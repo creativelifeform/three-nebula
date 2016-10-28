@@ -1,0 +1,77 @@
+version = 1.0.0
+source_dir = ../src/
+output_full = three.proton.js
+output_min = three.proton.min.js
+
+head
+-----
+/*!
+ * Proton v{version}
+ * https://github.com/a-jie/Proton
+ *
+ * Copyright {year}, A-JIE
+ * Licensed under the MIT license
+ * http://www.opensource.org/licenses/mit-license
+ *
+ */
+-----
+
+files
+-----
+core/Proton.js
+events/EventDispatcher.js
+utils/Util.js
+utils/ColorUtil.js
+utils/THREEUtil.js
+utils/PUID.js
+core/Particle.js
+core/Pool.js
+math/MathUtils.js
+math/Integration.js
+math/Vector3D.js
+math/Polar3D.js
+math/Span.js
+math/ArraySpan.js
+math/Quaternion.js
+math/Box.js
+behaviour/Behaviour.js
+initialize/Rate.js
+initialize/Initialize.js
+initialize/InitializeUtil.js
+initialize/Life.js
+initialize/Position.js
+initialize/Velocity.js
+initialize/Mass.js
+initialize/Radius.js
+initialize/Body.js
+behaviour/Force.js
+behaviour/Attraction.js
+behaviour/RandomDrift.js
+behaviour/Repulsion.js
+behaviour/Gravity.js
+behaviour/Collision.js
+behaviour/CrossZone.js
+behaviour/Alpha.js
+behaviour/Scale.js
+behaviour/Rotate.js
+behaviour/Color.js
+behaviour/Spring.js
+emitter/Emitter.js
+emitter/BehaviourEmitter.js
+emitter/FollowEmitter.js
+ease/ease.js
+render/BaseRender.js
+render/MeshRender.js
+render/PointsRender.js
+render/SpriteRender.js
+render/CustomRender.js
+zone/Zone.js
+zone/LineZone.js
+zone/SphereZone.js
+zone/MeshZone.js
+zone/PointZone.js
+zone/BoxZone.js
+zone/ScreenZone.js
+debug/log.js
+debug/Debug.js
+-----
