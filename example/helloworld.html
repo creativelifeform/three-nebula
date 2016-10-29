@@ -19,13 +19,15 @@
         top: 10px;
         right: 20px;
         color: #fff;
-        font-size: 16px;
+        font-size: 14px;
+        text-align: right;
     }
     </style>
 </head>
 
 <body>
-    <div class="tips">Please press the w key</div>
+    <div class="tips">Please press the w key
+        <br><span id="info">Add Behaviours</span></div>
     <div id="container"></div>
     <script src="../lib/stats.min.js"></script>
     <script src="../lib/three.min.js"></script>
@@ -33,13 +35,14 @@
     <script src="../lib/config.js"></script>
     <script src="./js/lib/TrackballControls.js"></script>
     <script>
-    var proton, emitter;
+    var proton, emitter1, emitter2;
     var camera, scene, renderer, stats, clock, controls;
 
     function init() {
         initScene();
         initLights();
         initProton();
+        initPlane();
         initControls();
         addStats();
         animate();
@@ -52,45 +55,82 @@
         scene = new THREE.Scene();
         scene.fog = new THREE.Fog(0xffffff, 1, 10000);
 
-        clock = new THREE.Clock();
-
         renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0xaaccff);
 
         document.body.appendChild(renderer.domElement);
         window.addEventListener('resize', onWindowResize, false);
     }
 
     function keydownEvent() {
-        var added = false;
-        var alpha = new Proton.Alpha(1, 0);
-        var collision = new Proton.Collision(emitter, true);
-        var color = new Proton.Color('random', 'random', Infinity, Proton.easeOutQuart);
+        var num = 0;
 
         document.onkeydown = function(e) {
             var keynum = window.event ? e.keyCode : e.which;
             if (keynum == 87) {
-                added = !added;
-                if (added) {
-                    emitter.addBehaviour(alpha);
-                    emitter.addBehaviour(color);
-                    emitter.addBehaviour(collision);
-                } else {
-                    emitter.removeBehaviour(alpha);
-                    emitter.removeBehaviour(color);
-                    emitter.removeBehaviour(collision);
+                num++;
+
+                switch (num) {
+                    case 1:
+                        var color = new Proton.Color('random', 'random', Infinity, Proton.easeOutQuart);
+                        addBehaviour(color);
+                        addInfo(": Color");
+                        break;
+
+                    case 2:
+                        var zone = new Proton.BoxZone(400);
+                        addBehaviour(new Proton.CrossZone(zone, "bound"));
+                        addInfo("+CrossZone");
+                        break;
+
+                    case 3:
+                        var force = new Proton.Force(1, 0, -.1);
+                        addBehaviour(force);
+                        addInfo("+Force");
+                        break;
+
+                    case 4:
+                        var spring = new Proton.Spring(0, 0, 0);
+                        addBehaviour(spring);
+                        addInfo("+Spring");
+                        break;
+
+                    case 5:
+                        var repulsion = new Proton.Repulsion(new Proton.Vector3D(0, -100, 0), 2, 200);
+                        addBehaviour(repulsion);
+                        addInfo("+Repulsion");
+                        break;
+
+                    default:
+
                 }
             }
+        }
+
+        function addInfo(info) {
+            document.getElementById("info").innerText += info;
+        }
+
+        function addBehaviour(behaviour) {
+            emitter1.addBehaviour(behaviour);
+            emitter2.addBehaviour(behaviour);
         }
     }
 
     function initLights() {
         var ambientLight = new THREE.AmbientLight(0x101010);
         scene.add(ambientLight);
+
         var pointLight = new THREE.PointLight(0xffffff, 2, 1000, 1);
         pointLight.position.set(0, 200, 200);
         scene.add(pointLight);
+
+        var spotLight = new THREE.SpotLight(0xffffff, .5);
+        spotLight.position.set(0, 500, 100);
+        scene.add(spotLight);
+        spotLight.lookAt(scene);
     }
 
     function initControls() {
@@ -114,26 +154,48 @@
         container.appendChild(stats.dom);
     }
 
+    function initPlane() {
+        var groundGeo = new THREE.PlaneBufferGeometry(10000, 10000);
+        var groundMat = new THREE.MeshPhongMaterial({
+            color: 0xffffff,
+            specular: 0x050505
+        });
+        groundMat.color.setHSL(0.095, 1, 0.75);
+
+        var ground = new THREE.Mesh(groundGeo, groundMat);
+        ground.rotation.x = -Math.PI / 2;
+        ground.position.y = -200;
+        scene.add(ground);
+        //ground.receiveShadow = true;
+    }
+
     function initProton() {
         proton = new Proton();
-        proton.addEmitter(createEmitter({
+
+        emitter1 = createEmitter({
             p: {
                 x: -100,
                 y: 0
             },
             Body: createMesh("sphere")
-        }));
-        proton.addEmitter(createEmitter({
+        })
+
+        emitter2 = createEmitter({
             p: {
                 x: 100,
                 y: 0
             },
             Body: createMesh("cube")
-        }));
+        })
+
+        proton.addEmitter(emitter1);
+        proton.addEmitter(emitter2);
+
         proton.addRender(new Proton.MeshRender(scene));
 
         //Proton.Debug.drawZone(proton,scene,zone2);
-        //Proton.Debug.drawEmitter(proton,scene,emitter);
+        Proton.Debug.drawEmitter(proton, scene, emitter1);
+        Proton.Debug.drawEmitter(proton, scene, emitter2);
     }
 
     function createMesh(geo) {
@@ -155,7 +217,7 @@
 
 
     function createEmitter(obj) {
-        emitter = new Proton.Emitter();
+        var emitter = new Proton.Emitter();
         emitter.rate = new Proton.Rate(new Proton.Span(5, 10), new Proton.Span(.1, .25));
         emitter.addInitialize(new Proton.Mass(1));
         emitter.addInitialize(new Proton.Radius(10));
@@ -166,11 +228,8 @@
 
         emitter.addBehaviour(new Proton.Rotate("random", "random"));
         emitter.addBehaviour(new Proton.Scale(1, 0.1));
-        //
+        //Gravity
         emitter.addBehaviour(new Proton.Gravity(3));
-        var zone2 = new Proton.BoxZone(400);
-        emitter.addBehaviour(new Proton.CrossZone(zone2, "bound"));
-
 
         emitter.p.x = obj.p.x;
         emitter.p.y = obj.p.y;

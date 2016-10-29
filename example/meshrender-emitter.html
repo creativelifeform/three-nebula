@@ -24,9 +24,10 @@
     <script src="./js/lib/TrackballControls.js"></script>
     <script>
     var proton, emitter;
-    var camera, scene, renderer, stats, clock, spring,controls;
+    var camera, scene, renderer, stats, clock, spring, controls;
 
     init();
+
     function init() {
         initScene();
         initLights();
@@ -104,7 +105,7 @@
         emitter.addInitialize(new Proton.Radius(100));
         emitter.addInitialize(new Proton.Life(2, 4));
         emitter.addInitialize(new Proton.Body(createBox()));
-        
+
         emitter.addInitialize(new Proton.Velocity(300, new Proton.Vector3D(0, 1, 0), 50));
 
         // //emitter.addBehaviour(new Proton.RandomDrift(30, 30, 30, .05));
