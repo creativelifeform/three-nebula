@@ -1,6 +1,7 @@
 three.proton
 ======
-three.proton is a magical 3d particle engine using [three.js](https://github.com/mrdoob/three.js). It is based on the Proton Engine library [https://github.com/a-jie/Proton](https://github.com/a-jie/Proton). It inherited Proton's most Api, and it was very, very easy to use.It is the simplest three.js particle engine<br>
+three.proton is a magical 3d particle engine using [three.js](https://github.com/mrdoob/three.js). It is based on the Proton Engine library [https://github.com/a-jie/Proton](https://github.com/a-jie/Proton). It inherited Proton's most Api, and it was very, very easy to use.<br>
+I think tt is the simplest three.js particle engine.Check out examples at https://a-jie.github.io/three.proton/<br>
 
 ## Features
 - Four kinds of renderers
