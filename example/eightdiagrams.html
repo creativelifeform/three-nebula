@@ -151,17 +151,6 @@
         return emitter;
     }
 
-    function createSprite() {
-        var map = new THREE.TextureLoader().load("./img/dot.png");
-        var material = new THREE.SpriteMaterial({
-            map: map,
-            color: 0xff0000,
-            blending: THREE.AdditiveBlending,
-            fog: true
-        });
-        return new THREE.Sprite(material);
-    }
-
     function animate() {
         stats.begin();
         requestAnimationFrame(animate);
