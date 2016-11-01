@@ -12,22 +12,24 @@
      * @constructor
      */
 
-    function MeshZone(geometry) {
+    function MeshZone(geometry, scale) {
         MeshZone._super_.call(this);
         if (geometry instanceof THREE.Geometry) {
             this.geometry = geometry;
         } else {
             this.geometry = geometry.geometry;
         }
+
+        this.scale = scale || 1;
     }
 
     Proton.Util.inherits(MeshZone, Proton.Zone);
     MeshZone.prototype.getPosition = function() {
         var vertices = this.geometry.vertices;
         var rVector = vertices[(vertices.length * Math.random()) >> 0];
-        this.vector.x = rVector.x;
-        this.vector.y = rVector.y;
-        this.vector.z = rVector.z;
+        this.vector.x = rVector.x * this.scale;
+        this.vector.y = rVector.y * this.scale;
+        this.vector.z = rVector.z * this.scale;
         return this.vector;
     }
 
