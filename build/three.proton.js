@@ -3435,7 +3435,7 @@
     function BoxZone(a, b, c, d, e, f) {
         var x, y, z, w, h, d;
         BoxZone._super_.call(this);
-        
+
         if (Proton.Util.isUndefined(b, c, d, e, f)) {
             x = y = z = 0;
             w = h = d = (a || 100);
@@ -3459,6 +3459,10 @@
         this.width = w;
         this.height = h;
         this.depth = d;
+
+        //
+        this.friction = 0.85;
+        this.max = 6;
     }
 
     Proton.Util.inherits(BoxZone, Proton.Zone);
@@ -3489,26 +3493,40 @@
     BoxZone.prototype._bound = function(particle) {
         if (particle.p.x - particle.radius < this.x - this.width / 2) {
             particle.p.x = this.x - this.width / 2 + particle.radius;
-            particle.v.x *= -1;
+            particle.v.x *= -this.friction;
+            this._static(particle, "x");
         } else if (particle.p.x + particle.radius > this.x + this.width / 2) {
             particle.p.x = this.x + this.width / 2 - particle.radius;
-            particle.v.x *= -1;
+            particle.v.x *= -this.friction;
+            this._static(particle, "x");
         }
 
         if (particle.p.y - particle.radius < this.y - this.height / 2) {
             particle.p.y = this.y - this.height / 2 + particle.radius;
-            particle.v.y *= -1;
+            particle.v.y *= -this.friction;
+            this._static(particle, "y");
         } else if (particle.p.y + particle.radius > this.y + this.height / 2) {
             particle.p.y = this.y + this.height / 2 - particle.radius;
-            particle.v.y *= -1;
+            particle.v.y *= -this.friction;
+            this._static(particle, "y");
         }
 
         if (particle.p.z - particle.radius < this.z - this.depth / 2) {
             particle.p.z = this.z - this.depth / 2 + particle.radius;
-            particle.v.z *= -1;
+            particle.v.z *= -this.friction;
+            this._static(particle, "z");
         } else if (particle.p.z + particle.radius > this.z + this.depth / 2) {
             particle.p.z = this.z + this.depth / 2 - particle.radius;
-            particle.v.z *= -1;
+            particle.v.z *= -this.friction;
+            this._static(particle, "z");
+        }
+    }
+
+    BoxZone.prototype._static = function(particle, axis) {
+        if (particle.v[axis] * particle.a[axis] > 0) return;
+        if (Math.abs(particle.v[axis]) < Math.abs(particle.a[axis]) * 0.0167 * this.max) {
+            particle.v[axis] = 0;
+            particle.a[axis] = 0;
         }
     }
 

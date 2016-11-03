@@ -128,13 +128,16 @@
         emitter.addBehaviour(new Proton.Scale(1, .1));
         emitter.addBehaviour(new Proton.G(6));
 
-        var zone2 = new Proton.BoxZone(600);
-        emitter.addBehaviour(new Proton.CrossZone(zone2, "bound"));
+        var zone = new Proton.BoxZone(600);
+        zone.friction = 0.95;
+        zone.max = 7;
+        emitter.addBehaviour(new Proton.CrossZone(zone, "bound"));
         emitter.addBehaviour(new Proton.Color(0xff0000, 'random', Infinity, Proton.easeOutQuart));
 
         emitter.p.x = 0;
         emitter.p.y = 0;
         emitter.emit();
+        Proton.Debug.drawZone(proton, scene, zone);
 
         return emitter;
     }
@@ -147,8 +150,9 @@
     }
 
     var tha = 0;
+
     function render() {
-        proton.update(clock.getDelta());
+        proton.update();
         renderer.render(scene, camera);
 
         tha += .005;
