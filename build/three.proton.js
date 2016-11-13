@@ -1,14 +1,23 @@
 /*!
- * Proton v1.0.0
- * https://github.com/a-jie/Proton
+ * three.proton v0.1.2
+ * https://github.com/a-jie/three.proton
  *
  * Copyright 2011-2016, A-JIE
  * Licensed under the MIT license
  * http://www.opensource.org/licenses/mit-license
  *
  */
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define([], factory);
+    } else if (typeof exports === 'object') {
+        module.exports = factory();
+    } else {
+        root.Proton = factory();
+    }
+}(this, function () {
 
-(function(window, undefined) {
+
     //the max particle number in pool
     Proton.POOL_MAX = 500;
     Proton.TIME_STEP = 60;
@@ -139,7 +148,7 @@
         }
     };
 
-    window.Proton = Proton;
+    
 
 
 /*
@@ -3824,5 +3833,5 @@
 
     Proton.Debug = Debug;
 
-
-})(window);
+    return Proton;
+}));
