@@ -1,8 +1,8 @@
 /*!
- * three.proton v0.1.2
+ * three.proton v0.1.3
  * https://github.com/a-jie/three.proton
  *
- * Copyright 2011-2016, A-JIE
+ * Copyright 2011-2017, A-JIE
  * Licensed under the MIT license
  * http://www.opensource.org/licenses/mit-license
  *
@@ -144,7 +144,7 @@
             }
 
             this.emitters.length = 0;
-            this.particlePool.destroy();
+            this.pool.destroy();
         }
     };
 

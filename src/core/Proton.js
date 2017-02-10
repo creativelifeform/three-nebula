@@ -125,7 +125,7 @@
             }
 
             this.emitters.length = 0;
-            this.particlePool.destroy();
+            this.pool.destroy();
         }
     };
 
