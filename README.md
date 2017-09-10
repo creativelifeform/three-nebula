@@ -17,6 +17,22 @@ I think it is the simplest three.js particle engine.Check out examples at https:
   
 - Perfectly compatible with the three.js library.
 
+## Installation
+
+#### Install using npm 
+[![anix](https://nodei.co/npm/three.proton.js.png)](https://npmjs.org/package/three.proton.js)
+
+``` 
+npm install three.proton.js --save
+... 
+import Proton from 'three.proton.js';
+```
+
+#### Include in html
+``` 
+<script type="text/javascript" src="js/proton.min.js"></script> 
+```
+
 ## Usage
 ```javascript
 var proton = new Proton();
