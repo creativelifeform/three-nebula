@@ -30,7 +30,7 @@ import Proton from 'three.proton.js';
 
 #### Include in html
 ``` 
-<script type="text/javascript" src="js/proton.min.js"></script> 
+<script type="text/javascript" src="js/three.proton.min.js"></script> 
 ```
 
 ## Usage
