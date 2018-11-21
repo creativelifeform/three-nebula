@@ -20,7 +20,7 @@ export default class Proton {
     this.emitters = [];
     this.renderers = [];
     this.pool = new Pool();
-    this.dispatcher = new EventDispatcher();
+    this.eventDispatcher = new EventDispatcher();
   }
 
   static get integrator() {
@@ -58,7 +58,7 @@ export default class Proton {
   addEmitter(emitter) {
     this.emitters.push(emitter);
     emitter.parent = this;
-    this.dispatcher.dispatchEvent('EMITTER_ADDED', emitter);
+    this.eventDispatcher.dispatchEvent('EMITTER_ADDED', emitter);
   }
 
   removeEmitter(emitter) {
@@ -66,11 +66,11 @@ export default class Proton {
 
     this.emitters.splice(this.emitters.indexOf(emitter), 1);
     emitter.parent = null;
-    this.dispatcher.dispatchEvent('EMITTER_REMOVED', emitter);
+    this.eventDispatcher.dispatchEvent('EMITTER_REMOVED', emitter);
   }
 
   update($delta) {
-    this.dispatcher.dispatchEvent('PROTON_UPDATE', this);
+    this.eventDispatcher.dispatchEvent('PROTON_UPDATE', this);
 
     var delta = $delta || 0.0167;
 
@@ -80,7 +80,7 @@ export default class Proton {
       while (i--) this.emitters[i].update(delta);
     }
 
-    this.dispatcher.dispatchEvent('PROTON_UPDATE_AFTER', this);
+    this.eventDispatcher.dispatchEvent('PROTON_UPDATE_AFTER', this);
   }
 
   /**

@@ -1,7 +1,8 @@
+import ease, { setEasingByName } from '../ease';
+
 import { PI } from '../constants';
 import { Util } from '../utils';
 import { Vector3D } from '../math';
-import { ease } from '../ease';
 
 export default class Particle {
   /**
@@ -64,7 +65,7 @@ export default class Particle {
     this.scale = 1;
     this.useColor = false;
     this.useAlpha = false;
-    this.easing = ease.setEasingByName(ease.easeLinear);
+    this.easing = setEasingByName(ease.easeLinear);
 
     if (init) {
       this.p = new Vector3D();
