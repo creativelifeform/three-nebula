@@ -115,6 +115,7 @@ export default class Particle {
       this.destroy();
     } else {
       var scale = this.easing(this.age / this.life);
+
       this.energy = Math.max(1 - scale, 0);
     }
   }
@@ -126,6 +127,7 @@ export default class Particle {
 
   addBehaviours(behaviours) {
     var i = behaviours.length;
+
     while (i--) {
       this.addBehaviour(behaviours[i]);
     }
@@ -133,6 +135,7 @@ export default class Particle {
 
   removeBehaviour(behaviour) {
     var index = this.behaviours.indexOf(behaviour);
+
     if (index > -1) {
       this.behaviours.splice(index, 1);
     }

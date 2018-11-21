@@ -1,5 +1,6 @@
 import { EULER, POOL_MAX } from '../constants';
 
+import EventDispatcher from '../events/EventDispatcher';
 import Integration from '../math/Integration';
 import Pool from './Pool';
 import { initValue } from '../utils/Util';
@@ -19,6 +20,7 @@ export default class Proton {
     this.emitters = [];
     this.renderers = [];
     this.pool = new Pool();
+    this.dispatcher = new EventDispatcher();
   }
 
   static get integrator() {
@@ -56,7 +58,7 @@ export default class Proton {
   addEmitter(emitter) {
     this.emitters.push(emitter);
     emitter.parent = this;
-    this.dispatchEvent('EMITTER_ADDED', emitter);
+    this.dispatcher.dispatchEvent('EMITTER_ADDED', emitter);
   }
 
   removeEmitter(emitter) {
@@ -64,11 +66,11 @@ export default class Proton {
 
     this.emitters.splice(this.emitters.indexOf(emitter), 1);
     emitter.parent = null;
-    this.dispatchEvent('EMITTER_REMOVED', emitter);
+    this.dispatcher.dispatchEvent('EMITTER_REMOVED', emitter);
   }
 
   update($delta) {
-    this.dispatchEvent('PROTON_UPDATE', this);
+    this.dispatcher.dispatchEvent('PROTON_UPDATE', this);
 
     var delta = $delta || 0.0167;
 
@@ -78,7 +80,7 @@ export default class Proton {
       while (i--) this.emitters[i].update(delta);
     }
 
-    this.dispatchEvent('PROTON_UPDATE_AFTER', this);
+    this.dispatcher.dispatchEvent('PROTON_UPDATE_AFTER', this);
   }
 
   /**

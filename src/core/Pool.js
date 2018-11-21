@@ -15,6 +15,7 @@ export default class Pool {
 
   getCount() {
     var count = 0;
+
     for (var id in this.list) count += this.list[id].length;
 
     return count++;
@@ -23,6 +24,7 @@ export default class Pool {
   get(obj) {
     var p,
       puid = obj.__puid || PUID.id(obj);
+
     if (this.list[puid] && this.list[puid].length > 0)
       p = this.list[puid].pop();
     else p = this.create(obj);
