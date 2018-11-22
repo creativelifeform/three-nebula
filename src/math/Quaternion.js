@@ -16,7 +16,7 @@ export default class Quaternion {
   }
 
   clone() {
-    return new Quaternion(this.x, this.y, this.z, this.w);
+    return new this.constructor(this.x, this.y, this.z, this.w);
   }
 
   copy(quaternion) {
