@@ -1,78 +1,83 @@
-(function(Proton, undefined) {
-    var Polar3D = function(radius, theta, phi) {
-        this.radius = radius || 1;
-        this.phi = phi || 0;
-        this.theta = theta || 0;
-    }
+import Vector3D from './Vector3D';
 
-    Polar3D.prototype = {
-        set: function(radius, theta, phi) {
-            this.radius = radius || 1;
-            this.phi = phi || 0;
-            this.theta = theta || 0;
+export default class Polar3D {
+  constructor(radius, theta, phi) {
+    this.radius = radius || 1;
+    this.phi = phi || 0;
+    this.theta = theta || 0;
+  }
 
-            return this;
-        },
+  set(radius, theta, phi) {
+    this.radius = radius || 1;
+    this.phi = phi || 0;
+    this.theta = theta || 0;
 
-        setRadius: function(radius) {
-            this.radius = radius;
-            return this;
-        },
+    return this;
+  }
 
-        setPhi: function(phi) {
-            this.phi = phi;
-            return this;
-        },
+  setRadius(radius) {
+    this.radius = radius;
 
-        setTheta: function(theta) {
-            this.theta = theta;
-            return this;
-        },
+    return this;
+  }
 
-        copy: function(p) {
-            this.radius = p.radius;
-            this.phi = p.phi;
-            this.theta = p.theta;
-            return this;
-        },
+  setPhi(phi) {
+    this.phi = phi;
 
-        toVector3D: function() {
-            return new Proton.Vector3D(this.getX(), this.getY(), this.getZ());
-        },
+    return this;
+  }
 
-        getX: function() {
-            return this.radius * Math.sin(this.theta) * Math.cos(this.phi);
-        },
+  setTheta(theta) {
+    this.theta = theta;
 
-        getY: function() {
-            return -this.radius * Math.sin(this.theta) * Math.sin(this.phi);
-        },
+    return this;
+  }
 
-        getZ: function() {
-            return this.radius * Math.cos(this.theta);
-        },
+  copy(p) {
+    this.radius = p.radius;
+    this.phi = p.phi;
+    this.theta = p.theta;
 
-        normalize: function() {
-            this.radius = 1;
-            return this;
-        },
+    return this;
+  }
 
-        equals: function(v) {
-            return ((v.radius === this.radius) && (v.phi === this.phi) && (v.theta === this.theta));
-        },
+  toVector3D() {
+    return new Vector3D(this.getX(), this.getY(), this.getZ());
+  }
 
-        clear: function() {
-            this.radius = 0.0;
-            this.phi = 0.0;
-            this.theta = 0.0;
-            return this;
-        },
+  getX() {
+    return this.radius * Math.sin(this.theta) * Math.cos(this.phi);
+  }
 
-        clone: function() {
-            return new Polar3D(this.radius, this.phi, this.theta);
-        }
-    };
+  getY() {
+    return -this.radius * Math.sin(this.theta) * Math.sin(this.phi);
+  }
 
+  getZ() {
+    return this.radius * Math.cos(this.theta);
+  }
 
-    Proton.Polar3D = Polar3D;
-})(Proton);
+  normalize() {
+    this.radius = 1;
+
+    return this;
+  }
+
+  equals(v) {
+    return (
+      v.radius === this.radius && v.phi === this.phi && v.theta === this.theta
+    );
+  }
+
+  clear() {
+    this.radius = 0.0;
+    this.phi = 0.0;
+    this.theta = 0.0;
+
+    return this;
+  }
+
+  clone() {
+    return new Polar3D(this.radius, this.phi, this.theta);
+  }
+}
