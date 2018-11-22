@@ -1,17 +1,20 @@
-(function(Proton, undefined) {
+import { Sprite, SpriteMaterial } from 'three';
 
-    function SpriteRender(container) {
-        SpriteRender._super_.call(this, container);
+import MeshRender from './MeshRender';
 
-        this._body = new THREE.Sprite(new THREE.SpriteMaterial({ color: 0xffffff }));
-        this.name = "SpriteRender";
-    }
+export default class SpriteRender extends MeshRender {
+  constructor(container) {
+    super(container);
 
-    Proton.Util.inherits(SpriteRender, Proton.MeshRender);
+    this._body = new Sprite(new SpriteMaterial({ color: 0xffffff }));
+    this.name = 'SpriteRender';
+  }
 
-    SpriteRender.prototype.scale = function(particle) {
-        particle.target.scale.set(particle.scale * particle.radius, particle.scale * particle.radius, 1);
-    };
-
-    Proton.SpriteRender = SpriteRender;
-})(Proton);
+  scale(particle) {
+    particle.target.scale.set(
+      particle.scale * particle.radius,
+      particle.scale * particle.radius,
+      1
+    );
+  }
+}

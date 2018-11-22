@@ -1,41 +1,38 @@
-(function(Proton, undefined) {
+import BaseRender from './BaseRender';
+import { Vector3 } from 'three';
 
-    function PointsRender(ps) {
-        PointsRender._super_.call(this);
-        this.points = ps;
-        this.name = "PointsRender";
+export default class PointsRender extends BaseRender {
+  constructor(ps) {
+    super();
+
+    this.points = ps;
+    this.name = 'PointsRender';
+  }
+
+  onProtonUpdate() {}
+
+  onParticleCreated(particle) {
+    if (!particle.target) {
+      particle.target = new Vector3();
     }
 
-    Proton.Util.inherits(PointsRender, Proton.BaseRender);
+    particle.target.copy(particle.p);
+    this.points.geometry.vertices.push(particle.target);
+  }
 
-    PointsRender.prototype.onProtonUpdate = function() {
-        
-    };
+  onParticleUpdate(particle) {
+    if (particle.target) {
+      particle.target.copy(particle.p);
+    }
+  }
 
-    PointsRender.prototype.onParticleCreated = function(particle) {
-        if (!particle.target) {
-            particle.target = new THREE.Vector3();
-        }
+  onParticleDead(particle) {
+    if (particle.target) {
+      var index = this.points.geometry.vertices.indexOf(particle.target);
 
-        particle.target.copy(particle.p);
-        this.points.geometry.vertices.push(particle.target);
-    };
+      if (index > -1) this.points.geometry.vertices.splice(index, 1);
 
-    PointsRender.prototype.onParticleUpdate = function(particle) {
-        if (particle.target) {
-            particle.target.copy(particle.p);
-        }
-    };
-
-    PointsRender.prototype.onParticleDead = function(particle) {
-        if (particle.target) {
-            var index = this.points.geometry.vertices.indexOf(particle.target);
-            if (index > -1)
-                this.points.geometry.vertices.splice(index, 1);
-            
-            particle.target = null;
-        }
-    };
-
-    Proton.PointsRender = PointsRender;
-})(Proton);
+      particle.target = null;
+    }
+  }
+}

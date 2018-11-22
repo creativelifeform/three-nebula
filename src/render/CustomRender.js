@@ -1,28 +1,21 @@
-(function(Proton, undefined) {
+import BaseRender from './BaseRender';
+import { Pool } from '../core';
 
-    function CustomRender() {
-        CustomRender._super_.call(this);
-        this.targetPool = new Proton.Pool();
-        this.materialPool = new Proton.Pool();
-        
-        this.name = "CustomRender";
-    }
+export default class CustomRender extends BaseRender {
+  constructor() {
+    super();
 
-    Proton.Util.inherits(CustomRender, Proton.BaseRender);
+    this.targetPool = new Pool();
+    this.materialPool = new Pool();
 
-    CustomRender.prototype.onProtonUpdate = function() {};
+    this.name = 'CustomRender';
+  }
 
-    CustomRender.prototype.onParticleCreated = function(particle) {
-        
-    };
+  onProtonUpdate() {}
 
-    CustomRender.prototype.onParticleUpdate = function(particle) {
-        
-    };
+  onParticleCreated(particle) {} // eslint-disable-line
 
-    CustomRender.prototype.onParticleDead = function(particle) {
-        
-    };
+  onParticleUpdate(particle) {} // eslint-disable-line
 
-    Proton.CustomRender = CustomRender;
-})(Proton);
+  onParticleDead(particle) {} // eslint-disable-line
+}

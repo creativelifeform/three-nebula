@@ -1,53 +1,51 @@
-(function(Proton, undefined) {
+export default class BaseRender {
+  constructor() {
+    this.name = 'BaseRender';
+  }
 
-    function BaseRender() { this.name = "BaseRender"; }
+  init(proton) {
+    var self = this;
 
-    BaseRender.prototype = {
-        init: function(proton) {
-            var self = this;
-            this.proton = proton;
-            
-            this.proton.addEventListener("PROTON_UPDATE", function(proton) {
-                self.onProtonUpdate.call(self, proton);
-            });
+    this.proton = proton;
 
-            this.proton.addEventListener("PARTICLE_CREATED", function(particle) {
-                self.onParticleCreated.call(self, particle);
-            });
+    this.proton.addEventListener('PROTON_UPDATE', function(proton) {
+      self.onProtonUpdate.call(self, proton);
+    });
 
-            this.proton.addEventListener("PARTICLE_UPDATE", function(particle) {
-                self.onParticleUpdate.call(self, particle);
-            });
+    this.proton.addEventListener('PARTICLE_CREATED', function(particle) {
+      self.onParticleCreated.call(self, particle);
+    });
 
-            this.proton.addEventListener("PARTICLE_DEAD", function(particle) {
-                self.onParticleDead.call(self, particle);
-            });
-        },
+    this.proton.addEventListener('PARTICLE_UPDATE', function(particle) {
+      self.onParticleUpdate.call(self, particle);
+    });
 
-        remove: function(proton) {
-            // this.proton.removeEventListener("PROTON_UPDATE", this.onProtonUpdate);
-            // this.proton.removeEventListener("PARTICLE_CREATED", this.onParticleCreated);
-            // this.proton.removeEventListener("PARTICLE_UPDATE", this.onParticleUpdate);
-            // this.proton.removeEventListener("PARTICLE_DEAD", this.onParticleDead);
-            this.proton = null;
-        },
+    this.proton.addEventListener('PARTICLE_DEAD', function(particle) {
+      self.onParticleDead.call(self, particle);
+    });
+  }
 
-        onParticleCreated: function(particle) {
+  remove() {
+    this.proton = null;
+  }
 
-        },
+  /**
+   * @abstract
+   */
+  onParticleCreated(particle) {} // eslint-disable-line
 
-        onParticleUpdate: function(particle) {
+  /**
+   * @abstract
+   */
+  onParticleUpdate(particle) {} // eslint-disable-line
 
-        },
+  /**
+   * @abstract
+   */
+  onParticleDead(particle) {} // eslint-disable-line
 
-        onParticleDead: function(particle) {
-
-        },
-
-        onProtonUpdate: function(proton) {
-
-        }
-    }
-
-    Proton.BaseRender = BaseRender;
-})(Proton);
+  /**
+   * @abstract
+   */
+  onProtonUpdate(proton) {} // eslint-disable-line
+}

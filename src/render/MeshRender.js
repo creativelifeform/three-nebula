@@ -1,25 +1,28 @@
-import * as THREE from "three";
+import { BoxGeometry, Mesh, MeshLambertMaterial } from 'three';
 
-(function(Proton, undefined) {
-  function MeshRender(container) {
-    MeshRender._super_.call(this);
+import BaseRender from './BaseRender';
+import { PUID } from '../utils';
+import { Pool } from '../core';
+
+export default class MeshRender extends BaseRender {
+  constructor(container) {
+    super();
+
     this.container = container;
 
-    this._targetPool = new Proton.Pool();
-    this._materialPool = new Proton.Pool();
-    this._body = new THREE.Mesh(
-      new THREE.BoxGeometry(50, 50, 50),
-      new THREE.MeshLambertMaterial({ color: "#ff0000" })
+    this._targetPool = new Pool();
+    this._materialPool = new Pool();
+    this._body = new Mesh(
+      new BoxGeometry(50, 50, 50),
+      new MeshLambertMaterial({ color: '#ff0000' })
     );
 
-    this.name = "MeshRender";
+    this.name = 'MeshRender';
   }
 
-  Proton.Util.inherits(MeshRender, Proton.BaseRender);
+  onProtonUpdate() {}
 
-  MeshRender.prototype.onProtonUpdate = function() {};
-
-  MeshRender.prototype.onParticleCreated = function(particle) {
+  onParticleCreated(particle) {
     if (!particle.target) {
       //set target
       if (!particle.body) particle.body = this._body;
@@ -27,9 +30,7 @@ import * as THREE from "three";
 
       //set material
       if (particle.useAlpha || particle.useColor) {
-        particle.target.material.__puid = Proton.PUID.id(
-          particle.body.material
-        );
+        particle.target.material.__puid = PUID.id(particle.body.material);
         particle.target.material = this._materialPool.get(
           particle.target.material
         );
@@ -40,9 +41,9 @@ import * as THREE from "three";
       particle.target.position.copy(particle.p);
       this.container.add(particle.target);
     }
-  };
+  }
 
-  MeshRender.prototype.onParticleUpdate = function(particle) {
+  onParticleUpdate(particle) {
     if (particle.target) {
       particle.target.position.copy(particle.p);
       particle.target.rotation.set(
@@ -61,13 +62,13 @@ import * as THREE from "three";
         particle.target.material.color.copy(particle.color);
       }
     }
-  };
+  }
 
-  MeshRender.prototype.scale = function(particle) {
+  scale(particle) {
     particle.target.scale.set(particle.scale, particle.scale, particle.scale);
-  };
+  }
 
-  MeshRender.prototype.onParticleDead = function(particle) {
+  onParticleDead(particle) {
     if (particle.target) {
       if (particle.useAlpha || particle.useColor)
         this._materialPool.expire(particle.target.material);
@@ -76,7 +77,5 @@ import * as THREE from "three";
       this.container.remove(particle.target);
       particle.target = null;
     }
-  };
-
-  Proton.MeshRender = MeshRender;
-})(Proton);
+  }
+}
