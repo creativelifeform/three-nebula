@@ -19,7 +19,7 @@ export default class Zone {
 
   crossing(particle) {
     if (!this.supportsCrossing) {
-      console.warn(
+      return console.warn(
         `${this.constructor.name} does not support the crossing method`
       );
     }
