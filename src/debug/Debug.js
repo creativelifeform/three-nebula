@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 
+import { BoxZone, LineZone, MeshZone, PointZone, SphereZone } from '../zone';
+
 export default {
   addEventListener: function(proton, fun) {
     proton.addEventListener('PROTON_UPDATE', function(e) {
@@ -9,14 +11,15 @@ export default {
   drawZone: function(proton, container, zone) {
     var geometry, material, mesh;
 
-    if (zone instanceof Proton.PointZone) {
+    if (zone instanceof PointZone) {
       geometry = new THREE.SphereGeometry(15);
-    } else if (zone instanceof Proton.LineZone) {
-    } else if (zone instanceof Proton.BoxZone) {
+    } else if (zone instanceof LineZone) {
+      // TODO
+    } else if (zone instanceof BoxZone) {
       geometry = new THREE.BoxGeometry(zone.width, zone.height, zone.depth);
-    } else if (zone instanceof Proton.SphereZone) {
+    } else if (zone instanceof SphereZone) {
       geometry = new THREE.SphereGeometry(zone.radius, 10, 10);
-    } else if (zone instanceof Proton.MeshZone) {
+    } else if (zone instanceof MeshZone) {
       if (zone.geometry instanceof THREE.Geometry) geometry = zone.geometry;
       else geometry = zone.geometry.geometry;
 
@@ -30,7 +33,7 @@ export default {
     mesh = new THREE.Mesh(geometry, material);
     container.add(mesh);
 
-    this.addEventListener(proton, function(e) {
+    this.addEventListener(proton, function() {
       mesh.position.set(zone.x, zone.y, zone.z);
     });
   },
@@ -54,7 +57,7 @@ export default {
     });
   },
   renderInfo: (function() {
-    function getCreatedNumber(type) {
+    function getCreatedNumber(type, proton) {
       var pool = type == 'material' ? '_materialPool' : '_targetPool';
       var renderer = proton.renderers[0];
 
@@ -109,7 +112,7 @@ export default {
         this._infoType = 1;
         this._infoCon.addEventListener(
           'click',
-          function(event) {
+          function() {
             self._infoType++;
             if (self._infoType > 3) self._infoType = 1;
           },

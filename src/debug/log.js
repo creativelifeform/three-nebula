@@ -9,7 +9,7 @@
  * @constructor
  * @param {*} logInfo;
  */
-export default () => {
+export default function() {
   let once = 0;
 
   if (window.console && window.console.trace) {
@@ -26,7 +26,7 @@ export default () => {
       }
     } else {
       arg.unshift('+15');
-      log.apply(console, arg);
+      this.apply(console, arg);
     }
   }
-};
+}
