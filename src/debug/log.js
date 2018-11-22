@@ -3,9 +3,9 @@
  *
  * This method will console.log the fixed number of your info  in updata or requestAnimationFrame
  *
- * use like this Proton.log('+12',mc); log 12 times
+ * use like this log('+12',mc); log 12 times
  *
- * @class Proton.log
+ * @class Log
  * @constructor
  * @param {*} logInfo;
  */
