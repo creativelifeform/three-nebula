@@ -33,7 +33,13 @@ describe('modules', () => {
       'Repulsion',
       'Rotate',
       'Scale',
-      'Spring'
+      'Spring',
+      'BehaviourEmitter',
+      'Emitter',
+      'FollowEmitter',
+      'Particle',
+      'Pool',
+      'Box'
     ];
 
     modules.forEach(module => assert.isFunction(Proton[module]));

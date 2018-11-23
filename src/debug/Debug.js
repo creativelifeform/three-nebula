@@ -4,7 +4,7 @@ import { BoxZone, LineZone, MeshZone, PointZone, SphereZone } from '../zone';
 
 export default {
   addEventListener: function(proton, fun) {
-    proton.addEventListener('PROTON_UPDATE', function(e) {
+    proton.eventDispatcher.addEventListener('PROTON_UPDATE', function(e) {
       fun(e);
     });
   },

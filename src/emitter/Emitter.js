@@ -98,7 +98,8 @@ export default class Emitter extends Particle {
     var particle = this.parent.pool.get(Particle);
 
     this.setupParticle(particle, initialize, behaviour);
-    this.parent && this.parent.dispatchEvent('PARTICLE_CREATED', particle);
+    this.parent &&
+      this.parent.eventDispatcher.dispatchEvent('PARTICLE_CREATED', particle);
     BIND_EMITTER_EVENT && this.dispatchEvent('PARTICLE_CREATED', particle);
 
     return particle;
@@ -189,7 +190,8 @@ export default class Emitter extends Particle {
       particle.update(time, i);
       integrator.integrate(particle, time, damping);
 
-      this.parent && this.parent.dispatchEvent('PARTICLE_UPDATE', particle);
+      this.parent &&
+        this.parent.eventDispatcher.dispatchEvent('PARTICLE_UPDATE', particle);
       BIND_EMITTER_EVENT && this.dispatchEvent('PARTICLE_UPDATE', particle);
     }
   }
@@ -227,7 +229,8 @@ export default class Emitter extends Particle {
     while (i--) {
       particle = this.particles[i];
       if (particle.dead) {
-        this.parent && this.parent.dispatchEvent('PARTICLE_DEAD', particle);
+        this.parent &&
+          this.parent.eventDispatcher.dispatchEvent('PARTICLE_DEAD', particle);
         BIND_EMITTER_EVENT && this.dispatchEvent('PARTICLE_DEAD', particle);
 
         this.parent.pool.expire(particle.reset());

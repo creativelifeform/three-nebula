@@ -1,39 +1,14 @@
 import { Proton } from './core';
 
-export {
-  BoxZone,
-  LineZone,
-  MeshZone,
-  PointZone,
-  ScreenZone,
-  SphereZone
-} from './zone';
-
-export {
-  Body,
-  Life,
-  Mass,
-  Position,
-  Radius,
-  Rate,
-  Velocity
-} from './initialize';
-
-export {
-  Alpha,
-  Attraction,
-  Collision,
-  Color,
-  CrossZone,
-  Force,
-  Gravity,
-  RandomDrift,
-  Repulsion,
-  Rotate,
-  Scale,
-  Spring
-} from './behaviour';
-
-export { Particle, Pool } from './core';
+export * from './behaviour';
+export * from './debug';
+export * from './ease';
+export * from './emitter';
+export * from './initialize';
+export * from './math';
+export * from './render';
+export * from './utils';
+export * from './zone';
 
 export default Proton;
+export { Particle, Pool } from './core';

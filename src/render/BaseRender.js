@@ -8,19 +8,27 @@ export default class BaseRender {
 
     this.proton = proton;
 
-    this.proton.addEventListener('PROTON_UPDATE', function(proton) {
+    this.proton.eventDispatcher.addEventListener('PROTON_UPDATE', function(
+      proton
+    ) {
       self.onProtonUpdate.call(self, proton);
     });
 
-    this.proton.addEventListener('PARTICLE_CREATED', function(particle) {
+    this.proton.eventDispatcher.addEventListener('PARTICLE_CREATED', function(
+      particle
+    ) {
       self.onParticleCreated.call(self, particle);
     });
 
-    this.proton.addEventListener('PARTICLE_UPDATE', function(particle) {
+    this.proton.eventDispatcher.addEventListener('PARTICLE_UPDATE', function(
+      particle
+    ) {
       self.onParticleUpdate.call(self, particle);
     });
 
-    this.proton.addEventListener('PARTICLE_DEAD', function(particle) {
+    this.proton.eventDispatcher.addEventListener('PARTICLE_DEAD', function(
+      particle
+    ) {
       self.onParticleDead.call(self, particle);
     });
   }

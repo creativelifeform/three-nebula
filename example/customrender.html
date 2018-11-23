@@ -18,13 +18,15 @@
 
 <body>
     <div id="container"></div>
-    <script src="../node_modules/stats.js/build/stats.min.js"></script>
-    <script src="../node_modules/three/build/three.min.js"></script>
-    <script src="../build/three-proton.js"></script>
+    <script src="./js/stats.min.js"></script>
+    <script src="./js/three.min.js"></script>
+    <script src="./js/three-proton.js"></script>
     <script>
     var proton, emitter;
     var camera, scene, renderer, stats, clock, spring;
     var mesh;
+
+    console.log(Proton);
 
     function init() {
         loadModel(initAll);
@@ -73,7 +75,7 @@
     }
 
     function initProton() {
-        proton = new Proton();
+        proton = new Proton.default();
         proton.addEmitter(createEmitter());
 
         //add custom renderer
@@ -125,7 +127,7 @@
         // //emitter.addBehaviour(new Proton.RandomDrift(30, 30, 30, .05));
         emitter.addBehaviour(new Proton.Rotate("random", "random"));
         emitter.addBehaviour(new Proton.Scale(1, .1));
-        emitter.addBehaviour(new Proton.G(6));
+        emitter.addBehaviour(new Proton.Gravity(6));
 
         var zone = new Proton.BoxZone(600);
         zone.friction = 0.95;
@@ -164,6 +166,8 @@
     function onWindowResize() {
 
     }
+
+    init();
     </script>
 </body>
 
