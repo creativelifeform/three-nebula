@@ -1,16 +1,22 @@
-(function(Proton, undefined) {
-	function Repulsion(targetPosition, force, radius, life, easing) {
-		Repulsion._super_.call(this, targetPosition, force, radius, life, easing);
-		this.force *= -1;
-		this.name = "Repulsion";
-	}
+import Attraction from './Attraction';
 
+export default class Repulsion extends Attraction {
+  constructor(targetPosition, force, radius, life, easing) {
+    super(targetPosition, force, radius, life, easing);
 
-	Proton.Util.inherits(Repulsion, Proton.Attraction);
-	Repulsion.prototype.reset = function(targetPosition, force, radius, life, easing) {
-		Repulsion._super_.prototype.reset.call(this, targetPosition, force, radius, life, easing);
-		this.force *= -1;
-	}
-	Proton.Repulsion = Repulsion;
-})(Proton);
+    this.force *= -1;
+    this.name = 'Repulsion';
+  }
 
+  reset(targetPosition, force, radius, life, easing) {
+    Repulsion._super_.prototype.reset.call(
+      this,
+      targetPosition,
+      force,
+      radius,
+      life,
+      easing
+    );
+    this.force *= -1;
+  }
+}

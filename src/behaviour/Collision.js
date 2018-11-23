@@ -1,10 +1,11 @@
 import Behaviour from './Behaviour';
+import { Vector3D } from '../math';
 
 export default class Collision extends Behaviour {
   /**
-   * The Scale class is the base for the other Proton.Behaviour
+   * The Scale class is the base for the other Behaviour
    *
-   * @class Proton.Behaviour
+   * @class Behaviour
    * @constructor
    */
   //can use Collision(emitter,true,function(){}) or Collision();
@@ -20,7 +21,7 @@ export default class Collision extends Behaviour {
     this.useMass = useMass;
     this.callback = callback;
     this.particles = [];
-    this.delta = new Proton.Vector3D();
+    this.delta = new Vector3D();
     life && Collision._super_.prototype.reset.call(this, life, easing);
   }
 

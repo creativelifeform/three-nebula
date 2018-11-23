@@ -1,15 +1,12 @@
-(function(Proton, undefined) {
-    function Gravity(g, life, easing) {
-        Gravity._super_.call(this, 0, -g, 0, life, easing);
-        this.name = "Gravity";
-    }
+import Force from './Behaviour';
 
-    Proton.Util.inherits(Gravity, Proton.Force);
+export default class Gravity extends Force {
+  constructor(g, life, easing) {
+    super(0, -g, 0, life, easing);
+    this.name = 'Gravity';
+  }
 
-    Gravity.prototype.reset = function(g, life, easing) {
-        Gravity._super_.prototype.reset.call(this, 0, -g, 0, life, easing);
-    }
-
-    Proton.Gravity = Gravity;
-    Proton.G = Gravity;
-})(Proton);
+  reset(g, life, easing) {
+    Gravity._super_.prototype.reset.call(this, 0, -g, 0, life, easing);
+  }
+}

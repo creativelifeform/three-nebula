@@ -1,35 +1,32 @@
-(function(Proton, undefined) {
-    /**
-     * The Behaviour class is the base for the other Behaviour
-     *
-     * @class Behaviour
-     * @constructor
-     */
-    function Spring(x, y, z, spring, friction, life, easing) {
-        Spring._super_.call(this, life, easing);
-        Spring.prototype.reset(x, y, z, spring, friction);
-        this.name = "Spring";
-    }
+import Behaviour from './Behaviour';
+import { Vector3D } from '../math';
 
-    Proton.Util.inherits(Spring, Proton.Behaviour);
-    Spring.prototype.reset = function(x, y, z, spring, friction) {
-        if (!this.pos)
-            this.pos = new Proton.Vector3D(x, y, z);
-        else
-            this.pos.set(x, y, z);
-        this.spring = spring || .1;
-        this.friction = friction || .98;
-    }
+export default class Spring extends Behaviour {
+  /**
+   * The Behaviour class is the base for the other Behaviour
+   *
+   * @class Behaviour
+   * @constructor
+   */
+  constructor(x, y, z, spring, friction, life, easing) {
+    super(life, easing);
 
-    Spring.prototype.applyBehaviour = function(particle, time, index) {
-        Spring._super_.prototype.applyBehaviour.call(this, particle, time, index);
+    this.reset(x, y, z, spring, friction);
+    this.name = 'Spring';
+  }
 
-        particle.v.x += (this.pos.x - particle.p.x) * this.spring;
-        particle.v.y += (this.pos.y - particle.p.y) * this.spring;
-        particle.v.z += (this.pos.z - particle.p.z) * this.spring;
+  reset(x, y, z, spring, friction) {
+    if (!this.pos) this.pos = new Vector3D(x, y, z);
+    else this.pos.set(x, y, z);
+    this.spring = spring || 0.1;
+    this.friction = friction || 0.98;
+  }
 
-    };
+  applyBehaviour(particle, time, index) {
+    Spring._super_.prototype.applyBehaviour.call(this, particle, time, index);
 
-
-    Proton.Spring = Spring;
-})(Proton);
+    particle.v.x += (this.pos.x - particle.p.x) * this.spring;
+    particle.v.y += (this.pos.y - particle.p.y) * this.spring;
+    particle.v.z += (this.pos.z - particle.p.z) * this.spring;
+  }
+}

@@ -1,26 +1,27 @@
-(function(Proton, undefined) {
-    /**
-     * The Behaviour class is the base for the other Behaviour
-     *
-     * @class Behaviour
-     * @constructor
-     */
-    function Force(fx, fy, fz, life, easing) {
-        Force._super_.call(this, life, easing);
-        Force.prototype.reset.call(this, fx, fy, fz);
-        this.name = "Force";
-    }
+import Behaviour from './Behaviour';
+import { Vector3D } from '../math';
 
-    Proton.Util.inherits(Force, Proton.Behaviour);
-    Force.prototype.reset = function(fx, fy, fz) {
-        this.force = this.normalizeForce(new Proton.Vector3D(fx, fy, fz));
-        this.force.id = Math.random();
-    }
+export default class Force extends Behaviour {
+  /**
+   * The Behaviour class is the base for the other Behaviour
+   *
+   * @class Behaviour
+   * @constructor
+   */
+  constructor(fx, fy, fz, life, easing) {
+    super(life, easing);
 
-    Force.prototype.applyBehaviour = function(particle, time, index) {
-        Force._super_.prototype.applyBehaviour.call(this, particle, time, index);
-        particle.a.add(this.force);
-    };
+    Force.prototype.reset.call(this, fx, fy, fz);
+    this.name = 'Force';
+  }
 
-    Proton.F = Proton.Force = Force;
-})(Proton);
+  reset(fx, fy, fz) {
+    this.force = this.normalizeForce(new Vector3D(fx, fy, fz));
+    this.force.id = Math.random();
+  }
+
+  applyBehaviour(particle, time, index) {
+    Force._super_.prototype.applyBehaviour.call(this, particle, time, index);
+    particle.a.add(this.force);
+  }
+}
