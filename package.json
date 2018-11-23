@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "webpack --env build",
-    "dev": "webpack --progress --colors --watch --env dev",
+    "examples": "./scripts/examples",
     "test": "mocha --require babel-core/register --colors ./test/*.spec.js",
     "test:only": "mocha --require babel-core/register --colors",
     "test:watch": "mocha --require babel-core/register --colors -w ./test/*.spec.js",
@@ -17,7 +17,7 @@
     "lint": "eslint src test && ./node_modules/.bin/madge --circular src",
     "coverage:generate": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/*.js -- --require babel-register",
     "coverage:publish": "./node_modules/.bin/istanbul-coveralls",
-    "publish": "chmod a+x ./scripts/publish && ./scripts/publish"
+    "publish": "./scripts/publish"
   },
   "repository": {
     "type": "git",
@@ -55,6 +55,7 @@
     "eslint": "^3.19.0",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-import": "^2.8.0",
+    "http-server": "^0.11.1",
     "jquery": "^3.3.1",
     "jsdoc": "~3.4.0",
     "minami": "~1.1.1",
