@@ -23,7 +23,7 @@ export default class Proton {
     this.eventDispatcher = new EventDispatcher();
   }
 
-  static get integrator() {
+  static integrator() {
     return new Integration(this.integrationType);
   }
 
