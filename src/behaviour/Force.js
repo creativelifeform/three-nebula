@@ -21,7 +21,7 @@ export default class Force extends Behaviour {
   }
 
   applyBehaviour(particle, time, index) {
-    Force._super_.prototype.applyBehaviour.call(this, particle, time, index);
+    super.applyBehaviour(particle, time, index);
     particle.a.add(this.force);
   }
 }

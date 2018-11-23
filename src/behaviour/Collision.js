@@ -22,7 +22,7 @@ export default class Collision extends Behaviour {
     this.callback = callback;
     this.particles = [];
     this.delta = new Vector3D();
-    life && Collision._super_.prototype.reset.call(this, life, easing);
+    life && super.reset(life, easing);
   }
 
   applyBehaviour(particle, time, index) {

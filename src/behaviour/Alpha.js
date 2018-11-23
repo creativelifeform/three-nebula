@@ -29,7 +29,7 @@ export default class Alpha extends Behaviour {
 
     this.a = createSpan(Util.initValue(a, 1));
     this.b = createSpan(b);
-    life && Alpha._super_.prototype.reset.call(this, life, easing);
+    life && super.reset(life, easing);
   }
 
   initialize(particle) {
@@ -40,7 +40,7 @@ export default class Alpha extends Behaviour {
   }
 
   applyBehaviour(particle, time, index) {
-    Alpha._super_.prototype.applyBehaviour.call(this, particle, time, index);
+    super.applyBehaviour(particle, time, index);
 
     particle.alpha = MathUtils.lerp(
       particle.transform.alphaA,

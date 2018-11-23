@@ -7,6 +7,21 @@ export default class Gravity extends Force {
   }
 
   reset(g, life, easing) {
-    Gravity._super_.prototype.reset.call(this, 0, -g, 0, life, easing);
+    super.reset(0, -g, 0, life, easing);
+  }
+}
+
+/**
+ * Compatibility class.
+ *
+ * @deprecated
+ */
+export class G extends Gravity {
+  constructor() {
+    super(arguments);
+
+    console.warn(
+      'The G class is deprecated and will be removed in the future, please use Gravity instead'
+    );
   }
 }

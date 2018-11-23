@@ -9,14 +9,7 @@ export default class Repulsion extends Attraction {
   }
 
   reset(targetPosition, force, radius, life, easing) {
-    Repulsion._super_.prototype.reset.call(
-      this,
-      targetPosition,
-      force,
-      radius,
-      life,
-      easing
-    );
+    super.reset(targetPosition, force, radius, life, easing);
     this.force *= -1;
   }
 }

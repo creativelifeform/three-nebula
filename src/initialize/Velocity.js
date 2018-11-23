@@ -73,3 +73,18 @@ Velocity.prototype.initialize = (function() {
     return this;
   };
 })();
+
+/**
+ * Compatibility class.
+ *
+ * @deprecated
+ */
+export class V extends Velocity {
+  constructor() {
+    super(arguments);
+
+    console.warn(
+      'The V class is deprecated and will be removed in the future, please use Velocity instead'
+    );
+  }
+}

@@ -23,16 +23,11 @@ export default class Attraction extends Behaviour {
     this.attractionForce = new Vector3D();
     this.lengthSq = 0;
 
-    if (life) Attraction._super_.prototype.reset.call(this, life, easing);
+    if (life) super.reset(life, easing);
   }
 
   applyBehaviour(particle, time, index) {
-    Attraction._super_.prototype.applyBehaviour.call(
-      this,
-      particle,
-      time,
-      index
-    );
+    super.applyBehaviour(particle, time, index);
     this.attractionForce.copy(this.targetPosition);
     this.attractionForce.sub(particle.p);
     this.lengthSq = this.attractionForce.lengthSq();

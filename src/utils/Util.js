@@ -70,6 +70,9 @@ export default {
     else return pan;
   },
 
+  /**
+   * @deprecated
+   */
   inherits: function(subClass, superClass) {
     subClass._super_ = superClass;
     if (Object['create']) {

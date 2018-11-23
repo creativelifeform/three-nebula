@@ -43,7 +43,7 @@ export default class BehaviourEmitter extends Emitter {
   }
 
   update(time) {
-    BehaviourEmitter._super_.prototype.update.call(this, time);
+    super.update(time);
 
     if (!this.sleep) {
       var length = this.selfBehaviours.length,

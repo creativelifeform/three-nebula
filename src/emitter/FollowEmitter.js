@@ -78,8 +78,7 @@ export default class FollowEmitter extends Emitter {
 
     this.p.copy(THREEUtil.toSpacePos(this.p, this.camera, this.canvas));
 
-    if (this._allowEmitting)
-      FollowEmitter._super_.prototype.emit.call(this, 'once');
+    if (this._allowEmitting) super.emit('once');
   }
 
   /**
@@ -87,7 +86,7 @@ export default class FollowEmitter extends Emitter {
    * @method destroy
    */
   destroy() {
-    FollowEmitter._super_.prototype.destroy.call(this);
+    super.destroy();
     this.mouseTarget.removeEventListener(
       'mousemove',
       this.mousemoveHandler,

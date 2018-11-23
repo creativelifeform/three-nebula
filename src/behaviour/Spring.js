@@ -23,7 +23,7 @@ export default class Spring extends Behaviour {
   }
 
   applyBehaviour(particle, time, index) {
-    Spring._super_.prototype.applyBehaviour.call(this, particle, time, index);
+    super.applyBehaviour(particle, time, index);
 
     particle.v.x += (this.pos.x - particle.p.x) * this.spring;
     particle.v.y += (this.pos.y - particle.p.y) * this.spring;

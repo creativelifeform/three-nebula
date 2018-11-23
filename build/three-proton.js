@@ -255,6 +255,9 @@ exports.default = {
     if (pan.constructor.name === 'Span') return pan.getValue();else return pan;
   },
 
+  /**
+   * @deprecated
+   */
   inherits: function inherits(subClass, superClass) {
     subClass._super_ = superClass;
     if (Object['create']) {
@@ -49930,6 +49933,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
@@ -49974,12 +49979,12 @@ var Attraction = function (_Behaviour) {
       this.attractionForce = new _math.Vector3D();
       this.lengthSq = 0;
 
-      if (life) Attraction._super_.prototype.reset.call(this, life, easing);
+      if (life) _get(Attraction.prototype.__proto__ || Object.getPrototypeOf(Attraction.prototype), 'reset', this).call(this, life, easing);
     }
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      Attraction._super_.prototype.applyBehaviour.call(this, particle, time, index);
+      _get(Attraction.prototype.__proto__ || Object.getPrototypeOf(Attraction.prototype), 'applyBehaviour', this).call(this, particle, time, index);
       this.attractionForce.copy(this.targetPosition);
       this.attractionForce.sub(particle.p);
       this.lengthSq = this.attractionForce.lengthSq();
@@ -51193,6 +51198,12 @@ Object.defineProperty(exports, 'Gravity', {
     return _interopRequireDefault(_Gravity).default;
   }
 });
+Object.defineProperty(exports, 'G', {
+  enumerable: true,
+  get: function get() {
+    return _Gravity.G;
+  }
+});
 
 var _RandomDrift = __webpack_require__(40);
 
@@ -51403,6 +51414,12 @@ Object.defineProperty(exports, 'Velocity', {
     return _interopRequireDefault(_Velocity).default;
   }
 });
+Object.defineProperty(exports, 'V', {
+  enumerable: true,
+  get: function get() {
+    return _Velocity.V;
+  }
+});
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51468,6 +51485,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _math = __webpack_require__(0);
 
 var _Behaviour2 = __webpack_require__(2);
@@ -51516,7 +51535,7 @@ var Alpha = function (_Behaviour) {
 
       this.a = (0, _math.createSpan)(_utils.Util.initValue(a, 1));
       this.b = (0, _math.createSpan)(b);
-      life && Alpha._super_.prototype.reset.call(this, life, easing);
+      life && _get(Alpha.prototype.__proto__ || Object.getPrototypeOf(Alpha.prototype), 'reset', this).call(this, life, easing);
     }
   }, {
     key: 'initialize',
@@ -51528,7 +51547,7 @@ var Alpha = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      Alpha._super_.prototype.applyBehaviour.call(this, particle, time, index);
+      _get(Alpha.prototype.__proto__ || Object.getPrototypeOf(Alpha.prototype), 'applyBehaviour', this).call(this, particle, time, index);
 
       particle.alpha = _math.MathUtils.lerp(particle.transform.alphaA, particle.transform.alphaB, this.energy);
       if (particle.alpha < 0.002) particle.alpha = 0;
@@ -51553,6 +51572,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
 var _Behaviour2 = __webpack_require__(2);
 
@@ -51596,7 +51617,7 @@ var Collision = function (_Behaviour) {
       this.callback = callback;
       this.particles = [];
       this.delta = new _math.Vector3D();
-      life && Collision._super_.prototype.reset.call(this, life, easing);
+      life && _get(Collision.prototype.__proto__ || Object.getPrototypeOf(Collision.prototype), 'reset', this).call(this, life, easing);
     }
   }, {
     key: 'applyBehaviour',
@@ -51823,6 +51844,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
@@ -51865,7 +51888,7 @@ var Force = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      Force._super_.prototype.applyBehaviour.call(this, particle, time, index);
+      _get(Force.prototype.__proto__ || Object.getPrototypeOf(Force.prototype), 'applyBehaviour', this).call(this, particle, time, index);
       particle.a.add(this.force);
     }
   }]);
@@ -51886,8 +51909,11 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.G = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
 var _Behaviour = __webpack_require__(2);
 
@@ -51916,15 +51942,36 @@ var Gravity = function (_Force) {
   _createClass(Gravity, [{
     key: 'reset',
     value: function reset(g, life, easing) {
-      Gravity._super_.prototype.reset.call(this, 0, -g, 0, life, easing);
+      _get(Gravity.prototype.__proto__ || Object.getPrototypeOf(Gravity.prototype), 'reset', this).call(this, 0, -g, 0, life, easing);
     }
   }]);
 
   return Gravity;
 }(_Behaviour2.default);
 
+/**
+ * Compatibility class.
+ *
+ * @deprecated
+ */
+
+
 exports.default = Gravity;
-module.exports = exports['default'];
+
+var G = exports.G = function (_Gravity) {
+  _inherits(G, _Gravity);
+
+  function G() {
+    _classCallCheck(this, G);
+
+    var _this2 = _possibleConstructorReturn(this, (G.__proto__ || Object.getPrototypeOf(G)).call(this, arguments));
+
+    console.warn('The G class is deprecated and will be removed in the future, please use Gravity instead');
+    return _this2;
+  }
+
+  return G;
+}(Gravity);
 
 /***/ }),
 /* 40 */
@@ -51938,6 +51985,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
 var _math = __webpack_require__(0);
 
@@ -51979,12 +52028,12 @@ var RandomDrift = function (_Behaviour) {
       this.randomFoce = this.normalizeForce(new _math.Vector3D(driftX, driftY, driftZ));
       this.delayPan = (0, _math.createSpan)(delay || 0.03);
       this.time = 0;
-      life && RandomDrift._super_.prototype.reset.call(this, life, easing);
+      life && _get(RandomDrift.prototype.__proto__ || Object.getPrototypeOf(RandomDrift.prototype), 'reset', this).call(this, life, easing);
     }
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      RandomDrift._super_.prototype.applyBehaviour.call(this, particle, time, index);
+      _get(RandomDrift.prototype.__proto__ || Object.getPrototypeOf(RandomDrift.prototype), 'applyBehaviour', this).call(particle, time, index);
 
       this.time += time;
       if (this.time >= this.delayPan.getValue()) {
@@ -52017,6 +52066,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _Attraction2 = __webpack_require__(17);
 
 var _Attraction3 = _interopRequireDefault(_Attraction2);
@@ -52045,7 +52096,7 @@ var Repulsion = function (_Attraction) {
   _createClass(Repulsion, [{
     key: 'reset',
     value: function reset(targetPosition, force, radius, life, easing) {
-      Repulsion._super_.prototype.reset.call(this, targetPosition, force, radius, life, easing);
+      _get(Repulsion.prototype.__proto__ || Object.getPrototypeOf(Repulsion.prototype), 'reset', this).call(this, targetPosition, force, radius, life, easing);
       this.force *= -1;
     }
   }]);
@@ -52301,6 +52352,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
@@ -52344,7 +52397,7 @@ var Spring = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      Spring._super_.prototype.applyBehaviour.call(this, particle, time, index);
+      _get(Spring.prototype.__proto__ || Object.getPrototypeOf(Spring.prototype), 'applyBehaviour', this).call(this, particle, time, index);
 
       particle.v.x += (this.pos.x - particle.p.x) * this.spring;
       particle.v.y += (this.pos.y - particle.p.y) * this.spring;
@@ -52565,6 +52618,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _Emitter2 = __webpack_require__(12);
 
 var _Emitter3 = _interopRequireDefault(_Emitter2);
@@ -52633,7 +52688,7 @@ var BehaviourEmitter = function (_Emitter) {
   }, {
     key: 'update',
     value: function update(time) {
-      BehaviourEmitter._super_.prototype.update.call(this, time);
+      _get(BehaviourEmitter.prototype.__proto__ || Object.getPrototypeOf(BehaviourEmitter.prototype), 'update', this).call(this, time);
 
       if (!this.sleep) {
         var length = this.selfBehaviours.length,
@@ -52664,6 +52719,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
 var _Emitter2 = __webpack_require__(12);
 
@@ -52772,7 +52829,7 @@ var FollowEmitter = function (_Emitter) {
 
       this.p.copy(_THREEUtil2.default.toSpacePos(this.p, this.camera, this.canvas));
 
-      if (this._allowEmitting) FollowEmitter._super_.prototype.emit.call(this, 'once');
+      if (this._allowEmitting) _get(FollowEmitter.prototype.__proto__ || Object.getPrototypeOf(FollowEmitter.prototype), 'emit', this).call(this, 'once');
     }
 
     /**
@@ -52783,7 +52840,7 @@ var FollowEmitter = function (_Emitter) {
   }, {
     key: 'destroy',
     value: function destroy() {
-      FollowEmitter._super_.prototype.destroy.call(this);
+      _get(FollowEmitter.prototype.__proto__ || Object.getPrototypeOf(FollowEmitter.prototype), 'destroy', this).call(this);
       this.mouseTarget.removeEventListener('mousemove', this.mousemoveHandler, false);
     }
   }]);
@@ -53292,6 +53349,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.V = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -53395,7 +53453,27 @@ Velocity.prototype.initialize = function () {
     return this;
   };
 }();
-module.exports = exports['default'];
+
+/**
+ * Compatibility class.
+ *
+ * @deprecated
+ */
+
+var V = exports.V = function (_Velocity) {
+  _inherits(V, _Velocity);
+
+  function V() {
+    _classCallCheck(this, V);
+
+    var _this2 = _possibleConstructorReturn(this, (V.__proto__ || Object.getPrototypeOf(V)).call(this, arguments));
+
+    console.warn('The V class is deprecated and will be removed in the future, please use Velocity instead');
+    return _this2;
+  }
+
+  return V;
+}(Velocity);
 
 /***/ }),
 /* 56 */
