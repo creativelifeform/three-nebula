@@ -1,47 +1,55 @@
-three.proton
-======
+# three.proton
+
+# [![Build Status](https://travis-ci.org/rohan-deshpande/three.proton.svg?branch=develop)](https://travis-ci.org/rohan-deshpande/three.proton)
+
 three.proton is a magical 3d particle engine using [three.js](https://github.com/mrdoob/three.js). It is based on the [Proton](https://github.com/a-jie/Proton) Engine library. It inherited Proton's most api.<br>
 I think it is the simplest three.js particle engine.Check out examples at https://a-jie.github.io/three.proton/<br>
 
 ## Features
+
 - Four kinds of renderers
-  - MeshRender 
-  - SpriteRender 
-  - PointsRender 
-  - CustomRender 
+
+  - MeshRender
+  - SpriteRender
+  - PointsRender
+  - CustomRender
 
 - Three kinds of emitters which can simulate many different physical effects
-  - Emitter 
-  - BehaviourEmitter 
-  - FollowEmitter 
-  
-- Perfectly compatible with the three.js library. 
+
+  - Emitter
+  - BehaviourEmitter
+  - FollowEmitter
+
+- Perfectly compatible with the three.js library.
 
 #### It was very, very easy to use
 
 ## Installation
 
-#### Install using npm 
+#### Install using npm
+
 [![anix](https://nodei.co/npm/three.proton.js.png)](https://npmjs.org/package/three.proton.js)
 
-``` 
+```
 npm install three.proton.js --save
-... 
+...
 import Proton from 'three.proton.js';
 ```
 
 #### Include in html
-``` 
-<script type="text/javascript" src="js/three.proton.min.js"></script> 
+
+```
+<script type="text/javascript" src="js/three.proton.min.js"></script>
 ```
 
 ## Usage
+
 ```javascript
 var proton = new Proton();
 var emitter = new Proton.Emitter();
 
 //setRate
-emitter.rate = new Proton.Rate(new Proton.Span(4, 16), new Proton.Span(.01));
+emitter.rate = new Proton.Rate(new Proton.Span(4, 16), new Proton.Span(0.01));
 
 //addInitialize
 emitter.addInitialize(new Proton.Position(new Proton.PointZone(0, 0)));
@@ -52,7 +60,7 @@ emitter.addInitialize(new Proton.V(45, new Proton.Vector3D(0, 1, 0), 180));
 
 //addBehaviour
 emitter.addBehaviour(new Proton.Alpha(1, 0));
-emitter.addBehaviour(new Proton.Scale(.1, 1.3));
+emitter.addBehaviour(new Proton.Scale(0.1, 1.3));
 
 var color1 = new THREE.Color();
 var color2 = new THREE.Color();
@@ -68,6 +76,7 @@ proton.addRender(new Proton.SpriteRender(scene));
 ```
 
 ## Building three.proton
+
 Node is a dependency, use terminal to install it with with:<br>
 `git clone git://github.com/a-jie/three.proton.git`<br>
 Then navigate to the build directory by running:<br>
@@ -76,4 +85,5 @@ Finally run the build command:<br>
 `node build.js`
 
 ## License
+
 Proton is released under the MIT License. http://www.opensource.org/licenses/mit-license
