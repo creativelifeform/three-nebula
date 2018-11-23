@@ -3,7 +3,7 @@ import { EULER, POOL_MAX } from '../constants';
 import EventDispatcher from '../events/EventDispatcher';
 import Integration from '../math/Integration';
 import Pool from './Pool';
-import { initValue } from '../utils/Util';
+import { Util } from '../utils/Util';
 
 export default class Proton {
   /**
@@ -15,8 +15,8 @@ export default class Proton {
    * @example var proton = new Proton(200);
    */
   constructor(preParticles, integrationType) {
-    this.preParticles = initValue(preParticles, POOL_MAX);
-    this.integrationType = initValue(integrationType, EULER);
+    this.preParticles = Util.initValue(preParticles, POOL_MAX);
+    this.integrationType = Util.initValue(integrationType, EULER);
     this.emitters = [];
     this.renderers = [];
     this.pool = new Pool();
