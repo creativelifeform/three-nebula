@@ -18,14 +18,15 @@
 
 <body>
     <div id="container"></div>
-    <script src="../lib/stats.min.js"></script>
-    <script src="../lib/three.min.js"></script>
-    <script src="../build/three.proton.min.js"></script>
+    <script src="./js/stats.min.js"></script>
+    <script src="./js/three.min.js"></script>
+    <script src="./js/three-proton.js"></script>
     <script>
     var proton, emitter;
     var camera, scene, renderer, stats, clock, mouseXpercent, mouseYpercent, cameraTarget;
 
     init();
+
     function init() {
         addScene();
         addLights();
@@ -102,7 +103,7 @@
     }
 
     function addProton() {
-        proton = new Proton();
+        proton = new Proton.default();
 
         emitter = new Proton.Emitter();
         emitter.rate = new Proton.Rate(new Proton.Span(34, 48), new Proton.Span(.2, .5));

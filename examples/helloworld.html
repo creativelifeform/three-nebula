@@ -29,10 +29,8 @@
     <div class="tips">Please press the w key
         <br><span id="info">Add Behaviours</span></div>
     <div id="container"></div>
-    <script src="../lib/stats.min.js"></script>
-    <script src="../lib/three.min.js"></script>
-    <script src="../lib/require.js"></script>
-    <script src="../lib/config.js"></script>
+    <script src="./js/stats.min.js"></script>
+    <script src="./js/three.min.js"></script>
     <script src="./js/lib/TrackballControls.js"></script>
     <script>
     var proton, emitter1, emitter2;
@@ -170,7 +168,7 @@
     }
 
     function initProton() {
-        proton = new Proton();
+        proton = new Proton.default();
 
         emitter1 = createEmitter({
             p: {

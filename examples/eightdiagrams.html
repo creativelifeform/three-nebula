@@ -18,8 +18,8 @@
 
 <body>
     <div id="container"></div>
-    <script src="../lib/stats.min.js"></script>
-    <script src="../lib/three.min.js"></script>
+    <script src="./js/stats.min.js"></script>
+    <script src="./js/three.min.js"></script>
     <script src="../build/three.proton.min.js"></script>
     <script src="./js/lib/TrackballControls.js"></script>
     <script>
@@ -27,6 +27,7 @@
     var camera, scene, renderer, stats, clock, spring, controls;
 
     init();
+
     function init() {
         addScene();
         addControls();
@@ -96,7 +97,7 @@
     }
 
     function addProton() {
-        proton = new Proton();
+        proton = new Proton.default();
 
         R = 70;
         emitter1 = createEmitter(R, 0, '#4F1500', '#0029FF');
@@ -126,7 +127,7 @@
         emitter.addInitialize(new Proton.Life(2));
         emitter.addInitialize(new Proton.Body(createSprite()));
         emitter.addInitialize(new Proton.Radius(80));
-        emitter.addInitialize(new Proton.V(200, new Proton.Vector3D(0, 0, -1), 0));
+        emitter.addInitialize(new Proton.Velocity(200, new Proton.Vector3D(0, 0, -1), 0));
 
 
         emitter.addBehaviour(new Proton.Alpha(1, 0));

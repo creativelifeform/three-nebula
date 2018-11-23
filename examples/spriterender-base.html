@@ -18,15 +18,16 @@
 
 <body>
     <div id="container"></div>
-    <script src="../lib/stats.min.js"></script>
-    <script src="../lib/three.min.js"></script>
-    <script src="../build/three.proton.min.js"></script>
+    <script src="./js/stats.min.js"></script>
+    <script src="./js/three.min.js"></script>
+    <script src="./js/three-proton.js"></script>
     <script src="./js/lib/TrackballControls.js"></script>
     <script>
     var proton, emitter;
     var camera, scene, renderer, stats, clock, controls;
 
     init();
+
     function init() {
         initScene();
         initLights();
@@ -69,7 +70,7 @@
     }
 
     function initProton() {
-        proton = new Proton();
+        proton = new Proton.default();
         proton.addEmitter(createEmitter());
         proton.addRender(new Proton.SpriteRender(scene));
 

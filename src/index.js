@@ -9,6 +9,5 @@ export * from './math';
 export * from './render';
 export * from './utils';
 export * from './zone';
-
-export default Proton;
 export { Particle, Pool } from './core';
+export default Proton;

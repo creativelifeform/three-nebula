@@ -18,9 +18,9 @@
 
 <body>
     <div id="container"></div>
-    <script src="../lib/stats.min.js"></script>
-    <script src="../lib/three.min.js"></script>
-    <script src="../build/three.proton.min.js"></script>
+    <script src="./js/stats.min.js"></script>
+    <script src="./js/three.min.js"></script>
+    <script src="./js/three-proton.js"></script>
     <script src="./js/lib/TrackballControls.js"></script>
     <script>
     var controls, camera, scene, renderer, proton;
@@ -118,14 +118,14 @@
     }
 
     function createProton() {
-        proton = new Proton;
+        proton = new Proton.default();
         var emitter = new Proton.Emitter();
         emitter.rate = new Proton.Rate(new Proton.Span(2, 5), new Proton.Span(.5, 1));
         emitter.addInitialize(new Proton.Mass(1));
         emitter.addInitialize(new Proton.Radius(100));
         emitter.addInitialize(new Proton.Life(5, 6));
         emitter.addInitialize(new Proton.Body(sphereMesh));
-        emitter.addInitialize(new Proton.V(new Proton.Span(300, 500), new Proton.Vector3D(0, 1, 0), 30));
+        emitter.addInitialize(new Proton.Velocity(new Proton.Span(300, 500), new Proton.Vector3D(0, 1, 0), 30));
         //emitter.addBehaviour(new Proton.Alpha(1, 0));
         emitter.addBehaviour(new Proton.Scale(1));
         emitter.addBehaviour(new Proton.Gravity(4));
