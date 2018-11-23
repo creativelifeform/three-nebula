@@ -51355,7 +51355,7 @@ var Proton = function () {
     }
   }], [{
     key: 'integrator',
-    get: function get() {
+    value: function integrator() {
       return new _Integration2.default(this.integrationType);
     }
   }]);

@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "node"
+script:
+  - npm run lint
+  - npm run test
+branches:
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+cache:
+  npm: true
