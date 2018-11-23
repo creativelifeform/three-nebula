@@ -20,6 +20,14 @@ export default class Vector3D extends Vector3 {
     return this;
   }
 
+  addValue(a, b, c) {
+    this.x += a;
+    this.y += b;
+    this.z += c;
+
+    return this;
+  }
+
   toString() {
     return 'x:' + this.x + 'y:' + this.y + 'z:' + this.z;
   }

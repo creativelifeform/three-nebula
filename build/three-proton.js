@@ -48898,6 +48898,15 @@ var Vector3D = function (_Vector) {
       return this;
     }
   }, {
+    key: 'addValue',
+    value: function addValue(a, b, c) {
+      this.x += a;
+      this.y += b;
+      this.z += c;
+
+      return this;
+    }
+  }, {
     key: 'toString',
     value: function toString() {
       return 'x:' + this.x + 'y:' + this.y + 'z:' + this.z;
