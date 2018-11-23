@@ -1,5 +1,3 @@
-import Span from '../math/Span';
-
 export default {
   initValue: function(value, defaults) {
     var _value = value != null && value != undefined ? value : defaults;
@@ -68,7 +66,7 @@ export default {
   },
 
   _getValue: function(pan) {
-    if (pan instanceof Span) return pan.getValue();
+    if (pan.constructor.name === 'Span') return pan.getValue();
     else return pan;
   },
 

@@ -13,6 +13,10 @@ export default {
     return nid;
   },
 
+  /**
+   * @deprecated
+   */
+  // eslint-disable-next-line
   hash: function(str) {
     return;
   }

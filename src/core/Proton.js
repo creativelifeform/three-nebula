@@ -3,7 +3,7 @@ import { EULER, POOL_MAX } from '../constants';
 import EventDispatcher from '../events/EventDispatcher';
 import Integration from '../math/Integration';
 import Pool from './Pool';
-import { Util } from '../utils/Util';
+import { Util } from '../utils';
 
 export default class Proton {
   /**
