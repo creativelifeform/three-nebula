@@ -37,7 +37,7 @@ export default class Rotate extends Behaviour {
       this.c = createSpan(this.c * DR);
     }
 
-    life && Rotate._super_.prototype.reset.call(this, life, easing);
+    life && super.reset(life, easing);
   }
 
   initialize(particle) {
@@ -80,7 +80,7 @@ export default class Rotate extends Behaviour {
   }
 
   applyBehaviour(particle, time, index) {
-    Rotate._super_.prototype.applyBehaviour.call(this, particle, time, index);
+    super.applyBehaviour(this, particle, time, index);
 
     switch (this._type) {
       case 'same':

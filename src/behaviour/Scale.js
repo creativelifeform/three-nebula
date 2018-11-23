@@ -24,7 +24,7 @@ export default class Scale extends Behaviour {
     this.a = createSpan(Util.initValue(a, 1));
     this.b = createSpan(b);
 
-    life && Scale._super_.prototype.reset.call(this, life, easing);
+    life && super.reset(life, easing);
   }
 
   initialize(particle) {
@@ -35,7 +35,8 @@ export default class Scale extends Behaviour {
   }
 
   applyBehaviour(particle, time, index) {
-    Scale._super_.prototype.applyBehaviour.call(this, particle, time, index);
+    super.applyBehaviour(particle, time, index);
+
     particle.scale = MathUtils.lerp(
       particle.transform.scaleA,
       particle.transform.scaleB,

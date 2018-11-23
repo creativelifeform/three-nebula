@@ -23,7 +23,7 @@ export default class Color extends Behaviour {
 
     this.a = createArraySpan(a);
     this.b = createArraySpan(b);
-    life && Color._super_.prototype.reset.call(this, life, easing);
+    life && super.reset(life, easing);
   }
 
   initialize(particle) {
@@ -35,7 +35,7 @@ export default class Color extends Behaviour {
   }
 
   applyBehaviour(particle, time, index) {
-    Color._super_.prototype.applyBehaviour.call(this, particle, time, index);
+    super.applyBehaviour(particle, time, index);
 
     if (!this._same) {
       particle.color.r = MathUtils.lerp(

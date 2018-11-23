@@ -51655,6 +51655,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _math = __webpack_require__(0);
 
 var _Behaviour2 = __webpack_require__(2);
@@ -51697,7 +51699,7 @@ var Color = function (_Behaviour) {
 
       this.a = (0, _math.createArraySpan)(a);
       this.b = (0, _math.createArraySpan)(b);
-      life && Color._super_.prototype.reset.call(this, life, easing);
+      life && _get(Color.prototype.__proto__ || Object.getPrototypeOf(Color.prototype), 'reset', this).call(this, life, easing);
     }
   }, {
     key: 'initialize',
@@ -51710,7 +51712,7 @@ var Color = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      Color._super_.prototype.applyBehaviour.call(this, particle, time, index);
+      _get(Color.prototype.__proto__ || Object.getPrototypeOf(Color.prototype), 'applyBehaviour', this).call(this, particle, time, index);
 
       if (!this._same) {
         particle.color.r = _math.MathUtils.lerp(particle.transform.colorA.r, particle.transform.colorB.r, this.energy);
@@ -51742,6 +51744,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
 var _Behaviour2 = __webpack_require__(2);
 
@@ -51788,13 +51792,13 @@ var CrossZone = function (_Behaviour) {
       this.zone.crossType = _utils.Util.initValue(crossType, 'dead');
 
       if (life) {
-        CrossZone._super_.prototype.reset.call(this, life, easing);
+        _get(CrossZone.prototype.__proto__ || Object.getPrototypeOf(CrossZone.prototype), 'reset', this).call(this, life, easing);
       }
     }
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      CrossZone._super_.prototype.applyBehaviour.call(this, particle, time, index);
+      _get(CrossZone.prototype.__proto__ || Object.getPrototypeOf(CrossZone.prototype), 'applyBehaviour', this).call(this, particle, time, index);
 
       this.zone.crossing.call(this.zone, particle);
     }
@@ -52065,6 +52069,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _constants = __webpack_require__(4);
 
 var _math = __webpack_require__(0);
@@ -52122,7 +52128,7 @@ var Rotate = function (_Behaviour) {
         this.c = (0, _math.createSpan)(this.c * _constants.DR);
       }
 
-      life && Rotate._super_.prototype.reset.call(this, life, easing);
+      life && _get(Rotate.prototype.__proto__ || Object.getPrototypeOf(Rotate.prototype), 'reset', this).call(this, life, easing);
     }
   }, {
     key: 'initialize',
@@ -52164,7 +52170,7 @@ var Rotate = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      Rotate._super_.prototype.applyBehaviour.call(this, particle, time, index);
+      _get(Rotate.prototype.__proto__ || Object.getPrototypeOf(Rotate.prototype), 'applyBehaviour', this).call(this, this, particle, time, index);
 
       switch (this._type) {
         case 'same':
@@ -52210,6 +52216,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _math = __webpack_require__(0);
 
 var _Behaviour2 = __webpack_require__(2);
@@ -52253,7 +52261,7 @@ var Scale = function (_Behaviour) {
       this.a = (0, _math.createSpan)(_utils.Util.initValue(a, 1));
       this.b = (0, _math.createSpan)(b);
 
-      life && Scale._super_.prototype.reset.call(this, life, easing);
+      life && _get(Scale.prototype.__proto__ || Object.getPrototypeOf(Scale.prototype), 'reset', this).call(this, life, easing);
     }
   }, {
     key: 'initialize',
@@ -52265,7 +52273,8 @@ var Scale = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      Scale._super_.prototype.applyBehaviour.call(this, particle, time, index);
+      _get(Scale.prototype.__proto__ || Object.getPrototypeOf(Scale.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+
       particle.scale = _math.MathUtils.lerp(particle.transform.scaleA, particle.transform.scaleB, this.energy);
 
       if (particle.scale < 0.0005) particle.scale = 0;
