@@ -1,3 +1,6 @@
+/**
+ * @deprecated Use THREE.Quaternion instead
+ */
 export default class Quaternion {
   constructor(x, y, z, w) {
     this.x = x || 0;

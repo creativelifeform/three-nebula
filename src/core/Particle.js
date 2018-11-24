@@ -1,7 +1,7 @@
+import { Util, uid } from '../utils';
 import { ease, setEasingByName } from '../ease';
 
 import { PI } from '../constants';
-import { Util } from '../utils';
 import { Vector3D } from '../math';
 
 export default class Particle {
@@ -15,11 +15,10 @@ export default class Particle {
    * @constructor
    */
   constructor(pOBJ) {
-    this.ID = 0;
     /**
      * @property {Number}  id - The particle's id
      */
-    this.id = 'particle_' + Particle.ID++;
+    this.id = `particle_${uid()}`;
     this.name = 'Particle';
     this.reset('init');
     Util.setPrototypeByObj(this, pOBJ);

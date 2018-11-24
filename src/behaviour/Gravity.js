@@ -1,4 +1,4 @@
-import Force from './Behaviour';
+import Force from './Force';
 import { classDeprecationWarning } from '../compatibility';
 
 export default class Gravity extends Force {

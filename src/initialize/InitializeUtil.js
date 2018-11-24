@@ -1,5 +1,8 @@
+import { Euler } from 'three';
 import Initialize from './Initialize';
 import Util from '../utils/Util';
+
+const particleEuler = new Euler();
 
 export default {
   initialize: function(emitter, particle, initializes) {
@@ -22,10 +25,14 @@ export default {
 
   bindEmitter: function(emitter, particle) {
     if (emitter.bindEmitter) {
+      const {
+        rotation: { x, y, z }
+      } = emitter;
+
       particle.p.add(emitter.p);
       particle.v.add(emitter.v);
       particle.a.add(emitter.a);
-      particle.v.applyEuler(emitter.rotation);
+      particle.v.applyEuler(particleEuler.set(x, y, z));
     }
   }
 };
