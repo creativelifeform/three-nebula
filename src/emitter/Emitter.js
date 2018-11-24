@@ -51,6 +51,18 @@ export default class Emitter extends Particle {
   }
 
   /**
+   * Sets the emitter rate.
+   *
+   * @param {Rate} rate - a rate initializer object
+   * @return {Emitter}
+   */
+  setRate(rate) {
+    this.rate = rate;
+
+    return this;
+  }
+
+  /**
    * start emit particle
    * @method emit
    * @param {Number} totalEmitTimes total emit times;
@@ -130,6 +142,23 @@ export default class Emitter extends Particle {
   }
 
   /**
+   * Proxy method for adding multiple initializers.
+   *
+   * @see addInitialize
+   * @param {array<Initialize>} properties - an array of emitter initializers
+   * @return {Emitter}
+   */
+  setProperties(properties) {
+    let i = properties.length;
+
+    while (i--) {
+      this.initializes.push(properties[i]);
+    }
+
+    return this;
+  }
+
+  /**
    * remove the Initialize
    * @method removeInitialize
    * @param {Initialize} initialize a initialize
@@ -159,6 +188,24 @@ export default class Emitter extends Particle {
 
     while (i--) this.behaviours.push(arguments[i]);
   }
+
+  /**
+   * Proxy method for adding multiple behaviours.
+   *
+   * @see addInitialize
+   * @param {array<Behaviour>} behaviours - an array of emitter behaviours
+   * @return {Emitter}
+   */
+  setBehaviours(behaviours) {
+    let i = behaviours.length;
+
+    while (i--) {
+      this.behaviours.push(behaviours[i]);
+    }
+
+    return this;
+  }
+
   /**
    * remove the Behaviour
    * @method removeBehaviour

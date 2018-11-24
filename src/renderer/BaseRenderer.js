@@ -1,4 +1,13 @@
-export default class BaseRender {
+import {
+  PARTICLE_CREATED,
+  PARTICLE_DEAD,
+  PARTICLE_UPDATE,
+  PROTON_UPDATE
+} from '../events/constants';
+
+import { classDeprecationWarning } from '../compatibility';
+
+export default class BaseRenderer {
   constructor() {
     this.name = 'BaseRender';
   }
@@ -8,25 +17,25 @@ export default class BaseRender {
 
     this.proton = proton;
 
-    this.proton.eventDispatcher.addEventListener('PROTON_UPDATE', function(
+    this.proton.eventDispatcher.addEventListener(PROTON_UPDATE, function(
       proton
     ) {
       self.onProtonUpdate.call(self, proton);
     });
 
-    this.proton.eventDispatcher.addEventListener('PARTICLE_CREATED', function(
+    this.proton.eventDispatcher.addEventListener(PARTICLE_CREATED, function(
       particle
     ) {
       self.onParticleCreated.call(self, particle);
     });
 
-    this.proton.eventDispatcher.addEventListener('PARTICLE_UPDATE', function(
+    this.proton.eventDispatcher.addEventListener(PARTICLE_UPDATE, function(
       particle
     ) {
       self.onParticleUpdate.call(self, particle);
     });
 
-    this.proton.eventDispatcher.addEventListener('PARTICLE_DEAD', function(
+    this.proton.eventDispatcher.addEventListener(PARTICLE_DEAD, function(
       particle
     ) {
       self.onParticleDead.call(self, particle);
@@ -56,4 +65,11 @@ export default class BaseRender {
    * @abstract
    */
   onProtonUpdate(proton) {} // eslint-disable-line
+}
+
+export class BaseRender extends BaseRenderer {
+  constructor(...args) {
+    super(...args);
+    console.warn(classDeprecationWarning('BaseRender', 'BaseRenderer'));
+  }
 }

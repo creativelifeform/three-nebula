@@ -1,4 +1,4 @@
-export default class Body {
+export default class Initialize {
   constructor() {
     this.name = 'Initialize';
   }

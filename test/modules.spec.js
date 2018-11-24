@@ -54,6 +54,10 @@ describe('modules', () => {
       'MeshRender',
       'PointsRender',
       'SpriteRender',
+      'CustomRenderer',
+      'MeshRenderer',
+      'PointsRenderer',
+      'SpriteRenderer',
       'ColorUtil',
       'PUID',
       'THREEUtil',
@@ -76,6 +80,16 @@ describe('modules', () => {
     assert.isFunction(Proton.default);
 
     const proton = new Proton.default();
+
+    assert.strictEqual(proton.constructor.name, 'Proton');
+
+    done();
+  });
+
+  it('should export a named module which is the Proton class', done => {
+    assert.isFunction(Proton.Proton);
+
+    const proton = new Proton.Proton();
 
     assert.strictEqual(proton.constructor.name, 'Proton');
 

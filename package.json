@@ -1,11 +1,10 @@
 {
   "name": "three-proton",
   "version": "0.1.5",
-  "description": "three.proton is a magical 3d particle engine using [three.js]",
+  "description": "A magical, WebGL based 3D particle engine",
   "main": "./build/three-proton.js",
   "directories": {
-    "example": "example",
-    "lib": "lib"
+    "examples": "examples"
   },
   "scripts": {
     "build": "webpack --env build",
@@ -21,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/a-jie/three.proton.git"
+    "url": "git+https://github.com/rohan-deshpande/three-proton.git"
   },
   "keywords": [
     "particle",
@@ -34,9 +33,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/a-jie/three.proton/issues"
+    "url": "https://github.com/rohan-deshpande/three-proton/issues"
   },
-  "homepage": "https://github.com/a-jie/three.proton#readme",
+  "homepage": "https://github.com/rohan-deshpande/three-proton#readme",
   "dependencies": {
     "madge": "^3.3.0",
     "three": "^0.98.0",

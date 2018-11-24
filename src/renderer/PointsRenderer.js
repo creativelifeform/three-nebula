@@ -1,7 +1,8 @@
-import BaseRender from './BaseRender';
+import BaseRenderer from './BaseRenderer';
 import { Vector3 } from 'three';
+import { classDeprecationWarning } from '../compatibility';
 
-export default class PointsRender extends BaseRender {
+export default class PointsRenderer extends BaseRenderer {
   constructor(ps) {
     super();
 
@@ -34,5 +35,12 @@ export default class PointsRender extends BaseRender {
 
       particle.target = null;
     }
+  }
+}
+
+export class PointsRender extends PointsRenderer {
+  constructor(...args) {
+    super(...args);
+    console.warn(classDeprecationWarning('PointsRender', 'PointsRenderer'));
   }
 }

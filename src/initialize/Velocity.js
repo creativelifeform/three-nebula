@@ -2,6 +2,7 @@ import { DR, MEASURE, PI } from '../constants';
 import { MathUtils, Polar3D, Vector3D, createSpan } from '../math';
 
 import Initialize from './Initialize';
+import { classDeprecationWarning } from '../compatibility';
 
 export default class Velocity extends Initialize {
   /**
@@ -80,11 +81,8 @@ Velocity.prototype.initialize = (function() {
  * @deprecated
  */
 export class V extends Velocity {
-  constructor() {
-    super(arguments);
-
-    console.warn(
-      'The V class is deprecated and will be removed in the future, please use Velocity instead'
-    );
+  constructor(...args) {
+    super(...args);
+    console.warn(classDeprecationWarning('V', 'Velocity'));
   }
 }

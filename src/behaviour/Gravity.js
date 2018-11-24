@@ -1,4 +1,5 @@
 import Force from './Behaviour';
+import { classDeprecationWarning } from '../compatibility';
 
 export default class Gravity extends Force {
   constructor(g, life, easing) {
@@ -17,11 +18,8 @@ export default class Gravity extends Force {
  * @deprecated
  */
 export class G extends Gravity {
-  constructor() {
-    super(arguments);
-
-    console.warn(
-      'The G class is deprecated and will be removed in the future, please use Gravity instead'
-    );
+  constructor(...args) {
+    super(...args);
+    console.warn(classDeprecationWarning('G', 'Gravity'));
   }
 }

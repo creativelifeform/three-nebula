@@ -1,7 +1,8 @@
-import BaseRender from './BaseRender';
+import BaseRenderer from './BaseRenderer';
 import { Pool } from '../core';
+import { classDeprecationWarning } from '../compatibility';
 
-export default class CustomRender extends BaseRender {
+export default class CustomRenderer extends BaseRenderer {
   constructor() {
     super();
 
@@ -18,4 +19,11 @@ export default class CustomRender extends BaseRender {
   onParticleUpdate(particle) {} // eslint-disable-line
 
   onParticleDead(particle) {} // eslint-disable-line
+}
+
+export class CustomRender extends CustomRenderer {
+  constructor(...args) {
+    super(...args);
+    console.warn(classDeprecationWarning('BaseRender', 'BaseRenderer'));
+  }
 }

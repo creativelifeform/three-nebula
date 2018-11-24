@@ -1,6 +1,11 @@
 import { EULER, POOL_MAX } from '../constants';
+import EventDispatcher, {
+  EMITTER_ADDED,
+  EMITTER_REMOVED,
+  PROTON_UPDATE,
+  PROTON_UPDATE_AFTER
+} from '../events';
 
-import EventDispatcher from '../events/EventDispatcher';
 import Integration from '../math/Integration';
 import Pool from './Pool';
 import { Util } from '../utils';
@@ -39,6 +44,19 @@ export default class Proton {
   }
 
   /**
+   * Adds a renderer to the Proton instance.
+   *
+   * @param {Renderer} renderer
+   * @return {Proton}
+   */
+  addRenderer(renderer) {
+    this.renderers.push(renderer);
+    renderer.init(this);
+
+    return this;
+  }
+
+  /**
    * @name add a type of Renderer
    *
    * @method addRender
@@ -50,15 +68,29 @@ export default class Proton {
   }
 
   /**
+   * Removes a renderer from the Proton instance.
+   *
+   * @param {Renderer} renderer
+   * @return {Proton}
+   */
+  removeRenderer(renderer) {
+    this.renderers.splice(this.renderers.indexOf(renderer), 1);
+    renderer.remove(this);
+  }
+
+  /**
    * add the Emitter
    *
    * @method addEmitter
    * @param {Emitter} emitter
+   * @return {Proton}
    */
   addEmitter(emitter) {
     this.emitters.push(emitter);
     emitter.parent = this;
-    this.eventDispatcher.dispatchEvent('EMITTER_ADDED', emitter);
+    this.eventDispatcher.dispatchEvent(EMITTER_ADDED, emitter);
+
+    return this;
   }
 
   removeEmitter(emitter) {
@@ -66,11 +98,11 @@ export default class Proton {
 
     this.emitters.splice(this.emitters.indexOf(emitter), 1);
     emitter.parent = null;
-    this.eventDispatcher.dispatchEvent('EMITTER_REMOVED', emitter);
+    this.eventDispatcher.dispatchEvent(EMITTER_REMOVED, emitter);
   }
 
   update($delta) {
-    this.eventDispatcher.dispatchEvent('PROTON_UPDATE', this);
+    this.eventDispatcher.dispatchEvent(PROTON_UPDATE, this);
 
     var delta = $delta || 0.0167;
 
@@ -80,7 +112,7 @@ export default class Proton {
       while (i--) this.emitters[i].update(delta);
     }
 
-    this.eventDispatcher.dispatchEvent('PROTON_UPDATE_AFTER', this);
+    this.eventDispatcher.dispatchEvent(PROTON_UPDATE_AFTER, this);
   }
 
   /**
