@@ -49369,17 +49369,46 @@ var Emitter = function (_Particle) {
     }
 
     /**
-     * start emit particle
-     * @method emit
-     * @param {Number} totalEmitTimes total emit times;
-     * @param {String} life the life of this emitter
+     * Sets the position of the emitter.
+     *
+     * @param {object} position - an object containing x, y and z props
+     * @return {Emitter}
+     */
+
+  }, {
+    key: 'setPosition',
+    value: function setPosition() {
+      var position = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var p = this.p;
+      var _position$x = position.x,
+          x = _position$x === undefined ? p.x : _position$x,
+          _position$y = position.y,
+          y = _position$y === undefined ? p.y : _position$y,
+          _position$z = position.z,
+          z = _position$z === undefined ? p.z : _position$z;
+
+
+      this.p.set(x, y, z);
+
+      return this;
+    }
+
+    /**
+     * Makes the emitter emit particles.
+     *
+     * @param {Number} totalEmitTimes - the total number of times to emit particles
+     * @param {String} life - the life of this emitter
+     * @return {Emitter}
      */
 
   }, {
     key: 'emit',
-    value: function emit(totalEmitTimes, life) {
+    value: function emit() {
+      var totalEmitTimes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Infinity;
+      var life = arguments[1];
+
       this.currentEmitTime = 0;
-      this.totalEmitTimes = _Util2.default.initValue(totalEmitTimes, Infinity);
+      this.totalEmitTimes = totalEmitTimes;
 
       if (life == true || life == 'life' || life == 'destroy') {
         this.life = totalEmitTimes == 'once' ? 1 : this.totalEmitTimes;
@@ -49388,6 +49417,8 @@ var Emitter = function (_Particle) {
       }
 
       this.rate.init();
+
+      return this;
     }
 
     /**
@@ -50105,14 +50136,22 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Forces particles along a specific axis.
+ *
+ */
 var Force = function (_Behaviour) {
   _inherits(Force, _Behaviour);
 
   /**
-   * The Behaviour class is the base for the other Behaviour
+   * @constructs Force
    *
-   * @class Behaviour
-   * @constructor
+   * @param {number} fx - the x axis force
+   * @param {number} fy - the y axis force
+   * @param {number} fz - the z axis force
+   * @param {number} life - the life of the particle
+   * @param {string} easing - the easing equation to use
+   * @return void
    */
   function Force(fx, fy, fz, life, easing) {
     _classCallCheck(this, Force);
@@ -50120,7 +50159,6 @@ var Force = function (_Behaviour) {
     var _this = _possibleConstructorReturn(this, (Force.__proto__ || Object.getPrototypeOf(Force)).call(this, life, easing));
 
     _this.reset(fx, fy, fz);
-    _this.name = 'Force';
     return _this;
   }
 
@@ -51976,16 +52014,25 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Forces particles down the y axis.
+ *
+ */
 var Gravity = function (_Force) {
   _inherits(Gravity, _Force);
 
-  function Gravity(g, life, easing) {
+  /**
+   * @constructs Gravity
+   *
+   * @param {number} gravity - the force to pull the particle down the y axis
+   * @param {number} life - the life of the particle
+   * @param {string} easing - the easing equation to use
+   * @return void
+   */
+  function Gravity(gravity, life, easing) {
     _classCallCheck(this, Gravity);
 
-    var _this = _possibleConstructorReturn(this, (Gravity.__proto__ || Object.getPrototypeOf(Gravity)).call(this, 0, -g, 0, life, easing));
-
-    _this.name = 'Gravity';
-    return _this;
+    return _possibleConstructorReturn(this, (Gravity.__proto__ || Object.getPrototypeOf(Gravity)).call(this, 0, -gravity, 0, life, easing));
   }
 
   return Gravity;
