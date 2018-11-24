@@ -58,7 +58,21 @@ npm i --save @rohandeshpande/three-proton
 ### Module
 
 ```javascript
-import Proton, { Emitter, Rate, Span, Position, Mass, Radius, Life, Velocity, PointZone, Vector3D, Alpha, Scale, Color } from '@rohandeshpande/three-proton';
+import Proton, {
+  Emitter,
+  Rate,
+  Span,
+  Position,
+  Mass,
+  Radius,
+  Life,
+  Velocity,
+  PointZone,
+  Vector3D,
+  Alpha,
+  Scale,
+  Color
+} from '@rohandeshpande/three-proton';
 import * as THREE from 'three';
 
 const proton = new Proton();
