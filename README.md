@@ -23,15 +23,17 @@ Check out examples at [https://rohan-deshpande.github.io/three-proton/](https://
 
 - Many kinds of behaviours and properties
 
-- Perfectly compatible with [`three`](https://github.com/mrdoob/three.js).
+- Perfectly compatible with [`three@0.98.0`](https://github.com/mrdoob/three.js).
 
 ## Installation
+
+### npm
 
 ```
 npm i --save three-proton
 ```
 
-**OR**
+### script
 
 ```
 <script type='text/javascript' src='node_modules/three-proton/build/three-proton.js'></script>
