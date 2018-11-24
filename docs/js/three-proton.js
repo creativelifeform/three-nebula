@@ -292,15 +292,11 @@ var _utils = __webpack_require__(3);
 
 var _ease = __webpack_require__(12);
 
-var _ease2 = _interopRequireDefault(_ease);
-
 var _constants = __webpack_require__(4);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var easeLinear = _ease2.default.easeLinear;
+var easeLinear = _ease.ease.easeLinear;
 
 var Behaviour = function () {
   function Behaviour(life, easing) {
@@ -49168,14 +49164,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setEasingByName = undefined;
+exports.setEasingByName = exports.ease = undefined;
 
 var _constants = __webpack_require__(4);
 
 /**
  * The Ease class provides a collection of easing functions for use with Proton
  */
-var ease = {
+var ease = exports.ease = {
   easeLinear: function easeLinear(value) {
     return value;
   },
@@ -49288,8 +49284,6 @@ var ease = {
 var setEasingByName = exports.setEasingByName = function setEasingByName(easeName) {
   if (ease[easeName]) return ease[easeName];else return ease.easeLinear;
 };
-
-exports.default = ease;
 
 /***/ }),
 /* 13 */
@@ -50127,15 +50121,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _ease = __webpack_require__(12);
 
-var _ease2 = _interopRequireDefault(_ease);
-
 var _constants = __webpack_require__(4);
 
 var _utils = __webpack_require__(3);
 
 var _math = __webpack_require__(0);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -50207,7 +50197,7 @@ var Particle = function () {
       this.scale = 1;
       this.useColor = false;
       this.useAlpha = false;
-      this.easing = (0, _ease.setEasingByName)(_ease2.default.easeLinear);
+      this.easing = (0, _ease.setEasingByName)(_ease.ease.easeLinear);
 
       if (init) {
         this.p = new _math.Vector3D();

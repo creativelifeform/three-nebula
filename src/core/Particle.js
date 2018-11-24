@@ -1,4 +1,4 @@
-import ease, { setEasingByName } from '../ease';
+import { ease, setEasingByName } from '../ease';
 
 import { PI } from '../constants';
 import { Util } from '../utils';

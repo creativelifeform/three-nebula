@@ -1,5 +1,5 @@
 import { Util, uid } from '../utils';
-import ease, { setEasingByName } from '../ease';
+import { ease, setEasingByName } from '../ease';
 
 import { MEASURE } from '../constants';
 

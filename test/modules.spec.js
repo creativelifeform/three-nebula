@@ -68,7 +68,8 @@ describe('modules', () => {
       'MeshZone',
       'PointZone',
       'ScreenZone',
-      'SphereZone'
+      'SphereZone',
+      'ease'
     ];
 
     modules.forEach(module => expect(Proton).to.have.property(module));

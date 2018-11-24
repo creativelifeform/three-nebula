@@ -133,7 +133,7 @@
         zone.friction = 0.95;
         zone.max = 7;
         emitter.addBehaviour(new Proton.CrossZone(zone, "bound"));
-        emitter.addBehaviour(new Proton.Color(0xff0000, 'random', Infinity, Proton.easeOutQuart));
+        emitter.addBehaviour(new Proton.Color(0xff0000, 'random', Infinity, Proton.ease.easeOutQuart));
 
         emitter.p.x = 0;
         emitter.p.y = 0;
