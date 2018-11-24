@@ -14,7 +14,6 @@ export default class Behaviour {
      */
     this.id = `Behaviour_${uid()}`;
     this.life = Util.initValue(life, Infinity);
-
     /**
      * The behaviour's decaying trend, for example easeOutQuart;
      * @property easing
