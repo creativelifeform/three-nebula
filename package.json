@@ -9,6 +9,7 @@
   "scripts": {
     "build": "webpack --env build",
     "examples": "./scripts/examples",
+    "examples:seed": "cp ./build/three-proton.js docs/js",
     "test": "mocha --require babel-core/register --colors ./test/*.spec.js",
     "test:only": "mocha --require babel-core/register --colors",
     "test:watch": "mocha --require babel-core/register --colors -w ./test/*.spec.js",

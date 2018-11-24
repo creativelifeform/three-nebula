@@ -531,6 +531,62 @@ var BIND_EMITTER_EVENT = exports.BIND_EMITTER_EVENT = false;
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Initialize = function () {
+  function Initialize() {
+    _classCallCheck(this, Initialize);
+
+    this.name = 'Initialize';
+  }
+
+  _createClass(Initialize, [{
+    key: 'init',
+    value: function init(emitter, particle) {
+      if (particle) {
+        this.initialize(particle);
+      } else {
+        this.initialize(emitter);
+      }
+    }
+
+    /**
+     * @abstract
+     */
+
+  }, {
+    key: 'reset',
+    value: function reset() {}
+
+    /**
+     * @abstract
+     */
+
+  }, {
+    key: 'initialize',
+    value: function initialize(target) {} // eslint-disable-line
+
+  }]);
+
+  return Initialize;
+}();
+
+exports.default = Initialize;
+module.exports = exports['default'];
+
+/***/ }),
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48783,62 +48839,6 @@ function LensFlare() {
 
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Initialize = function () {
-  function Initialize() {
-    _classCallCheck(this, Initialize);
-
-    this.name = 'Initialize';
-  }
-
-  _createClass(Initialize, [{
-    key: 'init',
-    value: function init(emitter, particle) {
-      if (particle) {
-        this.initialize(particle);
-      } else {
-        this.initialize(emitter);
-      }
-    }
-
-    /**
-     * @abstract
-     */
-
-  }, {
-    key: 'reset',
-    value: function reset() {}
-
-    /**
-     * @abstract
-     */
-
-  }, {
-    key: 'initialize',
-    value: function initialize(target) {} // eslint-disable-line
-
-  }]);
-
-  return Initialize;
-}();
-
-exports.default = Initialize;
-module.exports = exports['default'];
-
-/***/ }),
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48865,7 +48865,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _three = __webpack_require__(5);
+var _three = __webpack_require__(6);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -49852,7 +49852,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _three = __webpack_require__(5);
+var _three = __webpack_require__(6);
 
 var THREE = _interopRequireWildcard(_three);
 
@@ -50779,9 +50779,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _three = __webpack_require__(5);
+var _three = __webpack_require__(6);
 
-var _Initialize = __webpack_require__(6);
+var _Initialize = __webpack_require__(5);
 
 var _Initialize2 = _interopRequireDefault(_Initialize);
 
@@ -50841,7 +50841,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initialize2 = __webpack_require__(6);
+var _Initialize2 = __webpack_require__(5);
 
 var _Initialize3 = _interopRequireDefault(_Initialize2);
 
@@ -51077,7 +51077,7 @@ exports.MeshRender = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _three = __webpack_require__(5);
+var _three = __webpack_require__(6);
 
 var _BaseRenderer2 = __webpack_require__(14);
 
@@ -51438,7 +51438,7 @@ Object.defineProperty(exports, 'Body', {
   }
 });
 
-var _Initialize = __webpack_require__(6);
+var _Initialize = __webpack_require__(5);
 
 Object.defineProperty(exports, 'Initialize', {
   enumerable: true,
@@ -51962,10 +51962,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.G = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
 var _Force2 = __webpack_require__(19);
 
 var _Force3 = _interopRequireDefault(_Force2);
@@ -51991,13 +51987,6 @@ var Gravity = function (_Force) {
     _this.name = 'Gravity';
     return _this;
   }
-
-  _createClass(Gravity, [{
-    key: 'reset',
-    value: function reset(g, life, easing) {
-      _get(Gravity.prototype.__proto__ || Object.getPrototypeOf(Gravity.prototype), 'reset', this).call(this, 0, -g, 0, life, easing);
-    }
-  }]);
 
   return Gravity;
 }(_Force3.default);
@@ -52481,7 +52470,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _three = __webpack_require__(5);
+var _three = __webpack_require__(6);
 
 var THREE = _interopRequireWildcard(_three);
 
@@ -53097,7 +53086,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initialize2 = __webpack_require__(6);
+var _Initialize2 = __webpack_require__(5);
 
 var _Initialize3 = _interopRequireDefault(_Initialize2);
 
@@ -53165,7 +53154,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initialize2 = __webpack_require__(6);
+var _Initialize2 = __webpack_require__(5);
 
 var _Initialize3 = _interopRequireDefault(_Initialize2);
 
@@ -53229,7 +53218,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initialize2 = __webpack_require__(6);
+var _Initialize2 = __webpack_require__(5);
 
 var _Initialize3 = _interopRequireDefault(_Initialize2);
 
@@ -53293,7 +53282,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initialize2 = __webpack_require__(6);
+var _Initialize2 = __webpack_require__(5);
 
 var _Initialize3 = _interopRequireDefault(_Initialize2);
 
@@ -53379,7 +53368,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initialize2 = __webpack_require__(6);
+var _Initialize2 = __webpack_require__(5);
 
 var _Initialize3 = _interopRequireDefault(_Initialize2);
 
@@ -53454,7 +53443,7 @@ var _constants = __webpack_require__(4);
 
 var _math = __webpack_require__(0);
 
-var _Initialize2 = __webpack_require__(6);
+var _Initialize2 = __webpack_require__(5);
 
 var _Initialize3 = _interopRequireDefault(_Initialize2);
 
@@ -53849,123 +53838,121 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _three = __webpack_require__(5);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+/**
+ * @deprecated Use THREE.Quaternion instead
+ */
+var Quaternion = function () {
+  function Quaternion(x, y, z, w) {
+    _classCallCheck(this, Quaternion);
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Q = function (_Quaternion) {
-  _inherits(Q, _Quaternion);
-
-  function Q() {
-    _classCallCheck(this, Q);
-
-    return _possibleConstructorReturn(this, (Q.__proto__ || Object.getPrototypeOf(Q)).apply(this, arguments));
+    this.x = x || 0;
+    this.y = y || 0;
+    this.z = z || 0;
+    this.w = w !== undefined ? w : 1;
   }
 
-  return Q;
-}(_three.Quaternion);
+  _createClass(Quaternion, [{
+    key: "set",
+    value: function set(x, y, z, w) {
+      this.x = x;
+      this.y = y;
+      this.z = z;
+      this.w = w;
 
-// export default class Quaternion {
-//   constructor(x, y, z, w) {
-//     this.x = x || 0;
-//     this.y = y || 0;
-//     this.z = z || 0;
-//     this.w = w !== undefined ? w : 1;
-//   }
-//
-//   set(x, y, z, w) {
-//     this.x = x;
-//     this.y = y;
-//     this.z = z;
-//     this.w = w;
-//
-//     return this;
-//   }
-//
-//   clone() {
-//     return new this.constructor(this.x, this.y, this.z, this.w);
-//   }
-//
-//   copy(quaternion) {
-//     this.x = quaternion.x;
-//     this.y = quaternion.y;
-//     this.z = quaternion.z;
-//     this.w = quaternion.w;
-//
-//     return this;
-//   }
-//
-//   setFromEuler(euler) {
-//     // http://www.mathworks.com/matlabcentral/fileexchange/
-//     //  20696-function-to-convert-between-dcm-euler-angles-quaternions-and-euler-vectors/
-//     //  content/SpinCalc.m
-//
-//     var c1 = Math.cos(euler.x / 2);
-//     var c2 = Math.cos(euler.y / 2);
-//     var c3 = Math.cos(euler.z / 2);
-//     var s1 = Math.sin(euler.x / 2);
-//     var s2 = Math.sin(euler.y / 2);
-//     var s3 = Math.sin(euler.z / 2);
-//
-//     this.x = s1 * c2 * c3 + c1 * s2 * s3;
-//     this.y = c1 * s2 * c3 - s1 * c2 * s3;
-//     this.z = c1 * c2 * s3 + s1 * s2 * c3;
-//     this.w = c1 * c2 * c3 - s1 * s2 * s3;
-//
-//     return this;
-//   }
-//
-//   setFromAxisAngle(axis, angle) {
-//     // http://www.euclideanspace.com/maths/geometry/rotations/conversions/angleToQuaternion/index.htm
-//     // assumes axis is normalized
-//     var halfAngle = angle / 2,
-//       s = Math.sin(halfAngle);
-//
-//     this.x = axis.x * s;
-//     this.y = axis.y * s;
-//     this.z = axis.z * s;
-//     this.w = Math.cos(halfAngle);
-//
-//     return this;
-//   }
-//
-//   normalize() {
-//     var l = this.length();
-//
-//     if (l === 0) {
-//       this.x = 0;
-//       this.y = 0;
-//       this.z = 0;
-//       this.w = 1;
-//     } else {
-//       l = 1 / l;
-//       this.x *= l;
-//       this.y *= l;
-//       this.z *= l;
-//       this.w *= l;
-//     }
-//
-//     return this;
-//   }
-//
-//   length() {
-//     return Math.sqrt(
-//       this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w
-//     );
-//   }
-//
-//   dot(v) {
-//     return this.x * v.x + this.y * v.y + this.z * v.z + this.w * v.w;
-//   }
-// }
+      return this;
+    }
+  }, {
+    key: "clone",
+    value: function clone() {
+      return new this.constructor(this.x, this.y, this.z, this.w);
+    }
+  }, {
+    key: "copy",
+    value: function copy(quaternion) {
+      this.x = quaternion.x;
+      this.y = quaternion.y;
+      this.z = quaternion.z;
+      this.w = quaternion.w;
 
+      return this;
+    }
+  }, {
+    key: "setFromEuler",
+    value: function setFromEuler(euler) {
+      // http://www.mathworks.com/matlabcentral/fileexchange/
+      //  20696-function-to-convert-between-dcm-euler-angles-quaternions-and-euler-vectors/
+      //  content/SpinCalc.m
 
-exports.default = Q;
-module.exports = exports['default'];
+      var c1 = Math.cos(euler.x / 2);
+      var c2 = Math.cos(euler.y / 2);
+      var c3 = Math.cos(euler.z / 2);
+      var s1 = Math.sin(euler.x / 2);
+      var s2 = Math.sin(euler.y / 2);
+      var s3 = Math.sin(euler.z / 2);
+
+      this.x = s1 * c2 * c3 + c1 * s2 * s3;
+      this.y = c1 * s2 * c3 - s1 * c2 * s3;
+      this.z = c1 * c2 * s3 + s1 * s2 * c3;
+      this.w = c1 * c2 * c3 - s1 * s2 * s3;
+
+      return this;
+    }
+  }, {
+    key: "setFromAxisAngle",
+    value: function setFromAxisAngle(axis, angle) {
+      // http://www.euclideanspace.com/maths/geometry/rotations/conversions/angleToQuaternion/index.htm
+      // assumes axis is normalized
+      var halfAngle = angle / 2,
+          s = Math.sin(halfAngle);
+
+      this.x = axis.x * s;
+      this.y = axis.y * s;
+      this.z = axis.z * s;
+      this.w = Math.cos(halfAngle);
+
+      return this;
+    }
+  }, {
+    key: "normalize",
+    value: function normalize() {
+      var l = this.length();
+
+      if (l === 0) {
+        this.x = 0;
+        this.y = 0;
+        this.z = 0;
+        this.w = 1;
+      } else {
+        l = 1 / l;
+        this.x *= l;
+        this.y *= l;
+        this.z *= l;
+        this.w *= l;
+      }
+
+      return this;
+    }
+  }, {
+    key: "length",
+    value: function length() {
+      return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w);
+    }
+  }, {
+    key: "dot",
+    value: function dot(v) {
+      return this.x * v.x + this.y * v.y + this.z * v.z + this.w * v.w;
+    }
+  }]);
+
+  return Quaternion;
+}();
+
+exports.default = Quaternion;
+module.exports = exports["default"];
 
 /***/ }),
 /* 62 */
@@ -54073,7 +54060,7 @@ var _BaseRenderer2 = __webpack_require__(14);
 
 var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
-var _three = __webpack_require__(5);
+var _three = __webpack_require__(6);
 
 var _compatibility = __webpack_require__(7);
 
@@ -54171,7 +54158,7 @@ exports.SpriteRender = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _three = __webpack_require__(5);
+var _three = __webpack_require__(6);
 
 var _MeshRenderer2 = __webpack_require__(29);
 
@@ -54244,7 +54231,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _three = __webpack_require__(5);
+var _three = __webpack_require__(6);
 
 var THREE = _interopRequireWildcard(_three);
 
@@ -54554,7 +54541,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _three = __webpack_require__(5);
+var _three = __webpack_require__(6);
 
 var THREE = _interopRequireWildcard(_three);
 
