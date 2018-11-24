@@ -2,7 +2,7 @@
 
 # [![Build Status](https://travis-ci.org/rohan-deshpande/three-proton.svg?branch=develop)](https://travis-ci.org/rohan-deshpande/three-proton)
 
-**Three Proton** is a magical 3D particle engine that is compatible with [`three`](https://github.com/mrdoob/three.js). It is based on the [Proton](https://github.com/a-jie/Proton) Particle Engine library and shares much of its API.
+**Three Proton** is a magical, WebGL based 3D particle engine that has been designed to work in concert with [`three.js`](https://github.com/mrdoob/three.js). It is based on the [Proton](https://github.com/a-jie/Proton) particle engine library and shares much of its API.
 
 Check out examples at [https://rohan-deshpande.github.io/three-proton/](https://rohan-deshpande.github.io/three-proton/)
 
@@ -98,4 +98,4 @@ const proton = new Proton();
 
 ## License
 
-Proton is released under the MIT License. http://www.opensource.org/licenses/mit-license
+[MIT](LICENSE.md)
