@@ -51,7 +51,7 @@ npm i --save @rohandeshpande/three-proton
 * `lint` - Lints code and circular dependencies in `./src`
 * `coverage:generate` - Generates a code coverage report
 * `coverage:publish` - Publishes the coverage report
-* `git:publish <commit-message>` - Builds the module, adds all changed files commits with the message you supply and pushes to remote 
+* `git:publish <commit-message>` - Builds the module, adds all changed files commits with the message you supply and pushes to remote
 
 ## Usage
 
@@ -108,7 +108,7 @@ emitter.emit();
 If you are adding `three-proton` to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so
 
 ```javascript
-const { Proton, Emitter, Rate, Span } = Proton;
+const { Proton, Emitter, Rate, Span } = window.Proton;
 const proton = new Proton();
 ```
 
