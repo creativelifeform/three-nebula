@@ -30,7 +30,7 @@ Check out examples at [https://rohan-deshpande.github.io/three-proton/](https://
 ### npm
 
 ```
-npm i --save three-proton
+npm i --save @rohandeshpande/three-proton
 ```
 
 ### script
@@ -58,7 +58,7 @@ import Proton, {
   Alpha,
   Scale,
   Color
-} from 'three-proton';
+} from '@rohandeshpande/three-proton';
 
 import { Color as ThreeColor } from 'three';
 
