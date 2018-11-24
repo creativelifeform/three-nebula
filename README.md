@@ -2,7 +2,7 @@
 
 # [![Build Status](https://travis-ci.org/rohan-deshpande/three-proton.svg?branch=develop)](https://travis-ci.org/rohan-deshpande/three-proton)
 
-`three-proton` is a magical 3D particle engine that is compatible with [`three`](https://github.com/mrdoob/three.js). It is based on the [Proton](https://github.com/a-jie/Proton) Particle Engine library and shares much of its API.
+**Three Proton** is a magical 3D particle engine that is compatible with [`three`](https://github.com/mrdoob/three.js). It is based on the [Proton](https://github.com/a-jie/Proton) Particle Engine library and shares much of its API.
 
 Check out examples at [https://rohan-deshpande.github.io/three-proton/](https://rohan-deshpande.github.io/three-proton/)
 
