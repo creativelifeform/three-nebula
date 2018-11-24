@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # copy all dependencies to example/js and start the http server
-cp ./build/three-proton.js examples/js &&
-cp ./node_modules/three/build/three.min.js examples/js &&
-cp ./node_modules/stats.js/build/stats.min.js examples/js &&
+cp ./build/three-proton.js docs/js &&
+cp ./node_modules/three/build/three.min.js docs/js &&
+cp ./node_modules/stats.js/build/stats.min.js docs/js &&
 open http://localhost:8080 &&
-node ./node_modules/.bin/http-server ./examples
+node ./node_modules/.bin/http-server ./docs
