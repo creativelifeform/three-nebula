@@ -1,18 +1,25 @@
 import Behaviour from './Behaviour';
 import { Vector3D } from '../math';
 
+/**
+ * Forces particles along a specific axis.
+ *
+ */
 export default class Force extends Behaviour {
   /**
-   * The Behaviour class is the base for the other Behaviour
+   * @constructs Force
    *
-   * @class Behaviour
-   * @constructor
+   * @param {number} fx - the x axis force
+   * @param {number} fy - the y axis force
+   * @param {number} fz - the z axis force
+   * @param {number} life - the life of the particle
+   * @param {string} easing - the easing equation to use
+   * @return void
    */
   constructor(fx, fy, fz, life, easing) {
     super(life, easing);
 
     this.reset(fx, fy, fz);
-    this.name = 'Force';
   }
 
   reset(fx, fy, fz) {

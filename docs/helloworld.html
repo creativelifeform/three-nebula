@@ -75,7 +75,7 @@
 
                 switch (num) {
                     case 1:
-                        var color = new Proton.Color('random', 'random', Infinity, Proton.easeOutQuart);
+                        var color = new Proton.Color('random', 'random', Infinity, Proton.ease.easeOutQuart);
                         addBehaviour(color);
                         addInfo(": Color");
                         break;
@@ -195,8 +195,8 @@
         proton.addRender(new Proton.MeshRender(scene));
 
         //Proton.Debug.drawZone(proton,scene,zone2);
-        Proton.Debug.drawEmitter(proton, scene, emitter1);
-        Proton.Debug.drawEmitter(proton, scene, emitter2);
+        // Proton.Debug.drawEmitter(proton, scene, emitter1);
+        // Proton.Debug.drawEmitter(proton, scene, emitter2);
     }
 
     function createMesh(geo) {
