@@ -1,34 +1,31 @@
-(function(Proton, undefined) {
-    var InitializeUtil = {
+import Initialize from './Initialize';
+import Util from '../utils/Util';
 
-        initialize: function(emitter, particle, initializes) {
-            var i = initializes.length;
-            while (i--) {
-                var initialize = initializes[i];
-                if (initialize instanceof Proton.Initialize)
-                    initialize.init(emitter, particle);
-                else
-                    InitializeUtil.init(emitter, particle, initialize);
-            }
+export default {
+  initialize: function(emitter, particle, initializes) {
+    var i = initializes.length;
 
-            InitializeUtil.bindEmitter(emitter, particle);
-        },
+    while (i--) {
+      var initialize = initializes[i];
 
-        //////////////////////init//////////////////////
-        init: function(emitter, particle, initialize) {
-            Proton.Util.setPrototypeByObj(particle, initialize);
-            Proton.Util.setVectorByObj(particle, initialize);
-        },
-
-        bindEmitter: function(emitter, particle) {
-            if (emitter.bindEmitter) {
-                particle.p.add(emitter.p);
-                particle.v.add(emitter.v);
-                particle.a.add(emitter.a);
-                particle.v.applyEuler(emitter.rotation);
-            }
-        }
+      if (initialize instanceof Initialize) initialize.init(emitter, particle);
+      else this.init(emitter, particle, initialize);
     }
 
-    Proton.InitializeUtil = InitializeUtil;
-})(Proton);
+    this.bindEmitter(emitter, particle);
+  },
+
+  init: function(emitter, particle, initialize) {
+    Util.setPrototypeByObj(particle, initialize);
+    Util.setVectorByObj(particle, initialize);
+  },
+
+  bindEmitter: function(emitter, particle) {
+    if (emitter.bindEmitter) {
+      particle.p.add(emitter.p);
+      particle.v.add(emitter.v);
+      particle.a.add(emitter.a);
+      particle.v.applyEuler(emitter.rotation);
+    }
+  }
+};

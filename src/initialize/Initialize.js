@@ -1,22 +1,23 @@
-(function(Proton, undefined) {
-    function Initialize() {
-        this.name = "Initialize";
+export default class Initialize {
+  constructor() {
+    this.name = 'Initialize';
+  }
+
+  init(emitter, particle) {
+    if (particle) {
+      this.initialize(particle);
+    } else {
+      this.initialize(emitter);
     }
+  }
 
+  /**
+   * @abstract
+   */
+  reset() {}
 
-    Initialize.prototype.reset = function() {
-
-    }
-
-    Initialize.prototype.init = function(emitter, particle) {
-        if (particle) {
-            this.initialize(particle);
-        } else {
-            this.initialize(emitter);
-        }
-    };
-
-    ///sub class init
-    Initialize.prototype.initialize = function(target) {};
-    Proton.Initialize = Initialize;
-})(Proton);
+  /**
+   * @abstract
+   */
+  initialize(target) {} // eslint-disable-line
+}

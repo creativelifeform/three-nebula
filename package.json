@@ -1,28 +1,67 @@
 {
-  "name": "three.proton.js",
-  "version": "0.1.5",
-  "description": "three.proton is a magical 3d particle engine using [three.js]",
-  "main": "./build/three.proton.min.js",
+  "name": "three-proton",
+  "version": "1.0.0",
+  "description": "A magical, WebGL based 3D particle engine",
+  "main": "./build/three-proton.js",
   "directories": {
-    "example": "example",
-    "lib": "lib"
+    "examples": "examples"
   },
   "scripts": {
-    "build": "cd ./build && node build.js"
+    "build": "webpack --env build",
+    "examples": "./scripts/examples",
+    "test": "mocha --require babel-core/register --colors ./test/*.spec.js",
+    "test:only": "mocha --require babel-core/register --colors",
+    "test:watch": "mocha --require babel-core/register --colors -w ./test/*.spec.js",
+    "test:watch-only": "mocha --require babel-core/register --colors -w ",
+    "lint": "eslint src test && ./node_modules/.bin/madge --circular src",
+    "coverage:generate": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/*.js -- --require babel-register",
+    "coverage:publish": "./node_modules/.bin/istanbul-coveralls",
+    "publish": "./scripts/publish"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/a-jie/three.proton.git"
+    "url": "git+https://github.com/rohan-deshpande/three-proton.git"
   },
   "keywords": [
     "particle",
     "three.js",
     "3d"
   ],
-  "author": "a-jie",
+  "authors": [
+    "a-jie",
+    "rohan-deshpande"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/a-jie/three.proton/issues"
+    "url": "https://github.com/rohan-deshpande/three-proton/issues"
   },
-  "homepage": "https://github.com/a-jie/three.proton#readme"
+  "homepage": "https://github.com/rohan-deshpande/three-proton#readme",
+  "dependencies": {
+    "madge": "^3.3.0",
+    "three": "^0.98.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.1",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-import": "^2.8.0",
+    "http-server": "^0.11.1",
+    "jquery": "^3.3.1",
+    "jsdoc": "~3.4.0",
+    "minami": "~1.1.1",
+    "mocha": "^5.2.0",
+    "sinon": "^2.1.0",
+    "stats.js": "^0.17.0",
+    "webpack": "^2.3.3",
+    "yargs": "^7.0.2"
+  }
 }

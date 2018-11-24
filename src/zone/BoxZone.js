@@ -1,133 +1,157 @@
-(function(Proton, undefined) {
-    /**
-     * BoxZone is a box zone
-     * @param {Number|Proton.Vector3D} x - the position's x value or a Proton.Vector3D Object
-     * @param {Number} y - the position's y value 
-     * @param {Number} z - the position's z value 
-     * @param {Number} w - the Box's width 
-     * @param {Number} h - the Box's height 
-     * @param {Number} d - the Box's depth 
-     * @example 
-     * var boxZone = new Proton.BoxZone(0,0,0,50,50,50);
-     * or
-     * var boxZone = new Proton.BoxZone(new Proton.Proton.Vector3D(0,0,0), 50, 50, 50);
-     * @extends {Proton.Zone}
-     * @constructor
-     */
-    function BoxZone(a, b, c, d, e, f) {
-        var x, y, z, w, h, d;
-        BoxZone._super_.call(this);
+import MathUtils from '../math/MathUtils';
+import Util from '../utils/Util';
+import Zone from './Zone';
 
-        if (Proton.Util.isUndefined(b, c, d, e, f)) {
-            x = y = z = 0;
-            w = h = d = (a || 100);
-        } else if (Proton.Util.isUndefined(d, e, f)) {
-            x = y = z = 0;
-            w = a;
-            h = b;
-            d = c;
-        } else {
-            x = a;
-            y = b;
-            z = c;
-            w = d;
-            h = e;
-            d = f;
-        }
+export default class BoxZone extends Zone {
+  /**
+   * BoxZone is a box zone
+   * @param {Number|Vector3D} x - the position's x value or a Vector3D Object
+   * @param {Number} y - the position's y value
+   * @param {Number} z - the position's z value
+   * @param {Number} w - the Box's width
+   * @param {Number} h - the Box's height
+   * @param {Number} d - the Box's depth
+   * @example
+   * var boxZone = new BoxZone(0,0,0,50,50,50);
+   * or
+   * var boxZone = new BoxZone(new Vector3D(0,0,0), 50, 50, 50);
+   * @extends {Zone}
+   * @constructor
+   */
+  constructor(a, b, c, d, e, f) {
+    super();
 
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.width = w;
-        this.height = h;
-        this.depth = d;
+    // TODO this reassigning of arguments is pretty dangerous, need to fix it.
+    // eslint-disable-next-line
+    var x, y, z, w, h, d;
 
-        //
-        this.friction = 0.85;
-        this.max = 6;
+    if (Util.isUndefined(b, c, d, e, f)) {
+      x = y = z = 0;
+      w = h = d = a || 100;
+    } else if (Util.isUndefined(d, e, f)) {
+      x = y = z = 0;
+      w = a;
+      h = b;
+      d = c;
+    } else {
+      x = a;
+      y = b;
+      z = c;
+      w = d;
+      h = e;
+      d = f;
     }
 
-    Proton.Util.inherits(BoxZone, Proton.Zone);
-    BoxZone.prototype.getPosition = function() {
-        this.vector.x = this.x + Proton.MathUtils.randomAToB(-.5, .5) * this.width;
-        this.vector.y = this.y + Proton.MathUtils.randomAToB(-.5, .5) * this.height;
-        this.vector.z = this.z + Proton.MathUtils.randomAToB(-.5, .5) * this.depth;
-        return this.vector;
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.width = w;
+    this.height = h;
+    this.depth = d;
+    this.friction = 0.85;
+    this.max = 6;
+  }
+
+  getPosition() {
+    this.vector.x = this.x + MathUtils.randomAToB(-0.5, 0.5) * this.width;
+    this.vector.y = this.y + MathUtils.randomAToB(-0.5, 0.5) * this.height;
+    this.vector.z = this.z + MathUtils.randomAToB(-0.5, 0.5) * this.depth;
+
+    return this.vector;
+  }
+
+  _dead(particle) {
+    if (particle.p.x + particle.radius < this.x - this.width / 2)
+      particle.dead = true;
+    else if (particle.p.x - particle.radius > this.x + this.width / 2)
+      particle.dead = true;
+
+    if (particle.p.y + particle.radius < this.y - this.height / 2)
+      particle.dead = true;
+    else if (particle.p.y - particle.radius > this.y + this.height / 2)
+      particle.dead = true;
+
+    if (particle.p.z + particle.radius < this.z - this.depth / 2)
+      particle.dead = true;
+    else if (particle.p.z - particle.radius > this.z + this.depth / 2)
+      particle.dead = true;
+  }
+
+  _bound(particle) {
+    if (particle.p.x - particle.radius < this.x - this.width / 2) {
+      particle.p.x = this.x - this.width / 2 + particle.radius;
+      particle.v.x *= -this.friction;
+      this._static(particle, 'x');
+    } else if (particle.p.x + particle.radius > this.x + this.width / 2) {
+      particle.p.x = this.x + this.width / 2 - particle.radius;
+      particle.v.x *= -this.friction;
+      this._static(particle, 'x');
     }
 
-    BoxZone.prototype._dead = function(particle) {
-        if (particle.p.x + particle.radius < this.x - this.width / 2)
-            particle.dead = true;
-        else if (particle.p.x - particle.radius > this.x + this.width / 2)
-            particle.dead = true;
-
-        if (particle.p.y + particle.radius < this.y - this.height / 2)
-            particle.dead = true;
-        else if (particle.p.y - particle.radius > this.y + this.height / 2)
-            particle.dead = true;
-
-        if (particle.p.z + particle.radius < this.z - this.depth / 2)
-            particle.dead = true;
-        else if (particle.p.z - particle.radius > this.z + this.depth / 2)
-            particle.dead = true;
+    if (particle.p.y - particle.radius < this.y - this.height / 2) {
+      particle.p.y = this.y - this.height / 2 + particle.radius;
+      particle.v.y *= -this.friction;
+      this._static(particle, 'y');
+    } else if (particle.p.y + particle.radius > this.y + this.height / 2) {
+      particle.p.y = this.y + this.height / 2 - particle.radius;
+      particle.v.y *= -this.friction;
+      this._static(particle, 'y');
     }
 
-    BoxZone.prototype._bound = function(particle) {
-        if (particle.p.x - particle.radius < this.x - this.width / 2) {
-            particle.p.x = this.x - this.width / 2 + particle.radius;
-            particle.v.x *= -this.friction;
-            this._static(particle, "x");
-        } else if (particle.p.x + particle.radius > this.x + this.width / 2) {
-            particle.p.x = this.x + this.width / 2 - particle.radius;
-            particle.v.x *= -this.friction;
-            this._static(particle, "x");
-        }
-
-        if (particle.p.y - particle.radius < this.y - this.height / 2) {
-            particle.p.y = this.y - this.height / 2 + particle.radius;
-            particle.v.y *= -this.friction;
-            this._static(particle, "y");
-        } else if (particle.p.y + particle.radius > this.y + this.height / 2) {
-            particle.p.y = this.y + this.height / 2 - particle.radius;
-            particle.v.y *= -this.friction;
-            this._static(particle, "y");
-        }
-
-        if (particle.p.z - particle.radius < this.z - this.depth / 2) {
-            particle.p.z = this.z - this.depth / 2 + particle.radius;
-            particle.v.z *= -this.friction;
-            this._static(particle, "z");
-        } else if (particle.p.z + particle.radius > this.z + this.depth / 2) {
-            particle.p.z = this.z + this.depth / 2 - particle.radius;
-            particle.v.z *= -this.friction;
-            this._static(particle, "z");
-        }
+    if (particle.p.z - particle.radius < this.z - this.depth / 2) {
+      particle.p.z = this.z - this.depth / 2 + particle.radius;
+      particle.v.z *= -this.friction;
+      this._static(particle, 'z');
+    } else if (particle.p.z + particle.radius > this.z + this.depth / 2) {
+      particle.p.z = this.z + this.depth / 2 - particle.radius;
+      particle.v.z *= -this.friction;
+      this._static(particle, 'z');
     }
+  }
 
-    BoxZone.prototype._static = function(particle, axis) {
-        if (particle.v[axis] * particle.a[axis] > 0) return;
-        if (Math.abs(particle.v[axis]) < Math.abs(particle.a[axis]) * 0.0167 * this.max) {
-            particle.v[axis] = 0;
-            particle.a[axis] = 0;
-        }
+  _static(particle, axis) {
+    if (particle.v[axis] * particle.a[axis] > 0) return;
+    if (
+      Math.abs(particle.v[axis]) <
+      Math.abs(particle.a[axis]) * 0.0167 * this.max
+    ) {
+      particle.v[axis] = 0;
+      particle.a[axis] = 0;
     }
+  }
 
-    BoxZone.prototype._cross = function(particle) {
-        if (particle.p.x + particle.radius < this.x - this.width / 2 && particle.v.x <= 0)
-            particle.p.x = this.x + this.width / 2 + particle.radius;
-        else if (particle.p.x - particle.radius > this.x + this.width / 2 && particle.v.x >= 0)
-            particle.p.x = this.x - this.width / 2 - particle.radius;
+  _cross(particle) {
+    if (
+      particle.p.x + particle.radius < this.x - this.width / 2 &&
+      particle.v.x <= 0
+    )
+      particle.p.x = this.x + this.width / 2 + particle.radius;
+    else if (
+      particle.p.x - particle.radius > this.x + this.width / 2 &&
+      particle.v.x >= 0
+    )
+      particle.p.x = this.x - this.width / 2 - particle.radius;
 
-        if (particle.p.y + particle.radius < this.y - this.height / 2 && particle.v.y <= 0)
-            particle.p.y = this.y + this.height / 2 + particle.radius;
-        else if (particle.p.y - particle.radius > this.y + this.height / 2 && particle.v.y >= 0)
-            particle.p.y = this.y - this.height / 2 - particle.radius;
+    if (
+      particle.p.y + particle.radius < this.y - this.height / 2 &&
+      particle.v.y <= 0
+    )
+      particle.p.y = this.y + this.height / 2 + particle.radius;
+    else if (
+      particle.p.y - particle.radius > this.y + this.height / 2 &&
+      particle.v.y >= 0
+    )
+      particle.p.y = this.y - this.height / 2 - particle.radius;
 
-        if (particle.p.z + particle.radius < this.z - this.depth / 2 && particle.v.z <= 0)
-            particle.p.z = this.z + this.depth / 2 + particle.radius;
-        else if (particle.p.z - particle.radius > this.z + this.depth / 2 && particle.v.z >= 0)
-            particle.p.z = this.z - this.depth / 2 - particle.radius;
-    }
-
-    Proton.BoxZone = BoxZone;
-})(Proton);
+    if (
+      particle.p.z + particle.radius < this.z - this.depth / 2 &&
+      particle.v.z <= 0
+    )
+      particle.p.z = this.z + this.depth / 2 + particle.radius;
+    else if (
+      particle.p.z - particle.radius > this.z + this.depth / 2 &&
+      particle.v.z >= 0
+    )
+      particle.p.z = this.z - this.depth / 2 - particle.radius;
+  }
+}

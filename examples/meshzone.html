@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>three.proton - meshzone</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style type="text/css">
+    body {
+        font-family: Monospace;
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script src="./js/stats.min.js"></script>
+    <script src="./js/three.min.js"></script>
+    <script src="./js/three-proton.js"></script>
+    <script>
+
+    var proton, emitter;
+    var camera, scene, renderer, stats, clock, spring;
+    var mesh, randomBehaviour, gravity;
+
+    loadModel(initAll);
+
+    function initAll() {
+        initScene();
+        initLights();
+        initProton();
+        addStats();
+        addStars();
+        addMouseEvent();
+        animate();
+    }
+
+    function initScene() {
+        camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
+        camera.position.z = 500;
+        scene = new THREE.Scene();
+        scene.fog = new THREE.Fog(0xffffff, 1, 10000);
+
+        clock = new THREE.Clock();
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        document.body.appendChild(renderer.domElement);
+        window.addEventListener('resize', onWindowResize, false);
+    }
+
+    function initLights() {
+        var ambientLight = new THREE.AmbientLight(0x101010);
+        scene.add(ambientLight);
+
+        var pointLight = new THREE.PointLight(0xffffff, 2, 1000, 1);
+        pointLight.position.set(0, 200, 200);
+        scene.add(pointLight);
+    }
+
+    function addStats() {
+        stats = new Stats();
+        stats.showPanel(0);
+        stats.dom.style.position = 'absolute';
+        stats.dom.style.left = '0px';
+        stats.dom.style.top = '0px';
+        container.appendChild(stats.dom);
+    }
+
+    function addStars() {
+        var geometry = new THREE.Geometry();
+        for (var i = 0; i < 10000; i++) {
+            var vertex = new THREE.Vector3();
+            vertex.x = THREE.Math.randFloatSpread(2000);
+            vertex.y = THREE.Math.randFloatSpread(2000);
+            vertex.z = THREE.Math.randFloatSpread(2000);
+            geometry.vertices.push(vertex);
+        }
+        var particles = new THREE.Points(geometry, new THREE.PointsMaterial({
+            color: 0x888888
+        }));
+        scene.add(particles);
+    }
+
+    function initProton() {
+        proton = new Proton.default();
+        proton.addEmitter(createEmitter());
+        proton.addRender(new Proton.SpriteRender(scene));
+    }
+
+    //load model
+    function loadModel(callback) {
+        var objectLoader = new THREE.ObjectLoader();
+        objectLoader.load("assets/teapot.json", function(obj) {
+            mesh = obj;
+            callback();
+        });
+    }
+
+    function createEmitter() {
+        emitter = new Proton.Emitter();
+        emitter.rate = new Proton.Rate(new Proton.Span(11, 15), new Proton.Span(.02));
+        //addInitialize
+        emitter.addInitialize(new Proton.Position(new Proton.MeshZone(mesh, 200)));
+        emitter.addInitialize(new Proton.Mass(1));
+        emitter.addInitialize(new Proton.Radius(26, 50));
+        emitter.addInitialize(new Proton.Life(1.5));
+        emitter.addInitialize(new Proton.Body(createSprite()));
+
+        //addBehaviour
+        randomBehaviour = new Proton.RandomDrift(2, 2, 2);
+        gravity = new Proton.Gravity(0);
+        emitter.addBehaviour(customScaleBehaviour());
+        emitter.addBehaviour(gravity);
+        emitter.addBehaviour(randomBehaviour);
+        emitter.addBehaviour(new Proton.Color(['#00aeff', '#0fa954', '#54396e', '#e61d5f']));
+        emitter.addBehaviour(new Proton.Color('random'));
+
+        emitter.p.x = 0;
+        emitter.p.y = -120;
+        emitter.emit();
+
+        return emitter;
+    }
+
+    function customScaleBehaviour() {
+        return {
+            initialize: function(particle) {
+                particle.oldRadius = particle.radius;
+                particle.scale = 0;
+            },
+            applyBehaviour: function(particle) {
+                if (particle.energy >= 2 / 3) {
+                    particle.scale = (1 - particle.energy) * 3;
+                } else if (particle.energy <= 1 / 3) {
+                    particle.scale = particle.energy * 3;
+                }
+                particle.radius = particle.oldRadius * particle.scale;
+            }
+        }
+    }
+
+
+    function createSprite() {
+        var map = new THREE.TextureLoader().load("./img/dot.png");
+        var material = new THREE.SpriteMaterial({
+            map: map,
+            color: 0xff0000,
+            blending: THREE.AdditiveBlending,
+            fog: true
+        });
+        return new THREE.Sprite(material);
+    }
+
+    function addMouseEvent() {
+        var index = 0;
+        window.addEventListener('mousedown', function(e) {
+            index++;
+            if (index % 3 == 1) {
+                randomBehaviour.reset(2, 0, .2);
+                gravity.reset(3.5);
+            } else if (index % 3 == 2) {
+                randomBehaviour.reset(10, 10, 10);
+                gravity.reset(0);
+            } else {
+                randomBehaviour.reset(2, 2, 2);
+                gravity.reset(0);
+            }
+        });
+    }
+
+    function animate() {
+        stats.begin();
+        requestAnimationFrame(animate);
+        render();
+        stats.end();
+    }
+
+    var tha = 0;
+
+    function render() {
+        proton.update();
+        renderer.render(scene, camera);
+
+        tha += .005;
+        camera.lookAt(scene.position);
+        camera.position.x = Math.sin(tha) * 500;
+        camera.position.z = Math.cos(tha) * 500;
+        Proton.Debug.renderInfo(proton, 3);
+    }
+
+    function onWindowResize() {
+
+    }
+    </script>
+</body>
+
+</html>

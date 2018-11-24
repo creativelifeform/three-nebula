@@ -1,90 +1,90 @@
-(function(Proton, undefined) {
-    var Util = Util || {
-        initValue: function(value, defaults) {
-            var value = (value != null && value != undefined) ? value : defaults;
-            return value;
-        },
+export default {
+  initValue: function(value, defaults) {
+    var _value = value != null && value != undefined ? value : defaults;
 
-        isArray: function(value) {
-            return Object.prototype.toString.call(value) === '[object Array]';
-        },
+    return _value;
+  },
 
-        destroyArray: function(array) {
-            array.length = 0;
-        },
+  isArray: function(value) {
+    return Object.prototype.toString.call(value) === '[object Array]';
+  },
 
-        destroyObject: function(obj) {
-            for (var o in obj) delete obj[o];
-        },
+  destroyArray: function(array) {
+    array.length = 0;
+  },
 
-        isUndefined: function() {
-            for (var id in arguments) {
-                var arg = arguments[id];
-                if (arg !== undefined)
-                    return false;
-            }
+  destroyObject: function(obj) {
+    for (var o in obj) delete obj[o];
+  },
 
-            return true;
-        },
+  isUndefined: function() {
+    for (var id in arguments) {
+      var arg = arguments[id];
 
-        setVectorByObj: function(target, pOBJ) {
-            if (pOBJ["x"] !== undefined) target.p.x = pOBJ["x"];
-            if (pOBJ["y"] !== undefined) target.p.y = pOBJ["y"];
-            if (pOBJ["z"] !== undefined) target.p.z = pOBJ["z"];
+      if (arg !== undefined) return false;
+    }
 
-            if (pOBJ["vx"] !== undefined) target.v.x = pOBJ["vx"];
-            if (pOBJ["vy"] !== undefined) target.v.y = pOBJ["vy"];
-            if (pOBJ["vz"] !== undefined) target.v.z = pOBJ["vz"];
+    return true;
+  },
 
-            if (pOBJ["ax"] !== undefined) target.a.x = pOBJ["ax"];
-            if (pOBJ["ay"] !== undefined) target.a.y = pOBJ["ay"];
-            if (pOBJ["az"] !== undefined) target.a.z = pOBJ["az"];
+  setVectorByObj: function(target, pOBJ) {
+    if (pOBJ['x'] !== undefined) target.p.x = pOBJ['x'];
+    if (pOBJ['y'] !== undefined) target.p.y = pOBJ['y'];
+    if (pOBJ['z'] !== undefined) target.p.z = pOBJ['z'];
 
-            if (pOBJ["p"] !== undefined) target.p.copy(pOBJ["p"]);
-            if (pOBJ["v"] !== undefined) target.v.copy(pOBJ["v"]);
-            if (pOBJ["a"] !== undefined) target.a.copy(pOBJ["a"]);
+    if (pOBJ['vx'] !== undefined) target.v.x = pOBJ['vx'];
+    if (pOBJ['vy'] !== undefined) target.v.y = pOBJ['vy'];
+    if (pOBJ['vz'] !== undefined) target.v.z = pOBJ['vz'];
 
-            if (pOBJ["position"] !== undefined) target.p.copy(pOBJ["position"]);
-            if (pOBJ["velocity"] !== undefined) target.v.copy(pOBJ["velocity"]);
-            if (pOBJ["accelerate"] !== undefined) target.a.copy(pOBJ["accelerate"]);
-        },
+    if (pOBJ['ax'] !== undefined) target.a.x = pOBJ['ax'];
+    if (pOBJ['ay'] !== undefined) target.a.y = pOBJ['ay'];
+    if (pOBJ['az'] !== undefined) target.a.z = pOBJ['az'];
 
-        //set prototype
-        setPrototypeByObj: function(target, proObj, filters) {
-            for (var key in proObj) {
-                if (target.hasOwnProperty(key)) {
-                    if (filters) {
-                        if (filters.indexOf(key) < 0) target[key] = Util._getValue(proObj[key]);
-                    } else {
-                        target[key] = Util._getValue(proObj[key]);
-                    }
-                }
-            }
+    if (pOBJ['p'] !== undefined) target.p.copy(pOBJ['p']);
+    if (pOBJ['v'] !== undefined) target.v.copy(pOBJ['v']);
+    if (pOBJ['a'] !== undefined) target.a.copy(pOBJ['a']);
 
-            return target;
-        },
+    if (pOBJ['position'] !== undefined) target.p.copy(pOBJ['position']);
+    if (pOBJ['velocity'] !== undefined) target.v.copy(pOBJ['velocity']);
+    if (pOBJ['accelerate'] !== undefined) target.a.copy(pOBJ['accelerate']);
+  },
 
-        _getValue: function(pan) {
-            if (pan instanceof Span)
-                return pan.getValue();
-            else
-                return pan;
-        },
-
-        inherits: function(subClass, superClass) {
-            subClass._super_ = superClass;
-            if (Object['create']) {
-                subClass.prototype = Object.create(superClass.prototype, {
-                    constructor: { value: subClass }
-                });
-            } else {
-                var F = function() {};
-                F.prototype = superClass.prototype;
-                subClass.prototype = new F();
-                subClass.prototype.constructor = subClass;
-            }
+  //set prototype
+  setPrototypeByObj: function(target, proObj, filters) {
+    for (var key in proObj) {
+      if (target.hasOwnProperty(key)) {
+        if (filters) {
+          if (filters.indexOf(key) < 0)
+            target[key] = this._getValue(proObj[key]);
+        } else {
+          target[key] = this._getValue(proObj[key]);
         }
-    };
+      }
+    }
 
-    Proton.Util = Util;
-})(Proton);
+    return target;
+  },
+
+  _getValue: function(pan) {
+    if (pan.constructor.name === 'Span') return pan.getValue();
+    else return pan;
+  },
+
+  /**
+   * @deprecated
+   */
+  inherits: function(subClass, superClass) {
+    subClass._super_ = superClass;
+    if (Object['create']) {
+      subClass.prototype = Object.create(superClass.prototype, {
+        constructor: { value: subClass }
+      });
+    } else {
+      var F = function() {};
+
+      F.prototype = superClass.prototype;
+      subClass.prototype = new F();
+      subClass.prototype.constructor = subClass;
+    }
+  }
+};
