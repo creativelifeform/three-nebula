@@ -80,7 +80,7 @@ export default class Rotate extends Behaviour {
   }
 
   applyBehaviour(particle, time, index) {
-    super.applyBehaviour(this, particle, time, index);
+    super.applyBehaviour(particle, time, index);
 
     switch (this._type) {
       case 'same':

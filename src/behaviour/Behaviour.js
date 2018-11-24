@@ -1,5 +1,5 @@
 import { Util, uid } from '../utils';
-import ease, { setEasingByName } from '../ease';
+import { ease, setEasingByName } from '../ease';
 
 import { MEASURE } from '../constants';
 
@@ -14,7 +14,6 @@ export default class Behaviour {
      */
     this.id = `Behaviour_${uid()}`;
     this.life = Util.initValue(life, Infinity);
-
     /**
      * The behaviour's decaying trend, for example easeOutQuart;
      * @property easing

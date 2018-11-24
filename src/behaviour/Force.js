@@ -11,7 +11,7 @@ export default class Force extends Behaviour {
   constructor(fx, fy, fz, life, easing) {
     super(life, easing);
 
-    Force.prototype.reset.call(this, fx, fy, fz);
+    this.reset(fx, fy, fz);
     this.name = 'Force';
   }
 

@@ -25,7 +25,7 @@ export default class RandomDrift extends Behaviour {
   }
 
   applyBehaviour(particle, time, index) {
-    super.applyBehaviour.call(particle, time, index);
+    super.applyBehaviour(particle, time, index);
 
     this.time += time;
     if (this.time >= this.delayPan.getValue()) {

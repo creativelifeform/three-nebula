@@ -3,7 +3,7 @@ import { PI } from '../constants';
 /**
  * The Ease class provides a collection of easing functions for use with Proton
  */
-const ease = {
+export const ease = {
   easeLinear: function(value) {
     return value;
   },
@@ -118,5 +118,3 @@ export const setEasingByName = easeName => {
   if (ease[easeName]) return ease[easeName];
   else return ease.easeLinear;
 };
-
-export default ease;
