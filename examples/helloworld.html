@@ -31,10 +31,13 @@
     <div id="container"></div>
     <script src="./js/stats.min.js"></script>
     <script src="./js/three.min.js"></script>
+    <script src='./js/three-proton.js'></script>
     <script src="./js/lib/TrackballControls.js"></script>
     <script>
     var proton, emitter1, emitter2;
     var camera, scene, renderer, stats, clock, controls;
+
+    init();
 
     function init() {
         initScene();
