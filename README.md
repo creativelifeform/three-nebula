@@ -58,23 +58,8 @@ npm i --save @rohandeshpande/three-proton
 ### Module
 
 ```javascript
-import Proton, {
-  Emitter,
-  Rate,
-  Span,
-  Position,
-  Mass,
-  Radius,
-  Life,
-  Velocity,
-  PointZone,
-  Vector3D,
-  Alpha,
-  Scale,
-  Color
-} from '@rohandeshpande/three-proton';
-
-import { Color as ThreeColor } from 'three';
+import Proton, { Emitter, Rate, Span, Position, Mass, Radius, Life, Velocity, PointZone, Vector3D, Alpha, Scale, Color } from '@rohandeshpande/three-proton';
+import * as THREE from 'three';
 
 const proton = new Proton();
 const emitter = new Emitter();
@@ -93,7 +78,7 @@ emitter
   .setBehaviours([
     new Alpha(1, 0),
     new Scale(0.1, 1.3),
-    new Color(new ThreeColor(), new ThreeColor())
+    new Color(new THREE.Color(), new THREE.Color())
   ]);
 
 // add the emitter and a renderer to proton
