@@ -24,7 +24,7 @@
     <script src='./js/three-proton.js'></script>
     <script src="./js/lib/TrackballControls.js"></script>
     <script>
-    var proton, emitter, emitter1, emitter2, color1, color2;
+    var proton, emitter, color1, color2;
     var camera, scene, renderer, stats, clock, spring, controls;
 
     init();
@@ -33,9 +33,7 @@
         addScene();
         addControls();
         addLights();
-        // addStars();
         addProton();
-        //addInteraction();
         addStats();
         animate();
     }
@@ -83,22 +81,7 @@
         stats.dom.style.top = '0px';
         container.appendChild(stats.dom);
     }
-
-    function addStars() {
-        var geometry = new THREE.Geometry();
-        for (var i = 0; i < 10000; i++) {
-            var vertex = new THREE.Vector3();
-            vertex.x = THREE.Math.randFloatSpread(2000);
-            vertex.y = THREE.Math.randFloatSpread(2000);
-            vertex.z = THREE.Math.randFloatSpread(2000);
-            geometry.vertices.push(vertex);
-        }
-        var particles = new THREE.Points(geometry, new THREE.PointsMaterial({
-            color: 0x888888
-        }));
-        scene.add(particles);
-    }
-
+    
     function addProton() {
         proton = new Proton.default();
         emitter = new Proton.Emitter();
@@ -120,12 +103,9 @@
                 new Proton.Scale(.1, 1.3),
                 new Proton.Color(color1, color2),
             ]);
-        radius = 70;
-        emitter1 = createEmitter(radius, 0, '#4F1500', '#0029FF');
 
         proton.addEmitter(emitter.emit());
         proton.addRender(new Proton.SpriteRender(scene));
-
     }
 
     function createSprite() {
@@ -141,33 +121,9 @@
         return new THREE.Sprite(material);
     }
 
-    function createEmitter(x, y, color1, color2) {
-        var emitter = new Proton.Emitter();
-
-        return emitter
-            .setRate(new Proton.Rate(new Proton.Span(5, 7), new Proton.Span(.01, .02)))
-            .setProperties([
-                new Proton.Mass(1),
-                new Proton.Life(2),
-                new Proton.Body(createSprite()),
-                new Proton.Radius(80),
-                new Proton.Velocity(200, new Proton.Vector3D(0, 0, -1), 0),
-            ])
-            .setBehaviours([
-                new Proton.Alpha(1, 0),
-                new Proton.Color(color1, color2),
-                new Proton.Scale(1, 0.5),
-                new Proton.CrossZone(new Proton.ScreenZone(camera, renderer), 'dead'),
-                new Proton.Force(0, 0, -20),
-            ])
-            .setPosition({ x, y })
-            .emit();
-    }
-
     function animate() {
         stats.begin();
         requestAnimationFrame(animate);
-        animateEmitter();
         render();
         stats.end();
     }
@@ -188,12 +144,6 @@
     }
 
     var tha = 0;
-
-    function animateEmitter() {
-        tha += .13;
-        emitter1.p.x = radius * Math.cos(tha);
-        emitter1.p.y = radius * Math.sin(tha);
-    }
 
     function onWindowResize() {
 
