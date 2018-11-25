@@ -8,7 +8,6 @@ export default class SpriteRenderer extends MeshRenderer {
     super(container);
 
     this._body = new Sprite(new SpriteMaterial({ color: 0xffffff }));
-    this.name = 'SpriteRender';
   }
 
   scale(particle) {

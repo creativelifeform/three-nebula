@@ -9,7 +9,11 @@ import { classDeprecationWarning } from '../compatibility';
 
 export default class BaseRenderer {
   constructor() {
-    this.name = 'BaseRender';
+    this.setName();
+  }
+
+  setName() {
+    this.name = this.constructor.name;
   }
 
   init(proton) {
