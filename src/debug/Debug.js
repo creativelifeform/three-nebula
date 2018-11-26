@@ -2,7 +2,16 @@ import * as THREE from 'three';
 
 import { BoxZone, LineZone, MeshZone, PointZone, SphereZone } from '../zone';
 
+const PROTON_DEBUG_GROUP = 'PROTON_DEBUG_GROUP';
+
 export default {
+  init: function (scene) {
+    this.group = new THREE.Group();
+
+    this.group.name = PROTON_DEBUG_GROUP;
+
+    scene.add(this.group);
+  },
   addEventListener: function(proton, fun) {
     proton.eventDispatcher.addEventListener('PROTON_UPDATE', function(e) {
       fun(e);
@@ -31,7 +40,7 @@ export default {
       wireframe: true
     });
     mesh = new THREE.Mesh(geometry, material);
-    container.add(mesh);
+    this.group.add(mesh);
 
     this.addEventListener(proton, function() {
       mesh.position.set(zone.x, zone.y, zone.z);

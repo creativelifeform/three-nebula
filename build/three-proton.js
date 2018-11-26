@@ -52528,7 +52528,16 @@ var _zone = __webpack_require__(17);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+var PROTON_DEBUG_GROUP = 'PROTON_DEBUG_GROUP';
+
 exports.default = {
+  init: function init(scene) {
+    this.group = new THREE.Group();
+
+    this.group.name = PROTON_DEBUG_GROUP;
+
+    scene.add(this.group);
+  },
   addEventListener: function addEventListener(proton, fun) {
     proton.eventDispatcher.addEventListener('PROTON_UPDATE', function (e) {
       fun(e);
@@ -52556,7 +52565,7 @@ exports.default = {
       wireframe: true
     });
     mesh = new THREE.Mesh(geometry, material);
-    container.add(mesh);
+    this.group.add(mesh);
 
     this.addEventListener(proton, function () {
       mesh.position.set(zone.x, zone.y, zone.z);
