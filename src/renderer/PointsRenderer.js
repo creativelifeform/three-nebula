@@ -7,7 +7,6 @@ export default class PointsRenderer extends BaseRenderer {
     super();
 
     this.points = ps;
-    this.name = 'PointsRender';
   }
 
   onProtonUpdate() {}

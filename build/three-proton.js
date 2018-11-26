@@ -49745,10 +49745,15 @@ var BaseRenderer = function () {
   function BaseRenderer() {
     _classCallCheck(this, BaseRenderer);
 
-    this.name = 'BaseRender';
+    this.setName();
   }
 
   _createClass(BaseRenderer, [{
+    key: 'setName',
+    value: function setName() {
+      this.name = this.constructor.name;
+    }
+  }, {
     key: 'init',
     value: function init(proton) {
       var self = this;
@@ -51148,8 +51153,6 @@ var MeshRenderer = function (_BaseRenderer) {
     _this._targetPool = new _core.Pool();
     _this._materialPool = new _core.Pool();
     _this._body = new _three.Mesh(new _three.BoxGeometry(50, 50, 50), new _three.MeshLambertMaterial({ color: '#ff0000' }));
-
-    _this.name = 'MeshRender';
     return _this;
   }
 
@@ -54041,8 +54044,6 @@ var CustomRenderer = function (_BaseRenderer) {
 
     _this.targetPool = new _core.Pool();
     _this.materialPool = new _core.Pool();
-
-    _this.name = 'CustomRender';
     return _this;
   }
 
@@ -54082,7 +54083,7 @@ var CustomRender = exports.CustomRender = function (_CustomRenderer) {
 
     var _this2 = _possibleConstructorReturn(this, (_ref = CustomRender.__proto__ || Object.getPrototypeOf(CustomRender)).call.apply(_ref, [this].concat(args)));
 
-    console.warn((0, _compatibility.classDeprecationWarning)('BaseRender', 'BaseRenderer'));
+    console.warn((0, _compatibility.classDeprecationWarning)('CustomRender', 'CustomRenderer'));
     return _this2;
   }
 
@@ -54128,7 +54129,6 @@ var PointsRenderer = function (_BaseRenderer) {
     var _this = _possibleConstructorReturn(this, (PointsRenderer.__proto__ || Object.getPrototypeOf(PointsRenderer)).call(this));
 
     _this.points = ps;
-    _this.name = 'PointsRender';
     return _this;
   }
 
@@ -54230,7 +54230,6 @@ var SpriteRenderer = function (_MeshRenderer) {
     var _this = _possibleConstructorReturn(this, (SpriteRenderer.__proto__ || Object.getPrototypeOf(SpriteRenderer)).call(this, container));
 
     _this._body = new _three.Sprite(new _three.SpriteMaterial({ color: 0xffffff }));
-    _this.name = 'SpriteRender';
     return _this;
   }
 
@@ -54277,13 +54276,6 @@ var SpriteRender = exports.SpriteRender = function (_SpriteRenderer) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _three = __webpack_require__(6);
-
-var THREE = _interopRequireWildcard(_three);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
 exports.default = {
   getRGB: function getRGB(color) {
     var rgb = {};
@@ -54307,7 +54299,7 @@ exports.default = {
         rgb.g = parseInt(hex.charAt(2) + hex.charAt(3), 16) / 255;
         rgb.b = parseInt(hex.charAt(4) + hex.charAt(5), 16) / 255;
       }
-    } else if (color instanceof THREE.Color) {
+    } else {
       rgb.r = color.r;
       rgb.g = color.g;
       rgb.b = color.b;
