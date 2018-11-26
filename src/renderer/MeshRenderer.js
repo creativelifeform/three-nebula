@@ -17,8 +17,6 @@ export default class MeshRenderer extends BaseRenderer {
       new BoxGeometry(50, 50, 50),
       new MeshLambertMaterial({ color: '#ff0000' })
     );
-
-    this.name = 'MeshRender';
   }
 
   onProtonUpdate() {}

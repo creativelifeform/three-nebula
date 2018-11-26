@@ -63,14 +63,30 @@ export default class Emitter extends Particle {
   }
 
   /**
-   * start emit particle
-   * @method emit
-   * @param {Number} totalEmitTimes total emit times;
-   * @param {String} life the life of this emitter
+   * Sets the position of the emitter.
+   *
+   * @param {object} position - an object containing x, y and z props
+   * @return {Emitter}
    */
-  emit(totalEmitTimes, life) {
+  setPosition(position = {}) {
+    const { p } = this;
+    const { x = p.x, y = p.y, z = p.z } = position;
+
+    this.p.set(x, y, z);
+
+    return this;
+  }
+
+  /**
+   * Makes the emitter emit particles.
+   *
+   * @param {Number} totalEmitTimes - the total number of times to emit particles
+   * @param {String} life - the life of this emitter
+   * @return {Emitter}
+   */
+  emit(totalEmitTimes = Infinity, life) {
     this.currentEmitTime = 0;
-    this.totalEmitTimes = Util.initValue(totalEmitTimes, Infinity);
+    this.totalEmitTimes = totalEmitTimes;
 
     if (life == true || life == 'life' || life == 'destroy') {
       this.life = totalEmitTimes == 'once' ? 1 : this.totalEmitTimes;
@@ -79,6 +95,8 @@ export default class Emitter extends Particle {
     }
 
     this.rate.init();
+
+    return this;
   }
 
   /**

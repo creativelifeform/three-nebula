@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 export default {
   getRGB: function(color) {
     var rgb = {};
@@ -27,7 +25,7 @@ export default {
         rgb.g = parseInt(hex.charAt(2) + hex.charAt(3), 16) / 255;
         rgb.b = parseInt(hex.charAt(4) + hex.charAt(5), 16) / 255;
       }
-    } else if (color instanceof THREE.Color) {
+    } else {
       rgb.r = color.r;
       rgb.g = color.g;
       rgb.b = color.b;

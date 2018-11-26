@@ -49369,17 +49369,46 @@ var Emitter = function (_Particle) {
     }
 
     /**
-     * start emit particle
-     * @method emit
-     * @param {Number} totalEmitTimes total emit times;
-     * @param {String} life the life of this emitter
+     * Sets the position of the emitter.
+     *
+     * @param {object} position - an object containing x, y and z props
+     * @return {Emitter}
+     */
+
+  }, {
+    key: 'setPosition',
+    value: function setPosition() {
+      var position = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var p = this.p;
+      var _position$x = position.x,
+          x = _position$x === undefined ? p.x : _position$x,
+          _position$y = position.y,
+          y = _position$y === undefined ? p.y : _position$y,
+          _position$z = position.z,
+          z = _position$z === undefined ? p.z : _position$z;
+
+
+      this.p.set(x, y, z);
+
+      return this;
+    }
+
+    /**
+     * Makes the emitter emit particles.
+     *
+     * @param {Number} totalEmitTimes - the total number of times to emit particles
+     * @param {String} life - the life of this emitter
+     * @return {Emitter}
      */
 
   }, {
     key: 'emit',
-    value: function emit(totalEmitTimes, life) {
+    value: function emit() {
+      var totalEmitTimes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Infinity;
+      var life = arguments[1];
+
       this.currentEmitTime = 0;
-      this.totalEmitTimes = _Util2.default.initValue(totalEmitTimes, Infinity);
+      this.totalEmitTimes = totalEmitTimes;
 
       if (life == true || life == 'life' || life == 'destroy') {
         this.life = totalEmitTimes == 'once' ? 1 : this.totalEmitTimes;
@@ -49388,6 +49417,8 @@ var Emitter = function (_Particle) {
       }
 
       this.rate.init();
+
+      return this;
     }
 
     /**
@@ -49714,10 +49745,15 @@ var BaseRenderer = function () {
   function BaseRenderer() {
     _classCallCheck(this, BaseRenderer);
 
-    this.name = 'BaseRender';
+    this.setName();
   }
 
   _createClass(BaseRenderer, [{
+    key: 'setName',
+    value: function setName() {
+      this.name = this.constructor.name;
+    }
+  }, {
     key: 'init',
     value: function init(proton) {
       var self = this;
@@ -50105,14 +50141,22 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Forces particles along a specific axis.
+ *
+ */
 var Force = function (_Behaviour) {
   _inherits(Force, _Behaviour);
 
   /**
-   * The Behaviour class is the base for the other Behaviour
+   * @constructs Force
    *
-   * @class Behaviour
-   * @constructor
+   * @param {number} fx - the x axis force
+   * @param {number} fy - the y axis force
+   * @param {number} fz - the z axis force
+   * @param {number} life - the life of the particle
+   * @param {string} easing - the easing equation to use
+   * @return void
    */
   function Force(fx, fy, fz, life, easing) {
     _classCallCheck(this, Force);
@@ -50120,7 +50164,6 @@ var Force = function (_Behaviour) {
     var _this = _possibleConstructorReturn(this, (Force.__proto__ || Object.getPrototypeOf(Force)).call(this, life, easing));
 
     _this.reset(fx, fy, fz);
-    _this.name = 'Force';
     return _this;
   }
 
@@ -51110,8 +51153,6 @@ var MeshRenderer = function (_BaseRenderer) {
     _this._targetPool = new _core.Pool();
     _this._materialPool = new _core.Pool();
     _this._body = new _three.Mesh(new _three.BoxGeometry(50, 50, 50), new _three.MeshLambertMaterial({ color: '#ff0000' }));
-
-    _this.name = 'MeshRender';
     return _this;
   }
 
@@ -51976,16 +52017,25 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Forces particles down the y axis.
+ *
+ */
 var Gravity = function (_Force) {
   _inherits(Gravity, _Force);
 
-  function Gravity(g, life, easing) {
+  /**
+   * @constructs Gravity
+   *
+   * @param {number} gravity - the force to pull the particle down the y axis
+   * @param {number} life - the life of the particle
+   * @param {string} easing - the easing equation to use
+   * @return void
+   */
+  function Gravity(gravity, life, easing) {
     _classCallCheck(this, Gravity);
 
-    var _this = _possibleConstructorReturn(this, (Gravity.__proto__ || Object.getPrototypeOf(Gravity)).call(this, 0, -g, 0, life, easing));
-
-    _this.name = 'Gravity';
-    return _this;
+    return _possibleConstructorReturn(this, (Gravity.__proto__ || Object.getPrototypeOf(Gravity)).call(this, 0, -gravity, 0, life, easing));
   }
 
   return Gravity;
@@ -53994,8 +54044,6 @@ var CustomRenderer = function (_BaseRenderer) {
 
     _this.targetPool = new _core.Pool();
     _this.materialPool = new _core.Pool();
-
-    _this.name = 'CustomRender';
     return _this;
   }
 
@@ -54035,7 +54083,7 @@ var CustomRender = exports.CustomRender = function (_CustomRenderer) {
 
     var _this2 = _possibleConstructorReturn(this, (_ref = CustomRender.__proto__ || Object.getPrototypeOf(CustomRender)).call.apply(_ref, [this].concat(args)));
 
-    console.warn((0, _compatibility.classDeprecationWarning)('BaseRender', 'BaseRenderer'));
+    console.warn((0, _compatibility.classDeprecationWarning)('CustomRender', 'CustomRenderer'));
     return _this2;
   }
 
@@ -54081,7 +54129,6 @@ var PointsRenderer = function (_BaseRenderer) {
     var _this = _possibleConstructorReturn(this, (PointsRenderer.__proto__ || Object.getPrototypeOf(PointsRenderer)).call(this));
 
     _this.points = ps;
-    _this.name = 'PointsRender';
     return _this;
   }
 
@@ -54183,7 +54230,6 @@ var SpriteRenderer = function (_MeshRenderer) {
     var _this = _possibleConstructorReturn(this, (SpriteRenderer.__proto__ || Object.getPrototypeOf(SpriteRenderer)).call(this, container));
 
     _this._body = new _three.Sprite(new _three.SpriteMaterial({ color: 0xffffff }));
-    _this.name = 'SpriteRender';
     return _this;
   }
 
@@ -54230,13 +54276,6 @@ var SpriteRender = exports.SpriteRender = function (_SpriteRenderer) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _three = __webpack_require__(6);
-
-var THREE = _interopRequireWildcard(_three);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
 exports.default = {
   getRGB: function getRGB(color) {
     var rgb = {};
@@ -54260,7 +54299,7 @@ exports.default = {
         rgb.g = parseInt(hex.charAt(2) + hex.charAt(3), 16) / 255;
         rgb.b = parseInt(hex.charAt(4) + hex.charAt(5), 16) / 255;
       }
-    } else if (color instanceof THREE.Color) {
+    } else {
       rgb.r = color.r;
       rgb.g = color.g;
       rgb.b = color.b;

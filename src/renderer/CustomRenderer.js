@@ -8,8 +8,6 @@ export default class CustomRenderer extends BaseRenderer {
 
     this.targetPool = new Pool();
     this.materialPool = new Pool();
-
-    this.name = 'CustomRender';
   }
 
   onProtonUpdate() {}
@@ -24,6 +22,6 @@ export default class CustomRenderer extends BaseRenderer {
 export class CustomRender extends CustomRenderer {
   constructor(...args) {
     super(...args);
-    console.warn(classDeprecationWarning('BaseRender', 'BaseRenderer'));
+    console.warn(classDeprecationWarning('CustomRender', 'CustomRenderer'));
   }
 }
