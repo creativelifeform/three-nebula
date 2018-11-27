@@ -29,6 +29,10 @@ export default class MeshZone extends Zone {
     this.supportsCrossing = false;
   }
 
+  isMeshZone() {
+    return true;
+  }
+
   getPosition() {
     var vertices = this.geometry.vertices;
     var rVector = vertices[(vertices.length * Math.random()) >> 0];

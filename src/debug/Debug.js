@@ -1,7 +1,5 @@
 import * as THREE from 'three';
 
-import { BoxZone, LineZone, MeshZone, PointZone, SphereZone } from '../zone';
-
 const PROTON_DEBUG_GROUP = 'PROTON_DEBUG_GROUP';
 
 export default {
@@ -17,33 +15,55 @@ export default {
       fun(e);
     });
   },
-  drawZone: function(proton, container, zone) {
+  drawZone: function(proton, container, zone = {}) {
+    const color = '#2194ce';
+    const wireframe = true;
+    const { width, height, depth, radius, x, y, z } = zone;
     var geometry, material, mesh; // eslint-disable-line
 
-    if (zone instanceof PointZone) {
+    if (zone.isPointZone()) {
+      console.log('isPointZone');
       geometry = new THREE.SphereGeometry(15);
-    } else if (zone instanceof LineZone) {
-      // TODO
-    } else if (zone instanceof BoxZone) {
-      geometry = new THREE.BoxGeometry(zone.width, zone.height, zone.depth);
-    } else if (zone instanceof SphereZone) {
-      geometry = new THREE.SphereGeometry(zone.radius, 10, 10);
-    } else if (zone instanceof MeshZone) {
-      if (zone.geometry instanceof THREE.Geometry) geometry = zone.geometry;
-      else geometry = zone.geometry.geometry;
-
-      geometry = new THREE.SphereGeometry(zone.radius, 10, 10);
     }
 
-    material = new THREE.MeshBasicMaterial({
-      color: '#2194ce',
-      wireframe: true
-    });
-    mesh = new THREE.Mesh(new THREE.BoxGeometry(zone.width, zone.height, zone.depth), material);
-    this.group.add(mesh);
+    if (zone.isLineZone()) {
+      console.log('isLineZone');
+      // TODO
+    }
 
+    if (zone.isBoxZone()) {
+      console.log('isBoxZone');
+      geometry = new THREE.BoxGeometry(width, height, depth);
+    }
+
+    if (zone.isSphereZone()) {
+      console.log('isSphereZone');
+      geometry = new THREE.SphereGeometry(radius, 10, 10);
+    }
+
+    if (zone.isMeshZone()) {
+      console.log('isMeshZone');
+      geometry = (zone.geometry.geometry)
+        ? zone.geometry.geometry.clone()
+        : zone.geometry.clone();
+    }
+
+    if (!geometry) {
+      geometry = new THREE.BoxGeometry(width, height, depth);
+    }
+
+    const _geometry = new THREE.BoxGeometry(width, height, depth);
+
+    material = new THREE.MeshBasicMaterial({ color, wireframe });
+
+    console.log(geometry);
+    console.log(_geometry);
+
+    mesh = new THREE.Mesh(_geometry, material);
+
+    this.group.add(mesh);
     this.addEventListener(proton, function() {
-      mesh.position.set(zone.x, zone.y, zone.z);
+      mesh.position.set(x, y, z);
     });
   },
   drawEmitter: function(proton, container, emitter, color) {

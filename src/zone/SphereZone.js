@@ -44,6 +44,10 @@ export default class SphereZone extends Zone {
     this.the = this.phi = 0;
   }
 
+  isSphereZone() {
+    return true;
+  }
+
   _dead(particle) {
     var d = particle.p.distanceTo(this);
 

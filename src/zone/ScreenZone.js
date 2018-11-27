@@ -31,6 +31,10 @@ export default class ScreenZone extends Zone {
     this.name = 'ScreenZone';
   }
 
+  isScreenZone() {
+    return true;
+  }
+
   _dead(particle) {
     var pos = THREEUtil.toScreenPos(
       particle.p,

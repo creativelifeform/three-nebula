@@ -39,6 +39,10 @@ export default class PointZone extends Zone {
     this.supportsCrossing = false;
   }
 
+  isPointZone() {
+    return true;
+  }
+
   getPosition() {
     this.vector.x = this.x;
     this.vector.y = this.y;

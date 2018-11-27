@@ -39,6 +39,30 @@ export default class Zone {
     }
   }
 
+  isBoxZone() {
+    return false;
+  }
+
+  isLineZone() {
+    return false;
+  }
+
+  isMeshZone() {
+    return false;
+  }
+
+  isPointZone() {
+    return false;
+  }
+
+  isScreenZone() {
+    return false;
+  }
+
+  isSphereZone() {
+    return false;
+  }
+  
   /**
    * @abstract
    */
