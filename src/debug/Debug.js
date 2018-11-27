@@ -1,49 +1,46 @@
 import * as THREE from 'three';
 
-const PROTON_DEBUG_GROUP = 'PROTON_DEBUG_GROUP';
+import { DEFAULT_POSITION, DEFAULT_SIZE as size } from './constants';
 
 export default {
-  init: function (scene) {
-    this.group = new THREE.Group();
+  addEventListener: function(proton, onProtonUpdated) {
+    proton.eventDispatcher.addEventListener('PROTON_UPDATE', onProtonUpdated);
 
-    this.group.name = PROTON_DEBUG_GROUP;
+    return this;
+  },
 
-    scene.add(this.group);
-  },
-  addEventListener: function(proton, fun) {
-    proton.eventDispatcher.addEventListener('PROTON_UPDATE', function(e) {
-      fun(e);
-    });
-  },
   drawZone: function(proton, container, zone = {}) {
     const color = '#2194ce';
     const wireframe = true;
-    const { width, height, depth, radius, x, y, z } = zone;
-    var geometry, material, mesh; // eslint-disable-line
+    const {
+      width = size,
+      height = size,
+      depth = size,
+      radius = size,
+      x = DEFAULT_POSITION,
+      y = DEFAULT_POSITION,
+      z = DEFAULT_POSITION
+    } = zone;
+    let geometry;
 
     if (zone.isPointZone()) {
-      console.log('isPointZone');
       geometry = new THREE.SphereGeometry(15);
     }
 
     if (zone.isLineZone()) {
-      console.log('isLineZone');
       // TODO
     }
 
     if (zone.isBoxZone()) {
-      console.log('isBoxZone');
       geometry = new THREE.BoxGeometry(width, height, depth);
     }
 
     if (zone.isSphereZone()) {
-      console.log('isSphereZone');
-      geometry = new THREE.SphereGeometry(radius, 10, 10);
+      geometry = new THREE.SphereGeometry(radius, size, size);
     }
 
     if (zone.isMeshZone()) {
-      console.log('isMeshZone');
-      geometry = (zone.geometry.geometry)
+      geometry = zone.geometry.geometry
         ? zone.geometry.geometry.clone()
         : zone.geometry.clone();
     }
@@ -52,20 +49,18 @@ export default {
       geometry = new THREE.BoxGeometry(width, height, depth);
     }
 
-    const _geometry = new THREE.BoxGeometry(width, height, depth);
+    const material = new THREE.MeshBasicMaterial({ color, wireframe });
+    // NOTE! geometry.clone is required for UNKNOWN reasons,
+    // three does not render the mesh correctly without doing this since r88
+    const mesh = new THREE.Mesh(geometry.clone(), material);
 
-    material = new THREE.MeshBasicMaterial({ color, wireframe });
+    container.add(mesh);
 
-    console.log(geometry);
-    console.log(_geometry);
-
-    mesh = new THREE.Mesh(_geometry, material);
-
-    this.group.add(mesh);
     this.addEventListener(proton, function() {
       mesh.position.set(x, y, z);
     });
   },
+
   drawEmitter: function(proton, container, emitter, color) {
     var geometry = new THREE.OctahedronGeometry(15);
     var material = new THREE.MeshBasicMaterial({
@@ -85,6 +80,7 @@ export default {
       );
     });
   },
+
   renderInfo: (function() {
     function getCreatedNumber(type, proton) {
       var pool = type == 'material' ? '_materialPool' : '_targetPool';
@@ -126,6 +122,7 @@ export default {
       this._infoCon.innerHTML = str;
     };
   })(),
+
   addInfo: (function() {
     return function(style) {
       var self = this;

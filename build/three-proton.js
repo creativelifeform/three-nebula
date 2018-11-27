@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 51);
+/******/ 	return __webpack_require__(__webpack_require__.s = 52);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -87,7 +87,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ArraySpan = __webpack_require__(58);
+var _ArraySpan = __webpack_require__(59);
 
 Object.defineProperty(exports, 'ArraySpan', {
   enumerable: true,
@@ -102,7 +102,7 @@ Object.defineProperty(exports, 'createArraySpan', {
   }
 });
 
-var _Box = __webpack_require__(59);
+var _Box = __webpack_require__(60);
 
 Object.defineProperty(exports, 'Box', {
   enumerable: true,
@@ -129,7 +129,7 @@ Object.defineProperty(exports, 'MathUtils', {
   }
 });
 
-var _Polar3D = __webpack_require__(60);
+var _Polar3D = __webpack_require__(61);
 
 Object.defineProperty(exports, 'Polar3D', {
   enumerable: true,
@@ -138,7 +138,7 @@ Object.defineProperty(exports, 'Polar3D', {
   }
 });
 
-var _Quaternion = __webpack_require__(61);
+var _Quaternion = __webpack_require__(62);
 
 Object.defineProperty(exports, 'Quaternion', {
   enumerable: true,
@@ -286,7 +286,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ColorUtil = __webpack_require__(65);
+var _ColorUtil = __webpack_require__(66);
 
 Object.defineProperty(exports, 'ColorUtil', {
   enumerable: true,
@@ -50448,7 +50448,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _constants = __webpack_require__(4);
 
-var _events = __webpack_require__(50);
+var _events = __webpack_require__(51);
 
 var _events2 = _interopRequireDefault(_events);
 
@@ -51215,7 +51215,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _v = __webpack_require__(74);
+var _v = __webpack_require__(75);
 
 var _v2 = _interopRequireDefault(_v);
 
@@ -51371,7 +51371,7 @@ Object.defineProperty(exports, 'Debug', {
   }
 });
 
-var _log = __webpack_require__(47);
+var _log = __webpack_require__(48);
 
 Object.defineProperty(exports, 'log', {
   enumerable: true,
@@ -51393,7 +51393,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _BehaviourEmitter = __webpack_require__(48);
+var _BehaviourEmitter = __webpack_require__(49);
 
 Object.defineProperty(exports, 'BehaviourEmitter', {
   enumerable: true,
@@ -51402,7 +51402,7 @@ Object.defineProperty(exports, 'BehaviourEmitter', {
   }
 });
 
-var _FollowEmitter = __webpack_require__(49);
+var _FollowEmitter = __webpack_require__(50);
 
 Object.defineProperty(exports, 'FollowEmitter', {
   enumerable: true,
@@ -51433,7 +51433,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Body = __webpack_require__(52);
+var _Body = __webpack_require__(53);
 
 Object.defineProperty(exports, 'Body', {
   enumerable: true,
@@ -51460,7 +51460,7 @@ Object.defineProperty(exports, 'InitializeUtil', {
   }
 });
 
-var _Life = __webpack_require__(53);
+var _Life = __webpack_require__(54);
 
 Object.defineProperty(exports, 'Life', {
   enumerable: true,
@@ -51469,7 +51469,7 @@ Object.defineProperty(exports, 'Life', {
   }
 });
 
-var _Mass = __webpack_require__(54);
+var _Mass = __webpack_require__(55);
 
 Object.defineProperty(exports, 'Mass', {
   enumerable: true,
@@ -51478,7 +51478,7 @@ Object.defineProperty(exports, 'Mass', {
   }
 });
 
-var _Position = __webpack_require__(55);
+var _Position = __webpack_require__(56);
 
 Object.defineProperty(exports, 'Position', {
   enumerable: true,
@@ -51487,7 +51487,7 @@ Object.defineProperty(exports, 'Position', {
   }
 });
 
-var _Radius = __webpack_require__(56);
+var _Radius = __webpack_require__(57);
 
 Object.defineProperty(exports, 'Radius', {
   enumerable: true,
@@ -51505,7 +51505,7 @@ Object.defineProperty(exports, 'Rate', {
   }
 });
 
-var _Velocity = __webpack_require__(57);
+var _Velocity = __webpack_require__(58);
 
 Object.defineProperty(exports, 'Velocity', {
   enumerable: true,
@@ -51533,7 +51533,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _CustomRenderer = __webpack_require__(62);
+var _CustomRenderer = __webpack_require__(63);
 
 Object.defineProperty(exports, 'CustomRenderer', {
   enumerable: true,
@@ -51563,7 +51563,7 @@ Object.defineProperty(exports, 'MeshRender', {
   }
 });
 
-var _PointsRenderer = __webpack_require__(63);
+var _PointsRenderer = __webpack_require__(64);
 
 Object.defineProperty(exports, 'PointsRenderer', {
   enumerable: true,
@@ -51578,7 +51578,7 @@ Object.defineProperty(exports, 'PointsRender', {
   }
 });
 
-var _SpriteRenderer = __webpack_require__(64);
+var _SpriteRenderer = __webpack_require__(65);
 
 Object.defineProperty(exports, 'SpriteRenderer', {
   enumerable: true,
@@ -51606,7 +51606,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _BoxZone = __webpack_require__(66);
+var _BoxZone = __webpack_require__(67);
 
 Object.defineProperty(exports, 'BoxZone', {
   enumerable: true,
@@ -51615,7 +51615,7 @@ Object.defineProperty(exports, 'BoxZone', {
   }
 });
 
-var _LineZone = __webpack_require__(67);
+var _LineZone = __webpack_require__(68);
 
 Object.defineProperty(exports, 'LineZone', {
   enumerable: true,
@@ -51624,7 +51624,7 @@ Object.defineProperty(exports, 'LineZone', {
   }
 });
 
-var _MeshZone = __webpack_require__(68);
+var _MeshZone = __webpack_require__(69);
 
 Object.defineProperty(exports, 'MeshZone', {
   enumerable: true,
@@ -51633,7 +51633,7 @@ Object.defineProperty(exports, 'MeshZone', {
   }
 });
 
-var _PointZone = __webpack_require__(69);
+var _PointZone = __webpack_require__(70);
 
 Object.defineProperty(exports, 'PointZone', {
   enumerable: true,
@@ -51642,7 +51642,7 @@ Object.defineProperty(exports, 'PointZone', {
   }
 });
 
-var _ScreenZone = __webpack_require__(70);
+var _ScreenZone = __webpack_require__(71);
 
 Object.defineProperty(exports, 'ScreenZone', {
   enumerable: true,
@@ -51651,7 +51651,7 @@ Object.defineProperty(exports, 'ScreenZone', {
   }
 });
 
-var _SphereZone = __webpack_require__(71);
+var _SphereZone = __webpack_require__(72);
 
 Object.defineProperty(exports, 'SphereZone', {
   enumerable: true,
@@ -52554,60 +52554,56 @@ var _three = __webpack_require__(6);
 
 var THREE = _interopRequireWildcard(_three);
 
+var _constants = __webpack_require__(47);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var PROTON_DEBUG_GROUP = 'PROTON_DEBUG_GROUP';
-
 exports.default = {
-  init: function init(scene) {
-    this.group = new THREE.Group();
+  addEventListener: function addEventListener(proton, onProtonUpdated) {
+    proton.eventDispatcher.addEventListener('PROTON_UPDATE', onProtonUpdated);
 
-    this.group.name = PROTON_DEBUG_GROUP;
+    return this;
+  },
 
-    scene.add(this.group);
-  },
-  addEventListener: function addEventListener(proton, fun) {
-    proton.eventDispatcher.addEventListener('PROTON_UPDATE', function (e) {
-      fun(e);
-    });
-  },
   drawZone: function drawZone(proton, container) {
     var zone = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
     var color = '#2194ce';
     var wireframe = true;
-    var width = zone.width,
-        height = zone.height,
-        depth = zone.depth,
-        radius = zone.radius,
-        x = zone.x,
-        y = zone.y,
-        z = zone.z;
+    var _zone$width = zone.width,
+        width = _zone$width === undefined ? _constants.DEFAULT_SIZE : _zone$width,
+        _zone$height = zone.height,
+        height = _zone$height === undefined ? _constants.DEFAULT_SIZE : _zone$height,
+        _zone$depth = zone.depth,
+        depth = _zone$depth === undefined ? _constants.DEFAULT_SIZE : _zone$depth,
+        _zone$radius = zone.radius,
+        radius = _zone$radius === undefined ? _constants.DEFAULT_SIZE : _zone$radius,
+        _zone$x = zone.x,
+        x = _zone$x === undefined ? _constants.DEFAULT_POSITION : _zone$x,
+        _zone$y = zone.y,
+        y = _zone$y === undefined ? _constants.DEFAULT_POSITION : _zone$y,
+        _zone$z = zone.z,
+        z = _zone$z === undefined ? _constants.DEFAULT_POSITION : _zone$z;
 
-    var geometry, material, mesh; // eslint-disable-line
+    var geometry = void 0;
 
     if (zone.isPointZone()) {
-      console.log('isPointZone');
       geometry = new THREE.SphereGeometry(15);
     }
 
     if (zone.isLineZone()) {
-      console.log('isLineZone');
       // TODO
     }
 
     if (zone.isBoxZone()) {
-      console.log('isBoxZone');
       geometry = new THREE.BoxGeometry(width, height, depth);
     }
 
     if (zone.isSphereZone()) {
-      console.log('isSphereZone');
-      geometry = new THREE.SphereGeometry(radius, 10, 10);
+      geometry = new THREE.SphereGeometry(radius, _constants.DEFAULT_SIZE, _constants.DEFAULT_SIZE);
     }
 
     if (zone.isMeshZone()) {
-      console.log('isMeshZone');
       geometry = zone.geometry.geometry ? zone.geometry.geometry.clone() : zone.geometry.clone();
     }
 
@@ -52615,20 +52611,16 @@ exports.default = {
       geometry = new THREE.BoxGeometry(width, height, depth);
     }
 
-    var _geometry = new THREE.BoxGeometry(width, height, depth);
+    var material = new THREE.MeshBasicMaterial({ color: color, wireframe: wireframe });
+    var mesh = new THREE.Mesh(geometry.clone(), material);
 
-    material = new THREE.MeshBasicMaterial({ color: color, wireframe: wireframe });
+    container.add(mesh);
 
-    console.log(geometry);
-    console.log(_geometry);
-
-    mesh = new THREE.Mesh(_geometry, material);
-
-    this.group.add(mesh);
     this.addEventListener(proton, function () {
       mesh.position.set(x, y, z);
     });
   },
+
   drawEmitter: function drawEmitter(proton, container, emitter, color) {
     var geometry = new THREE.OctahedronGeometry(15);
     var material = new THREE.MeshBasicMaterial({
@@ -52644,6 +52636,7 @@ exports.default = {
       mesh.rotation.set(emitter.rotation.x, emitter.rotation.y, emitter.rotation.z);
     });
   },
+
   renderInfo: function () {
     function getCreatedNumber(type, proton) {
       var pool = type == 'material' ? '_materialPool' : '_targetPool';
@@ -52683,6 +52676,7 @@ exports.default = {
       this._infoCon.innerHTML = str;
     };
   }(),
+
   addInfo: function () {
     return function (style) {
       var self = this;
@@ -52735,6 +52729,24 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var DEFAULT_WIDTH = exports.DEFAULT_WIDTH = 10;
+var DEFAULT_HEIGHT = exports.DEFAULT_HEIGHT = 10;
+var DEFAULT_DEPTH = exports.DEFAULT_DEPTH = 10;
+var DEFAULT_RADIUS = exports.DEFAULT_RADIUS = 15;
+var DEFAULT_SIZE = exports.DEFAULT_SIZE = 15;
+var PROTON_DEBUG_GROUP = exports.PROTON_DEBUG_GROUP = 'PROTON_DEBUG_GROUP';
+var DEFAULT_POSITION = exports.DEFAULT_POSITION = 0;
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 exports.default = function () {
   var once = 0;
@@ -52771,7 +52783,7 @@ module.exports = exports['default']; /**
                                       */
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52873,7 +52885,7 @@ exports.default = BehaviourEmitter;
 module.exports = exports['default'];
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53017,7 +53029,7 @@ exports.default = FollowEmitter;
 module.exports = exports['default'];
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53049,7 +53061,7 @@ exports.default = _EventDispatcher2.default;
 module.exports = exports['default'];
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53191,7 +53203,7 @@ Object.defineProperty(exports, 'Pool', {
 exports.default = _core.Proton;
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53259,7 +53271,7 @@ exports.default = Body;
 module.exports = exports['default'];
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53323,7 +53335,7 @@ exports.default = Life;
 module.exports = exports['default'];
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53387,7 +53399,7 @@ exports.default = Mass;
 module.exports = exports['default'];
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53473,7 +53485,7 @@ Position.prototype.initialize = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53543,7 +53555,7 @@ exports.default = Radius;
 module.exports = exports['default'];
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53687,7 +53699,7 @@ var V = exports.V = function (_Velocity) {
 }(Velocity);
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53779,7 +53791,7 @@ var createArraySpan = exports.createArraySpan = function createArraySpan(arr) {
 };
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53822,7 +53834,7 @@ exports.default = Box;
 module.exports = exports["default"];
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53945,7 +53957,7 @@ exports.default = Polar3D;
 module.exports = exports['default'];
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54072,7 +54084,7 @@ exports.default = Quaternion;
 module.exports = exports["default"];
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54158,7 +54170,7 @@ var CustomRender = exports.CustomRender = function (_CustomRenderer) {
 }(CustomRenderer);
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54259,7 +54271,7 @@ var PointsRender = exports.PointsRender = function (_PointsRenderer) {
 }(PointsRenderer);
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54334,7 +54346,7 @@ var SpriteRender = exports.SpriteRender = function (_SpriteRenderer) {
 }(SpriteRenderer);
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54378,7 +54390,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54548,7 +54560,7 @@ exports.default = BoxZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54645,7 +54657,7 @@ exports.default = LineZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54733,7 +54745,7 @@ exports.default = MeshZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54827,7 +54839,7 @@ exports.default = PointZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54987,7 +54999,7 @@ ScreenZone.prototype._cross = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55129,7 +55141,7 @@ SphereZone.prototype._bound = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports) {
 
 /**
@@ -55159,7 +55171,7 @@ module.exports = bytesToUuid;
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports) {
 
 // Unique ID creation requires a high quality random # generator.  In the
@@ -55199,11 +55211,11 @@ if (getRandomValues) {
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var rng = __webpack_require__(73);
-var bytesToUuid = __webpack_require__(72);
+var rng = __webpack_require__(74);
+var bytesToUuid = __webpack_require__(73);
 
 // **`v1()` - Generate time-based UUID**
 //
