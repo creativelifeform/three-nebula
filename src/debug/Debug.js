@@ -18,7 +18,7 @@ export default {
     });
   },
   drawZone: function(proton, container, zone) {
-    var geometry, material, mesh;
+    var geometry, material, mesh; // eslint-disable-line
 
     if (zone instanceof PointZone) {
       geometry = new THREE.SphereGeometry(15);
@@ -39,7 +39,7 @@ export default {
       color: '#2194ce',
       wireframe: true
     });
-    mesh = new THREE.Mesh(geometry, material);
+    mesh = new THREE.Mesh(new THREE.BoxGeometry(zone.width, zone.height, zone.depth), material);
     this.group.add(mesh);
 
     this.addEventListener(proton, function() {
