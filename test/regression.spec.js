@@ -6,7 +6,7 @@ import chai from 'chai';
 
 const { assert, expect } = chai;
 
-describe('modules', () => {
+describe('regression', () => {
   it('should export all the required modules', done => {
     const modules = [
       'Particle',
