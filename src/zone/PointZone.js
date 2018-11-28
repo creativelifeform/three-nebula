@@ -39,6 +39,11 @@ export default class PointZone extends Zone {
     this.supportsCrossing = false;
   }
 
+  /**
+   * Returns true to indicate this is a PointZone.
+   *
+   * @return {boolean}
+   */
   isPointZone() {
     return true;
   }

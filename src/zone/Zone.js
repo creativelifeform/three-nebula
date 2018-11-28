@@ -1,10 +1,15 @@
 import Vector3D from '../math/Vector3D';
 
+/**
+ * A Zone determines the area in 3D space where an emitter's particles can position
+ * themselves. They are supplied to both the Position initializer
+ * and the CrossZone behaviour.
+ *
+ * @see {@link '../initialize/Position.js'}
+ * @see {@link '../behaviour/CrossZone.js'}
+ * @abstract
+ */
 export default class Zone {
-  /**
-   * Zone is a base class.
-   * @constructor
-   */
   constructor() {
     this.vector = new Vector3D(0, 0, 0);
     this.random = 0;
@@ -39,31 +44,64 @@ export default class Zone {
     }
   }
 
+  /**
+   * Determines if this zone is a BoxZone.
+   *
+   * @return {boolean}
+   */
   isBoxZone() {
     return false;
   }
 
+  /**
+   * Determines if this zone is a LineZone.
+   *
+   * @return {boolean}
+   */
   isLineZone() {
     return false;
   }
 
+  /**
+   * Determines if this zone is a MeshZone.
+   *
+   * @return {boolean}
+   */
   isMeshZone() {
     return false;
   }
 
+  /**
+   * Determines if this zone is a PointZone.
+   *
+   * @return {boolean}
+   */
   isPointZone() {
     return false;
   }
 
+  /**
+   * Determines if this zone is a ScreenZone.
+   *
+   * @return {boolean}
+   */
   isScreenZone() {
     return false;
   }
 
+  /**
+   * Determines if this zone is a SphereZone.
+   *
+   * @return {boolean}
+   */
   isSphereZone() {
     return false;
   }
-  
+
   /**
+   * Sets the particle's dead property to true if required.
+   *
+   * @param {Particle} particle
    * @abstract
    */
   _dead(particle) {} //eslint-disable-line

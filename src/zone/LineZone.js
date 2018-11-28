@@ -41,6 +41,11 @@ export default class LineZone extends Zone {
     this.supportsCrossing = false;
   }
 
+  /**
+   * Returns true to indicate this is a LineZone.
+   *
+   * @return {boolean}
+   */
   isLineZone() {
     return true;
   }

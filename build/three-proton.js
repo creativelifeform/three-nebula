@@ -48943,11 +48943,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**
+ * A Zone determines the area in 3D space where an emitter's particles can position
+ * themselves. They are supplied to both the Position initializer
+ * and the CrossZone behaviour.
+ *
+ * @see {@link '../initialize/Position.js'}
+ * @see {@link '../behaviour/CrossZone.js'}
+ * @abstract
+ */
 var Zone = function () {
-  /**
-   * Zone is a base class.
-   * @constructor
-   */
   function Zone() {
     _classCallCheck(this, Zone);
 
@@ -48984,31 +48989,73 @@ var Zone = function () {
           break;
       }
     }
+
+    /**
+     * Determines if this zone is a BoxZone.
+     *
+     * @return {boolean}
+     */
+
   }, {
     key: 'isBoxZone',
     value: function isBoxZone() {
       return false;
     }
+
+    /**
+     * Determines if this zone is a LineZone.
+     *
+     * @return {boolean}
+     */
+
   }, {
     key: 'isLineZone',
     value: function isLineZone() {
       return false;
     }
+
+    /**
+     * Determines if this zone is a MeshZone.
+     *
+     * @return {boolean}
+     */
+
   }, {
     key: 'isMeshZone',
     value: function isMeshZone() {
       return false;
     }
+
+    /**
+     * Determines if this zone is a PointZone.
+     *
+     * @return {boolean}
+     */
+
   }, {
     key: 'isPointZone',
     value: function isPointZone() {
       return false;
     }
+
+    /**
+     * Determines if this zone is a ScreenZone.
+     *
+     * @return {boolean}
+     */
+
   }, {
     key: 'isScreenZone',
     value: function isScreenZone() {
       return false;
     }
+
+    /**
+     * Determines if this zone is a SphereZone.
+     *
+     * @return {boolean}
+     */
+
   }, {
     key: 'isSphereZone',
     value: function isSphereZone() {
@@ -49016,6 +49063,9 @@ var Zone = function () {
     }
 
     /**
+     * Sets the particle's dead property to true if required.
+     *
+     * @param {Particle} particle
      * @abstract
      */
 
@@ -52558,13 +52608,31 @@ var _constants = __webpack_require__(47);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+/**
+ * @exports Debug - methods and helpers for debugging Proton emitters, zones and particles.
+ */
 exports.default = {
+  /**
+    * Adds an event listener to the proton instance's PROTON_UPDATE event.
+    *
+    * @param {Proton} proton - the proton instance
+    * @param {function} onProtonUpdated - the function to call when proton has been updated
+    * @return {Debug}
+    */
   addEventListener: function addEventListener(proton, onProtonUpdated) {
     proton.eventDispatcher.addEventListener('PROTON_UPDATE', onProtonUpdated);
 
     return this;
   },
 
+  /**
+    * Draws a wireframe mesh around the zone for debugging purposes.
+    *
+    * @param {Proton} proton - the proton instance
+    * @param {object} container - a three Object3D (usually the scene)
+    * @param {Zone} zone - a Zone instance
+    * @return void
+    */
   drawZone: function drawZone(proton, container) {
     var zone = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
@@ -52612,6 +52680,8 @@ exports.default = {
     }
 
     var material = new THREE.MeshBasicMaterial({ color: color, wireframe: wireframe });
+    // NOTE! geometry.clone is required for UNKNOWN reasons,
+    // three does not render the mesh correctly without doing this since r88
     var mesh = new THREE.Mesh(geometry.clone(), material);
 
     container.add(mesh);
@@ -52621,13 +52691,22 @@ exports.default = {
     });
   },
 
+  /**
+    * Draws a mesh for each particle emitted in order to help debug particles.
+    *
+    * @param {object} proton - the proton instance
+    * @param {object} container - a three Object3D (usually the scene)
+    * @param {object} emitter - the emitter to debug
+    * @param {string} color - the color for the debug mesh material
+    * @return void
+    */
   drawEmitter: function drawEmitter(proton, container, emitter, color) {
-    var geometry = new THREE.OctahedronGeometry(15);
+    var geometry = new THREE.OctahedronGeometry(_constants.DEFAULT_SIZE);
     var material = new THREE.MeshBasicMaterial({
       color: color || '#aaa',
       wireframe: true
     });
-    var mesh = new THREE.Mesh(geometry, material);
+    var mesh = new THREE.Mesh(geometry.clone(), material);
 
     container.add(mesh);
 
@@ -52637,6 +52716,13 @@ exports.default = {
     });
   },
 
+  /**
+   * Renders emitter / particle information into the info element.
+   *
+   * @param {object} proton - the proton instance
+   * @param {integer} style - style to apply (see the addInfo method's switch statement)
+   * @return void
+   */
   renderInfo: function () {
     function getCreatedNumber(type, proton) {
       var pool = type == 'material' ? '_materialPool' : '_targetPool';
@@ -52677,6 +52763,12 @@ exports.default = {
     };
   }(),
 
+  /**
+   * Appends the info element into the dom.
+   *
+   * @param {integer} style - the style type to apply
+   * @return void
+   */
   addInfo: function () {
     return function (style) {
       var self = this;
@@ -52734,7 +52826,6 @@ var DEFAULT_HEIGHT = exports.DEFAULT_HEIGHT = 10;
 var DEFAULT_DEPTH = exports.DEFAULT_DEPTH = 10;
 var DEFAULT_RADIUS = exports.DEFAULT_RADIUS = 15;
 var DEFAULT_SIZE = exports.DEFAULT_SIZE = 15;
-var PROTON_DEBUG_GROUP = exports.PROTON_DEBUG_GROUP = 'PROTON_DEBUG_GROUP';
 var DEFAULT_POSITION = exports.DEFAULT_POSITION = 0;
 
 /***/ }),
@@ -54477,6 +54568,13 @@ var BoxZone = function (_Zone) {
     return _this;
   }
 
+  /**
+   * Returns true to indicate this is a BoxZone.
+   *
+   * @return {boolean}
+   */
+
+
   _createClass(BoxZone, [{
     key: 'isBoxZone',
     value: function isBoxZone() {
@@ -54633,6 +54731,13 @@ var LineZone = function (_Zone) {
     return _this;
   }
 
+  /**
+   * Returns true to indicate this is a LineZone.
+   *
+   * @return {boolean}
+   */
+
+
   _createClass(LineZone, [{
     key: 'isLineZone',
     value: function isLineZone() {
@@ -54671,15 +54776,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _three = __webpack_require__(6);
 
-var THREE = _interopRequireWildcard(_three);
-
 var _Zone2 = __webpack_require__(9);
 
 var _Zone3 = _interopRequireDefault(_Zone2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -54687,37 +54788,47 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Uses a three Geometry to determine the zone parameters.
+ *
+ */
 var MeshZone = function (_Zone) {
   _inherits(MeshZone, _Zone);
 
   /**
-   * MeshZone is a threejs mesh zone
-   * @param {Geometry|Mesh} geometry - a THREE.Geometry or THREE.Mesh object
-   * @example
-   * var geometry = new THREE.CylinderGeometry( 5, 5, 20, 32 );
-   * var cylinder = new THREE.Mesh( geometry, material );
-   * var meshZone = new Proton.MeshZone(geometry);
-   * or
-   * var meshZone = new Proton.MeshZone(cylinder);
-   * @extends {Proton.Zone}
-   * @constructor
+   * @constructs {MeshZone}
+   *
+   * TODO BREAKING_CHANGE remove support for nested MeshZones and only accept
+   * Geometry as the first argument
+   *
+   * @param {Geometry} geometry - the geometry that will determine the zone bounds
+   * @param {number} scale - the zone scale
+   * @return void
    */
+  function MeshZone(geometry) {
+    var scale = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-  function MeshZone(geometry, scale) {
     _classCallCheck(this, MeshZone);
 
     var _this = _possibleConstructorReturn(this, (MeshZone.__proto__ || Object.getPrototypeOf(MeshZone)).call(this));
 
-    if (geometry instanceof THREE.Geometry) {
+    if (geometry instanceof _three.Geometry) {
       _this.geometry = geometry;
     } else {
       _this.geometry = geometry.geometry;
     }
 
-    _this.scale = scale || 1;
+    _this.scale = scale;
     _this.supportsCrossing = false;
     return _this;
   }
+
+  /**
+   * Returns true to indicate this is a MeshZone.
+   *
+   * @return {boolean}
+   */
+
 
   _createClass(MeshZone, [{
     key: 'isMeshZone',
@@ -54816,6 +54927,13 @@ var PointZone = function (_Zone) {
     return _this;
   }
 
+  /**
+   * Returns true to indicate this is a PointZone.
+   *
+   * @return {boolean}
+   */
+
+
   _createClass(PointZone, [{
     key: 'isPointZone',
     value: function isPointZone() {
@@ -54904,6 +55022,13 @@ var ScreenZone = function (_Zone) {
     }_this.name = 'ScreenZone';
     return _this;
   }
+
+  /**
+   * Returns true to indicate this is a ScreenZone.
+   *
+   * @return {boolean}
+   */
+
 
   _createClass(ScreenZone, [{
     key: 'isScreenZone',
@@ -55033,38 +55158,42 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * A spherical zone for particles to be emitted within.
+ *
+ */
 var SphereZone = function (_Zone) {
   _inherits(SphereZone, _Zone);
 
   /**
-   * SphereZone is a sphere zone
-   * @param {Number|Vector3D} x - the center's x value or a Vector3D Object
-   * @param {Number} y - the center's y value or the Sphere's radius
-   * @param {Number} z - the center's z value
-   * @param {Number} r - the Sphere's radius
-   * @example
-   * var sphereZone = new SphereZone(0,0,0,100);
-   * var sphereZone = new SphereZone(new Vector3D(0,0,0),100);
-   * @extends {Zone}
-   * @constructor
+   * @constructs {SphereZone}
+   *
+   * @param {number} centerX - the sphere's center x coordinate
+   * @param {number} centerY - the sphere's center y coordinate
+   * @param {number} centerZ - the sphere's center z coordinate
+   * @param {number} radius - the sphere's radius value
+   * @return void
    */
-  function SphereZone(a, b, c, d) {
+  function SphereZone(centerX, centerY, centerZ, radius) {
     _classCallCheck(this, SphereZone);
 
     // TODO see below, these should probably be assigned properly
     // eslint-disable-next-line
     var _this = _possibleConstructorReturn(this, (SphereZone.__proto__ || Object.getPrototypeOf(SphereZone)).call(this));
 
-    var x, y, z, r;
+    var x = void 0,
+        y = void 0,
+        z = void 0,
+        r = void 0;
 
-    if (_Util2.default.isUndefined(b, c, d)) {
+    if (_Util2.default.isUndefined(centerY, centerZ, radius)) {
       x = y = z = 0;
-      r = a || 100;
+      r = centerX || 100;
     } else {
-      x = a;
-      y = b;
-      z = c;
-      r = d;
+      x = centerX;
+      y = centerY;
+      z = centerZ;
+      r = radius;
     }
 
     _this.x = x;
@@ -55079,11 +55208,26 @@ var SphereZone = function (_Zone) {
     return _this;
   }
 
+  /**
+   * Returns true to indicate this is a SphereZone.
+   *
+   * @return {boolean}
+   */
+
+
   _createClass(SphereZone, [{
     key: 'isSphereZone',
     value: function isSphereZone() {
       return true;
     }
+
+    /**
+     * Sets the particle to dead if the particle collides with the sphere.
+     *
+     * @param {object} particle
+     * @return void
+     */
+
   }, {
     key: '_dead',
     value: function _dead(particle) {
@@ -55091,6 +55235,13 @@ var SphereZone = function (_Zone) {
 
       if (d - particle.radius > this.radius) particle.dead = true;
     }
+
+    /**
+     * Warns that this zone does not support the _cross method.
+     *
+     * @return void
+     */
+
   }, {
     key: '_cross',
     value: function _cross() {

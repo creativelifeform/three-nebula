@@ -31,6 +31,11 @@ export default class ScreenZone extends Zone {
     this.name = 'ScreenZone';
   }
 
+  /**
+   * Returns true to indicate this is a ScreenZone.
+   *
+   * @return {boolean}
+   */
   isScreenZone() {
     return true;
   }

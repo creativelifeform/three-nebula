@@ -1,34 +1,40 @@
-import * as THREE from 'three';
-
+import { Geometry } from 'three';
 import Zone from './Zone';
 
+/**
+ * Uses a three Geometry to determine the zone parameters.
+ *
+ */
 export default class MeshZone extends Zone {
+  
   /**
-   * MeshZone is a threejs mesh zone
-   * @param {Geometry|Mesh} geometry - a THREE.Geometry or THREE.Mesh object
-   * @example
-   * var geometry = new THREE.CylinderGeometry( 5, 5, 20, 32 );
-   * var cylinder = new THREE.Mesh( geometry, material );
-   * var meshZone = new Proton.MeshZone(geometry);
-   * or
-   * var meshZone = new Proton.MeshZone(cylinder);
-   * @extends {Proton.Zone}
-   * @constructor
+   * @constructs {MeshZone}
+   *
+   * TODO BREAKING_CHANGE remove support for nested MeshZones and only accept
+   * Geometry as the first argument
+   *
+   * @param {Geometry} geometry - the geometry that will determine the zone bounds
+   * @param {number} scale - the zone scale
+   * @return void
    */
-
-  constructor(geometry, scale) {
+  constructor(geometry, scale = 1) {
     super();
 
-    if (geometry instanceof THREE.Geometry) {
+    if (geometry instanceof Geometry) {
       this.geometry = geometry;
     } else {
       this.geometry = geometry.geometry;
     }
 
-    this.scale = scale || 1;
+    this.scale = scale;
     this.supportsCrossing = false;
   }
 
+  /**
+   * Returns true to indicate this is a MeshZone.
+   *
+   * @return {boolean}
+   */
   isMeshZone() {
     return true;
   }

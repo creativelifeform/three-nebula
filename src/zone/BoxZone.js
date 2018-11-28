@@ -52,6 +52,11 @@ export default class BoxZone extends Zone {
     this.max = 6;
   }
 
+  /**
+   * Returns true to indicate this is a BoxZone.
+   *
+   * @return {boolean}
+   */
   isBoxZone() {
     return true;
   }
