@@ -34,7 +34,7 @@
     <script src='./js/three-proton.js'></script>
     <script src="./js/lib/TrackballControls.js"></script>
     <script>
-    var proton, emitter1, emitter2;
+    var proton, emitter1, emitter2, zone2;
     var camera, scene, renderer, stats, clock, controls;
 
     init();
@@ -194,9 +194,9 @@
 
         proton.addRender(new Proton.MeshRender(scene));
 
-        //Proton.Debug.drawZone(proton,scene,zone2);
-        // Proton.Debug.drawEmitter(proton, scene, emitter1);
-        // Proton.Debug.drawEmitter(proton, scene, emitter2);
+        // Proton.Debug.drawZone(proton,scene,zone2);
+        Proton.Debug.drawEmitter(proton, scene, emitter1);
+        Proton.Debug.drawEmitter(proton, scene, emitter2);
     }
 
     function createMesh(geo) {

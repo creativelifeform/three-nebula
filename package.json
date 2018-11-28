@@ -7,7 +7,7 @@
     "examples": "examples"
   },
   "scripts": {
-    "build": "webpack --env build",
+    "build": "webpack --env build && npm run examples:seed",
     "examples": "./scripts/examples",
     "examples:seed": "cp ./build/three-proton.js docs/js",
     "test": "mocha --require babel-core/register --colors ./test/*.spec.js",
