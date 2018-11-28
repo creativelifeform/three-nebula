@@ -114,6 +114,31 @@ export const ease = {
   }
 };
 
+export const {
+  easeLinear,
+  easeInQuad,
+  easeOutQuad,
+  easeInOutQuad,
+  easeInCubic,
+  easeOutCubic,
+  easeInOutCubic,
+  easeInQuart,
+  easeOutQuart,
+  easeInOutQuart,
+  easeInSine,
+  easeOutSine,
+  easeInOutSine,
+  easeInExpo,
+  easeOutExpo,
+  easeInOutExpo,
+  easeInCirc,
+  easeOutCirc,
+  easeInOutCirc,
+  easeInBack,
+  easeOutBack,
+  easeInOutBack
+} = ease;
+
 export const setEasingByName = easeName => {
   if (ease[easeName]) return ease[easeName];
   else return ease.easeLinear;

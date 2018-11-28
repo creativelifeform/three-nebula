@@ -1,44 +1,85 @@
 import { MathUtils, createSpan } from '../math';
+import {
+  PARTICLE_ALPHA_THRESHOLD,
+  DEFAULT_BEHAVIOUR_EASING as defaultEasing
+} from './constants';
 
 import Behaviour from './Behaviour';
-import { Util } from '../utils';
 
+/**
+ * Behaviour that applies an alpha transition effect to particles.
+ *
+ */
 export default class Alpha extends Behaviour {
   /**
-   * The Alpha class is the base for the other Behaviour
+   * @constructs {Alpha}
    *
-   * @class Behaviour
-   * @constructor
+   * @param {number} alphaA - the starting alpha value
+   * @param {?number} alphaB - the ending alpha value
+   * @param {?number} life - the life of the behaviour
+   * @param {function} easing - the easing equation to use for transforms
+   * @return void
    */
-
-  constructor(a, b, life, easing) {
+  constructor(alphaA = 1, alphaB = null, life = null, easing = defaultEasing) {
     super(life, easing);
 
-    this.reset(a, b);
-    /**
-     * The Behaviour name;
-     * @property name
-     * @type {string}
-     */
-    this.name = 'Alpha';
+    this.reset(alphaA, alphaB);
   }
 
-  reset(a, b, life, easing) {
-    if (b == null || b == undefined) this._same = true;
-    else this._same = false;
+  get same() {
+    return this._same;
+  }
 
-    this.a = createSpan(Util.initValue(a, 1));
-    this.b = createSpan(b);
+  set same(same) {
+    this._same = same;
+  }
+
+  /**
+   * Resets the behaviour properties.
+   *
+   * @param {number} alphaA - the starting alpha value
+   * @param {?number} alphaB - the ending alpha value
+   * @param {?number} life - the life of the behaviour
+   * @param {function} easing - the easing equation to use for transforms
+   * @return void
+   */
+  reset(alphaA = 1, alphaB = null, life = null, easing = defaultEasing) {
+    this.same = !alphaB ? true : false;
+
+    this.alphaA = createSpan(alphaA);
+    this.alphaB = createSpan(alphaB);
+
     life && super.reset(life, easing);
   }
 
+  /**
+   * Initializes the behaviour on a particle.
+   *
+   * @param {object} particle - the particle to initialize the behaviour on
+   * @return void
+   */
   initialize(particle) {
     particle.useAlpha = true;
-    particle.transform.alphaA = this.a.getValue();
-    if (this._same) particle.transform.alphaB = particle.transform.alphaA;
-    else particle.transform.alphaB = this.b.getValue();
+    particle.transform.alphaA = this.alphaA.getValue();
+
+    if (this.same) {
+      particle.transform.alphaB = particle.transform.alphaA;
+    }
+
+    if (!this.same) {
+      particle.transform.alphaB = this.alphaB.getValue();
+    }
   }
 
+  /**
+   * Applies the behaviour to the particle.
+   *
+   * @augments particle.alpha
+   * @param {object} particle - the particle to apply the behaviour to
+   * @param {number} time - engine time
+   * @param {integer} index - the particle index
+   * @return void
+   */
   applyBehaviour(particle, time, index) {
     super.applyBehaviour(particle, time, index);
 
@@ -47,6 +88,9 @@ export default class Alpha extends Behaviour {
       particle.transform.alphaB,
       this.energy
     );
-    if (particle.alpha < 0.002) particle.alpha = 0;
+
+    if (particle.alpha < PARTICLE_ALPHA_THRESHOLD) {
+      particle.alpha = 0;
+    }
   }
 }
