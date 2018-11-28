@@ -1,49 +1,102 @@
 import * as THREE from 'three';
 
-import { BoxZone, LineZone, MeshZone, PointZone, SphereZone } from '../zone';
+import { DEFAULT_POSITION, DEFAULT_SIZE as size } from './constants';
 
+/**
+ * @exports Debug - methods and helpers for debugging Proton emitters, zones and particles.
+ */
 export default {
-  addEventListener: function(proton, fun) {
-    proton.eventDispatcher.addEventListener('PROTON_UPDATE', function(e) {
-      fun(e);
-    });
+  /**
+    * Adds an event listener to the proton instance's PROTON_UPDATE event.
+    *
+    * @param {Proton} proton - the proton instance
+    * @param {function} onProtonUpdated - the function to call when proton has been updated
+    * @return {Debug}
+    */
+  addEventListener: function(proton, onProtonUpdated) {
+    proton.eventDispatcher.addEventListener('PROTON_UPDATE', onProtonUpdated);
+
+    return this;
   },
-  drawZone: function(proton, container, zone) {
-    var geometry, material, mesh;
 
-    if (zone instanceof PointZone) {
+  /**
+    * Draws a wireframe mesh around the zone for debugging purposes.
+    *
+    * @param {Proton} proton - the proton instance
+    * @param {object} container - a three Object3D (usually the scene)
+    * @param {Zone} zone - a Zone instance
+    * @return void
+    */
+  drawZone: function(proton, container, zone = {}) {
+    const color = '#2194ce';
+    const wireframe = true;
+    const {
+      width = size,
+      height = size,
+      depth = size,
+      radius = size,
+      x = DEFAULT_POSITION,
+      y = DEFAULT_POSITION,
+      z = DEFAULT_POSITION
+    } = zone;
+    let geometry;
+
+    if (zone.isPointZone()) {
       geometry = new THREE.SphereGeometry(15);
-    } else if (zone instanceof LineZone) {
-      // TODO
-    } else if (zone instanceof BoxZone) {
-      geometry = new THREE.BoxGeometry(zone.width, zone.height, zone.depth);
-    } else if (zone instanceof SphereZone) {
-      geometry = new THREE.SphereGeometry(zone.radius, 10, 10);
-    } else if (zone instanceof MeshZone) {
-      if (zone.geometry instanceof THREE.Geometry) geometry = zone.geometry;
-      else geometry = zone.geometry.geometry;
-
-      geometry = new THREE.SphereGeometry(zone.radius, 10, 10);
     }
 
-    material = new THREE.MeshBasicMaterial({
-      color: '#2194ce',
-      wireframe: true
-    });
-    mesh = new THREE.Mesh(geometry, material);
+    if (zone.isLineZone()) {
+      // TODO
+    }
+
+    if (zone.isBoxZone()) {
+      geometry = new THREE.BoxGeometry(width, height, depth);
+    }
+
+    if (zone.isSphereZone()) {
+      geometry = new THREE.SphereGeometry(radius, size, size);
+    }
+
+    if (zone.isMeshZone()) {
+      geometry = zone.geometry.geometry
+        ? zone.geometry.geometry.clone()
+        : zone.geometry.clone();
+    }
+
+    if (!geometry) {
+      geometry = new THREE.BoxGeometry(width, height, depth);
+    }
+
+    const material = new THREE.MeshBasicMaterial({ color, wireframe });
+    // NOTE! geometry.clone is required for UNKNOWN reasons,
+    // three does not render the mesh correctly without doing this since r88
+    const mesh = new THREE.Mesh(geometry.clone(), material);
+
     container.add(mesh);
 
     this.addEventListener(proton, function() {
-      mesh.position.set(zone.x, zone.y, zone.z);
+      mesh.position.set(x, y, z);
     });
   },
+
+  /**
+    * Draws a mesh for each particle emitted in order to help debug particles.
+    *
+    * @param {object} proton - the proton instance
+    * @param {object} container - a three Object3D (usually the scene)
+    * @param {object} emitter - the emitter to debug
+    * @param {string} color - the color for the debug mesh material
+    * @return void
+    */
   drawEmitter: function(proton, container, emitter, color) {
-    var geometry = new THREE.OctahedronGeometry(15);
-    var material = new THREE.MeshBasicMaterial({
+    const geometry = new THREE.OctahedronGeometry(size);
+    const material = new THREE.MeshBasicMaterial({
       color: color || '#aaa',
       wireframe: true
     });
-    var mesh = new THREE.Mesh(geometry, material);
+    // NOTE! geometry.clone is required for UNKNOWN reasons,
+    // three does not render the mesh correctly without doing this since r88
+    const mesh = new THREE.Mesh(geometry.clone(), material);
 
     container.add(mesh);
 
@@ -56,6 +109,14 @@ export default {
       );
     });
   },
+
+  /**
+   * Renders emitter / particle information into the info element.
+   *
+   * @param {object} proton - the proton instance
+   * @param {integer} style - style to apply (see the addInfo method's switch statement)
+   * @return void
+   */
   renderInfo: (function() {
     function getCreatedNumber(type, proton) {
       var pool = type == 'material' ? '_materialPool' : '_targetPool';
@@ -97,6 +158,13 @@ export default {
       this._infoCon.innerHTML = str;
     };
   })(),
+
+  /**
+   * Appends the info element into the dom.
+   *
+   * @param {integer} style - the style type to apply
+   * @return void
+   */
   addInfo: (function() {
     return function(style) {
       var self = this;

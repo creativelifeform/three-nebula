@@ -3,34 +3,36 @@ import Util from '../utils/Util';
 import Vector3D from '../math/Vector3D';
 import Zone from './Zone';
 
+/**
+ * A spherical zone for particles to be emitted within.
+ *
+ */
 export default class SphereZone extends Zone {
+
   /**
-   * SphereZone is a sphere zone
-   * @param {Number|Vector3D} x - the center's x value or a Vector3D Object
-   * @param {Number} y - the center's y value or the Sphere's radius
-   * @param {Number} z - the center's z value
-   * @param {Number} r - the Sphere's radius
-   * @example
-   * var sphereZone = new SphereZone(0,0,0,100);
-   * var sphereZone = new SphereZone(new Vector3D(0,0,0),100);
-   * @extends {Zone}
-   * @constructor
+   * @constructs {SphereZone}
+   *
+   * @param {number} centerX - the sphere's center x coordinate
+   * @param {number} centerY - the sphere's center y coordinate
+   * @param {number} centerZ - the sphere's center z coordinate
+   * @param {number} radius - the sphere's radius value
+   * @return void
    */
-  constructor(a, b, c, d) {
+  constructor(centerX, centerY, centerZ, radius) {
     super();
 
     // TODO see below, these should probably be assigned properly
     // eslint-disable-next-line
-    var x, y, z, r;
+    let x, y, z, r;
 
-    if (Util.isUndefined(b, c, d)) {
+    if (Util.isUndefined(centerY, centerZ, radius)) {
       x = y = z = 0;
-      r = a || 100;
+      r = centerX || 100;
     } else {
-      x = a;
-      y = b;
-      z = c;
-      r = d;
+      x = centerX;
+      y = centerY;
+      z = centerZ;
+      r = radius;
     }
 
     this.x = x;
@@ -44,12 +46,32 @@ export default class SphereZone extends Zone {
     this.the = this.phi = 0;
   }
 
+  /**
+   * Returns true to indicate this is a SphereZone.
+   *
+   * @return {boolean}
+   */
+  isSphereZone() {
+    return true;
+  }
+
+  /**
+   * Sets the particle to dead if the particle collides with the sphere.
+   *
+   * @param {object} particle
+   * @return void
+   */
   _dead(particle) {
     var d = particle.p.distanceTo(this);
 
     if (d - particle.radius > this.radius) particle.dead = true;
   }
 
+  /**
+   * Warns that this zone does not support the _cross method.
+   *
+   * @return void
+   */
   _cross() {
     console.warn(`${this.constructor.name} does not support the _cross method`);
   }

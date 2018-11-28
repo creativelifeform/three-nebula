@@ -52,6 +52,15 @@ export default class BoxZone extends Zone {
     this.max = 6;
   }
 
+  /**
+   * Returns true to indicate this is a BoxZone.
+   *
+   * @return {boolean}
+   */
+  isBoxZone() {
+    return true;
+  }
+
   getPosition() {
     this.vector.x = this.x + MathUtils.randomAToB(-0.5, 0.5) * this.width;
     this.vector.y = this.y + MathUtils.randomAToB(-0.5, 0.5) * this.height;

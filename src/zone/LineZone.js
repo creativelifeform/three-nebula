@@ -41,6 +41,15 @@ export default class LineZone extends Zone {
     this.supportsCrossing = false;
   }
 
+  /**
+   * Returns true to indicate this is a LineZone.
+   *
+   * @return {boolean}
+   */
+  isLineZone() {
+    return true;
+  }
+
   getPosition() {
     this.random = Math.random();
     this.vector.x = this.x1 + this.random * (this.x2 - this.x1);
