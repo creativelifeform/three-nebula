@@ -42,7 +42,7 @@ describe('behaviour -> Alpha', () => {
     done();
   });
 
-  it('should initialize with the correct properties', done => {
+  it('should initialize the particle with the correct properties', done => {
     const particle = new Proton.Particle();
 
     behaviour.initialize(particle);

@@ -2353,13 +2353,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -2721,6 +2721,12 @@ window.esdocSearchIndex = [
     "src/math/arrayspan.js~arrayspan#getvalue",
     "class/src/math/ArraySpan.js~ArraySpan.html#instance-method-getValue",
     "src/math/ArraySpan.js~ArraySpan#getValue",
+    "method"
+  ],
+  [
+    "src/math/arrayspan.js~arrayspan#israndomcolor",
+    "class/src/math/ArraySpan.js~ArraySpan.html#instance-method-isRandomColor",
+    "src/math/ArraySpan.js~ArraySpan#isRandomColor",
     "method"
   ],
   [

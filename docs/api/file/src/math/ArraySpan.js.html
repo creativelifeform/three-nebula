@@ -134,51 +134,69 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/math/ArraySpan.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import MathUtils from &apos;./MathUtils&apos;;
 import Span from &apos;./Span&apos;;
-import Util from &apos;../utils/Util&apos;;
+import _ from &apos;lodash&apos;;
 
+/**
+ * Class for storing and interacting with an array of colours.
+ *
+ * NOTE Rename this to ColorSpan
+ */
 export default class ArraySpan extends Span {
   /**
-   * ArraySpan name get a random Color from a colors array
-   * @param {String|Array} colors - colors array
-   * @example
-   * var span = new ArraySpan([&quot;#fff&quot;,&quot;#ff0&quot;,&quot;#000&quot;]);
-   * or
-   * var span = new ArraySpan(&quot;#ff0&quot;);
-   * @extends {Span}
-   * @constructor
+   * Constructs an ArraySpan instance.
+   *
+   * @param {string|array} colors - single or multiple colors,
+   * if the string &apos;random&apos; is passed, a random color will be returned
+   * from the getValue method
+   * @return void
    */
-
-  constructor(colors) {
+  constructor(colors = &apos;random&apos;) {
     super();
 
-    this._arr = Util.isArray(colors) ? colors : [colors];
+    /**
+     * @desc An array of colors
+     * @type {array}
+     */
+    this._arr = Array.isArray(colors) ? colors : [colors];
   }
 
   /**
-   * getValue function
-   * @name get a random Color
+   * Gets a color from the color array.
+   *
    * @return {string} a hex color
    */
   getValue() {
-    var color = this._arr[(this._arr.length * Math.random()) &gt;&gt; 0];
+    const color = _.sample(this._arr);
 
-    if (color == &apos;random&apos; || color == &apos;Random&apos;) return MathUtils.randomColor();
-    else return color;
+    return this.isRandomColor(color) ? MathUtils.randomColor() : color;
+  }
+
+  /**
+   * Determines if the color supplied is &apos;random&apos;.
+   *
+   * @param {string} color - the color to check
+   */
+  isRandomColor(color) {
+    return typeof color === &apos;string&apos; &amp;&amp; color.toLowerCase() === &apos;random&apos;;
   }
 }
 
 /**
- * createArraySpan function
- * @name get a instance of Span
- * @param {number} a min number
- * @param {number} b max number
- * @param {number} c center number
- * @return {number} return a instance of Span
+ * Attempts to create an ArraySpan from the colors provided.
+ *
+ * @param {mixed} colors - colors to try and create an ArraySpan from
+ * @return {?ArraySpan}
  */
-export const createArraySpan = arr =&gt; {
-  if (!arr) return null;
-  if (arr instanceof ArraySpan) return arr;
-  else return new ArraySpan(arr);
+export const createArraySpan = colors =&gt; {
+  if (!colors) {
+    return null;
+  }
+
+  if (colors instanceof ArraySpan) {
+    return colors;
+  }
+
+  return new ArraySpan(colors);
 };
 </code></pre>
 
