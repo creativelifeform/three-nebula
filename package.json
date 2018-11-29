@@ -4,18 +4,16 @@
   "description": "A magical, WebGL based 3D particle engine",
   "main": "./build/three-proton.js",
   "directories": {
-    "examples": "examples"
+    "docs": "docs"
   },
   "scripts": {
-    "build": "webpack --env build && npm run examples:seed",
-    "examples": "./scripts/examples",
-    "examples:seed": "cp ./build/three-proton.js docs/js",
+    "build": "webpack --env build && npm run docs:build",
+    "docs": "./scripts/docs",
+    "docs:build": "cp ./build/three-proton.js docs/js && ./node_modules/.bin/esdoc",
     "test": "mocha --require babel-core/register --colors ./test/*.spec.js",
     "test:only": "mocha --require babel-core/register --colors",
     "test:watch": "mocha --require babel-core/register --colors -w ./test/*.spec.js",
     "test:watch-only": "mocha --require babel-core/register --colors -w ",
-    "docs:build": "./node_modules/.bin/esdoc",
-    "docs:serve": "open ./docs/api/index.html",
     "lint": "eslint src test && ./node_modules/.bin/madge --circular src",
     "coverage:generate": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/*.js -- --require babel-register",
     "coverage:publish": "./node_modules/.bin/istanbul-coveralls",

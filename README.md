@@ -4,7 +4,7 @@
 
 **Three Proton** is a magical, WebGL based 3D particle engine that has been designed to work in concert with [`three.js`](https://github.com/mrdoob/three.js). It is based on the [Proton](https://github.com/a-jie/Proton) particle engine library and shares much of its API.
 
-Check out examples at [https://rohan-deshpande.github.io/three-proton/](https://rohan-deshpande.github.io/three-proton/)
+Check out the examples and API reference documentation at [https://rohan-deshpande.github.io/three-proton/](https://rohan-deshpande.github.io/three-proton/)
 
 ## Features
 
@@ -41,17 +41,17 @@ npm i --save @rohandeshpande/three-proton
 
 ## Commands
 
-* `build` - Builds the module and writes the code into `./build/three-proton.js`
-* `examples` - Serves the examples at http://localhost:8080
-* `examples:seed` - Copies the latest build to `./examples/js`
-* `test` - Runs all specs
-* `test:only <spec>` - Runs a specific spec  
-* `test:watch` - Watches tests
-* `test:watch-only <spec>` - Watches a specific spec
-* `lint` - Lints code and circular dependencies in `./src`
-* `coverage:generate` - Generates a code coverage report
-* `coverage:publish` - Publishes the coverage report
-* `git:publish <commit-message>` - Builds the module, adds all changed files commits with the message you supply and pushes to remote
+- `build` - Builds the module and writes the code into `./build/three-proton.js`
+- `docs` - Serves the docs at http://localhost:8080
+- `docs:build` - Copies the latest build to `./docs/js` and builds the API reference docs
+- `test` - Runs all specs
+- `test:only <spec>` - Runs a specific spec
+- `test:watch` - Watches tests
+- `test:watch-only <spec>` - Watches a specific spec
+- `lint` - Lints code and circular dependencies in `./src`
+- `coverage:generate` - Generates a code coverage report
+- `coverage:publish` - Publishes the coverage report
+- `git:publish <commit-message>` - Builds the module, adds all changed files commits with the message you supply and pushes to remote
 
 ## Usage
 

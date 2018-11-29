@@ -6,7 +6,6 @@ import {
 } from './constants';
 
 import Behaviour from './Behaviour';
-import { Util } from '../utils';
 import { Vector3D } from '../math';
 
 /**

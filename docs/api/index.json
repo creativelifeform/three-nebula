@@ -932,7 +932,7 @@
     "__docId__": 62,
     "kind": "file",
     "name": "src/behaviour/Attraction.js",
-    "content": "import {\n  DEFAULT_ATTRACITON_RADIUS,\n  DEFAULT_ATTRACTION_FORCE_SCALAR,\n  PARTICLE_LENGTH_SQ_THRESHOLD,\n  DEFAULT_BEHAVIOUR_EASING as defaultEasing\n} from './constants';\n\nimport Behaviour from './Behaviour';\nimport { Util } from '../utils';\nimport { Vector3D } from '../math';\n\n/**\n * Behaviour that causes particles to be attracted to a target position.\n *\n */\nexport default class Attraction extends Behaviour {\n  /**\n   * Constructs an Attraction behaviour instance.\n   *\n   * @param {Vector3D} targetPosition - The position the particles will be attracted to\n   * @param {number} force - The attraction force scalar multiplier\n   * @param {number} radius - The attraction radius\n   * @param {number} life - The life of the particle\n   * @param {function} easing - The behaviour's decaying trend\n   * @return void\n   */\n  constructor(\n    targetPosition = new Vector3D(),\n    force = DEFAULT_ATTRACTION_FORCE_SCALAR,\n    radius = DEFAULT_ATTRACITON_RADIUS,\n    life = Infinity,\n    easing = defaultEasing\n  ) {\n    super(life, easing);\n\n    /**\n     * @desc The position the particles will be attracted to\n     * @type {Vector3D}\n     */\n    this.targetPosition = targetPosition;\n\n    /**\n     * @desc The attraction radius\n     * @type {number} - the attraction radius\n     */\n    this.radius = radius;\n\n    /**\n     * @desc The attraction force scalar multiplier\n     * @type {number}\n     */\n    this.force = force;\n\n    /**\n     * @desc The radius of the attraction squared\n     * @type {number}\n     */\n    this.radiusSq = this.radius * this.radius;\n\n    /**\n     * @desc The attraction force in 3D space\n     * @type {Vector3D}\n     */\n    this.attractionForce = new Vector3D();\n\n    /**\n     * @desc The linear attraction force\n     * @type {number}\n     */\n    this.lengthSq = 0;\n  }\n\n  /**\n   * Resets the behaviour properties.\n   *\n   * @param {Vector3D} targetPosition - the position the particles will be attracted to\n   * @param {number} force - the attraction force multiplier\n   * @param {number} radius - the attraction radius\n   * @param {number} life - the life of the particle\n   * @param {function} easing - The behaviour's decaying trend\n   * @return void\n   */\n  reset(targetPosition, force, radius, life, easing) {\n    this.targetPosition = Util.initValue(targetPosition, new Vector3D());\n    this.radius = Util.initValue(radius, 1000);\n    this.force = Util.initValue(this.normalizeValue(force), 100);\n    this.radiusSq = this.radius * this.radius;\n    this.attractionForce = new Vector3D();\n    this.lengthSq = 0;\n\n    life && super.reset(life, easing);\n  }\n\n  /**\n   * Applies the behaviour to the particle.\n   *\n   * @param {Particle} particle - the particle to apply the behaviour to\n   * @param {number} time - particle engine time\n   * @param {integer} index - the particle index\n   * @return void\n   */\n  applyBehaviour(particle, time, index) {\n    super.applyBehaviour(particle, time, index);\n\n    this.attractionForce.copy(this.targetPosition);\n    this.attractionForce.sub(particle.p);\n\n    this.lengthSq = this.attractionForce.lengthSq();\n\n    if (\n      this.lengthSq > PARTICLE_LENGTH_SQ_THRESHOLD &&\n      this.lengthSq < this.radiusSq\n    ) {\n      this.attractionForce.normalize();\n      this.attractionForce.scalar(1 - this.lengthSq / this.radiusSq);\n      this.attractionForce.scalar(this.force);\n\n      particle.a.add(this.attractionForce);\n    }\n  }\n}\n",
+    "content": "import {\n  DEFAULT_ATTRACITON_RADIUS,\n  DEFAULT_ATTRACTION_FORCE_SCALAR,\n  PARTICLE_LENGTH_SQ_THRESHOLD,\n  DEFAULT_BEHAVIOUR_EASING as defaultEasing\n} from './constants';\n\nimport Behaviour from './Behaviour';\nimport { Vector3D } from '../math';\n\n/**\n * Behaviour that causes particles to be attracted to a target position.\n *\n */\nexport default class Attraction extends Behaviour {\n  /**\n   * Constructs an Attraction behaviour instance.\n   *\n   * @param {Vector3D} targetPosition - The position the particles will be attracted to\n   * @param {number} force - The attraction force scalar multiplier\n   * @param {number} radius - The attraction radius\n   * @param {number} life - The life of the particle\n   * @param {function} easing - The behaviour's decaying trend\n   * @return void\n   */\n  constructor(\n    targetPosition = new Vector3D(),\n    force = DEFAULT_ATTRACTION_FORCE_SCALAR,\n    radius = DEFAULT_ATTRACITON_RADIUS,\n    life = Infinity,\n    easing = defaultEasing\n  ) {\n    super(life, easing);\n\n    /**\n     * @desc The position the particles will be attracted to\n     * @type {Vector3D}\n     */\n    this.targetPosition = targetPosition;\n\n    /**\n     * @desc The attraction radius\n     * @type {number} - the attraction radius\n     */\n    this.radius = radius;\n\n    /**\n     * @desc The attraction force scalar multiplier\n     * @type {number}\n     */\n    this.force = this.normalizeValue(force);\n\n    /**\n     * @desc The radius of the attraction squared\n     * @type {number}\n     */\n    this.radiusSq = this.radius * this.radius;\n\n    /**\n     * @desc The attraction force in 3D space\n     * @type {Vector3D}\n     */\n    this.attractionForce = new Vector3D();\n\n    /**\n     * @desc The linear attraction force\n     * @type {number}\n     */\n    this.lengthSq = 0;\n  }\n\n  /**\n   * Resets the behaviour properties.\n   *\n   * @param {Vector3D} targetPosition - the position the particles will be attracted to\n   * @param {number} force - the attraction force multiplier\n   * @param {number} radius - the attraction radius\n   * @param {number} life - the life of the particle\n   * @param {function} easing - The behaviour's decaying trend\n   * @return void\n   */\n  reset(\n    targetPosition = new Vector3D(),\n    force = DEFAULT_ATTRACTION_FORCE_SCALAR,\n    radius = DEFAULT_ATTRACITON_RADIUS,\n    life = Infinity,\n    easing = defaultEasing\n  ) {\n    this.targetPosition = targetPosition;\n    this.radius = radius;\n    this.force = this.normalizeValue(force);\n    this.radiusSq = this.radius * this.radius;\n    this.attractionForce = new Vector3D();\n    this.lengthSq = 0;\n\n    life && super.reset(life, easing);\n  }\n\n  /**\n   * Applies the behaviour to the particle.\n   *\n   * @param {Particle} particle - the particle to apply the behaviour to\n   * @param {number} time - particle engine time\n   * @param {integer} index - the particle index\n   * @return void\n   */\n  applyBehaviour(particle, time, index) {\n    super.applyBehaviour(particle, time, index);\n    this.attractionForce.copy(this.targetPosition);\n    this.attractionForce.sub(particle.p);\n    this.lengthSq = this.attractionForce.lengthSq();\n\n    if (\n      this.lengthSq > PARTICLE_LENGTH_SQ_THRESHOLD &&\n      this.lengthSq < this.radiusSq\n    ) {\n      this.attractionForce.normalize();\n      this.attractionForce.scalar(1 - this.lengthSq / this.radiusSq);\n      this.attractionForce.scalar(this.force);\n      particle.a.add(this.attractionForce);\n    }\n  }\n}\n",
     "static": true,
     "longname": "/Users/rohandeshpande/rd/three-proton/src/behaviour/Attraction.js",
     "access": "public",
@@ -951,7 +951,7 @@
     "importPath": "@rohandeshpande/three-proton/src/behaviour/Attraction.js",
     "importStyle": "Attraction",
     "description": "Behaviour that causes particles to be attracted to a target position.",
-    "lineNumber": 16,
+    "lineNumber": 15,
     "interface": false,
     "extends": [
       "src/behaviour/Behaviour.js~Behaviour"
@@ -968,7 +968,7 @@
     "longname": "src/behaviour/Attraction.js~Attraction#constructor",
     "access": "public",
     "description": "Constructs an Attraction behaviour instance.",
-    "lineNumber": 27,
+    "lineNumber": 26,
     "params": [
       {
         "nullable": null,
@@ -1039,7 +1039,7 @@
     "longname": "src/behaviour/Attraction.js~Attraction#targetPosition",
     "access": "public",
     "description": "The position the particles will be attracted to",
-    "lineNumber": 40,
+    "lineNumber": 39,
     "type": {
       "nullable": null,
       "types": [
@@ -1058,7 +1058,7 @@
     "longname": "src/behaviour/Attraction.js~Attraction#radius",
     "access": "public",
     "description": "The attraction radius",
-    "lineNumber": 46,
+    "lineNumber": 45,
     "type": {
       "nullable": null,
       "types": [
@@ -1077,7 +1077,7 @@
     "longname": "src/behaviour/Attraction.js~Attraction#force",
     "access": "public",
     "description": "The attraction force scalar multiplier",
-    "lineNumber": 52,
+    "lineNumber": 51,
     "type": {
       "nullable": null,
       "types": [
@@ -1096,7 +1096,7 @@
     "longname": "src/behaviour/Attraction.js~Attraction#radiusSq",
     "access": "public",
     "description": "The radius of the attraction squared",
-    "lineNumber": 58,
+    "lineNumber": 57,
     "type": {
       "nullable": null,
       "types": [
@@ -1115,7 +1115,7 @@
     "longname": "src/behaviour/Attraction.js~Attraction#attractionForce",
     "access": "public",
     "description": "The attraction force in 3D space",
-    "lineNumber": 64,
+    "lineNumber": 63,
     "type": {
       "nullable": null,
       "types": [
@@ -1134,7 +1134,7 @@
     "longname": "src/behaviour/Attraction.js~Attraction#lengthSq",
     "access": "public",
     "description": "The linear attraction force",
-    "lineNumber": 70,
+    "lineNumber": 69,
     "type": {
       "nullable": null,
       "types": [
@@ -1155,7 +1155,7 @@
     "longname": "src/behaviour/Attraction.js~Attraction#reset",
     "access": "public",
     "description": "Resets the behaviour properties.",
-    "lineNumber": 83,
+    "lineNumber": 82,
     "params": [
       {
         "nullable": null,
@@ -1228,7 +1228,7 @@
     "longname": "src/behaviour/Attraction.js~Attraction#applyBehaviour",
     "access": "public",
     "description": "Applies the behaviour to the particle.",
-    "lineNumber": 102,
+    "lineNumber": 107,
     "params": [
       {
         "nullable": null,
@@ -14012,7 +14012,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"@rohandeshpande/three-proton\",\n  \"version\": \"1.0.5\",\n  \"description\": \"A magical, WebGL based 3D particle engine\",\n  \"main\": \"./build/three-proton.js\",\n  \"directories\": {\n    \"examples\": \"examples\"\n  },\n  \"scripts\": {\n    \"build\": \"webpack --env build && npm run examples:seed\",\n    \"examples\": \"./scripts/examples\",\n    \"examples:seed\": \"cp ./build/three-proton.js docs/js\",\n    \"test\": \"mocha --require babel-core/register --colors ./test/*.spec.js\",\n    \"test:only\": \"mocha --require babel-core/register --colors\",\n    \"test:watch\": \"mocha --require babel-core/register --colors -w ./test/*.spec.js\",\n    \"test:watch-only\": \"mocha --require babel-core/register --colors -w \",\n    \"docs:build\": \"./node_modules/.bin/esdoc\",\n    \"docs:serve\": \"open ./docs/api/index.html\",\n    \"lint\": \"eslint src test && ./node_modules/.bin/madge --circular src\",\n    \"coverage:generate\": \"./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/*.js -- --require babel-register\",\n    \"coverage:publish\": \"./node_modules/.bin/istanbul-coveralls\",\n    \"git:publish\": \"./scripts/publish\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/rohan-deshpande/three-proton.git\"\n  },\n  \"keywords\": [\n    \"particle\",\n    \"three.js\",\n    \"3d\"\n  ],\n  \"authors\": [\n    \"a-jie\",\n    \"rohan-deshpande\"\n  ],\n  \"license\": \"MIT\",\n  \"bugs\": {\n    \"url\": \"https://github.com/rohan-deshpande/three-proton/issues\"\n  },\n  \"homepage\": \"https://github.com/rohan-deshpande/three-proton#readme\",\n  \"dependencies\": {\n    \"three\": \"^0.98.0\",\n    \"uuid\": \"^3.3.2\"\n  },\n  \"devDependencies\": {\n    \"babel\": \"^6.23.0\",\n    \"babel-core\": \"^6.24.1\",\n    \"babel-eslint\": \"^7.2.1\",\n    \"babel-loader\": \"^6.4.1\",\n    \"babel-plugin-add-module-exports\": \"^0.2.1\",\n    \"babel-plugin-transform-decorators-legacy\": \"^1.3.4\",\n    \"babel-plugin-transform-object-rest-spread\": \"^6.26.0\",\n    \"babel-preset-es2015\": \"^6.24.1\",\n    \"chai\": \"^3.5.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^3.19.0\",\n    \"eslint-loader\": \"^1.7.1\",\n    \"eslint-plugin-import\": \"^2.8.0\",\n    \"http-server\": \"^0.11.1\",\n    \"jquery\": \"^3.3.1\",\n    \"jsdoc\": \"~3.4.0\",\n    \"madge\": \"^3.3.0\",\n    \"minami\": \"~1.1.1\",\n    \"mocha\": \"^5.2.0\",\n    \"sinon\": \"^2.1.0\",\n    \"stats.js\": \"^0.17.0\",\n    \"webpack\": \"^2.3.3\",\n    \"yargs\": \"^7.0.2\"\n  }\n}\n",
+    "content": "{\n  \"name\": \"@rohandeshpande/three-proton\",\n  \"version\": \"1.0.5\",\n  \"description\": \"A magical, WebGL based 3D particle engine\",\n  \"main\": \"./build/three-proton.js\",\n  \"directories\": {\n    \"docs\": \"docs\"\n  },\n  \"scripts\": {\n    \"build\": \"webpack --env build && npm run docs:build\",\n    \"docs\": \"./scripts/docs\",\n    \"docs:build\": \"cp ./build/three-proton.js docs/js && ./node_modules/.bin/esdoc\",\n    \"test\": \"mocha --require babel-core/register --colors ./test/*.spec.js\",\n    \"test:only\": \"mocha --require babel-core/register --colors\",\n    \"test:watch\": \"mocha --require babel-core/register --colors -w ./test/*.spec.js\",\n    \"test:watch-only\": \"mocha --require babel-core/register --colors -w \",\n    \"lint\": \"eslint src test && ./node_modules/.bin/madge --circular src\",\n    \"coverage:generate\": \"./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/*.js -- --require babel-register\",\n    \"coverage:publish\": \"./node_modules/.bin/istanbul-coveralls\",\n    \"git:publish\": \"./scripts/publish\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/rohan-deshpande/three-proton.git\"\n  },\n  \"keywords\": [\n    \"particle\",\n    \"three.js\",\n    \"3d\"\n  ],\n  \"authors\": [\n    \"a-jie\",\n    \"rohan-deshpande\"\n  ],\n  \"license\": \"MIT\",\n  \"bugs\": {\n    \"url\": \"https://github.com/rohan-deshpande/three-proton/issues\"\n  },\n  \"homepage\": \"https://github.com/rohan-deshpande/three-proton#readme\",\n  \"dependencies\": {\n    \"three\": \"^0.98.0\",\n    \"uuid\": \"^3.3.2\"\n  },\n  \"devDependencies\": {\n    \"babel\": \"^6.23.0\",\n    \"babel-core\": \"^6.24.1\",\n    \"babel-eslint\": \"^7.2.1\",\n    \"babel-loader\": \"^6.4.1\",\n    \"babel-plugin-add-module-exports\": \"^0.2.1\",\n    \"babel-plugin-transform-decorators-legacy\": \"^1.3.4\",\n    \"babel-plugin-transform-object-rest-spread\": \"^6.26.0\",\n    \"babel-preset-es2015\": \"^6.24.1\",\n    \"chai\": \"^3.5.0\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"eslint\": \"^3.19.0\",\n    \"eslint-loader\": \"^1.7.1\",\n    \"eslint-plugin-import\": \"^2.8.0\",\n    \"http-server\": \"^0.11.1\",\n    \"jquery\": \"^3.3.1\",\n    \"jsdoc\": \"~3.4.0\",\n    \"madge\": \"^3.3.0\",\n    \"minami\": \"~1.1.1\",\n    \"mocha\": \"^5.2.0\",\n    \"sinon\": \"^2.1.0\",\n    \"stats.js\": \"^0.17.0\",\n    \"webpack\": \"^2.3.3\",\n    \"yargs\": \"^7.0.2\"\n  }\n}\n",
     "longname": "/Users/rohandeshpande/rd/three-proton/package.json",
     "name": "package.json",
     "static": true,
