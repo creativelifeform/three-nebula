@@ -7,8 +7,8 @@ import chai from 'chai';
 
 const { assert } = chai;
 
-describe('behaviour -> Force', () => {
-  const behaviour = new Proton.Force(1, 2, 1);
+describe('behaviour -> Gravity', () => {
+  const behaviour = new Proton.Gravity(1);
 
   it('should instantiate with the correct properties', done => {
     const { life, easing, age, energy, dead, force } = behaviour;
@@ -19,9 +19,7 @@ describe('behaviour -> Force', () => {
     assert.strictEqual(energy, 1);
     assert.isFalse(dead);
     assert.instanceOf(force, Proton.Vector3D);
-    assert.strictEqual(force.x, 100);
-    assert.strictEqual(force.y, 200);
-    assert.strictEqual(force.z, 100);
+    assert.strictEqual(force.y, -100);
 
     done();
   });
@@ -34,9 +32,9 @@ describe('behaviour -> Force', () => {
     const { a, old } = particle;
 
     assert.instanceOf(a, Proton.Vector3D);
-    assert.strictEqual(a.x, 100);
-    assert.strictEqual(a.y, 200);
-    assert.strictEqual(a.z, 100);
+    assert.strictEqual(a.x, 0);
+    assert.strictEqual(a.y, -100);
+    assert.strictEqual(a.z, 0);
     assert.strictEqual(old.a.x, 0);
     assert.strictEqual(old.a.y, 0);
     assert.strictEqual(old.a.z, 0);

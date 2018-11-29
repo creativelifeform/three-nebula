@@ -2,12 +2,12 @@ import Force from './Force';
 import { classDeprecationWarning } from '../compatibility';
 
 /**
- * Forces particles down the y axis.
+ * Behaviour that forces particles down the y axis.
  *
  */
 export default class Gravity extends Force {
   /**
-   * @constructs Gravity
+   * Constructs a Gravity behaviour instance.
    *
    * @param {number} gravity - the force to pull the particle down the y axis
    * @param {number} life - the life of the particle
