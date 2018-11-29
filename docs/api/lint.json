@@ -1,0 +1,444 @@
+[
+  {
+    "name": "Behaviour#reset",
+    "filePath": "src/behaviour/Behaviour.js",
+    "lines": [
+      {
+        "lineNumber": 41,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 42,
+        "line": "   * Reset this behaviour's parameters"
+      },
+      {
+        "lineNumber": 43,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 44,
+        "line": "   * @method reset"
+      },
+      {
+        "lineNumber": 45,
+        "line": "   * @param {Number} this behaviour's life"
+      },
+      {
+        "lineNumber": 46,
+        "line": "   * @param {String} this behaviour's easing"
+      },
+      {
+        "lineNumber": 47,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 48,
+        "line": "  reset(life, easing) {"
+      }
+    ],
+    "codeParams": [
+      "life",
+      "easing"
+    ],
+    "docParams": [
+      "this",
+      "this"
+    ]
+  },
+  {
+    "name": "Behaviour#applyBehaviour",
+    "filePath": "src/behaviour/Behaviour.js",
+    "lines": [
+      {
+        "lineNumber": 81,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 82,
+        "line": "   * Apply this behaviour for all particles every time"
+      },
+      {
+        "lineNumber": 83,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 84,
+        "line": "   * @method applyBehaviour"
+      },
+      {
+        "lineNumber": 85,
+        "line": "   * @param {Particle} particle"
+      },
+      {
+        "lineNumber": 86,
+        "line": "   * @param {Number} the integrate time 1/ms"
+      },
+      {
+        "lineNumber": 87,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 88,
+        "line": "  applyBehaviour(particle, time) {"
+      }
+    ],
+    "codeParams": [
+      "particle",
+      "time"
+    ],
+    "docParams": [
+      "particle",
+      "the"
+    ]
+  },
+  {
+    "name": "Proton#addRender",
+    "filePath": "src/core/Proton.js",
+    "lines": [
+      {
+        "lineNumber": 34,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 35,
+        "line": "   * @name add a type of Renderer"
+      },
+      {
+        "lineNumber": 36,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 37,
+        "line": "   * @method addRender"
+      },
+      {
+        "lineNumber": 38,
+        "line": "   * @param {Renderer} render"
+      },
+      {
+        "lineNumber": 39,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 40,
+        "line": "  addRender(renderer) {"
+      }
+    ],
+    "codeParams": [
+      "renderer"
+    ],
+    "docParams": [
+      "render"
+    ]
+  },
+  {
+    "name": "Proton#removeRender",
+    "filePath": "src/core/Proton.js",
+    "lines": [
+      {
+        "lineNumber": 58,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 59,
+        "line": "   * @name add a type of Renderer"
+      },
+      {
+        "lineNumber": 60,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 61,
+        "line": "   * @method addRender"
+      },
+      {
+        "lineNumber": 62,
+        "line": "   * @param {Renderer} render"
+      },
+      {
+        "lineNumber": 63,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 64,
+        "line": "  removeRender(renderer) {"
+      }
+    ],
+    "codeParams": [
+      "renderer"
+    ],
+    "docParams": [
+      "render"
+    ]
+  },
+  {
+    "name": "log",
+    "filePath": "src/debug/log.js",
+    "lines": [
+      {
+        "lineNumber": 0,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 1,
+        "line": " * You can use this emit particles."
+      },
+      {
+        "lineNumber": 2,
+        "line": " *"
+      },
+      {
+        "lineNumber": 3,
+        "line": " * This method will console.log the fixed number of your info  in updata or requestAnimationFrame"
+      },
+      {
+        "lineNumber": 4,
+        "line": " *"
+      },
+      {
+        "lineNumber": 5,
+        "line": " * use like this log('+12',mc); log 12 times"
+      },
+      {
+        "lineNumber": 6,
+        "line": " *"
+      },
+      {
+        "lineNumber": 7,
+        "line": " * @class Log"
+      },
+      {
+        "lineNumber": 8,
+        "line": " * @constructor"
+      },
+      {
+        "lineNumber": 9,
+        "line": " * @param {*} logInfo;"
+      },
+      {
+        "lineNumber": 10,
+        "line": " */"
+      },
+      {
+        "lineNumber": 11,
+        "line": "export default function() {"
+      }
+    ],
+    "codeParams": [],
+    "docParams": [
+      "logInfo;"
+    ]
+  },
+  {
+    "name": "BehaviourEmitter#addSelfBehaviour",
+    "filePath": "src/emitter/BehaviourEmitter.js",
+    "lines": [
+      {
+        "lineNumber": 17,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 18,
+        "line": "   * add the Behaviour to emitter;"
+      },
+      {
+        "lineNumber": 19,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 20,
+        "line": "   * you can use Behaviours array:emitter.addSelfBehaviour(Behaviour1,Behaviour2,Behaviour3);"
+      },
+      {
+        "lineNumber": 21,
+        "line": "   * @method addSelfBehaviour"
+      },
+      {
+        "lineNumber": 22,
+        "line": "   * @param {Proton.Behaviour} behaviour like this new Proton.Color('random')"
+      },
+      {
+        "lineNumber": 23,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 24,
+        "line": "  addSelfBehaviour() {"
+      }
+    ],
+    "codeParams": [],
+    "docParams": [
+      "behaviour"
+    ]
+  },
+  {
+    "name": "Emitter#addInitialize",
+    "filePath": "src/emitter/Emitter.js",
+    "lines": [
+      {
+        "lineNumber": 148,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 149,
+        "line": "   * add the Initialize to particles;"
+      },
+      {
+        "lineNumber": 150,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 151,
+        "line": "   * you can use initializes array:for example emitter.addInitialize(initialize1,initialize2,initialize3);"
+      },
+      {
+        "lineNumber": 152,
+        "line": "   * @method addInitialize"
+      },
+      {
+        "lineNumber": 153,
+        "line": "   * @param {Initialize} initialize like this new Radius(1, 12)"
+      },
+      {
+        "lineNumber": 154,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 155,
+        "line": "  addInitialize() {"
+      }
+    ],
+    "codeParams": [],
+    "docParams": [
+      "initialize"
+    ]
+  },
+  {
+    "name": "Emitter#removeInitialize",
+    "filePath": "src/emitter/Emitter.js",
+    "lines": [
+      {
+        "lineNumber": 178,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 179,
+        "line": "   * remove the Initialize"
+      },
+      {
+        "lineNumber": 180,
+        "line": "   * @method removeInitialize"
+      },
+      {
+        "lineNumber": 181,
+        "line": "   * @param {Initialize} initialize a initialize"
+      },
+      {
+        "lineNumber": 182,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 183,
+        "line": "  removeInitialize(initializer) {"
+      }
+    ],
+    "codeParams": [
+      "initializer"
+    ],
+    "docParams": [
+      "initialize"
+    ]
+  },
+  {
+    "name": "Emitter#addBehaviour",
+    "filePath": "src/emitter/Emitter.js",
+    "lines": [
+      {
+        "lineNumber": 196,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 197,
+        "line": "   * add the Behaviour to particles;"
+      },
+      {
+        "lineNumber": 198,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 199,
+        "line": "   * you can use Behaviours array:emitter.addBehaviour(Behaviour1,Behaviour2,Behaviour3);"
+      },
+      {
+        "lineNumber": 200,
+        "line": "   * @method addBehaviour"
+      },
+      {
+        "lineNumber": 201,
+        "line": "   * @param {Behaviour} behaviour like this new Color('random')"
+      },
+      {
+        "lineNumber": 202,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 203,
+        "line": "  addBehaviour() {"
+      }
+    ],
+    "codeParams": [],
+    "docParams": [
+      "behaviour"
+    ]
+  },
+  {
+    "name": "createArraySpan",
+    "filePath": "src/math/ArraySpan.js",
+    "lines": [
+      {
+        "lineNumber": 35,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 36,
+        "line": " * createArraySpan function"
+      },
+      {
+        "lineNumber": 37,
+        "line": " * @name get a instance of Span"
+      },
+      {
+        "lineNumber": 38,
+        "line": " * @param {number} a min number"
+      },
+      {
+        "lineNumber": 39,
+        "line": " * @param {number} b max number"
+      },
+      {
+        "lineNumber": 40,
+        "line": " * @param {number} c center number"
+      },
+      {
+        "lineNumber": 41,
+        "line": " * @return {number} return a instance of Span"
+      },
+      {
+        "lineNumber": 42,
+        "line": " */"
+      },
+      {
+        "lineNumber": 43,
+        "line": "export const createArraySpan = arr => {"
+      }
+    ],
+    "codeParams": [
+      "arr"
+    ],
+    "docParams": [
+      "a",
+      "b",
+      "c"
+    ]
+  }
+]
