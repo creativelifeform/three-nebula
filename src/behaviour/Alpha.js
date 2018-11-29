@@ -16,11 +16,11 @@ export default class Alpha extends Behaviour {
    *
    * @param {number} alphaA - the starting alpha value
    * @param {?number} alphaB - the ending alpha value
-   * @param {?number} life - the life of the behaviour
+   * @param {number|undefined} life - the life of the behaviour
    * @param {function} easing - the easing equation to use for transforms
    * @return void
    */
-  constructor(alphaA = 1, alphaB = null, life = null, easing = defaultEasing) {
+  constructor(alphaA = 1, alphaB = null, life, easing = defaultEasing) {
     super(life, easing);
 
     this.reset(alphaA, alphaB);
@@ -39,11 +39,11 @@ export default class Alpha extends Behaviour {
    *
    * @param {number} alphaA - the starting alpha value
    * @param {?number} alphaB - the ending alpha value
-   * @param {?number} life - the life of the behaviour
+   * @param {number} life - the life of the behaviour
    * @param {function} easing - the easing equation to use for transforms
    * @return void
    */
-  reset(alphaA = 1, alphaB = null, life = null, easing = defaultEasing) {
+  reset(alphaA = 1, alphaB = null, life, easing = defaultEasing) {
     this.same = !alphaB ? true : false;
 
     this.alphaA = createSpan(alphaA);
