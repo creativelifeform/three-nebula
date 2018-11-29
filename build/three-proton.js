@@ -50216,6 +50216,7 @@ var Attraction = function (_Behaviour) {
     /**
      * Applies the behaviour to the particle.
      *
+     * @augments particle.a
      * @param {Particle} particle - the particle to apply the behaviour to
      * @param {number} time - particle engine time
      * @param {integer} index - the particle index
@@ -52250,25 +52251,48 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Behaviour that allows for specific functions to be called on particles when
+ * they interact with a zone.
+ *
+ */
 var CrossZone = function (_Behaviour) {
   _inherits(CrossZone, _Behaviour);
 
+  /**
+   * Constructs a CrossZone behaviour instance.
+   *
+   * @param {Zone} a - the zone used to apply to particles with this behaviour
+   * @param {string} b - enum of cross types, valid strings include 'dead', 'bound', 'cross'
+   * @param {number} life - The life of the particle
+   * @param {function} easing - The behaviour's decaying trend
+   */
   function CrossZone(a, b, life, easing) {
     _classCallCheck(this, CrossZone);
 
     var _this = _possibleConstructorReturn(this, (CrossZone.__proto__ || Object.getPrototypeOf(CrossZone)).call(this, life, easing));
 
     _this.reset(a, b);
-    ///dead /bound /cross
     _this.name = 'CrossZone';
     return _this;
   }
+
+  /**
+   * Resets the behaviour properties.
+   *
+   * @param {Zone} a - the zone used to apply to particles with this behaviour
+   * @param {string} b - enum of cross types, valid strings include 'dead', 'bound', 'cross'
+   * @param {number} life - The life of the particle
+   * @param {function} easing - The behaviour's decaying trend
+   */
+
 
   _createClass(CrossZone, [{
     key: 'reset',
     value: function reset(a, b, life, easing) {
       var zone, crossType;
 
+      // TODO remove the ability for mixed order of arguments
       if (typeof a == 'string') {
         crossType = a;
         zone = b;
@@ -52277,13 +52301,26 @@ var CrossZone = function (_Behaviour) {
         zone = a;
       }
 
+      /**
+       * @desc The zone used to apply to particles with this behaviour
+       * @type {Zone}
+       */
       this.zone = zone;
       this.zone.crossType = _utils.Util.initValue(crossType, 'dead');
 
-      if (life) {
-        _get(CrossZone.prototype.__proto__ || Object.getPrototypeOf(CrossZone.prototype), 'reset', this).call(this, life, easing);
-      }
+      life && _get(CrossZone.prototype.__proto__ || Object.getPrototypeOf(CrossZone.prototype), 'reset', this).call(this, life, easing);
     }
+
+    /**
+     * Applies the behaviour to the particle.
+     *
+     * @see {@link '../zone/Zone.js'} crossing
+     * @param {object} particle - the particle to apply the behaviour to
+     * @param {number} time - engine time
+     * @param {integer} index - the particle index
+     * @return void
+     */
+
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {

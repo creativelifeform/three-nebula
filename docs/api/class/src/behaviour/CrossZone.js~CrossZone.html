@@ -132,13 +132,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import CrossZone from &apos;<span><a href="file/src/behaviour/CrossZone.js.html#lineNumber4">@rohandeshpande/three-proton/src/behaviour/CrossZone.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import CrossZone from &apos;<span><a href="file/src/behaviour/CrossZone.js.html#lineNumber9">@rohandeshpande/three-proton/src/behaviour/CrossZone.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/behaviour/CrossZone.js.html#lineNumber4">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/behaviour/CrossZone.js.html#lineNumber9">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -158,7 +158,9 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>Behaviour that allows for specific functions to be called on particles when
+they interact with a zone.</p>
+</div>
   
 
   
@@ -190,13 +192,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/CrossZone.js~CrossZone.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/CrossZone.js~CrossZone.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(a: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>, b: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Constructs a CrossZone behaviour instance.</p>
+</div>
       </div>
     </td>
     <td>
@@ -253,13 +256,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/CrossZone.js~CrossZone.html#instance-member-zone">zone</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/CrossZone.js~CrossZone.html#instance-member-zone">zone</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The zone used to apply to particles with this behaviour</p>
+</div>
       </div>
     </td>
     <td>
@@ -288,13 +292,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/CrossZone.js~CrossZone.html#instance-method-applyBehaviour">applyBehaviour</a></span></span><span class="code" data-ice="signature">(particle: <span>*</span>, time: <span>*</span>, index: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/CrossZone.js~CrossZone.html#instance-method-applyBehaviour">applyBehaviour</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Applies the behaviour to the particle.</p>
+</div>
       </div>
     </td>
     <td>
@@ -316,13 +321,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/CrossZone.js~CrossZone.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">(a: <span>*</span>, b: <span>*</span>, life: <span>*</span>, easing: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/CrossZone.js~CrossZone.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">(a: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>, b: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Resets the behaviour properties.</p>
+</div>
       </div>
     </td>
     <td>
@@ -728,22 +734,61 @@
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(a: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>, b: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/CrossZone.js.html#lineNumber5">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/CrossZone.js.html#lineNumber18">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Constructs a CrossZone behaviour instance.</p>
+</div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-constructor-constructor">Behaviour#constructor</a></span></div>
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">a</td>
+      <td data-ice="type" class="code"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>the zone used to apply to particles with this behaviour</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">b</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>enum of cross types, valid strings include &apos;dead&apos;, &apos;bound&apos;, &apos;cross&apos;</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">life</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The life of the particle</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">easing</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The behaviour&apos;s decaying trend</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   
@@ -778,7 +823,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/CrossZone.js.html#lineNumber10">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/CrossZone.js.html#lineNumber22">source</a></span></span>
     </span>
   </h3>
 
@@ -818,18 +863,19 @@
     
     
     
-    <span class="code" data-ice="name">zone</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">zone</span><span class="code" data-ice="signature">: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/CrossZone.js.html#lineNumber24">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/CrossZone.js.html#lineNumber49">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The zone used to apply to particles with this behaviour</p>
+</div>
 
   
 
@@ -864,18 +910,18 @@
     
     
     
-    <span class="code" data-ice="name">applyBehaviour</span><span class="code" data-ice="signature">(particle: <span>*</span>, time: <span>*</span>, index: <span>*</span>)</span>
+    <span class="code" data-ice="name">applyBehaviour</span><span class="code" data-ice="signature">(particle: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/CrossZone.js.html#lineNumber32">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/CrossZone.js.html#lineNumber64">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Apply this behaviour for all particles every time</p>
+  <div data-ice="description"><p>Applies the behaviour to the particle.</p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-applyBehaviour">Behaviour#applyBehaviour</a></span></div>
@@ -890,28 +936,44 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">particle</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the particle to apply the behaviour to</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">time</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>engine time</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">index</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span>integer</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the particle index</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -925,7 +987,7 @@
 
   
 
-  
+  <div data-ice="see"><h4>See:</h4><ul><li><span>{@link &apos;../zone/Zone.js&apos;} crossing</span></li></ul></div>
   
 </div>
 <div class="detail" data-ice="detail">
@@ -936,18 +998,18 @@
     
     
     
-    <span class="code" data-ice="name">reset</span><span class="code" data-ice="signature">(a: <span>*</span>, b: <span>*</span>, life: <span>*</span>, easing: <span>*</span>)</span>
+    <span class="code" data-ice="name">reset</span><span class="code" data-ice="signature">(a: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>, b: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/CrossZone.js.html#lineNumber13">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/CrossZone.js.html#lineNumber33">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Reset this behaviour&apos;s parameters</p>
+  <div data-ice="description"><p>Resets the behaviour properties.</p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-reset">Behaviour#reset</a></span></div>
@@ -962,27 +1024,31 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">a</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the zone used to apply to particles with this behaviour</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">b</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>enum of cross types, valid strings include &apos;dead&apos;, &apos;bound&apos;, &apos;cross&apos;</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">life</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The life of the particle</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">easing</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The behaviour&apos;s decaying trend</p>
+</td>
     </tr>
 </tbody>
   </table>
