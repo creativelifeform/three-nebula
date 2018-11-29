@@ -51790,6 +51790,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Behaviour that applies an alpha transition effect to particles.
  *
+ * @property {number} alphaA - the starting alpha value
+ * @property {number} alphaB - the ending alpha value
+ * @property {boolean} _same - determines if the values are the same
  */
 var Alpha = function (_Behaviour) {
   _inherits(Alpha, _Behaviour);
@@ -51799,14 +51802,14 @@ var Alpha = function (_Behaviour) {
    *
    * @param {number} alphaA - the starting alpha value
    * @param {?number} alphaB - the ending alpha value
-   * @param {?number} life - the life of the behaviour
+   * @param {number} life - the life of the behaviour
    * @param {function} easing - the easing equation to use for transforms
    * @return void
    */
   function Alpha() {
     var alphaA = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
     var alphaB = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-    var life = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    var life = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Infinity;
     var easing = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.DEFAULT_BEHAVIOUR_EASING;
 
     _classCallCheck(this, Alpha);
@@ -51817,6 +51820,13 @@ var Alpha = function (_Behaviour) {
     return _this;
   }
 
+  /**
+   * Gets the _same property.
+   *
+   * @return {boolean}
+   */
+
+
   _createClass(Alpha, [{
     key: 'reset',
 
@@ -51826,18 +51836,17 @@ var Alpha = function (_Behaviour) {
      *
      * @param {number} alphaA - the starting alpha value
      * @param {?number} alphaB - the ending alpha value
-     * @param {?number} life - the life of the behaviour
+     * @param {number} life - the life of the behaviour
      * @param {function} easing - the easing equation to use for transforms
      * @return void
      */
     value: function reset() {
       var alphaA = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       var alphaB = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-      var life = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+      var life = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Infinity;
       var easing = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.DEFAULT_BEHAVIOUR_EASING;
 
-      this.same = !alphaB ? true : false;
-
+      this.same = alphaB === null || alphaB === undefined ? true : false;
       this.alphaA = (0, _math.createSpan)(alphaA);
       this.alphaB = (0, _math.createSpan)(alphaB);
 
@@ -51891,7 +51900,15 @@ var Alpha = function (_Behaviour) {
     key: 'same',
     get: function get() {
       return this._same;
-    },
+    }
+
+    /**
+     * Sets the _same property.
+     *
+     * @param {boolean} same
+     * @return {boolean}
+     */
+    ,
     set: function set(same) {
       this._same = same;
     }

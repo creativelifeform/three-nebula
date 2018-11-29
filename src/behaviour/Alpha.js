@@ -9,6 +9,9 @@ import Behaviour from './Behaviour';
 /**
  * Behaviour that applies an alpha transition effect to particles.
  *
+ * @property {number} alphaA - the starting alpha value
+ * @property {number} alphaB - the ending alpha value
+ * @property {boolean} _same - determines if the values are the same
  */
 export default class Alpha extends Behaviour {
   /**
@@ -16,20 +19,31 @@ export default class Alpha extends Behaviour {
    *
    * @param {number} alphaA - the starting alpha value
    * @param {?number} alphaB - the ending alpha value
-   * @param {number|undefined} life - the life of the behaviour
+   * @param {number} life - the life of the behaviour
    * @param {function} easing - the easing equation to use for transforms
    * @return void
    */
-  constructor(alphaA = 1, alphaB = null, life, easing = defaultEasing) {
+  constructor(alphaA = 1, alphaB = null, life = Infinity, easing = defaultEasing) {
     super(life, easing);
 
     this.reset(alphaA, alphaB);
   }
 
+  /**
+   * Gets the _same property.
+   *
+   * @return {boolean}
+   */
   get same() {
     return this._same;
   }
 
+  /**
+   * Sets the _same property.
+   *
+   * @param {boolean} same
+   * @return {boolean}
+   */
   set same(same) {
     this._same = same;
   }
@@ -43,9 +57,8 @@ export default class Alpha extends Behaviour {
    * @param {function} easing - the easing equation to use for transforms
    * @return void
    */
-  reset(alphaA = 1, alphaB = null, life, easing = defaultEasing) {
-    this.same = !alphaB ? true : false;
-
+  reset(alphaA = 1, alphaB = null, life = Infinity, easing = defaultEasing) {
+    this.same = (alphaB === null || alphaB === undefined) ? true : false;
     this.alphaA = createSpan(alphaA);
     this.alphaB = createSpan(alphaB);
 
