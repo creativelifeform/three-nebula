@@ -12,7 +12,16 @@ describe('Alpha', () => {
 
   it('should instantiate with the correct properties', done => {
     const behaviour = new Proton.Alpha(1, 0);
-    const { life, age, energy, dead, _same, easing, alphaA, alphaB } = behaviour;
+    const {
+      life,
+      age,
+      energy,
+      dead,
+      _same,
+      easing,
+      alphaA,
+      alphaB
+    } = behaviour;
 
     assert.strictEqual(life, Infinity);
     assert.strictEqual(age, 0);
@@ -59,7 +68,16 @@ describe('Alpha', () => {
     behaviour.initialize(particle);
     behaviour.applyBehaviour(particle, TIME);
 
-    const { life, age, energy, dead, _same, easing, alphaA, alphaB } = behaviour;
+    const {
+      life,
+      age,
+      energy,
+      dead,
+      _same,
+      easing,
+      alphaA,
+      alphaB
+    } = behaviour;
 
     assert.strictEqual(life, Infinity);
     assert.strictEqual(age, 1000);
@@ -107,8 +125,7 @@ describe('Attraction', () => {
     assert.isFalse(dead);
     assert.isTrue(targetPosition instanceof Proton.Vector3D);
     assert.strictEqual(radius, 1000);
-    // TODO this should not be a NaN, there is an error in the constructor flow
-    assert.isTrue(isNaN(force));
+    assert.strictEqual(force, 10000);
     assert.strictEqual(radiusSq, 1000000);
     assert.isTrue(attractionForce instanceof Proton.Vector3D);
     assert.strictEqual(lengthSq, 0);
@@ -141,8 +158,7 @@ describe('Attraction', () => {
     assert.isFalse(dead);
     assert.isTrue(targetPosition instanceof Proton.Vector3D);
     assert.strictEqual(radius, 1000);
-    // TODO this should not be a NaN, there is an error in the constructor flow
-    assert.isTrue(isNaN(force));
+    assert.strictEqual(force, 10000);
     assert.strictEqual(radiusSq, 1000000);
     assert.isTrue(attractionForce instanceof Proton.Vector3D);
     assert.strictEqual(lengthSq, 0);

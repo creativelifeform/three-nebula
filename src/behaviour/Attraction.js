@@ -49,7 +49,7 @@ export default class Attraction extends Behaviour {
      * @desc The attraction force scalar multiplier
      * @type {number}
      */
-    this.force = force;
+    this.force = this.normalizeValue(force);
 
     /**
      * @desc The radius of the attraction squared
@@ -80,10 +80,16 @@ export default class Attraction extends Behaviour {
    * @param {function} easing - The behaviour's decaying trend
    * @return void
    */
-  reset(targetPosition, force, radius, life, easing) {
-    this.targetPosition = Util.initValue(targetPosition, new Vector3D());
-    this.radius = Util.initValue(radius, 1000);
-    this.force = Util.initValue(this.normalizeValue(force), 100);
+  reset(
+    targetPosition = new Vector3D(),
+    force = DEFAULT_ATTRACTION_FORCE_SCALAR,
+    radius = DEFAULT_ATTRACITON_RADIUS,
+    life = Infinity,
+    easing = defaultEasing
+  ) {
+    this.targetPosition = targetPosition;
+    this.radius = radius;
+    this.force = this.normalizeValue(force);
     this.radiusSq = this.radius * this.radius;
     this.attractionForce = new Vector3D();
     this.lengthSq = 0;
