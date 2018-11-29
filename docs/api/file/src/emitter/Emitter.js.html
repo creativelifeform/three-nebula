@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/emitter/Emitter.js | @rohandeshpande/three-proton</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A magical, WebGL based 3D particle engine"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@rohandeshpande/three-proton"><meta property="twitter:description" content="A magical, WebGL based 3D particle engine"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/rohan-deshpande/three-proton"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#behaviour">behaviour</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Alpha.js~Alpha.html">Alpha</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Attraction.js~Attraction.html">Attraction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Collision.js~Collision.html">Collision</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Color.js~Color.html">Color</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/CrossZone.js~CrossZone.html">CrossZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Force.js~Force.html">Force</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Gravity.js~G.html">G</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Gravity.js~Gravity.html">Gravity</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/RandomDrift.js~RandomDrift.html">RandomDrift</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Repulsion.js~Repulsion.html">Repulsion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Rotate.js~Rotate.html">Rotate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Scale.js~Scale.html">Scale</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Spring.js~Spring.html">Spring</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACITON_RADIUS">DEFAULT_ATTRACITON_RADIUS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACTION_FORCE_SCALAR">DEFAULT_ATTRACTION_FORCE_SCALAR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BEHAVIOUR_EASING">DEFAULT_BEHAVIOUR_EASING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_ALPHA_THRESHOLD">PARTICLE_ALPHA_THRESHOLD</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_LENGTH_SQ_THRESHOLD">PARTICLE_LENGTH_SQ_THRESHOLD</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#compatibility">compatibility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-classDeprecationWarning">classDeprecationWarning</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#constants">constants</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BIND_EMITTER_EVENT">BIND_EMITTER_EVENT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DR">DR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_ADDED">EMITTER_ADDED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_REMOVED">EMITTER_REMOVED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EULER">EULER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MEASURE">MEASURE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_CREATED">PARTICLE_CREATED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_DEAD">PARTICLE_DEAD</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_SLEEP">PARTICLE_SLEEP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_UPDATE">PARTICLE_UPDATE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PI">PI</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POOL_MAX">POOL_MAX</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RK2">RK2</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RK4">RK4</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TIME_STEP">TIME_STEP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VERLET">VERLET</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#debug">debug</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-log">log</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_DEPTH">DEFAULT_DEPTH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_HEIGHT">DEFAULT_HEIGHT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_POSITION">DEFAULT_POSITION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RADIUS">DEFAULT_RADIUS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_SIZE">DEFAULT_SIZE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_WIDTH">DEFAULT_WIDTH</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#ease">ease</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setEasingByName">setEasingByName</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ease">ease</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-easeLinear">easeLinear</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#emitter">emitter</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html">BehaviourEmitter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/FollowEmitter.js~FollowEmitter.html">FollowEmitter</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#events">events</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/events/EventDispatcher.js~EventDispatcher.html">EventDispatcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_ADDED">EMITTER_ADDED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_REMOVED">EMITTER_REMOVED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_CREATED">PARTICLE_CREATED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_DEAD">PARTICLE_DEAD</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_UPDATE">PARTICLE_UPDATE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initialize">initialize</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Body.js~Body.html">Body</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Life.js~Life.html">Life</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Mass.js~Mass.html">Mass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html">Position</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Radius.js~Radius.html">Radius</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Rate.js~Rate.html">Rate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Velocity.js~V.html">V</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Velocity.js~Velocity.html">Velocity</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#math">math</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Box.js~Box.html">Box</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Polar3D.js~Polar3D.html">Polar3D</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Quaternion.js~Quaternion.html">Quaternion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Span.js~Span.html">Span</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createArraySpan">createArraySpan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createSpan">createSpan</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#renderer">renderer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/BaseRenderer.js~BaseRender.html">BaseRender</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/BaseRenderer.js~BaseRenderer.html">BaseRenderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/CustomRenderer.js~CustomRender.html">CustomRender</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/CustomRenderer.js~CustomRenderer.html">CustomRenderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/MeshRenderer.js~MeshRender.html">MeshRender</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/MeshRenderer.js~MeshRenderer.html">MeshRenderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/PointsRenderer.js~PointsRender.html">PointsRender</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/PointsRenderer.js~PointsRenderer.html">PointsRenderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/SpriteRenderer.js~SpriteRender.html">SpriteRender</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/SpriteRenderer.js~SpriteRenderer.html">SpriteRenderer</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#zone">zone</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/BoxZone.js~BoxZone.html">BoxZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/LineZone.js~LineZone.html">LineZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/MeshZone.js~MeshZone.html">MeshZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/PointZone.js~PointZone.html">PointZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/ScreenZone.js~ScreenZone.html">ScreenZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/SphereZone.js~SphereZone.html">SphereZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/emitter/Emitter.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { BIND_EMITTER_EVENT } from &apos;../constants&apos;;
+import EventDispatcher from &apos;../events/EventDispatcher&apos;;
+import InitializeUtil from &apos;../initialize/InitializeUtil&apos;;
+import Particle from &apos;../core/Particle&apos;;
+import Rate from &apos;../initialize/Rate&apos;;
+import Util from &apos;../utils/Util&apos;;
+import { integrator } from &apos;../core/Proton&apos;;
+import uid from &apos;../utils/uid&apos;;
+
+export default class Emitter extends Particle {
+  constructor(pObj) {
+    super(pObj);
+
+    this.initializes = [];
+    this.particles = [];
+    this.behaviours = [];
+    this.currentEmitTime = 0;
+    this.totalEmitTimes = -1;
+
+    /**
+     * @property {Number} damping -The friction coefficient for all particle emit by This;
+     * @default 0.006
+     */
+    this.damping = 0.006;
+
+    /**
+     * If bindEmitter the particles can bind this emitter&apos;s property;
+     * @property bindEmitter
+     * @type {Boolean}
+     * @default true
+     */
+    this.bindEmitter = true;
+
+    /**
+     * The number of particles per second emit (a [particle]/b [s]);
+     * @property rate
+     * @type {Rate}
+     * @default Rate(1, .1)
+     */
+    this.rate = new Rate(1, 0.1);
+
+    /**
+     * The emitter&apos;s id;
+     * @property id
+     * @type {String} id
+     */
+    this.id = `emitter_${uid()}`;
+    this.cID = 0;
+    this.name = &apos;Emitter&apos;;
+    this.eventDispatcher = new EventDispatcher();
+  }
+
+  /**
+   * Sets the emitter rate.
+   *
+   * @param {Rate} rate - a rate initializer object
+   * @return {Emitter}
+   */
+  setRate(rate) {
+    this.rate = rate;
+
+    return this;
+  }
+
+  /**
+   * Sets the position of the emitter.
+   *
+   * @param {object} position - an object containing x, y and z props
+   * @return {Emitter}
+   */
+  setPosition(position = {}) {
+    const { p } = this;
+    const { x = p.x, y = p.y, z = p.z } = position;
+
+    this.p.set(x, y, z);
+
+    return this;
+  }
+
+  /**
+   * Makes the emitter emit particles.
+   *
+   * @param {Number} totalEmitTimes - the total number of times to emit particles
+   * @param {String} life - the life of this emitter
+   * @return {Emitter}
+   */
+  emit(totalEmitTimes = Infinity, life) {
+    this.currentEmitTime = 0;
+    this.totalEmitTimes = totalEmitTimes;
+
+    if (life == true || life == &apos;life&apos; || life == &apos;destroy&apos;) {
+      this.life = totalEmitTimes == &apos;once&apos; ? 1 : this.totalEmitTimes;
+    } else if (!isNaN(life)) {
+      this.life = life;
+    }
+
+    this.rate.init();
+
+    return this;
+  }
+
+  /**
+   * stop emiting
+   * @method stopEmit
+   */
+  stopEmit() {
+    this.totalEmitTimes = -1;
+    this.currentEmitTime = 0;
+  }
+
+  /**
+   * remove current all particles
+   * @method removeAllParticles
+   */
+  removeAllParticles() {
+    var i = this.particles.length;
+
+    while (i--) this.particles[i].dead = true;
+  }
+
+  /**
+   * create single particle;
+   *
+   * can use emit({x:10},new Gravity(10),{&apos;particleUpdate&apos;,fun}) or emit([{x:10},new Initialize],new Gravity(10),{&apos;particleUpdate&apos;,fun})
+   * @method removeAllParticles
+   */
+  createParticle(initialize, behaviour) {
+    var particle = this.parent.pool.get(Particle);
+
+    this.setupParticle(particle, initialize, behaviour);
+    this.parent &amp;&amp;
+      this.parent.eventDispatcher.dispatchEvent(&apos;PARTICLE_CREATED&apos;, particle);
+    BIND_EMITTER_EVENT &amp;&amp; this.dispatchEvent(&apos;PARTICLE_CREATED&apos;, particle);
+
+    return particle;
+  }
+  /**
+   * add initialize to this emitter
+   * @method addSelfInitialize
+   */
+  addSelfInitialize(pObj) {
+    if (pObj[&apos;init&apos;]) {
+      pObj.init(this);
+    } else {
+      this.initAll();
+    }
+  }
+
+  /**
+   * add the Initialize to particles;
+   *
+   * you can use initializes array:for example emitter.addInitialize(initialize1,initialize2,initialize3);
+   * @method addInitialize
+   * @param {Initialize} initialize like this new Radius(1, 12)
+   */
+  addInitialize() {
+    var i = arguments.length;
+
+    while (i--) this.initializes.push(arguments[i]);
+  }
+
+  /**
+   * Proxy method for adding multiple initializers.
+   *
+   * @see addInitialize
+   * @param {array&lt;Initialize&gt;} properties - an array of emitter initializers
+   * @return {Emitter}
+   */
+  setProperties(properties) {
+    let i = properties.length;
+
+    while (i--) {
+      this.initializes.push(properties[i]);
+    }
+
+    return this;
+  }
+
+  /**
+   * remove the Initialize
+   * @method removeInitialize
+   * @param {Initialize} initialize a initialize
+   */
+  removeInitialize(initializer) {
+    var index = this.initializes.indexOf(initializer);
+
+    if (index &gt; -1) this.initializes.splice(index, 1);
+  }
+
+  /**
+   * remove all Initializes
+   * @method removeInitializers
+   */
+  removeInitializers() {
+    Util.destroyArray(this.initializes);
+  }
+  /**
+   * add the Behaviour to particles;
+   *
+   * you can use Behaviours array:emitter.addBehaviour(Behaviour1,Behaviour2,Behaviour3);
+   * @method addBehaviour
+   * @param {Behaviour} behaviour like this new Color(&apos;random&apos;)
+   */
+  addBehaviour() {
+    var i = arguments.length;
+
+    while (i--) this.behaviours.push(arguments[i]);
+  }
+
+  /**
+   * Proxy method for adding multiple behaviours.
+   *
+   * @see addInitialize
+   * @param {array&lt;Behaviour&gt;} behaviours - an array of emitter behaviours
+   * @return {Emitter}
+   */
+  setBehaviours(behaviours) {
+    let i = behaviours.length;
+
+    while (i--) {
+      this.behaviours.push(behaviours[i]);
+    }
+
+    return this;
+  }
+
+  /**
+   * remove the Behaviour
+   * @method removeBehaviour
+   * @param {Behaviour} behaviour a behaviour
+   */
+  removeBehaviour(behaviour) {
+    var index = this.behaviours.indexOf(behaviour);
+
+    if (index &gt; -1) this.behaviours.splice(index, 1);
+  }
+  /**
+   * remove all behaviours
+   * @method removeAllBehaviours
+   */
+  removeAllBehaviours() {
+    Util.destroyArray(this.behaviours);
+  }
+
+  integrate(time) {
+    var damping = 1 - this.damping;
+
+    integrator.integrate(this, time, damping);
+
+    var i = this.particles.length;
+
+    while (i--) {
+      var particle = this.particles[i];
+
+      particle.update(time, i);
+      integrator.integrate(particle, time, damping);
+
+      this.parent &amp;&amp;
+        this.parent.eventDispatcher.dispatchEvent(&apos;PARTICLE_UPDATE&apos;, particle);
+      BIND_EMITTER_EVENT &amp;&amp; this.dispatchEvent(&apos;PARTICLE_UPDATE&apos;, particle);
+    }
+  }
+
+  emitting(time) {
+    if (this.totalEmitTimes == &apos;once&apos;) {
+      var i = this.rate.getValue(99999);
+
+      if (i &gt; 0) this.cID = i;
+      while (i--) this.createParticle();
+      this.totalEmitTimes = &apos;none&apos;;
+    } else if (!isNaN(this.totalEmitTimes)) {
+      this.currentEmitTime += time;
+      if (this.currentEmitTime &lt; this.totalEmitTimes) {
+        i = this.rate.getValue(time);
+
+        if (i &gt; 0) this.cID = i;
+        while (i--) this.createParticle();
+      }
+    }
+  }
+
+  update(time) {
+    this.age += time;
+    if (this.dead || this.age &gt;= this.life) {
+      this.destroy();
+    }
+
+    this.emitting(time);
+    this.integrate(time);
+
+    var particle,
+      i = this.particles.length;
+
+    while (i--) {
+      particle = this.particles[i];
+      if (particle.dead) {
+        this.parent &amp;&amp;
+          this.parent.eventDispatcher.dispatchEvent(&apos;PARTICLE_DEAD&apos;, particle);
+        BIND_EMITTER_EVENT &amp;&amp; this.dispatchEvent(&apos;PARTICLE_DEAD&apos;, particle);
+
+        this.parent.pool.expire(particle.reset());
+        this.particles.splice(i, 1);
+      }
+    }
+  }
+
+  setupParticle(particle, initialize, behaviour) {
+    var initializes = this.initializes;
+    var behaviours = this.behaviours;
+
+    if (initialize) {
+      if (Util.isArray(initialize)) initializes = initialize;
+      else initializes = [initialize];
+    }
+
+    if (behaviour) {
+      if (Util.isArray(behaviour)) behaviours = behaviour;
+      else behaviours = [behaviour];
+    }
+
+    InitializeUtil.initialize(this, particle, initializes);
+    particle.addBehaviours(behaviours);
+    particle.parent = this;
+    this.particles.push(particle);
+  }
+
+  /**
+   * Destory this Emitter
+   * @method destroy
+   */
+  destroy() {
+    this.dead = true;
+    this.energy = 0;
+    this.totalEmitTimes = -1;
+
+    if (this.particles.length == 0) {
+      this.removeInitializers();
+      this.removeAllBehaviours();
+
+      this.parent &amp;&amp; this.parent.removeEmitter(this);
+    }
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
