@@ -104,7 +104,6 @@ export default class Alpha extends Behaviour {
   /**
    * Applies the behaviour to the particle.
    *
-   * @augments particle.alpha
    * @param {object} particle - the particle to apply the behaviour to
    * @param {number} time - engine time
    * @param {integer} index - the particle index
