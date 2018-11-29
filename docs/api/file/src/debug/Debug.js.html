@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/debug/Debug.js | @rohandeshpande/three-proton</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A magical, WebGL based 3D particle engine"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@rohandeshpande/three-proton"><meta property="twitter:description" content="A magical, WebGL based 3D particle engine"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/rohan-deshpande/three-proton"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#behaviour">behaviour</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Alpha.js~Alpha.html">Alpha</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Attraction.js~Attraction.html">Attraction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Collision.js~Collision.html">Collision</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Color.js~Color.html">Color</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/CrossZone.js~CrossZone.html">CrossZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Force.js~Force.html">Force</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Gravity.js~G.html">G</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Gravity.js~Gravity.html">Gravity</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/RandomDrift.js~RandomDrift.html">RandomDrift</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Repulsion.js~Repulsion.html">Repulsion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Rotate.js~Rotate.html">Rotate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Scale.js~Scale.html">Scale</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/behaviour/Spring.js~Spring.html">Spring</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACITON_RADIUS">DEFAULT_ATTRACITON_RADIUS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACTION_FORCE_SCALAR">DEFAULT_ATTRACTION_FORCE_SCALAR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BEHAVIOUR_EASING">DEFAULT_BEHAVIOUR_EASING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_ALPHA_THRESHOLD">PARTICLE_ALPHA_THRESHOLD</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_LENGTH_SQ_THRESHOLD">PARTICLE_LENGTH_SQ_THRESHOLD</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#compatibility">compatibility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-classDeprecationWarning">classDeprecationWarning</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#constants">constants</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BIND_EMITTER_EVENT">BIND_EMITTER_EVENT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DR">DR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_ADDED">EMITTER_ADDED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_REMOVED">EMITTER_REMOVED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EULER">EULER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MEASURE">MEASURE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_CREATED">PARTICLE_CREATED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_DEAD">PARTICLE_DEAD</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_SLEEP">PARTICLE_SLEEP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_UPDATE">PARTICLE_UPDATE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PI">PI</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POOL_MAX">POOL_MAX</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RK2">RK2</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RK4">RK4</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TIME_STEP">TIME_STEP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VERLET">VERLET</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#debug">debug</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-log">log</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_DEPTH">DEFAULT_DEPTH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_HEIGHT">DEFAULT_HEIGHT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_POSITION">DEFAULT_POSITION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RADIUS">DEFAULT_RADIUS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_SIZE">DEFAULT_SIZE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_WIDTH">DEFAULT_WIDTH</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#ease">ease</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setEasingByName">setEasingByName</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ease">ease</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-easeLinear">easeLinear</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#emitter">emitter</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html">BehaviourEmitter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/FollowEmitter.js~FollowEmitter.html">FollowEmitter</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#events">events</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/events/EventDispatcher.js~EventDispatcher.html">EventDispatcher</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_ADDED">EMITTER_ADDED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_REMOVED">EMITTER_REMOVED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_CREATED">PARTICLE_CREATED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_DEAD">PARTICLE_DEAD</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_UPDATE">PARTICLE_UPDATE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initialize">initialize</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Body.js~Body.html">Body</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Life.js~Life.html">Life</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Mass.js~Mass.html">Mass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html">Position</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Radius.js~Radius.html">Radius</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Rate.js~Rate.html">Rate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Velocity.js~V.html">V</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Velocity.js~Velocity.html">Velocity</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#math">math</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Box.js~Box.html">Box</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Polar3D.js~Polar3D.html">Polar3D</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Quaternion.js~Quaternion.html">Quaternion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Span.js~Span.html">Span</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createArraySpan">createArraySpan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createSpan">createSpan</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#renderer">renderer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/BaseRenderer.js~BaseRender.html">BaseRender</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/BaseRenderer.js~BaseRenderer.html">BaseRenderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/CustomRenderer.js~CustomRender.html">CustomRender</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/CustomRenderer.js~CustomRenderer.html">CustomRenderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/MeshRenderer.js~MeshRender.html">MeshRender</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/MeshRenderer.js~MeshRenderer.html">MeshRenderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/PointsRenderer.js~PointsRender.html">PointsRender</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/PointsRenderer.js~PointsRenderer.html">PointsRenderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/SpriteRenderer.js~SpriteRender.html">SpriteRender</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/SpriteRenderer.js~SpriteRenderer.html">SpriteRenderer</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#zone">zone</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/BoxZone.js~BoxZone.html">BoxZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/LineZone.js~LineZone.html">LineZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/MeshZone.js~MeshZone.html">MeshZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/PointZone.js~PointZone.html">PointZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/ScreenZone.js~ScreenZone.html">ScreenZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/SphereZone.js~SphereZone.html">SphereZone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/debug/Debug.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import * as THREE from &apos;three&apos;;
+
+import { DEFAULT_POSITION, DEFAULT_SIZE as size } from &apos;./constants&apos;;
+
+/**
+ * @exports Debug - methods and helpers for debugging Proton emitters, zones and particles.
+ */
+export default {
+  /**
+    * Adds an event listener to the proton instance&apos;s PROTON_UPDATE event.
+    *
+    * @param {Proton} proton - the proton instance
+    * @param {function} onProtonUpdated - the function to call when proton has been updated
+    * @return {Debug}
+    */
+  addEventListener: function(proton, onProtonUpdated) {
+    proton.eventDispatcher.addEventListener(&apos;PROTON_UPDATE&apos;, onProtonUpdated);
+
+    return this;
+  },
+
+  /**
+    * Draws a wireframe mesh around the zone for debugging purposes.
+    *
+    * @param {Proton} proton - the proton instance
+    * @param {object} container - a three Object3D (usually the scene)
+    * @param {Zone} zone - a Zone instance
+    * @return void
+    */
+  drawZone: function(proton, container, zone = {}) {
+    const color = &apos;#2194ce&apos;;
+    const wireframe = true;
+    const {
+      width = size,
+      height = size,
+      depth = size,
+      radius = size,
+      x = DEFAULT_POSITION,
+      y = DEFAULT_POSITION,
+      z = DEFAULT_POSITION
+    } = zone;
+    let geometry;
+
+    if (zone.isPointZone()) {
+      geometry = new THREE.SphereGeometry(15);
+    }
+
+    if (zone.isLineZone()) {
+      // TODO
+    }
+
+    if (zone.isBoxZone()) {
+      geometry = new THREE.BoxGeometry(width, height, depth);
+    }
+
+    if (zone.isSphereZone()) {
+      geometry = new THREE.SphereGeometry(radius, size, size);
+    }
+
+    if (zone.isMeshZone()) {
+      geometry = zone.geometry.geometry
+        ? zone.geometry.geometry.clone()
+        : zone.geometry.clone();
+    }
+
+    if (!geometry) {
+      geometry = new THREE.BoxGeometry(width, height, depth);
+    }
+
+    const material = new THREE.MeshBasicMaterial({ color, wireframe });
+    // NOTE! geometry.clone is required for UNKNOWN reasons,
+    // three does not render the mesh correctly without doing this since r88
+    const mesh = new THREE.Mesh(geometry.clone(), material);
+
+    container.add(mesh);
+
+    this.addEventListener(proton, function() {
+      mesh.position.set(x, y, z);
+    });
+  },
+
+  /**
+    * Draws a mesh for each particle emitted in order to help debug particles.
+    *
+    * @param {object} proton - the proton instance
+    * @param {object} container - a three Object3D (usually the scene)
+    * @param {object} emitter - the emitter to debug
+    * @param {string} color - the color for the debug mesh material
+    * @return void
+    */
+  drawEmitter: function(proton, container, emitter, color) {
+    const geometry = new THREE.OctahedronGeometry(size);
+    const material = new THREE.MeshBasicMaterial({
+      color: color || &apos;#aaa&apos;,
+      wireframe: true
+    });
+    // NOTE! geometry.clone is required for UNKNOWN reasons,
+    // three does not render the mesh correctly without doing this since r88
+    const mesh = new THREE.Mesh(geometry.clone(), material);
+
+    container.add(mesh);
+
+    this.addEventListener(proton, function() {
+      mesh.position.copy(emitter.p);
+      mesh.rotation.set(
+        emitter.rotation.x,
+        emitter.rotation.y,
+        emitter.rotation.z
+      );
+    });
+  },
+
+  /**
+   * Renders emitter / particle information into the info element.
+   *
+   * @param {object} proton - the proton instance
+   * @param {integer} style - style to apply (see the addInfo method&apos;s switch statement)
+   * @return void
+   */
+  renderInfo: (function() {
+    function getCreatedNumber(type, proton) {
+      var pool = type == &apos;material&apos; ? &apos;_materialPool&apos; : &apos;_targetPool&apos;;
+      var renderer = proton.renderers[0];
+
+      return renderer[pool].cID;
+    }
+
+    function getEmitterPos(proton) {
+      var e = proton.emitters[0];
+
+      return (
+        Math.round(e.p.x) + &apos;,&apos; + Math.round(e.p.y) + &apos;,&apos; + Math.round(e.p.z)
+      );
+    }
+
+    return function(proton, style) {
+      this.addInfo(style);
+      var str = &apos;&apos;;
+
+      switch (this._infoType) {
+        case 2:
+          str += &apos;emitter:&apos; + proton.emitters.length + &apos;&lt;br&gt;&apos;;
+          str += &apos;em speed:&apos; + proton.emitters[0].cID + &apos;&lt;br&gt;&apos;;
+          str += &apos;pos:&apos; + getEmitterPos(proton);
+          break;
+
+        case 3:
+          str += proton.renderers[0].name + &apos;&lt;br&gt;&apos;;
+          str += &apos;target:&apos; + getCreatedNumber(&apos;target&apos;) + &apos;&lt;br&gt;&apos;;
+          str += &apos;material:&apos; + getCreatedNumber(&apos;material&apos;);
+          break;
+
+        default:
+          str += &apos;particles:&apos; + proton.getCount() + &apos;&lt;br&gt;&apos;;
+          str += &apos;pool:&apos; + proton.pool.getCount() + &apos;&lt;br&gt;&apos;;
+          str += &apos;total:&apos; + (proton.getCount() + proton.pool.getCount());
+      }
+      this._infoCon.innerHTML = str;
+    };
+  })(),
+
+  /**
+   * Appends the info element into the dom.
+   *
+   * @param {integer} style - the style type to apply
+   * @return void
+   */
+  addInfo: (function() {
+    return function(style) {
+      var self = this;
+
+      if (!this._infoCon) {
+        this._infoCon = document.createElement(&apos;div&apos;);
+        this._infoCon.style.cssText = [
+          &apos;position:fixed;bottom:0px;left:0;cursor:pointer;&apos;,
+          &apos;opacity:0.9;z-index:10000;padding:10px;font-size:12px;&apos;,
+          &apos;width:120px;height:50px;background-color:#002;color:#0ff;&apos;
+        ].join(&apos;&apos;);
+
+        this._infoType = 1;
+        this._infoCon.addEventListener(
+          &apos;click&apos;,
+          function() {
+            self._infoType++;
+            if (self._infoType &gt; 3) self._infoType = 1;
+          },
+          false
+        );
+
+        var bg, color;
+
+        switch (style) {
+          case 2:
+            bg = &apos;#201&apos;;
+            color = &apos;#f08&apos;;
+            break;
+
+          case 3:
+            bg = &apos;#020&apos;;
+            color = &apos;#0f0&apos;;
+            break;
+
+          default:
+            bg = &apos;#002&apos;;
+            color = &apos;#0ff&apos;;
+        }
+
+        this._infoCon.style[&apos;background-color&apos;] = bg;
+        this._infoCon.style[&apos;color&apos;] = color;
+      }
+
+      if (!this._infoCon.parentNode) document.body.appendChild(this._infoCon);
+    };
+  })()
+};
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
