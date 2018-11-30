@@ -46,6 +46,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACITON_RADIUS">DEFAULT_ATTRACITON_RADIUS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACTION_FORCE_SCALAR">DEFAULT_ATTRACTION_FORCE_SCALAR</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BEHAVIOUR_EASING">DEFAULT_BEHAVIOUR_EASING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RANDOM_DRIFT_DELAY">DEFAULT_RANDOM_DRIFT_DELAY</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_ALPHA_THRESHOLD">PARTICLE_ALPHA_THRESHOLD</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_LENGTH_SQ_THRESHOLD">PARTICLE_LENGTH_SQ_THRESHOLD</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#compatibility">compatibility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-classDeprecationWarning">classDeprecationWarning</a></span></span></li>
@@ -136,18 +137,18 @@
 import { Vector3D } from &apos;../math&apos;;
 
 /**
- * Forces particles along a specific axis.
+ * Behaviour that forces particles along a specific axis.
  *
  */
 export default class Force extends Behaviour {
   /**
-   * @constructs Force
+   * Constructs a Force behaviour instance.
    *
    * @param {number} fx - the x axis force
    * @param {number} fy - the y axis force
    * @param {number} fz - the z axis force
    * @param {number} life - the life of the particle
-   * @param {string} easing - the easing equation to use
+   * @param {function} easing - The behaviour&apos;s decaying trend
    * @return void
    */
   constructor(fx, fy, fz, life, easing) {
@@ -156,13 +157,39 @@ export default class Force extends Behaviour {
     this.reset(fx, fy, fz);
   }
 
+  /**
+   * Resets the behaviour properties.
+   *
+   * @param {number} fx - the x axis force
+   * @param {number} fy - the y axis force
+   * @param {number} fz - the z axis force
+   */
   reset(fx, fy, fz) {
+    /**
+     * @desc The normalized force to exert on the particle in
+     * @type {Vector3D}
+     */
     this.force = this.normalizeForce(new Vector3D(fx, fy, fz));
+
+    /**
+     * @desc The id of the force vector
+     * @property {number} this.force.id
+     */
     this.force.id = Math.random();
   }
 
+  /**
+   * Applies the behaviour to the particle.
+   * Mutates the particle.a property.
+   *
+   * @param {object} particle - the particle to apply the behaviour to
+   * @param {number} time - engine time
+   * @param {integer} index - the particle index
+   * @return void
+   */
   applyBehaviour(particle, time, index) {
     super.applyBehaviour(particle, time, index);
+
     particle.a.add(this.force);
   }
 }

@@ -138,6 +138,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_random_drift_delay",
+    "variable/index.html#static-variable-DEFAULT_RANDOM_DRIFT_DELAY",
+    "<span>DEFAULT_RANDOM_DRIFT_DELAY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/debug/constants.js~default_size",
     "variable/index.html#static-variable-DEFAULT_SIZE",
     "<span>DEFAULT_SIZE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
@@ -919,13 +925,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -1314,9 +1320,9 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/behaviour/randomdrift.js~randomdrift#randomfoce",
-    "class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-member-randomFoce",
-    "src/behaviour/RandomDrift.js~RandomDrift#randomFoce",
+    "src/behaviour/randomdrift.js~randomdrift#randomforce",
+    "class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-member-randomForce",
+    "src/behaviour/RandomDrift.js~RandomDrift#randomForce",
     "member"
   ],
   [

@@ -46,6 +46,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACITON_RADIUS">DEFAULT_ATTRACITON_RADIUS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACTION_FORCE_SCALAR">DEFAULT_ATTRACTION_FORCE_SCALAR</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BEHAVIOUR_EASING">DEFAULT_BEHAVIOUR_EASING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RANDOM_DRIFT_DELAY">DEFAULT_RANDOM_DRIFT_DELAY</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_ALPHA_THRESHOLD">PARTICLE_ALPHA_THRESHOLD</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_LENGTH_SQ_THRESHOLD">PARTICLE_LENGTH_SQ_THRESHOLD</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#compatibility">compatibility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-classDeprecationWarning">classDeprecationWarning</a></span></span></li>
@@ -158,7 +159,7 @@
 
   
   
-  <div class="description" data-ice="description"><p>Forces particles down the y axis.</p>
+  <div class="description" data-ice="description"><p>Behaviour that forces particles down the y axis.</p>
 </div>
   
 
@@ -197,7 +198,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Constructs a Gravity behaviour instance.</p>
+</div>
       </div>
     </td>
     <td>
@@ -610,13 +612,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Force.js~Force.html#instance-member-force">force</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Force.js~Force.html#instance-member-force">force</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The normalized force to exert on the particle in</p>
+</div>
       </div>
     </td>
     <td>
@@ -638,13 +641,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Force.js~Force.html#instance-method-applyBehaviour">applyBehaviour</a></span></span><span class="code" data-ice="signature">(particle: <span>*</span>, time: <span>*</span>, index: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Force.js~Force.html#instance-method-applyBehaviour">applyBehaviour</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Applies the behaviour to the particle.</p>
+</div>
       </div>
     </td>
     <td>
@@ -666,13 +670,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Force.js~Force.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">(fx: <span>*</span>, fy: <span>*</span>, fz: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Force.js~Force.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">(fx: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, fy: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, fz: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Resets the behaviour properties.</p>
+</div>
       </div>
     </td>
     <td>
@@ -707,7 +712,8 @@
   
   
   
-  
+  <div data-ice="description"><p>Constructs a Gravity behaviour instance.</p>
+</div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/behaviour/Force.js~Force.html#instance-constructor-constructor">Force#constructor</a></span></div>
 
