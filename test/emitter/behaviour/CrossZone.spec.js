@@ -1,8 +1,8 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Proton from '../../../src';
 
-import { TIME } from '../constants';
+import { TIME } from '../../constants';
 import chai from 'chai';
 import sinon from 'sinon';
 

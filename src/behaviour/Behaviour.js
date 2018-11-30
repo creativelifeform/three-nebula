@@ -12,7 +12,7 @@ export default class Behaviour {
      * @property id
      * @type {String} id
      */
-    this.id = `Behaviour_${uid()}`;
+    this.id = `behaviour-${uid()}`;
     this.life = Util.initValue(life, Infinity);
     /**
      * The behaviour's decaying trend, for example easeOutQuart;
