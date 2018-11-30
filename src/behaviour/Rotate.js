@@ -47,6 +47,16 @@ export default class Rotate extends Behaviour {
     this._type = type;
   }
 
+  /**
+   * Resets the behaviour properties.
+   *
+   * @param {number} x - X axis rotation
+   * @param {number} y - Y axis rotation
+   * @param {number} z - Z axis rotation
+   * @param {number} life - the life of the behaviour
+   * @param {function} easing - the easing equation to use for transforms
+   * @return void
+   */
   reset(a, b, c, life, easing) {
     /**
      * @desc X axis rotation.
