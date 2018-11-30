@@ -34,7 +34,16 @@ export default class Scale extends Behaviour {
     if (b == null || b == undefined) this._same = true;
     else this._same = false;
 
+    /**
+     * @desc The starting scale.
+     * @type {Span}
+     */
     this.a = createSpan(Util.initValue(a, 1));
+
+    /**
+     * @desc The ending scale.
+     * @type {Span}
+     */
     this.b = createSpan(b);
 
     life && super.reset(life, easing);
@@ -42,6 +51,7 @@ export default class Scale extends Behaviour {
 
   /**
    * Initializes the behaviour on a particle.
+   * Stores initial values for comparison and mutation in the applyBehaviour method.
    *
    * @param {object} particle - the particle to initialize the behaviour on
    * @return void
@@ -55,6 +65,7 @@ export default class Scale extends Behaviour {
 
   /**
    * Applies the behaviour to the particle.
+   * Mutates the particle's scale and its radius according to this scale.
    *
    * @param {object} particle - the particle to apply the behaviour to
    * @param {number} time - engine time
@@ -70,7 +81,10 @@ export default class Scale extends Behaviour {
       this.energy
     );
 
-    if (particle.scale < 0.0005) particle.scale = 0;
+    if (particle.scale < 0.0005) {
+      particle.scale = 0;
+    }
+
     particle.radius = particle.transform.oldRadius * particle.scale;
   }
 }
