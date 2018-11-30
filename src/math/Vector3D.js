@@ -1,4 +1,4 @@
-import { Vector3 } from 'three';
+import { Euler, Vector3 } from 'three';
 
 export default class Vector3D extends Vector3 {
   clear() {
@@ -27,5 +27,11 @@ export default class Vector3D extends Vector3 {
 
   toString() {
     return 'x:' + this.x + 'y:' + this.y + 'z:' + this.z;
+  }
+
+  eulerFromDir(vector3D) {
+    const euler = new Euler();
+
+    return euler.setFromVector3(vector3D);
   }
 }

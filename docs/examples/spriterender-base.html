@@ -18,13 +18,13 @@
 
 <body>
     <div id="container"></div>
-    <script src="./js/stats.min.js"></script>
-    <script src="./js/three.min.js"></script>
-    <script src="./js/three-proton.js"></script>
-    <script src="./js/lib/TrackballControls.js"></script>
+    <script src="../js/stats.min.js"></script>
+    <script src="../js/three.min.js"></script>
+    <script src="../js/three-proton.js"></script>
+    <script src="../js/lib/TrackballControls.js"></script>
     <script>
     var proton, emitter;
-    var camera, scene, renderer, stats, clock, spring, controls;
+    var camera, scene, renderer, stats, clock, controls;
 
     init();
 
@@ -32,7 +32,6 @@
         initScene();
         initLights();
         initProton();
-        initControls();
         addStats();
         animate();
     }
@@ -61,18 +60,6 @@
         scene.add(pointLight);
     }
 
-    function initControls() {
-        controls = new THREE.TrackballControls(camera);
-        controls.rotateSpeed = 1.0;
-        controls.zoomSpeed = 1.2;
-        controls.panSpeed = 0.8;
-        controls.noZoom = false;
-        controls.noPan = false;
-        controls.staticMoving = true;
-        controls.dynamicDampingFactor = 0.3;
-        //controls.addEventListener('change', render);
-    }
-
     function addStats() {
         stats = new Stats();
         stats.showPanel(0);
@@ -85,45 +72,46 @@
     function initProton() {
         proton = new Proton.default();
         proton.addEmitter(createEmitter());
-        proton.addRender(new Proton.MeshRender(scene));
+        proton.addRender(new Proton.SpriteRender(scene));
+
+        //Proton.Debug.drawZone(proton,scene,zone2);
+        //Proton.Debug.drawEmitter(proton,scene,emitter);
     }
 
-    function createBox() {
-        var geometry = new THREE.BoxGeometry(20, 20, 20);
-        var material = new THREE.MeshLambertMaterial({
-            color: "#00ffcc"
+    function createSprite() {
+        var map = new THREE.TextureLoader().load("./img/dot.png");
+        var material = new THREE.SpriteMaterial({
+            map: map,
+            color: 0xff0000,
+            blending: THREE.AdditiveBlending,
+            fog: true
         });
-
-        return new THREE.Mesh(geometry, material);
+        return new THREE.Sprite(material);
     }
 
 
     function createEmitter() {
         emitter = new Proton.Emitter();
-        emitter.rate = new Proton.Rate(new Proton.Span(6, 12), new Proton.Span(.2, .5));
+        emitter.rate = new Proton.Rate(new Proton.Span(5, 10), new Proton.Span(.1, .25));
         emitter.addInitialize(new Proton.Mass(1));
         emitter.addInitialize(new Proton.Radius(100));
         emitter.addInitialize(new Proton.Life(2, 4));
-        emitter.addInitialize(new Proton.Body(createBox()));
-
-        emitter.addInitialize(new Proton.Velocity(300, new Proton.Vector3D(0, 1, 0), 50));
+        emitter.addInitialize(new Proton.Body(createSprite()));
+        emitter.addInitialize(new Proton.Position(new Proton.BoxZone(100)));
+        emitter.addInitialize(new Proton.Velocity(200, new Proton.Vector3D(0, 1, 1), 180));
 
         // //emitter.addBehaviour(new Proton.RandomDrift(30, 30, 30, .05));
         emitter.addBehaviour(new Proton.Rotate("random", "random"));
-        emitter.addBehaviour(new Proton.Scale(1, .1));
-        // emitter.addBehaviour(new Proton.Alpha(1, 0, Infinity, Proton.easeInQuart));
-        var zone2 = new Proton.BoxZone(500);
+        emitter.addBehaviour(new Proton.Scale(1, 0.5));
+        emitter.addBehaviour(new Proton.Alpha(1, 0, Infinity, Proton.easeInQuart));
+        var zone2 = new Proton.BoxZone(400);
         //emitter.addBehaviour(new Proton.CrossZone(zone2, "bound"));
-        spring = new Proton.Spring(100, 100, 100);
-        emitter.addBehaviour(spring);
-        emitter.addBehaviour(new Proton.Color('random', 'random', Infinity, Proton.easeOutQuart));
+        //emitter.addBehaviour(new Proton.Collision(emitter,true));
+        emitter.addBehaviour(new Proton.Color(0xff0000, 'random', Infinity, Proton.easeOutQuart));
 
         emitter.p.x = 0;
         emitter.p.y = 0;
         emitter.emit();
-
-        ///Proton.Debug.drawZone(proton,scene,zone2);
-        Proton.Debug.drawEmitter(proton, scene, emitter);
         return emitter;
     }
 
@@ -134,23 +122,17 @@
         stats.end();
     }
 
-    var tha = 0,
-        R = 200;
+    var tha = 0;
 
     function render() {
-        proton.update(clock.getDelta());
+        proton.update();
         renderer.render(scene, camera);
+        //controls.update();
 
-        tha += .005;
-        proton.emitters[0].p.x = Math.cos(tha) * R;
-        proton.emitters[0].p.y = Math.sin(tha) * R;
-        proton.emitters[0].rotation.x += 0.01;
-        var x = Math.cos(tha) * 100;
-        var y = Math.sin(tha) * 100;
-        spring.reset(x, y, 100);
-        controls.update();
-
-        Proton.Debug.renderInfo(proton, 3);
+        camera.lookAt(scene.position);
+        tha += .02;
+        camera.position.x = Math.sin(tha) * 500;
+        camera.position.z = Math.cos(tha) * 500;
     }
 
     function onWindowResize() {

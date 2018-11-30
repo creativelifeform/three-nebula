@@ -46,6 +46,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACITON_RADIUS">DEFAULT_ATTRACITON_RADIUS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACTION_FORCE_SCALAR">DEFAULT_ATTRACTION_FORCE_SCALAR</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BEHAVIOUR_EASING">DEFAULT_BEHAVIOUR_EASING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RANDOM_DRIFT_DELAY">DEFAULT_RANDOM_DRIFT_DELAY</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_ALPHA_THRESHOLD">PARTICLE_ALPHA_THRESHOLD</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_LENGTH_SQ_THRESHOLD">PARTICLE_LENGTH_SQ_THRESHOLD</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#compatibility">compatibility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-classDeprecationWarning">classDeprecationWarning</a></span></span></li>
@@ -135,18 +136,39 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Behaviour from &apos;./Behaviour&apos;;
 import { Util } from &apos;../utils&apos;;
 
+/**
+ * Behaviour that allows for specific functions to be called on particles when
+ * they interact with a zone.
+ *
+ */
 export default class CrossZone extends Behaviour {
+  /**
+   * Constructs a CrossZone behaviour instance.
+   *
+   * @param {Zone} a - the zone used to apply to particles with this behaviour
+   * @param {string} b - enum of cross types, valid strings include &apos;dead&apos;, &apos;bound&apos;, &apos;cross&apos;
+   * @param {number} life - The life of the particle
+   * @param {function} easing - The behaviour&apos;s decaying trend
+   */
   constructor(a, b, life, easing) {
     super(life, easing);
 
     this.reset(a, b);
-    ///dead /bound /cross
     this.name = &apos;CrossZone&apos;;
   }
 
+  /**
+   * Resets the behaviour properties.
+   *
+   * @param {Zone} a - the zone used to apply to particles with this behaviour
+   * @param {string} b - enum of cross types, valid strings include &apos;dead&apos;, &apos;bound&apos;, &apos;cross&apos;
+   * @param {number} life - The life of the particle
+   * @param {function} easing - The behaviour&apos;s decaying trend
+   */
   reset(a, b, life, easing) {
     var zone, crossType;
 
+    // TODO remove the ability for mixed order of arguments
     if (typeof a == &apos;string&apos;) {
       crossType = a;
       zone = b;
@@ -155,14 +177,25 @@ export default class CrossZone extends Behaviour {
       zone = a;
     }
 
+    /**
+     * @desc The zone used to apply to particles with this behaviour
+     * @type {Zone}
+     */
     this.zone = zone;
     this.zone.crossType = Util.initValue(crossType, &apos;dead&apos;);
 
-    if (life) {
-      super.reset(life, easing);
-    }
+    life &amp;&amp; super.reset(life, easing);
   }
 
+  /**
+   * Applies the behaviour to the particle.
+   *
+   * @see {@link &apos;../zone/Zone.js&apos;} crossing
+   * @param {object} particle - the particle to apply the behaviour to
+   * @param {number} time - engine time
+   * @param {integer} index - the particle index
+   * @return void
+   */
   applyBehaviour(particle, time, index) {
     super.applyBehaviour(particle, time, index);
 

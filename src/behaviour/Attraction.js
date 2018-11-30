@@ -99,6 +99,7 @@ export default class Attraction extends Behaviour {
   /**
    * Applies the behaviour to the particle.
    *
+   * @augments particle.a
    * @param {Particle} particle - the particle to apply the behaviour to
    * @param {number} time - particle engine time
    * @param {integer} index - the particle index

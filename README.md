@@ -1,6 +1,8 @@
 # three-proton
 
-# [![Build Status](https://travis-ci.org/rohan-deshpande/three-proton.svg?branch=develop)](https://travis-ci.org/rohan-deshpande/three-proton)
+# [![Build Status](https://travis-ci.org/rohan-deshpande/three-proton.svg?branch=master)](https://travis-ci.org/rohan-deshpande/three-proton)
+
+# [![Coverage Status](https://coveralls.io/repos/github/rohan-deshpande/three-proton/badge.svg?branch=master)](https://coveralls.io/github/rohan-deshpande/three-proton?branch=master)
 
 **Three Proton** is a magical, WebGL based 3D particle engine that has been designed to work in concert with [`three.js`](https://github.com/mrdoob/three.js). It is based on the [Proton](https://github.com/a-jie/Proton) particle engine library and shares much of its API.
 
@@ -50,6 +52,7 @@ npm i --save @rohandeshpande/three-proton
 - `test:watch-only <spec>` - Watches a specific spec
 - `lint` - Lints code and circular dependencies in `./src`
 - `coverage:generate` - Generates a code coverage report
+- `coverage:view` - View the code coverage report
 - `coverage:publish` - Publishes the coverage report
 - `git:publish <commit-message>` - Builds the module, adds all changed files commits with the message you supply and pushes to remote
 

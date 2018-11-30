@@ -92,6 +92,128 @@
     ]
   },
   {
+    "name": "Rotate#reset",
+    "filePath": "src/behaviour/Rotate.js",
+    "lines": [
+      {
+        "lineNumber": 45,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 46,
+        "line": "   * Resets the behaviour properties."
+      },
+      {
+        "lineNumber": 47,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 48,
+        "line": "   * @param {number} x - X axis rotation"
+      },
+      {
+        "lineNumber": 49,
+        "line": "   * @param {number} y - Y axis rotation"
+      },
+      {
+        "lineNumber": 50,
+        "line": "   * @param {number} z - Z axis rotation"
+      },
+      {
+        "lineNumber": 51,
+        "line": "   * @param {number} life - the life of the behaviour"
+      },
+      {
+        "lineNumber": 52,
+        "line": "   * @param {function} easing - the easing equation to use for transforms"
+      },
+      {
+        "lineNumber": 53,
+        "line": "   * @return void"
+      },
+      {
+        "lineNumber": 54,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 55,
+        "line": "  reset(a, b, c, life, easing) {"
+      }
+    ],
+    "codeParams": [
+      "a",
+      "b",
+      "c",
+      "life",
+      "easing"
+    ],
+    "docParams": [
+      "x",
+      "y",
+      "z",
+      "life",
+      "easing"
+    ]
+  },
+  {
+    "name": "Scale#reset",
+    "filePath": "src/behaviour/Scale.js",
+    "lines": [
+      {
+        "lineNumber": 23,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 24,
+        "line": "   * Resets the behaviour properties."
+      },
+      {
+        "lineNumber": 25,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 26,
+        "line": "   * @param {number} scaleA - the starting scale value"
+      },
+      {
+        "lineNumber": 27,
+        "line": "   * @param {?number} scaleB - the ending scale value"
+      },
+      {
+        "lineNumber": 28,
+        "line": "   * @param {number} life - the life of the behaviour"
+      },
+      {
+        "lineNumber": 29,
+        "line": "   * @param {function} easing - the easing equation to use for transforms"
+      },
+      {
+        "lineNumber": 30,
+        "line": "   * @return void"
+      },
+      {
+        "lineNumber": 31,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 32,
+        "line": "  reset(a, b, life, easing) {"
+      }
+    ],
+    "codeParams": [
+      "a",
+      "b",
+      "life",
+      "easing"
+    ],
+    "docParams": [
+      "scaleA",
+      "scaleB",
+      "life",
+      "easing"
+    ]
+  },
+  {
     "name": "Proton#addRender",
     "filePath": "src/core/Proton.js",
     "lines": [
@@ -389,56 +511,6 @@
     "codeParams": [],
     "docParams": [
       "behaviour"
-    ]
-  },
-  {
-    "name": "createArraySpan",
-    "filePath": "src/math/ArraySpan.js",
-    "lines": [
-      {
-        "lineNumber": 35,
-        "line": "/**"
-      },
-      {
-        "lineNumber": 36,
-        "line": " * createArraySpan function"
-      },
-      {
-        "lineNumber": 37,
-        "line": " * @name get a instance of Span"
-      },
-      {
-        "lineNumber": 38,
-        "line": " * @param {number} a min number"
-      },
-      {
-        "lineNumber": 39,
-        "line": " * @param {number} b max number"
-      },
-      {
-        "lineNumber": 40,
-        "line": " * @param {number} c center number"
-      },
-      {
-        "lineNumber": 41,
-        "line": " * @return {number} return a instance of Span"
-      },
-      {
-        "lineNumber": 42,
-        "line": " */"
-      },
-      {
-        "lineNumber": 43,
-        "line": "export const createArraySpan = arr => {"
-      }
-    ],
-    "codeParams": [
-      "arr"
-    ],
-    "docParams": [
-      "a",
-      "b",
-      "c"
     ]
   }
 ]

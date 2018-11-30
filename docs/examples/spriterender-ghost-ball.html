@@ -1,8 +1,9 @@
+
 <!DOCTYPE HTML>
 <html>
 
 <head>
-    <title>three.proton - helloworld</title>
+    <title>three.proton - eightdiagrams</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <style type="text/css">
@@ -18,12 +19,12 @@
 
 <body>
     <div id="container"></div>
-    <script src="./js/stats.min.js"></script>
-    <script src="./js/three.min.js"></script>
-    <script src="./js/three-proton.js"></script>
-    <script src="./js/lib/TrackballControls.js"></script>
+    <script src="../js/stats.min.js"></script>
+    <script src="../js/three.min.js"></script>
+    <script src='../js/three-proton.js'></script>
+    <script src="../js/lib/TrackballControls.js"></script>
     <script>
-    var proton, emitter;
+    var proton, emitter, color1, color2;
     var camera, scene, renderer, stats, clock, spring, controls;
 
     init();
@@ -32,9 +33,7 @@
         addScene();
         addControls();
         addLights();
-        addStars();
         addProton();
-        //addInteraction();
         addStats();
         animate();
     }
@@ -82,25 +81,30 @@
         stats.dom.style.top = '0px';
         container.appendChild(stats.dom);
     }
-
-    function addStars() {
-        var geometry = new THREE.Geometry();
-        for (var i = 0; i < 10000; i++) {
-            var vertex = new THREE.Vector3();
-            vertex.x = THREE.Math.randFloatSpread(2000);
-            vertex.y = THREE.Math.randFloatSpread(2000);
-            vertex.z = THREE.Math.randFloatSpread(2000);
-            geometry.vertices.push(vertex);
-        }
-        var particles = new THREE.Points(geometry, new THREE.PointsMaterial({
-            color: 0x888888
-        }));
-        scene.add(particles);
-    }
-
+    
     function addProton() {
         proton = new Proton.default();
-        proton.addEmitter(createEmitter());
+        emitter = new Proton.Emitter();
+        color1 = new THREE.Color();
+        color2 = new THREE.Color();
+
+        emitter
+            .setRate(new Proton.Rate(new Proton.Span(4, 16), new Proton.Span(.01)))
+            .setProperties([
+                new Proton.Position(new Proton.PointZone(0, 0)),
+                new Proton.Mass(1),
+                new Proton.Radius(6, 12),
+                new Proton.Body(createSprite()),
+                new Proton.Life(3),
+                new Proton.Velocity(45, new Proton.Vector3D(0, 1, 0), 180)
+            ])
+            .setBehaviours([
+                new Proton.Alpha(1, 0),
+                new Proton.Scale(.1, 1.3),
+                new Proton.Color(color1, color2),
+            ]);
+
+        proton.addEmitter(emitter.emit());
         proton.addRender(new Proton.SpriteRender(scene));
     }
 
@@ -110,46 +114,11 @@
             map: map,
             color: 0xff0000,
             blending: THREE.AdditiveBlending,
-            fog: true
+            fog: true,
+            visible: true,
         });
+
         return new THREE.Sprite(material);
-    }
-
-
-    function createEmitter() {
-        emitter = new Proton.Emitter();
-        emitter.rate = new Proton.Rate(new Proton.Span(10, 15), new Proton.Span(.05, .1));
-        emitter.addInitialize(new Proton.Body(createSprite()));
-        emitter.addInitialize(new Proton.Mass(1));
-        emitter.addInitialize(new Proton.Life(1, 3));
-        emitter.addInitialize(new Proton.Position(new Proton.SphereZone(20)));
-        emitter.addInitialize(new Proton.Velocity(new Proton.Span(500, 800), new Proton.Vector3D(0, 1, 0), 30));
-        emitter.addBehaviour(new Proton.RandomDrift(10, 10, 10, .05));
-        //emitter.addBehaviour(new Proton.Alpha(1, 0.1));
-        emitter.addBehaviour(new Proton.Scale(new Proton.Span(2, 3.5), 0));
-        emitter.addBehaviour(new Proton.Gravity(6));
-        emitter.addBehaviour(new Proton.Color('#FF0026', ['#ffff00', '#ffff11'], Infinity, Proton.easeOutSine));
-        emitter.p.x = 0;
-        emitter.p.y = -150;
-        emitter.emit();
-        return emitter;
-    }
-
-    function addInteraction() {
-        window.addEventListener('mousemove', onMouseMove, false);
-        var pos = {
-            x: 0,
-            y: 0
-        };
-
-        function onMouseMove(event) {
-            pos.x = event.clientX;
-            pos.y = event.clientY;
-            var target = Proton.THREEUtil.toSpacePos(pos, camera, renderer.domElement);
-            emitter.p.x += (target.x - emitter.p.x) / 10;
-            emitter.p.y += (target.y - emitter.p.y) / 10;
-            emitter.p.z += (target.z - emitter.p.z) / 10;
-        }
     }
 
     function animate() {
@@ -159,13 +128,22 @@
         stats.end();
     }
 
+    var ctha = 0;
     function render() {
-        proton.update(clock.getDelta());
+        proton.update();
         renderer.render(scene, camera);
-        controls.update();
+        //controls.update();
+
+        camera.lookAt(scene.position);
+        ctha += .02;
+        camera.position.x = Math.sin(ctha) * 500;
+        camera.position.z = Math.cos(ctha) * 500;
+        camera.position.y = Math.sin(ctha) * 500;
 
         Proton.Debug.renderInfo(proton, 3);
     }
+
+    var tha = 0;
 
     function onWindowResize() {
 

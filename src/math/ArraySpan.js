@@ -1,48 +1,66 @@
 import MathUtils from './MathUtils';
 import Span from './Span';
-import Util from '../utils/Util';
+import _ from 'lodash';
 
+/**
+ * Class for storing and interacting with an array of colours.
+ *
+ * NOTE Rename this to ColorSpan
+ */
 export default class ArraySpan extends Span {
   /**
-   * ArraySpan name get a random Color from a colors array
-   * @param {String|Array} colors - colors array
-   * @example
-   * var span = new ArraySpan(["#fff","#ff0","#000"]);
-   * or
-   * var span = new ArraySpan("#ff0");
-   * @extends {Span}
-   * @constructor
+   * Constructs an ArraySpan instance.
+   *
+   * @param {string|array} colors - single or multiple colors,
+   * if the string 'random' is passed, a random color will be returned
+   * from the getValue method
+   * @return void
    */
-
-  constructor(colors) {
+  constructor(colors = 'random') {
     super();
 
-    this._arr = Util.isArray(colors) ? colors : [colors];
+    /**
+     * @desc An array of colors
+     * @type {array}
+     */
+    this._arr = Array.isArray(colors) ? colors : [colors];
   }
 
   /**
-   * getValue function
-   * @name get a random Color
+   * Gets a color from the color array.
+   *
    * @return {string} a hex color
    */
   getValue() {
-    var color = this._arr[(this._arr.length * Math.random()) >> 0];
+    const color = _.sample(this._arr);
 
-    if (color == 'random' || color == 'Random') return MathUtils.randomColor();
-    else return color;
+    return this.isRandomColor(color) ? MathUtils.randomColor() : color;
+  }
+
+  /**
+   * Determines if the color supplied is 'random'.
+   *
+   * @param {string} color - the color to check
+   */
+  isRandomColor(color) {
+    return typeof color === 'string' && color.toLowerCase() === 'random';
   }
 }
 
 /**
- * createArraySpan function
- * @name get a instance of Span
- * @param {number} a min number
- * @param {number} b max number
- * @param {number} c center number
- * @return {number} return a instance of Span
+ * Attempts to create an ArraySpan from the colors provided.
+ *
+ * @param {mixed} colors - colors to try and create an ArraySpan from
+ * @return {?ArraySpan}
  */
-export const createArraySpan = arr => {
-  if (!arr) return null;
-  if (arr instanceof ArraySpan) return arr;
-  else return new ArraySpan(arr);
+export const createArraySpan = colors => {
+  if (!colors) {
+    return null;
+  }
+
+  if (colors instanceof ArraySpan) {
+    return colors;
+  }
+
+  return new ArraySpan(colors);
 };
