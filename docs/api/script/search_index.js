@@ -925,13 +925,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -1432,6 +1432,18 @@ window.esdocSearchIndex = [
     "class/src/behaviour/Rotate.js~Rotate.html#instance-method-reset",
     "src/behaviour/Rotate.js~Rotate#reset",
     "method"
+  ],
+  [
+    "src/behaviour/rotate.js~rotate#type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
+    "src/behaviour/Rotate.js~Rotate#type",
+    "member"
+  ],
+  [
+    "src/behaviour/rotate.js~rotate#type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
+    "src/behaviour/Rotate.js~Rotate#type",
+    "member"
   ],
   [
     "src/behaviour/scale.js",
@@ -2359,13 +2371,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -3087,6 +3099,12 @@ window.esdocSearchIndex = [
     "src/math/vector3d.js~vector3d#clear",
     "class/src/math/Vector3D.js~Vector3D.html#instance-method-clear",
     "src/math/Vector3D.js~Vector3D#clear",
+    "method"
+  ],
+  [
+    "src/math/vector3d.js~vector3d#eulerfromdir",
+    "class/src/math/Vector3D.js~Vector3D.html#instance-method-eulerFromDir",
+    "src/math/Vector3D.js~Vector3D#eulerFromDir",
     "method"
   ],
   [

@@ -133,7 +133,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/math/Vector3D.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Vector3 } from &apos;three&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Euler, Vector3 } from &apos;three&apos;;
 
 export default class Vector3D extends Vector3 {
   clear() {
@@ -162,6 +162,12 @@ export default class Vector3D extends Vector3 {
 
   toString() {
     return &apos;x:&apos; + this.x + &apos;y:&apos; + this.y + &apos;z:&apos; + this.z;
+  }
+
+  eulerFromDir(vector3D) {
+    const euler = new Euler();
+
+    return euler.setFromVector3(vector3D);
   }
 }
 </code></pre>

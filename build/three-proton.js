@@ -48914,6 +48914,13 @@ var Vector3D = function (_Vector) {
     value: function toString() {
       return 'x:' + this.x + 'y:' + this.y + 'z:' + this.z;
     }
+  }, {
+    key: 'eulerFromDir',
+    value: function eulerFromDir(vector3D) {
+      var euler = new _three.Euler();
+
+      return euler.setFromVector3(vector3D);
+    }
   }]);
 
   return Vector3D;
@@ -52618,9 +52625,23 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Behaviour that causes particles to be repelled from a target position.
+ *
+ */
 var Repulsion = function (_Attraction) {
   _inherits(Repulsion, _Attraction);
 
+  /**
+   * Constructs an Repulsion behaviour instance.
+   *
+   * @param {Vector3D} targetPosition - The position the particles will be repelled from
+   * @param {number} force - The repulsion force scalar multiplier
+   * @param {number} radius - The repulsion radius
+   * @param {number} life - The life of the particle
+   * @param {function} easing - The behaviour's decaying trend
+   * @return void
+   */
   function Repulsion(targetPosition, force, radius, life, easing) {
     _classCallCheck(this, Repulsion);
 
@@ -52630,6 +52651,18 @@ var Repulsion = function (_Attraction) {
     _this.name = 'Repulsion';
     return _this;
   }
+
+  /**
+   * Resets the behaviour properties.
+   *
+   * @param {Vector3D} targetPosition - the position the particles will be attracted to
+   * @param {number} force - the attraction force multiplier
+   * @param {number} radius - the attraction radius
+   * @param {number} life - the life of the particle
+   * @param {function} easing - The behaviour's decaying trend
+   * @return void
+   */
+
 
   _createClass(Repulsion, [{
     key: 'reset',
@@ -52676,16 +52709,21 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Behaviour that rotates particles.
+ */
 var Rotate = function (_Behaviour) {
   _inherits(Rotate, _Behaviour);
 
-  /* The Rotate class is the base
-   * for the other Behaviour
+  /**
+   * Constructs a Rotate behaviour instance.
    *
-   * @class Behaviour * @constructor
-   * @example new Rotate(createSpan(-1,1),createSpan(-1,1),createSpan(-1,1));
-   * @example new Rotate();
-   * @example new Rotate("random");
+   * @param {number} x - X axis rotation
+   * @param {number} y - Y axis rotation
+   * @param {number} z - Z axis rotation
+   * @param {number} life - The life of the behaviour
+   * @param {function} easing - The easing equation to use for transforms
+   * @return void
    */
   function Rotate(x, y, z, life, easing) {
     _classCallCheck(this, Rotate);
@@ -52697,11 +52735,32 @@ var Rotate = function (_Behaviour) {
     return _this;
   }
 
+  /**
+   * Gets the rotation type.
+   *
+   * @return {string}
+   */
+
+
   _createClass(Rotate, [{
     key: 'reset',
     value: function reset(a, b, c, life, easing) {
+      /**
+       * @desc X axis rotation.
+       * @type {number|Span}
+       */
       this.a = a || 0;
+
+      /**
+       * @desc Y axis rotation.
+       * @type {number|Span}
+       */
       this.b = b || 0;
+
+      /**
+       * @desc Z axis rotation.
+       * @type {number|Span}
+       */
       this.c = c || 0;
 
       if (a === undefined || a == 'same') {
@@ -52719,6 +52778,14 @@ var Rotate = function (_Behaviour) {
 
       life && _get(Rotate.prototype.__proto__ || Object.getPrototypeOf(Rotate.prototype), 'reset', this).call(this, life, easing);
     }
+
+    /**
+     * Initializes the behaviour on a particle.
+     *
+     * @param {object} particle - the particle to initialize the behaviour on
+     * @return void
+     */
+
   }, {
     key: 'initialize',
     value: function initialize(particle) {
@@ -52742,6 +52809,22 @@ var Rotate = function (_Behaviour) {
           break;
       }
     }
+
+    /**
+     * Sets the particle's rotation prior to the behaviour being applied.
+     *
+     * NOTE It's hard to see here, but this is mutating the particle's rotation
+     * even though the particle is not being passed in directly.
+     *
+     * NOTE the else if below will never be reached because the value being passed in
+     * will never be of type Vector3D.
+     *
+     * @param {Vector3D} vec3 - the particle's rotation vector
+     * @param {string|number} value - the value to set the rotation value to, if 'random'
+     * rotation is randomised
+     * @return void
+     */
+
   }, {
     key: '_setRotation',
     value: function _setRotation(vec3, value) {
@@ -52752,21 +52835,39 @@ var Rotate = function (_Behaviour) {
         var z = _math.MathUtils.randomAToB(-_constants.PI, _constants.PI);
 
         vec3.set(x, y, z);
-      } else if (value instanceof _math.Vector3D) {
-        vec3.copy(value);
       }
+      // we can't ever get here because value will never be a Vector3D!
+      // consider refactoring to
+      //  if (value instance of Span) { vec3.add(value.getValue()); }
+      else if (value instanceof _math.Vector3D) {
+          vec3.copy(value);
+        }
     }
+
+    /**
+     * Applies the behaviour to the particle.
+     * Mutates the particle.a property.
+     *
+     * @see http://stackoverflow.com/questions/21622956/how-to-convert-direction-vector-to-euler-angles
+     * @param {object} particle - the particle to apply the behaviour to
+     * @param {number} time - engine time
+     * @param {integer} index - the particle index
+     * @return void
+     */
+
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
       _get(Rotate.prototype.__proto__ || Object.getPrototypeOf(Rotate.prototype), 'applyBehaviour', this).call(this, particle, time, index);
 
       switch (this._type) {
+        // orients the particle in the direction it is moving
         case 'same':
-          if (!particle.rotation) particle.rotation = new _math.Vector3D();
+          if (!particle.rotation) {
+            particle.rotation = new _math.Vector3D();
+          }
+
           particle.rotation.eulerFromDir(particle.v);
-          //http://stackoverflow.com/questions/21622956/how-to-convert-direction-vector-to-euler-angles
-          //console.log(particle.rotation);
           break;
 
         case 'set':
@@ -52783,6 +52884,26 @@ var Rotate = function (_Behaviour) {
           particle.rotation.add(particle.transform.addR);
           break;
       }
+    }
+  }, {
+    key: 'type',
+    get: function get() {
+      return this._type;
+    }
+
+    /**
+     * Sets the rotation type.
+     *
+     * @param {string}
+     * @return void
+     */
+    ,
+    set: function set(type) {
+      /**
+       * @desc The rotation type. ENUM of ['same', 'set', 'to', 'add'].
+       * @type {string}
+       */
+      this._type = type;
     }
   }]);
 
