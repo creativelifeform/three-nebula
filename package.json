@@ -15,7 +15,8 @@
     "test:watch": "mocha --require babel-core/register --colors -w './test/**/*.spec.js'",
     "test:watch-only": "mocha --require babel-core/register --colors -w ",
     "lint": "eslint src test && ./node_modules/.bin/madge --circular src",
-    "coverage:generate": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/*.js -- --require babel-register",
+    "coverage:serve": "open ./coverage/lcov-report/index.html",
+    "coverage:generate": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha './test/**/*.spec.js' -- --require babel-core/register",
     "coverage:publish": "./node_modules/.bin/istanbul-coveralls",
     "git:publish": "./scripts/publish"
   },
@@ -58,6 +59,7 @@
     "eslint-loader": "^1.7.1",
     "eslint-plugin-import": "^2.8.0",
     "http-server": "^0.11.1",
+    "istanbul": "^1.1.0-alpha.1",
     "jquery": "^3.3.1",
     "jsdoc": "~3.4.0",
     "madge": "^3.3.0",
