@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>SpriteRender - colors</title>
+    <title>three.proton - helloworld</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <style type="text/css">
@@ -18,13 +18,16 @@
 
 <body>
     <div id="container"></div>
-    <script src="./js/stats.min.js"></script>
-    <script src="./js/three.min.js"></script>
-    <script src="./js/three-proton.js"></script>
-    <script src="./js/lib/TrackballControls.js"></script>
+    <script src="../js/stats.min.js"></script>
+    <script src="../js/three.min.js"></script>
+    <script src="../js/three-proton.js"></script>
+    <script src="../js/lib/TrackballControls.js"></script>
     <script>
     var proton, emitter;
     var camera, scene, renderer, stats, clock, spring, controls;
+    var color1, color2,
+        tha = 0,
+        hcolor = 0;
 
     init();
 
@@ -32,7 +35,9 @@
         addScene();
         addControls();
         addLights();
+        addStars();
         addProton();
+        //addInteraction();
         addStats();
         animate();
     }
@@ -43,14 +48,9 @@
         scene = new THREE.Scene();
         scene.fog = new THREE.Fog(0xffffff, 1, 10000);
 
-        var axisHelper = new THREE.AxisHelper(250);
-        scene.add(axisHelper);
-
         clock = new THREE.Clock();
 
-        renderer = new THREE.WebGLRenderer({
-            preserveDrawingBuffer: true
-        });
+        renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -87,36 +87,46 @@
         container.appendChild(stats.dom);
     }
 
+    function addStars() {
+        var geometry = new THREE.Geometry();
+        for (var i = 0; i < 10000; i++) {
+            var vertex = new THREE.Vector3();
+            vertex.x = THREE.Math.randFloatSpread(2000);
+            vertex.y = THREE.Math.randFloatSpread(2000);
+            vertex.z = THREE.Math.randFloatSpread(2000);
+            geometry.vertices.push(vertex);
+        }
+        var particles = new THREE.Points(geometry, new THREE.PointsMaterial({
+            color: 0x888888
+        }));
+        scene.add(particles);
+    }
+
     function addProton() {
         proton = new Proton.default();
-        proton.addEmitter(createEmitter());
-        proton.addRender(new Proton.SpriteRender(scene));
-    }
 
-    function createBox() {
-        var geometry = new THREE.DodecahedronGeometry(20);
-        var material = new THREE.MeshLambertMaterial({
-            color: "#00ffcc"
-        });
-
-        return new THREE.Mesh(geometry, material);
-    }
-
-
-    function createEmitter() {
-        var colors = ['#529B88', '#CDD180', '#FFFA32', '#FB6255', '#FB4A53', '#FF4E50', '#F9D423'];
         emitter = new Proton.Emitter();
-        emitter.rate = new Proton.Rate(new Proton.Span(3, 6), new Proton.Span(.05, .2));
+        //setRate
+        emitter.rate = new Proton.Rate(new Proton.Span(4, 16), new Proton.Span(.01));
+        //addInitialize
+        emitter.addInitialize(new Proton.Position(new Proton.PointZone(0, 0)));
         emitter.addInitialize(new Proton.Mass(1));
-        emitter.addInitialize(new Proton.Radius(200, 400));
-        emitter.addInitialize(new Proton.Life(2, 4));
-        emitter.addInitialize(new Proton.Body(createSprite()));
-        emitter.addInitialize(new Proton.Position(new Proton.ScreenZone(camera, renderer)));
-        emitter.addBehaviour(new Proton.Alpha(0, 1, Infinity, Proton.easeOutCubic));
-        emitter.addBehaviour(new Proton.Scale(2, 0, Infinity, Proton.easeOutCubic));
-        emitter.addBehaviour(new Proton.Color(colors, 'random'));
+        emitter.addInitialize(new Proton.Radius(6, 12));
+        emitter.addInitialize(new Proton.Life(3));
+        emitter.addInitialize(new Proton.Velocity(45, new Proton.Vector3D(0, 1, 0), 180));
+        //addBehaviour
+        emitter.addBehaviour(new Proton.Alpha(1, 0));
+        emitter.addBehaviour(new Proton.Scale(.1, 1.3));
+
+        color1 = new THREE.Color();
+        color2 = new THREE.Color();
+        colorBehaviour = new Proton.Color(color1, color2);
+        emitter.addBehaviour(colorBehaviour);
+
         emitter.emit();
-        return emitter;
+        //add emitter
+        proton.addEmitter(emitter);
+        proton.addRender(new Proton.SpriteRender(scene));
     }
 
     function createSprite() {
@@ -130,6 +140,13 @@
         return new THREE.Sprite(material);
     }
 
+    function setColor() {
+        hcolor += .01;
+        color1.setHSL(hcolor - (hcolor >> 0), 1, .5);
+        color2.setHSL(hcolor - (hcolor >> 0) + .3, 1, .5);
+        //colorBehaviour.reset(color1, color2);
+    }
+
     function animate() {
         stats.begin();
         requestAnimationFrame(animate);
@@ -137,12 +154,30 @@
         stats.end();
     }
 
-    function render() {
-        proton.update();
-        renderer.render(scene, camera);
-        controls.update();
+    var ctha = 0;
+    var r = 500;
 
-        Proton.Debug.renderInfo(proton, 3);
+    function render() {
+        var delta = clock.getDelta();
+
+        setColor();
+
+        delta < 5 / 60 && proton.update(delta);
+        tha += Math.PI / 150;
+        var p = 300 * Math.sin(2 * tha)
+        emitter.p.x = p * Math.cos(tha);
+        emitter.p.y = p * Math.sin(tha);
+        emitter.p.z = p * Math.tan(tha) / 2;
+
+        renderer.render(scene, camera);
+        //controls.update();
+        camera.lookAt(scene.position);
+
+        ctha += .016;
+        r = 300;
+        camera.position.x = Math.sin(ctha) * r;
+        camera.position.z = Math.cos(ctha) * r;
+        camera.position.y = Math.sin(ctha) * r;
     }
 
     function onWindowResize() {

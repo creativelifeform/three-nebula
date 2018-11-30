@@ -46,6 +46,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACITON_RADIUS">DEFAULT_ATTRACITON_RADIUS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACTION_FORCE_SCALAR">DEFAULT_ATTRACTION_FORCE_SCALAR</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BEHAVIOUR_EASING">DEFAULT_BEHAVIOUR_EASING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RANDOM_DRIFT_DELAY">DEFAULT_RANDOM_DRIFT_DELAY</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_ALPHA_THRESHOLD">PARTICLE_ALPHA_THRESHOLD</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_LENGTH_SQ_THRESHOLD">PARTICLE_LENGTH_SQ_THRESHOLD</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#compatibility">compatibility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-classDeprecationWarning">classDeprecationWarning</a></span></span></li>
@@ -132,7 +133,7 @@
 </nav>
 
 <div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="three-proton">three-proton</h1><h1 id="-a-href--https---travis-ci-org-rohan-deshpande-three-proton---img-src--https---travis-ci-org-rohan-deshpande-three-proton-svg-branch-develop--alt--build-status----a-"><a href="https://travis-ci.org/rohan-deshpande/three-proton"><img src="https://travis-ci.org/rohan-deshpande/three-proton.svg?branch=develop" alt="Build Status"></a></h1><p><strong>Three Proton</strong> is a magical, WebGL based 3D particle engine that has been designed to work in concert with <a href="https://github.com/mrdoob/three.js"><code>three.js</code></a>. It is based on the <a href="https://github.com/a-jie/Proton">Proton</a> particle engine library and shares much of its API.</p>
-<p>Check out examples at <a href="https://rohan-deshpande.github.io/three-proton/">https://rohan-deshpande.github.io/three-proton/</a></p>
+<p>Check out the examples and API reference documentation at <a href="https://rohan-deshpande.github.io/three-proton/">https://rohan-deshpande.github.io/three-proton/</a></p>
 <h2 id="features">Features</h2><ul>
 <li><p>Four kinds of renderers</p>
 <ul>
@@ -158,10 +159,10 @@
 </code></pre><h3 id="script">script</h3><pre><code><code class="source-code prettyprint">&lt;script type=&apos;text/javascript&apos; src=&apos;node_modules/three-proton/build/three-proton.js&apos;&gt;&lt;/script&gt;</code>
 </code></pre><h2 id="commands">Commands</h2><ul>
 <li><code>build</code> - Builds the module and writes the code into <code>./build/three-proton.js</code></li>
-<li><code>examples</code> - Serves the examples at <a href="http://localhost:8080">http://localhost:8080</a></li>
-<li><code>examples:seed</code> - Copies the latest build to <code>./examples/js</code></li>
+<li><code>docs</code> - Serves the docs at <a href="http://localhost:8080">http://localhost:8080</a></li>
+<li><code>docs:build</code> - Copies the latest build to <code>./docs/js</code> and builds the API reference docs</li>
 <li><code>test</code> - Runs all specs</li>
-<li><code>test:only &lt;spec&gt;</code> - Runs a specific spec  </li>
+<li><code>test:only &lt;spec&gt;</code> - Runs a specific spec</li>
 <li><code>test:watch</code> - Watches tests</li>
 <li><code>test:watch-only &lt;spec&gt;</code> - Watches a specific spec</li>
 <li><code>lint</code> - Lints code and circular dependencies in <code>./src</code></li>

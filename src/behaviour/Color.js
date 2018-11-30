@@ -3,12 +3,18 @@ import { MathUtils, createArraySpan } from '../math';
 import Behaviour from './Behaviour';
 import { ColorUtil } from '../utils';
 
+/**
+ * A behaviour which mutates the color of a particle over time.
+ *
+ */
 export default class Color extends Behaviour {
   /**
-   * The Scale class is the base for the other Behaviour
+   * Constructs a Color behaviour instance.
    *
-   * @class Behaviour
-   * @constructor
+   * @param {number|string} a - the starting color
+   * @param {number|string} b - the ending color
+   * @param {number} life - the life of the particle
+   * @param {function} easing - The behaviour's decaying trend
    */
   constructor(a, b, life, easing) {
     super(life, easing);

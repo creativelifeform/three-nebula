@@ -10,12 +10,13 @@
     "build": "webpack --env build && npm run docs:build",
     "docs": "./scripts/docs",
     "docs:build": "cp ./build/three-proton.js docs/js && ./node_modules/.bin/esdoc",
-    "test": "mocha --require babel-core/register --colors ./test/*.spec.js",
+    "test": "mocha --require babel-core/register --colors './test/**/*.spec.js'",
     "test:only": "mocha --require babel-core/register --colors",
-    "test:watch": "mocha --require babel-core/register --colors -w ./test/*.spec.js",
+    "test:watch": "mocha --require babel-core/register --colors -w './test/**/*.spec.js'",
     "test:watch-only": "mocha --require babel-core/register --colors -w ",
     "lint": "eslint src test && ./node_modules/.bin/madge --circular src",
-    "coverage:generate": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test/*.js -- --require babel-register",
+    "coverage:serve": "open ./coverage/lcov-report/index.html",
+    "coverage:generate": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha './test/**/*.spec.js' -- --require babel-core/register",
     "coverage:publish": "./node_modules/.bin/istanbul-coveralls",
     "git:publish": "./scripts/publish"
   },
@@ -38,6 +39,7 @@
   },
   "homepage": "https://github.com/rohan-deshpande/three-proton#readme",
   "dependencies": {
+    "lodash": "^4.17.11",
     "three": "^0.98.0",
     "uuid": "^3.3.2"
   },
@@ -57,6 +59,8 @@
     "eslint-loader": "^1.7.1",
     "eslint-plugin-import": "^2.8.0",
     "http-server": "^0.11.1",
+    "istanbul": "^1.1.0-alpha.1",
+    "istanbul-coveralls": "^1.0.3",
     "jquery": "^3.3.1",
     "jsdoc": "~3.4.0",
     "madge": "^3.3.0",

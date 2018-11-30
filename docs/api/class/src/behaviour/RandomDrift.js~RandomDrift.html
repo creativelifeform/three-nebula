@@ -46,6 +46,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACITON_RADIUS">DEFAULT_ATTRACITON_RADIUS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ATTRACTION_FORCE_SCALAR">DEFAULT_ATTRACTION_FORCE_SCALAR</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BEHAVIOUR_EASING">DEFAULT_BEHAVIOUR_EASING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RANDOM_DRIFT_DELAY">DEFAULT_RANDOM_DRIFT_DELAY</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_ALPHA_THRESHOLD">PARTICLE_ALPHA_THRESHOLD</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_LENGTH_SQ_THRESHOLD">PARTICLE_LENGTH_SQ_THRESHOLD</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#compatibility">compatibility</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-classDeprecationWarning">classDeprecationWarning</a></span></span></li>
@@ -132,13 +133,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import RandomDrift from &apos;<span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber5">@rohandeshpande/three-proton/src/behaviour/RandomDrift.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import RandomDrift from &apos;<span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber10">@rohandeshpande/three-proton/src/behaviour/RandomDrift.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber5">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber10">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -158,7 +159,8 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>Behaviour that causes particles to drift to random coordinates in 3D space.</p>
+</div>
   
 
   
@@ -190,13 +192,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(driftX: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, driftY: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, driftZ: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, delay: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>The Behaviour class is the base for the other Behaviour</p>
+        <div data-ice="description"><p>Constructs a RandomDrift behaviour instance.</p>
 </div>
       </div>
     </td>
@@ -226,13 +228,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-member-delayPan">delayPan</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-member-delayPan">delayPan</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Span.js~Span.html">Span</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>A Span containing the delay supplied.</p>
+</div>
       </div>
     </td>
     <td>
@@ -282,13 +285,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-member-randomFoce">randomFoce</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-member-randomForce">randomForce</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>A Vector3D that stores the drift properties.</p>
+</div>
       </div>
     </td>
     <td>
@@ -316,7 +320,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Internal time used for calculating drift vs internal delay.</p>
+</div>
       </div>
     </td>
     <td>
@@ -345,13 +350,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-method-applyBehaviour">applyBehaviour</a></span></span><span class="code" data-ice="signature">(particle: <span>*</span>, time: <span>*</span>, index: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-method-applyBehaviour">applyBehaviour</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Applies the behaviour to the particle.</p>
+</div>
       </div>
     </td>
     <td>
@@ -373,13 +379,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">(driftX: <span>*</span>, driftY: <span>*</span>, driftZ: <span>*</span>, delay: <span>*</span>, life: <span>*</span>, easing: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">(driftX: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, driftY: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, driftZ: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, delay: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Resets the behaviour properties.</p>
+</div>
       </div>
     </td>
     <td>
@@ -785,26 +792,92 @@
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(driftX: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, driftY: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, driftZ: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, delay: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber12">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber22">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>The Behaviour class is the base for the other Behaviour</p>
+  <div data-ice="description"><p>Constructs a RandomDrift behaviour instance.</p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-constructor-constructor">Behaviour#constructor</a></span></div>
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">driftX</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>x axis drift</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">driftY</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>y axis drift</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">driftZ</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>z axis drift</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">delay</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: DEFAULT_RANDOM_DRIFT_DELAY</li></ul></td>
+      <td data-ice="description"><p>drift delay</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">life</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The life of the particle</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">easing</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The behaviour&apos;s decaying trend</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -832,18 +905,19 @@
     
     
     
-    <span class="code" data-ice="name">delayPan</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">delayPan</span><span class="code" data-ice="signature">: <span><a href="class/src/math/Span.js~Span.html">Span</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber22">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber71">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>A Span containing the delay supplied.</p>
+</div>
 
   
 
@@ -879,7 +953,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber17">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber39">source</a></span></span>
     </span>
   </h3>
 
@@ -912,25 +986,26 @@
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-randomFoce">
+  <h3 data-ice="anchor" id="instance-member-randomForce">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">randomFoce</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">randomForce</span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber21">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber64">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>A Vector3D that stores the drift properties.</p>
+</div>
 
   
 
@@ -966,14 +1041,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber16">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber38">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Internal time used for calculating drift vs internal delay.</p>
+</div>
 
   
 
@@ -1008,18 +1084,19 @@
     
     
     
-    <span class="code" data-ice="name">applyBehaviour</span><span class="code" data-ice="signature">(particle: <span>*</span>, time: <span>*</span>, index: <span>*</span>)</span>
+    <span class="code" data-ice="name">applyBehaviour</span><span class="code" data-ice="signature">(particle: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber27">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber86">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Apply this behaviour for all particles every time</p>
+  <div data-ice="description"><p>Applies the behaviour to the particle.
+Mutates the particle.a property.</p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-applyBehaviour">Behaviour#applyBehaviour</a></span></div>
@@ -1034,28 +1111,44 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">particle</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the particle to apply the behaviour to</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">time</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>engine time</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">index</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span>integer</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the particle index</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1080,18 +1173,18 @@
     
     
     
-    <span class="code" data-ice="name">reset</span><span class="code" data-ice="signature">(driftX: <span>*</span>, driftY: <span>*</span>, driftZ: <span>*</span>, delay: <span>*</span>, life: <span>*</span>, easing: <span>*</span>)</span>
+    <span class="code" data-ice="name">reset</span><span class="code" data-ice="signature">(driftX: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, driftY: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, driftZ: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, delay: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber20">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/RandomDrift.js.html#lineNumber52">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Reset this behaviour&apos;s parameters</p>
+  <div data-ice="description"><p>Resets the behaviour properties.</p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-reset">Behaviour#reset</a></span></div>
@@ -1106,39 +1199,46 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">driftX</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>x axis drift</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">driftY</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>y axis drift</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">driftZ</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>z axis drift</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">delay</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: DEFAULT_RANDOM_DRIFT_DELAY</li></ul></td>
+      <td data-ice="description"><p>drift delay</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">life</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The life of the particle</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">easing</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The behaviour&apos;s decaying trend</p>
+</td>
     </tr>
 </tbody>
   </table>
