@@ -3,6 +3,10 @@ import { MathUtils, createSpan } from '../math';
 import Behaviour from './Behaviour';
 import { Util } from '../utils';
 
+/**
+ * Behaviour that scales particles.
+ *
+ */
 export default class Scale extends Behaviour {
   /**
    * The Scale class is the base for the other Behaviour
@@ -17,6 +21,15 @@ export default class Scale extends Behaviour {
     this.name = 'Scale';
   }
 
+  /**
+   * Resets the behaviour properties.
+   *
+   * @param {number} scaleA - the starting scale value
+   * @param {?number} scaleB - the ending scale value
+   * @param {number} life - the life of the behaviour
+   * @param {function} easing - the easing equation to use for transforms
+   * @return void
+   */
   reset(a, b, life, easing) {
     if (b == null || b == undefined) this._same = true;
     else this._same = false;
@@ -27,6 +40,12 @@ export default class Scale extends Behaviour {
     life && super.reset(life, easing);
   }
 
+  /**
+   * Initializes the behaviour on a particle.
+   *
+   * @param {object} particle - the particle to initialize the behaviour on
+   * @return void
+   */
   initialize(particle) {
     particle.transform.scaleA = this.a.getValue();
     particle.transform.oldRadius = particle.radius;
@@ -34,6 +53,14 @@ export default class Scale extends Behaviour {
     else particle.transform.scaleB = this.b.getValue();
   }
 
+  /**
+   * Applies the behaviour to the particle.
+   *
+   * @param {object} particle - the particle to apply the behaviour to
+   * @param {number} time - engine time
+   * @param {integer} index - the particle index
+   * @return void
+   */
   applyBehaviour(particle, time, index) {
     super.applyBehaviour(particle, time, index);
 
