@@ -1,0 +1,52 @@
+/*global describe, it */
+
+import * as Proton from '../../../src';
+
+import chai from 'chai';
+
+const { assert } = chai;
+
+describe('property -> Life', () => {
+  const start = 3;
+  const end = 5;
+  const property = new Proton.Life(start, end);
+
+  it('should have the correct properties after instantiation', done => {
+    const {
+      lifePan,
+      lifePan: { _isArray, a, b, _center }
+    } = property;
+
+    assert.instanceOf(lifePan, Proton.Span);
+    assert.isFalse(_isArray);
+    assert.isFalse(_center);
+    assert.strictEqual(a, start);
+    assert.strictEqual(b, end);
+
+    done();
+  });
+
+  it('should set the correct properties on the particle after initialization', done => {
+    const particle = new Proton.Particle();
+
+    property.initialize(particle);
+
+    const { life } = particle;
+
+    assert.isAbove(life, start);
+    assert.isBelow(life, end);
+
+    done();
+  });
+
+  it('should set the particle life to Infinity if the first argument to the constructor is Infinity', done => {
+    const infiniteLife = new Proton.Life(Infinity);
+    const particle = new Proton.Particle();
+
+    infiniteLife.initialize(particle);
+
+    assert.strictEqual(particle.life, Infinity);
+
+    done();
+  });
+});
