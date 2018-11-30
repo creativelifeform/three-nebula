@@ -7,7 +7,7 @@ import chai from 'chai';
 
 const { assert } = chai;
 
-describe('behaviour -> Alpha', () => {
+describe('behaviour -> Behaviour', () => {
   const behaviour = new Behaviour();
 
   it('should instantiate with the correct properties and methods', done => {
