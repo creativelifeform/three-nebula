@@ -1,6 +1,6 @@
 {
   "name": "@rohandeshpande/three-proton",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A magical, WebGL based 3D particle engine",
   "main": "./build/three-proton.js",
   "directories": {
@@ -15,7 +15,7 @@
     "test:watch": "mocha --require babel-core/register --colors -w './test/**/*.spec.js'",
     "test:watch-only": "mocha --require babel-core/register --colors -w ",
     "lint": "eslint src test && ./node_modules/.bin/madge --circular src",
-    "coverage:serve": "open ./coverage/lcov-report/index.html",
+    "coverage:view": "open ./coverage/lcov-report/index.html",
     "coverage:generate": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha './test/**/*.spec.js' -- --require babel-core/register",
     "coverage:publish": "./node_modules/.bin/istanbul-coveralls",
     "git:publish": "./scripts/publish"
