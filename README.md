@@ -52,6 +52,7 @@ npm i --save @rohandeshpande/three-proton
 - `test:watch-only <spec>` - Watches a specific spec
 - `lint` - Lints code and circular dependencies in `./src`
 - `coverage:generate` - Generates a code coverage report
+- `coverage:view` - View the code coverage report
 - `coverage:publish` - Publishes the coverage report
 - `git:publish <commit-message>` - Builds the module, adds all changed files commits with the message you supply and pushes to remote
 
