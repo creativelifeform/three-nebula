@@ -11,17 +11,17 @@ export default class Mass extends Initializer {
    *
    * @param {number} min - The minumum mass for the particle
    * @param {number} max - The maximum mass for the particle
-   * @param {?string} center - The center of the mass span
+   * @param {boolean} [center] - Determines whether to average the mass value
    * @return void
    */
-  constructor(a, b, c) {
+  constructor(min, max, center = false) {
     super();
 
     /**
      * @desc The mass span which is used to set the particle mass value.
      * @type {Span}
      */
-    this.massPan = createSpan(a, b, c);
+    this.massPan = createSpan(min, max, center);
   }
 
   /**

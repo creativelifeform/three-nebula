@@ -9,19 +9,19 @@ export default class Life extends Initializer {
   /**
    * Constructs a Life property instance.
    *
-   * @param {number} a - The minimum life
-   * @param {number} b - The maximum life
-   * @param {?string} c - The span's center
+   * @param {number} min - The minimum life
+   * @param {number} max - The maximum life
+   * @param {boolean} [center] - Determines whether to average the life value
    * @return void
    */
-  constructor(a, b, c) {
+  constructor(min, max, center) {
     super();
 
     /**
      * @desc The life span of the particle.
      * @type {Span}
      */
-    this.lifePan = createSpan(a, b, c);
+    this.lifePan = createSpan(min, max, center);
   }
 
   /**
@@ -30,9 +30,9 @@ export default class Life extends Initializer {
    * @param {Particle} particle - the particle to initialize the property on
    * @return void
    */
-  initialize(target) {
+  initialize(particle) {
     if (this.lifePan.a == Infinity || this.lifePan.a == 'infi')
-      target.life = Infinity;
-    else target.life = this.lifePan.getValue();
+      particle.life = Infinity;
+    else particle.life = this.lifePan.getValue();
   }
 }

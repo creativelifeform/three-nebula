@@ -9,32 +9,32 @@ export default class Radius extends Initializer {
   /**
    * Constructs a Radius initializer instance.
    *
-   * @param {number} a - The width of the particle radius
-   * @param {number} b - The height of the particle radius
-   * @param {?string} c - The center of the radius span
+   * @param {number} width - The width of the particle radius
+   * @param {number} height - The height of the particle radius
+   * @param {boolean} [center] - Determines whether to average the radius value
    * @return void
    */
-  constructor(a, b, c) {
+  constructor(width, height, center = false) {
     super();
 
     /**
      * @desc The radius span which is used to set the particle radius value.
      * @type {Span}
      */
-    this.radius = createSpan(a, b, c);
+    this.radius = createSpan(width, height, center);
   }
 
   /**
    * Resets the initializer properties.
    * Clears all previously set zones and resets the zones according to args passed.
    *
-   * @param {number} a - The width of the particle radius
-   * @param {number} b - The height of the particle radius
-   * @param {?string} c - The center of the radius span
+   * @param {number} width - The width of the particle radius
+   * @param {number} height - The height of the particle radius
+   * @param {boolean} [shouldCenter] - Determines whether to average the radius value
    * @return void
    */
-  reset(a, b, c) {
-    this.radius = createSpan(a, b, c);
+  reset(width, height, center = false) {
+    this.radius = createSpan(width, height, center);
   }
 
   /**
