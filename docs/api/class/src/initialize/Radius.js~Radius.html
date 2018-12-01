@@ -94,7 +94,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initialize">initialize</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Body.js~Body.html">Body</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Life.js~Life.html">Life</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Mass.js~Mass.html">Mass</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html">Position</a></span></span></li>
@@ -133,13 +133,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Radius from &apos;<span><a href="file/src/initialize/Radius.js.html#lineNumber4">@rohandeshpande/three-proton/src/initialize/Radius.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Radius from &apos;<span><a href="file/src/initialize/Radius.js.html#lineNumber8">@rohandeshpande/three-proton/src/initialize/Radius.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/initialize/Radius.js.html#lineNumber4">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/initialize/Radius.js.html#lineNumber8">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -149,7 +149,7 @@
 
   
   
-  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span> &#x2192; Radius</div></div>
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span> &#x2192; Radius</div></div>
   
   
   
@@ -159,7 +159,8 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>Sets the radius property on initialized particles.</p>
+</div>
   
 
   
@@ -191,13 +192,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Radius.js~Radius.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(a: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>, b: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>, c: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Radius.js~Radius.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(width: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, height: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, center: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Radius is init particle&apos;s Radius</p>
+        <div data-ice="description"><p>Constructs a Radius initializer instance.</p>
 </div>
       </div>
     </td>
@@ -227,13 +228,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Radius.js~Radius.html#instance-member-radius">radius</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Radius.js~Radius.html#instance-member-radius">radius</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Span.js~Span.html">Span</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The radius span which is used to set the particle radius value.</p>
+</div>
       </div>
     </td>
     <td>
@@ -262,13 +264,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Radius.js~Radius.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(particle: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Radius.js~Radius.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Sets the particle&apos;s initial radius.</p>
+</div>
       </div>
     </td>
     <td>
@@ -290,13 +293,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Radius.js~Radius.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">(a: <span>*</span>, b: <span>*</span>, c: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Radius.js~Radius.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">(width: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, height: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, center: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Resets the initializer properties.</p>
+</div>
       </div>
     </td>
     <td>
@@ -309,7 +313,7 @@
 </div>
 
 <div class="inherited-summary" data-ice="inheritedSummary"><h2>Inherited Summary</h2><table class="summary" data-ice="summary">
-  <thead><tr><td data-ice="title" colspan="3"><span class="toggle closed"></span> From class <span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span></td></tr></thead>
+  <thead><tr><td data-ice="title" colspan="3"><span class="toggle closed"></span> From class <span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span></td></tr></thead>
   <tbody>
   
   <tr data-ice="target">
@@ -326,7 +330,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-member-name">name</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-member-name">name</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
@@ -354,41 +358,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">(emitter: <span>*</span>, particle: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">(emitter: <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>, particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      <span class="abstract" data-ice="abstract">abstract</span>
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(target: <span>*</span>)</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
+        <div data-ice="description"><p>Initializes the property on the emitter or particle.</p>
+</div>
       </div>
     </td>
     <td>
@@ -410,7 +387,36 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Place custom property initialization code in this method in the subclass.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      <span class="abstract" data-ice="abstract">abstract</span>
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
@@ -440,7 +446,7 @@
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(a: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>, b: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>, c: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>)</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(width: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, height: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, center: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
@@ -451,10 +457,10 @@
   
   
   
-  <div data-ice="description"><p>Radius is init particle&apos;s Radius</p>
+  <div data-ice="description"><p>Constructs a Radius initializer instance.</p>
 </div>
 
-  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-constructor-constructor">Initialize#constructor</a></span></div>
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-constructor-constructor">Initializer#constructor</a></span></div>
 
   <div data-ice="properties"><div data-ice="properties">
   <h4 data-ice="title">Params:</h4>
@@ -465,24 +471,25 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">a</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">width</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>the Radius&apos;s start point</p>
+      <td data-ice="description"><p>The width of the particle radius</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">b</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">height</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>the Radius&apos;s end point</p>
+      <td data-ice="description"><p>The height of the particle radius</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">c</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>span&apos;s center</p>
+      <td data-ice="name" class="code" data-depth="0">center</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: false</li></ul></td>
+      <td data-ice="description"><p>Determines whether to average the radius value</p>
 </td>
     </tr>
 </tbody>
@@ -490,26 +497,30 @@
 </div>
 </div>
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  <div data-ice="example">
-    <h4>Example:</h4>
-    
-  <div class="example-doc" data-ice="exampleDoc">
-      
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">var Radius = new Proton.Radius(3,5);
-or
-var Radius = new Proton.Radius(3,1,&quot;center&quot;);</code></pre>
-    </div>
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
 </div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 
@@ -527,18 +538,19 @@ var Radius = new Proton.Radius(3,1,&quot;center&quot;);</code></pre>
     
     
     
-    <span class="code" data-ice="name">radius</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">radius</span><span class="code" data-ice="signature">: <span><a href="class/src/math/Span.js~Span.html">Span</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Radius.js.html#lineNumber19">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Radius.js.html#lineNumber24">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The radius span which is used to set the particle radius value.</p>
+</div>
 
   
 
@@ -573,20 +585,21 @@ var Radius = new Proton.Radius(3,1,&quot;center&quot;);</code></pre>
     
     
     
-    <span class="code" data-ice="name">initialize</span><span class="code" data-ice="signature">(particle: <span>*</span>)</span>
+    <span class="code" data-ice="name">initialize</span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Radius.js.html#lineNumber26">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Radius.js.html#lineNumber46">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Sets the particle&apos;s initial radius.</p>
+</div>
 
-  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-initialize">Initialize#initialize</a></span></div>
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-method-initialize">Initializer#initialize</a></span></div>
 
   <div data-ice="properties"><div data-ice="properties">
   <h4 data-ice="title">Params:</h4>
@@ -598,16 +611,30 @@ var Radius = new Proton.Radius(3,1,&quot;center&quot;);</code></pre>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">particle</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the particle to initialize the property on</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -632,20 +659,22 @@ var Radius = new Proton.Radius(3,1,&quot;center&quot;);</code></pre>
     
     
     
-    <span class="code" data-ice="name">reset</span><span class="code" data-ice="signature">(a: <span>*</span>, b: <span>*</span>, c: <span>*</span>)</span>
+    <span class="code" data-ice="name">reset</span><span class="code" data-ice="signature">(width: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, height: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, center: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Radius.js.html#lineNumber22">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Radius.js.html#lineNumber36">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Resets the initializer properties.
+Clears all previously set zones and resets the zones according to args passed.</p>
+</div>
 
-  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-reset">Initialize#reset</a></span></div>
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-method-reset">Initializer#reset</a></span></div>
 
   <div data-ice="properties"><div data-ice="properties">
   <h4 data-ice="title">Params:</h4>
@@ -656,29 +685,46 @@ var Radius = new Proton.Radius(3,1,&quot;center&quot;);</code></pre>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">a</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="name" class="code" data-depth="0">width</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The width of the particle radius</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">b</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="name" class="code" data-depth="0">height</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The height of the particle radius</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">c</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="name" class="code" data-depth="0">center</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: false</li></ul></td>
+      <td data-ice="description"><p>Determines whether to average the radius value</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 

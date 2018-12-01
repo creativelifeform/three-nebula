@@ -94,7 +94,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initialize">initialize</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Body.js~Body.html">Body</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Life.js~Life.html">Life</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Mass.js~Mass.html">Mass</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html">Position</a></span></span></li>
@@ -133,13 +133,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Rate from &apos;<span><a href="file/src/initialize/Rate.js.html#lineNumber5">@rohandeshpande/three-proton/src/initialize/Rate.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Rate from &apos;<span><a href="file/src/initialize/Rate.js.html#lineNumber13">@rohandeshpande/three-proton/src/initialize/Rate.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/initialize/Rate.js.html#lineNumber5">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/initialize/Rate.js.html#lineNumber13">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -149,7 +149,7 @@
 
   
   
-  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span> &#x2192; Rate</div></div>
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span> &#x2192; Rate</div></div>
   
   
   
@@ -159,7 +159,11 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>Calculates the rate of particle emission.</p>
+<p>TODO This doesn&apos;t need to be an initializer, it doesn&apos;t have an initialize
+method, it overrides the base init method and it is only relevent to the Emitter class.
+It would be better to move this to the Emitter module itself as a standalone class.</p>
+</div>
   
 
   
@@ -191,13 +195,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Rate.js~Rate.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(numPan: <span>Array or Number or Proton.Span</span>, timePan: <span>Array or Number or Proton.Span</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Rate.js~Rate.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(numPan: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span>array</span> | <span><a href="class/src/math/Span.js~Span.html">Span</a></span>, timePan: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span>array</span> | <span><a href="class/src/math/Span.js~Span.html">Span</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>The number of particles per second emission (a [particle]/b [s]);</p>
+        <div data-ice="description"><p>Constructs a Rate instance.</p>
 </div>
       </div>
     </td>
@@ -233,7 +237,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>The rate&apos;s next time.</p>
+</div>
       </div>
     </td>
     <td>
@@ -255,13 +260,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Rate.js~Rate.html#instance-member-numPan">numPan</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Rate.js~Rate.html#instance-member-numPan">numPan</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Span.js~Span.html">Span</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Sets the number of particles to emit.</p>
+</div>
       </div>
     </td>
     <td>
@@ -289,7 +295,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>The rate&apos;s start time.</p>
+</div>
       </div>
     </td>
     <td>
@@ -311,13 +318,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Rate.js~Rate.html#instance-member-timePan">timePan</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Rate.js~Rate.html#instance-member-timePan">timePan</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Span.js~Span.html">Span</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Sets the time between each particle emission.</p>
+</div>
       </div>
     </td>
     <td>
@@ -346,13 +354,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Rate.js~Rate.html#instance-method-getValue">getValue</a></span></span><span class="code" data-ice="signature">(time: <span>*</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Rate.js~Rate.html#instance-method-getValue">getValue</a></span></span><span class="code" data-ice="signature">(time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Gets the number of particles to emit.</p>
+</div>
       </div>
     </td>
     <td>
@@ -374,13 +383,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Rate.js~Rate.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Rate.js~Rate.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Sets the startTime and nextTime properties.</p>
+</div>
       </div>
     </td>
     <td>
@@ -393,7 +403,7 @@
 </div>
 
 <div class="inherited-summary" data-ice="inheritedSummary"><h2>Inherited Summary</h2><table class="summary" data-ice="summary">
-  <thead><tr><td data-ice="title" colspan="3"><span class="toggle closed"></span> From class <span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span></td></tr></thead>
+  <thead><tr><td data-ice="title" colspan="3"><span class="toggle closed"></span> From class <span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span></td></tr></thead>
   <tbody>
   
   <tr data-ice="target">
@@ -410,7 +420,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-member-name">name</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-member-name">name</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
@@ -438,41 +448,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">(emitter: <span>*</span>, particle: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">(emitter: <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>, particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      <span class="abstract" data-ice="abstract">abstract</span>
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(target: <span>*</span>)</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
+        <div data-ice="description"><p>Initializes the property on the emitter or particle.</p>
+</div>
       </div>
     </td>
     <td>
@@ -494,7 +477,36 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Place custom property initialization code in this method in the subclass.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      <span class="abstract" data-ice="abstract">abstract</span>
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
@@ -524,21 +536,21 @@
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(numPan: <span>Array or Number or Proton.Span</span>, timePan: <span>Array or Number or Proton.Span</span>)</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(numPan: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span>array</span> | <span><a href="class/src/math/Span.js~Span.html">Span</a></span>, timePan: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span>array</span> | <span><a href="class/src/math/Span.js~Span.html">Span</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber14">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber21">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>The number of particles per second emission (a [particle]/b [s]);</p>
+  <div data-ice="description"><p>Constructs a Rate instance.</p>
 </div>
 
-  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-constructor-constructor">Initialize#constructor</a></span></div>
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-constructor-constructor">Initializer#constructor</a></span></div>
 
   <div data-ice="properties"><div data-ice="properties">
   <h4 data-ice="title">Params:</h4>
@@ -550,17 +562,16 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">numPan</td>
-      <td data-ice="type" class="code"><span>Array or Number or Proton.Span</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span>array</span> | <span><a href="class/src/math/Span.js~Span.html">Span</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>the number of each emission;</p>
+      <td data-ice="description"><p>The number of particles to emit</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">timePan</td>
-      <td data-ice="type" class="code"><span>Array or Number or Proton.Span</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span>array</span> | <span><a href="class/src/math/Span.js~Span.html">Span</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>the time of each emission;
-for example: new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));</p>
+      <td data-ice="description"><p>The time between each particle emission</p>
 </td>
     </tr>
 </tbody>
@@ -568,7 +579,20 @@ for example: new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -600,14 +624,15 @@ for example: new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber21">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber46">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The rate&apos;s next time.</p>
+</div>
 
   
 
@@ -639,18 +664,19 @@ for example: new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));
     
     
     
-    <span class="code" data-ice="name">numPan</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">numPan</span><span class="code" data-ice="signature">: <span><a href="class/src/math/Span.js~Span.html">Span</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber17">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber28">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Sets the number of particles to emit.</p>
+</div>
 
   
 
@@ -686,14 +712,15 @@ for example: new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber20">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber40">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The rate&apos;s start time.</p>
+</div>
 
   
 
@@ -725,18 +752,19 @@ for example: new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));
     
     
     
-    <span class="code" data-ice="name">timePan</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">timePan</span><span class="code" data-ice="signature">: <span><a href="class/src/math/Span.js~Span.html">Span</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber18">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber34">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Sets the time between each particle emission.</p>
+</div>
 
   
 
@@ -771,18 +799,19 @@ for example: new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));
     
     
     
-    <span class="code" data-ice="name">getValue</span><span class="code" data-ice="signature">(time: <span>*</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+    <span class="code" data-ice="name">getValue</span><span class="code" data-ice="signature">(time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber30">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber67">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Gets the number of particles to emit.</p>
+</div>
 
   
 
@@ -796,9 +825,10 @@ for example: new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">time</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Current particle engine time</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -842,25 +872,39 @@ for example: new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));
     
     
     
-    <span class="code" data-ice="name">init</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">init</span><span class="code" data-ice="signature">(): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber25">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Rate.js.html#lineNumber56">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Sets the startTime and nextTime properties.</p>
+</div>
 
-  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-init">Initialize#init</a></span></div>
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-method-init">Initializer#init</a></span></div>
 
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 

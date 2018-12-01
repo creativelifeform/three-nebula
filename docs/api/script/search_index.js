@@ -228,9 +228,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initialize/initialize.js~initialize",
-    "class/src/initialize/Initialize.js~Initialize.html",
-    "<span>Initialize</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initialize/Initialize.js</span>",
+    "@rohandeshpande/three-proton/src/initialize/initializer.js~initializer",
+    "class/src/initialize/Initializer.js~Initializer.html",
+    "<span>Initializer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initialize/Initializer.js</span>",
     "class"
   ],
   [
@@ -2448,46 +2448,46 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/initialize/initialize.js",
-    "file/src/initialize/Initialize.js.html",
-    "src/initialize/Initialize.js",
-    "file"
-  ],
-  [
-    "src/initialize/initialize.js~initialize#constructor",
-    "class/src/initialize/Initialize.js~Initialize.html#instance-constructor-constructor",
-    "src/initialize/Initialize.js~Initialize#constructor",
-    "method"
-  ],
-  [
-    "src/initialize/initialize.js~initialize#init",
-    "class/src/initialize/Initialize.js~Initialize.html#instance-method-init",
-    "src/initialize/Initialize.js~Initialize#init",
-    "method"
-  ],
-  [
-    "src/initialize/initialize.js~initialize#initialize",
-    "class/src/initialize/Initialize.js~Initialize.html#instance-method-initialize",
-    "src/initialize/Initialize.js~Initialize#initialize",
-    "method"
-  ],
-  [
-    "src/initialize/initialize.js~initialize#name",
-    "class/src/initialize/Initialize.js~Initialize.html#instance-member-name",
-    "src/initialize/Initialize.js~Initialize#name",
-    "member"
-  ],
-  [
-    "src/initialize/initialize.js~initialize#reset",
-    "class/src/initialize/Initialize.js~Initialize.html#instance-method-reset",
-    "src/initialize/Initialize.js~Initialize#reset",
-    "method"
-  ],
-  [
     "src/initialize/initializeutil.js",
     "file/src/initialize/InitializeUtil.js.html",
     "src/initialize/InitializeUtil.js",
     "file"
+  ],
+  [
+    "src/initialize/initializer.js",
+    "file/src/initialize/Initializer.js.html",
+    "src/initialize/Initializer.js",
+    "file"
+  ],
+  [
+    "src/initialize/initializer.js~initializer#constructor",
+    "class/src/initialize/Initializer.js~Initializer.html#instance-constructor-constructor",
+    "src/initialize/Initializer.js~Initializer#constructor",
+    "method"
+  ],
+  [
+    "src/initialize/initializer.js~initializer#init",
+    "class/src/initialize/Initializer.js~Initializer.html#instance-method-init",
+    "src/initialize/Initializer.js~Initializer#init",
+    "method"
+  ],
+  [
+    "src/initialize/initializer.js~initializer#initialize",
+    "class/src/initialize/Initializer.js~Initializer.html#instance-method-initialize",
+    "src/initialize/Initializer.js~Initializer#initialize",
+    "method"
+  ],
+  [
+    "src/initialize/initializer.js~initializer#name",
+    "class/src/initialize/Initializer.js~Initializer.html#instance-member-name",
+    "src/initialize/Initializer.js~Initializer#name",
+    "member"
+  ],
+  [
+    "src/initialize/initializer.js~initializer#reset",
+    "class/src/initialize/Initializer.js~Initializer.html#instance-method-reset",
+    "src/initialize/Initializer.js~Initializer#reset",
+    "method"
   ],
   [
     "src/initialize/life.js",

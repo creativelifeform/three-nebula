@@ -94,7 +94,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initialize">initialize</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Body.js~Body.html">Body</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Life.js~Life.html">Life</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Mass.js~Mass.html">Mass</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html">Position</a></span></span></li>
@@ -133,19 +133,51 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/initialize/Body.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Initialize from &apos;./Initialize&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Initializer from &apos;./Initializer&apos;;
 import Util from &apos;../utils/Util&apos;;
 import { createArraySpan } from &apos;../math&apos;;
 
-export default class Body extends Initialize {
+/**
+ * Sets the body property on initialized particles.
+ *
+ */
+export default class Body extends Initializer {
+  /**
+   * Constructs a Body initalizer instance.
+   *
+   * @param {string|number} body - The color for the particle body
+   * @param {?number} w - The width of the particle body
+   * @param {?number} h - The height of the particle body
+   * @return void
+   */
   constructor(body, w, h) {
     super();
 
+    /**
+     * @desc The color for the particle body
+     * @type {ArraySpan}
+     */
     this.body = createArraySpan(body);
+
+    /**
+     * @desc The width of the particle Body
+     * @type {number}
+     */
     this.w = w;
+
+    /**
+     * @desc The height of the particle Body
+     * @type {number}
+     */
     this.h = Util.initValue(h, this.w);
   }
 
+  /**
+   * Sets the particle&apos;s initial body.
+   *
+   * @param {Particle} particle - the particle to initialize the property on
+   * @return void
+   */
   initialize(particle) {
     var body = this.body.getValue();
 

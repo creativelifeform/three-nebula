@@ -1,25 +1,36 @@
-import Initialize from './Initialize';
+import Initializer from './Initializer';
 import { createSpan } from '../math';
 
-export default class Mass extends Initialize {
+/**
+ * Sets the mass property on initialized particles.
+ *
+ */
+export default class Mass extends Initializer {
   /**
-   * Mass is init particle's Mass
-   * @param {Number} a - the Mass's start point
-   * @param {Number} b - the Mass's end point
-   * @param {String} c - span's center
-   * @example
-   * var Mass = new Proton.Mass(3,5);
-   * or
-   * var Mass = new Proton.Mass(Infinity);
-   * @extends {Initialize}
-   * @constructor
+   * Constructs a Mass initializer instance.
+   *
+   * @param {number} min - The minumum mass for the particle
+   * @param {number} max - The maximum mass for the particle
+   * @param {boolean} [center] - Determines whether to average the mass value
+   * @return void
    */
-  constructor(a, b, c) {
+  constructor(min, max, center = false) {
     super();
-    this.massPan = createSpan(a, b, c);
+
+    /**
+     * @desc The mass span which is used to set the particle mass value.
+     * @type {Span}
+     */
+    this.massPan = createSpan(min, max, center);
   }
 
-  initialize(target) {
-    target.mass = this.massPan.getValue();
+  /**
+   * Sets the particle's initial mass.
+   *
+   * @param {Particle} particle - the particle to initialize the property on
+   * @return void
+   */
+  initialize(particle) {
+    particle.mass = this.massPan.getValue();
   }
 }
