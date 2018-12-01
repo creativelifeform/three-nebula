@@ -1,14 +1,14 @@
-import Initialize from './Initialize';
+import Initializer from './Initializer';
 import Util from '../utils/Util';
 import { createArraySpan } from '../math';
 
 /**
- * Stores the particle body's properties.
+ * Sets the body property on initialized particles.
  *
  */
-export default class Body extends Initialize {
+export default class Body extends Initializer {
   /**
-   * Constructs a Body property instance.
+   * Constructs a Body initalizer instance.
    *
    * @param {string|number} body - The color for the particle body
    * @param {?number} w - The width of the particle body
@@ -38,7 +38,7 @@ export default class Body extends Initialize {
   }
 
   /**
-   * Initializes the property on the particle.
+   * Sets the particle's initial body.
    *
    * @param {Particle} particle - the particle to initialize the property on
    * @return void

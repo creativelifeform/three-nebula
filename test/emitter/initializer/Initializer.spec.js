@@ -2,26 +2,26 @@
 
 import * as Proton from '../../../src';
 
-import Initialize from '../../../src/initialize/Initialize';
+import Initializer from '../../../src/initialize/Initializer';
 import chai from 'chai';
 
 const { assert } = chai;
 
-describe('property -> Property', () => {
+describe('initializer -> Initializer', () => {
   it('should have the required methods after instantiation', done => {
-    const initialize = new Initialize();
+    const initializer = new Initializer();
 
-    assert.isFunction(initialize.init);
-    assert.isFunction(initialize.reset);
-    assert.isFunction(initialize.initialize);
+    assert.isFunction(initializer.init);
+    assert.isFunction(initializer.reset);
+    assert.isFunction(initializer.initialize);
 
     done();
   });
   it('should initialize the emitter', done => {
     const emitter = new Proton.Emitter();
-    const initialize = new Initialize();
+    const initializer = new Initializer();
 
-    initialize.init(emitter);
+    initializer.init(emitter);
 
     assert.isTrue(emitter.hasBeenInitialized);
 
@@ -31,9 +31,9 @@ describe('property -> Property', () => {
   it('should initialize the particle', done => {
     const emitter = new Proton.Emitter();
     const particle = new Proton.Particle();
-    const initialize = new Initialize();
+    const initializer = new Initializer();
 
-    initialize.init(emitter, particle);
+    initializer.init(emitter, particle);
 
     assert.isUndefined(emitter.hasBeenInitialized);
     assert.isTrue(particle.hasBeenInitialized);

@@ -6,16 +6,16 @@ import chai from 'chai';
 
 const { assert } = chai;
 
-describe('property -> Mass', () => {
+describe('initializer -> Mass', () => {
   const min = 3;
   const max = 5;
-  const property = new Proton.Mass(min, max);
+  const initializer = new Proton.Mass(min, max);
 
   it('should have the correct properties after instantiation', done => {
     const {
       massPan,
       massPan: { _isArray, a, b, _center }
-    } = property;
+    } = initializer;
 
     assert.instanceOf(massPan, Proton.Span);
     assert.isFalse(_isArray);
@@ -29,7 +29,7 @@ describe('property -> Mass', () => {
   it('should set the correct properties on the particle after initialization', done => {
     const particle = new Proton.Particle();
 
-    property.initialize(particle);
+    initializer.initialize(particle);
 
     const { mass } = particle;
 

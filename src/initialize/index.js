@@ -1,5 +1,4 @@
 export { default as Body } from './Body';
-export { default as Initialize } from './Initialize';
 export { default as InitializeUtil } from './InitializeUtil';
 export { default as Life } from './Life';
 export { default as Mass } from './Mass';

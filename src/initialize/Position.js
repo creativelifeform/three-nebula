@@ -1,12 +1,13 @@
-import Initialize from './Initialize';
+import Initializer from './Initializer';
 
 /**
- * Manages the starting positions for particles being emitted.
+ * Sets the starting position property for initialized particles.
+ * This is respective to the supplied zones.
  *
  */
-export default class Position extends Initialize {
+export default class Position extends Initializer {
   /**
-   * Constructs a Position property instance.
+   * Constructs a Position initializer instance.
    *
    * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
    * @return void
@@ -17,7 +18,7 @@ export default class Position extends Initialize {
   }
 
   /**
-   * Resets the property properties.
+   * Resets the initializer properties.
    * Clears all previously set zones and resets the zones according to args passed.
    *
    * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
@@ -50,7 +51,7 @@ export default class Position extends Initialize {
 }
 
 /**
- * Initializes the property on the particle.
+ * Sets the particle's initial position.
  *
  * @param {Particle} particle - the particle to initialize the property on
  * @return void

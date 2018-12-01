@@ -6,7 +6,7 @@ import chai from 'chai';
 
 const { assert } = chai;
 
-describe('property -> Position', () => {
+describe('initializer -> Position', () => {
   const zoneA = new Proton.BoxZone(0, 0, 0, 5, 5, 5);
   const zoneB = new Proton.SphereZone(1, 1, 1);
 

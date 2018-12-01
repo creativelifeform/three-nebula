@@ -1,10 +1,10 @@
 import { DR, MEASURE, PI } from '../constants';
 import { MathUtils, Polar3D, Vector3D, createSpan } from '../math';
 
-import Initialize from './Initialize';
+import Initializer from './Initializer';
 import { classDeprecationWarning } from '../compatibility';
 
-export default class Velocity extends Initialize {
+export default class Velocity extends Initializer {
   /**
    * Velocity is init particle's Velocity
    * @param {Number} a - the Life's start point
@@ -14,7 +14,7 @@ export default class Velocity extends Initialize {
    * var life = new Life(3,5);
    * or
    * var life = new Life(Infinity);
-   * @extends {Initialize}
+   * @extends {Initializer}
    * @constructor
    */
   //radius and tha

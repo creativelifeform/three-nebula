@@ -1,8 +1,8 @@
-import Initialize from './Initialize';
+import Initializer from './Initializer';
 import Util from '../utils/Util';
 import { createSpan } from '../math';
 
-export default class Rate extends Initialize {
+export default class Rate extends Initializer {
   /**
    * The number of particles per second emission (a [particle]/b [s]);
    * @class Proton.Rate

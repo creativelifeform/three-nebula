@@ -6,9 +6,9 @@ import chai from 'chai';
 
 const { assert } = chai;
 
-describe('property -> Body', () => {
+describe('initializer -> Body', () => {
   const color = '#FF0000';
-  const property = new Proton.Body(color, 3, 4);
+  const initializer = new Proton.Body(color, 3, 4);
 
   it('should have the correct properties after instantiation', done => {
     const {
@@ -16,7 +16,7 @@ describe('property -> Body', () => {
       body: { _isArray, a, b, _center, _arr },
       w,
       h
-    } = property;
+    } = initializer;
 
     assert.instanceOf(body, Proton.ArraySpan);
     assert.isFalse(_isArray);
@@ -43,7 +43,7 @@ describe('property -> Body', () => {
   it('should set the correct properties on the particle after initialization', done => {
     const particle = new Proton.Particle();
 
-    property.initialize(particle);
+    initializer.initialize(particle);
 
     const {
       body: { width, height, body }

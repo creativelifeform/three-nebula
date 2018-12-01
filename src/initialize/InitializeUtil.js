@@ -1,5 +1,5 @@
 import { Euler } from 'three';
-import Initialize from './Initialize';
+import Initializer from './Initializer';
 import Util from '../utils/Util';
 
 const particleEuler = new Euler();
@@ -14,7 +14,7 @@ export default {
       // TODO remove this conditional, the else is not entered in any of the examples
       // and is just confusing
       /* istanbul ignore else */
-      if (initialize instanceof Initialize) initialize.init(emitter, particle);
+      if (initialize instanceof Initializer) initialize.init(emitter, particle);
       else this.init(emitter, particle, initialize);
     }
 

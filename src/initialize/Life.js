@@ -1,11 +1,11 @@
-import Initialize from './Initialize';
+import Initializer from './Initializer';
 import { createSpan } from '../math';
 
 /**
- * Stores the life span of a particle.
+ * Sets the life property on initialized particles.
  *
  */
-export default class Life extends Initialize {
+export default class Life extends Initializer {
   /**
    * Constructs a Life property instance.
    *
@@ -25,7 +25,7 @@ export default class Life extends Initialize {
   }
 
   /**
-   * Initializes the property on the particle.
+   * Sets the particle's initial life.
    *
    * @param {Particle} particle - the particle to initialize the property on
    * @return void

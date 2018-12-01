@@ -3,14 +3,14 @@
  *
  * @abstract
  */
-export default class Initialize {
+export default class Initializer {
   /**
-   * Constructs a Property instance.
+   * Constructs an Initializer instance.
    *
    * @return void
    */
   constructor() {
-    this.name = 'Initialize';
+    this.name = 'Initializer';
   }
 
   /**

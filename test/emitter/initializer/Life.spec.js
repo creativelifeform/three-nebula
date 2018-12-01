@@ -6,16 +6,16 @@ import chai from 'chai';
 
 const { assert } = chai;
 
-describe('property -> Life', () => {
+describe('initializer -> Life', () => {
   const start = 3;
   const end = 5;
-  const property = new Proton.Life(start, end);
+  const initializer = new Proton.Life(start, end);
 
   it('should have the correct properties after instantiation', done => {
     const {
       lifePan,
       lifePan: { _isArray, a, b, _center }
-    } = property;
+    } = initializer;
 
     assert.instanceOf(lifePan, Proton.Span);
     assert.isFalse(_isArray);
@@ -29,7 +29,7 @@ describe('property -> Life', () => {
   it('should set the correct properties on the particle after initialization', done => {
     const particle = new Proton.Particle();
 
-    property.initialize(particle);
+    initializer.initialize(particle);
 
     const { life } = particle;
 
