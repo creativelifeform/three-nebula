@@ -29,7 +29,7 @@ export default {
       else this.init(emitter, particle, initializer);
     }
 
-    this.bindEmitter(emitter, particle);
+    emitter.bindEmitter && this.bindEmitter(emitter, particle);
   },
 
   /**
@@ -41,16 +41,22 @@ export default {
     Util.setVectorByObj(particle, initialize);
   },
 
+  /**
+   * Ensures that the emitter's position, velocity and accleration are added
+   * to each created particle.
+   *
+   * @param {Emitter} emitter - The emitter that is emitting the particles
+   * @param {Particle} particle - The newly created particle
+   * @return void
+   */
   bindEmitter: function(emitter, particle) {
-    if (emitter.bindEmitter) {
-      const {
-        rotation: { x, y, z }
-      } = emitter;
+    const {
+      rotation: { x, y, z }
+    } = emitter;
 
-      particle.p.add(emitter.p);
-      particle.v.add(emitter.v);
-      particle.a.add(emitter.a);
-      particle.v.applyEuler(particleEuler.set(x, y, z));
-    }
+    particle.p.add(emitter.p);
+    particle.v.add(emitter.v);
+    particle.a.add(emitter.a);
+    particle.v.applyEuler(particleEuler.set(x, y, z));
   }
 };

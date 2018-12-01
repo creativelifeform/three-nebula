@@ -32,8 +32,35 @@ describe('initializer -> InitializeUtil', () => {
     spies.forEach(spy => {
       assert(spy.calledOnce);
       assert(spy.calledWith(particle));
+      assert(spy.neverCalledWith(emitter));
+
+      spy.restore();
     });
-    spies.forEach(spy => spy.restore());
+
+    done();
+  });
+
+  it('should call the bindEmitter method if the emitter has its bindEmitter prop set to true', done => {
+    const bindEmitterSpy = spy(InitializeUtil, 'bindEmitter');
+    const particlePositionAddSpy = spy(particle.p, 'add');
+    const particleVelocityAddSpy = spy(particle.v, 'add');
+    const particleVelocityApplyEulerSpy = spy(particle.v, 'applyEuler');
+    const particleAccelerationAddSpy = spy(particle.a, 'add');
+    const spies = [
+      bindEmitterSpy,
+      particlePositionAddSpy,
+      particleVelocityAddSpy,
+      particleVelocityApplyEulerSpy,
+      particleAccelerationAddSpy
+    ];
+
+    InitializeUtil.initialize(emitter, particle, initializers);
+
+    spies.forEach(spy => {
+      assert(spy.calledOnce);
+
+      spy.restore();
+    });
 
     done();
   });

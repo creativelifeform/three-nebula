@@ -51076,7 +51076,7 @@ exports.default = {
       if (initializer instanceof _Initializer2.default) initializer.init(emitter, particle);else this.init(emitter, particle, initializer);
     }
 
-    this.bindEmitter(emitter, particle);
+    emitter.bindEmitter && this.bindEmitter(emitter, particle);
   },
 
   /**
@@ -51088,19 +51088,25 @@ exports.default = {
     _Util2.default.setVectorByObj(particle, initialize);
   },
 
+  /**
+   * Ensures that the emitter's position, velocity and accleration are added
+   * to each created particle.
+   *
+   * @param {Emitter} emitter - The emitter that is emitting the particles
+   * @param {Particle} particle - The newly created particle
+   * @return void
+   */
   bindEmitter: function bindEmitter(emitter, particle) {
-    if (emitter.bindEmitter) {
-      var _emitter$rotation = emitter.rotation,
-          x = _emitter$rotation.x,
-          y = _emitter$rotation.y,
-          z = _emitter$rotation.z;
+    var _emitter$rotation = emitter.rotation,
+        x = _emitter$rotation.x,
+        y = _emitter$rotation.y,
+        z = _emitter$rotation.z;
 
 
-      particle.p.add(emitter.p);
-      particle.v.add(emitter.v);
-      particle.a.add(emitter.a);
-      particle.v.applyEuler(particleEuler.set(x, y, z));
-    }
+    particle.p.add(emitter.p);
+    particle.v.add(emitter.v);
+    particle.a.add(emitter.a);
+    particle.v.applyEuler(particleEuler.set(x, y, z));
   }
 };
 module.exports = exports['default'];
