@@ -16,6 +16,7 @@ export default class Initialize {
   /**
    * Initializes the property on the emitter or particle.
    *
+   * @see {@link '../emitter/emitter.js'} setupParticle
    * @param {Emitter} emitter - the emitter to initialize the property on
    * @param {Particle} particle - the particle to intiialize the property on
    * @return void

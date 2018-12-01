@@ -35,7 +35,7 @@ describe('property -> Property', () => {
 
     initialize.init(emitter, particle);
 
-    assert.isFalse(emitter.hasBeenInitialized);
+    assert.isUndefined(emitter.hasBeenInitialized);
     assert.isTrue(particle.hasBeenInitialized);
 
     done();

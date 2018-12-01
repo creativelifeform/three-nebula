@@ -96,47 +96,47 @@
     "filePath": "src/behaviour/Rotate.js",
     "lines": [
       {
-        "lineNumber": 45,
+        "lineNumber": 49,
         "line": "  /**"
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 50,
         "line": "   * Resets the behaviour properties."
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 51,
         "line": "   *"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 52,
         "line": "   * @param {number} x - X axis rotation"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 53,
         "line": "   * @param {number} y - Y axis rotation"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 54,
         "line": "   * @param {number} z - Z axis rotation"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 55,
         "line": "   * @param {number} life - the life of the behaviour"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 56,
         "line": "   * @param {function} easing - the easing equation to use for transforms"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 57,
         "line": "   * @return void"
       },
       {
-        "lineNumber": 54,
+        "lineNumber": 58,
         "line": "   */"
       },
       {
-        "lineNumber": 55,
+        "lineNumber": 59,
         "line": "  reset(a, b, c, life, easing) {"
       }
     ],
@@ -511,6 +511,126 @@
     "codeParams": [],
     "docParams": [
       "behaviour"
+    ]
+  },
+  {
+    "name": "Life#initialize",
+    "filePath": "src/initialize/Life.js",
+    "lines": [
+      {
+        "lineNumber": 26,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 27,
+        "line": "   * Initializes the property on the particle."
+      },
+      {
+        "lineNumber": 28,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 29,
+        "line": "   * @param {Particle} particle - the particle to initialize the property on"
+      },
+      {
+        "lineNumber": 30,
+        "line": "   * @return void"
+      },
+      {
+        "lineNumber": 31,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 32,
+        "line": "  initialize(target) {"
+      }
+    ],
+    "codeParams": [
+      "target"
+    ],
+    "docParams": [
+      "particle"
+    ]
+  },
+  {
+    "name": "Position#reset",
+    "filePath": "src/initialize/Position.js",
+    "lines": [
+      {
+        "lineNumber": 18,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 19,
+        "line": "   * Resets the property properties."
+      },
+      {
+        "lineNumber": 20,
+        "line": "   * Clears all previously set zones and resets the zones according to args passed."
+      },
+      {
+        "lineNumber": 21,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 22,
+        "line": "   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position."
+      },
+      {
+        "lineNumber": 23,
+        "line": "   * @return void"
+      },
+      {
+        "lineNumber": 24,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 25,
+        "line": "  reset() {"
+      }
+    ],
+    "codeParams": [],
+    "docParams": [
+      "zones"
+    ]
+  },
+  {
+    "name": "Position#addZone",
+    "filePath": "src/initialize/Position.js",
+    "lines": [
+      {
+        "lineNumber": 38,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 39,
+        "line": "   * Adds a zone or zones to this.zones."
+      },
+      {
+        "lineNumber": 40,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 41,
+        "line": "   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position."
+      },
+      {
+        "lineNumber": 42,
+        "line": "   * @return void"
+      },
+      {
+        "lineNumber": 43,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 44,
+        "line": "  addZone() {"
+      }
+    ],
+    "codeParams": [],
+    "docParams": [
+      "zones"
     ]
   }
 ]

@@ -11,6 +11,9 @@ export default {
     while (i--) {
       var initialize = initializes[i];
 
+      // TODO remove this conditional, the else is not entered in any of the examples
+      // and is just confusing
+      /* istanbul ignore else */
       if (initialize instanceof Initialize) initialize.init(emitter, particle);
       else this.init(emitter, particle, initialize);
     }
@@ -18,7 +21,11 @@ export default {
     this.bindEmitter(emitter, particle);
   },
 
+  /**
+   * @deprecated Looks like this method is never called
+   */
   init: function(emitter, particle, initialize) {
+    console.log('InitializeUtil.init called');
     Util.setPrototypeByObj(particle, initialize);
     Util.setVectorByObj(particle, initialize);
   },

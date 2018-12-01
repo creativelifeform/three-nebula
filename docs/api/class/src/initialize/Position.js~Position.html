@@ -133,13 +133,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Position from &apos;<span><a href="file/src/initialize/Position.js.html#lineNumber3">@rohandeshpande/three-proton/src/initialize/Position.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Position from &apos;<span><a href="file/src/initialize/Position.js.html#lineNumber7">@rohandeshpande/three-proton/src/initialize/Position.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/initialize/Position.js.html#lineNumber3">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/initialize/Position.js.html#lineNumber7">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -159,7 +159,8 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>Manages the starting positions for particles being emitted.</p>
+</div>
   
 
   
@@ -191,13 +192,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(zone: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(zones: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span> | <span>array</span>&lt;<span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>&gt;): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Position is init particle&apos;s Position</p>
+        <div data-ice="description"><p>Constructs a Position property instance.</p>
 </div>
       </div>
     </td>
@@ -262,13 +263,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html#instance-method-addZone">addZone</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html#instance-method-addZone">addZone</a></span></span><span class="code" data-ice="signature">(zones: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span> | <span>array</span>&lt;<span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>&gt;): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Adds a zone or zones to this.zones.</p>
+</div>
       </div>
     </td>
     <td>
@@ -290,13 +292,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">(zones: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span> | <span>array</span>&lt;<span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>&gt;): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Resets the property properties.</p>
+</div>
       </div>
     </td>
     <td>
@@ -354,13 +357,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">(emitter: <span>*</span>, particle: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">(emitter: <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>, particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Initializes the property on the emitter or particle.</p>
+</div>
       </div>
     </td>
     <td>
@@ -382,13 +386,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(target: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Place custom property initialization code in this method in the subclass.</p>
+</div>
       </div>
     </td>
     <td>
@@ -440,7 +445,7 @@
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(zone: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>)</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(zones: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span> | <span>array</span>&lt;<span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>&gt;): <span>*</span></span>
     <span class="right-info">
       
       
@@ -451,7 +456,7 @@
   
   
   
-  <div data-ice="description"><p>Position is init particle&apos;s Position</p>
+  <div data-ice="description"><p>Constructs a Position property instance.</p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-constructor-constructor">Initialize#constructor</a></span></div>
@@ -465,10 +470,10 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">zone</td>
-      <td data-ice="type" class="code"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">zones</td>
+      <td data-ice="type" class="code"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span> | <span>array</span>&lt;<span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>&gt;</td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>the Position zone</p>
+      <td data-ice="description"><p>The zones to use to calculate particle starting position.</p>
 </td>
     </tr>
 </tbody>
@@ -476,26 +481,30 @@
 </div>
 </div>
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  <div data-ice="example">
-    <h4>Example:</h4>
-    
-  <div class="example-doc" data-ice="exampleDoc">
-      
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">var Position = new Proton.Position(new Proton.PointZone(30,100,0));
-or
-var Position = new Proton.Position(Infinity);</code></pre>
-    </div>
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
 </div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 
@@ -517,7 +526,7 @@ var Position = new Proton.Position(Infinity);</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Position.js.html#lineNumber20">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Position.js.html#lineNumber27">source</a></span></span>
     </span>
   </h3>
 
@@ -559,25 +568,56 @@ var Position = new Proton.Position(Infinity);</code></pre>
     
     
     
-    <span class="code" data-ice="name">addZone</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">addZone</span><span class="code" data-ice="signature">(zones: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span> | <span>array</span>&lt;<span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>&gt;): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Position.js.html#lineNumber28">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Position.js.html#lineNumber45">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
-
-  
-
-  <div data-ice="properties">
+  <div data-ice="description"><p>Adds a zone or zones to this.zones.</p>
 </div>
 
   
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">zones</td>
+      <td data-ice="type" class="code"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span> | <span>array</span>&lt;<span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>&gt;</td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The zones to use to calculate particle starting position.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -602,25 +642,57 @@ var Position = new Proton.Position(Infinity);</code></pre>
     
     
     
-    <span class="code" data-ice="name">reset</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">reset</span><span class="code" data-ice="signature">(zones: <span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span> | <span>array</span>&lt;<span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>&gt;): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Position.js.html#lineNumber19">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Position.js.html#lineNumber26">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Resets the property properties.
+Clears all previously set zones and resets the zones according to args passed.</p>
+</div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-reset">Initialize#reset</a></span></div>
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">zones</td>
+      <td data-ice="type" class="code"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span> | <span>array</span>&lt;<span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span>&gt;</td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The zones to use to calculate particle starting position.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 

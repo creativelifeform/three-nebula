@@ -154,6 +154,7 @@ export default {
   },
 
   init: function(emitter, particle, initialize) {
+    console.log(&apos;InitializeUtil.init called&apos;);
     Util.setPrototypeByObj(particle, initialize);
     Util.setVectorByObj(particle, initialize);
   },

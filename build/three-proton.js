@@ -307,7 +307,7 @@ var Behaviour = function () {
      * @property id
      * @type {String} id
      */
-    this.id = 'Behaviour_' + (0, _utils.uid)();
+    this.id = 'behaviour-' + (0, _utils.uid)();
     this.life = _utils.Util.initValue(life, Infinity);
     /**
      * The behaviour's decaying trend, for example easeOutQuart;
@@ -486,20 +486,42 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**
+ * The base Emitter / Particle property class.
+ *
+ * @abstract
+ */
 var Initialize = function () {
+  /**
+   * Constructs a Property instance.
+   *
+   * @return void
+   */
   function Initialize() {
     _classCallCheck(this, Initialize);
 
     this.name = 'Initialize';
   }
 
+  /**
+   * Initializes the property on the emitter or particle.
+   *
+   * @see {@link '../emitter/emitter.js'} setupParticle
+   * @param {Emitter} emitter - the emitter to initialize the property on
+   * @param {Particle} particle - the particle to intiialize the property on
+   * @return void
+   */
+
+
   _createClass(Initialize, [{
     key: 'init',
     value: function init(emitter, particle) {
       if (particle) {
         this.initialize(particle);
+        particle.hasBeenInitialized = true;
       } else {
         this.initialize(emitter);
+        emitter.hasBeenInitialized = true;
       }
     }
 
@@ -512,6 +534,9 @@ var Initialize = function () {
     value: function reset() {}
 
     /**
+     * Place custom property initialization code in this method in the subclass.
+     *
+     * @param {object} target - either an Emitter or a Particle
      * @abstract
      */
 
@@ -51042,6 +51067,7 @@ exports.default = {
   },
 
   init: function init(emitter, particle, initialize) {
+    console.log('InitializeUtil.init called');
     _Util2.default.setPrototypeByObj(particle, initialize);
     _Util2.default.setVectorByObj(particle, initialize);
   },
@@ -52911,6 +52937,10 @@ var Rotate = function (_Behaviour) {
      */
     ,
     set: function set(type) {
+      /**
+       * @desc The rotation type. ENUM of ['same', 'set', 'to', 'add'].
+       * @type {string}
+       */
       this._type = type;
     }
   }]);
@@ -53862,19 +53892,53 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Stores the particle body's properties.
+ *
+ */
 var Body = function (_Initialize) {
   _inherits(Body, _Initialize);
 
+  /**
+   * Constructs a Body property instance.
+   *
+   * @param {string|number} body - The color for the particle body
+   * @param {?number} w - The width of the particle body
+   * @param {?number} h - The height of the particle body
+   * @return void
+   */
   function Body(body, w, h) {
     _classCallCheck(this, Body);
 
+    /**
+     * @desc The color for the particle body
+     * @type {ArraySpan}
+     */
     var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
 
     _this.body = (0, _math.createArraySpan)(body);
+
+    /**
+     * @desc The width of the particle Body
+     * @type {number}
+     */
     _this.w = w;
+
+    /**
+     * @desc The height of the particle Body
+     * @type {number}
+     */
     _this.h = _Util2.default.initValue(h, _this.w);
     return _this;
   }
+
+  /**
+   * Initializes the property on the particle.
+   *
+   * @param {Particle} particle - the particle to initialize the property on
+   * @return void
+   */
+
 
   _createClass(Body, [{
     key: 'initialize',
@@ -53926,29 +53990,41 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Stores the life span of a particle.
+ *
+ */
 var Life = function (_Initialize) {
   _inherits(Life, _Initialize);
 
   /**
-   * Life is init particle's Life
-   * @param {Number} a - the Life's start point
-   * @param {Number} b - the Life's end point
-   * @param {String} c - span's center
-   * @example
-   * var life = new Proton.Life(3,5);
-   * or
-   * var life = new Proton.Life(Infinity);
-   * @extends {Initialize}
-   * @constructor
+   * Constructs a Life property instance.
+   *
+   * @param {number} a - The minimum life
+   * @param {number} b - The maximum life
+   * @param {?string} c - The span's center
+   * @return void
    */
   function Life(a, b, c) {
     _classCallCheck(this, Life);
 
+    /**
+     * @desc The life span of the particle.
+     * @type {Span}
+     */
     var _this = _possibleConstructorReturn(this, (Life.__proto__ || Object.getPrototypeOf(Life)).call(this));
 
     _this.lifePan = (0, _math.createSpan)(a, b, c);
     return _this;
   }
+
+  /**
+   * Initializes the property on the particle.
+   *
+   * @param {Particle} particle - the particle to initialize the property on
+   * @return void
+   */
+
 
   _createClass(Life, [{
     key: 'initialize',
@@ -54052,18 +54128,18 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Manages the starting positions for particles being emitted.
+ *
+ */
 var Position = function (_Initialize) {
   _inherits(Position, _Initialize);
 
   /**
-   * Position is init particle's Position
-   * @param {Zone} zone - the Position zone
-   * @example
-   * var Position = new Proton.Position(new Proton.PointZone(30,100,0));
-   * or
-   * var Position = new Proton.Position(Infinity);
-   * @extends {Proton.Initialize}
-   * @constructor
+   * Constructs a Position property instance.
+   *
+   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
+   * @return void
    */
   function Position() {
     _classCallCheck(this, Position);
@@ -54074,6 +54150,15 @@ var Position = function (_Initialize) {
     return _this;
   }
 
+  /**
+   * Resets the property properties.
+   * Clears all previously set zones and resets the zones according to args passed.
+   *
+   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
+   * @return void
+   */
+
+
   _createClass(Position, [{
     key: 'reset',
     value: function reset() {
@@ -54081,8 +54166,20 @@ var Position = function (_Initialize) {
 
       var args = Array.prototype.slice.call(arguments);
 
+      /**
+       * @desc The zones to use as bounds for calculating the particle's starting position.
+       * @type {array<Zone>}
+       */
       this.zones = this.zones.concat(args);
     }
+
+    /**
+     * Adds a zone or zones to this.zones.
+     *
+     * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
+     * @return void
+     */
+
   }, {
     key: 'addZone',
     value: function addZone() {
@@ -54095,9 +54192,15 @@ var Position = function (_Initialize) {
   return Position;
 }(_Initialize3.default);
 
+/**
+ * Initializes the property on the particle.
+ *
+ * @param {Particle} particle - the particle to initialize the property on
+ * @return void
+ */
+
+
 exports.default = Position;
-
-
 Position.prototype.initialize = function () {
   var zone = void 0;
 

@@ -136,24 +136,35 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Initialize from &apos;./Initialize&apos;;
 import { createSpan } from &apos;../math&apos;;
 
+/**
+ * Stores the life span of a particle.
+ *
+ */
 export default class Life extends Initialize {
   /**
-   * Life is init particle&apos;s Life
-   * @param {Number} a - the Life&apos;s start point
-   * @param {Number} b - the Life&apos;s end point
-   * @param {String} c - span&apos;s center
-   * @example
-   * var life = new Proton.Life(3,5);
-   * or
-   * var life = new Proton.Life(Infinity);
-   * @extends {Initialize}
-   * @constructor
+   * Constructs a Life property instance.
+   *
+   * @param {number} a - The minimum life
+   * @param {number} b - The maximum life
+   * @param {?string} c - The span&apos;s center
+   * @return void
    */
   constructor(a, b, c) {
     super();
+
+    /**
+     * @desc The life span of the particle.
+     * @type {Span}
+     */
     this.lifePan = createSpan(a, b, c);
   }
 
+  /**
+   * Initializes the property on the particle.
+   *
+   * @param {Particle} particle - the particle to initialize the property on
+   * @return void
+   */
   initialize(target) {
     if (this.lifePan.a == Infinity || this.lifePan.a == &apos;infi&apos;)
       target.life = Infinity;

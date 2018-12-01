@@ -65,7 +65,6 @@ export default class Particle {
     this.useColor = false;
     this.useAlpha = false;
     this.easing = setEasingByName(ease.easeLinear);
-    this.hasBeenInitialized = false;
 
     if (init) {
       this.p = new Vector3D();
