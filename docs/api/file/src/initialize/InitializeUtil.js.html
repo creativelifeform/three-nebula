@@ -140,17 +140,28 @@ import Util from &apos;../utils/Util&apos;;
 const particleEuler = new Euler();
 
 export default {
-  initialize: function(emitter, particle, initializes) {
-    var i = initializes.length;
+  /**
+   * Loops through the initializers array and calls each initializer&apos;s initialize method
+   * on the supplied particle. This sets the particle&apos;s initial properties.
+   *
+   * @see {@link &apos;../emitter/Emitter&apos;} setupParticle
+   * @param {Emitter} emitter - The emitter that has called this method
+   * @param {Particle} particle - The particle that has just been created
+   * @param {array&lt;Initializer&gt;} initializers - All of the emitter&apos;s initializers
+   * @return void
+   */
+  initialize: function(emitter, particle, initializers) {
+    var i = initializers.length;
 
     while (i--) {
-      var initialize = initializes[i];
+      var initializer = initializers[i];
 
       // TODO remove this conditional, the else is not entered in any of the examples
       // and is just confusing
       /* istanbul ignore else */
-      if (initialize instanceof Initializer) initialize.init(emitter, particle);
-      else this.init(emitter, particle, initialize);
+      if (initializer instanceof Initializer)
+        initializer.init(emitter, particle);
+      else this.init(emitter, particle, initializer);
     }
 
     this.bindEmitter(emitter, particle);
