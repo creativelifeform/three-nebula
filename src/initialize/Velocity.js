@@ -4,24 +4,30 @@ import { MathUtils, Polar3D, Vector3D, createSpan } from '../math';
 import Initializer from './Initializer';
 import { classDeprecationWarning } from '../compatibility';
 
+/**
+ * Sets the velocity property on initialized particles.
+ *
+ * TODO The constructor for this class is insane. This should be broken down into three
+ * separate classes, VectorVelocity, PolarVelocity and RadialVelocity, that way
+ * it will be much cleaner and there won't be any need for mixed argument types.
+ *
+ */
 export default class Velocity extends Initializer {
   /**
-   * Velocity is init particle's Velocity
-   * @param {Number} a - the Life's start point
-   * @param {Number} b - the Life's end point
-   * @param {String} c - span's center
-   * @example
-   * var life = new Life(3,5);
-   * or
-   * var life = new Life(Infinity);
-   * @extends {Initializer}
-   * @constructor
+   * Constructs a Velocity intitializer instance.
+   *
+   * @param {Vector3D|Polar3D|Span|number} a - Vector, Polar or radius
+   * @param {number|Vector3D} b - Theta or Vector
+   * @param {number} c - Theta
    */
-  //radius and tha
   constructor(a, b, c) {
     super();
 
     this.reset(a, b, c);
+    /**
+     * @desc Directional vector
+     * @type {Vector3D}
+     */
     this.dirVec = new Vector3D(0, 0, 0);
     this.name = 'Velocity';
   }
