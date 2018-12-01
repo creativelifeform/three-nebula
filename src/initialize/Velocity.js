@@ -16,7 +16,7 @@ export default class Velocity extends Initializer {
   /**
    * Constructs a Velocity intitializer instance.
    *
-   * @param {Vector3D|Polar3D|Span|number} a - Vector, Polar or radius
+   * @param {Vector3D|Polar3D|Span|number} a - Vector, Polar or radius (as a number or Span)
    * @param {number|Vector3D} b - Theta or Vector
    * @param {number} c - Theta
    */
@@ -35,9 +35,28 @@ export default class Velocity extends Initializer {
   reset(a, b, c) {
     //[vector,tha]
     if (a instanceof Vector3D) {
+      /**
+       * @desc Velocity radius span.
+       * @type {Span}
+       */
       this.radiusPan = createSpan(1);
+
+      /**
+       * @desc Direction vector.
+       * @type {Vector3D}
+       */
       this.dir = a.clone();
+
+      /**
+       * @desc Theta.
+       * @type {number}
+       */
       this.tha = b * DR;
+
+      /**
+       * @desc Determines whether to use the directional vector or not.
+       * @type {boolean}
+       */
       this._useV = true;
     }
 
@@ -62,12 +81,20 @@ export default class Velocity extends Initializer {
   }
 }
 
+/**
+ * Sets the particle's initial velocity.
+ * BUG? This seems to always set the dirVec to 0, 0, 0 in the case of polar3d velocity.
+ *
+ * @singleton
+ * @param {Particle} particle - the particle to initialize the property on
+ * @return void
+ */
 Velocity.prototype.initialize = (function() {
   var tha;
   var normal = new Vector3D(0, 0, 1);
   var v = new Vector3D(0, 0, 0);
 
-  return function initialize(target) {
+  return function initialize(particle) {
     tha = this.tha * Math.random();
     this._useV && this.dirVec.copy(this.dir).scalar(this.radiusPan.getValue());
 
@@ -75,7 +102,7 @@ Velocity.prototype.initialize = (function() {
     v.copy(this.dirVec).applyAxisAngle(normal, tha);
     v.applyAxisAngle(this.dirVec.normalize(), Math.random() * PI * 2);
 
-    target.v.copy(v);
+    particle.v.copy(v);
 
     return this;
   };

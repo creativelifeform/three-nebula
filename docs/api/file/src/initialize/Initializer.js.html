@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/utils/THREEUtil.js | @rohandeshpande/three-proton</title>
+  <title data-ice="title">src/initialize/Initializer.js | @rohandeshpande/three-proton</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -132,74 +132,53 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/utils/THREEUtil.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import * as THREE from &apos;three&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/initialize/Initializer.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * The base Emitter / Particle property class.
+ *
+ * @abstract
+ */
+export default class Initializer {
+  /**
+   * Constructs an Initializer instance.
+   *
+   * @return void
+   */
+  constructor() {
+    this.name = &apos;Initializer&apos;;
+  }
 
-import PUID from &apos;./PUID&apos;;
+  /**
+   * Initializes the property on the emitter or particle.
+   *
+   * @see {@link &apos;../emitter/emitter.js&apos;} setupParticle
+   * @param {Emitter} emitter - the emitter to initialize the property on
+   * @param {Particle} particle - the particle to intiialize the property on
+   * @return void
+   */
+  init(emitter, particle) {
+    if (particle) {
+      this.initialize(particle);
+      particle.hasBeenInitialized = true;
+    } else {
+      this.initialize(emitter);
+      emitter.hasBeenInitialized = true;
+    }
+  }
 
-export default {
-  toScreenPos: (function() {
-    var vector = new THREE.Vector3();
+  /**
+   * @abstract
+   */
+  reset() {}
 
-    return function(pos, camera, canvas) {
-      vector.copy(pos);
-      // map to normalized device coordinate (NDC) space
-      vector.project(camera);
-      // map to 2D screen space
-      vector.x = Math.round(((vector.x + 1) * canvas.width) / 2);
-      vector.y = Math.round(((-vector.y + 1) * canvas.height) / 2);
-      vector.z = 0;
-
-      return vector;
-    };
-  })(),
-
-  toSpacePos: (function() {
-    var vector = new THREE.Vector3(),
-      dir = new THREE.Vector3(),
-      distance;
-
-    return function(pos, camera, canvas) {
-      vector.set(
-        (pos.x / canvas.width) * 2 - 1,
-        -(pos.y / canvas.height) * 2 + 1,
-        0.5
-      );
-      vector.unproject(camera);
-
-      dir.copy(vector.sub(camera.position).normalize());
-      distance = -camera.position.z / dir.z;
-      vector.copy(camera.position);
-      vector.add(dir.multiplyScalar(distance));
-
-      return vector;
-    };
-  })(),
-
-  getTexture: (function() {
-    var store = {};
-
-    return function(img) {
-      let id;
-
-      if (img instanceof THREE.Texture) {
-        return img;
-      } else if (typeof img == &apos;string&apos;) {
-        id = PUID.hash(img);
-
-        if (!store[id]) store[id] = new THREE.Texture(img);
-
-        return store[id];
-      } else if (img instanceof Image) {
-        id = PUID.hash(img.src);
-
-        if (!store[id]) store[id] = new THREE.Texture(img);
-
-        return store[id];
-      }
-    };
-  })()
-};
+  /**
+   * Place custom property initialization code in this method in the subclass.
+   *
+   * @param {object} target - either an Emitter or a Particle
+   * @abstract
+   */
+  initialize(target) {} // eslint-disable-line
+}
 </code></pre>
 
 </div>

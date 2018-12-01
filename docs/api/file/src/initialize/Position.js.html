@@ -94,7 +94,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initialize">initialize</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Body.js~Body.html">Body</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Life.js~Life.html">Life</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Mass.js~Mass.html">Mass</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html">Position</a></span></span></li>
@@ -133,15 +133,16 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/initialize/Position.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Initialize from &apos;./Initialize&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Initializer from &apos;./Initializer&apos;;
 
 /**
- * Manages the starting positions for particles being emitted.
+ * Sets the starting position property for initialized particles.
+ * This is respective to the supplied zones.
  *
  */
-export default class Position extends Initialize {
+export default class Position extends Initializer {
   /**
-   * Constructs a Position property instance.
+   * Constructs a Position initializer instance.
    *
    * @param {Zone|array&lt;Zone&gt;} zones - The zones to use to calculate particle starting position.
    * @return void
@@ -152,7 +153,7 @@ export default class Position extends Initialize {
   }
 
   /**
-   * Resets the property properties.
+   * Resets the initializer properties.
    * Clears all previously set zones and resets the zones according to args passed.
    *
    * @param {Zone|array&lt;Zone&gt;} zones - The zones to use to calculate particle starting position.
@@ -185,7 +186,7 @@ export default class Position extends Initialize {
 }
 
 /**
- * Initializes the property on the particle.
+ * Sets the particle&apos;s initial position.
  *
  * @param {Particle} particle - the particle to initialize the property on
  * @return void

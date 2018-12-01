@@ -94,7 +94,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initialize">initialize</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Body.js~Body.html">Body</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Life.js~Life.html">Life</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Mass.js~Mass.html">Mass</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html">Position</a></span></span></li>
@@ -133,35 +133,72 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/initialize/Rate.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Initialize from &apos;./Initialize&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Initializer from &apos;./Initializer&apos;;
 import Util from &apos;../utils/Util&apos;;
 import { createSpan } from &apos;../math&apos;;
 
-export default class Rate extends Initialize {
+/**
+ * Calculates the rate of particle emission.
+ *
+ * TODO This doesn&apos;t need to be an initializer, it doesn&apos;t have an initialize
+ * method, it overrides the base init method and it is only relevent to the Emitter class.
+ * It would be better to move this to the Emitter module itself as a standalone class.
+ *
+ */
+export default class Rate extends Initializer {
   /**
-   * The number of particles per second emission (a [particle]/b [s]);
-   * @class Proton.Rate
-   * @constructor
-   * @param {Array or Number or Proton.Span} numPan the number of each emission;
-   * @param {Array or Number or Proton.Span} timePan the time of each emission;
-   * for example: new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));
+   * Constructs a Rate instance.
+   *
+   * @param {number|array|Span} numPan - The number of particles to emit
+   * @param {number|array|Span} timePan - The time between each particle emission
+   * @return void
    */
   constructor(numPan, timePan) {
     super();
 
+    /**
+     * @desc Sets the number of particles to emit.
+     * @type {Span}
+     */
     this.numPan = createSpan(Util.initValue(numPan, 1));
+
+    /**
+     * @desc Sets the time between each particle emission.
+     * @type {Span}
+     */
     this.timePan = createSpan(Util.initValue(timePan, 1));
 
+    /**
+     * @desc The rate&apos;s start time.
+     * @type {number}
+     */
     this.startTime = 0;
+
+    /**
+     * @desc The rate&apos;s next time.
+     * @type {number}
+     */
     this.nextTime = 0;
+
     this.init();
   }
 
+  /**
+   * Sets the startTime and nextTime properties.
+   *
+   * @return void
+   */
   init() {
     this.startTime = 0;
     this.nextTime = this.timePan.getValue();
   }
 
+  /**
+   * Gets the number of particles to emit.
+   *
+   * @param {number} time - Current particle engine time
+   * @return {number}
+   */
   getValue(time) {
     this.startTime += time;
 

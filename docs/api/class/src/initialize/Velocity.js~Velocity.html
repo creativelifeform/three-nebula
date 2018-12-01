@@ -94,7 +94,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initialize">initialize</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Body.js~Body.html">Body</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Life.js~Life.html">Life</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Mass.js~Mass.html">Mass</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html">Position</a></span></span></li>
@@ -133,13 +133,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Velocity from &apos;<span><a href="file/src/initialize/Velocity.js.html#lineNumber7">@rohandeshpande/three-proton/src/initialize/Velocity.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Velocity from &apos;<span><a href="file/src/initialize/Velocity.js.html#lineNumber15">@rohandeshpande/three-proton/src/initialize/Velocity.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/initialize/Velocity.js.html#lineNumber7">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/initialize/Velocity.js.html#lineNumber15">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -149,7 +149,7 @@
 
   
   
-  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span> &#x2192; Velocity</div></div>
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span> &#x2192; Velocity</div></div>
   <div class="flat-list" data-ice="directSubclass"><h4>Direct Subclass:</h4><div><span><a href="class/src/initialize/Velocity.js~V.html">V</a></span></div></div>
   
   
@@ -159,7 +159,11 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>Sets the velocity property on initialized particles.</p>
+<p>TODO The constructor for this class is insane. This should be broken down into three
+separate classes, VectorVelocity, PolarVelocity and RadialVelocity, that way
+it will be much cleaner and there won&apos;t be any need for mixed argument types.</p>
+</div>
   
 
   
@@ -191,13 +195,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Velocity.js~Velocity.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(a: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>, b: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>, c: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Velocity.js~Velocity.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(a: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span> | <span><a href="class/src/math/Polar3D.js~Polar3D.html">Polar3D</a></span> | <span><a href="class/src/math/Span.js~Span.html">Span</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, b: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span>, c: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Velocity is init particle&apos;s Velocity</p>
+        <div data-ice="description"><p>Constructs a Velocity intitializer instance.</p>
 </div>
       </div>
     </td>
@@ -227,13 +231,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Velocity.js~Velocity.html#instance-member-dir">dir</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Velocity.js~Velocity.html#instance-member-dir">dir</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Direction vector.</p>
+</div>
       </div>
     </td>
     <td>
@@ -255,13 +260,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Velocity.js~Velocity.html#instance-member-dirVec">dirVec</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Velocity.js~Velocity.html#instance-member-dirVec">dirVec</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Directional vector</p>
+</div>
       </div>
     </td>
     <td>
@@ -311,13 +317,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Velocity.js~Velocity.html#instance-member-radiusPan">radiusPan</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Velocity.js~Velocity.html#instance-member-radiusPan">radiusPan</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Span.js~Span.html">Span</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Velocity radius span.</p>
+</div>
       </div>
     </td>
     <td>
@@ -339,13 +346,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Velocity.js~Velocity.html#instance-member-tha">tha</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Velocity.js~Velocity.html#instance-member-tha">tha</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Theta.</p>
+</div>
       </div>
     </td>
     <td>
@@ -379,7 +387,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Determines whether to use the directional vector or not.</p>
+</div>
       </div>
     </td>
     <td>
@@ -455,7 +464,7 @@
 </div>
 
 <div class="inherited-summary" data-ice="inheritedSummary"><h2>Inherited Summary</h2><table class="summary" data-ice="summary">
-  <thead><tr><td data-ice="title" colspan="3"><span class="toggle closed"></span> From class <span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span></td></tr></thead>
+  <thead><tr><td data-ice="title" colspan="3"><span class="toggle closed"></span> From class <span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span></td></tr></thead>
   <tbody>
   
   <tr data-ice="target">
@@ -472,7 +481,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-member-name">name</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-member-name">name</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
@@ -500,7 +509,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">(emitter: <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>, particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">(emitter: <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>, particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -529,7 +538,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>)</span>
         </p>
       </div>
       <div>
@@ -558,7 +567,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
@@ -588,21 +597,21 @@
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(a: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>, b: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>, c: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>)</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(a: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span> | <span><a href="class/src/math/Polar3D.js~Polar3D.html">Polar3D</a></span> | <span><a href="class/src/math/Span.js~Span.html">Span</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, b: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span>, c: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber21">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber23">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Velocity is init particle&apos;s Velocity</p>
+  <div data-ice="description"><p>Constructs a Velocity intitializer instance.</p>
 </div>
 
-  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-constructor-constructor">Initialize#constructor</a></span></div>
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-constructor-constructor">Initializer#constructor</a></span></div>
 
   <div data-ice="properties"><div data-ice="properties">
   <h4 data-ice="title">Params:</h4>
@@ -614,23 +623,23 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">a</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
+      <td data-ice="type" class="code"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span> | <span><a href="class/src/math/Polar3D.js~Polar3D.html">Polar3D</a></span> | <span><a href="class/src/math/Span.js~Span.html">Span</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>the Life&apos;s start point</p>
+      <td data-ice="description"><p>Vector, Polar or radius (as a number or Span)</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">b</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>the Life&apos;s end point</p>
+      <td data-ice="description"><p>Theta or Vector</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">c</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>span&apos;s center</p>
+      <td data-ice="description"><p>Theta</p>
 </td>
     </tr>
 </tbody>
@@ -648,16 +657,7 @@
 
   
 
-  <div data-ice="example">
-    <h4>Example:</h4>
-    
-  <div class="example-doc" data-ice="exampleDoc">
-      
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">var life = new Life(3,5);
-or
-var life = new Life(Infinity);</code></pre>
-    </div>
-</div>
+  
 
   
 
@@ -675,18 +675,19 @@ var life = new Life(Infinity);</code></pre>
     
     
     
-    <span class="code" data-ice="name">dir</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">dir</span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber33">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber48">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Direction vector.</p>
+</div>
 
   
 
@@ -718,18 +719,19 @@ var life = new Life(Infinity);</code></pre>
     
     
     
-    <span class="code" data-ice="name">dirVec</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">dirVec</span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber25">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber31">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Directional vector</p>
+</div>
 
   
 
@@ -765,7 +767,7 @@ var life = new Life(Infinity);</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber26">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber32">source</a></span></span>
     </span>
   </h3>
 
@@ -774,7 +776,7 @@ var life = new Life(Infinity);</code></pre>
   
   
 
-  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-member-name">Initialize#name</a></span></div>
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-member-name">Initializer#name</a></span></div>
 
   <div data-ice="properties">
 </div>
@@ -804,18 +806,19 @@ var life = new Life(Infinity);</code></pre>
     
     
     
-    <span class="code" data-ice="name">radiusPan</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">radiusPan</span><span class="code" data-ice="signature">: <span><a href="class/src/math/Span.js~Span.html">Span</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber32">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber42">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Velocity radius span.</p>
+</div>
 
   
 
@@ -847,18 +850,19 @@ var life = new Life(Infinity);</code></pre>
     
     
     
-    <span class="code" data-ice="name">tha</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">tha</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber34">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber54">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Theta.</p>
+</div>
 
   
 
@@ -896,14 +900,15 @@ var life = new Life(Infinity);</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber35">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber60">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Determines whether to use the directional vector or not.</p>
+</div>
 
   
 
@@ -942,7 +947,7 @@ var life = new Life(Infinity);</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber54">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber79">source</a></span></span>
     </span>
   </h3>
 
@@ -1013,7 +1018,7 @@ var life = new Life(Infinity);</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber29">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initialize/Velocity.js.html#lineNumber35">source</a></span></span>
     </span>
   </h3>
 
@@ -1022,7 +1027,7 @@ var life = new Life(Infinity);</code></pre>
   
   
 
-  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initialize.js~Initialize.html#instance-method-reset">Initialize#reset</a></span></div>
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initialize/Initializer.js~Initializer.html#instance-method-reset">Initializer#reset</a></span></div>
 
   <div data-ice="properties"><div data-ice="properties">
   <h4 data-ice="title">Params:</h4>

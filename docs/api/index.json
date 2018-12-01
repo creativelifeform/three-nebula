@@ -8553,7 +8553,7 @@
     "__docId__": 423,
     "kind": "file",
     "name": "src/initialize/Body.js",
-    "content": "import Initialize from './Initialize';\nimport Util from '../utils/Util';\nimport { createArraySpan } from '../math';\n\n/**\n * Stores the particle body's properties.\n *\n */\nexport default class Body extends Initialize {\n  /**\n   * Constructs a Body property instance.\n   *\n   * @param {string|number} body - The color for the particle body\n   * @param {?number} w - The width of the particle body\n   * @param {?number} h - The height of the particle body\n   * @return void\n   */\n  constructor(body, w, h) {\n    super();\n\n    /**\n     * @desc The color for the particle body\n     * @type {ArraySpan}\n     */\n    this.body = createArraySpan(body);\n\n    /**\n     * @desc The width of the particle Body\n     * @type {number}\n     */\n    this.w = w;\n\n    /**\n     * @desc The height of the particle Body\n     * @type {number}\n     */\n    this.h = Util.initValue(h, this.w);\n  }\n\n  /**\n   * Initializes the property on the particle.\n   *\n   * @param {Particle} particle - the particle to initialize the property on\n   * @return void\n   */\n  initialize(particle) {\n    var body = this.body.getValue();\n\n    if (this.w) {\n      particle.body = {\n        width: this.w,\n        height: this.h,\n        body: body\n      };\n    } else {\n      particle.body = body;\n    }\n  }\n}\n",
+    "content": "import Initializer from './Initializer';\nimport Util from '../utils/Util';\nimport { createArraySpan } from '../math';\n\n/**\n * Sets the body property on initialized particles.\n *\n */\nexport default class Body extends Initializer {\n  /**\n   * Constructs a Body initalizer instance.\n   *\n   * @param {string|number} body - The color for the particle body\n   * @param {?number} w - The width of the particle body\n   * @param {?number} h - The height of the particle body\n   * @return void\n   */\n  constructor(body, w, h) {\n    super();\n\n    /**\n     * @desc The color for the particle body\n     * @type {ArraySpan}\n     */\n    this.body = createArraySpan(body);\n\n    /**\n     * @desc The width of the particle Body\n     * @type {number}\n     */\n    this.w = w;\n\n    /**\n     * @desc The height of the particle Body\n     * @type {number}\n     */\n    this.h = Util.initValue(h, this.w);\n  }\n\n  /**\n   * Sets the particle's initial body.\n   *\n   * @param {Particle} particle - the particle to initialize the property on\n   * @return void\n   */\n  initialize(particle) {\n    var body = this.body.getValue();\n\n    if (this.w) {\n      particle.body = {\n        width: this.w,\n        height: this.h,\n        body: body\n      };\n    } else {\n      particle.body = body;\n    }\n  }\n}\n",
     "static": true,
     "longname": "/Users/rohandeshpande/Projects/three-proton/src/initialize/Body.js",
     "access": "public",
@@ -8571,11 +8571,11 @@
     "export": true,
     "importPath": "@rohandeshpande/three-proton/src/initialize/Body.js",
     "importStyle": "Body",
-    "description": "Stores the particle body's properties.",
+    "description": "Sets the body property on initialized particles.",
     "lineNumber": 9,
     "interface": false,
     "extends": [
-      "src/initialize/Initialize.js~Initialize"
+      "src/initialize/Initializer.js~Initializer"
     ]
   },
   {
@@ -8588,7 +8588,7 @@
     "static": false,
     "longname": "src/initialize/Body.js~Body#constructor",
     "access": "public",
-    "description": "Constructs a Body property instance.",
+    "description": "Constructs a Body initalizer instance.",
     "lineNumber": 18,
     "params": [
       {
@@ -8699,7 +8699,7 @@
     "static": false,
     "longname": "src/initialize/Body.js~Body#initialize",
     "access": "public",
-    "description": "Initializes the property on the particle.",
+    "description": "Sets the particle's initial body.",
     "lineNumber": 46,
     "params": [
       {
@@ -8725,41 +8725,73 @@
   {
     "__docId__": 430,
     "kind": "file",
-    "name": "src/initialize/Initialize.js",
-    "content": "/**\n * The base Emitter / Particle property class.\n *\n * @abstract\n */\nexport default class Initialize {\n  /**\n   * Constructs a Property instance.\n   *\n   * @return void\n   */\n  constructor() {\n    this.name = 'Initialize';\n  }\n\n  /**\n   * Initializes the property on the emitter or particle.\n   *\n   * @see {@link '../emitter/emitter.js'} setupParticle\n   * @param {Emitter} emitter - the emitter to initialize the property on\n   * @param {Particle} particle - the particle to intiialize the property on\n   * @return void\n   */\n  init(emitter, particle) {\n    if (particle) {\n      this.initialize(particle);\n      particle.hasBeenInitialized = true;\n    } else {\n      this.initialize(emitter);\n      emitter.hasBeenInitialized = true;\n    }\n  }\n\n  /**\n   * @abstract\n   */\n  reset() {}\n\n  /**\n   * Place custom property initialization code in this method in the subclass.\n   *\n   * @param {object} target - either an Emitter or a Particle\n   * @abstract\n   */\n  initialize(target) {} // eslint-disable-line\n}\n",
+    "name": "src/initialize/InitializeUtil.js",
+    "content": "import { Euler } from 'three';\nimport Initializer from './Initializer';\nimport Util from '../utils/Util';\n\nconst particleEuler = new Euler();\n\nexport default {\n  initialize: function(emitter, particle, initializes) {\n    var i = initializes.length;\n\n    while (i--) {\n      var initialize = initializes[i];\n\n      // TODO remove this conditional, the else is not entered in any of the examples\n      // and is just confusing\n      /* istanbul ignore else */\n      if (initialize instanceof Initializer) initialize.init(emitter, particle);\n      else this.init(emitter, particle, initialize);\n    }\n\n    this.bindEmitter(emitter, particle);\n  },\n\n  /**\n   * @deprecated Looks like this method is never called\n   */\n  init: function(emitter, particle, initialize) {\n    console.log('InitializeUtil.init called');\n    Util.setPrototypeByObj(particle, initialize);\n    Util.setVectorByObj(particle, initialize);\n  },\n\n  bindEmitter: function(emitter, particle) {\n    if (emitter.bindEmitter) {\n      const {\n        rotation: { x, y, z }\n      } = emitter;\n\n      particle.p.add(emitter.p);\n      particle.v.add(emitter.v);\n      particle.a.add(emitter.a);\n      particle.v.applyEuler(particleEuler.set(x, y, z));\n    }\n  }\n};\n",
     "static": true,
-    "longname": "/Users/rohandeshpande/Projects/three-proton/src/initialize/Initialize.js",
+    "longname": "/Users/rohandeshpande/Projects/three-proton/src/initialize/InitializeUtil.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
   },
   {
     "__docId__": 431,
-    "kind": "class",
-    "name": "Initialize",
-    "memberof": "src/initialize/Initialize.js",
+    "kind": "variable",
+    "name": "particleEuler",
+    "memberof": "src/initialize/InitializeUtil.js",
     "static": true,
-    "longname": "src/initialize/Initialize.js~Initialize",
+    "longname": "src/initialize/InitializeUtil.js~particleEuler",
+    "access": "public",
+    "export": false,
+    "importPath": "@rohandeshpande/three-proton/src/initialize/InitializeUtil.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 432,
+    "kind": "file",
+    "name": "src/initialize/Initializer.js",
+    "content": "/**\n * The base Emitter / Particle property class.\n *\n * @abstract\n */\nexport default class Initializer {\n  /**\n   * Constructs an Initializer instance.\n   *\n   * @return void\n   */\n  constructor() {\n    this.name = 'Initializer';\n  }\n\n  /**\n   * Initializes the property on the emitter or particle.\n   *\n   * @see {@link '../emitter/emitter.js'} setupParticle\n   * @param {Emitter} emitter - the emitter to initialize the property on\n   * @param {Particle} particle - the particle to intiialize the property on\n   * @return void\n   */\n  init(emitter, particle) {\n    if (particle) {\n      this.initialize(particle);\n      particle.hasBeenInitialized = true;\n    } else {\n      this.initialize(emitter);\n      emitter.hasBeenInitialized = true;\n    }\n  }\n\n  /**\n   * @abstract\n   */\n  reset() {}\n\n  /**\n   * Place custom property initialization code in this method in the subclass.\n   *\n   * @param {object} target - either an Emitter or a Particle\n   * @abstract\n   */\n  initialize(target) {} // eslint-disable-line\n}\n",
+    "static": true,
+    "longname": "/Users/rohandeshpande/Projects/three-proton/src/initialize/Initializer.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 433,
+    "kind": "class",
+    "name": "Initializer",
+    "memberof": "src/initialize/Initializer.js",
+    "static": true,
+    "longname": "src/initialize/Initializer.js~Initializer",
     "access": "public",
     "export": true,
-    "importPath": "@rohandeshpande/three-proton/src/initialize/Initialize.js",
-    "importStyle": "Initialize",
+    "importPath": "@rohandeshpande/three-proton/src/initialize/Initializer.js",
+    "importStyle": "Initializer",
     "description": "The base Emitter / Particle property class.",
     "lineNumber": 6,
     "abstract": true,
     "interface": false
   },
   {
-    "__docId__": 432,
+    "__docId__": 434,
     "kind": "constructor",
     "name": "constructor",
-    "memberof": "src/initialize/Initialize.js~Initialize",
+    "memberof": "src/initialize/Initializer.js~Initializer",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "src/initialize/Initialize.js~Initialize#constructor",
+    "longname": "src/initialize/Initializer.js~Initializer#constructor",
     "access": "public",
-    "description": "Constructs a Property instance.",
+    "description": "Constructs an Initializer instance.",
     "lineNumber": 12,
     "return": {
       "nullable": null,
@@ -8771,12 +8803,12 @@
     }
   },
   {
-    "__docId__": 433,
+    "__docId__": 435,
     "kind": "member",
     "name": "name",
-    "memberof": "src/initialize/Initialize.js~Initialize",
+    "memberof": "src/initialize/Initializer.js~Initializer",
     "static": false,
-    "longname": "src/initialize/Initialize.js~Initialize#name",
+    "longname": "src/initialize/Initializer.js~Initializer#name",
     "access": "public",
     "description": null,
     "lineNumber": 13,
@@ -8788,14 +8820,14 @@
     }
   },
   {
-    "__docId__": 434,
+    "__docId__": 436,
     "kind": "method",
     "name": "init",
-    "memberof": "src/initialize/Initialize.js~Initialize",
+    "memberof": "src/initialize/Initializer.js~Initializer",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "src/initialize/Initialize.js~Initialize#init",
+    "longname": "src/initialize/Initializer.js~Initializer#init",
     "access": "public",
     "description": "Initializes the property on the emitter or particle.",
     "see": [
@@ -8834,14 +8866,14 @@
     }
   },
   {
-    "__docId__": 435,
+    "__docId__": 437,
     "kind": "method",
     "name": "reset",
-    "memberof": "src/initialize/Initialize.js~Initialize",
+    "memberof": "src/initialize/Initializer.js~Initializer",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "src/initialize/Initialize.js~Initialize#reset",
+    "longname": "src/initialize/Initializer.js~Initializer#reset",
     "access": "public",
     "description": "",
     "lineNumber": 37,
@@ -8850,14 +8882,14 @@
     "return": null
   },
   {
-    "__docId__": 436,
+    "__docId__": 438,
     "kind": "method",
     "name": "initialize",
-    "memberof": "src/initialize/Initialize.js~Initialize",
+    "memberof": "src/initialize/Initializer.js~Initializer",
     "generator": false,
     "async": false,
     "static": false,
-    "longname": "src/initialize/Initialize.js~Initialize#initialize",
+    "longname": "src/initialize/Initializer.js~Initializer#initialize",
     "access": "public",
     "description": "Place custom property initialization code in this method in the subclass.",
     "lineNumber": 45,
@@ -8877,42 +8909,10 @@
     "return": null
   },
   {
-    "__docId__": 437,
-    "kind": "file",
-    "name": "src/initialize/InitializeUtil.js",
-    "content": "import { Euler } from 'three';\nimport Initialize from './Initialize';\nimport Util from '../utils/Util';\n\nconst particleEuler = new Euler();\n\nexport default {\n  initialize: function(emitter, particle, initializes) {\n    var i = initializes.length;\n\n    while (i--) {\n      var initialize = initializes[i];\n\n      if (initialize instanceof Initialize) initialize.init(emitter, particle);\n      else this.init(emitter, particle, initialize);\n    }\n\n    this.bindEmitter(emitter, particle);\n  },\n\n  init: function(emitter, particle, initialize) {\n    console.log('InitializeUtil.init called');\n    Util.setPrototypeByObj(particle, initialize);\n    Util.setVectorByObj(particle, initialize);\n  },\n\n  bindEmitter: function(emitter, particle) {\n    if (emitter.bindEmitter) {\n      const {\n        rotation: { x, y, z }\n      } = emitter;\n\n      particle.p.add(emitter.p);\n      particle.v.add(emitter.v);\n      particle.a.add(emitter.a);\n      particle.v.applyEuler(particleEuler.set(x, y, z));\n    }\n  }\n};\n",
-    "static": true,
-    "longname": "/Users/rohandeshpande/Projects/three-proton/src/initialize/InitializeUtil.js",
-    "access": "public",
-    "description": null,
-    "lineNumber": 1
-  },
-  {
-    "__docId__": 438,
-    "kind": "variable",
-    "name": "particleEuler",
-    "memberof": "src/initialize/InitializeUtil.js",
-    "static": true,
-    "longname": "src/initialize/InitializeUtil.js~particleEuler",
-    "access": "public",
-    "export": false,
-    "importPath": "@rohandeshpande/three-proton/src/initialize/InitializeUtil.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    },
-    "ignore": true
-  },
-  {
     "__docId__": 439,
     "kind": "file",
     "name": "src/initialize/Life.js",
-    "content": "import Initialize from './Initialize';\nimport { createSpan } from '../math';\n\n/**\n * Stores the life span of a particle.\n *\n */\nexport default class Life extends Initialize {\n  /**\n   * Constructs a Life property instance.\n   *\n   * @param {number} a - The minimum life\n   * @param {number} b - The maximum life\n   * @param {?string} c - The span's center\n   * @return void\n   */\n  constructor(a, b, c) {\n    super();\n\n    /**\n     * @desc The life span of the particle.\n     * @type {Span}\n     */\n    this.lifePan = createSpan(a, b, c);\n  }\n\n  /**\n   * Initializes the property on the particle.\n   *\n   * @param {Particle} particle - the particle to initialize the property on\n   * @return void\n   */\n  initialize(target) {\n    if (this.lifePan.a == Infinity || this.lifePan.a == 'infi')\n      target.life = Infinity;\n    else target.life = this.lifePan.getValue();\n  }\n}\n",
+    "content": "import Initializer from './Initializer';\nimport { createSpan } from '../math';\n\n/**\n * Sets the life property on initialized particles.\n *\n */\nexport default class Life extends Initializer {\n  /**\n   * Constructs a Life property instance.\n   *\n   * @param {number} min - The minimum life\n   * @param {number} max - The maximum life\n   * @param {boolean} [center] - Determines whether to average the life value\n   * @return void\n   */\n  constructor(min, max, center) {\n    super();\n\n    /**\n     * @desc The life span of the particle.\n     * @type {Span}\n     */\n    this.lifePan = createSpan(min, max, center);\n  }\n\n  /**\n   * Sets the particle's initial life.\n   *\n   * @param {Particle} particle - the particle to initialize the property on\n   * @return void\n   */\n  initialize(particle) {\n    if (this.lifePan.a == Infinity || this.lifePan.a == 'infi')\n      particle.life = Infinity;\n    else particle.life = this.lifePan.getValue();\n  }\n}\n",
     "static": true,
     "longname": "/Users/rohandeshpande/Projects/three-proton/src/initialize/Life.js",
     "access": "public",
@@ -8930,11 +8930,11 @@
     "export": true,
     "importPath": "@rohandeshpande/three-proton/src/initialize/Life.js",
     "importStyle": "Life",
-    "description": "Stores the life span of a particle.",
+    "description": "Sets the life property on initialized particles.",
     "lineNumber": 8,
     "interface": false,
     "extends": [
-      "src/initialize/Initialize.js~Initialize"
+      "src/initialize/Initializer.js~Initializer"
     ]
   },
   {
@@ -8957,7 +8957,7 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "a",
+        "name": "min",
         "description": "The minimum life"
       },
       {
@@ -8967,18 +8967,18 @@
         ],
         "spread": false,
         "optional": false,
-        "name": "b",
+        "name": "max",
         "description": "The maximum life"
       },
       {
-        "nullable": true,
+        "nullable": null,
         "types": [
-          "string"
+          "boolean"
         ],
         "spread": false,
-        "optional": false,
-        "name": "c",
-        "description": "The span's center"
+        "optional": true,
+        "name": "center",
+        "description": "Determines whether to average the life value"
       }
     ],
     "return": {
@@ -9019,7 +9019,7 @@
     "static": false,
     "longname": "src/initialize/Life.js~Life#initialize",
     "access": "public",
-    "description": "Initializes the property on the particle.",
+    "description": "Sets the particle's initial life.",
     "lineNumber": 33,
     "params": [
       {
@@ -9046,7 +9046,7 @@
     "__docId__": 444,
     "kind": "file",
     "name": "src/initialize/Mass.js",
-    "content": "import Initialize from './Initialize';\nimport { createSpan } from '../math';\n\nexport default class Mass extends Initialize {\n  /**\n   * Mass is init particle's Mass\n   * @param {Number} a - the Mass's start point\n   * @param {Number} b - the Mass's end point\n   * @param {String} c - span's center\n   * @example\n   * var Mass = new Proton.Mass(3,5);\n   * or\n   * var Mass = new Proton.Mass(Infinity);\n   * @extends {Initialize}\n   * @constructor\n   */\n  constructor(a, b, c) {\n    super();\n    this.massPan = createSpan(a, b, c);\n  }\n\n  initialize(target) {\n    target.mass = this.massPan.getValue();\n  }\n}\n",
+    "content": "import Initializer from './Initializer';\nimport { createSpan } from '../math';\n\n/**\n * Sets the mass property on initialized particles.\n *\n */\nexport default class Mass extends Initializer {\n  /**\n   * Constructs a Mass initializer instance.\n   *\n   * @param {number} min - The minumum mass for the particle\n   * @param {number} max - The maximum mass for the particle\n   * @param {boolean} [center] - Determines whether to average the mass value\n   * @return void\n   */\n  constructor(min, max, center = false) {\n    super();\n\n    /**\n     * @desc The mass span which is used to set the particle mass value.\n     * @type {Span}\n     */\n    this.massPan = createSpan(min, max, center);\n  }\n\n  /**\n   * Sets the particle's initial mass.\n   *\n   * @param {Particle} particle - the particle to initialize the property on\n   * @return void\n   */\n  initialize(particle) {\n    particle.mass = this.massPan.getValue();\n  }\n}\n",
     "static": true,
     "longname": "/Users/rohandeshpande/Projects/three-proton/src/initialize/Mass.js",
     "access": "public",
@@ -9064,12 +9064,11 @@
     "export": true,
     "importPath": "@rohandeshpande/three-proton/src/initialize/Mass.js",
     "importStyle": "Mass",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
+    "description": "Sets the mass property on initialized particles.",
+    "lineNumber": 8,
     "interface": false,
     "extends": [
-      "src/initialize/Initialize.js~Initialize"
+      "src/initialize/Initializer.js~Initializer"
     ]
   },
   {
@@ -9082,53 +9081,48 @@
     "static": false,
     "longname": "src/initialize/Mass.js~Mass#constructor",
     "access": "public",
-    "description": "Mass is init particle's Mass",
-    "examples": [
-      "var Mass = new Proton.Mass(3,5);\nor\nvar Mass = new Proton.Mass(Infinity);"
-    ],
+    "description": "Constructs a Mass initializer instance.",
     "lineNumber": 17,
-    "unknown": [
-      {
-        "tagName": "@extends",
-        "tagValue": "{Initialize}"
-      },
-      {
-        "tagName": "@constructor",
-        "tagValue": ""
-      }
-    ],
     "params": [
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
-        "name": "a",
-        "description": "the Mass's start point"
+        "name": "min",
+        "description": "The minumum mass for the particle"
       },
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
-        "name": "b",
-        "description": "the Mass's end point"
+        "name": "max",
+        "description": "The maximum mass for the particle"
       },
       {
         "nullable": null,
         "types": [
-          "String"
+          "boolean"
         ],
         "spread": false,
-        "optional": false,
-        "name": "c",
-        "description": "span's center"
+        "optional": true,
+        "name": "center",
+        "description": "Determines whether to average the mass value"
       }
-    ]
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "void"
+    }
   },
   {
     "__docId__": 447,
@@ -9138,13 +9132,15 @@
     "static": false,
     "longname": "src/initialize/Mass.js~Mass#massPan",
     "access": "public",
-    "description": null,
-    "lineNumber": 19,
-    "undocument": true,
+    "description": "The mass span which is used to set the particle mass value.",
+    "lineNumber": 24,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Span"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -9157,24 +9153,34 @@
     "static": false,
     "longname": "src/initialize/Mass.js~Mass#initialize",
     "access": "public",
-    "description": null,
-    "lineNumber": 22,
-    "undocument": true,
+    "description": "Sets the particle's initial mass.",
+    "lineNumber": 33,
     "params": [
       {
-        "name": "target",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Particle"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "particle",
+        "description": "the particle to initialize the property on"
       }
     ],
-    "return": null
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "void"
+    }
   },
   {
     "__docId__": 449,
     "kind": "file",
     "name": "src/initialize/Position.js",
-    "content": "import Initialize from './Initialize';\n\n/**\n * Manages the starting positions for particles being emitted.\n *\n */\nexport default class Position extends Initialize {\n  /**\n   * Constructs a Position property instance.\n   *\n   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.\n   * @return void\n   */\n  constructor() {\n    super();\n    this.reset.apply(this, arguments);\n  }\n\n  /**\n   * Resets the property properties.\n   * Clears all previously set zones and resets the zones according to args passed.\n   *\n   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.\n   * @return void\n   */\n  reset() {\n    if (!this.zones) this.zones = [];\n    else this.zones.length = 0;\n\n    var args = Array.prototype.slice.call(arguments);\n\n    /**\n     * @desc The zones to use as bounds for calculating the particle's starting position.\n     * @type {array<Zone>}\n     */\n    this.zones = this.zones.concat(args);\n  }\n\n  /**\n   * Adds a zone or zones to this.zones.\n   *\n   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.\n   * @return void\n   */\n  addZone() {\n    var args = Array.prototype.slice.call(arguments);\n\n    this.zones = this.zones.concat(args);\n  }\n}\n\n/**\n * Initializes the property on the particle.\n *\n * @param {Particle} particle - the particle to initialize the property on\n * @return void\n */\nPosition.prototype.initialize = (function() {\n  let zone;\n\n  return function(target) {\n    zone = this.zones[(Math.random() * this.zones.length) >> 0];\n\n    zone.getPosition();\n\n    target.p.x = zone.vector.x;\n    target.p.y = zone.vector.y;\n    target.p.z = zone.vector.z;\n  };\n})();\n",
+    "content": "import Initializer from './Initializer';\n\n/**\n * Sets the starting position property for initialized particles.\n * This is respective to the supplied zones.\n *\n */\nexport default class Position extends Initializer {\n  /**\n   * Constructs a Position initializer instance.\n   *\n   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.\n   * @return void\n   */\n  constructor() {\n    super();\n    this.reset.apply(this, arguments);\n  }\n\n  /**\n   * Resets the initializer properties.\n   * Clears all previously set zones and resets the zones according to args passed.\n   *\n   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.\n   * @return void\n   */\n  reset() {\n    if (!this.zones) this.zones = [];\n    else this.zones.length = 0;\n\n    var args = Array.prototype.slice.call(arguments);\n\n    /**\n     * @desc The zones to use as bounds for calculating the particle's starting position.\n     * @type {array<Zone>}\n     */\n    this.zones = this.zones.concat(args);\n  }\n\n  /**\n   * Adds a zone or zones to this.zones.\n   *\n   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.\n   * @return void\n   */\n  addZone() {\n    var args = Array.prototype.slice.call(arguments);\n\n    this.zones = this.zones.concat(args);\n  }\n}\n\n/**\n * Sets the particle's initial position.\n *\n * @param {Particle} particle - the particle to initialize the property on\n * @return void\n */\nPosition.prototype.initialize = (function() {\n  let zone;\n\n  return function(target) {\n    zone = this.zones[(Math.random() * this.zones.length) >> 0];\n\n    zone.getPosition();\n\n    target.p.x = zone.vector.x;\n    target.p.y = zone.vector.y;\n    target.p.z = zone.vector.z;\n  };\n})();\n",
     "static": true,
     "longname": "/Users/rohandeshpande/Projects/three-proton/src/initialize/Position.js",
     "access": "public",
@@ -9192,11 +9198,11 @@
     "export": true,
     "importPath": "@rohandeshpande/three-proton/src/initialize/Position.js",
     "importStyle": "Position",
-    "description": "Manages the starting positions for particles being emitted.",
-    "lineNumber": 7,
+    "description": "Sets the starting position property for initialized particles.\nThis is respective to the supplied zones.",
+    "lineNumber": 8,
     "interface": false,
     "extends": [
-      "src/initialize/Initialize.js~Initialize"
+      "src/initialize/Initializer.js~Initializer"
     ]
   },
   {
@@ -9209,8 +9215,8 @@
     "static": false,
     "longname": "src/initialize/Position.js~Position#constructor",
     "access": "public",
-    "description": "Constructs a Position property instance.",
-    "lineNumber": 14,
+    "description": "Constructs a Position initializer instance.",
+    "lineNumber": 15,
     "params": [
       {
         "nullable": null,
@@ -9243,8 +9249,8 @@
     "static": false,
     "longname": "src/initialize/Position.js~Position#reset",
     "access": "public",
-    "description": "Resets the property properties.\nClears all previously set zones and resets the zones according to args passed.",
-    "lineNumber": 26,
+    "description": "Resets the initializer properties.\nClears all previously set zones and resets the zones according to args passed.",
+    "lineNumber": 27,
     "params": [
       {
         "nullable": null,
@@ -9276,7 +9282,7 @@
     "longname": "src/initialize/Position.js~Position#zones",
     "access": "public",
     "description": null,
-    "lineNumber": 27,
+    "lineNumber": 28,
     "undocument": true,
     "type": {
       "types": [
@@ -9295,7 +9301,7 @@
     "longname": "src/initialize/Position.js~Position#addZone",
     "access": "public",
     "description": "Adds a zone or zones to this.zones.",
-    "lineNumber": 45,
+    "lineNumber": 46,
     "params": [
       {
         "nullable": null,
@@ -9322,7 +9328,7 @@
     "__docId__": 457,
     "kind": "file",
     "name": "src/initialize/Radius.js",
-    "content": "import Initialize from './Initialize';\nimport { createSpan } from '../math';\n\nexport default class Radius extends Initialize {\n  /**\n   * Radius is init particle's Radius\n   * @param {Number} a - the Radius's start point\n   * @param {Number} b - the Radius's end point\n   * @param {String} c - span's center\n   * @example\n   * var Radius = new Proton.Radius(3,5);\n   * or\n   * var Radius = new Proton.Radius(3,1,\"center\");\n   * @extends {Initialize}\n   * @constructor\n   */\n  constructor(a, b, c) {\n    super();\n    this.radius = createSpan(a, b, c);\n  }\n\n  reset(a, b, c) {\n    this.radius = createSpan(a, b, c);\n  }\n\n  initialize(particle) {\n    particle.radius = this.radius.getValue();\n    particle.transform.oldRadius = particle.radius;\n  }\n}\n",
+    "content": "import Initializer from './Initializer';\nimport { createSpan } from '../math';\n\n/**\n * Sets the radius property on initialized particles.\n *\n */\nexport default class Radius extends Initializer {\n  /**\n   * Constructs a Radius initializer instance.\n   *\n   * @param {number} width - The width of the particle radius\n   * @param {number} height - The height of the particle radius\n   * @param {boolean} [center=false] - Determines whether to average the radius value\n   * @return void\n   */\n  constructor(width, height, center = false) {\n    super();\n\n    /**\n     * @desc The radius span which is used to set the particle radius value.\n     * @type {Span}\n     */\n    this.radius = createSpan(width, height, center);\n  }\n\n  /**\n   * Resets the initializer properties.\n   * Clears all previously set zones and resets the zones according to args passed.\n   *\n   * @param {number} width - The width of the particle radius\n   * @param {number} height - The height of the particle radius\n   * @param {boolean} [center=false] - Determines whether to average the radius value\n   * @return void\n   */\n  reset(width, height, center = false) {\n    this.radius = createSpan(width, height, center);\n  }\n\n  /**\n   * Sets the particle's initial radius.\n   *\n   * @param {Particle} particle - the particle to initialize the property on\n   * @return void\n   */\n  initialize(particle) {\n    particle.radius = this.radius.getValue();\n    particle.transform.oldRadius = particle.radius;\n  }\n}\n",
     "static": true,
     "longname": "/Users/rohandeshpande/Projects/three-proton/src/initialize/Radius.js",
     "access": "public",
@@ -9340,12 +9346,11 @@
     "export": true,
     "importPath": "@rohandeshpande/three-proton/src/initialize/Radius.js",
     "importStyle": "Radius",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
+    "description": "Sets the radius property on initialized particles.",
+    "lineNumber": 8,
     "interface": false,
     "extends": [
-      "src/initialize/Initialize.js~Initialize"
+      "src/initialize/Initializer.js~Initializer"
     ]
   },
   {
@@ -9358,53 +9363,50 @@
     "static": false,
     "longname": "src/initialize/Radius.js~Radius#constructor",
     "access": "public",
-    "description": "Radius is init particle's Radius",
-    "examples": [
-      "var Radius = new Proton.Radius(3,5);\nor\nvar Radius = new Proton.Radius(3,1,\"center\");"
-    ],
+    "description": "Constructs a Radius initializer instance.",
     "lineNumber": 17,
-    "unknown": [
-      {
-        "tagName": "@extends",
-        "tagValue": "{Initialize}"
-      },
-      {
-        "tagName": "@constructor",
-        "tagValue": ""
-      }
-    ],
     "params": [
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
-        "name": "a",
-        "description": "the Radius's start point"
+        "name": "width",
+        "description": "The width of the particle radius"
       },
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number"
         ],
         "spread": false,
         "optional": false,
-        "name": "b",
-        "description": "the Radius's end point"
+        "name": "height",
+        "description": "The height of the particle radius"
       },
       {
         "nullable": null,
         "types": [
-          "String"
+          "boolean"
         ],
         "spread": false,
-        "optional": false,
-        "name": "c",
-        "description": "span's center"
+        "optional": true,
+        "defaultValue": "false",
+        "defaultRaw": false,
+        "name": "center",
+        "description": "Determines whether to average the radius value"
       }
-    ]
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "void"
+    }
   },
   {
     "__docId__": 460,
@@ -9414,13 +9416,15 @@
     "static": false,
     "longname": "src/initialize/Radius.js~Radius#radius",
     "access": "public",
-    "description": null,
-    "lineNumber": 19,
-    "undocument": true,
+    "description": "The radius span which is used to set the particle radius value.",
+    "lineNumber": 24,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Span"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -9433,30 +9437,50 @@
     "static": false,
     "longname": "src/initialize/Radius.js~Radius#reset",
     "access": "public",
-    "description": null,
-    "lineNumber": 22,
-    "undocument": true,
+    "description": "Resets the initializer properties.\nClears all previously set zones and resets the zones according to args passed.",
+    "lineNumber": 36,
     "params": [
       {
-        "name": "a",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "width",
+        "description": "The width of the particle radius"
       },
       {
-        "name": "b",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "height",
+        "description": "The height of the particle radius"
       },
       {
-        "name": "c",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "false",
+        "defaultRaw": false,
+        "name": "center",
+        "description": "Determines whether to average the radius value"
       }
     ],
-    "return": null
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "void"
+    }
   },
   {
     "__docId__": 463,
@@ -9468,24 +9492,34 @@
     "static": false,
     "longname": "src/initialize/Radius.js~Radius#initialize",
     "access": "public",
-    "description": null,
-    "lineNumber": 26,
-    "undocument": true,
+    "description": "Sets the particle's initial radius.",
+    "lineNumber": 46,
     "params": [
       {
-        "name": "particle",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Particle"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "particle",
+        "description": "the particle to initialize the property on"
       }
     ],
-    "return": null
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "void"
+    }
   },
   {
     "__docId__": 464,
     "kind": "file",
     "name": "src/initialize/Rate.js",
-    "content": "import Initialize from './Initialize';\nimport Util from '../utils/Util';\nimport { createSpan } from '../math';\n\nexport default class Rate extends Initialize {\n  /**\n   * The number of particles per second emission (a [particle]/b [s]);\n   * @class Proton.Rate\n   * @constructor\n   * @param {Array or Number or Proton.Span} numPan the number of each emission;\n   * @param {Array or Number or Proton.Span} timePan the time of each emission;\n   * for example: new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));\n   */\n  constructor(numPan, timePan) {\n    super();\n\n    this.numPan = createSpan(Util.initValue(numPan, 1));\n    this.timePan = createSpan(Util.initValue(timePan, 1));\n\n    this.startTime = 0;\n    this.nextTime = 0;\n    this.init();\n  }\n\n  init() {\n    this.startTime = 0;\n    this.nextTime = this.timePan.getValue();\n  }\n\n  getValue(time) {\n    this.startTime += time;\n\n    if (this.startTime >= this.nextTime) {\n      this.init();\n\n      if (this.numPan.b == 1) {\n        if (this.numPan.getValue('Float') > 0.5) return 1;\n        else return 0;\n      } else {\n        return this.numPan.getValue('Int');\n      }\n    }\n\n    return 0;\n  }\n}\n",
+    "content": "import Initializer from './Initializer';\nimport Util from '../utils/Util';\nimport { createSpan } from '../math';\n\n/**\n * Calculates the rate of particle emission.\n *\n * TODO This doesn't need to be an initializer, it doesn't have an initialize\n * method, it overrides the base init method and it is only relevent to the Emitter class.\n * It would be better to move this to the Emitter module itself as a standalone class.\n *\n */\nexport default class Rate extends Initializer {\n  /**\n   * Constructs a Rate instance.\n   *\n   * @param {number|array|Span} numPan - The number of particles to emit\n   * @param {number|array|Span} timePan - The time between each particle emission\n   * @return void\n   */\n  constructor(numPan, timePan) {\n    super();\n\n    /**\n     * @desc Sets the number of particles to emit.\n     * @type {Span}\n     */\n    this.numPan = createSpan(Util.initValue(numPan, 1));\n\n    /**\n     * @desc Sets the time between each particle emission.\n     * @type {Span}\n     */\n    this.timePan = createSpan(Util.initValue(timePan, 1));\n\n    /**\n     * @desc The rate's start time.\n     * @type {number}\n     */\n    this.startTime = 0;\n\n    /**\n     * @desc The rate's next time.\n     * @type {number}\n     */\n    this.nextTime = 0;\n\n    this.init();\n  }\n\n  /**\n   * Sets the startTime and nextTime properties.\n   *\n   * @return void\n   */\n  init() {\n    this.startTime = 0;\n    this.nextTime = this.timePan.getValue();\n  }\n\n  /**\n   * Gets the number of particles to emit.\n   *\n   * @param {number} time - Current particle engine time\n   * @return {number}\n   */\n  getValue(time) {\n    this.startTime += time;\n\n    if (this.startTime >= this.nextTime) {\n      this.init();\n\n      if (this.numPan.b == 1) {\n        if (this.numPan.getValue('Float') > 0.5) return 1;\n        else return 0;\n      } else {\n        return this.numPan.getValue('Int');\n      }\n    }\n\n    return 0;\n  }\n}\n",
     "static": true,
     "longname": "/Users/rohandeshpande/Projects/three-proton/src/initialize/Rate.js",
     "access": "public",
@@ -9503,12 +9537,11 @@
     "export": true,
     "importPath": "@rohandeshpande/three-proton/src/initialize/Rate.js",
     "importStyle": "Rate",
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
+    "description": "Calculates the rate of particle emission.\n\nTODO This doesn't need to be an initializer, it doesn't have an initialize\nmethod, it overrides the base init method and it is only relevent to the Emitter class.\nIt would be better to move this to the Emitter module itself as a standalone class.",
+    "lineNumber": 13,
     "interface": false,
     "extends": [
-      "src/initialize/Initialize.js~Initialize"
+      "src/initialize/Initializer.js~Initializer"
     ]
   },
   {
@@ -9521,40 +9554,42 @@
     "static": false,
     "longname": "src/initialize/Rate.js~Rate#constructor",
     "access": "public",
-    "description": "The number of particles per second emission (a [particle]/b [s]);",
-    "lineNumber": 14,
-    "unknown": [
-      {
-        "tagName": "@class",
-        "tagValue": "Proton.Rate"
-      },
-      {
-        "tagName": "@constructor",
-        "tagValue": ""
-      }
-    ],
+    "description": "Constructs a Rate instance.",
+    "lineNumber": 21,
     "params": [
       {
         "nullable": null,
         "types": [
-          "Array or Number or Proton.Span"
+          "number",
+          "array",
+          "Span"
         ],
         "spread": false,
         "optional": false,
         "name": "numPan",
-        "description": "the number of each emission;"
+        "description": "The number of particles to emit"
       },
       {
         "nullable": null,
         "types": [
-          "Array or Number or Proton.Span"
+          "number",
+          "array",
+          "Span"
         ],
         "spread": false,
         "optional": false,
         "name": "timePan",
-        "description": "the time of each emission;\nfor example: new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));"
+        "description": "The time between each particle emission"
       }
-    ]
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "void"
+    }
   },
   {
     "__docId__": 467,
@@ -9564,13 +9599,15 @@
     "static": false,
     "longname": "src/initialize/Rate.js~Rate#numPan",
     "access": "public",
-    "description": null,
-    "lineNumber": 17,
-    "undocument": true,
+    "description": "Sets the number of particles to emit.",
+    "lineNumber": 28,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Span"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -9581,13 +9618,15 @@
     "static": false,
     "longname": "src/initialize/Rate.js~Rate#timePan",
     "access": "public",
-    "description": null,
-    "lineNumber": 18,
-    "undocument": true,
+    "description": "Sets the time between each particle emission.",
+    "lineNumber": 34,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Span"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -9598,13 +9637,15 @@
     "static": false,
     "longname": "src/initialize/Rate.js~Rate#startTime",
     "access": "public",
-    "description": null,
-    "lineNumber": 20,
-    "undocument": true,
+    "description": "The rate's start time.",
+    "lineNumber": 40,
     "type": {
+      "nullable": null,
       "types": [
         "number"
-      ]
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -9615,13 +9656,15 @@
     "static": false,
     "longname": "src/initialize/Rate.js~Rate#nextTime",
     "access": "public",
-    "description": null,
-    "lineNumber": 21,
-    "undocument": true,
+    "description": "The rate's next time.",
+    "lineNumber": 46,
     "type": {
+      "nullable": null,
       "types": [
         "number"
-      ]
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -9634,11 +9677,17 @@
     "static": false,
     "longname": "src/initialize/Rate.js~Rate#init",
     "access": "public",
-    "description": null,
-    "lineNumber": 25,
-    "undocument": true,
-    "params": [],
-    "return": null
+    "description": "Sets the startTime and nextTime properties.",
+    "lineNumber": 56,
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "void"
+    },
+    "params": []
   },
   {
     "__docId__": 474,
@@ -9650,28 +9699,34 @@
     "static": false,
     "longname": "src/initialize/Rate.js~Rate#getValue",
     "access": "public",
-    "description": null,
-    "lineNumber": 30,
-    "undocument": true,
+    "description": "Gets the number of particles to emit.",
+    "lineNumber": 67,
     "params": [
       {
-        "name": "time",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "time",
+        "description": "Current particle engine time"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
         "number"
-      ]
+      ],
+      "spread": false,
+      "description": ""
     }
   },
   {
     "__docId__": 476,
     "kind": "file",
     "name": "src/initialize/Velocity.js",
-    "content": "import { DR, MEASURE, PI } from '../constants';\nimport { MathUtils, Polar3D, Vector3D, createSpan } from '../math';\n\nimport Initialize from './Initialize';\nimport { classDeprecationWarning } from '../compatibility';\n\nexport default class Velocity extends Initialize {\n  /**\n   * Velocity is init particle's Velocity\n   * @param {Number} a - the Life's start point\n   * @param {Number} b - the Life's end point\n   * @param {String} c - span's center\n   * @example\n   * var life = new Life(3,5);\n   * or\n   * var life = new Life(Infinity);\n   * @extends {Initialize}\n   * @constructor\n   */\n  //radius and tha\n  constructor(a, b, c) {\n    super();\n\n    this.reset(a, b, c);\n    this.dirVec = new Vector3D(0, 0, 0);\n    this.name = 'Velocity';\n  }\n\n  reset(a, b, c) {\n    //[vector,tha]\n    if (a instanceof Vector3D) {\n      this.radiusPan = createSpan(1);\n      this.dir = a.clone();\n      this.tha = b * DR;\n      this._useV = true;\n    }\n\n    //[polar,tha]\n    else if (a instanceof Polar3D) {\n      this.tha = b * DR;\n      this.dirVec = a.toVector3D();\n      this._useV = false;\n    }\n\n    //[radius,vector,tha]\n    else {\n      this.radiusPan = createSpan(a);\n      this.dir = b.clone().normalize();\n      this.tha = c * DR;\n      this._useV = true;\n    }\n  }\n\n  normalize(vr) {\n    return vr * MEASURE;\n  }\n}\n\nVelocity.prototype.initialize = (function() {\n  var tha;\n  var normal = new Vector3D(0, 0, 1);\n  var v = new Vector3D(0, 0, 0);\n\n  return function initialize(target) {\n    tha = this.tha * Math.random();\n    this._useV && this.dirVec.copy(this.dir).scalar(this.radiusPan.getValue());\n\n    MathUtils.getNormal(this.dirVec, normal);\n    v.copy(this.dirVec).applyAxisAngle(normal, tha);\n    v.applyAxisAngle(this.dirVec.normalize(), Math.random() * PI * 2);\n\n    target.v.copy(v);\n\n    return this;\n  };\n})();\n\n/**\n * Compatibility class.\n *\n * @deprecated\n */\nexport class V extends Velocity {\n  constructor(...args) {\n    super(...args);\n    console.warn(classDeprecationWarning('V', 'Velocity'));\n  }\n}\n",
+    "content": "import { DR, MEASURE, PI } from '../constants';\nimport { MathUtils, Polar3D, Vector3D, createSpan } from '../math';\n\nimport Initializer from './Initializer';\nimport { classDeprecationWarning } from '../compatibility';\n\n/**\n * Sets the velocity property on initialized particles.\n *\n * TODO The constructor for this class is insane. This should be broken down into three\n * separate classes, VectorVelocity, PolarVelocity and RadialVelocity, that way\n * it will be much cleaner and there won't be any need for mixed argument types.\n *\n */\nexport default class Velocity extends Initializer {\n  /**\n   * Constructs a Velocity intitializer instance.\n   *\n   * @param {Vector3D|Polar3D|Span|number} a - Vector, Polar or radius (as a number or Span)\n   * @param {number|Vector3D} b - Theta or Vector\n   * @param {number} c - Theta\n   */\n  constructor(a, b, c) {\n    super();\n\n    this.reset(a, b, c);\n    /**\n     * @desc Directional vector\n     * @type {Vector3D}\n     */\n    this.dirVec = new Vector3D(0, 0, 0);\n    this.name = 'Velocity';\n  }\n\n  reset(a, b, c) {\n    //[vector,tha]\n    if (a instanceof Vector3D) {\n      /**\n       * @desc Velocity radius span.\n       * @type {Span}\n       */\n      this.radiusPan = createSpan(1);\n\n      /**\n       * @desc Direction vector.\n       * @type {Vector3D}\n       */\n      this.dir = a.clone();\n\n      /**\n       * @desc Theta.\n       * @type {number}\n       */\n      this.tha = b * DR;\n\n      /**\n       * @desc Determines whether to use the directional vector or not.\n       * @type {boolean}\n       */\n      this._useV = true;\n    }\n\n    //[polar,tha]\n    else if (a instanceof Polar3D) {\n      this.tha = b * DR;\n      this.dirVec = a.toVector3D();\n      this._useV = false;\n    }\n\n    //[radius,vector,tha]\n    else {\n      this.radiusPan = createSpan(a);\n      this.dir = b.clone().normalize();\n      this.tha = c * DR;\n      this._useV = true;\n    }\n  }\n\n  normalize(vr) {\n    return vr * MEASURE;\n  }\n}\n\n/**\n * Sets the particle's initial velocity.\n * BUG? This seems to always set the dirVec to 0, 0, 0 in the case of polar3d velocity.\n *\n * @singleton\n * @param {Particle} particle - the particle to initialize the property on\n * @return void\n */\nVelocity.prototype.initialize = (function() {\n  var tha;\n  var normal = new Vector3D(0, 0, 1);\n  var v = new Vector3D(0, 0, 0);\n\n  return function initialize(particle) {\n    tha = this.tha * Math.random();\n    this._useV && this.dirVec.copy(this.dir).scalar(this.radiusPan.getValue());\n\n    MathUtils.getNormal(this.dirVec, normal);\n    v.copy(this.dirVec).applyAxisAngle(normal, tha);\n    v.applyAxisAngle(this.dirVec.normalize(), Math.random() * PI * 2);\n\n    particle.v.copy(v);\n\n    return this;\n  };\n})();\n\n/**\n * Compatibility class.\n *\n * @deprecated\n */\nexport class V extends Velocity {\n  constructor(...args) {\n    super(...args);\n    console.warn(classDeprecationWarning('V', 'Velocity'));\n  }\n}\n",
     "static": true,
     "longname": "/Users/rohandeshpande/Projects/three-proton/src/initialize/Velocity.js",
     "access": "public",
@@ -9689,12 +9744,11 @@
     "export": true,
     "importPath": "@rohandeshpande/three-proton/src/initialize/Velocity.js",
     "importStyle": "Velocity",
-    "description": null,
-    "lineNumber": 7,
-    "undocument": true,
+    "description": "Sets the velocity property on initialized particles.\n\nTODO The constructor for this class is insane. This should be broken down into three\nseparate classes, VectorVelocity, PolarVelocity and RadialVelocity, that way\nit will be much cleaner and there won't be any need for mixed argument types.",
+    "lineNumber": 15,
     "interface": false,
     "extends": [
-      "src/initialize/Initialize.js~Initialize"
+      "src/initialize/Initializer.js~Initializer"
     ]
   },
   {
@@ -9707,51 +9761,42 @@
     "static": false,
     "longname": "src/initialize/Velocity.js~Velocity#constructor",
     "access": "public",
-    "description": "Velocity is init particle's Velocity",
-    "examples": [
-      "var life = new Life(3,5);\nor\nvar life = new Life(Infinity);"
-    ],
-    "lineNumber": 21,
-    "unknown": [
-      {
-        "tagName": "@extends",
-        "tagValue": "{Initialize}"
-      },
-      {
-        "tagName": "@constructor",
-        "tagValue": ""
-      }
-    ],
+    "description": "Constructs a Velocity intitializer instance.",
+    "lineNumber": 23,
     "params": [
       {
         "nullable": null,
         "types": [
-          "Number"
+          "Vector3D",
+          "Polar3D",
+          "Span",
+          "number"
         ],
         "spread": false,
         "optional": false,
         "name": "a",
-        "description": "the Life's start point"
+        "description": "Vector, Polar or radius (as a number or Span)"
       },
       {
         "nullable": null,
         "types": [
-          "Number"
+          "number",
+          "Vector3D"
         ],
         "spread": false,
         "optional": false,
         "name": "b",
-        "description": "the Life's end point"
+        "description": "Theta or Vector"
       },
       {
         "nullable": null,
         "types": [
-          "String"
+          "number"
         ],
         "spread": false,
         "optional": false,
         "name": "c",
-        "description": "span's center"
+        "description": "Theta"
       }
     ]
   },
@@ -9763,13 +9808,15 @@
     "static": false,
     "longname": "src/initialize/Velocity.js~Velocity#dirVec",
     "access": "public",
-    "description": null,
-    "lineNumber": 25,
-    "undocument": true,
+    "description": "Directional vector",
+    "lineNumber": 31,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Vector3D"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -9781,7 +9828,7 @@
     "longname": "src/initialize/Velocity.js~Velocity#name",
     "access": "public",
     "description": null,
-    "lineNumber": 26,
+    "lineNumber": 32,
     "undocument": true,
     "type": {
       "types": [
@@ -9800,7 +9847,7 @@
     "longname": "src/initialize/Velocity.js~Velocity#reset",
     "access": "public",
     "description": null,
-    "lineNumber": 29,
+    "lineNumber": 35,
     "undocument": true,
     "params": [
       {
@@ -9832,13 +9879,15 @@
     "static": false,
     "longname": "src/initialize/Velocity.js~Velocity#radiusPan",
     "access": "public",
-    "description": null,
-    "lineNumber": 32,
-    "undocument": true,
+    "description": "Velocity radius span.",
+    "lineNumber": 42,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Span"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -9849,13 +9898,15 @@
     "static": false,
     "longname": "src/initialize/Velocity.js~Velocity#dir",
     "access": "public",
-    "description": null,
-    "lineNumber": 33,
-    "undocument": true,
+    "description": "Direction vector.",
+    "lineNumber": 48,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Vector3D"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -9866,13 +9917,15 @@
     "static": false,
     "longname": "src/initialize/Velocity.js~Velocity#tha",
     "access": "public",
-    "description": null,
-    "lineNumber": 34,
-    "undocument": true,
+    "description": "Theta.",
+    "lineNumber": 54,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -9883,13 +9936,15 @@
     "static": false,
     "longname": "src/initialize/Velocity.js~Velocity#_useV",
     "access": "private",
-    "description": null,
-    "lineNumber": 35,
-    "undocument": true,
+    "description": "Determines whether to use the directional vector or not.",
+    "lineNumber": 60,
     "type": {
+      "nullable": null,
       "types": [
         "boolean"
-      ]
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -9903,7 +9958,7 @@
     "longname": "src/initialize/Velocity.js~Velocity#normalize",
     "access": "public",
     "description": null,
-    "lineNumber": 54,
+    "lineNumber": 79,
     "undocument": true,
     "params": [
       {
@@ -9931,7 +9986,7 @@
     "importPath": "@rohandeshpande/three-proton/src/initialize/Velocity.js",
     "importStyle": "{V}",
     "description": "Compatibility class.",
-    "lineNumber": 83,
+    "lineNumber": 116,
     "deprecated": true,
     "interface": false,
     "extends": [
@@ -9949,14 +10004,14 @@
     "longname": "src/initialize/Velocity.js~V#constructor",
     "access": "public",
     "description": null,
-    "lineNumber": 84,
+    "lineNumber": 117,
     "undocument": true
   },
   {
     "__docId__": 496,
     "kind": "file",
     "name": "src/initialize/index.js",
-    "content": "export { default as Body } from './Body';\nexport { default as Initialize } from './Initialize';\nexport { default as InitializeUtil } from './InitializeUtil';\nexport { default as Life } from './Life';\nexport { default as Mass } from './Mass';\nexport { default as Position } from './Position';\nexport { default as Radius } from './Radius';\nexport { default as Rate } from './Rate';\nexport { default as Velocity, V } from './Velocity';\n",
+    "content": "export { default as Body } from './Body';\nexport { default as InitializeUtil } from './InitializeUtil';\nexport { default as Life } from './Life';\nexport { default as Mass } from './Mass';\nexport { default as Position } from './Position';\nexport { default as Radius } from './Radius';\nexport { default as Rate } from './Rate';\nexport { default as Velocity, V } from './Velocity';\n",
     "static": true,
     "longname": "/Users/rohandeshpande/Projects/three-proton/src/initialize/index.js",
     "access": "public",

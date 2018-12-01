@@ -94,7 +94,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initialize">initialize</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Body.js~Body.html">Body</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Life.js~Life.html">Life</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Mass.js~Mass.html">Mass</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html">Position</a></span></span></li>
@@ -136,27 +136,33 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { DR, MEASURE, PI } from &apos;../constants&apos;;
 import { MathUtils, Polar3D, Vector3D, createSpan } from &apos;../math&apos;;
 
-import Initialize from &apos;./Initialize&apos;;
+import Initializer from &apos;./Initializer&apos;;
 import { classDeprecationWarning } from &apos;../compatibility&apos;;
 
-export default class Velocity extends Initialize {
+/**
+ * Sets the velocity property on initialized particles.
+ *
+ * TODO The constructor for this class is insane. This should be broken down into three
+ * separate classes, VectorVelocity, PolarVelocity and RadialVelocity, that way
+ * it will be much cleaner and there won&apos;t be any need for mixed argument types.
+ *
+ */
+export default class Velocity extends Initializer {
   /**
-   * Velocity is init particle&apos;s Velocity
-   * @param {Number} a - the Life&apos;s start point
-   * @param {Number} b - the Life&apos;s end point
-   * @param {String} c - span&apos;s center
-   * @example
-   * var life = new Life(3,5);
-   * or
-   * var life = new Life(Infinity);
-   * @extends {Initialize}
-   * @constructor
+   * Constructs a Velocity intitializer instance.
+   *
+   * @param {Vector3D|Polar3D|Span|number} a - Vector, Polar or radius (as a number or Span)
+   * @param {number|Vector3D} b - Theta or Vector
+   * @param {number} c - Theta
    */
-  //radius and tha
   constructor(a, b, c) {
     super();
 
     this.reset(a, b, c);
+    /**
+     * @desc Directional vector
+     * @type {Vector3D}
+     */
     this.dirVec = new Vector3D(0, 0, 0);
     this.name = &apos;Velocity&apos;;
   }
@@ -164,9 +170,28 @@ export default class Velocity extends Initialize {
   reset(a, b, c) {
     //[vector,tha]
     if (a instanceof Vector3D) {
+      /**
+       * @desc Velocity radius span.
+       * @type {Span}
+       */
       this.radiusPan = createSpan(1);
+
+      /**
+       * @desc Direction vector.
+       * @type {Vector3D}
+       */
       this.dir = a.clone();
+
+      /**
+       * @desc Theta.
+       * @type {number}
+       */
       this.tha = b * DR;
+
+      /**
+       * @desc Determines whether to use the directional vector or not.
+       * @type {boolean}
+       */
       this._useV = true;
     }
 
@@ -191,12 +216,20 @@ export default class Velocity extends Initialize {
   }
 }
 
+/**
+ * Sets the particle&apos;s initial velocity.
+ * BUG? This seems to always set the dirVec to 0, 0, 0 in the case of polar3d velocity.
+ *
+ * @singleton
+ * @param {Particle} particle - the particle to initialize the property on
+ * @return void
+ */
 Velocity.prototype.initialize = (function() {
   var tha;
   var normal = new Vector3D(0, 0, 1);
   var v = new Vector3D(0, 0, 0);
 
-  return function initialize(target) {
+  return function initialize(particle) {
     tha = this.tha * Math.random();
     this._useV &amp;&amp; this.dirVec.copy(this.dir).scalar(this.radiusPan.getValue());
 
@@ -204,7 +237,7 @@ Velocity.prototype.initialize = (function() {
     v.copy(this.dirVec).applyAxisAngle(normal, tha);
     v.applyAxisAngle(this.dirVec.normalize(), Math.random() * PI * 2);
 
-    target.v.copy(v);
+    particle.v.copy(v);
 
     return this;
   };

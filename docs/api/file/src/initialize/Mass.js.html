@@ -94,7 +94,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initialize">initialize</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Body.js~Body.html">Body</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initialize.js~Initialize.html">Initialize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Initializer.js~Initializer.html">Initializer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Life.js~Life.html">Life</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Mass.js~Mass.html">Mass</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initialize/Position.js~Position.html">Position</a></span></span></li>
@@ -133,29 +133,40 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/initialize/Mass.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Initialize from &apos;./Initialize&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Initializer from &apos;./Initializer&apos;;
 import { createSpan } from &apos;../math&apos;;
 
-export default class Mass extends Initialize {
+/**
+ * Sets the mass property on initialized particles.
+ *
+ */
+export default class Mass extends Initializer {
   /**
-   * Mass is init particle&apos;s Mass
-   * @param {Number} a - the Mass&apos;s start point
-   * @param {Number} b - the Mass&apos;s end point
-   * @param {String} c - span&apos;s center
-   * @example
-   * var Mass = new Proton.Mass(3,5);
-   * or
-   * var Mass = new Proton.Mass(Infinity);
-   * @extends {Initialize}
-   * @constructor
+   * Constructs a Mass initializer instance.
+   *
+   * @param {number} min - The minumum mass for the particle
+   * @param {number} max - The maximum mass for the particle
+   * @param {boolean} [center] - Determines whether to average the mass value
+   * @return void
    */
-  constructor(a, b, c) {
+  constructor(min, max, center = false) {
     super();
-    this.massPan = createSpan(a, b, c);
+
+    /**
+     * @desc The mass span which is used to set the particle mass value.
+     * @type {Span}
+     */
+    this.massPan = createSpan(min, max, center);
   }
 
-  initialize(target) {
-    target.mass = this.massPan.getValue();
+  /**
+   * Sets the particle&apos;s initial mass.
+   *
+   * @param {Particle} particle - the particle to initialize the property on
+   * @return void
+   */
+  initialize(particle) {
+    particle.mass = this.massPan.getValue();
   }
 }
 </code></pre>

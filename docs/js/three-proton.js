@@ -288,7 +288,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(4);
 
 var _ease = __webpack_require__(10);
 
@@ -482,87 +482,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * The base Emitter / Particle property class.
- *
- * @abstract
- */
-var Initialize = function () {
-  /**
-   * Constructs a Property instance.
-   *
-   * @return void
-   */
-  function Initialize() {
-    _classCallCheck(this, Initialize);
-
-    this.name = 'Initialize';
-  }
-
-  /**
-   * Initializes the property on the emitter or particle.
-   *
-   * @see {@link '../emitter/emitter.js'} setupParticle
-   * @param {Emitter} emitter - the emitter to initialize the property on
-   * @param {Particle} particle - the particle to intiialize the property on
-   * @return void
-   */
-
-
-  _createClass(Initialize, [{
-    key: 'init',
-    value: function init(emitter, particle) {
-      if (particle) {
-        this.initialize(particle);
-        particle.hasBeenInitialized = true;
-      } else {
-        this.initialize(emitter);
-        emitter.hasBeenInitialized = true;
-      }
-    }
-
-    /**
-     * @abstract
-     */
-
-  }, {
-    key: 'reset',
-    value: function reset() {}
-
-    /**
-     * Place custom property initialization code in this method in the subclass.
-     *
-     * @param {object} target - either an Emitter or a Particle
-     * @abstract
-     */
-
-  }, {
-    key: 'initialize',
-    value: function initialize(target) {} // eslint-disable-line
-
-  }]);
-
-  return Initialize;
-}();
-
-exports.default = Initialize;
-module.exports = exports['default'];
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _ColorUtil = __webpack_require__(67);
 
 Object.defineProperty(exports, 'ColorUtil', {
@@ -609,6 +528,87 @@ Object.defineProperty(exports, 'uid', {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * The base Emitter / Particle property class.
+ *
+ * @abstract
+ */
+var Initializer = function () {
+  /**
+   * Constructs an Initializer instance.
+   *
+   * @return void
+   */
+  function Initializer() {
+    _classCallCheck(this, Initializer);
+
+    this.name = 'Initializer';
+  }
+
+  /**
+   * Initializes the property on the emitter or particle.
+   *
+   * @see {@link '../emitter/emitter.js'} setupParticle
+   * @param {Emitter} emitter - the emitter to initialize the property on
+   * @param {Particle} particle - the particle to intiialize the property on
+   * @return void
+   */
+
+
+  _createClass(Initializer, [{
+    key: 'init',
+    value: function init(emitter, particle) {
+      if (particle) {
+        this.initialize(particle);
+        particle.hasBeenInitialized = true;
+      } else {
+        this.initialize(emitter);
+        emitter.hasBeenInitialized = true;
+      }
+    }
+
+    /**
+     * @abstract
+     */
+
+  }, {
+    key: 'reset',
+    value: function reset() {}
+
+    /**
+     * Place custom property initialization code in this method in the subclass.
+     *
+     * @param {object} target - either an Emitter or a Particle
+     * @abstract
+     */
+
+  }, {
+    key: 'initialize',
+    value: function initialize(target) {} // eslint-disable-line
+
+  }]);
+
+  return Initializer;
+}();
+
+exports.default = Initializer;
+module.exports = exports['default'];
 
 /***/ }),
 /* 6 */
@@ -50417,7 +50417,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(4);
 
 var _ease = __webpack_require__(10);
 
@@ -50714,7 +50714,7 @@ var _Pool = __webpack_require__(21);
 
 var _Pool2 = _interopRequireDefault(_Pool);
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51041,9 +51041,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _three = __webpack_require__(6);
 
-var _Initialize = __webpack_require__(4);
+var _Initializer = __webpack_require__(5);
 
-var _Initialize2 = _interopRequireDefault(_Initialize);
+var _Initializer2 = _interopRequireDefault(_Initializer);
 
 var _Util = __webpack_require__(1);
 
@@ -51060,12 +51060,18 @@ exports.default = {
     while (i--) {
       var initialize = initializes[i];
 
-      if (initialize instanceof _Initialize2.default) initialize.init(emitter, particle);else this.init(emitter, particle, initialize);
+      // TODO remove this conditional, the else is not entered in any of the examples
+      // and is just confusing
+      /* istanbul ignore else */
+      if (initialize instanceof _Initializer2.default) initialize.init(emitter, particle);else this.init(emitter, particle, initialize);
     }
 
     this.bindEmitter(emitter, particle);
   },
 
+  /**
+   * @deprecated Looks like this method is never called
+   */
   init: function init(emitter, particle, initialize) {
     console.log('InitializeUtil.init called');
     _Util2.default.setPrototypeByObj(particle, initialize);
@@ -51102,9 +51108,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initialize2 = __webpack_require__(4);
+var _Initializer2 = __webpack_require__(5);
 
-var _Initialize3 = _interopRequireDefault(_Initialize2);
+var _Initializer3 = _interopRequireDefault(_Initializer2);
 
 var _Util = __webpack_require__(1);
 
@@ -51120,30 +51126,63 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Rate = function (_Initialize) {
-  _inherits(Rate, _Initialize);
+/**
+ * Calculates the rate of particle emission.
+ *
+ * TODO This doesn't need to be an initializer, it doesn't have an initialize
+ * method, it overrides the base init method and it is only relevent to the Emitter class.
+ * It would be better to move this to the Emitter module itself as a standalone class.
+ *
+ */
+var Rate = function (_Initializer) {
+  _inherits(Rate, _Initializer);
 
   /**
-   * The number of particles per second emission (a [particle]/b [s]);
-   * @class Proton.Rate
-   * @constructor
-   * @param {Array or Number or Proton.Span} numPan the number of each emission;
-   * @param {Array or Number or Proton.Span} timePan the time of each emission;
-   * for example: new Proton.Rate(new Proton.Span(10, 20), new Proton.Span(.1, .25));
+   * Constructs a Rate instance.
+   *
+   * @param {number|array|Span} numPan - The number of particles to emit
+   * @param {number|array|Span} timePan - The time between each particle emission
+   * @return void
    */
   function Rate(numPan, timePan) {
     _classCallCheck(this, Rate);
 
+    /**
+     * @desc Sets the number of particles to emit.
+     * @type {Span}
+     */
     var _this = _possibleConstructorReturn(this, (Rate.__proto__ || Object.getPrototypeOf(Rate)).call(this));
 
     _this.numPan = (0, _math.createSpan)(_Util2.default.initValue(numPan, 1));
+
+    /**
+     * @desc Sets the time between each particle emission.
+     * @type {Span}
+     */
     _this.timePan = (0, _math.createSpan)(_Util2.default.initValue(timePan, 1));
 
+    /**
+     * @desc The rate's start time.
+     * @type {number}
+     */
     _this.startTime = 0;
+
+    /**
+     * @desc The rate's next time.
+     * @type {number}
+     */
     _this.nextTime = 0;
+
     _this.init();
     return _this;
   }
+
+  /**
+   * Sets the startTime and nextTime properties.
+   *
+   * @return void
+   */
+
 
   _createClass(Rate, [{
     key: 'init',
@@ -51151,6 +51190,14 @@ var Rate = function (_Initialize) {
       this.startTime = 0;
       this.nextTime = this.timePan.getValue();
     }
+
+    /**
+     * Gets the number of particles to emit.
+     *
+     * @param {number} time - Current particle engine time
+     * @return {number}
+     */
+
   }, {
     key: 'getValue',
     value: function getValue(time) {
@@ -51171,7 +51218,7 @@ var Rate = function (_Initialize) {
   }]);
 
   return Rate;
-}(_Initialize3.default);
+}(_Initializer3.default);
 
 exports.default = Rate;
 module.exports = exports['default'];
@@ -51344,7 +51391,7 @@ var _BaseRenderer2 = __webpack_require__(15);
 
 var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(4);
 
 var _core = __webpack_require__(12);
 
@@ -51694,15 +51741,6 @@ Object.defineProperty(exports, 'Body', {
   enumerable: true,
   get: function get() {
     return _interopRequireDefault(_Body).default;
-  }
-});
-
-var _Initialize = __webpack_require__(4);
-
-Object.defineProperty(exports, 'Initialize', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Initialize).default;
   }
 });
 
@@ -52217,7 +52255,7 @@ var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52311,7 +52349,7 @@ var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52972,7 +53010,7 @@ var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53815,7 +53853,7 @@ Object.keys(_renderer).forEach(function (key) {
   });
 });
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(4);
 
 Object.keys(_utils).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -53874,9 +53912,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initialize2 = __webpack_require__(4);
+var _Initializer2 = __webpack_require__(5);
 
-var _Initialize3 = _interopRequireDefault(_Initialize2);
+var _Initializer3 = _interopRequireDefault(_Initializer2);
 
 var _Util = __webpack_require__(1);
 
@@ -53893,14 +53931,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Stores the particle body's properties.
+ * Sets the body property on initialized particles.
  *
  */
-var Body = function (_Initialize) {
-  _inherits(Body, _Initialize);
+var Body = function (_Initializer) {
+  _inherits(Body, _Initializer);
 
   /**
-   * Constructs a Body property instance.
+   * Constructs a Body initalizer instance.
    *
    * @param {string|number} body - The color for the particle body
    * @param {?number} w - The width of the particle body
@@ -53933,7 +53971,7 @@ var Body = function (_Initialize) {
   }
 
   /**
-   * Initializes the property on the particle.
+   * Sets the particle's initial body.
    *
    * @param {Particle} particle - the particle to initialize the property on
    * @return void
@@ -53958,7 +53996,7 @@ var Body = function (_Initialize) {
   }]);
 
   return Body;
-}(_Initialize3.default);
+}(_Initializer3.default);
 
 exports.default = Body;
 module.exports = exports['default'];
@@ -53976,9 +54014,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initialize2 = __webpack_require__(4);
+var _Initializer2 = __webpack_require__(5);
 
-var _Initialize3 = _interopRequireDefault(_Initialize2);
+var _Initializer3 = _interopRequireDefault(_Initializer2);
 
 var _math = __webpack_require__(0);
 
@@ -53991,21 +54029,21 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Stores the life span of a particle.
+ * Sets the life property on initialized particles.
  *
  */
-var Life = function (_Initialize) {
-  _inherits(Life, _Initialize);
+var Life = function (_Initializer) {
+  _inherits(Life, _Initializer);
 
   /**
    * Constructs a Life property instance.
    *
-   * @param {number} a - The minimum life
-   * @param {number} b - The maximum life
-   * @param {?string} c - The span's center
+   * @param {number} min - The minimum life
+   * @param {number} max - The maximum life
+   * @param {boolean} [center] - Determines whether to average the life value
    * @return void
    */
-  function Life(a, b, c) {
+  function Life(min, max, center) {
     _classCallCheck(this, Life);
 
     /**
@@ -54014,12 +54052,12 @@ var Life = function (_Initialize) {
      */
     var _this = _possibleConstructorReturn(this, (Life.__proto__ || Object.getPrototypeOf(Life)).call(this));
 
-    _this.lifePan = (0, _math.createSpan)(a, b, c);
+    _this.lifePan = (0, _math.createSpan)(min, max, center);
     return _this;
   }
 
   /**
-   * Initializes the property on the particle.
+   * Sets the particle's initial life.
    *
    * @param {Particle} particle - the particle to initialize the property on
    * @return void
@@ -54028,13 +54066,13 @@ var Life = function (_Initialize) {
 
   _createClass(Life, [{
     key: 'initialize',
-    value: function initialize(target) {
-      if (this.lifePan.a == Infinity || this.lifePan.a == 'infi') target.life = Infinity;else target.life = this.lifePan.getValue();
+    value: function initialize(particle) {
+      if (this.lifePan.a == Infinity || this.lifePan.a == 'infi') particle.life = Infinity;else particle.life = this.lifePan.getValue();
     }
   }]);
 
   return Life;
-}(_Initialize3.default);
+}(_Initializer3.default);
 
 exports.default = Life;
 module.exports = exports['default'];
@@ -54052,9 +54090,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initialize2 = __webpack_require__(4);
+var _Initializer2 = __webpack_require__(5);
 
-var _Initialize3 = _interopRequireDefault(_Initialize2);
+var _Initializer3 = _interopRequireDefault(_Initializer2);
 
 var _math = __webpack_require__(0);
 
@@ -54066,39 +54104,53 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Mass = function (_Initialize) {
-  _inherits(Mass, _Initialize);
+/**
+ * Sets the mass property on initialized particles.
+ *
+ */
+var Mass = function (_Initializer) {
+  _inherits(Mass, _Initializer);
 
   /**
-   * Mass is init particle's Mass
-   * @param {Number} a - the Mass's start point
-   * @param {Number} b - the Mass's end point
-   * @param {String} c - span's center
-   * @example
-   * var Mass = new Proton.Mass(3,5);
-   * or
-   * var Mass = new Proton.Mass(Infinity);
-   * @extends {Initialize}
-   * @constructor
+   * Constructs a Mass initializer instance.
+   *
+   * @param {number} min - The minumum mass for the particle
+   * @param {number} max - The maximum mass for the particle
+   * @param {boolean} [center] - Determines whether to average the mass value
+   * @return void
    */
-  function Mass(a, b, c) {
+  function Mass(min, max) {
+    var center = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
     _classCallCheck(this, Mass);
 
+    /**
+     * @desc The mass span which is used to set the particle mass value.
+     * @type {Span}
+     */
     var _this = _possibleConstructorReturn(this, (Mass.__proto__ || Object.getPrototypeOf(Mass)).call(this));
 
-    _this.massPan = (0, _math.createSpan)(a, b, c);
+    _this.massPan = (0, _math.createSpan)(min, max, center);
     return _this;
   }
 
+  /**
+   * Sets the particle's initial mass.
+   *
+   * @param {Particle} particle - the particle to initialize the property on
+   * @return void
+   */
+
+
   _createClass(Mass, [{
     key: 'initialize',
-    value: function initialize(target) {
-      target.mass = this.massPan.getValue();
+    value: function initialize(particle) {
+      particle.mass = this.massPan.getValue();
     }
   }]);
 
   return Mass;
-}(_Initialize3.default);
+}(_Initializer3.default);
 
 exports.default = Mass;
 module.exports = exports['default'];
@@ -54116,9 +54168,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initialize2 = __webpack_require__(4);
+var _Initializer2 = __webpack_require__(5);
 
-var _Initialize3 = _interopRequireDefault(_Initialize2);
+var _Initializer3 = _interopRequireDefault(_Initializer2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54129,14 +54181,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Manages the starting positions for particles being emitted.
+ * Sets the starting position property for initialized particles.
+ * This is respective to the supplied zones.
  *
  */
-var Position = function (_Initialize) {
-  _inherits(Position, _Initialize);
+var Position = function (_Initializer) {
+  _inherits(Position, _Initializer);
 
   /**
-   * Constructs a Position property instance.
+   * Constructs a Position initializer instance.
    *
    * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
    * @return void
@@ -54151,7 +54204,7 @@ var Position = function (_Initialize) {
   }
 
   /**
-   * Resets the property properties.
+   * Resets the initializer properties.
    * Clears all previously set zones and resets the zones according to args passed.
    *
    * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
@@ -54190,10 +54243,10 @@ var Position = function (_Initialize) {
   }]);
 
   return Position;
-}(_Initialize3.default);
+}(_Initializer3.default);
 
 /**
- * Initializes the property on the particle.
+ * Sets the particle's initial position.
  *
  * @param {Particle} particle - the particle to initialize the property on
  * @return void
@@ -54229,9 +54282,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initialize2 = __webpack_require__(4);
+var _Initializer2 = __webpack_require__(5);
 
-var _Initialize3 = _interopRequireDefault(_Initialize2);
+var _Initializer3 = _interopRequireDefault(_Initializer2);
 
 var _math = __webpack_require__(0);
 
@@ -54243,35 +54296,62 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Radius = function (_Initialize) {
-  _inherits(Radius, _Initialize);
+/**
+ * Sets the radius property on initialized particles.
+ *
+ */
+var Radius = function (_Initializer) {
+  _inherits(Radius, _Initializer);
 
   /**
-   * Radius is init particle's Radius
-   * @param {Number} a - the Radius's start point
-   * @param {Number} b - the Radius's end point
-   * @param {String} c - span's center
-   * @example
-   * var Radius = new Proton.Radius(3,5);
-   * or
-   * var Radius = new Proton.Radius(3,1,"center");
-   * @extends {Initialize}
-   * @constructor
+   * Constructs a Radius initializer instance.
+   *
+   * @param {number} width - The width of the particle radius
+   * @param {number} height - The height of the particle radius
+   * @param {boolean} [center=false] - Determines whether to average the radius value
+   * @return void
    */
-  function Radius(a, b, c) {
+  function Radius(width, height) {
+    var center = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
     _classCallCheck(this, Radius);
 
+    /**
+     * @desc The radius span which is used to set the particle radius value.
+     * @type {Span}
+     */
     var _this = _possibleConstructorReturn(this, (Radius.__proto__ || Object.getPrototypeOf(Radius)).call(this));
 
-    _this.radius = (0, _math.createSpan)(a, b, c);
+    _this.radius = (0, _math.createSpan)(width, height, center);
     return _this;
   }
 
+  /**
+   * Resets the initializer properties.
+   * Clears all previously set zones and resets the zones according to args passed.
+   *
+   * @param {number} width - The width of the particle radius
+   * @param {number} height - The height of the particle radius
+   * @param {boolean} [center=false] - Determines whether to average the radius value
+   * @return void
+   */
+
+
   _createClass(Radius, [{
     key: 'reset',
-    value: function reset(a, b, c) {
-      this.radius = (0, _math.createSpan)(a, b, c);
+    value: function reset(width, height) {
+      var center = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+      this.radius = (0, _math.createSpan)(width, height, center);
     }
+
+    /**
+     * Sets the particle's initial radius.
+     *
+     * @param {Particle} particle - the particle to initialize the property on
+     * @return void
+     */
+
   }, {
     key: 'initialize',
     value: function initialize(particle) {
@@ -54281,7 +54361,7 @@ var Radius = function (_Initialize) {
   }]);
 
   return Radius;
-}(_Initialize3.default);
+}(_Initializer3.default);
 
 exports.default = Radius;
 module.exports = exports['default'];
@@ -54304,9 +54384,9 @@ var _constants = __webpack_require__(3);
 
 var _math = __webpack_require__(0);
 
-var _Initialize2 = __webpack_require__(4);
+var _Initializer2 = __webpack_require__(5);
 
-var _Initialize3 = _interopRequireDefault(_Initialize2);
+var _Initializer3 = _interopRequireDefault(_Initializer2);
 
 var _compatibility = __webpack_require__(7);
 
@@ -54318,28 +54398,34 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Velocity = function (_Initialize) {
-  _inherits(Velocity, _Initialize);
+/**
+ * Sets the velocity property on initialized particles.
+ *
+ * TODO The constructor for this class is insane. This should be broken down into three
+ * separate classes, VectorVelocity, PolarVelocity and RadialVelocity, that way
+ * it will be much cleaner and there won't be any need for mixed argument types.
+ *
+ */
+var Velocity = function (_Initializer) {
+  _inherits(Velocity, _Initializer);
 
   /**
-   * Velocity is init particle's Velocity
-   * @param {Number} a - the Life's start point
-   * @param {Number} b - the Life's end point
-   * @param {String} c - span's center
-   * @example
-   * var life = new Life(3,5);
-   * or
-   * var life = new Life(Infinity);
-   * @extends {Initialize}
-   * @constructor
+   * Constructs a Velocity intitializer instance.
+   *
+   * @param {Vector3D|Polar3D|Span|number} a - Vector, Polar or radius (as a number or Span)
+   * @param {number|Vector3D} b - Theta or Vector
+   * @param {number} c - Theta
    */
-  //radius and tha
   function Velocity(a, b, c) {
     _classCallCheck(this, Velocity);
 
     var _this = _possibleConstructorReturn(this, (Velocity.__proto__ || Object.getPrototypeOf(Velocity)).call(this));
 
     _this.reset(a, b, c);
+    /**
+     * @desc Directional vector
+     * @type {Vector3D}
+     */
     _this.dirVec = new _math.Vector3D(0, 0, 0);
     _this.name = 'Velocity';
     return _this;
@@ -54350,9 +54436,28 @@ var Velocity = function (_Initialize) {
     value: function reset(a, b, c) {
       //[vector,tha]
       if (a instanceof _math.Vector3D) {
+        /**
+         * @desc Velocity radius span.
+         * @type {Span}
+         */
         this.radiusPan = (0, _math.createSpan)(1);
+
+        /**
+         * @desc Direction vector.
+         * @type {Vector3D}
+         */
         this.dir = a.clone();
+
+        /**
+         * @desc Theta.
+         * @type {number}
+         */
         this.tha = b * _constants.DR;
+
+        /**
+         * @desc Determines whether to use the directional vector or not.
+         * @type {boolean}
+         */
         this._useV = true;
       }
 
@@ -54379,17 +54484,25 @@ var Velocity = function (_Initialize) {
   }]);
 
   return Velocity;
-}(_Initialize3.default);
+}(_Initializer3.default);
+
+/**
+ * Sets the particle's initial velocity.
+ * BUG? This seems to always set the dirVec to 0, 0, 0 in the case of polar3d velocity.
+ *
+ * @singleton
+ * @param {Particle} particle - the particle to initialize the property on
+ * @return void
+ */
+
 
 exports.default = Velocity;
-
-
 Velocity.prototype.initialize = function () {
   var tha;
   var normal = new _math.Vector3D(0, 0, 1);
   var v = new _math.Vector3D(0, 0, 0);
 
-  return function initialize(target) {
+  return function initialize(particle) {
     tha = this.tha * Math.random();
     this._useV && this.dirVec.copy(this.dir).scalar(this.radiusPan.getValue());
 
@@ -54397,7 +54510,7 @@ Velocity.prototype.initialize = function () {
     v.copy(this.dirVec).applyAxisAngle(normal, tha);
     v.applyAxisAngle(this.dirVec.normalize(), Math.random() * _constants.PI * 2);
 
-    target.v.copy(v);
+    particle.v.copy(v);
 
     return this;
   };

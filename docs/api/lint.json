@@ -514,79 +514,39 @@
     ]
   },
   {
-    "name": "Life#initialize",
-    "filePath": "src/initialize/Life.js",
-    "lines": [
-      {
-        "lineNumber": 26,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 27,
-        "line": "   * Initializes the property on the particle."
-      },
-      {
-        "lineNumber": 28,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 29,
-        "line": "   * @param {Particle} particle - the particle to initialize the property on"
-      },
-      {
-        "lineNumber": 30,
-        "line": "   * @return void"
-      },
-      {
-        "lineNumber": 31,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 32,
-        "line": "  initialize(target) {"
-      }
-    ],
-    "codeParams": [
-      "target"
-    ],
-    "docParams": [
-      "particle"
-    ]
-  },
-  {
     "name": "Position#reset",
     "filePath": "src/initialize/Position.js",
     "lines": [
       {
-        "lineNumber": 18,
+        "lineNumber": 19,
         "line": "  /**"
       },
       {
-        "lineNumber": 19,
-        "line": "   * Resets the property properties."
-      },
-      {
         "lineNumber": 20,
-        "line": "   * Clears all previously set zones and resets the zones according to args passed."
+        "line": "   * Resets the initializer properties."
       },
       {
         "lineNumber": 21,
-        "line": "   *"
+        "line": "   * Clears all previously set zones and resets the zones according to args passed."
       },
       {
         "lineNumber": 22,
-        "line": "   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position."
+        "line": "   *"
       },
       {
         "lineNumber": 23,
-        "line": "   * @return void"
+        "line": "   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position."
       },
       {
         "lineNumber": 24,
-        "line": "   */"
+        "line": "   * @return void"
       },
       {
         "lineNumber": 25,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 26,
         "line": "  reset() {"
       }
     ],
@@ -600,31 +560,31 @@
     "filePath": "src/initialize/Position.js",
     "lines": [
       {
-        "lineNumber": 38,
+        "lineNumber": 39,
         "line": "  /**"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 40,
         "line": "   * Adds a zone or zones to this.zones."
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 41,
         "line": "   *"
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 42,
         "line": "   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position."
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 43,
         "line": "   * @return void"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 44,
         "line": "   */"
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 45,
         "line": "  addZone() {"
       }
     ],

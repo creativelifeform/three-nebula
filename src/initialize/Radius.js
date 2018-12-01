@@ -11,7 +11,7 @@ export default class Radius extends Initializer {
    *
    * @param {number} width - The width of the particle radius
    * @param {number} height - The height of the particle radius
-   * @param {boolean} [center] - Determines whether to average the radius value
+   * @param {boolean} [center=false] - Determines whether to average the radius value
    * @return void
    */
   constructor(width, height, center = false) {
@@ -30,7 +30,7 @@ export default class Radius extends Initializer {
    *
    * @param {number} width - The width of the particle radius
    * @param {number} height - The height of the particle radius
-   * @param {boolean} [shouldCenter] - Determines whether to average the radius value
+   * @param {boolean} [center=false] - Determines whether to average the radius value
    * @return void
    */
   reset(width, height, center = false) {
