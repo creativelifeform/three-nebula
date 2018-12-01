@@ -2,7 +2,7 @@
 
 import * as Proton from '../../../src';
 
-import InitializeUtil from '../../../src/initialize/InitializeUtil';
+import InitializerUtil from '../../../src/initializer/InitializerUtil';
 import chai from 'chai';
 import sinon from 'sinon';
 
@@ -27,7 +27,7 @@ describe('initializer -> InitializeUtil', () => {
     const velocitySpy = spy(velocity, 'initialize');
     const spies = [massSpy, lifeSpy, bodySpy, radiusSpy, velocitySpy];
 
-    InitializeUtil.initialize(emitter, particle, initializers);
+    InitializerUtil.initialize(emitter, particle, initializers);
 
     spies.forEach(spy => {
       assert(spy.calledOnce);
@@ -41,7 +41,7 @@ describe('initializer -> InitializeUtil', () => {
   });
 
   it('should call the bindEmitter method if the emitter has its bindEmitter prop set to true', done => {
-    const bindEmitterSpy = spy(InitializeUtil, 'bindEmitter');
+    const bindEmitterSpy = spy(InitializerUtil, 'bindEmitter');
     const particlePositionAddSpy = spy(particle.p, 'add');
     const particleVelocityAddSpy = spy(particle.v, 'add');
     const particleVelocityApplyEulerSpy = spy(particle.v, 'applyEuler');
@@ -54,7 +54,7 @@ describe('initializer -> InitializeUtil', () => {
       particleAccelerationAddSpy
     ];
 
-    InitializeUtil.initialize(emitter, particle, initializers);
+    InitializerUtil.initialize(emitter, particle, initializers);
 
     spies.forEach(spy => {
       assert(spy.calledOnce);

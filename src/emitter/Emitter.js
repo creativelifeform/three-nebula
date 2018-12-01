@@ -1,8 +1,8 @@
+import { InitializerUtil, Rate } from '../initializer';
+
 import { BIND_EMITTER_EVENT } from '../constants';
 import EventDispatcher from '../events/EventDispatcher';
-import InitializeUtil from '../initialize/InitializeUtil';
 import Particle from '../core/Particle';
-import Rate from '../initialize/Rate';
 import Util from '../utils/Util';
 import { integrator } from '../core/Proton';
 import uid from '../utils/uid';
@@ -318,7 +318,7 @@ export default class Emitter extends Particle {
       else behaviours = [behaviour];
     }
 
-    InitializeUtil.initialize(this, particle, initializes);
+    InitializerUtil.initialize(this, particle, initializes);
     particle.addBehaviours(behaviours);
     particle.parent = this;
     this.particles.push(particle);

@@ -1,32 +1,54 @@
-import { Util, uid } from '../utils';
-import { ease, setEasingByName } from '../ease';
-
+import { DEFAULT_BEHAVIOUR_EASING } from './constants';
 import { MEASURE } from '../constants';
+import { uid } from '../utils';
 
-const { easeLinear } = ease;
-
+/**
+ * The base behaviour class.
+ * Behaviours manage a particle's behaviour after they have been emitted.
+ *
+ */
 export default class Behaviour {
-  constructor(life, easing) {
+  /**
+   * Constructs a Behaviour instance.
+   *
+   * @param {number} [life=Infinity] - The life of the behaviour
+   * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
+   * @return void
+   */
+  constructor(life = Infinity, easing = DEFAULT_BEHAVIOUR_EASING) {
     /**
-     * The behaviour's id;
-     * @property id
-     * @type {String} id
+     * @desc The behaviour's id
+     * @type {string} id
      */
     this.id = `behaviour-${uid()}`;
-    this.life = Util.initValue(life, Infinity);
+
     /**
-     * The behaviour's decaying trend, for example easeOutQuart;
-     * @property easing
-     * @type {String}
-     * @default easeLinear
+     * @desc The life of the behaviour
+     * @type {number}
      */
-    this.easing = Util.initValue(easing, setEasingByName(easeLinear));
-    this.age = 0;
-    this.energy = 1;
+    this.life = life;
+
     /**
-     * The behaviour is Dead;
-     * @property dead
-     * @type {Boolean}
+     * @desc The behaviour's decaying trend
+     * @type {function}
+     */
+    this.easing = easing;
+
+    /**
+     * @desc The age of the behaviour
+     * @type {number}
+     */
+    this.age = 0;
+
+    /**
+     * @desc The energy of the behaviour
+     * @type {number}
+     */
+    this.energy = 1;
+
+    /**
+     * Determines if the behaviour is dead or not
+     * @type {boolean}
      */
     this.dead = false;
 
@@ -42,19 +64,19 @@ export default class Behaviour {
   /**
    * Reset this behaviour's parameters
    *
-   * @method reset
-   * @param {Number} this behaviour's life
-   * @param {String} this behaviour's easing
+   * @param {number} [life=Infinity] - The life of the behaviour
+   * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
    */
-  reset(life, easing) {
-    this.life = Util.initValue(life, Infinity);
-    this.easing = Util.initValue(easing, setEasingByName(easeLinear));
+  reset(life = Infinity, easing = DEFAULT_BEHAVIOUR_EASING) {
+    this.life = life;
+    this.easing = easing;
   }
+
   /**
    * Normalize a force by 1:100;
    *
-   * @method normalizeForce
-   * @param {Vector2D} force
+   * @param {Vector3D} force - The force to normalize.
+   * @return {Vector3D}
    */
   normalizeForce(force) {
     return force.scalar(MEASURE);
@@ -63,31 +85,39 @@ export default class Behaviour {
   /**
    * Normalize a value by 1:100;
    *
-   * @method normalizeValue
-   * @param {Number} value
+   * @param {number} value - The value to normalize
+   * @return {number}
    */
   normalizeValue(value) {
     return value * MEASURE;
   }
 
   /**
-   * Initialize the behaviour's parameters for all particles
+   * Set the behaviour's initial properties on the particle.
    *
-   * @method initialize
    * @param {Particle} particle
    * @abstract
    */
   initialize(particle) {} // eslint-disable-line
 
   /**
-   * Apply this behaviour for all particles every time
+   * Compares the age of the behaviour vs integration time and determines
+   * if the behaviour should be set to dead or not.
+   * Sets the behaviour energy as a factor of particle age and life.
    *
-   * @method applyBehaviour
-   * @param {Particle} particle
-   * @param {Number} the integrate time 1/ms
+   * TODO It's a little weird that sub class behaviours override this method and
+   * also call it from within their own applyBehaviour method. Since this method
+   * primarily sets energy, consider renaming it to setEnergy or energise. Then
+   * each sub class can simply call this.setEnergy instead of super.applyBehaviour.
+   *
+   * @param {Particle} particle - The particle to apply the behaviour to
+   * @param {Number} time - the proton integration time
+   * @return void
    */
   applyBehaviour(particle, time) {
-    if (this.dead) return;
+    if (this.dead) {
+      return;
+    }
 
     this.age += time;
 
@@ -98,14 +128,15 @@ export default class Behaviour {
       return;
     }
 
-    var scale = this.easing(particle.age / particle.life);
+    const scale = this.easing(particle.age / particle.life);
 
     this.energy = Math.max(1 - scale, 0);
   }
 
   /**
-   * Destory this behaviour
-   * @method destroy
+   * Destory this behaviour.
+   *
+   * @abstract
    */
   destroy() {}
 }
