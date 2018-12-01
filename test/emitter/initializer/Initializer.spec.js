@@ -2,7 +2,7 @@
 
 import * as Proton from '../../../src';
 
-import Initializer from '../../../src/initialize/Initializer';
+import Initializer from '../../../src/initializer/Initializer';
 import chai from 'chai';
 
 const { assert } = chai;
