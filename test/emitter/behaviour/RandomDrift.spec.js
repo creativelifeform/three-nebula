@@ -1,9 +1,9 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Proton from '../../../src';
 
-import { DEFAULT_RANDOM_DRIFT_DELAY } from '../../src/behaviour/constants';
-import { TIME } from '../constants';
+import { DEFAULT_RANDOM_DRIFT_DELAY } from '../../../src/behaviour/constants';
+import { TIME } from '../../constants';
 import chai from 'chai';
 
 const { assert } = chai;

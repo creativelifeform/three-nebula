@@ -1,14 +1,14 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Proton from '../../../src';
 
-import { TIME } from '../constants';
+import { TIME } from '../../constants';
 import chai from 'chai';
 
 const { assert } = chai;
 
-describe('behaviour -> Attraction', () => {
-  const behaviour = new Proton.Attraction();
+describe('behaviour -> Repulsion', () => {
+  const behaviour = new Proton.Repulsion();
 
   it('should instantiate with the correct properties', done => {
     const {
@@ -32,7 +32,7 @@ describe('behaviour -> Attraction', () => {
     assert.isFalse(dead);
     assert.isTrue(targetPosition instanceof Proton.Vector3D);
     assert.strictEqual(radius, 1000);
-    assert.strictEqual(force, 10000);
+    assert.strictEqual(force, -10000);
     assert.strictEqual(radiusSq, 1000000);
     assert.isTrue(attractionForce instanceof Proton.Vector3D);
     assert.strictEqual(lengthSq, 0);
@@ -65,7 +65,7 @@ describe('behaviour -> Attraction', () => {
     assert.isFalse(dead);
     assert.isTrue(targetPosition instanceof Proton.Vector3D);
     assert.strictEqual(radius, 1000);
-    assert.strictEqual(force, 10000);
+    assert.strictEqual(force, -10000);
     assert.strictEqual(radiusSq, 1000000);
     assert.isTrue(attractionForce instanceof Proton.Vector3D);
     assert.strictEqual(lengthSq, 0);
