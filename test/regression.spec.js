@@ -31,7 +31,7 @@ describe('regression', () => {
       'FollowEmitter',
       'Emitter',
       'Body',
-      'InitializeUtil',
+      'InitializerUtil',
       'Life',
       'Mass',
       'Position',

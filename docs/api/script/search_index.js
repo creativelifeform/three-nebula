@@ -48,9 +48,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initialize/body.js~body",
-    "class/src/initialize/Body.js~Body.html",
-    "<span>Body</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initialize/Body.js</span>",
+    "@rohandeshpande/three-proton/src/initializer/body.js~body",
+    "class/src/initializer/Body.js~Body.html",
+    "<span>Body</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Body.js</span>",
     "class"
   ],
   [
@@ -228,9 +228,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initialize/initializer.js~initializer",
-    "class/src/initialize/Initializer.js~Initializer.html",
-    "<span>Initializer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initialize/Initializer.js</span>",
+    "@rohandeshpande/three-proton/src/initializer/initializer.js~initializer",
+    "class/src/initializer/Initializer.js~Initializer.html",
+    "<span>Initializer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Initializer.js</span>",
     "class"
   ],
   [
@@ -240,9 +240,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initialize/life.js~life",
-    "class/src/initialize/Life.js~Life.html",
-    "<span>Life</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initialize/Life.js</span>",
+    "@rohandeshpande/three-proton/src/initializer/life.js~life",
+    "class/src/initializer/Life.js~Life.html",
+    "<span>Life</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Life.js</span>",
     "class"
   ],
   [
@@ -258,9 +258,9 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initialize/mass.js~mass",
-    "class/src/initialize/Mass.js~Mass.html",
-    "<span>Mass</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initialize/Mass.js</span>",
+    "@rohandeshpande/three-proton/src/initializer/mass.js~mass",
+    "class/src/initializer/Mass.js~Mass.html",
+    "<span>Mass</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Mass.js</span>",
     "class"
   ],
   [
@@ -408,9 +408,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initialize/position.js~position",
-    "class/src/initialize/Position.js~Position.html",
-    "<span>Position</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initialize/Position.js</span>",
+    "@rohandeshpande/three-proton/src/initializer/position.js~position",
+    "class/src/initializer/Position.js~Position.html",
+    "<span>Position</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Position.js</span>",
     "class"
   ],
   [
@@ -438,9 +438,9 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initialize/radius.js~radius",
-    "class/src/initialize/Radius.js~Radius.html",
-    "<span>Radius</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initialize/Radius.js</span>",
+    "@rohandeshpande/three-proton/src/initializer/radius.js~radius",
+    "class/src/initializer/Radius.js~Radius.html",
+    "<span>Radius</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Radius.js</span>",
     "class"
   ],
   [
@@ -450,9 +450,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initialize/rate.js~rate",
-    "class/src/initialize/Rate.js~Rate.html",
-    "<span>Rate</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initialize/Rate.js</span>",
+    "@rohandeshpande/three-proton/src/initializer/rate.js~rate",
+    "class/src/initializer/Rate.js~Rate.html",
+    "<span>Rate</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Rate.js</span>",
     "class"
   ],
   [
@@ -516,9 +516,9 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initialize/velocity.js~v",
-    "class/src/initialize/Velocity.js~V.html",
-    "<span>V</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initialize/Velocity.js</span>",
+    "@rohandeshpande/three-proton/src/initializer/velocity.js~v",
+    "class/src/initializer/Velocity.js~V.html",
+    "<span>V</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity.js</span>",
     "class"
   ],
   [
@@ -534,9 +534,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initialize/velocity.js~velocity",
-    "class/src/initialize/Velocity.js~Velocity.html",
-    "<span>Velocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initialize/Velocity.js</span>",
+    "@rohandeshpande/three-proton/src/initializer/velocity.js~velocity",
+    "class/src/initializer/Velocity.js~Velocity.html",
+    "<span>Velocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity.js</span>",
     "class"
   ],
   [
@@ -2412,309 +2412,309 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/initialize/body.js",
-    "file/src/initialize/Body.js.html",
-    "src/initialize/Body.js",
+    "src/initializer/body.js",
+    "file/src/initializer/Body.js.html",
+    "src/initializer/Body.js",
     "file"
   ],
   [
-    "src/initialize/body.js~body#body",
-    "class/src/initialize/Body.js~Body.html#instance-member-body",
-    "src/initialize/Body.js~Body#body",
+    "src/initializer/body.js~body#body",
+    "class/src/initializer/Body.js~Body.html#instance-member-body",
+    "src/initializer/Body.js~Body#body",
     "member"
   ],
   [
-    "src/initialize/body.js~body#constructor",
-    "class/src/initialize/Body.js~Body.html#instance-constructor-constructor",
-    "src/initialize/Body.js~Body#constructor",
+    "src/initializer/body.js~body#constructor",
+    "class/src/initializer/Body.js~Body.html#instance-constructor-constructor",
+    "src/initializer/Body.js~Body#constructor",
     "method"
   ],
   [
-    "src/initialize/body.js~body#h",
-    "class/src/initialize/Body.js~Body.html#instance-member-h",
-    "src/initialize/Body.js~Body#h",
+    "src/initializer/body.js~body#h",
+    "class/src/initializer/Body.js~Body.html#instance-member-h",
+    "src/initializer/Body.js~Body#h",
     "member"
   ],
   [
-    "src/initialize/body.js~body#initialize",
-    "class/src/initialize/Body.js~Body.html#instance-method-initialize",
-    "src/initialize/Body.js~Body#initialize",
+    "src/initializer/body.js~body#initialize",
+    "class/src/initializer/Body.js~Body.html#instance-method-initialize",
+    "src/initializer/Body.js~Body#initialize",
     "method"
   ],
   [
-    "src/initialize/body.js~body#w",
-    "class/src/initialize/Body.js~Body.html#instance-member-w",
-    "src/initialize/Body.js~Body#w",
+    "src/initializer/body.js~body#w",
+    "class/src/initializer/Body.js~Body.html#instance-member-w",
+    "src/initializer/Body.js~Body#w",
     "member"
   ],
   [
-    "src/initialize/initializeutil.js",
-    "file/src/initialize/InitializeUtil.js.html",
-    "src/initialize/InitializeUtil.js",
+    "src/initializer/initializer.js",
+    "file/src/initializer/Initializer.js.html",
+    "src/initializer/Initializer.js",
     "file"
   ],
   [
-    "src/initialize/initializer.js",
-    "file/src/initialize/Initializer.js.html",
-    "src/initialize/Initializer.js",
+    "src/initializer/initializer.js~initializer#constructor",
+    "class/src/initializer/Initializer.js~Initializer.html#instance-constructor-constructor",
+    "src/initializer/Initializer.js~Initializer#constructor",
+    "method"
+  ],
+  [
+    "src/initializer/initializer.js~initializer#init",
+    "class/src/initializer/Initializer.js~Initializer.html#instance-method-init",
+    "src/initializer/Initializer.js~Initializer#init",
+    "method"
+  ],
+  [
+    "src/initializer/initializer.js~initializer#initialize",
+    "class/src/initializer/Initializer.js~Initializer.html#instance-method-initialize",
+    "src/initializer/Initializer.js~Initializer#initialize",
+    "method"
+  ],
+  [
+    "src/initializer/initializer.js~initializer#name",
+    "class/src/initializer/Initializer.js~Initializer.html#instance-member-name",
+    "src/initializer/Initializer.js~Initializer#name",
+    "member"
+  ],
+  [
+    "src/initializer/initializer.js~initializer#reset",
+    "class/src/initializer/Initializer.js~Initializer.html#instance-method-reset",
+    "src/initializer/Initializer.js~Initializer#reset",
+    "method"
+  ],
+  [
+    "src/initializer/initializerutil.js",
+    "file/src/initializer/InitializerUtil.js.html",
+    "src/initializer/InitializerUtil.js",
     "file"
   ],
   [
-    "src/initialize/initializer.js~initializer#constructor",
-    "class/src/initialize/Initializer.js~Initializer.html#instance-constructor-constructor",
-    "src/initialize/Initializer.js~Initializer#constructor",
-    "method"
-  ],
-  [
-    "src/initialize/initializer.js~initializer#init",
-    "class/src/initialize/Initializer.js~Initializer.html#instance-method-init",
-    "src/initialize/Initializer.js~Initializer#init",
-    "method"
-  ],
-  [
-    "src/initialize/initializer.js~initializer#initialize",
-    "class/src/initialize/Initializer.js~Initializer.html#instance-method-initialize",
-    "src/initialize/Initializer.js~Initializer#initialize",
-    "method"
-  ],
-  [
-    "src/initialize/initializer.js~initializer#name",
-    "class/src/initialize/Initializer.js~Initializer.html#instance-member-name",
-    "src/initialize/Initializer.js~Initializer#name",
-    "member"
-  ],
-  [
-    "src/initialize/initializer.js~initializer#reset",
-    "class/src/initialize/Initializer.js~Initializer.html#instance-method-reset",
-    "src/initialize/Initializer.js~Initializer#reset",
-    "method"
-  ],
-  [
-    "src/initialize/life.js",
-    "file/src/initialize/Life.js.html",
-    "src/initialize/Life.js",
+    "src/initializer/life.js",
+    "file/src/initializer/Life.js.html",
+    "src/initializer/Life.js",
     "file"
   ],
   [
-    "src/initialize/life.js~life#constructor",
-    "class/src/initialize/Life.js~Life.html#instance-constructor-constructor",
-    "src/initialize/Life.js~Life#constructor",
+    "src/initializer/life.js~life#constructor",
+    "class/src/initializer/Life.js~Life.html#instance-constructor-constructor",
+    "src/initializer/Life.js~Life#constructor",
     "method"
   ],
   [
-    "src/initialize/life.js~life#initialize",
-    "class/src/initialize/Life.js~Life.html#instance-method-initialize",
-    "src/initialize/Life.js~Life#initialize",
+    "src/initializer/life.js~life#initialize",
+    "class/src/initializer/Life.js~Life.html#instance-method-initialize",
+    "src/initializer/Life.js~Life#initialize",
     "method"
   ],
   [
-    "src/initialize/life.js~life#lifepan",
-    "class/src/initialize/Life.js~Life.html#instance-member-lifePan",
-    "src/initialize/Life.js~Life#lifePan",
+    "src/initializer/life.js~life#lifepan",
+    "class/src/initializer/Life.js~Life.html#instance-member-lifePan",
+    "src/initializer/Life.js~Life#lifePan",
     "member"
   ],
   [
-    "src/initialize/mass.js",
-    "file/src/initialize/Mass.js.html",
-    "src/initialize/Mass.js",
+    "src/initializer/mass.js",
+    "file/src/initializer/Mass.js.html",
+    "src/initializer/Mass.js",
     "file"
   ],
   [
-    "src/initialize/mass.js~mass#constructor",
-    "class/src/initialize/Mass.js~Mass.html#instance-constructor-constructor",
-    "src/initialize/Mass.js~Mass#constructor",
+    "src/initializer/mass.js~mass#constructor",
+    "class/src/initializer/Mass.js~Mass.html#instance-constructor-constructor",
+    "src/initializer/Mass.js~Mass#constructor",
     "method"
   ],
   [
-    "src/initialize/mass.js~mass#initialize",
-    "class/src/initialize/Mass.js~Mass.html#instance-method-initialize",
-    "src/initialize/Mass.js~Mass#initialize",
+    "src/initializer/mass.js~mass#initialize",
+    "class/src/initializer/Mass.js~Mass.html#instance-method-initialize",
+    "src/initializer/Mass.js~Mass#initialize",
     "method"
   ],
   [
-    "src/initialize/mass.js~mass#masspan",
-    "class/src/initialize/Mass.js~Mass.html#instance-member-massPan",
-    "src/initialize/Mass.js~Mass#massPan",
+    "src/initializer/mass.js~mass#masspan",
+    "class/src/initializer/Mass.js~Mass.html#instance-member-massPan",
+    "src/initializer/Mass.js~Mass#massPan",
     "member"
   ],
   [
-    "src/initialize/position.js",
-    "file/src/initialize/Position.js.html",
-    "src/initialize/Position.js",
+    "src/initializer/position.js",
+    "file/src/initializer/Position.js.html",
+    "src/initializer/Position.js",
     "file"
   ],
   [
-    "src/initialize/position.js~position#addzone",
-    "class/src/initialize/Position.js~Position.html#instance-method-addZone",
-    "src/initialize/Position.js~Position#addZone",
+    "src/initializer/position.js~position#addzone",
+    "class/src/initializer/Position.js~Position.html#instance-method-addZone",
+    "src/initializer/Position.js~Position#addZone",
     "method"
   ],
   [
-    "src/initialize/position.js~position#constructor",
-    "class/src/initialize/Position.js~Position.html#instance-constructor-constructor",
-    "src/initialize/Position.js~Position#constructor",
+    "src/initializer/position.js~position#constructor",
+    "class/src/initializer/Position.js~Position.html#instance-constructor-constructor",
+    "src/initializer/Position.js~Position#constructor",
     "method"
   ],
   [
-    "src/initialize/position.js~position#reset",
-    "class/src/initialize/Position.js~Position.html#instance-method-reset",
-    "src/initialize/Position.js~Position#reset",
+    "src/initializer/position.js~position#reset",
+    "class/src/initializer/Position.js~Position.html#instance-method-reset",
+    "src/initializer/Position.js~Position#reset",
     "method"
   ],
   [
-    "src/initialize/position.js~position#zones",
-    "class/src/initialize/Position.js~Position.html#instance-member-zones",
-    "src/initialize/Position.js~Position#zones",
+    "src/initializer/position.js~position#zones",
+    "class/src/initializer/Position.js~Position.html#instance-member-zones",
+    "src/initializer/Position.js~Position#zones",
     "member"
   ],
   [
-    "src/initialize/radius.js",
-    "file/src/initialize/Radius.js.html",
-    "src/initialize/Radius.js",
+    "src/initializer/radius.js",
+    "file/src/initializer/Radius.js.html",
+    "src/initializer/Radius.js",
     "file"
   ],
   [
-    "src/initialize/radius.js~radius#constructor",
-    "class/src/initialize/Radius.js~Radius.html#instance-constructor-constructor",
-    "src/initialize/Radius.js~Radius#constructor",
+    "src/initializer/radius.js~radius#constructor",
+    "class/src/initializer/Radius.js~Radius.html#instance-constructor-constructor",
+    "src/initializer/Radius.js~Radius#constructor",
     "method"
   ],
   [
-    "src/initialize/radius.js~radius#initialize",
-    "class/src/initialize/Radius.js~Radius.html#instance-method-initialize",
-    "src/initialize/Radius.js~Radius#initialize",
+    "src/initializer/radius.js~radius#initialize",
+    "class/src/initializer/Radius.js~Radius.html#instance-method-initialize",
+    "src/initializer/Radius.js~Radius#initialize",
     "method"
   ],
   [
-    "src/initialize/radius.js~radius#radius",
-    "class/src/initialize/Radius.js~Radius.html#instance-member-radius",
-    "src/initialize/Radius.js~Radius#radius",
+    "src/initializer/radius.js~radius#radius",
+    "class/src/initializer/Radius.js~Radius.html#instance-member-radius",
+    "src/initializer/Radius.js~Radius#radius",
     "member"
   ],
   [
-    "src/initialize/radius.js~radius#reset",
-    "class/src/initialize/Radius.js~Radius.html#instance-method-reset",
-    "src/initialize/Radius.js~Radius#reset",
+    "src/initializer/radius.js~radius#reset",
+    "class/src/initializer/Radius.js~Radius.html#instance-method-reset",
+    "src/initializer/Radius.js~Radius#reset",
     "method"
   ],
   [
-    "src/initialize/rate.js",
-    "file/src/initialize/Rate.js.html",
-    "src/initialize/Rate.js",
+    "src/initializer/rate.js",
+    "file/src/initializer/Rate.js.html",
+    "src/initializer/Rate.js",
     "file"
   ],
   [
-    "src/initialize/rate.js~rate#constructor",
-    "class/src/initialize/Rate.js~Rate.html#instance-constructor-constructor",
-    "src/initialize/Rate.js~Rate#constructor",
+    "src/initializer/rate.js~rate#constructor",
+    "class/src/initializer/Rate.js~Rate.html#instance-constructor-constructor",
+    "src/initializer/Rate.js~Rate#constructor",
     "method"
   ],
   [
-    "src/initialize/rate.js~rate#getvalue",
-    "class/src/initialize/Rate.js~Rate.html#instance-method-getValue",
-    "src/initialize/Rate.js~Rate#getValue",
+    "src/initializer/rate.js~rate#getvalue",
+    "class/src/initializer/Rate.js~Rate.html#instance-method-getValue",
+    "src/initializer/Rate.js~Rate#getValue",
     "method"
   ],
   [
-    "src/initialize/rate.js~rate#init",
-    "class/src/initialize/Rate.js~Rate.html#instance-method-init",
-    "src/initialize/Rate.js~Rate#init",
+    "src/initializer/rate.js~rate#init",
+    "class/src/initializer/Rate.js~Rate.html#instance-method-init",
+    "src/initializer/Rate.js~Rate#init",
     "method"
   ],
   [
-    "src/initialize/rate.js~rate#nexttime",
-    "class/src/initialize/Rate.js~Rate.html#instance-member-nextTime",
-    "src/initialize/Rate.js~Rate#nextTime",
+    "src/initializer/rate.js~rate#nexttime",
+    "class/src/initializer/Rate.js~Rate.html#instance-member-nextTime",
+    "src/initializer/Rate.js~Rate#nextTime",
     "member"
   ],
   [
-    "src/initialize/rate.js~rate#numpan",
-    "class/src/initialize/Rate.js~Rate.html#instance-member-numPan",
-    "src/initialize/Rate.js~Rate#numPan",
+    "src/initializer/rate.js~rate#numpan",
+    "class/src/initializer/Rate.js~Rate.html#instance-member-numPan",
+    "src/initializer/Rate.js~Rate#numPan",
     "member"
   ],
   [
-    "src/initialize/rate.js~rate#starttime",
-    "class/src/initialize/Rate.js~Rate.html#instance-member-startTime",
-    "src/initialize/Rate.js~Rate#startTime",
+    "src/initializer/rate.js~rate#starttime",
+    "class/src/initializer/Rate.js~Rate.html#instance-member-startTime",
+    "src/initializer/Rate.js~Rate#startTime",
     "member"
   ],
   [
-    "src/initialize/rate.js~rate#timepan",
-    "class/src/initialize/Rate.js~Rate.html#instance-member-timePan",
-    "src/initialize/Rate.js~Rate#timePan",
+    "src/initializer/rate.js~rate#timepan",
+    "class/src/initializer/Rate.js~Rate.html#instance-member-timePan",
+    "src/initializer/Rate.js~Rate#timePan",
     "member"
   ],
   [
-    "src/initialize/velocity.js",
-    "file/src/initialize/Velocity.js.html",
-    "src/initialize/Velocity.js",
+    "src/initializer/velocity.js",
+    "file/src/initializer/Velocity.js.html",
+    "src/initializer/Velocity.js",
     "file"
   ],
   [
-    "src/initialize/velocity.js~v#constructor",
-    "class/src/initialize/Velocity.js~V.html#instance-constructor-constructor",
-    "src/initialize/Velocity.js~V#constructor",
+    "src/initializer/velocity.js~v#constructor",
+    "class/src/initializer/Velocity.js~V.html#instance-constructor-constructor",
+    "src/initializer/Velocity.js~V#constructor",
     "method"
   ],
   [
-    "src/initialize/velocity.js~velocity#_usev",
-    "class/src/initialize/Velocity.js~Velocity.html#instance-member-_useV",
-    "src/initialize/Velocity.js~Velocity#_useV",
+    "src/initializer/velocity.js~velocity#_usev",
+    "class/src/initializer/Velocity.js~Velocity.html#instance-member-_useV",
+    "src/initializer/Velocity.js~Velocity#_useV",
     "member"
   ],
   [
-    "src/initialize/velocity.js~velocity#constructor",
-    "class/src/initialize/Velocity.js~Velocity.html#instance-constructor-constructor",
-    "src/initialize/Velocity.js~Velocity#constructor",
+    "src/initializer/velocity.js~velocity#constructor",
+    "class/src/initializer/Velocity.js~Velocity.html#instance-constructor-constructor",
+    "src/initializer/Velocity.js~Velocity#constructor",
     "method"
   ],
   [
-    "src/initialize/velocity.js~velocity#dir",
-    "class/src/initialize/Velocity.js~Velocity.html#instance-member-dir",
-    "src/initialize/Velocity.js~Velocity#dir",
+    "src/initializer/velocity.js~velocity#dir",
+    "class/src/initializer/Velocity.js~Velocity.html#instance-member-dir",
+    "src/initializer/Velocity.js~Velocity#dir",
     "member"
   ],
   [
-    "src/initialize/velocity.js~velocity#dirvec",
-    "class/src/initialize/Velocity.js~Velocity.html#instance-member-dirVec",
-    "src/initialize/Velocity.js~Velocity#dirVec",
+    "src/initializer/velocity.js~velocity#dirvec",
+    "class/src/initializer/Velocity.js~Velocity.html#instance-member-dirVec",
+    "src/initializer/Velocity.js~Velocity#dirVec",
     "member"
   ],
   [
-    "src/initialize/velocity.js~velocity#name",
-    "class/src/initialize/Velocity.js~Velocity.html#instance-member-name",
-    "src/initialize/Velocity.js~Velocity#name",
+    "src/initializer/velocity.js~velocity#name",
+    "class/src/initializer/Velocity.js~Velocity.html#instance-member-name",
+    "src/initializer/Velocity.js~Velocity#name",
     "member"
   ],
   [
-    "src/initialize/velocity.js~velocity#normalize",
-    "class/src/initialize/Velocity.js~Velocity.html#instance-method-normalize",
-    "src/initialize/Velocity.js~Velocity#normalize",
+    "src/initializer/velocity.js~velocity#normalize",
+    "class/src/initializer/Velocity.js~Velocity.html#instance-method-normalize",
+    "src/initializer/Velocity.js~Velocity#normalize",
     "method"
   ],
   [
-    "src/initialize/velocity.js~velocity#radiuspan",
-    "class/src/initialize/Velocity.js~Velocity.html#instance-member-radiusPan",
-    "src/initialize/Velocity.js~Velocity#radiusPan",
+    "src/initializer/velocity.js~velocity#radiuspan",
+    "class/src/initializer/Velocity.js~Velocity.html#instance-member-radiusPan",
+    "src/initializer/Velocity.js~Velocity#radiusPan",
     "member"
   ],
   [
-    "src/initialize/velocity.js~velocity#reset",
-    "class/src/initialize/Velocity.js~Velocity.html#instance-method-reset",
-    "src/initialize/Velocity.js~Velocity#reset",
+    "src/initializer/velocity.js~velocity#reset",
+    "class/src/initializer/Velocity.js~Velocity.html#instance-method-reset",
+    "src/initializer/Velocity.js~Velocity#reset",
     "method"
   ],
   [
-    "src/initialize/velocity.js~velocity#tha",
-    "class/src/initialize/Velocity.js~Velocity.html#instance-member-tha",
-    "src/initialize/Velocity.js~Velocity#tha",
+    "src/initializer/velocity.js~velocity#tha",
+    "class/src/initializer/Velocity.js~Velocity.html#instance-member-tha",
+    "src/initializer/Velocity.js~Velocity#tha",
     "member"
   ],
   [
-    "src/initialize/index.js",
-    "file/src/initialize/index.js.html",
-    "src/initialize/index.js",
+    "src/initializer/index.js",
+    "file/src/initializer/index.js.html",
+    "src/initializer/index.js",
     "file"
   ],
   [
