@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.0.10] - 2018-12-02
+
+### Added
+
+* Unit tests for the `core/Particle` class
+* Doc blocks for this class
+
+### Changed
+
+* Refactored the `Particle.reset` method and constructor
+
 ## [1.0.9] - 2018-12-02
 
 ### Changed
