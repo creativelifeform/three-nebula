@@ -96,6 +96,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_age",
+    "variable/index.html#static-variable-DEFAULT_AGE",
+    "<span>DEFAULT_AGE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_alpha",
+    "variable/index.html#static-variable-DEFAULT_ALPHA",
+    "<span>DEFAULT_ALPHA</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/behaviour/constants.js~default_attraciton_radius",
     "variable/index.html#static-variable-DEFAULT_ATTRACITON_RADIUS",
     "<span>DEFAULT_ATTRACITON_RADIUS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
@@ -114,9 +126,33 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_body",
+    "variable/index.html#static-variable-DEFAULT_BODY",
+    "<span>DEFAULT_BODY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_dead",
+    "variable/index.html#static-variable-DEFAULT_DEAD",
+    "<span>DEFAULT_DEAD</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/debug/constants.js~default_depth",
     "variable/index.html#static-variable-DEFAULT_DEPTH",
     "<span>DEFAULT_DEPTH</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_easing",
+    "variable/index.html#static-variable-DEFAULT_EASING",
+    "<span>DEFAULT_EASING</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_energy",
+    "variable/index.html#static-variable-DEFAULT_ENERGY",
+    "<span>DEFAULT_ENERGY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
     "variable"
   ],
   [
@@ -126,9 +162,33 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_life",
+    "variable/index.html#static-variable-DEFAULT_LIFE",
+    "<span>DEFAULT_LIFE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_mass",
+    "variable/index.html#static-variable-DEFAULT_MASS",
+    "<span>DEFAULT_MASS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_parent",
+    "variable/index.html#static-variable-DEFAULT_PARENT",
+    "<span>DEFAULT_PARENT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/debug/constants.js~default_position",
     "variable/index.html#static-variable-DEFAULT_POSITION",
     "<span>DEFAULT_POSITION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_radius",
+    "variable/index.html#static-variable-DEFAULT_RADIUS",
+    "<span>DEFAULT_RADIUS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
     "variable"
   ],
   [
@@ -144,9 +204,33 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_scale",
+    "variable/index.html#static-variable-DEFAULT_SCALE",
+    "<span>DEFAULT_SCALE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/debug/constants.js~default_size",
     "variable/index.html#static-variable-DEFAULT_SIZE",
     "<span>DEFAULT_SIZE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_sleep",
+    "variable/index.html#static-variable-DEFAULT_SLEEP",
+    "<span>DEFAULT_SLEEP</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_use_alpha",
+    "variable/index.html#static-variable-DEFAULT_USE_ALPHA",
+    "<span>DEFAULT_USE_ALPHA</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_use_color",
+    "variable/index.html#static-variable-DEFAULT_USE_COLOR",
+    "<span>DEFAULT_USE_COLOR</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
     "variable"
   ],
   [
@@ -1942,6 +2026,12 @@ window.esdocSearchIndex = [
     "class/src/core/Proton.js~Proton.html#static-method-integrator",
     "src/core/Proton.js~Proton.integrator",
     "method"
+  ],
+  [
+    "src/core/constants.js",
+    "file/src/core/constants.js.html",
+    "src/core/constants.js",
+    "file"
   ],
   [
     "src/core/index.js",

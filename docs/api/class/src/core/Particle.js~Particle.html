@@ -72,6 +72,20 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_AGE">DEFAULT_AGE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ALPHA">DEFAULT_ALPHA</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BODY">DEFAULT_BODY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_DEAD">DEFAULT_DEAD</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_EASING">DEFAULT_EASING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ENERGY">DEFAULT_ENERGY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_LIFE">DEFAULT_LIFE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_MASS">DEFAULT_MASS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_PARENT">DEFAULT_PARENT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RADIUS">DEFAULT_RADIUS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_SCALE">DEFAULT_SCALE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_SLEEP">DEFAULT_SLEEP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_USE_ALPHA">DEFAULT_USE_ALPHA</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_USE_COLOR">DEFAULT_USE_COLOR</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#debug">debug</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-log">log</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_DEPTH">DEFAULT_DEPTH</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_HEIGHT">DEFAULT_HEIGHT</a></span></span></li>
@@ -133,13 +147,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Particle from &apos;<span><a href="file/src/core/Particle.js.html#lineNumber7">@rohandeshpande/three-proton/src/core/Particle.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Particle from &apos;<span><a href="file/src/core/Particle.js.html#lineNumber26">@rohandeshpande/three-proton/src/core/Particle.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/core/Particle.js.html#lineNumber7">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/core/Particle.js.html#lineNumber26">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -159,7 +173,8 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>A Particle is an object that is emitted by an emitter.</p>
+</div>
   
 
   
@@ -191,13 +206,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(pObj: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(properties: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>the Particle class</p>
+        <div data-ice="description"><p>Constructs a Particle instance.</p>
 </div>
       </div>
     </td>
@@ -227,13 +242,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-a">a</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-a">a</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s acceleration</p>
+</div>
       </div>
     </td>
     <td>
@@ -261,7 +277,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s age</p>
+</div>
       </div>
     </td>
     <td>
@@ -289,7 +306,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s alpha</p>
+</div>
       </div>
     </td>
     <td>
@@ -311,13 +329,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-behaviours">behaviours</a></span></span><span class="code" data-ice="signature">: <span><span>*</span><span>[]</span></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-behaviours">behaviours</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s behaviours array</p>
+</div>
       </div>
     </td>
     <td>
@@ -339,13 +358,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-body">body</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-body">body</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s body</p>
+</div>
       </div>
     </td>
     <td>
@@ -367,13 +387,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-color">color</a></span></span><span class="code" data-ice="signature">: {&quot;r&quot;: <span>*</span>, &quot;g&quot;: <span>*</span>, &quot;b&quot;: <span>*</span>}</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-color">color</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s color store</p>
+</div>
       </div>
     </td>
     <td>
@@ -395,13 +416,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-dead">dead</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-dead">dead</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Determines if the particle is dead or not</p>
+</div>
       </div>
     </td>
     <td>
@@ -423,13 +445,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-easing">easing</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-easing">easing</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s easing</p>
+</div>
       </div>
     </td>
     <td>
@@ -457,7 +480,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s energy loss</p>
+</div>
       </div>
     </td>
     <td>
@@ -479,13 +503,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-id">id</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-id">id</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s unique id</p>
+</div>
       </div>
     </td>
     <td>
@@ -507,13 +532,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-life">life</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-life">life</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s life</p>
+</div>
       </div>
     </td>
     <td>
@@ -541,7 +567,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s mass</p>
+</div>
       </div>
     </td>
     <td>
@@ -591,13 +618,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-old">old</a></span></span><span class="code" data-ice="signature">: {}</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-old">old</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s last position, velocity and acceleration</p>
+</div>
       </div>
     </td>
     <td>
@@ -619,13 +647,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-p">p</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-p">p</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s position</p>
+</div>
       </div>
     </td>
     <td>
@@ -647,13 +676,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-parent">parent</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-parent">parent</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s parent</p>
+</div>
       </div>
     </td>
     <td>
@@ -681,7 +711,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s radius</p>
+</div>
       </div>
     </td>
     <td>
@@ -703,13 +734,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-rotation">rotation</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-rotation">rotation</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s rotation</p>
+</div>
       </div>
     </td>
     <td>
@@ -737,7 +769,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s scale</p>
+</div>
       </div>
     </td>
     <td>
@@ -759,13 +792,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-sleep">sleep</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-sleep">sleep</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Determines if the particle is sleeping or not</p>
+</div>
       </div>
     </td>
     <td>
@@ -787,13 +821,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-transform">transform</a></span></span><span class="code" data-ice="signature">: {}</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-transform">transform</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s transform collection</p>
+</div>
       </div>
     </td>
     <td>
@@ -821,7 +856,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Determines whether to use alpha or not</p>
+</div>
       </div>
     </td>
     <td>
@@ -849,7 +885,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Determines whether to use color or not</p>
+</div>
       </div>
     </td>
     <td>
@@ -871,13 +908,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-v">v</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-v">v</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particle&apos;s velocity</p>
+</div>
       </div>
     </td>
     <td>
@@ -906,69 +944,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-addBehaviour">addBehaviour</a></span></span><span class="code" data-ice="signature">(behaviour: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-addBehaviour">addBehaviour</a></span></span><span class="code" data-ice="signature">(behaviour: <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-addBehaviours">addBehaviours</a></span></span><span class="code" data-ice="signature">(behaviours: <span>*</span>)</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-destroy">destroy</a></span></span><span class="code" data-ice="signature">()</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Destory this particle</p>
+        <div data-ice="description"><p>Adds a behaviour to the particle.</p>
 </div>
       </div>
     </td>
@@ -991,13 +973,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-getDirection">getDirection</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-addBehaviours">addBehaviours</a></span></span><span class="code" data-ice="signature">(behaviours: <span>array</span>&lt;<span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>&gt;): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Adds multiple behaviours to the particle.</p>
+</div>
       </div>
     </td>
     <td>
@@ -1019,13 +1002,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-removeAllBehaviours">removeAllBehaviours</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-destroy">destroy</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Destroys the particle.</p>
+</div>
       </div>
     </td>
     <td>
@@ -1047,13 +1031,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-removeBehaviour">removeBehaviour</a></span></span><span class="code" data-ice="signature">(behaviour: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-getDirection">getDirection</a></span></span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Gets the particle&apos;s current direction.</p>
+</div>
       </div>
     </td>
     <td>
@@ -1075,13 +1060,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">(init: <span>*</span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-removeAllBehaviours">removeAllBehaviours</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Removes all behaviours from the particle.</p>
+</div>
       </div>
     </td>
     <td>
@@ -1103,13 +1089,76 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-update">update</a></span></span><span class="code" data-ice="signature">(time: <span>*</span>, index: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-removeBehaviour">removeBehaviour</a></span></span><span class="code" data-ice="signature">(behaviour: <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
+        <div data-ice="description"><p>Removes the behaviour from the particle.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></span>
+        </p>
+      </div>
+      <div>
         
+        
+        <div data-ice="description"><p>Resets the particle&apos;s default properties and clear&apos;s its particle&apos;s position,
+velocity, acceleration, color and rotation. Also destroy&apos;s the particle&apos;s
+transform collection &amp; removes all behaviours.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-method-update">update</a></span></span><span class="code" data-ice="signature">(time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Updates the particle&apos;s properties by applying each behaviour to the particle.
+Will also update the particle&apos;s energy, unless it&apos;s age is greater than it&apos;s life
+in which case it will be destroyed.</p>
+</div>
       </div>
     </td>
     <td>
@@ -1135,18 +1184,18 @@
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(pObj: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>)</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(properties: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber17">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber52">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>the Particle class</p>
+  <div data-ice="description"><p>Constructs a Particle instance.</p>
 </div>
 
   
@@ -1160,10 +1209,10 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">pObj</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">properties</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>the parameters of particle config.</p>
+      <td data-ice="description"><p>The properties to instantiate the particle with</p>
 </td>
     </tr>
 </tbody>
@@ -1171,26 +1220,173 @@
 </div>
 </div>
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  <div data-ice="example">
-    <h4>Example:</h4>
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties"><div data-ice="properties">
+  <h4 data-ice="title">Return Properties:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
     
-  <div class="example-doc" data-ice="exampleDoc">
-      
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">var p = new Proton.Particle({life:3,dead:false});
-or
-var p = new Proton.Particle({mass:1,radius:100});</code></pre>
-    </div>
+    <tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.life</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s life</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.age</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s age</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.energy</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s energy loss</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.dead</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Determines if the particle is dead or not</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.sleep</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Determines if the particle is sleeping or not</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.target</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s target</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.body</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s body</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.mass</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s mass</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.radius</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s radius</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.alpha</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s alpha</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.scale</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s scale</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.rotation</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s rotation</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.color</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s color</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.easing</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s easing</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.p</td>
+      <td data-ice="type" class="code"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s position</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.v</td>
+      <td data-ice="type" class="code"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s velocity</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.a</td>
+      <td data-ice="type" class="code"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s acceleration</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.behaviours</td>
+      <td data-ice="type" class="code"><span>array</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s behaviours array</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">properties.transform</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle&apos;s transform collection</p>
+</td>
+    </tr>
+</tbody>
+  </table>
 </div>
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 
@@ -1208,18 +1404,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">a</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">a</span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber72">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber143">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s acceleration</p>
+</div>
 
   
 
@@ -1255,14 +1452,15 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber54">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber68">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s age</p>
+</div>
 
   
 
@@ -1298,14 +1496,15 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber63">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber108">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s alpha</p>
+</div>
 
   
 
@@ -1337,18 +1536,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">behaviours</span><span class="code" data-ice="signature">: <span><span>*</span><span>[]</span></span></span>
+    <span class="code" data-ice="name">behaviours</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber77">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber168">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s behaviours array</p>
+</div>
 
   
 
@@ -1380,18 +1580,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">body</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">body</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber59">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber88">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s body</p>
+</div>
 
   
 
@@ -1423,18 +1624,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">color</span><span class="code" data-ice="signature">: {&quot;r&quot;: <span>*</span>, &quot;g&quot;: <span>*</span>, &quot;b&quot;: <span>*</span>}</span>
+    <span class="code" data-ice="name">color</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber79">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber178">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s color store</p>
+</div>
 
   
 
@@ -1466,18 +1668,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">dead</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+    <span class="code" data-ice="name">dead</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber57">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber78">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Determines if the particle is dead or not</p>
+</div>
 
   
 
@@ -1509,18 +1712,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">easing</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">easing</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber67">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber128">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s easing</p>
+</div>
 
   
 
@@ -1556,14 +1760,15 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber56">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber73">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s energy loss</p>
+</div>
 
   
 
@@ -1595,39 +1800,23 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">id</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span class="code" data-ice="name">id</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber21">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber57">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Properties:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">id</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s id</p>
-</td>
-    </tr>
-</tbody>
-  </table>
+  <div data-ice="description"><p>The particle&apos;s unique id</p>
 </div>
+
+  
+
+  <div data-ice="properties">
 </div>
 
   
@@ -1655,18 +1844,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">life</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">life</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber53">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber63">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s life</p>
+</div>
 
   
 
@@ -1702,14 +1892,15 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber61">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber98">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s mass</p>
+</div>
 
   
 
@@ -1745,7 +1936,7 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber22">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber58">source</a></span></span>
     </span>
   </h3>
 
@@ -1784,18 +1975,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">old</span><span class="code" data-ice="signature">: {}</span>
+    <span class="code" data-ice="name">old</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber73">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber148">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s last position, velocity and acceleration</p>
+</div>
 
   
 
@@ -1827,18 +2019,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">p</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">p</span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber70">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber133">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s position</p>
+</div>
 
   
 
@@ -1870,18 +2063,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">parent</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">parent</span><span class="code" data-ice="signature">: <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber60">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber93">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s parent</p>
+</div>
 
   
 
@@ -1917,14 +2111,15 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber62">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber103">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s radius</p>
+</div>
 
   
 
@@ -1956,18 +2151,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">rotation</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">rotation</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber80">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber183">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s rotation</p>
+</div>
 
   
 
@@ -2003,14 +2199,15 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber64">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber113">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s scale</p>
+</div>
 
   
 
@@ -2042,18 +2239,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">sleep</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+    <span class="code" data-ice="name">sleep</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber58">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber83">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Determines if the particle is sleeping or not</p>
+</div>
 
   
 
@@ -2085,18 +2283,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">transform</span><span class="code" data-ice="signature">: {}</span>
+    <span class="code" data-ice="name">transform</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber78">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber173">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s transform collection</p>
+</div>
 
   
 
@@ -2132,14 +2331,15 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber66">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber123">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Determines whether to use alpha or not</p>
+</div>
 
   
 
@@ -2175,14 +2375,15 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber65">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber118">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Determines whether to use color or not</p>
+</div>
 
   
 
@@ -2214,18 +2415,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">v</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">v</span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber71">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber138">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The particle&apos;s velocity</p>
+</div>
 
   
 
@@ -2260,18 +2462,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">addBehaviour</span><span class="code" data-ice="signature">(behaviour: <span>*</span>)</span>
+    <span class="code" data-ice="name">addBehaviour</span><span class="code" data-ice="signature">(behaviour: <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber123">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber274">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Adds a behaviour to the particle.</p>
+</div>
 
   
 
@@ -2285,16 +2488,30 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">behaviour</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The behaviour to add to the particle</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -2319,18 +2536,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">addBehaviours</span><span class="code" data-ice="signature">(behaviours: <span>*</span>)</span>
+    <span class="code" data-ice="name">addBehaviours</span><span class="code" data-ice="signature">(behaviours: <span>array</span>&lt;<span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>&gt;): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber128">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber285">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Adds multiple behaviours to the particle.</p>
+</div>
 
   
 
@@ -2344,16 +2562,30 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">behaviours</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span>array</span>&lt;<span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>&gt;</td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>An array of behaviours to add to the particle</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -2378,18 +2610,18 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">destroy</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">destroy</span><span class="code" data-ice="signature">(): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber152">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber321">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Destory this particle</p>
+  <div data-ice="description"><p>Destroys the particle.</p>
 </div>
 
   
@@ -2397,7 +2629,20 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -2422,18 +2667,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">getDirection</span><span class="code" data-ice="signature">(): <span>*</span></span>
+    <span class="code" data-ice="name">getDirection</span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber27">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber194">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Gets the particle&apos;s current direction.</p>
+</div>
 
   
 
@@ -2445,7 +2691,7 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
           
         </tr>
       </tbody>
@@ -2477,25 +2723,39 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">removeAllBehaviours</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">removeAllBehaviours</span><span class="code" data-ice="signature">(): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber144">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber312">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Removes all behaviours from the particle.</p>
+</div>
 
   
 
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -2520,18 +2780,19 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">removeBehaviour</span><span class="code" data-ice="signature">(behaviour: <span>*</span>)</span>
+    <span class="code" data-ice="name">removeBehaviour</span><span class="code" data-ice="signature">(behaviour: <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber136">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber299">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Removes the behaviour from the particle.</p>
+</div>
 
   
 
@@ -2545,16 +2806,30 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">behaviour</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The behaviour to remove from the particle</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -2579,38 +2854,25 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">reset</span><span class="code" data-ice="signature">(init: <span>*</span>): <span>*</span></span>
+    <span class="code" data-ice="name">reset</span><span class="code" data-ice="signature">(): <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber52">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber205">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">init</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
+  <div data-ice="description"><p>Resets the particle&apos;s default properties and clear&apos;s its particle&apos;s position,
+velocity, acceleration, color and rotation. Also destroy&apos;s the particle&apos;s
+transform collection &amp; removes all behaviours.</p>
 </div>
+
+  
+
+  <div data-ice="properties">
 </div>
 
   <div class="return-params" data-ice="returnParams">
@@ -2618,155 +2880,12 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></td>
           
         </tr>
       </tbody>
     </table>
-    <div data-ice="returnProperties"><div data-ice="properties">
-  <h4 data-ice="title">Return Properties:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">life</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s life</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">age</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s age</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">energy</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s energy loss</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">dead</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle is dead?</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">sleep</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle is sleep?</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">target</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s target</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">body</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s body</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">mass</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s mass</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">radius</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s radius</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">alpha</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s alpha</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">scale</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s scale</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">rotation</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s rotation</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">color</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s color</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">easing</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s easing</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">p</td>
-      <td data-ice="type" class="code"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s position</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">v</td>
-      <td data-ice="type" class="code"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s velocity</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">a</td>
-      <td data-ice="type" class="code"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s acceleration</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">behaviours</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s behaviours array</p>
-</td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">transform</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The particle&apos;s transform collection</p>
-</td>
-    </tr>
-</tbody>
-  </table>
-</div>
+    <div data-ice="returnProperties">
 </div>
   </div>
 
@@ -2793,18 +2912,21 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     
     
-    <span class="code" data-ice="name">update</span><span class="code" data-ice="signature">(time: <span>*</span>, index: <span>*</span>)</span>
+    <span class="code" data-ice="name">update</span><span class="code" data-ice="signature">(time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber100">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Particle.js.html#lineNumber246">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Updates the particle&apos;s properties by applying each behaviour to the particle.
+Will also update the particle&apos;s energy, unless it&apos;s age is greater than it&apos;s life
+in which case it will be destroyed.</p>
+</div>
 
   
 
@@ -2818,22 +2940,37 @@ var p = new Proton.Particle({mass:1,radius:100});</code></pre>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">time</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Integration time</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">index</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span>integer</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Particle index</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
