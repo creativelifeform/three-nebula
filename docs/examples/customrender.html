@@ -88,6 +88,7 @@
         }
 
         renderer.onParticleUpdate = function(p) {
+            console.log(p);
             p.target.position.copy(p.p);
             p.target.rotation.set(p.rotation.x, p.rotation.y, p.rotation.z);
 

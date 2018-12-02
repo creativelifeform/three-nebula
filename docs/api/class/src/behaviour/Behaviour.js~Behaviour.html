@@ -69,6 +69,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TIME_STEP">TIME_STEP</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VERLET">VERLET</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle2.js~Particle.html">Particle</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
@@ -1035,7 +1036,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber112">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber117">source</a></span></span>
     </span>
   </h3>
 
@@ -1045,6 +1046,10 @@ if the behaviour should be set to dead or not.</p>
   <div data-ice="description"><p>Compares the age of the behaviour vs integration time and determines
 if the behaviour should be set to dead or not.
 Sets the behaviour energy as a factor of particle age and life.</p>
+<p>TODO It&apos;s a little weird that sub class behaviours override this method and
+also call it from within their own applyBehaviour method. Since this method
+primarily sets energy, consider renaming it to setEnergy or energise. Then
+each sub class can simply call this.setEnergy instead of super.applyBehaviour.</p>
 </div>
 
   
@@ -1118,7 +1123,7 @@ Sets the behaviour energy as a factor of particle age and life.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber136">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber141">source</a></span></span>
     </span>
   </h3>
 

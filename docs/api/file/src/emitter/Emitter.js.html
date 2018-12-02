@@ -69,6 +69,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TIME_STEP">TIME_STEP</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VERLET">VERLET</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle2.js~Particle.html">Particle</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
@@ -433,7 +434,7 @@ export default class Emitter extends Particle {
           this.parent.eventDispatcher.dispatchEvent(&apos;PARTICLE_DEAD&apos;, particle);
         BIND_EMITTER_EVENT &amp;&amp; this.dispatchEvent(&apos;PARTICLE_DEAD&apos;, particle);
 
-        this.parent.pool.expire(particle.reset());
+        this.parent.pool.expire(particle.clear());
         this.particles.splice(i, 1);
       }
     }

@@ -420,6 +420,11 @@ var Behaviour = function () {
      * if the behaviour should be set to dead or not.
      * Sets the behaviour energy as a factor of particle age and life.
      *
+     * TODO It's a little weird that sub class behaviours override this method and
+     * also call it from within their own applyBehaviour method. Since this method
+     * primarily sets energy, consider renaming it to setEnergy or energise. Then
+     * each sub class can simply call this.setEnergy instead of super.applyBehaviour.
+     *
      * @param {Particle} particle - The particle to apply the behaviour to
      * @param {Number} time - the proton integration time
      * @return void
@@ -49869,7 +49874,7 @@ var Emitter = function (_Particle) {
           this.parent && this.parent.eventDispatcher.dispatchEvent('PARTICLE_DEAD', particle);
           _constants.BIND_EMITTER_EVENT && this.dispatchEvent('PARTICLE_DEAD', particle);
 
-          this.parent.pool.expire(particle.reset());
+          this.parent.pool.expire(particle.clear());
           this.particles.splice(i, 1);
         }
       }

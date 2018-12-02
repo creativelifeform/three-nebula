@@ -195,3 +195,85 @@ describe('core -> Particle', () => {
     done();
   });
 });
+
+describe('particle update', () => {
+  it('should set the particle age, apply behaviours to the particle and set its energy if particle.sleep === false', done => {
+    const particle = new Particle(preset);
+    const attraction = new Proton.Attraction();
+    const time = 2;
+    const attractionSpy = spy(attraction, 'applyBehaviour');
+    const easingSpy = spy(particle, 'easing');
+    const spies = [attractionSpy, easingSpy];
+
+    particle.removeAllBehaviours();
+    particle.sleep = false;
+    particle.dead = false;
+    particle.age = 0;
+    particle.life = 4;
+    particle.addBehaviour(attraction);
+
+    particle.update(time, 0);
+
+    spies.forEach((spy, index) => {
+      assert(spy.calledOnce);
+
+      index === 0 && assert(spy.calledWith(particle, time, 0));
+
+      spy.restore();
+    });
+
+    assert.equal(particle.age, 2);
+    assert.equal(particle.energy, 0.75);
+    assert.isFalse(particle.dead);
+
+    done();
+  });
+
+  it('should not set age or apply behaviours if particle.sleep === true', done => {
+    const particle = new Particle(preset);
+    const attraction = new Proton.Attraction();
+    const time = 2;
+    const attractionSpy = spy(attraction, 'applyBehaviour');
+    const spies = [attractionSpy];
+
+    particle.removeAllBehaviours();
+    particle.sleep = true;
+    particle.dead = false;
+    particle.age = 0;
+    particle.life = 4;
+    particle.addBehaviour(attraction);
+
+    particle.update(time, 0);
+
+    spies.forEach(spy => {
+      assert(spy.notCalled);
+
+      spy.restore();
+    });
+
+    assert.equal(particle.age, 0);
+    assert.equal(particle.energy, 1);
+    assert.isFalse(particle.dead);
+
+    done();
+  });
+
+  it('should call particle.destroy the particle if age >= life', done => {
+    const particle = new Particle(preset);
+    const time = 2;
+    const destroySpy = spy(particle, 'destroy');
+
+    particle.sleep = false;
+    particle.dead = false;
+    particle.age = 6;
+    particle.life = 4;
+
+    particle.update(time, 0);
+
+    assert(destroySpy.calledOnce);
+
+    destroySpy.restore();
+
+    done();
+  });
+});
