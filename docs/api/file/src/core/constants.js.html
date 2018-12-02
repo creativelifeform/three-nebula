@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/behaviour/Spring.js | @rohandeshpande/three-proton</title>
+  <title data-ice="title">src/core/constants.js | @rohandeshpande/three-proton</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -146,39 +146,79 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/behaviour/Spring.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Behaviour from &apos;./Behaviour&apos;;
-import { Vector3D } from &apos;../math&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/core/constants.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { easeLinear } from &apos;../ease&apos;;
 
-export default class Spring extends Behaviour {
-  /**
-   * The Behaviour class is the base for the other Behaviour
-   *
-   * @class Behaviour
-   * @constructor
-   */
-  constructor(x, y, z, spring, friction, life, easing) {
-    super(life, easing);
-
-    this.reset(x, y, z, spring, friction);
-    this.name = &apos;Spring&apos;;
-  }
-
-  reset(x, y, z, spring, friction) {
-    if (!this.pos) this.pos = new Vector3D(x, y, z);
-    else this.pos.set(x, y, z);
-    this.spring = spring || 0.1;
-    this.friction = friction || 0.98;
-  }
-
-  applyBehaviour(particle, time, index) {
-    super.applyBehaviour(particle, time, index);
-
-    particle.v.x += (this.pos.x - particle.p.x) * this.spring;
-    particle.v.y += (this.pos.y - particle.p.y) * this.spring;
-    particle.v.z += (this.pos.z - particle.p.z) * this.spring;
-  }
-}
+/**
+ * @desc Default particle life
+ * @type {number}
+ */
+export const DEFAULT_LIFE = Infinity;
+/**
+ * @desc Default particle age
+ * @type {number}
+ */
+export const DEFAULT_AGE = 0;
+/**
+ * @desc Default particle energy
+ * @type {number}
+ */
+export const DEFAULT_ENERGY = 1;
+/**
+ * @desc Default particle dead
+ * @type {boolean}
+ */
+export const DEFAULT_DEAD = false;
+/**
+ * @desc Default particle sleep
+ * @type {boolean}
+ */
+export const DEFAULT_SLEEP = false;
+/**
+ * @desc Default particle body
+ * @type {?object}
+ */
+export const DEFAULT_BODY = null;
+/**
+ * @desc Default particle parent
+ * @type {?Emitter}
+ */
+export const DEFAULT_PARENT = null;
+/**
+ * @desc Default particle mass
+ * @type {number}
+ */
+export const DEFAULT_MASS = 1;
+/**
+ * @desc Default particle radius
+ * @type {number}
+ */
+export const DEFAULT_RADIUS = 10;
+/**
+ * @desc Default particle alpha
+ * @type {number}
+ */
+export const DEFAULT_ALPHA = 1;
+/**
+ * @desc Default particle scale
+ * @type {number}
+ */
+export const DEFAULT_SCALE = 1;
+/**
+ * @desc Default particle useColor
+ * @type {boolean}
+ */
+export const DEFAULT_USE_COLOR = false;
+/**
+ * @desc Default particle useAlpha
+ * @type {boolean}
+ */
+export const DEFAULT_USE_ALPHA = false;
+/**
+ * @desc Default particle easing
+ * @type {function}
+ */
+export const DEFAULT_EASING = easeLinear;
 </code></pre>
 
 </div>

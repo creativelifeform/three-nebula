@@ -69,10 +69,23 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TIME_STEP">TIME_STEP</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VERLET">VERLET</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle2.js~Particle.html">Particle</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_AGE">DEFAULT_AGE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ALPHA">DEFAULT_ALPHA</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BODY">DEFAULT_BODY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_DEAD">DEFAULT_DEAD</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_EASING">DEFAULT_EASING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ENERGY">DEFAULT_ENERGY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_LIFE">DEFAULT_LIFE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_MASS">DEFAULT_MASS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_PARENT">DEFAULT_PARENT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RADIUS">DEFAULT_RADIUS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_SCALE">DEFAULT_SCALE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_SLEEP">DEFAULT_SLEEP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_USE_ALPHA">DEFAULT_USE_ALPHA</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_USE_COLOR">DEFAULT_USE_COLOR</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#debug">debug</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-log">log</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_DEPTH">DEFAULT_DEPTH</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_HEIGHT">DEFAULT_HEIGHT</a></span></span></li>
@@ -133,7 +146,7 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">241/574</span></h1>
+<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">251/554</span></h1>
 
 <table class="files-summary" data-ice="files" data-use-coverage="true">
   <thead>
@@ -308,20 +321,12 @@
       <td style="display: none;" data-ice="updated">2018-11-07 07:02:22 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/core/Particle.js.html#errorLines=100,123,128,136,144,22,27,53,54,56,57,58,59,60,61,62,63,64,65,66,67,7,70,71,72,73,77,78,79,80">src/core/Particle.js</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/core/Particle.js.html#errorLines=58">src/core/Particle.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></td>
-      <td class="coverage"><span data-ice="coverage">11 %</span><span data-ice="coverageCount" class="coverage-count">4/34</span></td>
-      <td style="display: none;" data-ice="size">4051 byte</td>
-      <td style="display: none;" data-ice="lines">158</td>
-      <td style="display: none;" data-ice="updated">2018-12-01 08:56:53 (UTC)</td>
-    </tr>
-<tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/core/Particle2.js.html#errorLines=43">src/core/Particle2.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/Particle2.js~Particle.html">Particle</a></span></td>
       <td class="coverage"><span data-ice="coverage">97 %</span><span data-ice="coverageCount" class="coverage-count">33/34</span></td>
-      <td style="display: none;" data-ice="size">7374 byte</td>
-      <td style="display: none;" data-ice="lines">295</td>
-      <td style="display: none;" data-ice="updated">2018-12-01 08:56:30 (UTC)</td>
+      <td style="display: none;" data-ice="size">8249 byte</td>
+      <td style="display: none;" data-ice="lines">327</td>
+      <td style="display: none;" data-ice="updated">2018-12-01 10:17:32 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/core/Pool.js.html#errorLines=16,24,3,37,4,41,48,5,6,9">src/core/Pool.js</a></span></td>
@@ -339,6 +344,27 @@
       <td style="display: none;" data-ice="size">3259 byte</td>
       <td style="display: none;" data-ice="lines">151</td>
       <td style="display: none;" data-ice="updated">2018-11-04 09:54:41 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/constants.js.html">src/core/constants.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="variable/index.html#static-variable-DEFAULT_AGE">DEFAULT_AGE</a></span>
+<span><a href="variable/index.html#static-variable-DEFAULT_ALPHA">DEFAULT_ALPHA</a></span>
+<span><a href="variable/index.html#static-variable-DEFAULT_BODY">DEFAULT_BODY</a></span>
+<span><a href="variable/index.html#static-variable-DEFAULT_DEAD">DEFAULT_DEAD</a></span>
+<span><a href="variable/index.html#static-variable-DEFAULT_EASING">DEFAULT_EASING</a></span>
+<span><a href="variable/index.html#static-variable-DEFAULT_ENERGY">DEFAULT_ENERGY</a></span>
+<span><a href="variable/index.html#static-variable-DEFAULT_LIFE">DEFAULT_LIFE</a></span>
+<span><a href="variable/index.html#static-variable-DEFAULT_MASS">DEFAULT_MASS</a></span>
+<span><a href="variable/index.html#static-variable-DEFAULT_PARENT">DEFAULT_PARENT</a></span>
+<span><a href="variable/index.html#static-variable-DEFAULT_RADIUS">DEFAULT_RADIUS</a></span>
+<span><a href="variable/index.html#static-variable-DEFAULT_SCALE">DEFAULT_SCALE</a></span>
+<span><a href="variable/index.html#static-variable-DEFAULT_SLEEP">DEFAULT_SLEEP</a></span>
+<span><a href="variable/index.html#static-variable-DEFAULT_USE_ALPHA">DEFAULT_USE_ALPHA</a></span>
+<span><a href="variable/index.html#static-variable-DEFAULT_USE_COLOR">DEFAULT_USE_COLOR</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">14/14</span></td>
+      <td style="display: none;" data-ice="size">1357 byte</td>
+      <td style="display: none;" data-ice="lines">72</td>
+      <td style="display: none;" data-ice="updated">2018-12-01 10:26:31 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/core/index.js.html">src/core/index.js</a></span></td>
@@ -409,7 +435,7 @@
       <td class="coverage"><span data-ice="coverage">51 %</span><span data-ice="coverageCount" class="coverage-count">20/39</span></td>
       <td style="display: none;" data-ice="size">8061 byte</td>
       <td style="display: none;" data-ice="lines">343</td>
-      <td style="display: none;" data-ice="updated">2018-12-01 04:13:31 (UTC)</td>
+      <td style="display: none;" data-ice="updated">2018-12-01 10:11:19 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/emitter/FollowEmitter.js.html#errorLines=21,22,23,27,5,65,66,67,70">src/emitter/FollowEmitter.js</a></span></td>

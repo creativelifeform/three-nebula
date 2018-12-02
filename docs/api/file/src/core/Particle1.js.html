@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/behaviour/Spring.js | @rohandeshpande/three-proton</title>
+  <title data-ice="title">src/core/Particle1.js | @rohandeshpande/three-proton</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -69,6 +69,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TIME_STEP">TIME_STEP</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VERLET">VERLET</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle1.js~Particle.html">Particle</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
@@ -146,37 +147,201 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/behaviour/Spring.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Behaviour from &apos;./Behaviour&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/core/Particle1.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Util, uid } from &apos;../utils&apos;;
+import { ease, setEasingByName } from &apos;../ease&apos;;
+
+import { PI } from &apos;../constants&apos;;
 import { Vector3D } from &apos;../math&apos;;
 
-export default class Spring extends Behaviour {
+export default class Particle {
   /**
-   * The Behaviour class is the base for the other Behaviour
-   *
-   * @class Behaviour
+   * the Particle class
+   * @param {Number} pObj - the parameters of particle config.
+   * @example
+   * var p = new Proton.Particle({life:3,dead:false});
+   * or
+   * var p = new Proton.Particle({mass:1,radius:100});
    * @constructor
    */
-  constructor(x, y, z, spring, friction, life, easing) {
-    super(life, easing);
-
-    this.reset(x, y, z, spring, friction);
-    this.name = &apos;Spring&apos;;
+  constructor(pOBJ) {
+    /**
+     * @property {Number}  id - The particle&apos;s id
+     */
+    this.id = `particle_${uid()}`;
+    this.name = &apos;Particle&apos;;
+    this.reset(&apos;init&apos;);
+    Util.setPrototypeByObj(this, pOBJ);
   }
 
-  reset(x, y, z, spring, friction) {
-    if (!this.pos) this.pos = new Vector3D(x, y, z);
-    else this.pos.set(x, y, z);
-    this.spring = spring || 0.1;
-    this.friction = friction || 0.98;
+  getDirection() {
+    return Math.atan2(this.v.x, -this.v.y) * (180 / PI);
   }
 
-  applyBehaviour(particle, time, index) {
-    super.applyBehaviour(particle, time, index);
+  /**
+   * @property {Number} life - The particle&apos;s life
+   * @property {Number} age - The particle&apos;s age
+   * @property {Number} energy - The particle&apos;s energy loss
+   * @property {Boolean} dead - The particle is dead?
+   * @property {Boolean} sleep - The particle is sleep?
+   * @property {Object} target - The particle&apos;s target
+   * @property {Object} body - The particle&apos;s body
+   * @property {Number} mass - The particle&apos;s mass
+   * @property {Number} radius - The particle&apos;s radius
+   * @property {Number} alpha - The particle&apos;s alpha
+   * @property {Number} scale - The particle&apos;s scale
+   * @property {Number} rotation - The particle&apos;s rotation
+   * @property {String|Number} color - The particle&apos;s color
+   * @property {Function} easing - The particle&apos;s easing
+   * @property {Vector3D} p - The particle&apos;s position
+   * @property {Vector3D} v - The particle&apos;s velocity
+   * @property {Vector3D} a - The particle&apos;s acceleration
+   * @property {Array} behaviours - The particle&apos;s behaviours array
+   * @property {Object} transform - The particle&apos;s transform collection
+   */
+  reset(init) {
+    this.life = Infinity;
+    this.age = 0;
+    //energy loss
+    this.energy = 1;
+    this.dead = false;
+    this.sleep = false;
+    this.body = null;
+    this.parent = null;
+    this.mass = 1;
+    this.radius = 10;
+    this.alpha = 1;
+    this.scale = 1;
+    this.useColor = false;
+    this.useAlpha = false;
+    this.easing = setEasingByName(ease.easeLinear);
 
-    particle.v.x += (this.pos.x - particle.p.x) * this.spring;
-    particle.v.y += (this.pos.y - particle.p.y) * this.spring;
-    particle.v.z += (this.pos.z - particle.p.z) * this.spring;
+    if (init) {
+      this.p = new Vector3D();
+      this.v = new Vector3D();
+      this.a = new Vector3D();
+      this.old = {};
+      this.old.p = this.p.clone();
+      this.old.v = this.v.clone();
+      this.old.a = this.a.clone();
+      this.behaviours = [];
+      this.transform = {};
+      this.color = { r: 0, g: 0, b: 0 };
+      this.rotation = new Vector3D();
+    } else {
+      this.p.set(0, 0, 0);
+      this.v.set(0, 0, 0);
+      this.a.set(0, 0, 0);
+      this.old.p.set(0, 0, 0);
+      this.old.v.set(0, 0, 0);
+      this.old.a.set(0, 0, 0);
+      this.color.r = 0;
+      this.color.g = 0;
+      this.color.b = 0;
+
+      this.rotation.clear();
+      Util.destroyObject(this.transform);
+      this.removeAllBehaviours();
+    }
+
+    return this;
+  }
+
+  /**
+   * Clear&apos;s the particle&apos;s position, velocity, acceleration, color and rotation.
+   * Destroy&apos;s the particle&apos;s transform collection &amp; removes all behaviours.
+   *
+   * @return void
+   */
+  clear() {
+    this.life = Infinity;
+    this.age = 0;
+    this.energy = 1;
+    this.dead = false;
+    this.sleep = false;
+    this.body = null;
+    this.parent = null;
+    this.mass = 1;
+    this.radius = 10;
+    this.alpha = 1;
+    this.scale = 1;
+    this.useColor = false;
+    this.useAlpha = false;
+    this.easing = setEasingByName(ease.easeLinear);
+    this.p.set(0, 0, 0);
+    this.v.set(0, 0, 0);
+    this.a.set(0, 0, 0);
+    this.old.p.set(0, 0, 0);
+    this.old.v.set(0, 0, 0);
+    this.old.a.set(0, 0, 0);
+    this.color.r = 0;
+    this.color.g = 0;
+    this.color.b = 0;
+
+    this.rotation.clear();
+    Util.destroyObject(this.transform);
+    this.removeAllBehaviours();
+
+    return this;
+  }
+
+  update(time, index) {
+    if (!this.sleep) {
+      this.age += time;
+
+      var i = this.behaviours.length;
+
+      while (i--) {
+        this.behaviours[i] &amp;&amp;
+          this.behaviours[i].applyBehaviour(this, time, index);
+      }
+    } else {
+      //sleep
+    }
+
+    if (this.age &gt;= this.life) {
+      this.destroy();
+    } else {
+      var scale = this.easing(this.age / this.life);
+
+      this.energy = Math.max(1 - scale, 0);
+    }
+  }
+
+  addBehaviour(behaviour) {
+    this.behaviours.push(behaviour);
+    behaviour.initialize(this);
+  }
+
+  addBehaviours(behaviours) {
+    var i = behaviours.length;
+
+    while (i--) {
+      this.addBehaviour(behaviours[i]);
+    }
+  }
+
+  removeBehaviour(behaviour) {
+    var index = this.behaviours.indexOf(behaviour);
+
+    if (index &gt; -1) {
+      this.behaviours.splice(index, 1);
+    }
+  }
+
+  removeAllBehaviours() {
+    Util.destroyArray(this.behaviours);
+  }
+
+  /**
+   * Destory this particle
+   * @method destroy
+   */
+  destroy() {
+    this.removeAllBehaviours();
+    this.energy = 0;
+    this.dead = true;
+    this.parent = null;
   }
 }
 </code></pre>

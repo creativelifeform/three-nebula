@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 51);
+/******/ 	return __webpack_require__(__webpack_require__.s = 52);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -87,7 +87,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ArraySpan = __webpack_require__(60);
+var _ArraySpan = __webpack_require__(61);
 
 Object.defineProperty(exports, 'ArraySpan', {
   enumerable: true,
@@ -102,7 +102,7 @@ Object.defineProperty(exports, 'createArraySpan', {
   }
 });
 
-var _Box = __webpack_require__(61);
+var _Box = __webpack_require__(62);
 
 Object.defineProperty(exports, 'Box', {
   enumerable: true,
@@ -129,7 +129,7 @@ Object.defineProperty(exports, 'MathUtils', {
   }
 });
 
-var _Polar3D = __webpack_require__(62);
+var _Polar3D = __webpack_require__(63);
 
 Object.defineProperty(exports, 'Polar3D', {
   enumerable: true,
@@ -138,7 +138,7 @@ Object.defineProperty(exports, 'Polar3D', {
   }
 });
 
-var _Quaternion = __webpack_require__(63);
+var _Quaternion = __webpack_require__(64);
 
 Object.defineProperty(exports, 'Quaternion', {
   enumerable: true,
@@ -520,7 +520,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ColorUtil = __webpack_require__(67);
+var _ColorUtil = __webpack_require__(68);
 
 Object.defineProperty(exports, 'ColorUtil', {
   enumerable: true,
@@ -49874,7 +49874,7 @@ var Emitter = function (_Particle) {
           this.parent && this.parent.eventDispatcher.dispatchEvent('PARTICLE_DEAD', particle);
           _constants.BIND_EMITTER_EVENT && this.dispatchEvent('PARTICLE_DEAD', particle);
 
-          this.parent.pool.expire(particle.clear());
+          this.parent.pool.expire(particle.reset());
           this.particles.splice(i, 1);
         }
       }
@@ -50181,7 +50181,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Body = __webpack_require__(52);
+var _Body = __webpack_require__(53);
 
 Object.defineProperty(exports, 'Body', {
   enumerable: true,
@@ -50190,7 +50190,7 @@ Object.defineProperty(exports, 'Body', {
   }
 });
 
-var _InitializerUtil = __webpack_require__(53);
+var _InitializerUtil = __webpack_require__(54);
 
 Object.defineProperty(exports, 'InitializerUtil', {
   enumerable: true,
@@ -50199,7 +50199,7 @@ Object.defineProperty(exports, 'InitializerUtil', {
   }
 });
 
-var _Life = __webpack_require__(54);
+var _Life = __webpack_require__(55);
 
 Object.defineProperty(exports, 'Life', {
   enumerable: true,
@@ -50208,7 +50208,7 @@ Object.defineProperty(exports, 'Life', {
   }
 });
 
-var _Mass = __webpack_require__(55);
+var _Mass = __webpack_require__(56);
 
 Object.defineProperty(exports, 'Mass', {
   enumerable: true,
@@ -50217,7 +50217,7 @@ Object.defineProperty(exports, 'Mass', {
   }
 });
 
-var _Position = __webpack_require__(56);
+var _Position = __webpack_require__(57);
 
 Object.defineProperty(exports, 'Position', {
   enumerable: true,
@@ -50226,7 +50226,7 @@ Object.defineProperty(exports, 'Position', {
   }
 });
 
-var _Radius = __webpack_require__(57);
+var _Radius = __webpack_require__(58);
 
 Object.defineProperty(exports, 'Radius', {
   enumerable: true,
@@ -50235,7 +50235,7 @@ Object.defineProperty(exports, 'Radius', {
   }
 });
 
-var _Rate = __webpack_require__(58);
+var _Rate = __webpack_require__(59);
 
 Object.defineProperty(exports, 'Rate', {
   enumerable: true,
@@ -50244,7 +50244,7 @@ Object.defineProperty(exports, 'Rate', {
   }
 });
 
-var _Velocity = __webpack_require__(59);
+var _Velocity = __webpack_require__(60);
 
 Object.defineProperty(exports, 'Velocity', {
   enumerable: true,
@@ -50540,115 +50540,250 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _constants = __webpack_require__(45);
+
 var _utils = __webpack_require__(4);
 
-var _ease = __webpack_require__(13);
-
-var _constants = __webpack_require__(3);
+var _constants2 = __webpack_require__(3);
 
 var _math = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**
+ * A Particle is an object that is emitted by an emitter.
+ *
+ */
 var Particle = function () {
   /**
-   * the Particle class
-   * @param {Number} pObj - the parameters of particle config.
-   * @example
-   * var p = new Proton.Particle({life:3,dead:false});
-   * or
-   * var p = new Proton.Particle({mass:1,radius:100});
-   * @constructor
+   * Constructs a Particle instance.
+   *
+   * @param {object} properties - The properties to instantiate the particle with
+   * @property {number} properties.life - The particle's life
+   * @property {number} properties.age - The particle's age
+   * @property {number} properties.energy - The particle's energy loss
+   * @property {boolean} properties.dead - Determines if the particle is dead or not
+   * @property {boolean} properties.sleep - Determines if the particle is sleeping or not
+   * @property {object} properties.target - The particle's target
+   * @property {object} properties.body - The particle's body
+   * @property {number} properties.mass - The particle's mass
+   * @property {number} properties.radius - The particle's radius
+   * @property {number} properties.alpha - The particle's alpha
+   * @property {number} properties.scale - The particle's scale
+   * @property {number} properties.rotation - The particle's rotation
+   * @property {string|number} properties.color - The particle's color
+   * @property {function} properties.easing - The particle's easing
+   * @property {Vector3D} properties.p - The particle's position
+   * @property {Vector3D} properties.v - The particle's velocity
+   * @property {Vector3D} properties.a - The particle's acceleration
+   * @property {array} properties.behaviours - The particle's behaviours array
+   * @property {object} properties.transform - The particle's transform collection
+   * @return void
    */
-  function Particle(pOBJ) {
+  function Particle(properties) {
     _classCallCheck(this, Particle);
 
     /**
-     * @property {Number}  id - The particle's id
+     * @desc The particle's unique id
+     * @type {number}
      */
-    this.id = 'particle_' + (0, _utils.uid)();
+    this.id = 'particle-' + (0, _utils.uid)();
     this.name = 'Particle';
-    this.reset('init');
-    _utils.Util.setPrototypeByObj(this, pOBJ);
+    /**
+     * @desc The particle's life
+     * @type {number}
+     */
+    this.life = _constants.DEFAULT_LIFE;
+    /**
+     * @desc The particle's age
+     * @type {number}
+     */
+    this.age = _constants.DEFAULT_AGE;
+    /**
+     * @desc The particle's energy loss
+     * @type {number}
+     */
+    this.energy = _constants.DEFAULT_ENERGY;
+    /**
+     * @desc Determines if the particle is dead or not
+     * @type {number}
+     */
+    this.dead = _constants.DEFAULT_DEAD;
+    /**
+     * @desc Determines if the particle is sleeping or not
+     * @type {number}
+     */
+    this.sleep = _constants.DEFAULT_SLEEP;
+    /**
+     * @desc The particle's body
+     * @type {object}
+     */
+    this.body = _constants.DEFAULT_BODY;
+    /**
+     * @desc The particle's parent
+     * @type {?Emitter}
+     */
+    this.parent = _constants.DEFAULT_PARENT;
+    /**
+     * @desc The particle's mass
+     * @type {number}
+     */
+    this.mass = _constants.DEFAULT_MASS;
+    /**
+     * @desc The particle's radius
+     * @type {number}
+     */
+    this.radius = _constants.DEFAULT_RADIUS;
+    /**
+     * @desc The particle's alpha
+     * @type {number}
+     */
+    this.alpha = _constants.DEFAULT_ALPHA;
+    /**
+     * @desc The particle's scale
+     * @type {number}
+     */
+    this.scale = _constants.DEFAULT_SCALE;
+    /**
+     * @desc Determines whether to use color or not
+     * @type {boolean}
+     */
+    this.useColor = _constants.DEFAULT_USE_COLOR;
+    /**
+     * @desc Determines whether to use alpha or not
+     * @type {boolean}
+     */
+    this.useAlpha = _constants.DEFAULT_USE_ALPHA;
+    /**
+     * @desc The particle's easing
+     * @type {number}
+     */
+    this.easing = _constants.DEFAULT_EASING;
+    /**
+     * @desc The particle's position
+     * @type {Vector3D}
+     */
+    this.p = new _math.Vector3D();
+    /**
+     * @desc The particle's velocity
+     * @type {Vector3D}
+     */
+    this.v = new _math.Vector3D();
+    /**
+     * @desc The particle's acceleration
+     * @type {Vector3D}
+     */
+    this.a = new _math.Vector3D();
+    /**
+     * @desc The particle's last position, velocity and acceleration
+     * @type {object}
+     */
+    this.old = {};
+    /**
+     * @desc The particle's old position
+     * @type {number}
+     */
+    this.old.p = this.p.clone();
+    /**
+     * @desc The particle's old velocity
+     * @type {number}
+     */
+    this.old.v = this.v.clone();
+    /**
+     * @desc The particle's old acceleration
+     * @type {number}
+     */
+    this.old.a = this.a.clone();
+    /**
+     * @desc The particle's behaviours array
+     * @type {number}
+     */
+    this.behaviours = [];
+    /**
+     * @desc The particle's transform collection
+     * @type {number}
+     */
+    this.transform = {};
+    /**
+     * @desc The particle's color store
+     * @type {number}
+     */
+    this.color = { r: 0, g: 0, b: 0 };
+    /**
+     * @desc The particle's rotation
+     * @type {number}
+     */
+    this.rotation = new _math.Vector3D();
+
+    // override constructor props with passed properties.
+    _utils.Util.setPrototypeByObj(this, properties);
   }
+
+  /**
+   * Gets the particle's current direction.
+   *
+   * @return {number}
+   */
+
 
   _createClass(Particle, [{
     key: 'getDirection',
     value: function getDirection() {
-      return Math.atan2(this.v.x, -this.v.y) * (180 / _constants.PI);
+      return Math.atan2(this.v.x, -this.v.y) * (180 / _constants2.PI);
     }
 
     /**
-     * @property {Number} life - The particle's life
-     * @property {Number} age - The particle's age
-     * @property {Number} energy - The particle's energy loss
-     * @property {Boolean} dead - The particle is dead?
-     * @property {Boolean} sleep - The particle is sleep?
-     * @property {Object} target - The particle's target
-     * @property {Object} body - The particle's body
-     * @property {Number} mass - The particle's mass
-     * @property {Number} radius - The particle's radius
-     * @property {Number} alpha - The particle's alpha
-     * @property {Number} scale - The particle's scale
-     * @property {Number} rotation - The particle's rotation
-     * @property {String|Number} color - The particle's color
-     * @property {Function} easing - The particle's easing
-     * @property {Vector3D} p - The particle's position
-     * @property {Vector3D} v - The particle's velocity
-     * @property {Vector3D} a - The particle's acceleration
-     * @property {Array} behaviours - The particle's behaviours array
-     * @property {Object} transform - The particle's transform collection
+     * Resets the particle's default properties and clear's its particle's position,
+     * velocity, acceleration, color and rotation. Also destroy's the particle's
+     * transform collection & removes all behaviours.
+     *
+     * @return {Particle}
      */
 
   }, {
     key: 'reset',
-    value: function reset(init) {
-      this.life = Infinity;
-      this.age = 0;
-      //energy loss
-      this.energy = 1;
-      this.dead = false;
-      this.sleep = false;
-      this.body = null;
-      this.parent = null;
-      this.mass = 1;
-      this.radius = 10;
-      this.alpha = 1;
-      this.scale = 1;
-      this.useColor = false;
-      this.useAlpha = false;
-      this.easing = (0, _ease.setEasingByName)(_ease.ease.easeLinear);
+    value: function reset() {
+      this.life = _constants.DEFAULT_LIFE;
+      this.age = _constants.DEFAULT_AGE;
+      this.energy = _constants.DEFAULT_ENERGY;
+      this.dead = _constants.DEFAULT_DEAD;
+      this.sleep = _constants.DEFAULT_SLEEP;
+      this.body = _constants.DEFAULT_BODY;
+      this.parent = _constants.DEFAULT_PARENT;
+      this.mass = _constants.DEFAULT_MASS;
+      this.radius = _constants.DEFAULT_RADIUS;
+      this.alpha = _constants.DEFAULT_ALPHA;
+      this.scale = _constants.DEFAULT_SCALE;
+      this.useColor = _constants.DEFAULT_USE_COLOR;
+      this.useAlpha = _constants.DEFAULT_USE_ALPHA;
+      this.easing = _constants.DEFAULT_EASING;
+      this.p.set(0, 0, 0);
+      this.v.set(0, 0, 0);
+      this.a.set(0, 0, 0);
+      this.old.p.set(0, 0, 0);
+      this.old.v.set(0, 0, 0);
+      this.old.a.set(0, 0, 0);
+      this.color.r = 0;
+      this.color.g = 0;
+      this.color.b = 0;
 
-      if (init) {
-        this.p = new _math.Vector3D();
-        this.v = new _math.Vector3D();
-        this.a = new _math.Vector3D();
-        this.old = {};
-        this.old.p = this.p.clone();
-        this.old.v = this.v.clone();
-        this.old.a = this.a.clone();
-        this.behaviours = [];
-        this.transform = {};
-        this.color = { r: 0, g: 0, b: 0 };
-        this.rotation = new _math.Vector3D();
-      } else {
-        this.p.set(0, 0, 0);
-        this.v.set(0, 0, 0);
-        this.a.set(0, 0, 0);
-        this.old.p.set(0, 0, 0);
-        this.old.v.set(0, 0, 0);
-        this.old.a.set(0, 0, 0);
-        this.color.r = 0;
-        this.color.g = 0;
-        this.color.b = 0;
-
-        this.rotation.clear();
-        _utils.Util.destroyObject(this.transform);
-        this.removeAllBehaviours();
-      }
+      this.rotation.clear();
+      _utils.Util.destroyObject(this.transform);
+      this.removeAllBehaviours();
 
       return this;
     }
+
+    /**
+     * Updates the particle's properties by applying each behaviour to the particle.
+     * Will also update the particle's energy, unless it's age is greater than it's life
+     * in which case it will be destroyed.
+     *
+     * @param {number} time - Integration time
+     * @param {integer} index - Particle index
+     * @return void
+     */
+
   }, {
     key: 'update',
     value: function update(time, index) {
@@ -50658,10 +50793,10 @@ var Particle = function () {
         var i = this.behaviours.length;
 
         while (i--) {
-          this.behaviours[i] && this.behaviours[i].applyBehaviour(this, time, index);
+          var behaviour = this.behaviours[i];
+
+          behaviour && behaviour.applyBehaviour(this, time, index);
         }
-      } else {
-        //sleep
       }
 
       if (this.age >= this.life) {
@@ -50672,12 +50807,28 @@ var Particle = function () {
         this.energy = Math.max(1 - scale, 0);
       }
     }
+
+    /**
+     * Adds a behaviour to the particle.
+     *
+     * @param {Behaviour} behaviour - The behaviour to add to the particle
+     * @return void
+     */
+
   }, {
     key: 'addBehaviour',
     value: function addBehaviour(behaviour) {
       this.behaviours.push(behaviour);
       behaviour.initialize(this);
     }
+
+    /**
+     * Adds multiple behaviours to the particle.
+     *
+     * @param {array<Behaviour>} behaviours - An array of behaviours to add to the particle
+     * @return void
+     */
+
   }, {
     key: 'addBehaviours',
     value: function addBehaviours(behaviours) {
@@ -50687,6 +50838,14 @@ var Particle = function () {
         this.addBehaviour(behaviours[i]);
       }
     }
+
+    /**
+     * Removes the behaviour from the particle.
+     *
+     * @param {Behaviour} behaviour - The behaviour to remove from the particle
+     * @return void
+     */
+
   }, {
     key: 'removeBehaviour',
     value: function removeBehaviour(behaviour) {
@@ -50696,6 +50855,13 @@ var Particle = function () {
         this.behaviours.splice(index, 1);
       }
     }
+
+    /**
+     * Removes all behaviours from the particle.
+     *
+     * @return void
+     */
+
   }, {
     key: 'removeAllBehaviours',
     value: function removeAllBehaviours() {
@@ -50703,8 +50869,9 @@ var Particle = function () {
     }
 
     /**
-     * Destory this particle
-     * @method destroy
+     * Destroys the particle.
+     *
+     * @return void
      */
 
   }, {
@@ -50825,7 +50992,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _constants = __webpack_require__(3);
 
-var _events = __webpack_require__(50);
+var _events = __webpack_require__(51);
 
 var _events2 = _interopRequireDefault(_events);
 
@@ -51445,7 +51612,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _v = __webpack_require__(77);
+var _v = __webpack_require__(78);
 
 var _v2 = _interopRequireDefault(_v);
 
@@ -51592,7 +51759,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Debug = __webpack_require__(45);
+var _Debug = __webpack_require__(46);
 
 Object.defineProperty(exports, 'Debug', {
   enumerable: true,
@@ -51601,7 +51768,7 @@ Object.defineProperty(exports, 'Debug', {
   }
 });
 
-var _log = __webpack_require__(47);
+var _log = __webpack_require__(48);
 
 Object.defineProperty(exports, 'log', {
   enumerable: true,
@@ -51623,7 +51790,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _BehaviourEmitter = __webpack_require__(48);
+var _BehaviourEmitter = __webpack_require__(49);
 
 Object.defineProperty(exports, 'BehaviourEmitter', {
   enumerable: true,
@@ -51632,7 +51799,7 @@ Object.defineProperty(exports, 'BehaviourEmitter', {
   }
 });
 
-var _FollowEmitter = __webpack_require__(49);
+var _FollowEmitter = __webpack_require__(50);
 
 Object.defineProperty(exports, 'FollowEmitter', {
   enumerable: true,
@@ -51663,7 +51830,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _CustomRenderer = __webpack_require__(64);
+var _CustomRenderer = __webpack_require__(65);
 
 Object.defineProperty(exports, 'CustomRenderer', {
   enumerable: true,
@@ -51693,7 +51860,7 @@ Object.defineProperty(exports, 'MeshRender', {
   }
 });
 
-var _PointsRenderer = __webpack_require__(65);
+var _PointsRenderer = __webpack_require__(66);
 
 Object.defineProperty(exports, 'PointsRenderer', {
   enumerable: true,
@@ -51708,7 +51875,7 @@ Object.defineProperty(exports, 'PointsRender', {
   }
 });
 
-var _SpriteRenderer = __webpack_require__(66);
+var _SpriteRenderer = __webpack_require__(67);
 
 Object.defineProperty(exports, 'SpriteRenderer', {
   enumerable: true,
@@ -51736,7 +51903,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _BoxZone = __webpack_require__(68);
+var _BoxZone = __webpack_require__(69);
 
 Object.defineProperty(exports, 'BoxZone', {
   enumerable: true,
@@ -51745,7 +51912,7 @@ Object.defineProperty(exports, 'BoxZone', {
   }
 });
 
-var _LineZone = __webpack_require__(69);
+var _LineZone = __webpack_require__(70);
 
 Object.defineProperty(exports, 'LineZone', {
   enumerable: true,
@@ -51754,7 +51921,7 @@ Object.defineProperty(exports, 'LineZone', {
   }
 });
 
-var _MeshZone = __webpack_require__(70);
+var _MeshZone = __webpack_require__(71);
 
 Object.defineProperty(exports, 'MeshZone', {
   enumerable: true,
@@ -51763,7 +51930,7 @@ Object.defineProperty(exports, 'MeshZone', {
   }
 });
 
-var _PointZone = __webpack_require__(71);
+var _PointZone = __webpack_require__(72);
 
 Object.defineProperty(exports, 'PointZone', {
   enumerable: true,
@@ -51772,7 +51939,7 @@ Object.defineProperty(exports, 'PointZone', {
   }
 });
 
-var _ScreenZone = __webpack_require__(72);
+var _ScreenZone = __webpack_require__(73);
 
 Object.defineProperty(exports, 'ScreenZone', {
   enumerable: true,
@@ -51781,7 +51948,7 @@ Object.defineProperty(exports, 'ScreenZone', {
   }
 });
 
-var _SphereZone = __webpack_require__(73);
+var _SphereZone = __webpack_require__(74);
 
 Object.defineProperty(exports, 'SphereZone', {
   enumerable: true,
@@ -53040,12 +53207,97 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.DEFAULT_EASING = exports.DEFAULT_USE_ALPHA = exports.DEFAULT_USE_COLOR = exports.DEFAULT_SCALE = exports.DEFAULT_ALPHA = exports.DEFAULT_RADIUS = exports.DEFAULT_MASS = exports.DEFAULT_PARENT = exports.DEFAULT_BODY = exports.DEFAULT_SLEEP = exports.DEFAULT_DEAD = exports.DEFAULT_ENERGY = exports.DEFAULT_AGE = exports.DEFAULT_LIFE = undefined;
+
+var _ease = __webpack_require__(13);
+
+/**
+ * @desc Default particle life
+ * @type {number}
+ */
+var DEFAULT_LIFE = exports.DEFAULT_LIFE = Infinity;
+/**
+ * @desc Default particle age
+ * @type {number}
+ */
+var DEFAULT_AGE = exports.DEFAULT_AGE = 0;
+/**
+ * @desc Default particle energy
+ * @type {number}
+ */
+var DEFAULT_ENERGY = exports.DEFAULT_ENERGY = 1;
+/**
+ * @desc Default particle dead
+ * @type {boolean}
+ */
+var DEFAULT_DEAD = exports.DEFAULT_DEAD = false;
+/**
+ * @desc Default particle sleep
+ * @type {boolean}
+ */
+var DEFAULT_SLEEP = exports.DEFAULT_SLEEP = false;
+/**
+ * @desc Default particle body
+ * @type {?object}
+ */
+var DEFAULT_BODY = exports.DEFAULT_BODY = null;
+/**
+ * @desc Default particle parent
+ * @type {?Emitter}
+ */
+var DEFAULT_PARENT = exports.DEFAULT_PARENT = null;
+/**
+ * @desc Default particle mass
+ * @type {number}
+ */
+var DEFAULT_MASS = exports.DEFAULT_MASS = 1;
+/**
+ * @desc Default particle radius
+ * @type {number}
+ */
+var DEFAULT_RADIUS = exports.DEFAULT_RADIUS = 10;
+/**
+ * @desc Default particle alpha
+ * @type {number}
+ */
+var DEFAULT_ALPHA = exports.DEFAULT_ALPHA = 1;
+/**
+ * @desc Default particle scale
+ * @type {number}
+ */
+var DEFAULT_SCALE = exports.DEFAULT_SCALE = 1;
+/**
+ * @desc Default particle useColor
+ * @type {boolean}
+ */
+var DEFAULT_USE_COLOR = exports.DEFAULT_USE_COLOR = false;
+/**
+ * @desc Default particle useAlpha
+ * @type {boolean}
+ */
+var DEFAULT_USE_ALPHA = exports.DEFAULT_USE_ALPHA = false;
+/**
+ * @desc Default particle easing
+ * @type {function}
+ */
+var DEFAULT_EASING = exports.DEFAULT_EASING = _ease.easeLinear;
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _three = __webpack_require__(6);
 
 var THREE = _interopRequireWildcard(_three);
 
-var _constants = __webpack_require__(46);
+var _constants = __webpack_require__(47);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -53255,7 +53507,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53272,7 +53524,7 @@ var DEFAULT_SIZE = exports.DEFAULT_SIZE = 15;
 var DEFAULT_POSITION = exports.DEFAULT_POSITION = 0;
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53317,7 +53569,7 @@ module.exports = exports['default']; /**
                                       */
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53419,7 +53671,7 @@ exports.default = BehaviourEmitter;
 module.exports = exports['default'];
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53563,7 +53815,7 @@ exports.default = FollowEmitter;
 module.exports = exports['default'];
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53595,7 +53847,7 @@ exports.default = _EventDispatcher2.default;
 module.exports = exports['default'];
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53737,7 +53989,7 @@ Object.defineProperty(exports, 'Pool', {
 exports.default = _core.Proton;
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53839,7 +54091,7 @@ exports.default = Body;
 module.exports = exports['default'];
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53922,7 +54174,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53998,7 +54250,7 @@ exports.default = Life;
 module.exports = exports['default'];
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54076,7 +54328,7 @@ exports.default = Mass;
 module.exports = exports['default'];
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54190,7 +54442,7 @@ Position.prototype.initialize = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54287,7 +54539,7 @@ exports.default = Radius;
 module.exports = exports['default'];
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54415,7 +54667,7 @@ exports.default = Rate;
 module.exports = exports['default'];
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54592,7 +54844,7 @@ var V = exports.V = function (_Velocity) {
 }(Velocity);
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54613,7 +54865,7 @@ var _Span2 = __webpack_require__(27);
 
 var _Span3 = _interopRequireDefault(_Span2);
 
-var _lodash = __webpack_require__(74);
+var _lodash = __webpack_require__(75);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -54709,7 +54961,7 @@ var createArraySpan = exports.createArraySpan = function createArraySpan(colors)
 };
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54752,7 +55004,7 @@ exports.default = Box;
 module.exports = exports["default"];
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54875,7 +55127,7 @@ exports.default = Polar3D;
 module.exports = exports['default'];
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55002,7 +55254,7 @@ exports.default = Quaternion;
 module.exports = exports["default"];
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55088,7 +55340,7 @@ var CustomRender = exports.CustomRender = function (_CustomRenderer) {
 }(CustomRenderer);
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55189,7 +55441,7 @@ var PointsRender = exports.PointsRender = function (_PointsRenderer) {
 }(PointsRenderer);
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55264,7 +55516,7 @@ var SpriteRender = exports.SpriteRender = function (_SpriteRenderer) {
 }(SpriteRenderer);
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55308,7 +55560,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55485,7 +55737,7 @@ exports.default = BoxZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55589,7 +55841,7 @@ exports.default = LineZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55683,7 +55935,7 @@ exports.default = MeshZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55784,7 +56036,7 @@ exports.default = PointZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55951,7 +56203,7 @@ ScreenZone.prototype._cross = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56119,7 +56371,7 @@ SphereZone.prototype._bound = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -73231,10 +73483,10 @@ module.exports = exports['default'];
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(78), __webpack_require__(79)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(79), __webpack_require__(80)(module)))
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports) {
 
 /**
@@ -73264,7 +73516,7 @@ module.exports = bytesToUuid;
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports) {
 
 // Unique ID creation requires a high quality random # generator.  In the
@@ -73304,11 +73556,11 @@ if (getRandomValues) {
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var rng = __webpack_require__(76);
-var bytesToUuid = __webpack_require__(75);
+var rng = __webpack_require__(77);
+var bytesToUuid = __webpack_require__(76);
 
 // **`v1()` - Generate time-based UUID**
 //
@@ -73419,7 +73671,7 @@ module.exports = v1;
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports) {
 
 var g;
@@ -73446,7 +73698,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {

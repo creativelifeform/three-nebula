@@ -336,6 +336,8 @@ export default class Particle {
     this.rotation.clear();
     Util.destroyObject(this.transform);
     this.removeAllBehaviours();
+
+    return this;
   }
 
   /**

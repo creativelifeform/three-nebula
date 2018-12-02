@@ -1,5 +1,20 @@
+import {
+  DEFAULT_AGE,
+  DEFAULT_ALPHA,
+  DEFAULT_BODY,
+  DEFAULT_DEAD,
+  DEFAULT_EASING,
+  DEFAULT_ENERGY,
+  DEFAULT_LIFE,
+  DEFAULT_MASS,
+  DEFAULT_PARENT,
+  DEFAULT_RADIUS,
+  DEFAULT_SCALE,
+  DEFAULT_SLEEP,
+  DEFAULT_USE_ALPHA,
+  DEFAULT_USE_COLOR
+} from './constants';
 import { Util, uid } from '../utils';
-import { ease, setEasingByName } from '../ease';
 
 import { PI } from '../constants';
 import { Vector3D } from '../math';
@@ -45,72 +60,72 @@ export default class Particle {
      * @desc The particle's life
      * @type {number}
      */
-    this.life = Infinity;
+    this.life = DEFAULT_LIFE;
     /**
      * @desc The particle's age
      * @type {number}
      */
-    this.age = 0;
+    this.age = DEFAULT_AGE;
     /**
      * @desc The particle's energy loss
      * @type {number}
      */
-    this.energy = 1;
+    this.energy = DEFAULT_ENERGY;
     /**
      * @desc Determines if the particle is dead or not
      * @type {number}
      */
-    this.dead = false;
+    this.dead = DEFAULT_DEAD;
     /**
      * @desc Determines if the particle is sleeping or not
      * @type {number}
      */
-    this.sleep = false;
+    this.sleep = DEFAULT_SLEEP;
     /**
      * @desc The particle's body
      * @type {object}
      */
-    this.body = null;
+    this.body = DEFAULT_BODY;
     /**
      * @desc The particle's parent
      * @type {?Emitter}
      */
-    this.parent = null;
+    this.parent = DEFAULT_PARENT;
     /**
      * @desc The particle's mass
      * @type {number}
      */
-    this.mass = 1;
+    this.mass = DEFAULT_MASS;
     /**
      * @desc The particle's radius
      * @type {number}
      */
-    this.radius = 10;
+    this.radius = DEFAULT_RADIUS;
     /**
      * @desc The particle's alpha
      * @type {number}
      */
-    this.alpha = 1;
+    this.alpha = DEFAULT_ALPHA;
     /**
      * @desc The particle's scale
      * @type {number}
      */
-    this.scale = 1;
+    this.scale = DEFAULT_SCALE;
     /**
      * @desc Determines whether to use color or not
      * @type {boolean}
      */
-    this.useColor = false;
+    this.useColor = DEFAULT_USE_COLOR;
     /**
      * @desc Determines whether to use alpha or not
      * @type {boolean}
      */
-    this.useAlpha = false;
+    this.useAlpha = DEFAULT_USE_ALPHA;
     /**
      * @desc The particle's easing
      * @type {number}
      */
-    this.easing = setEasingByName(ease.easeLinear);
+    this.easing = DEFAULT_EASING;
     /**
      * @desc The particle's position
      * @type {Vector3D}
@@ -181,12 +196,27 @@ export default class Particle {
   }
 
   /**
-   * Clear's the particle's position, velocity, acceleration, color and rotation.
-   * Destroy's the particle's transform collection & removes all behaviours.
+   * Resets the particle's default properties and clear's its particle's position,
+   * velocity, acceleration, color and rotation. Also destroy's the particle's
+   * transform collection & removes all behaviours.
    *
-   * @return void
+   * @return {Particle}
    */
-  clear() {
+  reset() {
+    this.life = DEFAULT_LIFE;
+    this.age = DEFAULT_AGE;
+    this.energy = DEFAULT_ENERGY;
+    this.dead = DEFAULT_DEAD;
+    this.sleep = DEFAULT_SLEEP;
+    this.body = DEFAULT_BODY;
+    this.parent = DEFAULT_PARENT;
+    this.mass = DEFAULT_MASS;
+    this.radius = DEFAULT_RADIUS;
+    this.alpha = DEFAULT_ALPHA;
+    this.scale = DEFAULT_SCALE;
+    this.useColor = DEFAULT_USE_COLOR;
+    this.useAlpha = DEFAULT_USE_ALPHA;
+    this.easing = DEFAULT_EASING;
     this.p.set(0, 0, 0);
     this.v.set(0, 0, 0);
     this.a.set(0, 0, 0);
@@ -200,6 +230,8 @@ export default class Particle {
     this.rotation.clear();
     Util.destroyObject(this.transform);
     this.removeAllBehaviours();
+
+    return this;
   }
 
   /**

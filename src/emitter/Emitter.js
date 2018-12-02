@@ -298,7 +298,7 @@ export default class Emitter extends Particle {
           this.parent.eventDispatcher.dispatchEvent('PARTICLE_DEAD', particle);
         BIND_EMITTER_EVENT && this.dispatchEvent('PARTICLE_DEAD', particle);
 
-        this.parent.pool.expire(particle.clear());
+        this.parent.pool.expire(particle.reset());
         this.particles.splice(i, 1);
       }
     }

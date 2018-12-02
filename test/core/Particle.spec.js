@@ -2,6 +2,23 @@
 
 import * as Proton from '../../src';
 
+import {
+  DEFAULT_AGE,
+  DEFAULT_ALPHA,
+  DEFAULT_BODY,
+  DEFAULT_DEAD,
+  DEFAULT_EASING,
+  DEFAULT_ENERGY,
+  DEFAULT_LIFE,
+  DEFAULT_MASS,
+  DEFAULT_PARENT,
+  DEFAULT_RADIUS,
+  DEFAULT_SCALE,
+  DEFAULT_SLEEP,
+  DEFAULT_USE_ALPHA,
+  DEFAULT_USE_COLOR
+} from '../../src/core/constants';
+
 import chai from 'chai';
 import { preset } from './fixtures/particle';
 import sinon from 'sinon';
@@ -91,13 +108,26 @@ describe('core -> Particle', () => {
     done();
   });
 
-  it('should clear the particle\'s clearable properties', done => {
+  it('should reset the particle\'s clearable properties and return the particle', done => {
     const particle = new Particle(preset);
-
-    particle.clear();
+    const reset = particle.reset();
 
     const { p, v, a, old, color, transform, behaviours, rotation } = particle;
 
+    assert.strictEqual(reset.age, DEFAULT_AGE);
+    assert.strictEqual(reset.alpha, DEFAULT_ALPHA);
+    assert.strictEqual(reset.body, DEFAULT_BODY);
+    assert.strictEqual(reset.dead, DEFAULT_DEAD);
+    assert.strictEqual(reset.easing, DEFAULT_EASING);
+    assert.strictEqual(reset.energy, DEFAULT_ENERGY);
+    assert.strictEqual(reset.life, DEFAULT_LIFE);
+    assert.strictEqual(reset.mass, DEFAULT_MASS);
+    assert.strictEqual(reset.parent, DEFAULT_PARENT);
+    assert.strictEqual(reset.radius, DEFAULT_RADIUS);
+    assert.strictEqual(reset.scale, DEFAULT_SCALE);
+    assert.strictEqual(reset.sleep, DEFAULT_SLEEP);
+    assert.strictEqual(reset.useAlpha, DEFAULT_USE_ALPHA);
+    assert.strictEqual(reset.useColor, DEFAULT_USE_COLOR);
     assert.deepEqual(values(p), [0, 0, 0]);
     assert.deepEqual(values(v), [0, 0, 0]);
     assert.deepEqual(values(a), [0, 0, 0]);
@@ -108,6 +138,7 @@ describe('core -> Particle', () => {
     assert.isEmpty(transform);
     assert.isEmpty(behaviours);
     assert.deepEqual(values(rotation), [0, 0, 0]);
+    assert.instanceOf(reset, Particle);
 
     done();
   });

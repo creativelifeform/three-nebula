@@ -96,6 +96,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_age",
+    "variable/index.html#static-variable-DEFAULT_AGE",
+    "<span>DEFAULT_AGE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_alpha",
+    "variable/index.html#static-variable-DEFAULT_ALPHA",
+    "<span>DEFAULT_ALPHA</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/behaviour/constants.js~default_attraciton_radius",
     "variable/index.html#static-variable-DEFAULT_ATTRACITON_RADIUS",
     "<span>DEFAULT_ATTRACITON_RADIUS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
@@ -114,9 +126,33 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_body",
+    "variable/index.html#static-variable-DEFAULT_BODY",
+    "<span>DEFAULT_BODY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_dead",
+    "variable/index.html#static-variable-DEFAULT_DEAD",
+    "<span>DEFAULT_DEAD</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/debug/constants.js~default_depth",
     "variable/index.html#static-variable-DEFAULT_DEPTH",
     "<span>DEFAULT_DEPTH</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_easing",
+    "variable/index.html#static-variable-DEFAULT_EASING",
+    "<span>DEFAULT_EASING</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_energy",
+    "variable/index.html#static-variable-DEFAULT_ENERGY",
+    "<span>DEFAULT_ENERGY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
     "variable"
   ],
   [
@@ -126,9 +162,33 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_life",
+    "variable/index.html#static-variable-DEFAULT_LIFE",
+    "<span>DEFAULT_LIFE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_mass",
+    "variable/index.html#static-variable-DEFAULT_MASS",
+    "<span>DEFAULT_MASS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_parent",
+    "variable/index.html#static-variable-DEFAULT_PARENT",
+    "<span>DEFAULT_PARENT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/debug/constants.js~default_position",
     "variable/index.html#static-variable-DEFAULT_POSITION",
     "<span>DEFAULT_POSITION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_radius",
+    "variable/index.html#static-variable-DEFAULT_RADIUS",
+    "<span>DEFAULT_RADIUS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
     "variable"
   ],
   [
@@ -144,9 +204,33 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_scale",
+    "variable/index.html#static-variable-DEFAULT_SCALE",
+    "<span>DEFAULT_SCALE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/debug/constants.js~default_size",
     "variable/index.html#static-variable-DEFAULT_SIZE",
     "<span>DEFAULT_SIZE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_sleep",
+    "variable/index.html#static-variable-DEFAULT_SLEEP",
+    "<span>DEFAULT_SLEEP</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_use_alpha",
+    "variable/index.html#static-variable-DEFAULT_USE_ALPHA",
+    "<span>DEFAULT_USE_ALPHA</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_use_color",
+    "variable/index.html#static-variable-DEFAULT_USE_COLOR",
+    "<span>DEFAULT_USE_COLOR</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
     "variable"
   ],
   [
@@ -375,12 +459,6 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/core/particle.js~particle",
     "class/src/core/Particle.js~Particle.html",
     "<span>Particle</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/Particle.js</span>",
-    "class"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/core/particle2.js~particle",
-    "class/src/core/Particle2.js~Particle.html",
-    "<span>Particle</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/Particle2.js</span>",
     "class"
   ],
   [
@@ -1782,210 +1860,6 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/core/particle2.js",
-    "file/src/core/Particle2.js.html",
-    "src/core/Particle2.js",
-    "file"
-  ],
-  [
-    "src/core/particle2.js~particle#a",
-    "class/src/core/Particle2.js~Particle.html#instance-member-a",
-    "src/core/Particle2.js~Particle#a",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#addbehaviour",
-    "class/src/core/Particle2.js~Particle.html#instance-method-addBehaviour",
-    "src/core/Particle2.js~Particle#addBehaviour",
-    "method"
-  ],
-  [
-    "src/core/particle2.js~particle#addbehaviours",
-    "class/src/core/Particle2.js~Particle.html#instance-method-addBehaviours",
-    "src/core/Particle2.js~Particle#addBehaviours",
-    "method"
-  ],
-  [
-    "src/core/particle2.js~particle#age",
-    "class/src/core/Particle2.js~Particle.html#instance-member-age",
-    "src/core/Particle2.js~Particle#age",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#alpha",
-    "class/src/core/Particle2.js~Particle.html#instance-member-alpha",
-    "src/core/Particle2.js~Particle#alpha",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#behaviours",
-    "class/src/core/Particle2.js~Particle.html#instance-member-behaviours",
-    "src/core/Particle2.js~Particle#behaviours",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#body",
-    "class/src/core/Particle2.js~Particle.html#instance-member-body",
-    "src/core/Particle2.js~Particle#body",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#clear",
-    "class/src/core/Particle2.js~Particle.html#instance-method-clear",
-    "src/core/Particle2.js~Particle#clear",
-    "method"
-  ],
-  [
-    "src/core/particle2.js~particle#color",
-    "class/src/core/Particle2.js~Particle.html#instance-member-color",
-    "src/core/Particle2.js~Particle#color",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#constructor",
-    "class/src/core/Particle2.js~Particle.html#instance-constructor-constructor",
-    "src/core/Particle2.js~Particle#constructor",
-    "method"
-  ],
-  [
-    "src/core/particle2.js~particle#dead",
-    "class/src/core/Particle2.js~Particle.html#instance-member-dead",
-    "src/core/Particle2.js~Particle#dead",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#destroy",
-    "class/src/core/Particle2.js~Particle.html#instance-method-destroy",
-    "src/core/Particle2.js~Particle#destroy",
-    "method"
-  ],
-  [
-    "src/core/particle2.js~particle#easing",
-    "class/src/core/Particle2.js~Particle.html#instance-member-easing",
-    "src/core/Particle2.js~Particle#easing",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#energy",
-    "class/src/core/Particle2.js~Particle.html#instance-member-energy",
-    "src/core/Particle2.js~Particle#energy",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#getdirection",
-    "class/src/core/Particle2.js~Particle.html#instance-method-getDirection",
-    "src/core/Particle2.js~Particle#getDirection",
-    "method"
-  ],
-  [
-    "src/core/particle2.js~particle#id",
-    "class/src/core/Particle2.js~Particle.html#instance-member-id",
-    "src/core/Particle2.js~Particle#id",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#life",
-    "class/src/core/Particle2.js~Particle.html#instance-member-life",
-    "src/core/Particle2.js~Particle#life",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#mass",
-    "class/src/core/Particle2.js~Particle.html#instance-member-mass",
-    "src/core/Particle2.js~Particle#mass",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#name",
-    "class/src/core/Particle2.js~Particle.html#instance-member-name",
-    "src/core/Particle2.js~Particle#name",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#old",
-    "class/src/core/Particle2.js~Particle.html#instance-member-old",
-    "src/core/Particle2.js~Particle#old",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#p",
-    "class/src/core/Particle2.js~Particle.html#instance-member-p",
-    "src/core/Particle2.js~Particle#p",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#parent",
-    "class/src/core/Particle2.js~Particle.html#instance-member-parent",
-    "src/core/Particle2.js~Particle#parent",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#radius",
-    "class/src/core/Particle2.js~Particle.html#instance-member-radius",
-    "src/core/Particle2.js~Particle#radius",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#removeallbehaviours",
-    "class/src/core/Particle2.js~Particle.html#instance-method-removeAllBehaviours",
-    "src/core/Particle2.js~Particle#removeAllBehaviours",
-    "method"
-  ],
-  [
-    "src/core/particle2.js~particle#removebehaviour",
-    "class/src/core/Particle2.js~Particle.html#instance-method-removeBehaviour",
-    "src/core/Particle2.js~Particle#removeBehaviour",
-    "method"
-  ],
-  [
-    "src/core/particle2.js~particle#rotation",
-    "class/src/core/Particle2.js~Particle.html#instance-member-rotation",
-    "src/core/Particle2.js~Particle#rotation",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#scale",
-    "class/src/core/Particle2.js~Particle.html#instance-member-scale",
-    "src/core/Particle2.js~Particle#scale",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#sleep",
-    "class/src/core/Particle2.js~Particle.html#instance-member-sleep",
-    "src/core/Particle2.js~Particle#sleep",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#transform",
-    "class/src/core/Particle2.js~Particle.html#instance-member-transform",
-    "src/core/Particle2.js~Particle#transform",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#update",
-    "class/src/core/Particle2.js~Particle.html#instance-method-update",
-    "src/core/Particle2.js~Particle#update",
-    "method"
-  ],
-  [
-    "src/core/particle2.js~particle#usealpha",
-    "class/src/core/Particle2.js~Particle.html#instance-member-useAlpha",
-    "src/core/Particle2.js~Particle#useAlpha",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#usecolor",
-    "class/src/core/Particle2.js~Particle.html#instance-member-useColor",
-    "src/core/Particle2.js~Particle#useColor",
-    "member"
-  ],
-  [
-    "src/core/particle2.js~particle#v",
-    "class/src/core/Particle2.js~Particle.html#instance-member-v",
-    "src/core/Particle2.js~Particle#v",
-    "member"
-  ],
-  [
     "src/core/pool.js",
     "file/src/core/Pool.js.html",
     "src/core/Pool.js",
@@ -2152,6 +2026,12 @@ window.esdocSearchIndex = [
     "class/src/core/Proton.js~Proton.html#static-method-integrator",
     "src/core/Proton.js~Proton.integrator",
     "method"
+  ],
+  [
+    "src/core/constants.js",
+    "file/src/core/constants.js.html",
+    "src/core/constants.js",
+    "file"
   ],
   [
     "src/core/index.js",
