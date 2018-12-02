@@ -35,4 +35,34 @@ describe('core -> Proton', () => {
 
     done();
   });
+
+  it('should return an integrator from the static integrator method', done => {
+    assert.instanceOf(System.integrator(), Proton.Integration);
+
+    done();
+  });
+
+  it('should add a renderer', done => {
+    const proton = new System();
+    const renderer = new Proton.SpriteRenderer();
+
+    proton.addRenderer(renderer);
+
+    assert.notEmpty(proton.renderers);
+    assert.instanceOf(proton.renderers[0], Proton.SpriteRenderer);
+
+    done();
+  });
+
+  it('should remove the renderer', done => {
+    const proton = new System();
+    const renderer = new Proton.SpriteRenderer();
+
+    proton.addRenderer(renderer);
+    proton.removeRenderer(renderer);
+
+    assert.isEmpty(proton.renderers);
+
+    done();
+  });
 });

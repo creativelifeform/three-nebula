@@ -9,7 +9,6 @@ import EventDispatcher, {
 import { DEFAULT_PROTON_DELTA } from './constants';
 import Integration from '../math/Integration';
 import Pool from './Pool';
-import { Util } from '../utils';
 
 /**
  * The core of the three-proton particle engine.
@@ -21,22 +20,26 @@ export default class Proton {
   /**
    * Constructs a Proton instance.
    *
+   * TODO the proton instance should have an integrator set as a property.
+   * It is only required from the emitter class, and therefore can be accessed within
+   * that class from emitter.parent.integrator
+   *
    * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
    * @param {string} [integrationType=EULER] - The integration type to use
    * @return void
    */
-  constructor(preParticles, integrationType) {
+  constructor(preParticles = POOL_MAX, integrationType = EULER) {
     /**
      * @desc The number of particles to start with
      * @type {number}
      */
-    this.preParticles = Util.initValue(preParticles, POOL_MAX);
+    this.preParticles = preParticles;
 
     /**
      * @desc The integration type to use
      * @param {string}
      */
-    this.integrationType = Util.initValue(integrationType, EULER);
+    this.integrationType = integrationType;
 
     /**
      * @desc The emitters in the particle system
@@ -76,6 +79,7 @@ export default class Proton {
   /**
    * @deprecated Use addRenderer
    */
+  /* istanbul ignore next */
   addRender(renderer) {
     this.renderers.push(renderer);
     renderer.init(this);
@@ -97,6 +101,7 @@ export default class Proton {
   /**
    * @deprecated Use removeRenderer
    */
+  /* istanbul ignore next */
   removeRender(renderer) {
     this.renderers.splice(this.renderers.indexOf(renderer), 1);
     renderer.remove(this);
