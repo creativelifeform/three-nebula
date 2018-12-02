@@ -6,37 +6,75 @@ import EventDispatcher, {
   PROTON_UPDATE_AFTER
 } from '../events';
 
+import { DEFAULT_PROTON_DELTA } from './constants';
 import Integration from '../math/Integration';
 import Pool from './Pool';
 import { Util } from '../utils';
 
+/**
+ * The core of the three-proton particle engine.
+ * A Proton instance can contain multiple emitters, each with their own initializers
+ * and behaviours.
+ *
+ */
 export default class Proton {
   /**
-   * @name Proton is a particle engine for three.js
+   * Constructs a Proton instance.
    *
-   * @class Proton
-   * @param {number} preParticles input any number
-   * @param {number} integrationType input any number
-   * @example var proton = new Proton(200);
+   * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
+   * @param {string} [integrationType=EULER] - The integration type to use
+   * @return void
    */
   constructor(preParticles, integrationType) {
+    /**
+     * @desc The number of particles to start with
+     * @type {number}
+     */
     this.preParticles = Util.initValue(preParticles, POOL_MAX);
+
+    /**
+     * @desc The integration type to use
+     * @param {string}
+     */
     this.integrationType = Util.initValue(integrationType, EULER);
+
+    /**
+     * @desc The emitters in the particle system
+     * @type {array<Emitter>}
+     */
     this.emitters = [];
+
+    /**
+     * @desc The renderers for the system
+     * @type {array<Renderer>}
+     */
     this.renderers = [];
+
+    /**
+     * @desc A pool used to manage the internal proton cache of objects
+     * @type {Pool}
+     */
     this.pool = new Pool();
+
+    /**
+     * @desc Internal event dispatcher
+     * @type {EventDispatcher}
+     */
     this.eventDispatcher = new EventDispatcher();
   }
 
+  /**
+   * Returns a new Integration instance based on the type passed to the constructor.
+   *
+   * @static
+   * @return {Integration}
+   */
   static integrator() {
     return new Integration(this.integrationType);
   }
 
   /**
-   * @name add a type of Renderer
-   *
-   * @method addRender
-   * @param {Renderer} render
+   * @deprecated Use addRenderer
    */
   addRender(renderer) {
     this.renderers.push(renderer);
@@ -44,9 +82,9 @@ export default class Proton {
   }
 
   /**
-   * Adds a renderer to the Proton instance.
+   * Adds a renderer to the Proton instance and initializes it.
    *
-   * @param {Renderer} renderer
+   * @param {Renderer} renderer - The renderer to add
    * @return {Proton}
    */
   addRenderer(renderer) {
@@ -57,10 +95,7 @@ export default class Proton {
   }
 
   /**
-   * @name add a type of Renderer
-   *
-   * @method addRender
-   * @param {Renderer} render
+   * @deprecated Use removeRenderer
    */
   removeRender(renderer) {
     this.renderers.splice(this.renderers.indexOf(renderer), 1);
@@ -79,10 +114,10 @@ export default class Proton {
   }
 
   /**
-   * add the Emitter
+   * Adds an emitter to the Proton instance.
+   * Dispatches the EMITTER_ADDED event.
    *
-   * @method addEmitter
-   * @param {Emitter} emitter
+   * @param {Emitter} emitter - The emitter to add
    * @return {Proton}
    */
   addEmitter(emitter) {
@@ -93,32 +128,46 @@ export default class Proton {
     return this;
   }
 
+  /**
+   * Removes an emitter from the Proton instance.
+   * Dispatches the EMITTER_REMOVED event.
+   *
+   * @param {Emitter} emitter - The emitter to remove
+   * @return {Proton}
+   */
   removeEmitter(emitter) {
     if (emitter.parent != this) return;
 
     this.emitters.splice(this.emitters.indexOf(emitter), 1);
     emitter.parent = null;
     this.eventDispatcher.dispatchEvent(EMITTER_REMOVED, emitter);
+
+    return this;
   }
 
-  update($delta) {
+  /**
+   * Updates the particle system based on the delta passed.
+   *
+   * @param {number}
+   */
+  update(delta = DEFAULT_PROTON_DELTA) {
     this.eventDispatcher.dispatchEvent(PROTON_UPDATE, this);
 
-    var delta = $delta || 0.0167;
+    const d = delta || DEFAULT_PROTON_DELTA;
 
-    if (delta > 0) {
+    if (d > 0) {
       var i = this.emitters.length;
 
-      while (i--) this.emitters[i].update(delta);
+      while (i--) this.emitters[i].update(d);
     }
 
     this.eventDispatcher.dispatchEvent(PROTON_UPDATE_AFTER, this);
   }
 
   /**
-   * getCount
-   * @name get the count of particle
-   * @return (number) particles count
+   * Gets a count of the total number of particles in the system.
+   *
+   * @return {integer}
    */
   getCount() {
     var total = 0;
@@ -131,8 +180,9 @@ export default class Proton {
   }
 
   /**
-   * destroy
-   * @name destroy the proton
+   * Destroys all emitters and the Proton pool.
+   *
+   * @return void
    */
   destroy() {
     var i = 0,
@@ -148,4 +198,8 @@ export default class Proton {
   }
 }
 
+/**
+ * @desc The system's integrator
+ * @type {Integrator}
+ */
 export const integrator = Proton.integrator();
