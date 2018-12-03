@@ -16,12 +16,6 @@ import sinon from 'sinon';
 
 const { assert } = chai;
 const System = Proton.Proton;
-const { values, keys } = Object;
-const { spy } = sinon;
-
-// TODO Currently having issues testing the event dispatches, not sure why
-// but Sinon seems unable to spy the EventDispatcher's dispatchEvent method
-// properly.
 
 describe('core -> Proton', () => {
   it('should instantiate with the correct properties', done => {
@@ -56,8 +50,7 @@ describe('core -> Proton', () => {
     const proton = new System();
     const renderer = new Proton.SpriteRenderer();
 
-    proton.addRenderer(renderer);
-
+    assert.instanceOf(proton.addRenderer(renderer), System);
     assert.notEmpty(proton.renderers);
     assert.instanceOf(proton.renderers[0], Proton.SpriteRenderer);
 
@@ -68,34 +61,54 @@ describe('core -> Proton', () => {
     const proton = new System();
     const renderer = new Proton.SpriteRenderer();
 
-    proton.addRenderer(renderer);
-    proton.removeRenderer(renderer);
+    proton.addRenderer(renderer).removeRenderer(renderer);
 
     assert.isEmpty(proton.renderers);
 
     done();
   });
 
-  it('should add an emitter', done => {
+  it('should add an emitter and dispatch the EMITTER_ADDED', done => {
     const proton = new System();
     const emitter = new Proton.Emitter();
+    const spy = sinon.spy(proton, 'dispatch');
 
-    proton.addEmitter(emitter);
-
+    assert.instanceOf(proton.addEmitter(emitter), System);
     assert.isNotEmpty(proton.emitters);
     assert.instanceOf(proton.emitters[0], Proton.Emitter);
+    assert(spy.calledOnce);
+    assert(spy.calledWith(EMITTER_ADDED, emitter));
+
+    spy.restore();
+    done();
+  });
+
+  it('should remove an emitter and dispatch the EMITTER_REMOVED event', done => {
+    const proton = new System();
+    const emitter = new Proton.Emitter();
+    const spy = sinon.spy(proton, 'dispatch');
+
+    proton.addEmitter(emitter);
+    proton.removeEmitter(emitter);
+    assert.isEmpty(proton.emitters);
+    assert(spy.calledTwice);
+    assert(spy.secondCall.calledWith(EMITTER_REMOVED, emitter));
+
+    spy.restore();
 
     done();
   });
 
-  it('should remove an emitter', done => {
+  it('should not remove an emitter that is not a child of the proton instance', done => {
     const proton = new System();
-    const emitter = new Proton.Emitter();
+    const emitterA = new Proton.Emitter();
+    const emitterB = new Proton.Emitter();
 
-    proton.addEmitter(emitter);
-    proton.removeEmitter(emitter);
+    proton.addEmitter(emitterA);
+    proton.removeEmitter(emitterB);
 
-    assert.isEmpty(proton.emitters);
+    assert.lengthOf(proton.emitters, 1);
+    assert.equal(emitterA.id, proton.emitters[0].id);
 
     done();
   });
@@ -103,14 +116,20 @@ describe('core -> Proton', () => {
   it('should call the update method for all emitters and also dispatch the required events', done => {
     const proton = new System();
     const emitter = new Proton.Emitter();
-    const emitterSpy = spy(emitter, 'update');
+    const emitterSpy = sinon.spy(emitter, 'update');
+    const dispatchSpy = sinon.spy(proton, 'dispatch');
 
     proton.addEmitter(emitter);
     proton.update();
 
     assert(emitterSpy.calledOnce);
+    // proton.addEmitter x1 + proton.update x2
+    assert(dispatchSpy.calledThrice);
+    assert(dispatchSpy.secondCall.calledWith(PROTON_UPDATE));
+    assert(dispatchSpy.thirdCall.calledWith(PROTON_UPDATE_AFTER));
 
     emitterSpy.restore();
+    dispatchSpy.restore();
 
     done();
   });
@@ -118,30 +137,39 @@ describe('core -> Proton', () => {
   it('should get the count of particles in the system', done => {
     const proton = new System();
     const emitter = new Proton.Emitter();
+    const rate = new Proton.Rate(500, 0.01);
+    const renderer = new Proton.SpriteRenderer(new Scene());
 
-    emitter
-      .setRate(
-        new Proton.Rate(new Proton.Span(100, 200), new Proton.Span(0.01, 0.01))
-      )
-      .setProperties([
-        new Proton.Mass(1),
-        new Proton.Life(2),
-        new Proton.Radius(80),
-        new Proton.Velocity(200, new Proton.Vector3D(0, 0, -1), 0)
-      ])
-      .setBehaviours([
-        new Proton.Alpha(1, 0),
-        new Proton.Scale(1, 0.5),
-        new Proton.Force(0, 0, -20)
-      ]);
+    proton
+      .addRenderer(renderer)
+      .addEmitter(emitter.setRate(rate).emit())
+      .update()
+      .then(() => {
+        setTimeout(() => {
+          assert.notEqual(proton.getCount(), 0);
+          done();
+        }, 1500);
+      });
+  });
 
-    proton.addRenderer(new Proton.SpriteRenderer(new Scene()));
-    proton.addEmitter(emitter.emit());
-    proton.update().then(() => {
-      setTimeout(() => {
-        assert.notEqual(proton.getCount(), 0);
-        done();
-      }, 1500);
-    });
+  it('should destroy all emitters and the empty the pool', done => {
+    const proton = new System();
+    const emitter = new Proton.Emitter();
+    const rate = new Proton.Rate(500, 0.01);
+    const renderer = new Proton.SpriteRenderer(new Scene());
+
+    proton
+      .addRenderer(renderer)
+      .addEmitter(emitter.setRate(rate).emit())
+      .update();
+
+    setTimeout(() => {
+      proton.destroy();
+
+      assert.isEmpty(proton.emitters);
+      assert.isEmpty(proton.pool.list);
+
+      done();
+    }, 500);
   });
 });

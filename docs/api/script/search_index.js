@@ -186,6 +186,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/constants.js~default_proton_delta",
+    "variable/index.html#static-variable-DEFAULT_PROTON_DELTA",
+    "<span>DEFAULT_PROTON_DELTA</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/core/constants.js~default_radius",
     "variable/index.html#static-variable-DEFAULT_RADIUS",
     "<span>DEFAULT_RADIUS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
@@ -1953,6 +1959,12 @@ window.esdocSearchIndex = [
     "src/core/proton.js~proton#destroy",
     "class/src/core/Proton.js~Proton.html#instance-method-destroy",
     "src/core/Proton.js~Proton#destroy",
+    "method"
+  ],
+  [
+    "src/core/proton.js~proton#dispatch",
+    "class/src/core/Proton.js~Proton.html#instance-method-dispatch",
+    "src/core/Proton.js~Proton#dispatch",
     "method"
   ],
   [

@@ -77,11 +77,22 @@ export default class Proton {
   }
 
   /**
+   * Proxy method for the internal event dispatcher's dispatchEvent method.
+   *
+   * @param {string} event - The event to dispatch
+   * @param {object<Proton|Emitter>} [target=this] - The event target
+   */
+  dispatch(event, target = this) {
+    this.eventDispatcher.dispatchEvent(event, target);
+  }
+
+  /**
    * @deprecated Use addRenderer
    */
-  /* istanbul ignore next */
   addRender(renderer) {
+    /* istanbul ignore next */
     this.renderers.push(renderer);
+    /* istanbul ignore next */
     renderer.init(this);
   }
 
@@ -101,9 +112,10 @@ export default class Proton {
   /**
    * @deprecated Use removeRenderer
    */
-  /* istanbul ignore next */
   removeRender(renderer) {
+    /* istanbul ignore next */
     this.renderers.splice(this.renderers.indexOf(renderer), 1);
+    /* istanbul ignore next */
     renderer.remove(this);
   }
 
@@ -116,6 +128,8 @@ export default class Proton {
   removeRenderer(renderer) {
     this.renderers.splice(this.renderers.indexOf(renderer), 1);
     renderer.remove(this);
+
+    return this;
   }
 
   /**
@@ -126,9 +140,10 @@ export default class Proton {
    * @return {Proton}
    */
   addEmitter(emitter) {
-    this.emitters.push(emitter);
     emitter.parent = this;
-    this.eventDispatcher.dispatchEvent(EMITTER_ADDED, emitter);
+
+    this.emitters.push(emitter);
+    this.dispatch(EMITTER_ADDED, emitter);
 
     return this;
   }
@@ -141,11 +156,14 @@ export default class Proton {
    * @return {Proton}
    */
   removeEmitter(emitter) {
-    if (emitter.parent != this) return;
+    if (emitter.parent !== this) {
+      return this;
+    }
+
+    emitter.parent = null;
 
     this.emitters.splice(this.emitters.indexOf(emitter), 1);
-    emitter.parent = null;
-    this.eventDispatcher.dispatchEvent(EMITTER_REMOVED, emitter);
+    this.dispatch(EMITTER_REMOVED, emitter);
 
     return this;
   }
@@ -157,7 +175,7 @@ export default class Proton {
    * @return {Promise}
    */
   update(delta = DEFAULT_PROTON_DELTA) {
-    this.eventDispatcher.dispatchEvent(PROTON_UPDATE, this);
+    this.dispatch(PROTON_UPDATE);
 
     const d = delta || DEFAULT_PROTON_DELTA;
 
@@ -167,7 +185,7 @@ export default class Proton {
       while (i--) this.emitters[i].update(d);
     }
 
-    this.eventDispatcher.dispatchEvent(PROTON_UPDATE_AFTER, this);
+    this.dispatch(PROTON_UPDATE_AFTER);
 
     return Promise.resolve();
   }
