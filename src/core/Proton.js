@@ -154,6 +154,7 @@ export default class Proton {
    * Updates the particle system based on the delta passed.
    *
    * @param {number}
+   * @return {Promise}
    */
   update(delta = DEFAULT_PROTON_DELTA) {
     this.eventDispatcher.dispatchEvent(PROTON_UPDATE, this);
@@ -167,6 +168,8 @@ export default class Proton {
     }
 
     this.eventDispatcher.dispatchEvent(PROTON_UPDATE_AFTER, this);
+
+    return Promise.resolve();
   }
 
   /**
@@ -175,11 +178,13 @@ export default class Proton {
    * @return {integer}
    */
   getCount() {
-    var total = 0;
-    var i,
-      length = this.emitters.length;
+    let total = 0;
+    let length = this.emitters.length;
+    let i;
 
-    for (i = 0; i < length; i++) total += this.emitters[i].particles.length;
+    for (i = 0; i < length; i++) {
+      total += this.emitters[i].particles.length;
+    }
 
     return total;
   }
