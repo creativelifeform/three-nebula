@@ -498,6 +498,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/pool2.js~pool",
+    "class/src/core/Pool2.js~Pool.html",
+    "<span>Pool</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/Pool2.js</span>",
+    "class"
+  ],
+  [
     "@rohandeshpande/three-proton/src/initializer/position.js~position",
     "class/src/initializer/Position.js~Position.html",
     "<span>Position</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Position.js</span>",
@@ -1015,13 +1021,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -1926,6 +1932,84 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/core/pool2.js",
+    "file/src/core/Pool2.js.html",
+    "src/core/Pool2.js",
+    "file"
+  ],
+  [
+    "src/core/pool2.js~pool#_getlist",
+    "class/src/core/Pool2.js~Pool.html#instance-method-_getList",
+    "src/core/Pool2.js~Pool#_getList",
+    "method"
+  ],
+  [
+    "src/core/pool2.js~pool#cid",
+    "class/src/core/Pool2.js~Pool.html#instance-member-cID",
+    "src/core/Pool2.js~Pool#cID",
+    "member"
+  ],
+  [
+    "src/core/pool2.js~pool#cancloneobject",
+    "class/src/core/Pool2.js~Pool.html#instance-method-canCloneObject",
+    "src/core/Pool2.js~Pool#canCloneObject",
+    "method"
+  ],
+  [
+    "src/core/pool2.js~pool#cancreatenewobject",
+    "class/src/core/Pool2.js~Pool.html#instance-method-canCreateNewObject",
+    "src/core/Pool2.js~Pool#canCreateNewObject",
+    "method"
+  ],
+  [
+    "src/core/pool2.js~pool#caninstantiateobject",
+    "class/src/core/Pool2.js~Pool.html#instance-method-canInstantiateObject",
+    "src/core/Pool2.js~Pool#canInstantiateObject",
+    "method"
+  ],
+  [
+    "src/core/pool2.js~pool#constructor",
+    "class/src/core/Pool2.js~Pool.html#instance-constructor-constructor",
+    "src/core/Pool2.js~Pool#constructor",
+    "method"
+  ],
+  [
+    "src/core/pool2.js~pool#create",
+    "class/src/core/Pool2.js~Pool.html#instance-method-create",
+    "src/core/Pool2.js~Pool#create",
+    "method"
+  ],
+  [
+    "src/core/pool2.js~pool#destroy",
+    "class/src/core/Pool2.js~Pool.html#instance-method-destroy",
+    "src/core/Pool2.js~Pool#destroy",
+    "method"
+  ],
+  [
+    "src/core/pool2.js~pool#expire",
+    "class/src/core/Pool2.js~Pool.html#instance-method-expire",
+    "src/core/Pool2.js~Pool#expire",
+    "method"
+  ],
+  [
+    "src/core/pool2.js~pool#get",
+    "class/src/core/Pool2.js~Pool.html#instance-method-get",
+    "src/core/Pool2.js~Pool#get",
+    "method"
+  ],
+  [
+    "src/core/pool2.js~pool#getcount",
+    "class/src/core/Pool2.js~Pool.html#instance-method-getCount",
+    "src/core/Pool2.js~Pool#getCount",
+    "method"
+  ],
+  [
+    "src/core/pool2.js~pool#list",
+    "class/src/core/Pool2.js~Pool.html#instance-member-list",
+    "src/core/Pool2.js~Pool#list",
+    "member"
+  ],
+  [
     "src/core/proton.js",
     "file/src/core/Proton.js.html",
     "src/core/Proton.js",
@@ -2473,13 +2557,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],

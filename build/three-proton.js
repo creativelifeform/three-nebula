@@ -50924,7 +50924,17 @@ var Pool = function () {
     value: function create(obj) {
       this.cID++;
 
-      if (typeof obj == 'function') return new obj();else return obj.clone();
+      if (typeof obj == 'function') {
+        console.log('Pool.create is instantiating');
+        console.log(obj);
+
+        return new obj();
+      } else {
+        console.log('Pool.create is cloning');
+        console.log(obj);
+
+        return obj.clone();
+      }
     }
   }, {
     key: 'getCount',
@@ -51198,6 +51208,14 @@ var Proton = function () {
     /**
      * Updates the particle system based on the delta passed.
      *
+     * @example
+     * animate = timestamp => {
+     *   threeRenderer.render(threeScene, threeCamera);
+     *   proton.update();
+     *   requestAnimationFrame(animate);
+     * }
+     * animate();
+     *
      * @param {number}
      * @return {Promise}
      */
@@ -51207,9 +51225,9 @@ var Proton = function () {
     value: function update() {
       var delta = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants2.DEFAULT_PROTON_DELTA;
 
-      this.dispatch(_events.PROTON_UPDATE);
-
       var d = delta || _constants2.DEFAULT_PROTON_DELTA;
+
+      this.dispatch(_events.PROTON_UPDATE);
 
       if (d > 0) {
         var i = this.emitters.length;
@@ -51233,8 +51251,8 @@ var Proton = function () {
   }, {
     key: 'getCount',
     value: function getCount() {
-      var total = 0;
       var length = this.emitters.length;
+      var total = 0;
       var i = void 0;
 
       for (i = 0; i < length; i++) {
@@ -51253,8 +51271,8 @@ var Proton = function () {
   }, {
     key: 'destroy',
     value: function destroy() {
-      var i = 0,
-          length = this.emitters.length;
+      var length = this.emitters.length;
+      var i = 0;
 
       for (i; i < length; i++) {
         this.emitters[i].destroy();
