@@ -70,3 +70,9 @@ export const DEFAULT_USE_ALPHA = false;
  * @type {function}
  */
 export const DEFAULT_EASING = easeLinear;
+
+/**
+ * @desc The default delta provided to the Proton instance
+ * @type {number}
+ */
+export const DEFAULT_PROTON_DELTA = 0.0167;

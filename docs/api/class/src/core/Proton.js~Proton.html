@@ -81,6 +81,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_LIFE">DEFAULT_LIFE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_MASS">DEFAULT_MASS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_PARENT">DEFAULT_PARENT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_PROTON_DELTA">DEFAULT_PROTON_DELTA</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RADIUS">DEFAULT_RADIUS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_SCALE">DEFAULT_SCALE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_SLEEP">DEFAULT_SLEEP</a></span></span></li>
@@ -147,13 +148,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Proton from &apos;<span><a href="file/src/core/Proton.js.html#lineNumber13">@rohandeshpande/three-proton/src/core/Proton.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Proton from &apos;<span><a href="file/src/core/Proton.js.html#lineNumber19">@rohandeshpande/three-proton/src/core/Proton.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/core/Proton.js.html#lineNumber13">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/core/Proton.js.html#lineNumber19">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -173,7 +174,10 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>The core of the three-proton particle engine.
+A Proton instance can contain multiple emitters, each with their own initializers
+and behaviours.</p>
+</div>
   
 
   
@@ -204,13 +208,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#static-method-integrator">integrator</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#static-method-integrator">integrator</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Returns a new Integration instance based on the type passed to the constructor.</p>
+</div>
       </div>
     </td>
     <td>
@@ -239,13 +244,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(preParticles: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, integrationType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(preParticles: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, integrationType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Constructs a Proton instance.</p>
+</div>
       </div>
     </td>
     <td>
@@ -274,13 +280,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-member-emitters">emitters</a></span></span><span class="code" data-ice="signature">: <span><span>*</span><span>[]</span></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-member-emitters">emitters</a></span></span><span class="code" data-ice="signature">: <span>array</span>&lt;<span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The emitters in the particle system</p>
+</div>
       </div>
     </td>
     <td>
@@ -302,13 +309,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-member-eventDispatcher">eventDispatcher</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-member-eventDispatcher">eventDispatcher</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/events/EventDispatcher.js~EventDispatcher.html">EventDispatcher</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Internal event dispatcher</p>
+</div>
       </div>
     </td>
     <td>
@@ -336,7 +344,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>The integration type to use</p>
+</div>
       </div>
     </td>
     <td>
@@ -358,13 +367,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-member-pool">pool</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-member-pool">pool</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>A pool used to manage the internal proton cache of objects</p>
+</div>
       </div>
     </td>
     <td>
@@ -386,13 +396,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-member-preParticles">preParticles</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-member-preParticles">preParticles</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The number of particles to start with</p>
+</div>
       </div>
     </td>
     <td>
@@ -414,13 +425,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-member-renderers">renderers</a></span></span><span class="code" data-ice="signature">: <span><span>*</span><span>[]</span></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-member-renderers">renderers</a></span></span><span class="code" data-ice="signature">: <span>array</span>&lt;<span>Renderer</span>&gt;</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The renderers for the system</p>
+</div>
       </div>
     </td>
     <td>
@@ -455,7 +467,7 @@
       <div>
         
         
-        <div data-ice="description"><p>add the Emitter</p>
+        <div data-ice="description"><p>Adds an emitter to the Proton instance.</p>
 </div>
       </div>
     </td>
@@ -478,11 +490,11 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-addRender">addRender</a></span></span><span class="code" data-ice="signature">(render: <span>Renderer</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-addRender">addRender</a></span></span><span class="code" data-ice="signature">(renderer: <span>*</span>)</span>
         </p>
       </div>
       <div>
-        
+        <div class="deprecated" data-ice="deprecated">this method was deprecated. Use addRenderer</div>
         
         
       </div>
@@ -512,7 +524,7 @@
       <div>
         
         
-        <div data-ice="description"><p>Adds a renderer to the Proton instance.</p>
+        <div data-ice="description"><p>Adds a renderer to the Proton instance and initializes it.</p>
 </div>
       </div>
     </td>
@@ -535,13 +547,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-destroy">destroy</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-destroy">destroy</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>destroy</p>
+        <div data-ice="description"><p>Destroys all emitters and the Proton pool.</p>
 </div>
       </div>
     </td>
@@ -564,13 +576,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-getCount">getCount</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-dispatch">dispatch</a></span></span><span class="code" data-ice="signature">(event: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&lt;<span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span>|<span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>&gt;)</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>getCount</p>
+        <div data-ice="description"><p>Proxy method for the internal event dispatcher&apos;s dispatchEvent method.</p>
 </div>
       </div>
     </td>
@@ -593,13 +605,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-removeEmitter">removeEmitter</a></span></span><span class="code" data-ice="signature">(emitter: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-getCount">getCount</a></span></span><span class="code" data-ice="signature">(): <span>integer</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Gets a count of the total number of particles in the system.</p>
+</div>
       </div>
     </td>
     <td>
@@ -621,11 +634,40 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-removeRender">removeRender</a></span></span><span class="code" data-ice="signature">(render: <span>Renderer</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-removeEmitter">removeEmitter</a></span></span><span class="code" data-ice="signature">(emitter: <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>): <span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span>
         </p>
       </div>
       <div>
         
+        
+        <div data-ice="description"><p>Removes an emitter from the Proton instance.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-removeRender">removeRender</a></span></span><span class="code" data-ice="signature">(renderer: <span>*</span>)</span>
+        </p>
+      </div>
+      <div>
+        <div class="deprecated" data-ice="deprecated">this method was deprecated. Use removeRenderer</div>
         
         
       </div>
@@ -678,13 +720,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-update">update</a></span></span><span class="code" data-ice="signature">($delta: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-update">update</a></span></span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Updates the particle system based on the delta passed.</p>
+</div>
       </div>
     </td>
     <td>
@@ -709,18 +752,19 @@
     
     
     
-    <span class="code" data-ice="name">integrator</span><span class="code" data-ice="signature">(): <span>*</span></span>
+    <span class="code" data-ice="name">integrator</span><span class="code" data-ice="signature">(): <span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber31">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber75">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Returns a new Integration instance based on the type passed to the constructor.</p>
+</div>
 
   
 
@@ -732,7 +776,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></td>
           
         </tr>
       </tbody>
@@ -767,18 +811,22 @@
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(preParticles: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, integrationType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(preParticles: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, integrationType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber22">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber31">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Constructs a Proton instance.</p>
+<p>TODO the proton instance should have an integrator set as a property.
+It is only required from the emitter class, and therefore can be accessed within
+that class from emitter.parent.integrator</p>
+</div>
 
   
 
@@ -793,15 +841,17 @@
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">preParticles</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>input any number</p>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: POOL_MAX</li></ul></td>
+      <td data-ice="description"><p>The number of particles to start with</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">integrationType</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>input any number</p>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: EULER</li></ul></td>
+      <td data-ice="description"><p>The integration type to use</p>
 </td>
     </tr>
 </tbody>
@@ -809,24 +859,30 @@
 </div>
 </div>
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  <div data-ice="example">
-    <h4>Example:</h4>
-    
-  <div class="example-doc" data-ice="exampleDoc">
-      
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">var proton = new Proton(200);</code></pre>
-    </div>
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
 </div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 
@@ -844,18 +900,19 @@
     
     
     
-    <span class="code" data-ice="name">emitters</span><span class="code" data-ice="signature">: <span><span>*</span><span>[]</span></span></span>
+    <span class="code" data-ice="name">emitters</span><span class="code" data-ice="signature">: <span>array</span>&lt;<span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>&gt;</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber25">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber48">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The emitters in the particle system</p>
+</div>
 
   
 
@@ -887,18 +944,19 @@
     
     
     
-    <span class="code" data-ice="name">eventDispatcher</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">eventDispatcher</span><span class="code" data-ice="signature">: <span><a href="class/src/events/EventDispatcher.js~EventDispatcher.html">EventDispatcher</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber28">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber66">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Internal event dispatcher</p>
+</div>
 
   
 
@@ -934,14 +992,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber24">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber42">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The integration type to use</p>
+</div>
 
   
 
@@ -973,18 +1032,19 @@
     
     
     
-    <span class="code" data-ice="name">pool</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">pool</span><span class="code" data-ice="signature">: <span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber27">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber60">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>A pool used to manage the internal proton cache of objects</p>
+</div>
 
   
 
@@ -1016,18 +1076,19 @@
     
     
     
-    <span class="code" data-ice="name">preParticles</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">preParticles</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber23">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber36">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The number of particles to start with</p>
+</div>
 
   
 
@@ -1059,18 +1120,19 @@
     
     
     
-    <span class="code" data-ice="name">renderers</span><span class="code" data-ice="signature">: <span><span>*</span><span>[]</span></span></span>
+    <span class="code" data-ice="name">renderers</span><span class="code" data-ice="signature">: <span>array</span>&lt;<span>Renderer</span>&gt;</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber26">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber54">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The renderers for the system</p>
+</div>
 
   
 
@@ -1109,14 +1171,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber88">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber142">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>add the Emitter</p>
+  <div data-ice="description"><p>Adds an emitter to the Proton instance.
+Dispatches the EMITTER_ADDED event.</p>
 </div>
 
   
@@ -1133,7 +1196,8 @@
       <td data-ice="name" class="code" data-depth="0">emitter</td>
       <td data-ice="type" class="code"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The emitter to add</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1177,16 +1241,16 @@
     
     
     
-    <span class="code" data-ice="name">addRender</span><span class="code" data-ice="signature">(render: <span>Renderer</span>)</span>
+    <span class="code" data-ice="name">addRender</span><span class="code" data-ice="signature">(renderer: <span>*</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber41">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber92">source</a></span></span>
     </span>
   </h3>
 
   
-  
+  <div class="deprecated" data-ice="deprecated">this method was deprecated. Use addRenderer</div>
   
   
 
@@ -1201,8 +1265,8 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">render</td>
-      <td data-ice="type" class="code"><span>Renderer</span></td>
+      <td data-ice="name" class="code" data-depth="0">renderer</td>
+      <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1240,14 +1304,14 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber52">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber105">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Adds a renderer to the Proton instance.</p>
+  <div data-ice="description"><p>Adds a renderer to the Proton instance and initializes it.</p>
 </div>
 
   
@@ -1264,7 +1328,8 @@
       <td data-ice="name" class="code" data-depth="0">renderer</td>
       <td data-ice="type" class="code"><span>Renderer</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The renderer to add</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1308,23 +1373,105 @@
     
     
     
-    <span class="code" data-ice="name">destroy</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">destroy</span><span class="code" data-ice="signature">(): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber137">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber215">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>destroy</p>
+  <div data-ice="description"><p>Destroys all emitters and the Proton pool.</p>
 </div>
 
   
 
   <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-dispatch">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">dispatch</span><span class="code" data-ice="signature">(event: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&lt;<span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span>|<span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>&gt;)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber85">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Proxy method for the internal event dispatcher&apos;s dispatchEvent method.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">event</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The event to dispatch</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">target</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&lt;<span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span>|<span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>&gt;</td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: this</li></ul></td>
+      <td data-ice="description"><p>The event target</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   
@@ -1352,18 +1499,18 @@
     
     
     
-    <span class="code" data-ice="name">getCount</span><span class="code" data-ice="signature">(): <span>*</span></span>
+    <span class="code" data-ice="name">getCount</span><span class="code" data-ice="signature">(): <span>integer</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber123">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber198">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>getCount</p>
+  <div data-ice="description"><p>Gets a count of the total number of particles in the system.</p>
 </div>
 
   
@@ -1376,9 +1523,8 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>(number) particles count</p>
-</td>
+          <td class="return-type code" data-ice="returnType"><span>integer</span></td>
+          
         </tr>
       </tbody>
     </table>
@@ -1409,18 +1555,20 @@
     
     
     
-    <span class="code" data-ice="name">removeEmitter</span><span class="code" data-ice="signature">(emitter: <span>*</span>)</span>
+    <span class="code" data-ice="name">removeEmitter</span><span class="code" data-ice="signature">(emitter: <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>): <span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber96">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber158">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Removes an emitter from the Proton instance.
+Dispatches the EMITTER_REMOVED event.</p>
+</div>
 
   
 
@@ -1434,16 +1582,29 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">emitter</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The emitter to remove</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1468,16 +1629,16 @@
     
     
     
-    <span class="code" data-ice="name">removeRender</span><span class="code" data-ice="signature">(render: <span>Renderer</span>)</span>
+    <span class="code" data-ice="name">removeRender</span><span class="code" data-ice="signature">(renderer: <span>*</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber65">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber115">source</a></span></span>
     </span>
   </h3>
 
   
-  
+  <div class="deprecated" data-ice="deprecated">this method was deprecated. Use removeRenderer</div>
   
   
 
@@ -1492,8 +1653,8 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">render</td>
-      <td data-ice="type" class="code"><span>Renderer</span></td>
+      <td data-ice="name" class="code" data-depth="0">renderer</td>
+      <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1531,7 +1692,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber76">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber128">source</a></span></span>
     </span>
   </h3>
 
@@ -1599,41 +1760,38 @@
     
     
     
-    <span class="code" data-ice="name">update</span><span class="code" data-ice="signature">($delta: <span>*</span>)</span>
+    <span class="code" data-ice="name">update</span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber104">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber177">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">$delta</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
+  <div data-ice="description"><p>Updates the particle system based on the delta passed.</p>
 </div>
 
   
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
