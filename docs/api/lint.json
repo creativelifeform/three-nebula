@@ -122,84 +122,42 @@
     ]
   },
   {
-    "name": "Proton#addRender",
+    "name": "Proton#update",
     "filePath": "src/core/Proton.js",
     "lines": [
       {
-        "lineNumber": 34,
+        "lineNumber": 170,
         "line": "  /**"
       },
       {
-        "lineNumber": 35,
-        "line": "   * @name add a type of Renderer"
+        "lineNumber": 171,
+        "line": "   * Updates the particle system based on the delta passed."
       },
       {
-        "lineNumber": 36,
+        "lineNumber": 172,
         "line": "   *"
       },
       {
-        "lineNumber": 37,
-        "line": "   * @method addRender"
+        "lineNumber": 173,
+        "line": "   * @param {number}"
       },
       {
-        "lineNumber": 38,
-        "line": "   * @param {Renderer} render"
+        "lineNumber": 174,
+        "line": "   * @return {Promise}"
       },
       {
-        "lineNumber": 39,
+        "lineNumber": 175,
         "line": "   */"
       },
       {
-        "lineNumber": 40,
-        "line": "  addRender(renderer) {"
+        "lineNumber": 176,
+        "line": "  update(delta = DEFAULT_PROTON_DELTA) {"
       }
     ],
     "codeParams": [
-      "renderer"
+      "delta"
     ],
-    "docParams": [
-      "render"
-    ]
-  },
-  {
-    "name": "Proton#removeRender",
-    "filePath": "src/core/Proton.js",
-    "lines": [
-      {
-        "lineNumber": 58,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 59,
-        "line": "   * @name add a type of Renderer"
-      },
-      {
-        "lineNumber": 60,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 61,
-        "line": "   * @method addRender"
-      },
-      {
-        "lineNumber": 62,
-        "line": "   * @param {Renderer} render"
-      },
-      {
-        "lineNumber": 63,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 64,
-        "line": "  removeRender(renderer) {"
-      }
-    ],
-    "codeParams": [
-      "renderer"
-    ],
-    "docParams": [
-      "render"
-    ]
+    "docParams": []
   },
   {
     "name": "log",

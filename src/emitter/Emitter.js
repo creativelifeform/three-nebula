@@ -44,7 +44,7 @@ export default class Emitter extends Particle {
      * @property id
      * @type {String} id
      */
-    this.id = `emitter_${uid()}`;
+    this.id = `emitter-${uid()}`;
     this.cID = 0;
     this.name = 'Emitter';
     this.eventDispatcher = new EventDispatcher();
