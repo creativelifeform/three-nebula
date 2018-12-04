@@ -70,7 +70,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VERLET">VERLET</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_AGE">DEFAULT_AGE</a></span></span></li>
@@ -152,14 +151,16 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export default {
   _id: 0,
   _uids: {},
-  id: function(obj) {
-    for (var id in this._uids) {
-      if (this._uids[id] == obj) return id;
+  id: function(functionOrObject) {
+    for (let id in this._uids) {
+      if (this._uids[id] == functionOrObject) {
+        return id;
+      }
     }
 
-    var nid = &apos;PUID_&apos; + this._id++;
+    const nid = &apos;PUID_&apos; + this._id++;
 
-    this._uids[nid] = obj;
+    this._uids[nid] = functionOrObject;
 
     return nid;
   },

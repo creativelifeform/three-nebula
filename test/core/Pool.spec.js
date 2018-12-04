@@ -4,6 +4,7 @@ import * as Proton from '../../src';
 
 import { Object3D } from 'three';
 import chai from 'chai';
+import sinon from 'sinon';
 
 const { assert } = chai;
 const { Pool } = Proton;
@@ -54,10 +55,65 @@ describe('core -> Pool', () => {
   it('should store the object in the mapped list', done => {
     const pool = new Pool();
     const particle = pool.get(Proton.Particle);
+    const poolId = particle.__puid;
 
     pool.expire(particle);
 
-    console.log(pool.list);
+    assert.isArray(pool.list[poolId]);
+    assert.equal(poolId, pool.list[poolId][0].__puid);
+
+    done();
+  });
+
+  it('should get the object out of the pool if it was previously expired', done => {
+    const pool = new Pool();
+    const particle = pool.get(Proton.Particle);
+    const createSpy = sinon.spy(pool, 'create');
+
+    pool.expire(particle);
+
+    const retrieved = pool.get(particle);
+
+    assert(createSpy.notCalled);
+    assert.equal(particle, retrieved);
+
+    createSpy.restore();
+    done();
+  });
+
+  it('should get the count of objects in the pool', done => {
+    const pool = new Pool();
+    const count = 123;
+    const particles = [];
+
+    for (let i = 0; i < count; i++) {
+      particles.push(pool.get(Proton.Particle));
+    }
+
+    particles.forEach(particle => pool.expire(particle));
+
+    assert.equal(count, pool.getCount());
+
+    done();
+  });
+
+  it('should destroy all pools', done => {
+    const pool = new Pool();
+    const count = 5;
+    const particles = [];
+
+    for (let i = 0; i < count; i++) {
+      const particle = pool.get(Proton.Particle);
+
+      pool.get(new Object3D());
+      particles.push(particle);
+    }
+
+    particles.forEach(particle => pool.expire(particle));
+
+    pool.destroy();
+
+    assert.isEmpty(pool.list);
 
     done();
   });
