@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/utils/PUID.js | @rohandeshpande/three-proton</title>
+  <title data-ice="title">src/core/Pool2.js | @rohandeshpande/three-proton</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -70,6 +70,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VERLET">VERLET</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_AGE">DEFAULT_AGE</a></span></span></li>
@@ -147,32 +148,113 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/utils/PUID.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export default {
-  _id: 0,
-  _uids: {},
-  id: function(functionOrObject) {
-    for (let id in this._uids) {
-      if (this._uids[id] == functionOrObject) {
-        return id;
-      }
-    }
+<div class="content" data-ice="content"><h1 data-ice="title">src/core/Pool2.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import PUID from &apos;../utils/PUID&apos;;
 
-    const nid = &apos;PUID_&apos; + this._id++;
-
-    this._uids[nid] = functionOrObject;
-
-    return nid;
-  },
+export default class Pool {
+  constructor() {
+    this.cID = 0;
+    this.list = {};
+  }
 
   /**
-   * @deprecated
+   * Attempts to create a new object either by creating a new instance or calling its
+   * clone method.
+   *
+   * NOTE If unable to create an object this method will simply return undefined
+   * it should possibly throw an error in this case.
+   *
+   * @param {object} o - The object to create
+   * @return {object|undefined}
    */
-  // eslint-disable-next-line
-  hash: function(str) {
-    return;
+  create(o) {
+    if (!this.canCreateNewObject(o)) {
+      // TODO throw an error here
+      return;
+    }
+
+    this.cID++;
+
+    if (this.canInstantiateObject(o)) {
+      return new o();
+    }
+
+    if (this.canCloneObject(o)) {
+      return o.clone();
+    }
   }
-};
+
+  /**
+   * Determines if the object is able to be instantiated or not.
+   *
+   * @param {object} object - The object to check
+   * @return {boolean}
+   */
+  canInstantiateObject(object) {
+    return typeof object === &apos;function&apos;;
+  }
+
+  /**
+   * Determines if the object is able to be cloned or not.
+   *
+   * @param {object} object - The object to check
+   * @return {boolean}
+   */
+  canCloneObject(object) {
+    return object.clone &amp;&amp; typeof object.clone === &apos;function&apos;;
+  }
+
+  /**
+   * Determines if a new object is able to be created.
+   *
+   * @param {object} object - The object to check
+   * @return {boolean}
+   */
+  canCreateNewObject(object) {
+    return this.canInstantiateObject(object) || this.canCloneObject(object)
+      ? true
+      : false;
+  }
+
+  getCount() {
+    var count = 0;
+
+    for (var id in this.list) count += this.list[id].length;
+
+    return count++;
+  }
+
+  get(obj) {
+    var p,
+      puid = obj.__puid || PUID.id(obj);
+
+    if (this.list[puid] &amp;&amp; this.list[puid].length &gt; 0)
+      p = this.list[puid].pop();
+    else p = this.create(obj);
+
+    p.__puid = obj.__puid || puid;
+
+    return p;
+  }
+
+  expire(obj) {
+    return this._getList(obj.__puid).push(obj);
+  }
+
+  destroy() {
+    for (var id in this.list) {
+      this.list[id].length = 0;
+      delete this.list[id];
+    }
+  }
+
+  _getList(uid) {
+    uid = uid || &apos;default&apos;;
+    if (!this.list[uid]) this.list[uid] = [];
+
+    return this.list[uid];
+  }
+}
 </code></pre>
 
 </div>

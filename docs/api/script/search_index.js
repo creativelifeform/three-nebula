@@ -1015,13 +1015,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -1525,13 +1525,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
@@ -1882,6 +1882,24 @@ window.esdocSearchIndex = [
     "class/src/core/Pool.js~Pool.html#instance-member-cID",
     "src/core/Pool.js~Pool#cID",
     "member"
+  ],
+  [
+    "src/core/pool.js~pool#cancloneobject",
+    "class/src/core/Pool.js~Pool.html#instance-method-canCloneObject",
+    "src/core/Pool.js~Pool#canCloneObject",
+    "method"
+  ],
+  [
+    "src/core/pool.js~pool#cancreatenewobject",
+    "class/src/core/Pool.js~Pool.html#instance-method-canCreateNewObject",
+    "src/core/Pool.js~Pool#canCreateNewObject",
+    "method"
+  ],
+  [
+    "src/core/pool.js~pool#caninstantiateobject",
+    "class/src/core/Pool.js~Pool.html#instance-method-canInstantiateObject",
+    "src/core/Pool.js~Pool#canInstantiateObject",
+    "method"
   ],
   [
     "src/core/pool.js~pool#constructor",

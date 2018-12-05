@@ -70,6 +70,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VERLET">VERLET</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_AGE">DEFAULT_AGE</a></span></span></li>
@@ -148,13 +149,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Pool from &apos;<span><a href="file/src/core/Pool.js.html#lineNumber8">@rohandeshpande/three-proton/src/core/Pool.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Pool from &apos;<span><a href="file/src/core/Pool2.js.html#lineNumber3">@rohandeshpande/three-proton/src/core/Pool2.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/core/Pool.js.html#lineNumber8">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/core/Pool2.js.html#lineNumber3">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -174,9 +175,7 @@
 
   
   
-  <div class="description" data-ice="description"><p>An object pool implementation. Used for pooling objects to avoid unnecessary
-garbage collection.</p>
-</div>
+  
   
 
   
@@ -208,14 +207,13 @@ garbage collection.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Constructs a Pool instance.</p>
-</div>
+        
       </div>
     </td>
     <td>
@@ -244,14 +242,13 @@ garbage collection.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html#instance-member-cID">cID</a></span></span><span class="code" data-ice="signature">: <span>integer</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html#instance-member-cID">cID</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Incrementing id that keeps a count of the number of objects created</p>
-</div>
+        
       </div>
     </td>
     <td>
@@ -273,14 +270,13 @@ garbage collection.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html#instance-member-list">list</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html#instance-member-list">list</a></span></span><span class="code" data-ice="signature">: {}</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Map of pools in the format of PUID&lt;String&gt;: pool&lt;Array&gt;</p>
-</div>
+        
       </div>
     </td>
     <td>
@@ -309,7 +305,7 @@ garbage collection.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html#instance-method-canCloneObject">canCloneObject</a></span></span><span class="code" data-ice="signature">(object: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html#instance-method-canCloneObject">canCloneObject</a></span></span><span class="code" data-ice="signature">(object: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
@@ -338,7 +334,7 @@ garbage collection.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html#instance-method-canCreateNewObject">canCreateNewObject</a></span></span><span class="code" data-ice="signature">(object: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html#instance-method-canCreateNewObject">canCreateNewObject</a></span></span><span class="code" data-ice="signature">(object: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
@@ -367,7 +363,7 @@ garbage collection.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html#instance-method-canInstantiateObject">canInstantiateObject</a></span></span><span class="code" data-ice="signature">(object: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html#instance-method-canInstantiateObject">canInstantiateObject</a></span></span><span class="code" data-ice="signature">(object: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
@@ -396,7 +392,7 @@ garbage collection.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html#instance-method-create">create</a></span></span><span class="code" data-ice="signature">(functionOrObject: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html#instance-method-create">create</a></span></span><span class="code" data-ice="signature">(o: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
         </p>
       </div>
       <div>
@@ -426,14 +422,13 @@ clone method.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html#instance-method-destroy">destroy</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html#instance-method-destroy">destroy</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Destroys all pools.</p>
-</div>
+        
       </div>
     </td>
     <td>
@@ -455,14 +450,13 @@ clone method.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html#instance-method-expire">expire</a></span></span><span class="code" data-ice="signature">(obj: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>integer</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html#instance-method-expire">expire</a></span></span><span class="code" data-ice="signature">(obj: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Pushes an object into the pool.</p>
-</div>
+        
       </div>
     </td>
     <td>
@@ -484,14 +478,13 @@ clone method.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html#instance-method-get">get</a></span></span><span class="code" data-ice="signature">(obj: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html#instance-method-get">get</a></span></span><span class="code" data-ice="signature">(obj: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Gets an object either by creating a new one or retrieving it from the pool.</p>
-</div>
+        
       </div>
     </td>
     <td>
@@ -513,14 +506,13 @@ clone method.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html#instance-method-getCount">getCount</a></span></span><span class="code" data-ice="signature">(): <span>integer</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html#instance-method-getCount">getCount</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Gets a count of all objects in the pool.</p>
-</div>
+        
       </div>
     </td>
     <td>
@@ -548,14 +540,13 @@ clone method.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html#instance-method-_getList">_getList</a></span></span><span class="code" data-ice="signature">(uid: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>array</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Pool2.js~Pool.html#instance-method-_getList">_getList</a></span></span><span class="code" data-ice="signature">(uid: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Gets the pool mapped to the UID.</p>
-</div>
+        
       </div>
     </td>
     <td>
@@ -581,39 +572,25 @@ clone method.</p>
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(): <span>*</span></span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">()</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Pool.js.html#lineNumber14">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Pool2.js.html#lineNumber4">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Constructs a Pool instance.</p>
-</div>
+  
 
   
 
   <div data-ice="properties">
 </div>
 
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>void</p>
-</td>
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
+  
 
   
 
@@ -641,19 +618,18 @@ clone method.</p>
     
     
     
-    <span class="code" data-ice="name">cID</span><span class="code" data-ice="signature">: <span>integer</span></span>
+    <span class="code" data-ice="name">cID</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Pool.js.html#lineNumber19">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Pool2.js.html#lineNumber5">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Incrementing id that keeps a count of the number of objects created</p>
-</div>
+  
 
   
 
@@ -685,19 +661,18 @@ clone method.</p>
     
     
     
-    <span class="code" data-ice="name">list</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
+    <span class="code" data-ice="name">list</span><span class="code" data-ice="signature">: {}</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Pool.js.html#lineNumber25">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Pool2.js.html#lineNumber6">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Map of pools in the format of PUID&lt;String&gt;: pool&lt;Array&gt;</p>
-</div>
+  
 
   
 
@@ -736,7 +711,7 @@ clone method.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Pool.js.html#lineNumber71">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Pool2.js.html#lineNumber52">source</a></span></span>
     </span>
   </h3>
 
@@ -809,7 +784,7 @@ clone method.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Pool.js.html#lineNumber81">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Pool2.js.html#lineNumber62">source</a></span></span>
     </span>
   </h3>
 
@@ -882,7 +857,7 @@ clone method.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Pool.js.html#lineNumber61">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Pool2.js.html#lineNumber42">source</a></span></span>
     </span>
   </h3>
 
@@ -951,11 +926,11 @@ clone method.</p>
     
     
     
-    <span class="code" data-ice="name">create</span><span class="code" data-ice="signature">(functionOrObject: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
+    <span class="code" data-ice="name">create</span><span class="code" data-ice="signature">(o: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Pool.js.html#lineNumber38">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Pool2.js.html#lineNumber19">source</a></span></span>
     </span>
   </h3>
 
@@ -979,10 +954,10 @@ it should possibly throw an error in this case.</p>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">functionOrObject</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">o</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The object to instantiate or clone</p>
+      <td data-ice="description"><p>The object to create</p>
 </td>
     </tr>
 </tbody>
@@ -1027,39 +1002,25 @@ it should possibly throw an error in this case.</p>
     
     
     
-    <span class="code" data-ice="name">destroy</span><span class="code" data-ice="signature">(): <span>*</span></span>
+    <span class="code" data-ice="name">destroy</span><span class="code" data-ice="signature">()</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Pool.js.html#lineNumber134">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Pool2.js.html#lineNumber93">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Destroys all pools.</p>
-</div>
+  
 
   
 
   <div data-ice="properties">
 </div>
 
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>void</p>
-</td>
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
+  
 
   
 
@@ -1084,19 +1045,18 @@ it should possibly throw an error in this case.</p>
     
     
     
-    <span class="code" data-ice="name">expire</span><span class="code" data-ice="signature">(obj: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>integer</span></span>
+    <span class="code" data-ice="name">expire</span><span class="code" data-ice="signature">(obj: <span>*</span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Pool.js.html#lineNumber125">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Pool2.js.html#lineNumber89">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Pushes an object into the pool.</p>
-</div>
+  
 
   
 
@@ -1110,10 +1070,9 @@ it should possibly throw an error in this case.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">obj</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The object to expire</p>
-</td>
+      <td data-ice="description"></td>
     </tr>
 </tbody>
   </table>
@@ -1125,7 +1084,7 @@ it should possibly throw an error in this case.</p>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>integer</span></td>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
           
         </tr>
       </tbody>
@@ -1157,19 +1116,18 @@ it should possibly throw an error in this case.</p>
     
     
     
-    <span class="code" data-ice="name">get</span><span class="code" data-ice="signature">(obj: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
+    <span class="code" data-ice="name">get</span><span class="code" data-ice="signature">(obj: <span>*</span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Pool.js.html#lineNumber106">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Pool2.js.html#lineNumber76">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Gets an object either by creating a new one or retrieving it from the pool.</p>
-</div>
+  
 
   
 
@@ -1183,10 +1141,9 @@ it should possibly throw an error in this case.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">obj</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The function or object to get</p>
-</td>
+      <td data-ice="description"></td>
     </tr>
 </tbody>
   </table>
@@ -1198,7 +1155,7 @@ it should possibly throw an error in this case.</p>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
           
         </tr>
       </tbody>
@@ -1230,19 +1187,18 @@ it should possibly throw an error in this case.</p>
     
     
     
-    <span class="code" data-ice="name">getCount</span><span class="code" data-ice="signature">(): <span>integer</span></span>
+    <span class="code" data-ice="name">getCount</span><span class="code" data-ice="signature">(): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Pool.js.html#lineNumber92">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Pool2.js.html#lineNumber68">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Gets a count of all objects in the pool.</p>
-</div>
+  
 
   
 
@@ -1254,7 +1210,7 @@ it should possibly throw an error in this case.</p>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>integer</span></td>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
           
         </tr>
       </tbody>
@@ -1288,19 +1244,18 @@ it should possibly throw an error in this case.</p>
     
     
     
-    <span class="code" data-ice="name">_getList</span><span class="code" data-ice="signature">(uid: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>array</span></span>
+    <span class="code" data-ice="name">_getList</span><span class="code" data-ice="signature">(uid: <span>*</span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Pool.js.html#lineNumber147">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Pool2.js.html#lineNumber100">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Gets the pool mapped to the UID.</p>
-</div>
+  
 
   
 
@@ -1314,10 +1269,9 @@ it should possibly throw an error in this case.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">uid</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The pool uid</p>
-</td>
+      <td data-ice="description"></td>
     </tr>
 </tbody>
   </table>
@@ -1329,7 +1283,7 @@ it should possibly throw an error in this case.</p>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span>array</span></td>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
           
         </tr>
       </tbody>

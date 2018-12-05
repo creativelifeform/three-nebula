@@ -1,14 +1,16 @@
 export default {
   _id: 0,
   _uids: {},
-  id: function(obj) {
-    for (var id in this._uids) {
-      if (this._uids[id] == obj) return id;
+  id: function(functionOrObject) {
+    for (let id in this._uids) {
+      if (this._uids[id] == functionOrObject) {
+        return id;
+      }
     }
 
-    var nid = 'PUID_' + this._id++;
+    const nid = 'PUID_' + this._id++;
 
-    this._uids[nid] = obj;
+    this._uids[nid] = functionOrObject;
 
     return nid;
   },

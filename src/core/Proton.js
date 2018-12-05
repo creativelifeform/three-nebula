@@ -171,18 +171,28 @@ export default class Proton {
   /**
    * Updates the particle system based on the delta passed.
    *
+   * @example
+   * animate = timestamp => {
+   *   threeRenderer.render(threeScene, threeCamera);
+   *   proton.update();
+   *   requestAnimationFrame(animate);
+   * }
+   * animate();
+   *
    * @param {number}
    * @return {Promise}
    */
   update(delta = DEFAULT_PROTON_DELTA) {
-    this.dispatch(PROTON_UPDATE);
-
     const d = delta || DEFAULT_PROTON_DELTA;
 
-    if (d > 0) {
-      var i = this.emitters.length;
+    this.dispatch(PROTON_UPDATE);
 
-      while (i--) this.emitters[i].update(d);
+    if (d > 0) {
+      let i = this.emitters.length;
+
+      while (i--) {
+        this.emitters[i].update(d);
+      }
     }
 
     this.dispatch(PROTON_UPDATE_AFTER);
@@ -196,8 +206,8 @@ export default class Proton {
    * @return {integer}
    */
   getCount() {
+    const length = this.emitters.length;
     let total = 0;
-    let length = this.emitters.length;
     let i;
 
     for (i = 0; i < length; i++) {
@@ -213,8 +223,8 @@ export default class Proton {
    * @return void
    */
   destroy() {
-    var i = 0,
-      length = this.emitters.length;
+    const length = this.emitters.length;
+    let i = 0;
 
     for (i; i < length; i++) {
       this.emitters[i].destroy();
