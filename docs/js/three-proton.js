@@ -50064,14 +50064,16 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
   _id: 0,
   _uids: {},
-  id: function id(obj) {
+  id: function id(functionOrObject) {
     for (var id in this._uids) {
-      if (this._uids[id] == obj) return id;
+      if (this._uids[id] == functionOrObject) {
+        return id;
+      }
     }
 
     var nid = 'PUID_' + this._id++;
 
-    this._uids[nid] = obj;
+    this._uids[nid] = functionOrObject;
 
     return nid;
   },
@@ -50911,21 +50913,109 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**
+ * An object pool implementation. Used for pooling objects to avoid unnecessary
+ * garbage collection.
+ *
+ */
 var Pool = function () {
+  /**
+   * Constructs a Pool instance.
+   *
+   * @return void
+   */
   function Pool() {
     _classCallCheck(this, Pool);
 
+    /**
+     * @desc Incrementing id that keeps a count of the number of objects created
+     * @type {integer}
+     */
     this.cID = 0;
+
+    /**
+     * @desc Map of pools in the format of PUID<String>: pool<Array>
+     * @type {object}
+     */
     this.list = {};
   }
 
+  /**
+   * Attempts to create a new object either by creating a new instance or calling its
+   * clone method.
+   *
+   * NOTE If unable to create an object this method will simply return undefined
+   * it should possibly throw an error in this case.
+   *
+   * @param {function|object} functionOrObject - The object to instantiate or clone
+   * @return {object|undefined}
+   */
+
+
   _createClass(Pool, [{
     key: 'create',
-    value: function create(obj) {
+    value: function create(functionOrObject) {
+      if (!this.canCreateNewObject(functionOrObject)) {
+        // TODO throw an error here
+        return;
+      }
+
       this.cID++;
 
-      if (typeof obj == 'function') return new obj();else return obj.clone();
+      if (this.canInstantiateObject(functionOrObject)) {
+        return new functionOrObject();
+      }
+
+      if (this.canCloneObject(functionOrObject)) {
+        return functionOrObject.clone();
+      }
     }
+
+    /**
+     * Determines if the object is able to be instantiated or not.
+     *
+     * @param {object} object - The object to check
+     * @return {boolean}
+     */
+
+  }, {
+    key: 'canInstantiateObject',
+    value: function canInstantiateObject(object) {
+      return typeof object === 'function';
+    }
+
+    /**
+     * Determines if the object is able to be cloned or not.
+     *
+     * @param {object} object - The object to check
+     * @return {boolean}
+     */
+
+  }, {
+    key: 'canCloneObject',
+    value: function canCloneObject(object) {
+      return object.clone && typeof object.clone === 'function';
+    }
+
+    /**
+     * Determines if a new object is able to be created.
+     *
+     * @param {object} object - The object to check
+     * @return {boolean}
+     */
+
+  }, {
+    key: 'canCreateNewObject',
+    value: function canCreateNewObject(object) {
+      return this.canInstantiateObject(object) || this.canCloneObject(object) ? true : false;
+    }
+
+    /**
+     * Gets a count of all objects in the pool.
+     *
+     * @return {integer}
+     */
+
   }, {
     key: 'getCount',
     value: function getCount() {
@@ -50935,6 +51025,14 @@ var Pool = function () {
         count += this.list[id].length;
       }return count++;
     }
+
+    /**
+     * Gets an object either by creating a new one or retrieving it from the pool.
+     *
+     * @param {function|object} obj - The function or object to get
+     * @return {object}
+     */
+
   }, {
     key: 'get',
     value: function get(obj) {
@@ -50947,11 +51045,26 @@ var Pool = function () {
 
       return p;
     }
+
+    /**
+     * Pushes an object into the pool.
+     *
+     * @param {object} obj - The object to expire
+     * @return {integer}
+     */
+
   }, {
     key: 'expire',
     value: function expire(obj) {
       return this._getList(obj.__puid).push(obj);
     }
+
+    /**
+     * Destroys all pools.
+     *
+     * @return void
+     */
+
   }, {
     key: 'destroy',
     value: function destroy() {
@@ -50960,6 +51073,14 @@ var Pool = function () {
         delete this.list[id];
       }
     }
+
+    /**
+     * Gets the pool mapped to the UID.
+     *
+     * @param {string} uid - The pool uid
+     * @return {array}
+     */
+
   }, {
     key: '_getList',
     value: function _getList(uid) {
@@ -51198,6 +51319,14 @@ var Proton = function () {
     /**
      * Updates the particle system based on the delta passed.
      *
+     * @example
+     * animate = timestamp => {
+     *   threeRenderer.render(threeScene, threeCamera);
+     *   proton.update();
+     *   requestAnimationFrame(animate);
+     * }
+     * animate();
+     *
      * @param {number}
      * @return {Promise}
      */
@@ -51207,9 +51336,9 @@ var Proton = function () {
     value: function update() {
       var delta = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants2.DEFAULT_PROTON_DELTA;
 
-      this.dispatch(_events.PROTON_UPDATE);
-
       var d = delta || _constants2.DEFAULT_PROTON_DELTA;
+
+      this.dispatch(_events.PROTON_UPDATE);
 
       if (d > 0) {
         var i = this.emitters.length;
@@ -51233,8 +51362,8 @@ var Proton = function () {
   }, {
     key: 'getCount',
     value: function getCount() {
-      var total = 0;
       var length = this.emitters.length;
+      var total = 0;
       var i = void 0;
 
       for (i = 0; i < length; i++) {
@@ -51253,8 +51382,8 @@ var Proton = function () {
   }, {
     key: 'destroy',
     value: function destroy() {
-      var i = 0,
-          length = this.emitters.length;
+      var length = this.emitters.length;
+      var i = 0;
 
       for (i; i < length; i++) {
         this.emitters[i].destroy();
