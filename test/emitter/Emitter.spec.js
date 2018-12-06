@@ -7,11 +7,12 @@ import {
   DEFAULT_DAMPING,
   DEFAULT_EMITTER_RATE
 } from '../../src/emitter/constants';
+import EventDispatcher, { PARTICLE_CREATED } from '../../src/events/';
 
-import EventDispatcher from '../../src/events/EventDispatcher';
 import chai from 'chai';
 import sinon from 'sinon';
 
+const { spy } = sinon;
 const { assert } = chai;
 const { Emitter } = Proton;
 
@@ -46,6 +47,122 @@ describe('emitter -> Emitter', () => {
     assert.isString(id);
     assert.instanceOf(eventDispatcher, EventDispatcher);
 
+    done();
+  });
+
+  it('should set the emitter rate and return the emitter', done => {
+    const emitter = new Emitter();
+    const rate = new Proton.Rate(1, 2);
+
+    assert.instanceOf(emitter.setRate(rate), Emitter);
+
+    const { numPan, timePan } = emitter.rate;
+
+    assert.equal(numPan.a, 1);
+    assert.equal(numPan.b, 1);
+    assert.equal(timePan.a, 2);
+    assert.equal(timePan.b, 2);
+
+    done();
+  });
+
+  it('should set the emitter postion and return the emitter', done => {
+    const emitter = new Emitter();
+    const position = { x: 4, y: 2, z: 9 };
+
+    assert.instanceOf(emitter.setPosition(position), Emitter);
+
+    const { p } = emitter;
+    const { x, y, z } = position;
+
+    assert.deepEqual(Object.values(p), [x, y, z]);
+
+    done();
+  });
+
+  it('should set the the totalEmitTimes and life and call the rate init method', done => {
+    const emitter = new Emitter();
+    const rateInitSpy = spy(emitter.rate, 'init');
+
+    emitter.emit(5, 11);
+
+    const { currentEmitTime, totalEmitTimes, life } = emitter;
+
+    assert.equal(currentEmitTime, 0);
+    assert.equal(totalEmitTimes, 5);
+    assert.equal(life, 11);
+
+    assert(rateInitSpy.calledOnce);
+
+    rateInitSpy.restore();
+
+    done();
+  });
+
+  it('should set the correct properties to stop particles emitting', done => {
+    const emitter = new Emitter();
+
+    emitter.emit(5, 11).stopEmit();
+
+    assert.equal(emitter.currentEmitTime, 0);
+    assert.equal(emitter.totalEmitTimes, -1);
+
+    done();
+  });
+
+  it('should kill all of the emitter\'s particles', done => {
+    const emitter = new Emitter();
+
+    for (let i = 0; i < 500; i++) {
+      emitter.particles.push(new Proton.Particle());
+    }
+
+    emitter.removeAllParticles();
+    emitter.particles.forEach(particle => assert.isTrue(particle.dead));
+
+    done();
+  });
+
+  it('should get a particle from the pool, call the setupParticle method, dispatch events and return the particle', done => {
+    const proton = new Proton.Proton();
+    const emitter = new Emitter();
+    const initializer = new Proton.Mass();
+    const behaviour = new Proton.Attraction();
+    const setupParticleSpy = spy(emitter, 'setupParticle');
+    const protonDispatchSpy = spy(proton, 'dispatch');
+    const emitterDispatchSpy = spy(emitter, 'dispatch');
+    const spies = [setupParticleSpy, protonDispatchSpy, emitterDispatchSpy];
+
+    proton.addEmitter(emitter);
+
+    const particle = emitter.createParticle(initializer, behaviour);
+
+    assert.instanceOf(particle, Proton.Particle);
+    assert(setupParticleSpy.calledOnceWith(particle, initializer, behaviour));
+    assert(protonDispatchSpy.secondCall.calledWith(PARTICLE_CREATED, particle));
+    assert(emitterDispatchSpy.notCalled);
+
+    spies.forEach(spy => spy.restore());
+    done();
+  });
+
+  it('should call the emitter\'s dispatch when creating a particle with bindEmitterEvent set to true', done => {
+    const proton = new Proton.Proton();
+    const emitter = new Emitter();
+    const emitterDispatchSpy = spy(emitter, 'dispatch');
+    const spies = [emitterDispatchSpy];
+
+    proton.addEmitter(emitter);
+    emitter.bindEmitterEvent = true;
+
+    const particle = emitter.createParticle(
+      new Proton.Mass(),
+      new Proton.Attraction()
+    );
+
+    assert(emitterDispatchSpy.calledOnceWith(PARTICLE_CREATED, particle));
+
+    spies.forEach(spy => spy.restore());
     done();
   });
 });

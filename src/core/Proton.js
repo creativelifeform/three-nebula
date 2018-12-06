@@ -80,7 +80,7 @@ export default class Proton {
    * Proxy method for the internal event dispatcher's dispatchEvent method.
    *
    * @param {string} event - The event to dispatch
-   * @param {object<Proton|Emitter>} [target=this] - The event target
+   * @param {object<Proton|Emitter|Particle>} [target=this] - The event target
    */
   dispatch(event, target = this) {
     this.eventDispatcher.dispatchEvent(event, target);
