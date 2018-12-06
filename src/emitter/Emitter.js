@@ -1,52 +1,94 @@
-import { InitializerUtil, Rate } from '../initializer';
+import {
+  DEFAULT_BIND_EMITTER,
+  DEFAULT_DAMPING,
+  DEFAULT_EMITTER_RATE
+} from './constants';
 
 import { BIND_EMITTER_EVENT } from '../constants';
 import EventDispatcher from '../events/EventDispatcher';
+import { InitializerUtil } from '../initializer';
 import Particle from '../core/Particle';
 import Util from '../utils/Util';
 import { integrator } from '../core/Proton';
 import uid from '../utils/uid';
 
+/**
+ * Emitters are the Proton engine's particle factories. They cause particles to
+ * be rendered by emitting them, and store all particle initializers and behaviours.
+ *
+ */
 export default class Emitter extends Particle {
-  constructor(pObj) {
-    super(pObj);
+  /**
+   * Constructs an Emitter instance.
+   *
+   * @param {object} properties - The properties to instantiate the particle with
+   * @return void
+   */
+  constructor(properties) {
+    super(properties);
 
-    this.initializes = [];
+    /**
+     * @desc The particles emitted by this emitter.
+     * @type {array}
+     */
     this.particles = [];
+
+    /**
+     * @desc The initializers for particles emitted by this emitter.
+     * @type {array}
+     */
+    this.initializers = [];
+
+    /**
+     * @desc The behaviours for particles emitted by this emitter.
+     * @type {array}
+     */
     this.behaviours = [];
+
+    /**
+     * @desc The current emit iteration.
+     * @type {integer}
+     */
     this.currentEmitTime = 0;
+
+    /**
+     * @desc The total number of times the emitter has emitted particles.
+     * @type {integer}
+     */
     this.totalEmitTimes = -1;
 
     /**
-     * @property {Number} damping -The friction coefficient for all particle emit by This;
-     * @default 0.006
+     * @desc The friction coefficient for all particle to emit by.
+     * @type {number}
      */
-    this.damping = 0.006;
+    this.damping = DEFAULT_DAMPING;
 
     /**
-     * If bindEmitter the particles can bind this emitter's property;
-     * @property bindEmitter
-     * @type {Boolean}
-     * @default true
+     *
+     * @desc Ensures that particles emitted by this emitter are positioned
+     * according to the emitter's properties.
+     * @type {boolean}
      */
-    this.bindEmitter = true;
+    this.bindEmitter = DEFAULT_BIND_EMITTER;
 
     /**
-     * The number of particles per second emit (a [particle]/b [s]);
-     * @property rate
+     * @desc The number of particles to emit per second (a [particle]/b [s])
      * @type {Rate}
-     * @default Rate(1, .1)
      */
-    this.rate = new Rate(1, 0.1);
+    this.rate = DEFAULT_EMITTER_RATE;
 
     /**
-     * The emitter's id;
-     * @property id
-     * @type {String} id
+     * @desc The emitter's id.
+     * @type {string}
      */
     this.id = `emitter-${uid()}`;
     this.cID = 0;
     this.name = 'Emitter';
+
+    /**
+     * @desc The emitter's internal event dispatcher.
+     * @type {EventDispatcher}
+     */
     this.eventDispatcher = new EventDispatcher();
   }
 
@@ -149,14 +191,14 @@ export default class Emitter extends Particle {
   /**
    * add the Initialize to particles;
    *
-   * you can use initializes array:for example emitter.addInitialize(initialize1,initialize2,initialize3);
+   * you can use initializers array:for example emitter.addInitialize(initialize1,initialize2,initialize3);
    * @method addInitialize
    * @param {Initialize} initialize like this new Radius(1, 12)
    */
   addInitialize() {
     var i = arguments.length;
 
-    while (i--) this.initializes.push(arguments[i]);
+    while (i--) this.initializers.push(arguments[i]);
   }
 
   /**
@@ -170,7 +212,7 @@ export default class Emitter extends Particle {
     let i = properties.length;
 
     while (i--) {
-      this.initializes.push(properties[i]);
+      this.initializers.push(properties[i]);
     }
 
     return this;
@@ -182,9 +224,9 @@ export default class Emitter extends Particle {
    * @param {Initialize} initialize a initialize
    */
   removeInitialize(initializer) {
-    var index = this.initializes.indexOf(initializer);
+    var index = this.initializers.indexOf(initializer);
 
-    if (index > -1) this.initializes.splice(index, 1);
+    if (index > -1) this.initializers.splice(index, 1);
   }
 
   /**
@@ -192,7 +234,7 @@ export default class Emitter extends Particle {
    * @method removeInitializers
    */
   removeInitializers() {
-    Util.destroyArray(this.initializes);
+    Util.destroyArray(this.initializers);
   }
   /**
    * add the Behaviour to particles;
@@ -305,12 +347,12 @@ export default class Emitter extends Particle {
   }
 
   setupParticle(particle, initialize, behaviour) {
-    var initializes = this.initializes;
+    var initializers = this.initializers;
     var behaviours = this.behaviours;
 
     if (initialize) {
-      if (Util.isArray(initialize)) initializes = initialize;
-      else initializes = [initialize];
+      if (Util.isArray(initialize)) initializers = initialize;
+      else initializers = [initialize];
     }
 
     if (behaviour) {
@@ -318,7 +360,7 @@ export default class Emitter extends Particle {
       else behaviours = [behaviour];
     }
 
-    InitializerUtil.initialize(this, particle, initializes);
+    InitializerUtil.initialize(this, particle, initializers);
     particle.addBehaviours(behaviours);
     particle.parent = this;
     this.particles.push(particle);
