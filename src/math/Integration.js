@@ -9,8 +9,8 @@ export default class Integration {
     this.type = Util.initValue(type, EULER);
   }
 
-  integrate(particles, time, damping) {
-    this.euler(particles, time, damping);
+  integrate(particle, time, damping) {
+    this.euler(particle, time, damping);
   }
 
   euler(particle, time, damping) {

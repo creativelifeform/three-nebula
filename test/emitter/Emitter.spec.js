@@ -165,4 +165,117 @@ describe('emitter -> Emitter', () => {
     spies.forEach(spy => spy.restore());
     done();
   });
+
+  it('should add an initializer to the emitter', done => {
+    const emitter = new Emitter();
+    const mass = new Proton.Mass();
+
+    assert.instanceOf(emitter.addInitializer(mass), Emitter);
+    assert.notEmpty(emitter.initializers);
+    assert.instanceOf(emitter.initializers[0], Proton.Mass);
+
+    done();
+  });
+
+  it('should add all the initializers passed', done => {
+    const emitter = new Emitter();
+    const mass = new Proton.Mass();
+    const life = new Proton.Life();
+    const radius = new Proton.Radius();
+    const initializers = [mass, life, radius];
+
+    assert.instanceOf(emitter.addInitializers(initializers), Emitter);
+    assert.lengthOf(emitter.initializers, initializers.length);
+    assert.instanceOf(emitter.initializers[0], Proton.Radius);
+    assert.instanceOf(emitter.initializers[1], Proton.Life);
+    assert.instanceOf(emitter.initializers[2], Proton.Mass);
+
+    done();
+  });
+
+  it('should set the emitter initializers to the initializers passed', done => {
+    const emitter = new Emitter();
+    const mass = new Proton.Mass();
+    const life = new Proton.Life();
+    const radius = new Proton.Radius();
+    const initializers = [mass, life, radius];
+
+    assert.instanceOf(emitter.setInitializers(initializers), Emitter);
+    assert.deepEqual(emitter.initializers, initializers);
+
+    done();
+  });
+
+  it('should remove the initializer', done => {
+    const emitter = new Emitter();
+    const mass = new Proton.Mass();
+    const life = new Proton.Life();
+
+    emitter.addInitializers([mass, life]);
+
+    assert.lengthOf(emitter.initializers, 2);
+
+    emitter.removeInitializer(mass);
+
+    assert.lengthOf(emitter.initializers, 1);
+    assert.instanceOf(emitter.initializers[0], Proton.Life);
+
+    done();
+  });
+
+  it('should remove all the initializers from the emitter', done => {
+    const emitter = new Emitter();
+    const mass = new Proton.Mass();
+    const life = new Proton.Life();
+    const radius = new Proton.Radius();
+    const initializers = [mass, life, radius];
+
+    emitter.addInitializers(initializers);
+
+    assert.instanceOf(emitter.removeAllInitializers(), Emitter);
+    assert.lengthOf(emitter.initializers, 0);
+
+    done();
+  });
+
+  it('should add a behaviour to the emitter', done => {
+    const emitter = new Emitter();
+    const attraction = new Proton.Attraction();
+
+    assert.instanceOf(emitter.addBehaviour(attraction), Emitter);
+    assert.lengthOf(emitter.behaviours, 1);
+    assert.deepEqual(emitter.behaviours[0], attraction);
+
+    done();
+  });
+
+  it('should add all the behaviours to the emitter', done => {
+    const emitter = new Emitter();
+    const attraction = new Proton.Attraction();
+    const repulsion = new Proton.Repulsion();
+    const gravity = new Proton.Gravity();
+    const behaviours = [attraction, repulsion, gravity];
+
+    assert.instanceOf(emitter.addBehaviours(behaviours), Emitter);
+    assert.lengthOf(emitter.behaviours, behaviours.length);
+    assert.instanceOf(emitter.behaviours[0], Proton.Gravity);
+    assert.instanceOf(emitter.behaviours[1], Proton.Repulsion);
+    assert.instanceOf(emitter.behaviours[2], Proton.Attraction);
+
+    done();
+  });
+
+  it('should set the emitter behaviours to the behaviours passed', done => {
+    const emitter = new Emitter();
+    const attraction = new Proton.Attraction();
+    const repulsion = new Proton.Repulsion();
+    const gravity = new Proton.Gravity();
+    const behaviours = [attraction, repulsion, gravity];
+
+    assert.instanceOf(emitter.setBehaviours(behaviours), Emitter);
+    assert.lengthOf(emitter.behaviours, behaviours.length);
+    assert.deepEqual(emitter.behaviours, behaviours);
+
+    done();
+  });
 });

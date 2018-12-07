@@ -4,7 +4,11 @@ import {
   DEFAULT_DAMPING,
   DEFAULT_EMITTER_RATE
 } from './constants';
-import EventDispatcher, { PARTICLE_CREATED } from '../events';
+import EventDispatcher, {
+  PARTICLE_CREATED,
+  PARTICLE_DEAD,
+  PARTICLE_UPDATE
+} from '../events';
 
 import { BIND_EMITTER_EVENT } from '../constants';
 import { InitializerUtil } from '../initializer';
@@ -245,7 +249,7 @@ export default class Emitter extends Particle {
    * @return {Emitter}
    */
   addInitializer(initializer) {
-    this.initializers.add(initializer);
+    this.initializers.push(initializer);
 
     return this;
   }
@@ -311,7 +315,7 @@ export default class Emitter extends Particle {
    *
    * @return {Emitter}
    */
-  removeInitializers() {
+  removeAllInitializers() {
     Util.destroyArray(this.initializers);
 
     return this;
@@ -359,39 +363,86 @@ export default class Emitter extends Particle {
   }
 
   /**
-   * remove the Behaviour
-   * @method removeBehaviour
-   * @param {Behaviour} behaviour a behaviour
+   * Removes the behaviour from the emitter's behaviours array.
+   *
+   * @param {Behaviour} behaviour - The behaviour to remove
+   * @return {Emitter}
    */
   removeBehaviour(behaviour) {
-    var index = this.behaviours.indexOf(behaviour);
+    const index = this.behaviours.indexOf(behaviour);
 
-    if (index > -1) this.behaviours.splice(index, 1);
+    if (index > -1) {
+      this.behaviours.splice(index, 1);
+    }
+
+    return this;
   }
+
   /**
-   * remove all behaviours
-   * @method removeAllBehaviours
+   * Removes all behaviours from the emitter.
+   *
+   * @return {Emitter}
    */
   removeAllBehaviours() {
     Util.destroyArray(this.behaviours);
+
+    return this;
   }
 
+  /**
+   * Updates the emitter according to the time passed.
+   * If the emitter age is greater than time, the emitter is killed.
+   * Particle updates occur in the integrate method.
+   *
+   * @param {number} time - Proton engine time
+   * @return void
+   */
+  update(time) {
+    this.age += time;
+
+    if (this.dead || this.age >= this.life) {
+      this.destroy();
+    }
+
+    this.emitting(time);
+    this.integrate(time);
+
+    let i = this.particles.length;
+
+    while (i--) {
+      const particle = this.particles[i];
+
+      if (particle.dead) {
+        this.parent && this.parent.dispatch(PARTICLE_DEAD, particle);
+        this.bindEmitterEvent && this.dispatch(PARTICLE_DEAD, particle);
+        this.parent.pool.expire(particle.reset());
+        this.particles.splice(i, 1);
+      }
+    }
+  }
+
+  /**
+   * Runs the integration algorithm on the emitter and all particles.
+   * Updates the particles with the timstamp passed.
+   *
+   * @param {number} time - Proton engine time
+   * @return void
+   */
   integrate(time) {
-    var damping = 1 - this.damping;
+    const damping = 1 - this.damping;
 
     integrator.integrate(this, time, damping);
 
-    var i = this.particles.length;
+    let i = this.particles.length;
 
     while (i--) {
-      var particle = this.particles[i];
+      const particle = this.particles[i];
 
       particle.update(time, i);
       integrator.integrate(particle, time, damping);
 
-      this.parent &&
-        this.parent.eventDispatcher.dispatchEvent('PARTICLE_UPDATE', particle);
-      BIND_EMITTER_EVENT && this.dispatchEvent('PARTICLE_UPDATE', particle);
+      this.parent && this.parent.dispatch(PARTICLE_UPDATE, particle);
+      this.bindEmitterEvent && this.dispatch(PARTICLE_UPDATE, particle);
     }
   }
 
@@ -409,31 +460,6 @@ export default class Emitter extends Particle {
 
         if (i > 0) this.cID = i;
         while (i--) this.createParticle();
-      }
-    }
-  }
-
-  update(time) {
-    this.age += time;
-    if (this.dead || this.age >= this.life) {
-      this.destroy();
-    }
-
-    this.emitting(time);
-    this.integrate(time);
-
-    var particle,
-      i = this.particles.length;
-
-    while (i--) {
-      particle = this.particles[i];
-      if (particle.dead) {
-        this.parent &&
-          this.parent.eventDispatcher.dispatchEvent('PARTICLE_DEAD', particle);
-        BIND_EMITTER_EVENT && this.dispatchEvent('PARTICLE_DEAD', particle);
-
-        this.parent.pool.expire(particle.reset());
-        this.particles.splice(i, 1);
       }
     }
   }

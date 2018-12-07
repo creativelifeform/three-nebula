@@ -238,6 +238,6 @@ export default class Proton {
 
 /**
  * @desc The system's integrator
- * @type {Integrator}
+ * @type {Integration}
  */
 export const integrator = Proton.integrator();
