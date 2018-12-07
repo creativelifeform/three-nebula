@@ -278,4 +278,19 @@ describe('emitter -> Emitter', () => {
 
     done();
   });
+
+  it('should remove all emitter behaviours', done => {
+    const emitter = new Emitter();
+
+    emitter.setBehaviours([
+      new Proton.Attraction(),
+      new Proton.Repulsion(),
+      new Proton.Gravity()
+    ]);
+
+    assert.instanceOf(emitter.removeAllBehaviours(), Emitter);
+    assert.empty(emitter.behaviours);
+
+    done();
+  });
 });

@@ -100,6 +100,10 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#emitter">emitter</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html">BehaviourEmitter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/FollowEmitter.js~FollowEmitter.html">FollowEmitter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BIND_EMITTER">DEFAULT_BIND_EMITTER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BIND_EMITTER_EVENT">DEFAULT_BIND_EMITTER_EVENT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_DAMPING">DEFAULT_DAMPING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_EMITTER_RATE">DEFAULT_EMITTER_RATE</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#events">events</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/events/EventDispatcher.js~EventDispatcher.html">EventDispatcher</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_ADDED">EMITTER_ADDED</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_REMOVED">EMITTER_REMOVED</a></span></span></li>
@@ -576,7 +580,7 @@ and behaviours.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-dispatch">dispatch</a></span></span><span class="code" data-ice="signature">(event: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&lt;<span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span>|<span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>&gt;)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#instance-method-dispatch">dispatch</a></span></span><span class="code" data-ice="signature">(event: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&lt;<span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span>|<span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>|<span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>&gt;)</span>
         </p>
       </div>
       <div>
@@ -1430,7 +1434,7 @@ Dispatches the EMITTER_ADDED event.</p>
     
     
     
-    <span class="code" data-ice="name">dispatch</span><span class="code" data-ice="signature">(event: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&lt;<span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span>|<span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>&gt;)</span>
+    <span class="code" data-ice="name">dispatch</span><span class="code" data-ice="signature">(event: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&lt;<span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span>|<span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>|<span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>&gt;)</span>
     <span class="right-info">
       
       
@@ -1463,7 +1467,7 @@ Dispatches the EMITTER_ADDED event.</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">target</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&lt;<span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span>|<span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>&gt;</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&lt;<span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span>|<span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>|<span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>&gt;</td>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: this</li></ul></td>
       <td data-ice="description"><p>The event target</p>

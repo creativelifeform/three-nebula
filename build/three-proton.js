@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 52);
+/******/ 	return __webpack_require__(__webpack_require__.s = 53);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -87,7 +87,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ArraySpan = __webpack_require__(61);
+var _ArraySpan = __webpack_require__(62);
 
 Object.defineProperty(exports, 'ArraySpan', {
   enumerable: true,
@@ -102,7 +102,7 @@ Object.defineProperty(exports, 'createArraySpan', {
   }
 });
 
-var _Box = __webpack_require__(62);
+var _Box = __webpack_require__(63);
 
 Object.defineProperty(exports, 'Box', {
   enumerable: true,
@@ -129,7 +129,7 @@ Object.defineProperty(exports, 'MathUtils', {
   }
 });
 
-var _Polar3D = __webpack_require__(63);
+var _Polar3D = __webpack_require__(64);
 
 Object.defineProperty(exports, 'Polar3D', {
   enumerable: true,
@@ -138,7 +138,7 @@ Object.defineProperty(exports, 'Polar3D', {
   }
 });
 
-var _Quaternion = __webpack_require__(64);
+var _Quaternion = __webpack_require__(65);
 
 Object.defineProperty(exports, 'Quaternion', {
   enumerable: true,
@@ -48854,7 +48854,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ColorUtil = __webpack_require__(68);
+var _ColorUtil = __webpack_require__(69);
 
 Object.defineProperty(exports, 'ColorUtil', {
   enumerable: true,
@@ -48863,7 +48863,7 @@ Object.defineProperty(exports, 'ColorUtil', {
   }
 });
 
-var _PUID = __webpack_require__(16);
+var _PUID = __webpack_require__(17);
 
 Object.defineProperty(exports, 'PUID', {
   enumerable: true,
@@ -48872,7 +48872,7 @@ Object.defineProperty(exports, 'PUID', {
   }
 });
 
-var _THREEUtil = __webpack_require__(17);
+var _THREEUtil = __webpack_require__(18);
 
 Object.defineProperty(exports, 'THREEUtil', {
   enumerable: true,
@@ -49481,15 +49481,106 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _Body = __webpack_require__(54);
+
+Object.defineProperty(exports, 'Body', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Body).default;
+  }
+});
+
+var _InitializerUtil = __webpack_require__(55);
+
+Object.defineProperty(exports, 'InitializerUtil', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_InitializerUtil).default;
+  }
+});
+
+var _Life = __webpack_require__(56);
+
+Object.defineProperty(exports, 'Life', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Life).default;
+  }
+});
+
+var _Mass = __webpack_require__(57);
+
+Object.defineProperty(exports, 'Mass', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Mass).default;
+  }
+});
+
+var _Position = __webpack_require__(58);
+
+Object.defineProperty(exports, 'Position', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Position).default;
+  }
+});
+
+var _Radius = __webpack_require__(59);
+
+Object.defineProperty(exports, 'Radius', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Radius).default;
+  }
+});
+
+var _Rate = __webpack_require__(60);
+
+Object.defineProperty(exports, 'Rate', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Rate).default;
+  }
+});
+
+var _Velocity = __webpack_require__(61);
+
+Object.defineProperty(exports, 'Velocity', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Velocity).default;
+  }
+});
+Object.defineProperty(exports, 'V', {
+  enumerable: true,
+  get: function get() {
+    return _Velocity.V;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _initializer = __webpack_require__(18);
+var _constants = __webpack_require__(51);
 
-var _constants = __webpack_require__(3);
+var _events = __webpack_require__(26);
 
-var _EventDispatcher = __webpack_require__(25);
+var _events2 = _interopRequireDefault(_events);
 
-var _EventDispatcher2 = _interopRequireDefault(_EventDispatcher);
+var _initializer = __webpack_require__(14);
 
 var _Particle2 = __webpack_require__(21);
 
@@ -49513,63 +49604,121 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Emitters are the Proton engine's particle factories. They cause particles to
+ * be rendered by emitting them, and store all particle initializers and behaviours.
+ *
+ */
 var Emitter = function (_Particle) {
   _inherits(Emitter, _Particle);
 
-  function Emitter(pObj) {
+  /**
+   * Constructs an Emitter instance.
+   *
+   * @param {object} properties - The properties to instantiate the particle with
+   * @return void
+   */
+  function Emitter(properties) {
     _classCallCheck(this, Emitter);
 
-    var _this = _possibleConstructorReturn(this, (Emitter.__proto__ || Object.getPrototypeOf(Emitter)).call(this, pObj));
+    /**
+     * @desc The particles emitted by this emitter.
+     * @type {array}
+     */
+    var _this = _possibleConstructorReturn(this, (Emitter.__proto__ || Object.getPrototypeOf(Emitter)).call(this, properties));
 
-    _this.initializes = [];
     _this.particles = [];
+
+    /**
+     * @desc The initializers for particles emitted by this emitter.
+     * @type {array}
+     */
+    _this.initializers = [];
+
+    /**
+     * @desc The behaviours for particles emitted by this emitter.
+     * @type {array}
+     */
     _this.behaviours = [];
+
+    /**
+     * @desc The current emit iteration.
+     * @type {integer}
+     */
     _this.currentEmitTime = 0;
+
+    /**
+     * @desc The total number of times the emitter should emit particles.
+     * @type {integer}
+     */
     _this.totalEmitTimes = -1;
 
     /**
-     * @property {Number} damping -The friction coefficient for all particle emit by This;
-     * @default 0.006
+     * @desc The friction coefficient for all particle to emit by.
+     * @type {number}
      */
-    _this.damping = 0.006;
+    _this.damping = _constants.DEFAULT_DAMPING;
 
     /**
-     * If bindEmitter the particles can bind this emitter's property;
-     * @property bindEmitter
-     * @type {Boolean}
-     * @default true
+     * @desc Ensures that particles emitted by this emitter are positioned
+     * according to the emitter's properties.
+     * @type {boolean}
      */
-    _this.bindEmitter = true;
+    _this.bindEmitter = _constants.DEFAULT_BIND_EMITTER;
 
     /**
-     * The number of particles per second emit (a [particle]/b [s]);
-     * @property rate
+     * @desc Determines if the emitter will dispatch internal events. Defaults
+     * to false
+     * @type {boolean}
+     */
+    _this.bindEmitterEvent = _constants.DEFAULT_BIND_EMITTER_EVENT;
+
+    /**
+     * @desc The number of particles to emit per second (a [particle]/b [s])
      * @type {Rate}
-     * @default Rate(1, .1)
      */
-    _this.rate = new _initializer.Rate(1, 0.1);
+    _this.rate = _constants.DEFAULT_EMITTER_RATE;
 
     /**
-     * The emitter's id;
-     * @property id
-     * @type {String} id
+     * @desc The emitter's id.
+     * @type {string}
      */
     _this.id = 'emitter-' + (0, _uid2.default)();
     _this.cID = 0;
     _this.name = 'Emitter';
-    _this.eventDispatcher = new _EventDispatcher2.default();
+
+    /**
+     * @desc The emitter's internal event dispatcher.
+     * @type {EventDispatcher}
+     */
+    _this.eventDispatcher = new _events2.default();
     return _this;
   }
 
   /**
-   * Sets the emitter rate.
+   * Proxy method for the internal event dispatcher's dispatchEvent method.
    *
-   * @param {Rate} rate - a rate initializer object
-   * @return {Emitter}
+   * @param {string} event - The event to dispatch
+   * @param {object<Particle>} [target=this] - The event target
    */
 
 
   _createClass(Emitter, [{
+    key: 'dispatch',
+    value: function dispatch(event) {
+      var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this;
+
+      this.eventDispatcher.dispatchEvent(event, target);
+    }
+
+    /**
+     * Sets the emitter rate.
+     *
+     * @param {Rate} rate - a rate initializer object
+     * @return {Emitter}
+     */
+
+  }, {
     key: 'setRate',
     value: function setRate(rate) {
       this.rate = rate;
@@ -49603,10 +49752,14 @@ var Emitter = function (_Particle) {
     }
 
     /**
-     * Makes the emitter emit particles.
+     * Sets the total number of times the emitter should emit particles as well as
+     * the emitter's life. Also intializes the emitter rate.
+     * This enables the emitter to emit particles.
      *
-     * @param {Number} totalEmitTimes - the total number of times to emit particles
-     * @param {String} life - the life of this emitter
+     * TODO Refactor this so that it does not accept mixed type arguments.
+     *
+     * @param {number} [totalEmitTimes=Infinity] - the total number of times to emit particles
+     * @param {number} [life=Infinity] - the life of this emitter in milliseconds
      * @return {Emitter}
      */
 
@@ -49614,14 +49767,14 @@ var Emitter = function (_Particle) {
     key: 'emit',
     value: function emit() {
       var totalEmitTimes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Infinity;
-      var life = arguments[1];
+      var life = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Infinity;
 
       this.currentEmitTime = 0;
       this.totalEmitTimes = totalEmitTimes;
 
-      if (life == true || life == 'life' || life == 'destroy') {
-        this.life = totalEmitTimes == 'once' ? 1 : this.totalEmitTimes;
-      } else if (!isNaN(life)) {
+      if (totalEmitTimes === 1) {
+        this.life = totalEmitTimes;
+      } else {
         this.life = life;
       }
 
@@ -49631,8 +49784,9 @@ var Emitter = function (_Particle) {
     }
 
     /**
-     * stop emiting
-     * @method stopEmit
+     * Stops the emitter from emitting particles.
+     *
+     * @return void
      */
 
   }, {
@@ -49643,8 +49797,11 @@ var Emitter = function (_Particle) {
     }
 
     /**
-     * remove current all particles
-     * @method removeAllParticles
+     * Kills all of the emitter's particles.
+     *
+     * TODO Rename this method to killAllParticles
+     *
+     * @return void
      */
 
   }, {
@@ -49658,122 +49815,181 @@ var Emitter = function (_Particle) {
     }
 
     /**
-     * create single particle;
+     * Add an initializer to this emitter.
      *
-     * can use emit({x:10},new Gravity(10),{'particleUpdate',fun}) or emit([{x:10},new Initialize],new Gravity(10),{'particleUpdate',fun})
-     * @method removeAllParticles
-     */
-
-  }, {
-    key: 'createParticle',
-    value: function createParticle(initialize, behaviour) {
-      var particle = this.parent.pool.get(_Particle3.default);
-
-      this.setupParticle(particle, initialize, behaviour);
-      this.parent && this.parent.eventDispatcher.dispatchEvent('PARTICLE_CREATED', particle);
-      _constants.BIND_EMITTER_EVENT && this.dispatchEvent('PARTICLE_CREATED', particle);
-
-      return particle;
-    }
-    /**
-     * add initialize to this emitter
-     * @method addSelfInitialize
+     * @deprecated This will be removed in the next major version.
+     * @param {object} pObj
+     * @return void
      */
 
   }, {
     key: 'addSelfInitialize',
     value: function addSelfInitialize(pObj) {
+      /* istanbul ignore if */
       if (pObj['init']) {
         pObj.init(this);
+        /* istanbul ignore else */
       } else {
         this.initAll();
       }
     }
 
     /**
-     * add the Initialize to particles;
+     * Adds particle initializer(s) to the emitter.
+     * Each initializer is run on each particle when they are created.
      *
-     * you can use initializes array:for example emitter.addInitialize(initialize1,initialize2,initialize3);
-     * @method addInitialize
-     * @param {Initialize} initialize like this new Radius(1, 12)
+     * @deprecated This will be removed in the next major version use addInitializer or addInitializers.
+     * @return {Emitter}
      */
 
   }, {
     key: 'addInitialize',
     value: function addInitialize() {
+      /* istanbul ignore next */
       var i = arguments.length;
 
+      /* istanbul ignore next */
       while (i--) {
-        this.initializes.push(arguments[i]);
+        this.initializers.push(arguments[i]);
       }
     }
 
     /**
-     * Proxy method for adding multiple initializers.
+     * Adds a particle initializer to the emitter.
+     * Each initializer is run on each particle when they are created.
      *
-     * @see addInitialize
-     * @param {array<Initialize>} properties - an array of emitter initializers
+     * @param {Initializer} initializer - The initializer to add
      * @return {Emitter}
      */
 
   }, {
-    key: 'setProperties',
-    value: function setProperties(properties) {
-      var i = properties.length;
+    key: 'addInitializer',
+    value: function addInitializer(initializer) {
+      this.initializers.push(initializer);
+
+      return this;
+    }
+
+    /**
+     * Adds multiple particle initializers to the emitter.
+     *
+     * @param {array<Initializer>} initializers - an array of particle initializers
+     * @return {Emitter}
+     */
+
+  }, {
+    key: 'addInitializers',
+    value: function addInitializers(initializers) {
+      var i = initializers.length;
 
       while (i--) {
-        this.initializes.push(properties[i]);
+        this.addInitializer(initializers[i]);
       }
 
       return this;
     }
 
     /**
-     * remove the Initialize
-     * @method removeInitialize
-     * @param {Initialize} initialize a initialize
+     * Sets the emitter's particle initializers.
+     *
+     * @param {array<Initializer>} initializers - an array of particle initializers
+     * @return {Emitter}
+     */
+
+  }, {
+    key: 'setInitializers',
+    value: function setInitializers(initializers) {
+      this.initializers = initializers;
+
+      return this;
+    }
+
+    /**
+     * @deprecated This will be removed in the next major version use removeInitializer instead.
+     * @param {Initializer} initializer - The initializer to remove
      */
 
   }, {
     key: 'removeInitialize',
     value: function removeInitialize(initializer) {
-      var index = this.initializes.indexOf(initializer);
+      /* istanbul ignore next */
+      var index = this.initializers.indexOf(initializer);
 
-      if (index > -1) this.initializes.splice(index, 1);
+      /* istanbul ignore next */
+      if (index > -1) this.initializers.splice(index, 1);
     }
 
     /**
-     * remove all Initializes
-     * @method removeInitializers
+     * Removes an initializer from the emitter's initializers array.
+     *
+     * @param {Initializer} initializer - The initializer to remove
+     * @return {Emitter}
      */
 
   }, {
-    key: 'removeInitializers',
-    value: function removeInitializers() {
-      _Util2.default.destroyArray(this.initializes);
+    key: 'removeInitializer',
+    value: function removeInitializer(initializer) {
+      var index = this.initializers.indexOf(initializer);
+
+      if (index > -1) {
+        this.initializers.splice(index, 1);
+      }
+
+      return this;
     }
+
     /**
-     * add the Behaviour to particles;
+     * Removes all initializers.
      *
-     * you can use Behaviours array:emitter.addBehaviour(Behaviour1,Behaviour2,Behaviour3);
-     * @method addBehaviour
-     * @param {Behaviour} behaviour like this new Color('random')
+     * @return {Emitter}
+     */
+
+  }, {
+    key: 'removeAllInitializers',
+    value: function removeAllInitializers() {
+      _Util2.default.destroyArray(this.initializers);
+
+      return this;
+    }
+
+    /**
+     * Adds a behaviour to the emitter. All emitter behaviours are added to each particle when
+     * they are emitted.
+     *
+     * @param {Behaviour} behaviour - The behaviour to add to the emitter
+     * @return {Emitter}
      */
 
   }, {
     key: 'addBehaviour',
-    value: function addBehaviour() {
-      var i = arguments.length;
+    value: function addBehaviour(behaviour) {
+      this.behaviours.push(behaviour);
 
-      while (i--) {
-        this.behaviours.push(arguments[i]);
-      }
+      return this;
     }
 
     /**
-     * Proxy method for adding multiple behaviours.
+     * Adds multiple behaviours to the emitter.
      *
-     * @see addInitialize
+     * @param {array<Behaviour>} behaviours - an array of emitter behaviours
+     * @return {Emitter}
+     */
+
+  }, {
+    key: 'addBehaviours',
+    value: function addBehaviours(behaviours) {
+      var i = behaviours.length;
+
+      while (i--) {
+        this.addBehaviour(behaviours[i]);
+      }
+
+      return this;
+    }
+
+    /**
+     * Sets the emitter's behaviours.
+     *
      * @param {array<Behaviour>} behaviours - an array of emitter behaviours
      * @return {Emitter}
      */
@@ -49781,19 +49997,16 @@ var Emitter = function (_Particle) {
   }, {
     key: 'setBehaviours',
     value: function setBehaviours(behaviours) {
-      var i = behaviours.length;
-
-      while (i--) {
-        this.behaviours.push(behaviours[i]);
-      }
+      this.behaviours = behaviours;
 
       return this;
     }
 
     /**
-     * remove the Behaviour
-     * @method removeBehaviour
-     * @param {Behaviour} behaviour a behaviour
+     * Removes the behaviour from the emitter's behaviours array.
+     *
+     * @param {Behaviour} behaviour - The behaviour to remove
+     * @return {Emitter}
      */
 
   }, {
@@ -49801,18 +50014,72 @@ var Emitter = function (_Particle) {
     value: function removeBehaviour(behaviour) {
       var index = this.behaviours.indexOf(behaviour);
 
-      if (index > -1) this.behaviours.splice(index, 1);
+      if (index > -1) {
+        this.behaviours.splice(index, 1);
+      }
+
+      return this;
     }
+
     /**
-     * remove all behaviours
-     * @method removeAllBehaviours
+     * Removes all behaviours from the emitter.
+     *
+     * @return {Emitter}
      */
 
   }, {
     key: 'removeAllBehaviours',
     value: function removeAllBehaviours() {
       _Util2.default.destroyArray(this.behaviours);
+
+      return this;
     }
+
+    /**
+     * Updates the emitter according to the time passed by calling the generate
+     * and integrate methods. The generate method creates particles, the integrate
+     * method updates existing particles.
+     *
+     * If the emitter age is greater than time, the emitter is killed.
+     *
+     * @param {number} time - Proton engine time
+     * @return void
+     */
+
+  }, {
+    key: 'update',
+    value: function update(time) {
+      this.age += time;
+
+      if (this.dead || this.age >= this.life) {
+        this.destroy();
+      }
+
+      this.generate(time);
+      this.integrate(time);
+
+      var i = this.particles.length;
+
+      while (i--) {
+        var particle = this.particles[i];
+
+        if (particle.dead) {
+          this.parent && this.parent.dispatch(_events.PARTICLE_DEAD, particle);
+          this.bindEmitterEvent && this.dispatch(_events.PARTICLE_DEAD, particle);
+          this.parent.pool.expire(particle.reset());
+          this.particles.splice(i, 1);
+        }
+      }
+    }
+
+    /**
+     * Runs the integration algorithm on the emitter and all particles.
+     * Updates the particles with the timstamp passed.
+     *
+     * @param {number} time - Proton engine time
+     * @return void
+     */
+
   }, {
     key: 'integrate',
     value: function integrate(time) {
@@ -49828,80 +50095,113 @@ var Emitter = function (_Particle) {
         particle.update(time, i);
         _Proton.integrator.integrate(particle, time, damping);
 
-        this.parent && this.parent.eventDispatcher.dispatchEvent('PARTICLE_UPDATE', particle);
-        _constants.BIND_EMITTER_EVENT && this.dispatchEvent('PARTICLE_UPDATE', particle);
+        this.parent && this.parent.dispatch(_events.PARTICLE_UPDATE, particle);
+        this.bindEmitterEvent && this.dispatch(_events.PARTICLE_UPDATE, particle);
       }
     }
+
+    /**
+     * Generates new particles.
+     *
+     * @param {number} time - Proton engine time
+     * @return void
+     */
+
   }, {
-    key: 'emitting',
-    value: function emitting(time) {
-      if (this.totalEmitTimes == 'once') {
+    key: 'generate',
+    value: function generate(time) {
+      if (this.totalEmitTimes === 1) {
         var i = this.rate.getValue(99999);
 
-        if (i > 0) this.cID = i;
+        if (i > 0) {
+          this.cID = i;
+        }
+
         while (i--) {
           this.createParticle();
-        }this.totalEmitTimes = 'none';
-      } else if (!isNaN(this.totalEmitTimes)) {
-        this.currentEmitTime += time;
-        if (this.currentEmitTime < this.totalEmitTimes) {
-          i = this.rate.getValue(time);
+        }
 
-          if (i > 0) this.cID = i;
-          while (i--) {
-            this.createParticle();
-          }
+        this.totalEmitTimes = 0;
+
+        return;
+      }
+
+      this.currentEmitTime += time;
+
+      if (this.currentEmitTime < this.totalEmitTimes) {
+        var _i = this.rate.getValue(time);
+
+        if (_i > 0) {
+          this.cID = _i;
+        }
+
+        while (_i--) {
+          this.createParticle();
         }
       }
     }
+
+    /**
+     * Creates a particle by retreiving one from the pool and setting it up with
+     * the supplied initializer and behaviour.
+     *
+     * TODO This method is only ever called from generate and never with arguments
+     * so it's safe to remove the arguments.
+     *
+     * @return {Emitter}
+     */
+
   }, {
-    key: 'update',
-    value: function update(time) {
-      this.age += time;
-      if (this.dead || this.age >= this.life) {
-        this.destroy();
-      }
+    key: 'createParticle',
+    value: function createParticle(initializer, behaviour) {
+      var particle = this.parent.pool.get(_Particle3.default);
 
-      this.emitting(time);
-      this.integrate(time);
+      this.setupParticle(particle, initializer, behaviour);
+      this.parent && this.parent.dispatch(_events.PARTICLE_CREATED, particle);
+      this.bindEmitterEvent && this.dispatch(_events.PARTICLE_CREATED, particle);
 
-      var particle,
-          i = this.particles.length;
-
-      while (i--) {
-        particle = this.particles[i];
-        if (particle.dead) {
-          this.parent && this.parent.eventDispatcher.dispatchEvent('PARTICLE_DEAD', particle);
-          _constants.BIND_EMITTER_EVENT && this.dispatchEvent('PARTICLE_DEAD', particle);
-
-          this.parent.pool.expire(particle.reset());
-          this.particles.splice(i, 1);
-        }
-      }
+      return particle;
     }
+
+    /**
+     * Sets up a particle by running all initializers on it and setting its behaviours.
+     * Also adds the particle to this.particles.
+     *
+     * TODO This method is only ever called from createParticle and never with arguments
+     * so it's safe to remove the arguments.
+     *
+     * @param {Particle} particle - The particle to setup
+     * @return void
+     */
+
   }, {
     key: 'setupParticle',
     value: function setupParticle(particle, initialize, behaviour) {
-      var initializes = this.initializes;
+      var initializers = this.initializers;
       var behaviours = this.behaviours;
 
+      /* istanbul ignore if */
       if (initialize) {
-        if (_Util2.default.isArray(initialize)) initializes = initialize;else initializes = [initialize];
+        if (_Util2.default.isArray(initialize)) initializers = initialize;else initializers = [initialize];
       }
 
+      /* istanbul ignore if */
       if (behaviour) {
         if (_Util2.default.isArray(behaviour)) behaviours = behaviour;else behaviours = [behaviour];
       }
 
-      _initializer.InitializerUtil.initialize(this, particle, initializes);
+      _initializer.InitializerUtil.initialize(this, particle, initializers);
+
       particle.addBehaviours(behaviours);
       particle.parent = this;
+
       this.particles.push(particle);
     }
 
     /**
-     * Destory this Emitter
-     * @method destroy
+     * Kills the emitter.
+     *
+     * @return void
      */
 
   }, {
@@ -49912,7 +50212,7 @@ var Emitter = function (_Particle) {
       this.totalEmitTimes = -1;
 
       if (this.particles.length == 0) {
-        this.removeInitializers();
+        this.removeAllInitializers();
         this.removeAllBehaviours();
 
         this.parent && this.parent.removeEmitter(this);
@@ -49927,7 +50227,7 @@ exports.default = Emitter;
 module.exports = exports['default'];
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49940,7 +50240,7 @@ exports.BaseRender = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(26);
+var _constants = __webpack_require__(25);
 
 var _compatibility = __webpack_require__(7);
 
@@ -50052,7 +50352,7 @@ var BaseRender = exports.BaseRender = function (_BaseRenderer) {
 }(BaseRenderer);
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50089,7 +50389,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50103,7 +50403,7 @@ var _three = __webpack_require__(5);
 
 var THREE = _interopRequireWildcard(_three);
 
-var _PUID = __webpack_require__(16);
+var _PUID = __webpack_require__(17);
 
 var _PUID2 = _interopRequireDefault(_PUID);
 
@@ -50171,97 +50471,6 @@ exports.default = {
   }()
 };
 module.exports = exports['default'];
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Body = __webpack_require__(53);
-
-Object.defineProperty(exports, 'Body', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Body).default;
-  }
-});
-
-var _InitializerUtil = __webpack_require__(54);
-
-Object.defineProperty(exports, 'InitializerUtil', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_InitializerUtil).default;
-  }
-});
-
-var _Life = __webpack_require__(55);
-
-Object.defineProperty(exports, 'Life', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Life).default;
-  }
-});
-
-var _Mass = __webpack_require__(56);
-
-Object.defineProperty(exports, 'Mass', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Mass).default;
-  }
-});
-
-var _Position = __webpack_require__(57);
-
-Object.defineProperty(exports, 'Position', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Position).default;
-  }
-});
-
-var _Radius = __webpack_require__(58);
-
-Object.defineProperty(exports, 'Radius', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Radius).default;
-  }
-});
-
-var _Rate = __webpack_require__(59);
-
-Object.defineProperty(exports, 'Rate', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Rate).default;
-  }
-});
-
-var _Velocity = __webpack_require__(60);
-
-Object.defineProperty(exports, 'Velocity', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Velocity).default;
-  }
-});
-Object.defineProperty(exports, 'V', {
-  enumerable: true,
-  get: function get() {
-    return _Velocity.V;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 /* 19 */
@@ -50905,7 +51114,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _PUID = __webpack_require__(16);
+var _PUID = __webpack_require__(17);
 
 var _PUID2 = _interopRequireDefault(_PUID);
 
@@ -51113,7 +51322,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _constants = __webpack_require__(3);
 
-var _events = __webpack_require__(51);
+var _events = __webpack_require__(26);
 
 var _events2 = _interopRequireDefault(_events);
 
@@ -51208,7 +51417,7 @@ var Proton = function () {
      * Proxy method for the internal event dispatcher's dispatchEvent method.
      *
      * @param {string} event - The event to dispatch
-     * @param {object<Proton|Emitter>} [target=this] - The event target
+     * @param {object<Proton|Emitter|Particle>} [target=this] - The event target
      */
     value: function dispatch(event) {
       var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this;
@@ -51405,7 +51614,7 @@ var Proton = function () {
 
 /**
  * @desc The system's integrator
- * @type {Integrator}
+ * @type {Integration}
  */
 
 
@@ -51513,112 +51722,13 @@ var DEFAULT_PROTON_DELTA = exports.DEFAULT_PROTON_DELTA = 0.0167;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/*
- * EventDispatcher
- * Visit http://createjs.com/ for documentation, updates and examples.
- *
- **/
-
-var EventDispatcher = function () {
-  function EventDispatcher() {
-    _classCallCheck(this, EventDispatcher);
-
-    this.listeners = null;
-  }
-
-  _createClass(EventDispatcher, [{
-    key: "addEventListener",
-    value: function addEventListener(type, listener) {
-      if (!this.listeners) {
-        this.listeners = {};
-      } else {
-        this.removeEventListener(type, listener);
-      }
-
-      if (!this.listeners[type]) this.listeners[type] = [];
-      this.listeners[type].push(listener);
-
-      return listener;
-    }
-  }, {
-    key: "removeEventListener",
-    value: function removeEventListener(type, listener) {
-      if (!this.listeners) return;
-      if (!this.listeners[type]) return;
-
-      var arr = this.listeners[type];
-
-      for (var i = 0, l = arr.length; i < l; i++) {
-        if (arr[i] == listener) {
-          if (l == 1) {
-            delete this.listeners[type];
-          }
-          // allows for faster checks.
-          else {
-              arr.splice(i, 1);
-            }
-          break;
-        }
-      }
-    }
-  }, {
-    key: "removeAllEventListeners",
-    value: function removeAllEventListeners(type) {
-      if (!type) this.listeners = null;else if (this.listeners) delete this.listeners[type];
-    }
-  }, {
-    key: "dispatchEvent",
-    value: function dispatchEvent(eventName, eventTarget) {
-      var ret = false,
-          listeners = this.listeners;
-
-      if (eventName && listeners) {
-        var arr = listeners[eventName];
-
-        if (!arr) return ret;
-
-        arr = arr.slice();
-        // to avoid issues with items being removed or added during the dispatch
-
-        var handler,
-            i = arr.length;
-
-        while (i--) {
-          handler = arr[i];
-
-          ret = ret || handler(eventTarget);
-        }
-      }
-
-      return !!ret;
-    }
-  }, {
-    key: "hasEventListener",
-    value: function hasEventListener(type) {
-      var listeners = this.listeners;
-
-      return !!(listeners && listeners[type]);
-    }
-  }, {
-    key: "listeners",
-    set: function set(listeners) {
-      this._listeners = listeners;
-    },
-    get: function get() {
-      return this._listeners;
-    }
-  }]);
-
-  return EventDispatcher;
-}();
-
-exports.default = EventDispatcher;
-module.exports = exports["default"];
+var PROTON_UPDATE = exports.PROTON_UPDATE = 'PROTON_UPDATE';
+var PARTICLE_CREATED = exports.PARTICLE_CREATED = 'PARTICLE_CREATED';
+var PARTICLE_UPDATE = exports.PARTICLE_UPDATE = 'PARTICLE_UPDATE';
+var PARTICLE_DEAD = exports.PARTICLE_DEAD = 'PARTICLE_DEAD';
+var EMITTER_ADDED = exports.EMITTER_ADDED = 'EMITTER_ADDED';
+var EMITTER_REMOVED = exports.EMITTER_REMOVED = 'EMITTER_REMOVED';
+var PROTON_UPDATE_AFTER = exports.PROTON_UPDATE_AFTER = 'PROTON_UPDATE_AFTER';
 
 /***/ }),
 /* 26 */
@@ -51630,13 +51740,24 @@ module.exports = exports["default"];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var PROTON_UPDATE = exports.PROTON_UPDATE = 'PROTON_UPDATE';
-var PARTICLE_CREATED = exports.PARTICLE_CREATED = 'PARTICLE_CREATED';
-var PARTICLE_UPDATE = exports.PARTICLE_UPDATE = 'PARTICLE_UPDATE';
-var PARTICLE_DEAD = exports.PARTICLE_DEAD = 'PARTICLE_DEAD';
-var EMITTER_ADDED = exports.EMITTER_ADDED = 'EMITTER_ADDED';
-var EMITTER_REMOVED = exports.EMITTER_REMOVED = 'EMITTER_REMOVED';
-var PROTON_UPDATE_AFTER = exports.PROTON_UPDATE_AFTER = 'PROTON_UPDATE_AFTER';
+exports.PROTON_UPDATE = exports.PROTON_UPDATE_AFTER = exports.PARTICLE_UPDATE = exports.PARTICLE_DEAD = exports.PARTICLE_CREATED = exports.EMITTER_REMOVED = exports.EMITTER_ADDED = undefined;
+
+var _constants = __webpack_require__(25);
+
+var _EventDispatcher = __webpack_require__(52);
+
+var _EventDispatcher2 = _interopRequireDefault(_EventDispatcher);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _EventDispatcher2.default;
+exports.EMITTER_ADDED = _constants.EMITTER_ADDED;
+exports.EMITTER_REMOVED = _constants.EMITTER_REMOVED;
+exports.PARTICLE_CREATED = _constants.PARTICLE_CREATED;
+exports.PARTICLE_DEAD = _constants.PARTICLE_DEAD;
+exports.PARTICLE_UPDATE = _constants.PARTICLE_UPDATE;
+exports.PROTON_UPDATE_AFTER = _constants.PROTON_UPDATE_AFTER;
+exports.PROTON_UPDATE = _constants.PROTON_UPDATE;
 
 /***/ }),
 /* 27 */
@@ -51673,8 +51794,8 @@ var Integration = function () {
 
   _createClass(Integration, [{
     key: 'integrate',
-    value: function integrate(particles, time, damping) {
-      this.euler(particles, time, damping);
+    value: function integrate(particle, time, damping) {
+      this.euler(particle, time, damping);
     }
   }, {
     key: 'euler',
@@ -51802,7 +51923,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _three = __webpack_require__(5);
 
-var _BaseRenderer2 = __webpack_require__(15);
+var _BaseRenderer2 = __webpack_require__(16);
 
 var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
@@ -51932,7 +52053,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _v = __webpack_require__(78);
+var _v = __webpack_require__(79);
 
 var _v2 = _interopRequireDefault(_v);
 
@@ -52128,7 +52249,7 @@ Object.defineProperty(exports, 'FollowEmitter', {
   }
 });
 
-var _Emitter = __webpack_require__(14);
+var _Emitter = __webpack_require__(15);
 
 Object.defineProperty(exports, 'Emitter', {
   enumerable: true,
@@ -52150,7 +52271,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _CustomRenderer = __webpack_require__(65);
+var _CustomRenderer = __webpack_require__(66);
 
 Object.defineProperty(exports, 'CustomRenderer', {
   enumerable: true,
@@ -52180,7 +52301,7 @@ Object.defineProperty(exports, 'MeshRender', {
   }
 });
 
-var _PointsRenderer = __webpack_require__(66);
+var _PointsRenderer = __webpack_require__(67);
 
 Object.defineProperty(exports, 'PointsRenderer', {
   enumerable: true,
@@ -52195,7 +52316,7 @@ Object.defineProperty(exports, 'PointsRender', {
   }
 });
 
-var _SpriteRenderer = __webpack_require__(67);
+var _SpriteRenderer = __webpack_require__(68);
 
 Object.defineProperty(exports, 'SpriteRenderer', {
   enumerable: true,
@@ -52223,7 +52344,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _BoxZone = __webpack_require__(69);
+var _BoxZone = __webpack_require__(70);
 
 Object.defineProperty(exports, 'BoxZone', {
   enumerable: true,
@@ -52232,7 +52353,7 @@ Object.defineProperty(exports, 'BoxZone', {
   }
 });
 
-var _LineZone = __webpack_require__(70);
+var _LineZone = __webpack_require__(71);
 
 Object.defineProperty(exports, 'LineZone', {
   enumerable: true,
@@ -52241,7 +52362,7 @@ Object.defineProperty(exports, 'LineZone', {
   }
 });
 
-var _MeshZone = __webpack_require__(71);
+var _MeshZone = __webpack_require__(72);
 
 Object.defineProperty(exports, 'MeshZone', {
   enumerable: true,
@@ -52250,7 +52371,7 @@ Object.defineProperty(exports, 'MeshZone', {
   }
 });
 
-var _PointZone = __webpack_require__(72);
+var _PointZone = __webpack_require__(73);
 
 Object.defineProperty(exports, 'PointZone', {
   enumerable: true,
@@ -52259,7 +52380,7 @@ Object.defineProperty(exports, 'PointZone', {
   }
 });
 
-var _ScreenZone = __webpack_require__(73);
+var _ScreenZone = __webpack_require__(74);
 
 Object.defineProperty(exports, 'ScreenZone', {
   enumerable: true,
@@ -52268,7 +52389,7 @@ Object.defineProperty(exports, 'ScreenZone', {
   }
 });
 
-var _SphereZone = __webpack_require__(74);
+var _SphereZone = __webpack_require__(75);
 
 Object.defineProperty(exports, 'SphereZone', {
   enumerable: true,
@@ -53818,7 +53939,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _Emitter2 = __webpack_require__(14);
+var _Emitter2 = __webpack_require__(15);
 
 var _Emitter3 = _interopRequireDefault(_Emitter2);
 
@@ -53920,11 +54041,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _Emitter2 = __webpack_require__(14);
+var _Emitter2 = __webpack_require__(15);
 
 var _Emitter3 = _interopRequireDefault(_Emitter2);
 
-var _THREEUtil = __webpack_require__(17);
+var _THREEUtil = __webpack_require__(18);
 
 var _THREEUtil2 = _interopRequireDefault(_THREEUtil);
 
@@ -54059,24 +54180,134 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.PROTON_UPDATE_AFTER = exports.PROTON_UPDATE = exports.EMITTER_REMOVED = exports.EMITTER_ADDED = undefined;
+exports.DEFAULT_BIND_EMITTER_EVENT = exports.DEFAULT_EMITTER_RATE = exports.DEFAULT_BIND_EMITTER = exports.DEFAULT_DAMPING = undefined;
 
-var _constants = __webpack_require__(26);
+var _initializer = __webpack_require__(14);
 
-var _EventDispatcher = __webpack_require__(25);
-
-var _EventDispatcher2 = _interopRequireDefault(_EventDispatcher);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _EventDispatcher2.default;
-exports.EMITTER_ADDED = _constants.EMITTER_ADDED;
-exports.EMITTER_REMOVED = _constants.EMITTER_REMOVED;
-exports.PROTON_UPDATE = _constants.PROTON_UPDATE;
-exports.PROTON_UPDATE_AFTER = _constants.PROTON_UPDATE_AFTER;
+var DEFAULT_DAMPING = exports.DEFAULT_DAMPING = 0.006;
+var DEFAULT_BIND_EMITTER = exports.DEFAULT_BIND_EMITTER = true;
+var DEFAULT_EMITTER_RATE = exports.DEFAULT_EMITTER_RATE = new _initializer.Rate(1, 0.1);
+var DEFAULT_BIND_EMITTER_EVENT = exports.DEFAULT_BIND_EMITTER_EVENT = false;
 
 /***/ }),
 /* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/*
+ * EventDispatcher
+ * Visit http://createjs.com/ for documentation, updates and examples.
+ *
+ **/
+
+var EventDispatcher = function () {
+  function EventDispatcher() {
+    _classCallCheck(this, EventDispatcher);
+
+    this.listeners = null;
+  }
+
+  _createClass(EventDispatcher, [{
+    key: "addEventListener",
+    value: function addEventListener(type, listener) {
+      if (!this.listeners) {
+        this.listeners = {};
+      } else {
+        this.removeEventListener(type, listener);
+      }
+
+      if (!this.listeners[type]) this.listeners[type] = [];
+      this.listeners[type].push(listener);
+
+      return listener;
+    }
+  }, {
+    key: "removeEventListener",
+    value: function removeEventListener(type, listener) {
+      if (!this.listeners) return;
+      if (!this.listeners[type]) return;
+
+      var arr = this.listeners[type];
+
+      for (var i = 0, l = arr.length; i < l; i++) {
+        if (arr[i] == listener) {
+          if (l == 1) {
+            delete this.listeners[type];
+          }
+          // allows for faster checks.
+          else {
+              arr.splice(i, 1);
+            }
+          break;
+        }
+      }
+    }
+  }, {
+    key: "removeAllEventListeners",
+    value: function removeAllEventListeners(type) {
+      if (!type) this.listeners = null;else if (this.listeners) delete this.listeners[type];
+    }
+  }, {
+    key: "dispatchEvent",
+    value: function dispatchEvent(eventName, eventTarget) {
+      var ret = false,
+          listeners = this.listeners;
+
+      if (eventName && listeners) {
+        var arr = listeners[eventName];
+
+        if (!arr) return ret;
+
+        arr = arr.slice();
+        // to avoid issues with items being removed or added during the dispatch
+
+        var handler,
+            i = arr.length;
+
+        while (i--) {
+          handler = arr[i];
+
+          ret = ret || handler(eventTarget);
+        }
+      }
+
+      return !!ret;
+    }
+  }, {
+    key: "hasEventListener",
+    value: function hasEventListener(type) {
+      var listeners = this.listeners;
+
+      return !!(listeners && listeners[type]);
+    }
+  }, {
+    key: "listeners",
+    set: function set(listeners) {
+      this._listeners = listeners;
+    },
+    get: function get() {
+      return this._listeners;
+    }
+  }]);
+
+  return EventDispatcher;
+}();
+
+exports.default = EventDispatcher;
+module.exports = exports["default"];
+
+/***/ }),
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54135,7 +54366,7 @@ Object.keys(_emitter).forEach(function (key) {
   });
 });
 
-var _initializer = __webpack_require__(18);
+var _initializer = __webpack_require__(14);
 
 Object.keys(_initializer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -54218,7 +54449,7 @@ Object.defineProperty(exports, 'Pool', {
 exports.default = _core.Proton;
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54320,7 +54551,7 @@ exports.default = Body;
 module.exports = exports['default'];
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54403,7 +54634,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54479,7 +54710,7 @@ exports.default = Life;
 module.exports = exports['default'];
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54557,7 +54788,7 @@ exports.default = Mass;
 module.exports = exports['default'];
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54671,7 +54902,7 @@ Position.prototype.initialize = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54768,7 +54999,7 @@ exports.default = Radius;
 module.exports = exports['default'];
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54896,7 +55127,7 @@ exports.default = Rate;
 module.exports = exports['default'];
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55073,7 +55304,7 @@ var V = exports.V = function (_Velocity) {
 }(Velocity);
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55094,7 +55325,7 @@ var _Span2 = __webpack_require__(28);
 
 var _Span3 = _interopRequireDefault(_Span2);
 
-var _lodash = __webpack_require__(75);
+var _lodash = __webpack_require__(76);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -55190,7 +55421,7 @@ var createArraySpan = exports.createArraySpan = function createArraySpan(colors)
 };
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55233,7 +55464,7 @@ exports.default = Box;
 module.exports = exports["default"];
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55356,7 +55587,7 @@ exports.default = Polar3D;
 module.exports = exports['default'];
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55483,7 +55714,7 @@ exports.default = Quaternion;
 module.exports = exports["default"];
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55496,7 +55727,7 @@ exports.CustomRender = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _BaseRenderer2 = __webpack_require__(15);
+var _BaseRenderer2 = __webpack_require__(16);
 
 var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
@@ -55569,7 +55800,7 @@ var CustomRender = exports.CustomRender = function (_CustomRenderer) {
 }(CustomRenderer);
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55582,7 +55813,7 @@ exports.PointsRender = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _BaseRenderer2 = __webpack_require__(15);
+var _BaseRenderer2 = __webpack_require__(16);
 
 var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
@@ -55670,7 +55901,7 @@ var PointsRender = exports.PointsRender = function (_PointsRenderer) {
 }(PointsRenderer);
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55745,7 +55976,7 @@ var SpriteRender = exports.SpriteRender = function (_SpriteRenderer) {
 }(SpriteRenderer);
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55789,7 +56020,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55966,7 +56197,7 @@ exports.default = BoxZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56070,7 +56301,7 @@ exports.default = LineZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56164,7 +56395,7 @@ exports.default = MeshZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56265,7 +56496,7 @@ exports.default = PointZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56277,7 +56508,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _THREEUtil = __webpack_require__(17);
+var _THREEUtil = __webpack_require__(18);
 
 var _THREEUtil2 = _interopRequireDefault(_THREEUtil);
 
@@ -56432,7 +56663,7 @@ ScreenZone.prototype._cross = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56600,7 +56831,7 @@ SphereZone.prototype._bound = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -73712,10 +73943,10 @@ module.exports = exports['default'];
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(79), __webpack_require__(80)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(80), __webpack_require__(81)(module)))
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports) {
 
 /**
@@ -73745,7 +73976,7 @@ module.exports = bytesToUuid;
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports) {
 
 // Unique ID creation requires a high quality random # generator.  In the
@@ -73785,11 +74016,11 @@ if (getRandomValues) {
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var rng = __webpack_require__(77);
-var bytesToUuid = __webpack_require__(76);
+var rng = __webpack_require__(78);
+var bytesToUuid = __webpack_require__(77);
 
 // **`v1()` - Generate time-based UUID**
 //
@@ -73900,7 +74131,7 @@ module.exports = v1;
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports) {
 
 var g;
@@ -73927,7 +74158,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {

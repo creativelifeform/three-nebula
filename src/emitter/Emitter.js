@@ -10,7 +10,6 @@ import EventDispatcher, {
   PARTICLE_UPDATE
 } from '../events';
 
-import { BIND_EMITTER_EVENT } from '../constants';
 import { InitializerUtil } from '../initializer';
 import Particle from '../core/Particle';
 import Util from '../utils/Util';
@@ -57,7 +56,7 @@ export default class Emitter extends Particle {
     this.currentEmitTime = 0;
 
     /**
-     * @desc The total number of times the emitter has emitted particles.
+     * @desc The total number of times the emitter should emit particles.
      * @type {integer}
      */
     this.totalEmitTimes = -1;
@@ -147,17 +146,17 @@ export default class Emitter extends Particle {
    *
    * TODO Refactor this so that it does not accept mixed type arguments.
    *
-   * @param {number} totalEmitTimes - the total number of times to emit particles
-   * @param {number} life - the life of this emitter in milliseconds
+   * @param {number} [totalEmitTimes=Infinity] - the total number of times to emit particles
+   * @param {number} [life=Infinity] - the life of this emitter in milliseconds
    * @return {Emitter}
    */
-  emit(totalEmitTimes = Infinity, life) {
+  emit(totalEmitTimes = Infinity, life = Infinity) {
     this.currentEmitTime = 0;
     this.totalEmitTimes = totalEmitTimes;
 
-    if (life == true || life == 'life' || life == 'destroy') {
-      this.life = totalEmitTimes == 'once' ? 1 : this.totalEmitTimes;
-    } else if (!isNaN(life)) {
+    if (totalEmitTimes === 1) {
+      this.life = totalEmitTimes;
+    } else {
       this.life = life;
     }
 
@@ -189,24 +188,6 @@ export default class Emitter extends Particle {
     while (i--) {
       this.particles[i].dead = true;
     }
-  }
-
-  /**
-   * Creates a particle by retreiving one from the pool and setting it up with
-   * the supplied initializer and behaviour.
-   *
-   * @param {Initializer} initializer - The initializer that will set the particle's initial properties
-   * @param {Behaviour} behaviour - The behaviour that will control the particle
-   * @return {Emitter}
-   */
-  createParticle(initializer, behaviour) {
-    const particle = this.parent.pool.get(Particle);
-
-    this.setupParticle(particle, initializer, behaviour);
-    this.parent && this.parent.dispatch(PARTICLE_CREATED, particle);
-    this.bindEmitterEvent && this.dispatch(PARTICLE_CREATED, particle);
-
-    return particle;
   }
 
   /**
@@ -390,9 +371,11 @@ export default class Emitter extends Particle {
   }
 
   /**
-   * Updates the emitter according to the time passed.
+   * Updates the emitter according to the time passed by calling the generate
+   * and integrate methods. The generate method creates particles, the integrate
+   * method updates existing particles.
+   *
    * If the emitter age is greater than time, the emitter is killed.
-   * Particle updates occur in the integrate method.
    *
    * @param {number} time - Proton engine time
    * @return void
@@ -404,7 +387,7 @@ export default class Emitter extends Particle {
       this.destroy();
     }
 
-    this.emitting(time);
+    this.generate(time);
     this.integrate(time);
 
     let i = this.particles.length;
@@ -446,47 +429,101 @@ export default class Emitter extends Particle {
     }
   }
 
-  emitting(time) {
-    if (this.totalEmitTimes == 'once') {
-      var i = this.rate.getValue(99999);
+  /**
+   * Generates new particles.
+   *
+   * @param {number} time - Proton engine time
+   * @return void
+   */
+  generate(time) {
+    if (this.totalEmitTimes === 1) {
+      let i = this.rate.getValue(99999);
 
-      if (i > 0) this.cID = i;
-      while (i--) this.createParticle();
-      this.totalEmitTimes = 'none';
-    } else if (!isNaN(this.totalEmitTimes)) {
-      this.currentEmitTime += time;
-      if (this.currentEmitTime < this.totalEmitTimes) {
-        i = this.rate.getValue(time);
+      if (i > 0) {
+        this.cID = i;
+      }
 
-        if (i > 0) this.cID = i;
-        while (i--) this.createParticle();
+      while (i--) {
+        this.createParticle();
+      }
+
+      this.totalEmitTimes = 0;
+
+      return;
+    }
+
+    this.currentEmitTime += time;
+
+    if (this.currentEmitTime < this.totalEmitTimes) {
+      let i = this.rate.getValue(time);
+
+      if (i > 0) {
+        this.cID = i;
+      }
+
+      while (i--) {
+        this.createParticle();
       }
     }
   }
 
+  /**
+   * Creates a particle by retreiving one from the pool and setting it up with
+   * the supplied initializer and behaviour.
+   *
+   * TODO This method is only ever called from generate and never with arguments
+   * so it's safe to remove the arguments.
+   *
+   * @return {Emitter}
+   */
+  createParticle(initializer, behaviour) {
+    const particle = this.parent.pool.get(Particle);
+
+    this.setupParticle(particle, initializer, behaviour);
+    this.parent && this.parent.dispatch(PARTICLE_CREATED, particle);
+    this.bindEmitterEvent && this.dispatch(PARTICLE_CREATED, particle);
+
+    return particle;
+  }
+
+  /**
+   * Sets up a particle by running all initializers on it and setting its behaviours.
+   * Also adds the particle to this.particles.
+   *
+   * TODO This method is only ever called from createParticle and never with arguments
+   * so it's safe to remove the arguments.
+   *
+   * @param {Particle} particle - The particle to setup
+   * @return void
+   */
   setupParticle(particle, initialize, behaviour) {
     var initializers = this.initializers;
     var behaviours = this.behaviours;
 
+    /* istanbul ignore if */
     if (initialize) {
       if (Util.isArray(initialize)) initializers = initialize;
       else initializers = [initialize];
     }
 
+    /* istanbul ignore if */
     if (behaviour) {
       if (Util.isArray(behaviour)) behaviours = behaviour;
       else behaviours = [behaviour];
     }
 
     InitializerUtil.initialize(this, particle, initializers);
+
     particle.addBehaviours(behaviours);
     particle.parent = this;
+
     this.particles.push(particle);
   }
 
   /**
-   * Destory this Emitter
-   * @method destroy
+   * Kills the emitter.
+   *
+   * @return void
    */
   destroy() {
     this.dead = true;
@@ -494,7 +531,7 @@ export default class Emitter extends Particle {
     this.totalEmitTimes = -1;
 
     if (this.particles.length == 0) {
-      this.removeInitializers();
+      this.removeAllInitializers();
       this.removeAllBehaviours();
 
       this.parent && this.parent.removeEmitter(this);

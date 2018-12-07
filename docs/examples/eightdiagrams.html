@@ -124,7 +124,7 @@
 
         return emitter
             .setRate(new Proton.Rate(new Proton.Span(5, 7), new Proton.Span(.01, .02)))
-            .setProperties([
+            .setInitializers([
                 new Proton.Mass(1),
                 new Proton.Life(2),
                 new Proton.Body(createSprite()),
