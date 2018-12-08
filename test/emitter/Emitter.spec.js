@@ -15,6 +15,7 @@ import sinon from 'sinon';
 const { spy } = sinon;
 const { assert } = chai;
 const { Emitter } = Proton;
+const TODO = new Error('TODO');
 
 describe('emitter -> Emitter', () => {
   it('should instantiate with the correct properties', done => {
@@ -95,6 +96,17 @@ describe('emitter -> Emitter', () => {
     assert(rateInitSpy.calledOnce);
 
     rateInitSpy.restore();
+
+    done();
+  });
+
+  it('should set the life to 1 if the totalEmitTimes is 1', done => {
+    const emitter = new Emitter();
+
+    emitter.emit(1, 1002);
+
+    assert.equal(emitter.totalEmitTimes, 1);
+    assert.equal(emitter.life, 1);
 
     done();
   });
@@ -292,5 +304,79 @@ describe('emitter -> Emitter', () => {
     assert.empty(emitter.behaviours);
 
     done();
+  });
+
+  it('should get a particle from the pool when creating the particle and return the particle', done => {
+    done(TODO);
+  });
+
+  it('should call the setupParticle method on the particle when creating it', done => {
+    done(TODO);
+  });
+
+  it('should dispatch the correct events when creating a particle', done => {
+    done(TODO);
+  });
+
+  it('should call the InitializerUtil.initialize method on the particle passing the correct arguments', done => {
+    done(TODO);
+  });
+
+  it('should set the particle beahviours as well as its parent and push the particle into the emitter.particles array', done => {
+    done(TODO);
+  });
+
+  it('should destroy the emitter', done => {
+    done(TODO);
+  });
+});
+
+describe('emitter -> Emitter -> update', () => {
+  it('should set the emitter age according to the time passed', done => {
+    done(TODO);
+  });
+
+  it('should destroy the emitter if the emitter is dead', done => {
+    done(TODO);
+  });
+
+  it('should call the generate and integrate methods, passing the update time argument to both', done => {
+    done(TODO);
+  });
+
+  it('should destroy the emitter if the emitter age is >= to its life', done => {
+    done(TODO);
+  });
+
+  it('should call the required methods while updating the emitter if a particle is dead', done => {
+    done(TODO);
+  });
+});
+
+describe('emitter -> Emitter -> integrate', () => {
+  it('should call the integrator\'s integrate method passing the correct arguments', done => {
+    done(TODO);
+  });
+
+  it('should update and integrate each particle', done => {
+    done(TODO);
+  });
+
+  it('should dispatch the correct events after updating particles', done => {
+    done(TODO);
+  });
+});
+
+describe('emitter -> Emitter -> generate', () => {
+  it('should set the cID, call createParticle the right number of times and set the totalEmitTimes to 0 if the totalEmitTimes was 1', done => {
+    done(TODO);
+  });
+
+  it('should set the currentEmitTime', done => {
+    done(TODO);
+  });
+
+  it('should create the correct number of particles if currentEmitTime < totalEmitTimes', done => {
+    done(TODO);
   });
 });
