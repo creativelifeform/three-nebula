@@ -7,8 +7,13 @@ import {
   DEFAULT_DAMPING,
   DEFAULT_EMITTER_RATE
 } from '../../src/emitter/constants';
-import EventDispatcher, { PARTICLE_CREATED } from '../../src/events/';
+import EventDispatcher, {
+  PARTICLE_CREATED,
+  PARTICLE_DEAD
+} from '../../src/events/';
 
+import { Integration } from '../../src/math';
+import { TIME } from '../constants';
 import chai from 'chai';
 import sinon from 'sinon';
 
@@ -500,42 +505,147 @@ describe('emitter -> Emitter', () => {
   });
 });
 
-// describe('emitter -> Emitter -> update', () => {
-//   it('should set the emitter age according to the time passed', done => {
-//     done(TODO);
-//   });
-//
-//   it('should destroy the emitter if the emitter is dead', done => {
-//     done(TODO);
-//   });
-//
-//   it('should call the generate and integrate methods, passing the update time argument to both', done => {
-//     done(TODO);
-//   });
-//
-//   it('should destroy the emitter if the emitter age is >= to its life', done => {
-//     done(TODO);
-//   });
-//
-//   it('should call the required methods while updating the emitter if a particle is dead', done => {
-//     done(TODO);
-//   });
-// });
-//
-// describe('emitter -> Emitter -> integrate', () => {
-//   it('should call the integrator\'s integrate method passing the correct arguments', done => {
-//     done(TODO);
-//   });
-//
-//   it('should update and integrate each particle', done => {
-//     done(TODO);
-//   });
-//
-//   it('should dispatch the correct events after updating particles', done => {
-//     done(TODO);
-//   });
-// });
-//
+describe('emitter -> Emitter -> update', () => {
+  it('should set the emitter age according to the time passed', done => {
+    const emitter = new Emitter();
+
+    assert.equal(emitter.age, 0);
+
+    emitter.update(TIME);
+
+    assert.equal(emitter.age, TIME);
+
+    done();
+  });
+
+  it('should destroy the emitter if the emitter is dead', done => {
+    const emitter = new Emitter();
+    const destroySpy = spy(emitter, 'destroy');
+
+    emitter.dead = true;
+
+    emitter.update(TIME);
+
+    assert(destroySpy.calledOnce);
+
+    destroySpy.restore();
+
+    done();
+  });
+  it('should destroy the emitter if the emitter age is >= to its life', done => {
+    const emitterA = new Emitter();
+    const emitterB = new Emitter();
+    const destroySpyA = spy(emitterA, 'destroy');
+    const destroySpyB = spy(emitterB, 'destroy');
+
+    emitterA.emit(100, 4);
+    emitterA.update(TIME);
+
+    emitterB.emit(100, TIME);
+    emitterB.update(TIME);
+
+    assert.isAbove(emitterA.age, emitterA.life);
+    assert.equal(emitterB.age, emitterB.life);
+
+    assert(destroySpyA.calledOnce);
+    assert(destroySpyB.calledOnce);
+
+    destroySpyA.restore();
+    destroySpyB.restore();
+
+    done();
+  });
+
+  it('should call the generate and integrate methods, passing the update time argument to both', done => {
+    const emitter = new Emitter();
+    const generateSpy = spy(emitter, 'generate');
+    const integrateSpy = spy(emitter, 'integrate');
+
+    emitter.update(TIME);
+
+    assert(generateSpy.calledOnceWith(TIME));
+    assert(integrateSpy.calledOnceWith(TIME));
+
+    generateSpy.restore();
+    integrateSpy.restore();
+
+    done();
+  });
+
+  it('should call the required methods while updating the emitter if a particle is dead', done => {
+    const proton = new Proton.Proton();
+    const emitter = new Emitter();
+    const liveParticlesCount = 10;
+    const deadParticlesCount = 23;
+    const protonDispatchSpy = spy(proton, 'dispatch');
+    const poolExpireSpy = spy(proton.pool, 'expire');
+    const particleResetSpy = spy(Proton.Particle.prototype, 'reset');
+
+    proton.addEmitter(emitter);
+
+    for (let i = 0; i < liveParticlesCount; i++) {
+      emitter.particles.push(new Proton.Particle());
+    }
+
+    for (let i = 0; i < deadParticlesCount; i++) {
+      emitter.particles.push(new Proton.Particle({ dead: true }));
+    }
+
+    emitter.update(TIME);
+
+    assert.equal(poolExpireSpy.callCount, deadParticlesCount);
+    assert.equal(particleResetSpy.callCount, deadParticlesCount);
+    assert.lengthOf(emitter.particles, liveParticlesCount);
+    // +1 for the add emitter dispatch
+    assert(protonDispatchSpy.callCount, deadParticlesCount + 1);
+    assert(protonDispatchSpy.calledWith(PARTICLE_DEAD));
+
+    done();
+  });
+});
+
+describe('emitter -> Emitter -> integrate', () => {
+  it('should integrate the emitter', done => {
+    const emitter = new Emitter();
+    const integrationSpy = spy(Integration.prototype, 'integrate');
+
+    emitter.integrate(TIME);
+
+    assert(integrationSpy.calledOnceWith(emitter, TIME, 1 - emitter.damping));
+
+    integrationSpy.restore();
+
+    done();
+  });
+
+  it('should update and integrate each particle', done => {
+    // TODO spy dispatches
+    const emitter = new Emitter();
+    const integrationSpy = spy(Integration.prototype, 'integrate');
+    const particleUpdateSpy = spy(Proton.Particle.prototype, 'update');
+    const particlesCount = 33;
+
+    for (let i = 0; i < particlesCount; i++) {
+      emitter.particles.push(new Proton.Particle());
+    }
+
+    emitter.integrate(TIME);
+
+    assert(integrationSpy.callCount, particlesCount + 1);
+    assert(particleUpdateSpy.callCount, particlesCount);
+    assert(particleUpdateSpy.calledWith(TIME));
+
+    integrationSpy.restore();
+    particleUpdateSpy.restore();
+
+    done();
+  });
+  //
+  // it('should dispatch the correct events after updating particles', done => {
+  //   done(TODO);
+  // });
+});
+
 // describe('emitter -> Emitter -> generate', () => {
 //   it('should set the cID, call createParticle the right number of times and set the totalEmitTimes to 0 if the totalEmitTimes was 1', done => {
 //     done(TODO);
