@@ -213,10 +213,10 @@ const proton = new Proton();
 const emitter = new Emitter();
 const renderer = new SpriteRenderer(threeScene);
 
-// Set emitter rate (particles per second), properties and behaviours
+// Set emitter rate (particles per second), particle initializers and behaviours
 emitter
   .setRate(new Rate(new Span(4, 16), new Span(0.01)))
-  .setProperties([
+  .setInitializers([
     new Position(new PointZone(0, 0)),
     new Mass(1),
     new Radius(6, 12),
@@ -230,10 +230,7 @@ emitter
   ]);
 
 // add the emitter and a renderer to proton
-proton.addEmitter(emitter).addRenderer(renderer);
-
-// emit particles
-emitter.emit();</code>
+proton.addEmitter(emitter.emit()).addRenderer(renderer);</code>
 </code></pre>
 <h3 id="script">Script</h3><p>If you are adding <code>three-proton</code> to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">const { Proton, Emitter, Rate, Span } = window.Proton;

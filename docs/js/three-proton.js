@@ -50036,6 +50036,63 @@ var Emitter = function (_Particle) {
     }
 
     /**
+     * Creates a particle by retreiving one from the pool and setting it up with
+     * the supplied initializer and behaviour.
+     *
+     * TODO This method is only ever called from generate and never with arguments
+     * so it's safe to remove the arguments.
+     *
+     * @return {Emitter}
+     */
+
+  }, {
+    key: 'createParticle',
+    value: function createParticle(initializer, behaviour) {
+      var particle = this.parent.pool.get(_Particle3.default);
+
+      this.setupParticle(particle, initializer, behaviour);
+      this.parent && this.parent.dispatch(_events.PARTICLE_CREATED, particle);
+      this.bindEmitterEvent && this.dispatch(_events.PARTICLE_CREATED, particle);
+
+      return particle;
+    }
+
+    /**
+     * Sets up a particle by running all initializers on it and setting its behaviours.
+     * Also adds the particle to this.particles.
+     *
+     * TODO This method is only ever called from createParticle and never with arguments
+     * so it's safe to remove the arguments.
+     *
+     * @param {Particle} particle - The particle to setup
+     * @return void
+     */
+
+  }, {
+    key: 'setupParticle',
+    value: function setupParticle(particle, initialize, behaviour) {
+      var initializers = this.initializers;
+      var behaviours = this.behaviours;
+
+      /* istanbul ignore if */
+      if (initialize) {
+        if (_Util2.default.isArray(initialize)) initializers = initialize;else initializers = [initialize];
+      }
+
+      /* istanbul ignore if */
+      if (behaviour) {
+        if (_Util2.default.isArray(behaviour)) behaviours = behaviour;else behaviours = [behaviour];
+      }
+
+      _initializer.InitializerUtil.initialize(this, particle, initializers);
+
+      particle.addBehaviours(behaviours);
+      particle.parent = this;
+
+      this.particles.push(particle);
+    }
+
+    /**
      * Updates the emitter according to the time passed by calling the generate
      * and integrate methods. The generate method creates particles, the integrate
      * method updates existing particles.
@@ -50139,63 +50196,6 @@ var Emitter = function (_Particle) {
           this.createParticle();
         }
       }
-    }
-
-    /**
-     * Creates a particle by retreiving one from the pool and setting it up with
-     * the supplied initializer and behaviour.
-     *
-     * TODO This method is only ever called from generate and never with arguments
-     * so it's safe to remove the arguments.
-     *
-     * @return {Emitter}
-     */
-
-  }, {
-    key: 'createParticle',
-    value: function createParticle(initializer, behaviour) {
-      var particle = this.parent.pool.get(_Particle3.default);
-
-      this.setupParticle(particle, initializer, behaviour);
-      this.parent && this.parent.dispatch(_events.PARTICLE_CREATED, particle);
-      this.bindEmitterEvent && this.dispatch(_events.PARTICLE_CREATED, particle);
-
-      return particle;
-    }
-
-    /**
-     * Sets up a particle by running all initializers on it and setting its behaviours.
-     * Also adds the particle to this.particles.
-     *
-     * TODO This method is only ever called from createParticle and never with arguments
-     * so it's safe to remove the arguments.
-     *
-     * @param {Particle} particle - The particle to setup
-     * @return void
-     */
-
-  }, {
-    key: 'setupParticle',
-    value: function setupParticle(particle, initialize, behaviour) {
-      var initializers = this.initializers;
-      var behaviours = this.behaviours;
-
-      /* istanbul ignore if */
-      if (initialize) {
-        if (_Util2.default.isArray(initialize)) initializers = initialize;else initializers = [initialize];
-      }
-
-      /* istanbul ignore if */
-      if (behaviour) {
-        if (_Util2.default.isArray(behaviour)) behaviours = behaviour;else behaviours = [behaviour];
-      }
-
-      _initializer.InitializerUtil.initialize(this, particle, initializers);
-
-      particle.addBehaviours(behaviours);
-      particle.parent = this;
-
-      this.particles.push(particle);
     }
 
     /**
