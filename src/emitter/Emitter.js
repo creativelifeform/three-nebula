@@ -371,6 +371,59 @@ export default class Emitter extends Particle {
   }
 
   /**
+   * Creates a particle by retreiving one from the pool and setting it up with
+   * the supplied initializer and behaviour.
+   *
+   * TODO This method is only ever called from generate and never with arguments
+   * so it's safe to remove the arguments.
+   *
+   * @return {Emitter}
+   */
+  createParticle(initializer, behaviour) {
+    const particle = this.parent.pool.get(Particle);
+
+    this.setupParticle(particle, initializer, behaviour);
+    this.parent && this.parent.dispatch(PARTICLE_CREATED, particle);
+    this.bindEmitterEvent && this.dispatch(PARTICLE_CREATED, particle);
+
+    return particle;
+  }
+
+  /**
+   * Sets up a particle by running all initializers on it and setting its behaviours.
+   * Also adds the particle to this.particles.
+   *
+   * TODO This method is only ever called from createParticle and never with arguments
+   * so it's safe to remove the arguments.
+   *
+   * @param {Particle} particle - The particle to setup
+   * @return void
+   */
+  setupParticle(particle, initialize, behaviour) {
+    var initializers = this.initializers;
+    var behaviours = this.behaviours;
+
+    /* istanbul ignore if */
+    if (initialize) {
+      if (Util.isArray(initialize)) initializers = initialize;
+      else initializers = [initialize];
+    }
+
+    /* istanbul ignore if */
+    if (behaviour) {
+      if (Util.isArray(behaviour)) behaviours = behaviour;
+      else behaviours = [behaviour];
+    }
+
+    InitializerUtil.initialize(this, particle, initializers);
+
+    particle.addBehaviours(behaviours);
+    particle.parent = this;
+
+    this.particles.push(particle);
+  }
+
+  /**
    * Updates the emitter according to the time passed by calling the generate
    * and integrate methods. The generate method creates particles, the integrate
    * method updates existing particles.
@@ -465,59 +518,6 @@ export default class Emitter extends Particle {
         this.createParticle();
       }
     }
-  }
-
-  /**
-   * Creates a particle by retreiving one from the pool and setting it up with
-   * the supplied initializer and behaviour.
-   *
-   * TODO This method is only ever called from generate and never with arguments
-   * so it's safe to remove the arguments.
-   *
-   * @return {Emitter}
-   */
-  createParticle(initializer, behaviour) {
-    const particle = this.parent.pool.get(Particle);
-
-    this.setupParticle(particle, initializer, behaviour);
-    this.parent && this.parent.dispatch(PARTICLE_CREATED, particle);
-    this.bindEmitterEvent && this.dispatch(PARTICLE_CREATED, particle);
-
-    return particle;
-  }
-
-  /**
-   * Sets up a particle by running all initializers on it and setting its behaviours.
-   * Also adds the particle to this.particles.
-   *
-   * TODO This method is only ever called from createParticle and never with arguments
-   * so it's safe to remove the arguments.
-   *
-   * @param {Particle} particle - The particle to setup
-   * @return void
-   */
-  setupParticle(particle, initialize, behaviour) {
-    var initializers = this.initializers;
-    var behaviours = this.behaviours;
-
-    /* istanbul ignore if */
-    if (initialize) {
-      if (Util.isArray(initialize)) initializers = initialize;
-      else initializers = [initialize];
-    }
-
-    /* istanbul ignore if */
-    if (behaviour) {
-      if (Util.isArray(behaviour)) behaviours = behaviour;
-      else behaviours = [behaviour];
-    }
-
-    InitializerUtil.initialize(this, particle, initializers);
-
-    particle.addBehaviours(behaviours);
-    particle.parent = this;
-
-    this.particles.push(particle);
   }
 
   /**
