@@ -291,6 +291,22 @@ describe('emitter -> Emitter', () => {
     done();
   });
 
+  it('should remove the emitter behaviour', done => {
+    const emitter = new Emitter();
+    const attraction = new Proton.Attraction();
+    const repulsion = new Proton.Repulsion();
+    const gravity = new Proton.Gravity();
+    const behaviours = [attraction, repulsion, gravity];
+
+    emitter.setBehaviours(behaviours);
+    emitter.removeBehaviour(repulsion);
+
+    assert.lengthOf(emitter.behaviours, 2);
+    assert.deepEqual(emitter.behaviours, [attraction, gravity]);
+
+    done();
+  });
+
   it('should remove all emitter behaviours', done => {
     const emitter = new Emitter();
 
