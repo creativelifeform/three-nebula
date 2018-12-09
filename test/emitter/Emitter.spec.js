@@ -9,7 +9,8 @@ import {
 } from '../../src/emitter/constants';
 import EventDispatcher, {
   PARTICLE_CREATED,
-  PARTICLE_DEAD
+  PARTICLE_DEAD,
+  PARTICLE_UPDATE
 } from '../../src/events/';
 
 import { Integration } from '../../src/math';
@@ -619,7 +620,6 @@ describe('emitter -> Emitter -> integrate', () => {
   });
 
   it('should update and integrate each particle', done => {
-    // TODO spy dispatches
     const emitter = new Emitter();
     const integrationSpy = spy(Integration.prototype, 'integrate');
     const particleUpdateSpy = spy(Proton.Particle.prototype, 'update');
@@ -640,22 +640,66 @@ describe('emitter -> Emitter -> integrate', () => {
 
     done();
   });
-  //
-  // it('should dispatch the correct events after updating particles', done => {
-  //   done(TODO);
-  // });
+
+  it('should dispatch the correct events after updating and integrating particles', done => {
+    const proton = new Proton.Proton();
+    const emitter = new Emitter();
+    const protonDispatchSpy = spy(proton, 'dispatch');
+    const particle = new Proton.Particle();
+
+    proton.addEmitter(emitter);
+    emitter.particles.push(particle);
+
+    emitter.integrate(TIME);
+
+    assert(protonDispatchSpy.secondCall.calledWith(PARTICLE_UPDATE, particle));
+
+    protonDispatchSpy.restore();
+
+    done();
+  });
 });
 
-// describe('emitter -> Emitter -> generate', () => {
-//   it('should set the cID, call createParticle the right number of times and set the totalEmitTimes to 0 if the totalEmitTimes was 1', done => {
-//     done(TODO);
-//   });
-//
-//   it('should set the currentEmitTime', done => {
-//     done(TODO);
-//   });
-//
-//   it('should create the correct number of particles if currentEmitTime < totalEmitTimes', done => {
-//     done(TODO);
-//   });
-// });
+describe('emitter -> Emitter -> generate', () => {
+  it('should set the cID, call createParticle the right number of times and set the totalEmitTimes to 0 if the totalEmitTimes was 1', done => {
+    const proton = new Proton.Proton();
+    const emitter = new Emitter();
+    const createParticleSpy = spy(emitter, 'createParticle');
+
+    proton.addEmitter(emitter.emit(1));
+    emitter.generate(TIME);
+
+    assert.equal(emitter.cID, 1);
+    assert(createParticleSpy.calledOnce);
+    assert.equal(emitter.totalEmitTimes, 0);
+
+    createParticleSpy.restore();
+
+    done();
+  });
+
+  it('should set the currentEmitTime', done => {
+    const proton = new Proton.Proton();
+    const emitter = new Emitter();
+
+    proton.addEmitter(emitter.emit());
+    emitter.generate(0.01);
+
+    assert.equal(emitter.currentEmitTime, 0.01);
+
+    done();
+  });
+
+  it('should create the correct number of particles if currentEmitTime < totalEmitTimes', done => {
+    const proton = new Proton.Proton();
+    const emitter = new Emitter();
+
+    proton.addEmitter(emitter.emit());
+    emitter.setRate(new Proton.Rate([32, 44], [99, 112]));
+    emitter.generate(0.9);
+
+    console.log(emitter.cID);
+
+    done();
+  });
+});
