@@ -198,11 +198,13 @@ export default class Emitter extends Particle {
    * @return void
    */
   addSelfInitialize(pObj) {
-    /* istanbul ignore if */
+    /* istanbul ignore next */
     if (pObj['init']) {
+      /* istanbul ignore next */
       pObj.init(this);
-      /* istanbul ignore else */
+      /* istanbul ignore next */
     } else {
+      /* istanbul ignore next */
       this.initAll();
     }
   }

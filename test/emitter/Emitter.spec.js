@@ -693,12 +693,20 @@ describe('emitter -> Emitter -> generate', () => {
   it('should create the correct number of particles if currentEmitTime < totalEmitTimes', done => {
     const proton = new Proton.Proton();
     const emitter = new Emitter();
+    const getValueSpy = spy(Proton.Rate.prototype, 'getValue');
+    const createParticleSpy = spy(emitter, 'createParticle');
+    const time = 0.0184;
 
     proton.addEmitter(emitter.emit());
-    emitter.setRate(new Proton.Rate([32, 44], [99, 112]));
-    emitter.generate(0.9);
+    emitter.setRate(new Proton.Rate(5, 0.01));
+    emitter.generate(time);
 
-    console.log(emitter.cID);
+    assert(getValueSpy.calledOnceWith(time));
+    assert.equal(emitter.cID, 5);
+    assert.equal(createParticleSpy.callCount, 5);
+
+    getValueSpy.restore();
+    createParticleSpy.restore();
 
     done();
   });
