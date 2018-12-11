@@ -10,21 +10,18 @@ Check out the examples and API reference documentation at [https://rohan-deshpan
 ## Features
 
 - Four kinds of renderers
-
   - `MeshRenderer`
   - `SpriteRenderer`
   - `PointsRenderer`
   - `CustomRenderer`
-
 - Three kinds of emitters which can simulate many different physical effects
 
   - `Emitter`
   - `BehaviourEmitter`
   - `FollowEmitter`
 
-- Many kinds of behaviours and properties
-
-- Perfectly compatible with [`three@0.98.0`](https://github.com/mrdoob/three.js).
+- Many kinds of particle behaviours and initializers
+- Perfect compatibility with [`three@0.98.0`](https://github.com/mrdoob/three.js).
 
 ## Installation
 
