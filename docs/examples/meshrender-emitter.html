@@ -85,7 +85,7 @@
     function initProton() {
         proton = new Proton.default();
         proton.addEmitter(createEmitter());
-        proton.addRender(new Proton.MeshRender(scene));
+        proton.addRenderer(new Proton.MeshRenderer(scene));
     }
 
     function createBox() {
@@ -101,12 +101,12 @@
     function createEmitter() {
         emitter = new Proton.Emitter();
         emitter.rate = new Proton.Rate(new Proton.Span(6, 12), new Proton.Span(.2, .5));
-        emitter.addInitialize(new Proton.Mass(1));
-        emitter.addInitialize(new Proton.Radius(100));
-        emitter.addInitialize(new Proton.Life(2, 4));
-        emitter.addInitialize(new Proton.Body(createBox()));
+        emitter.addInitializer(new Proton.Mass(1));
+        emitter.addInitializer(new Proton.Radius(100));
+        emitter.addInitializer(new Proton.Life(2, 4));
+        emitter.addInitializer(new Proton.Body(createBox()));
 
-        emitter.addInitialize(new Proton.Velocity(300, new Proton.Vector3D(0, 1, 0), 50));
+        emitter.addInitializer(new Proton.Velocity(300, new Proton.Vector3D(0, 1, 0), 50));
 
         // //emitter.addBehaviour(new Proton.RandomDrift(30, 30, 30, .05));
         emitter.addBehaviour(new Proton.Rotate("random", "random"));

@@ -13,13 +13,5 @@ export default {
     this._uids[nid] = functionOrObject;
 
     return nid;
-  },
-
-  /**
-   * @deprecated
-   */
-  // eslint-disable-next-line
-  hash: function(str) {
-    return;
   }
 };

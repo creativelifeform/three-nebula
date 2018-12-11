@@ -2,7 +2,6 @@ import { DR, MEASURE, PI } from '../constants';
 import { MathUtils, Polar3D, Vector3D, createSpan } from '../math';
 
 import Initializer from './Initializer';
-import { classDeprecationWarning } from '../compatibility';
 
 /**
  * Sets the velocity property on initialized particles.
@@ -107,15 +106,3 @@ Velocity.prototype.initialize = (function() {
     return this;
   };
 })();
-
-/**
- * Compatibility class.
- *
- * @deprecated
- */
-export class V extends Velocity {
-  constructor(...args) {
-    super(...args);
-    console.warn(classDeprecationWarning('V', 'Velocity'));
-  }
-}

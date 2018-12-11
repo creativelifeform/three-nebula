@@ -68,23 +68,5 @@ export default {
   _getValue: function(pan) {
     if (pan.constructor.name === 'Span') return pan.getValue();
     else return pan;
-  },
-
-  /**
-   * @deprecated
-   */
-  inherits: function(subClass, superClass) {
-    subClass._super_ = superClass;
-    if (Object['create']) {
-      subClass.prototype = Object.create(superClass.prototype, {
-        constructor: { value: subClass }
-      });
-    } else {
-      var F = function() {};
-
-      F.prototype = superClass.prototype;
-      subClass.prototype = new F();
-      subClass.prototype.constructor = subClass;
-    }
   }
 };
