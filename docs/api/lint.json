@@ -292,123 +292,61 @@
     ]
   },
   {
-    "name": "Emitter#addInitialize",
+    "name": "Emitter#setupParticle",
     "filePath": "src/emitter/Emitter.js",
     "lines": [
       {
-        "lineNumber": 148,
+        "lineNumber": 391,
         "line": "  /**"
       },
       {
-        "lineNumber": 149,
-        "line": "   * add the Initialize to particles;"
+        "lineNumber": 392,
+        "line": "   * Sets up a particle by running all initializers on it and setting its behaviours."
       },
       {
-        "lineNumber": 150,
+        "lineNumber": 393,
+        "line": "   * Also adds the particle to this.particles."
+      },
+      {
+        "lineNumber": 394,
         "line": "   *"
       },
       {
-        "lineNumber": 151,
-        "line": "   * you can use initializes array:for example emitter.addInitialize(initialize1,initialize2,initialize3);"
+        "lineNumber": 395,
+        "line": "   * TODO This method is only ever called from createParticle and never with arguments"
       },
       {
-        "lineNumber": 152,
-        "line": "   * @method addInitialize"
+        "lineNumber": 396,
+        "line": "   * so it's safe to remove the arguments."
       },
       {
-        "lineNumber": 153,
-        "line": "   * @param {Initialize} initialize like this new Radius(1, 12)"
+        "lineNumber": 397,
+        "line": "   *"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 398,
+        "line": "   * @param {Particle} particle - The particle to setup"
+      },
+      {
+        "lineNumber": 399,
+        "line": "   * @return void"
+      },
+      {
+        "lineNumber": 400,
         "line": "   */"
       },
       {
-        "lineNumber": 155,
-        "line": "  addInitialize() {"
-      }
-    ],
-    "codeParams": [],
-    "docParams": [
-      "initialize"
-    ]
-  },
-  {
-    "name": "Emitter#removeInitialize",
-    "filePath": "src/emitter/Emitter.js",
-    "lines": [
-      {
-        "lineNumber": 178,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 179,
-        "line": "   * remove the Initialize"
-      },
-      {
-        "lineNumber": 180,
-        "line": "   * @method removeInitialize"
-      },
-      {
-        "lineNumber": 181,
-        "line": "   * @param {Initialize} initialize a initialize"
-      },
-      {
-        "lineNumber": 182,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 183,
-        "line": "  removeInitialize(initializer) {"
+        "lineNumber": 401,
+        "line": "  setupParticle(particle, initialize, behaviour) {"
       }
     ],
     "codeParams": [
-      "initializer"
-    ],
-    "docParams": [
-      "initialize"
-    ]
-  },
-  {
-    "name": "Emitter#addBehaviour",
-    "filePath": "src/emitter/Emitter.js",
-    "lines": [
-      {
-        "lineNumber": 196,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 197,
-        "line": "   * add the Behaviour to particles;"
-      },
-      {
-        "lineNumber": 198,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 199,
-        "line": "   * you can use Behaviours array:emitter.addBehaviour(Behaviour1,Behaviour2,Behaviour3);"
-      },
-      {
-        "lineNumber": 200,
-        "line": "   * @method addBehaviour"
-      },
-      {
-        "lineNumber": 201,
-        "line": "   * @param {Behaviour} behaviour like this new Color('random')"
-      },
-      {
-        "lineNumber": 202,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 203,
-        "line": "  addBehaviour() {"
-      }
-    ],
-    "codeParams": [],
-    "docParams": [
+      "particle",
+      "initialize",
       "behaviour"
+    ],
+    "docParams": [
+      "particle"
     ]
   },
   {

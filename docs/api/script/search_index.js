@@ -126,9 +126,27 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/emitter/constants.js~default_bind_emitter",
+    "variable/index.html#static-variable-DEFAULT_BIND_EMITTER",
+    "<span>DEFAULT_BIND_EMITTER</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/emitter/constants.js~default_bind_emitter_event",
+    "variable/index.html#static-variable-DEFAULT_BIND_EMITTER_EVENT",
+    "<span>DEFAULT_BIND_EMITTER_EVENT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/core/constants.js~default_body",
     "variable/index.html#static-variable-DEFAULT_BODY",
     "<span>DEFAULT_BODY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/emitter/constants.js~default_damping",
+    "variable/index.html#static-variable-DEFAULT_DAMPING",
+    "<span>DEFAULT_DAMPING</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/constants.js</span>",
     "variable"
   ],
   [
@@ -147,6 +165,12 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/core/constants.js~default_easing",
     "variable/index.html#static-variable-DEFAULT_EASING",
     "<span>DEFAULT_EASING</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/emitter/constants.js~default_emitter_rate",
+    "variable/index.html#static-variable-DEFAULT_EMITTER_RATE",
+    "<span>DEFAULT_EMITTER_RATE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/constants.js</span>",
     "variable"
   ],
   [
@@ -1015,13 +1039,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -2148,9 +2172,27 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/emitter/emitter.js~emitter#addbehaviours",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-addBehaviours",
+    "src/emitter/Emitter.js~Emitter#addBehaviours",
+    "method"
+  ],
+  [
     "src/emitter/emitter.js~emitter#addinitialize",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitialize",
     "src/emitter/Emitter.js~Emitter#addInitialize",
+    "method"
+  ],
+  [
+    "src/emitter/emitter.js~emitter#addinitializer",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitializer",
+    "src/emitter/Emitter.js~Emitter#addInitializer",
+    "method"
+  ],
+  [
+    "src/emitter/emitter.js~emitter#addinitializers",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitializers",
+    "src/emitter/Emitter.js~Emitter#addInitializers",
     "method"
   ],
   [
@@ -2175,6 +2217,12 @@ window.esdocSearchIndex = [
     "src/emitter/emitter.js~emitter#bindemitter",
     "class/src/emitter/Emitter.js~Emitter.html#instance-member-bindEmitter",
     "src/emitter/Emitter.js~Emitter#bindEmitter",
+    "member"
+  ],
+  [
+    "src/emitter/emitter.js~emitter#bindemitterevent",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-member-bindEmitterEvent",
+    "src/emitter/Emitter.js~Emitter#bindEmitterEvent",
     "member"
   ],
   [
@@ -2220,15 +2268,15 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/emitter/emitter.js~emitter#emit",
-    "class/src/emitter/Emitter.js~Emitter.html#instance-method-emit",
-    "src/emitter/Emitter.js~Emitter#emit",
+    "src/emitter/emitter.js~emitter#dispatch",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-dispatch",
+    "src/emitter/Emitter.js~Emitter#dispatch",
     "method"
   ],
   [
-    "src/emitter/emitter.js~emitter#emitting",
-    "class/src/emitter/Emitter.js~Emitter.html#instance-method-emitting",
-    "src/emitter/Emitter.js~Emitter#emitting",
+    "src/emitter/emitter.js~emitter#emit",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-emit",
+    "src/emitter/Emitter.js~Emitter#emit",
     "method"
   ],
   [
@@ -2244,15 +2292,21 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/emitter/emitter.js~emitter#generate",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-generate",
+    "src/emitter/Emitter.js~Emitter#generate",
+    "method"
+  ],
+  [
     "src/emitter/emitter.js~emitter#id",
     "class/src/emitter/Emitter.js~Emitter.html#instance-member-id",
     "src/emitter/Emitter.js~Emitter#id",
     "member"
   ],
   [
-    "src/emitter/emitter.js~emitter#initializes",
-    "class/src/emitter/Emitter.js~Emitter.html#instance-member-initializes",
-    "src/emitter/Emitter.js~Emitter#initializes",
+    "src/emitter/emitter.js~emitter#initializers",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-member-initializers",
+    "src/emitter/Emitter.js~Emitter#initializers",
     "member"
   ],
   [
@@ -2298,6 +2352,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/emitter/emitter.js~emitter#removeallinitializers",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeAllInitializers",
+    "src/emitter/Emitter.js~Emitter#removeAllInitializers",
+    "method"
+  ],
+  [
     "src/emitter/emitter.js~emitter#removeallparticles",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeAllParticles",
     "src/emitter/Emitter.js~Emitter#removeAllParticles",
@@ -2316,9 +2376,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/emitter/emitter.js~emitter#removeinitializers",
-    "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeInitializers",
-    "src/emitter/Emitter.js~Emitter#removeInitializers",
+    "src/emitter/emitter.js~emitter#removeinitializer",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeInitializer",
+    "src/emitter/Emitter.js~Emitter#removeInitializer",
     "method"
   ],
   [
@@ -2328,15 +2388,15 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/emitter/emitter.js~emitter#setposition",
-    "class/src/emitter/Emitter.js~Emitter.html#instance-method-setPosition",
-    "src/emitter/Emitter.js~Emitter#setPosition",
+    "src/emitter/emitter.js~emitter#setinitializers",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-setInitializers",
+    "src/emitter/Emitter.js~Emitter#setInitializers",
     "method"
   ],
   [
-    "src/emitter/emitter.js~emitter#setproperties",
-    "class/src/emitter/Emitter.js~Emitter.html#instance-method-setProperties",
-    "src/emitter/Emitter.js~Emitter#setProperties",
+    "src/emitter/emitter.js~emitter#setposition",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-setPosition",
+    "src/emitter/Emitter.js~Emitter#setPosition",
     "method"
   ],
   [
@@ -2448,6 +2508,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/emitter/constants.js",
+    "file/src/emitter/constants.js.html",
+    "src/emitter/constants.js",
+    "file"
+  ],
+  [
     "src/emitter/index.js",
     "file/src/emitter/index.js.html",
     "src/emitter/index.js",
@@ -2491,13 +2557,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],

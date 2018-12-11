@@ -90,7 +90,7 @@
 
         emitter
             .setRate(new Proton.Rate(new Proton.Span(4, 16), new Proton.Span(.01)))
-            .setProperties([
+            .setInitializers([
                 new Proton.Position(new Proton.PointZone(0, 0)),
                 new Proton.Mass(1),
                 new Proton.Radius(6, 12),
