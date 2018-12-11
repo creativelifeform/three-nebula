@@ -24,12 +24,6 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/baserenderer.js~baserender",
-    "class/src/renderer/BaseRenderer.js~BaseRender.html",
-    "<span>BaseRender</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/BaseRenderer.js</span>",
-    "class"
-  ],
-  [
     "@rohandeshpande/three-proton/src/renderer/baserenderer.js~baserenderer",
     "class/src/renderer/BaseRenderer.js~BaseRenderer.html",
     "<span>BaseRenderer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/BaseRenderer.js</span>",
@@ -81,12 +75,6 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/behaviour/crosszone.js~crosszone",
     "class/src/behaviour/CrossZone.js~CrossZone.html",
     "<span>CrossZone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/CrossZone.js</span>",
-    "class"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/renderer/customrenderer.js~customrender",
-    "class/src/renderer/CustomRenderer.js~CustomRender.html",
-    "<span>CustomRender</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/CustomRenderer.js</span>",
     "class"
   ],
   [
@@ -330,12 +318,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/gravity.js~g",
-    "class/src/behaviour/Gravity.js~G.html",
-    "<span>G</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Gravity.js</span>",
-    "class"
-  ],
-  [
     "@rohandeshpande/three-proton/src/behaviour/gravity.js~gravity",
     "class/src/behaviour/Gravity.js~Gravity.html",
     "<span>Gravity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Gravity.js</span>",
@@ -375,12 +357,6 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/initializer/mass.js~mass",
     "class/src/initializer/Mass.js~Mass.html",
     "<span>Mass</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Mass.js</span>",
-    "class"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/renderer/meshrenderer.js~meshrender",
-    "class/src/renderer/MeshRenderer.js~MeshRender.html",
-    "<span>MeshRender</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/MeshRenderer.js</span>",
     "class"
   ],
   [
@@ -498,12 +474,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/pointsrenderer.js~pointsrender",
-    "class/src/renderer/PointsRenderer.js~PointsRender.html",
-    "<span>PointsRender</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/PointsRenderer.js</span>",
-    "class"
-  ],
-  [
     "@rohandeshpande/three-proton/src/renderer/pointsrenderer.js~pointsrenderer",
     "class/src/renderer/PointsRenderer.js~PointsRenderer.html",
     "<span>PointsRenderer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/PointsRenderer.js</span>",
@@ -531,12 +501,6 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/core/proton.js~proton",
     "class/src/core/Proton.js~Proton.html",
     "<span>Proton</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/Proton.js</span>",
-    "class"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/math/quaternion.js~quaternion",
-    "class/src/math/Quaternion.js~Quaternion.html",
-    "<span>Quaternion</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/Quaternion.js</span>",
     "class"
   ],
   [
@@ -612,12 +576,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/spriterenderer.js~spriterender",
-    "class/src/renderer/SpriteRenderer.js~SpriteRender.html",
-    "<span>SpriteRender</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/SpriteRenderer.js</span>",
-    "class"
-  ],
-  [
     "@rohandeshpande/three-proton/src/renderer/spriterenderer.js~spriterenderer",
     "class/src/renderer/SpriteRenderer.js~SpriteRenderer.html",
     "<span>SpriteRenderer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/SpriteRenderer.js</span>",
@@ -628,12 +586,6 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-TIME_STEP",
     "<span>TIME_STEP</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
     "variable"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/initializer/velocity.js~v",
-    "class/src/initializer/Velocity.js~V.html",
-    "<span>V</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity.js</span>",
-    "class"
   ],
   [
     "@rohandeshpande/three-proton/src/constants/index.js~verlet",
@@ -658,12 +610,6 @@ window.esdocSearchIndex = [
     "class/src/zone/Zone.js~Zone.html",
     "<span>Zone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/Zone.js</span>",
     "class"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/compatibility/index.js~classdeprecationwarning",
-    "function/index.html#static-function-classDeprecationWarning",
-    "<span>classDeprecationWarning</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/compatibility/index.js</span>",
-    "function"
   ],
   [
     "@rohandeshpande/three-proton/src/math/arrayspan.js~createarrayspan",
@@ -1392,12 +1338,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/behaviour/gravity.js~g#constructor",
-    "class/src/behaviour/Gravity.js~G.html#instance-constructor-constructor",
-    "src/behaviour/Gravity.js~G#constructor",
-    "method"
-  ],
-  [
     "src/behaviour/gravity.js~gravity#constructor",
     "class/src/behaviour/Gravity.js~Gravity.html#instance-constructor-constructor",
     "src/behaviour/Gravity.js~Gravity#constructor",
@@ -1549,13 +1489,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
@@ -1671,12 +1611,6 @@ window.esdocSearchIndex = [
     "src/behaviour/index.js",
     "file/src/behaviour/index.js.html",
     "src/behaviour/index.js",
-    "file"
-  ],
-  [
-    "src/compatibility/index.js",
-    "file/src/compatibility/index.js.html",
-    "src/compatibility/index.js",
     "file"
   ],
   [
@@ -1980,12 +1914,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/core/proton.js~proton#addrender",
-    "class/src/core/Proton.js~Proton.html#instance-method-addRender",
-    "src/core/Proton.js~Proton#addRender",
-    "method"
-  ],
-  [
     "src/core/proton.js~proton#addrenderer",
     "class/src/core/Proton.js~Proton.html#instance-method-addRenderer",
     "src/core/Proton.js~Proton#addRenderer",
@@ -2049,12 +1977,6 @@ window.esdocSearchIndex = [
     "src/core/proton.js~proton#removeemitter",
     "class/src/core/Proton.js~Proton.html#instance-method-removeEmitter",
     "src/core/Proton.js~Proton#removeEmitter",
-    "method"
-  ],
-  [
-    "src/core/proton.js~proton#removerender",
-    "class/src/core/Proton.js~Proton.html#instance-method-removeRender",
-    "src/core/Proton.js~Proton#removeRender",
     "method"
   ],
   [
@@ -2178,12 +2100,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/emitter/emitter.js~emitter#addinitialize",
-    "class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitialize",
-    "src/emitter/Emitter.js~Emitter#addInitialize",
-    "method"
-  ],
-  [
     "src/emitter/emitter.js~emitter#addinitializer",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitializer",
     "src/emitter/Emitter.js~Emitter#addInitializer",
@@ -2193,12 +2109,6 @@ window.esdocSearchIndex = [
     "src/emitter/emitter.js~emitter#addinitializers",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitializers",
     "src/emitter/Emitter.js~Emitter#addInitializers",
-    "method"
-  ],
-  [
-    "src/emitter/emitter.js~emitter#addselfinitialize",
-    "class/src/emitter/Emitter.js~Emitter.html#instance-method-addSelfInitialize",
-    "src/emitter/Emitter.js~Emitter#addSelfInitialize",
     "method"
   ],
   [
@@ -2367,12 +2277,6 @@ window.esdocSearchIndex = [
     "src/emitter/emitter.js~emitter#removebehaviour",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeBehaviour",
     "src/emitter/Emitter.js~Emitter#removeBehaviour",
-    "method"
-  ],
-  [
-    "src/emitter/emitter.js~emitter#removeinitialize",
-    "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeInitialize",
-    "src/emitter/Emitter.js~Emitter#removeInitialize",
     "method"
   ],
   [
@@ -2557,13 +2461,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -2836,12 +2740,6 @@ window.esdocSearchIndex = [
     "file/src/initializer/Velocity.js.html",
     "src/initializer/Velocity.js",
     "file"
-  ],
-  [
-    "src/initializer/velocity.js~v#constructor",
-    "class/src/initializer/Velocity.js~V.html#instance-constructor-constructor",
-    "src/initializer/Velocity.js~V#constructor",
-    "method"
   ],
   [
     "src/initializer/velocity.js~velocity#_usev",
@@ -3144,90 +3042,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/math/quaternion.js",
-    "file/src/math/Quaternion.js.html",
-    "src/math/Quaternion.js",
-    "file"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#clone",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-clone",
-    "src/math/Quaternion.js~Quaternion#clone",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#constructor",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-constructor-constructor",
-    "src/math/Quaternion.js~Quaternion#constructor",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#copy",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-copy",
-    "src/math/Quaternion.js~Quaternion#copy",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#dot",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-dot",
-    "src/math/Quaternion.js~Quaternion#dot",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#length",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-length",
-    "src/math/Quaternion.js~Quaternion#length",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#normalize",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-normalize",
-    "src/math/Quaternion.js~Quaternion#normalize",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#set",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-set",
-    "src/math/Quaternion.js~Quaternion#set",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#setfromaxisangle",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-setFromAxisAngle",
-    "src/math/Quaternion.js~Quaternion#setFromAxisAngle",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#setfromeuler",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-setFromEuler",
-    "src/math/Quaternion.js~Quaternion#setFromEuler",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#w",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-member-w",
-    "src/math/Quaternion.js~Quaternion#w",
-    "member"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#x",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-member-x",
-    "src/math/Quaternion.js~Quaternion#x",
-    "member"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#y",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-member-y",
-    "src/math/Quaternion.js~Quaternion#y",
-    "member"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#z",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-member-z",
-    "src/math/Quaternion.js~Quaternion#z",
-    "member"
-  ],
-  [
     "src/math/span.js",
     "file/src/math/Span.js.html",
     "src/math/Span.js",
@@ -3336,12 +3150,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/renderer/baserenderer.js~baserender#constructor",
-    "class/src/renderer/BaseRenderer.js~BaseRender.html#instance-constructor-constructor",
-    "src/renderer/BaseRenderer.js~BaseRender#constructor",
-    "method"
-  ],
-  [
     "src/renderer/baserenderer.js~baserenderer#constructor",
     "class/src/renderer/BaseRenderer.js~BaseRenderer.html#instance-constructor-constructor",
     "src/renderer/BaseRenderer.js~BaseRenderer#constructor",
@@ -3408,12 +3216,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/renderer/customrenderer.js~customrender#constructor",
-    "class/src/renderer/CustomRenderer.js~CustomRender.html#instance-constructor-constructor",
-    "src/renderer/CustomRenderer.js~CustomRender#constructor",
-    "method"
-  ],
-  [
     "src/renderer/customrenderer.js~customrenderer#constructor",
     "class/src/renderer/CustomRenderer.js~CustomRenderer.html#instance-constructor-constructor",
     "src/renderer/CustomRenderer.js~CustomRenderer#constructor",
@@ -3460,12 +3262,6 @@ window.esdocSearchIndex = [
     "file/src/renderer/MeshRenderer.js.html",
     "src/renderer/MeshRenderer.js",
     "file"
-  ],
-  [
-    "src/renderer/meshrenderer.js~meshrender#constructor",
-    "class/src/renderer/MeshRenderer.js~MeshRender.html#instance-constructor-constructor",
-    "src/renderer/MeshRenderer.js~MeshRender#constructor",
-    "method"
   ],
   [
     "src/renderer/meshrenderer.js~meshrenderer#_body",
@@ -3534,12 +3330,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/renderer/pointsrenderer.js~pointsrender#constructor",
-    "class/src/renderer/PointsRenderer.js~PointsRender.html#instance-constructor-constructor",
-    "src/renderer/PointsRenderer.js~PointsRender#constructor",
-    "method"
-  ],
-  [
     "src/renderer/pointsrenderer.js~pointsrenderer#constructor",
     "class/src/renderer/PointsRenderer.js~PointsRenderer.html#instance-constructor-constructor",
     "src/renderer/PointsRenderer.js~PointsRenderer#constructor",
@@ -3580,12 +3370,6 @@ window.esdocSearchIndex = [
     "file/src/renderer/SpriteRenderer.js.html",
     "src/renderer/SpriteRenderer.js",
     "file"
-  ],
-  [
-    "src/renderer/spriterenderer.js~spriterender#constructor",
-    "class/src/renderer/SpriteRenderer.js~SpriteRender.html#instance-constructor-constructor",
-    "src/renderer/SpriteRenderer.js~SpriteRender#constructor",
-    "method"
   ],
   [
     "src/renderer/spriterenderer.js~spriterenderer#_body",

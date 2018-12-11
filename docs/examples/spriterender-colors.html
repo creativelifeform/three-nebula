@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>SpriteRender - colors</title>
+    <title>SpriteRenderer - colors</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <style type="text/css">
@@ -90,7 +90,7 @@
     function addProton() {
         proton = new Proton.default();
         proton.addEmitter(createEmitter());
-        proton.addRender(new Proton.SpriteRender(scene));
+        proton.addRenderer(new Proton.SpriteRenderer(scene));
     }
 
     function createBox() {
@@ -107,11 +107,11 @@
         var colors = ['#529B88', '#CDD180', '#FFFA32', '#FB6255', '#FB4A53', '#FF4E50', '#F9D423'];
         emitter = new Proton.Emitter();
         emitter.rate = new Proton.Rate(new Proton.Span(3, 6), new Proton.Span(.05, .2));
-        emitter.addInitialize(new Proton.Mass(1));
-        emitter.addInitialize(new Proton.Radius(200, 400));
-        emitter.addInitialize(new Proton.Life(2, 4));
-        emitter.addInitialize(new Proton.Body(createSprite()));
-        emitter.addInitialize(new Proton.Position(new Proton.ScreenZone(camera, renderer)));
+        emitter.addInitializer(new Proton.Mass(1));
+        emitter.addInitializer(new Proton.Radius(200, 400));
+        emitter.addInitializer(new Proton.Life(2, 4));
+        emitter.addInitializer(new Proton.Body(createSprite()));
+        emitter.addInitializer(new Proton.Position(new Proton.ScreenZone(camera, renderer)));
         emitter.addBehaviour(new Proton.Alpha(0, 1, Infinity, Proton.easeOutCubic));
         emitter.addBehaviour(new Proton.Scale(2, 0, Infinity, Proton.easeOutCubic));
         emitter.addBehaviour(new Proton.Color(colors, 'random'));

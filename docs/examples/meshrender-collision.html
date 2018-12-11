@@ -121,11 +121,11 @@
         proton = new Proton.default();
         var emitter = new Proton.Emitter();
         emitter.rate = new Proton.Rate(new Proton.Span(2, 5), new Proton.Span(.5, 1));
-        emitter.addInitialize(new Proton.Mass(1));
-        emitter.addInitialize(new Proton.Radius(100));
-        emitter.addInitialize(new Proton.Life(5, 6));
-        emitter.addInitialize(new Proton.Body(sphereMesh));
-        emitter.addInitialize(new Proton.Velocity(new Proton.Span(300, 500), new Proton.Vector3D(0, 1, 0), 30));
+        emitter.addInitializer(new Proton.Mass(1));
+        emitter.addInitializer(new Proton.Radius(100));
+        emitter.addInitializer(new Proton.Life(5, 6));
+        emitter.addInitializer(new Proton.Body(sphereMesh));
+        emitter.addInitializer(new Proton.Velocity(new Proton.Span(300, 500), new Proton.Vector3D(0, 1, 0), 30));
         //emitter.addBehaviour(new Proton.Alpha(1, 0));
         emitter.addBehaviour(new Proton.Scale(1));
         emitter.addBehaviour(new Proton.Gravity(4));
@@ -133,7 +133,7 @@
 
         emitter.emit();
         proton.addEmitter(emitter);
-        proton.addRender(new Proton.MeshRender(scene));
+        proton.addRenderer(new Proton.MeshRenderer(scene));
     }
 
     function onWindowResize() {

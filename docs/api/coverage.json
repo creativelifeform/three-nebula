@@ -1,7 +1,7 @@
 {
-  "coverage": "51.84%",
-  "expectCount": 569,
-  "actualCount": 295,
+  "coverage": "53.64%",
+  "expectCount": 535,
+  "actualCount": 287,
   "files": {
     "src/behaviour/Alpha.js": {
       "expectCount": 10,
@@ -60,11 +60,9 @@
       "undocumentLines": []
     },
     "src/behaviour/Gravity.js": {
-      "expectCount": 4,
-      "actualCount": 3,
-      "undocumentLines": [
-        29
-      ]
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/behaviour/RandomDrift.js": {
       "expectCount": 8,
@@ -121,13 +119,6 @@
         8
       ]
     },
-    "src/compatibility/index.js": {
-      "expectCount": 1,
-      "actualCount": 0,
-      "undocumentLines": [
-        1
-      ]
-    },
     "src/constants/index.js": {
       "expectCount": 18,
       "actualCount": 2,
@@ -163,8 +154,8 @@
       "undocumentLines": []
     },
     "src/core/Proton.js": {
-      "expectCount": 20,
-      "actualCount": 20,
+      "expectCount": 18,
+      "actualCount": 18,
       "undocumentLines": []
     },
     "src/core/constants.js": {
@@ -207,16 +198,16 @@
       ]
     },
     "src/emitter/Emitter.js": {
-      "expectCount": 45,
-      "actualCount": 38,
+      "expectCount": 42,
+      "actualCount": 35,
       "undocumentLines": [
         95,
         96,
         158,
-        388,
-        439,
-        531,
-        532
+        342,
+        393,
+        485,
+        486
       ]
     },
     "src/emitter/FollowEmitter.js": {
@@ -289,7 +280,7 @@
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        5
+        3
       ]
     },
     "src/initializer/Life.js": {
@@ -320,13 +311,12 @@
       "undocumentLines": []
     },
     "src/initializer/Velocity.js": {
-      "expectCount": 12,
-      "actualCount": 8,
+      "expectCount": 10,
+      "actualCount": 7,
       "undocumentLines": [
-        32,
-        35,
-        79,
-        117
+        31,
+        34,
+        78
       ]
     },
     "src/math/ArraySpan.js": {
@@ -385,25 +375,6 @@
         80
       ]
     },
-    "src/math/Quaternion.js": {
-      "expectCount": 14,
-      "actualCount": 1,
-      "undocumentLines": [
-        5,
-        6,
-        7,
-        8,
-        9,
-        12,
-        21,
-        25,
-        34,
-        54,
-        68,
-        87,
-        93
-      ]
-    },
     "src/math/Span.js": {
       "expectCount": 8,
       "actualCount": 2,
@@ -432,80 +403,70 @@
       ]
     },
     "src/renderer/BaseRenderer.js": {
-      "expectCount": 13,
+      "expectCount": 11,
       "actualCount": 4,
       "undocumentLines": [
-        10,
-        11,
-        15,
-        16,
-        19,
-        22,
-        49,
-        74,
-        75
+        8,
+        9,
+        13,
+        14,
+        17,
+        20,
+        47
       ]
     },
     "src/renderer/CustomRenderer.js": {
-      "expectCount": 10,
+      "expectCount": 8,
       "actualCount": 0,
       "undocumentLines": [
+        4,
         5,
-        6,
-        9,
-        10,
-        13,
-        15,
-        17,
-        19,
-        22,
-        23
-      ]
-    },
-    "src/renderer/MeshRenderer.js": {
-      "expectCount": 13,
-      "actualCount": 0,
-      "undocumentLines": [
         8,
         9,
         12,
         14,
-        15,
         16,
-        22,
-        24,
-        45,
-        66,
-        70,
-        82,
-        83
+        18
+      ]
+    },
+    "src/renderer/MeshRenderer.js": {
+      "expectCount": 11,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        8,
+        11,
+        13,
+        14,
+        15,
+        21,
+        23,
+        44,
+        65,
+        69
       ]
     },
     "src/renderer/PointsRenderer.js": {
-      "expectCount": 9,
+      "expectCount": 7,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        8,
+        11,
+        13,
+        22,
+        28
+      ]
+    },
+    "src/renderer/SpriteRenderer.js": {
+      "expectCount": 4,
       "actualCount": 0,
       "undocumentLines": [
         5,
         6,
         9,
-        12,
-        14,
-        23,
-        29,
-        40,
-        41
-      ]
-    },
-    "src/renderer/SpriteRenderer.js": {
-      "expectCount": 6,
-      "actualCount": 0,
-      "undocumentLines": [
-        6,
-        7,
-        10,
-        13,
-        22,
-        23
+        12
       ]
     },
     "src/zone/BoxZone.js": {

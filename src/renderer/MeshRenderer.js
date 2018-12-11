@@ -3,7 +3,6 @@ import { BoxGeometry, Mesh, MeshLambertMaterial } from 'three';
 import BaseRenderer from './BaseRenderer';
 import { PUID } from '../utils';
 import { Pool } from '../core';
-import { classDeprecationWarning } from '../compatibility';
 
 export default class MeshRenderer extends BaseRenderer {
   constructor(container) {
@@ -76,12 +75,5 @@ export default class MeshRenderer extends BaseRenderer {
       this.container.remove(particle.target);
       particle.target = null;
     }
-  }
-}
-
-export class MeshRender extends MeshRenderer {
-  constructor(...args) {
-    super(...args);
-    console.warn(classDeprecationWarning('MeshRender', 'MeshRenderer'));
   }
 }

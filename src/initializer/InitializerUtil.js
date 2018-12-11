@@ -1,6 +1,4 @@
 import { Euler } from 'three';
-import Initializer from './Initializer';
-import Util from '../utils/Util';
 
 const particleEuler = new Euler();
 
@@ -16,29 +14,13 @@ export default {
    * @return void
    */
   initialize: function(emitter, particle, initializers) {
-    var i = initializers.length;
+    let i = initializers.length;
 
     while (i--) {
-      var initializer = initializers[i];
-
-      // TODO remove this conditional, the else is not entered in any of the examples
-      // and is just confusing
-      /* istanbul ignore else */
-      if (initializer instanceof Initializer)
-        initializer.init(emitter, particle);
-      else this.init(emitter, particle, initializer);
+      initializers[i].init(emitter, particle);
     }
 
     emitter.bindEmitter && this.bindEmitter(emitter, particle);
-  },
-
-  /**
-   * @deprecated Looks like this method is never called
-   */
-  init: function(emitter, particle, initialize) {
-    console.log('InitializeUtil.init called');
-    Util.setPrototypeByObj(particle, initialize);
-    Util.setVectorByObj(particle, initialize);
   },
 
   /**

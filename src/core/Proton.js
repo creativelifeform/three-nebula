@@ -87,16 +87,6 @@ export default class Proton {
   }
 
   /**
-   * @deprecated Use addRenderer
-   */
-  addRender(renderer) {
-    /* istanbul ignore next */
-    this.renderers.push(renderer);
-    /* istanbul ignore next */
-    renderer.init(this);
-  }
-
-  /**
    * Adds a renderer to the Proton instance and initializes it.
    *
    * @param {Renderer} renderer - The renderer to add
@@ -107,16 +97,6 @@ export default class Proton {
     renderer.init(this);
 
     return this;
-  }
-
-  /**
-   * @deprecated Use removeRenderer
-   */
-  removeRender(renderer) {
-    /* istanbul ignore next */
-    this.renderers.splice(this.renderers.indexOf(renderer), 1);
-    /* istanbul ignore next */
-    renderer.remove(this);
   }
 
   /**
