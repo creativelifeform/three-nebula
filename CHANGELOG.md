@@ -5,7 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [1.0.11] - 2018-12-06
+## [1.0.13] - 2018-12-11
+
+### Added
+
+- Unit tests covering the `emitter/Emitter` class
+- Better coverage for the `behaviour/Attraction` and `behaviour/Gravity` classes
+
+## [1.0.12] - 2018-12-06
 
 ### Added
 
