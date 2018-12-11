@@ -21,7 +21,6 @@ import sinon from 'sinon';
 const { spy } = sinon;
 const { assert } = chai;
 const { Emitter } = Proton;
-const TODO = new Error('TODO');
 
 describe('emitter -> Emitter', () => {
   it('should instantiate with the correct properties', done => {
