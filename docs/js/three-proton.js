@@ -49825,11 +49825,13 @@ var Emitter = function (_Particle) {
   }, {
     key: 'addSelfInitialize',
     value: function addSelfInitialize(pObj) {
-      /* istanbul ignore if */
+      /* istanbul ignore next */
       if (pObj['init']) {
+        /* istanbul ignore next */
         pObj.init(this);
-        /* istanbul ignore else */
+        /* istanbul ignore next */
       } else {
+        /* istanbul ignore next */
         this.initAll();
       }
     }
@@ -50614,8 +50616,10 @@ var Attraction = function (_Behaviour) {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
       _get(Attraction.prototype.__proto__ || Object.getPrototypeOf(Attraction.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+
       this.attractionForce.copy(this.targetPosition);
       this.attractionForce.sub(particle.p);
+
       this.lengthSq = this.attractionForce.lengthSq();
 
       if (this.lengthSq > _constants.PARTICLE_LENGTH_SQ_THRESHOLD && this.lengthSq < this.radiusSq) {
@@ -52951,6 +52955,7 @@ exports.default = Gravity;
 var G = exports.G = function (_Gravity) {
   _inherits(G, _Gravity);
 
+  /* istanbul ignore next */
   function G() {
     var _ref;
 
@@ -52960,7 +52965,10 @@ var G = exports.G = function (_Gravity) {
       args[_key] = arguments[_key];
     }
 
+    /* istanbul ignore next */
     var _this2 = _possibleConstructorReturn(this, (_ref = G.__proto__ || Object.getPrototypeOf(G)).call.apply(_ref, [this].concat(args)));
+    /* istanbul ignore next */
+
 
     console.warn((0, _compatibility.classDeprecationWarning)('G', 'Gravity'));
     return _this2;
