@@ -25,8 +25,11 @@ export default class Gravity extends Force {
  * @deprecated
  */
 export class G extends Gravity {
+  /* istanbul ignore next */
   constructor(...args) {
+    /* istanbul ignore next */
     super(...args);
+    /* istanbul ignore next */
     console.warn(classDeprecationWarning('G', 'Gravity'));
   }
 }
