@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/initializer/Position.js | @rohandeshpande/three-proton</title>
+  <title data-ice="title">src/emitter/constants.js | @rohandeshpande/three-proton</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -151,78 +151,13 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/initializer/Position.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Initializer from &apos;./Initializer&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/emitter/constants.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Rate } from &apos;../initializer&apos;;
 
-/**
- * Sets the starting position property for initialized particles.
- * This is respective to the supplied zones.
- *
- */
-export default class Position extends Initializer {
-  /**
-   * Constructs a Position initializer instance.
-   *
-   * @param {Zone|array&lt;Zone&gt;} zones - The zones to use to calculate particle starting position.
-   * @return void
-   */
-  constructor() {
-    super();
-    this.reset.apply(this, arguments);
-  }
-
-  /**
-   * Resets the initializer properties.
-   * Clears all previously set zones and resets the zones according to args passed.
-   *
-   * @param {Zone|array&lt;Zone&gt;} zones - The zones to use to calculate particle starting position.
-   * @return void
-   */
-  reset() {
-    if (!this.zones) this.zones = [];
-    else this.zones.length = 0;
-
-    var args = Array.prototype.slice.call(arguments);
-
-    /**
-     * @desc The zones to use as bounds for calculating the particle&apos;s starting position.
-     * @type {array&lt;Zone&gt;}
-     */
-    this.zones = this.zones.concat(args);
-  }
-
-  /**
-   * Adds a zone or zones to this.zones.
-   *
-   * @param {Zone|array&lt;Zone&gt;} zones - The zones to use to calculate particle starting position.
-   * @return void
-   */
-  addZone() {
-    var args = Array.prototype.slice.call(arguments);
-
-    this.zones = this.zones.concat(args);
-  }
-}
-
-/**
- * Sets the particle&apos;s initial position.
- *
- * @param {Particle} particle - the particle to initialize the property on
- * @return void
- */
-Position.prototype.initialize = (function() {
-  let zone;
-
-  return function(target) {
-    zone = this.zones[(Math.random() * this.zones.length) &gt;&gt; 0];
-
-    zone.getPosition();
-
-    target.p.x = zone.vector.x;
-    target.p.y = zone.vector.y;
-    target.p.z = zone.vector.z;
-  };
-})();
+export const DEFAULT_DAMPING = 0.006;
+export const DEFAULT_BIND_EMITTER = true;
+export const DEFAULT_EMITTER_RATE = new Rate(1, 0.1);
+export const DEFAULT_BIND_EMITTER_EVENT = false;
 </code></pre>
 
 </div>

@@ -100,6 +100,10 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#emitter">emitter</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html">BehaviourEmitter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/FollowEmitter.js~FollowEmitter.html">FollowEmitter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BIND_EMITTER">DEFAULT_BIND_EMITTER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BIND_EMITTER_EVENT">DEFAULT_BIND_EMITTER_EVENT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_DAMPING">DEFAULT_DAMPING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_EMITTER_RATE">DEFAULT_EMITTER_RATE</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#events">events</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/events/EventDispatcher.js~EventDispatcher.html">EventDispatcher</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_ADDED">EMITTER_ADDED</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_REMOVED">EMITTER_REMOVED</a></span></span></li>
@@ -1337,13 +1341,14 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-behaviours">behaviours</a></span></span><span class="code" data-ice="signature">: <span><span>*</span><span>[]</span></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-behaviours">behaviours</a></span></span><span class="code" data-ice="signature">: <span>array</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The behaviours for particles emitted by this emitter.</p>
+</div>
       </div>
     </td>
     <td>
@@ -1365,13 +1370,43 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-bindEmitter">bindEmitter</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-bindEmitter">bindEmitter</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>If bindEmitter the particles can bind this emitter&apos;s property;</p>
+        <div data-ice="description"><p>Ensures that particles emitted by this emitter are positioned
+according to the emitter&apos;s properties.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-bindEmitterEvent">bindEmitterEvent</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Determines if the emitter will dispatch internal events.</p>
 </div>
       </div>
     </td>
@@ -1422,13 +1457,14 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-currentEmitTime">currentEmitTime</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-currentEmitTime">currentEmitTime</a></span></span><span class="code" data-ice="signature">: <span>integer</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The current emit iteration.</p>
+</div>
       </div>
     </td>
     <td>
@@ -1456,7 +1492,8 @@ in which case it will be destroyed.</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>The friction coefficient for all particle to emit by.</p>
+</div>
       </div>
     </td>
     <td>
@@ -1534,41 +1571,13 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-eventDispatcher">eventDispatcher</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-eventDispatcher">eventDispatcher</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/events/EventDispatcher.js~EventDispatcher.html">EventDispatcher</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-id">id</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>The emitter&apos;s id;</p>
+        <div data-ice="description"><p>The emitter&apos;s internal event dispatcher.</p>
 </div>
       </div>
     </td>
@@ -1591,13 +1600,43 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-initializes">initializes</a></span></span><span class="code" data-ice="signature">: <span><span>*</span><span>[]</span></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-id">id</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
         
         
+        <div data-ice="description"><p>The emitter&apos;s id.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-initializers">initializers</a></span></span><span class="code" data-ice="signature">: <span>array</span></span>
+        </p>
+      </div>
+      <div>
         
+        
+        <div data-ice="description"><p>The initializers for particles emitted by this emitter.</p>
+</div>
       </div>
     </td>
     <td>
@@ -1703,13 +1742,14 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-particles">particles</a></span></span><span class="code" data-ice="signature">: <span><span>*</span><span>[]</span></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-particles">particles</a></span></span><span class="code" data-ice="signature">: <span>array</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>The particles emitted by this emitter.</p>
+</div>
       </div>
     </td>
     <td>
@@ -1737,7 +1777,7 @@ in which case it will be destroyed.</p>
       <div>
         
         
-        <div data-ice="description"><p>The number of particles per second emit (a [particle]/b [s]);</p>
+        <div data-ice="description"><p>The number of particles to emit per second (a [particle]/b [s])</p>
 </div>
       </div>
     </td>
@@ -1760,41 +1800,13 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-totalEmitTimes">totalEmitTimes</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-totalEmitTimes">totalEmitTimes</a></span></span><span class="code" data-ice="signature">: <span>integer</span></span>
         </p>
       </div>
       <div>
         
         
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-addBehaviour">addBehaviour</a></span></span><span class="code" data-ice="signature">(behaviour: <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>)</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>add the Behaviour to particles;</p>
+        <div data-ice="description"><p>The total number of times the emitter should emit particles.</p>
 </div>
       </div>
     </td>
@@ -1817,13 +1829,13 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitialize">addInitialize</a></span></span><span class="code" data-ice="signature">(initialize: <span>Initialize</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-addBehaviour">addBehaviour</a></span></span><span class="code" data-ice="signature">(behaviour: <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>add the Initialize to particles;</p>
+        <div data-ice="description"><p>Adds a behaviour to the emitter.</p>
 </div>
       </div>
     </td>
@@ -1846,13 +1858,13 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-addSelfInitialize">addSelfInitialize</a></span></span><span class="code" data-ice="signature">(pObj: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-addBehaviours">addBehaviours</a></span></span><span class="code" data-ice="signature">(behaviours: <span>array</span>&lt;<span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>&gt;): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>add initialize to this emitter</p>
+        <div data-ice="description"><p>Adds multiple behaviours to the emitter.</p>
 </div>
       </div>
     </td>
@@ -1875,13 +1887,13 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-createParticle">createParticle</a></span></span><span class="code" data-ice="signature">(initialize: <span>*</span>, behaviour: <span>*</span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitialize">addInitialize</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
       <div>
+        <div class="deprecated" data-ice="deprecated">this method was deprecated. This will be removed in the next major version use addInitializer or addInitializers.</div>
         
-        
-        <div data-ice="description"><p>create single particle;</p>
+        <div data-ice="description"><p>Adds particle initializer(s) to the emitter.</p>
 </div>
       </div>
     </td>
@@ -1904,13 +1916,13 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-destroy">destroy</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitializer">addInitializer</a></span></span><span class="code" data-ice="signature">(initializer: <span><a href="class/src/initializer/Initializer.js~Initializer.html">Initializer</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Destory this Emitter</p>
+        <div data-ice="description"><p>Adds a particle initializer to the emitter.</p>
 </div>
       </div>
     </td>
@@ -1933,13 +1945,13 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-emit">emit</a></span></span><span class="code" data-ice="signature">(totalEmitTimes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitializers">addInitializers</a></span></span><span class="code" data-ice="signature">(initializers: <span>array</span>&lt;<span><a href="class/src/initializer/Initializer.js~Initializer.html">Initializer</a></span>&gt;): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Makes the emitter emit particles.</p>
+        <div data-ice="description"><p>Adds multiple particle initializers to the emitter.</p>
 </div>
       </div>
     </td>
@@ -1962,69 +1974,13 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-emitting">emitting</a></span></span><span class="code" data-ice="signature">(time: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-addSelfInitialize">addSelfInitialize</a></span></span><span class="code" data-ice="signature">(pObj: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
+        <div class="deprecated" data-ice="deprecated">this method was deprecated. This will be removed in the next major version.</div>
         
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-integrate">integrate</a></span></span><span class="code" data-ice="signature">(time: <span>*</span>)</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeAllBehaviours">removeAllBehaviours</a></span></span><span class="code" data-ice="signature">()</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>remove all behaviours</p>
+        <div data-ice="description"><p>Add an initializer to this emitter.</p>
 </div>
       </div>
     </td>
@@ -2047,13 +2003,14 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeAllParticles">removeAllParticles</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-createParticle">createParticle</a></span></span><span class="code" data-ice="signature">(initializer: <span>*</span>, behaviour: <span>*</span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>remove current all particles</p>
+        <div data-ice="description"><p>Creates a particle by retreiving one from the pool and setting it up with
+the supplied initializer and behaviour.</p>
 </div>
       </div>
     </td>
@@ -2076,13 +2033,13 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeBehaviour">removeBehaviour</a></span></span><span class="code" data-ice="signature">(behaviour: <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-destroy">destroy</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>remove the Behaviour</p>
+        <div data-ice="description"><p>Kills the emitter.</p>
 </div>
       </div>
     </td>
@@ -2105,13 +2062,13 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeInitialize">removeInitialize</a></span></span><span class="code" data-ice="signature">(initialize: <span>Initialize</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-dispatch">dispatch</a></span></span><span class="code" data-ice="signature">(event: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, target: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&lt;<span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>&gt;)</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>remove the Initialize</p>
+        <div data-ice="description"><p>Proxy method for the internal event dispatcher&apos;s dispatchEvent method.</p>
 </div>
       </div>
     </td>
@@ -2134,13 +2091,248 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeInitializers">removeInitializers</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-emit">emit</a></span></span><span class="code" data-ice="signature">(totalEmitTimes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>remove all Initializes</p>
+        <div data-ice="description"><p>Sets the total number of times the emitter should emit particles as well as
+the emitter&apos;s life. Also intializes the emitter rate.
+This enables the emitter to emit particles.</p>
+<p>TODO Refactor this so that it does not accept mixed type arguments.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-generate">generate</a></span></span><span class="code" data-ice="signature">(time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Generates new particles.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-integrate">integrate</a></span></span><span class="code" data-ice="signature">(time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Runs the integration algorithm on the emitter and all particles.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeAllBehaviours">removeAllBehaviours</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Removes all behaviours from the emitter.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeAllInitializers">removeAllInitializers</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Removes all initializers.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeAllParticles">removeAllParticles</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Kills all of the emitter&apos;s particles.</p>
+<p>TODO Rename this method to killAllParticles</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeBehaviour">removeBehaviour</a></span></span><span class="code" data-ice="signature">(behaviour: <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Removes the behaviour from the emitter&apos;s behaviours array.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeInitialize">removeInitialize</a></span></span><span class="code" data-ice="signature">(initializer: <span><a href="class/src/initializer/Initializer.js~Initializer.html">Initializer</a></span>)</span>
+        </p>
+      </div>
+      <div>
+        <div class="deprecated" data-ice="deprecated">this method was deprecated. This will be removed in the next major version use removeInitializer instead.</div>
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeInitializer">removeInitializer</a></span></span><span class="code" data-ice="signature">(initializer: <span><a href="class/src/initializer/Initializer.js~Initializer.html">Initializer</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Removes an initializer from the emitter&apos;s initializers array.</p>
 </div>
       </div>
     </td>
@@ -2169,7 +2361,36 @@ in which case it will be destroyed.</p>
       <div>
         
         
-        <div data-ice="description"><p>Proxy method for adding multiple behaviours.</p>
+        <div data-ice="description"><p>Sets the emitter&apos;s behaviours.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-setInitializers">setInitializers</a></span></span><span class="code" data-ice="signature">(initializers: <span>array</span>&lt;<span><a href="class/src/initializer/Initializer.js~Initializer.html">Initializer</a></span>&gt;): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Sets the emitter&apos;s particle initializers.</p>
 </div>
       </div>
     </td>
@@ -2221,35 +2442,6 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-setProperties">setProperties</a></span></span><span class="code" data-ice="signature">(properties: <span>array</span>&lt;<span>Initialize</span>&gt;): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Proxy method for adding multiple initializers.</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
           <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-setRate">setRate</a></span></span><span class="code" data-ice="signature">(rate: <span><a href="class/src/initializer/Rate.js~Rate.html">Rate</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
@@ -2279,41 +2471,13 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-setupParticle">setupParticle</a></span></span><span class="code" data-ice="signature">(particle: <span>*</span>, initialize: <span>*</span>, behaviour: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-setupParticle">setupParticle</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-stopEmit">stopEmit</a></span></span><span class="code" data-ice="signature">()</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>stop emiting</p>
+        <div data-ice="description"><p>Sets up a particle by running all initializers on it and setting its behaviours.</p>
 </div>
       </div>
     </td>
@@ -2336,13 +2500,44 @@ in which case it will be destroyed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-update">update</a></span></span><span class="code" data-ice="signature">(time: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-stopEmit">stopEmit</a></span></span><span class="code" data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
+        <div data-ice="description"><p>Stops the emitter from emitting particles.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-update">update</a></span></span><span class="code" data-ice="signature">(time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
         
+        
+        <div data-ice="description"><p>Updates the emitter according to the time passed by calling the generate
+and integrate methods.</p>
+</div>
       </div>
     </td>
     <td>
@@ -2611,9 +2806,10 @@ in which case it will be destroyed.</p>
   
   
   
-  <div data-ice="description"><p>Updates the particle&apos;s properties by applying each behaviour to the particle.
-Will also update the particle&apos;s energy, unless it&apos;s age is greater than it&apos;s life
-in which case it will be destroyed.</p>
+  <div data-ice="description"><p>Updates the emitter according to the time passed by calling the generate
+and integrate methods. The generate method creates particles, the integrate
+method updates existing particles.</p>
+<p>If the emitter age is greater than time, the emitter is killed.</p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-update">Emitter#update</a></span></div>
