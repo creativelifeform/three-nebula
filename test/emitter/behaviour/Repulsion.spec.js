@@ -4,6 +4,7 @@ import * as Proton from '../../../src';
 
 import { TIME } from '../../constants';
 import chai from 'chai';
+import { getEasingByName } from '../../../src/ease';
 
 const { assert } = chai;
 
@@ -90,6 +91,7 @@ describe('behaviour -> Repulsion', () => {
     assert.equal(instance.force, -400);
     assert.equal(instance.radius, 12);
     assert.equal(instance.life, 3);
+    assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
 
     done();
   });
