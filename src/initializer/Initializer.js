@@ -43,4 +43,13 @@ export default class Initializer {
    * @abstract
    */
   initialize(target) {} // eslint-disable-line
+
+  /**
+   * Returns a new instance of the initializer from the JSON object passed.
+   *
+   * @abstract
+   * @param {object} json - JSON object containing the required constructor properties
+   * @return {Behaviour}
+   */
+  static fromJSON(json) {} // eslint-disable-line
 }

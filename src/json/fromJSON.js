@@ -11,29 +11,6 @@ import { Emitter } from '../emitter';
 import { Proton } from '../core';
 import Rate from '../initializer/Rate';
 
-export default json => {
-  const {
-    preParticles = POOL_MAX,
-    integrationType = EULER,
-    emitters = []
-  } = json;
-  const proton = new Proton(preParticles, integrationType);
-
-  emitters.forEach(emitterData => {
-    const emitter = new Emitter();
-    const { rate, initializers, behaviours } = emitterData;
-
-    emitter
-      .setRate(makeRate(rate))
-      .setInitializers(makeInitializers(initializers))
-      .setBehaviours(makeBehaviours(behaviours));
-
-    proton.addEmitter(emitter);
-  });
-
-  return proton;
-};
-
 /**
  * Makes a rate instance.
  *
@@ -88,4 +65,27 @@ const makeBehaviours = items => {
   });
 
   return behaviours;
+};
+
+export default json => {
+  const {
+    preParticles = POOL_MAX,
+    integrationType = EULER,
+    emitters = []
+  } = json;
+  const proton = new Proton(preParticles, integrationType);
+
+  emitters.forEach(emitterData => {
+    const emitter = new Emitter();
+    const { rate, initializers, behaviours } = emitterData;
+
+    emitter
+      .setRate(makeRate(rate))
+      .setInitializers(makeInitializers(initializers))
+      .setBehaviours(makeBehaviours(behaviours));
+
+    proton.addEmitter(emitter);
+  });
+
+  return proton;
 };
