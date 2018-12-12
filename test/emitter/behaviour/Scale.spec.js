@@ -4,6 +4,7 @@ import * as Proton from '../../../src';
 
 import { TIME } from '../../constants';
 import chai from 'chai';
+import { getEasingByName } from '../../../src/ease';
 
 const { assert } = chai;
 
@@ -71,6 +72,23 @@ describe('behaviour -> Scale', () => {
 
     assert.strictEqual(particle.radius, 30);
     assert.strictEqual(particle.scale, 3);
+    done();
+  });
+
+  it('should construct the behaviour from a JSON object', done => {
+    const instance = Proton.Scale.fromJSON({
+      scaleA: 0.4,
+      scaleB: 1,
+      life: 4,
+      easing: 'easeInOutExpo'
+    });
+
+    assert.instanceOf(instance, Proton.Scale);
+    assert.instanceOf(instance.scaleA, Proton.Span);
+    assert.instanceOf(instance.scaleB, Proton.Span);
+    assert.equal(instance.life, 4);
+    assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
+
     done();
   });
 });
