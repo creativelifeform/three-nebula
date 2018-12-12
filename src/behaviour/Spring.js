@@ -31,7 +31,7 @@ export default class Spring extends Behaviour {
     particle.v.z += (this.pos.z - particle.p.z) * this.spring;
   }
 
-  fromJSON(json) {
+  static fromJSON(json) {
     const { x, y, z, spring, friction, life, easing } = json;
 
     return new Spring(x, y, z, spring, friction, life, getEasingByName(easing));

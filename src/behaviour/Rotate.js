@@ -207,7 +207,7 @@ export default class Rotate extends Behaviour {
     }
   }
 
-  fromJSON(json) {
+  static fromJSON(json) {
     const { x, y, z, life, easing } = json;
 
     return new Rotate(x, y, z, life, getEasingByName(easing));

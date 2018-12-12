@@ -100,7 +100,7 @@ export default class RandomDrift extends Behaviour {
     }
   }
 
-  fromJSON(json) {
+  static fromJSON(json) {
     const { x, y, z, delay, life, easing } = json;
 
     return new RandomDrift(x, y, z, delay, life, getEasingByName(easing));

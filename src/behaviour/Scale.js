@@ -114,7 +114,7 @@ export default class Scale extends Behaviour {
     particle.radius = particle.transform.oldRadius * particle.scale;
   }
 
-  fromJSON(json) {
+  static fromJSON(json) {
     const { scaleA, scaleB, life, easing } = json;
 
     return new Scale(scaleA, scaleB, life, getEasingByName(easing));

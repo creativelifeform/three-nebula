@@ -85,13 +85,9 @@ export default class Alpha extends Behaviour {
     particle.useAlpha = true;
     particle.transform.alphaA = this.alphaA.getValue();
 
-    if (this.same) {
-      particle.transform.alphaB = particle.transform.alphaA;
-    }
-
-    if (!this.same) {
-      particle.transform.alphaB = this.alphaB.getValue();
-    }
+    particle.transform.alphaB = this.same
+      ? particle.transform.alphaA
+      : this.alphaB.getValue();
   }
 
   /**

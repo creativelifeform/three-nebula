@@ -65,7 +65,7 @@ export default class Force extends Behaviour {
    * @param {object} json - The JSON to construct the instance from.
    * @return {Force}
    */
-  fromJSON(json) {
+  static fromJSON(json) {
     const { fx, fy, fz, life, easing } = json;
 
     return new Force(fx, fy, fz, life, getEasingByName(easing));

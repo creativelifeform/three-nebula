@@ -18,7 +18,7 @@ export default class Gravity extends Force {
     super(0, -gravity, 0, life, easing);
   }
 
-  fromJSON(json) {
+  static fromJSON(json) {
     const { gravity, life, easing } = json;
 
     return new Gravity(gravity, life, getEasingByName(easing));

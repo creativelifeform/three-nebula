@@ -37,4 +37,21 @@ describe('behaviour -> CrossZone', () => {
 
     done();
   });
+
+  it('should construct the behaviour from a JSON object', done => {
+    const instance = Proton.CrossZone.fromJSON({
+      colorA: '#FF0000',
+      colorB: '#000000',
+      life: 3,
+      easing: 'easeInOutExpo'
+    });
+
+    assert.instanceOf(instance, Proton.Color);
+    assert.instanceOf(instance.colorA, Proton.ArraySpan);
+    assert.instanceOf(instance.colorB, Proton.ArraySpan);
+    assert.equal(instance.life, 3);
+    assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
+
+    done();
+  });
 });

@@ -1,7 +1,7 @@
 import * as Zone from '../zone';
 
 import Behaviour from './Behaviour';
-import { Util } from '../utils';
+import { DEFAULT_CROSS_TYPE } from './constants';
 import { getEasingByName } from '../ease';
 
 /**
@@ -13,44 +13,33 @@ export default class CrossZone extends Behaviour {
   /**
    * Constructs a CrossZone behaviour instance.
    *
-   * @param {Zone} a - the zone used to apply to particles with this behaviour
-   * @param {string} b - enum of cross types, valid strings include 'dead', 'bound', 'cross'
+   * @param {Zone} zone - the zone used to apply to particles with this behaviour
+   * @param {string} [crossType=DEFAULT_CROSS_TYPE] - enum of cross types, valid strings include 'dead', 'bound', 'cross'
    * @param {number} life - The life of the particle
    * @param {function} easing - The behaviour's decaying trend
    */
-  constructor(a, b, life, easing) {
+  constructor(zone, crossType, life, easing) {
     super(life, easing);
 
-    this.reset(a, b);
+    this.reset(zone, crossType);
     this.name = 'CrossZone';
   }
 
   /**
    * Resets the behaviour properties.
    *
-   * @param {Zone} a - the zone used to apply to particles with this behaviour
-   * @param {string} b - enum of cross types, valid strings include 'dead', 'bound', 'cross'
+   * @param {Zone} zone - the zone used to apply to particles with this behaviour
+   * @param {string} [crossType=DEFAULT_CROSS_TYPE] - enum of cross types, valid strings include 'dead', 'bound', 'cross'
    * @param {number} life - The life of the particle
    * @param {function} easing - The behaviour's decaying trend
    */
-  reset(a, b, life, easing) {
-    var zone, crossType;
-
-    // TODO remove the ability for mixed order of arguments
-    if (typeof a == 'string') {
-      crossType = a;
-      zone = b;
-    } else {
-      crossType = b;
-      zone = a;
-    }
-
+  reset(zone, crossType = DEFAULT_CROSS_TYPE, life, easing) {
     /**
      * @desc The zone used to apply to particles with this behaviour
      * @type {Zone}
      */
     this.zone = zone;
-    this.zone.crossType = Util.initValue(crossType, 'dead');
+    this.zone.crossType = crossType;
 
     life && super.reset(life, easing);
   }
@@ -76,7 +65,7 @@ export default class CrossZone extends Behaviour {
    * @param {object} json - The JSON to construct the instance from.
    * @return {CrossZone}
    */
-  fromJSON(json) {
+  static fromJSON(json) {
     const { zoneType, zoneParams, crossType, life, easing } = json;
 
     const zone = new Zone[zoneType](...Object.values(zoneParams));

@@ -144,14 +144,10 @@ export default class Behaviour {
 
   /**
    * Returns a new instance of the behaviour from the JSON object passed.
-   * This will be overriden by almost every subclass.
    *
-   * @param {object} json - JSON object containing the required constructor args as values
+   * @abstract
+   * @param {object} json - JSON object containing the required constructor properties
    * @return {Behaviour}
    */
-  fromJSON(json) {
-    const params = { ...json, easing: getEasingByName(json.easing) };
-
-    return new this(...Object.values(params));
-  }
+  fromJSON(json) {} // eslint-disable-line
 }
