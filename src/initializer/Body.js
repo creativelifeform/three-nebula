@@ -1,5 +1,4 @@
 import Initializer from './Initializer';
-import Util from '../utils/Util';
 import { createArraySpan } from '../math';
 
 /**
@@ -34,7 +33,7 @@ export default class Body extends Initializer {
      * @desc The height of the particle Body
      * @type {number}
      */
-    this.h = Util.initValue(h, this.w);
+    this.h = h || w;
   }
 
   /**

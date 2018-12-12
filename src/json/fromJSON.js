@@ -22,7 +22,7 @@ const makeRate = json => new Rate.fromJSON(json);
 /**
  * Makes initializers from json items.
  *
- * @param {array<object>} items - An array of objects which can be used to instantiate initializer instances.
+ * @param {array<object>} items - An array of objects which provide initializer constructor params
  * @return {array<Initializer>}
  */
 const makeInitializers = items => {
@@ -46,7 +46,7 @@ const makeInitializers = items => {
 /**
  * Makes behaviours from json items.
  *
- * @param {array<object>} items - An array of objects which can be used to instantiate behaviour instances.
+ * @param {array<object>} items - An array of objects which provide behaviour constructor params
  * @return {array<Behaviour>}
  */
 const makeBehaviours = items => {
@@ -67,6 +67,15 @@ const makeBehaviours = items => {
   return behaviours;
 };
 
+/**
+ * Creates a Proton instance from a JSON object.
+ *
+ * @param {object} json - The JSON to create the Proton instance from
+ * @param {number} json.preParticles - The predetermined number of particles
+ * @param {string} json.integrationType - The integration algorithm to use
+ * @param {array<object>} json.emitters - The emitters for the proton instance
+ * @return {Proton}
+ */
 export default json => {
   const {
     preParticles = POOL_MAX,
@@ -75,9 +84,9 @@ export default json => {
   } = json;
   const proton = new Proton(preParticles, integrationType);
 
-  emitters.forEach(emitterData => {
+  emitters.forEach(data => {
     const emitter = new Emitter();
-    const { rate, initializers, behaviours } = emitterData;
+    const { rate, initializers, behaviours } = data;
 
     emitter
       .setRate(makeRate(rate))
