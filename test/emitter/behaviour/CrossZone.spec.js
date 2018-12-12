@@ -4,6 +4,7 @@ import * as Proton from '../../../src';
 
 import { TIME } from '../../constants';
 import chai from 'chai';
+import { getEasingByName } from '../../../src/ease';
 import sinon from 'sinon';
 
 const { spy } = sinon;
@@ -40,15 +41,25 @@ describe('behaviour -> CrossZone', () => {
 
   it('should construct the behaviour from a JSON object', done => {
     const instance = Proton.CrossZone.fromJSON({
-      colorA: '#FF0000',
-      colorB: '#000000',
+      zoneType: 'SphereZone',
+      zoneParams: {
+        x: 1,
+        y: 1,
+        z: 1,
+        radius: 10
+      },
+      crossType: 'bound',
       life: 3,
       easing: 'easeInOutExpo'
     });
 
-    assert.instanceOf(instance, Proton.Color);
-    assert.instanceOf(instance.colorA, Proton.ArraySpan);
-    assert.instanceOf(instance.colorB, Proton.ArraySpan);
+    assert.instanceOf(instance, Proton.CrossZone);
+    assert.instanceOf(instance.zone, Proton.SphereZone);
+    assert.equal(instance.zone.x, 1);
+    assert.equal(instance.zone.y, 1);
+    assert.equal(instance.zone.z, 1);
+    assert.equal(instance.zone.radius, 10);
+    assert.equal(instance.zone.crossType, 'bound');
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
 
