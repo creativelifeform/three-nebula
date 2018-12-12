@@ -54,7 +54,7 @@ export default class Repulsion extends Attraction {
   static fromJSON(json) {
     const { x, y, z, force, radius, life, easing } = json;
 
-    return new Attraction(
+    return new Repulsion(
       new Vector3D(x, y, z),
       force,
       radius,

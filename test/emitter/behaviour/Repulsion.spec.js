@@ -72,4 +72,25 @@ describe('behaviour -> Repulsion', () => {
 
     done();
   });
+
+  it('should construct the behaviour from a JSON object', done => {
+    const instance = Proton.Repulsion.fromJSON({
+      x: 1,
+      y: 4,
+      z: 1,
+      force: 4,
+      radius: 12,
+      life: 3,
+      easing: 'easeInOutExpo'
+    });
+
+    assert.instanceOf(instance, Proton.Repulsion);
+    assert.deepEqual(Object.values(instance.targetPosition), [1, 4, 1]);
+    assert.instanceOf(instance.targetPosition, Proton.Vector3D);
+    assert.equal(instance.force, -400);
+    assert.equal(instance.radius, 12);
+    assert.equal(instance.life, 3);
+
+    done();
+  });
 });
