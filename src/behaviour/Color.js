@@ -2,6 +2,7 @@ import { MathUtils, createArraySpan } from '../math';
 
 import Behaviour from './Behaviour';
 import { ColorUtil } from '../utils';
+import { getEasingByName } from '../ease';
 
 /**
  * A behaviour which mutates the color of a particle over time.
@@ -64,5 +65,21 @@ export default class Color extends Behaviour {
       particle.color.g = particle.transform.colorA.g;
       particle.color.b = particle.transform.colorA.b;
     }
+  }
+
+  /**
+   * Creates a Color initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @property {number} json.colorA - The starting color
+   * @property {number} json.colorB - The ending color
+   * @property {number} json.life - The life of the particle
+   * @property {string} json.easing - The behaviour's decaying trend
+   * @return {Color}
+   */
+  fromJSON(json) {
+    const { colorA, colorB, life, easing } = json;
+
+    return new Color(colorA, colorB, life, getEasingByName(easing));
   }
 }

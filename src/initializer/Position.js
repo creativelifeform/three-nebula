@@ -1,3 +1,5 @@
+import * as Zone from '../zone';
+
 import Initializer from './Initializer';
 
 /**
@@ -47,6 +49,19 @@ export default class Position extends Initializer {
     var args = Array.prototype.slice.call(arguments);
 
     this.zones = this.zones.concat(args);
+  }
+
+  /**
+   * Creates a Position initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @property {string} json.zoneType - The type of zone to use for initial position
+   * @return {Position}
+   */
+  static fromJSON(json) {
+    const { zoneType, ...params } = json;
+
+    return new Position(new Zone[zoneType](...params));
   }
 }
 

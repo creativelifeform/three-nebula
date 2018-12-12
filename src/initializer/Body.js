@@ -56,4 +56,19 @@ export default class Body extends Initializer {
       particle.body = body;
     }
   }
+
+  /**
+   * Creates a Body initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @property {number} json.body - The color for the particle body
+   * @property {number} json.width - The width of the particle body
+   * @property {number} json.height - The height of the particle body
+   * @return {Body}
+   */
+  static fromJSON(json) {
+    const { body, width, height } = json;
+
+    return new Body(body, width, height);
+  }
 }

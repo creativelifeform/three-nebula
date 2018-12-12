@@ -33,4 +33,19 @@ export default class Mass extends Initializer {
   initialize(particle) {
     particle.mass = this.massPan.getValue();
   }
+
+  /**
+   * Creates a Mass initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @property {number} json.min - The minimum mass
+   * @property {number} json.max - The maximum mass
+   * @property {number} json.center - The center of the mass
+   * @return {Mass}
+   */
+  static fromJSON(json) {
+    const { min, max, center = false } = json;
+
+    return new Mass(min, max, center);
+  }
 }

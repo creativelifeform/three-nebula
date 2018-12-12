@@ -47,4 +47,19 @@ export default class Radius extends Initializer {
     particle.radius = this.radius.getValue();
     particle.transform.oldRadius = particle.radius;
   }
+
+  /**
+   * Creates a Radius initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @property {number} json.width - The width of the particle radius
+   * @property {number} json.height - The height of the particle radius
+   * @property {number} json.center - The center of the particle radius
+   * @return {Radius}
+   */
+  static fromJSON(json) {
+    const { width, height, center = false } = json;
+
+    return new Radius(width, height, center);
+  }
 }

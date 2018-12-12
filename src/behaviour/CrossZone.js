@@ -1,5 +1,8 @@
+import * as Zone from '../zone';
+
 import Behaviour from './Behaviour';
 import { Util } from '../utils';
+import { getEasingByName } from '../ease';
 
 /**
  * Behaviour that allows for specific functions to be called on particles when
@@ -65,5 +68,19 @@ export default class CrossZone extends Behaviour {
     super.applyBehaviour(particle, time, index);
 
     this.zone.crossing.call(this.zone, particle);
+  }
+
+  /**
+   * Creates a CrossZone initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @return {CrossZone}
+   */
+  fromJSON(json) {
+    const { zoneType, zoneParams, crossType, life, easing } = json;
+
+    const zone = new Zone[zoneType](...Object.values(zoneParams));
+
+    return new CrossZone(zone, crossType, life, getEasingByName(easing));
   }
 }

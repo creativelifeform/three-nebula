@@ -2,6 +2,7 @@ import { DR, PI } from '../constants';
 import { MathUtils, Vector3D, createSpan } from '../math';
 
 import Behaviour from './Behaviour';
+import { getEasingByName } from '../ease';
 
 /**
  * Behaviour that rotates particles.
@@ -204,5 +205,11 @@ export default class Rotate extends Behaviour {
         particle.rotation.add(particle.transform.addR);
         break;
     }
+  }
+
+  fromJSON(json) {
+    const { x, y, z, life, easing } = json;
+
+    return new Rotate(x, y, z, life, getEasingByName(easing));
   }
 }

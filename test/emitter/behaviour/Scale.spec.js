@@ -22,7 +22,16 @@ describe('behaviour -> Scale', () => {
   });
 
   it('should instantiate with the correct properties', done => {
-    const { life, easing, age, energy, dead, _same, a, b } = behaviour;
+    const {
+      life,
+      easing,
+      age,
+      energy,
+      dead,
+      _same,
+      scaleA,
+      scaleB
+    } = behaviour;
 
     assert.strictEqual(life, Infinity);
     assert.isFunction(easing);
@@ -30,12 +39,12 @@ describe('behaviour -> Scale', () => {
     assert.strictEqual(energy, 1);
     assert.isFalse(dead);
     assert.isFalse(_same);
-    assert.instanceOf(a, Proton.Span);
-    assert.instanceOf(b, Proton.Span);
-    assert.strictEqual(a.a, 3);
-    assert.strictEqual(a.b, 3);
-    assert.strictEqual(b.a, 11);
-    assert.strictEqual(b.b, 11);
+    assert.instanceOf(scaleA, Proton.Span);
+    assert.instanceOf(scaleB, Proton.Span);
+    assert.strictEqual(scaleA.a, 3);
+    assert.strictEqual(scaleA.b, 3);
+    assert.strictEqual(scaleB.a, 11);
+    assert.strictEqual(scaleB.b, 11);
 
     done();
   });

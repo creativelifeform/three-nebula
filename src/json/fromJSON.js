@@ -1,21 +1,15 @@
 import * as Behaviour from '../behaviour';
-import * as Zone from '../zone';
+import * as Initializer from '../initializer';
 
-import {
-  Body,
-  Life,
-  Mass,
-  Position,
-  Radius,
-  Rate,
-  Velocity
-} from '../initializer';
 import { EULER, POOL_MAX } from '../constants';
-import { isTypeBody, isTypeLife, isTypeZone } from './utils';
+import {
+  SUPPORTED_BEHAVIOUR_TYPES,
+  SUPPORTED_INITIALIZER_TYPES
+} from './constants';
 
 import { Emitter } from '../emitter';
 import { Proton } from '../core';
-import { Span } from '../math';
+import Rate from '../initializer/Rate';
 
 export default json => {
   const {
@@ -27,7 +21,6 @@ export default json => {
 
   emitters.forEach(emitterData => {
     const emitter = new Emitter();
-    const behavioursToSet = [];
     const { rate, initializers, behaviours } = emitterData;
 
     emitter
@@ -41,47 +34,57 @@ export default json => {
   return proton;
 };
 
-const makeRate = props => {
-  const { particlesMin, particlesMax, perSecondMin, perSecondMax } = props;
+/**
+ * Makes a rate instance.
+ *
+ * @param {object} json - The data required to construct a Rate instance
+ * @return {Rate}
+ */
+const makeRate = json => new Rate.fromJSON(json);
 
-  return new Rate(
-    new Span(particlesMin, particlesMax),
-    new Span(perSecondMin, perSecondMax)
-  );
-};
-
+/**
+ * Makes initializers from json items.
+ *
+ * @param {array<object>} items - An array of objects which can be used to instantiate initializer instances.
+ * @return {array<Initializer>}
+ */
 const makeInitializers = items => {
   const initializers = [];
 
   items.forEach(data => {
     const { type, properties } = data;
-    let initializer;
 
-    if (isTypeZone(type)) {
-      const { zoneType, ...zoneParams } = properties;
-
-      initializer = new Position(new Zone[zoneType](...zoneParams));
+    if (!SUPPORTED_INITIALIZER_TYPES.includes(type)) {
+      throw new Error(
+        `The initializer type ${type} is invalid or not yet supported`
+      );
     }
 
-    if (isTypeBody(type)) {
-      initializer = new Body(...properties);
-    }
-
-    if (isTypeLife(type)) {
-      initializer = new Life(...properties);
-    }
-
-    initializers.push(initializer);
+    initializers.push(new Initializer[type].fromJSON(properties));
   });
 
   return initializers;
 };
 
+/**
+ * Makes behaviours from json items.
+ *
+ * @param {array<object>} items - An array of objects which can be used to instantiate behaviour instances.
+ * @return {array<Behaviour>}
+ */
 const makeBehaviours = items => {
   const behaviours = [];
 
   items.forEach(data => {
     const { type, properties } = data;
+
+    if (!SUPPORTED_BEHAVIOUR_TYPES.includes(type)) {
+      throw new Error(
+        `The behaviour type ${type} is invalid or not yet supported`
+      );
+    }
+
+    behaviours.push(new Behaviour[type].fromJSON(properties));
   });
 
   return behaviours;
