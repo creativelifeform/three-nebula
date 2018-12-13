@@ -71,4 +71,23 @@ describe('initializer -> Position', () => {
 
     done();
   });
+
+  it('should construct the initializer from a JSON object', done => {
+    const instance = Proton.Position.fromJSON({
+      zoneType: 'SphereZone',
+      x: 1,
+      y: 1,
+      z: 1,
+      radius: 4
+    });
+
+    assert.instanceOf(instance, Proton.Position);
+    assert.instanceOf(instance.zones[0], Proton.SphereZone);
+    assert.equal(instance.zones[0].x, 1);
+    assert.equal(instance.zones[0].y, 1);
+    assert.equal(instance.zones[0].z, 1);
+    assert.equal(instance.zones[0].radius, 4);
+
+    done();
+  });
 });

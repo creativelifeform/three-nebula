@@ -61,7 +61,7 @@ export default class Position extends Initializer {
   static fromJSON(json) {
     const { zoneType, ...params } = json;
 
-    return new Position(new Zone[zoneType](...params));
+    return new Position(new Zone[zoneType](...Object.values(params)));
   }
 }
 

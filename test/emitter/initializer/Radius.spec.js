@@ -40,4 +40,19 @@ describe('initializer -> Radius', () => {
 
     done();
   });
+
+  it('should construct the initializer from a JSON object', done => {
+    const instance = Proton.Radius.fromJSON({
+      width: 3,
+      height: 10,
+      center: true
+    });
+
+    assert.instanceOf(instance, Proton.Radius);
+    assert.instanceOf(instance.radius, Proton.Span);
+    assert.equal(instance.radius.a, 3);
+    assert.equal(instance.radius.b, 10);
+
+    done();
+  });
 });
