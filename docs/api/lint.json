@@ -1,188 +1,66 @@
 [
   {
-    "name": "Rotate#reset",
-    "filePath": "src/behaviour/Rotate.js",
-    "lines": [
-      {
-        "lineNumber": 49,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 50,
-        "line": "   * Resets the behaviour properties."
-      },
-      {
-        "lineNumber": 51,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 52,
-        "line": "   * @param {number} x - X axis rotation"
-      },
-      {
-        "lineNumber": 53,
-        "line": "   * @param {number} y - Y axis rotation"
-      },
-      {
-        "lineNumber": 54,
-        "line": "   * @param {number} z - Z axis rotation"
-      },
-      {
-        "lineNumber": 55,
-        "line": "   * @param {number} life - the life of the behaviour"
-      },
-      {
-        "lineNumber": 56,
-        "line": "   * @param {function} easing - the easing equation to use for transforms"
-      },
-      {
-        "lineNumber": 57,
-        "line": "   * @return void"
-      },
-      {
-        "lineNumber": 58,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 59,
-        "line": "  reset(a, b, c, life, easing) {"
-      }
-    ],
-    "codeParams": [
-      "a",
-      "b",
-      "c",
-      "life",
-      "easing"
-    ],
-    "docParams": [
-      "x",
-      "y",
-      "z",
-      "life",
-      "easing"
-    ]
-  },
-  {
-    "name": "Scale#reset",
-    "filePath": "src/behaviour/Scale.js",
-    "lines": [
-      {
-        "lineNumber": 23,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 24,
-        "line": "   * Resets the behaviour properties."
-      },
-      {
-        "lineNumber": 25,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 26,
-        "line": "   * @param {number} scaleA - the starting scale value"
-      },
-      {
-        "lineNumber": 27,
-        "line": "   * @param {?number} scaleB - the ending scale value"
-      },
-      {
-        "lineNumber": 28,
-        "line": "   * @param {number} life - the life of the behaviour"
-      },
-      {
-        "lineNumber": 29,
-        "line": "   * @param {function} easing - the easing equation to use for transforms"
-      },
-      {
-        "lineNumber": 30,
-        "line": "   * @return void"
-      },
-      {
-        "lineNumber": 31,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 32,
-        "line": "  reset(a, b, life, easing) {"
-      }
-    ],
-    "codeParams": [
-      "a",
-      "b",
-      "life",
-      "easing"
-    ],
-    "docParams": [
-      "scaleA",
-      "scaleB",
-      "life",
-      "easing"
-    ]
-  },
-  {
     "name": "Proton#update",
     "filePath": "src/core/Proton.js",
     "lines": [
       {
-        "lineNumber": 150,
+        "lineNumber": 164,
         "line": "  /**"
       },
       {
-        "lineNumber": 151,
+        "lineNumber": 165,
         "line": "   * Updates the particle system based on the delta passed."
       },
       {
-        "lineNumber": 152,
+        "lineNumber": 166,
         "line": "   *"
       },
       {
-        "lineNumber": 153,
+        "lineNumber": 167,
         "line": "   * @example"
       },
       {
-        "lineNumber": 154,
+        "lineNumber": 168,
         "line": "   * animate = timestamp => {"
       },
       {
-        "lineNumber": 155,
+        "lineNumber": 169,
         "line": "   *   threeRenderer.render(threeScene, threeCamera);"
       },
       {
-        "lineNumber": 156,
+        "lineNumber": 170,
         "line": "   *   proton.update();"
       },
       {
-        "lineNumber": 157,
+        "lineNumber": 171,
         "line": "   *   requestAnimationFrame(animate);"
       },
       {
-        "lineNumber": 158,
+        "lineNumber": 172,
         "line": "   * }"
       },
       {
-        "lineNumber": 159,
+        "lineNumber": 173,
         "line": "   * animate();"
       },
       {
-        "lineNumber": 160,
+        "lineNumber": 174,
         "line": "   *"
       },
       {
-        "lineNumber": 161,
+        "lineNumber": 175,
         "line": "   * @param {number}"
       },
       {
-        "lineNumber": 162,
+        "lineNumber": 176,
         "line": "   * @return {Promise}"
       },
       {
-        "lineNumber": 163,
+        "lineNumber": 177,
         "line": "   */"
       },
       {
-        "lineNumber": 164,
+        "lineNumber": 178,
         "line": "  update(delta = DEFAULT_PROTON_DELTA) {"
       }
     ],
@@ -347,86 +225,6 @@
     ],
     "docParams": [
       "particle"
-    ]
-  },
-  {
-    "name": "Position#reset",
-    "filePath": "src/initializer/Position.js",
-    "lines": [
-      {
-        "lineNumber": 19,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 20,
-        "line": "   * Resets the initializer properties."
-      },
-      {
-        "lineNumber": 21,
-        "line": "   * Clears all previously set zones and resets the zones according to args passed."
-      },
-      {
-        "lineNumber": 22,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 23,
-        "line": "   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position."
-      },
-      {
-        "lineNumber": 24,
-        "line": "   * @return void"
-      },
-      {
-        "lineNumber": 25,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 26,
-        "line": "  reset() {"
-      }
-    ],
-    "codeParams": [],
-    "docParams": [
-      "zones"
-    ]
-  },
-  {
-    "name": "Position#addZone",
-    "filePath": "src/initializer/Position.js",
-    "lines": [
-      {
-        "lineNumber": 39,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 40,
-        "line": "   * Adds a zone or zones to this.zones."
-      },
-      {
-        "lineNumber": 41,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 42,
-        "line": "   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position."
-      },
-      {
-        "lineNumber": 43,
-        "line": "   * @return void"
-      },
-      {
-        "lineNumber": 44,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 45,
-        "line": "  addZone() {"
-      }
-    ],
-    "codeParams": [],
-    "docParams": [
-      "zones"
     ]
   }
 ]

@@ -1,7 +1,6 @@
 import { DEFAULT_BEHAVIOUR_EASING, DEFAULT_LIFE } from './constants';
 
 import { MEASURE } from '../constants';
-import { getEasingByName } from '../ease';
 import { uid } from '../utils';
 
 /**

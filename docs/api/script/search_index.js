@@ -18,6 +18,78 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_alpha",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_ALPHA",
+    "<span>BEHAVIOUR_TYPE_ALPHA</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_attraction",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_ATTRACTION",
+    "<span>BEHAVIOUR_TYPE_ATTRACTION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_collision",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_COLLISION",
+    "<span>BEHAVIOUR_TYPE_COLLISION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_color",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_COLOR",
+    "<span>BEHAVIOUR_TYPE_COLOR</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_cross_zone",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_CROSS_ZONE",
+    "<span>BEHAVIOUR_TYPE_CROSS_ZONE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_force",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_FORCE",
+    "<span>BEHAVIOUR_TYPE_FORCE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_gravity",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_GRAVITY",
+    "<span>BEHAVIOUR_TYPE_GRAVITY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_random_drift",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_RANDOM_DRIFT",
+    "<span>BEHAVIOUR_TYPE_RANDOM_DRIFT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_repulsion",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_REPULSION",
+    "<span>BEHAVIOUR_TYPE_REPULSION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_rotate",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_ROTATE",
+    "<span>BEHAVIOUR_TYPE_ROTATE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_scale",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_SCALE",
+    "<span>BEHAVIOUR_TYPE_SCALE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_spring",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_SPRING",
+    "<span>BEHAVIOUR_TYPE_SPRING</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/constants/index.js~bind_emitter_event",
     "variable/index.html#static-variable-BIND_EMITTER_EVENT",
     "<span>BIND_EMITTER_EVENT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
@@ -114,6 +186,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_behaviour_easing_type",
+    "variable/index.html#static-variable-DEFAULT_BEHAVIOUR_EASING_TYPE",
+    "<span>DEFAULT_BEHAVIOUR_EASING_TYPE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/emitter/constants.js~default_bind_emitter",
     "variable/index.html#static-variable-DEFAULT_BIND_EMITTER",
     "<span>DEFAULT_BIND_EMITTER</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/constants.js</span>",
@@ -129,6 +207,12 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/core/constants.js~default_body",
     "variable/index.html#static-variable-DEFAULT_BODY",
     "<span>DEFAULT_BODY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_cross_type",
+    "variable/index.html#static-variable-DEFAULT_CROSS_TYPE",
+    "<span>DEFAULT_CROSS_TYPE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
     "variable"
   ],
   [
@@ -171,6 +255,12 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/debug/constants.js~default_height",
     "variable/index.html#static-variable-DEFAULT_HEIGHT",
     "<span>DEFAULT_HEIGHT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_life",
+    "variable/index.html#static-variable-DEFAULT_LIFE",
+    "<span>DEFAULT_LIFE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
     "variable"
   ],
   [
@@ -322,6 +412,60 @@ window.esdocSearchIndex = [
     "class/src/behaviour/Gravity.js~Gravity.html",
     "<span>Gravity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Gravity.js</span>",
     "class"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_body",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_BODY",
+    "<span>INITIALIZER_TYPE_BODY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_life",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_LIFE",
+    "<span>INITIALIZER_TYPE_LIFE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_mass",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_MASS",
+    "<span>INITIALIZER_TYPE_MASS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_polar_velocity",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_POLAR_VELOCITY",
+    "<span>INITIALIZER_TYPE_POLAR_VELOCITY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_position",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_POSITION",
+    "<span>INITIALIZER_TYPE_POSITION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_radial_velocity",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_RADIAL_VELOCITY",
+    "<span>INITIALIZER_TYPE_RADIAL_VELOCITY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_radius",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_RADIUS",
+    "<span>INITIALIZER_TYPE_RADIUS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_vector_velocity",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_VECTOR_VELOCITY",
+    "<span>INITIALIZER_TYPE_VECTOR_VELOCITY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_zone",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_ZONE",
+    "<span>INITIALIZER_TYPE_ZONE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
   ],
   [
     "@rohandeshpande/three-proton/src/initializer/initializer.js~initializer",
@@ -492,16 +636,34 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/position.js~position",
-    "class/src/initializer/Position.js~Position.html",
-    "<span>Position</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Position.js</span>",
-    "class"
-  ],
-  [
     "@rohandeshpande/three-proton/src/core/proton.js~proton",
     "class/src/core/Proton.js~Proton.html",
     "<span>Proton</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/Proton.js</span>",
     "class"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/renderer/types.js~renderer_type_custom",
+    "variable/index.html#static-variable-RENDERER_TYPE_CUSTOM",
+    "<span>RENDERER_TYPE_CUSTOM</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/renderer/types.js~renderer_type_mesh",
+    "variable/index.html#static-variable-RENDERER_TYPE_MESH",
+    "<span>RENDERER_TYPE_MESH</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/renderer/types.js~renderer_type_points",
+    "variable/index.html#static-variable-RENDERER_TYPE_POINTS",
+    "<span>RENDERER_TYPE_POINTS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/renderer/types.js~renderer_type_sprite",
+    "variable/index.html#static-variable-RENDERER_TYPE_SPRITE",
+    "<span>RENDERER_TYPE_SPRITE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/types.js</span>",
+    "variable"
   ],
   [
     "@rohandeshpande/three-proton/src/constants/index.js~rk2",
@@ -544,6 +706,24 @@ window.esdocSearchIndex = [
     "class/src/behaviour/Rotate.js~Rotate.html",
     "<span>Rotate</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Rotate.js</span>",
     "class"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~supported_json_behaviour_types",
+    "variable/index.html#static-variable-SUPPORTED_JSON_BEHAVIOUR_TYPES",
+    "<span>SUPPORTED_JSON_BEHAVIOUR_TYPES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~supported_json_initializer_types",
+    "variable/index.html#static-variable-SUPPORTED_JSON_INITIALIZER_TYPES",
+    "<span>SUPPORTED_JSON_INITIALIZER_TYPES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~supported_json_renderer_types",
+    "variable/index.html#static-variable-SUPPORTED_JSON_RENDERER_TYPES",
+    "<span>SUPPORTED_JSON_RENDERER_TYPES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
   ],
   [
     "@rohandeshpande/three-proton/src/behaviour/scale.js~scale",
@@ -634,6 +814,18 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-easeLinear",
     "<span>easeLinear</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/ease/index.js</span>",
     "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/fromjson.js~fromjson",
+    "function/index.html#static-function-fromJSON",
+    "<span>fromJSON</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/fromJSON.js</span>",
+    "function"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/ease/index.js~geteasingbyname",
+    "function/index.html#static-function-getEasingByName",
+    "<span>getEasingByName</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/ease/index.js</span>",
+    "function"
   ],
   [
     "@rohandeshpande/three-proton/src/core/proton.js~integrator",
@@ -996,6 +1188,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/behaviour/alpha.js~alpha.fromjson",
+    "class/src/behaviour/Alpha.js~Alpha.html#static-method-fromJSON",
+    "src/behaviour/Alpha.js~Alpha.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/attraction.js",
     "file/src/behaviour/Attraction.js.html",
     "src/behaviour/Attraction.js",
@@ -1056,6 +1254,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/behaviour/attraction.js~attraction.fromjson",
+    "class/src/behaviour/Attraction.js~Attraction.html#static-method-fromJSON",
+    "src/behaviour/Attraction.js~Attraction.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/behaviour.js",
     "file/src/behaviour/Behaviour.js.html",
     "src/behaviour/Behaviour.js",
@@ -1102,6 +1306,12 @@ window.esdocSearchIndex = [
     "class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-energy",
     "src/behaviour/Behaviour.js~Behaviour#energy",
     "member"
+  ],
+  [
+    "src/behaviour/behaviour.js~behaviour#fromjson",
+    "class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-fromJSON",
+    "src/behaviour/Behaviour.js~Behaviour#fromJSON",
+    "method"
   ],
   [
     "src/behaviour/behaviour.js~behaviour#id",
@@ -1188,6 +1398,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/behaviour/collision.js~collision#fromjson",
+    "class/src/behaviour/Collision.js~Collision.html#instance-method-fromJSON",
+    "src/behaviour/Collision.js~Collision#fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/collision.js~collision#name",
     "class/src/behaviour/Collision.js~Collision.html#instance-member-name",
     "src/behaviour/Collision.js~Collision#name",
@@ -1224,21 +1440,21 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/behaviour/color.js~color#a",
-    "class/src/behaviour/Color.js~Color.html#instance-member-a",
-    "src/behaviour/Color.js~Color#a",
-    "member"
-  ],
-  [
     "src/behaviour/color.js~color#applybehaviour",
     "class/src/behaviour/Color.js~Color.html#instance-method-applyBehaviour",
     "src/behaviour/Color.js~Color#applyBehaviour",
     "method"
   ],
   [
-    "src/behaviour/color.js~color#b",
-    "class/src/behaviour/Color.js~Color.html#instance-member-b",
-    "src/behaviour/Color.js~Color#b",
+    "src/behaviour/color.js~color#colora",
+    "class/src/behaviour/Color.js~Color.html#instance-member-colorA",
+    "src/behaviour/Color.js~Color#colorA",
+    "member"
+  ],
+  [
+    "src/behaviour/color.js~color#colorb",
+    "class/src/behaviour/Color.js~Color.html#instance-member-colorB",
+    "src/behaviour/Color.js~Color#colorB",
     "member"
   ],
   [
@@ -1263,6 +1479,24 @@ window.esdocSearchIndex = [
     "src/behaviour/color.js~color#reset",
     "class/src/behaviour/Color.js~Color.html#instance-method-reset",
     "src/behaviour/Color.js~Color#reset",
+    "method"
+  ],
+  [
+    "src/behaviour/color.js~color#same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "src/behaviour/Color.js~Color#same",
+    "member"
+  ],
+  [
+    "src/behaviour/color.js~color#same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "src/behaviour/Color.js~Color#same",
+    "member"
+  ],
+  [
+    "src/behaviour/color.js~color.fromjson",
+    "class/src/behaviour/Color.js~Color.html#static-method-fromJSON",
+    "src/behaviour/Color.js~Color.fromJSON",
     "method"
   ],
   [
@@ -1302,6 +1536,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/behaviour/crosszone.js~crosszone.fromjson",
+    "class/src/behaviour/CrossZone.js~CrossZone.html#static-method-fromJSON",
+    "src/behaviour/CrossZone.js~CrossZone.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/force.js",
     "file/src/behaviour/Force.js.html",
     "src/behaviour/Force.js",
@@ -1332,6 +1572,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/behaviour/force.js~force.fromjson",
+    "class/src/behaviour/Force.js~Force.html#static-method-fromJSON",
+    "src/behaviour/Force.js~Force.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/gravity.js",
     "file/src/behaviour/Gravity.js.html",
     "src/behaviour/Gravity.js",
@@ -1341,6 +1587,12 @@ window.esdocSearchIndex = [
     "src/behaviour/gravity.js~gravity#constructor",
     "class/src/behaviour/Gravity.js~Gravity.html#instance-constructor-constructor",
     "src/behaviour/Gravity.js~Gravity#constructor",
+    "method"
+  ],
+  [
+    "src/behaviour/gravity.js~gravity.fromjson",
+    "class/src/behaviour/Gravity.js~Gravity.html#static-method-fromJSON",
+    "src/behaviour/Gravity.js~Gravity.fromJSON",
     "method"
   ],
   [
@@ -1392,6 +1644,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/behaviour/randomdrift.js~randomdrift.fromjson",
+    "class/src/behaviour/RandomDrift.js~RandomDrift.html#static-method-fromJSON",
+    "src/behaviour/RandomDrift.js~RandomDrift.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/repulsion.js",
     "file/src/behaviour/Repulsion.js.html",
     "src/behaviour/Repulsion.js",
@@ -1422,6 +1680,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/behaviour/repulsion.js~repulsion.fromjson",
+    "class/src/behaviour/Repulsion.js~Repulsion.html#static-method-fromJSON",
+    "src/behaviour/Repulsion.js~Repulsion.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/rotate.js",
     "file/src/behaviour/Rotate.js.html",
     "src/behaviour/Rotate.js",
@@ -1440,28 +1704,10 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/behaviour/rotate.js~rotate#a",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-member-a",
-    "src/behaviour/Rotate.js~Rotate#a",
-    "member"
-  ],
-  [
     "src/behaviour/rotate.js~rotate#applybehaviour",
     "class/src/behaviour/Rotate.js~Rotate.html#instance-method-applyBehaviour",
     "src/behaviour/Rotate.js~Rotate#applyBehaviour",
     "method"
-  ],
-  [
-    "src/behaviour/rotate.js~rotate#b",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-member-b",
-    "src/behaviour/Rotate.js~Rotate#b",
-    "member"
-  ],
-  [
-    "src/behaviour/rotate.js~rotate#c",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-member-c",
-    "src/behaviour/Rotate.js~Rotate#c",
-    "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#constructor",
@@ -1500,6 +1746,30 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/behaviour/rotate.js~rotate#x",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-member-x",
+    "src/behaviour/Rotate.js~Rotate#x",
+    "member"
+  ],
+  [
+    "src/behaviour/rotate.js~rotate#y",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-member-y",
+    "src/behaviour/Rotate.js~Rotate#y",
+    "member"
+  ],
+  [
+    "src/behaviour/rotate.js~rotate#z",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-member-z",
+    "src/behaviour/Rotate.js~Rotate#z",
+    "member"
+  ],
+  [
+    "src/behaviour/rotate.js~rotate.fromjson",
+    "class/src/behaviour/Rotate.js~Rotate.html#static-method-fromJSON",
+    "src/behaviour/Rotate.js~Rotate.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/scale.js",
     "file/src/behaviour/Scale.js.html",
     "src/behaviour/Scale.js",
@@ -1512,22 +1782,10 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/behaviour/scale.js~scale#a",
-    "class/src/behaviour/Scale.js~Scale.html#instance-member-a",
-    "src/behaviour/Scale.js~Scale#a",
-    "member"
-  ],
-  [
     "src/behaviour/scale.js~scale#applybehaviour",
     "class/src/behaviour/Scale.js~Scale.html#instance-method-applyBehaviour",
     "src/behaviour/Scale.js~Scale#applyBehaviour",
     "method"
-  ],
-  [
-    "src/behaviour/scale.js~scale#b",
-    "class/src/behaviour/Scale.js~Scale.html#instance-member-b",
-    "src/behaviour/Scale.js~Scale#b",
-    "member"
   ],
   [
     "src/behaviour/scale.js~scale#constructor",
@@ -1551,6 +1809,36 @@ window.esdocSearchIndex = [
     "src/behaviour/scale.js~scale#reset",
     "class/src/behaviour/Scale.js~Scale.html#instance-method-reset",
     "src/behaviour/Scale.js~Scale#reset",
+    "method"
+  ],
+  [
+    "src/behaviour/scale.js~scale#same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
+    "src/behaviour/Scale.js~Scale#same",
+    "member"
+  ],
+  [
+    "src/behaviour/scale.js~scale#same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
+    "src/behaviour/Scale.js~Scale#same",
+    "member"
+  ],
+  [
+    "src/behaviour/scale.js~scale#scalea",
+    "class/src/behaviour/Scale.js~Scale.html#instance-member-scaleA",
+    "src/behaviour/Scale.js~Scale#scaleA",
+    "member"
+  ],
+  [
+    "src/behaviour/scale.js~scale#scaleb",
+    "class/src/behaviour/Scale.js~Scale.html#instance-member-scaleB",
+    "src/behaviour/Scale.js~Scale#scaleB",
+    "member"
+  ],
+  [
+    "src/behaviour/scale.js~scale.fromjson",
+    "class/src/behaviour/Scale.js~Scale.html#static-method-fromJSON",
+    "src/behaviour/Scale.js~Scale.fromJSON",
     "method"
   ],
   [
@@ -1602,6 +1890,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/behaviour/spring.js~spring.fromjson",
+    "class/src/behaviour/Spring.js~Spring.html#static-method-fromJSON",
+    "src/behaviour/Spring.js~Spring.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/constants.js",
     "file/src/behaviour/constants.js.html",
     "src/behaviour/constants.js",
@@ -1611,6 +1905,12 @@ window.esdocSearchIndex = [
     "src/behaviour/index.js",
     "file/src/behaviour/index.js.html",
     "src/behaviour/index.js",
+    "file"
+  ],
+  [
+    "src/behaviour/types.js",
+    "file/src/behaviour/types.js.html",
+    "src/behaviour/types.js",
     "file"
   ],
   [
@@ -1998,6 +2298,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/core/proton.js~proton.fromjson",
+    "class/src/core/Proton.js~Proton.html#static-method-fromJSON",
+    "src/core/Proton.js~Proton.fromJSON",
+    "method"
+  ],
+  [
     "src/core/proton.js~proton.integrator",
     "class/src/core/Proton.js~Proton.html#static-method-integrator",
     "src/core/Proton.js~Proton.integrator",
@@ -2007,6 +2313,12 @@ window.esdocSearchIndex = [
     "src/core/constants.js",
     "file/src/core/constants.js.html",
     "src/core/constants.js",
+    "file"
+  ],
+  [
+    "src/core/fromjson.js",
+    "file/src/core/fromJSON.js.html",
+    "src/core/fromJSON.js",
     "file"
   ],
   [
@@ -2461,13 +2773,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -2538,6 +2850,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/initializer/body.js~body.fromjson",
+    "class/src/initializer/Body.js~Body.html#static-method-fromJSON",
+    "src/initializer/Body.js~Body.fromJSON",
+    "method"
+  ],
+  [
     "src/initializer/initializer.js",
     "file/src/initializer/Initializer.js.html",
     "src/initializer/Initializer.js",
@@ -2574,6 +2892,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/initializer/initializer.js~initializer.fromjson",
+    "class/src/initializer/Initializer.js~Initializer.html#static-method-fromJSON",
+    "src/initializer/Initializer.js~Initializer.fromJSON",
+    "method"
+  ],
+  [
     "src/initializer/initializerutil.js",
     "file/src/initializer/InitializerUtil.js.html",
     "src/initializer/InitializerUtil.js",
@@ -2604,6 +2928,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/initializer/life.js~life.fromjson",
+    "class/src/initializer/Life.js~Life.html#static-method-fromJSON",
+    "src/initializer/Life.js~Life.fromJSON",
+    "method"
+  ],
+  [
     "src/initializer/mass.js",
     "file/src/initializer/Mass.js.html",
     "src/initializer/Mass.js",
@@ -2628,34 +2958,10 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/initializer/position.js",
-    "file/src/initializer/Position.js.html",
-    "src/initializer/Position.js",
-    "file"
-  ],
-  [
-    "src/initializer/position.js~position#addzone",
-    "class/src/initializer/Position.js~Position.html#instance-method-addZone",
-    "src/initializer/Position.js~Position#addZone",
+    "src/initializer/mass.js~mass.fromjson",
+    "class/src/initializer/Mass.js~Mass.html#static-method-fromJSON",
+    "src/initializer/Mass.js~Mass.fromJSON",
     "method"
-  ],
-  [
-    "src/initializer/position.js~position#constructor",
-    "class/src/initializer/Position.js~Position.html#instance-constructor-constructor",
-    "src/initializer/Position.js~Position#constructor",
-    "method"
-  ],
-  [
-    "src/initializer/position.js~position#reset",
-    "class/src/initializer/Position.js~Position.html#instance-method-reset",
-    "src/initializer/Position.js~Position#reset",
-    "method"
-  ],
-  [
-    "src/initializer/position.js~position#zones",
-    "class/src/initializer/Position.js~Position.html#instance-member-zones",
-    "src/initializer/Position.js~Position#zones",
-    "member"
   ],
   [
     "src/initializer/radius.js",
@@ -2685,6 +2991,12 @@ window.esdocSearchIndex = [
     "src/initializer/radius.js~radius#reset",
     "class/src/initializer/Radius.js~Radius.html#instance-method-reset",
     "src/initializer/Radius.js~Radius#reset",
+    "method"
+  ],
+  [
+    "src/initializer/radius.js~radius.fromjson",
+    "class/src/initializer/Radius.js~Radius.html#static-method-fromJSON",
+    "src/initializer/Radius.js~Radius.fromJSON",
     "method"
   ],
   [
@@ -2734,6 +3046,12 @@ window.esdocSearchIndex = [
     "class/src/initializer/Rate.js~Rate.html#instance-member-timePan",
     "src/initializer/Rate.js~Rate#timePan",
     "member"
+  ],
+  [
+    "src/initializer/rate.js~rate.fromjson",
+    "class/src/initializer/Rate.js~Rate.html#static-method-fromJSON",
+    "src/initializer/Rate.js~Rate.fromJSON",
+    "method"
   ],
   [
     "src/initializer/velocity.js",
@@ -2799,6 +3117,12 @@ window.esdocSearchIndex = [
     "src/initializer/index.js",
     "file/src/initializer/index.js.html",
     "src/initializer/index.js",
+    "file"
+  ],
+  [
+    "src/initializer/types.js",
+    "file/src/initializer/types.js.html",
+    "src/initializer/types.js",
     "file"
   ],
   [
@@ -3393,6 +3717,12 @@ window.esdocSearchIndex = [
     "src/renderer/index.js",
     "file/src/renderer/index.js.html",
     "src/renderer/index.js",
+    "file"
+  ],
+  [
+    "src/renderer/types.js",
+    "file/src/renderer/types.js.html",
+    "src/renderer/types.js",
     "file"
   ],
   [

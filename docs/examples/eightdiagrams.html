@@ -121,6 +121,9 @@
 
     function createEmitter(x, y, color1, color2) {
         var emitter = new Proton.Emitter();
+        var body = new Proton.Body(createSprite());
+
+        console.log(body);
 
         return emitter
             .setRate(new Proton.Rate(new Proton.Span(5, 7), new Proton.Span(.01, .02)))
