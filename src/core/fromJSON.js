@@ -3,8 +3,8 @@ import * as Initializer from '../initializer';
 
 import { EULER, POOL_MAX } from '../constants';
 import {
-  SUPPORTED_BEHAVIOUR_TYPES,
-  SUPPORTED_INITIALIZER_TYPES
+  SUPPORTED_JSON_BEHAVIOUR_TYPES,
+  SUPPORTED_JSON_INITIALIZER_TYPES
 } from './constants';
 
 import { Emitter } from '../emitter';
@@ -31,7 +31,7 @@ const makeInitializers = items => {
   items.forEach(data => {
     const { type, properties } = data;
 
-    if (!SUPPORTED_INITIALIZER_TYPES.includes(type)) {
+    if (!SUPPORTED_JSON_INITIALIZER_TYPES.includes(type)) {
       throw new Error(
         `The initializer type ${type} is invalid or not yet supported`
       );
@@ -55,7 +55,7 @@ const makeBehaviours = items => {
   items.forEach(data => {
     const { type, properties } = data;
 
-    if (!SUPPORTED_BEHAVIOUR_TYPES.includes(type)) {
+    if (!SUPPORTED_JSON_BEHAVIOUR_TYPES.includes(type)) {
       throw new Error(
         `The behaviour type ${type} is invalid or not yet supported`
       );
@@ -86,12 +86,13 @@ export default json => {
 
   emitters.forEach(data => {
     const emitter = new Emitter();
-    const { rate, initializers, behaviours } = data;
+    const { rate, initializers, behaviours, position } = data;
 
     emitter
       .setRate(makeRate(rate))
       .setInitializers(makeInitializers(initializers))
-      .setBehaviours(makeBehaviours(behaviours));
+      .setBehaviours(makeBehaviours(behaviours))
+      .setPosition(position);
 
     proton.addEmitter(emitter);
   });

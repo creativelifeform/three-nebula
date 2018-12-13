@@ -1,3 +1,25 @@
+import {
+  BEHAVIOUR_TYPE_ALPHA,
+  BEHAVIOUR_TYPE_ATTRACTION,
+  BEHAVIOUR_TYPE_COLOR,
+  BEHAVIOUR_TYPE_CROSS_ZONE,
+  BEHAVIOUR_TYPE_FORCE,
+  BEHAVIOUR_TYPE_GRAVITY,
+  BEHAVIOUR_TYPE_RANDOM_DRIFT,
+  BEHAVIOUR_TYPE_REPULSION,
+  BEHAVIOUR_TYPE_ROTATE,
+  BEHAVIOUR_TYPE_SCALE,
+  BEHAVIOUR_TYPE_SPRING
+} from '../behaviour/types';
+import {
+  INITIALIZER_TYPE_BODY,
+  INITIALIZER_TYPE_LIFE,
+  INITIALIZER_TYPE_MASS,
+  INITIALIZER_TYPE_POSITION,
+  INITIALIZER_TYPE_RADIUS
+} from '../initializer/types';
+
+import { RENDERER_TYPE_SPRITE } from '../renderer/types';
 import { easeLinear } from '../ease';
 
 /**
@@ -76,3 +98,39 @@ export const DEFAULT_EASING = easeLinear;
  * @type {number}
  */
 export const DEFAULT_PROTON_DELTA = 0.0167;
+
+/**
+ * @desc The types of initializers supported by the Proton.fromJSON method.
+ * @type {array<string>}
+ */
+export const SUPPORTED_JSON_INITIALIZER_TYPES = [
+  INITIALIZER_TYPE_POSITION,
+  INITIALIZER_TYPE_LIFE,
+  INITIALIZER_TYPE_RADIUS,
+  INITIALIZER_TYPE_MASS,
+  INITIALIZER_TYPE_BODY
+];
+
+/**
+ * @desc The types of behaviours supported by the Proton.fromJSON method.
+ * @type {array<string>}
+ */
+export const SUPPORTED_JSON_BEHAVIOUR_TYPES = [
+  BEHAVIOUR_TYPE_ALPHA,
+  BEHAVIOUR_TYPE_ATTRACTION,
+  BEHAVIOUR_TYPE_COLOR,
+  BEHAVIOUR_TYPE_CROSS_ZONE,
+  BEHAVIOUR_TYPE_FORCE,
+  BEHAVIOUR_TYPE_GRAVITY,
+  BEHAVIOUR_TYPE_RANDOM_DRIFT,
+  BEHAVIOUR_TYPE_REPULSION,
+  BEHAVIOUR_TYPE_ROTATE,
+  BEHAVIOUR_TYPE_SCALE,
+  BEHAVIOUR_TYPE_SPRING
+];
+
+/**
+ * @desc The types of renderers supported by the Proton.fromJSON method.
+ * @type {array<string>}
+ */
+export const SUPPORTED_JSON_RENDERER_TYPES = [RENDERER_TYPE_SPRITE];
