@@ -177,14 +177,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/initializer/Body.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {
-  Sprite,
-  SpriteMaterial,
-  TextureLoader,
-  AdditiveBlending as blending
-} from &apos;three&apos;;
-
-import Initializer from &apos;./Initializer&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Initializer from &apos;./Initializer&apos;;
 import { createArraySpan } from &apos;../math&apos;;
 
 /**
@@ -252,22 +245,9 @@ export default class Body extends Initializer {
    * @return {Body}
    */
   static fromJSON(json) {
-    let spriteBody = null;
-    const { body, width, height, texture } = json;
+    const { body, width, height } = json;
 
-    if (texture) {
-      const map = new TextureLoader().load(texture);
-      const material = new SpriteMaterial({
-        map,
-        blending,
-        color: 0xff0000,
-        fog: true
-      });
-
-      spriteBody = new Sprite(material);
-    }
-
-    return new Body(spriteBody || body, width, height);
+    return new Body(body, width, height);
   }
 }
 </code></pre>

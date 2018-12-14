@@ -10605,7 +10605,7 @@
     "__docId__": 506,
     "kind": "file",
     "name": "src/initializer/Body.js",
-    "content": "import {\n  Sprite,\n  SpriteMaterial,\n  TextureLoader,\n  AdditiveBlending as blending\n} from 'three';\n\nimport Initializer from './Initializer';\nimport { createArraySpan } from '../math';\n\n/**\n * Sets the body property on initialized particles.\n *\n */\nexport default class Body extends Initializer {\n  /**\n   * Constructs a Body initalizer instance.\n   *\n   * @param {string|number} body - The color for the particle body\n   * @param {?number} w - The width of the particle body\n   * @param {?number} h - The height of the particle body\n   * @return void\n   */\n  constructor(body, w, h) {\n    super();\n\n    /**\n     * @desc The color for the particle body\n     * @type {ArraySpan}\n     */\n    this.body = createArraySpan(body);\n\n    /**\n     * @desc The width of the particle Body\n     * @type {number}\n     */\n    this.w = w;\n\n    /**\n     * @desc The height of the particle Body\n     * @type {number}\n     */\n    this.h = h || w;\n  }\n\n  /**\n   * Sets the particle's initial body.\n   *\n   * @param {Particle} particle - the particle to initialize the property on\n   * @return void\n   */\n  initialize(particle) {\n    var body = this.body.getValue();\n\n    if (this.w) {\n      particle.body = {\n        width: this.w,\n        height: this.h,\n        body: body\n      };\n    } else {\n      particle.body = body;\n    }\n  }\n\n  /**\n   * Creates a Body initializer from JSON.\n   *\n   * @param {object} json - The JSON to construct the instance from.\n   * @property {number} json.body - The color for the particle body\n   * @property {number} json.width - The width of the particle body\n   * @property {number} json.height - The height of the particle body\n   * @return {Body}\n   */\n  static fromJSON(json) {\n    let spriteBody = null;\n    const { body, width, height, texture } = json;\n\n    if (texture) {\n      const map = new TextureLoader().load(texture);\n      const material = new SpriteMaterial({\n        map,\n        blending,\n        color: 0xff0000,\n        fog: true\n      });\n\n      spriteBody = new Sprite(material);\n    }\n\n    return new Body(spriteBody || body, width, height);\n  }\n}\n",
+    "content": "import Initializer from './Initializer';\nimport { createArraySpan } from '../math';\n\n/**\n * Sets the body property on initialized particles.\n *\n */\nexport default class Body extends Initializer {\n  /**\n   * Constructs a Body initalizer instance.\n   *\n   * @param {string|number} body - The color for the particle body\n   * @param {?number} w - The width of the particle body\n   * @param {?number} h - The height of the particle body\n   * @return void\n   */\n  constructor(body, w, h) {\n    super();\n\n    /**\n     * @desc The color for the particle body\n     * @type {ArraySpan}\n     */\n    this.body = createArraySpan(body);\n\n    /**\n     * @desc The width of the particle Body\n     * @type {number}\n     */\n    this.w = w;\n\n    /**\n     * @desc The height of the particle Body\n     * @type {number}\n     */\n    this.h = h || w;\n  }\n\n  /**\n   * Sets the particle's initial body.\n   *\n   * @param {Particle} particle - the particle to initialize the property on\n   * @return void\n   */\n  initialize(particle) {\n    var body = this.body.getValue();\n\n    if (this.w) {\n      particle.body = {\n        width: this.w,\n        height: this.h,\n        body: body\n      };\n    } else {\n      particle.body = body;\n    }\n  }\n\n  /**\n   * Creates a Body initializer from JSON.\n   *\n   * @param {object} json - The JSON to construct the instance from.\n   * @property {number} json.body - The color for the particle body\n   * @property {number} json.width - The width of the particle body\n   * @property {number} json.height - The height of the particle body\n   * @return {Body}\n   */\n  static fromJSON(json) {\n    const { body, width, height } = json;\n\n    return new Body(body, width, height);\n  }\n}\n",
     "static": true,
     "longname": "/Users/rohan/Projects/three-proton/src/initializer/Body.js",
     "access": "public",
@@ -10624,7 +10624,7 @@
     "importPath": "@rohandeshpande/three-proton/src/initializer/Body.js",
     "importStyle": "Body",
     "description": "Sets the body property on initialized particles.",
-    "lineNumber": 15,
+    "lineNumber": 8,
     "interface": false,
     "extends": [
       "src/initializer/Initializer.js~Initializer"
@@ -10641,7 +10641,7 @@
     "longname": "src/initializer/Body.js~Body#constructor",
     "access": "public",
     "description": "Constructs a Body initalizer instance.",
-    "lineNumber": 24,
+    "lineNumber": 17,
     "params": [
       {
         "nullable": null,
@@ -10693,7 +10693,7 @@
     "longname": "src/initializer/Body.js~Body#body",
     "access": "public",
     "description": "The color for the particle body",
-    "lineNumber": 31,
+    "lineNumber": 24,
     "type": {
       "nullable": null,
       "types": [
@@ -10712,7 +10712,7 @@
     "longname": "src/initializer/Body.js~Body#w",
     "access": "public",
     "description": "The width of the particle Body",
-    "lineNumber": 37,
+    "lineNumber": 30,
     "type": {
       "nullable": null,
       "types": [
@@ -10731,7 +10731,7 @@
     "longname": "src/initializer/Body.js~Body#h",
     "access": "public",
     "description": "The height of the particle Body",
-    "lineNumber": 43,
+    "lineNumber": 36,
     "type": {
       "nullable": null,
       "types": [
@@ -10752,7 +10752,7 @@
     "longname": "src/initializer/Body.js~Body#initialize",
     "access": "public",
     "description": "Sets the particle's initial body.",
-    "lineNumber": 52,
+    "lineNumber": 45,
     "params": [
       {
         "nullable": null,
@@ -10785,7 +10785,7 @@
     "longname": "src/initializer/Body.js~Body.fromJSON",
     "access": "public",
     "description": "Creates a Body initializer from JSON.",
-    "lineNumber": 75,
+    "lineNumber": 68,
     "params": [
       {
         "nullable": null,

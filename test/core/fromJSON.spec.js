@@ -69,8 +69,7 @@ describe('fromJSON', () => {
           new Proton.Scale(1, 0.5),
           new Proton.Force(0, 0, -20)
         ])
-        .setPosition({ x, y })
-        .emit();
+        .setPosition({ x, y });
     }
 
     const scene = new Scene();
@@ -78,16 +77,12 @@ describe('fromJSON', () => {
     const protonFromJson = Proton.Proton.fromJSON(eightdiagrams);
     const emitter1 = createEmitter(70, 0, '#4F1500', '#0029FF');
     const emitter2 = createEmitter(-70, 0, '#004CFE', '#6600FF');
-    const renderer = new Proton.SpriteRenderer(scene);
 
     proton.addEmitter(emitter1).addEmitter(emitter2);
-    proton.addRenderer(renderer);
-    protonFromJson.addRenderer(renderer);
+    proton.addRenderer(new Proton.SpriteRenderer(scene));
+    protonFromJson.addRenderer(new Proton.SpriteRenderer(scene));
 
-    console.log(proton);
-    console.log(protonFromJson);
-
-    // assert.deepEqual(proton, protonFromJson);
+    assert.deepEqual(proton, protonFromJson);
 
     done();
   });
