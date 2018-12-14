@@ -1,34 +1,37 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>three.proton - eightdiagrams</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
     <style type="text/css">
-    body {
+      body {
         font-family: Monospace;
         background-color: #fff;
         margin: 0;
         padding: 0;
         overflow: hidden;
-    }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="container"></div>
     <script src="../js/stats.min.js"></script>
     <script src="../js/three.js"></script>
-    <script src='../js/three-proton.js'></script>
+    <script src="../js/three-proton.js"></script>
     <script src="../js/lib/TrackballControls.js"></script>
     <script>
-    var proton, emitter1, emitter2, radius;
-    var camera, scene, renderer, stats, clock, spring, controls;
+      var proton, emitter1, emitter2, radius;
+      var camera, scene, renderer, stats, clock, spring, controls;
+      var animateTimes = 1;
+      var animatedTimes = 0;
+      init();
 
-    init();
-
-    function init() {
+      function init() {
         addScene();
         addControls();
         addLights();
@@ -37,10 +40,15 @@
         //addInteraction();
         addStats();
         animate();
-    }
+      }
 
-    function addScene() {
-        camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
+      function addScene() {
+        camera = new THREE.PerspectiveCamera(
+          70,
+          window.innerWidth / window.innerHeight,
+          1,
+          1000
+        );
         camera.position.z = 500;
         scene = new THREE.Scene();
         scene.fog = new THREE.Fog(0xffffff, 1, 10000);
@@ -50,9 +58,9 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
         window.addEventListener('resize', onWindowResize, false);
-    }
+      }
 
-    function addControls() {
+      function addControls() {
         controls = new THREE.TrackballControls(camera);
         controls.rotateSpeed = 1.0;
         controls.zoomSpeed = 1.2;
@@ -61,192 +69,197 @@
         controls.noPan = false;
         controls.staticMoving = true;
         controls.dynamicDampingFactor = 0.3;
-    }
+      }
 
-    function addLights() {
+      function addLights() {
         var ambientLight = new THREE.AmbientLight(0x101010);
         scene.add(ambientLight);
 
         var pointLight = new THREE.PointLight(0xffffff, 2, 1000, 1);
         pointLight.position.set(0, 200, 200);
         scene.add(pointLight);
-    }
+      }
 
-    function addStats() {
+      function addStats() {
         stats = new Stats();
         stats.showPanel(0);
         stats.dom.style.position = 'absolute';
         stats.dom.style.left = '0px';
         stats.dom.style.top = '0px';
         container.appendChild(stats.dom);
-    }
+      }
 
-    function addStars() {
+      function addStars() {
         var geometry = new THREE.Geometry();
         for (var i = 0; i < 10000; i++) {
-            var vertex = new THREE.Vector3();
-            vertex.x = THREE.Math.randFloatSpread(2000);
-            vertex.y = THREE.Math.randFloatSpread(2000);
-            vertex.z = THREE.Math.randFloatSpread(2000);
-            geometry.vertices.push(vertex);
+          var vertex = new THREE.Vector3();
+          vertex.x = THREE.Math.randFloatSpread(2000);
+          vertex.y = THREE.Math.randFloatSpread(2000);
+          vertex.z = THREE.Math.randFloatSpread(2000);
+          geometry.vertices.push(vertex);
         }
-        var particles = new THREE.Points(geometry, new THREE.PointsMaterial({
+        var particles = new THREE.Points(
+          geometry,
+          new THREE.PointsMaterial({
             color: 0x888888
-        }));
+          })
+        );
         scene.add(particles);
-    }
+      }
 
-    function addProton() {
+      function addProton() {
         const json = {
-          "preParticles": 500,
-          "integrationType": "euler",
-          "emitters": [
+          preParticles: 500,
+          integrationType: 'euler',
+          emitters: [
             {
-              "rate": {
-                "particlesMin": 5,
-                "particlesMax": 7,
-                "perSecondMin": 0.01,
-                "perSecondMax": 0.02
+              rate: {
+                particlesMin: 5,
+                particlesMax: 7,
+                perSecondMin: 0.01,
+                perSecondMax: 0.02
               },
-              "position": {
-                "x": 70,
-                "y": 0
+              position: {
+                x: 70,
+                y: 0
               },
-              "initializers": [
+              initializers: [
                 {
-                  "type": "Mass",
-                  "properties": {
-                    "min": 1,
-                    "max": 1
+                  type: 'Mass',
+                  properties: {
+                    min: 1,
+                    max: 1
                   }
                 },
                 {
-                  "type": "Life",
-                  "properties": {
-                    "min": 2,
-                    "max": 2
+                  type: 'Life',
+                  properties: {
+                    min: 2,
+                    max: 2
                   }
                 },
                 {
-                  "type": "BodySprite",
-                  "properties": {
-                    "texture": "./img/dot.png"
+                  type: 'Body',
+                  properties: {
+                    body: createSprite(),
+                    texture: './img/dot.png'
                   }
                 },
                 {
-                  "type": "Radius",
-                  "properties": {
-                    "width": 80,
-                    "height": 80
+                  type: 'Radius',
+                  properties: {
+                    width: 80,
+                    height: 80
                   }
                 }
               ],
-              "behaviours": [
+              behaviours: [
                 {
-                  "type": "Alpha",
-                  "properties": {
-                    "alphaA": 1,
-                    "alphaB": 0
+                  type: 'Alpha',
+                  properties: {
+                    alphaA: 1,
+                    alphaB: 0
                   }
                 },
                 {
-                  "type": "Color",
-                  "properties": {
-                    "colorA": "#4F1500",
-                    "colorB": "#0029FF"
+                  type: 'Color',
+                  properties: {
+                    colorA: '#4F1500',
+                    colorB: '#0029FF'
                   }
                 },
                 {
-                  "type": "Scale",
-                  "properties": {
-                    "scaleA": 1,
-                    "scaleB": 0.5
+                  type: 'Scale',
+                  properties: {
+                    scaleA: 1,
+                    scaleB: 0.5
                   }
                 },
                 {
-                  "type": "Force",
-                  "properties": {
-                    "fx": 0,
-                    "fy": 0,
-                    "fz": -20
+                  type: 'Force',
+                  properties: {
+                    fx: 0,
+                    fy: 0,
+                    fz: -20
                   }
                 }
               ]
             },
             {
-              "rate": {
-                "particlesMin": 5,
-                "particlesMax": 7,
-                "perSecondMin": 0.01,
-                "perSecondMax": 0.02
+              rate: {
+                particlesMin: 5,
+                particlesMax: 7,
+                perSecondMin: 0.01,
+                perSecondMax: 0.02
               },
-              "position": {
-                "x": -70,
-                "y": 0
+              position: {
+                x: -70,
+                y: 0
               },
-              "initializers": [
+              initializers: [
                 {
-                  "type": "Mass",
-                  "properties": {
-                    "min": 1,
-                    "max": 1
+                  type: 'Mass',
+                  properties: {
+                    min: 1,
+                    max: 1
                   }
                 },
                 {
-                  "type": "Life",
-                  "properties": {
-                    "min": 2,
-                    "max": 2
+                  type: 'Life',
+                  properties: {
+                    min: 2,
+                    max: 2
                   }
                 },
                 {
-                  "type": "BodySprite",
-                  "properties": {
-                    "texture": "./img/dot.png"
+                  type: 'Body',
+                  properties: {
+                    body: createSprite(),
+                    texture: './img/dot.png'
                   }
                 },
                 {
-                  "type": "Radius",
-                  "properties": {
-                    "width": 80,
-                    "height": 80
+                  type: 'Radius',
+                  properties: {
+                    width: 80,
+                    height: 80
                   }
                 }
               ],
-              "behaviours": [
+              behaviours: [
                 {
-                  "type": "Alpha",
-                  "properties": {
-                    "alphaA": 1,
-                    "alphaB": 0
+                  type: 'Alpha',
+                  properties: {
+                    alphaA: 1,
+                    alphaB: 0
                   }
                 },
                 {
-                  "type": "Color",
-                  "properties": {
-                    "colorA": "#004CFE",
-                    "colorB": "#6600FF"
+                  type: 'Color',
+                  properties: {
+                    colorA: '#004CFE',
+                    colorB: '#6600FF'
                   }
                 },
                 {
-                  "type": "Scale",
-                  "properties": {
-                    "scaleA": 1,
-                    "scaleB": 0.5
+                  type: 'Scale',
+                  properties: {
+                    scaleA: 1,
+                    scaleB: 0.5
                   }
                 },
                 {
-                  "type": "Force",
-                  "properties": {
-                    "fx": 0,
-                    "fy": 0,
-                    "fz": -20
+                  type: 'Force',
+                  properties: {
+                    fx: 0,
+                    fy: 0,
+                    fz: -20
                   }
                 }
               ]
             }
           ]
-        }
+        };
 
         // proton = new Proton.default();
         proton = Proton.default.fromJSON(json);
@@ -255,87 +268,119 @@
         emitter2 = createEmitter(-radius, 0, '#004CFE', '#6600FF');
 
         proton.emitters.forEach(emitter => emitter.emit());
+        let logged = false;
+        class DebugRenderer extends Proton.SpriteRenderer {
+          onProtonUpdate() {}
 
-        console.log(proton);
+          onParticleCreated(particle) {
+            if (!logged) {
+              console.log(particle.body);
+              // this.container.add(
+              //   new THREE.Mesh(
+              //     new THREE.BoxGeometry(1, 1, 1),
+              //     new THREE.MeshBasicMaterial({ color: '#FF0000' })
+              //   )
+              // );
+              this.container.add(particle.body);
+            }
+            logged = true;
+          }
+
+          onParticleUpdate(particle) {}
+
+          scale(particle) {}
+
+          onParticleDead(particle) {}
+        }
 
         // proton.addEmitter(emitter1);
         // proton.addEmitter(emitter2);
         proton.addRenderer(new Proton.SpriteRenderer(scene));
+      }
 
-    }
-
-    function createSprite() {
-        var map = new THREE.TextureLoader().load("./img/dot.png");
+      function createSprite() {
+        var map = new THREE.TextureLoader().load('./img/dot.png');
         var material = new THREE.SpriteMaterial({
-            map: map,
-            color: 0xff0000,
-            blending: THREE.AdditiveBlending,
-            fog: true
+          map: map,
+          color: 0xff0000,
+          blending: THREE.AdditiveBlending,
+          fog: true
         });
         return new THREE.Sprite(material);
-    }
+      }
 
-    function createEmitter(x, y, color1, color2) {
+      function createEmitter(x, y, color1, color2) {
         var emitter = new Proton.Emitter();
 
         return emitter
-            .setRate(new Proton.Rate(new Proton.Span(5, 7), new Proton.Span(.01, .02)))
-            .setInitializers([
-                new Proton.Mass(1),
-                new Proton.Life(2),
-                new Proton.BodySprite("./img/dot.png"),
-                new Proton.Radius(80),
-                new Proton.Velocity(200, new Proton.Vector3D(0, 0, -1), 0),
-            ])
-            .setBehaviours([
-                new Proton.Alpha(1, 0),
-                new Proton.Color(color1, color2),
-                new Proton.Scale(1, 0.5),
-                new Proton.CrossZone(new Proton.ScreenZone(camera, renderer), 'dead'),
-                new Proton.Force(0, 0, -20),
-            ])
-            .setPosition({ x, y })
-            .emit();
-    }
+          .setRate(
+            new Proton.Rate(new Proton.Span(5, 7), new Proton.Span(0.01, 0.02))
+          )
+          .setInitializers([
+            new Proton.Mass(1),
+            new Proton.Life(2),
+            new Proton.BodySprite('./img/dot.png'),
+            new Proton.Radius(80),
+            new Proton.Velocity(200, new Proton.Vector3D(0, 0, -1), 0)
+          ])
+          .setBehaviours([
+            new Proton.Alpha(1, 0),
+            new Proton.Color(color1, color2),
+            new Proton.Scale(1, 0.5),
+            new Proton.CrossZone(
+              new Proton.ScreenZone(camera, renderer),
+              'dead'
+            ),
+            new Proton.Force(0, 0, -20)
+          ])
+          .setPosition({ x, y })
+          .emit();
+      }
 
-    function animate() {
+      function animate() {
         stats.begin();
+
+        // if (animatedTimes <= animateTimes) {
+        //   animatedTimes++;
+        //   requestAnimationFrame(animate);
+        //   // animateEmitter();
+        //   render();
+        // }
+
         requestAnimationFrame(animate);
         // animateEmitter();
         render();
-        stats.end();
-    }
 
-    var ctha = 0;
-    function render() {
+        stats.end();
+      }
+
+      var ctha = 0;
+      function render() {
         proton.update();
         renderer.render(scene, camera);
         //controls.update();
 
         camera.lookAt(scene.position);
-        ctha += .02;
+        ctha += 0.02;
         camera.position.x = Math.sin(ctha) * 500;
         camera.position.z = Math.cos(ctha) * 500;
         camera.position.y = Math.sin(ctha) * 500;
 
         Proton.Debug.renderInfo(proton, 3);
-    }
+      }
 
-    var tha = 0;
+      var tha = 0;
 
-    function animateEmitter() {
-        tha += .13;
+      function animateEmitter() {
+        tha += 0.13;
         emitter1.p.x = radius * Math.cos(tha);
         emitter1.p.y = radius * Math.sin(tha);
 
         emitter2.p.x = radius * Math.cos(tha + Math.PI / 2);
         emitter2.p.y = radius * Math.sin(tha + Math.PI / 2);
-    }
+      }
 
-    function onWindowResize() {
-
-    }
+      function onWindowResize() {}
     </script>
-</body>
-
+  </body>
 </html>
