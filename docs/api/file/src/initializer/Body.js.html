@@ -137,7 +137,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Radius.js~Radius.html">Radius</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Rate.js~Rate.html">Rate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Velocity.js~Velocity.html">Velocity</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_MATERIAL_PROPERTIES">DEFAULT_MATERIAL_PROPERTIES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_BODY">INITIALIZER_TYPE_BODY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_BODY_SPRITE">INITIALIZER_TYPE_BODY_SPRITE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_LIFE">INITIALIZER_TYPE_LIFE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_MASS">INITIALIZER_TYPE_MASS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_POLAR_VELOCITY">INITIALIZER_TYPE_POLAR_VELOCITY</a></span></span></li>
@@ -175,7 +177,14 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/initializer/Body.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Initializer from &apos;./Initializer&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {
+  Sprite,
+  SpriteMaterial,
+  TextureLoader,
+  AdditiveBlending as blending
+} from &apos;three&apos;;
+
+import Initializer from &apos;./Initializer&apos;;
 import { createArraySpan } from &apos;../math&apos;;
 
 /**
@@ -243,9 +252,22 @@ export default class Body extends Initializer {
    * @return {Body}
    */
   static fromJSON(json) {
-    const { body, width, height } = json;
+    let spriteBody = null;
+    const { body, width, height, texture } = json;
 
-    return new Body(body, width, height);
+    if (texture) {
+      const map = new TextureLoader().load(texture);
+      const material = new SpriteMaterial({
+        map,
+        blending,
+        color: 0xff0000,
+        fog: true
+      });
+
+      spriteBody = new Sprite(material);
+    }
+
+    return new Body(spriteBody || body, width, height);
   }
 }
 </code></pre>

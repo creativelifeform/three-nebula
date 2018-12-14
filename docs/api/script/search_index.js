@@ -276,6 +276,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/initializer/constants.js~default_material_properties",
+    "variable/index.html#static-variable-DEFAULT_MATERIAL_PROPERTIES",
+    "<span>DEFAULT_MATERIAL_PROPERTIES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/core/constants.js~default_parent",
     "variable/index.html#static-variable-DEFAULT_PARENT",
     "<span>DEFAULT_PARENT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
@@ -417,6 +423,12 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_body",
     "variable/index.html#static-variable-INITIALIZER_TYPE_BODY",
     "<span>INITIALIZER_TYPE_BODY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_body_sprite",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_BODY_SPRITE",
+    "<span>INITIALIZER_TYPE_BODY_SPRITE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
     "variable"
   ],
   [
@@ -1177,13 +1189,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -3112,6 +3124,12 @@ window.esdocSearchIndex = [
     "class/src/initializer/Velocity.js~Velocity.html#instance-member-tha",
     "src/initializer/Velocity.js~Velocity#tha",
     "member"
+  ],
+  [
+    "src/initializer/constants.js",
+    "file/src/initializer/constants.js.html",
+    "src/initializer/constants.js",
+    "file"
   ],
   [
     "src/initializer/index.js",

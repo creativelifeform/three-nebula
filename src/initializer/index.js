@@ -1,4 +1,5 @@
 export { default as Body } from './Body';
+export { default as BodySprite } from './BodySprite';
 export { default as InitializerUtil } from './InitializerUtil';
 export { default as Life } from './Life';
 export { default as Mass } from './Mass';

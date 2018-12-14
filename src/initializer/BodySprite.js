@@ -19,9 +19,9 @@ export default class BodySprite extends Initializer {
 
     /**
      * @desc The texture for the THREE.SpriteMaterial map.
-     * @type {TextureLoader}
+     * @type {Texture}
      */
-    this.texture = TextureLoader().load(texture);
+    this.texture = new TextureLoader().load(texture);
 
     /**
      * @desc THREE.SpriteMaterial instance.
@@ -60,6 +60,6 @@ export default class BodySprite extends Initializer {
   static fromJSON(json) {
     const { texture, materialProperties = DEFAULT_MATERIAL_PROPERTIES } = json;
 
-    return new Sprite(texture, materialProperties);
+    return new BodySprite(texture, materialProperties);
   }
 }
