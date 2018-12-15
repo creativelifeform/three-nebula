@@ -141,7 +141,6 @@
                 {
                   type: 'Body',
                   properties: {
-                    body: createSprite(),
                     texture: './img/dot.png'
                   }
                 },
@@ -214,7 +213,6 @@
                 {
                   type: 'Body',
                   properties: {
-                    body: createSprite(),
                     texture: './img/dot.png'
                   }
                 },
@@ -261,6 +259,16 @@
           ]
         };
 
+        json.emitters.forEach(emitter => {
+          emitter.initializers.forEach(initializer => {
+            const { type, properties } = initializer;
+
+            if (type === 'Body' && properties.texture) {
+              initializer.properties.body = createSprite(properties.texture);
+            }
+          });
+        });
+
         // proton = new Proton.default();
         proton = Proton.default.fromJSON(json);
         radius = 70;
@@ -268,38 +276,14 @@
         emitter2 = createEmitter(-radius, 0, '#004CFE', '#6600FF');
 
         proton.emitters.forEach(emitter => emitter.emit());
-        let logged = false;
-        class DebugRenderer extends Proton.SpriteRenderer {
-          onProtonUpdate() {}
-
-          onParticleCreated(particle) {
-            if (!logged) {
-              console.log(particle.body);
-              // this.container.add(
-              //   new THREE.Mesh(
-              //     new THREE.BoxGeometry(1, 1, 1),
-              //     new THREE.MeshBasicMaterial({ color: '#FF0000' })
-              //   )
-              // );
-              this.container.add(particle.body);
-            }
-            logged = true;
-          }
-
-          onParticleUpdate(particle) {}
-
-          scale(particle) {}
-
-          onParticleDead(particle) {}
-        }
 
         // proton.addEmitter(emitter1);
         // proton.addEmitter(emitter2);
         proton.addRenderer(new Proton.SpriteRenderer(scene));
       }
 
-      function createSprite() {
-        var map = new THREE.TextureLoader().load('./img/dot.png');
+      function createSprite(texture) {
+        var map = new THREE.TextureLoader().load(texture);
         var material = new THREE.SpriteMaterial({
           map: map,
           color: 0xff0000,
