@@ -852,12 +852,6 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/fromjson.js~preparejson",
-    "function/index.html#static-function-prepareJSON",
-    "<span>prepareJSON</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/fromJSON.js</span>",
-    "function"
-  ],
-  [
     "@rohandeshpande/three-proton/src/ease/index.js~seteasingbyname",
     "function/index.html#static-function-setEasingByName",
     "<span>setEasingByName</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/ease/index.js</span>",

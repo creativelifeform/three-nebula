@@ -92,7 +92,8 @@ export default json => {
       .setRate(makeRate(rate))
       .setInitializers(makeInitializers(initializers))
       .setBehaviours(makeBehaviours(behaviours))
-      .setPosition(position);
+      .setPosition(position)
+      .emit();
 
     proton.addEmitter(emitter);
   });

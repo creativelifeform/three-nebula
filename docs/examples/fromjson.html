@@ -25,10 +25,8 @@
     <script src="../js/three-proton.js"></script>
     <script src="../js/lib/TrackballControls.js"></script>
     <script>
-      var proton, emitter1, emitter2, radius;
-      var camera, scene, renderer, stats, clock, spring, controls;
-      var animateTimes = 1;
-      var animatedTimes = 0;
+      var proton, camera, scene, renderer, stats, clock, spring, controls;
+
       init();
 
       function init() {
@@ -37,7 +35,6 @@
         addLights();
         addStars();
         addProton();
-        //addInteraction();
         addStats();
         animate();
       }
@@ -139,7 +136,7 @@
                   }
                 },
                 {
-                  type: 'Body',
+                  type: 'BodySprite',
                   properties: {
                     texture: './img/dot.png'
                   }
@@ -211,7 +208,7 @@
                   }
                 },
                 {
-                  type: 'Body',
+                  type: 'BodySprite',
                   properties: {
                     texture: './img/dot.png'
                   }
@@ -258,81 +255,15 @@
             }
           ]
         };
-
-        json.emitters.forEach(emitter => {
-          emitter.initializers.forEach(initializer => {
-            const { type, properties } = initializer;
-
-            if (type === 'Body' && properties.texture) {
-              initializer.properties.body = createSprite(properties.texture);
-            }
-          });
-        });
-
-        // proton = new Proton.default();
-        proton = Proton.default.fromJSON(json);
-        radius = 70;
-        emitter1 = createEmitter(radius, 0, '#4F1500', '#0029FF');
-        emitter2 = createEmitter(-radius, 0, '#004CFE', '#6600FF');
-
-        proton.emitters.forEach(emitter => emitter.emit());
-
-        // proton.addEmitter(emitter1);
-        // proton.addEmitter(emitter2);
-        proton.addRenderer(new Proton.SpriteRenderer(scene));
-      }
-
-      function createSprite(texture) {
-        var map = new THREE.TextureLoader().load(texture);
-        var material = new THREE.SpriteMaterial({
-          map: map,
-          color: 0xff0000,
-          blending: THREE.AdditiveBlending,
-          fog: true
-        });
-        return new THREE.Sprite(material);
-      }
-
-      function createEmitter(x, y, color1, color2) {
-        var emitter = new Proton.Emitter();
-
-        return emitter
-          .setRate(
-            new Proton.Rate(new Proton.Span(5, 7), new Proton.Span(0.01, 0.02))
-          )
-          .setInitializers([
-            new Proton.Mass(1),
-            new Proton.Life(2),
-            new Proton.BodySprite('./img/dot.png'),
-            new Proton.Radius(80),
-            new Proton.Velocity(200, new Proton.Vector3D(0, 0, -1), 0)
-          ])
-          .setBehaviours([
-            new Proton.Alpha(1, 0),
-            new Proton.Color(color1, color2),
-            new Proton.Scale(1, 0.5),
-            new Proton.CrossZone(
-              new Proton.ScreenZone(camera, renderer),
-              'dead'
-            ),
-            new Proton.Force(0, 0, -20)
-          ])
-          .setPosition({ x, y })
-          .emit();
+        proton = Proton.default
+          .fromJSON(json)
+          .addRenderer(new Proton.SpriteRenderer(scene));
       }
 
       function animate() {
         stats.begin();
 
-        // if (animatedTimes <= animateTimes) {
-        //   animatedTimes++;
-        //   requestAnimationFrame(animate);
-        //   // animateEmitter();
-        //   render();
-        // }
-
         requestAnimationFrame(animate);
-        // animateEmitter();
         render();
 
         stats.end();
@@ -342,7 +273,6 @@
       function render() {
         proton.update();
         renderer.render(scene, camera);
-        //controls.update();
 
         camera.lookAt(scene.position);
         ctha += 0.02;
@@ -351,17 +281,6 @@
         camera.position.y = Math.sin(ctha) * 500;
 
         Proton.Debug.renderInfo(proton, 3);
-      }
-
-      var tha = 0;
-
-      function animateEmitter() {
-        tha += 0.13;
-        emitter1.p.x = radius * Math.cos(tha);
-        emitter1.p.y = radius * Math.sin(tha);
-
-        emitter2.p.x = radius * Math.cos(tha + Math.PI / 2);
-        emitter2.p.y = radius * Math.sin(tha + Math.PI / 2);
       }
 
       function onWindowResize() {}

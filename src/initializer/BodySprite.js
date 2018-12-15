@@ -17,26 +17,45 @@ export default class BodySprite extends Initializer {
   constructor(texture, materialProperties = DEFAULT_MATERIAL_PROPERTIES) {
     super();
 
-    /**
-     * @desc The texture for the THREE.SpriteMaterial map.
-     * @type {Texture}
-     */
-    this.texture = new TextureLoader().load(texture);
+    this.load(texture, materialProperties);
+  }
 
-    /**
-     * @desc THREE.SpriteMaterial instance.
-     * @type {SpriteMaterial}
-     */
-    this.material = new SpriteMaterial({
-      ...{ map: this.texture },
-      ...materialProperties
+  /**
+   * Loads the texture and sets the BodySprite properties.
+   *
+   * @param {string} texture - The sprite texture
+   * @param {object} materialProperties - The sprite material properties
+   * @return {Promise<BodySprite>}
+   */
+  load(texture, materialProperties) {
+    const loader = new TextureLoader();
+
+    return new Promise(resolve => {
+      loader.load(texture, map => {
+        /**
+         * @desc The texture for the THREE.SpriteMaterial map.
+         * @type {Texture}
+         */
+        this.texture = map;
+
+        /**
+         * @desc THREE.SpriteMaterial instance.
+         * @type {SpriteMaterial}
+         */
+        this.material = new SpriteMaterial({
+          ...{ map },
+          ...materialProperties
+        });
+
+        /**
+         * @desc THREE.Sprite instance.
+         * @type {Sprite}
+         */
+        this.sprite = new Sprite(this.material);
+
+        resolve(this);
+      });
     });
-
-    /**
-     * @desc THREE.Sprite instance.
-     * @type {Sprite}
-     */
-    this.sprite = new Sprite(this.material);
   }
 
   /**

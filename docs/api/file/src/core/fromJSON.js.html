@@ -85,7 +85,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromJSON">fromJSON</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-prepareJSON">prepareJSON</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_AGE">DEFAULT_AGE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ALPHA">DEFAULT_ALPHA</a></span></span></li>
@@ -180,7 +179,6 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/core/fromJSON.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import * as Behaviour from &apos;../behaviour&apos;;
 import * as Initializer from &apos;../initializer&apos;;
-import * as THREE from &apos;three&apos;;
 
 import { EULER, POOL_MAX } from &apos;../constants&apos;;
 import {
@@ -191,32 +189,6 @@ import {
 import { Emitter } from &apos;../emitter&apos;;
 import { Proton } from &apos;../core&apos;;
 import Rate from &apos;../initializer/Rate&apos;;
-
-export const prepareJSON = json =&gt; {
-  function makeSprite(texture) {
-    var map = new THREE.TextureLoader().load(texture);
-    var material = new THREE.SpriteMaterial({
-      map: map,
-      color: 0xff0000,
-      blending: THREE.AdditiveBlending,
-      fog: true
-    });
-
-    return new THREE.Sprite(material);
-  }
-
-  json.emitters.forEach(emitter =&gt; {
-    emitter.initializers.forEach(initializer =&gt; {
-      const { type, properties } = initializer;
-
-      if (type === &apos;Body&apos; &amp;&amp; properties.texture) {
-        initializer.properties.body = makeSprite(properties.texture);
-      }
-    });
-  });
-
-  return json;
-};
 
 /**
  * Makes a rate instance.
@@ -299,7 +271,8 @@ export default json =&gt; {
       .setRate(makeRate(rate))
       .setInitializers(makeInitializers(initializers))
       .setBehaviours(makeBehaviours(behaviours))
-      .setPosition(position);
+      .setPosition(position)
+      .emit();
 
     proton.addEmitter(emitter);
   });

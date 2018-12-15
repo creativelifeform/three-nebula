@@ -1,9 +1,8 @@
-/*global describe, it, xit */
+/*global describe, it */
 
 import * as Proton from '../../src';
 
 import Particles from '../../src/core/Proton';
-import { Scene } from 'three';
 import chai from 'chai';
 import domino from 'domino';
 import eightdiagrams from './fixtures/eightdiagrams.json';
@@ -45,48 +44,6 @@ describe('fromJSON', () => {
 
     assert.equal(proton.emitters[0].p.x, eightdiagrams.emitters[0].position.x);
     assert.equal(proton.emitters[1].p.x, eightdiagrams.emitters[1].position.x);
-
-    done();
-  });
-
-  xit('should produce an identical object when instantiating via JSON or through code', done => {
-    function createEmitter(x, y, color1, color2) {
-      const emitter = new Proton.Emitter();
-
-      return emitter
-        .setRate(
-          new Proton.Rate(new Proton.Span(5, 7), new Proton.Span(0.01, 0.02))
-        )
-        .setInitializers([
-          new Proton.Mass(1),
-          new Proton.Life(2),
-          new Proton.BodySprite('./img/dot.png'),
-          new Proton.Radius(80)
-        ])
-        .setBehaviours([
-          new Proton.Alpha(1, 0),
-          new Proton.Color(color1, color2),
-          new Proton.Scale(1, 0.5),
-          new Proton.Force(0, 0, -20)
-        ])
-        .setPosition({ x, y });
-    }
-
-    const scene = new Scene();
-    const proton = new Proton.Proton();
-    const protonFromJson = Proton.Proton.fromJSON(eightdiagrams);
-    const emitter1 = createEmitter(70, 0, '#4F1500', '#0029FF');
-    const emitter2 = createEmitter(-70, 0, '#004CFE', '#6600FF');
-
-    proton.addEmitter(emitter1).addEmitter(emitter2);
-    proton.addRenderer(new Proton.SpriteRenderer(scene));
-    protonFromJson.addRenderer(new Proton.SpriteRenderer(scene));
-
-    const particleA = new Proton.Particle();
-    const particleB = new Proton.Particle();
-
-    proton.renderers[0].onParticleCreated(particleA);
-    protonFromJson.renderers[0].onParticleCreated(particleB);
 
     done();
   });
