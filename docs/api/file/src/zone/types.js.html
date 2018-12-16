@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/utils/ColorUtil.js | @rohandeshpande/three-proton</title>
+  <title data-ice="title">src/zone/types.js | @rohandeshpande/three-proton</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -185,43 +185,13 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/utils/ColorUtil.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export default {
-  getRGB: function(color) {
-    var rgb = {};
-
-    if (typeof color === &apos;number&apos;) {
-      hex = Math.floor(color);
-      rgb.r = ((color &gt;&gt; 16) &amp; 255) / 255;
-      rgb.g = ((color &gt;&gt; 8) &amp; 255) / 255;
-      rgb.b = (color &amp; 255) / 255;
-    } else if (typeof color === &apos;string&apos;) {
-      var m;
-
-      if (
-        (m = /^(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(,\s*([0-9]*\.?[0-9]+)\s*)?$/.exec(
-          color
-        ))
-      ) {
-        rgb.r = Math.min(255, parseInt(m[1], 10)) / 255;
-        rgb.g = Math.min(255, parseInt(m[2], 10)) / 255;
-        rgb.b = Math.min(255, parseInt(m[3], 10)) / 255;
-      } else if ((m = /^\#([A-Fa-f0-9]+)$/.exec(color))) {
-        var hex = m[1];
-
-        rgb.r = parseInt(hex.charAt(0) + hex.charAt(1), 16) / 255;
-        rgb.g = parseInt(hex.charAt(2) + hex.charAt(3), 16) / 255;
-        rgb.b = parseInt(hex.charAt(4) + hex.charAt(5), 16) / 255;
-      }
-    } else {
-      rgb.r = color.r;
-      rgb.g = color.g;
-      rgb.b = color.b;
-    }
-
-    return rgb;
-  }
-};
+<div class="content" data-ice="content"><h1 data-ice="title">src/zone/types.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export const ZONE_TYPE_BOX = &apos;BoxZone&apos;;
+export const ZONE_TYPE_LINE = &apos;LineZone&apos;;
+export const ZONE_TYPE_MESH = &apos;MeshZone&apos;;
+export const ZONE_TYPE_POINT = &apos;PointZone&apos;;
+export const ZONE_TYPE_SCREEN = &apos;ScreenZone&apos;;
+export const ZONE_TYPE_SPHERE = &apos;SphereZone&apos;;
 </code></pre>
 
 </div>

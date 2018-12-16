@@ -1,6 +1,7 @@
 import * as Zone from '../zone';
 
 import Initializer from './Initializer';
+import { SUPPORTED_JSON_ZONE_TYPES } from '../core/constants';
 
 /**
  * Sets the starting position property for initialized particles.
@@ -60,6 +61,12 @@ export default class Position extends Initializer {
    */
   static fromJSON(json) {
     const { zoneType, ...params } = json;
+
+    if (!SUPPORTED_JSON_ZONE_TYPES.includes(zoneType)) {
+      throw new Error(
+        `The zone type ${zoneType} is invalid or not yet supported`
+      );
+    }
 
     return new Position(new Zone[zoneType](...Object.values(params)));
   }

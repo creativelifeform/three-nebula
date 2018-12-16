@@ -104,6 +104,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SUPPORTED_JSON_BEHAVIOUR_TYPES">SUPPORTED_JSON_BEHAVIOUR_TYPES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SUPPORTED_JSON_INITIALIZER_TYPES">SUPPORTED_JSON_INITIALIZER_TYPES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SUPPORTED_JSON_RENDERER_TYPES">SUPPORTED_JSON_RENDERER_TYPES</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SUPPORTED_JSON_ZONE_TYPES">SUPPORTED_JSON_ZONE_TYPES</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#debug">debug</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-log">log</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_DEPTH">DEFAULT_DEPTH</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_HEIGHT">DEFAULT_HEIGHT</a></span></span></li>
@@ -174,11 +175,17 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/ScreenZone.js~ScreenZone.html">ScreenZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/SphereZone.js~SphereZone.html">SphereZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_BOX">ZONE_TYPE_BOX</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_LINE">ZONE_TYPE_LINE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_MESH">ZONE_TYPE_MESH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_POINT">ZONE_TYPE_POINT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_SCREEN">ZONE_TYPE_SCREEN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_SPHERE">ZONE_TYPE_SPHERE</a></span></span></li>
 </ul>
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">322/605</span></h1>
+<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">323/612</span></h1>
 
 <table class="files-summary" data-ice="files" data-use-coverage="true">
   <thead>
@@ -409,11 +416,12 @@
 <span><a href="variable/index.html#static-variable-DEFAULT_USE_COLOR">DEFAULT_USE_COLOR</a></span>
 <span><a href="variable/index.html#static-variable-SUPPORTED_JSON_BEHAVIOUR_TYPES">SUPPORTED_JSON_BEHAVIOUR_TYPES</a></span>
 <span><a href="variable/index.html#static-variable-SUPPORTED_JSON_INITIALIZER_TYPES">SUPPORTED_JSON_INITIALIZER_TYPES</a></span>
-<span><a href="variable/index.html#static-variable-SUPPORTED_JSON_RENDERER_TYPES">SUPPORTED_JSON_RENDERER_TYPES</a></span></td>
-      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">18/18</span></td>
-      <td style="display: none;" data-ice="size">3022 byte</td>
-      <td style="display: none;" data-ice="lines">138</td>
-      <td style="display: none;" data-ice="updated">2018-12-06 04:53:09 (UTC)</td>
+<span><a href="variable/index.html#static-variable-SUPPORTED_JSON_RENDERER_TYPES">SUPPORTED_JSON_RENDERER_TYPES</a></span>
+<span><a href="variable/index.html#static-variable-SUPPORTED_JSON_ZONE_TYPES">SUPPORTED_JSON_ZONE_TYPES</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">19/19</span></td>
+      <td style="display: none;" data-ice="size">3386 byte</td>
+      <td style="display: none;" data-ice="lines">157</td>
+      <td style="display: none;" data-ice="updated">2018-12-01 07:19:26 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/core/fromJSON.js.html">src/core/fromJSON.js</a></span></td>
@@ -609,12 +617,12 @@
       <td style="display: none;" data-ice="updated">2018-12-06 04:09:10 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/initializer/Position.js.html#errorLines=30">src/initializer/Position.js</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/initializer/Position.js.html#errorLines=31">src/initializer/Position.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="class/src/initializer/Position.js~Position.html">Position</a></span></td>
       <td class="coverage"><span data-ice="coverage">83 %</span><span data-ice="coverageCount" class="coverage-count">5/6</span></td>
-      <td style="display: none;" data-ice="size">2186 byte</td>
-      <td style="display: none;" data-ice="lines">86</td>
-      <td style="display: none;" data-ice="updated">2018-12-06 04:09:10 (UTC)</td>
+      <td style="display: none;" data-ice="size">2413 byte</td>
+      <td style="display: none;" data-ice="lines">93</td>
+      <td style="display: none;" data-ice="updated">2018-12-01 07:20:48 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/initializer/Radius.js.html">src/initializer/Radius.js</a></span></td>
@@ -909,6 +917,19 @@
       <td style="display: none;" data-ice="size">308 byte</td>
       <td style="display: none;" data-ice="lines">6</td>
       <td style="display: none;" data-ice="updated">2018-11-07 07:02:22 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/zone/types.js.html#errorLines=1,2,3,4,5,6">src/zone/types.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="variable/index.html#static-variable-ZONE_TYPE_BOX">ZONE_TYPE_BOX</a></span>
+<span><a href="variable/index.html#static-variable-ZONE_TYPE_LINE">ZONE_TYPE_LINE</a></span>
+<span><a href="variable/index.html#static-variable-ZONE_TYPE_MESH">ZONE_TYPE_MESH</a></span>
+<span><a href="variable/index.html#static-variable-ZONE_TYPE_POINT">ZONE_TYPE_POINT</a></span>
+<span><a href="variable/index.html#static-variable-ZONE_TYPE_SCREEN">ZONE_TYPE_SCREEN</a></span>
+<span><a href="variable/index.html#static-variable-ZONE_TYPE_SPHERE">ZONE_TYPE_SPHERE</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/6</span></td>
+      <td style="display: none;" data-ice="size">260 byte</td>
+      <td style="display: none;" data-ice="lines">6</td>
+      <td style="display: none;" data-ice="updated">2018-12-01 07:16:52 (UTC)</td>
     </tr>
 </tbody>
 </table>

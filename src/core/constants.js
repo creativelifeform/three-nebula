@@ -19,6 +19,13 @@ import {
   INITIALIZER_TYPE_POSITION,
   INITIALIZER_TYPE_RADIUS
 } from '../initializer/types';
+import {
+  ZONE_TYPE_BOX,
+  ZONE_TYPE_LINE,
+  ZONE_TYPE_MESH,
+  ZONE_TYPE_POINT,
+  ZONE_TYPE_SPHERE
+} from '../zone/types';
 
 import { RENDERER_TYPE_SPRITE } from '../renderer/types';
 import { easeLinear } from '../ease';
@@ -136,3 +143,15 @@ export const SUPPORTED_JSON_BEHAVIOUR_TYPES = [
  * @type {array<string>}
  */
 export const SUPPORTED_JSON_RENDERER_TYPES = [RENDERER_TYPE_SPRITE];
+
+/**
+ * @desc The types of zones supported by the Proton.fromJSON method.
+ * @type {array<string>}
+ */
+export const SUPPORTED_JSON_ZONE_TYPES = [
+  ZONE_TYPE_BOX,
+  ZONE_TYPE_LINE,
+  ZONE_TYPE_MESH,
+  ZONE_TYPE_POINT,
+  ZONE_TYPE_SPHERE
+];

@@ -104,6 +104,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SUPPORTED_JSON_BEHAVIOUR_TYPES">SUPPORTED_JSON_BEHAVIOUR_TYPES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SUPPORTED_JSON_INITIALIZER_TYPES">SUPPORTED_JSON_INITIALIZER_TYPES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SUPPORTED_JSON_RENDERER_TYPES">SUPPORTED_JSON_RENDERER_TYPES</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SUPPORTED_JSON_ZONE_TYPES">SUPPORTED_JSON_ZONE_TYPES</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#debug">debug</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-log">log</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_DEPTH">DEFAULT_DEPTH</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_HEIGHT">DEFAULT_HEIGHT</a></span></span></li>
@@ -174,6 +175,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/ScreenZone.js~ScreenZone.html">ScreenZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/SphereZone.js~SphereZone.html">SphereZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_BOX">ZONE_TYPE_BOX</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_LINE">ZONE_TYPE_LINE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_MESH">ZONE_TYPE_MESH</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_POINT">ZONE_TYPE_POINT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_SCREEN">ZONE_TYPE_SCREEN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_SPHERE">ZONE_TYPE_SPHERE</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -200,6 +207,13 @@ import {
   INITIALIZER_TYPE_POSITION,
   INITIALIZER_TYPE_RADIUS
 } from &apos;../initializer/types&apos;;
+import {
+  ZONE_TYPE_BOX,
+  ZONE_TYPE_LINE,
+  ZONE_TYPE_MESH,
+  ZONE_TYPE_POINT,
+  ZONE_TYPE_SPHERE
+} from &apos;../zone/types&apos;;
 
 import { RENDERER_TYPE_SPRITE } from &apos;../renderer/types&apos;;
 import { easeLinear } from &apos;../ease&apos;;
@@ -317,6 +331,18 @@ export const SUPPORTED_JSON_BEHAVIOUR_TYPES = [
  * @type {array&lt;string&gt;}
  */
 export const SUPPORTED_JSON_RENDERER_TYPES = [RENDERER_TYPE_SPRITE];
+
+/**
+ * @desc The types of zones supported by the Proton.fromJSON method.
+ * @type {array&lt;string&gt;}
+ */
+export const SUPPORTED_JSON_ZONE_TYPES = [
+  ZONE_TYPE_BOX,
+  ZONE_TYPE_LINE,
+  ZONE_TYPE_MESH,
+  ZONE_TYPE_POINT,
+  ZONE_TYPE_SPHERE
+];
 </code></pre>
 
 </div>

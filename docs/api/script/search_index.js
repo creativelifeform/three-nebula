@@ -750,6 +750,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/constants.js~supported_json_zone_types",
+    "variable/index.html#static-variable-SUPPORTED_JSON_ZONE_TYPES",
+    "<span>SUPPORTED_JSON_ZONE_TYPES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/behaviour/scale.js~scale",
     "class/src/behaviour/Scale.js~Scale.html",
     "<span>Scale</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Scale.js</span>",
@@ -808,6 +814,42 @@ window.esdocSearchIndex = [
     "class/src/initializer/Velocity.js~Velocity.html",
     "<span>Velocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity.js</span>",
     "class"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_box",
+    "variable/index.html#static-variable-ZONE_TYPE_BOX",
+    "<span>ZONE_TYPE_BOX</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_line",
+    "variable/index.html#static-variable-ZONE_TYPE_LINE",
+    "<span>ZONE_TYPE_LINE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_mesh",
+    "variable/index.html#static-variable-ZONE_TYPE_MESH",
+    "<span>ZONE_TYPE_MESH</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_point",
+    "variable/index.html#static-variable-ZONE_TYPE_POINT",
+    "<span>ZONE_TYPE_POINT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_screen",
+    "variable/index.html#static-variable-ZONE_TYPE_SCREEN",
+    "<span>ZONE_TYPE_SCREEN</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_sphere",
+    "variable/index.html#static-variable-ZONE_TYPE_SPHERE",
+    "<span>ZONE_TYPE_SPHERE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "variable"
   ],
   [
     "@rohandeshpande/three-proton/src/zone/zone.js~zone",
@@ -1201,13 +1243,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -4359,6 +4401,12 @@ window.esdocSearchIndex = [
     "src/zone/index.js",
     "file/src/zone/index.js.html",
     "src/zone/index.js",
+    "file"
+  ],
+  [
+    "src/zone/types.js",
+    "file/src/zone/types.js.html",
+    "src/zone/types.js",
     "file"
   ]
 ]

@@ -120,7 +120,7 @@ Object.defineProperty(exports, 'Integration', {
   }
 });
 
-var _MathUtils = __webpack_require__(13);
+var _MathUtils = __webpack_require__(14);
 
 Object.defineProperty(exports, 'MathUtils', {
   enumerable: true,
@@ -49498,147 +49498,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _constants = __webpack_require__(3);
-
-exports.default = {
-  randomAToB: function randomAToB(a, b, INT) {
-    if (!INT) return a + Math.random() * (b - a);else return (Math.random() * (b - a) >> 0) + a;
-  },
-  randomFloating: function randomFloating(center, f, INT) {
-    return this.randomAToB(center - f, center + f, INT);
-  },
-
-  randomZone: function randomZone(display) {}, //eslint-disable-line
-
-  degreeTransform: function degreeTransform(a) {
-    return a * _constants.PI / 180;
-  },
-
-  toColor16: function getRGB(num) {
-    return '#' + num.toString(16);
-  },
-
-  randomColor: function randomColor() {
-    return '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6);
-  },
-
-  lerp: function lerp(a, b, energy) {
-    return b + (a - b) * energy;
-  },
-
-  getNormal: function getNormal(v, n) {
-    if (v.x == 0 && v.y == 0) {
-      if (v.z == 0) n.set(1, 0, 1);else n.set(1, 1, -v.y / v.z);
-    } else {
-      if (v.x == 0) n.set(1, 0, 1);else n.set(-v.y / v.x, 1, 1);
-    }
-
-    return n.normalize();
-  },
-
-  /**
-   * Rodrigues' Rotation Formula
-   * https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
-   * v′ = vcos(θ) + k(k⋅v)(1−cos(θ)) + (k*v)sin(θ)
-   */
-  axisRotate: function axisRotate(v0, v, k, tha) {
-    var cos = Math.cos(tha);
-    var sin = Math.sin(tha);
-    var p = k.dot(v) * (1 - cos);
-
-    v0.copy(k);
-    v0.cross(v).scalar(sin);
-    v0.addValue(v.x * cos, v.y * cos, v.z * cos);
-    v0.addValue(k.x * p, k.y * p, k.z * p);
-  }
-};
-module.exports = exports['default'];
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _BoxZone = __webpack_require__(74);
-
-Object.defineProperty(exports, 'BoxZone', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_BoxZone).default;
-  }
-});
-
-var _LineZone = __webpack_require__(75);
-
-Object.defineProperty(exports, 'LineZone', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_LineZone).default;
-  }
-});
-
-var _MeshZone = __webpack_require__(76);
-
-Object.defineProperty(exports, 'MeshZone', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_MeshZone).default;
-  }
-});
-
-var _PointZone = __webpack_require__(77);
-
-Object.defineProperty(exports, 'PointZone', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_PointZone).default;
-  }
-});
-
-var _ScreenZone = __webpack_require__(78);
-
-Object.defineProperty(exports, 'ScreenZone', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_ScreenZone).default;
-  }
-});
-
-var _SphereZone = __webpack_require__(79);
-
-Object.defineProperty(exports, 'SphereZone', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_SphereZone).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.SUPPORTED_JSON_RENDERER_TYPES = exports.SUPPORTED_JSON_BEHAVIOUR_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = exports.DEFAULT_PROTON_DELTA = exports.DEFAULT_EASING = exports.DEFAULT_USE_ALPHA = exports.DEFAULT_USE_COLOR = exports.DEFAULT_SCALE = exports.DEFAULT_ALPHA = exports.DEFAULT_RADIUS = exports.DEFAULT_MASS = exports.DEFAULT_PARENT = exports.DEFAULT_BODY = exports.DEFAULT_SLEEP = exports.DEFAULT_DEAD = exports.DEFAULT_ENERGY = exports.DEFAULT_AGE = exports.DEFAULT_LIFE = undefined;
+exports.SUPPORTED_JSON_ZONE_TYPES = exports.SUPPORTED_JSON_RENDERER_TYPES = exports.SUPPORTED_JSON_BEHAVIOUR_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = exports.DEFAULT_PROTON_DELTA = exports.DEFAULT_EASING = exports.DEFAULT_USE_ALPHA = exports.DEFAULT_USE_COLOR = exports.DEFAULT_SCALE = exports.DEFAULT_ALPHA = exports.DEFAULT_RADIUS = exports.DEFAULT_MASS = exports.DEFAULT_PARENT = exports.DEFAULT_BODY = exports.DEFAULT_SLEEP = exports.DEFAULT_DEAD = exports.DEFAULT_ENERGY = exports.DEFAULT_AGE = exports.DEFAULT_LIFE = undefined;
 
 var _types = __webpack_require__(46);
 
 var _types2 = __webpack_require__(65);
 
-var _types3 = __webpack_require__(72);
+var _types3 = __webpack_require__(80);
+
+var _types4 = __webpack_require__(72);
 
 var _ease = __webpack_require__(1);
 
@@ -49735,7 +49603,147 @@ var SUPPORTED_JSON_BEHAVIOUR_TYPES = exports.SUPPORTED_JSON_BEHAVIOUR_TYPES = [_
  * @desc The types of renderers supported by the Proton.fromJSON method.
  * @type {array<string>}
  */
-var SUPPORTED_JSON_RENDERER_TYPES = exports.SUPPORTED_JSON_RENDERER_TYPES = [_types3.RENDERER_TYPE_SPRITE];
+var SUPPORTED_JSON_RENDERER_TYPES = exports.SUPPORTED_JSON_RENDERER_TYPES = [_types4.RENDERER_TYPE_SPRITE];
+
+/**
+ * @desc The types of zones supported by the Proton.fromJSON method.
+ * @type {array<string>}
+ */
+var SUPPORTED_JSON_ZONE_TYPES = exports.SUPPORTED_JSON_ZONE_TYPES = [_types3.ZONE_TYPE_BOX, _types3.ZONE_TYPE_LINE, _types3.ZONE_TYPE_MESH, _types3.ZONE_TYPE_POINT, _types3.ZONE_TYPE_SPHERE];
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _constants = __webpack_require__(3);
+
+exports.default = {
+  randomAToB: function randomAToB(a, b, INT) {
+    if (!INT) return a + Math.random() * (b - a);else return (Math.random() * (b - a) >> 0) + a;
+  },
+  randomFloating: function randomFloating(center, f, INT) {
+    return this.randomAToB(center - f, center + f, INT);
+  },
+
+  randomZone: function randomZone(display) {}, //eslint-disable-line
+
+  degreeTransform: function degreeTransform(a) {
+    return a * _constants.PI / 180;
+  },
+
+  toColor16: function getRGB(num) {
+    return '#' + num.toString(16);
+  },
+
+  randomColor: function randomColor() {
+    return '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6);
+  },
+
+  lerp: function lerp(a, b, energy) {
+    return b + (a - b) * energy;
+  },
+
+  getNormal: function getNormal(v, n) {
+    if (v.x == 0 && v.y == 0) {
+      if (v.z == 0) n.set(1, 0, 1);else n.set(1, 1, -v.y / v.z);
+    } else {
+      if (v.x == 0) n.set(1, 0, 1);else n.set(-v.y / v.x, 1, 1);
+    }
+
+    return n.normalize();
+  },
+
+  /**
+   * Rodrigues' Rotation Formula
+   * https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
+   * v′ = vcos(θ) + k(k⋅v)(1−cos(θ)) + (k*v)sin(θ)
+   */
+  axisRotate: function axisRotate(v0, v, k, tha) {
+    var cos = Math.cos(tha);
+    var sin = Math.sin(tha);
+    var p = k.dot(v) * (1 - cos);
+
+    v0.copy(k);
+    v0.cross(v).scalar(sin);
+    v0.addValue(v.x * cos, v.y * cos, v.z * cos);
+    v0.addValue(k.x * p, k.y * p, k.z * p);
+  }
+};
+module.exports = exports['default'];
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _BoxZone = __webpack_require__(74);
+
+Object.defineProperty(exports, 'BoxZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_BoxZone).default;
+  }
+});
+
+var _LineZone = __webpack_require__(75);
+
+Object.defineProperty(exports, 'LineZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_LineZone).default;
+  }
+});
+
+var _MeshZone = __webpack_require__(76);
+
+Object.defineProperty(exports, 'MeshZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_MeshZone).default;
+  }
+});
+
+var _PointZone = __webpack_require__(77);
+
+Object.defineProperty(exports, 'PointZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_PointZone).default;
+  }
+});
+
+var _ScreenZone = __webpack_require__(78);
+
+Object.defineProperty(exports, 'ScreenZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_ScreenZone).default;
+  }
+});
+
+var _SphereZone = __webpack_require__(79);
+
+Object.defineProperty(exports, 'SphereZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_SphereZone).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 /* 16 */
@@ -51052,7 +51060,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(15);
+var _constants = __webpack_require__(13);
 
 var _utils = __webpack_require__(9);
 
@@ -51627,7 +51635,7 @@ var _events = __webpack_require__(28);
 
 var _events2 = _interopRequireDefault(_events);
 
-var _constants2 = __webpack_require__(15);
+var _constants2 = __webpack_require__(13);
 
 var _Integration = __webpack_require__(30);
 
@@ -52187,7 +52195,7 @@ exports.createSpan = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _MathUtils = __webpack_require__(13);
+var _MathUtils = __webpack_require__(14);
 
 var _MathUtils2 = _interopRequireDefault(_MathUtils);
 
@@ -52385,7 +52393,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _v = __webpack_require__(83);
+var _v = __webpack_require__(84);
 
 var _v2 = _interopRequireDefault(_v);
 
@@ -52939,7 +52947,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _zone = __webpack_require__(14);
+var _zone = __webpack_require__(15);
 
 var Zone = _interopRequireWildcard(_zone);
 
@@ -53960,7 +53968,7 @@ var Initializer = _interopRequireWildcard(_initializer);
 
 var _constants = __webpack_require__(3);
 
-var _constants2 = __webpack_require__(15);
+var _constants2 = __webpack_require__(13);
 
 var _emitter = __webpack_require__(21);
 
@@ -54844,7 +54852,7 @@ Object.keys(_utils).forEach(function (key) {
   });
 });
 
-var _zone = __webpack_require__(14);
+var _zone = __webpack_require__(15);
 
 Object.keys(_zone).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -55387,13 +55395,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _zone = __webpack_require__(14);
+var _zone = __webpack_require__(15);
 
 var Zone = _interopRequireWildcard(_zone);
 
 var _Initializer2 = __webpack_require__(6);
 
 var _Initializer3 = _interopRequireDefault(_Initializer2);
+
+var _constants = __webpack_require__(13);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55483,6 +55493,10 @@ var Position = function (_Initializer) {
     value: function fromJSON(json) {
       var zoneType = json.zoneType,
           params = _objectWithoutProperties(json, ['zoneType']);
+
+      if (!_constants.SUPPORTED_JSON_ZONE_TYPES.includes(zoneType)) {
+        throw new Error('The zone type ' + zoneType + ' is invalid or not yet supported');
+      }
 
       return new Position(new (Function.prototype.bind.apply(Zone[zoneType], [null].concat(_toConsumableArray(Object.values(params)))))());
     }
@@ -55837,7 +55851,7 @@ exports.createArraySpan = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _MathUtils = __webpack_require__(13);
+var _MathUtils = __webpack_require__(14);
 
 var _MathUtils2 = _interopRequireDefault(_MathUtils);
 
@@ -55845,7 +55859,7 @@ var _Span2 = __webpack_require__(31);
 
 var _Span3 = _interopRequireDefault(_Span2);
 
-var _lodash = __webpack_require__(80);
+var _lodash = __webpack_require__(81);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -56371,7 +56385,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _MathUtils = __webpack_require__(13);
+var _MathUtils = __webpack_require__(14);
 
 var _MathUtils2 = _interopRequireDefault(_MathUtils);
 
@@ -57173,6 +57187,23 @@ module.exports = exports['default'];
 
 /***/ }),
 /* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var ZONE_TYPE_BOX = exports.ZONE_TYPE_BOX = 'BoxZone';
+var ZONE_TYPE_LINE = exports.ZONE_TYPE_LINE = 'LineZone';
+var ZONE_TYPE_MESH = exports.ZONE_TYPE_MESH = 'MeshZone';
+var ZONE_TYPE_POINT = exports.ZONE_TYPE_POINT = 'PointZone';
+var ZONE_TYPE_SCREEN = exports.ZONE_TYPE_SCREEN = 'ScreenZone';
+var ZONE_TYPE_SPHERE = exports.ZONE_TYPE_SPHERE = 'SphereZone';
+
+/***/ }),
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -74284,10 +74315,10 @@ module.exports = exports['default'];
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(84), __webpack_require__(85)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(85), __webpack_require__(86)(module)))
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports) {
 
 /**
@@ -74317,7 +74348,7 @@ module.exports = bytesToUuid;
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports) {
 
 // Unique ID creation requires a high quality random # generator.  In the
@@ -74357,11 +74388,11 @@ if (getRandomValues) {
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var rng = __webpack_require__(82);
-var bytesToUuid = __webpack_require__(81);
+var rng = __webpack_require__(83);
+var bytesToUuid = __webpack_require__(82);
 
 // **`v1()` - Generate time-based UUID**
 //
@@ -74472,7 +74503,7 @@ module.exports = v1;
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports) {
 
 var g;
@@ -74499,7 +74530,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
