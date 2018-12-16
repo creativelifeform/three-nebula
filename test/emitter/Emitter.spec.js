@@ -1,6 +1,7 @@
 /*global describe, it */
 
 import * as Proton from '../../src';
+import * as integration from '../../src/math/integration';
 
 import {
   DEFAULT_BIND_EMITTER,
@@ -13,7 +14,6 @@ import EventDispatcher, {
   PARTICLE_UPDATE
 } from '../../src/events/';
 
-import { Integration } from '../../src/math';
 import { TIME } from '../constants';
 import chai from 'chai';
 import sinon from 'sinon';
@@ -607,7 +607,7 @@ describe('emitter -> Emitter -> update', () => {
 describe('emitter -> Emitter -> integrate', () => {
   it('should integrate the emitter', done => {
     const emitter = new Emitter();
-    const integrationSpy = spy(Integration.prototype, 'integrate');
+    const integrationSpy = spy(integration, 'integrate');
 
     emitter.integrate(TIME);
 
@@ -620,7 +620,7 @@ describe('emitter -> Emitter -> integrate', () => {
 
   it('should update and integrate each particle', done => {
     const emitter = new Emitter();
-    const integrationSpy = spy(Integration.prototype, 'integrate');
+    const integrationSpy = spy(integration, 'integrate');
     const particleUpdateSpy = spy(Proton.Particle.prototype, 'update');
     const particlesCount = 33;
 

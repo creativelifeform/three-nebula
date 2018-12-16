@@ -2,6 +2,7 @@ import { DR, PI } from '../constants';
 import { MathUtils, Vector3D, createSpan } from '../math';
 
 import Behaviour from './Behaviour';
+import { getEasingByName } from '../ease';
 
 /**
  * Behaviour that rotates particles.
@@ -57,36 +58,36 @@ export default class Rotate extends Behaviour {
    * @param {function} easing - the easing equation to use for transforms
    * @return void
    */
-  reset(a, b, c, life, easing) {
+  reset(x, y, z, life, easing) {
     /**
      * @desc X axis rotation.
      * @type {number|Span}
      */
-    this.a = a || 0;
+    this.x = x || 0;
 
     /**
      * @desc Y axis rotation.
      * @type {number|Span}
      */
-    this.b = b || 0;
+    this.y = y || 0;
 
     /**
      * @desc Z axis rotation.
      * @type {number|Span}
      */
-    this.c = c || 0;
+    this.z = z || 0;
 
-    if (a === undefined || a == 'same') {
+    if (x === undefined || x == 'same') {
       this._type = 'same';
-    } else if (b == undefined) {
+    } else if (y == undefined) {
       this._type = 'set';
-    } else if (c === undefined) {
+    } else if (z === undefined) {
       this._type = 'to';
     } else {
       this._type = 'add';
-      this.a = createSpan(this.a * DR);
-      this.b = createSpan(this.b * DR);
-      this.c = createSpan(this.c * DR);
+      this.x = createSpan(this.x * DR);
+      this.y = createSpan(this.y * DR);
+      this.z = createSpan(this.z * DR);
     }
 
     life && super.reset(life, easing);
@@ -104,21 +105,21 @@ export default class Rotate extends Behaviour {
         break;
 
       case 'set':
-        this._setRotation(particle.rotation, this.a);
+        this._setRotation(particle.rotation, this.x);
         break;
 
       case 'to':
         particle.transform.fR = particle.transform.fR || new Vector3D();
         particle.transform.tR = particle.transform.tR || new Vector3D();
-        this._setRotation(particle.transform.fR, this.a);
-        this._setRotation(particle.transform.tR, this.b);
+        this._setRotation(particle.transform.fR, this.x);
+        this._setRotation(particle.transform.tR, this.y);
         break;
 
       case 'add':
         particle.transform.addR = new Vector3D(
-          this.a.getValue(),
-          this.b.getValue(),
-          this.c.getValue()
+          this.x.getValue(),
+          this.y.getValue(),
+          this.z.getValue()
         );
         break;
     }
@@ -133,25 +134,25 @@ export default class Rotate extends Behaviour {
    * NOTE the else if below will never be reached because the value being passed in
    * will never be of type Vector3D.
    *
-   * @param {Vector3D} vec3 - the particle's rotation vector
+   * @param {Vector3D} particleRotation - the particle's rotation vector
    * @param {string|number} value - the value to set the rotation value to, if 'random'
    * rotation is randomised
    * @return void
    */
-  _setRotation(vec3, value) {
-    vec3 = vec3 || new Vector3D();
+  _setRotation(particleRotation, value) {
+    particleRotation = particleRotation || new Vector3D();
     if (value == 'random') {
       var x = MathUtils.randomAToB(-PI, PI);
       var y = MathUtils.randomAToB(-PI, PI);
       var z = MathUtils.randomAToB(-PI, PI);
 
-      vec3.set(x, y, z);
+      particleRotation.set(x, y, z);
     }
     // we can't ever get here because value will never be a Vector3D!
     // consider refactoring to
     //  if (value instance of Span) { vec3.add(value.getValue()); }
     else if (value instanceof Vector3D) {
-      vec3.copy(value);
+      particleRotation.copy(value);
     }
   }
 
@@ -204,5 +205,11 @@ export default class Rotate extends Behaviour {
         particle.rotation.add(particle.transform.addR);
         break;
     }
+  }
+
+  static fromJSON(json) {
+    const { x, y, z, life, easing } = json;
+
+    return new Rotate(x, y, z, life, getEasingByName(easing));
   }
 }

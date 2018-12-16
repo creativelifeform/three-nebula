@@ -55,4 +55,19 @@ describe('initializer -> Body', () => {
 
     done();
   });
+
+  it('should construct the initializer from a JSON object', done => {
+    const instance = Proton.Body.fromJSON({
+      body: '#FF0000',
+      width: 4,
+      height: 5
+    });
+
+    assert.instanceOf(instance, Proton.Body);
+    assert.instanceOf(instance.body, Proton.ArraySpan);
+    assert.equal(instance.w, 4);
+    assert.equal(instance.h, 5);
+
+    done();
+  });
 });

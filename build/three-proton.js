@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 52);
+/******/ 	return __webpack_require__(__webpack_require__.s = 55);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -87,7 +87,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ArraySpan = __webpack_require__(61);
+var _ArraySpan = __webpack_require__(66);
 
 Object.defineProperty(exports, 'ArraySpan', {
   enumerable: true,
@@ -102,7 +102,7 @@ Object.defineProperty(exports, 'createArraySpan', {
   }
 });
 
-var _Box = __webpack_require__(62);
+var _Box = __webpack_require__(67);
 
 Object.defineProperty(exports, 'Box', {
   enumerable: true,
@@ -111,16 +111,16 @@ Object.defineProperty(exports, 'Box', {
   }
 });
 
-var _Integration = __webpack_require__(26);
+var _integration = __webpack_require__(69);
 
-Object.defineProperty(exports, 'Integration', {
+Object.defineProperty(exports, 'integrate', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_Integration).default;
+    return _integration.integrate;
   }
 });
 
-var _MathUtils = __webpack_require__(10);
+var _MathUtils = __webpack_require__(14);
 
 Object.defineProperty(exports, 'MathUtils', {
   enumerable: true,
@@ -129,7 +129,7 @@ Object.defineProperty(exports, 'MathUtils', {
   }
 });
 
-var _Polar3D = __webpack_require__(63);
+var _Polar3D = __webpack_require__(68);
 
 Object.defineProperty(exports, 'Polar3D', {
   enumerable: true,
@@ -138,7 +138,7 @@ Object.defineProperty(exports, 'Polar3D', {
   }
 });
 
-var _Span = __webpack_require__(27);
+var _Span = __webpack_require__(29);
 
 Object.defineProperty(exports, 'Span', {
   enumerable: true,
@@ -162,6 +162,33 @@ Object.defineProperty(exports, 'Vector3D', {
   }
 });
 
+var _constants = __webpack_require__(17);
+
+Object.defineProperty(exports, 'INTEGRATION_TYPE_EULER', {
+  enumerable: true,
+  get: function get() {
+    return _constants.INTEGRATION_TYPE_EULER;
+  }
+});
+Object.defineProperty(exports, 'INTEGRATION_TYPE_RK2', {
+  enumerable: true,
+  get: function get() {
+    return _constants.INTEGRATION_TYPE_RK2;
+  }
+});
+Object.defineProperty(exports, 'INTEGRATION_TYPE_RK4', {
+  enumerable: true,
+  get: function get() {
+    return _constants.INTEGRATION_TYPE_RK4;
+  }
+});
+Object.defineProperty(exports, 'INTEGRATION_TYPE_VERLET', {
+  enumerable: true,
+  get: function get() {
+    return _constants.INTEGRATION_TYPE_VERLET;
+  }
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
@@ -174,14 +201,193 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.getEasingByName = exports.setEasingByName = exports.easeInOutBack = exports.easeOutBack = exports.easeInBack = exports.easeInOutCirc = exports.easeOutCirc = exports.easeInCirc = exports.easeInOutExpo = exports.easeOutExpo = exports.easeInExpo = exports.easeInOutSine = exports.easeOutSine = exports.easeInSine = exports.easeInOutQuart = exports.easeOutQuart = exports.easeInQuart = exports.easeInOutCubic = exports.easeOutCubic = exports.easeInCubic = exports.easeInOutQuad = exports.easeOutQuad = exports.easeInQuad = exports.easeLinear = exports.ease = undefined;
+
+var _constants = __webpack_require__(4);
+
+/**
+ * The Ease class provides a collection of easing functions for use with Proton
+ */
+var ease = exports.ease = {
+  easeLinear: function easeLinear(value) {
+    return value;
+  },
+
+  easeInQuad: function easeInQuad(value) {
+    return Math.pow(value, 2);
+  },
+
+  easeOutQuad: function easeOutQuad(value) {
+    return -(Math.pow(value - 1, 2) - 1);
+  },
+
+  easeInOutQuad: function easeInOutQuad(value) {
+    if ((value /= 0.5) < 1) return 0.5 * Math.pow(value, 2);
+
+    return -0.5 * ((value -= 2) * value - 2);
+  },
+
+  easeInCubic: function easeInCubic(value) {
+    return Math.pow(value, 3);
+  },
+
+  easeOutCubic: function easeOutCubic(value) {
+    return Math.pow(value - 1, 3) + 1;
+  },
+
+  easeInOutCubic: function easeInOutCubic(value) {
+    if ((value /= 0.5) < 1) return 0.5 * Math.pow(value, 3);
+
+    return 0.5 * (Math.pow(value - 2, 3) + 2);
+  },
+
+  easeInQuart: function easeInQuart(value) {
+    return Math.pow(value, 4);
+  },
+
+  easeOutQuart: function easeOutQuart(value) {
+    return -(Math.pow(value - 1, 4) - 1);
+  },
+
+  easeInOutQuart: function easeInOutQuart(value) {
+    if ((value /= 0.5) < 1) return 0.5 * Math.pow(value, 4);
+
+    return -0.5 * ((value -= 2) * Math.pow(value, 3) - 2);
+  },
+
+  easeInSine: function easeInSine(value) {
+    return -Math.cos(value * (_constants.PI / 2)) + 1;
+  },
+
+  easeOutSine: function easeOutSine(value) {
+    return Math.sin(value * (_constants.PI / 2));
+  },
+
+  easeInOutSine: function easeInOutSine(value) {
+    return -0.5 * (Math.cos(_constants.PI * value) - 1);
+  },
+
+  easeInExpo: function easeInExpo(value) {
+    return value === 0 ? 0 : Math.pow(2, 10 * (value - 1));
+  },
+
+  easeOutExpo: function easeOutExpo(value) {
+    return value === 1 ? 1 : -Math.pow(2, -10 * value) + 1;
+  },
+
+  easeInOutExpo: function easeInOutExpo(value) {
+    if (value === 0) return 0;
+    if (value === 1) return 1;
+    if ((value /= 0.5) < 1) return 0.5 * Math.pow(2, 10 * (value - 1));
+
+    return 0.5 * (-Math.pow(2, -10 * --value) + 2);
+  },
+
+  easeInCirc: function easeInCirc(value) {
+    return -(Math.sqrt(1 - value * value) - 1);
+  },
+
+  easeOutCirc: function easeOutCirc(value) {
+    return Math.sqrt(1 - Math.pow(value - 1, 2));
+  },
+
+  easeInOutCirc: function easeInOutCirc(value) {
+    if ((value /= 0.5) < 1) return -0.5 * (Math.sqrt(1 - value * value) - 1);
+
+    return 0.5 * (Math.sqrt(1 - (value -= 2) * value) + 1);
+  },
+
+  easeInBack: function easeInBack(value) {
+    var s = 1.70158;
+
+    return value * value * ((s + 1) * value - s);
+  },
+
+  easeOutBack: function easeOutBack(value) {
+    var s = 1.70158;
+
+    return (value = value - 1) * value * ((s + 1) * value + s) + 1;
+  },
+
+  easeInOutBack: function easeInOutBack(value) {
+    var s = 1.70158;
+
+    if ((value /= 0.5) < 1) return 0.5 * (value * value * (((s *= 1.525) + 1) * value - s));
+
+    return 0.5 * ((value -= 2) * value * (((s *= 1.525) + 1) * value + s) + 2);
+  }
+};
+
+var easeLinear = ease.easeLinear,
+    easeInQuad = ease.easeInQuad,
+    easeOutQuad = ease.easeOutQuad,
+    easeInOutQuad = ease.easeInOutQuad,
+    easeInCubic = ease.easeInCubic,
+    easeOutCubic = ease.easeOutCubic,
+    easeInOutCubic = ease.easeInOutCubic,
+    easeInQuart = ease.easeInQuart,
+    easeOutQuart = ease.easeOutQuart,
+    easeInOutQuart = ease.easeInOutQuart,
+    easeInSine = ease.easeInSine,
+    easeOutSine = ease.easeOutSine,
+    easeInOutSine = ease.easeInOutSine,
+    easeInExpo = ease.easeInExpo,
+    easeOutExpo = ease.easeOutExpo,
+    easeInOutExpo = ease.easeInOutExpo,
+    easeInCirc = ease.easeInCirc,
+    easeOutCirc = ease.easeOutCirc,
+    easeInOutCirc = ease.easeInOutCirc,
+    easeInBack = ease.easeInBack,
+    easeOutBack = ease.easeOutBack,
+    easeInOutBack = ease.easeInOutBack;
+exports.easeLinear = easeLinear;
+exports.easeInQuad = easeInQuad;
+exports.easeOutQuad = easeOutQuad;
+exports.easeInOutQuad = easeInOutQuad;
+exports.easeInCubic = easeInCubic;
+exports.easeOutCubic = easeOutCubic;
+exports.easeInOutCubic = easeInOutCubic;
+exports.easeInQuart = easeInQuart;
+exports.easeOutQuart = easeOutQuart;
+exports.easeInOutQuart = easeInOutQuart;
+exports.easeInSine = easeInSine;
+exports.easeOutSine = easeOutSine;
+exports.easeInOutSine = easeInOutSine;
+exports.easeInExpo = easeInExpo;
+exports.easeOutExpo = easeOutExpo;
+exports.easeInOutExpo = easeInOutExpo;
+exports.easeInCirc = easeInCirc;
+exports.easeOutCirc = easeOutCirc;
+exports.easeInOutCirc = easeInOutCirc;
+exports.easeInBack = easeInBack;
+exports.easeOutBack = easeOutBack;
+exports.easeInOutBack = easeInOutBack;
+var setEasingByName = exports.setEasingByName = function setEasingByName(easeName) {
+  if (ease[easeName]) return ease[easeName];else return ease.easeLinear;
+};
+
+var getEasingByName = exports.getEasingByName = function getEasingByName(name) {
+  return ease[name] ? ease[name] : ease.easeLinear;
+};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(9);
+var _constants = __webpack_require__(10);
 
-var _constants2 = __webpack_require__(3);
+var _constants2 = __webpack_require__(4);
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(9);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -263,8 +469,8 @@ var Behaviour = function () {
       var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Infinity;
       var easing = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_BEHAVIOUR_EASING;
 
-      this.life = life;
-      this.easing = easing;
+      this.life = life || _constants.DEFAULT_LIFE;
+      this.easing = easing || _constants.DEFAULT_BEHAVIOUR_EASING;
     }
 
     /**
@@ -349,6 +555,19 @@ var Behaviour = function () {
   }, {
     key: 'destroy',
     value: function destroy() {}
+
+    /**
+     * Returns a new instance of the behaviour from the JSON object passed.
+     *
+     * @abstract
+     * @param {object} json - JSON object containing the required constructor properties
+     * @return {Behaviour}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(json) {} // eslint-disable-line
+
   }]);
 
   return Behaviour;
@@ -358,132 +577,7 @@ exports.default = Behaviour;
 module.exports = exports['default'];
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
-  initValue: function initValue(value, defaults) {
-    var _value = value != null && value != undefined ? value : defaults;
-
-    return _value;
-  },
-
-  isArray: function isArray(value) {
-    return Object.prototype.toString.call(value) === '[object Array]';
-  },
-
-  destroyArray: function destroyArray(array) {
-    array.length = 0;
-  },
-
-  destroyObject: function destroyObject(obj) {
-    for (var o in obj) {
-      delete obj[o];
-    }
-  },
-
-  isUndefined: function isUndefined() {
-    for (var id in arguments) {
-      var arg = arguments[id];
-
-      if (arg !== undefined) return false;
-    }
-
-    return true;
-  },
-
-  setVectorByObj: function setVectorByObj(target, pOBJ) {
-    if (pOBJ['x'] !== undefined) target.p.x = pOBJ['x'];
-    if (pOBJ['y'] !== undefined) target.p.y = pOBJ['y'];
-    if (pOBJ['z'] !== undefined) target.p.z = pOBJ['z'];
-
-    if (pOBJ['vx'] !== undefined) target.v.x = pOBJ['vx'];
-    if (pOBJ['vy'] !== undefined) target.v.y = pOBJ['vy'];
-    if (pOBJ['vz'] !== undefined) target.v.z = pOBJ['vz'];
-
-    if (pOBJ['ax'] !== undefined) target.a.x = pOBJ['ax'];
-    if (pOBJ['ay'] !== undefined) target.a.y = pOBJ['ay'];
-    if (pOBJ['az'] !== undefined) target.a.z = pOBJ['az'];
-
-    if (pOBJ['p'] !== undefined) target.p.copy(pOBJ['p']);
-    if (pOBJ['v'] !== undefined) target.v.copy(pOBJ['v']);
-    if (pOBJ['a'] !== undefined) target.a.copy(pOBJ['a']);
-
-    if (pOBJ['position'] !== undefined) target.p.copy(pOBJ['position']);
-    if (pOBJ['velocity'] !== undefined) target.v.copy(pOBJ['velocity']);
-    if (pOBJ['accelerate'] !== undefined) target.a.copy(pOBJ['accelerate']);
-  },
-
-  //set prototype
-  setPrototypeByObj: function setPrototypeByObj(target, proObj, filters) {
-    for (var key in proObj) {
-      if (target.hasOwnProperty(key)) {
-        if (filters) {
-          if (filters.indexOf(key) < 0) target[key] = this._getValue(proObj[key]);
-        } else {
-          target[key] = this._getValue(proObj[key]);
-        }
-      }
-    }
-
-    return target;
-  },
-
-  _getValue: function _getValue(pan) {
-    if (pan.constructor.name === 'Span') return pan.getValue();else return pan;
-  }
-};
-module.exports = exports['default'];
-
-/***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var PI = exports.PI = 3.142;
-
-/**
- * The max particle number in pool.
- *
- * @const {integer}
- */
-var POOL_MAX = exports.POOL_MAX = 500;
-var TIME_STEP = exports.TIME_STEP = 60;
-var DR = exports.DR = PI / 180;
-
-/**
- * 1:100
- *
- * @const {integer}
- */
-var MEASURE = exports.MEASURE = 100;
-var EULER = exports.EULER = 'euler';
-var RK2 = exports.RK2 = 'runge-kutta2';
-var RK4 = exports.RK4 = 'runge-kutta4';
-var VERLET = exports.VERLET = 'verlet';
-var PARTICLE_CREATED = exports.PARTICLE_CREATED = 'partilcleCreated';
-var PARTICLE_UPDATE = exports.PARTICLE_UPDATE = 'partilcleUpdate';
-var PARTICLE_SLEEP = exports.PARTICLE_SLEEP = 'particleSleep';
-var PARTICLE_DEAD = exports.PARTICLE_DEAD = 'partilcleDead';
-var PROTON_UPDATE = exports.PROTON_UPDATE = 'protonUpdate';
-var PROTON_UPDATE_AFTER = exports.PROTON_UPDATE_AFTER = 'protonUpdateAfter';
-var EMITTER_ADDED = exports.EMITTER_ADDED = 'emitterAdded';
-var EMITTER_REMOVED = exports.EMITTER_REMOVED = 'emitterRemoved';
-var BIND_EMITTER_EVENT = exports.BIND_EMITTER_EVENT = false;
-
-/***/ }),
-/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48736,7 +48830,7 @@ function LensFlare() {
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48745,56 +48839,39 @@ function LensFlare() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var PI = exports.PI = 3.142;
 
-var _ColorUtil = __webpack_require__(67);
+/**
+ * The max particle number in pool.
+ *
+ * @const {integer}
+ */
+var POOL_MAX = exports.POOL_MAX = 500;
+var TIME_STEP = exports.TIME_STEP = 60;
+var DR = exports.DR = PI / 180;
 
-Object.defineProperty(exports, 'ColorUtil', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_ColorUtil).default;
-  }
-});
-
-var _PUID = __webpack_require__(16);
-
-Object.defineProperty(exports, 'PUID', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_PUID).default;
-  }
-});
-
-var _THREEUtil = __webpack_require__(17);
-
-Object.defineProperty(exports, 'THREEUtil', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_THREEUtil).default;
-  }
-});
-
-var _Util = __webpack_require__(2);
-
-Object.defineProperty(exports, 'Util', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Util).default;
-  }
-});
-
-var _uid = __webpack_require__(29);
-
-Object.defineProperty(exports, 'uid', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_uid).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+/**
+ * 1:100
+ *
+ * @const {integer}
+ */
+var MEASURE = exports.MEASURE = 100;
+var EULER = exports.EULER = 'euler';
+var RK2 = exports.RK2 = 'runge-kutta2';
+var RK4 = exports.RK4 = 'runge-kutta4';
+var VERLET = exports.VERLET = 'verlet';
+var PARTICLE_CREATED = exports.PARTICLE_CREATED = 'partilcleCreated';
+var PARTICLE_UPDATE = exports.PARTICLE_UPDATE = 'partilcleUpdate';
+var PARTICLE_SLEEP = exports.PARTICLE_SLEEP = 'particleSleep';
+var PARTICLE_DEAD = exports.PARTICLE_DEAD = 'partilcleDead';
+var PROTON_UPDATE = exports.PROTON_UPDATE = 'protonUpdate';
+var PROTON_UPDATE_AFTER = exports.PROTON_UPDATE_AFTER = 'protonUpdateAfter';
+var EMITTER_ADDED = exports.EMITTER_ADDED = 'emitterAdded';
+var EMITTER_REMOVED = exports.EMITTER_REMOVED = 'emitterRemoved';
+var BIND_EMITTER_EVENT = exports.BIND_EMITTER_EVENT = false;
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48866,12 +48943,108 @@ var Initializer = function () {
     key: 'initialize',
     value: function initialize(target) {} // eslint-disable-line
 
+    /**
+     * Returns a new instance of the initializer from the JSON object passed.
+     *
+     * @abstract
+     * @param {object} json - JSON object containing the required constructor properties
+     * @return {Behaviour}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {} // eslint-disable-line
+
   }]);
 
   return Initializer;
 }();
 
 exports.default = Initializer;
+module.exports = exports['default'];
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  initValue: function initValue(value, defaults) {
+    var _value = value != null && value != undefined ? value : defaults;
+
+    return _value;
+  },
+
+  isArray: function isArray(value) {
+    return Object.prototype.toString.call(value) === '[object Array]';
+  },
+
+  destroyArray: function destroyArray(array) {
+    array.length = 0;
+  },
+
+  destroyObject: function destroyObject(obj) {
+    for (var o in obj) {
+      delete obj[o];
+    }
+  },
+
+  isUndefined: function isUndefined() {
+    for (var id in arguments) {
+      var arg = arguments[id];
+
+      if (arg !== undefined) return false;
+    }
+
+    return true;
+  },
+
+  setVectorByObj: function setVectorByObj(target, pOBJ) {
+    if (pOBJ['x'] !== undefined) target.p.x = pOBJ['x'];
+    if (pOBJ['y'] !== undefined) target.p.y = pOBJ['y'];
+    if (pOBJ['z'] !== undefined) target.p.z = pOBJ['z'];
+
+    if (pOBJ['vx'] !== undefined) target.v.x = pOBJ['vx'];
+    if (pOBJ['vy'] !== undefined) target.v.y = pOBJ['vy'];
+    if (pOBJ['vz'] !== undefined) target.v.z = pOBJ['vz'];
+
+    if (pOBJ['ax'] !== undefined) target.a.x = pOBJ['ax'];
+    if (pOBJ['ay'] !== undefined) target.a.y = pOBJ['ay'];
+    if (pOBJ['az'] !== undefined) target.a.z = pOBJ['az'];
+
+    if (pOBJ['p'] !== undefined) target.p.copy(pOBJ['p']);
+    if (pOBJ['v'] !== undefined) target.v.copy(pOBJ['v']);
+    if (pOBJ['a'] !== undefined) target.a.copy(pOBJ['a']);
+
+    if (pOBJ['position'] !== undefined) target.p.copy(pOBJ['position']);
+    if (pOBJ['velocity'] !== undefined) target.v.copy(pOBJ['velocity']);
+    if (pOBJ['accelerate'] !== undefined) target.a.copy(pOBJ['accelerate']);
+  },
+
+  //set prototype
+  setPrototypeByObj: function setPrototypeByObj(target, proObj, filters) {
+    for (var key in proObj) {
+      if (target.hasOwnProperty(key)) {
+        if (filters) {
+          if (filters.indexOf(key) < 0) target[key] = this._getValue(proObj[key]);
+        } else {
+          target[key] = this._getValue(proObj[key]);
+        }
+      }
+    }
+
+    return target;
+  },
+
+  _getValue: function _getValue(pan) {
+    if (pan.constructor.name === 'Span') return pan.getValue();else return pan;
+  }
+};
 module.exports = exports['default'];
 
 /***/ }),
@@ -48887,7 +49060,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _three = __webpack_require__(4);
+var _three = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -49136,16 +49309,53 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.PARTICLE_LENGTH_SQ_THRESHOLD = exports.PARTICLE_ALPHA_THRESHOLD = exports.DEFAULT_RANDOM_DRIFT_DELAY = exports.DEFAULT_BEHAVIOUR_EASING = exports.DEFAULT_ATTRACTION_FORCE_SCALAR = exports.DEFAULT_ATTRACITON_RADIUS = undefined;
 
-var _ease = __webpack_require__(12);
+var _ColorUtil = __webpack_require__(74);
 
-var DEFAULT_ATTRACITON_RADIUS = exports.DEFAULT_ATTRACITON_RADIUS = 1000;
-var DEFAULT_ATTRACTION_FORCE_SCALAR = exports.DEFAULT_ATTRACTION_FORCE_SCALAR = 100;
-var DEFAULT_BEHAVIOUR_EASING = exports.DEFAULT_BEHAVIOUR_EASING = _ease.easeLinear;
-var DEFAULT_RANDOM_DRIFT_DELAY = exports.DEFAULT_RANDOM_DRIFT_DELAY = 0.03;
-var PARTICLE_ALPHA_THRESHOLD = exports.PARTICLE_ALPHA_THRESHOLD = 0.002;
-var PARTICLE_LENGTH_SQ_THRESHOLD = exports.PARTICLE_LENGTH_SQ_THRESHOLD = 0.000004;
+Object.defineProperty(exports, 'ColorUtil', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_ColorUtil).default;
+  }
+});
+
+var _PUID = __webpack_require__(19);
+
+Object.defineProperty(exports, 'PUID', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_PUID).default;
+  }
+});
+
+var _THREEUtil = __webpack_require__(20);
+
+Object.defineProperty(exports, 'THREEUtil', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_THREEUtil).default;
+  }
+});
+
+var _Util = __webpack_require__(6);
+
+Object.defineProperty(exports, 'Util', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Util).default;
+  }
+});
+
+var _uid = __webpack_require__(31);
+
+Object.defineProperty(exports, 'uid', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_uid).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 /* 10 */
@@ -49157,62 +49367,19 @@ var PARTICLE_LENGTH_SQ_THRESHOLD = exports.PARTICLE_LENGTH_SQ_THRESHOLD = 0.0000
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.DEFAULT_CROSS_TYPE = exports.PARTICLE_LENGTH_SQ_THRESHOLD = exports.PARTICLE_ALPHA_THRESHOLD = exports.DEFAULT_RANDOM_DRIFT_DELAY = exports.DEFAULT_BEHAVIOUR_EASING_TYPE = exports.DEFAULT_BEHAVIOUR_EASING = exports.DEFAULT_ATTRACTION_FORCE_SCALAR = exports.DEFAULT_ATTRACITON_RADIUS = exports.DEFAULT_LIFE = undefined;
 
-var _constants = __webpack_require__(3);
+var _ease = __webpack_require__(1);
 
-exports.default = {
-  randomAToB: function randomAToB(a, b, INT) {
-    if (!INT) return a + Math.random() * (b - a);else return (Math.random() * (b - a) >> 0) + a;
-  },
-  randomFloating: function randomFloating(center, f, INT) {
-    return this.randomAToB(center - f, center + f, INT);
-  },
-
-  randomZone: function randomZone(display) {}, //eslint-disable-line
-
-  degreeTransform: function degreeTransform(a) {
-    return a * _constants.PI / 180;
-  },
-
-  toColor16: function getRGB(num) {
-    return '#' + num.toString(16);
-  },
-
-  randomColor: function randomColor() {
-    return '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6);
-  },
-
-  lerp: function lerp(a, b, energy) {
-    return b + (a - b) * energy;
-  },
-
-  getNormal: function getNormal(v, n) {
-    if (v.x == 0 && v.y == 0) {
-      if (v.z == 0) n.set(1, 0, 1);else n.set(1, 1, -v.y / v.z);
-    } else {
-      if (v.x == 0) n.set(1, 0, 1);else n.set(-v.y / v.x, 1, 1);
-    }
-
-    return n.normalize();
-  },
-
-  /**
-   * Rodrigues' Rotation Formula
-   * https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
-   * v′ = vcos(θ) + k(k⋅v)(1−cos(θ)) + (k*v)sin(θ)
-   */
-  axisRotate: function axisRotate(v0, v, k, tha) {
-    var cos = Math.cos(tha);
-    var sin = Math.sin(tha);
-    var p = k.dot(v) * (1 - cos);
-
-    v0.copy(k);
-    v0.cross(v).scalar(sin);
-    v0.addValue(v.x * cos, v.y * cos, v.z * cos);
-    v0.addValue(k.x * p, k.y * p, k.z * p);
-  }
-};
-module.exports = exports['default'];
+var DEFAULT_LIFE = exports.DEFAULT_LIFE = Infinity;
+var DEFAULT_ATTRACITON_RADIUS = exports.DEFAULT_ATTRACITON_RADIUS = 1000;
+var DEFAULT_ATTRACTION_FORCE_SCALAR = exports.DEFAULT_ATTRACTION_FORCE_SCALAR = 100;
+var DEFAULT_BEHAVIOUR_EASING = exports.DEFAULT_BEHAVIOUR_EASING = _ease.easeLinear;
+var DEFAULT_BEHAVIOUR_EASING_TYPE = exports.DEFAULT_BEHAVIOUR_EASING_TYPE = 'easeLinear';
+var DEFAULT_RANDOM_DRIFT_DELAY = exports.DEFAULT_RANDOM_DRIFT_DELAY = 0.03;
+var PARTICLE_ALPHA_THRESHOLD = exports.PARTICLE_ALPHA_THRESHOLD = 0.002;
+var PARTICLE_LENGTH_SQ_THRESHOLD = exports.PARTICLE_LENGTH_SQ_THRESHOLD = 0.000004;
+var DEFAULT_CROSS_TYPE = exports.DEFAULT_CROSS_TYPE = 'dead';
 
 /***/ }),
 /* 11 */
@@ -49225,30 +49392,84 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Particle = __webpack_require__(20);
+var _Body = __webpack_require__(56);
 
-Object.defineProperty(exports, 'Particle', {
+Object.defineProperty(exports, 'Body', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_Particle).default;
+    return _interopRequireDefault(_Body).default;
   }
 });
 
-var _Pool = __webpack_require__(21);
+var _BodySprite = __webpack_require__(57);
 
-Object.defineProperty(exports, 'Pool', {
+Object.defineProperty(exports, 'BodySprite', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_Pool).default;
+    return _interopRequireDefault(_BodySprite).default;
   }
 });
 
-var _Proton = __webpack_require__(22);
+var _InitializerUtil = __webpack_require__(58);
 
-Object.defineProperty(exports, 'Proton', {
+Object.defineProperty(exports, 'InitializerUtil', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_Proton).default;
+    return _interopRequireDefault(_InitializerUtil).default;
+  }
+});
+
+var _Life = __webpack_require__(59);
+
+Object.defineProperty(exports, 'Life', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Life).default;
+  }
+});
+
+var _Mass = __webpack_require__(60);
+
+Object.defineProperty(exports, 'Mass', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Mass).default;
+  }
+});
+
+var _Position = __webpack_require__(61);
+
+Object.defineProperty(exports, 'Position', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Position).default;
+  }
+});
+
+var _Radius = __webpack_require__(62);
+
+Object.defineProperty(exports, 'Radius', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Radius).default;
+  }
+});
+
+var _Rate = __webpack_require__(28);
+
+Object.defineProperty(exports, 'Rate', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Rate).default;
+  }
+});
+
+var _Velocity = __webpack_require__(63);
+
+Object.defineProperty(exports, 'Velocity', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Velocity).default;
   }
 });
 
@@ -49264,170 +49485,118 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setEasingByName = exports.easeInOutBack = exports.easeOutBack = exports.easeInBack = exports.easeInOutCirc = exports.easeOutCirc = exports.easeInCirc = exports.easeInOutExpo = exports.easeOutExpo = exports.easeInExpo = exports.easeInOutSine = exports.easeOutSine = exports.easeInSine = exports.easeInOutQuart = exports.easeOutQuart = exports.easeInQuart = exports.easeInOutCubic = exports.easeOutCubic = exports.easeInCubic = exports.easeInOutQuad = exports.easeOutQuad = exports.easeInQuad = exports.easeLinear = exports.ease = undefined;
+exports.SUPPORTED_JSON_ZONE_TYPES = exports.SUPPORTED_JSON_RENDERER_TYPES = exports.SUPPORTED_JSON_BEHAVIOUR_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = exports.DEFAULT_PROTON_DELTA = exports.DEFAULT_EASING = exports.DEFAULT_USE_ALPHA = exports.DEFAULT_USE_COLOR = exports.DEFAULT_SCALE = exports.DEFAULT_ALPHA = exports.DEFAULT_RADIUS = exports.DEFAULT_MASS = exports.DEFAULT_PARENT = exports.DEFAULT_BODY = exports.DEFAULT_SLEEP = exports.DEFAULT_DEAD = exports.DEFAULT_ENERGY = exports.DEFAULT_AGE = exports.DEFAULT_LIFE = undefined;
 
-var _constants = __webpack_require__(3);
+var _types = __webpack_require__(45);
+
+var _types2 = __webpack_require__(65);
+
+var _types3 = __webpack_require__(81);
+
+var _types4 = __webpack_require__(73);
+
+var _ease = __webpack_require__(1);
 
 /**
- * The Ease class provides a collection of easing functions for use with Proton
+ * @desc Default particle life
+ * @type {number}
  */
-var ease = exports.ease = {
-  easeLinear: function easeLinear(value) {
-    return value;
-  },
+var DEFAULT_LIFE = exports.DEFAULT_LIFE = Infinity;
+/**
+ * @desc Default particle age
+ * @type {number}
+ */
+var DEFAULT_AGE = exports.DEFAULT_AGE = 0;
+/**
+ * @desc Default particle energy
+ * @type {number}
+ */
+var DEFAULT_ENERGY = exports.DEFAULT_ENERGY = 1;
+/**
+ * @desc Default particle dead
+ * @type {boolean}
+ */
+var DEFAULT_DEAD = exports.DEFAULT_DEAD = false;
+/**
+ * @desc Default particle sleep
+ * @type {boolean}
+ */
+var DEFAULT_SLEEP = exports.DEFAULT_SLEEP = false;
+/**
+ * @desc Default particle body
+ * @type {?object}
+ */
+var DEFAULT_BODY = exports.DEFAULT_BODY = null;
+/**
+ * @desc Default particle parent
+ * @type {?Emitter}
+ */
+var DEFAULT_PARENT = exports.DEFAULT_PARENT = null;
+/**
+ * @desc Default particle mass
+ * @type {number}
+ */
+var DEFAULT_MASS = exports.DEFAULT_MASS = 1;
+/**
+ * @desc Default particle radius
+ * @type {number}
+ */
+var DEFAULT_RADIUS = exports.DEFAULT_RADIUS = 10;
+/**
+ * @desc Default particle alpha
+ * @type {number}
+ */
+var DEFAULT_ALPHA = exports.DEFAULT_ALPHA = 1;
+/**
+ * @desc Default particle scale
+ * @type {number}
+ */
+var DEFAULT_SCALE = exports.DEFAULT_SCALE = 1;
+/**
+ * @desc Default particle useColor
+ * @type {boolean}
+ */
+var DEFAULT_USE_COLOR = exports.DEFAULT_USE_COLOR = false;
+/**
+ * @desc Default particle useAlpha
+ * @type {boolean}
+ */
+var DEFAULT_USE_ALPHA = exports.DEFAULT_USE_ALPHA = false;
+/**
+ * @desc Default particle easing
+ * @type {function}
+ */
+var DEFAULT_EASING = exports.DEFAULT_EASING = _ease.easeLinear;
 
-  easeInQuad: function easeInQuad(value) {
-    return Math.pow(value, 2);
-  },
+/**
+ * @desc The default delta provided to the Proton instance
+ * @type {number}
+ */
+var DEFAULT_PROTON_DELTA = exports.DEFAULT_PROTON_DELTA = 0.0167;
 
-  easeOutQuad: function easeOutQuad(value) {
-    return -(Math.pow(value - 1, 2) - 1);
-  },
+/**
+ * @desc The types of initializers supported by the Proton.fromJSON method.
+ * @type {array<string>}
+ */
+var SUPPORTED_JSON_INITIALIZER_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = [_types2.INITIALIZER_TYPE_POSITION, _types2.INITIALIZER_TYPE_LIFE, _types2.INITIALIZER_TYPE_RADIUS, _types2.INITIALIZER_TYPE_MASS, _types2.INITIALIZER_TYPE_BODY, _types2.INITIALIZER_TYPE_BODY_SPRITE];
 
-  easeInOutQuad: function easeInOutQuad(value) {
-    if ((value /= 0.5) < 1) return 0.5 * Math.pow(value, 2);
+/**
+ * @desc The types of behaviours supported by the Proton.fromJSON method.
+ * @type {array<string>}
+ */
+var SUPPORTED_JSON_BEHAVIOUR_TYPES = exports.SUPPORTED_JSON_BEHAVIOUR_TYPES = [_types.BEHAVIOUR_TYPE_ALPHA, _types.BEHAVIOUR_TYPE_ATTRACTION, _types.BEHAVIOUR_TYPE_COLOR, _types.BEHAVIOUR_TYPE_CROSS_ZONE, _types.BEHAVIOUR_TYPE_FORCE, _types.BEHAVIOUR_TYPE_GRAVITY, _types.BEHAVIOUR_TYPE_RANDOM_DRIFT, _types.BEHAVIOUR_TYPE_REPULSION, _types.BEHAVIOUR_TYPE_ROTATE, _types.BEHAVIOUR_TYPE_SCALE, _types.BEHAVIOUR_TYPE_SPRING];
 
-    return -0.5 * ((value -= 2) * value - 2);
-  },
+/**
+ * @desc The types of renderers supported by the Proton.fromJSON method.
+ * @type {array<string>}
+ */
+var SUPPORTED_JSON_RENDERER_TYPES = exports.SUPPORTED_JSON_RENDERER_TYPES = [_types4.RENDERER_TYPE_SPRITE];
 
-  easeInCubic: function easeInCubic(value) {
-    return Math.pow(value, 3);
-  },
-
-  easeOutCubic: function easeOutCubic(value) {
-    return Math.pow(value - 1, 3) + 1;
-  },
-
-  easeInOutCubic: function easeInOutCubic(value) {
-    if ((value /= 0.5) < 1) return 0.5 * Math.pow(value, 3);
-
-    return 0.5 * (Math.pow(value - 2, 3) + 2);
-  },
-
-  easeInQuart: function easeInQuart(value) {
-    return Math.pow(value, 4);
-  },
-
-  easeOutQuart: function easeOutQuart(value) {
-    return -(Math.pow(value - 1, 4) - 1);
-  },
-
-  easeInOutQuart: function easeInOutQuart(value) {
-    if ((value /= 0.5) < 1) return 0.5 * Math.pow(value, 4);
-
-    return -0.5 * ((value -= 2) * Math.pow(value, 3) - 2);
-  },
-
-  easeInSine: function easeInSine(value) {
-    return -Math.cos(value * (_constants.PI / 2)) + 1;
-  },
-
-  easeOutSine: function easeOutSine(value) {
-    return Math.sin(value * (_constants.PI / 2));
-  },
-
-  easeInOutSine: function easeInOutSine(value) {
-    return -0.5 * (Math.cos(_constants.PI * value) - 1);
-  },
-
-  easeInExpo: function easeInExpo(value) {
-    return value === 0 ? 0 : Math.pow(2, 10 * (value - 1));
-  },
-
-  easeOutExpo: function easeOutExpo(value) {
-    return value === 1 ? 1 : -Math.pow(2, -10 * value) + 1;
-  },
-
-  easeInOutExpo: function easeInOutExpo(value) {
-    if (value === 0) return 0;
-    if (value === 1) return 1;
-    if ((value /= 0.5) < 1) return 0.5 * Math.pow(2, 10 * (value - 1));
-
-    return 0.5 * (-Math.pow(2, -10 * --value) + 2);
-  },
-
-  easeInCirc: function easeInCirc(value) {
-    return -(Math.sqrt(1 - value * value) - 1);
-  },
-
-  easeOutCirc: function easeOutCirc(value) {
-    return Math.sqrt(1 - Math.pow(value - 1, 2));
-  },
-
-  easeInOutCirc: function easeInOutCirc(value) {
-    if ((value /= 0.5) < 1) return -0.5 * (Math.sqrt(1 - value * value) - 1);
-
-    return 0.5 * (Math.sqrt(1 - (value -= 2) * value) + 1);
-  },
-
-  easeInBack: function easeInBack(value) {
-    var s = 1.70158;
-
-    return value * value * ((s + 1) * value - s);
-  },
-
-  easeOutBack: function easeOutBack(value) {
-    var s = 1.70158;
-
-    return (value = value - 1) * value * ((s + 1) * value + s) + 1;
-  },
-
-  easeInOutBack: function easeInOutBack(value) {
-    var s = 1.70158;
-
-    if ((value /= 0.5) < 1) return 0.5 * (value * value * (((s *= 1.525) + 1) * value - s));
-
-    return 0.5 * ((value -= 2) * value * (((s *= 1.525) + 1) * value + s) + 2);
-  }
-};
-
-var easeLinear = ease.easeLinear,
-    easeInQuad = ease.easeInQuad,
-    easeOutQuad = ease.easeOutQuad,
-    easeInOutQuad = ease.easeInOutQuad,
-    easeInCubic = ease.easeInCubic,
-    easeOutCubic = ease.easeOutCubic,
-    easeInOutCubic = ease.easeInOutCubic,
-    easeInQuart = ease.easeInQuart,
-    easeOutQuart = ease.easeOutQuart,
-    easeInOutQuart = ease.easeInOutQuart,
-    easeInSine = ease.easeInSine,
-    easeOutSine = ease.easeOutSine,
-    easeInOutSine = ease.easeInOutSine,
-    easeInExpo = ease.easeInExpo,
-    easeOutExpo = ease.easeOutExpo,
-    easeInOutExpo = ease.easeInOutExpo,
-    easeInCirc = ease.easeInCirc,
-    easeOutCirc = ease.easeOutCirc,
-    easeInOutCirc = ease.easeInOutCirc,
-    easeInBack = ease.easeInBack,
-    easeOutBack = ease.easeOutBack,
-    easeInOutBack = ease.easeInOutBack;
-exports.easeLinear = easeLinear;
-exports.easeInQuad = easeInQuad;
-exports.easeOutQuad = easeOutQuad;
-exports.easeInOutQuad = easeInOutQuad;
-exports.easeInCubic = easeInCubic;
-exports.easeOutCubic = easeOutCubic;
-exports.easeInOutCubic = easeInOutCubic;
-exports.easeInQuart = easeInQuart;
-exports.easeOutQuart = easeOutQuart;
-exports.easeInOutQuart = easeInOutQuart;
-exports.easeInSine = easeInSine;
-exports.easeOutSine = easeOutSine;
-exports.easeInOutSine = easeInOutSine;
-exports.easeInExpo = easeInExpo;
-exports.easeOutExpo = easeOutExpo;
-exports.easeInOutExpo = easeInOutExpo;
-exports.easeInCirc = easeInCirc;
-exports.easeOutCirc = easeOutCirc;
-exports.easeInOutCirc = easeInOutCirc;
-exports.easeInBack = easeInBack;
-exports.easeOutBack = easeOutBack;
-exports.easeInOutBack = easeInOutBack;
-var setEasingByName = exports.setEasingByName = function setEasingByName(easeName) {
-  if (ease[easeName]) return ease[easeName];else return ease.easeLinear;
-};
+/**
+ * @desc The types of zones supported by the Proton.fromJSON method.
+ * @type {array<string>}
+ */
+var SUPPORTED_JSON_ZONE_TYPES = exports.SUPPORTED_JSON_ZONE_TYPES = [_types3.ZONE_TYPE_BOX, _types3.ZONE_TYPE_LINE, _types3.ZONE_TYPE_MESH, _types3.ZONE_TYPE_POINT, _types3.ZONE_TYPE_SPHERE];
 
 /***/ }),
 /* 13 */
@@ -49440,112 +49609,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Body = __webpack_require__(53);
-
-Object.defineProperty(exports, 'Body', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Body).default;
-  }
-});
-
-var _InitializerUtil = __webpack_require__(54);
-
-Object.defineProperty(exports, 'InitializerUtil', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_InitializerUtil).default;
-  }
-});
-
-var _Life = __webpack_require__(55);
-
-Object.defineProperty(exports, 'Life', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Life).default;
-  }
-});
-
-var _Mass = __webpack_require__(56);
-
-Object.defineProperty(exports, 'Mass', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Mass).default;
-  }
-});
-
-var _Position = __webpack_require__(57);
-
-Object.defineProperty(exports, 'Position', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Position).default;
-  }
-});
-
-var _Radius = __webpack_require__(58);
-
-Object.defineProperty(exports, 'Radius', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Radius).default;
-  }
-});
-
-var _Rate = __webpack_require__(59);
-
-Object.defineProperty(exports, 'Rate', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Rate).default;
-  }
-});
-
-var _Velocity = __webpack_require__(60);
-
-Object.defineProperty(exports, 'Velocity', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Velocity).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(50);
+var _constants = __webpack_require__(53);
 
-var _events = __webpack_require__(25);
+var _events = __webpack_require__(27);
 
 var _events2 = _interopRequireDefault(_events);
 
-var _initializer = __webpack_require__(13);
+var _math = __webpack_require__(0);
 
-var _Particle2 = __webpack_require__(20);
+var _initializer = __webpack_require__(11);
+
+var _Particle2 = __webpack_require__(24);
 
 var _Particle3 = _interopRequireDefault(_Particle2);
 
-var _Util = __webpack_require__(2);
+var _Util = __webpack_require__(6);
 
 var _Util2 = _interopRequireDefault(_Util);
 
-var _Proton = __webpack_require__(22);
-
-var _uid = __webpack_require__(29);
+var _uid = __webpack_require__(31);
 
 var _uid2 = _interopRequireDefault(_uid);
 
@@ -50038,9 +50122,10 @@ var Emitter = function (_Particle) {
   }, {
     key: 'integrate',
     value: function integrate(time) {
+      var integrationType = this.parent ? this.parent.integrationType : _math.INTEGRATION_TYPE_EULER;
       var damping = 1 - this.damping;
 
-      _Proton.integrator.integrate(this, time, damping);
+      (0, _math.integrate)(this, time, damping, integrationType);
 
       var i = this.particles.length;
 
@@ -50048,7 +50133,7 @@ var Emitter = function (_Particle) {
         var particle = this.particles[i];
 
         particle.update(time, i);
-        _Proton.integrator.integrate(particle, time, damping);
+        (0, _math.integrate)(particle, time, damping, integrationType);
 
         this.parent && this.parent.dispatch(_events.PARTICLE_UPDATE, particle);
         this.bindEmitterEvent && this.dispatch(_events.PARTICLE_UPDATE, particle);
@@ -50125,7 +50210,215 @@ exports.default = Emitter;
 module.exports = exports['default'];
 
 /***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _constants = __webpack_require__(4);
+
+exports.default = {
+  randomAToB: function randomAToB(a, b, INT) {
+    if (!INT) return a + Math.random() * (b - a);else return (Math.random() * (b - a) >> 0) + a;
+  },
+  randomFloating: function randomFloating(center, f, INT) {
+    return this.randomAToB(center - f, center + f, INT);
+  },
+
+  randomZone: function randomZone(display) {}, //eslint-disable-line
+
+  degreeTransform: function degreeTransform(a) {
+    return a * _constants.PI / 180;
+  },
+
+  toColor16: function getRGB(num) {
+    return '#' + num.toString(16);
+  },
+
+  randomColor: function randomColor() {
+    return '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6);
+  },
+
+  lerp: function lerp(a, b, energy) {
+    return b + (a - b) * energy;
+  },
+
+  getNormal: function getNormal(v, n) {
+    if (v.x == 0 && v.y == 0) {
+      if (v.z == 0) n.set(1, 0, 1);else n.set(1, 1, -v.y / v.z);
+    } else {
+      if (v.x == 0) n.set(1, 0, 1);else n.set(-v.y / v.x, 1, 1);
+    }
+
+    return n.normalize();
+  },
+
+  /**
+   * Rodrigues' Rotation Formula
+   * https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
+   * v′ = vcos(θ) + k(k⋅v)(1−cos(θ)) + (k*v)sin(θ)
+   */
+  axisRotate: function axisRotate(v0, v, k, tha) {
+    var cos = Math.cos(tha);
+    var sin = Math.sin(tha);
+    var p = k.dot(v) * (1 - cos);
+
+    v0.copy(k);
+    v0.cross(v).scalar(sin);
+    v0.addValue(v.x * cos, v.y * cos, v.z * cos);
+    v0.addValue(k.x * p, k.y * p, k.z * p);
+  }
+};
+module.exports = exports['default'];
+
+/***/ }),
 /* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Particle = __webpack_require__(24);
+
+Object.defineProperty(exports, 'Particle', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Particle).default;
+  }
+});
+
+var _Pool = __webpack_require__(25);
+
+Object.defineProperty(exports, 'Pool', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Pool).default;
+  }
+});
+
+var _Proton = __webpack_require__(46);
+
+Object.defineProperty(exports, 'Proton', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Proton).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _BoxZone = __webpack_require__(75);
+
+Object.defineProperty(exports, 'BoxZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_BoxZone).default;
+  }
+});
+
+var _LineZone = __webpack_require__(76);
+
+Object.defineProperty(exports, 'LineZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_LineZone).default;
+  }
+});
+
+var _MeshZone = __webpack_require__(77);
+
+Object.defineProperty(exports, 'MeshZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_MeshZone).default;
+  }
+});
+
+var _PointZone = __webpack_require__(78);
+
+Object.defineProperty(exports, 'PointZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_PointZone).default;
+  }
+});
+
+var _ScreenZone = __webpack_require__(79);
+
+Object.defineProperty(exports, 'ScreenZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_ScreenZone).default;
+  }
+});
+
+var _SphereZone = __webpack_require__(80);
+
+Object.defineProperty(exports, 'SphereZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_SphereZone).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * @see https://en.wikipedia.org/wiki/Euler_method
+ * @type {string}
+ */
+var INTEGRATION_TYPE_EULER = exports.INTEGRATION_TYPE_EULER = 'EULER';
+
+/**
+ * @see http://web.mit.edu/10.001/Web/Course_Notes/Differential_Equations_Notes/node5.html
+ * @type {string}
+ */
+var INTEGRATION_TYPE_RK2 = exports.INTEGRATION_TYPE_RK2 = 'RUNGE_KUTTA_2';
+
+/**
+ * @see http://web.mit.edu/10.001/Web/Course_Notes/Differential_Equations_Notes/node5.html
+ * @type {string}
+ */
+var INTEGRATION_TYPE_RK4 = exports.INTEGRATION_TYPE_RK4 = 'RUNGE_KUTTA_4';
+
+/**
+ * @see https://en.wikipedia.org/wiki/Verlet_integration
+ * @type {string}
+ */
+var INTEGRATION_TYPE_VERLET = exports.INTEGRATION_TYPE_VERLET = 'VERLET';
+
+/***/ }),
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50137,7 +50430,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(24);
+var _constants = __webpack_require__(26);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -50223,7 +50516,7 @@ exports.default = BaseRenderer;
 module.exports = exports['default'];
 
 /***/ }),
-/* 16 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50252,7 +50545,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 17 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50262,11 +50555,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _three = __webpack_require__(4);
+var _three = __webpack_require__(3);
 
 var THREE = _interopRequireWildcard(_three);
 
-var _PUID = __webpack_require__(16);
+var _PUID = __webpack_require__(19);
 
 var _PUID2 = _interopRequireDefault(_PUID);
 
@@ -50336,7 +50629,128 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 18 */
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Alpha = __webpack_require__(35);
+
+Object.defineProperty(exports, 'Alpha', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Alpha).default;
+  }
+});
+
+var _Attraction = __webpack_require__(22);
+
+Object.defineProperty(exports, 'Attraction', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Attraction).default;
+  }
+});
+
+var _Collision = __webpack_require__(36);
+
+Object.defineProperty(exports, 'Collision', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Collision).default;
+  }
+});
+
+var _Color = __webpack_require__(37);
+
+Object.defineProperty(exports, 'Color', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Color).default;
+  }
+});
+
+var _CrossZone = __webpack_require__(38);
+
+Object.defineProperty(exports, 'CrossZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_CrossZone).default;
+  }
+});
+
+var _Force = __webpack_require__(23);
+
+Object.defineProperty(exports, 'Force', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Force).default;
+  }
+});
+
+var _Gravity = __webpack_require__(39);
+
+Object.defineProperty(exports, 'Gravity', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Gravity).default;
+  }
+});
+
+var _RandomDrift = __webpack_require__(40);
+
+Object.defineProperty(exports, 'RandomDrift', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_RandomDrift).default;
+  }
+});
+
+var _Repulsion = __webpack_require__(41);
+
+Object.defineProperty(exports, 'Repulsion', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Repulsion).default;
+  }
+});
+
+var _Rotate = __webpack_require__(42);
+
+Object.defineProperty(exports, 'Rotate', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Rotate).default;
+  }
+});
+
+var _Scale = __webpack_require__(43);
+
+Object.defineProperty(exports, 'Scale', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Scale).default;
+  }
+});
+
+var _Spring = __webpack_require__(44);
+
+Object.defineProperty(exports, 'Spring', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Spring).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50350,13 +50764,15 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _constants = __webpack_require__(9);
+var _constants = __webpack_require__(10);
 
-var _Behaviour2 = __webpack_require__(1);
+var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
 var _math = __webpack_require__(0);
+
+var _ease = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50379,15 +50795,15 @@ var Attraction = function (_Behaviour) {
    * @param {Vector3D} targetPosition - The position the particles will be attracted to
    * @param {number} force - The attraction force scalar multiplier
    * @param {number} radius - The attraction radius
-   * @param {number} life - The life of the particle
-   * @param {function} easing - The behaviour's decaying trend
+   * @param {number} [life=DEFAULT_LIFE] - The life of the particle
+   * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
    * @return void
    */
   function Attraction() {
     var targetPosition = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new _math.Vector3D();
     var force = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_ATTRACTION_FORCE_SCALAR;
     var radius = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _constants.DEFAULT_ATTRACITON_RADIUS;
-    var life = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : Infinity;
+    var life = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.DEFAULT_LIFE;
     var easing = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : _constants.DEFAULT_BEHAVIOUR_EASING;
 
     _classCallCheck(this, Attraction);
@@ -50450,8 +50866,8 @@ var Attraction = function (_Behaviour) {
       var targetPosition = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new _math.Vector3D();
       var force = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_ATTRACTION_FORCE_SCALAR;
       var radius = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _constants.DEFAULT_ATTRACITON_RADIUS;
-      var life = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : Infinity;
-      var easing = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : _constants.DEFAULT_BEHAVIOUR_EASING;
+      var life = arguments[3];
+      var easing = arguments[4];
 
       this.targetPosition = targetPosition;
       this.radius = radius;
@@ -50490,6 +50906,34 @@ var Attraction = function (_Behaviour) {
         particle.a.add(this.attractionForce);
       }
     }
+
+    /**
+     * Creates a Body initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.x - The target position x value
+     * @property {number} json.y - The target position y value
+     * @property {number} json.z - The target position z value
+     * @property {number} json.force - The attraction force scalar multiplier
+     * @property {number} json.life - The life of the particle
+     * @property {string} json.easing - The behaviour's decaying trend
+     * @return {Body}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var x = json.x,
+          y = json.y,
+          z = json.z,
+          force = json.force,
+          radius = json.radius,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Attraction(new _math.Vector3D(x, y, z), force, radius, life, (0, _ease.getEasingByName)(easing));
+    }
   }]);
 
   return Attraction;
@@ -50499,7 +50943,7 @@ exports.default = Attraction;
 module.exports = exports['default'];
 
 /***/ }),
-/* 19 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50513,11 +50957,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _Behaviour2 = __webpack_require__(1);
+var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
 var _math = __webpack_require__(0);
+
+var _ease = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50595,6 +51041,26 @@ var Force = function (_Behaviour) {
 
       particle.a.add(this.force);
     }
+
+    /**
+     * Creates a Force initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @return {Force}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var fx = json.fx,
+          fy = json.fy,
+          fz = json.fz,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Force(fx, fy, fz, life, (0, _ease.getEasingByName)(easing));
+    }
   }]);
 
   return Force;
@@ -50604,7 +51070,7 @@ exports.default = Force;
 module.exports = exports['default'];
 
 /***/ }),
-/* 20 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50616,11 +51082,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(23);
+var _constants = __webpack_require__(12);
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(9);
 
-var _constants2 = __webpack_require__(3);
+var _constants2 = __webpack_require__(4);
 
 var _math = __webpack_require__(0);
 
@@ -50967,7 +51433,7 @@ exports.default = Particle;
 module.exports = exports['default'];
 
 /***/ }),
-/* 21 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50979,7 +51445,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _PUID = __webpack_require__(16);
+var _PUID = __webpack_require__(19);
 
 var _PUID2 = _interopRequireDefault(_PUID);
 
@@ -51172,387 +51638,7 @@ exports.default = Pool;
 module.exports = exports['default'];
 
 /***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.integrator = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _constants = __webpack_require__(3);
-
-var _events = __webpack_require__(25);
-
-var _events2 = _interopRequireDefault(_events);
-
-var _constants2 = __webpack_require__(23);
-
-var _Integration = __webpack_require__(26);
-
-var _Integration2 = _interopRequireDefault(_Integration);
-
-var _Pool = __webpack_require__(21);
-
-var _Pool2 = _interopRequireDefault(_Pool);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * The core of the three-proton particle engine.
- * A Proton instance can contain multiple emitters, each with their own initializers
- * and behaviours.
- *
- */
-var Proton = function () {
-  /**
-   * Constructs a Proton instance.
-   *
-   * TODO the proton instance should have an integrator set as a property.
-   * It is only required from the emitter class, and therefore can be accessed within
-   * that class from emitter.parent.integrator
-   *
-   * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
-   * @param {string} [integrationType=EULER] - The integration type to use
-   * @return void
-   */
-  function Proton() {
-    var preParticles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants.POOL_MAX;
-    var integrationType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.EULER;
-
-    _classCallCheck(this, Proton);
-
-    /**
-     * @desc The number of particles to start with
-     * @type {number}
-     */
-    this.preParticles = preParticles;
-
-    /**
-     * @desc The integration type to use
-     * @param {string}
-     */
-    this.integrationType = integrationType;
-
-    /**
-     * @desc The emitters in the particle system
-     * @type {array<Emitter>}
-     */
-    this.emitters = [];
-
-    /**
-     * @desc The renderers for the system
-     * @type {array<Renderer>}
-     */
-    this.renderers = [];
-
-    /**
-     * @desc A pool used to manage the internal proton cache of objects
-     * @type {Pool}
-     */
-    this.pool = new _Pool2.default();
-
-    /**
-     * @desc Internal event dispatcher
-     * @type {EventDispatcher}
-     */
-    this.eventDispatcher = new _events2.default();
-  }
-
-  /**
-   * Returns a new Integration instance based on the type passed to the constructor.
-   *
-   * @static
-   * @return {Integration}
-   */
-
-
-  _createClass(Proton, [{
-    key: 'dispatch',
-
-
-    /**
-     * Proxy method for the internal event dispatcher's dispatchEvent method.
-     *
-     * @param {string} event - The event to dispatch
-     * @param {object<Proton|Emitter|Particle>} [target=this] - The event target
-     */
-    value: function dispatch(event) {
-      var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this;
-
-      this.eventDispatcher.dispatchEvent(event, target);
-    }
-
-    /**
-     * Adds a renderer to the Proton instance and initializes it.
-     *
-     * @param {Renderer} renderer - The renderer to add
-     * @return {Proton}
-     */
-
-  }, {
-    key: 'addRenderer',
-    value: function addRenderer(renderer) {
-      this.renderers.push(renderer);
-      renderer.init(this);
-
-      return this;
-    }
-
-    /**
-     * Removes a renderer from the Proton instance.
-     *
-     * @param {Renderer} renderer
-     * @return {Proton}
-     */
-
-  }, {
-    key: 'removeRenderer',
-    value: function removeRenderer(renderer) {
-      this.renderers.splice(this.renderers.indexOf(renderer), 1);
-      renderer.remove(this);
-
-      return this;
-    }
-
-    /**
-     * Adds an emitter to the Proton instance.
-     * Dispatches the EMITTER_ADDED event.
-     *
-     * @param {Emitter} emitter - The emitter to add
-     * @return {Proton}
-     */
-
-  }, {
-    key: 'addEmitter',
-    value: function addEmitter(emitter) {
-      emitter.parent = this;
-
-      this.emitters.push(emitter);
-      this.dispatch(_events.EMITTER_ADDED, emitter);
-
-      return this;
-    }
-
-    /**
-     * Removes an emitter from the Proton instance.
-     * Dispatches the EMITTER_REMOVED event.
-     *
-     * @param {Emitter} emitter - The emitter to remove
-     * @return {Proton}
-     */
-
-  }, {
-    key: 'removeEmitter',
-    value: function removeEmitter(emitter) {
-      if (emitter.parent !== this) {
-        return this;
-      }
-
-      emitter.parent = null;
-
-      this.emitters.splice(this.emitters.indexOf(emitter), 1);
-      this.dispatch(_events.EMITTER_REMOVED, emitter);
-
-      return this;
-    }
-
-    /**
-     * Updates the particle system based on the delta passed.
-     *
-     * @example
-     * animate = timestamp => {
-     *   threeRenderer.render(threeScene, threeCamera);
-     *   proton.update();
-     *   requestAnimationFrame(animate);
-     * }
-     * animate();
-     *
-     * @param {number}
-     * @return {Promise}
-     */
-
-  }, {
-    key: 'update',
-    value: function update() {
-      var delta = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants2.DEFAULT_PROTON_DELTA;
-
-      var d = delta || _constants2.DEFAULT_PROTON_DELTA;
-
-      this.dispatch(_events.PROTON_UPDATE);
-
-      if (d > 0) {
-        var i = this.emitters.length;
-
-        while (i--) {
-          this.emitters[i].update(d);
-        }
-      }
-
-      this.dispatch(_events.PROTON_UPDATE_AFTER);
-
-      return Promise.resolve();
-    }
-
-    /**
-     * Gets a count of the total number of particles in the system.
-     *
-     * @return {integer}
-     */
-
-  }, {
-    key: 'getCount',
-    value: function getCount() {
-      var length = this.emitters.length;
-      var total = 0;
-      var i = void 0;
-
-      for (i = 0; i < length; i++) {
-        total += this.emitters[i].particles.length;
-      }
-
-      return total;
-    }
-
-    /**
-     * Destroys all emitters and the Proton pool.
-     *
-     * @return void
-     */
-
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      var length = this.emitters.length;
-      var i = 0;
-
-      for (i; i < length; i++) {
-        this.emitters[i].destroy();
-        delete this.emitters[i];
-      }
-
-      this.emitters.length = 0;
-      this.pool.destroy();
-    }
-  }], [{
-    key: 'integrator',
-    value: function integrator() {
-      return new _Integration2.default(this.integrationType);
-    }
-  }]);
-
-  return Proton;
-}();
-
-/**
- * @desc The system's integrator
- * @type {Integration}
- */
-
-
-exports.default = Proton;
-var integrator = exports.integrator = Proton.integrator();
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DEFAULT_PROTON_DELTA = exports.DEFAULT_EASING = exports.DEFAULT_USE_ALPHA = exports.DEFAULT_USE_COLOR = exports.DEFAULT_SCALE = exports.DEFAULT_ALPHA = exports.DEFAULT_RADIUS = exports.DEFAULT_MASS = exports.DEFAULT_PARENT = exports.DEFAULT_BODY = exports.DEFAULT_SLEEP = exports.DEFAULT_DEAD = exports.DEFAULT_ENERGY = exports.DEFAULT_AGE = exports.DEFAULT_LIFE = undefined;
-
-var _ease = __webpack_require__(12);
-
-/**
- * @desc Default particle life
- * @type {number}
- */
-var DEFAULT_LIFE = exports.DEFAULT_LIFE = Infinity;
-/**
- * @desc Default particle age
- * @type {number}
- */
-var DEFAULT_AGE = exports.DEFAULT_AGE = 0;
-/**
- * @desc Default particle energy
- * @type {number}
- */
-var DEFAULT_ENERGY = exports.DEFAULT_ENERGY = 1;
-/**
- * @desc Default particle dead
- * @type {boolean}
- */
-var DEFAULT_DEAD = exports.DEFAULT_DEAD = false;
-/**
- * @desc Default particle sleep
- * @type {boolean}
- */
-var DEFAULT_SLEEP = exports.DEFAULT_SLEEP = false;
-/**
- * @desc Default particle body
- * @type {?object}
- */
-var DEFAULT_BODY = exports.DEFAULT_BODY = null;
-/**
- * @desc Default particle parent
- * @type {?Emitter}
- */
-var DEFAULT_PARENT = exports.DEFAULT_PARENT = null;
-/**
- * @desc Default particle mass
- * @type {number}
- */
-var DEFAULT_MASS = exports.DEFAULT_MASS = 1;
-/**
- * @desc Default particle radius
- * @type {number}
- */
-var DEFAULT_RADIUS = exports.DEFAULT_RADIUS = 10;
-/**
- * @desc Default particle alpha
- * @type {number}
- */
-var DEFAULT_ALPHA = exports.DEFAULT_ALPHA = 1;
-/**
- * @desc Default particle scale
- * @type {number}
- */
-var DEFAULT_SCALE = exports.DEFAULT_SCALE = 1;
-/**
- * @desc Default particle useColor
- * @type {boolean}
- */
-var DEFAULT_USE_COLOR = exports.DEFAULT_USE_COLOR = false;
-/**
- * @desc Default particle useAlpha
- * @type {boolean}
- */
-var DEFAULT_USE_ALPHA = exports.DEFAULT_USE_ALPHA = false;
-/**
- * @desc Default particle easing
- * @type {function}
- */
-var DEFAULT_EASING = exports.DEFAULT_EASING = _ease.easeLinear;
-
-/**
- * @desc The default delta provided to the Proton instance
- * @type {number}
- */
-var DEFAULT_PROTON_DELTA = exports.DEFAULT_PROTON_DELTA = 0.0167;
-
-/***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51570,7 +51656,7 @@ var EMITTER_REMOVED = exports.EMITTER_REMOVED = 'EMITTER_REMOVED';
 var PROTON_UPDATE_AFTER = exports.PROTON_UPDATE_AFTER = 'PROTON_UPDATE_AFTER';
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51581,9 +51667,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.PROTON_UPDATE = exports.PROTON_UPDATE_AFTER = exports.PARTICLE_UPDATE = exports.PARTICLE_DEAD = exports.PARTICLE_CREATED = exports.EMITTER_REMOVED = exports.EMITTER_ADDED = undefined;
 
-var _constants = __webpack_require__(24);
+var _constants = __webpack_require__(26);
 
-var _EventDispatcher = __webpack_require__(51);
+var _EventDispatcher = __webpack_require__(54);
 
 var _EventDispatcher2 = _interopRequireDefault(_EventDispatcher);
 
@@ -51599,7 +51685,7 @@ exports.PROTON_UPDATE_AFTER = _constants.PROTON_UPDATE_AFTER;
 exports.PROTON_UPDATE = _constants.PROTON_UPDATE;
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51611,9 +51697,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(3);
+var _math = __webpack_require__(0);
 
-var _Util = __webpack_require__(2);
+var _Initializer2 = __webpack_require__(5);
+
+var _Initializer3 = _interopRequireDefault(_Initializer2);
+
+var _Util = __webpack_require__(6);
 
 var _Util2 = _interopRequireDefault(_Util);
 
@@ -51621,44 +51711,132 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/**
- * 数值积分 Numerical integration
- */
-var Integration = function () {
-  function Integration(type) {
-    _classCallCheck(this, Integration);
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-    this.type = _Util2.default.initValue(type, _constants.EULER);
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Calculates the rate of particle emission.
+ *
+ * TODO This doesn't need to be an initializer, it doesn't have an initialize
+ * method, it overrides the base init method and it is only relevent to the Emitter class.
+ * It would be better to move this to the Emitter module itself as a standalone class.
+ *
+ */
+var Rate = function (_Initializer) {
+  _inherits(Rate, _Initializer);
+
+  /**
+   * Constructs a Rate instance.
+   *
+   * @param {number|array|Span} numPan - The number of particles to emit
+   * @param {number|array|Span} timePan - The time between each particle emission
+   * @return void
+   */
+  function Rate(numPan, timePan) {
+    _classCallCheck(this, Rate);
+
+    /**
+     * @desc Sets the number of particles to emit.
+     * @type {Span}
+     */
+    var _this = _possibleConstructorReturn(this, (Rate.__proto__ || Object.getPrototypeOf(Rate)).call(this));
+
+    _this.numPan = (0, _math.createSpan)(_Util2.default.initValue(numPan, 1));
+
+    /**
+     * @desc Sets the time between each particle emission.
+     * @type {Span}
+     */
+    _this.timePan = (0, _math.createSpan)(_Util2.default.initValue(timePan, 1));
+
+    /**
+     * @desc The rate's start time.
+     * @type {number}
+     */
+    _this.startTime = 0;
+
+    /**
+     * @desc The rate's next time.
+     * @type {number}
+     */
+    _this.nextTime = 0;
+
+    _this.init();
+    return _this;
   }
 
-  _createClass(Integration, [{
-    key: 'integrate',
-    value: function integrate(particle, time, damping) {
-      this.euler(particle, time, damping);
+  /**
+   * Sets the startTime and nextTime properties.
+   *
+   * @return void
+   */
+
+
+  _createClass(Rate, [{
+    key: 'init',
+    value: function init() {
+      this.startTime = 0;
+      this.nextTime = this.timePan.getValue();
     }
+
+    /**
+     * Gets the number of particles to emit.
+     *
+     * @param {number} time - Current particle engine time
+     * @return {number}
+     */
+
   }, {
-    key: 'euler',
-    value: function euler(particle, time, damping) {
-      if (!particle.sleep) {
-        particle.old.p.copy(particle.p);
-        particle.old.v.copy(particle.v);
-        particle.a.scalar(1 / particle.mass);
-        particle.v.add(particle.a.scalar(time));
-        particle.p.add(particle.old.v.scalar(time));
-        damping && particle.v.scalar(damping);
-        particle.a.clear();
+    key: 'getValue',
+    value: function getValue(time) {
+      this.startTime += time;
+
+      if (this.startTime >= this.nextTime) {
+        this.init();
+
+        if (this.numPan.b == 1) {
+          if (this.numPan.getValue('Float') > 0.5) return 1;else return 0;
+        } else {
+          return this.numPan.getValue('Int');
+        }
       }
+
+      return 0;
+    }
+
+    /**
+     * Creates a Rate initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.particlesMin - The minimum number of particles to emit
+     * @property {number} json.particlesMax - The maximum number of particles to emit
+     * @property {number} json.perSecondMin - The minimum per second emit rate
+     * @property {number} json.perSecondMax - The maximum per second emit rate
+     * @return {Rate}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var particlesMin = json.particlesMin,
+          particlesMax = json.particlesMax,
+          perSecondMin = json.perSecondMin,
+          perSecondMax = json.perSecondMax;
+
+
+      return new Rate(new _math.Span(particlesMin, particlesMax), new _math.Span(perSecondMin, perSecondMax));
     }
   }]);
 
-  return Integration;
-}();
+  return Rate;
+}(_Initializer3.default);
 
-exports.default = Integration;
+exports.default = Rate;
 module.exports = exports['default'];
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51671,11 +51849,11 @@ exports.createSpan = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _MathUtils = __webpack_require__(10);
+var _MathUtils = __webpack_require__(14);
 
 var _MathUtils2 = _interopRequireDefault(_MathUtils);
 
-var _Util = __webpack_require__(2);
+var _Util = __webpack_require__(6);
 
 var _Util2 = _interopRequireDefault(_Util);
 
@@ -51747,7 +51925,7 @@ var createSpan = exports.createSpan = function createSpan(a, b, c) {
 };
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51759,15 +51937,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _three = __webpack_require__(4);
+var _three = __webpack_require__(3);
 
-var _BaseRenderer2 = __webpack_require__(15);
+var _BaseRenderer2 = __webpack_require__(18);
 
 var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(9);
 
-var _core = __webpack_require__(11);
+var _core = __webpack_require__(15);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51859,147 +52037,6 @@ exports.default = MeshRenderer;
 module.exports = exports['default'];
 
 /***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _v = __webpack_require__(77);
-
-var _v2 = _interopRequireDefault(_v);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _v2.default;
-module.exports = exports['default'];
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Alpha = __webpack_require__(35);
-
-Object.defineProperty(exports, 'Alpha', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Alpha).default;
-  }
-});
-
-var _Attraction = __webpack_require__(18);
-
-Object.defineProperty(exports, 'Attraction', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Attraction).default;
-  }
-});
-
-var _Collision = __webpack_require__(36);
-
-Object.defineProperty(exports, 'Collision', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Collision).default;
-  }
-});
-
-var _Color = __webpack_require__(37);
-
-Object.defineProperty(exports, 'Color', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Color).default;
-  }
-});
-
-var _CrossZone = __webpack_require__(38);
-
-Object.defineProperty(exports, 'CrossZone', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_CrossZone).default;
-  }
-});
-
-var _Force = __webpack_require__(19);
-
-Object.defineProperty(exports, 'Force', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Force).default;
-  }
-});
-
-var _Gravity = __webpack_require__(39);
-
-Object.defineProperty(exports, 'Gravity', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Gravity).default;
-  }
-});
-
-var _RandomDrift = __webpack_require__(40);
-
-Object.defineProperty(exports, 'RandomDrift', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_RandomDrift).default;
-  }
-});
-
-var _Repulsion = __webpack_require__(41);
-
-Object.defineProperty(exports, 'Repulsion', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Repulsion).default;
-  }
-});
-
-var _Rotate = __webpack_require__(42);
-
-Object.defineProperty(exports, 'Rotate', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Rotate).default;
-  }
-});
-
-var _Scale = __webpack_require__(43);
-
-Object.defineProperty(exports, 'Scale', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Scale).default;
-  }
-});
-
-var _Spring = __webpack_require__(44);
-
-Object.defineProperty(exports, 'Spring', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Spring).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52010,25 +52047,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Debug = __webpack_require__(45);
+var _v = __webpack_require__(85);
 
-Object.defineProperty(exports, 'Debug', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Debug).default;
-  }
-});
-
-var _log = __webpack_require__(47);
-
-Object.defineProperty(exports, 'log', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_log).default;
-  }
-});
+var _v2 = _interopRequireDefault(_v);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _v2.default;
+module.exports = exports['default'];
 
 /***/ }),
 /* 32 */
@@ -52041,30 +52067,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _BehaviourEmitter = __webpack_require__(48);
+var _Debug = __webpack_require__(48);
 
-Object.defineProperty(exports, 'BehaviourEmitter', {
+Object.defineProperty(exports, 'Debug', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_BehaviourEmitter).default;
+    return _interopRequireDefault(_Debug).default;
   }
 });
 
-var _FollowEmitter = __webpack_require__(49);
+var _log = __webpack_require__(50);
 
-Object.defineProperty(exports, 'FollowEmitter', {
+Object.defineProperty(exports, 'log', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_FollowEmitter).default;
-  }
-});
-
-var _Emitter = __webpack_require__(14);
-
-Object.defineProperty(exports, 'Emitter', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Emitter).default;
+    return _interopRequireDefault(_log).default;
   }
 });
 
@@ -52081,39 +52098,30 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _CustomRenderer = __webpack_require__(64);
+var _BehaviourEmitter = __webpack_require__(51);
 
-Object.defineProperty(exports, 'CustomRenderer', {
+Object.defineProperty(exports, 'BehaviourEmitter', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_CustomRenderer).default;
+    return _interopRequireDefault(_BehaviourEmitter).default;
   }
 });
 
-var _MeshRenderer = __webpack_require__(28);
+var _FollowEmitter = __webpack_require__(52);
 
-Object.defineProperty(exports, 'MeshRenderer', {
+Object.defineProperty(exports, 'FollowEmitter', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_MeshRenderer).default;
+    return _interopRequireDefault(_FollowEmitter).default;
   }
 });
 
-var _PointsRenderer = __webpack_require__(65);
+var _Emitter = __webpack_require__(13);
 
-Object.defineProperty(exports, 'PointsRenderer', {
+Object.defineProperty(exports, 'Emitter', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_PointsRenderer).default;
-  }
-});
-
-var _SpriteRenderer = __webpack_require__(66);
-
-Object.defineProperty(exports, 'SpriteRenderer', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_SpriteRenderer).default;
+    return _interopRequireDefault(_Emitter).default;
   }
 });
 
@@ -52130,57 +52138,39 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _BoxZone = __webpack_require__(68);
+var _CustomRenderer = __webpack_require__(70);
 
-Object.defineProperty(exports, 'BoxZone', {
+Object.defineProperty(exports, 'CustomRenderer', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_BoxZone).default;
+    return _interopRequireDefault(_CustomRenderer).default;
   }
 });
 
-var _LineZone = __webpack_require__(69);
+var _MeshRenderer = __webpack_require__(30);
 
-Object.defineProperty(exports, 'LineZone', {
+Object.defineProperty(exports, 'MeshRenderer', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_LineZone).default;
+    return _interopRequireDefault(_MeshRenderer).default;
   }
 });
 
-var _MeshZone = __webpack_require__(70);
+var _PointsRenderer = __webpack_require__(71);
 
-Object.defineProperty(exports, 'MeshZone', {
+Object.defineProperty(exports, 'PointsRenderer', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_MeshZone).default;
+    return _interopRequireDefault(_PointsRenderer).default;
   }
 });
 
-var _PointZone = __webpack_require__(71);
+var _SpriteRenderer = __webpack_require__(72);
 
-Object.defineProperty(exports, 'PointZone', {
+Object.defineProperty(exports, 'SpriteRenderer', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_PointZone).default;
-  }
-});
-
-var _ScreenZone = __webpack_require__(72);
-
-Object.defineProperty(exports, 'ScreenZone', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_ScreenZone).default;
-  }
-});
-
-var _SphereZone = __webpack_require__(73);
-
-Object.defineProperty(exports, 'SphereZone', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_SphereZone).default;
+    return _interopRequireDefault(_SpriteRenderer).default;
   }
 });
 
@@ -52203,11 +52193,13 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _math = __webpack_require__(0);
 
-var _constants = __webpack_require__(9);
-
-var _Behaviour2 = __webpack_require__(1);
+var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
+
+var _constants = __webpack_require__(10);
+
+var _ease = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52236,8 +52228,8 @@ var Alpha = function (_Behaviour) {
   function Alpha() {
     var alphaA = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
     var alphaB = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-    var life = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Infinity;
-    var easing = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.DEFAULT_BEHAVIOUR_EASING;
+    var life = arguments[2];
+    var easing = arguments[3];
 
     _classCallCheck(this, Alpha);
 
@@ -52282,8 +52274,8 @@ var Alpha = function (_Behaviour) {
     value: function reset() {
       var alphaA = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       var alphaB = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-      var life = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Infinity;
-      var easing = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.DEFAULT_BEHAVIOUR_EASING;
+      var life = arguments[2];
+      var easing = arguments[3];
 
       this.same = alphaB === null || alphaB === undefined ? true : false;
       this.alphaA = (0, _math.createSpan)(alphaA);
@@ -52305,13 +52297,7 @@ var Alpha = function (_Behaviour) {
       particle.useAlpha = true;
       particle.transform.alphaA = this.alphaA.getValue();
 
-      if (this.same) {
-        particle.transform.alphaB = particle.transform.alphaA;
-      }
-
-      if (!this.same) {
-        particle.transform.alphaB = this.alphaB.getValue();
-      }
+      particle.transform.alphaB = this.same ? particle.transform.alphaA : this.alphaB.getValue();
     }
 
     /**
@@ -52334,6 +52320,18 @@ var Alpha = function (_Behaviour) {
         particle.alpha = 0;
       }
     }
+
+    /**
+     * Creates a Body initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.alphaA - The starting alpha value
+     * @property {number} json.alphaB - The ending alpha value
+     * @property {number} json.life - The life of the behaviour
+     * @property {string} json.easing - The easing equation to use for transforms
+     * @return {Body}
+     */
+
   }, {
     key: 'same',
     get: function get() {
@@ -52352,6 +52350,17 @@ var Alpha = function (_Behaviour) {
        * @type {boolean}
        */
       this._same = same;
+    }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var alphaA = json.alphaA,
+          alphaB = json.alphaB,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Alpha(alphaA, alphaB, life, (0, _ease.getEasingByName)(easing));
     }
   }]);
 
@@ -52376,7 +52385,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _Behaviour2 = __webpack_require__(1);
+var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
@@ -52457,6 +52466,11 @@ var Collision = function (_Behaviour) {
     value: function _getAverageMass(aPartcile, bParticle) {
       return this.useMass ? bParticle.mass / (aPartcile.mass + bParticle.mass) : 0.5;
     }
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(json) {// eslint-disable-line
+      // TODO
+    }
   }]);
 
   return Collision;
@@ -52482,11 +52496,13 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _math = __webpack_require__(0);
 
-var _Behaviour2 = __webpack_require__(1);
+var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(9);
+
+var _ease = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52506,37 +52522,44 @@ var Color = function (_Behaviour) {
   /**
    * Constructs a Color behaviour instance.
    *
-   * @param {number|string} a - the starting color
-   * @param {number|string} b - the ending color
+   * @param {number|string} colorA - the starting color
+   * @param {number|string} colorB - the ending color
    * @param {number} life - the life of the particle
    * @param {function} easing - The behaviour's decaying trend
    */
-  function Color(a, b, life, easing) {
+  function Color(colorA, colorB, life, easing) {
     _classCallCheck(this, Color);
 
     var _this = _possibleConstructorReturn(this, (Color.__proto__ || Object.getPrototypeOf(Color)).call(this, life, easing));
 
-    _this.reset(a, b);
+    _this.reset(colorA, colorB);
     _this.name = 'Color';
     return _this;
   }
 
+  /**
+   * Gets the _same property which determines if the alpha are the same.
+   *
+   * @return {boolean}
+   */
+
+
   _createClass(Color, [{
     key: 'reset',
-    value: function reset(a, b, life, easing) {
-      if (b == null || b == undefined) this._same = true;else this._same = false;
+    value: function reset(colorA, colorB, life, easing) {
+      this.same = colorB === null || colorB === undefined ? true : false;
 
-      this.a = (0, _math.createArraySpan)(a);
-      this.b = (0, _math.createArraySpan)(b);
+      this.colorA = (0, _math.createArraySpan)(colorA);
+      this.colorB = (0, _math.createArraySpan)(colorB);
       life && _get(Color.prototype.__proto__ || Object.getPrototypeOf(Color.prototype), 'reset', this).call(this, life, easing);
     }
   }, {
     key: 'initialize',
     value: function initialize(particle) {
-      particle.transform.colorA = _utils.ColorUtil.getRGB(this.a.getValue());
+      particle.transform.colorA = _utils.ColorUtil.getRGB(this.colorA.getValue());
 
       particle.useColor = true;
-      if (this._same) particle.transform.colorB = particle.transform.colorA;else particle.transform.colorB = _utils.ColorUtil.getRGB(this.b.getValue());
+      particle.transform.colorB = this.same ? particle.transform.colorA : _utils.ColorUtil.getRGB(this.colorB.getValue());
     }
   }, {
     key: 'applyBehaviour',
@@ -52552,6 +52575,48 @@ var Color = function (_Behaviour) {
         particle.color.g = particle.transform.colorA.g;
         particle.color.b = particle.transform.colorA.b;
       }
+    }
+
+    /**
+     * Creates a Color initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.colorA - The starting color
+     * @property {number} json.colorB - The ending color
+     * @property {number} json.life - The life of the particle
+     * @property {string} json.easing - The behaviour's decaying trend
+     * @return {Color}
+     */
+
+  }, {
+    key: 'same',
+    get: function get() {
+      return this._same;
+    }
+
+    /**
+     * Sets the _same property which determines if the alpha are the same.
+     *
+     * @param {boolean} same
+     * @return {boolean}
+     */
+    ,
+    set: function set(same) {
+      /**
+       * @type {boolean}
+       */
+      this._same = same;
+    }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var colorA = json.colorA,
+          colorB = json.colorB,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Color(colorA, colorB, life, (0, _ease.getEasingByName)(easing));
     }
   }]);
 
@@ -52576,13 +52641,23 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _Behaviour2 = __webpack_require__(1);
+var _zone = __webpack_require__(16);
+
+var Zone = _interopRequireWildcard(_zone);
+
+var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
-var _utils = __webpack_require__(5);
+var _constants = __webpack_require__(10);
+
+var _ease = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -52601,17 +52676,17 @@ var CrossZone = function (_Behaviour) {
   /**
    * Constructs a CrossZone behaviour instance.
    *
-   * @param {Zone} a - the zone used to apply to particles with this behaviour
-   * @param {string} b - enum of cross types, valid strings include 'dead', 'bound', 'cross'
+   * @param {Zone} zone - the zone used to apply to particles with this behaviour
+   * @param {string} [crossType=DEFAULT_CROSS_TYPE] - enum of cross types, valid strings include 'dead', 'bound', 'cross'
    * @param {number} life - The life of the particle
    * @param {function} easing - The behaviour's decaying trend
    */
-  function CrossZone(a, b, life, easing) {
+  function CrossZone(zone, crossType, life, easing) {
     _classCallCheck(this, CrossZone);
 
     var _this = _possibleConstructorReturn(this, (CrossZone.__proto__ || Object.getPrototypeOf(CrossZone)).call(this, life, easing));
 
-    _this.reset(a, b);
+    _this.reset(zone, crossType);
     _this.name = 'CrossZone';
     return _this;
   }
@@ -52619,8 +52694,8 @@ var CrossZone = function (_Behaviour) {
   /**
    * Resets the behaviour properties.
    *
-   * @param {Zone} a - the zone used to apply to particles with this behaviour
-   * @param {string} b - enum of cross types, valid strings include 'dead', 'bound', 'cross'
+   * @param {Zone} zone - the zone used to apply to particles with this behaviour
+   * @param {string} [crossType=DEFAULT_CROSS_TYPE] - enum of cross types, valid strings include 'dead', 'bound', 'cross'
    * @param {number} life - The life of the particle
    * @param {function} easing - The behaviour's decaying trend
    */
@@ -52628,24 +52703,17 @@ var CrossZone = function (_Behaviour) {
 
   _createClass(CrossZone, [{
     key: 'reset',
-    value: function reset(a, b, life, easing) {
-      var zone, crossType;
-
-      // TODO remove the ability for mixed order of arguments
-      if (typeof a == 'string') {
-        crossType = a;
-        zone = b;
-      } else {
-        crossType = b;
-        zone = a;
-      }
+    value: function reset(zone) {
+      var crossType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_CROSS_TYPE;
+      var life = arguments[2];
+      var easing = arguments[3];
 
       /**
        * @desc The zone used to apply to particles with this behaviour
        * @type {Zone}
        */
       this.zone = zone;
-      this.zone.crossType = _utils.Util.initValue(crossType, 'dead');
+      this.zone.crossType = crossType;
 
       life && _get(CrossZone.prototype.__proto__ || Object.getPrototypeOf(CrossZone.prototype), 'reset', this).call(this, life, easing);
     }
@@ -52667,6 +52735,28 @@ var CrossZone = function (_Behaviour) {
 
       this.zone.crossing.call(this.zone, particle);
     }
+
+    /**
+     * Creates a CrossZone initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @return {CrossZone}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var zoneType = json.zoneType,
+          zoneParams = json.zoneParams,
+          crossType = json.crossType,
+          life = json.life,
+          easing = json.easing;
+
+
+      var zone = new (Function.prototype.bind.apply(Zone[zoneType], [null].concat(_toConsumableArray(Object.values(zoneParams)))))();
+
+      return new CrossZone(zone, crossType, life, (0, _ease.getEasingByName)(easing));
+    }
   }]);
 
   return CrossZone;
@@ -52686,9 +52776,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Force2 = __webpack_require__(19);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Force2 = __webpack_require__(23);
 
 var _Force3 = _interopRequireDefault(_Force2);
+
+var _ease = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52719,6 +52813,18 @@ var Gravity = function (_Force) {
     return _possibleConstructorReturn(this, (Gravity.__proto__ || Object.getPrototypeOf(Gravity)).call(this, 0, -gravity, 0, life, easing));
   }
 
+  _createClass(Gravity, null, [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var gravity = json.gravity,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Gravity(gravity, life, (0, _ease.getEasingByName)(easing));
+    }
+  }]);
+
   return Gravity;
 }(_Force3.default);
 
@@ -52742,11 +52848,13 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _math = __webpack_require__(0);
 
-var _Behaviour2 = __webpack_require__(1);
+var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
-var _constants = __webpack_require__(9);
+var _constants = __webpack_require__(10);
+
+var _ease = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52855,6 +52963,19 @@ var RandomDrift = function (_Behaviour) {
         this.time = 0;
       }
     }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var x = json.x,
+          y = json.y,
+          z = json.z,
+          delay = json.delay,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new RandomDrift(x, y, z, delay, life, (0, _ease.getEasingByName)(easing));
+    }
   }]);
 
   return RandomDrift;
@@ -52878,9 +52999,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _Attraction2 = __webpack_require__(18);
+var _Attraction2 = __webpack_require__(22);
 
 var _Attraction3 = _interopRequireDefault(_Attraction2);
+
+var _math = __webpack_require__(0);
+
+var _ease = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52935,6 +53060,34 @@ var Repulsion = function (_Attraction) {
       _get(Repulsion.prototype.__proto__ || Object.getPrototypeOf(Repulsion.prototype), 'reset', this).call(this, targetPosition, force, radius, life, easing);
       this.force *= -1;
     }
+
+    /**
+     * Creates a Body initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.x - The target position x value
+     * @property {number} json.y - The target position y value
+     * @property {number} json.z - The target position z value
+     * @property {number} json.force - The attraction force scalar multiplier
+     * @property {number} json.life - The life of the particle
+     * @property {string} json.easing - The behaviour's decaying trend
+     * @return {Body}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var x = json.x,
+          y = json.y,
+          z = json.z,
+          force = json.force,
+          radius = json.radius,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Repulsion(new _math.Vector3D(x, y, z), force, radius, life, (0, _ease.getEasingByName)(easing));
+    }
   }]);
 
   return Repulsion;
@@ -52958,13 +53111,15 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _constants = __webpack_require__(3);
+var _constants = __webpack_require__(4);
 
 var _math = __webpack_require__(0);
 
-var _Behaviour2 = __webpack_require__(1);
+var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
+
+var _ease = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53021,36 +53176,36 @@ var Rotate = function (_Behaviour) {
      * @param {function} easing - the easing equation to use for transforms
      * @return void
      */
-    value: function reset(a, b, c, life, easing) {
+    value: function reset(x, y, z, life, easing) {
       /**
        * @desc X axis rotation.
        * @type {number|Span}
        */
-      this.a = a || 0;
+      this.x = x || 0;
 
       /**
        * @desc Y axis rotation.
        * @type {number|Span}
        */
-      this.b = b || 0;
+      this.y = y || 0;
 
       /**
        * @desc Z axis rotation.
        * @type {number|Span}
        */
-      this.c = c || 0;
+      this.z = z || 0;
 
-      if (a === undefined || a == 'same') {
+      if (x === undefined || x == 'same') {
         this._type = 'same';
-      } else if (b == undefined) {
+      } else if (y == undefined) {
         this._type = 'set';
-      } else if (c === undefined) {
+      } else if (z === undefined) {
         this._type = 'to';
       } else {
         this._type = 'add';
-        this.a = (0, _math.createSpan)(this.a * _constants.DR);
-        this.b = (0, _math.createSpan)(this.b * _constants.DR);
-        this.c = (0, _math.createSpan)(this.c * _constants.DR);
+        this.x = (0, _math.createSpan)(this.x * _constants.DR);
+        this.y = (0, _math.createSpan)(this.y * _constants.DR);
+        this.z = (0, _math.createSpan)(this.z * _constants.DR);
       }
 
       life && _get(Rotate.prototype.__proto__ || Object.getPrototypeOf(Rotate.prototype), 'reset', this).call(this, life, easing);
@@ -53071,18 +53226,18 @@ var Rotate = function (_Behaviour) {
           break;
 
         case 'set':
-          this._setRotation(particle.rotation, this.a);
+          this._setRotation(particle.rotation, this.x);
           break;
 
         case 'to':
           particle.transform.fR = particle.transform.fR || new _math.Vector3D();
           particle.transform.tR = particle.transform.tR || new _math.Vector3D();
-          this._setRotation(particle.transform.fR, this.a);
-          this._setRotation(particle.transform.tR, this.b);
+          this._setRotation(particle.transform.fR, this.x);
+          this._setRotation(particle.transform.tR, this.y);
           break;
 
         case 'add':
-          particle.transform.addR = new _math.Vector3D(this.a.getValue(), this.b.getValue(), this.c.getValue());
+          particle.transform.addR = new _math.Vector3D(this.x.getValue(), this.y.getValue(), this.z.getValue());
           break;
       }
     }
@@ -53096,7 +53251,7 @@ var Rotate = function (_Behaviour) {
      * NOTE the else if below will never be reached because the value being passed in
      * will never be of type Vector3D.
      *
-     * @param {Vector3D} vec3 - the particle's rotation vector
+     * @param {Vector3D} particleRotation - the particle's rotation vector
      * @param {string|number} value - the value to set the rotation value to, if 'random'
      * rotation is randomised
      * @return void
@@ -53104,20 +53259,20 @@ var Rotate = function (_Behaviour) {
 
   }, {
     key: '_setRotation',
-    value: function _setRotation(vec3, value) {
-      vec3 = vec3 || new _math.Vector3D();
+    value: function _setRotation(particleRotation, value) {
+      particleRotation = particleRotation || new _math.Vector3D();
       if (value == 'random') {
         var x = _math.MathUtils.randomAToB(-_constants.PI, _constants.PI);
         var y = _math.MathUtils.randomAToB(-_constants.PI, _constants.PI);
         var z = _math.MathUtils.randomAToB(-_constants.PI, _constants.PI);
 
-        vec3.set(x, y, z);
+        particleRotation.set(x, y, z);
       }
       // we can't ever get here because value will never be a Vector3D!
       // consider refactoring to
       //  if (value instance of Span) { vec3.add(value.getValue()); }
       else if (value instanceof _math.Vector3D) {
-          vec3.copy(value);
+          particleRotation.copy(value);
         }
     }
 
@@ -53182,6 +53337,18 @@ var Rotate = function (_Behaviour) {
        */
       this._type = type;
     }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var x = json.x,
+          y = json.y,
+          z = json.z,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Rotate(x, y, z, life, (0, _ease.getEasingByName)(easing));
+    }
   }]);
 
   return Rotate;
@@ -53207,11 +53374,11 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _math = __webpack_require__(0);
 
-var _Behaviour2 = __webpack_require__(1);
+var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
-var _utils = __webpack_require__(5);
+var _ease = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53229,23 +53396,7 @@ var Scale = function (_Behaviour) {
   _inherits(Scale, _Behaviour);
 
   /**
-   * The Scale class is the base for the other Behaviour
-   *
-   * @class Behaviour
-   * @constructor
-   */
-  function Scale(a, b, life, easing) {
-    _classCallCheck(this, Scale);
-
-    var _this = _possibleConstructorReturn(this, (Scale.__proto__ || Object.getPrototypeOf(Scale)).call(this, life, easing));
-
-    _this.reset(a, b);
-    _this.name = 'Scale';
-    return _this;
-  }
-
-  /**
-   * Resets the behaviour properties.
+   * Constructs a Scale behaviour instance.
    *
    * @param {number} scaleA - the starting scale value
    * @param {?number} scaleB - the ending scale value
@@ -53253,24 +53404,50 @@ var Scale = function (_Behaviour) {
    * @param {function} easing - the easing equation to use for transforms
    * @return void
    */
+  function Scale(scaleA, scaleB, life, easing) {
+    _classCallCheck(this, Scale);
+
+    var _this = _possibleConstructorReturn(this, (Scale.__proto__ || Object.getPrototypeOf(Scale)).call(this, life, easing));
+
+    _this.reset(scaleA, scaleB);
+    _this.name = 'Scale';
+    return _this;
+  }
+
+  /**
+   * Gets the _same property which determines if the scale props are the same.
+   *
+   * @return {boolean}
+   */
 
 
   _createClass(Scale, [{
     key: 'reset',
-    value: function reset(a, b, life, easing) {
-      if (b == null || b == undefined) this._same = true;else this._same = false;
+
+
+    /**
+     * Resets the behaviour properties.
+     *
+     * @param {number} scaleA - the starting scale value
+     * @param {?number} scaleB - the ending scale value
+     * @param {number} life - the life of the behaviour
+     * @param {function} easing - the easing equation to use for transforms
+     * @return void
+     */
+    value: function reset(scaleA, scaleB, life, easing) {
+      this.same = scaleB === null || scaleB === undefined ? true : false;
 
       /**
        * @desc The starting scale.
        * @type {Span}
        */
-      this.a = (0, _math.createSpan)(_utils.Util.initValue(a, 1));
+      this.scaleA = (0, _math.createSpan)(scaleA || 1);
 
       /**
        * @desc The ending scale.
        * @type {Span}
        */
-      this.b = (0, _math.createSpan)(b);
+      this.scaleB = (0, _math.createSpan)(scaleB);
 
       life && _get(Scale.prototype.__proto__ || Object.getPrototypeOf(Scale.prototype), 'reset', this).call(this, life, easing);
     }
@@ -53286,9 +53463,10 @@ var Scale = function (_Behaviour) {
   }, {
     key: 'initialize',
     value: function initialize(particle) {
-      particle.transform.scaleA = this.a.getValue();
+      particle.transform.scaleA = this.scaleA.getValue();
       particle.transform.oldRadius = particle.radius;
-      if (this._same) particle.transform.scaleB = particle.transform.scaleA;else particle.transform.scaleB = this.b.getValue();
+
+      particle.transform.scaleB = this.same ? particle.transform.scaleA : this.scaleB.getValue();
     }
 
     /**
@@ -53314,6 +53492,36 @@ var Scale = function (_Behaviour) {
 
       particle.radius = particle.transform.oldRadius * particle.scale;
     }
+  }, {
+    key: 'same',
+    get: function get() {
+      return this._same;
+    }
+
+    /**
+     * Sets the _same property which determines if the scale props are the same.
+     *
+     * @param {boolean} same
+     * @return {boolean}
+     */
+    ,
+    set: function set(same) {
+      /**
+       * @type {boolean}
+       */
+      this._same = same;
+    }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var scaleA = json.scaleA,
+          scaleB = json.scaleB,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Scale(scaleA, scaleB, life, (0, _ease.getEasingByName)(easing));
+    }
   }]);
 
   return Scale;
@@ -53337,11 +53545,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _Behaviour2 = __webpack_require__(1);
+var _Behaviour2 = __webpack_require__(2);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
 var _math = __webpack_require__(0);
+
+var _ease = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53386,6 +53596,20 @@ var Spring = function (_Behaviour) {
       particle.v.y += (this.pos.y - particle.p.y) * this.spring;
       particle.v.z += (this.pos.z - particle.p.z) * this.spring;
     }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var x = json.x,
+          y = json.y,
+          z = json.z,
+          spring = json.spring,
+          friction = json.friction,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Spring(x, y, z, spring, friction, life, (0, _ease.getEasingByName)(easing));
+    }
   }]);
 
   return Spring;
@@ -53404,12 +53628,455 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var BEHAVIOUR_TYPE_ALPHA = exports.BEHAVIOUR_TYPE_ALPHA = 'Alpha';
+var BEHAVIOUR_TYPE_ATTRACTION = exports.BEHAVIOUR_TYPE_ATTRACTION = 'Attraction';
+var BEHAVIOUR_TYPE_COLLISION = exports.BEHAVIOUR_TYPE_COLLISION = 'Collision';
+var BEHAVIOUR_TYPE_COLOR = exports.BEHAVIOUR_TYPE_COLOR = 'Color';
+var BEHAVIOUR_TYPE_CROSS_ZONE = exports.BEHAVIOUR_TYPE_CROSS_ZONE = 'CrossZone';
+var BEHAVIOUR_TYPE_FORCE = exports.BEHAVIOUR_TYPE_FORCE = 'Force';
+var BEHAVIOUR_TYPE_GRAVITY = exports.BEHAVIOUR_TYPE_GRAVITY = 'Gravity';
+var BEHAVIOUR_TYPE_RANDOM_DRIFT = exports.BEHAVIOUR_TYPE_RANDOM_DRIFT = 'RandomDrift';
+var BEHAVIOUR_TYPE_REPULSION = exports.BEHAVIOUR_TYPE_REPULSION = 'Repulsion';
+var BEHAVIOUR_TYPE_ROTATE = exports.BEHAVIOUR_TYPE_ROTATE = 'Rotate';
+var BEHAVIOUR_TYPE_SCALE = exports.BEHAVIOUR_TYPE_SCALE = 'Scale';
+var BEHAVIOUR_TYPE_SPRING = exports.BEHAVIOUR_TYPE_SPRING = 'Spring';
 
-var _three = __webpack_require__(4);
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _events = __webpack_require__(27);
+
+var _events2 = _interopRequireDefault(_events);
+
+var _constants = __webpack_require__(12);
+
+var _Emitter = __webpack_require__(13);
+
+var _Emitter2 = _interopRequireDefault(_Emitter);
+
+var _constants2 = __webpack_require__(17);
+
+var _constants3 = __webpack_require__(4);
+
+var _Pool = __webpack_require__(25);
+
+var _Pool2 = _interopRequireDefault(_Pool);
+
+var _fromJSON2 = __webpack_require__(47);
+
+var _fromJSON3 = _interopRequireDefault(_fromJSON2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * The core of the three-proton particle engine.
+ * A Proton instance can contain multiple emitters, each with their own initializers
+ * and behaviours.
+ *
+ */
+var Proton = function () {
+  /**
+   * Constructs a Proton instance.
+   *
+   * TODO the proton instance should have an integrator set as a property.
+   * It is only required from the emitter class, and therefore can be accessed within
+   * that class from emitter.parent.integrator
+   *
+   * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
+   * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
+   * @return void
+   */
+  function Proton() {
+    var preParticles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants3.POOL_MAX;
+    var integrationType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants2.INTEGRATION_TYPE_EULER;
+
+    _classCallCheck(this, Proton);
+
+    /**
+     * @desc The number of particles to start with
+     * @type {number}
+     */
+    this.preParticles = preParticles;
+
+    /**
+     * @desc The integration algorithm type to use
+     * @param {string}
+     */
+    this.integrationType = integrationType;
+
+    /**
+     * @desc The emitters in the particle system
+     * @type {array<Emitter>}
+     */
+    this.emitters = [];
+
+    /**
+     * @desc The renderers for the system
+     * @type {array<Renderer>}
+     */
+    this.renderers = [];
+
+    /**
+     * @desc A pool used to manage the internal proton cache of objects
+     * @type {Pool}
+     */
+    this.pool = new _Pool2.default();
+
+    /**
+     * @desc Internal event dispatcher
+     * @type {EventDispatcher}
+     */
+    this.eventDispatcher = new _events2.default();
+  }
+
+  /**
+   * Creates a Proton instance from a JSON object.
+   *
+   * @param {object} json - The JSON to create the Proton instance from
+   * @param {number} json.preParticles - The predetermined number of particles
+   * @param {string} json.integrationType - The integration algorithm to use
+   * @param {array<object>} json.emitters - The emitters for the proton instance
+   * @return {Proton}
+   */
+
+
+  _createClass(Proton, [{
+    key: 'dispatch',
+
+
+    /**
+     * Proxy method for the internal event dispatcher's dispatchEvent method.
+     *
+     * @param {string} event - The event to dispatch
+     * @param {object<Proton|Emitter|Particle>} [target=this] - The event target
+     */
+    value: function dispatch(event) {
+      var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this;
+
+      this.eventDispatcher.dispatchEvent(event, target);
+    }
+
+    /**
+     * Adds a renderer to the Proton instance and initializes it.
+     *
+     * @param {Renderer} renderer - The renderer to add
+     * @return {Proton}
+     */
+
+  }, {
+    key: 'addRenderer',
+    value: function addRenderer(renderer) {
+      this.renderers.push(renderer);
+      renderer.init(this);
+
+      return this;
+    }
+
+    /**
+     * Removes a renderer from the Proton instance.
+     *
+     * @param {Renderer} renderer
+     * @return {Proton}
+     */
+
+  }, {
+    key: 'removeRenderer',
+    value: function removeRenderer(renderer) {
+      this.renderers.splice(this.renderers.indexOf(renderer), 1);
+      renderer.remove(this);
+
+      return this;
+    }
+
+    /**
+     * Adds an emitter to the Proton instance.
+     * Dispatches the EMITTER_ADDED event.
+     *
+     * @param {Emitter} emitter - The emitter to add
+     * @return {Proton}
+     */
+
+  }, {
+    key: 'addEmitter',
+    value: function addEmitter(emitter) {
+      emitter.parent = this;
+
+      this.emitters.push(emitter);
+      this.dispatch(_events.EMITTER_ADDED, emitter);
+
+      return this;
+    }
+
+    /**
+     * Removes an emitter from the Proton instance.
+     * Dispatches the EMITTER_REMOVED event.
+     *
+     * @param {Emitter} emitter - The emitter to remove
+     * @return {Proton}
+     */
+
+  }, {
+    key: 'removeEmitter',
+    value: function removeEmitter(emitter) {
+      if (emitter.parent !== this) {
+        return this;
+      }
+
+      emitter.parent = null;
+
+      this.emitters.splice(this.emitters.indexOf(emitter), 1);
+      this.dispatch(_events.EMITTER_REMOVED, emitter);
+
+      return this;
+    }
+
+    /**
+     * Updates the particle system based on the delta passed.
+     *
+     * @example
+     * animate = () => {
+     *   threeRenderer.render(threeScene, threeCamera);
+     *   proton.update();
+     *   requestAnimationFrame(animate);
+     * }
+     * animate();
+     *
+     * @param {number} delta - Delta time
+     * @return {Promise}
+     */
+
+  }, {
+    key: 'update',
+    value: function update() {
+      var delta = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants.DEFAULT_PROTON_DELTA;
+
+      var d = delta || _constants.DEFAULT_PROTON_DELTA;
+
+      this.dispatch(_events.PROTON_UPDATE);
+
+      if (d > 0) {
+        var i = this.emitters.length;
+
+        while (i--) {
+          this.emitters[i].update(d);
+        }
+      }
+
+      this.dispatch(_events.PROTON_UPDATE_AFTER);
+
+      return Promise.resolve();
+    }
+
+    /**
+     * Gets a count of the total number of particles in the system.
+     *
+     * @return {integer}
+     */
+
+  }, {
+    key: 'getCount',
+    value: function getCount() {
+      var length = this.emitters.length;
+      var total = 0;
+      var i = void 0;
+
+      for (i = 0; i < length; i++) {
+        total += this.emitters[i].particles.length;
+      }
+
+      return total;
+    }
+
+    /**
+     * Destroys all emitters and the Proton pool.
+     *
+     * @return void
+     */
+
+  }, {
+    key: 'destroy',
+    value: function destroy() {
+      var length = this.emitters.length;
+      var i = 0;
+
+      for (i; i < length; i++) {
+        this.emitters[i].destroy();
+        delete this.emitters[i];
+      }
+
+      this.emitters.length = 0;
+      this.pool.destroy();
+    }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      return (0, _fromJSON3.default)(json, Proton, _Emitter2.default);
+    }
+  }]);
+
+  return Proton;
+}();
+
+exports.default = Proton;
+module.exports = exports['default'];
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _behaviour = __webpack_require__(21);
+
+var Behaviour = _interopRequireWildcard(_behaviour);
+
+var _initializer = __webpack_require__(11);
+
+var Initializer = _interopRequireWildcard(_initializer);
+
+var _constants = __webpack_require__(4);
+
+var _constants2 = __webpack_require__(12);
+
+var _Rate = __webpack_require__(28);
+
+var _Rate2 = _interopRequireDefault(_Rate);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+/**
+ * Makes a rate instance.
+ *
+ * @param {object} json - The data required to construct a Rate instance
+ * @return {Rate}
+ */
+var makeRate = function makeRate(json) {
+  return new _Rate2.default.fromJSON(json);
+};
+
+/**
+ * Makes initializers from json items.
+ *
+ * @param {array<object>} items - An array of objects which provide initializer constructor params
+ * @return {array<Initializer>}
+ */
+var makeInitializers = function makeInitializers(items) {
+  var initializers = [];
+
+  items.forEach(function (data) {
+    var type = data.type,
+        properties = data.properties;
+
+
+    if (!_constants2.SUPPORTED_JSON_INITIALIZER_TYPES.includes(type)) {
+      throw new Error('The initializer type ' + type + ' is invalid or not yet supported');
+    }
+
+    initializers.push(new Initializer[type].fromJSON(properties));
+  });
+
+  return initializers;
+};
+
+/**
+ * Makes behaviours from json items.
+ *
+ * @param {array<object>} items - An array of objects which provide behaviour constructor params
+ * @return {array<Behaviour>}
+ */
+var makeBehaviours = function makeBehaviours(items) {
+  var behaviours = [];
+
+  items.forEach(function (data) {
+    var type = data.type,
+        properties = data.properties;
+
+
+    if (!_constants2.SUPPORTED_JSON_BEHAVIOUR_TYPES.includes(type)) {
+      throw new Error('The behaviour type ' + type + ' is invalid or not yet supported');
+    }
+
+    behaviours.push(new Behaviour[type].fromJSON(properties));
+  });
+
+  return behaviours;
+};
+
+/**
+ * Creates a Proton instance from a JSON object.
+ *
+ * @param {object} json - The JSON to create the Proton instance from
+ * @param {function} Proton - The proton class
+ * @param {function} Emitter - The emitter class
+ * @param {number} json.preParticles - The predetermined number of particles
+ * @param {string} json.integrationType - The integration algorithm to use
+ * @param {array<object>} json.emitters - The emitters for the proton instance
+ * @return {Proton}
+ */
+
+exports.default = function (json, Proton, Emitter) {
+  var _json$preParticles = json.preParticles,
+      preParticles = _json$preParticles === undefined ? _constants.POOL_MAX : _json$preParticles,
+      _json$integrationType = json.integrationType,
+      integrationType = _json$integrationType === undefined ? _constants.EULER : _json$integrationType,
+      _json$emitters = json.emitters,
+      emitters = _json$emitters === undefined ? [] : _json$emitters;
+
+  var proton = new Proton(preParticles, integrationType);
+
+  emitters.forEach(function (data) {
+    var emitter = new Emitter();
+    var rate = data.rate,
+        initializers = data.initializers,
+        behaviours = data.behaviours,
+        position = data.position;
+
+
+    emitter.setRate(makeRate(rate)).setInitializers(makeInitializers(initializers)).setBehaviours(makeBehaviours(behaviours)).setPosition(position).emit();
+
+    proton.addEmitter(emitter);
+  });
+
+  return proton;
+};
+
+module.exports = exports['default'];
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _three = __webpack_require__(3);
 
 var THREE = _interopRequireWildcard(_three);
 
-var _constants = __webpack_require__(46);
+var _constants = __webpack_require__(49);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -53619,7 +54286,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 46 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53636,7 +54303,7 @@ var DEFAULT_SIZE = exports.DEFAULT_SIZE = 15;
 var DEFAULT_POSITION = exports.DEFAULT_POSITION = 0;
 
 /***/ }),
-/* 47 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53675,13 +54342,11 @@ module.exports = exports['default']; /**
                                       *
                                       * use like this log('+12',mc); log 12 times
                                       *
-                                      * @class Log
-                                      * @constructor
-                                      * @param {*} logInfo;
+                                      * @return void
                                       */
 
 /***/ }),
-/* 48 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53695,7 +54360,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _Emitter2 = __webpack_require__(14);
+var _Emitter2 = __webpack_require__(13);
 
 var _Emitter3 = _interopRequireDefault(_Emitter2);
 
@@ -53783,7 +54448,7 @@ exports.default = BehaviourEmitter;
 module.exports = exports['default'];
 
 /***/ }),
-/* 49 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53797,15 +54462,15 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _Emitter2 = __webpack_require__(14);
+var _Emitter2 = __webpack_require__(13);
 
 var _Emitter3 = _interopRequireDefault(_Emitter2);
 
-var _THREEUtil = __webpack_require__(17);
+var _THREEUtil = __webpack_require__(20);
 
 var _THREEUtil2 = _interopRequireDefault(_THREEUtil);
 
-var _Util = __webpack_require__(2);
+var _Util = __webpack_require__(6);
 
 var _Util2 = _interopRequireDefault(_Util);
 
@@ -53927,7 +54592,7 @@ exports.default = FollowEmitter;
 module.exports = exports['default'];
 
 /***/ }),
-/* 50 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53938,7 +54603,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.DEFAULT_BIND_EMITTER_EVENT = exports.DEFAULT_EMITTER_RATE = exports.DEFAULT_BIND_EMITTER = exports.DEFAULT_DAMPING = undefined;
 
-var _initializer = __webpack_require__(13);
+var _initializer = __webpack_require__(11);
 
 var DEFAULT_DAMPING = exports.DEFAULT_DAMPING = 0.006;
 var DEFAULT_BIND_EMITTER = exports.DEFAULT_BIND_EMITTER = true;
@@ -53946,7 +54611,7 @@ var DEFAULT_EMITTER_RATE = exports.DEFAULT_EMITTER_RATE = new _initializer.Rate(
 var DEFAULT_BIND_EMITTER_EVENT = exports.DEFAULT_BIND_EMITTER_EVENT = false;
 
 /***/ }),
-/* 51 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54063,7 +54728,7 @@ exports.default = EventDispatcher;
 module.exports = exports["default"];
 
 /***/ }),
-/* 52 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54074,7 +54739,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Pool = exports.Particle = exports.Proton = undefined;
 
-var _behaviour = __webpack_require__(30);
+var _behaviour = __webpack_require__(21);
 
 Object.keys(_behaviour).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -54086,7 +54751,7 @@ Object.keys(_behaviour).forEach(function (key) {
   });
 });
 
-var _debug = __webpack_require__(31);
+var _debug = __webpack_require__(32);
 
 Object.keys(_debug).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -54098,7 +54763,7 @@ Object.keys(_debug).forEach(function (key) {
   });
 });
 
-var _ease = __webpack_require__(12);
+var _ease = __webpack_require__(1);
 
 Object.keys(_ease).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -54110,7 +54775,7 @@ Object.keys(_ease).forEach(function (key) {
   });
 });
 
-var _emitter = __webpack_require__(32);
+var _emitter = __webpack_require__(33);
 
 Object.keys(_emitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -54122,7 +54787,7 @@ Object.keys(_emitter).forEach(function (key) {
   });
 });
 
-var _initializer = __webpack_require__(13);
+var _initializer = __webpack_require__(11);
 
 Object.keys(_initializer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -54146,7 +54811,7 @@ Object.keys(_math).forEach(function (key) {
   });
 });
 
-var _renderer = __webpack_require__(33);
+var _renderer = __webpack_require__(34);
 
 Object.keys(_renderer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -54158,7 +54823,7 @@ Object.keys(_renderer).forEach(function (key) {
   });
 });
 
-var _utils = __webpack_require__(5);
+var _utils = __webpack_require__(9);
 
 Object.keys(_utils).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -54170,7 +54835,7 @@ Object.keys(_utils).forEach(function (key) {
   });
 });
 
-var _zone = __webpack_require__(34);
+var _zone = __webpack_require__(16);
 
 Object.keys(_zone).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -54182,7 +54847,7 @@ Object.keys(_zone).forEach(function (key) {
   });
 });
 
-var _core = __webpack_require__(11);
+var _core = __webpack_require__(15);
 
 Object.defineProperty(exports, 'Proton', {
   enumerable: true,
@@ -54205,7 +54870,7 @@ Object.defineProperty(exports, 'Pool', {
 exports.default = _core.Proton;
 
 /***/ }),
-/* 53 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54217,13 +54882,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initializer2 = __webpack_require__(6);
+var _Initializer2 = __webpack_require__(5);
 
 var _Initializer3 = _interopRequireDefault(_Initializer2);
-
-var _Util = __webpack_require__(2);
-
-var _Util2 = _interopRequireDefault(_Util);
 
 var _math = __webpack_require__(0);
 
@@ -54271,7 +54932,7 @@ var Body = function (_Initializer) {
      * @desc The height of the particle Body
      * @type {number}
      */
-    _this.h = _Util2.default.initValue(h, _this.w);
+    _this.h = h || w;
     return _this;
   }
 
@@ -54298,6 +54959,27 @@ var Body = function (_Initializer) {
         particle.body = body;
       }
     }
+
+    /**
+     * Creates a Body initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.body - The color for the particle body
+     * @property {number} json.width - The width of the particle body
+     * @property {number} json.height - The height of the particle body
+     * @return {Body}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var body = json.body,
+          width = json.width,
+          height = json.height;
+
+
+      return new Body(body, width, height);
+    }
   }]);
 
   return Body;
@@ -54307,7 +54989,7 @@ exports.default = Body;
 module.exports = exports['default'];
 
 /***/ }),
-/* 54 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54317,7 +54999,127 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _three = __webpack_require__(4);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _three = __webpack_require__(3);
+
+var _constants = __webpack_require__(64);
+
+var _Initializer2 = __webpack_require__(5);
+
+var _Initializer3 = _interopRequireDefault(_Initializer2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Sets the body property to be a THREE.Sprite on initialized particles.
+ *
+ * NOTE The texture map MUST be set on the SpriteMaterial in the TextureLoader.load
+ * callback. Not doing so will cause WebGL buffer errors.
+ */
+var BodySprite = function (_Initializer) {
+  _inherits(BodySprite, _Initializer);
+
+  /**
+   * Constructs a BodySprite initializer.
+   *
+   * @param {string} texture - The sprite texture
+   * @param {object} materialProperties - The sprite material properties
+   * @throws {Error} If the TextureLoader fails to load the supplied texture
+   * @return void
+   */
+  function BodySprite(texture) {
+    var materialProperties = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_MATERIAL_PROPERTIES;
+
+    _classCallCheck(this, BodySprite);
+
+    var _this = _possibleConstructorReturn(this, (BodySprite.__proto__ || Object.getPrototypeOf(BodySprite)).call(this));
+
+    new _three.TextureLoader().load(texture, function (map) {
+      /**
+       * @desc The texture for the THREE.SpriteMaterial map.
+       * @type {Texture}
+       */
+      _this.texture = map;
+
+      /**
+       * @desc THREE.SpriteMaterial instance.
+       * @type {SpriteMaterial}
+       */
+      _this.material = new _three.SpriteMaterial(_extends({ map: map }, materialProperties));
+
+      /**
+       * @desc THREE.Sprite instance.
+       * @type {Sprite}
+       */
+      _this.sprite = new _three.Sprite(_this.material);
+    }, undefined, function (error) {
+      throw new Error(error);
+    });
+    return _this;
+  }
+
+  /**
+   * Sets the particle body to the sprite.
+   *
+   * @param {Particle} particle - The particle to set the body of
+   * @return void
+   */
+
+
+  _createClass(BodySprite, [{
+    key: 'initialize',
+    value: function initialize(particle) {
+      particle.body = this.sprite;
+    }
+
+    /**
+     * Creates a BodySprite initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @param {string} json.texture - The sprite texture
+     * @param {object} json.materialProperties - The sprite material properties
+     * @return {BodySprite}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var texture = json.texture,
+          _json$materialPropert = json.materialProperties,
+          materialProperties = _json$materialPropert === undefined ? _constants.DEFAULT_MATERIAL_PROPERTIES : _json$materialPropert;
+
+
+      return new BodySprite(texture, materialProperties);
+    }
+  }]);
+
+  return BodySprite;
+}(_Initializer3.default);
+
+exports.default = BodySprite;
+module.exports = exports['default'];
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _three = __webpack_require__(3);
 
 var particleEuler = new _three.Euler();
 
@@ -54366,7 +55168,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 55 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54378,7 +55180,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initializer2 = __webpack_require__(6);
+var _Initializer2 = __webpack_require__(5);
 
 var _Initializer3 = _interopRequireDefault(_Initializer2);
 
@@ -54433,6 +55235,28 @@ var Life = function (_Initializer) {
     value: function initialize(particle) {
       if (this.lifePan.a == Infinity || this.lifePan.a == 'infi') particle.life = Infinity;else particle.life = this.lifePan.getValue();
     }
+
+    /**
+     * Creates a Life initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.min - The minimum life time
+     * @property {number} json.max - The maximum life time
+     * @property {number} json.center - The center of the life time
+     * @return {Life}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var min = json.min,
+          max = json.max,
+          _json$center = json.center,
+          center = _json$center === undefined ? false : _json$center;
+
+
+      return new Life(min, max, center);
+    }
   }]);
 
   return Life;
@@ -54442,7 +55266,7 @@ exports.default = Life;
 module.exports = exports['default'];
 
 /***/ }),
-/* 56 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54454,7 +55278,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initializer2 = __webpack_require__(6);
+var _Initializer2 = __webpack_require__(5);
 
 var _Initializer3 = _interopRequireDefault(_Initializer2);
 
@@ -54511,6 +55335,28 @@ var Mass = function (_Initializer) {
     value: function initialize(particle) {
       particle.mass = this.massPan.getValue();
     }
+
+    /**
+     * Creates a Mass initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.min - The minimum mass
+     * @property {number} json.max - The maximum mass
+     * @property {number} json.center - The center of the mass
+     * @return {Mass}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var min = json.min,
+          max = json.max,
+          _json$center = json.center,
+          center = _json$center === undefined ? false : _json$center;
+
+
+      return new Mass(min, max, center);
+    }
   }]);
 
   return Mass;
@@ -54520,7 +55366,7 @@ exports.default = Mass;
 module.exports = exports['default'];
 
 /***/ }),
-/* 57 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54532,11 +55378,23 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initializer2 = __webpack_require__(6);
+var _zone = __webpack_require__(16);
+
+var Zone = _interopRequireWildcard(_zone);
+
+var _Initializer2 = __webpack_require__(5);
 
 var _Initializer3 = _interopRequireDefault(_Initializer2);
 
+var _constants = __webpack_require__(12);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -54604,6 +55462,27 @@ var Position = function (_Initializer) {
 
       this.zones = this.zones.concat(args);
     }
+
+    /**
+     * Creates a Position initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {string} json.zoneType - The type of zone to use for initial position
+     * @return {Position}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var zoneType = json.zoneType,
+          params = _objectWithoutProperties(json, ['zoneType']);
+
+      if (!_constants.SUPPORTED_JSON_ZONE_TYPES.includes(zoneType)) {
+        throw new Error('The zone type ' + zoneType + ' is invalid or not yet supported');
+      }
+
+      return new Position(new (Function.prototype.bind.apply(Zone[zoneType], [null].concat(_toConsumableArray(Object.values(params)))))());
+    }
   }]);
 
   return Position;
@@ -54634,7 +55513,7 @@ Position.prototype.initialize = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 58 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54646,7 +55525,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initializer2 = __webpack_require__(6);
+var _Initializer2 = __webpack_require__(5);
 
 var _Initializer3 = _interopRequireDefault(_Initializer2);
 
@@ -54722,6 +55601,28 @@ var Radius = function (_Initializer) {
       particle.radius = this.radius.getValue();
       particle.transform.oldRadius = particle.radius;
     }
+
+    /**
+     * Creates a Radius initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.width - The width of the particle radius
+     * @property {number} json.height - The height of the particle radius
+     * @property {number} json.center - The center of the particle radius
+     * @return {Radius}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var width = json.width,
+          height = json.height,
+          _json$center = json.center,
+          center = _json$center === undefined ? false : _json$center;
+
+
+      return new Radius(width, height, center);
+    }
   }]);
 
   return Radius;
@@ -54731,7 +55632,7 @@ exports.default = Radius;
 module.exports = exports['default'];
 
 /***/ }),
-/* 59 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54743,139 +55644,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Initializer2 = __webpack_require__(6);
-
-var _Initializer3 = _interopRequireDefault(_Initializer2);
-
-var _Util = __webpack_require__(2);
-
-var _Util2 = _interopRequireDefault(_Util);
+var _constants = __webpack_require__(4);
 
 var _math = __webpack_require__(0);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Calculates the rate of particle emission.
- *
- * TODO This doesn't need to be an initializer, it doesn't have an initialize
- * method, it overrides the base init method and it is only relevent to the Emitter class.
- * It would be better to move this to the Emitter module itself as a standalone class.
- *
- */
-var Rate = function (_Initializer) {
-  _inherits(Rate, _Initializer);
-
-  /**
-   * Constructs a Rate instance.
-   *
-   * @param {number|array|Span} numPan - The number of particles to emit
-   * @param {number|array|Span} timePan - The time between each particle emission
-   * @return void
-   */
-  function Rate(numPan, timePan) {
-    _classCallCheck(this, Rate);
-
-    /**
-     * @desc Sets the number of particles to emit.
-     * @type {Span}
-     */
-    var _this = _possibleConstructorReturn(this, (Rate.__proto__ || Object.getPrototypeOf(Rate)).call(this));
-
-    _this.numPan = (0, _math.createSpan)(_Util2.default.initValue(numPan, 1));
-
-    /**
-     * @desc Sets the time between each particle emission.
-     * @type {Span}
-     */
-    _this.timePan = (0, _math.createSpan)(_Util2.default.initValue(timePan, 1));
-
-    /**
-     * @desc The rate's start time.
-     * @type {number}
-     */
-    _this.startTime = 0;
-
-    /**
-     * @desc The rate's next time.
-     * @type {number}
-     */
-    _this.nextTime = 0;
-
-    _this.init();
-    return _this;
-  }
-
-  /**
-   * Sets the startTime and nextTime properties.
-   *
-   * @return void
-   */
-
-
-  _createClass(Rate, [{
-    key: 'init',
-    value: function init() {
-      this.startTime = 0;
-      this.nextTime = this.timePan.getValue();
-    }
-
-    /**
-     * Gets the number of particles to emit.
-     *
-     * @param {number} time - Current particle engine time
-     * @return {number}
-     */
-
-  }, {
-    key: 'getValue',
-    value: function getValue(time) {
-      this.startTime += time;
-
-      if (this.startTime >= this.nextTime) {
-        this.init();
-
-        if (this.numPan.b == 1) {
-          if (this.numPan.getValue('Float') > 0.5) return 1;else return 0;
-        } else {
-          return this.numPan.getValue('Int');
-        }
-      }
-
-      return 0;
-    }
-  }]);
-
-  return Rate;
-}(_Initializer3.default);
-
-exports.default = Rate;
-module.exports = exports['default'];
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _constants = __webpack_require__(3);
-
-var _math = __webpack_require__(0);
-
-var _Initializer2 = __webpack_require__(6);
+var _Initializer2 = __webpack_require__(5);
 
 var _Initializer3 = _interopRequireDefault(_Initializer2);
 
@@ -55007,7 +55780,48 @@ Velocity.prototype.initialize = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 61 */
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DEFAULT_MATERIAL_PROPERTIES = undefined;
+
+var _three = __webpack_require__(3);
+
+var DEFAULT_MATERIAL_PROPERTIES = exports.DEFAULT_MATERIAL_PROPERTIES = {
+  color: 0xff0000,
+  blending: _three.AdditiveBlending,
+  fog: true
+};
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var INITIALIZER_TYPE_BODY = exports.INITIALIZER_TYPE_BODY = 'Body';
+var INITIALIZER_TYPE_BODY_SPRITE = exports.INITIALIZER_TYPE_BODY_SPRITE = 'BodySprite';
+var INITIALIZER_TYPE_LIFE = exports.INITIALIZER_TYPE_LIFE = 'Life';
+var INITIALIZER_TYPE_MASS = exports.INITIALIZER_TYPE_MASS = 'Mass';
+var INITIALIZER_TYPE_POSITION = exports.INITIALIZER_TYPE_POSITION = 'Position';
+var INITIALIZER_TYPE_RADIUS = exports.INITIALIZER_TYPE_RADIUS = 'Radius';
+var INITIALIZER_TYPE_ZONE = exports.INITIALIZER_TYPE_ZONE = 'Zone';
+var INITIALIZER_TYPE_VECTOR_VELOCITY = exports.INITIALIZER_TYPE_VECTOR_VELOCITY = 'VectorVelocity';
+var INITIALIZER_TYPE_POLAR_VELOCITY = exports.INITIALIZER_TYPE_POLAR_VELOCITY = 'PolarVelocity';
+var INITIALIZER_TYPE_RADIAL_VELOCITY = exports.INITIALIZER_TYPE_RADIAL_VELOCITY = 'RadialVelocity';
+
+/***/ }),
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55020,15 +55834,15 @@ exports.createArraySpan = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _MathUtils = __webpack_require__(10);
+var _MathUtils = __webpack_require__(14);
 
 var _MathUtils2 = _interopRequireDefault(_MathUtils);
 
-var _Span2 = __webpack_require__(27);
+var _Span2 = __webpack_require__(29);
 
 var _Span3 = _interopRequireDefault(_Span2);
 
-var _lodash = __webpack_require__(74);
+var _lodash = __webpack_require__(82);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -55124,7 +55938,7 @@ var createArraySpan = exports.createArraySpan = function createArraySpan(colors)
 };
 
 /***/ }),
-/* 62 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55167,7 +55981,7 @@ exports.default = Box;
 module.exports = exports["default"];
 
 /***/ }),
-/* 63 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55290,7 +56104,65 @@ exports.default = Polar3D;
 module.exports = exports['default'];
 
 /***/ }),
-/* 64 */
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.integrate = undefined;
+
+var _constants = __webpack_require__(17);
+
+/**
+ * Performs euler integration on the particle.
+ *
+ * @param {Particle} particle - The particle to integrate
+ * @param {number} time - The factor of time to use
+ * @param {number} damping - The damping to use
+ * @return void
+ */
+var eulerIntegration = function eulerIntegration(particle, time, damping) {
+  if (particle.sleep) {
+    return;
+  }
+
+  particle.old.p.copy(particle.p);
+  particle.old.v.copy(particle.v);
+  particle.a.scalar(1 / particle.mass);
+  particle.v.add(particle.a.scalar(time));
+  particle.p.add(particle.old.v.scalar(time));
+  damping && particle.v.scalar(damping);
+  particle.a.clear();
+};
+
+/**
+ * Performs the chosen integration on the particle.
+ * Defaults to euler integration.
+ *
+ * @param {Particle} particle - The particle to integrate
+ * @param {number} time - The factor of time to use
+ * @param {number} damping - The damping to use
+ * @param {string} [type=INTEGRATION_TYPE_EULER] - The algorithm to use
+ * @return void
+ */
+var integrate = exports.integrate = function integrate(particle, time, damping) {
+  var type = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.INTEGRATION_TYPE_EULER;
+
+  switch (type) {
+    case _constants.INTEGRATION_TYPE_EULER:
+      eulerIntegration(particle, time, damping);
+      break;
+    default:
+      eulerIntegration(particle, time, damping);
+  }
+};
+
+/***/ }),
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55302,11 +56174,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _BaseRenderer2 = __webpack_require__(15);
+var _BaseRenderer2 = __webpack_require__(18);
 
 var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
-var _core = __webpack_require__(11);
+var _core = __webpack_require__(15);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55353,7 +56225,7 @@ exports.default = CustomRenderer;
 module.exports = exports['default'];
 
 /***/ }),
-/* 65 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55365,11 +56237,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _BaseRenderer2 = __webpack_require__(15);
+var _BaseRenderer2 = __webpack_require__(18);
 
 var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
-var _three = __webpack_require__(4);
+var _three = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55431,7 +56303,7 @@ exports.default = PointsRenderer;
 module.exports = exports['default'];
 
 /***/ }),
-/* 66 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55443,9 +56315,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _three = __webpack_require__(4);
+var _three = __webpack_require__(3);
 
-var _MeshRenderer2 = __webpack_require__(28);
+var _MeshRenderer2 = __webpack_require__(30);
 
 var _MeshRenderer3 = _interopRequireDefault(_MeshRenderer2);
 
@@ -55483,7 +56355,22 @@ exports.default = SpriteRenderer;
 module.exports = exports['default'];
 
 /***/ }),
-/* 67 */
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var RENDERER_TYPE_CUSTOM = exports.RENDERER_TYPE_CUSTOM = 'CustomRenderer';
+var RENDERER_TYPE_SPRITE = exports.RENDERER_TYPE_SPRITE = 'SpriteRenderer';
+var RENDERER_TYPE_MESH = exports.RENDERER_TYPE_MESH = 'MeshRenderer';
+var RENDERER_TYPE_POINTS = exports.RENDERER_TYPE_POINTS = 'PointsRenderer';
+
+/***/ }),
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55527,7 +56414,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 68 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55539,11 +56426,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _MathUtils = __webpack_require__(10);
+var _MathUtils = __webpack_require__(14);
 
 var _MathUtils2 = _interopRequireDefault(_MathUtils);
 
-var _Util = __webpack_require__(2);
+var _Util = __webpack_require__(6);
 
 var _Util2 = _interopRequireDefault(_Util);
 
@@ -55609,7 +56496,9 @@ var BoxZone = function (_Zone) {
     _this.width = w;
     _this.height = h;
     _this.depth = d;
+    // TODO Set this via an argument to the constructor
     _this.friction = 0.85;
+    // TODO Set this via an argument to the constructor
     _this.max = 6;
     return _this;
   }
@@ -55704,7 +56593,7 @@ exports.default = BoxZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 69 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55808,7 +56697,7 @@ exports.default = LineZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 70 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55820,7 +56709,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _three = __webpack_require__(4);
+var _three = __webpack_require__(3);
 
 var _Zone2 = __webpack_require__(8);
 
@@ -55902,7 +56791,7 @@ exports.default = MeshZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 71 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -55914,7 +56803,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Util = __webpack_require__(2);
+var _Util = __webpack_require__(6);
 
 var _Util2 = _interopRequireDefault(_Util);
 
@@ -56003,7 +56892,7 @@ exports.default = PointZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 72 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56015,7 +56904,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _THREEUtil = __webpack_require__(17);
+var _THREEUtil = __webpack_require__(20);
 
 var _THREEUtil2 = _interopRequireDefault(_THREEUtil);
 
@@ -56170,7 +57059,7 @@ ScreenZone.prototype._cross = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 73 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56182,9 +57071,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(3);
+var _constants = __webpack_require__(4);
 
-var _Util = __webpack_require__(2);
+var _Util = __webpack_require__(6);
 
 var _Util2 = _interopRequireDefault(_Util);
 
@@ -56338,7 +57227,24 @@ SphereZone.prototype._bound = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 74 */
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var ZONE_TYPE_BOX = exports.ZONE_TYPE_BOX = 'BoxZone';
+var ZONE_TYPE_LINE = exports.ZONE_TYPE_LINE = 'LineZone';
+var ZONE_TYPE_MESH = exports.ZONE_TYPE_MESH = 'MeshZone';
+var ZONE_TYPE_POINT = exports.ZONE_TYPE_POINT = 'PointZone';
+var ZONE_TYPE_SCREEN = exports.ZONE_TYPE_SCREEN = 'ScreenZone';
+var ZONE_TYPE_SPHERE = exports.ZONE_TYPE_SPHERE = 'SphereZone';
+
+/***/ }),
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -73450,10 +74356,10 @@ module.exports = exports['default'];
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(78), __webpack_require__(79)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(86), __webpack_require__(87)(module)))
 
 /***/ }),
-/* 75 */
+/* 83 */
 /***/ (function(module, exports) {
 
 /**
@@ -73483,7 +74389,7 @@ module.exports = bytesToUuid;
 
 
 /***/ }),
-/* 76 */
+/* 84 */
 /***/ (function(module, exports) {
 
 // Unique ID creation requires a high quality random # generator.  In the
@@ -73523,11 +74429,11 @@ if (getRandomValues) {
 
 
 /***/ }),
-/* 77 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var rng = __webpack_require__(76);
-var bytesToUuid = __webpack_require__(75);
+var rng = __webpack_require__(84);
+var bytesToUuid = __webpack_require__(83);
 
 // **`v1()` - Generate time-based UUID**
 //
@@ -73638,7 +74544,7 @@ module.exports = v1;
 
 
 /***/ }),
-/* 78 */
+/* 86 */
 /***/ (function(module, exports) {
 
 var g;
@@ -73665,7 +74571,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 79 */
+/* 87 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {

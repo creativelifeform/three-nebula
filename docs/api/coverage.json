@@ -1,25 +1,25 @@
 {
-  "coverage": "53.64%",
-  "expectCount": 535,
-  "actualCount": 287,
+  "coverage": "53.35%",
+  "expectCount": 611,
+  "actualCount": 326,
   "files": {
     "src/behaviour/Alpha.js": {
-      "expectCount": 10,
-      "actualCount": 10,
+      "expectCount": 11,
+      "actualCount": 11,
       "undocumentLines": []
     },
     "src/behaviour/Attraction.js": {
-      "expectCount": 10,
-      "actualCount": 10,
+      "expectCount": 11,
+      "actualCount": 11,
       "undocumentLines": []
     },
     "src/behaviour/Behaviour.js": {
-      "expectCount": 15,
-      "actualCount": 15,
+      "expectCount": 16,
+      "actualCount": 16,
       "undocumentLines": []
     },
     "src/behaviour/Collision.js": {
-      "expectCount": 11,
+      "expectCount": 12,
       "actualCount": 1,
       "undocumentLines": [
         4,
@@ -31,84 +31,89 @@
         23,
         24,
         29,
-        68
+        68,
+        74
       ]
     },
     "src/behaviour/Color.js": {
-      "expectCount": 9,
-      "actualCount": 2,
+      "expectCount": 12,
+      "actualCount": 6,
       "undocumentLines": [
-        23,
-        26,
-        27,
-        30,
-        31,
-        35,
-        43
+        24,
+        49,
+        52,
+        53,
+        57,
+        66
       ]
     },
     "src/behaviour/CrossZone.js": {
-      "expectCount": 6,
-      "actualCount": 5,
+      "expectCount": 7,
+      "actualCount": 6,
       "undocumentLines": [
-        22
-      ]
-    },
-    "src/behaviour/Force.js": {
-      "expectCount": 5,
-      "actualCount": 5,
-      "undocumentLines": []
-    },
-    "src/behaviour/Gravity.js": {
-      "expectCount": 2,
-      "actualCount": 2,
-      "undocumentLines": []
-    },
-    "src/behaviour/RandomDrift.js": {
-      "expectCount": 8,
-      "actualCount": 7,
-      "undocumentLines": [
-        39
-      ]
-    },
-    "src/behaviour/Repulsion.js": {
-      "expectCount": 5,
-      "actualCount": 3,
-      "undocumentLines": [
-        21,
-        22
-      ]
-    },
-    "src/behaviour/Rotate.js": {
-      "expectCount": 13,
-      "actualCount": 12,
-      "undocumentLines": [
-        24
-      ]
-    },
-    "src/behaviour/Scale.js": {
-      "expectCount": 9,
-      "actualCount": 7,
-      "undocumentLines": [
-        21,
-        34
-      ]
-    },
-    "src/behaviour/Spring.js": {
-      "expectCount": 8,
-      "actualCount": 1,
-      "undocumentLines": [
-        4,
-        15,
-        18,
-        19,
-        21,
-        22,
         25
       ]
     },
-    "src/behaviour/constants.js": {
+    "src/behaviour/Force.js": {
       "expectCount": 6,
+      "actualCount": 6,
+      "undocumentLines": []
+    },
+    "src/behaviour/Gravity.js": {
+      "expectCount": 3,
+      "actualCount": 2,
+      "undocumentLines": [
+        21
+      ]
+    },
+    "src/behaviour/RandomDrift.js": {
+      "expectCount": 9,
+      "actualCount": 7,
+      "undocumentLines": [
+        40,
+        103
+      ]
+    },
+    "src/behaviour/Repulsion.js": {
+      "expectCount": 6,
+      "actualCount": 4,
+      "undocumentLines": [
+        23,
+        24
+      ]
+    },
+    "src/behaviour/Rotate.js": {
+      "expectCount": 14,
+      "actualCount": 12,
+      "undocumentLines": [
+        25,
+        210
+      ]
+    },
+    "src/behaviour/Scale.js": {
+      "expectCount": 12,
+      "actualCount": 10,
+      "undocumentLines": [
+        24,
+        117
+      ]
+    },
+    "src/behaviour/Spring.js": {
+      "expectCount": 9,
+      "actualCount": 1,
+      "undocumentLines": [
+        5,
+        16,
+        19,
+        20,
+        22,
+        23,
+        26,
+        34
+      ]
+    },
+    "src/behaviour/constants.js": {
+      "expectCount": 9,
       "actualCount": 0,
       "undocumentLines": [
         3,
@@ -116,7 +121,28 @@
         5,
         6,
         7,
-        8
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "src/behaviour/types.js": {
+      "expectCount": 12,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
       ]
     },
     "src/constants/index.js": {
@@ -154,13 +180,18 @@
       "undocumentLines": []
     },
     "src/core/Proton.js": {
-      "expectCount": 18,
-      "actualCount": 18,
+      "expectCount": 17,
+      "actualCount": 17,
       "undocumentLines": []
     },
     "src/core/constants.js": {
-      "expectCount": 15,
-      "actualCount": 15,
+      "expectCount": 19,
+      "actualCount": 19,
+      "undocumentLines": []
+    },
+    "src/core/fromJSON.js": {
+      "expectCount": 4,
+      "actualCount": 4,
       "undocumentLines": []
     },
     "src/debug/constants.js": {
@@ -181,11 +212,12 @@
       "undocumentLines": []
     },
     "src/ease/index.js": {
-      "expectCount": 3,
+      "expectCount": 4,
       "actualCount": 1,
       "undocumentLines": [
         117,
-        142
+        142,
+        147
       ]
     },
     "src/emitter/BehaviourEmitter.js": {
@@ -206,8 +238,8 @@
         158,
         342,
         393,
-        485,
-        486
+        488,
+        489
       ]
     },
     "src/emitter/FollowEmitter.js": {
@@ -265,13 +297,18 @@
       ]
     },
     "src/initializer/Body.js": {
-      "expectCount": 6,
-      "actualCount": 6,
+      "expectCount": 7,
+      "actualCount": 7,
+      "undocumentLines": []
+    },
+    "src/initializer/BodySprite.js": {
+      "expectCount": 7,
+      "actualCount": 7,
       "undocumentLines": []
     },
     "src/initializer/Initializer.js": {
-      "expectCount": 6,
-      "actualCount": 5,
+      "expectCount": 7,
+      "actualCount": 6,
       "undocumentLines": [
         13
       ]
@@ -284,30 +321,30 @@
       ]
     },
     "src/initializer/Life.js": {
-      "expectCount": 4,
-      "actualCount": 4,
-      "undocumentLines": []
-    },
-    "src/initializer/Mass.js": {
-      "expectCount": 4,
-      "actualCount": 4,
-      "undocumentLines": []
-    },
-    "src/initializer/Position.js": {
-      "expectCount": 5,
-      "actualCount": 4,
-      "undocumentLines": [
-        28
-      ]
-    },
-    "src/initializer/Radius.js": {
       "expectCount": 5,
       "actualCount": 5,
       "undocumentLines": []
     },
+    "src/initializer/Mass.js": {
+      "expectCount": 5,
+      "actualCount": 5,
+      "undocumentLines": []
+    },
+    "src/initializer/Position.js": {
+      "expectCount": 6,
+      "actualCount": 5,
+      "undocumentLines": [
+        31
+      ]
+    },
+    "src/initializer/Radius.js": {
+      "expectCount": 6,
+      "actualCount": 6,
+      "undocumentLines": []
+    },
     "src/initializer/Rate.js": {
-      "expectCount": 8,
-      "actualCount": 8,
+      "expectCount": 9,
+      "actualCount": 9,
       "undocumentLines": []
     },
     "src/initializer/Velocity.js": {
@@ -317,6 +354,29 @@
         31,
         34,
         78
+      ]
+    },
+    "src/initializer/constants.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/initializer/types.js": {
+      "expectCount": 10,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ]
     },
     "src/math/ArraySpan.js": {
@@ -339,16 +399,6 @@
         9,
         10,
         14
-      ]
-    },
-    "src/math/Integration.js": {
-      "expectCount": 5,
-      "actualCount": 1,
-      "undocumentLines": [
-        8,
-        9,
-        12,
-        16
       ]
     },
     "src/math/Polar3D.js": {
@@ -401,6 +451,16 @@
         28,
         32
       ]
+    },
+    "src/math/constants.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
+    },
+    "src/math/integration.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/renderer/BaseRenderer.js": {
       "expectCount": 11,
@@ -469,6 +529,16 @@
         12
       ]
     },
+    "src/renderer/types.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
     "src/zone/BoxZone.js": {
       "expectCount": 16,
       "actualCount": 2,
@@ -480,13 +550,13 @@
         48,
         49,
         50,
-        51,
         52,
-        64,
-        72,
-        89,
-        121,
-        132
+        54,
+        66,
+        74,
+        91,
+        123,
+        134
       ]
     },
     "src/zone/LineZone.js": {
@@ -564,6 +634,18 @@
         18,
         21,
         25
+      ]
+    },
+    "src/zone/types.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
       ]
     }
   }

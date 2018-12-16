@@ -35,4 +35,19 @@ export default class Life extends Initializer {
       particle.life = Infinity;
     else particle.life = this.lifePan.getValue();
   }
+
+  /**
+   * Creates a Life initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @property {number} json.min - The minimum life time
+   * @property {number} json.max - The maximum life time
+   * @property {number} json.center - The center of the life time
+   * @return {Life}
+   */
+  static fromJSON(json) {
+    const { min, max, center = false } = json;
+
+    return new Life(min, max, center);
+  }
 }

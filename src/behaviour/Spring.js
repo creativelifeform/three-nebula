@@ -1,5 +1,6 @@
 import Behaviour from './Behaviour';
 import { Vector3D } from '../math';
+import { getEasingByName } from '../ease';
 
 export default class Spring extends Behaviour {
   /**
@@ -28,5 +29,11 @@ export default class Spring extends Behaviour {
     particle.v.x += (this.pos.x - particle.p.x) * this.spring;
     particle.v.y += (this.pos.y - particle.p.y) * this.spring;
     particle.v.z += (this.pos.z - particle.p.z) * this.spring;
+  }
+
+  static fromJSON(json) {
+    const { x, y, z, spring, friction, life, easing } = json;
+
+    return new Spring(x, y, z, spring, friction, life, getEasingByName(easing));
   }
 }

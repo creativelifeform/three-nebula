@@ -70,4 +70,8 @@ export default class Collision extends Behaviour {
       ? bParticle.mass / (aPartcile.mass + bParticle.mass)
       : 0.5;
   }
+
+  fromJSON(json) { // eslint-disable-line
+    // TODO
+  }
 }

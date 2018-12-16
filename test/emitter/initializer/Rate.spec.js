@@ -37,4 +37,23 @@ describe('initializer -> Rate', () => {
 
     done();
   });
+
+  it('should construct the initializer from a JSON object', done => {
+    const instance = Proton.Rate.fromJSON({
+      particlesMin: 3,
+      particlesMax: 10,
+      perSecondMin: 0.01,
+      perSecondMax: 0.05
+    });
+
+    assert.instanceOf(instance, Proton.Rate);
+    assert.instanceOf(instance.numPan, Proton.Span);
+    assert.instanceOf(instance.timePan, Proton.Span);
+    assert.equal(instance.numPan.a, 3);
+    assert.equal(instance.numPan.b, 10);
+    assert.equal(instance.timePan.a, 0.01);
+    assert.equal(instance.timePan.b, 0.05);
+
+    done();
+  });
 });

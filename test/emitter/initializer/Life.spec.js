@@ -49,4 +49,19 @@ describe('initializer -> Life', () => {
 
     done();
   });
+
+  it('should construct the initializer from a JSON object', done => {
+    const instance = Proton.Life.fromJSON({
+      min: 3,
+      max: 10,
+      center: true
+    });
+
+    assert.instanceOf(instance, Proton.Life);
+    assert.instanceOf(instance.lifePan, Proton.Span);
+    assert.equal(instance.lifePan.a, 3);
+    assert.equal(instance.lifePan.b, 10);
+
+    done();
+  });
 });

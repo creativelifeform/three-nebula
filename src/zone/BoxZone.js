@@ -48,7 +48,9 @@ export default class BoxZone extends Zone {
     this.width = w;
     this.height = h;
     this.depth = d;
+    // TODO Set this via an argument to the constructor
     this.friction = 0.85;
+    // TODO Set this via an argument to the constructor
     this.max = 6;
   }
 

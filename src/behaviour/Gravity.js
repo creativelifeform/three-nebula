@@ -1,4 +1,5 @@
 import Force from './Force';
+import { getEasingByName } from '../ease';
 
 /**
  * Behaviour that forces particles down the y axis.
@@ -15,5 +16,11 @@ export default class Gravity extends Force {
    */
   constructor(gravity, life, easing) {
     super(0, -gravity, 0, life, easing);
+  }
+
+  static fromJSON(json) {
+    const { gravity, life, easing } = json;
+
+    return new Gravity(gravity, life, getEasingByName(easing));
   }
 }
