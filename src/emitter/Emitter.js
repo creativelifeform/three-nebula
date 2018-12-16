@@ -9,6 +9,7 @@ import EventDispatcher, {
   PARTICLE_DEAD,
   PARTICLE_UPDATE
 } from '../events';
+import { INTEGRATION_TYPE_EULER, integrate } from '../math';
 
 import { InitializerUtil } from '../initializer';
 import Particle from '../core/Particle';
@@ -420,10 +421,12 @@ export default class Emitter extends Particle {
    * @return void
    */
   integrate(time) {
-    const { integrator } = this.parent;
+    const integrationType = this.parent
+      ? this.parent.integrationType
+      : INTEGRATION_TYPE_EULER;
     const damping = 1 - this.damping;
 
-    integrator.integrate(this, time, damping);
+    integrate(this, time, damping, integrationType);
 
     let i = this.particles.length;
 
@@ -431,7 +434,7 @@ export default class Emitter extends Particle {
       const particle = this.particles[i];
 
       particle.update(time, i);
-      integrator.integrate(particle, time, damping);
+      integrate(particle, time, damping, integrationType);
 
       this.parent && this.parent.dispatch(PARTICLE_UPDATE, particle);
       this.bindEmitterEvent && this.dispatch(PARTICLE_UPDATE, particle);

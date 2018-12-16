@@ -1,4 +1,3 @@
-import { EULER, POOL_MAX } from '../constants';
 import EventDispatcher, {
   EMITTER_ADDED,
   EMITTER_REMOVED,
@@ -8,7 +7,8 @@ import EventDispatcher, {
 
 import { DEFAULT_PROTON_DELTA } from './constants';
 import Emitter from '../emitter/Emitter';
-import Integration from '../math/Integration';
+import { INTEGRATION_TYPE_EULER } from '../math/constants';
+import { POOL_MAX } from '../constants';
 import Pool from './Pool';
 import fromJSON from './fromJSON';
 
@@ -27,10 +27,13 @@ export default class Proton {
    * that class from emitter.parent.integrator
    *
    * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
-   * @param {string} [integrationType=EULER] - The integration type to use
+   * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
    * @return void
    */
-  constructor(preParticles = POOL_MAX, integrationType = EULER) {
+  constructor(
+    preParticles = POOL_MAX,
+    integrationType = INTEGRATION_TYPE_EULER
+  ) {
     /**
      * @desc The number of particles to start with
      * @type {number}
@@ -38,16 +41,10 @@ export default class Proton {
     this.preParticles = preParticles;
 
     /**
-     * @desc The integration type to use
+     * @desc The integration algorithm type to use
      * @param {string}
      */
     this.integrationType = integrationType;
-
-    /**
-     * @desc The system's integrator algorithm
-     * @type {Integration}
-     */
-    this.integrator = new Integration(this.integrationType);
 
     /**
      * @desc The emitters in the particle system
