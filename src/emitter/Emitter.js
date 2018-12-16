@@ -13,7 +13,6 @@ import EventDispatcher, {
 import { InitializerUtil } from '../initializer';
 import Particle from '../core/Particle';
 import Util from '../utils/Util';
-import { integrator } from '../core/Proton';
 import uid from '../utils/uid';
 
 /**
@@ -421,6 +420,7 @@ export default class Emitter extends Particle {
    * @return void
    */
   integrate(time) {
+    const { integrator } = this.parent;
     const damping = 1 - this.damping;
 
     integrator.integrate(this, time, damping);

@@ -7,6 +7,7 @@ import EventDispatcher, {
 } from '../events';
 
 import { DEFAULT_PROTON_DELTA } from './constants';
+import Emitter from '../emitter/Emitter';
 import Integration from '../math/Integration';
 import Pool from './Pool';
 import fromJSON from './fromJSON';
@@ -43,6 +44,12 @@ export default class Proton {
     this.integrationType = integrationType;
 
     /**
+     * @desc The system's integrator algorithm
+     * @type {Integration}
+     */
+    this.integrator = new Integration(this.integrationType);
+
+    /**
      * @desc The emitters in the particle system
      * @type {array<Emitter>}
      */
@@ -68,16 +75,6 @@ export default class Proton {
   }
 
   /**
-   * Returns a new Integration instance based on the type passed to the constructor.
-   *
-   * @static
-   * @return {Integration}
-   */
-  static integrator() {
-    return new Integration(this.integrationType);
-  }
-
-  /**
    * Creates a Proton instance from a JSON object.
    *
    * @param {object} json - The JSON to create the Proton instance from
@@ -87,7 +84,7 @@ export default class Proton {
    * @return {Proton}
    */
   static fromJSON(json) {
-    return fromJSON(json);
+    return fromJSON(json, Proton, Emitter);
   }
 
   /**
@@ -229,9 +226,3 @@ export default class Proton {
     this.pool.destroy();
   }
 }
-
-/**
- * @desc The system's integrator
- * @type {Integration}
- */
-export const integrator = Proton.integrator();
