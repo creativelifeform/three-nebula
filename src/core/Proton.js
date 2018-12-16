@@ -166,14 +166,14 @@ export default class Proton {
    * Updates the particle system based on the delta passed.
    *
    * @example
-   * animate = timestamp => {
+   * animate = () => {
    *   threeRenderer.render(threeScene, threeCamera);
    *   proton.update();
    *   requestAnimationFrame(animate);
    * }
    * animate();
    *
-   * @param {number}
+   * @param {number} delta - Delta time
    * @return {Promise}
    */
   update(delta = DEFAULT_PROTON_DELTA) {

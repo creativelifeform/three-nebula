@@ -51808,14 +51808,14 @@ var Proton = function () {
      * Updates the particle system based on the delta passed.
      *
      * @example
-     * animate = timestamp => {
+     * animate = () => {
      *   threeRenderer.render(threeScene, threeCamera);
      *   proton.update();
      *   requestAnimationFrame(animate);
      * }
      * animate();
      *
-     * @param {number}
+     * @param {number} delta - Delta time
      * @return {Promise}
      */
 
@@ -54351,9 +54351,7 @@ module.exports = exports['default']; /**
                                       *
                                       * use like this log('+12',mc); log 12 times
                                       *
-                                      * @class Log
-                                      * @constructor
-                                      * @param {*} logInfo;
+                                      * @return void
                                       */
 
 /***/ }),
@@ -55033,6 +55031,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Sets the body property to be a THREE.Sprite on initialized particles.
  *
+ * NOTE The texture map MUST be set on the SpriteMaterial in the TextureLoader.load
+ * callback. Not doing so will cause WebGL buffer errors.
  */
 var BodySprite = function (_Initializer) {
   _inherits(BodySprite, _Initializer);
@@ -55042,6 +55042,8 @@ var BodySprite = function (_Initializer) {
    *
    * @param {string} texture - The sprite texture
    * @param {object} materialProperties - The sprite material properties
+   * @throws {Error} If the TextureLoader fails to load the supplied texture
+   * @return void
    */
   function BodySprite(texture) {
     var materialProperties = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_MATERIAL_PROPERTIES;
@@ -55068,6 +55070,8 @@ var BodySprite = function (_Initializer) {
        * @type {Sprite}
        */
       _this.sprite = new _three.Sprite(_this.material);
+    }, undefined, function (error) {
+      throw new Error(error);
     });
     return _this;
   }

@@ -120,6 +120,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@rohandeshpande/three-proton/src/initializer/bodysprite.js~bodysprite",
+    "class/src/initializer/BodySprite.js~BodySprite.html",
+    "<span>BodySprite</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/BodySprite.js</span>",
+    "class"
+  ],
+  [
     "@rohandeshpande/three-proton/src/math/box.js~box",
     "class/src/math/Box.js~Box.html",
     "<span>Box</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/Box.js</span>",
@@ -645,6 +651,12 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/core/pool.js~pool",
     "class/src/core/Pool.js~Pool.html",
     "<span>Pool</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/Pool.js</span>",
+    "class"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/position.js~position",
+    "class/src/initializer/Position.js~Position.html",
+    "<span>Position</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Position.js</span>",
     "class"
   ],
   [
@@ -1189,13 +1201,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -1495,13 +1507,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
@@ -1747,13 +1759,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
@@ -1825,13 +1837,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
@@ -2785,13 +2797,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -2865,6 +2877,48 @@ window.esdocSearchIndex = [
     "src/initializer/body.js~body.fromjson",
     "class/src/initializer/Body.js~Body.html#static-method-fromJSON",
     "src/initializer/Body.js~Body.fromJSON",
+    "method"
+  ],
+  [
+    "src/initializer/bodysprite.js",
+    "file/src/initializer/BodySprite.js.html",
+    "src/initializer/BodySprite.js",
+    "file"
+  ],
+  [
+    "src/initializer/bodysprite.js~bodysprite#constructor",
+    "class/src/initializer/BodySprite.js~BodySprite.html#instance-constructor-constructor",
+    "src/initializer/BodySprite.js~BodySprite#constructor",
+    "method"
+  ],
+  [
+    "src/initializer/bodysprite.js~bodysprite#initialize",
+    "class/src/initializer/BodySprite.js~BodySprite.html#instance-method-initialize",
+    "src/initializer/BodySprite.js~BodySprite#initialize",
+    "method"
+  ],
+  [
+    "src/initializer/bodysprite.js~bodysprite#material",
+    "class/src/initializer/BodySprite.js~BodySprite.html#instance-member-material",
+    "src/initializer/BodySprite.js~BodySprite#material",
+    "member"
+  ],
+  [
+    "src/initializer/bodysprite.js~bodysprite#sprite",
+    "class/src/initializer/BodySprite.js~BodySprite.html#instance-member-sprite",
+    "src/initializer/BodySprite.js~BodySprite#sprite",
+    "member"
+  ],
+  [
+    "src/initializer/bodysprite.js~bodysprite#texture",
+    "class/src/initializer/BodySprite.js~BodySprite.html#instance-member-texture",
+    "src/initializer/BodySprite.js~BodySprite#texture",
+    "member"
+  ],
+  [
+    "src/initializer/bodysprite.js~bodysprite.fromjson",
+    "class/src/initializer/BodySprite.js~BodySprite.html#static-method-fromJSON",
+    "src/initializer/BodySprite.js~BodySprite.fromJSON",
     "method"
   ],
   [
@@ -2973,6 +3027,42 @@ window.esdocSearchIndex = [
     "src/initializer/mass.js~mass.fromjson",
     "class/src/initializer/Mass.js~Mass.html#static-method-fromJSON",
     "src/initializer/Mass.js~Mass.fromJSON",
+    "method"
+  ],
+  [
+    "src/initializer/position.js",
+    "file/src/initializer/Position.js.html",
+    "src/initializer/Position.js",
+    "file"
+  ],
+  [
+    "src/initializer/position.js~position#addzone",
+    "class/src/initializer/Position.js~Position.html#instance-method-addZone",
+    "src/initializer/Position.js~Position#addZone",
+    "method"
+  ],
+  [
+    "src/initializer/position.js~position#constructor",
+    "class/src/initializer/Position.js~Position.html#instance-constructor-constructor",
+    "src/initializer/Position.js~Position#constructor",
+    "method"
+  ],
+  [
+    "src/initializer/position.js~position#reset",
+    "class/src/initializer/Position.js~Position.html#instance-method-reset",
+    "src/initializer/Position.js~Position#reset",
+    "method"
+  ],
+  [
+    "src/initializer/position.js~position#zones",
+    "class/src/initializer/Position.js~Position.html#instance-member-zones",
+    "src/initializer/Position.js~Position#zones",
+    "member"
+  ],
+  [
+    "src/initializer/position.js~position.fromjson",
+    "class/src/initializer/Position.js~Position.html#static-method-fromJSON",
+    "src/initializer/Position.js~Position.fromJSON",
     "method"
   ],
   [

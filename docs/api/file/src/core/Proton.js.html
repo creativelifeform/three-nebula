@@ -131,9 +131,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initializer">initializer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Body.js~Body.html">Body</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/BodySprite.js~BodySprite.html">BodySprite</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Initializer.js~Initializer.html">Initializer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Life.js~Life.html">Life</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Mass.js~Mass.html">Mass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Position.js~Position.html">Position</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Radius.js~Radius.html">Radius</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Rate.js~Rate.html">Rate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Velocity.js~Velocity.html">Velocity</a></span></span></li>
@@ -345,14 +347,14 @@ export default class Proton {
    * Updates the particle system based on the delta passed.
    *
    * @example
-   * animate = timestamp =&gt; {
+   * animate = () =&gt; {
    *   threeRenderer.render(threeScene, threeCamera);
    *   proton.update();
    *   requestAnimationFrame(animate);
    * }
    * animate();
    *
-   * @param {number}
+   * @param {number} delta - Delta time
    * @return {Promise}
    */
   update(delta = DEFAULT_PROTON_DELTA) {

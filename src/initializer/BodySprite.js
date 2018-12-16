@@ -6,6 +6,8 @@ import Initializer from './Initializer';
 /**
  * Sets the body property to be a THREE.Sprite on initialized particles.
  *
+ * NOTE The texture map MUST be set on the SpriteMaterial in the TextureLoader.load
+ * callback. Not doing so will cause WebGL buffer errors.
  */
 export default class BodySprite extends Initializer {
   /**
@@ -13,32 +15,41 @@ export default class BodySprite extends Initializer {
    *
    * @param {string} texture - The sprite texture
    * @param {object} materialProperties - The sprite material properties
+   * @throws {Error} If the TextureLoader fails to load the supplied texture
+   * @return void
    */
   constructor(texture, materialProperties = DEFAULT_MATERIAL_PROPERTIES) {
     super();
 
-    new TextureLoader().load(texture, map => {
-      /**
-       * @desc The texture for the THREE.SpriteMaterial map.
-       * @type {Texture}
-       */
-      this.texture = map;
+    new TextureLoader().load(
+      texture,
+      map => {
+        /**
+         * @desc The texture for the THREE.SpriteMaterial map.
+         * @type {Texture}
+         */
+        this.texture = map;
 
-      /**
-       * @desc THREE.SpriteMaterial instance.
-       * @type {SpriteMaterial}
-       */
-      this.material = new SpriteMaterial({
-        ...{ map },
-        ...materialProperties
-      });
+        /**
+         * @desc THREE.SpriteMaterial instance.
+         * @type {SpriteMaterial}
+         */
+        this.material = new SpriteMaterial({
+          ...{ map },
+          ...materialProperties
+        });
 
-      /**
-       * @desc THREE.Sprite instance.
-       * @type {Sprite}
-       */
-      this.sprite = new Sprite(this.material);
-    });
+        /**
+         * @desc THREE.Sprite instance.
+         * @type {Sprite}
+         */
+        this.sprite = new Sprite(this.material);
+      },
+      undefined,
+      error => {
+        throw new Error(error);
+      }
+    );
   }
 
   /**

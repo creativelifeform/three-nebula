@@ -21,14 +21,13 @@
   <body>
     <div id="container"></div>
     <script src="../js/stats.min.js"></script>
-    <script src="../js/three.js"></script>
+    <script src="../js/three.min.js"></script>
     <script src="../js/three-proton.js"></script>
     <script src="../js/lib/TrackballControls.js"></script>
     <script>
       var proton, emitter1, emitter2, radius;
       var camera, scene, renderer, stats, clock, spring, controls;
-      var animateTimes = 1;
-      var animatedTimes = 0;
+
       init();
 
       function init() {
@@ -116,8 +115,6 @@
         proton.addEmitter(emitter1);
         proton.addEmitter(emitter2);
         proton.addRenderer(new Proton.SpriteRenderer(scene));
-
-        console.log(proton);
       }
 
       function createSprite() {
@@ -133,7 +130,6 @@
 
       function createEmitter(x, y, color1, color2) {
         var emitter = new Proton.Emitter();
-        var body = new Proton.Body(createSprite());
 
         return emitter
           .setRate(
@@ -142,7 +138,7 @@
           .setInitializers([
             new Proton.Mass(1),
             new Proton.Life(2),
-            new Proton.BodySprite('./img/dot.png'),
+            new Proton.Body(createSprite()),
             new Proton.Radius(80),
             new Proton.Velocity(200, new Proton.Vector3D(0, 0, -1), 0)
           ])
@@ -162,13 +158,9 @@
 
       function animate() {
         stats.begin();
-
-        if (animatedTimes < animateTimes) {
-          animatedTimes++;
-          requestAnimationFrame(animate);
-          animateEmitter();
-          render();
-        }
+        requestAnimationFrame(animate);
+        animateEmitter();
+        render();
         stats.end();
       }
 

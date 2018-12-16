@@ -4,8 +4,10 @@ import * as Proton from '../../src';
 
 import Particles from '../../src/core/Proton';
 import chai from 'chai';
+import containsInvalidBehaviour from './fixtures/json/containsInvalidBehaviour.json';
+import containsInvalidInitializer from './fixtures/json/containsInvalidInitializer.json';
 import domino from 'domino';
-import eightdiagrams from './fixtures/eightdiagrams.json';
+import eightdiagrams from './fixtures/json/eightdiagrams.json';
 
 const { assert } = chai;
 
@@ -44,6 +46,26 @@ describe('fromJSON', () => {
 
     assert.equal(proton.emitters[0].p.x, eightdiagrams.emitters[0].position.x);
     assert.equal(proton.emitters[1].p.x, eightdiagrams.emitters[1].position.x);
+
+    done();
+  });
+
+  it('should throw an error if an invalid initializer type is supplied', done => {
+    assert.throws(
+      () => Particles.fromJSON(containsInvalidInitializer),
+      Error,
+      'The initializer type MrDoob is invalid or not yet supported'
+    );
+
+    done();
+  });
+
+  it('should throw an error if an invalid behavour type is supplied', done => {
+    assert.throws(
+      () => Particles.fromJSON(containsInvalidBehaviour),
+      Error,
+      'The behaviour type MrDoob is invalid or not yet supported'
+    );
 
     done();
   });

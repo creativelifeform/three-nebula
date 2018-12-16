@@ -1,133 +1,5 @@
 [
   {
-    "name": "Proton#update",
-    "filePath": "src/core/Proton.js",
-    "lines": [
-      {
-        "lineNumber": 164,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 165,
-        "line": "   * Updates the particle system based on the delta passed."
-      },
-      {
-        "lineNumber": 166,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 167,
-        "line": "   * @example"
-      },
-      {
-        "lineNumber": 168,
-        "line": "   * animate = timestamp => {"
-      },
-      {
-        "lineNumber": 169,
-        "line": "   *   threeRenderer.render(threeScene, threeCamera);"
-      },
-      {
-        "lineNumber": 170,
-        "line": "   *   proton.update();"
-      },
-      {
-        "lineNumber": 171,
-        "line": "   *   requestAnimationFrame(animate);"
-      },
-      {
-        "lineNumber": 172,
-        "line": "   * }"
-      },
-      {
-        "lineNumber": 173,
-        "line": "   * animate();"
-      },
-      {
-        "lineNumber": 174,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 175,
-        "line": "   * @param {number}"
-      },
-      {
-        "lineNumber": 176,
-        "line": "   * @return {Promise}"
-      },
-      {
-        "lineNumber": 177,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 178,
-        "line": "  update(delta = DEFAULT_PROTON_DELTA) {"
-      }
-    ],
-    "codeParams": [
-      "delta"
-    ],
-    "docParams": []
-  },
-  {
-    "name": "log",
-    "filePath": "src/debug/log.js",
-    "lines": [
-      {
-        "lineNumber": 0,
-        "line": "/**"
-      },
-      {
-        "lineNumber": 1,
-        "line": " * You can use this emit particles."
-      },
-      {
-        "lineNumber": 2,
-        "line": " *"
-      },
-      {
-        "lineNumber": 3,
-        "line": " * This method will console.log the fixed number of your info  in updata or requestAnimationFrame"
-      },
-      {
-        "lineNumber": 4,
-        "line": " *"
-      },
-      {
-        "lineNumber": 5,
-        "line": " * use like this log('+12',mc); log 12 times"
-      },
-      {
-        "lineNumber": 6,
-        "line": " *"
-      },
-      {
-        "lineNumber": 7,
-        "line": " * @class Log"
-      },
-      {
-        "lineNumber": 8,
-        "line": " * @constructor"
-      },
-      {
-        "lineNumber": 9,
-        "line": " * @param {*} logInfo;"
-      },
-      {
-        "lineNumber": 10,
-        "line": " */"
-      },
-      {
-        "lineNumber": 11,
-        "line": "export default function() {"
-      }
-    ],
-    "codeParams": [],
-    "docParams": [
-      "logInfo;"
-    ]
-  },
-  {
     "name": "BehaviourEmitter#addSelfBehaviour",
     "filePath": "src/emitter/BehaviourEmitter.js",
     "lines": [
@@ -225,6 +97,86 @@
     ],
     "docParams": [
       "particle"
+    ]
+  },
+  {
+    "name": "Position#reset",
+    "filePath": "src/initializer/Position.js",
+    "lines": [
+      {
+        "lineNumber": 21,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 22,
+        "line": "   * Resets the initializer properties."
+      },
+      {
+        "lineNumber": 23,
+        "line": "   * Clears all previously set zones and resets the zones according to args passed."
+      },
+      {
+        "lineNumber": 24,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 25,
+        "line": "   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position."
+      },
+      {
+        "lineNumber": 26,
+        "line": "   * @return void"
+      },
+      {
+        "lineNumber": 27,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 28,
+        "line": "  reset() {"
+      }
+    ],
+    "codeParams": [],
+    "docParams": [
+      "zones"
+    ]
+  },
+  {
+    "name": "Position#addZone",
+    "filePath": "src/initializer/Position.js",
+    "lines": [
+      {
+        "lineNumber": 41,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 42,
+        "line": "   * Adds a zone or zones to this.zones."
+      },
+      {
+        "lineNumber": 43,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 44,
+        "line": "   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position."
+      },
+      {
+        "lineNumber": 45,
+        "line": "   * @return void"
+      },
+      {
+        "lineNumber": 46,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 47,
+        "line": "  addZone() {"
+      }
+    ],
+    "codeParams": [],
+    "docParams": [
+      "zones"
     ]
   }
 ]
