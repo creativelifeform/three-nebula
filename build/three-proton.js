@@ -55050,59 +55050,37 @@ var BodySprite = function (_Initializer) {
 
     var _this = _possibleConstructorReturn(this, (BodySprite.__proto__ || Object.getPrototypeOf(BodySprite)).call(this));
 
-    _this.load(texture, materialProperties);
+    new _three.TextureLoader().load(texture, function (map) {
+      /**
+       * @desc The texture for the THREE.SpriteMaterial map.
+       * @type {Texture}
+       */
+      _this.texture = map;
+
+      /**
+       * @desc THREE.SpriteMaterial instance.
+       * @type {SpriteMaterial}
+       */
+      _this.material = new _three.SpriteMaterial(_extends({ map: map }, materialProperties));
+
+      /**
+       * @desc THREE.Sprite instance.
+       * @type {Sprite}
+       */
+      _this.sprite = new _three.Sprite(_this.material);
+    });
     return _this;
   }
 
   /**
-   * Loads the texture and sets the BodySprite properties.
+   * Sets the particle body to the sprite.
    *
-   * @param {string} texture - The sprite texture
-   * @param {object} materialProperties - The sprite material properties
-   * @return {Promise<BodySprite>}
+   * @param {Particle} particle - The particle to set the body of
+   * @return void
    */
 
 
   _createClass(BodySprite, [{
-    key: 'load',
-    value: function load(texture, materialProperties) {
-      var _this2 = this;
-
-      var loader = new _three.TextureLoader();
-
-      return new Promise(function (resolve) {
-        loader.load(texture, function (map) {
-          /**
-           * @desc The texture for the THREE.SpriteMaterial map.
-           * @type {Texture}
-           */
-          _this2.texture = map;
-
-          /**
-           * @desc THREE.SpriteMaterial instance.
-           * @type {SpriteMaterial}
-           */
-          _this2.material = new _three.SpriteMaterial(_extends({ map: map }, materialProperties));
-
-          /**
-           * @desc THREE.Sprite instance.
-           * @type {Sprite}
-           */
-          _this2.sprite = new _three.Sprite(_this2.material);
-
-          resolve(_this2);
-        });
-      });
-    }
-
-    /**
-     * Sets the particle body to the sprite.
-     *
-     * @param {Particle} particle - The particle to set the body of
-     * @return void
-     */
-
-  }, {
     key: 'initialize',
     value: function initialize(particle) {
       particle.body = this.sprite;
