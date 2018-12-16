@@ -85,7 +85,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromJSON">fromJSON</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_AGE">DEFAULT_AGE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ALPHA">DEFAULT_ALPHA</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BODY">DEFAULT_BODY</a></span></span></li>
@@ -153,12 +152,16 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_ZONE">INITIALIZER_TYPE_ZONE</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#math">math</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Box.js~Box.html">Box</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Polar3D.js~Polar3D.html">Polar3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Span.js~Span.html">Span</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createArraySpan">createArraySpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createSpan">createSpan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integrate">integrate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_EULER">INTEGRATION_TYPE_EULER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_RK2">INTEGRATION_TYPE_RK2</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_RK4">INTEGRATION_TYPE_RK4</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_VERLET">INTEGRATION_TYPE_VERLET</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#renderer">renderer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/BaseRenderer.js~BaseRenderer.html">BaseRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/CustomRenderer.js~CustomRenderer.html">CustomRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/MeshRenderer.js~MeshRenderer.html">MeshRenderer</a></span></span></li>
@@ -1787,42 +1790,13 @@ they interact with a zone.</p>
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-fromJSON">fromJSON</a></span></span><span class="code" data-ice="signature">(json: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-fromJSON">fromJSON</a></span></span><span class="code" data-ice="signature">(json: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, Proton: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, Emitter: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span>
         </p>
       </div>
       <div>
         
         
         <div data-ice="description"><p>Creates a Proton instance from a JSON object.</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          <span data-ice="kind-icon" class="kind-variable">V</span>
-          
-          
-          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>The system&apos;s integrator</p>
 </div>
       </div>
     </td>
@@ -3814,35 +3788,6 @@ be rendered by emitting them, and store all particle initializers and behaviours
           <span data-ice="kind-icon" class="kind-class">C</span>
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>&#x6570;&#x503C;&#x79EF;&#x5206; Numerical integration</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          <span data-ice="kind-icon" class="kind-class">C</span>
-          
-          
           <span class="code" data-ice="name"><span><a href="class/src/math/Polar3D.js~Polar3D.html">Polar3D</a></span></span>
         </p>
       </div>
@@ -3957,6 +3902,147 @@ be rendered by emitting them, and store all particle initializers and behaviours
           
           
           <span class="code" data-ice="name"><span><a href="function/index.html#static-function-createSpan">createSpan</a></span></span><span class="code" data-ice="signature">(a: <span>*</span>, b: <span>*</span>, c: <span>*</span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-function">F</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-integrate">integrate</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, damping: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, type: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Performs the chosen integration on the particle.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-variable">V</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_EULER">INTEGRATION_TYPE_EULER</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-variable">V</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_RK2">INTEGRATION_TYPE_RK2</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-variable">V</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_RK4">INTEGRATION_TYPE_RK4</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-variable">V</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_VERLET">INTEGRATION_TYPE_VERLET</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>

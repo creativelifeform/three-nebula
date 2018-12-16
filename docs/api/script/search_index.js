@@ -486,15 +486,33 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/math/constants.js~integration_type_euler",
+    "variable/index.html#static-variable-INTEGRATION_TYPE_EULER",
+    "<span>INTEGRATION_TYPE_EULER</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/math/constants.js~integration_type_rk2",
+    "variable/index.html#static-variable-INTEGRATION_TYPE_RK2",
+    "<span>INTEGRATION_TYPE_RK2</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/math/constants.js~integration_type_rk4",
+    "variable/index.html#static-variable-INTEGRATION_TYPE_RK4",
+    "<span>INTEGRATION_TYPE_RK4</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/math/constants.js~integration_type_verlet",
+    "variable/index.html#static-variable-INTEGRATION_TYPE_VERLET",
+    "<span>INTEGRATION_TYPE_VERLET</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/initializer/initializer.js~initializer",
     "class/src/initializer/Initializer.js~Initializer.html",
     "<span>Initializer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Initializer.js</span>",
-    "class"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/math/integration.js~integration",
-    "class/src/math/Integration.js~Integration.html",
-    "<span>Integration</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/Integration.js</span>",
     "class"
   ],
   [
@@ -894,10 +912,10 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/proton.js~integrator",
-    "variable/index.html#static-variable-integrator",
-    "<span>integrator</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/Proton.js</span>",
-    "variable"
+    "@rohandeshpande/three-proton/src/math/integration.js~integrate",
+    "function/index.html#static-function-integrate",
+    "<span>integrate</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/integration.js</span>",
+    "function"
   ],
   [
     "@rohandeshpande/three-proton/src/debug/log.js~log",
@@ -1801,13 +1819,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
@@ -2367,12 +2385,6 @@ window.esdocSearchIndex = [
     "src/core/proton.js~proton.fromjson",
     "class/src/core/Proton.js~Proton.html#static-method-fromJSON",
     "src/core/Proton.js~Proton.fromJSON",
-    "method"
-  ],
-  [
-    "src/core/proton.js~proton.integrator",
-    "class/src/core/Proton.js~Proton.html#static-method-integrator",
-    "src/core/Proton.js~Proton.integrator",
     "method"
   ],
   [
@@ -3372,36 +3384,6 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/math/integration.js",
-    "file/src/math/Integration.js.html",
-    "src/math/Integration.js",
-    "file"
-  ],
-  [
-    "src/math/integration.js~integration#constructor",
-    "class/src/math/Integration.js~Integration.html#instance-constructor-constructor",
-    "src/math/Integration.js~Integration#constructor",
-    "method"
-  ],
-  [
-    "src/math/integration.js~integration#euler",
-    "class/src/math/Integration.js~Integration.html#instance-method-euler",
-    "src/math/Integration.js~Integration#euler",
-    "method"
-  ],
-  [
-    "src/math/integration.js~integration#integrate",
-    "class/src/math/Integration.js~Integration.html#instance-method-integrate",
-    "src/math/Integration.js~Integration#integrate",
-    "method"
-  ],
-  [
-    "src/math/integration.js~integration#type",
-    "class/src/math/Integration.js~Integration.html#instance-member-type",
-    "src/math/Integration.js~Integration#type",
-    "member"
-  ],
-  [
     "src/math/mathutils.js",
     "file/src/math/MathUtils.js.html",
     "src/math/MathUtils.js",
@@ -3612,9 +3594,21 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/math/constants.js",
+    "file/src/math/constants.js.html",
+    "src/math/constants.js",
+    "file"
+  ],
+  [
     "src/math/index.js",
     "file/src/math/index.js.html",
     "src/math/index.js",
+    "file"
+  ],
+  [
+    "src/math/integration.js",
+    "file/src/math/integration.js.html",
+    "src/math/integration.js",
     "file"
   ],
   [

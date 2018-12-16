@@ -85,7 +85,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromJSON">fromJSON</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_AGE">DEFAULT_AGE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ALPHA">DEFAULT_ALPHA</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BODY">DEFAULT_BODY</a></span></span></li>
@@ -153,12 +152,16 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_ZONE">INITIALIZER_TYPE_ZONE</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#math">math</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Box.js~Box.html">Box</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Polar3D.js~Polar3D.html">Polar3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Span.js~Span.html">Span</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createArraySpan">createArraySpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createSpan">createSpan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integrate">integrate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_EULER">INTEGRATION_TYPE_EULER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_RK2">INTEGRATION_TYPE_RK2</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_RK4">INTEGRATION_TYPE_RK4</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_VERLET">INTEGRATION_TYPE_VERLET</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#renderer">renderer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/BaseRenderer.js~BaseRenderer.html">BaseRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/CustomRenderer.js~CustomRenderer.html">CustomRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/MeshRenderer.js~MeshRenderer.html">MeshRenderer</a></span></span></li>
@@ -185,7 +188,7 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">323/612</span></h1>
+<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">326/611</span></h1>
 
 <table class="files-summary" data-ice="files" data-use-coverage="true">
   <thead>
@@ -390,12 +393,11 @@
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/core/Proton.js.html">src/core/Proton.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span>
-<span><a href="variable/index.html#static-variable-integrator">integrator</a></span></td>
-      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">19/19</span></td>
-      <td style="display: none;" data-ice="size">5468 byte</td>
-      <td style="display: none;" data-ice="lines">237</td>
-      <td style="display: none;" data-ice="updated">2018-12-01 07:00:09 (UTC)</td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">17/17</span></td>
+      <td style="display: none;" data-ice="size">5256 byte</td>
+      <td style="display: none;" data-ice="lines">225</td>
+      <td style="display: none;" data-ice="updated">2018-12-01 10:24:22 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/core/constants.js.html">src/core/constants.js</a></span></td>
@@ -427,9 +429,9 @@
       <td data-ice="filePath"><span><a href="file/src/core/fromJSON.js.html">src/core/fromJSON.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-fromJSON">fromJSON</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">4/4</span></td>
-      <td style="display: none;" data-ice="size">2620 byte</td>
+      <td style="display: none;" data-ice="size">2663 byte</td>
       <td style="display: none;" data-ice="lines">102</td>
-      <td style="display: none;" data-ice="updated">2018-12-01 05:48:23 (UTC)</td>
+      <td style="display: none;" data-ice="updated">2018-12-01 08:00:10 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/core/index.js.html">src/core/index.js</a></span></td>
@@ -496,12 +498,12 @@
       <td style="display: none;" data-ice="updated">2018-11-07 07:02:22 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/emitter/Emitter.js.html#errorLines=158,342,393,485,486,95,96">src/emitter/Emitter.js</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/emitter/Emitter.js.html#errorLines=158,342,393,488,489,95,96">src/emitter/Emitter.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></td>
       <td class="coverage"><span data-ice="coverage">83 %</span><span data-ice="coverageCount" class="coverage-count">35/42</span></td>
-      <td style="display: none;" data-ice="size">11374 byte</td>
-      <td style="display: none;" data-ice="lines">496</td>
-      <td style="display: none;" data-ice="updated">2018-12-06 04:09:10 (UTC)</td>
+      <td style="display: none;" data-ice="size">11510 byte</td>
+      <td style="display: none;" data-ice="lines">499</td>
+      <td style="display: none;" data-ice="updated">2018-12-01 19:33:35 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/emitter/FollowEmitter.js.html#errorLines=21,22,23,27,5,65,66,67,70">src/emitter/FollowEmitter.js</a></span></td>
@@ -699,14 +701,6 @@
       <td style="display: none;" data-ice="updated">2018-11-07 07:02:22 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/math/Integration.js.html#errorLines=12,16,8,9">src/math/Integration.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></td>
-      <td class="coverage"><span data-ice="coverage">20 %</span><span data-ice="coverageCount" class="coverage-count">1/5</span></td>
-      <td style="display: none;" data-ice="size">676 byte</td>
-      <td style="display: none;" data-ice="lines">27</td>
-      <td style="display: none;" data-ice="updated">2018-12-06 04:09:03 (UTC)</td>
-    </tr>
-<tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/math/MathUtils.js.html">src/math/MathUtils.js</a></span></td>
       <td data-ice="identifier" class="identifiers">-</td>
       <td class="coverage"><span data-ice="coverage">-</span></td>
@@ -740,12 +734,31 @@
       <td style="display: none;" data-ice="updated">2018-12-01 10:35:16 (UTC)</td>
     </tr>
 <tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/math/constants.js.html">src/math/constants.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_EULER">INTEGRATION_TYPE_EULER</a></span>
+<span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_RK2">INTEGRATION_TYPE_RK2</a></span>
+<span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_RK4">INTEGRATION_TYPE_RK4</a></span>
+<span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_VERLET">INTEGRATION_TYPE_VERLET</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">4/4</span></td>
+      <td style="display: none;" data-ice="size">599 byte</td>
+      <td style="display: none;" data-ice="lines">23</td>
+      <td style="display: none;" data-ice="updated">2018-12-01 19:31:23 (UTC)</td>
+    </tr>
+<tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/math/index.js.html">src/math/index.js</a></span></td>
       <td data-ice="identifier" class="identifiers">-</td>
       <td class="coverage"><span data-ice="coverage">-</span></td>
-      <td style="display: none;" data-ice="size">369 byte</td>
-      <td style="display: none;" data-ice="lines">7</td>
-      <td style="display: none;" data-ice="updated">2018-12-06 04:09:10 (UTC)</td>
+      <td style="display: none;" data-ice="size">487 byte</td>
+      <td style="display: none;" data-ice="lines">13</td>
+      <td style="display: none;" data-ice="updated">2018-12-01 19:32:55 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/math/integration.js.html">src/math/integration.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-integrate">integrate</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">2/2</span></td>
+      <td style="display: none;" data-ice="size">1273 byte</td>
+      <td style="display: none;" data-ice="lines">48</td>
+      <td style="display: none;" data-ice="updated">2018-12-01 10:32:19 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/renderer/BaseRenderer.js.html#errorLines=13,14,17,20,47,8,9">src/renderer/BaseRenderer.js</a></span></td>

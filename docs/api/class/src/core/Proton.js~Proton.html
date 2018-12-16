@@ -85,7 +85,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromJSON">fromJSON</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_AGE">DEFAULT_AGE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ALPHA">DEFAULT_ALPHA</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BODY">DEFAULT_BODY</a></span></span></li>
@@ -153,12 +152,16 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_ZONE">INITIALIZER_TYPE_ZONE</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#math">math</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Box.js~Box.html">Box</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Polar3D.js~Polar3D.html">Polar3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Span.js~Span.html">Span</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createArraySpan">createArraySpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createSpan">createSpan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integrate">integrate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_EULER">INTEGRATION_TYPE_EULER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_RK2">INTEGRATION_TYPE_RK2</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_RK4">INTEGRATION_TYPE_RK4</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_VERLET">INTEGRATION_TYPE_VERLET</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#renderer">renderer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/BaseRenderer.js~BaseRenderer.html">BaseRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/CustomRenderer.js~CustomRenderer.html">CustomRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/MeshRenderer.js~MeshRenderer.html">MeshRenderer</a></span></span></li>
@@ -186,13 +189,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Proton from &apos;<span><a href="file/src/core/Proton.js.html#lineNumber20">@rohandeshpande/three-proton/src/core/Proton.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Proton from &apos;<span><a href="file/src/core/Proton.js.html#lineNumber21">@rohandeshpande/three-proton/src/core/Proton.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/core/Proton.js.html#lineNumber20">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/core/Proton.js.html#lineNumber21">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -253,35 +256,6 @@ and behaviours.</p>
         
         
         <div data-ice="description"><p>Creates a Proton instance from a JSON object.</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      <span data-ice="static">static</span>
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#static-method-integrator">integrator</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Returns a new Integration instance based on the type passed to the constructor.</p>
 </div>
       </div>
     </td>
@@ -411,7 +385,7 @@ and behaviours.</p>
       <div>
         
         
-        <div data-ice="description"><p>The integration type to use</p>
+        <div data-ice="description"><p>The integration algorithm type to use</p>
 </div>
       </div>
     </td>
@@ -767,7 +741,7 @@ and behaviours.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber89">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber83">source</a></span></span>
     </span>
   </h3>
 
@@ -849,62 +823,6 @@ and behaviours.</p>
   
   
 </div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="static-method-integrator">
-    <span class="access" data-ice="access">public</span>
-    <span data-ice="static">static</span>
-    
-    
-    
-    
-    <span class="code" data-ice="name">integrator</span><span class="code" data-ice="signature">(): <span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber76">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Returns a new Integration instance based on the type passed to the constructor.</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
 </div>
 <div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
 
@@ -920,7 +838,7 @@ and behaviours.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber32">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber33">source</a></span></span>
     </span>
   </h3>
 
@@ -955,7 +873,7 @@ that class from emitter.parent.integrator</p>
       <td data-ice="name" class="code" data-depth="0">integrationType</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
-<li>default: EULER</li></ul></td>
+<li>default: INTEGRATION_TYPE_EULER</li></ul></td>
       <td data-ice="description"><p>The integration type to use</p>
 </td>
     </tr>
@@ -1009,7 +927,7 @@ that class from emitter.parent.integrator</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber49">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber53">source</a></span></span>
     </span>
   </h3>
 
@@ -1053,7 +971,7 @@ that class from emitter.parent.integrator</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber67">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber71">source</a></span></span>
     </span>
   </h3>
 
@@ -1097,14 +1015,14 @@ that class from emitter.parent.integrator</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber43">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber47">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>The integration type to use</p>
+  <div data-ice="description"><p>The integration algorithm type to use</p>
 </div>
 
   
@@ -1141,7 +1059,7 @@ that class from emitter.parent.integrator</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber61">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber65">source</a></span></span>
     </span>
   </h3>
 
@@ -1185,7 +1103,7 @@ that class from emitter.parent.integrator</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber37">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber41">source</a></span></span>
     </span>
   </h3>
 
@@ -1229,7 +1147,7 @@ that class from emitter.parent.integrator</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber55">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber59">source</a></span></span>
     </span>
   </h3>
 
@@ -1276,7 +1194,7 @@ that class from emitter.parent.integrator</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber136">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber130">source</a></span></span>
     </span>
   </h3>
 
@@ -1350,7 +1268,7 @@ Dispatches the EMITTER_ADDED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber109">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber103">source</a></span></span>
     </span>
   </h3>
 
@@ -1423,7 +1341,7 @@ Dispatches the EMITTER_ADDED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber219">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber213">source</a></span></span>
     </span>
   </h3>
 
@@ -1480,7 +1398,7 @@ Dispatches the EMITTER_ADDED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber99">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber93">source</a></span></span>
     </span>
   </h3>
 
@@ -1549,7 +1467,7 @@ Dispatches the EMITTER_ADDED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber202">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber196">source</a></span></span>
     </span>
   </h3>
 
@@ -1605,7 +1523,7 @@ Dispatches the EMITTER_ADDED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber152">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber146">source</a></span></span>
     </span>
   </h3>
 
@@ -1679,7 +1597,7 @@ Dispatches the EMITTER_REMOVED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber122">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber116">source</a></span></span>
     </span>
   </h3>
 
@@ -1751,7 +1669,7 @@ Dispatches the EMITTER_REMOVED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber179">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber173">source</a></span></span>
     </span>
   </h3>
 

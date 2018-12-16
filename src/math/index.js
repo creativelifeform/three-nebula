@@ -1,6 +1,6 @@
 export { default as ArraySpan, createArraySpan } from './ArraySpan';
 export { default as Box } from './Box';
-export { default as Integration, integrate } from './Integration';
+export { integrate } from './integration';
 export { default as MathUtils } from './MathUtils';
 export { default as Polar3D } from './Polar3D';
 export { default as Span, createSpan } from './Span';

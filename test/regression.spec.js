@@ -40,7 +40,7 @@ describe('regression', () => {
       'ArraySpan',
       'createArraySpan',
       'Box',
-      'Integration',
+      'integrate',
       'MathUtils',
       'Polar3D',
       'Span',

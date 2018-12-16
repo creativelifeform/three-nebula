@@ -85,7 +85,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromJSON">fromJSON</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-integrator">integrator</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_AGE">DEFAULT_AGE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ALPHA">DEFAULT_ALPHA</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BODY">DEFAULT_BODY</a></span></span></li>
@@ -153,12 +152,16 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_ZONE">INITIALIZER_TYPE_ZONE</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#math">math</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Box.js~Box.html">Box</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Integration.js~Integration.html">Integration</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Polar3D.js~Polar3D.html">Polar3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Span.js~Span.html">Span</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createArraySpan">createArraySpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createSpan">createSpan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integrate">integrate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_EULER">INTEGRATION_TYPE_EULER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_RK2">INTEGRATION_TYPE_RK2</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_RK4">INTEGRATION_TYPE_RK4</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_VERLET">INTEGRATION_TYPE_VERLET</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#renderer">renderer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/BaseRenderer.js~BaseRenderer.html">BaseRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/CustomRenderer.js~CustomRenderer.html">CustomRenderer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/renderer/MeshRenderer.js~MeshRenderer.html">MeshRenderer</a></span></span></li>
@@ -186,8 +189,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/core/Proton.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { EULER, POOL_MAX } from &apos;../constants&apos;;
-import EventDispatcher, {
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import EventDispatcher, {
   EMITTER_ADDED,
   EMITTER_REMOVED,
   PROTON_UPDATE,
@@ -195,7 +197,9 @@ import EventDispatcher, {
 } from &apos;../events&apos;;
 
 import { DEFAULT_PROTON_DELTA } from &apos;./constants&apos;;
-import Integration from &apos;../math/Integration&apos;;
+import Emitter from &apos;../emitter/Emitter&apos;;
+import { INTEGRATION_TYPE_EULER } from &apos;../math/constants&apos;;
+import { POOL_MAX } from &apos;../constants&apos;;
 import Pool from &apos;./Pool&apos;;
 import fromJSON from &apos;./fromJSON&apos;;
 
@@ -214,10 +218,13 @@ export default class Proton {
    * that class from emitter.parent.integrator
    *
    * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
-   * @param {string} [integrationType=EULER] - The integration type to use
+   * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
    * @return void
    */
-  constructor(preParticles = POOL_MAX, integrationType = EULER) {
+  constructor(
+    preParticles = POOL_MAX,
+    integrationType = INTEGRATION_TYPE_EULER
+  ) {
     /**
      * @desc The number of particles to start with
      * @type {number}
@@ -225,7 +232,7 @@ export default class Proton {
     this.preParticles = preParticles;
 
     /**
-     * @desc The integration type to use
+     * @desc The integration algorithm type to use
      * @param {string}
      */
     this.integrationType = integrationType;
@@ -256,16 +263,6 @@ export default class Proton {
   }
 
   /**
-   * Returns a new Integration instance based on the type passed to the constructor.
-   *
-   * @static
-   * @return {Integration}
-   */
-  static integrator() {
-    return new Integration(this.integrationType);
-  }
-
-  /**
    * Creates a Proton instance from a JSON object.
    *
    * @param {object} json - The JSON to create the Proton instance from
@@ -275,7 +272,7 @@ export default class Proton {
    * @return {Proton}
    */
   static fromJSON(json) {
-    return fromJSON(json);
+    return fromJSON(json, Proton, Emitter);
   }
 
   /**
@@ -417,12 +414,6 @@ export default class Proton {
     this.pool.destroy();
   }
 }
-
-/**
- * @desc The system&apos;s integrator
- * @type {Integration}
- */
-export const integrator = Proton.integrator();
 </code></pre>
 
 </div>
