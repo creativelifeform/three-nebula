@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 432,
+  "end": 458,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 432,
+    "end": 458,
     "loc": {
       "start": {
         "line": 1,
@@ -727,7 +727,7 @@
       {
         "type": "ExportNamedDeclaration",
         "start": 382,
-        "end": 431,
+        "end": 457,
         "loc": {
           "start": {
             "line": 9,
@@ -735,7 +735,7 @@
           },
           "end": {
             "line": 9,
-            "column": 49
+            "column": 75
           }
         },
         "declaration": null,
@@ -743,7 +743,7 @@
           {
             "type": "ExportSpecifier",
             "start": 391,
-            "end": 410,
+            "end": 405,
             "loc": {
               "start": {
                 "line": 9,
@@ -751,13 +751,13 @@
               },
               "end": {
                 "line": 9,
-                "column": 28
+                "column": 23
               }
             },
             "local": {
               "type": "Identifier",
               "start": 391,
-              "end": 398,
+              "end": 405,
               "loc": {
                 "start": {
                   "line": 9,
@@ -765,43 +765,141 @@
                 },
                 "end": {
                   "line": 9,
-                  "column": 16
+                  "column": 23
                 },
-                "identifierName": "default"
+                "identifierName": "VectorVelocity"
               },
-              "name": "default"
+              "name": "VectorVelocity"
             },
             "exported": {
               "type": "Identifier",
-              "start": 402,
-              "end": 410,
+              "start": 391,
+              "end": 405,
               "loc": {
                 "start": {
                   "line": 9,
-                  "column": 20
+                  "column": 9
                 },
                 "end": {
                   "line": 9,
-                  "column": 28
+                  "column": 23
                 },
-                "identifierName": "Velocity"
+                "identifierName": "VectorVelocity"
               },
-              "name": "Velocity"
+              "name": "VectorVelocity"
+            }
+          },
+          {
+            "type": "ExportSpecifier",
+            "start": 407,
+            "end": 420,
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 25
+              },
+              "end": {
+                "line": 9,
+                "column": 38
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 407,
+              "end": 420,
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 25
+                },
+                "end": {
+                  "line": 9,
+                  "column": 38
+                },
+                "identifierName": "PolarVelocity"
+              },
+              "name": "PolarVelocity"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 407,
+              "end": 420,
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 25
+                },
+                "end": {
+                  "line": 9,
+                  "column": 38
+                },
+                "identifierName": "PolarVelocity"
+              },
+              "name": "PolarVelocity"
+            }
+          },
+          {
+            "type": "ExportSpecifier",
+            "start": 422,
+            "end": 436,
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 40
+              },
+              "end": {
+                "line": 9,
+                "column": 54
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 422,
+              "end": 436,
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 40
+                },
+                "end": {
+                  "line": 9,
+                  "column": 54
+                },
+                "identifierName": "RadialVelocity"
+              },
+              "name": "RadialVelocity"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 422,
+              "end": 436,
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 40
+                },
+                "end": {
+                  "line": 9,
+                  "column": 54
+                },
+                "identifierName": "RadialVelocity"
+              },
+              "name": "RadialVelocity"
             }
           }
         ],
         "source": {
           "type": "StringLiteral",
-          "start": 418,
-          "end": 430,
+          "start": 444,
+          "end": 456,
           "loc": {
             "start": {
               "line": 9,
-              "column": 36
+              "column": 62
             },
             "end": {
               "line": 9,
-              "column": 48
+              "column": 74
             }
           },
           "extra": {
@@ -2767,8 +2865,33 @@
     },
     {
       "type": {
-        "label": "default",
-        "keyword": "default",
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "VectorVelocity",
+      "start": 391,
+      "end": 405,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 9
+        },
+        "end": {
+          "line": 9,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
         "beforeExpr": true,
         "startsExpr": false,
         "rightAssociative": false,
@@ -2779,17 +2902,16 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "default",
-      "start": 391,
-      "end": 398,
+      "start": 405,
+      "end": 406,
       "loc": {
         "start": {
           "line": 9,
-          "column": 9
+          "column": 23
         },
         "end": {
           "line": 9,
-          "column": 16
+          "column": 24
         }
       }
     },
@@ -2805,17 +2927,43 @@
         "postfix": false,
         "binop": null
       },
-      "value": "as",
-      "start": 399,
-      "end": 401,
+      "value": "PolarVelocity",
+      "start": 407,
+      "end": 420,
       "loc": {
         "start": {
           "line": 9,
-          "column": 17
+          "column": 25
         },
         "end": {
           "line": 9,
-          "column": 19
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 420,
+      "end": 421,
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 38
+        },
+        "end": {
+          "line": 9,
+          "column": 39
         }
       }
     },
@@ -2831,17 +2979,17 @@
         "postfix": false,
         "binop": null
       },
-      "value": "Velocity",
-      "start": 402,
-      "end": 410,
+      "value": "RadialVelocity",
+      "start": 422,
+      "end": 436,
       "loc": {
         "start": {
           "line": 9,
-          "column": 20
+          "column": 40
         },
         "end": {
           "line": 9,
-          "column": 28
+          "column": 54
         }
       }
     },
@@ -2857,16 +3005,16 @@
         "postfix": false,
         "binop": null
       },
-      "start": 411,
-      "end": 412,
+      "start": 437,
+      "end": 438,
       "loc": {
         "start": {
           "line": 9,
-          "column": 29
+          "column": 55
         },
         "end": {
           "line": 9,
-          "column": 30
+          "column": 56
         }
       }
     },
@@ -2883,16 +3031,16 @@
         "binop": null
       },
       "value": "from",
-      "start": 413,
-      "end": 417,
+      "start": 439,
+      "end": 443,
       "loc": {
         "start": {
           "line": 9,
-          "column": 31
+          "column": 57
         },
         "end": {
           "line": 9,
-          "column": 35
+          "column": 61
         }
       }
     },
@@ -2910,16 +3058,16 @@
         "updateContext": null
       },
       "value": "./Velocity",
-      "start": 418,
-      "end": 430,
+      "start": 444,
+      "end": 456,
       "loc": {
         "start": {
           "line": 9,
-          "column": 36
+          "column": 62
         },
         "end": {
           "line": 9,
-          "column": 48
+          "column": 74
         }
       }
     },
@@ -2936,16 +3084,16 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 430,
-      "end": 431,
+      "start": 456,
+      "end": 457,
       "loc": {
         "start": {
           "line": 9,
-          "column": 48
+          "column": 74
         },
         "end": {
           "line": 9,
-          "column": 49
+          "column": 75
         }
       }
     },
@@ -2962,8 +3110,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 432,
-      "end": 432,
+      "start": 458,
+      "end": 458,
       "loc": {
         "start": {
           "line": 10,

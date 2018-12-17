@@ -125,7 +125,7 @@
         emitter.addInitializer(new Proton.Radius(100));
         emitter.addInitializer(new Proton.Life(5, 6));
         emitter.addInitializer(new Proton.Body(sphereMesh));
-        emitter.addInitializer(new Proton.Velocity(new Proton.Span(300, 500), new Proton.Vector3D(0, 1, 0), 30));
+        emitter.addInitializer(new Proton.RadialVelocity(new Proton.Span(300, 500), new Proton.Vector3D(0, 1, 0), 30));
         //emitter.addBehaviour(new Proton.Alpha(1, 0));
         emitter.addBehaviour(new Proton.Scale(1));
         emitter.addBehaviour(new Proton.Gravity(4));

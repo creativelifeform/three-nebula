@@ -81,7 +81,7 @@
         stats.dom.style.top = '0px';
         container.appendChild(stats.dom);
     }
-    
+
     function addProton() {
         proton = new Proton.default();
         emitter = new Proton.Emitter();
@@ -96,7 +96,7 @@
                 new Proton.Radius(6, 12),
                 new Proton.Body(createSprite()),
                 new Proton.Life(3),
-                new Proton.Velocity(45, new Proton.Vector3D(0, 1, 0), 180)
+                new Proton.RadialVelocity(45, new Proton.Vector3D(0, 1, 0), 180)
             ])
             .setBehaviours([
                 new Proton.Alpha(1, 0),

@@ -116,7 +116,7 @@
 
         emitter.addInitializer(new Proton.Life(5, 10));
         emitter.addInitializer(new Proton.Body(createSnow()));
-        emitter.addInitializer(new Proton.Velocity(0, new Proton.Vector3D(0, -1, 0), 90));
+        emitter.addInitializer(new Proton.RadialVelocity(0, new Proton.Vector3D(0, -1, 0), 90));
 
         emitter.addBehaviour(new Proton.RandomDrift(10, 1, 10, .05));
         emitter.addBehaviour(new Proton.Rotate("random", "random"));
