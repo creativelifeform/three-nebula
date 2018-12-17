@@ -98,7 +98,7 @@
         emitter.addInitializer(new Proton.Life(2, 4));
         emitter.addInitializer(new Proton.Body(createSprite()));
         emitter.addInitializer(new Proton.Position(new Proton.BoxZone(100)));
-        emitter.addInitializer(new Proton.Velocity(200, new Proton.Vector3D(0, 1, 1), 180));
+        emitter.addInitializer(new Proton.RadialVelocity(200, new Proton.Vector3D(0, 1, 1), 180));
 
         // //emitter.addBehaviour(new Proton.RandomDrift(30, 30, 30, .05));
         emitter.addBehaviour(new Proton.Rotate("random", "random"));

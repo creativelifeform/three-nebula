@@ -106,7 +106,7 @@
         emitter.addInitializer(new Proton.Life(2, 4));
         emitter.addInitializer(new Proton.Body(createBox()));
 
-        emitter.addInitializer(new Proton.Velocity(300, new Proton.Vector3D(0, 1, 0), 50));
+        emitter.addInitializer(new Proton.RadialVelocity(300, new Proton.Vector3D(0, 1, 0), 50));
 
         // //emitter.addBehaviour(new Proton.RandomDrift(30, 30, 30, .05));
         emitter.addBehaviour(new Proton.Rotate("random", "random"));

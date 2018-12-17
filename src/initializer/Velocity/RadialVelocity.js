@@ -10,7 +10,7 @@ export default class RadialVelocity extends Velocity {
   /**
    * Constructs a RadialVelocity initializer.
    *
-   * @param {number} radius - The velocity radius
+   * @param {number|Span} radius - The velocity radius
    * @param {Vector3D} vector3d - The directional vector for the velocity
    * @param {number} theta - The theta angle to use
    * @return void

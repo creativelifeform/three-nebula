@@ -30,7 +30,6 @@ export default class Velocity extends Initializer {
 
 /**
  * Sets the particle's initial velocity.
- * BUG? This seems to always set the dirVec to 0, 0, 0 in the case of polar3d velocity.
  *
  * @singleton
  * @param {Particle} particle - the particle to initialize the property on

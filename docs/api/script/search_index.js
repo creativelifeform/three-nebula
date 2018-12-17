@@ -666,6 +666,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@rohandeshpande/three-proton/src/initializer/velocity/polarvelocity.js~polarvelocity",
+    "class/src/initializer/Velocity/PolarVelocity.js~PolarVelocity.html",
+    "<span>PolarVelocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity/PolarVelocity.js</span>",
+    "class"
+  ],
+  [
     "@rohandeshpande/three-proton/src/core/pool.js~pool",
     "class/src/core/Pool.js~Pool.html",
     "<span>Pool</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/Pool.js</span>",
@@ -718,6 +724,12 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-RK4",
     "<span>RK4</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
     "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/velocity/radialvelocity.js~radialvelocity",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html",
+    "<span>RadialVelocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity/RadialVelocity.js</span>",
+    "class"
   ],
   [
     "@rohandeshpande/three-proton/src/initializer/radius.js~radius",
@@ -828,9 +840,15 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/velocity.js~velocity",
-    "class/src/initializer/Velocity.js~Velocity.html",
-    "<span>Velocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity.js</span>",
+    "@rohandeshpande/three-proton/src/initializer/velocity/vectorvelocity.js~vectorvelocity",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html",
+    "<span>VectorVelocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity/VectorVelocity.js</span>",
+    "class"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/velocity/velocity.js~velocity",
+    "class/src/initializer/Velocity/Velocity.js~Velocity.html",
+    "<span>Velocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity/Velocity.js</span>",
     "class"
   ],
   [
@@ -1819,13 +1837,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
@@ -2851,13 +2869,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -3210,64 +3228,136 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/initializer/velocity.js",
-    "file/src/initializer/Velocity.js.html",
-    "src/initializer/Velocity.js",
+    "src/initializer/velocity/polarvelocity.js",
+    "file/src/initializer/Velocity/PolarVelocity.js.html",
+    "src/initializer/Velocity/PolarVelocity.js",
     "file"
   ],
   [
-    "src/initializer/velocity.js~velocity#_usev",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-member-_useV",
-    "src/initializer/Velocity.js~Velocity#_useV",
+    "src/initializer/velocity/polarvelocity.js~polarvelocity#_usev",
+    "class/src/initializer/Velocity/PolarVelocity.js~PolarVelocity.html#instance-member-_useV",
+    "src/initializer/Velocity/PolarVelocity.js~PolarVelocity#_useV",
     "member"
   ],
   [
-    "src/initializer/velocity.js~velocity#constructor",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-constructor-constructor",
-    "src/initializer/Velocity.js~Velocity#constructor",
+    "src/initializer/velocity/polarvelocity.js~polarvelocity#constructor",
+    "class/src/initializer/Velocity/PolarVelocity.js~PolarVelocity.html#instance-constructor-constructor",
+    "src/initializer/Velocity/PolarVelocity.js~PolarVelocity#constructor",
     "method"
   ],
   [
-    "src/initializer/velocity.js~velocity#dir",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-member-dir",
-    "src/initializer/Velocity.js~Velocity#dir",
+    "src/initializer/velocity/polarvelocity.js~polarvelocity#dirvec",
+    "class/src/initializer/Velocity/PolarVelocity.js~PolarVelocity.html#instance-member-dirVec",
+    "src/initializer/Velocity/PolarVelocity.js~PolarVelocity#dirVec",
     "member"
   ],
   [
-    "src/initializer/velocity.js~velocity#dirvec",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-member-dirVec",
-    "src/initializer/Velocity.js~Velocity#dirVec",
+    "src/initializer/velocity/polarvelocity.js~polarvelocity#tha",
+    "class/src/initializer/Velocity/PolarVelocity.js~PolarVelocity.html#instance-member-tha",
+    "src/initializer/Velocity/PolarVelocity.js~PolarVelocity#tha",
     "member"
   ],
   [
-    "src/initializer/velocity.js~velocity#name",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-member-name",
-    "src/initializer/Velocity.js~Velocity#name",
+    "src/initializer/velocity/radialvelocity.js",
+    "file/src/initializer/Velocity/RadialVelocity.js.html",
+    "src/initializer/Velocity/RadialVelocity.js",
+    "file"
+  ],
+  [
+    "src/initializer/velocity/radialvelocity.js~radialvelocity#_usev",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#instance-member-_useV",
+    "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#_useV",
     "member"
   ],
   [
-    "src/initializer/velocity.js~velocity#normalize",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-method-normalize",
-    "src/initializer/Velocity.js~Velocity#normalize",
+    "src/initializer/velocity/radialvelocity.js~radialvelocity#constructor",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#instance-constructor-constructor",
+    "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#constructor",
     "method"
   ],
   [
-    "src/initializer/velocity.js~velocity#radiuspan",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-member-radiusPan",
-    "src/initializer/Velocity.js~Velocity#radiusPan",
+    "src/initializer/velocity/radialvelocity.js~radialvelocity#dir",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#instance-member-dir",
+    "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#dir",
     "member"
   ],
   [
-    "src/initializer/velocity.js~velocity#reset",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-method-reset",
-    "src/initializer/Velocity.js~Velocity#reset",
+    "src/initializer/velocity/radialvelocity.js~radialvelocity#radiuspan",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#instance-member-radiusPan",
+    "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#radiusPan",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/radialvelocity.js~radialvelocity#tha",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#instance-member-tha",
+    "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#tha",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/vectorvelocity.js",
+    "file/src/initializer/Velocity/VectorVelocity.js.html",
+    "src/initializer/Velocity/VectorVelocity.js",
+    "file"
+  ],
+  [
+    "src/initializer/velocity/vectorvelocity.js~vectorvelocity#_usev",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html#instance-member-_useV",
+    "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#_useV",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/vectorvelocity.js~vectorvelocity#constructor",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html#instance-constructor-constructor",
+    "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#constructor",
     "method"
   ],
   [
-    "src/initializer/velocity.js~velocity#tha",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-member-tha",
-    "src/initializer/Velocity.js~Velocity#tha",
+    "src/initializer/velocity/vectorvelocity.js~vectorvelocity#dir",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html#instance-member-dir",
+    "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#dir",
     "member"
+  ],
+  [
+    "src/initializer/velocity/vectorvelocity.js~vectorvelocity#radiuspan",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html#instance-member-radiusPan",
+    "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#radiusPan",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/vectorvelocity.js~vectorvelocity#tha",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html#instance-member-tha",
+    "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#tha",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/velocity.js",
+    "file/src/initializer/Velocity/Velocity.js.html",
+    "src/initializer/Velocity/Velocity.js",
+    "file"
+  ],
+  [
+    "src/initializer/velocity/velocity.js~velocity#constructor",
+    "class/src/initializer/Velocity/Velocity.js~Velocity.html#instance-constructor-constructor",
+    "src/initializer/Velocity/Velocity.js~Velocity#constructor",
+    "method"
+  ],
+  [
+    "src/initializer/velocity/velocity.js~velocity#dirvec",
+    "class/src/initializer/Velocity/Velocity.js~Velocity.html#instance-member-dirVec",
+    "src/initializer/Velocity/Velocity.js~Velocity#dirVec",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/velocity.js~velocity#normalize",
+    "class/src/initializer/Velocity/Velocity.js~Velocity.html#instance-method-normalize",
+    "src/initializer/Velocity/Velocity.js~Velocity#normalize",
+    "method"
+  ],
+  [
+    "src/initializer/velocity/index.js",
+    "file/src/initializer/Velocity/index.js.html",
+    "src/initializer/Velocity/index.js",
+    "file"
   ],
   [
     "src/initializer/constants.js",
