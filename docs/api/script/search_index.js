@@ -1585,13 +1585,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
@@ -1837,13 +1837,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
@@ -2869,13 +2869,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -3258,6 +3258,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/initializer/velocity/polarvelocity.js~polarvelocity.fromjson",
+    "class/src/initializer/Velocity/PolarVelocity.js~PolarVelocity.html#static-method-fromJSON",
+    "src/initializer/Velocity/PolarVelocity.js~PolarVelocity.fromJSON",
+    "method"
+  ],
+  [
     "src/initializer/velocity/radialvelocity.js",
     "file/src/initializer/Velocity/RadialVelocity.js.html",
     "src/initializer/Velocity/RadialVelocity.js",
@@ -3294,6 +3300,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/initializer/velocity/radialvelocity.js~radialvelocity.fromjson",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#static-method-fromJSON",
+    "src/initializer/Velocity/RadialVelocity.js~RadialVelocity.fromJSON",
+    "method"
+  ],
+  [
     "src/initializer/velocity/vectorvelocity.js",
     "file/src/initializer/Velocity/VectorVelocity.js.html",
     "src/initializer/Velocity/VectorVelocity.js",
@@ -3328,6 +3340,12 @@ window.esdocSearchIndex = [
     "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html#instance-member-tha",
     "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#tha",
     "member"
+  ],
+  [
+    "src/initializer/velocity/vectorvelocity.js~vectorvelocity.fromjson",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html#static-method-fromJSON",
+    "src/initializer/Velocity/VectorVelocity.js~VectorVelocity.fromJSON",
+    "method"
   ],
   [
     "src/initializer/velocity/velocity.js",

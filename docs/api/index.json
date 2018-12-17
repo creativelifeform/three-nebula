@@ -7590,7 +7590,7 @@
     "__docId__": 348,
     "kind": "file",
     "name": "src/core/constants.js",
-    "content": "import {\n  BEHAVIOUR_TYPE_ALPHA,\n  BEHAVIOUR_TYPE_ATTRACTION,\n  BEHAVIOUR_TYPE_COLOR,\n  BEHAVIOUR_TYPE_CROSS_ZONE,\n  BEHAVIOUR_TYPE_FORCE,\n  BEHAVIOUR_TYPE_GRAVITY,\n  BEHAVIOUR_TYPE_RANDOM_DRIFT,\n  BEHAVIOUR_TYPE_REPULSION,\n  BEHAVIOUR_TYPE_ROTATE,\n  BEHAVIOUR_TYPE_SCALE,\n  BEHAVIOUR_TYPE_SPRING\n} from '../behaviour/types';\nimport {\n  INITIALIZER_TYPE_BODY,\n  INITIALIZER_TYPE_BODY_SPRITE,\n  INITIALIZER_TYPE_LIFE,\n  INITIALIZER_TYPE_MASS,\n  INITIALIZER_TYPE_POSITION,\n  INITIALIZER_TYPE_RADIUS\n} from '../initializer/types';\nimport {\n  ZONE_TYPE_BOX,\n  ZONE_TYPE_LINE,\n  ZONE_TYPE_MESH,\n  ZONE_TYPE_POINT,\n  ZONE_TYPE_SPHERE\n} from '../zone/types';\n\nimport { RENDERER_TYPE_SPRITE } from '../renderer/types';\nimport { easeLinear } from '../ease';\n\n/**\n * @desc Default particle life\n * @type {number}\n */\nexport const DEFAULT_LIFE = Infinity;\n/**\n * @desc Default particle age\n * @type {number}\n */\nexport const DEFAULT_AGE = 0;\n/**\n * @desc Default particle energy\n * @type {number}\n */\nexport const DEFAULT_ENERGY = 1;\n/**\n * @desc Default particle dead\n * @type {boolean}\n */\nexport const DEFAULT_DEAD = false;\n/**\n * @desc Default particle sleep\n * @type {boolean}\n */\nexport const DEFAULT_SLEEP = false;\n/**\n * @desc Default particle body\n * @type {?object}\n */\nexport const DEFAULT_BODY = null;\n/**\n * @desc Default particle parent\n * @type {?Emitter}\n */\nexport const DEFAULT_PARENT = null;\n/**\n * @desc Default particle mass\n * @type {number}\n */\nexport const DEFAULT_MASS = 1;\n/**\n * @desc Default particle radius\n * @type {number}\n */\nexport const DEFAULT_RADIUS = 10;\n/**\n * @desc Default particle alpha\n * @type {number}\n */\nexport const DEFAULT_ALPHA = 1;\n/**\n * @desc Default particle scale\n * @type {number}\n */\nexport const DEFAULT_SCALE = 1;\n/**\n * @desc Default particle useColor\n * @type {boolean}\n */\nexport const DEFAULT_USE_COLOR = false;\n/**\n * @desc Default particle useAlpha\n * @type {boolean}\n */\nexport const DEFAULT_USE_ALPHA = false;\n/**\n * @desc Default particle easing\n * @type {function}\n */\nexport const DEFAULT_EASING = easeLinear;\n\n/**\n * @desc The default delta provided to the Proton instance\n * @type {number}\n */\nexport const DEFAULT_PROTON_DELTA = 0.0167;\n\n/**\n * @desc The types of initializers supported by the Proton.fromJSON method.\n * @type {array<string>}\n */\nexport const SUPPORTED_JSON_INITIALIZER_TYPES = [\n  INITIALIZER_TYPE_POSITION,\n  INITIALIZER_TYPE_LIFE,\n  INITIALIZER_TYPE_RADIUS,\n  INITIALIZER_TYPE_MASS,\n  INITIALIZER_TYPE_BODY,\n  INITIALIZER_TYPE_BODY_SPRITE\n];\n\n/**\n * @desc The types of behaviours supported by the Proton.fromJSON method.\n * @type {array<string>}\n */\nexport const SUPPORTED_JSON_BEHAVIOUR_TYPES = [\n  BEHAVIOUR_TYPE_ALPHA,\n  BEHAVIOUR_TYPE_ATTRACTION,\n  BEHAVIOUR_TYPE_COLOR,\n  BEHAVIOUR_TYPE_CROSS_ZONE,\n  BEHAVIOUR_TYPE_FORCE,\n  BEHAVIOUR_TYPE_GRAVITY,\n  BEHAVIOUR_TYPE_RANDOM_DRIFT,\n  BEHAVIOUR_TYPE_REPULSION,\n  BEHAVIOUR_TYPE_ROTATE,\n  BEHAVIOUR_TYPE_SCALE,\n  BEHAVIOUR_TYPE_SPRING\n];\n\n/**\n * @desc The types of renderers supported by the Proton.fromJSON method.\n * @type {array<string>}\n */\nexport const SUPPORTED_JSON_RENDERER_TYPES = [RENDERER_TYPE_SPRITE];\n\n/**\n * @desc The types of zones supported by the Proton.fromJSON method.\n * @type {array<string>}\n */\nexport const SUPPORTED_JSON_ZONE_TYPES = [\n  ZONE_TYPE_BOX,\n  ZONE_TYPE_LINE,\n  ZONE_TYPE_MESH,\n  ZONE_TYPE_POINT,\n  ZONE_TYPE_SPHERE\n];\n",
+    "content": "import {\n  BEHAVIOUR_TYPE_ALPHA,\n  BEHAVIOUR_TYPE_ATTRACTION,\n  BEHAVIOUR_TYPE_COLOR,\n  BEHAVIOUR_TYPE_CROSS_ZONE,\n  BEHAVIOUR_TYPE_FORCE,\n  BEHAVIOUR_TYPE_GRAVITY,\n  BEHAVIOUR_TYPE_RANDOM_DRIFT,\n  BEHAVIOUR_TYPE_REPULSION,\n  BEHAVIOUR_TYPE_ROTATE,\n  BEHAVIOUR_TYPE_SCALE,\n  BEHAVIOUR_TYPE_SPRING\n} from '../behaviour/types';\nimport {\n  INITIALIZER_TYPE_BODY,\n  INITIALIZER_TYPE_BODY_SPRITE,\n  INITIALIZER_TYPE_LIFE,\n  INITIALIZER_TYPE_MASS,\n  INITIALIZER_TYPE_POLAR_VELOCITY,\n  INITIALIZER_TYPE_POSITION,\n  INITIALIZER_TYPE_RADIAL_VELOCITY,\n  INITIALIZER_TYPE_RADIUS,\n  INITIALIZER_TYPE_VECTOR_VELOCITY\n} from '../initializer/types';\nimport {\n  ZONE_TYPE_BOX,\n  ZONE_TYPE_LINE,\n  ZONE_TYPE_MESH,\n  ZONE_TYPE_POINT,\n  ZONE_TYPE_SPHERE\n} from '../zone/types';\n\nimport { RENDERER_TYPE_SPRITE } from '../renderer/types';\nimport { easeLinear } from '../ease';\n\n/**\n * @desc Default particle life\n * @type {number}\n */\nexport const DEFAULT_LIFE = Infinity;\n/**\n * @desc Default particle age\n * @type {number}\n */\nexport const DEFAULT_AGE = 0;\n/**\n * @desc Default particle energy\n * @type {number}\n */\nexport const DEFAULT_ENERGY = 1;\n/**\n * @desc Default particle dead\n * @type {boolean}\n */\nexport const DEFAULT_DEAD = false;\n/**\n * @desc Default particle sleep\n * @type {boolean}\n */\nexport const DEFAULT_SLEEP = false;\n/**\n * @desc Default particle body\n * @type {?object}\n */\nexport const DEFAULT_BODY = null;\n/**\n * @desc Default particle parent\n * @type {?Emitter}\n */\nexport const DEFAULT_PARENT = null;\n/**\n * @desc Default particle mass\n * @type {number}\n */\nexport const DEFAULT_MASS = 1;\n/**\n * @desc Default particle radius\n * @type {number}\n */\nexport const DEFAULT_RADIUS = 10;\n/**\n * @desc Default particle alpha\n * @type {number}\n */\nexport const DEFAULT_ALPHA = 1;\n/**\n * @desc Default particle scale\n * @type {number}\n */\nexport const DEFAULT_SCALE = 1;\n/**\n * @desc Default particle useColor\n * @type {boolean}\n */\nexport const DEFAULT_USE_COLOR = false;\n/**\n * @desc Default particle useAlpha\n * @type {boolean}\n */\nexport const DEFAULT_USE_ALPHA = false;\n/**\n * @desc Default particle easing\n * @type {function}\n */\nexport const DEFAULT_EASING = easeLinear;\n\n/**\n * @desc The default delta provided to the Proton instance\n * @type {number}\n */\nexport const DEFAULT_PROTON_DELTA = 0.0167;\n\n/**\n * @desc The types of initializers supported by the Proton.fromJSON method.\n * @type {array<string>}\n */\nexport const SUPPORTED_JSON_INITIALIZER_TYPES = [\n  INITIALIZER_TYPE_POSITION,\n  INITIALIZER_TYPE_LIFE,\n  INITIALIZER_TYPE_RADIUS,\n  INITIALIZER_TYPE_MASS,\n  INITIALIZER_TYPE_BODY,\n  INITIALIZER_TYPE_BODY_SPRITE,\n  INITIALIZER_TYPE_POLAR_VELOCITY,\n  INITIALIZER_TYPE_RADIAL_VELOCITY,\n  INITIALIZER_TYPE_VECTOR_VELOCITY\n];\n\n/**\n * @desc The types of behaviours supported by the Proton.fromJSON method.\n * @type {array<string>}\n */\nexport const SUPPORTED_JSON_BEHAVIOUR_TYPES = [\n  BEHAVIOUR_TYPE_ALPHA,\n  BEHAVIOUR_TYPE_ATTRACTION,\n  BEHAVIOUR_TYPE_COLOR,\n  BEHAVIOUR_TYPE_CROSS_ZONE,\n  BEHAVIOUR_TYPE_FORCE,\n  BEHAVIOUR_TYPE_GRAVITY,\n  BEHAVIOUR_TYPE_RANDOM_DRIFT,\n  BEHAVIOUR_TYPE_REPULSION,\n  BEHAVIOUR_TYPE_ROTATE,\n  BEHAVIOUR_TYPE_SCALE,\n  BEHAVIOUR_TYPE_SPRING\n];\n\n/**\n * @desc The types of renderers supported by the Proton.fromJSON method.\n * @type {array<string>}\n */\nexport const SUPPORTED_JSON_RENDERER_TYPES = [RENDERER_TYPE_SPRITE];\n\n/**\n * @desc The types of zones supported by the Proton.fromJSON method.\n * @type {array<string>}\n */\nexport const SUPPORTED_JSON_ZONE_TYPES = [\n  ZONE_TYPE_BOX,\n  ZONE_TYPE_LINE,\n  ZONE_TYPE_MESH,\n  ZONE_TYPE_POINT,\n  ZONE_TYPE_SPHERE\n];\n",
     "static": true,
     "longname": "/Users/rohandeshpande/rd/three-proton/src/core/constants.js",
     "access": "public",
@@ -7609,7 +7609,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_LIFE}",
     "description": "Default particle life",
-    "lineNumber": 37,
+    "lineNumber": 40,
     "type": {
       "nullable": null,
       "types": [
@@ -7631,7 +7631,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_AGE}",
     "description": "Default particle age",
-    "lineNumber": 42,
+    "lineNumber": 45,
     "type": {
       "nullable": null,
       "types": [
@@ -7653,7 +7653,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_ENERGY}",
     "description": "Default particle energy",
-    "lineNumber": 47,
+    "lineNumber": 50,
     "type": {
       "nullable": null,
       "types": [
@@ -7675,7 +7675,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_DEAD}",
     "description": "Default particle dead",
-    "lineNumber": 52,
+    "lineNumber": 55,
     "type": {
       "nullable": null,
       "types": [
@@ -7697,7 +7697,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_SLEEP}",
     "description": "Default particle sleep",
-    "lineNumber": 57,
+    "lineNumber": 60,
     "type": {
       "nullable": null,
       "types": [
@@ -7719,7 +7719,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_BODY}",
     "description": "Default particle body",
-    "lineNumber": 62,
+    "lineNumber": 65,
     "type": {
       "nullable": true,
       "types": [
@@ -7741,7 +7741,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_PARENT}",
     "description": "Default particle parent",
-    "lineNumber": 67,
+    "lineNumber": 70,
     "type": {
       "nullable": true,
       "types": [
@@ -7763,7 +7763,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_MASS}",
     "description": "Default particle mass",
-    "lineNumber": 72,
+    "lineNumber": 75,
     "type": {
       "nullable": null,
       "types": [
@@ -7785,7 +7785,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_RADIUS}",
     "description": "Default particle radius",
-    "lineNumber": 77,
+    "lineNumber": 80,
     "type": {
       "nullable": null,
       "types": [
@@ -7807,7 +7807,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_ALPHA}",
     "description": "Default particle alpha",
-    "lineNumber": 82,
+    "lineNumber": 85,
     "type": {
       "nullable": null,
       "types": [
@@ -7829,7 +7829,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_SCALE}",
     "description": "Default particle scale",
-    "lineNumber": 87,
+    "lineNumber": 90,
     "type": {
       "nullable": null,
       "types": [
@@ -7851,7 +7851,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_USE_COLOR}",
     "description": "Default particle useColor",
-    "lineNumber": 92,
+    "lineNumber": 95,
     "type": {
       "nullable": null,
       "types": [
@@ -7873,7 +7873,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_USE_ALPHA}",
     "description": "Default particle useAlpha",
-    "lineNumber": 97,
+    "lineNumber": 100,
     "type": {
       "nullable": null,
       "types": [
@@ -7895,7 +7895,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_EASING}",
     "description": "Default particle easing",
-    "lineNumber": 102,
+    "lineNumber": 105,
     "type": {
       "nullable": null,
       "types": [
@@ -7917,7 +7917,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{DEFAULT_PROTON_DELTA}",
     "description": "The default delta provided to the Proton instance",
-    "lineNumber": 108,
+    "lineNumber": 111,
     "type": {
       "nullable": null,
       "types": [
@@ -7939,7 +7939,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{SUPPORTED_JSON_INITIALIZER_TYPES}",
     "description": "The types of initializers supported by the Proton.fromJSON method.",
-    "lineNumber": 114,
+    "lineNumber": 117,
     "type": {
       "nullable": null,
       "types": [
@@ -7961,7 +7961,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{SUPPORTED_JSON_BEHAVIOUR_TYPES}",
     "description": "The types of behaviours supported by the Proton.fromJSON method.",
-    "lineNumber": 127,
+    "lineNumber": 133,
     "type": {
       "nullable": null,
       "types": [
@@ -7983,7 +7983,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{SUPPORTED_JSON_RENDERER_TYPES}",
     "description": "The types of renderers supported by the Proton.fromJSON method.",
-    "lineNumber": 145,
+    "lineNumber": 151,
     "type": {
       "nullable": null,
       "types": [
@@ -8005,7 +8005,7 @@
     "importPath": "@rohandeshpande/three-proton/src/core/constants.js",
     "importStyle": "{SUPPORTED_JSON_ZONE_TYPES}",
     "description": "The types of zones supported by the Proton.fromJSON method.",
-    "lineNumber": 151,
+    "lineNumber": 157,
     "type": {
       "nullable": null,
       "types": [
@@ -12410,7 +12410,7 @@
     "__docId__": 573,
     "kind": "file",
     "name": "src/initializer/Velocity/PolarVelocity.js",
-    "content": "import { DR } from '../../constants';\nimport Velocity from './Velocity';\n\n/**\n * Sets the velocity property on initialized particles.\n *\n */\nexport default class PolarVelocity extends Velocity {\n  /**\n   * Constructs a PolarVelocity initializer.\n   *\n   * @param {Polar3D} polar3d - The polar vector for the velocity\n   * @param {number} theta - The theta angle to use\n   * @return void\n   */\n  constructor(polar3d, theta) {\n    super();\n\n    /**\n     * @desc Theta.\n     * @type {number}\n     */\n    this.tha = theta * DR;\n\n    /**\n     * @desc Directional vector\n     * @type {Vector3D}\n     */\n    this.dirVec = polar3d.toVector3D();\n\n    /**\n     * @desc Determines whether to use the directional vector or not.\n     * @type {boolean}\n     */\n    this._useV = false;\n  }\n}\n",
+    "content": "import { DR } from '../../constants';\nimport { Polar3D } from '../../math';\nimport Velocity from './Velocity';\n\n/**\n * Sets the velocity property on initialized particles.\n *\n */\nexport default class PolarVelocity extends Velocity {\n  /**\n   * Constructs a PolarVelocity initializer.\n   *\n   * @param {Polar3D} polar3d - The polar vector for the velocity\n   * @param {number} theta - The theta angle to use\n   * @return void\n   */\n  constructor(polar3d, theta) {\n    super();\n\n    /**\n     * @desc Theta.\n     * @type {number}\n     */\n    this.tha = theta * DR;\n\n    /**\n     * @desc Directional vector\n     * @type {Vector3D}\n     */\n    this.dirVec = polar3d.toVector3D();\n\n    /**\n     * @desc Determines whether to use the directional vector or not.\n     * @type {boolean}\n     */\n    this._useV = false;\n  }\n\n  /**\n   * Creates a PolarVelocity initializer from JSON.\n   *\n   * @param {object} json - The JSON to construct the instance from.\n   * @param {number} json.polarRadius - The Polar3D radius\n   * @param {number} json.polarTheta - The Polar3D theta\n   * @param {number} json.polarPhi - The Polar3D phi\n   * @param {number} json.velocityTheta - The velocity theta\n   * @return {PolarVelocity}\n   */\n  static fromJSON(json) {\n    const { polarRadius, polarTheta, polarPhi, velocityTheta } = json;\n\n    return new PolarVelocity(\n      new Polar3D(polarRadius, polarTheta, polarPhi),\n      velocityTheta\n    );\n  }\n}\n",
     "static": true,
     "longname": "/Users/rohandeshpande/rd/three-proton/src/initializer/Velocity/PolarVelocity.js",
     "access": "public",
@@ -12429,7 +12429,7 @@
     "importPath": "@rohandeshpande/three-proton/src/initializer/Velocity/PolarVelocity.js",
     "importStyle": "PolarVelocity",
     "description": "Sets the velocity property on initialized particles.",
-    "lineNumber": 8,
+    "lineNumber": 9,
     "interface": false,
     "extends": [
       "src/initializer/Velocity/Velocity.js~Velocity"
@@ -12446,7 +12446,7 @@
     "longname": "src/initializer/Velocity/PolarVelocity.js~PolarVelocity#constructor",
     "access": "public",
     "description": "Constructs a PolarVelocity initializer.",
-    "lineNumber": 16,
+    "lineNumber": 17,
     "params": [
       {
         "nullable": null,
@@ -12487,7 +12487,7 @@
     "longname": "src/initializer/Velocity/PolarVelocity.js~PolarVelocity#tha",
     "access": "public",
     "description": "Theta.",
-    "lineNumber": 23,
+    "lineNumber": 24,
     "type": {
       "nullable": null,
       "types": [
@@ -12506,7 +12506,7 @@
     "longname": "src/initializer/Velocity/PolarVelocity.js~PolarVelocity#dirVec",
     "access": "public",
     "description": "Directional vector",
-    "lineNumber": 29,
+    "lineNumber": 30,
     "type": {
       "nullable": null,
       "types": [
@@ -12525,7 +12525,7 @@
     "longname": "src/initializer/Velocity/PolarVelocity.js~PolarVelocity#_useV",
     "access": "private",
     "description": "Determines whether to use the directional vector or not.",
-    "lineNumber": 35,
+    "lineNumber": 36,
     "type": {
       "nullable": null,
       "types": [
@@ -12537,9 +12537,82 @@
   },
   {
     "__docId__": 579,
+    "kind": "method",
+    "name": "fromJSON",
+    "memberof": "src/initializer/Velocity/PolarVelocity.js~PolarVelocity",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/initializer/Velocity/PolarVelocity.js~PolarVelocity.fromJSON",
+    "access": "public",
+    "description": "Creates a PolarVelocity initializer from JSON.",
+    "lineNumber": 49,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json",
+        "description": "The JSON to construct the instance from."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.polarRadius",
+        "description": "The Polar3D radius"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.polarTheta",
+        "description": "The Polar3D theta"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.polarPhi",
+        "description": "The Polar3D phi"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.velocityTheta",
+        "description": "The velocity theta"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "PolarVelocity"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 580,
     "kind": "file",
     "name": "src/initializer/Velocity/RadialVelocity.js",
-    "content": "import { DR } from '../../constants';\nimport Velocity from './Velocity';\nimport { createSpan } from '../../math';\n\n/**\n * Sets the velocity property on initialized particles.\n *\n */\nexport default class RadialVelocity extends Velocity {\n  /**\n   * Constructs a RadialVelocity initializer.\n   *\n   * @param {number} radius - The velocity radius\n   * @param {Vector3D} vector3d - The directional vector for the velocity\n   * @param {number} theta - The theta angle to use\n   * @return void\n   */\n  constructor(radius, vector3d, theta) {\n    super();\n\n    /**\n     * @desc Velocity radius span.\n     * @type {Span}\n     */\n    this.radiusPan = createSpan(radius);\n\n    /**\n     * @desc Direction vector.\n     * @type {Vector3D}\n     */\n    this.dir = vector3d.clone().normalize();\n\n    /**\n     * @desc Theta.\n     * @type {number}\n     */\n    this.tha = theta * DR;\n\n    /**\n     * @desc Determines whether to use the directional vector or not.\n     * @type {boolean}\n     */\n    this._useV = true;\n  }\n}\n",
+    "content": "import { Vector3D, createSpan } from '../../math';\n\nimport { DR } from '../../constants';\nimport Velocity from './Velocity';\n\n/**\n * Sets the velocity property on initialized particles.\n *\n */\nexport default class RadialVelocity extends Velocity {\n  /**\n   * Constructs a RadialVelocity initializer.\n   *\n   * @param {number|Span} radius - The velocity radius\n   * @param {Vector3D} vector3d - The directional vector for the velocity\n   * @param {number} theta - The theta angle to use\n   * @return void\n   */\n  constructor(radius, vector3d, theta) {\n    super();\n\n    /**\n     * @desc Velocity radius span.\n     * @type {Span}\n     */\n    this.radiusPan = createSpan(radius);\n\n    /**\n     * @desc Direction vector.\n     * @type {Vector3D}\n     */\n    this.dir = vector3d.clone().normalize();\n\n    /**\n     * @desc Theta.\n     * @type {number}\n     */\n    this.tha = theta * DR;\n\n    /**\n     * @desc Determines whether to use the directional vector or not.\n     * @type {boolean}\n     */\n    this._useV = true;\n  }\n\n  /**\n   * Creates a RadialVelocity initializer from JSON.\n   *\n   * @param {object} json - The JSON to construct the instance from.\n   * @param {number} json.radius - The velocity radius\n   * @param {number} json.x - The velocity x axis direction\n   * @param {number} json.y - The velocity y axis direction\n   * @param {number} json.z - The velocity z axis direction\n   * @param {number} json.theta - The velocity theta\n   * @return {RadialVelocity}\n   */\n  static fromJSON(json) {\n    const { radius, x, y, z, theta } = json;\n\n    return new RadialVelocity(radius, new Vector3D(x, y, z), theta);\n  }\n}\n",
     "static": true,
     "longname": "/Users/rohandeshpande/rd/three-proton/src/initializer/Velocity/RadialVelocity.js",
     "access": "public",
@@ -12547,7 +12620,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 580,
+    "__docId__": 581,
     "kind": "class",
     "name": "RadialVelocity",
     "memberof": "src/initializer/Velocity/RadialVelocity.js",
@@ -12558,14 +12631,14 @@
     "importPath": "@rohandeshpande/three-proton/src/initializer/Velocity/RadialVelocity.js",
     "importStyle": "RadialVelocity",
     "description": "Sets the velocity property on initialized particles.",
-    "lineNumber": 9,
+    "lineNumber": 10,
     "interface": false,
     "extends": [
       "src/initializer/Velocity/Velocity.js~Velocity"
     ]
   },
   {
-    "__docId__": 581,
+    "__docId__": 582,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/initializer/Velocity/RadialVelocity.js~RadialVelocity",
@@ -12575,12 +12648,13 @@
     "longname": "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#constructor",
     "access": "public",
     "description": "Constructs a RadialVelocity initializer.",
-    "lineNumber": 18,
+    "lineNumber": 19,
     "params": [
       {
         "nullable": null,
         "types": [
-          "number"
+          "number",
+          "Span"
         ],
         "spread": false,
         "optional": false,
@@ -12618,7 +12692,7 @@
     }
   },
   {
-    "__docId__": 582,
+    "__docId__": 583,
     "kind": "member",
     "name": "radiusPan",
     "memberof": "src/initializer/Velocity/RadialVelocity.js~RadialVelocity",
@@ -12626,7 +12700,7 @@
     "longname": "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#radiusPan",
     "access": "public",
     "description": "Velocity radius span.",
-    "lineNumber": 25,
+    "lineNumber": 26,
     "type": {
       "nullable": null,
       "types": [
@@ -12637,7 +12711,7 @@
     }
   },
   {
-    "__docId__": 583,
+    "__docId__": 584,
     "kind": "member",
     "name": "dir",
     "memberof": "src/initializer/Velocity/RadialVelocity.js~RadialVelocity",
@@ -12645,7 +12719,7 @@
     "longname": "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#dir",
     "access": "public",
     "description": "Direction vector.",
-    "lineNumber": 31,
+    "lineNumber": 32,
     "type": {
       "nullable": null,
       "types": [
@@ -12656,7 +12730,7 @@
     }
   },
   {
-    "__docId__": 584,
+    "__docId__": 585,
     "kind": "member",
     "name": "tha",
     "memberof": "src/initializer/Velocity/RadialVelocity.js~RadialVelocity",
@@ -12664,7 +12738,7 @@
     "longname": "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#tha",
     "access": "public",
     "description": "Theta.",
-    "lineNumber": 37,
+    "lineNumber": 38,
     "type": {
       "nullable": null,
       "types": [
@@ -12675,7 +12749,7 @@
     }
   },
   {
-    "__docId__": 585,
+    "__docId__": 586,
     "kind": "member",
     "name": "_useV",
     "memberof": "src/initializer/Velocity/RadialVelocity.js~RadialVelocity",
@@ -12683,7 +12757,7 @@
     "longname": "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#_useV",
     "access": "private",
     "description": "Determines whether to use the directional vector or not.",
-    "lineNumber": 43,
+    "lineNumber": 44,
     "type": {
       "nullable": null,
       "types": [
@@ -12694,10 +12768,93 @@
     }
   },
   {
-    "__docId__": 586,
+    "__docId__": 587,
+    "kind": "method",
+    "name": "fromJSON",
+    "memberof": "src/initializer/Velocity/RadialVelocity.js~RadialVelocity",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/initializer/Velocity/RadialVelocity.js~RadialVelocity.fromJSON",
+    "access": "public",
+    "description": "Creates a RadialVelocity initializer from JSON.",
+    "lineNumber": 58,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json",
+        "description": "The JSON to construct the instance from."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.radius",
+        "description": "The velocity radius"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.x",
+        "description": "The velocity x axis direction"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.y",
+        "description": "The velocity y axis direction"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.z",
+        "description": "The velocity z axis direction"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.theta",
+        "description": "The velocity theta"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "RadialVelocity"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 588,
     "kind": "file",
     "name": "src/initializer/Velocity/VectorVelocity.js",
-    "content": "import { DR } from '../../constants';\nimport Velocity from './Velocity';\nimport { createSpan } from '../../math';\n\n/**\n * Sets the velocity property on initialized particles.\n *\n */\nexport default class VectorVelocity extends Velocity {\n  /**\n   * Constructs a VectorVelocity initializer.\n   *\n   * @param {Vector3D} vector3d - The directional vector for the velocity\n   * @param {number} theta - The theta angle to use\n   * @return void\n   */\n  constructor(vector3d, theta) {\n    super();\n\n    /**\n     * @desc Velocity radius span.\n     * @type {Span}\n     */\n    this.radiusPan = createSpan(1);\n\n    /**\n     * @desc Direction vector.\n     * @type {Vector3D}\n     */\n    this.dir = vector3d.clone();\n\n    /**\n     * @desc Theta.\n     * @type {number}\n     */\n    this.tha = theta * DR;\n\n    /**\n     * @desc Determines whether to use the directional vector or not.\n     * @type {boolean}\n     */\n    this._useV = true;\n  }\n}\n",
+    "content": "import { Vector3D, createSpan } from '../../math';\n\nimport { DR } from '../../constants';\nimport Velocity from './Velocity';\n\n/**\n * Sets the velocity property on initialized particles.\n *\n */\nexport default class VectorVelocity extends Velocity {\n  /**\n   * Constructs a VectorVelocity initializer.\n   *\n   * @param {Vector3D} vector3d - The directional vector for the velocity\n   * @param {number} theta - The theta angle to use\n   * @return void\n   */\n  constructor(vector3d, theta) {\n    super();\n\n    /**\n     * @desc Velocity radius span.\n     * @type {Span}\n     */\n    this.radiusPan = createSpan(1);\n\n    /**\n     * @desc Direction vector.\n     * @type {Vector3D}\n     */\n    this.dir = vector3d.clone();\n\n    /**\n     * @desc Theta.\n     * @type {number}\n     */\n    this.tha = theta * DR;\n\n    /**\n     * @desc Determines whether to use the directional vector or not.\n     * @type {boolean}\n     */\n    this._useV = true;\n  }\n\n  /**\n   * Creates a VectorVelocity initializer from JSON.\n   *\n   * @param {object} json - The JSON to construct the instance from.\n   * @param {number} json.x - The velocity x axis direction\n   * @param {number} json.y - The velocity y axis direction\n   * @param {number} json.z - The velocity z axis direction\n   * @param {number} json.theta - The velocity theta\n   * @return {VectorVelocity}\n   */\n  static fromJSON(json) {\n    const { x, y, z, theta } = json;\n\n    return new VectorVelocity(new Vector3D(x, y, z), theta);\n  }\n}\n",
     "static": true,
     "longname": "/Users/rohandeshpande/rd/three-proton/src/initializer/Velocity/VectorVelocity.js",
     "access": "public",
@@ -12705,7 +12862,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 587,
+    "__docId__": 589,
     "kind": "class",
     "name": "VectorVelocity",
     "memberof": "src/initializer/Velocity/VectorVelocity.js",
@@ -12716,14 +12873,14 @@
     "importPath": "@rohandeshpande/three-proton/src/initializer/Velocity/VectorVelocity.js",
     "importStyle": "VectorVelocity",
     "description": "Sets the velocity property on initialized particles.",
-    "lineNumber": 9,
+    "lineNumber": 10,
     "interface": false,
     "extends": [
       "src/initializer/Velocity/Velocity.js~Velocity"
     ]
   },
   {
-    "__docId__": 588,
+    "__docId__": 590,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/initializer/Velocity/VectorVelocity.js~VectorVelocity",
@@ -12733,7 +12890,7 @@
     "longname": "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#constructor",
     "access": "public",
     "description": "Constructs a VectorVelocity initializer.",
-    "lineNumber": 17,
+    "lineNumber": 18,
     "params": [
       {
         "nullable": null,
@@ -12766,7 +12923,7 @@
     }
   },
   {
-    "__docId__": 589,
+    "__docId__": 591,
     "kind": "member",
     "name": "radiusPan",
     "memberof": "src/initializer/Velocity/VectorVelocity.js~VectorVelocity",
@@ -12774,7 +12931,7 @@
     "longname": "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#radiusPan",
     "access": "public",
     "description": "Velocity radius span.",
-    "lineNumber": 24,
+    "lineNumber": 25,
     "type": {
       "nullable": null,
       "types": [
@@ -12785,7 +12942,7 @@
     }
   },
   {
-    "__docId__": 590,
+    "__docId__": 592,
     "kind": "member",
     "name": "dir",
     "memberof": "src/initializer/Velocity/VectorVelocity.js~VectorVelocity",
@@ -12793,7 +12950,7 @@
     "longname": "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#dir",
     "access": "public",
     "description": "Direction vector.",
-    "lineNumber": 30,
+    "lineNumber": 31,
     "type": {
       "nullable": null,
       "types": [
@@ -12804,7 +12961,7 @@
     }
   },
   {
-    "__docId__": 591,
+    "__docId__": 593,
     "kind": "member",
     "name": "tha",
     "memberof": "src/initializer/Velocity/VectorVelocity.js~VectorVelocity",
@@ -12812,7 +12969,7 @@
     "longname": "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#tha",
     "access": "public",
     "description": "Theta.",
-    "lineNumber": 36,
+    "lineNumber": 37,
     "type": {
       "nullable": null,
       "types": [
@@ -12823,7 +12980,7 @@
     }
   },
   {
-    "__docId__": 592,
+    "__docId__": 594,
     "kind": "member",
     "name": "_useV",
     "memberof": "src/initializer/Velocity/VectorVelocity.js~VectorVelocity",
@@ -12831,7 +12988,7 @@
     "longname": "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#_useV",
     "access": "private",
     "description": "Determines whether to use the directional vector or not.",
-    "lineNumber": 42,
+    "lineNumber": 43,
     "type": {
       "nullable": null,
       "types": [
@@ -12842,7 +12999,80 @@
     }
   },
   {
-    "__docId__": 593,
+    "__docId__": 595,
+    "kind": "method",
+    "name": "fromJSON",
+    "memberof": "src/initializer/Velocity/VectorVelocity.js~VectorVelocity",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/initializer/Velocity/VectorVelocity.js~VectorVelocity.fromJSON",
+    "access": "public",
+    "description": "Creates a VectorVelocity initializer from JSON.",
+    "lineNumber": 56,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json",
+        "description": "The JSON to construct the instance from."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.x",
+        "description": "The velocity x axis direction"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.y",
+        "description": "The velocity y axis direction"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.z",
+        "description": "The velocity z axis direction"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "json.theta",
+        "description": "The velocity theta"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "VectorVelocity"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 596,
     "kind": "file",
     "name": "src/initializer/Velocity/Velocity.js",
     "content": "import { MEASURE, PI } from '../../constants';\nimport { MathUtils, Vector3D } from '../../math';\n\nimport Initializer from '../Initializer';\n\n/**\n * Abstract class for Velocity initializers.\n *\n */\nexport default class Velocity extends Initializer {\n  /**\n   * Constructs a Velocity intitializer instance.\n   *\n   * @return void\n   */\n  constructor() {\n    super();\n\n    /**\n     * @desc Directional vector\n     * @type {Vector3D}\n     */\n    this.dirVec = new Vector3D(0, 0, 0);\n  }\n\n  normalize(vr) {\n    return vr * MEASURE;\n  }\n}\n\n/**\n * Sets the particle's initial velocity.\n *\n * @singleton\n * @param {Particle} particle - the particle to initialize the property on\n * @return void\n */\nVelocity.prototype.initialize = (function() {\n  var tha;\n  var normal = new Vector3D(0, 0, 1);\n  var v = new Vector3D(0, 0, 0);\n\n  return function initialize(particle) {\n    tha = this.tha * Math.random();\n    this._useV && this.dirVec.copy(this.dir).scalar(this.radiusPan.getValue());\n\n    MathUtils.getNormal(this.dirVec, normal);\n    v.copy(this.dirVec).applyAxisAngle(normal, tha);\n    v.applyAxisAngle(this.dirVec.normalize(), Math.random() * PI * 2);\n\n    particle.v.copy(v);\n\n    return this;\n  };\n})();\n",
@@ -12853,7 +13083,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 594,
+    "__docId__": 597,
     "kind": "class",
     "name": "Velocity",
     "memberof": "src/initializer/Velocity/Velocity.js",
@@ -12871,7 +13101,7 @@
     ]
   },
   {
-    "__docId__": 595,
+    "__docId__": 598,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/initializer/Velocity/Velocity.js~Velocity",
@@ -12892,7 +13122,7 @@
     }
   },
   {
-    "__docId__": 596,
+    "__docId__": 599,
     "kind": "member",
     "name": "dirVec",
     "memberof": "src/initializer/Velocity/Velocity.js~Velocity",
@@ -12911,7 +13141,7 @@
     }
   },
   {
-    "__docId__": 597,
+    "__docId__": 600,
     "kind": "method",
     "name": "normalize",
     "memberof": "src/initializer/Velocity/Velocity.js~Velocity",
@@ -12938,7 +13168,7 @@
     }
   },
   {
-    "__docId__": 598,
+    "__docId__": 601,
     "kind": "file",
     "name": "src/initializer/Velocity/index.js",
     "content": "export { default as PolarVelocity } from './PolarVelocity';\nexport { default as RadialVelocity } from './RadialVelocity';\nexport { default as VectorVelocity } from './VectorVelocity';\n",
@@ -12949,7 +13179,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 599,
+    "__docId__": 602,
     "kind": "file",
     "name": "src/initializer/constants.js",
     "content": "import { AdditiveBlending } from 'three';\n\nexport const DEFAULT_MATERIAL_PROPERTIES = {\n  color: 0xff0000,\n  blending: AdditiveBlending,\n  fog: true\n};\n",
@@ -12960,7 +13190,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 600,
+    "__docId__": 603,
     "kind": "variable",
     "name": "DEFAULT_MATERIAL_PROPERTIES",
     "memberof": "src/initializer/constants.js",
@@ -12980,7 +13210,7 @@
     }
   },
   {
-    "__docId__": 601,
+    "__docId__": 604,
     "kind": "file",
     "name": "src/initializer/index.js",
     "content": "export { default as Body } from './Body';\nexport { default as BodySprite } from './BodySprite';\nexport { default as InitializerUtil } from './InitializerUtil';\nexport { default as Life } from './Life';\nexport { default as Mass } from './Mass';\nexport { default as Position } from './Position';\nexport { default as Radius } from './Radius';\nexport { default as Rate } from './Rate';\nexport { VectorVelocity, PolarVelocity, RadialVelocity } from './Velocity';\n",
@@ -12991,7 +13221,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 602,
+    "__docId__": 605,
     "kind": "file",
     "name": "src/initializer/types.js",
     "content": "export const INITIALIZER_TYPE_BODY = 'Body';\nexport const INITIALIZER_TYPE_BODY_SPRITE = 'BodySprite';\nexport const INITIALIZER_TYPE_LIFE = 'Life';\nexport const INITIALIZER_TYPE_MASS = 'Mass';\nexport const INITIALIZER_TYPE_POSITION = 'Position';\nexport const INITIALIZER_TYPE_RADIUS = 'Radius';\nexport const INITIALIZER_TYPE_ZONE = 'Zone';\nexport const INITIALIZER_TYPE_VECTOR_VELOCITY = 'VectorVelocity';\nexport const INITIALIZER_TYPE_POLAR_VELOCITY = 'PolarVelocity';\nexport const INITIALIZER_TYPE_RADIAL_VELOCITY = 'RadialVelocity';\n",
@@ -13002,7 +13232,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 603,
+    "__docId__": 606,
     "kind": "variable",
     "name": "INITIALIZER_TYPE_BODY",
     "memberof": "src/initializer/types.js",
@@ -13022,7 +13252,7 @@
     }
   },
   {
-    "__docId__": 604,
+    "__docId__": 607,
     "kind": "variable",
     "name": "INITIALIZER_TYPE_BODY_SPRITE",
     "memberof": "src/initializer/types.js",
@@ -13042,7 +13272,7 @@
     }
   },
   {
-    "__docId__": 605,
+    "__docId__": 608,
     "kind": "variable",
     "name": "INITIALIZER_TYPE_LIFE",
     "memberof": "src/initializer/types.js",
@@ -13062,7 +13292,7 @@
     }
   },
   {
-    "__docId__": 606,
+    "__docId__": 609,
     "kind": "variable",
     "name": "INITIALIZER_TYPE_MASS",
     "memberof": "src/initializer/types.js",
@@ -13082,7 +13312,7 @@
     }
   },
   {
-    "__docId__": 607,
+    "__docId__": 610,
     "kind": "variable",
     "name": "INITIALIZER_TYPE_POSITION",
     "memberof": "src/initializer/types.js",
@@ -13102,7 +13332,7 @@
     }
   },
   {
-    "__docId__": 608,
+    "__docId__": 611,
     "kind": "variable",
     "name": "INITIALIZER_TYPE_RADIUS",
     "memberof": "src/initializer/types.js",
@@ -13122,7 +13352,7 @@
     }
   },
   {
-    "__docId__": 609,
+    "__docId__": 612,
     "kind": "variable",
     "name": "INITIALIZER_TYPE_ZONE",
     "memberof": "src/initializer/types.js",
@@ -13142,7 +13372,7 @@
     }
   },
   {
-    "__docId__": 610,
+    "__docId__": 613,
     "kind": "variable",
     "name": "INITIALIZER_TYPE_VECTOR_VELOCITY",
     "memberof": "src/initializer/types.js",
@@ -13162,7 +13392,7 @@
     }
   },
   {
-    "__docId__": 611,
+    "__docId__": 614,
     "kind": "variable",
     "name": "INITIALIZER_TYPE_POLAR_VELOCITY",
     "memberof": "src/initializer/types.js",
@@ -13182,7 +13412,7 @@
     }
   },
   {
-    "__docId__": 612,
+    "__docId__": 615,
     "kind": "variable",
     "name": "INITIALIZER_TYPE_RADIAL_VELOCITY",
     "memberof": "src/initializer/types.js",
@@ -13202,7 +13432,7 @@
     }
   },
   {
-    "__docId__": 613,
+    "__docId__": 616,
     "kind": "file",
     "name": "src/math/ArraySpan.js",
     "content": "import MathUtils from './MathUtils';\nimport Span from './Span';\nimport _ from 'lodash';\n\n/**\n * Class for storing and interacting with an array of colours.\n *\n * NOTE Rename this to ColorSpan\n */\nexport default class ArraySpan extends Span {\n  /**\n   * Constructs an ArraySpan instance.\n   *\n   * @param {string|array} colors - single or multiple colors,\n   * if the string 'random' is passed, a random color will be returned\n   * from the getValue method\n   * @return void\n   */\n  constructor(colors = 'random') {\n    super();\n\n    /**\n     * @desc An array of colors\n     * @type {array}\n     */\n    this._arr = Array.isArray(colors) ? colors : [colors];\n  }\n\n  /**\n   * Gets a color from the color array.\n   *\n   * @return {string} a hex color\n   */\n  getValue() {\n    const color = _.sample(this._arr);\n\n    return this.isRandomColor(color) ? MathUtils.randomColor() : color;\n  }\n\n  /**\n   * Determines if the color supplied is 'random'.\n   *\n   * @param {string} color - the color to check\n   */\n  isRandomColor(color) {\n    return typeof color === 'string' && color.toLowerCase() === 'random';\n  }\n}\n\n/**\n * Attempts to create an ArraySpan from the colors provided.\n *\n * @param {mixed} colors - colors to try and create an ArraySpan from\n * @return {?ArraySpan}\n */\nexport const createArraySpan = colors => {\n  if (!colors) {\n    return null;\n  }\n\n  if (colors instanceof ArraySpan) {\n    return colors;\n  }\n\n  return new ArraySpan(colors);\n};\n",
@@ -13213,7 +13443,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 614,
+    "__docId__": 617,
     "kind": "class",
     "name": "ArraySpan",
     "memberof": "src/math/ArraySpan.js",
@@ -13231,7 +13461,7 @@
     ]
   },
   {
-    "__docId__": 615,
+    "__docId__": 618,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/math/ArraySpan.js~ArraySpan",
@@ -13265,7 +13495,7 @@
     }
   },
   {
-    "__docId__": 616,
+    "__docId__": 619,
     "kind": "member",
     "name": "_arr",
     "memberof": "src/math/ArraySpan.js~ArraySpan",
@@ -13284,7 +13514,7 @@
     }
   },
   {
-    "__docId__": 617,
+    "__docId__": 620,
     "kind": "method",
     "name": "getValue",
     "memberof": "src/math/ArraySpan.js~ArraySpan",
@@ -13306,7 +13536,7 @@
     "params": []
   },
   {
-    "__docId__": 618,
+    "__docId__": 621,
     "kind": "method",
     "name": "isRandomColor",
     "memberof": "src/math/ArraySpan.js~ArraySpan",
@@ -13336,7 +13566,7 @@
     }
   },
   {
-    "__docId__": 619,
+    "__docId__": 622,
     "kind": "function",
     "name": "createArraySpan",
     "memberof": "src/math/ArraySpan.js",
@@ -13372,7 +13602,7 @@
     }
   },
   {
-    "__docId__": 620,
+    "__docId__": 623,
     "kind": "file",
     "name": "src/math/Box.js",
     "content": "export default class Box {\n  constructor(x, y, z, w, h, d) {\n    this.x = x;\n    this.y = y;\n    this.z = z;\n    this.width = w;\n    this.height = h;\n    this.depth = d;\n    this.bottom = this.y + this.height;\n    this.right = this.x + this.width;\n    this.right = this.x + this.width;\n  }\n\n  contains(x, y, z) {\n    if (\n      x <= this.right &&\n      x >= this.x &&\n      y <= this.bottom &&\n      y >= this.y &&\n      z <= this.depth &&\n      z >= this.z\n    )\n      return true;\n    else return false;\n  }\n}\n",
@@ -13383,7 +13613,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 621,
+    "__docId__": 624,
     "kind": "class",
     "name": "Box",
     "memberof": "src/math/Box.js",
@@ -13399,7 +13629,7 @@
     "interface": false
   },
   {
-    "__docId__": 622,
+    "__docId__": 625,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/math/Box.js~Box",
@@ -13413,7 +13643,7 @@
     "undocument": true
   },
   {
-    "__docId__": 623,
+    "__docId__": 626,
     "kind": "member",
     "name": "x",
     "memberof": "src/math/Box.js~Box",
@@ -13430,7 +13660,7 @@
     }
   },
   {
-    "__docId__": 624,
+    "__docId__": 627,
     "kind": "member",
     "name": "y",
     "memberof": "src/math/Box.js~Box",
@@ -13447,7 +13677,7 @@
     }
   },
   {
-    "__docId__": 625,
+    "__docId__": 628,
     "kind": "member",
     "name": "z",
     "memberof": "src/math/Box.js~Box",
@@ -13464,7 +13694,7 @@
     }
   },
   {
-    "__docId__": 626,
+    "__docId__": 629,
     "kind": "member",
     "name": "width",
     "memberof": "src/math/Box.js~Box",
@@ -13481,7 +13711,7 @@
     }
   },
   {
-    "__docId__": 627,
+    "__docId__": 630,
     "kind": "member",
     "name": "height",
     "memberof": "src/math/Box.js~Box",
@@ -13498,7 +13728,7 @@
     }
   },
   {
-    "__docId__": 628,
+    "__docId__": 631,
     "kind": "member",
     "name": "depth",
     "memberof": "src/math/Box.js~Box",
@@ -13515,7 +13745,7 @@
     }
   },
   {
-    "__docId__": 629,
+    "__docId__": 632,
     "kind": "member",
     "name": "bottom",
     "memberof": "src/math/Box.js~Box",
@@ -13532,7 +13762,7 @@
     }
   },
   {
-    "__docId__": 630,
+    "__docId__": 633,
     "kind": "member",
     "name": "right",
     "memberof": "src/math/Box.js~Box",
@@ -13549,7 +13779,7 @@
     }
   },
   {
-    "__docId__": 632,
+    "__docId__": 635,
     "kind": "method",
     "name": "contains",
     "memberof": "src/math/Box.js~Box",
@@ -13588,7 +13818,7 @@
     }
   },
   {
-    "__docId__": 633,
+    "__docId__": 636,
     "kind": "file",
     "name": "src/math/MathUtils.js",
     "content": "import { PI } from '../constants';\n\nexport default {\n  randomAToB: function(a, b, INT) {\n    if (!INT) return a + Math.random() * (b - a);\n    else return ((Math.random() * (b - a)) >> 0) + a;\n  },\n  randomFloating: function(center, f, INT) {\n    return this.randomAToB(center - f, center + f, INT);\n  },\n\n  randomZone: function(display) {}, //eslint-disable-line\n\n  degreeTransform: function(a) {\n    return (a * PI) / 180;\n  },\n\n  toColor16: function getRGB(num) {\n    return '#' + num.toString(16);\n  },\n\n  randomColor: function() {\n    return (\n      '#' +\n      ('00000' + ((Math.random() * 0x1000000) << 0).toString(16)).slice(-6)\n    );\n  },\n\n  lerp: function(a, b, energy) {\n    return b + (a - b) * energy;\n  },\n\n  getNormal: function(v, n) {\n    if (v.x == 0 && v.y == 0) {\n      if (v.z == 0) n.set(1, 0, 1);\n      else n.set(1, 1, -v.y / v.z);\n    } else {\n      if (v.x == 0) n.set(1, 0, 1);\n      else n.set(-v.y / v.x, 1, 1);\n    }\n\n    return n.normalize();\n  },\n\n  /**\n   * Rodrigues' Rotation Formula\n   * https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula\n   * v′ = vcos(θ) + k(k⋅v)(1−cos(θ)) + (k*v)sin(θ)\n   */\n  axisRotate: function(v0, v, k, tha) {\n    var cos = Math.cos(tha);\n    var sin = Math.sin(tha);\n    var p = k.dot(v) * (1 - cos);\n\n    v0.copy(k);\n    v0.cross(v).scalar(sin);\n    v0.addValue(v.x * cos, v.y * cos, v.z * cos);\n    v0.addValue(k.x * p, k.y * p, k.z * p);\n  }\n};\n",
@@ -13599,7 +13829,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 634,
+    "__docId__": 637,
     "kind": "file",
     "name": "src/math/Polar3D.js",
     "content": "import Vector3D from './Vector3D';\n\nexport default class Polar3D {\n  constructor(radius, theta, phi) {\n    this.radius = radius || 1;\n    this.phi = phi || 0;\n    this.theta = theta || 0;\n  }\n\n  set(radius, theta, phi) {\n    this.radius = radius || 1;\n    this.phi = phi || 0;\n    this.theta = theta || 0;\n\n    return this;\n  }\n\n  setRadius(radius) {\n    this.radius = radius;\n\n    return this;\n  }\n\n  setPhi(phi) {\n    this.phi = phi;\n\n    return this;\n  }\n\n  setTheta(theta) {\n    this.theta = theta;\n\n    return this;\n  }\n\n  copy(p) {\n    this.radius = p.radius;\n    this.phi = p.phi;\n    this.theta = p.theta;\n\n    return this;\n  }\n\n  toVector3D() {\n    return new Vector3D(this.getX(), this.getY(), this.getZ());\n  }\n\n  getX() {\n    return this.radius * Math.sin(this.theta) * Math.cos(this.phi);\n  }\n\n  getY() {\n    return -this.radius * Math.sin(this.theta) * Math.sin(this.phi);\n  }\n\n  getZ() {\n    return this.radius * Math.cos(this.theta);\n  }\n\n  normalize() {\n    this.radius = 1;\n\n    return this;\n  }\n\n  equals(v) {\n    return (\n      v.radius === this.radius && v.phi === this.phi && v.theta === this.theta\n    );\n  }\n\n  clear() {\n    this.radius = 0.0;\n    this.phi = 0.0;\n    this.theta = 0.0;\n\n    return this;\n  }\n\n  clone() {\n    return new Polar3D(this.radius, this.phi, this.theta);\n  }\n}\n",
@@ -13610,7 +13840,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 635,
+    "__docId__": 638,
     "kind": "class",
     "name": "Polar3D",
     "memberof": "src/math/Polar3D.js",
@@ -13626,7 +13856,7 @@
     "interface": false
   },
   {
-    "__docId__": 636,
+    "__docId__": 639,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13640,7 +13870,7 @@
     "undocument": true
   },
   {
-    "__docId__": 637,
+    "__docId__": 640,
     "kind": "member",
     "name": "radius",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13657,7 +13887,7 @@
     }
   },
   {
-    "__docId__": 638,
+    "__docId__": 641,
     "kind": "member",
     "name": "phi",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13674,7 +13904,7 @@
     }
   },
   {
-    "__docId__": 639,
+    "__docId__": 642,
     "kind": "member",
     "name": "theta",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13691,7 +13921,7 @@
     }
   },
   {
-    "__docId__": 640,
+    "__docId__": 643,
     "kind": "method",
     "name": "set",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13730,7 +13960,7 @@
     }
   },
   {
-    "__docId__": 644,
+    "__docId__": 647,
     "kind": "method",
     "name": "setRadius",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13757,7 +13987,7 @@
     }
   },
   {
-    "__docId__": 646,
+    "__docId__": 649,
     "kind": "method",
     "name": "setPhi",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13784,7 +14014,7 @@
     }
   },
   {
-    "__docId__": 648,
+    "__docId__": 651,
     "kind": "method",
     "name": "setTheta",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13811,7 +14041,7 @@
     }
   },
   {
-    "__docId__": 650,
+    "__docId__": 653,
     "kind": "method",
     "name": "copy",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13838,7 +14068,7 @@
     }
   },
   {
-    "__docId__": 654,
+    "__docId__": 657,
     "kind": "method",
     "name": "toVector3D",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13858,7 +14088,7 @@
     }
   },
   {
-    "__docId__": 655,
+    "__docId__": 658,
     "kind": "method",
     "name": "getX",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13878,7 +14108,7 @@
     }
   },
   {
-    "__docId__": 656,
+    "__docId__": 659,
     "kind": "method",
     "name": "getY",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13898,7 +14128,7 @@
     }
   },
   {
-    "__docId__": 657,
+    "__docId__": 660,
     "kind": "method",
     "name": "getZ",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13918,7 +14148,7 @@
     }
   },
   {
-    "__docId__": 658,
+    "__docId__": 661,
     "kind": "method",
     "name": "normalize",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13938,7 +14168,7 @@
     }
   },
   {
-    "__docId__": 660,
+    "__docId__": 663,
     "kind": "method",
     "name": "equals",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13965,7 +14195,7 @@
     }
   },
   {
-    "__docId__": 661,
+    "__docId__": 664,
     "kind": "method",
     "name": "clear",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -13985,7 +14215,7 @@
     }
   },
   {
-    "__docId__": 665,
+    "__docId__": 668,
     "kind": "method",
     "name": "clone",
     "memberof": "src/math/Polar3D.js~Polar3D",
@@ -14005,7 +14235,7 @@
     }
   },
   {
-    "__docId__": 666,
+    "__docId__": 669,
     "kind": "file",
     "name": "src/math/Span.js",
     "content": "import MathUtils from './MathUtils';\nimport Util from '../utils/Util';\n\nexport default class Span {\n  /**\n   * Span Class. Get a random Number from a to b. Or from c-a to c+b\n   * @param {Number|Array} a - min number\n   * @param {Number} b - max number\n   * @param {Number} center - the center's z value\n   * @example\n   * var span = new Span(0,30);\n   * or\n   * var span = new Span([\"#fff\",\"#ff0\",\"#000\"]);\n   * or\n   * var span = new Span(5,1,\"center\");\n   * @extends {Zone}\n   * @constructor\n   */\n  constructor(a, b, center) {\n    this._isArray = false;\n\n    if (Util.isArray(a)) {\n      this._isArray = true;\n      this.a = a;\n    } else {\n      this.a = Util.initValue(a, 1);\n      this.b = Util.initValue(b, this.a);\n      this._center = Util.initValue(center, false);\n    }\n  }\n\n  /**\n   * Span.getValue function\n   * @name get a random Number from a to b. Or get a random Number from c-a to c+b\n   * @param {number} INT or int\n   * @return {number} a random Number\n   */\n  getValue(INT) {\n    if (this._isArray) {\n      return this.a[(this.a.length * Math.random()) >> 0];\n    } else {\n      if (!this._center) return MathUtils.randomAToB(this.a, this.b, INT);\n      else return MathUtils.randomFloating(this.a, this.b, INT);\n    }\n  }\n}\n\nexport const createSpan = (a, b, c) => {\n  if (a instanceof Span) return a;\n\n  if (b === undefined) {\n    return new Span(a);\n  } else {\n    if (c === undefined) return new Span(a, b);\n    else return new Span(a, b, c);\n  }\n};\n",
@@ -14016,7 +14246,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 667,
+    "__docId__": 670,
     "kind": "class",
     "name": "Span",
     "memberof": "src/math/Span.js",
@@ -14032,7 +14262,7 @@
     "interface": false
   },
   {
-    "__docId__": 668,
+    "__docId__": 671,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/math/Span.js~Span",
@@ -14091,7 +14321,7 @@
     ]
   },
   {
-    "__docId__": 669,
+    "__docId__": 672,
     "kind": "member",
     "name": "_isArray",
     "memberof": "src/math/Span.js~Span",
@@ -14108,7 +14338,7 @@
     }
   },
   {
-    "__docId__": 671,
+    "__docId__": 674,
     "kind": "member",
     "name": "a",
     "memberof": "src/math/Span.js~Span",
@@ -14125,7 +14355,7 @@
     }
   },
   {
-    "__docId__": 673,
+    "__docId__": 676,
     "kind": "member",
     "name": "b",
     "memberof": "src/math/Span.js~Span",
@@ -14142,7 +14372,7 @@
     }
   },
   {
-    "__docId__": 674,
+    "__docId__": 677,
     "kind": "member",
     "name": "_center",
     "memberof": "src/math/Span.js~Span",
@@ -14159,7 +14389,7 @@
     }
   },
   {
-    "__docId__": 675,
+    "__docId__": 678,
     "kind": "method",
     "name": "getValue",
     "memberof": "src/math/Span.js~Span",
@@ -14192,7 +14422,7 @@
     }
   },
   {
-    "__docId__": 676,
+    "__docId__": 679,
     "kind": "function",
     "name": "createSpan",
     "memberof": "src/math/Span.js",
@@ -14234,7 +14464,7 @@
     }
   },
   {
-    "__docId__": 677,
+    "__docId__": 680,
     "kind": "file",
     "name": "src/math/Vector3D.js",
     "content": "import { Euler, Vector3 } from 'three';\n\nexport default class Vector3D extends Vector3 {\n  clear() {\n    this.x = 0.0;\n    this.y = 0.0;\n    this.z = 0.0;\n\n    return this;\n  }\n\n  scalar(s) {\n    this.x *= s;\n    this.y *= s;\n    this.z *= s;\n\n    return this;\n  }\n\n  addValue(a, b, c) {\n    this.x += a;\n    this.y += b;\n    this.z += c;\n\n    return this;\n  }\n\n  toString() {\n    return 'x:' + this.x + 'y:' + this.y + 'z:' + this.z;\n  }\n\n  eulerFromDir(vector3D) {\n    const euler = new Euler();\n\n    return euler.setFromVector3(vector3D);\n  }\n}\n",
@@ -14245,7 +14475,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 678,
+    "__docId__": 681,
     "kind": "class",
     "name": "Vector3D",
     "memberof": "src/math/Vector3D.js",
@@ -14264,7 +14494,7 @@
     ]
   },
   {
-    "__docId__": 679,
+    "__docId__": 682,
     "kind": "method",
     "name": "clear",
     "memberof": "src/math/Vector3D.js~Vector3D",
@@ -14284,7 +14514,7 @@
     }
   },
   {
-    "__docId__": 680,
+    "__docId__": 683,
     "kind": "member",
     "name": "x",
     "memberof": "src/math/Vector3D.js~Vector3D",
@@ -14301,7 +14531,7 @@
     }
   },
   {
-    "__docId__": 681,
+    "__docId__": 684,
     "kind": "member",
     "name": "y",
     "memberof": "src/math/Vector3D.js~Vector3D",
@@ -14318,7 +14548,7 @@
     }
   },
   {
-    "__docId__": 682,
+    "__docId__": 685,
     "kind": "member",
     "name": "z",
     "memberof": "src/math/Vector3D.js~Vector3D",
@@ -14335,7 +14565,7 @@
     }
   },
   {
-    "__docId__": 683,
+    "__docId__": 686,
     "kind": "method",
     "name": "scalar",
     "memberof": "src/math/Vector3D.js~Vector3D",
@@ -14362,7 +14592,7 @@
     }
   },
   {
-    "__docId__": 687,
+    "__docId__": 690,
     "kind": "method",
     "name": "addValue",
     "memberof": "src/math/Vector3D.js~Vector3D",
@@ -14401,7 +14631,7 @@
     }
   },
   {
-    "__docId__": 691,
+    "__docId__": 694,
     "kind": "method",
     "name": "toString",
     "memberof": "src/math/Vector3D.js~Vector3D",
@@ -14421,7 +14651,7 @@
     }
   },
   {
-    "__docId__": 692,
+    "__docId__": 695,
     "kind": "method",
     "name": "eulerFromDir",
     "memberof": "src/math/Vector3D.js~Vector3D",
@@ -14448,7 +14678,7 @@
     }
   },
   {
-    "__docId__": 693,
+    "__docId__": 696,
     "kind": "file",
     "name": "src/math/constants.js",
     "content": "/**\n * @see https://en.wikipedia.org/wiki/Euler_method\n * @type {string}\n */\nexport const INTEGRATION_TYPE_EULER = 'EULER';\n\n/**\n * @see http://web.mit.edu/10.001/Web/Course_Notes/Differential_Equations_Notes/node5.html\n * @type {string}\n */\nexport const INTEGRATION_TYPE_RK2 = 'RUNGE_KUTTA_2';\n\n/**\n * @see http://web.mit.edu/10.001/Web/Course_Notes/Differential_Equations_Notes/node5.html\n * @type {string}\n */\nexport const INTEGRATION_TYPE_RK4 = 'RUNGE_KUTTA_4';\n\n/**\n * @see https://en.wikipedia.org/wiki/Verlet_integration\n * @type {string}\n */\nexport const INTEGRATION_TYPE_VERLET = 'VERLET';\n",
@@ -14459,7 +14689,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 694,
+    "__docId__": 697,
     "kind": "variable",
     "name": "INTEGRATION_TYPE_EULER",
     "memberof": "src/math/constants.js",
@@ -14484,7 +14714,7 @@
     }
   },
   {
-    "__docId__": 695,
+    "__docId__": 698,
     "kind": "variable",
     "name": "INTEGRATION_TYPE_RK2",
     "memberof": "src/math/constants.js",
@@ -14509,7 +14739,7 @@
     }
   },
   {
-    "__docId__": 696,
+    "__docId__": 699,
     "kind": "variable",
     "name": "INTEGRATION_TYPE_RK4",
     "memberof": "src/math/constants.js",
@@ -14534,7 +14764,7 @@
     }
   },
   {
-    "__docId__": 697,
+    "__docId__": 700,
     "kind": "variable",
     "name": "INTEGRATION_TYPE_VERLET",
     "memberof": "src/math/constants.js",
@@ -14559,7 +14789,7 @@
     }
   },
   {
-    "__docId__": 698,
+    "__docId__": 701,
     "kind": "file",
     "name": "src/math/index.js",
     "content": "export { default as ArraySpan, createArraySpan } from './ArraySpan';\nexport { default as Box } from './Box';\nexport { integrate } from './integration';\nexport { default as MathUtils } from './MathUtils';\nexport { default as Polar3D } from './Polar3D';\nexport { default as Span, createSpan } from './Span';\nexport { default as Vector3D } from './Vector3D';\nexport {\n  INTEGRATION_TYPE_EULER,\n  INTEGRATION_TYPE_RK2,\n  INTEGRATION_TYPE_RK4,\n  INTEGRATION_TYPE_VERLET\n} from './constants';\n",
@@ -14570,7 +14800,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 699,
+    "__docId__": 702,
     "kind": "file",
     "name": "src/math/integration.js",
     "content": "import { INTEGRATION_TYPE_EULER } from './constants';\n\n/**\n * Performs euler integration on the particle.\n *\n * @param {Particle} particle - The particle to integrate\n * @param {number} time - The factor of time to use\n * @param {number} damping - The damping to use\n * @return void\n */\nconst eulerIntegration = (particle, time, damping) => {\n  if (particle.sleep) {\n    return;\n  }\n\n  particle.old.p.copy(particle.p);\n  particle.old.v.copy(particle.v);\n  particle.a.scalar(1 / particle.mass);\n  particle.v.add(particle.a.scalar(time));\n  particle.p.add(particle.old.v.scalar(time));\n  damping && particle.v.scalar(damping);\n  particle.a.clear();\n};\n\n/**\n * Performs the chosen integration on the particle.\n * Defaults to euler integration.\n *\n * @param {Particle} particle - The particle to integrate\n * @param {number} time - The factor of time to use\n * @param {number} damping - The damping to use\n * @param {string} [type=INTEGRATION_TYPE_EULER] - The algorithm to use\n * @return void\n */\nexport const integrate = (\n  particle,\n  time,\n  damping,\n  type = INTEGRATION_TYPE_EULER\n) => {\n  switch (type) {\n    case INTEGRATION_TYPE_EULER:\n      eulerIntegration(particle, time, damping);\n      break;\n    default:\n      eulerIntegration(particle, time, damping);\n  }\n};\n",
@@ -14581,7 +14811,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 700,
+    "__docId__": 703,
     "kind": "function",
     "name": "eulerIntegration",
     "memberof": "src/math/integration.js",
@@ -14638,7 +14868,7 @@
     "ignore": true
   },
   {
-    "__docId__": 701,
+    "__docId__": 704,
     "kind": "function",
     "name": "integrate",
     "memberof": "src/math/integration.js",
@@ -14706,7 +14936,7 @@
     }
   },
   {
-    "__docId__": 702,
+    "__docId__": 705,
     "kind": "file",
     "name": "src/renderer/BaseRenderer.js",
     "content": "import {\n  PARTICLE_CREATED,\n  PARTICLE_DEAD,\n  PARTICLE_UPDATE,\n  PROTON_UPDATE\n} from '../events/constants';\n\nexport default class BaseRenderer {\n  constructor() {\n    this.setName();\n  }\n\n  setName() {\n    this.name = this.constructor.name;\n  }\n\n  init(proton) {\n    var self = this;\n\n    this.proton = proton;\n\n    this.proton.eventDispatcher.addEventListener(PROTON_UPDATE, function(\n      proton\n    ) {\n      self.onProtonUpdate.call(self, proton);\n    });\n\n    this.proton.eventDispatcher.addEventListener(PARTICLE_CREATED, function(\n      particle\n    ) {\n      self.onParticleCreated.call(self, particle);\n    });\n\n    this.proton.eventDispatcher.addEventListener(PARTICLE_UPDATE, function(\n      particle\n    ) {\n      self.onParticleUpdate.call(self, particle);\n    });\n\n    this.proton.eventDispatcher.addEventListener(PARTICLE_DEAD, function(\n      particle\n    ) {\n      self.onParticleDead.call(self, particle);\n    });\n  }\n\n  remove() {\n    this.proton = null;\n  }\n\n  /**\n   * @abstract\n   */\n  onParticleCreated(particle) {} // eslint-disable-line\n\n  /**\n   * @abstract\n   */\n  onParticleUpdate(particle) {} // eslint-disable-line\n\n  /**\n   * @abstract\n   */\n  onParticleDead(particle) {} // eslint-disable-line\n\n  /**\n   * @abstract\n   */\n  onProtonUpdate(proton) {} // eslint-disable-line\n}\n",
@@ -14717,7 +14947,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 703,
+    "__docId__": 706,
     "kind": "class",
     "name": "BaseRenderer",
     "memberof": "src/renderer/BaseRenderer.js",
@@ -14733,7 +14963,7 @@
     "interface": false
   },
   {
-    "__docId__": 704,
+    "__docId__": 707,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/renderer/BaseRenderer.js~BaseRenderer",
@@ -14747,7 +14977,7 @@
     "undocument": true
   },
   {
-    "__docId__": 705,
+    "__docId__": 708,
     "kind": "method",
     "name": "setName",
     "memberof": "src/renderer/BaseRenderer.js~BaseRenderer",
@@ -14763,7 +14993,7 @@
     "return": null
   },
   {
-    "__docId__": 706,
+    "__docId__": 709,
     "kind": "member",
     "name": "name",
     "memberof": "src/renderer/BaseRenderer.js~BaseRenderer",
@@ -14780,7 +15010,7 @@
     }
   },
   {
-    "__docId__": 707,
+    "__docId__": 710,
     "kind": "method",
     "name": "init",
     "memberof": "src/renderer/BaseRenderer.js~BaseRenderer",
@@ -14803,7 +15033,7 @@
     "return": null
   },
   {
-    "__docId__": 708,
+    "__docId__": 711,
     "kind": "member",
     "name": "proton",
     "memberof": "src/renderer/BaseRenderer.js~BaseRenderer",
@@ -14820,7 +15050,7 @@
     }
   },
   {
-    "__docId__": 709,
+    "__docId__": 712,
     "kind": "method",
     "name": "remove",
     "memberof": "src/renderer/BaseRenderer.js~BaseRenderer",
@@ -14836,7 +15066,7 @@
     "return": null
   },
   {
-    "__docId__": 711,
+    "__docId__": 714,
     "kind": "method",
     "name": "onParticleCreated",
     "memberof": "src/renderer/BaseRenderer.js~BaseRenderer",
@@ -14859,7 +15089,7 @@
     "return": null
   },
   {
-    "__docId__": 712,
+    "__docId__": 715,
     "kind": "method",
     "name": "onParticleUpdate",
     "memberof": "src/renderer/BaseRenderer.js~BaseRenderer",
@@ -14882,7 +15112,7 @@
     "return": null
   },
   {
-    "__docId__": 713,
+    "__docId__": 716,
     "kind": "method",
     "name": "onParticleDead",
     "memberof": "src/renderer/BaseRenderer.js~BaseRenderer",
@@ -14905,7 +15135,7 @@
     "return": null
   },
   {
-    "__docId__": 714,
+    "__docId__": 717,
     "kind": "method",
     "name": "onProtonUpdate",
     "memberof": "src/renderer/BaseRenderer.js~BaseRenderer",
@@ -14928,7 +15158,7 @@
     "return": null
   },
   {
-    "__docId__": 715,
+    "__docId__": 718,
     "kind": "file",
     "name": "src/renderer/CustomRenderer.js",
     "content": "import BaseRenderer from './BaseRenderer';\nimport { Pool } from '../core';\n\nexport default class CustomRenderer extends BaseRenderer {\n  constructor() {\n    super();\n\n    this.targetPool = new Pool();\n    this.materialPool = new Pool();\n  }\n\n  onProtonUpdate() {}\n\n  onParticleCreated(particle) {} // eslint-disable-line\n\n  onParticleUpdate(particle) {} // eslint-disable-line\n\n  onParticleDead(particle) {} // eslint-disable-line\n}\n",
@@ -14939,7 +15169,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 716,
+    "__docId__": 719,
     "kind": "class",
     "name": "CustomRenderer",
     "memberof": "src/renderer/CustomRenderer.js",
@@ -14958,7 +15188,7 @@
     ]
   },
   {
-    "__docId__": 717,
+    "__docId__": 720,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/renderer/CustomRenderer.js~CustomRenderer",
@@ -14972,7 +15202,7 @@
     "undocument": true
   },
   {
-    "__docId__": 718,
+    "__docId__": 721,
     "kind": "member",
     "name": "targetPool",
     "memberof": "src/renderer/CustomRenderer.js~CustomRenderer",
@@ -14989,7 +15219,7 @@
     }
   },
   {
-    "__docId__": 719,
+    "__docId__": 722,
     "kind": "member",
     "name": "materialPool",
     "memberof": "src/renderer/CustomRenderer.js~CustomRenderer",
@@ -15006,7 +15236,7 @@
     }
   },
   {
-    "__docId__": 720,
+    "__docId__": 723,
     "kind": "method",
     "name": "onProtonUpdate",
     "memberof": "src/renderer/CustomRenderer.js~CustomRenderer",
@@ -15022,7 +15252,7 @@
     "return": null
   },
   {
-    "__docId__": 721,
+    "__docId__": 724,
     "kind": "method",
     "name": "onParticleCreated",
     "memberof": "src/renderer/CustomRenderer.js~CustomRenderer",
@@ -15045,7 +15275,7 @@
     "return": null
   },
   {
-    "__docId__": 722,
+    "__docId__": 725,
     "kind": "method",
     "name": "onParticleUpdate",
     "memberof": "src/renderer/CustomRenderer.js~CustomRenderer",
@@ -15068,7 +15298,7 @@
     "return": null
   },
   {
-    "__docId__": 723,
+    "__docId__": 726,
     "kind": "method",
     "name": "onParticleDead",
     "memberof": "src/renderer/CustomRenderer.js~CustomRenderer",
@@ -15091,7 +15321,7 @@
     "return": null
   },
   {
-    "__docId__": 724,
+    "__docId__": 727,
     "kind": "file",
     "name": "src/renderer/MeshRenderer.js",
     "content": "import { BoxGeometry, Mesh, MeshLambertMaterial } from 'three';\n\nimport BaseRenderer from './BaseRenderer';\nimport { PUID } from '../utils';\nimport { Pool } from '../core';\n\nexport default class MeshRenderer extends BaseRenderer {\n  constructor(container) {\n    super();\n\n    this.container = container;\n\n    this._targetPool = new Pool();\n    this._materialPool = new Pool();\n    this._body = new Mesh(\n      new BoxGeometry(50, 50, 50),\n      new MeshLambertMaterial({ color: '#ff0000' })\n    );\n  }\n\n  onProtonUpdate() {}\n\n  onParticleCreated(particle) {\n    if (!particle.target) {\n      //set target\n      if (!particle.body) particle.body = this._body;\n      particle.target = this._targetPool.get(particle.body);\n\n      //set material\n      if (particle.useAlpha || particle.useColor) {\n        particle.target.material.__puid = PUID.id(particle.body.material);\n        particle.target.material = this._materialPool.get(\n          particle.target.material\n        );\n      }\n    }\n\n    if (particle.target) {\n      particle.target.position.copy(particle.p);\n      this.container.add(particle.target);\n    }\n  }\n\n  onParticleUpdate(particle) {\n    if (particle.target) {\n      particle.target.position.copy(particle.p);\n      particle.target.rotation.set(\n        particle.rotation.x,\n        particle.rotation.y,\n        particle.rotation.z\n      );\n      this.scale(particle);\n\n      if (particle.useAlpha) {\n        particle.target.material.opacity = particle.alpha;\n        particle.target.material.transparent = true;\n      }\n\n      if (particle.useColor) {\n        particle.target.material.color.copy(particle.color);\n      }\n    }\n  }\n\n  scale(particle) {\n    particle.target.scale.set(particle.scale, particle.scale, particle.scale);\n  }\n\n  onParticleDead(particle) {\n    if (particle.target) {\n      if (particle.useAlpha || particle.useColor)\n        this._materialPool.expire(particle.target.material);\n\n      this._targetPool.expire(particle.target);\n      this.container.remove(particle.target);\n      particle.target = null;\n    }\n  }\n}\n",
@@ -15102,7 +15332,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 725,
+    "__docId__": 728,
     "kind": "class",
     "name": "MeshRenderer",
     "memberof": "src/renderer/MeshRenderer.js",
@@ -15121,7 +15351,7 @@
     ]
   },
   {
-    "__docId__": 726,
+    "__docId__": 729,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/renderer/MeshRenderer.js~MeshRenderer",
@@ -15135,7 +15365,7 @@
     "undocument": true
   },
   {
-    "__docId__": 727,
+    "__docId__": 730,
     "kind": "member",
     "name": "container",
     "memberof": "src/renderer/MeshRenderer.js~MeshRenderer",
@@ -15152,7 +15382,7 @@
     }
   },
   {
-    "__docId__": 728,
+    "__docId__": 731,
     "kind": "member",
     "name": "_targetPool",
     "memberof": "src/renderer/MeshRenderer.js~MeshRenderer",
@@ -15169,7 +15399,7 @@
     }
   },
   {
-    "__docId__": 729,
+    "__docId__": 732,
     "kind": "member",
     "name": "_materialPool",
     "memberof": "src/renderer/MeshRenderer.js~MeshRenderer",
@@ -15186,7 +15416,7 @@
     }
   },
   {
-    "__docId__": 730,
+    "__docId__": 733,
     "kind": "member",
     "name": "_body",
     "memberof": "src/renderer/MeshRenderer.js~MeshRenderer",
@@ -15203,7 +15433,7 @@
     }
   },
   {
-    "__docId__": 731,
+    "__docId__": 734,
     "kind": "method",
     "name": "onProtonUpdate",
     "memberof": "src/renderer/MeshRenderer.js~MeshRenderer",
@@ -15219,7 +15449,7 @@
     "return": null
   },
   {
-    "__docId__": 732,
+    "__docId__": 735,
     "kind": "method",
     "name": "onParticleCreated",
     "memberof": "src/renderer/MeshRenderer.js~MeshRenderer",
@@ -15242,7 +15472,7 @@
     "return": null
   },
   {
-    "__docId__": 733,
+    "__docId__": 736,
     "kind": "method",
     "name": "onParticleUpdate",
     "memberof": "src/renderer/MeshRenderer.js~MeshRenderer",
@@ -15265,7 +15495,7 @@
     "return": null
   },
   {
-    "__docId__": 734,
+    "__docId__": 737,
     "kind": "method",
     "name": "scale",
     "memberof": "src/renderer/MeshRenderer.js~MeshRenderer",
@@ -15288,7 +15518,7 @@
     "return": null
   },
   {
-    "__docId__": 735,
+    "__docId__": 738,
     "kind": "method",
     "name": "onParticleDead",
     "memberof": "src/renderer/MeshRenderer.js~MeshRenderer",
@@ -15311,7 +15541,7 @@
     "return": null
   },
   {
-    "__docId__": 736,
+    "__docId__": 739,
     "kind": "file",
     "name": "src/renderer/PointsRenderer.js",
     "content": "import BaseRenderer from './BaseRenderer';\nimport { Vector3 } from 'three';\n\nexport default class PointsRenderer extends BaseRenderer {\n  constructor(ps) {\n    super();\n\n    this.points = ps;\n  }\n\n  onProtonUpdate() {}\n\n  onParticleCreated(particle) {\n    if (!particle.target) {\n      particle.target = new Vector3();\n    }\n\n    particle.target.copy(particle.p);\n    this.points.geometry.vertices.push(particle.target);\n  }\n\n  onParticleUpdate(particle) {\n    if (particle.target) {\n      particle.target.copy(particle.p);\n    }\n  }\n\n  onParticleDead(particle) {\n    if (particle.target) {\n      var index = this.points.geometry.vertices.indexOf(particle.target);\n\n      if (index > -1) this.points.geometry.vertices.splice(index, 1);\n\n      particle.target = null;\n    }\n  }\n}\n",
@@ -15322,7 +15552,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 737,
+    "__docId__": 740,
     "kind": "class",
     "name": "PointsRenderer",
     "memberof": "src/renderer/PointsRenderer.js",
@@ -15341,7 +15571,7 @@
     ]
   },
   {
-    "__docId__": 738,
+    "__docId__": 741,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/renderer/PointsRenderer.js~PointsRenderer",
@@ -15355,7 +15585,7 @@
     "undocument": true
   },
   {
-    "__docId__": 739,
+    "__docId__": 742,
     "kind": "member",
     "name": "points",
     "memberof": "src/renderer/PointsRenderer.js~PointsRenderer",
@@ -15372,7 +15602,7 @@
     }
   },
   {
-    "__docId__": 740,
+    "__docId__": 743,
     "kind": "method",
     "name": "onProtonUpdate",
     "memberof": "src/renderer/PointsRenderer.js~PointsRenderer",
@@ -15388,7 +15618,7 @@
     "return": null
   },
   {
-    "__docId__": 741,
+    "__docId__": 744,
     "kind": "method",
     "name": "onParticleCreated",
     "memberof": "src/renderer/PointsRenderer.js~PointsRenderer",
@@ -15411,7 +15641,7 @@
     "return": null
   },
   {
-    "__docId__": 742,
+    "__docId__": 745,
     "kind": "method",
     "name": "onParticleUpdate",
     "memberof": "src/renderer/PointsRenderer.js~PointsRenderer",
@@ -15434,7 +15664,7 @@
     "return": null
   },
   {
-    "__docId__": 743,
+    "__docId__": 746,
     "kind": "method",
     "name": "onParticleDead",
     "memberof": "src/renderer/PointsRenderer.js~PointsRenderer",
@@ -15457,7 +15687,7 @@
     "return": null
   },
   {
-    "__docId__": 744,
+    "__docId__": 747,
     "kind": "file",
     "name": "src/renderer/SpriteRenderer.js",
     "content": "import { Sprite, SpriteMaterial } from 'three';\n\nimport MeshRenderer from './MeshRenderer';\n\nexport default class SpriteRenderer extends MeshRenderer {\n  constructor(container) {\n    super(container);\n\n    this._body = new Sprite(new SpriteMaterial({ color: 0xffffff }));\n  }\n\n  scale(particle) {\n    particle.target.scale.set(\n      particle.scale * particle.radius,\n      particle.scale * particle.radius,\n      1\n    );\n  }\n}\n",
@@ -15468,7 +15698,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 745,
+    "__docId__": 748,
     "kind": "class",
     "name": "SpriteRenderer",
     "memberof": "src/renderer/SpriteRenderer.js",
@@ -15487,7 +15717,7 @@
     ]
   },
   {
-    "__docId__": 746,
+    "__docId__": 749,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/renderer/SpriteRenderer.js~SpriteRenderer",
@@ -15501,7 +15731,7 @@
     "undocument": true
   },
   {
-    "__docId__": 747,
+    "__docId__": 750,
     "kind": "member",
     "name": "_body",
     "memberof": "src/renderer/SpriteRenderer.js~SpriteRenderer",
@@ -15518,7 +15748,7 @@
     }
   },
   {
-    "__docId__": 748,
+    "__docId__": 751,
     "kind": "method",
     "name": "scale",
     "memberof": "src/renderer/SpriteRenderer.js~SpriteRenderer",
@@ -15541,7 +15771,7 @@
     "return": null
   },
   {
-    "__docId__": 749,
+    "__docId__": 752,
     "kind": "file",
     "name": "src/renderer/index.js",
     "content": "export { default as CustomRenderer } from './CustomRenderer';\nexport { default as MeshRenderer } from './MeshRenderer';\nexport { default as PointsRenderer } from './PointsRenderer';\nexport { default as SpriteRenderer } from './SpriteRenderer';\n",
@@ -15552,7 +15782,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 750,
+    "__docId__": 753,
     "kind": "file",
     "name": "src/renderer/types.js",
     "content": "export const RENDERER_TYPE_CUSTOM = 'CustomRenderer';\nexport const RENDERER_TYPE_SPRITE = 'SpriteRenderer';\nexport const RENDERER_TYPE_MESH = 'MeshRenderer';\nexport const RENDERER_TYPE_POINTS = 'PointsRenderer';\n",
@@ -15563,7 +15793,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 751,
+    "__docId__": 754,
     "kind": "variable",
     "name": "RENDERER_TYPE_CUSTOM",
     "memberof": "src/renderer/types.js",
@@ -15583,7 +15813,7 @@
     }
   },
   {
-    "__docId__": 752,
+    "__docId__": 755,
     "kind": "variable",
     "name": "RENDERER_TYPE_SPRITE",
     "memberof": "src/renderer/types.js",
@@ -15603,7 +15833,7 @@
     }
   },
   {
-    "__docId__": 753,
+    "__docId__": 756,
     "kind": "variable",
     "name": "RENDERER_TYPE_MESH",
     "memberof": "src/renderer/types.js",
@@ -15623,7 +15853,7 @@
     }
   },
   {
-    "__docId__": 754,
+    "__docId__": 757,
     "kind": "variable",
     "name": "RENDERER_TYPE_POINTS",
     "memberof": "src/renderer/types.js",
@@ -15643,7 +15873,7 @@
     }
   },
   {
-    "__docId__": 755,
+    "__docId__": 758,
     "kind": "file",
     "name": "src/utils/ColorUtil.js",
     "content": "export default {\n  getRGB: function(color) {\n    var rgb = {};\n\n    if (typeof color === 'number') {\n      hex = Math.floor(color);\n      rgb.r = ((color >> 16) & 255) / 255;\n      rgb.g = ((color >> 8) & 255) / 255;\n      rgb.b = (color & 255) / 255;\n    } else if (typeof color === 'string') {\n      var m;\n\n      if (\n        (m = /^(\\d+)\\s*,\\s*(\\d+)\\s*,\\s*(\\d+)\\s*(,\\s*([0-9]*\\.?[0-9]+)\\s*)?$/.exec(\n          color\n        ))\n      ) {\n        rgb.r = Math.min(255, parseInt(m[1], 10)) / 255;\n        rgb.g = Math.min(255, parseInt(m[2], 10)) / 255;\n        rgb.b = Math.min(255, parseInt(m[3], 10)) / 255;\n      } else if ((m = /^\\#([A-Fa-f0-9]+)$/.exec(color))) {\n        var hex = m[1];\n\n        rgb.r = parseInt(hex.charAt(0) + hex.charAt(1), 16) / 255;\n        rgb.g = parseInt(hex.charAt(2) + hex.charAt(3), 16) / 255;\n        rgb.b = parseInt(hex.charAt(4) + hex.charAt(5), 16) / 255;\n      }\n    } else {\n      rgb.r = color.r;\n      rgb.g = color.g;\n      rgb.b = color.b;\n    }\n\n    return rgb;\n  }\n};\n",
@@ -15654,7 +15884,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 756,
+    "__docId__": 759,
     "kind": "file",
     "name": "src/utils/PUID.js",
     "content": "export default {\n  _id: 0,\n  _uids: {},\n  id: function(functionOrObject) {\n    for (let id in this._uids) {\n      if (this._uids[id] == functionOrObject) {\n        return id;\n      }\n    }\n\n    const nid = 'PUID_' + this._id++;\n\n    this._uids[nid] = functionOrObject;\n\n    return nid;\n  }\n};\n",
@@ -15665,7 +15895,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 757,
+    "__docId__": 760,
     "kind": "file",
     "name": "src/utils/THREEUtil.js",
     "content": "import * as THREE from 'three';\n\nimport PUID from './PUID';\n\nexport default {\n  toScreenPos: (function() {\n    var vector = new THREE.Vector3();\n\n    return function(pos, camera, canvas) {\n      vector.copy(pos);\n      // map to normalized device coordinate (NDC) space\n      vector.project(camera);\n      // map to 2D screen space\n      vector.x = Math.round(((vector.x + 1) * canvas.width) / 2);\n      vector.y = Math.round(((-vector.y + 1) * canvas.height) / 2);\n      vector.z = 0;\n\n      return vector;\n    };\n  })(),\n\n  toSpacePos: (function() {\n    var vector = new THREE.Vector3(),\n      dir = new THREE.Vector3(),\n      distance;\n\n    return function(pos, camera, canvas) {\n      vector.set(\n        (pos.x / canvas.width) * 2 - 1,\n        -(pos.y / canvas.height) * 2 + 1,\n        0.5\n      );\n      vector.unproject(camera);\n\n      dir.copy(vector.sub(camera.position).normalize());\n      distance = -camera.position.z / dir.z;\n      vector.copy(camera.position);\n      vector.add(dir.multiplyScalar(distance));\n\n      return vector;\n    };\n  })(),\n\n  getTexture: (function() {\n    var store = {};\n\n    return function(img) {\n      let id;\n\n      if (img instanceof THREE.Texture) {\n        return img;\n      } else if (typeof img == 'string') {\n        id = PUID.hash(img);\n\n        if (!store[id]) store[id] = new THREE.Texture(img);\n\n        return store[id];\n      } else if (img instanceof Image) {\n        id = PUID.hash(img.src);\n\n        if (!store[id]) store[id] = new THREE.Texture(img);\n\n        return store[id];\n      }\n    };\n  })()\n};\n",
@@ -15676,7 +15906,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 758,
+    "__docId__": 761,
     "kind": "file",
     "name": "src/utils/Util.js",
     "content": "export default {\n  initValue: function(value, defaults) {\n    var _value = value != null && value != undefined ? value : defaults;\n\n    return _value;\n  },\n\n  isArray: function(value) {\n    return Object.prototype.toString.call(value) === '[object Array]';\n  },\n\n  destroyArray: function(array) {\n    array.length = 0;\n  },\n\n  destroyObject: function(obj) {\n    for (var o in obj) delete obj[o];\n  },\n\n  isUndefined: function() {\n    for (var id in arguments) {\n      var arg = arguments[id];\n\n      if (arg !== undefined) return false;\n    }\n\n    return true;\n  },\n\n  setVectorByObj: function(target, pOBJ) {\n    if (pOBJ['x'] !== undefined) target.p.x = pOBJ['x'];\n    if (pOBJ['y'] !== undefined) target.p.y = pOBJ['y'];\n    if (pOBJ['z'] !== undefined) target.p.z = pOBJ['z'];\n\n    if (pOBJ['vx'] !== undefined) target.v.x = pOBJ['vx'];\n    if (pOBJ['vy'] !== undefined) target.v.y = pOBJ['vy'];\n    if (pOBJ['vz'] !== undefined) target.v.z = pOBJ['vz'];\n\n    if (pOBJ['ax'] !== undefined) target.a.x = pOBJ['ax'];\n    if (pOBJ['ay'] !== undefined) target.a.y = pOBJ['ay'];\n    if (pOBJ['az'] !== undefined) target.a.z = pOBJ['az'];\n\n    if (pOBJ['p'] !== undefined) target.p.copy(pOBJ['p']);\n    if (pOBJ['v'] !== undefined) target.v.copy(pOBJ['v']);\n    if (pOBJ['a'] !== undefined) target.a.copy(pOBJ['a']);\n\n    if (pOBJ['position'] !== undefined) target.p.copy(pOBJ['position']);\n    if (pOBJ['velocity'] !== undefined) target.v.copy(pOBJ['velocity']);\n    if (pOBJ['accelerate'] !== undefined) target.a.copy(pOBJ['accelerate']);\n  },\n\n  //set prototype\n  setPrototypeByObj: function(target, proObj, filters) {\n    for (var key in proObj) {\n      if (target.hasOwnProperty(key)) {\n        if (filters) {\n          if (filters.indexOf(key) < 0)\n            target[key] = this._getValue(proObj[key]);\n        } else {\n          target[key] = this._getValue(proObj[key]);\n        }\n      }\n    }\n\n    return target;\n  },\n\n  _getValue: function(pan) {\n    if (pan.constructor.name === 'Span') return pan.getValue();\n    else return pan;\n  }\n};\n",
@@ -15687,7 +15917,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 759,
+    "__docId__": 762,
     "kind": "file",
     "name": "src/utils/index.js",
     "content": "export { default as ColorUtil } from './ColorUtil';\nexport { default as PUID } from './PUID';\nexport { default as THREEUtil } from './THREEUtil';\nexport { default as Util } from './Util';\nexport { default as uid } from './uid';\n",
@@ -15698,7 +15928,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 760,
+    "__docId__": 763,
     "kind": "file",
     "name": "src/utils/uid.js",
     "content": "import uid from 'uuid/v1';\n\nexport default uid;\n",
@@ -15709,7 +15939,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 761,
+    "__docId__": 764,
     "kind": "file",
     "name": "src/zone/BoxZone.js",
     "content": "import MathUtils from '../math/MathUtils';\nimport Util from '../utils/Util';\nimport Zone from './Zone';\n\nexport default class BoxZone extends Zone {\n  /**\n   * BoxZone is a box zone\n   * @param {Number|Vector3D} x - the position's x value or a Vector3D Object\n   * @param {Number} y - the position's y value\n   * @param {Number} z - the position's z value\n   * @param {Number} w - the Box's width\n   * @param {Number} h - the Box's height\n   * @param {Number} d - the Box's depth\n   * @example\n   * var boxZone = new BoxZone(0,0,0,50,50,50);\n   * or\n   * var boxZone = new BoxZone(new Vector3D(0,0,0), 50, 50, 50);\n   * @extends {Zone}\n   * @constructor\n   */\n  constructor(a, b, c, d, e, f) {\n    super();\n\n    // TODO this reassigning of arguments is pretty dangerous, need to fix it.\n    // eslint-disable-next-line\n    var x, y, z, w, h, d;\n\n    if (Util.isUndefined(b, c, d, e, f)) {\n      x = y = z = 0;\n      w = h = d = a || 100;\n    } else if (Util.isUndefined(d, e, f)) {\n      x = y = z = 0;\n      w = a;\n      h = b;\n      d = c;\n    } else {\n      x = a;\n      y = b;\n      z = c;\n      w = d;\n      h = e;\n      d = f;\n    }\n\n    this.x = x;\n    this.y = y;\n    this.z = z;\n    this.width = w;\n    this.height = h;\n    this.depth = d;\n    // TODO Set this via an argument to the constructor\n    this.friction = 0.85;\n    // TODO Set this via an argument to the constructor\n    this.max = 6;\n  }\n\n  /**\n   * Returns true to indicate this is a BoxZone.\n   *\n   * @return {boolean}\n   */\n  isBoxZone() {\n    return true;\n  }\n\n  getPosition() {\n    this.vector.x = this.x + MathUtils.randomAToB(-0.5, 0.5) * this.width;\n    this.vector.y = this.y + MathUtils.randomAToB(-0.5, 0.5) * this.height;\n    this.vector.z = this.z + MathUtils.randomAToB(-0.5, 0.5) * this.depth;\n\n    return this.vector;\n  }\n\n  _dead(particle) {\n    if (particle.p.x + particle.radius < this.x - this.width / 2)\n      particle.dead = true;\n    else if (particle.p.x - particle.radius > this.x + this.width / 2)\n      particle.dead = true;\n\n    if (particle.p.y + particle.radius < this.y - this.height / 2)\n      particle.dead = true;\n    else if (particle.p.y - particle.radius > this.y + this.height / 2)\n      particle.dead = true;\n\n    if (particle.p.z + particle.radius < this.z - this.depth / 2)\n      particle.dead = true;\n    else if (particle.p.z - particle.radius > this.z + this.depth / 2)\n      particle.dead = true;\n  }\n\n  _bound(particle) {\n    if (particle.p.x - particle.radius < this.x - this.width / 2) {\n      particle.p.x = this.x - this.width / 2 + particle.radius;\n      particle.v.x *= -this.friction;\n      this._static(particle, 'x');\n    } else if (particle.p.x + particle.radius > this.x + this.width / 2) {\n      particle.p.x = this.x + this.width / 2 - particle.radius;\n      particle.v.x *= -this.friction;\n      this._static(particle, 'x');\n    }\n\n    if (particle.p.y - particle.radius < this.y - this.height / 2) {\n      particle.p.y = this.y - this.height / 2 + particle.radius;\n      particle.v.y *= -this.friction;\n      this._static(particle, 'y');\n    } else if (particle.p.y + particle.radius > this.y + this.height / 2) {\n      particle.p.y = this.y + this.height / 2 - particle.radius;\n      particle.v.y *= -this.friction;\n      this._static(particle, 'y');\n    }\n\n    if (particle.p.z - particle.radius < this.z - this.depth / 2) {\n      particle.p.z = this.z - this.depth / 2 + particle.radius;\n      particle.v.z *= -this.friction;\n      this._static(particle, 'z');\n    } else if (particle.p.z + particle.radius > this.z + this.depth / 2) {\n      particle.p.z = this.z + this.depth / 2 - particle.radius;\n      particle.v.z *= -this.friction;\n      this._static(particle, 'z');\n    }\n  }\n\n  _static(particle, axis) {\n    if (particle.v[axis] * particle.a[axis] > 0) return;\n    if (\n      Math.abs(particle.v[axis]) <\n      Math.abs(particle.a[axis]) * 0.0167 * this.max\n    ) {\n      particle.v[axis] = 0;\n      particle.a[axis] = 0;\n    }\n  }\n\n  _cross(particle) {\n    if (\n      particle.p.x + particle.radius < this.x - this.width / 2 &&\n      particle.v.x <= 0\n    )\n      particle.p.x = this.x + this.width / 2 + particle.radius;\n    else if (\n      particle.p.x - particle.radius > this.x + this.width / 2 &&\n      particle.v.x >= 0\n    )\n      particle.p.x = this.x - this.width / 2 - particle.radius;\n\n    if (\n      particle.p.y + particle.radius < this.y - this.height / 2 &&\n      particle.v.y <= 0\n    )\n      particle.p.y = this.y + this.height / 2 + particle.radius;\n    else if (\n      particle.p.y - particle.radius > this.y + this.height / 2 &&\n      particle.v.y >= 0\n    )\n      particle.p.y = this.y - this.height / 2 - particle.radius;\n\n    if (\n      particle.p.z + particle.radius < this.z - this.depth / 2 &&\n      particle.v.z <= 0\n    )\n      particle.p.z = this.z + this.depth / 2 + particle.radius;\n    else if (\n      particle.p.z - particle.radius > this.z + this.depth / 2 &&\n      particle.v.z >= 0\n    )\n      particle.p.z = this.z - this.depth / 2 - particle.radius;\n  }\n}\n",
@@ -15720,7 +15950,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 762,
+    "__docId__": 765,
     "kind": "class",
     "name": "BoxZone",
     "memberof": "src/zone/BoxZone.js",
@@ -15739,7 +15969,7 @@
     ]
   },
   {
-    "__docId__": 763,
+    "__docId__": 766,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -15828,7 +16058,7 @@
     ]
   },
   {
-    "__docId__": 764,
+    "__docId__": 767,
     "kind": "member",
     "name": "x",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -15845,7 +16075,7 @@
     }
   },
   {
-    "__docId__": 765,
+    "__docId__": 768,
     "kind": "member",
     "name": "y",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -15862,7 +16092,7 @@
     }
   },
   {
-    "__docId__": 766,
+    "__docId__": 769,
     "kind": "member",
     "name": "z",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -15879,7 +16109,7 @@
     }
   },
   {
-    "__docId__": 767,
+    "__docId__": 770,
     "kind": "member",
     "name": "width",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -15896,7 +16126,7 @@
     }
   },
   {
-    "__docId__": 768,
+    "__docId__": 771,
     "kind": "member",
     "name": "height",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -15913,7 +16143,7 @@
     }
   },
   {
-    "__docId__": 769,
+    "__docId__": 772,
     "kind": "member",
     "name": "depth",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -15930,7 +16160,7 @@
     }
   },
   {
-    "__docId__": 770,
+    "__docId__": 773,
     "kind": "member",
     "name": "friction",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -15947,7 +16177,7 @@
     }
   },
   {
-    "__docId__": 771,
+    "__docId__": 774,
     "kind": "member",
     "name": "max",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -15964,7 +16194,7 @@
     }
   },
   {
-    "__docId__": 772,
+    "__docId__": 775,
     "kind": "method",
     "name": "isBoxZone",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -15986,7 +16216,7 @@
     "params": []
   },
   {
-    "__docId__": 773,
+    "__docId__": 776,
     "kind": "method",
     "name": "getPosition",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -16006,7 +16236,7 @@
     }
   },
   {
-    "__docId__": 774,
+    "__docId__": 777,
     "kind": "method",
     "name": "_dead",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -16029,7 +16259,7 @@
     "return": null
   },
   {
-    "__docId__": 775,
+    "__docId__": 778,
     "kind": "method",
     "name": "_bound",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -16052,7 +16282,7 @@
     "return": null
   },
   {
-    "__docId__": 776,
+    "__docId__": 779,
     "kind": "method",
     "name": "_static",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -16081,7 +16311,7 @@
     "return": null
   },
   {
-    "__docId__": 777,
+    "__docId__": 780,
     "kind": "method",
     "name": "_cross",
     "memberof": "src/zone/BoxZone.js~BoxZone",
@@ -16104,7 +16334,7 @@
     "return": null
   },
   {
-    "__docId__": 778,
+    "__docId__": 781,
     "kind": "file",
     "name": "src/zone/LineZone.js",
     "content": "import Vector3D from '../math/Vector3D';\nimport Zone from './Zone';\n\nexport default class LineZone extends Zone {\n  /**\n   * LineZone is a 3d line zone\n   * @param {Number|Vector3D} x1 - the line's start point of x value or a Vector3D Object\n   * @param {Number|Vector3D} y1 - the line's start point of y value or a Vector3D Object\n   * @param {Number} z1 - the line's start point of z value\n   * @param {Number} x2 - the line's end point of x value\n   * @param {Number} y2 - the line's end point of y value\n   * @param {Number} z2 - the line's end point of z value\n   * @example\n   * var lineZone = new Proton.LineZone(0,0,0,100,100,0);\n   * or\n   * var lineZone = new Proton.LineZone(new Proton.Vector3D(0,0,0),new Proton.Vector3D(100,100,0));\n   * @extends {Zone}\n   * @constructor\n   */\n  constructor(x1, y1, z1, x2, y2, z2) {\n    super();\n\n    if (x1 instanceof Vector3D) {\n      this.x1 = x1.x;\n      this.y1 = x1.y;\n      this.z1 = x1.z;\n\n      this.x2 = x2.x;\n      this.y2 = x2.y;\n      this.z2 = x2.z;\n    } else {\n      this.x1 = x1;\n      this.y1 = y1;\n      this.z1 = z1;\n\n      this.x2 = x2;\n      this.y2 = y2;\n      this.z2 = z2;\n    }\n\n    this.supportsCrossing = false;\n  }\n\n  /**\n   * Returns true to indicate this is a LineZone.\n   *\n   * @return {boolean}\n   */\n  isLineZone() {\n    return true;\n  }\n\n  getPosition() {\n    this.random = Math.random();\n    this.vector.x = this.x1 + this.random * (this.x2 - this.x1);\n    this.vector.y = this.y1 + this.random * (this.y2 - this.y1);\n    this.vector.z = this.z1 + this.random * (this.z2 - this.z1);\n\n    return this.vector;\n  }\n}\n",
@@ -16115,7 +16345,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 779,
+    "__docId__": 782,
     "kind": "class",
     "name": "LineZone",
     "memberof": "src/zone/LineZone.js",
@@ -16134,7 +16364,7 @@
     ]
   },
   {
-    "__docId__": 780,
+    "__docId__": 783,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/zone/LineZone.js~LineZone",
@@ -16224,7 +16454,7 @@
     ]
   },
   {
-    "__docId__": 781,
+    "__docId__": 784,
     "kind": "member",
     "name": "x1",
     "memberof": "src/zone/LineZone.js~LineZone",
@@ -16241,7 +16471,7 @@
     }
   },
   {
-    "__docId__": 782,
+    "__docId__": 785,
     "kind": "member",
     "name": "y1",
     "memberof": "src/zone/LineZone.js~LineZone",
@@ -16258,7 +16488,7 @@
     }
   },
   {
-    "__docId__": 783,
+    "__docId__": 786,
     "kind": "member",
     "name": "z1",
     "memberof": "src/zone/LineZone.js~LineZone",
@@ -16275,7 +16505,7 @@
     }
   },
   {
-    "__docId__": 784,
+    "__docId__": 787,
     "kind": "member",
     "name": "x2",
     "memberof": "src/zone/LineZone.js~LineZone",
@@ -16292,7 +16522,7 @@
     }
   },
   {
-    "__docId__": 785,
+    "__docId__": 788,
     "kind": "member",
     "name": "y2",
     "memberof": "src/zone/LineZone.js~LineZone",
@@ -16309,7 +16539,7 @@
     }
   },
   {
-    "__docId__": 786,
+    "__docId__": 789,
     "kind": "member",
     "name": "z2",
     "memberof": "src/zone/LineZone.js~LineZone",
@@ -16326,7 +16556,7 @@
     }
   },
   {
-    "__docId__": 793,
+    "__docId__": 796,
     "kind": "member",
     "name": "supportsCrossing",
     "memberof": "src/zone/LineZone.js~LineZone",
@@ -16343,7 +16573,7 @@
     }
   },
   {
-    "__docId__": 794,
+    "__docId__": 797,
     "kind": "method",
     "name": "isLineZone",
     "memberof": "src/zone/LineZone.js~LineZone",
@@ -16365,7 +16595,7 @@
     "params": []
   },
   {
-    "__docId__": 795,
+    "__docId__": 798,
     "kind": "method",
     "name": "getPosition",
     "memberof": "src/zone/LineZone.js~LineZone",
@@ -16385,7 +16615,7 @@
     }
   },
   {
-    "__docId__": 796,
+    "__docId__": 799,
     "kind": "member",
     "name": "random",
     "memberof": "src/zone/LineZone.js~LineZone",
@@ -16402,7 +16632,7 @@
     }
   },
   {
-    "__docId__": 797,
+    "__docId__": 800,
     "kind": "file",
     "name": "src/zone/MeshZone.js",
     "content": "import { Geometry } from 'three';\nimport Zone from './Zone';\n\n/**\n * Uses a three Geometry to determine the zone parameters.\n *\n */\nexport default class MeshZone extends Zone {\n  \n  /**\n   * @constructs {MeshZone}\n   *\n   * TODO BREAKING_CHANGE remove support for nested MeshZones and only accept\n   * Geometry as the first argument\n   *\n   * @param {Geometry} geometry - the geometry that will determine the zone bounds\n   * @param {number} scale - the zone scale\n   * @return void\n   */\n  constructor(geometry, scale = 1) {\n    super();\n\n    if (geometry instanceof Geometry) {\n      this.geometry = geometry;\n    } else {\n      this.geometry = geometry.geometry;\n    }\n\n    this.scale = scale;\n    this.supportsCrossing = false;\n  }\n\n  /**\n   * Returns true to indicate this is a MeshZone.\n   *\n   * @return {boolean}\n   */\n  isMeshZone() {\n    return true;\n  }\n\n  getPosition() {\n    var vertices = this.geometry.vertices;\n    var rVector = vertices[(vertices.length * Math.random()) >> 0];\n\n    this.vector.x = rVector.x * this.scale;\n    this.vector.y = rVector.y * this.scale;\n    this.vector.z = rVector.z * this.scale;\n\n    return this.vector;\n  }\n}\n",
@@ -16413,7 +16643,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 798,
+    "__docId__": 801,
     "kind": "class",
     "name": "MeshZone",
     "memberof": "src/zone/MeshZone.js",
@@ -16431,7 +16661,7 @@
     ]
   },
   {
-    "__docId__": 799,
+    "__docId__": 802,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/zone/MeshZone.js~MeshZone",
@@ -16480,7 +16710,7 @@
     }
   },
   {
-    "__docId__": 800,
+    "__docId__": 803,
     "kind": "member",
     "name": "geometry",
     "memberof": "src/zone/MeshZone.js~MeshZone",
@@ -16497,7 +16727,7 @@
     }
   },
   {
-    "__docId__": 802,
+    "__docId__": 805,
     "kind": "member",
     "name": "scale",
     "memberof": "src/zone/MeshZone.js~MeshZone",
@@ -16514,7 +16744,7 @@
     }
   },
   {
-    "__docId__": 803,
+    "__docId__": 806,
     "kind": "member",
     "name": "supportsCrossing",
     "memberof": "src/zone/MeshZone.js~MeshZone",
@@ -16531,7 +16761,7 @@
     }
   },
   {
-    "__docId__": 804,
+    "__docId__": 807,
     "kind": "method",
     "name": "isMeshZone",
     "memberof": "src/zone/MeshZone.js~MeshZone",
@@ -16553,7 +16783,7 @@
     "params": []
   },
   {
-    "__docId__": 805,
+    "__docId__": 808,
     "kind": "method",
     "name": "getPosition",
     "memberof": "src/zone/MeshZone.js~MeshZone",
@@ -16573,7 +16803,7 @@
     }
   },
   {
-    "__docId__": 806,
+    "__docId__": 809,
     "kind": "file",
     "name": "src/zone/PointZone.js",
     "content": "import Util from '../utils/Util';\nimport Zone from './Zone';\n\nexport default class PointZone extends Zone {\n  /**\n   * PointZone is a point zone\n   * @param {Number|Vector3D} x - the center's x value or a Vector3D Object\n   * @param {Number} y - the center's y value\n   * @param {Number} z - the center's z value\n   * @example\n   * var pointZone = new Proton.PointZone(0,30,10);\n   * or\n   * var pointZone = new Proton.PointZone(new Proton.Vector3D(0,30,10));\n   * @extends {Zone}\n   * @constructor\n   */\n  constructor(a, b, c) {\n    super();\n\n    // TODO see below, these should probably be assigned properly\n    // eslint-disable-next-line\n    var x, y, z;\n\n    if (Util.isUndefined(a, b, c)) {\n      x = y = z = 0;\n    } else {\n      x = a;\n      y = b;\n      z = c;\n    }\n\n    this.x = x;\n\n    // TODO shouldn't this be set to y?\n    this.y = x;\n\n    // TODO shouldn't this be set to z?\n    this.z = x;\n    this.supportsCrossing = false;\n  }\n\n  /**\n   * Returns true to indicate this is a PointZone.\n   *\n   * @return {boolean}\n   */\n  isPointZone() {\n    return true;\n  }\n\n  getPosition() {\n    this.vector.x = this.x;\n    this.vector.y = this.y;\n    this.vector.z = this.z;\n\n    return this.vector;\n  }\n}\n",
@@ -16584,7 +16814,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 807,
+    "__docId__": 810,
     "kind": "class",
     "name": "PointZone",
     "memberof": "src/zone/PointZone.js",
@@ -16603,7 +16833,7 @@
     ]
   },
   {
-    "__docId__": 808,
+    "__docId__": 811,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/zone/PointZone.js~PointZone",
@@ -16662,7 +16892,7 @@
     ]
   },
   {
-    "__docId__": 809,
+    "__docId__": 812,
     "kind": "member",
     "name": "x",
     "memberof": "src/zone/PointZone.js~PointZone",
@@ -16679,7 +16909,7 @@
     }
   },
   {
-    "__docId__": 810,
+    "__docId__": 813,
     "kind": "member",
     "name": "y",
     "memberof": "src/zone/PointZone.js~PointZone",
@@ -16696,7 +16926,7 @@
     }
   },
   {
-    "__docId__": 811,
+    "__docId__": 814,
     "kind": "member",
     "name": "z",
     "memberof": "src/zone/PointZone.js~PointZone",
@@ -16713,7 +16943,7 @@
     }
   },
   {
-    "__docId__": 812,
+    "__docId__": 815,
     "kind": "member",
     "name": "supportsCrossing",
     "memberof": "src/zone/PointZone.js~PointZone",
@@ -16730,7 +16960,7 @@
     }
   },
   {
-    "__docId__": 813,
+    "__docId__": 816,
     "kind": "method",
     "name": "isPointZone",
     "memberof": "src/zone/PointZone.js~PointZone",
@@ -16752,7 +16982,7 @@
     "params": []
   },
   {
-    "__docId__": 814,
+    "__docId__": 817,
     "kind": "method",
     "name": "getPosition",
     "memberof": "src/zone/PointZone.js~PointZone",
@@ -16772,7 +17002,7 @@
     }
   },
   {
-    "__docId__": 815,
+    "__docId__": 818,
     "kind": "file",
     "name": "src/zone/ScreenZone.js",
     "content": "import THREEUtil from '../utils/THREEUtil';\nimport Vector3D from '../math/Vector3D';\nimport Zone from './Zone';\n\nexport default class ScreenZone extends Zone {\n  /**\n   * ScreenZone is a 3d line zone\n   * @param {Number|Vector3D} x1 - the line's start point of x value or a Vector3D Object\n   * @param {Number|Vector3D} y1 - the line's start point of y value or a Vector3D Object\n   * @param {Number} z1 - the line's start point of z value\n   * @param {Number} x2 - the line's end point of x value\n   * @param {Number} y2 - the line's end point of y value\n   * @param {Number} z2 - the line's end point of z value\n   * @example\n   * var lineZone = new ScreenZone(0,0,0,100,100,0);\n   * or\n   * var lineZone = new ScreenZone(new Vector3D(0,0,0),new Vector3D(100,100,0));\n   * @extends {Zone}\n   * @constructor\n   */\n  constructor(camera, renderer, dis, dir) {\n    super();\n\n    this.camera = camera;\n    this.renderer = renderer;\n    this.dis = dis || 20;\n    dir = dir || '1234';\n\n    for (var i = 1; i < 5; i++) this['d' + i] = dir.indexOf(i + '') >= 0;\n\n    this.name = 'ScreenZone';\n  }\n\n  /**\n   * Returns true to indicate this is a ScreenZone.\n   *\n   * @return {boolean}\n   */\n  isScreenZone() {\n    return true;\n  }\n\n  _dead(particle) {\n    var pos = THREEUtil.toScreenPos(\n      particle.p,\n      this.camera,\n      this.renderer.domElement\n    );\n    var canvas = this.renderer.domElement;\n\n    if (pos.y + particle.radius < -this.dis && this.d1) {\n      particle.dead = true;\n    } else if (pos.y - particle.radius > canvas.height + this.dis && this.d3) {\n      particle.dead = true;\n    }\n\n    if (pos.x + particle.radius < -this.dis && this.d4) {\n      particle.dead = true;\n    } else if (pos.x - particle.radius > canvas.width + this.dis && this.d2) {\n      particle.dead = true;\n    }\n  }\n\n  _bound(particle) {\n    var pos = THREEUtil.toScreenPos(\n      particle.p,\n      this.camera,\n      this.renderer.domElement\n    );\n    var canvas = this.renderer.domElement;\n\n    if (pos.y + particle.radius < -this.dis) {\n      particle.v.y *= -1;\n    } else if (pos.y - particle.radius > canvas.height + this.dis) {\n      particle.v.y *= -1;\n    }\n\n    if (pos.x + particle.radius < -this.dis) {\n      particle.v.y *= -1;\n    } else if (pos.x - particle.radius > canvas.width + this.dis) {\n      particle.v.y *= -1;\n    }\n  }\n}\n\nScreenZone.prototype.getPosition = (function() {\n  var vec2 = new Vector3D(),\n    canvas;\n\n  return function() {\n    canvas = this.renderer.domElement;\n    vec2.x = Math.random() * canvas.width;\n    vec2.y = Math.random() * canvas.height;\n    this.vector.copy(THREEUtil.toSpacePos(vec2, this.camera, canvas));\n\n    return this.vector;\n  };\n})();\n\nScreenZone.prototype._cross = (function() {\n  var vec2 = new Vector3D();\n\n  return function(particle) {\n    var pos = THREEUtil.toScreenPos(\n      particle.p,\n      this.camera,\n      this.renderer.domElement\n    );\n    var canvas = this.renderer.domElement;\n\n    if (pos.y + particle.radius < -this.dis) {\n      vec2.x = pos.x;\n      vec2.y = canvas.height + this.dis + particle.radius;\n      particle.p.y = THREEUtil.toSpacePos(vec2, this.camera, canvas).y;\n    } else if (pos.y - particle.radius > canvas.height + this.dis) {\n      vec2.x = pos.x;\n      vec2.y = -this.dis - particle.radius;\n      particle.p.y = THREEUtil.toSpacePos(vec2, this.camera, canvas).y;\n    }\n\n    if (pos.x + particle.radius < -this.dis) {\n      vec2.y = pos.y;\n      vec2.x = canvas.width + this.dis + particle.radius;\n      particle.p.x = THREEUtil.toSpacePos(vec2, this.camera, canvas).x;\n    } else if (pos.x - particle.radius > canvas.width + this.dis) {\n      vec2.y = pos.y;\n      vec2.x = -this.dis - particle.radius;\n      particle.p.x = THREEUtil.toSpacePos(vec2, this.camera, canvas).x;\n    }\n  };\n})();\n",
@@ -16783,7 +17013,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 816,
+    "__docId__": 819,
     "kind": "class",
     "name": "ScreenZone",
     "memberof": "src/zone/ScreenZone.js",
@@ -16802,7 +17032,7 @@
     ]
   },
   {
-    "__docId__": 817,
+    "__docId__": 820,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/zone/ScreenZone.js~ScreenZone",
@@ -16892,7 +17122,7 @@
     ]
   },
   {
-    "__docId__": 818,
+    "__docId__": 821,
     "kind": "member",
     "name": "camera",
     "memberof": "src/zone/ScreenZone.js~ScreenZone",
@@ -16909,7 +17139,7 @@
     }
   },
   {
-    "__docId__": 819,
+    "__docId__": 822,
     "kind": "member",
     "name": "renderer",
     "memberof": "src/zone/ScreenZone.js~ScreenZone",
@@ -16926,7 +17156,7 @@
     }
   },
   {
-    "__docId__": 820,
+    "__docId__": 823,
     "kind": "member",
     "name": "dis",
     "memberof": "src/zone/ScreenZone.js~ScreenZone",
@@ -16943,7 +17173,7 @@
     }
   },
   {
-    "__docId__": 821,
+    "__docId__": 824,
     "kind": "member",
     "name": "['d' + i]",
     "memberof": "src/zone/ScreenZone.js~ScreenZone",
@@ -16960,7 +17190,7 @@
     }
   },
   {
-    "__docId__": 822,
+    "__docId__": 825,
     "kind": "member",
     "name": "name",
     "memberof": "src/zone/ScreenZone.js~ScreenZone",
@@ -16977,7 +17207,7 @@
     }
   },
   {
-    "__docId__": 823,
+    "__docId__": 826,
     "kind": "method",
     "name": "isScreenZone",
     "memberof": "src/zone/ScreenZone.js~ScreenZone",
@@ -16999,7 +17229,7 @@
     "params": []
   },
   {
-    "__docId__": 824,
+    "__docId__": 827,
     "kind": "method",
     "name": "_dead",
     "memberof": "src/zone/ScreenZone.js~ScreenZone",
@@ -17022,7 +17252,7 @@
     "return": null
   },
   {
-    "__docId__": 825,
+    "__docId__": 828,
     "kind": "method",
     "name": "_bound",
     "memberof": "src/zone/ScreenZone.js~ScreenZone",
@@ -17045,7 +17275,7 @@
     "return": null
   },
   {
-    "__docId__": 826,
+    "__docId__": 829,
     "kind": "file",
     "name": "src/zone/SphereZone.js",
     "content": "import { PI } from '../constants';\nimport Util from '../utils/Util';\nimport Vector3D from '../math/Vector3D';\nimport Zone from './Zone';\n\n/**\n * A spherical zone for particles to be emitted within.\n *\n */\nexport default class SphereZone extends Zone {\n\n  /**\n   * @constructs {SphereZone}\n   *\n   * @param {number} centerX - the sphere's center x coordinate\n   * @param {number} centerY - the sphere's center y coordinate\n   * @param {number} centerZ - the sphere's center z coordinate\n   * @param {number} radius - the sphere's radius value\n   * @return void\n   */\n  constructor(centerX, centerY, centerZ, radius) {\n    super();\n\n    // TODO see below, these should probably be assigned properly\n    // eslint-disable-next-line\n    let x, y, z, r;\n\n    if (Util.isUndefined(centerY, centerZ, radius)) {\n      x = y = z = 0;\n      r = centerX || 100;\n    } else {\n      x = centerX;\n      y = centerY;\n      z = centerZ;\n      r = radius;\n    }\n\n    this.x = x;\n\n    // TODO shouldn't this be set to y?\n    this.y = x;\n\n    // TODO shouldn't this be set to z?\n    this.z = x;\n    this.radius = r;\n    this.the = this.phi = 0;\n  }\n\n  /**\n   * Returns true to indicate this is a SphereZone.\n   *\n   * @return {boolean}\n   */\n  isSphereZone() {\n    return true;\n  }\n\n  /**\n   * Sets the particle to dead if the particle collides with the sphere.\n   *\n   * @param {object} particle\n   * @return void\n   */\n  _dead(particle) {\n    var d = particle.p.distanceTo(this);\n\n    if (d - particle.radius > this.radius) particle.dead = true;\n  }\n\n  /**\n   * Warns that this zone does not support the _cross method.\n   *\n   * @return void\n   */\n  _cross() {\n    console.warn(`${this.constructor.name} does not support the _cross method`);\n  }\n}\n\nSphereZone.prototype.getPosition = (function() {\n  var tha, phi, r;\n\n  return function() {\n    this.random = Math.random();\n\n    r = this.random * this.radius;\n    tha = PI * Math.random(); //[0-pi]\n    phi = PI * 2 * Math.random(); //[0-2pi]\n\n    this.vector.x = this.x + r * Math.sin(tha) * Math.cos(phi);\n    this.vector.y = this.y + r * Math.sin(phi) * Math.sin(tha);\n    this.vector.z = this.z + r * Math.cos(tha);\n\n    return this.vector;\n  };\n})();\n\nSphereZone.prototype._bound = (function() {\n  var normal = new Vector3D(),\n    v = new Vector3D(),\n    k;\n\n  return function(particle) {\n    var d = particle.p.distanceTo(this);\n\n    if (d + particle.radius >= this.radius) {\n      normal\n        .copy(particle.p)\n        .sub(this)\n        .normalize();\n      v.copy(particle.v);\n      k = 2 * v.dot(normal);\n      particle.v.sub(normal.scalar(k));\n    }\n  };\n})();\n",
@@ -17056,7 +17286,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 827,
+    "__docId__": 830,
     "kind": "class",
     "name": "SphereZone",
     "memberof": "src/zone/SphereZone.js",
@@ -17074,7 +17304,7 @@
     ]
   },
   {
-    "__docId__": 828,
+    "__docId__": 831,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/zone/SphereZone.js~SphereZone",
@@ -17143,7 +17373,7 @@
     }
   },
   {
-    "__docId__": 829,
+    "__docId__": 832,
     "kind": "member",
     "name": "x",
     "memberof": "src/zone/SphereZone.js~SphereZone",
@@ -17160,7 +17390,7 @@
     }
   },
   {
-    "__docId__": 830,
+    "__docId__": 833,
     "kind": "member",
     "name": "y",
     "memberof": "src/zone/SphereZone.js~SphereZone",
@@ -17177,7 +17407,7 @@
     }
   },
   {
-    "__docId__": 831,
+    "__docId__": 834,
     "kind": "member",
     "name": "z",
     "memberof": "src/zone/SphereZone.js~SphereZone",
@@ -17194,7 +17424,7 @@
     }
   },
   {
-    "__docId__": 832,
+    "__docId__": 835,
     "kind": "member",
     "name": "radius",
     "memberof": "src/zone/SphereZone.js~SphereZone",
@@ -17211,7 +17441,7 @@
     }
   },
   {
-    "__docId__": 833,
+    "__docId__": 836,
     "kind": "member",
     "name": "the",
     "memberof": "src/zone/SphereZone.js~SphereZone",
@@ -17228,7 +17458,7 @@
     }
   },
   {
-    "__docId__": 834,
+    "__docId__": 837,
     "kind": "method",
     "name": "isSphereZone",
     "memberof": "src/zone/SphereZone.js~SphereZone",
@@ -17250,7 +17480,7 @@
     "params": []
   },
   {
-    "__docId__": 835,
+    "__docId__": 838,
     "kind": "method",
     "name": "_dead",
     "memberof": "src/zone/SphereZone.js~SphereZone",
@@ -17283,7 +17513,7 @@
     }
   },
   {
-    "__docId__": 836,
+    "__docId__": 839,
     "kind": "method",
     "name": "_cross",
     "memberof": "src/zone/SphereZone.js~SphereZone",
@@ -17305,7 +17535,7 @@
     "params": []
   },
   {
-    "__docId__": 837,
+    "__docId__": 840,
     "kind": "file",
     "name": "src/zone/Zone.js",
     "content": "import Vector3D from '../math/Vector3D';\n\n/**\n * A Zone determines the area in 3D space where an emitter's particles can position\n * themselves. They are supplied to both the Position initializer\n * and the CrossZone behaviour.\n *\n * @see {@link '../initialize/Position.js'}\n * @see {@link '../behaviour/CrossZone.js'}\n * @abstract\n */\nexport default class Zone {\n  constructor() {\n    this.vector = new Vector3D(0, 0, 0);\n    this.random = 0;\n    this.crossType = 'dead';\n    this.log = true;\n    this.supportsCrossing = true;\n  }\n\n  getPosition() {\n    return null;\n  }\n\n  crossing(particle) {\n    if (!this.supportsCrossing) {\n      return console.warn(\n        `${this.constructor.name} does not support the crossing method`\n      );\n    }\n\n    switch (this.crossType) {\n      case 'bound':\n        this._bound(particle);\n        break;\n\n      case 'cross':\n        this._cross(particle);\n        break;\n\n      case 'dead':\n        this._dead(particle);\n        break;\n    }\n  }\n\n  /**\n   * Determines if this zone is a BoxZone.\n   *\n   * @return {boolean}\n   */\n  isBoxZone() {\n    return false;\n  }\n\n  /**\n   * Determines if this zone is a LineZone.\n   *\n   * @return {boolean}\n   */\n  isLineZone() {\n    return false;\n  }\n\n  /**\n   * Determines if this zone is a MeshZone.\n   *\n   * @return {boolean}\n   */\n  isMeshZone() {\n    return false;\n  }\n\n  /**\n   * Determines if this zone is a PointZone.\n   *\n   * @return {boolean}\n   */\n  isPointZone() {\n    return false;\n  }\n\n  /**\n   * Determines if this zone is a ScreenZone.\n   *\n   * @return {boolean}\n   */\n  isScreenZone() {\n    return false;\n  }\n\n  /**\n   * Determines if this zone is a SphereZone.\n   *\n   * @return {boolean}\n   */\n  isSphereZone() {\n    return false;\n  }\n\n  /**\n   * Sets the particle's dead property to true if required.\n   *\n   * @param {Particle} particle\n   * @abstract\n   */\n  _dead(particle) {} //eslint-disable-line\n\n  /**\n   * @abstract\n   */\n  _bound(particle) {} //eslint-disable-line\n\n  /**\n   * @abstract\n   */\n  _cross(particle) {} //eslint-disable-line\n}\n",
@@ -17316,7 +17546,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 838,
+    "__docId__": 841,
     "kind": "class",
     "name": "Zone",
     "memberof": "src/zone/Zone.js",
@@ -17336,7 +17566,7 @@
     "interface": false
   },
   {
-    "__docId__": 839,
+    "__docId__": 842,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17350,7 +17580,7 @@
     "undocument": true
   },
   {
-    "__docId__": 840,
+    "__docId__": 843,
     "kind": "member",
     "name": "vector",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17367,7 +17597,7 @@
     }
   },
   {
-    "__docId__": 841,
+    "__docId__": 844,
     "kind": "member",
     "name": "random",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17384,7 +17614,7 @@
     }
   },
   {
-    "__docId__": 842,
+    "__docId__": 845,
     "kind": "member",
     "name": "crossType",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17401,7 +17631,7 @@
     }
   },
   {
-    "__docId__": 843,
+    "__docId__": 846,
     "kind": "member",
     "name": "log",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17418,7 +17648,7 @@
     }
   },
   {
-    "__docId__": 844,
+    "__docId__": 847,
     "kind": "member",
     "name": "supportsCrossing",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17435,7 +17665,7 @@
     }
   },
   {
-    "__docId__": 845,
+    "__docId__": 848,
     "kind": "method",
     "name": "getPosition",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17455,7 +17685,7 @@
     }
   },
   {
-    "__docId__": 846,
+    "__docId__": 849,
     "kind": "method",
     "name": "crossing",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17482,7 +17712,7 @@
     }
   },
   {
-    "__docId__": 847,
+    "__docId__": 850,
     "kind": "method",
     "name": "isBoxZone",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17504,7 +17734,7 @@
     "params": []
   },
   {
-    "__docId__": 848,
+    "__docId__": 851,
     "kind": "method",
     "name": "isLineZone",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17526,7 +17756,7 @@
     "params": []
   },
   {
-    "__docId__": 849,
+    "__docId__": 852,
     "kind": "method",
     "name": "isMeshZone",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17548,7 +17778,7 @@
     "params": []
   },
   {
-    "__docId__": 850,
+    "__docId__": 853,
     "kind": "method",
     "name": "isPointZone",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17570,7 +17800,7 @@
     "params": []
   },
   {
-    "__docId__": 851,
+    "__docId__": 854,
     "kind": "method",
     "name": "isScreenZone",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17592,7 +17822,7 @@
     "params": []
   },
   {
-    "__docId__": 852,
+    "__docId__": 855,
     "kind": "method",
     "name": "isSphereZone",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17614,7 +17844,7 @@
     "params": []
   },
   {
-    "__docId__": 853,
+    "__docId__": 856,
     "kind": "method",
     "name": "_dead",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17641,7 +17871,7 @@
     "return": null
   },
   {
-    "__docId__": 854,
+    "__docId__": 857,
     "kind": "method",
     "name": "_bound",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17664,7 +17894,7 @@
     "return": null
   },
   {
-    "__docId__": 855,
+    "__docId__": 858,
     "kind": "method",
     "name": "_cross",
     "memberof": "src/zone/Zone.js~Zone",
@@ -17687,7 +17917,7 @@
     "return": null
   },
   {
-    "__docId__": 856,
+    "__docId__": 859,
     "kind": "file",
     "name": "src/zone/index.js",
     "content": "export { default as BoxZone } from './BoxZone';\nexport { default as LineZone } from './LineZone';\nexport { default as MeshZone } from './MeshZone';\nexport { default as PointZone } from './PointZone';\nexport { default as ScreenZone } from './ScreenZone';\nexport { default as SphereZone } from './SphereZone';\n",
@@ -17698,7 +17928,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 857,
+    "__docId__": 860,
     "kind": "file",
     "name": "src/zone/types.js",
     "content": "export const ZONE_TYPE_BOX = 'BoxZone';\nexport const ZONE_TYPE_LINE = 'LineZone';\nexport const ZONE_TYPE_MESH = 'MeshZone';\nexport const ZONE_TYPE_POINT = 'PointZone';\nexport const ZONE_TYPE_SCREEN = 'ScreenZone';\nexport const ZONE_TYPE_SPHERE = 'SphereZone';\n",
@@ -17709,7 +17939,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 858,
+    "__docId__": 861,
     "kind": "variable",
     "name": "ZONE_TYPE_BOX",
     "memberof": "src/zone/types.js",
@@ -17729,7 +17959,7 @@
     }
   },
   {
-    "__docId__": 859,
+    "__docId__": 862,
     "kind": "variable",
     "name": "ZONE_TYPE_LINE",
     "memberof": "src/zone/types.js",
@@ -17749,7 +17979,7 @@
     }
   },
   {
-    "__docId__": 860,
+    "__docId__": 863,
     "kind": "variable",
     "name": "ZONE_TYPE_MESH",
     "memberof": "src/zone/types.js",
@@ -17769,7 +17999,7 @@
     }
   },
   {
-    "__docId__": 861,
+    "__docId__": 864,
     "kind": "variable",
     "name": "ZONE_TYPE_POINT",
     "memberof": "src/zone/types.js",
@@ -17789,7 +18019,7 @@
     }
   },
   {
-    "__docId__": 862,
+    "__docId__": 865,
     "kind": "variable",
     "name": "ZONE_TYPE_SCREEN",
     "memberof": "src/zone/types.js",
@@ -17809,7 +18039,7 @@
     }
   },
   {
-    "__docId__": 863,
+    "__docId__": 866,
     "kind": "variable",
     "name": "ZONE_TYPE_SPHERE",
     "memberof": "src/zone/types.js",
@@ -17830,7 +18060,7 @@
   },
   {
     "kind": "index",
-    "content": "# three-proton\n\n[![Build Status](https://travis-ci.org/rohan-deshpande/three-proton.svg?branch=master)](https://travis-ci.org/rohan-deshpande/three-proton)\n[![Coverage Status](https://coveralls.io/repos/github/rohan-deshpande/three-proton/badge.svg?branch=master)](https://coveralls.io/github/rohan-deshpande/three-proton?branch=master&kill_cache=1)\n\n**Three Proton** is a magical, WebGL based 3D particle engine that has been designed to work in concert with [`three.js`](https://github.com/mrdoob/three.js). It is based on the [Proton](https://github.com/a-jie/Proton) particle engine library and shares much of its API.\n\nCheck out the examples and API reference documentation at [https://rohan-deshpande.github.io/three-proton/](https://rohan-deshpande.github.io/three-proton/)\n\n## Features\n\n- Four kinds of renderers\n  - `MeshRenderer`\n  - `SpriteRenderer`\n  - `PointsRenderer`\n  - `CustomRenderer`\n- Three kinds of emitters which can simulate many different physical effects\n\n  - `Emitter`\n  - `BehaviourEmitter`\n  - `FollowEmitter`\n\n- Many kinds of particle behaviours and initializers\n- Perfect compatibility with [`three@0.98.0`](https://github.com/mrdoob/three.js).\n\n## Installation\n\n### npm\n\n```\nnpm i --save @rohandeshpande/three-proton\n```\n\n### script\n\n```\n<script type='text/javascript' src='node_modules/three-proton/build/three-proton.js'></script>\n```\n\n## Commands\n\n- `build` - Builds the module and writes the code into `./build/three-proton.js`\n- `docs` - Serves the docs at http://localhost:8080\n- `docs:build` - Copies the latest build to `./docs/js` and builds the API reference docs\n- `test` - Runs all specs\n- `test:only <spec>` - Runs a specific spec\n- `test:watch` - Watches tests\n- `test:watch-only <spec>` - Watches a specific spec\n- `lint` - Lints code and circular dependencies in `./src`\n- `coverage:generate` - Generates a code coverage report\n- `coverage:view` - View the code coverage report\n- `coverage:publish` - Publishes the coverage report\n- `git:publish <commit-message>` - Builds the module, adds all changed files commits with the message you supply and pushes to remote\n\n## Usage\n\n### Module\n\n```javascript\nimport Proton, {\n  Emitter,\n  Rate,\n  Span,\n  Position,\n  Mass,\n  Radius,\n  Life,\n  Velocity,\n  PointZone,\n  Vector3D,\n  Alpha,\n  Scale,\n  Color\n} from '@rohandeshpande/three-proton';\nimport * as THREE from 'three';\n\nconst proton = new Proton();\nconst emitter = new Emitter();\nconst renderer = new SpriteRenderer(threeScene);\n\n// Set emitter rate (particles per second), particle initializers and behaviours\nemitter\n  .setRate(new Rate(new Span(4, 16), new Span(0.01)))\n  .setInitializers([\n    new Position(new PointZone(0, 0)),\n    new Mass(1),\n    new Radius(6, 12),\n    new Life(3),\n    new Velocity(45, new Vector3D(0, 1, 0), 180)\n  ])\n  .setBehaviours([\n    new Alpha(1, 0),\n    new Scale(0.1, 1.3),\n    new Color(new THREE.Color(), new THREE.Color())\n  ]);\n\n// add the emitter and a renderer to proton\nproton.addEmitter(emitter.emit()).addRenderer(renderer);\n```\n\n### Script\n\nIf you are adding `three-proton` to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so\n\n```javascript\nconst { Proton, Emitter, Rate, Span } = window.Proton;\nconst proton = new Proton();\n```\n\n## License\n\n[MIT](LICENSE.md)\n",
+    "content": "# three-proton\n\n[![Build Status](https://travis-ci.org/rohan-deshpande/three-proton.svg?branch=master)](https://travis-ci.org/rohan-deshpande/three-proton)\n[![Coverage Status](https://coveralls.io/repos/github/rohan-deshpande/three-proton/badge.svg?branch=master)](https://coveralls.io/github/rohan-deshpande/three-proton?branch=master&kill_cache=1)\n\n**Three Proton** is a magical, WebGL based 3D particle engine that has been designed to work in concert with [`three.js`](https://github.com/mrdoob/three.js). It is based on the [Proton](https://github.com/a-jie/Proton) particle engine library and shares much of its API.\n\nCheck out the examples and API reference documentation at [https://rohan-deshpande.github.io/three-proton/](https://rohan-deshpande.github.io/three-proton/)\n\n## Features\n\n- Four kinds of renderers\n  - `MeshRenderer`\n  - `SpriteRenderer`\n  - `PointsRenderer`\n  - `CustomRenderer`\n- Three kinds of emitters which can simulate many different physical effects\n\n  - `Emitter`\n  - `BehaviourEmitter`\n  - `FollowEmitter`\n\n- Many kinds of particle behaviours and initializers\n- Perfect compatibility with [`three@0.98.0`](https://github.com/mrdoob/three.js).\n\n## Installation\n\n### npm\n\n```\nnpm i --save @rohandeshpande/three-proton\n```\n\n### script\n\n```\n<script type='text/javascript' src='node_modules/three-proton/build/three-proton.js'></script>\n```\n\n## Usage\n\n### Module\n\n```javascript\nimport Proton, {\n  Emitter,\n  Rate,\n  Span,\n  Position,\n  Mass,\n  Radius,\n  Life,\n  Velocity,\n  PointZone,\n  Vector3D,\n  Alpha,\n  Scale,\n  Color\n} from '@rohandeshpande/three-proton';\nimport * as THREE from 'three';\n\nconst proton = new Proton();\nconst emitter = new Emitter();\nconst renderer = new SpriteRenderer(threeScene);\n\n// Set emitter rate (particles per second), particle initializers and behaviours\nemitter\n  .setRate(new Rate(new Span(4, 16), new Span(0.01)))\n  .setInitializers([\n    new Position(new PointZone(0, 0)),\n    new Mass(1),\n    new Radius(6, 12),\n    new Life(3),\n    new RadialVelocity(45, new Vector3D(0, 1, 0), 180)\n  ])\n  .setBehaviours([\n    new Alpha(1, 0),\n    new Scale(0.1, 1.3),\n    new Color(new THREE.Color(), new THREE.Color())\n  ]);\n\n// add the emitter and a renderer to proton\nproton.addEmitter(emitter.emit()).addRenderer(renderer);\n```\n\n### Script\n\nIf you are adding `three-proton` to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so\n\n```javascript\nconst { Proton, Emitter, Rate, Span } = window.Proton;\nconst proton = new Proton();\n```\n\n## NPM Scripts\n\n- `build` - Builds the module and writes the code into `./build/three-proton.js`\n- `docs` - Serves the docs at http://localhost:8080\n- `docs:build` - Copies the latest build to `./docs/js` and builds the API reference docs\n- `test` - Runs all specs\n- `test:only <spec>` - Runs a specific spec\n- `test:watch` - Watches tests\n- `test:watch-only <spec>` - Watches a specific spec\n- `lint` - Lints code and circular dependencies in `./src`\n- `coverage:generate` - Generates a code coverage report\n- `coverage:view` - View the code coverage report\n- `coverage:publish` - Publishes the coverage report\n- `git:publish <commit-message>` - Builds the module, adds all changed files commits with the message you supply and pushes to remote\n\n## License\n\n[MIT](LICENSE.md)\n",
     "longname": "/Users/rohandeshpande/rd/three-proton/README.md",
     "name": "./README.md",
     "static": true,

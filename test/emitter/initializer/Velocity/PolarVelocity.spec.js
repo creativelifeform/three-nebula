@@ -43,4 +43,24 @@ describe('initializer -> Polar Velocity', () => {
 
     done();
   });
+
+  it('should construct the initializer from a JSON object', done => {
+    const instance = Proton.PolarVelocity.fromJSON({
+      polarRadius: 1,
+      polarTheta: 0.96,
+      polarPhi: 0.88,
+      velocityTheta: 0.45
+    });
+
+    assert.instanceOf(instance, Proton.PolarVelocity);
+    assert.instanceOf(instance.dirVec, Proton.Vector3D);
+    assert.equal(instance.tha, 0.007855);
+    assert.deepEqual(Object.values(instance.dirVec), [
+      0.5219488450608104,
+      -0.6313827909557999,
+      0.5735199860724567
+    ]);
+
+    done();
+  });
 });

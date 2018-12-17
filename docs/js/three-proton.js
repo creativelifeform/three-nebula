@@ -49590,7 +49590,7 @@ var DEFAULT_PROTON_DELTA = exports.DEFAULT_PROTON_DELTA = 0.0167;
  * @desc The types of initializers supported by the Proton.fromJSON method.
  * @type {array<string>}
  */
-var SUPPORTED_JSON_INITIALIZER_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = [_types2.INITIALIZER_TYPE_POSITION, _types2.INITIALIZER_TYPE_LIFE, _types2.INITIALIZER_TYPE_RADIUS, _types2.INITIALIZER_TYPE_MASS, _types2.INITIALIZER_TYPE_BODY, _types2.INITIALIZER_TYPE_BODY_SPRITE];
+var SUPPORTED_JSON_INITIALIZER_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = [_types2.INITIALIZER_TYPE_POSITION, _types2.INITIALIZER_TYPE_LIFE, _types2.INITIALIZER_TYPE_RADIUS, _types2.INITIALIZER_TYPE_MASS, _types2.INITIALIZER_TYPE_BODY, _types2.INITIALIZER_TYPE_BODY_SPRITE, _types2.INITIALIZER_TYPE_POLAR_VELOCITY, _types2.INITIALIZER_TYPE_RADIAL_VELOCITY, _types2.INITIALIZER_TYPE_VECTOR_VELOCITY];
 
 /**
  * @desc The types of behaviours supported by the Proton.fromJSON method.
@@ -55748,7 +55748,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _constants = __webpack_require__(2);
+
+var _math = __webpack_require__(0);
 
 var _Velocity2 = __webpack_require__(17);
 
@@ -55801,6 +55805,31 @@ var PolarVelocity = function (_Velocity) {
     return _this;
   }
 
+  /**
+   * Creates a PolarVelocity initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @param {number} json.polarRadius - The Polar3D radius
+   * @param {number} json.polarTheta - The Polar3D theta
+   * @param {number} json.polarPhi - The Polar3D phi
+   * @param {number} json.velocityTheta - The velocity theta
+   * @return {PolarVelocity}
+   */
+
+
+  _createClass(PolarVelocity, null, [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var polarRadius = json.polarRadius,
+          polarTheta = json.polarTheta,
+          polarPhi = json.polarPhi,
+          velocityTheta = json.velocityTheta;
+
+
+      return new PolarVelocity(new _math.Polar3D(polarRadius, polarTheta, polarPhi), velocityTheta);
+    }
+  }]);
+
   return PolarVelocity;
 }(_Velocity3.default);
 
@@ -55818,13 +55847,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
 var _constants = __webpack_require__(2);
 
 var _Velocity2 = __webpack_require__(17);
 
 var _Velocity3 = _interopRequireDefault(_Velocity2);
-
-var _math = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55844,7 +55875,7 @@ var RadialVelocity = function (_Velocity) {
   /**
    * Constructs a RadialVelocity initializer.
    *
-   * @param {number} radius - The velocity radius
+   * @param {number|Span} radius - The velocity radius
    * @param {Vector3D} vector3d - The directional vector for the velocity
    * @param {number} theta - The theta angle to use
    * @return void
@@ -55880,6 +55911,33 @@ var RadialVelocity = function (_Velocity) {
     return _this;
   }
 
+  /**
+   * Creates a RadialVelocity initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @param {number} json.radius - The velocity radius
+   * @param {number} json.x - The velocity x axis direction
+   * @param {number} json.y - The velocity y axis direction
+   * @param {number} json.z - The velocity z axis direction
+   * @param {number} json.theta - The velocity theta
+   * @return {RadialVelocity}
+   */
+
+
+  _createClass(RadialVelocity, null, [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var radius = json.radius,
+          x = json.x,
+          y = json.y,
+          z = json.z,
+          theta = json.theta;
+
+
+      return new RadialVelocity(radius, new _math.Vector3D(x, y, z), theta);
+    }
+  }]);
+
   return RadialVelocity;
 }(_Velocity3.default);
 
@@ -55897,13 +55955,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
 var _constants = __webpack_require__(2);
 
 var _Velocity2 = __webpack_require__(17);
 
 var _Velocity3 = _interopRequireDefault(_Velocity2);
-
-var _math = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55957,6 +56017,31 @@ var VectorVelocity = function (_Velocity) {
     _this._useV = true;
     return _this;
   }
+
+  /**
+   * Creates a VectorVelocity initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @param {number} json.x - The velocity x axis direction
+   * @param {number} json.y - The velocity y axis direction
+   * @param {number} json.z - The velocity z axis direction
+   * @param {number} json.theta - The velocity theta
+   * @return {VectorVelocity}
+   */
+
+
+  _createClass(VectorVelocity, null, [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var x = json.x,
+          y = json.y,
+          z = json.z,
+          theta = json.theta;
+
+
+      return new VectorVelocity(new _math.Vector3D(x, y, z), theta);
+    }
+  }]);
 
   return VectorVelocity;
 }(_Velocity3.default);

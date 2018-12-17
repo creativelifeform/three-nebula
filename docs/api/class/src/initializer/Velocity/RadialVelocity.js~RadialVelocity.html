@@ -192,13 +192,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import RadialVelocity from &apos;<span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber9">@rohandeshpande/three-proton/src/initializer/Velocity/RadialVelocity.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import RadialVelocity from &apos;<span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber10">@rohandeshpande/three-proton/src/initializer/Velocity/RadialVelocity.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber9">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber10">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -232,7 +232,42 @@
 </div>
 
 
-
+<div data-ice="staticMethodSummary"><h2>Static Method Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Static Public Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#static-method-fromJSON">fromJSON</a></span></span><span class="code" data-ice="signature">(json: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html">RadialVelocity</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Creates a RadialVelocity initializer from JSON.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
 <div data-ice="constructorSummary"><h2>Constructor Summary</h2><table class="summary" data-ice="summary">
   <thead><tr><td data-ice="title" colspan="3">Public Constructor</td></tr></thead>
   <tbody>
@@ -251,7 +286,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(radius: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, vector3d: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span>, theta: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(radius: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span><a href="class/src/math/Span.js~Span.html">Span</a></span>, vector3d: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span>, theta: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -616,7 +651,117 @@
 </div>
 
 
+<div data-ice="staticMethodDetails"><h2 data-ice="title">Static Public Methods</h2>
 
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-method-fromJSON">
+    <span class="access" data-ice="access">public</span>
+    <span data-ice="static">static</span>
+    
+    
+    
+    
+    <span class="code" data-ice="name">fromJSON</span><span class="code" data-ice="signature">(json: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html">RadialVelocity</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber58">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Creates a RadialVelocity initializer from JSON.</p>
+</div>
+
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/initializer/Initializer.js~Initializer.html#static-method-fromJSON">Initializer#fromJSON</a></span></div>
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">json</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The JSON to construct the instance from.</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">json.radius</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The velocity radius</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">json.x</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The velocity x axis direction</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">json.y</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The velocity y axis direction</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">json.z</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The velocity z axis direction</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">json.theta</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The velocity theta</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html">RadialVelocity</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
 <div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
 
 <div class="detail" data-ice="detail">
@@ -627,11 +772,11 @@
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(radius: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, vector3d: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span>, theta: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(radius: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span><a href="class/src/math/Span.js~Span.html">Span</a></span>, vector3d: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span>, theta: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber18">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber19">source</a></span></span>
     </span>
   </h3>
 
@@ -653,7 +798,7 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">radius</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span><a href="class/src/math/Span.js~Span.html">Span</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>The velocity radius</p>
 </td>
@@ -722,7 +867,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber31">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber32">source</a></span></span>
     </span>
   </h3>
 
@@ -766,7 +911,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber25">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber26">source</a></span></span>
     </span>
   </h3>
 
@@ -810,7 +955,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber37">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber38">source</a></span></span>
     </span>
   </h3>
 
@@ -856,7 +1001,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber43">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/initializer/Velocity/RadialVelocity.js.html#lineNumber44">source</a></span></span>
     </span>
   </h3>
 

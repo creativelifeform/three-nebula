@@ -48,4 +48,22 @@ describe('initializer -> Vector Velocity', () => {
 
     done();
   });
+
+  it('should construct the initializer from a JSON object', done => {
+    const instance = Proton.VectorVelocity.fromJSON({
+      x: 0.96,
+      y: 0.88,
+      z: 0.45,
+      theta: 0.75
+    });
+
+    assert.instanceOf(instance, Proton.VectorVelocity);
+    assert.instanceOf(instance.radiusPan, Proton.Span);
+    assert.instanceOf(instance.dir, Proton.Vector3D);
+    assert.equal(instance.tha, 0.013091666666666665);
+    assert.deepEqual(Object.values(instance.dir), [0.96, 0.88, 0.45]);
+    assert.deepEqual([instance.radiusPan.a, instance.radiusPan.b], [1, 1]);
+
+    done();
+  });
 });

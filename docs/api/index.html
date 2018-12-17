@@ -216,21 +216,7 @@
 </ul>
 <h2 id="installation">Installation</h2><h3 id="npm">npm</h3><pre><code><code class="source-code prettyprint">npm i --save @rohandeshpande/three-proton</code>
 </code></pre><h3 id="script">script</h3><pre><code><code class="source-code prettyprint">&lt;script type=&apos;text/javascript&apos; src=&apos;node_modules/three-proton/build/three-proton.js&apos;&gt;&lt;/script&gt;</code>
-</code></pre><h2 id="commands">Commands</h2><ul>
-<li><code>build</code> - Builds the module and writes the code into <code>./build/three-proton.js</code></li>
-<li><code>docs</code> - Serves the docs at <a href="http://localhost:8080">http://localhost:8080</a></li>
-<li><code>docs:build</code> - Copies the latest build to <code>./docs/js</code> and builds the API reference docs</li>
-<li><code>test</code> - Runs all specs</li>
-<li><code>test:only &lt;spec&gt;</code> - Runs a specific spec</li>
-<li><code>test:watch</code> - Watches tests</li>
-<li><code>test:watch-only &lt;spec&gt;</code> - Watches a specific spec</li>
-<li><code>lint</code> - Lints code and circular dependencies in <code>./src</code></li>
-<li><code>coverage:generate</code> - Generates a code coverage report</li>
-<li><code>coverage:view</code> - View the code coverage report</li>
-<li><code>coverage:publish</code> - Publishes the coverage report</li>
-<li><code>git:publish &lt;commit-message&gt;</code> - Builds the module, adds all changed files commits with the message you supply and pushes to remote</li>
-</ul>
-<h2 id="usage">Usage</h2><h3 id="module">Module</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import Proton, {
+</code></pre><h2 id="usage">Usage</h2><h3 id="module">Module</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import Proton, {
   Emitter,
   Rate,
   Span,
@@ -259,7 +245,7 @@ emitter
     new Mass(1),
     new Radius(6, 12),
     new Life(3),
-    new Velocity(45, new Vector3D(0, 1, 0), 180)
+    new RadialVelocity(45, new Vector3D(0, 1, 0), 180)
   ])
   .setBehaviours([
     new Alpha(1, 0),
@@ -274,6 +260,20 @@ proton.addEmitter(emitter.emit()).addRenderer(renderer);</code>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">const { Proton, Emitter, Rate, Span } = window.Proton;
 const proton = new Proton();</code>
 </code></pre>
+<h2 id="npm-scripts">NPM Scripts</h2><ul>
+<li><code>build</code> - Builds the module and writes the code into <code>./build/three-proton.js</code></li>
+<li><code>docs</code> - Serves the docs at <a href="http://localhost:8080">http://localhost:8080</a></li>
+<li><code>docs:build</code> - Copies the latest build to <code>./docs/js</code> and builds the API reference docs</li>
+<li><code>test</code> - Runs all specs</li>
+<li><code>test:only &lt;spec&gt;</code> - Runs a specific spec</li>
+<li><code>test:watch</code> - Watches tests</li>
+<li><code>test:watch-only &lt;spec&gt;</code> - Watches a specific spec</li>
+<li><code>lint</code> - Lints code and circular dependencies in <code>./src</code></li>
+<li><code>coverage:generate</code> - Generates a code coverage report</li>
+<li><code>coverage:view</code> - View the code coverage report</li>
+<li><code>coverage:publish</code> - Publishes the coverage report</li>
+<li><code>git:publish &lt;commit-message&gt;</code> - Builds the module, adds all changed files commits with the message you supply and pushes to remote</li>
+</ul>
 <h2 id="license">License</h2><p><a href="LICENSE.md">MIT</a></p>
 </div>
 </div>

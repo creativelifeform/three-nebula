@@ -37,21 +37,6 @@ npm i --save @rohandeshpande/three-proton
 <script type='text/javascript' src='node_modules/three-proton/build/three-proton.js'></script>
 ```
 
-## Commands
-
-- `build` - Builds the module and writes the code into `./build/three-proton.js`
-- `docs` - Serves the docs at http://localhost:8080
-- `docs:build` - Copies the latest build to `./docs/js` and builds the API reference docs
-- `test` - Runs all specs
-- `test:only <spec>` - Runs a specific spec
-- `test:watch` - Watches tests
-- `test:watch-only <spec>` - Watches a specific spec
-- `lint` - Lints code and circular dependencies in `./src`
-- `coverage:generate` - Generates a code coverage report
-- `coverage:view` - View the code coverage report
-- `coverage:publish` - Publishes the coverage report
-- `git:publish <commit-message>` - Builds the module, adds all changed files commits with the message you supply and pushes to remote
-
 ## Usage
 
 ### Module
@@ -86,7 +71,7 @@ emitter
     new Mass(1),
     new Radius(6, 12),
     new Life(3),
-    new Velocity(45, new Vector3D(0, 1, 0), 180)
+    new RadialVelocity(45, new Vector3D(0, 1, 0), 180)
   ])
   .setBehaviours([
     new Alpha(1, 0),
@@ -106,6 +91,21 @@ If you are adding `three-proton` to your project in the script tag, the only dif
 const { Proton, Emitter, Rate, Span } = window.Proton;
 const proton = new Proton();
 ```
+
+## NPM Scripts
+
+- `build` - Builds the module and writes the code into `./build/three-proton.js`
+- `docs` - Serves the docs at http://localhost:8080
+- `docs:build` - Copies the latest build to `./docs/js` and builds the API reference docs
+- `test` - Runs all specs
+- `test:only <spec>` - Runs a specific spec
+- `test:watch` - Watches tests
+- `test:watch-only <spec>` - Watches a specific spec
+- `lint` - Lints code and circular dependencies in `./src`
+- `coverage:generate` - Generates a code coverage report
+- `coverage:view` - View the code coverage report
+- `coverage:publish` - Publishes the coverage report
+- `git:publish <commit-message>` - Builds the module, adds all changed files commits with the message you supply and pushes to remote
 
 ## License
 

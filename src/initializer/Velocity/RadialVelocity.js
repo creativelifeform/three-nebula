@@ -1,6 +1,7 @@
+import { Vector3D, createSpan } from '../../math';
+
 import { DR } from '../../constants';
 import Velocity from './Velocity';
-import { createSpan } from '../../math';
 
 /**
  * Sets the velocity property on initialized particles.
@@ -41,5 +42,22 @@ export default class RadialVelocity extends Velocity {
      * @type {boolean}
      */
     this._useV = true;
+  }
+
+  /**
+   * Creates a RadialVelocity initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @param {number} json.radius - The velocity radius
+   * @param {number} json.x - The velocity x axis direction
+   * @param {number} json.y - The velocity y axis direction
+   * @param {number} json.z - The velocity z axis direction
+   * @param {number} json.theta - The velocity theta
+   * @return {RadialVelocity}
+   */
+  static fromJSON(json) {
+    const { radius, x, y, z, theta } = json;
+
+    return new RadialVelocity(radius, new Vector3D(x, y, z), theta);
   }
 }

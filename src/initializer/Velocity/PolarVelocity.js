@@ -1,4 +1,5 @@
 import { DR } from '../../constants';
+import { Polar3D } from '../../math';
 import Velocity from './Velocity';
 
 /**
@@ -33,5 +34,24 @@ export default class PolarVelocity extends Velocity {
      * @type {boolean}
      */
     this._useV = false;
+  }
+
+  /**
+   * Creates a PolarVelocity initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @param {number} json.polarRadius - The Polar3D radius
+   * @param {number} json.polarTheta - The Polar3D theta
+   * @param {number} json.polarPhi - The Polar3D phi
+   * @param {number} json.velocityTheta - The velocity theta
+   * @return {PolarVelocity}
+   */
+  static fromJSON(json) {
+    const { polarRadius, polarTheta, polarPhi, velocityTheta } = json;
+
+    return new PolarVelocity(
+      new Polar3D(polarRadius, polarTheta, polarPhi),
+      velocityTheta
+    );
   }
 }
