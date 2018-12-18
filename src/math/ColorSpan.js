@@ -10,7 +10,7 @@ export default class ColorSpan extends Span {
   /**
    * Constructs an ArraySpan instance.
    *
-   * @param {string|array} colors - An array of colors to select from
+   * @param {array<string>} colors - An array of colors to select from
    * @param {boolean} shouldRandomize - Determines if a random color should be returned from the getValue method
    * @return void
    */
@@ -25,7 +25,7 @@ export default class ColorSpan extends Span {
 
     /**
      * @desc An array of colors to select from
-     * @type {array}
+     * @type {array<string>}
      */
     this.colors = Array.isArray(colors) ? colors : [colors];
   }
@@ -44,7 +44,7 @@ export default class ColorSpan extends Span {
  * Attempts to create an ArraySpan from the colors provided.
  *
  * @param {mixed} colors - colors to try and create an ArraySpan from
- * @return {?ArraySpan}
+ * @return {?ColorSpan}
  */
 export const createColorSpan = colors => {
   if (!colors) {
