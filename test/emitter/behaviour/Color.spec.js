@@ -11,7 +11,7 @@ const { assert } = chai;
 describe('behaviour -> Color', () => {
   const behaviour = new Proton.Color(
     0xff0000,
-    'random',
+    null,
     Infinity,
     Proton.ease.easeOutQuart
   );
@@ -26,20 +26,22 @@ describe('behaviour -> Color', () => {
     assert.strictEqual(behaviour.energy, 1);
     assert.isFalse(behaviour.dead);
     assert.isFalse(behaviour._same);
-    assert.isTrue(colorA instanceof Proton.ArraySpan);
-    assert.isTrue(colorB instanceof Proton.ArraySpan);
+    assert.isTrue(colorA instanceof Proton.ColorSpan);
+    assert.isTrue(colorB instanceof Proton.ColorSpan);
     assert.isFalse(colorA._isArray);
     assert.strictEqual(colorA.a, 1);
     assert.strictEqual(colorA.b, 1);
     assert.isFalse(colorA._center);
-    assert.lengthOf(colorA._arr, 1);
-    assert.strictEqual(colorA._arr[0], 16711680);
+    assert.lengthOf(colorA.colors, 1);
+    assert.strictEqual(colorA.colors[0], 16711680);
     assert.isFalse(colorB._isArray);
     assert.strictEqual(colorB.a, 1);
     assert.strictEqual(colorB.b, 1);
     assert.isFalse(colorB._center);
-    assert.lengthOf(colorB._arr, 1);
-    assert.strictEqual(colorB._arr[0], 'random');
+    assert.lengthOf(colorB.colors, 1);
+    assert.strictEqual(colorB.colors[0], null);
+
+    console.log(colorB);
     done();
   });
 
@@ -102,8 +104,8 @@ describe('behaviour -> Color', () => {
     });
 
     assert.instanceOf(instance, Proton.Color);
-    assert.instanceOf(instance.colorA, Proton.ArraySpan);
-    assert.instanceOf(instance.colorB, Proton.ArraySpan);
+    assert.instanceOf(instance.colorA, Proton.ColorSpan);
+    assert.instanceOf(instance.colorB, Proton.ColorSpan);
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
 

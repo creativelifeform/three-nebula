@@ -31,7 +31,8 @@ export default class ColorSpan extends Span {
   }
 
   /**
-   * Gets a color from the color array.
+   * Gets a color from the color array
+   * or a random color if this.shouldRandomize is true.
    *
    * @return {string} a hex color
    */
