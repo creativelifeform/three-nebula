@@ -4,6 +4,7 @@ import * as Proton from '../../../src';
 
 import { TIME } from '../../constants';
 import chai from 'chai';
+import { getEasingByName } from '../../../src/ease';
 
 const { assert } = chai;
 
@@ -48,31 +49,31 @@ describe('behaviour -> Rotate', () => {
   });
 
   it('should instantiate with the correct properties', done => {
-    assert.strictEqual(random.a, 'random');
-    assert.strictEqual(same.a, 0);
-    assert.strictEqual(same.b, 0);
-    assert.strictEqual(same.c, 0);
-    assert.strictEqual(set.a, 1);
-    assert.strictEqual(set.b, 0);
-    assert.strictEqual(set.c, 0);
-    assert.strictEqual(to.a, 1);
-    assert.strictEqual(to.b, 2);
-    assert.strictEqual(to.c, 0);
-    assert.instanceOf(add.a, Proton.Span);
-    assert.instanceOf(add.b, Proton.Span);
-    assert.instanceOf(add.c, Proton.Span);
-    assert.isFalse(add.a._isArray);
-    assert.isFalse(add.a._center);
-    assert.isFalse(add.b._isArray);
-    assert.isFalse(add.b._center);
-    assert.isFalse(add.c._isArray);
-    assert.isFalse(add.c._center);
-    assert.strictEqual(add.a.a, 0.017455555555555554);
-    assert.strictEqual(add.a.b, 0.017455555555555554);
-    assert.strictEqual(add.b.a, 0.03491111111111111);
-    assert.strictEqual(add.b.b, 0.03491111111111111);
-    assert.strictEqual(add.c.a, 0.05236666666666666);
-    assert.strictEqual(add.c.b, 0.05236666666666666);
+    assert.strictEqual(random.x, 'random');
+    assert.strictEqual(same.x, 0);
+    assert.strictEqual(same.y, 0);
+    assert.strictEqual(same.z, 0);
+    assert.strictEqual(set.x, 1);
+    assert.strictEqual(set.y, 0);
+    assert.strictEqual(set.z, 0);
+    assert.strictEqual(to.x, 1);
+    assert.strictEqual(to.y, 2);
+    assert.strictEqual(to.z, 0);
+    assert.instanceOf(add.x, Proton.Span);
+    assert.instanceOf(add.y, Proton.Span);
+    assert.instanceOf(add.z, Proton.Span);
+    assert.isFalse(add.x._isArray);
+    assert.isFalse(add.y._center);
+    assert.isFalse(add.z._isArray);
+    assert.isFalse(add.y._center);
+    assert.isFalse(add.z._isArray);
+    assert.isFalse(add.z._center);
+    assert.strictEqual(add.x.a, 0.017455555555555554);
+    assert.strictEqual(add.x.b, 0.017455555555555554);
+    assert.strictEqual(add.y.a, 0.03491111111111111);
+    assert.strictEqual(add.y.b, 0.03491111111111111);
+    assert.strictEqual(add.z.a, 0.05236666666666666);
+    assert.strictEqual(add.z.b, 0.05236666666666666);
 
     done();
   });
@@ -226,6 +227,25 @@ describe('behaviour -> Rotate', () => {
     assert.strictEqual(rotation.x, 0.017455555555555554);
     assert.strictEqual(rotation.y, 0.03491111111111111);
     assert.strictEqual(rotation.z, 0.05236666666666666);
+
+    done();
+  });
+
+  it('should construct the behaviour from a JSON object', done => {
+    const instance = Proton.Rotate.fromJSON({
+      x: 1,
+      y: 2,
+      z: 3,
+      life: 3,
+      easing: 'easeInOutExpo'
+    });
+
+    assert.instanceOf(instance, Proton.Rotate);
+    assert.equal(instance.life, 3);
+    assert.instanceOf(instance.x, Proton.Span);
+    assert.instanceOf(instance.y, Proton.Span);
+    assert.instanceOf(instance.z, Proton.Span);
+    assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
 
     done();
   });

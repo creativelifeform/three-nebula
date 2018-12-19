@@ -4,6 +4,7 @@ import * as Proton from '../../../src';
 
 import { TIME } from '../../constants';
 import chai from 'chai';
+import { getEasingByName } from '../../../src/ease';
 
 const { assert } = chai;
 
@@ -38,6 +39,24 @@ describe('behaviour -> Gravity', () => {
     assert.strictEqual(old.a.x, 0);
     assert.strictEqual(old.a.y, 0);
     assert.strictEqual(old.a.z, 0);
+
+    done();
+  });
+
+  it('should construct the behaviour from a JSON object', done => {
+    const instance = Proton.Gravity.fromJSON({
+      gravity: 1,
+      life: 3,
+      easing: 'easeInOutExpo'
+    });
+
+    assert.instanceOf(instance, Proton.Gravity);
+    assert.instanceOf(instance.force, Proton.Vector3D);
+    assert.strictEqual(instance.force.x, 0);
+    assert.strictEqual(instance.force.y, -100);
+    assert.strictEqual(instance.force.z, 0);
+    assert.equal(instance.life, 3);
+    assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
 
     done();
   });

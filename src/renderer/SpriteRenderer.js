@@ -1,7 +1,6 @@
 import { Sprite, SpriteMaterial } from 'three';
 
 import MeshRenderer from './MeshRenderer';
-import { classDeprecationWarning } from '../compatibility';
 
 export default class SpriteRenderer extends MeshRenderer {
   constructor(container) {
@@ -16,12 +15,5 @@ export default class SpriteRenderer extends MeshRenderer {
       particle.scale * particle.radius,
       1
     );
-  }
-}
-
-export class SpriteRender extends SpriteRenderer {
-  constructor(...args) {
-    super(...args);
-    console.warn(classDeprecationWarning('SpriteRender', 'SpriteRenderer'));
   }
 }

@@ -18,16 +18,82 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_alpha",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_ALPHA",
+    "<span>BEHAVIOUR_TYPE_ALPHA</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_attraction",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_ATTRACTION",
+    "<span>BEHAVIOUR_TYPE_ATTRACTION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_collision",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_COLLISION",
+    "<span>BEHAVIOUR_TYPE_COLLISION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_color",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_COLOR",
+    "<span>BEHAVIOUR_TYPE_COLOR</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_cross_zone",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_CROSS_ZONE",
+    "<span>BEHAVIOUR_TYPE_CROSS_ZONE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_force",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_FORCE",
+    "<span>BEHAVIOUR_TYPE_FORCE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_gravity",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_GRAVITY",
+    "<span>BEHAVIOUR_TYPE_GRAVITY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_random_drift",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_RANDOM_DRIFT",
+    "<span>BEHAVIOUR_TYPE_RANDOM_DRIFT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_repulsion",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_REPULSION",
+    "<span>BEHAVIOUR_TYPE_REPULSION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_rotate",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_ROTATE",
+    "<span>BEHAVIOUR_TYPE_ROTATE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_scale",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_SCALE",
+    "<span>BEHAVIOUR_TYPE_SCALE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_spring",
+    "variable/index.html#static-variable-BEHAVIOUR_TYPE_SPRING",
+    "<span>BEHAVIOUR_TYPE_SPRING</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/constants/index.js~bind_emitter_event",
     "variable/index.html#static-variable-BIND_EMITTER_EVENT",
     "<span>BIND_EMITTER_EVENT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
     "variable"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/renderer/baserenderer.js~baserender",
-    "class/src/renderer/BaseRenderer.js~BaseRender.html",
-    "<span>BaseRender</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/BaseRenderer.js</span>",
-    "class"
   ],
   [
     "@rohandeshpande/three-proton/src/renderer/baserenderer.js~baserenderer",
@@ -51,6 +117,12 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/initializer/body.js~body",
     "class/src/initializer/Body.js~Body.html",
     "<span>Body</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Body.js</span>",
+    "class"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/bodysprite.js~bodysprite",
+    "class/src/initializer/BodySprite.js~BodySprite.html",
+    "<span>BodySprite</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/BodySprite.js</span>",
     "class"
   ],
   [
@@ -81,12 +153,6 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/behaviour/crosszone.js~crosszone",
     "class/src/behaviour/CrossZone.js~CrossZone.html",
     "<span>CrossZone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/CrossZone.js</span>",
-    "class"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/renderer/customrenderer.js~customrender",
-    "class/src/renderer/CustomRenderer.js~CustomRender.html",
-    "<span>CustomRender</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/CustomRenderer.js</span>",
     "class"
   ],
   [
@@ -126,6 +192,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_behaviour_easing_type",
+    "variable/index.html#static-variable-DEFAULT_BEHAVIOUR_EASING_TYPE",
+    "<span>DEFAULT_BEHAVIOUR_EASING_TYPE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/emitter/constants.js~default_bind_emitter",
     "variable/index.html#static-variable-DEFAULT_BIND_EMITTER",
     "<span>DEFAULT_BIND_EMITTER</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/constants.js</span>",
@@ -141,6 +213,12 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/core/constants.js~default_body",
     "variable/index.html#static-variable-DEFAULT_BODY",
     "<span>DEFAULT_BODY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_cross_type",
+    "variable/index.html#static-variable-DEFAULT_CROSS_TYPE",
+    "<span>DEFAULT_CROSS_TYPE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
     "variable"
   ],
   [
@@ -186,6 +264,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_life",
+    "variable/index.html#static-variable-DEFAULT_LIFE",
+    "<span>DEFAULT_LIFE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/core/constants.js~default_life",
     "variable/index.html#static-variable-DEFAULT_LIFE",
     "<span>DEFAULT_LIFE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
@@ -195,6 +279,12 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/core/constants.js~default_mass",
     "variable/index.html#static-variable-DEFAULT_MASS",
     "<span>DEFAULT_MASS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/constants.js~default_material_properties",
+    "variable/index.html#static-variable-DEFAULT_MATERIAL_PROPERTIES",
+    "<span>DEFAULT_MATERIAL_PROPERTIES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/constants.js</span>",
     "variable"
   ],
   [
@@ -330,27 +420,99 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/gravity.js~g",
-    "class/src/behaviour/Gravity.js~G.html",
-    "<span>G</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Gravity.js</span>",
-    "class"
-  ],
-  [
     "@rohandeshpande/three-proton/src/behaviour/gravity.js~gravity",
     "class/src/behaviour/Gravity.js~Gravity.html",
     "<span>Gravity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Gravity.js</span>",
     "class"
   ],
   [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_body",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_BODY",
+    "<span>INITIALIZER_TYPE_BODY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_body_sprite",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_BODY_SPRITE",
+    "<span>INITIALIZER_TYPE_BODY_SPRITE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_life",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_LIFE",
+    "<span>INITIALIZER_TYPE_LIFE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_mass",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_MASS",
+    "<span>INITIALIZER_TYPE_MASS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_polar_velocity",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_POLAR_VELOCITY",
+    "<span>INITIALIZER_TYPE_POLAR_VELOCITY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_position",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_POSITION",
+    "<span>INITIALIZER_TYPE_POSITION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_radial_velocity",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_RADIAL_VELOCITY",
+    "<span>INITIALIZER_TYPE_RADIAL_VELOCITY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_radius",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_RADIUS",
+    "<span>INITIALIZER_TYPE_RADIUS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_vector_velocity",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_VECTOR_VELOCITY",
+    "<span>INITIALIZER_TYPE_VECTOR_VELOCITY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_zone",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_ZONE",
+    "<span>INITIALIZER_TYPE_ZONE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/math/constants.js~integration_type_euler",
+    "variable/index.html#static-variable-INTEGRATION_TYPE_EULER",
+    "<span>INTEGRATION_TYPE_EULER</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/math/constants.js~integration_type_rk2",
+    "variable/index.html#static-variable-INTEGRATION_TYPE_RK2",
+    "<span>INTEGRATION_TYPE_RK2</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/math/constants.js~integration_type_rk4",
+    "variable/index.html#static-variable-INTEGRATION_TYPE_RK4",
+    "<span>INTEGRATION_TYPE_RK4</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/math/constants.js~integration_type_verlet",
+    "variable/index.html#static-variable-INTEGRATION_TYPE_VERLET",
+    "<span>INTEGRATION_TYPE_VERLET</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/initializer/initializer.js~initializer",
     "class/src/initializer/Initializer.js~Initializer.html",
     "<span>Initializer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Initializer.js</span>",
-    "class"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/math/integration.js~integration",
-    "class/src/math/Integration.js~Integration.html",
-    "<span>Integration</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/Integration.js</span>",
     "class"
   ],
   [
@@ -375,12 +537,6 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/initializer/mass.js~mass",
     "class/src/initializer/Mass.js~Mass.html",
     "<span>Mass</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Mass.js</span>",
-    "class"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/renderer/meshrenderer.js~meshrender",
-    "class/src/renderer/MeshRenderer.js~MeshRender.html",
-    "<span>MeshRender</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/MeshRenderer.js</span>",
     "class"
   ],
   [
@@ -498,12 +654,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/pointsrenderer.js~pointsrender",
-    "class/src/renderer/PointsRenderer.js~PointsRender.html",
-    "<span>PointsRender</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/PointsRenderer.js</span>",
-    "class"
-  ],
-  [
     "@rohandeshpande/three-proton/src/renderer/pointsrenderer.js~pointsrenderer",
     "class/src/renderer/PointsRenderer.js~PointsRenderer.html",
     "<span>PointsRenderer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/PointsRenderer.js</span>",
@@ -513,6 +663,12 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/math/polar3d.js~polar3d",
     "class/src/math/Polar3D.js~Polar3D.html",
     "<span>Polar3D</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/Polar3D.js</span>",
+    "class"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/velocity/polarvelocity.js~polarvelocity",
+    "class/src/initializer/Velocity/PolarVelocity.js~PolarVelocity.html",
+    "<span>PolarVelocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity/PolarVelocity.js</span>",
     "class"
   ],
   [
@@ -534,10 +690,28 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/quaternion.js~quaternion",
-    "class/src/math/Quaternion.js~Quaternion.html",
-    "<span>Quaternion</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/Quaternion.js</span>",
-    "class"
+    "@rohandeshpande/three-proton/src/renderer/types.js~renderer_type_custom",
+    "variable/index.html#static-variable-RENDERER_TYPE_CUSTOM",
+    "<span>RENDERER_TYPE_CUSTOM</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/renderer/types.js~renderer_type_mesh",
+    "variable/index.html#static-variable-RENDERER_TYPE_MESH",
+    "<span>RENDERER_TYPE_MESH</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/renderer/types.js~renderer_type_points",
+    "variable/index.html#static-variable-RENDERER_TYPE_POINTS",
+    "<span>RENDERER_TYPE_POINTS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/renderer/types.js~renderer_type_sprite",
+    "variable/index.html#static-variable-RENDERER_TYPE_SPRITE",
+    "<span>RENDERER_TYPE_SPRITE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/types.js</span>",
+    "variable"
   ],
   [
     "@rohandeshpande/three-proton/src/constants/index.js~rk2",
@@ -550,6 +724,12 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-RK4",
     "<span>RK4</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
     "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/velocity/radialvelocity.js~radialvelocity",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html",
+    "<span>RadialVelocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity/RadialVelocity.js</span>",
+    "class"
   ],
   [
     "@rohandeshpande/three-proton/src/initializer/radius.js~radius",
@@ -582,6 +762,30 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/constants.js~supported_json_behaviour_types",
+    "variable/index.html#static-variable-SUPPORTED_JSON_BEHAVIOUR_TYPES",
+    "<span>SUPPORTED_JSON_BEHAVIOUR_TYPES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~supported_json_initializer_types",
+    "variable/index.html#static-variable-SUPPORTED_JSON_INITIALIZER_TYPES",
+    "<span>SUPPORTED_JSON_INITIALIZER_TYPES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~supported_json_renderer_types",
+    "variable/index.html#static-variable-SUPPORTED_JSON_RENDERER_TYPES",
+    "<span>SUPPORTED_JSON_RENDERER_TYPES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/constants.js~supported_json_zone_types",
+    "variable/index.html#static-variable-SUPPORTED_JSON_ZONE_TYPES",
+    "<span>SUPPORTED_JSON_ZONE_TYPES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/behaviour/scale.js~scale",
     "class/src/behaviour/Scale.js~Scale.html",
     "<span>Scale</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Scale.js</span>",
@@ -612,12 +816,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/spriterenderer.js~spriterender",
-    "class/src/renderer/SpriteRenderer.js~SpriteRender.html",
-    "<span>SpriteRender</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/SpriteRenderer.js</span>",
-    "class"
-  ],
-  [
     "@rohandeshpande/three-proton/src/renderer/spriterenderer.js~spriterenderer",
     "class/src/renderer/SpriteRenderer.js~SpriteRenderer.html",
     "<span>SpriteRenderer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/SpriteRenderer.js</span>",
@@ -628,12 +826,6 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-TIME_STEP",
     "<span>TIME_STEP</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
     "variable"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/initializer/velocity.js~v",
-    "class/src/initializer/Velocity.js~V.html",
-    "<span>V</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity.js</span>",
-    "class"
   ],
   [
     "@rohandeshpande/three-proton/src/constants/index.js~verlet",
@@ -648,22 +840,58 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/velocity.js~velocity",
-    "class/src/initializer/Velocity.js~Velocity.html",
-    "<span>Velocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity.js</span>",
+    "@rohandeshpande/three-proton/src/initializer/velocity/vectorvelocity.js~vectorvelocity",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html",
+    "<span>VectorVelocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity/VectorVelocity.js</span>",
     "class"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/velocity/velocity.js~velocity",
+    "class/src/initializer/Velocity/Velocity.js~Velocity.html",
+    "<span>Velocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity/Velocity.js</span>",
+    "class"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_box",
+    "variable/index.html#static-variable-ZONE_TYPE_BOX",
+    "<span>ZONE_TYPE_BOX</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_line",
+    "variable/index.html#static-variable-ZONE_TYPE_LINE",
+    "<span>ZONE_TYPE_LINE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_mesh",
+    "variable/index.html#static-variable-ZONE_TYPE_MESH",
+    "<span>ZONE_TYPE_MESH</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_point",
+    "variable/index.html#static-variable-ZONE_TYPE_POINT",
+    "<span>ZONE_TYPE_POINT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_screen",
+    "variable/index.html#static-variable-ZONE_TYPE_SCREEN",
+    "<span>ZONE_TYPE_SCREEN</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_sphere",
+    "variable/index.html#static-variable-ZONE_TYPE_SPHERE",
+    "<span>ZONE_TYPE_SPHERE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "variable"
   ],
   [
     "@rohandeshpande/three-proton/src/zone/zone.js~zone",
     "class/src/zone/Zone.js~Zone.html",
     "<span>Zone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/Zone.js</span>",
     "class"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/compatibility/index.js~classdeprecationwarning",
-    "function/index.html#static-function-classDeprecationWarning",
-    "<span>classDeprecationWarning</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/compatibility/index.js</span>",
-    "function"
   ],
   [
     "@rohandeshpande/three-proton/src/math/arrayspan.js~createarrayspan",
@@ -690,10 +918,22 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/proton.js~integrator",
-    "variable/index.html#static-variable-integrator",
-    "<span>integrator</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/Proton.js</span>",
-    "variable"
+    "@rohandeshpande/three-proton/src/core/fromjson.js~fromjson",
+    "function/index.html#static-function-fromJSON",
+    "<span>fromJSON</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/fromJSON.js</span>",
+    "function"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/ease/index.js~geteasingbyname",
+    "function/index.html#static-function-getEasingByName",
+    "<span>getEasingByName</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/ease/index.js</span>",
+    "function"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/math/integration.js~integrate",
+    "function/index.html#static-function-integrate",
+    "<span>integrate</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/integration.js</span>",
+    "function"
   ],
   [
     "@rohandeshpande/three-proton/src/debug/log.js~log",
@@ -1039,15 +1279,21 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
+  ],
+  [
+    "src/behaviour/alpha.js~alpha.fromjson",
+    "class/src/behaviour/Alpha.js~Alpha.html#static-method-fromJSON",
+    "src/behaviour/Alpha.js~Alpha.fromJSON",
+    "method"
   ],
   [
     "src/behaviour/attraction.js",
@@ -1110,6 +1356,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/behaviour/attraction.js~attraction.fromjson",
+    "class/src/behaviour/Attraction.js~Attraction.html#static-method-fromJSON",
+    "src/behaviour/Attraction.js~Attraction.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/behaviour.js",
     "file/src/behaviour/Behaviour.js.html",
     "src/behaviour/Behaviour.js",
@@ -1156,6 +1408,12 @@ window.esdocSearchIndex = [
     "class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-energy",
     "src/behaviour/Behaviour.js~Behaviour#energy",
     "member"
+  ],
+  [
+    "src/behaviour/behaviour.js~behaviour#fromjson",
+    "class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-fromJSON",
+    "src/behaviour/Behaviour.js~Behaviour#fromJSON",
+    "method"
   ],
   [
     "src/behaviour/behaviour.js~behaviour#id",
@@ -1242,6 +1500,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/behaviour/collision.js~collision#fromjson",
+    "class/src/behaviour/Collision.js~Collision.html#instance-method-fromJSON",
+    "src/behaviour/Collision.js~Collision#fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/collision.js~collision#name",
     "class/src/behaviour/Collision.js~Collision.html#instance-member-name",
     "src/behaviour/Collision.js~Collision#name",
@@ -1278,21 +1542,21 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/behaviour/color.js~color#a",
-    "class/src/behaviour/Color.js~Color.html#instance-member-a",
-    "src/behaviour/Color.js~Color#a",
-    "member"
-  ],
-  [
     "src/behaviour/color.js~color#applybehaviour",
     "class/src/behaviour/Color.js~Color.html#instance-method-applyBehaviour",
     "src/behaviour/Color.js~Color#applyBehaviour",
     "method"
   ],
   [
-    "src/behaviour/color.js~color#b",
-    "class/src/behaviour/Color.js~Color.html#instance-member-b",
-    "src/behaviour/Color.js~Color#b",
+    "src/behaviour/color.js~color#colora",
+    "class/src/behaviour/Color.js~Color.html#instance-member-colorA",
+    "src/behaviour/Color.js~Color#colorA",
+    "member"
+  ],
+  [
+    "src/behaviour/color.js~color#colorb",
+    "class/src/behaviour/Color.js~Color.html#instance-member-colorB",
+    "src/behaviour/Color.js~Color#colorB",
     "member"
   ],
   [
@@ -1317,6 +1581,24 @@ window.esdocSearchIndex = [
     "src/behaviour/color.js~color#reset",
     "class/src/behaviour/Color.js~Color.html#instance-method-reset",
     "src/behaviour/Color.js~Color#reset",
+    "method"
+  ],
+  [
+    "src/behaviour/color.js~color#same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "src/behaviour/Color.js~Color#same",
+    "member"
+  ],
+  [
+    "src/behaviour/color.js~color#same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "src/behaviour/Color.js~Color#same",
+    "member"
+  ],
+  [
+    "src/behaviour/color.js~color.fromjson",
+    "class/src/behaviour/Color.js~Color.html#static-method-fromJSON",
+    "src/behaviour/Color.js~Color.fromJSON",
     "method"
   ],
   [
@@ -1356,6 +1638,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/behaviour/crosszone.js~crosszone.fromjson",
+    "class/src/behaviour/CrossZone.js~CrossZone.html#static-method-fromJSON",
+    "src/behaviour/CrossZone.js~CrossZone.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/force.js",
     "file/src/behaviour/Force.js.html",
     "src/behaviour/Force.js",
@@ -1386,21 +1674,27 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/behaviour/force.js~force.fromjson",
+    "class/src/behaviour/Force.js~Force.html#static-method-fromJSON",
+    "src/behaviour/Force.js~Force.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/gravity.js",
     "file/src/behaviour/Gravity.js.html",
     "src/behaviour/Gravity.js",
     "file"
   ],
   [
-    "src/behaviour/gravity.js~g#constructor",
-    "class/src/behaviour/Gravity.js~G.html#instance-constructor-constructor",
-    "src/behaviour/Gravity.js~G#constructor",
-    "method"
-  ],
-  [
     "src/behaviour/gravity.js~gravity#constructor",
     "class/src/behaviour/Gravity.js~Gravity.html#instance-constructor-constructor",
     "src/behaviour/Gravity.js~Gravity#constructor",
+    "method"
+  ],
+  [
+    "src/behaviour/gravity.js~gravity.fromjson",
+    "class/src/behaviour/Gravity.js~Gravity.html#static-method-fromJSON",
+    "src/behaviour/Gravity.js~Gravity.fromJSON",
     "method"
   ],
   [
@@ -1452,6 +1746,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/behaviour/randomdrift.js~randomdrift.fromjson",
+    "class/src/behaviour/RandomDrift.js~RandomDrift.html#static-method-fromJSON",
+    "src/behaviour/RandomDrift.js~RandomDrift.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/repulsion.js",
     "file/src/behaviour/Repulsion.js.html",
     "src/behaviour/Repulsion.js",
@@ -1482,6 +1782,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/behaviour/repulsion.js~repulsion.fromjson",
+    "class/src/behaviour/Repulsion.js~Repulsion.html#static-method-fromJSON",
+    "src/behaviour/Repulsion.js~Repulsion.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/rotate.js",
     "file/src/behaviour/Rotate.js.html",
     "src/behaviour/Rotate.js",
@@ -1500,28 +1806,10 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/behaviour/rotate.js~rotate#a",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-member-a",
-    "src/behaviour/Rotate.js~Rotate#a",
-    "member"
-  ],
-  [
     "src/behaviour/rotate.js~rotate#applybehaviour",
     "class/src/behaviour/Rotate.js~Rotate.html#instance-method-applyBehaviour",
     "src/behaviour/Rotate.js~Rotate#applyBehaviour",
     "method"
-  ],
-  [
-    "src/behaviour/rotate.js~rotate#b",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-member-b",
-    "src/behaviour/Rotate.js~Rotate#b",
-    "member"
-  ],
-  [
-    "src/behaviour/rotate.js~rotate#c",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-member-c",
-    "src/behaviour/Rotate.js~Rotate#c",
-    "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#constructor",
@@ -1549,15 +1837,39 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
+  ],
+  [
+    "src/behaviour/rotate.js~rotate#x",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-member-x",
+    "src/behaviour/Rotate.js~Rotate#x",
+    "member"
+  ],
+  [
+    "src/behaviour/rotate.js~rotate#y",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-member-y",
+    "src/behaviour/Rotate.js~Rotate#y",
+    "member"
+  ],
+  [
+    "src/behaviour/rotate.js~rotate#z",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-member-z",
+    "src/behaviour/Rotate.js~Rotate#z",
+    "member"
+  ],
+  [
+    "src/behaviour/rotate.js~rotate.fromjson",
+    "class/src/behaviour/Rotate.js~Rotate.html#static-method-fromJSON",
+    "src/behaviour/Rotate.js~Rotate.fromJSON",
+    "method"
   ],
   [
     "src/behaviour/scale.js",
@@ -1572,22 +1884,10 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/behaviour/scale.js~scale#a",
-    "class/src/behaviour/Scale.js~Scale.html#instance-member-a",
-    "src/behaviour/Scale.js~Scale#a",
-    "member"
-  ],
-  [
     "src/behaviour/scale.js~scale#applybehaviour",
     "class/src/behaviour/Scale.js~Scale.html#instance-method-applyBehaviour",
     "src/behaviour/Scale.js~Scale#applyBehaviour",
     "method"
-  ],
-  [
-    "src/behaviour/scale.js~scale#b",
-    "class/src/behaviour/Scale.js~Scale.html#instance-member-b",
-    "src/behaviour/Scale.js~Scale#b",
-    "member"
   ],
   [
     "src/behaviour/scale.js~scale#constructor",
@@ -1611,6 +1911,36 @@ window.esdocSearchIndex = [
     "src/behaviour/scale.js~scale#reset",
     "class/src/behaviour/Scale.js~Scale.html#instance-method-reset",
     "src/behaviour/Scale.js~Scale#reset",
+    "method"
+  ],
+  [
+    "src/behaviour/scale.js~scale#same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
+    "src/behaviour/Scale.js~Scale#same",
+    "member"
+  ],
+  [
+    "src/behaviour/scale.js~scale#same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
+    "src/behaviour/Scale.js~Scale#same",
+    "member"
+  ],
+  [
+    "src/behaviour/scale.js~scale#scalea",
+    "class/src/behaviour/Scale.js~Scale.html#instance-member-scaleA",
+    "src/behaviour/Scale.js~Scale#scaleA",
+    "member"
+  ],
+  [
+    "src/behaviour/scale.js~scale#scaleb",
+    "class/src/behaviour/Scale.js~Scale.html#instance-member-scaleB",
+    "src/behaviour/Scale.js~Scale#scaleB",
+    "member"
+  ],
+  [
+    "src/behaviour/scale.js~scale.fromjson",
+    "class/src/behaviour/Scale.js~Scale.html#static-method-fromJSON",
+    "src/behaviour/Scale.js~Scale.fromJSON",
     "method"
   ],
   [
@@ -1662,6 +1992,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/behaviour/spring.js~spring.fromjson",
+    "class/src/behaviour/Spring.js~Spring.html#static-method-fromJSON",
+    "src/behaviour/Spring.js~Spring.fromJSON",
+    "method"
+  ],
+  [
     "src/behaviour/constants.js",
     "file/src/behaviour/constants.js.html",
     "src/behaviour/constants.js",
@@ -1674,9 +2010,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/compatibility/index.js",
-    "file/src/compatibility/index.js.html",
-    "src/compatibility/index.js",
+    "src/behaviour/types.js",
+    "file/src/behaviour/types.js.html",
+    "src/behaviour/types.js",
     "file"
   ],
   [
@@ -1980,12 +2316,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/core/proton.js~proton#addrender",
-    "class/src/core/Proton.js~Proton.html#instance-method-addRender",
-    "src/core/Proton.js~Proton#addRender",
-    "method"
-  ],
-  [
     "src/core/proton.js~proton#addrenderer",
     "class/src/core/Proton.js~Proton.html#instance-method-addRenderer",
     "src/core/Proton.js~Proton#addRenderer",
@@ -2052,12 +2382,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/core/proton.js~proton#removerender",
-    "class/src/core/Proton.js~Proton.html#instance-method-removeRender",
-    "src/core/Proton.js~Proton#removeRender",
-    "method"
-  ],
-  [
     "src/core/proton.js~proton#removerenderer",
     "class/src/core/Proton.js~Proton.html#instance-method-removeRenderer",
     "src/core/Proton.js~Proton#removeRenderer",
@@ -2076,15 +2400,21 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/core/proton.js~proton.integrator",
-    "class/src/core/Proton.js~Proton.html#static-method-integrator",
-    "src/core/Proton.js~Proton.integrator",
+    "src/core/proton.js~proton.fromjson",
+    "class/src/core/Proton.js~Proton.html#static-method-fromJSON",
+    "src/core/Proton.js~Proton.fromJSON",
     "method"
   ],
   [
     "src/core/constants.js",
     "file/src/core/constants.js.html",
     "src/core/constants.js",
+    "file"
+  ],
+  [
+    "src/core/fromjson.js",
+    "file/src/core/fromJSON.js.html",
+    "src/core/fromJSON.js",
     "file"
   ],
   [
@@ -2178,12 +2508,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/emitter/emitter.js~emitter#addinitialize",
-    "class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitialize",
-    "src/emitter/Emitter.js~Emitter#addInitialize",
-    "method"
-  ],
-  [
     "src/emitter/emitter.js~emitter#addinitializer",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitializer",
     "src/emitter/Emitter.js~Emitter#addInitializer",
@@ -2193,12 +2517,6 @@ window.esdocSearchIndex = [
     "src/emitter/emitter.js~emitter#addinitializers",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitializers",
     "src/emitter/Emitter.js~Emitter#addInitializers",
-    "method"
-  ],
-  [
-    "src/emitter/emitter.js~emitter#addselfinitialize",
-    "class/src/emitter/Emitter.js~Emitter.html#instance-method-addSelfInitialize",
-    "src/emitter/Emitter.js~Emitter#addSelfInitialize",
     "method"
   ],
   [
@@ -2367,12 +2685,6 @@ window.esdocSearchIndex = [
     "src/emitter/emitter.js~emitter#removebehaviour",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeBehaviour",
     "src/emitter/Emitter.js~Emitter#removeBehaviour",
-    "method"
-  ],
-  [
-    "src/emitter/emitter.js~emitter#removeinitialize",
-    "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeInitialize",
-    "src/emitter/Emitter.js~Emitter#removeInitialize",
     "method"
   ],
   [
@@ -2557,13 +2869,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -2634,6 +2946,54 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/initializer/body.js~body.fromjson",
+    "class/src/initializer/Body.js~Body.html#static-method-fromJSON",
+    "src/initializer/Body.js~Body.fromJSON",
+    "method"
+  ],
+  [
+    "src/initializer/bodysprite.js",
+    "file/src/initializer/BodySprite.js.html",
+    "src/initializer/BodySprite.js",
+    "file"
+  ],
+  [
+    "src/initializer/bodysprite.js~bodysprite#constructor",
+    "class/src/initializer/BodySprite.js~BodySprite.html#instance-constructor-constructor",
+    "src/initializer/BodySprite.js~BodySprite#constructor",
+    "method"
+  ],
+  [
+    "src/initializer/bodysprite.js~bodysprite#initialize",
+    "class/src/initializer/BodySprite.js~BodySprite.html#instance-method-initialize",
+    "src/initializer/BodySprite.js~BodySprite#initialize",
+    "method"
+  ],
+  [
+    "src/initializer/bodysprite.js~bodysprite#material",
+    "class/src/initializer/BodySprite.js~BodySprite.html#instance-member-material",
+    "src/initializer/BodySprite.js~BodySprite#material",
+    "member"
+  ],
+  [
+    "src/initializer/bodysprite.js~bodysprite#sprite",
+    "class/src/initializer/BodySprite.js~BodySprite.html#instance-member-sprite",
+    "src/initializer/BodySprite.js~BodySprite#sprite",
+    "member"
+  ],
+  [
+    "src/initializer/bodysprite.js~bodysprite#texture",
+    "class/src/initializer/BodySprite.js~BodySprite.html#instance-member-texture",
+    "src/initializer/BodySprite.js~BodySprite#texture",
+    "member"
+  ],
+  [
+    "src/initializer/bodysprite.js~bodysprite.fromjson",
+    "class/src/initializer/BodySprite.js~BodySprite.html#static-method-fromJSON",
+    "src/initializer/BodySprite.js~BodySprite.fromJSON",
+    "method"
+  ],
+  [
     "src/initializer/initializer.js",
     "file/src/initializer/Initializer.js.html",
     "src/initializer/Initializer.js",
@@ -2670,6 +3030,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/initializer/initializer.js~initializer.fromjson",
+    "class/src/initializer/Initializer.js~Initializer.html#static-method-fromJSON",
+    "src/initializer/Initializer.js~Initializer.fromJSON",
+    "method"
+  ],
+  [
     "src/initializer/initializerutil.js",
     "file/src/initializer/InitializerUtil.js.html",
     "src/initializer/InitializerUtil.js",
@@ -2700,6 +3066,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/initializer/life.js~life.fromjson",
+    "class/src/initializer/Life.js~Life.html#static-method-fromJSON",
+    "src/initializer/Life.js~Life.fromJSON",
+    "method"
+  ],
+  [
     "src/initializer/mass.js",
     "file/src/initializer/Mass.js.html",
     "src/initializer/Mass.js",
@@ -2722,6 +3094,12 @@ window.esdocSearchIndex = [
     "class/src/initializer/Mass.js~Mass.html#instance-member-massPan",
     "src/initializer/Mass.js~Mass#massPan",
     "member"
+  ],
+  [
+    "src/initializer/mass.js~mass.fromjson",
+    "class/src/initializer/Mass.js~Mass.html#static-method-fromJSON",
+    "src/initializer/Mass.js~Mass.fromJSON",
+    "method"
   ],
   [
     "src/initializer/position.js",
@@ -2754,6 +3132,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/initializer/position.js~position.fromjson",
+    "class/src/initializer/Position.js~Position.html#static-method-fromJSON",
+    "src/initializer/Position.js~Position.fromJSON",
+    "method"
+  ],
+  [
     "src/initializer/radius.js",
     "file/src/initializer/Radius.js.html",
     "src/initializer/Radius.js",
@@ -2781,6 +3165,12 @@ window.esdocSearchIndex = [
     "src/initializer/radius.js~radius#reset",
     "class/src/initializer/Radius.js~Radius.html#instance-method-reset",
     "src/initializer/Radius.js~Radius#reset",
+    "method"
+  ],
+  [
+    "src/initializer/radius.js~radius.fromjson",
+    "class/src/initializer/Radius.js~Radius.html#static-method-fromJSON",
+    "src/initializer/Radius.js~Radius.fromJSON",
     "method"
   ],
   [
@@ -2832,75 +3222,177 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/initializer/velocity.js",
-    "file/src/initializer/Velocity.js.html",
-    "src/initializer/Velocity.js",
+    "src/initializer/rate.js~rate.fromjson",
+    "class/src/initializer/Rate.js~Rate.html#static-method-fromJSON",
+    "src/initializer/Rate.js~Rate.fromJSON",
+    "method"
+  ],
+  [
+    "src/initializer/velocity/polarvelocity.js",
+    "file/src/initializer/Velocity/PolarVelocity.js.html",
+    "src/initializer/Velocity/PolarVelocity.js",
     "file"
   ],
   [
-    "src/initializer/velocity.js~v#constructor",
-    "class/src/initializer/Velocity.js~V.html#instance-constructor-constructor",
-    "src/initializer/Velocity.js~V#constructor",
+    "src/initializer/velocity/polarvelocity.js~polarvelocity#_usev",
+    "class/src/initializer/Velocity/PolarVelocity.js~PolarVelocity.html#instance-member-_useV",
+    "src/initializer/Velocity/PolarVelocity.js~PolarVelocity#_useV",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/polarvelocity.js~polarvelocity#constructor",
+    "class/src/initializer/Velocity/PolarVelocity.js~PolarVelocity.html#instance-constructor-constructor",
+    "src/initializer/Velocity/PolarVelocity.js~PolarVelocity#constructor",
     "method"
   ],
   [
-    "src/initializer/velocity.js~velocity#_usev",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-member-_useV",
-    "src/initializer/Velocity.js~Velocity#_useV",
+    "src/initializer/velocity/polarvelocity.js~polarvelocity#dirvec",
+    "class/src/initializer/Velocity/PolarVelocity.js~PolarVelocity.html#instance-member-dirVec",
+    "src/initializer/Velocity/PolarVelocity.js~PolarVelocity#dirVec",
     "member"
   ],
   [
-    "src/initializer/velocity.js~velocity#constructor",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-constructor-constructor",
-    "src/initializer/Velocity.js~Velocity#constructor",
+    "src/initializer/velocity/polarvelocity.js~polarvelocity#tha",
+    "class/src/initializer/Velocity/PolarVelocity.js~PolarVelocity.html#instance-member-tha",
+    "src/initializer/Velocity/PolarVelocity.js~PolarVelocity#tha",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/polarvelocity.js~polarvelocity.fromjson",
+    "class/src/initializer/Velocity/PolarVelocity.js~PolarVelocity.html#static-method-fromJSON",
+    "src/initializer/Velocity/PolarVelocity.js~PolarVelocity.fromJSON",
     "method"
   ],
   [
-    "src/initializer/velocity.js~velocity#dir",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-member-dir",
-    "src/initializer/Velocity.js~Velocity#dir",
+    "src/initializer/velocity/radialvelocity.js",
+    "file/src/initializer/Velocity/RadialVelocity.js.html",
+    "src/initializer/Velocity/RadialVelocity.js",
+    "file"
+  ],
+  [
+    "src/initializer/velocity/radialvelocity.js~radialvelocity#_usev",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#instance-member-_useV",
+    "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#_useV",
     "member"
   ],
   [
-    "src/initializer/velocity.js~velocity#dirvec",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-member-dirVec",
-    "src/initializer/Velocity.js~Velocity#dirVec",
-    "member"
-  ],
-  [
-    "src/initializer/velocity.js~velocity#name",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-member-name",
-    "src/initializer/Velocity.js~Velocity#name",
-    "member"
-  ],
-  [
-    "src/initializer/velocity.js~velocity#normalize",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-method-normalize",
-    "src/initializer/Velocity.js~Velocity#normalize",
+    "src/initializer/velocity/radialvelocity.js~radialvelocity#constructor",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#instance-constructor-constructor",
+    "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#constructor",
     "method"
   ],
   [
-    "src/initializer/velocity.js~velocity#radiuspan",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-member-radiusPan",
-    "src/initializer/Velocity.js~Velocity#radiusPan",
+    "src/initializer/velocity/radialvelocity.js~radialvelocity#dir",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#instance-member-dir",
+    "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#dir",
     "member"
   ],
   [
-    "src/initializer/velocity.js~velocity#reset",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-method-reset",
-    "src/initializer/Velocity.js~Velocity#reset",
+    "src/initializer/velocity/radialvelocity.js~radialvelocity#radiuspan",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#instance-member-radiusPan",
+    "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#radiusPan",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/radialvelocity.js~radialvelocity#tha",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#instance-member-tha",
+    "src/initializer/Velocity/RadialVelocity.js~RadialVelocity#tha",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/radialvelocity.js~radialvelocity.fromjson",
+    "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html#static-method-fromJSON",
+    "src/initializer/Velocity/RadialVelocity.js~RadialVelocity.fromJSON",
     "method"
   ],
   [
-    "src/initializer/velocity.js~velocity#tha",
-    "class/src/initializer/Velocity.js~Velocity.html#instance-member-tha",
-    "src/initializer/Velocity.js~Velocity#tha",
+    "src/initializer/velocity/vectorvelocity.js",
+    "file/src/initializer/Velocity/VectorVelocity.js.html",
+    "src/initializer/Velocity/VectorVelocity.js",
+    "file"
+  ],
+  [
+    "src/initializer/velocity/vectorvelocity.js~vectorvelocity#_usev",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html#instance-member-_useV",
+    "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#_useV",
     "member"
+  ],
+  [
+    "src/initializer/velocity/vectorvelocity.js~vectorvelocity#constructor",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html#instance-constructor-constructor",
+    "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#constructor",
+    "method"
+  ],
+  [
+    "src/initializer/velocity/vectorvelocity.js~vectorvelocity#dir",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html#instance-member-dir",
+    "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#dir",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/vectorvelocity.js~vectorvelocity#radiuspan",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html#instance-member-radiusPan",
+    "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#radiusPan",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/vectorvelocity.js~vectorvelocity#tha",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html#instance-member-tha",
+    "src/initializer/Velocity/VectorVelocity.js~VectorVelocity#tha",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/vectorvelocity.js~vectorvelocity.fromjson",
+    "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html#static-method-fromJSON",
+    "src/initializer/Velocity/VectorVelocity.js~VectorVelocity.fromJSON",
+    "method"
+  ],
+  [
+    "src/initializer/velocity/velocity.js",
+    "file/src/initializer/Velocity/Velocity.js.html",
+    "src/initializer/Velocity/Velocity.js",
+    "file"
+  ],
+  [
+    "src/initializer/velocity/velocity.js~velocity#constructor",
+    "class/src/initializer/Velocity/Velocity.js~Velocity.html#instance-constructor-constructor",
+    "src/initializer/Velocity/Velocity.js~Velocity#constructor",
+    "method"
+  ],
+  [
+    "src/initializer/velocity/velocity.js~velocity#dirvec",
+    "class/src/initializer/Velocity/Velocity.js~Velocity.html#instance-member-dirVec",
+    "src/initializer/Velocity/Velocity.js~Velocity#dirVec",
+    "member"
+  ],
+  [
+    "src/initializer/velocity/velocity.js~velocity#normalize",
+    "class/src/initializer/Velocity/Velocity.js~Velocity.html#instance-method-normalize",
+    "src/initializer/Velocity/Velocity.js~Velocity#normalize",
+    "method"
+  ],
+  [
+    "src/initializer/velocity/index.js",
+    "file/src/initializer/Velocity/index.js.html",
+    "src/initializer/Velocity/index.js",
+    "file"
+  ],
+  [
+    "src/initializer/constants.js",
+    "file/src/initializer/constants.js.html",
+    "src/initializer/constants.js",
+    "file"
   ],
   [
     "src/initializer/index.js",
     "file/src/initializer/index.js.html",
     "src/initializer/index.js",
+    "file"
+  ],
+  [
+    "src/initializer/types.js",
+    "file/src/initializer/types.js.html",
+    "src/initializer/types.js",
     "file"
   ],
   [
@@ -2997,36 +3489,6 @@ window.esdocSearchIndex = [
     "src/math/box.js~box#z",
     "class/src/math/Box.js~Box.html#instance-member-z",
     "src/math/Box.js~Box#z",
-    "member"
-  ],
-  [
-    "src/math/integration.js",
-    "file/src/math/Integration.js.html",
-    "src/math/Integration.js",
-    "file"
-  ],
-  [
-    "src/math/integration.js~integration#constructor",
-    "class/src/math/Integration.js~Integration.html#instance-constructor-constructor",
-    "src/math/Integration.js~Integration#constructor",
-    "method"
-  ],
-  [
-    "src/math/integration.js~integration#euler",
-    "class/src/math/Integration.js~Integration.html#instance-method-euler",
-    "src/math/Integration.js~Integration#euler",
-    "method"
-  ],
-  [
-    "src/math/integration.js~integration#integrate",
-    "class/src/math/Integration.js~Integration.html#instance-method-integrate",
-    "src/math/Integration.js~Integration#integrate",
-    "method"
-  ],
-  [
-    "src/math/integration.js~integration#type",
-    "class/src/math/Integration.js~Integration.html#instance-member-type",
-    "src/math/Integration.js~Integration#type",
     "member"
   ],
   [
@@ -3144,90 +3606,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/math/quaternion.js",
-    "file/src/math/Quaternion.js.html",
-    "src/math/Quaternion.js",
-    "file"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#clone",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-clone",
-    "src/math/Quaternion.js~Quaternion#clone",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#constructor",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-constructor-constructor",
-    "src/math/Quaternion.js~Quaternion#constructor",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#copy",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-copy",
-    "src/math/Quaternion.js~Quaternion#copy",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#dot",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-dot",
-    "src/math/Quaternion.js~Quaternion#dot",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#length",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-length",
-    "src/math/Quaternion.js~Quaternion#length",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#normalize",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-normalize",
-    "src/math/Quaternion.js~Quaternion#normalize",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#set",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-set",
-    "src/math/Quaternion.js~Quaternion#set",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#setfromaxisangle",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-setFromAxisAngle",
-    "src/math/Quaternion.js~Quaternion#setFromAxisAngle",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#setfromeuler",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-method-setFromEuler",
-    "src/math/Quaternion.js~Quaternion#setFromEuler",
-    "method"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#w",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-member-w",
-    "src/math/Quaternion.js~Quaternion#w",
-    "member"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#x",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-member-x",
-    "src/math/Quaternion.js~Quaternion#x",
-    "member"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#y",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-member-y",
-    "src/math/Quaternion.js~Quaternion#y",
-    "member"
-  ],
-  [
-    "src/math/quaternion.js~quaternion#z",
-    "class/src/math/Quaternion.js~Quaternion.html#instance-member-z",
-    "src/math/Quaternion.js~Quaternion#z",
-    "member"
-  ],
-  [
     "src/math/span.js",
     "file/src/math/Span.js.html",
     "src/math/Span.js",
@@ -3324,9 +3702,21 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/math/constants.js",
+    "file/src/math/constants.js.html",
+    "src/math/constants.js",
+    "file"
+  ],
+  [
     "src/math/index.js",
     "file/src/math/index.js.html",
     "src/math/index.js",
+    "file"
+  ],
+  [
+    "src/math/integration.js",
+    "file/src/math/integration.js.html",
+    "src/math/integration.js",
     "file"
   ],
   [
@@ -3334,12 +3724,6 @@ window.esdocSearchIndex = [
     "file/src/renderer/BaseRenderer.js.html",
     "src/renderer/BaseRenderer.js",
     "file"
-  ],
-  [
-    "src/renderer/baserenderer.js~baserender#constructor",
-    "class/src/renderer/BaseRenderer.js~BaseRender.html#instance-constructor-constructor",
-    "src/renderer/BaseRenderer.js~BaseRender#constructor",
-    "method"
   ],
   [
     "src/renderer/baserenderer.js~baserenderer#constructor",
@@ -3408,12 +3792,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/renderer/customrenderer.js~customrender#constructor",
-    "class/src/renderer/CustomRenderer.js~CustomRender.html#instance-constructor-constructor",
-    "src/renderer/CustomRenderer.js~CustomRender#constructor",
-    "method"
-  ],
-  [
     "src/renderer/customrenderer.js~customrenderer#constructor",
     "class/src/renderer/CustomRenderer.js~CustomRenderer.html#instance-constructor-constructor",
     "src/renderer/CustomRenderer.js~CustomRenderer#constructor",
@@ -3460,12 +3838,6 @@ window.esdocSearchIndex = [
     "file/src/renderer/MeshRenderer.js.html",
     "src/renderer/MeshRenderer.js",
     "file"
-  ],
-  [
-    "src/renderer/meshrenderer.js~meshrender#constructor",
-    "class/src/renderer/MeshRenderer.js~MeshRender.html#instance-constructor-constructor",
-    "src/renderer/MeshRenderer.js~MeshRender#constructor",
-    "method"
   ],
   [
     "src/renderer/meshrenderer.js~meshrenderer#_body",
@@ -3534,12 +3906,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/renderer/pointsrenderer.js~pointsrender#constructor",
-    "class/src/renderer/PointsRenderer.js~PointsRender.html#instance-constructor-constructor",
-    "src/renderer/PointsRenderer.js~PointsRender#constructor",
-    "method"
-  ],
-  [
     "src/renderer/pointsrenderer.js~pointsrenderer#constructor",
     "class/src/renderer/PointsRenderer.js~PointsRenderer.html#instance-constructor-constructor",
     "src/renderer/PointsRenderer.js~PointsRenderer#constructor",
@@ -3582,12 +3948,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/renderer/spriterenderer.js~spriterender#constructor",
-    "class/src/renderer/SpriteRenderer.js~SpriteRender.html#instance-constructor-constructor",
-    "src/renderer/SpriteRenderer.js~SpriteRender#constructor",
-    "method"
-  ],
-  [
     "src/renderer/spriterenderer.js~spriterenderer#_body",
     "class/src/renderer/SpriteRenderer.js~SpriteRenderer.html#instance-member-_body",
     "src/renderer/SpriteRenderer.js~SpriteRenderer#_body",
@@ -3609,6 +3969,12 @@ window.esdocSearchIndex = [
     "src/renderer/index.js",
     "file/src/renderer/index.js.html",
     "src/renderer/index.js",
+    "file"
+  ],
+  [
+    "src/renderer/types.js",
+    "file/src/renderer/types.js.html",
+    "src/renderer/types.js",
     "file"
   ],
   [
@@ -4137,6 +4503,12 @@ window.esdocSearchIndex = [
     "src/zone/index.js",
     "file/src/zone/index.js.html",
     "src/zone/index.js",
+    "file"
+  ],
+  [
+    "src/zone/types.js",
+    "file/src/zone/types.js.html",
+    "src/zone/types.js",
     "file"
   ]
 ]

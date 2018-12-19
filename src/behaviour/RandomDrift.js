@@ -2,6 +2,7 @@ import { MathUtils, Vector3D, createSpan } from '../math';
 
 import Behaviour from './Behaviour';
 import { DEFAULT_RANDOM_DRIFT_DELAY } from './constants';
+import { getEasingByName } from '../ease';
 
 /**
  * Behaviour that causes particles to drift to random coordinates in 3D space.
@@ -97,5 +98,11 @@ export default class RandomDrift extends Behaviour {
 
       this.time = 0;
     }
+  }
+
+  static fromJSON(json) {
+    const { x, y, z, delay, life, easing } = json;
+
+    return new RandomDrift(x, y, z, delay, life, getEasingByName(easing));
   }
 }

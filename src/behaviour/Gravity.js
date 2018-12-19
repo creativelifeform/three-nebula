@@ -1,5 +1,5 @@
 import Force from './Force';
-import { classDeprecationWarning } from '../compatibility';
+import { getEasingByName } from '../ease';
 
 /**
  * Behaviour that forces particles down the y axis.
@@ -17,19 +17,10 @@ export default class Gravity extends Force {
   constructor(gravity, life, easing) {
     super(0, -gravity, 0, life, easing);
   }
-}
 
-/**
- * Compatibility class.
- *
- * @deprecated
- */
-export class G extends Gravity {
-  /* istanbul ignore next */
-  constructor(...args) {
-    /* istanbul ignore next */
-    super(...args);
-    /* istanbul ignore next */
-    console.warn(classDeprecationWarning('G', 'Gravity'));
+  static fromJSON(json) {
+    const { gravity, life, easing } = json;
+
+    return new Gravity(gravity, life, getEasingByName(easing));
   }
 }

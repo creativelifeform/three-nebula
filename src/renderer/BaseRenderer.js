@@ -5,8 +5,6 @@ import {
   PROTON_UPDATE
 } from '../events/constants';
 
-import { classDeprecationWarning } from '../compatibility';
-
 export default class BaseRenderer {
   constructor() {
     this.setName();
@@ -69,11 +67,4 @@ export default class BaseRenderer {
    * @abstract
    */
   onProtonUpdate(proton) {} // eslint-disable-line
-}
-
-export class BaseRender extends BaseRenderer {
-  constructor(...args) {
-    super(...args);
-    console.warn(classDeprecationWarning('BaseRender', 'BaseRenderer'));
-  }
 }

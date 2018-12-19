@@ -9,11 +9,11 @@ import EventDispatcher, {
   PARTICLE_DEAD,
   PARTICLE_UPDATE
 } from '../events';
+import { INTEGRATION_TYPE_EULER, integrate } from '../math';
 
 import { InitializerUtil } from '../initializer';
 import Particle from '../core/Particle';
 import Util from '../utils/Util';
-import { integrator } from '../core/Proton';
 import uid from '../utils/uid';
 
 /**
@@ -191,40 +191,6 @@ export default class Emitter extends Particle {
   }
 
   /**
-   * Add an initializer to this emitter.
-   *
-   * @deprecated This will be removed in the next major version.
-   * @param {object} pObj
-   * @return void
-   */
-  addSelfInitialize(pObj) {
-    /* istanbul ignore next */
-    if (pObj['init']) {
-      /* istanbul ignore next */
-      pObj.init(this);
-      /* istanbul ignore next */
-    } else {
-      /* istanbul ignore next */
-      this.initAll();
-    }
-  }
-
-  /**
-   * Adds particle initializer(s) to the emitter.
-   * Each initializer is run on each particle when they are created.
-   *
-   * @deprecated This will be removed in the next major version use addInitializer or addInitializers.
-   * @return {Emitter}
-   */
-  addInitialize() {
-    /* istanbul ignore next */
-    var i = arguments.length;
-
-    /* istanbul ignore next */
-    while (i--) this.initializers.push(arguments[i]);
-  }
-
-  /**
    * Adds a particle initializer to the emitter.
    * Each initializer is run on each particle when they are created.
    *
@@ -263,18 +229,6 @@ export default class Emitter extends Particle {
     this.initializers = initializers;
 
     return this;
-  }
-
-  /**
-   * @deprecated This will be removed in the next major version use removeInitializer instead.
-   * @param {Initializer} initializer - The initializer to remove
-   */
-  removeInitialize(initializer) {
-    /* istanbul ignore next */
-    var index = this.initializers.indexOf(initializer);
-
-    /* istanbul ignore next */
-    if (index > -1) this.initializers.splice(index, 1);
   }
 
   /**
@@ -467,9 +421,12 @@ export default class Emitter extends Particle {
    * @return void
    */
   integrate(time) {
+    const integrationType = this.parent
+      ? this.parent.integrationType
+      : INTEGRATION_TYPE_EULER;
     const damping = 1 - this.damping;
 
-    integrator.integrate(this, time, damping);
+    integrate(this, time, damping, integrationType);
 
     let i = this.particles.length;
 
@@ -477,7 +434,7 @@ export default class Emitter extends Particle {
       const particle = this.particles[i];
 
       particle.update(time, i);
-      integrator.integrate(particle, time, damping);
+      integrate(particle, time, damping, integrationType);
 
       this.parent && this.parent.dispatch(PARTICLE_UPDATE, particle);
       this.bindEmitterEvent && this.dispatch(PARTICLE_UPDATE, particle);

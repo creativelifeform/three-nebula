@@ -14,7 +14,11 @@ describe('initializer -> InitializeUtil', () => {
   const life = new Proton.Life(2);
   const body = new Proton.Body('#FF0000');
   const radius = new Proton.Radius(80);
-  const velocity = new Proton.Velocity(200, new Proton.Vector3D(0, 0, -1), 0);
+  const velocity = new Proton.RadialVelocity(
+    200,
+    new Proton.Vector3D(0, 0, -1),
+    0
+  );
   const emitter = new Proton.Emitter();
   const particle = new Proton.Particle();
   const initializers = [mass, life, body, radius, velocity];

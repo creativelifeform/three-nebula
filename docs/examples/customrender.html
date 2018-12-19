@@ -79,7 +79,7 @@
         proton.addEmitter(createEmitter());
 
         //add custom renderer
-        var renderer = new Proton.CustomRender();
+        var renderer = new Proton.CustomRenderer();
         renderer.onParticleCreated = function(p) {
             //p.target = mesh.clone();
             p.target = this.targetPool.get(mesh);
@@ -101,7 +101,7 @@
             p.target = null;
         }
 
-        proton.addRender(renderer);
+        proton.addRenderer(renderer);
     }
 
     //load model
@@ -119,10 +119,10 @@
     function createEmitter() {
         emitter = new Proton.Emitter();
         emitter.rate = new Proton.Rate(new Proton.Span(4, 8), new Proton.Span(.2, .5));
-        emitter.addInitialize(new Proton.Mass(1));
-        emitter.addInitialize(new Proton.Radius(100));
-        emitter.addInitialize(new Proton.Life(2, 4));
-        emitter.addInitialize(new Proton.Velocity(400, new Proton.Vector3D(0, 1, 0), 60));
+        emitter.addInitializer(new Proton.Mass(1));
+        emitter.addInitializer(new Proton.Radius(100));
+        emitter.addInitializer(new Proton.Life(2, 4));
+        emitter.addInitializer(new Proton.RadialVelocity(400, new Proton.Vector3D(0, 1, 0), 60));
 
         // //emitter.addBehaviour(new Proton.RandomDrift(30, 30, 30, .05));
         emitter.addBehaviour(new Proton.Rotate("random", "random"));

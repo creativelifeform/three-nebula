@@ -1,4 +1,4 @@
-export { default as CustomRenderer, CustomRender } from './CustomRenderer';
-export { default as MeshRenderer, MeshRender } from './MeshRenderer';
-export { default as PointsRenderer, PointsRender } from './PointsRenderer';
-export { default as SpriteRenderer, SpriteRender } from './SpriteRenderer';
+export { default as CustomRenderer } from './CustomRenderer';
+export { default as MeshRenderer } from './MeshRenderer';
+export { default as PointsRenderer } from './PointsRenderer';
+export { default as SpriteRenderer } from './SpriteRenderer';

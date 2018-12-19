@@ -1,4 +1,3 @@
-import { EULER, POOL_MAX } from '../constants';
 import EventDispatcher, {
   EMITTER_ADDED,
   EMITTER_REMOVED,
@@ -7,8 +6,11 @@ import EventDispatcher, {
 } from '../events';
 
 import { DEFAULT_PROTON_DELTA } from './constants';
-import Integration from '../math/Integration';
+import Emitter from '../emitter/Emitter';
+import { INTEGRATION_TYPE_EULER } from '../math/constants';
+import { POOL_MAX } from '../constants';
 import Pool from './Pool';
+import fromJSON from './fromJSON';
 
 /**
  * The core of the three-proton particle engine.
@@ -25,10 +27,13 @@ export default class Proton {
    * that class from emitter.parent.integrator
    *
    * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
-   * @param {string} [integrationType=EULER] - The integration type to use
+   * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
    * @return void
    */
-  constructor(preParticles = POOL_MAX, integrationType = EULER) {
+  constructor(
+    preParticles = POOL_MAX,
+    integrationType = INTEGRATION_TYPE_EULER
+  ) {
     /**
      * @desc The number of particles to start with
      * @type {number}
@@ -36,7 +41,7 @@ export default class Proton {
     this.preParticles = preParticles;
 
     /**
-     * @desc The integration type to use
+     * @desc The integration algorithm type to use
      * @param {string}
      */
     this.integrationType = integrationType;
@@ -67,13 +72,16 @@ export default class Proton {
   }
 
   /**
-   * Returns a new Integration instance based on the type passed to the constructor.
+   * Creates a Proton instance from a JSON object.
    *
-   * @static
-   * @return {Integration}
+   * @param {object} json - The JSON to create the Proton instance from
+   * @param {number} json.preParticles - The predetermined number of particles
+   * @param {string} json.integrationType - The integration algorithm to use
+   * @param {array<object>} json.emitters - The emitters for the proton instance
+   * @return {Proton}
    */
-  static integrator() {
-    return new Integration(this.integrationType);
+  static fromJSON(json) {
+    return fromJSON(json, Proton, Emitter);
   }
 
   /**
@@ -87,16 +95,6 @@ export default class Proton {
   }
 
   /**
-   * @deprecated Use addRenderer
-   */
-  addRender(renderer) {
-    /* istanbul ignore next */
-    this.renderers.push(renderer);
-    /* istanbul ignore next */
-    renderer.init(this);
-  }
-
-  /**
    * Adds a renderer to the Proton instance and initializes it.
    *
    * @param {Renderer} renderer - The renderer to add
@@ -107,16 +105,6 @@ export default class Proton {
     renderer.init(this);
 
     return this;
-  }
-
-  /**
-   * @deprecated Use removeRenderer
-   */
-  removeRender(renderer) {
-    /* istanbul ignore next */
-    this.renderers.splice(this.renderers.indexOf(renderer), 1);
-    /* istanbul ignore next */
-    renderer.remove(this);
   }
 
   /**
@@ -172,14 +160,14 @@ export default class Proton {
    * Updates the particle system based on the delta passed.
    *
    * @example
-   * animate = timestamp => {
+   * animate = () => {
    *   threeRenderer.render(threeScene, threeCamera);
    *   proton.update();
    *   requestAnimationFrame(animate);
    * }
    * animate();
    *
-   * @param {number}
+   * @param {number} delta - Delta time
    * @return {Promise}
    */
   update(delta = DEFAULT_PROTON_DELTA) {
@@ -235,9 +223,3 @@ export default class Proton {
     this.pool.destroy();
   }
 }
-
-/**
- * @desc The system's integrator
- * @type {Integration}
- */
-export const integrator = Proton.integrator();

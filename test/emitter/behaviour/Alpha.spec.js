@@ -4,6 +4,7 @@ import * as Proton from '../../../src';
 
 import { TIME } from '../../constants';
 import chai from 'chai';
+import { getEasingByName } from '../../../src/ease';
 
 const { assert } = chai;
 
@@ -94,6 +95,23 @@ describe('behaviour -> Alpha', () => {
     assert.isFalse(alphaB._center);
     assert.strictEqual(alphaB.a, 0);
     assert.strictEqual(alphaB.b, 0);
+
+    done();
+  });
+
+  it('should construct the behaviour from a JSON object', done => {
+    const instance = Proton.Alpha.fromJSON({
+      alphaA: 0.4,
+      alphaB: 1,
+      life: 4,
+      easing: 'easeInOutExpo'
+    });
+
+    assert.instanceOf(instance, Proton.Alpha);
+    assert.instanceOf(instance.alphaA, Proton.Span);
+    assert.instanceOf(instance.alphaB, Proton.Span);
+    assert.equal(instance.life, 4);
+    assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
 
     done();
   });

@@ -1,5 +1,6 @@
 import Behaviour from './Behaviour';
 import { Vector3D } from '../math';
+import { getEasingByName } from '../ease';
 
 /**
  * Behaviour that forces particles along a specific axis.
@@ -56,5 +57,17 @@ export default class Force extends Behaviour {
     super.applyBehaviour(particle, time, index);
 
     particle.a.add(this.force);
+  }
+
+  /**
+   * Creates a Force initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @return {Force}
+   */
+  static fromJSON(json) {
+    const { fx, fy, fz, life, easing } = json;
+
+    return new Force(fx, fy, fz, life, getEasingByName(easing));
   }
 }

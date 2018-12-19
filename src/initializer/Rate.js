@@ -1,6 +1,7 @@
+import { Span, createSpan } from '../math';
+
 import Initializer from './Initializer';
 import Util from '../utils/Util';
-import { createSpan } from '../math';
 
 /**
  * Calculates the rate of particle emission.
@@ -79,5 +80,24 @@ export default class Rate extends Initializer {
     }
 
     return 0;
+  }
+
+  /**
+   * Creates a Rate initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @property {number} json.particlesMin - The minimum number of particles to emit
+   * @property {number} json.particlesMax - The maximum number of particles to emit
+   * @property {number} json.perSecondMin - The minimum per second emit rate
+   * @property {number} json.perSecondMax - The maximum per second emit rate
+   * @return {Rate}
+   */
+  static fromJSON(json) {
+    const { particlesMin, particlesMax, perSecondMin, perSecondMax } = json;
+
+    return new Rate(
+      new Span(particlesMin, particlesMax),
+      new Span(perSecondMin, perSecondMax)
+    );
   }
 }

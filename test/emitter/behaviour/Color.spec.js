@@ -4,6 +4,7 @@ import * as Proton from '../../../src';
 
 import { TIME } from '../../constants';
 import chai from 'chai';
+import { getEasingByName } from '../../../src/ease';
 
 const { assert } = chai;
 
@@ -17,7 +18,7 @@ describe('behaviour -> Color', () => {
   const particle = new Proton.Particle();
 
   it('should instantiate with the correct properties', done => {
-    const { a, b } = behaviour;
+    const { colorA, colorB } = behaviour;
 
     assert.strictEqual(behaviour.life, Infinity);
     assert.isFunction(behaviour.easing);
@@ -25,20 +26,20 @@ describe('behaviour -> Color', () => {
     assert.strictEqual(behaviour.energy, 1);
     assert.isFalse(behaviour.dead);
     assert.isFalse(behaviour._same);
-    assert.isTrue(a instanceof Proton.ArraySpan);
-    assert.isTrue(b instanceof Proton.ArraySpan);
-    assert.isFalse(a._isArray);
-    assert.strictEqual(a.a, 1);
-    assert.strictEqual(a.b, 1);
-    assert.isFalse(a._center);
-    assert.lengthOf(a._arr, 1);
-    assert.strictEqual(a._arr[0], 16711680);
-    assert.isFalse(b._isArray);
-    assert.strictEqual(b.a, 1);
-    assert.strictEqual(b.b, 1);
-    assert.isFalse(b._center);
-    assert.lengthOf(b._arr, 1);
-    assert.strictEqual(b._arr[0], 'random');
+    assert.isTrue(colorA instanceof Proton.ArraySpan);
+    assert.isTrue(colorB instanceof Proton.ArraySpan);
+    assert.isFalse(colorA._isArray);
+    assert.strictEqual(colorA.a, 1);
+    assert.strictEqual(colorA.b, 1);
+    assert.isFalse(colorA._center);
+    assert.lengthOf(colorA._arr, 1);
+    assert.strictEqual(colorA._arr[0], 16711680);
+    assert.isFalse(colorB._isArray);
+    assert.strictEqual(colorB.a, 1);
+    assert.strictEqual(colorB.b, 1);
+    assert.isFalse(colorB._center);
+    assert.lengthOf(colorB._arr, 1);
+    assert.strictEqual(colorB._arr[0], 'random');
     done();
   });
 
@@ -88,6 +89,23 @@ describe('behaviour -> Color', () => {
       assert.isNumber(value)
     );
     assert.deepEqual(particle.color, { r: 1, g: 0, b: 0 });
+
+    done();
+  });
+
+  it('should construct the behaviour from a JSON object', done => {
+    const instance = Proton.Color.fromJSON({
+      colorA: '#FF0000',
+      colorB: '#000000',
+      life: 3,
+      easing: 'easeInOutExpo'
+    });
+
+    assert.instanceOf(instance, Proton.Color);
+    assert.instanceOf(instance.colorA, Proton.ArraySpan);
+    assert.instanceOf(instance.colorB, Proton.ArraySpan);
+    assert.equal(instance.life, 3);
+    assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
 
     done();
   });

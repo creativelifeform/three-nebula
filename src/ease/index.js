@@ -143,3 +143,6 @@ export const setEasingByName = easeName => {
   if (ease[easeName]) return ease[easeName];
   else return ease.easeLinear;
 };
+
+export const getEasingByName = name =>
+  ease[name] ? ease[name] : ease.easeLinear;

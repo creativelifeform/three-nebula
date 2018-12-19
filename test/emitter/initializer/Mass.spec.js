@@ -38,4 +38,19 @@ describe('initializer -> Mass', () => {
 
     done();
   });
+
+  it('should construct the initializer from a JSON object', done => {
+    const instance = Proton.Mass.fromJSON({
+      min: 3,
+      max: 10,
+      center: true
+    });
+
+    assert.instanceOf(instance, Proton.Mass);
+    assert.instanceOf(instance.massPan, Proton.Span);
+    assert.equal(instance.massPan.a, 3);
+    assert.equal(instance.massPan.b, 10);
+
+    done();
+  });
 });

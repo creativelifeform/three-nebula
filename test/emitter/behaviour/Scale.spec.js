@@ -4,6 +4,7 @@ import * as Proton from '../../../src';
 
 import { TIME } from '../../constants';
 import chai from 'chai';
+import { getEasingByName } from '../../../src/ease';
 
 const { assert } = chai;
 
@@ -22,7 +23,16 @@ describe('behaviour -> Scale', () => {
   });
 
   it('should instantiate with the correct properties', done => {
-    const { life, easing, age, energy, dead, _same, a, b } = behaviour;
+    const {
+      life,
+      easing,
+      age,
+      energy,
+      dead,
+      _same,
+      scaleA,
+      scaleB
+    } = behaviour;
 
     assert.strictEqual(life, Infinity);
     assert.isFunction(easing);
@@ -30,12 +40,12 @@ describe('behaviour -> Scale', () => {
     assert.strictEqual(energy, 1);
     assert.isFalse(dead);
     assert.isFalse(_same);
-    assert.instanceOf(a, Proton.Span);
-    assert.instanceOf(b, Proton.Span);
-    assert.strictEqual(a.a, 3);
-    assert.strictEqual(a.b, 3);
-    assert.strictEqual(b.a, 11);
-    assert.strictEqual(b.b, 11);
+    assert.instanceOf(scaleA, Proton.Span);
+    assert.instanceOf(scaleB, Proton.Span);
+    assert.strictEqual(scaleA.a, 3);
+    assert.strictEqual(scaleA.b, 3);
+    assert.strictEqual(scaleB.a, 11);
+    assert.strictEqual(scaleB.b, 11);
 
     done();
   });
@@ -62,6 +72,23 @@ describe('behaviour -> Scale', () => {
 
     assert.strictEqual(particle.radius, 30);
     assert.strictEqual(particle.scale, 3);
+    done();
+  });
+
+  it('should construct the behaviour from a JSON object', done => {
+    const instance = Proton.Scale.fromJSON({
+      scaleA: 0.4,
+      scaleB: 1,
+      life: 4,
+      easing: 'easeInOutExpo'
+    });
+
+    assert.instanceOf(instance, Proton.Scale);
+    assert.instanceOf(instance.scaleA, Proton.Span);
+    assert.instanceOf(instance.scaleB, Proton.Span);
+    assert.equal(instance.life, 4);
+    assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
+
     done();
   });
 });

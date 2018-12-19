@@ -1,4 +1,5 @@
-import { DEFAULT_BEHAVIOUR_EASING } from './constants';
+import { DEFAULT_BEHAVIOUR_EASING, DEFAULT_LIFE } from './constants';
+
 import { MEASURE } from '../constants';
 import { uid } from '../utils';
 
@@ -68,8 +69,8 @@ export default class Behaviour {
    * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
    */
   reset(life = Infinity, easing = DEFAULT_BEHAVIOUR_EASING) {
-    this.life = life;
-    this.easing = easing;
+    this.life = life || DEFAULT_LIFE;
+    this.easing = easing || DEFAULT_BEHAVIOUR_EASING;
   }
 
   /**
@@ -139,4 +140,13 @@ export default class Behaviour {
    * @abstract
    */
   destroy() {}
+
+  /**
+   * Returns a new instance of the behaviour from the JSON object passed.
+   *
+   * @abstract
+   * @param {object} json - JSON object containing the required constructor properties
+   * @return {Behaviour}
+   */
+  fromJSON(json) {} // eslint-disable-line
 }
