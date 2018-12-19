@@ -8,20 +8,20 @@ import _ from 'lodash';
  */
 export default class ColorSpan extends Span {
   /**
-   * Constructs an ArraySpan instance.
+   * Constructs a ColorSpan instance.
    *
-   * @param {array<string>} colors - An array of colors to select from
-   * @param {boolean} shouldRandomize - Determines if a random color should be returned from the getValue method
+   * @param {?array<string>} colors - An array of colors to select from,
+   * if falsey, a random color will be returned from getValue
    * @return void
    */
-  constructor(colors, shouldRandomize = false) {
+  constructor(colors) {
     super();
 
     /**
      * @desc Determines if a random color should be returned from the getValue method.
      * @type {boolean}
      */
-    this.shouldRandomize = shouldRandomize;
+    this.shouldRandomize = !colors ? true : false;
 
     /**
      * @desc An array of colors to select from
