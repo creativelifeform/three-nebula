@@ -1,4 +1,4 @@
-import { MathUtils, createArraySpan } from '../math';
+import { MathUtils, createColorSpan } from '../math';
 
 import Behaviour from './Behaviour';
 import { ColorUtil } from '../utils';
@@ -49,8 +49,8 @@ export default class Color extends Behaviour {
   reset(colorA, colorB, life, easing) {
     this.same = colorB === null || colorB === undefined ? true : false;
 
-    this.colorA = createArraySpan(colorA);
-    this.colorB = createArraySpan(colorB);
+    this.colorA = createColorSpan(colorA);
+    this.colorB = createColorSpan(colorB);
     life && super.reset(life, easing);
   }
 

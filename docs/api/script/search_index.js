@@ -150,6 +150,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@rohandeshpande/three-proton/src/math/colorspan.js~colorspan",
+    "class/src/math/ColorSpan.js~ColorSpan.html",
+    "<span>ColorSpan</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/ColorSpan.js</span>",
+    "class"
+  ],
+  [
     "@rohandeshpande/three-proton/src/behaviour/crosszone.js~crosszone",
     "class/src/behaviour/CrossZone.js~CrossZone.html",
     "<span>CrossZone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/CrossZone.js</span>",
@@ -900,6 +906,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@rohandeshpande/three-proton/src/math/colorspan.js~createcolorspan",
+    "function/index.html#static-function-createColorSpan",
+    "<span>createColorSpan</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/ColorSpan.js</span>",
+    "function"
+  ],
+  [
     "@rohandeshpande/three-proton/src/math/span.js~createspan",
     "function/index.html#static-function-createSpan",
     "<span>createSpan</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/Span.js</span>",
@@ -1279,13 +1291,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -1585,13 +1597,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
@@ -1837,13 +1849,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#type",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-type",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-type",
     "src/behaviour/Rotate.js~Rotate#type",
     "member"
   ],
@@ -3402,12 +3414,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/math/arrayspan.js~arrayspan#_arr",
-    "class/src/math/ArraySpan.js~ArraySpan.html#instance-member-_arr",
-    "src/math/ArraySpan.js~ArraySpan#_arr",
-    "member"
-  ],
-  [
     "src/math/arrayspan.js~arrayspan#constructor",
     "class/src/math/ArraySpan.js~ArraySpan.html#instance-constructor-constructor",
     "src/math/ArraySpan.js~ArraySpan#constructor",
@@ -3420,10 +3426,10 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/math/arrayspan.js~arrayspan#israndomcolor",
-    "class/src/math/ArraySpan.js~ArraySpan.html#instance-method-isRandomColor",
-    "src/math/ArraySpan.js~ArraySpan#isRandomColor",
-    "method"
+    "src/math/arrayspan.js~arrayspan#items",
+    "class/src/math/ArraySpan.js~ArraySpan.html#instance-member-items",
+    "src/math/ArraySpan.js~ArraySpan#items",
+    "member"
   ],
   [
     "src/math/box.js",
@@ -3489,6 +3495,36 @@ window.esdocSearchIndex = [
     "src/math/box.js~box#z",
     "class/src/math/Box.js~Box.html#instance-member-z",
     "src/math/Box.js~Box#z",
+    "member"
+  ],
+  [
+    "src/math/colorspan.js",
+    "file/src/math/ColorSpan.js.html",
+    "src/math/ColorSpan.js",
+    "file"
+  ],
+  [
+    "src/math/colorspan.js~colorspan#colors",
+    "class/src/math/ColorSpan.js~ColorSpan.html#instance-member-colors",
+    "src/math/ColorSpan.js~ColorSpan#colors",
+    "member"
+  ],
+  [
+    "src/math/colorspan.js~colorspan#constructor",
+    "class/src/math/ColorSpan.js~ColorSpan.html#instance-constructor-constructor",
+    "src/math/ColorSpan.js~ColorSpan#constructor",
+    "method"
+  ],
+  [
+    "src/math/colorspan.js~colorspan#getvalue",
+    "class/src/math/ColorSpan.js~ColorSpan.html#instance-method-getValue",
+    "src/math/ColorSpan.js~ColorSpan#getValue",
+    "method"
+  ],
+  [
+    "src/math/colorspan.js~colorspan#shouldrandomize",
+    "class/src/math/ColorSpan.js~ColorSpan.html#instance-member-shouldRandomize",
+    "src/math/ColorSpan.js~ColorSpan#shouldRandomize",
     "member"
   ],
   [

@@ -155,10 +155,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Velocity/Velocity.js~Velocity.html">Velocity</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#math">math</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Box.js~Box.html">Box</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/ColorSpan.js~ColorSpan.html">ColorSpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Polar3D.js~Polar3D.html">Polar3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Span.js~Span.html">Span</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createArraySpan">createArraySpan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createColorSpan">createColorSpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createSpan">createSpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integrate">integrate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_EULER">INTEGRATION_TYPE_EULER</a></span></span></li>
@@ -3837,7 +3839,8 @@ be rendered by emitting them, and store all particle initializers and behaviours
       <div>
         
         
-        <div data-ice="description"><p>Class for storing and interacting with an array of colours.</p>
+        <div data-ice="description"><p>Class for storing items of mixed type and fetching a randomised
+value from these items.</p>
 </div>
       </div>
     </td>
@@ -3867,6 +3870,35 @@ be rendered by emitting them, and store all particle initializers and behaviours
         
         
         
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-class">C</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/math/ColorSpan.js~ColorSpan.html">ColorSpan</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Class for storing and interacting with an array of colours.</p>
+</div>
       </div>
     </td>
     <td>
@@ -3972,7 +4004,36 @@ be rendered by emitting them, and store all particle initializers and behaviours
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-createArraySpan">createArraySpan</a></span></span><span class="code" data-ice="signature">(colors: <span>mixed</span>): <span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-createArraySpan">createArraySpan</a></span></span><span class="code" data-ice="signature">(items: <span>mixed</span>): <span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Attempts to create an ArraySpan from the items provided.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-function">F</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-createColorSpan">createColorSpan</a></span></span><span class="code" data-ice="signature">(colors: <span>mixed</span>): <span><a href="class/src/math/ColorSpan.js~ColorSpan.html">ColorSpan</a></span></span>
         </p>
       </div>
       <div>

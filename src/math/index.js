@@ -1,4 +1,5 @@
 export { default as ArraySpan, createArraySpan } from './ArraySpan';
+export { default as ColorSpan, createColorSpan } from './ColorSpan';
 export { default as Box } from './Box';
 export { integrate } from './integration';
 export { default as MathUtils } from './MathUtils';

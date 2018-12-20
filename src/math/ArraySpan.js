@@ -1,66 +1,52 @@
-import MathUtils from './MathUtils';
 import Span from './Span';
 import _ from 'lodash';
 
 /**
- * Class for storing and interacting with an array of colours.
+ * Class for storing items of mixed type and fetching a randomised
+ * value from these items.
  *
- * NOTE Rename this to ColorSpan
  */
 export default class ArraySpan extends Span {
   /**
    * Constructs an ArraySpan instance.
    *
-   * @param {string|array} colors - single or multiple colors,
-   * if the string 'random' is passed, a random color will be returned
-   * from the getValue method
+   * @param {mixed|array<mixed>} items - Items
    * @return void
    */
-  constructor(colors = 'random') {
+  constructor(items) {
     super();
 
     /**
      * @desc An array of colors
      * @type {array}
      */
-    this._arr = Array.isArray(colors) ? colors : [colors];
+    this.items = Array.isArray(items) ? items : [items];
   }
 
   /**
-   * Gets a color from the color array.
+   * Gets a random item.
    *
-   * @return {string} a hex color
+   * @return {mixed}
    */
   getValue() {
-    const color = _.sample(this._arr);
-
-    return this.isRandomColor(color) ? MathUtils.randomColor() : color;
-  }
-
-  /**
-   * Determines if the color supplied is 'random'.
-   *
-   * @param {string} color - the color to check
-   */
-  isRandomColor(color) {
-    return typeof color === 'string' && color.toLowerCase() === 'random';
+    return _.sample(this.items);
   }
 }
 
 /**
- * Attempts to create an ArraySpan from the colors provided.
+ * Attempts to create an ArraySpan from the items provided.
  *
- * @param {mixed} colors - colors to try and create an ArraySpan from
+ * @param {mixed} items - Items to try and create an ArraySpan from
  * @return {?ArraySpan}
  */
-export const createArraySpan = colors => {
-  if (!colors) {
+export const createArraySpan = items => {
+  if (!items) {
     return null;
   }
 
-  if (colors instanceof ArraySpan) {
-    return colors;
+  if (items instanceof ArraySpan) {
+    return items;
   }
 
-  return new ArraySpan(colors);
+  return new ArraySpan(items);
 };
