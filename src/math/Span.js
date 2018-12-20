@@ -1,5 +1,6 @@
 import MathUtils from './MathUtils';
 import Util from '../utils/Util';
+import { MATH_TYPE_SPAN as type } from './types';
 
 export default class Span {
   /**
@@ -18,6 +19,12 @@ export default class Span {
    */
   constructor(a, b, center) {
     this._isArray = false;
+
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
 
     if (Util.isArray(a)) {
       this._isArray = true;

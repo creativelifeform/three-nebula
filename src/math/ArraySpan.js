@@ -1,5 +1,6 @@
 import Span from './Span';
 import _ from 'lodash';
+import { MATH_TYPE_ARRAY_SPAN as type } from './types';
 
 /**
  * Class for storing items of mixed type and fetching a randomised
@@ -15,6 +16,12 @@ export default class ArraySpan extends Span {
    */
   constructor(items) {
     super();
+
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
 
     /**
      * @desc An array of colors

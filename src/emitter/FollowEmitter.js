@@ -1,6 +1,7 @@
 import Emitter from './Emitter';
 import THREEUtil from '../utils/THREEUtil';
 import Util from '../utils/Util';
+import { EMITTER_TYPE_FOLLOW as type } from './types';
 
 export default class FollowEmitter extends Emitter {
   /**
@@ -18,6 +19,11 @@ export default class FollowEmitter extends Emitter {
   constructor(mouseTarget, ease, pObj) {
     super(pObj);
 
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
     this.mouseTarget = Util.initValue(mouseTarget, window);
     this.ease = Util.initValue(ease, 0.7);
     this._allowEmitting = false;

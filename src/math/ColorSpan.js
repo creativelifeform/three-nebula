@@ -1,6 +1,7 @@
 import MathUtils from './MathUtils';
 import Span from './Span';
 import _ from 'lodash';
+import { MATH_TYPE_COLOR_SPAN as type } from './types';
 
 /**
  * Class for storing and interacting with an array of colours.
@@ -16,6 +17,12 @@ export default class ColorSpan extends Span {
    */
   constructor(colors) {
     super();
+
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
 
     /**
      * @desc Determines if a random color should be returned from the getValue method.

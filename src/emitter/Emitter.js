@@ -14,6 +14,7 @@ import { INTEGRATION_TYPE_EULER, integrate } from '../math';
 import { InitializerUtil } from '../initializer';
 import Particle from '../core/Particle';
 import Util from '../utils/Util';
+import { EMITTER_TYPE_EMITTER as type } from './types';
 import uid from '../utils/uid';
 
 /**
@@ -30,6 +31,12 @@ export default class Emitter extends Particle {
    */
   constructor(properties) {
     super(properties);
+
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
 
     /**
      * @desc The particles emitted by this emitter.

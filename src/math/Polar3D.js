@@ -1,7 +1,13 @@
 import Vector3D from './Vector3D';
+import { MATH_TYPE_POLAR_3D as type } from './types';
 
 export default class Polar3D {
   constructor(radius, theta, phi) {
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
     this.radius = radius || 1;
     this.phi = phi || 0;
     this.theta = theta || 0;

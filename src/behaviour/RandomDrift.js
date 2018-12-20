@@ -38,7 +38,6 @@ export default class RandomDrift extends Behaviour {
      * @type {number}
      */
     this.time = 0;
-    this.name = 'RandomDrift';
   }
 
   /**
