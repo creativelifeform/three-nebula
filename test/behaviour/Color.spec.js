@@ -41,7 +41,6 @@ describe('behaviour -> Color', () => {
     assert.lengthOf(colorB.colors, 1);
     assert.strictEqual(colorB.colors[0], 'random');
 
-    console.log(colorB);
     done();
   });
 
