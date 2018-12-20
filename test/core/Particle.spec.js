@@ -32,6 +32,7 @@ describe('core -> Particle', () => {
   it('should set all default properties', done => {
     const particle = new Particle();
 
+    assert.equal(particle.type, 'Particle');
     assert.strictEqual(particle.life, Infinity);
     assert.strictEqual(particle.age, 0);
     assert.strictEqual(particle.energy, 1);
