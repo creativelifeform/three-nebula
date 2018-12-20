@@ -18,6 +18,7 @@ describe('initializer -> Body', () => {
       h
     } = initializer;
 
+    assert.equal(initializer.type, 'Body');
     assert.instanceOf(body, Proton.ArraySpan);
     assert.isFalse(_isArray);
     assert.isFalse(_center);

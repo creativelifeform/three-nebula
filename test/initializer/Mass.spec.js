@@ -17,6 +17,7 @@ describe('initializer -> Mass', () => {
       massPan: { _isArray, a, b, _center }
     } = initializer;
 
+    assert.equal(initializer.type, 'Mass');
     assert.instanceOf(massPan, Proton.Span);
     assert.isFalse(_isArray);
     assert.isFalse(_center);

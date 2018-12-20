@@ -15,6 +15,7 @@ describe('initializer -> Rate', () => {
   it('should have the correct properties after instantiation', done => {
     const { numPan, timePan, startTime, nextTime } = rate;
 
+    assert.equal(rate.type, 'Rate');
     assert.strictEqual(numPan.a, 1);
     assert.strictEqual(numPan.b, 4);
     assert.strictEqual(timePan.a, 0.1);

@@ -1,6 +1,7 @@
 import { DR } from '../../constants';
 import { Polar3D } from '../../math';
 import Velocity from './Velocity';
+import { INITIALIZER_TYPE_POLAR_VELOCITY as type } from '../types';
 
 /**
  * Sets the velocity property on initialized particles.
@@ -15,7 +16,7 @@ export default class PolarVelocity extends Velocity {
    * @return void
    */
   constructor(polar3d, theta) {
-    super();
+    super(type);
 
     /**
      * @desc Theta.

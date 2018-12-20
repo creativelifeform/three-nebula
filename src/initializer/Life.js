@@ -1,5 +1,6 @@
 import Initializer from './Initializer';
 import { createSpan } from '../math';
+import { INITIALIZER_TYPE_LIFE as type } from './types';
 
 /**
  * Sets the life property on initialized particles.
@@ -15,7 +16,7 @@ export default class Life extends Initializer {
    * @return void
    */
   constructor(min, max, center) {
-    super();
+    super(type);
 
     /**
      * @desc The life span of the particle.

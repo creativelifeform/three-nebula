@@ -21,6 +21,7 @@ describe('initializer -> Radial Velocity', () => {
       dirVec
     } = velocity;
 
+    assert.equal(velocity.type, 'RadialVelocity');
     assert.equal(a, 13);
     assert.equal(b, 13);
     assert.equal(x, 0.4082482904638631);

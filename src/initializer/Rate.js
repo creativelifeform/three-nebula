@@ -1,7 +1,8 @@
+import { DEFAULT_RATE_NUM_PAN, DEFAULT_RATE_TIME_PAN } from './constants';
 import { Span, createSpan } from '../math';
 
 import Initializer from './Initializer';
-import Util from '../utils/Util';
+import { INITIALIZER_TYPE_RATE as type } from './types';
 
 /**
  * Calculates the rate of particle emission.
@@ -19,20 +20,20 @@ export default class Rate extends Initializer {
    * @param {number|array|Span} timePan - The time between each particle emission
    * @return void
    */
-  constructor(numPan, timePan) {
-    super();
+  constructor(numPan = DEFAULT_RATE_NUM_PAN, timePan = DEFAULT_RATE_TIME_PAN) {
+    super(type);
 
     /**
      * @desc Sets the number of particles to emit.
      * @type {Span}
      */
-    this.numPan = createSpan(Util.initValue(numPan, 1));
+    this.numPan = createSpan(numPan);
 
     /**
      * @desc Sets the time between each particle emission.
      * @type {Span}
      */
-    this.timePan = createSpan(Util.initValue(timePan, 1));
+    this.timePan = createSpan(timePan);
 
     /**
      * @desc The rate's start time.
