@@ -3,6 +3,7 @@ import { MathUtils, Vector3D, createSpan } from '../math';
 import Behaviour from './Behaviour';
 import { DEFAULT_RANDOM_DRIFT_DELAY } from './constants';
 import { getEasingByName } from '../ease';
+import { BEHAVIOUR_TYPE_RANDOM_DRIFT as type } from './types';
 
 /**
  * Behaviour that causes particles to drift to random coordinates in 3D space.
@@ -28,7 +29,7 @@ export default class RandomDrift extends Behaviour {
     life,
     easing
   ) {
-    super(life, easing);
+    super(life, easing, type);
 
     this.reset(driftX, driftY, driftZ, delay);
 

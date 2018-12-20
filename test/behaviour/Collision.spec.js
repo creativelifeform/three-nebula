@@ -14,6 +14,7 @@ describe('behaviour -> Collision', () => {
   const particleB = new Proton.Particle({ mass: 4 });
 
   it('should instantiate with the correct properties', done => {
+    assert.equal(behaviour.type, 'Collision');
     assert.strictEqual(behaviour.life, Infinity);
     assert.isFunction(behaviour.easing);
     assert.strictEqual(behaviour.age, 0);
@@ -21,7 +22,7 @@ describe('behaviour -> Collision', () => {
     assert.isFalse(behaviour.dead);
     assert.isTrue(behaviour.emitter instanceof Proton.Emitter);
     assert.isTrue(behaviour.useMass);
-    assert.isFunction(behaviour.callback);
+    assert.isFunction(behaviour.onCollide);
     assert.isArray(behaviour.particles);
     assert.isTrue(behaviour.delta instanceof Proton.Vector3D);
     assert.isFunction(behaviour._getAverageMass);
@@ -41,7 +42,7 @@ describe('behaviour -> Collision', () => {
     assert.isFalse(behaviour.dead);
     assert.isTrue(behaviour.emitter instanceof Proton.Emitter);
     assert.isTrue(behaviour.useMass);
-    assert.isFunction(behaviour.callback);
+    assert.isFunction(behaviour.onCollide);
     assert.isArray(behaviour.particles);
     assert.isTrue(behaviour.delta instanceof Proton.Vector3D);
 

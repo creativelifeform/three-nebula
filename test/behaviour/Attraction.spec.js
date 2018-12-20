@@ -14,6 +14,7 @@ describe('behaviour -> Attraction', () => {
 
   it('should instantiate with the correct properties', done => {
     const {
+      type,
       life,
       easing,
       age,
@@ -27,6 +28,7 @@ describe('behaviour -> Attraction', () => {
       lengthSq
     } = behaviour;
 
+    assert.equal(type, 'Attraction');
     assert.strictEqual(life, Infinity);
     assert.isFunction(easing);
     assert.strictEqual(age, 0);

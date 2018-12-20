@@ -1,5 +1,6 @@
 import Force from './Force';
 import { getEasingByName } from '../ease';
+import { BEHAVIOUR_TYPE_GRAVITY as type } from './types';
 
 /**
  * Behaviour that forces particles down the y axis.
@@ -16,6 +17,12 @@ export default class Gravity extends Force {
    */
   constructor(gravity, life, easing) {
     super(0, -gravity, 0, life, easing);
+
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
   }
 
   static fromJSON(json) {

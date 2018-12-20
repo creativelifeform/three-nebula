@@ -2,6 +2,7 @@ import { MathUtils, createSpan } from '../math';
 
 import Behaviour from './Behaviour';
 import { getEasingByName } from '../ease';
+import { BEHAVIOUR_TYPE_SCALE as type } from './types';
 
 /**
  * Behaviour that scales particles.
@@ -18,10 +19,9 @@ export default class Scale extends Behaviour {
    * @return void
    */
   constructor(scaleA, scaleB, life, easing) {
-    super(life, easing);
+    super(life, easing, type);
 
     this.reset(scaleA, scaleB);
-    this.name = 'Scale';
   }
 
   /**
@@ -114,6 +114,12 @@ export default class Scale extends Behaviour {
     particle.radius = particle.transform.oldRadius * particle.scale;
   }
 
+  /**
+   * Returns a new instance of the behaviour from the JSON object passed.
+   *
+   * @param {object} json - JSON object containing the required constructor properties
+   * @return {Spring}
+   */
   static fromJSON(json) {
     const { scaleA, scaleB, life, easing } = json;
 

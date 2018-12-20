@@ -1,7 +1,7 @@
 import Behaviour from './Behaviour';
 import { Vector3D } from '../math';
 import { getEasingByName } from '../ease';
-
+import { BEHAVIOUR_TYPE_FORCE as type } from './types';
 /**
  * Behaviour that forces particles along a specific axis.
  *
@@ -18,7 +18,7 @@ export default class Force extends Behaviour {
    * @return void
    */
   constructor(fx, fy, fz, life, easing) {
-    super(life, easing);
+    super(life, easing, type);
 
     this.reset(fx, fy, fz);
   }

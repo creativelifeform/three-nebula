@@ -3,6 +3,7 @@ import { MathUtils, Vector3D, createSpan } from '../math';
 
 import Behaviour from './Behaviour';
 import { getEasingByName } from '../ease';
+import { BEHAVIOUR_TYPE_ROTATE as type } from './types';
 
 /**
  * Behaviour that rotates particles.
@@ -19,10 +20,9 @@ export default class Rotate extends Behaviour {
    * @return void
    */
   constructor(x, y, z, life, easing) {
-    super(life, easing);
+    super(life, easing, type);
 
     this.reset(x, y, z);
-    this.name = 'Rotate';
   }
 
   /**
@@ -30,8 +30,8 @@ export default class Rotate extends Behaviour {
    *
    * @return {string}
    */
-  get type() {
-    return this._type;
+  get rotationType() {
+    return this._rotationType;
   }
 
   /**
@@ -40,12 +40,12 @@ export default class Rotate extends Behaviour {
    * @param {string}
    * @return void
    */
-  set type(type) {
+  set rotationType(rotationType) {
     /**
      * @desc The rotation type. ENUM of ['same', 'set', 'to', 'add'].
      * @type {string}
      */
-    this._type = type;
+    this._rotationType = rotationType;
   }
 
   /**
@@ -78,13 +78,13 @@ export default class Rotate extends Behaviour {
     this.z = z || 0;
 
     if (x === undefined || x == 'same') {
-      this._type = 'same';
+      this.rotationType = 'same';
     } else if (y == undefined) {
-      this._type = 'set';
+      this.rotationType = 'set';
     } else if (z === undefined) {
-      this._type = 'to';
+      this.rotationType = 'to';
     } else {
-      this._type = 'add';
+      this.rotationType = 'add';
       this.x = createSpan(this.x * DR);
       this.y = createSpan(this.y * DR);
       this.z = createSpan(this.z * DR);
@@ -100,7 +100,7 @@ export default class Rotate extends Behaviour {
    * @return void
    */
   initialize(particle) {
-    switch (this._type) {
+    switch (this.rotationType) {
       case 'same':
         break;
 
@@ -169,7 +169,7 @@ export default class Rotate extends Behaviour {
   applyBehaviour(particle, time, index) {
     super.applyBehaviour(particle, time, index);
 
-    switch (this._type) {
+    switch (this.rotationType) {
       // orients the particle in the direction it is moving
       case 'same':
         if (!particle.rotation) {

@@ -3,6 +3,7 @@ import * as Zone from '../zone';
 import Behaviour from './Behaviour';
 import { DEFAULT_CROSS_TYPE } from './constants';
 import { getEasingByName } from '../ease';
+import { BEHAVIOUR_TYPE_CROSS_ZONE as type } from './types';
 
 /**
  * Behaviour that allows for specific functions to be called on particles when
@@ -19,10 +20,9 @@ export default class CrossZone extends Behaviour {
    * @param {function} easing - The behaviour's decaying trend
    */
   constructor(zone, crossType, life, easing) {
-    super(life, easing);
+    super(life, easing, type);
 
     this.reset(zone, crossType);
-    this.name = 'CrossZone';
   }
 
   /**

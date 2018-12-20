@@ -24,6 +24,7 @@ describe('behaviour -> Spring', () => {
       friction
     } = behaviour;
 
+    assert.equal(behaviour.type, 'Spring');
     assert.strictEqual(life, Infinity);
     assert.isFunction(easing);
     assert.strictEqual(age, 0);

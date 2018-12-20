@@ -9,6 +9,7 @@ import {
 import Behaviour from './Behaviour';
 import { Vector3D } from '../math';
 import { getEasingByName } from '../ease';
+import { BEHAVIOUR_TYPE_ATTRACTION as type } from './types';
 
 /**
  * Behaviour that causes particles to be attracted to a target position.
@@ -32,7 +33,7 @@ export default class Attraction extends Behaviour {
     life = DEFAULT_LIFE,
     easing = DEFAULT_BEHAVIOUR_EASING
   ) {
-    super(life, easing);
+    super(life, easing, type);
 
     /**
      * @desc The position the particles will be attracted to

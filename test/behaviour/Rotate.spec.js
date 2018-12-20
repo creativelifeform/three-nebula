@@ -21,34 +21,35 @@ describe('behaviour -> Rotate', () => {
   const addParticle = new Proton.Particle();
 
   it('should set the rotation type to "same" if the first argument is undefined or "same"', done => {
-    assert.strictEqual(same._type, 'same');
+    assert.strictEqual(same.rotationType, 'same');
 
     const _same = new Proton.Rotate('same');
 
-    assert.strictEqual(_same._type, 'same');
+    assert.strictEqual(_same.rotationType, 'same');
 
     done();
   });
 
   it('should set the rotation type to "set" if the second argument is undefined', done => {
-    assert.strictEqual(set._type, 'set');
+    assert.strictEqual(set.rotationType, 'set');
 
     done();
   });
 
   it('should set the rotation type to "to" if the third argument is undefined', done => {
-    assert.strictEqual(to._type, 'to');
+    assert.strictEqual(to.rotationType, 'to');
 
     done();
   });
 
   it('should set the rotation type to "add" if all arguments are defined', done => {
-    assert.strictEqual(add._type, 'add');
+    assert.strictEqual(add.rotationType, 'add');
 
     done();
   });
 
   it('should instantiate with the correct properties', done => {
+    assert.equal(random.type, 'Rotate');
     assert.strictEqual(random.x, 'random');
     assert.strictEqual(same.x, 0);
     assert.strictEqual(same.y, 0);

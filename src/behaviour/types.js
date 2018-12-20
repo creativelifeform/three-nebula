@@ -1,3 +1,4 @@
+export const BEHAVIOUR_TYPE_ABSTRACT = 'Behaviour';
 export const BEHAVIOUR_TYPE_ALPHA = 'Alpha';
 export const BEHAVIOUR_TYPE_ATTRACTION = 'Attraction';
 export const BEHAVIOUR_TYPE_COLLISION = 'Collision';

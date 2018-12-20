@@ -13,6 +13,7 @@ describe('behaviour -> Alpha', () => {
 
   it('should instantiate with the correct properties', done => {
     const {
+      type,
       life,
       age,
       energy,
@@ -23,6 +24,7 @@ describe('behaviour -> Alpha', () => {
       alphaB
     } = behaviour;
 
+    assert.strictEqual(type, 'Alpha');
     assert.strictEqual(life, Infinity);
     assert.strictEqual(age, 0);
     assert.strictEqual(energy, 1);

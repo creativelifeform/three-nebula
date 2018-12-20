@@ -1,7 +1,7 @@
 import Attraction from './Attraction';
 import { Vector3D } from '../math';
 import { getEasingByName } from '../ease';
-
+import { BEHAVIOUR_TYPE_REPULSION as type } from './types';
 /**
  * Behaviour that causes particles to be repelled from a target position.
  *
@@ -20,8 +20,17 @@ export default class Repulsion extends Attraction {
   constructor(targetPosition, force, radius, life, easing) {
     super(targetPosition, force, radius, life, easing);
 
+    /**
+     * @desc Repulsion is attraction with negative force.
+     * @type {number}
+     */
     this.force *= -1;
-    this.name = 'Repulsion';
+
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
   }
 
   /**

@@ -1,5 +1,6 @@
 import { DEFAULT_BEHAVIOUR_EASING, DEFAULT_LIFE } from './constants';
 
+import { BEHAVIOUR_TYPE_ABSTRACT } from './types';
 import { MEASURE } from '../constants';
 import { uid } from '../utils';
 
@@ -16,7 +17,17 @@ export default class Behaviour {
    * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
    * @return void
    */
-  constructor(life = Infinity, easing = DEFAULT_BEHAVIOUR_EASING) {
+  constructor(
+    life = Infinity,
+    easing = DEFAULT_BEHAVIOUR_EASING,
+    type = BEHAVIOUR_TYPE_ABSTRACT
+  ) {
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
+
     /**
      * @desc The behaviour's id
      * @type {string} id
@@ -52,14 +63,6 @@ export default class Behaviour {
      * @type {boolean}
      */
     this.dead = false;
-
-    /**
-     * The behaviour name;
-     * @property name
-     * @type {string}
-     */
-
-    this.name = 'Behaviour';
   }
 
   /**

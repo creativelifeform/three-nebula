@@ -34,6 +34,7 @@ describe('behaviour -> Scale', () => {
       scaleB
     } = behaviour;
 
+    assert.equal(behaviour.type, 'Scale');
     assert.strictEqual(life, Infinity);
     assert.isFunction(easing);
     assert.strictEqual(age, 0);
