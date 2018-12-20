@@ -155,10 +155,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Velocity/Velocity.js~Velocity.html">Velocity</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#math">math</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Box.js~Box.html">Box</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/ColorSpan.js~ColorSpan.html">ColorSpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Polar3D.js~Polar3D.html">Polar3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Span.js~Span.html">Span</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createArraySpan">createArraySpan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createColorSpan">createColorSpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createSpan">createSpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integrate">integrate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_EULER">INTEGRATION_TYPE_EULER</a></span></span></li>
@@ -192,71 +194,57 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/math/ArraySpan.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import MathUtils from &apos;./MathUtils&apos;;
-import Span from &apos;./Span&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Span from &apos;./Span&apos;;
 import _ from &apos;lodash&apos;;
 
 /**
- * Class for storing and interacting with an array of colours.
+ * Class for storing items of mixed type and fetching a randomised
+ * value from these items.
  *
- * NOTE Rename this to ColorSpan
  */
 export default class ArraySpan extends Span {
   /**
    * Constructs an ArraySpan instance.
    *
-   * @param {string|array} colors - single or multiple colors,
-   * if the string &apos;random&apos; is passed, a random color will be returned
-   * from the getValue method
+   * @param {mixed|array&lt;mixed&gt;} items - Items
    * @return void
    */
-  constructor(colors = &apos;random&apos;) {
+  constructor(items) {
     super();
 
     /**
      * @desc An array of colors
      * @type {array}
      */
-    this._arr = Array.isArray(colors) ? colors : [colors];
+    this.items = Array.isArray(items) ? items : [items];
   }
 
   /**
-   * Gets a color from the color array.
+   * Gets a random item.
    *
-   * @return {string} a hex color
+   * @return {mixed}
    */
   getValue() {
-    const color = _.sample(this._arr);
-
-    return this.isRandomColor(color) ? MathUtils.randomColor() : color;
-  }
-
-  /**
-   * Determines if the color supplied is &apos;random&apos;.
-   *
-   * @param {string} color - the color to check
-   */
-  isRandomColor(color) {
-    return typeof color === &apos;string&apos; &amp;&amp; color.toLowerCase() === &apos;random&apos;;
+    return _.sample(this.items);
   }
 }
 
 /**
- * Attempts to create an ArraySpan from the colors provided.
+ * Attempts to create an ArraySpan from the items provided.
  *
- * @param {mixed} colors - colors to try and create an ArraySpan from
+ * @param {mixed} items - Items to try and create an ArraySpan from
  * @return {?ArraySpan}
  */
-export const createArraySpan = colors =&gt; {
-  if (!colors) {
+export const createArraySpan = items =&gt; {
+  if (!items) {
     return null;
   }
 
-  if (colors instanceof ArraySpan) {
-    return colors;
+  if (items instanceof ArraySpan) {
+    return items;
   }
 
-  return new ArraySpan(colors);
+  return new ArraySpan(items);
 };
 </code></pre>
 

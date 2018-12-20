@@ -9,7 +9,8 @@ export default class Body extends Initializer {
   /**
    * Constructs a Body initalizer instance.
    *
-   * @param {string|number} body - The color for the particle body
+   * @param {string|number|object} body - The content for the particle body, can
+   * be a color or an object (mesh)
    * @param {?number} w - The width of the particle body
    * @param {?number} h - The height of the particle body
    * @return void
@@ -18,7 +19,7 @@ export default class Body extends Initializer {
     super();
 
     /**
-     * @desc The color for the particle body
+     * @desc The content for the particle body
      * @type {ArraySpan}
      */
     this.body = createArraySpan(body);

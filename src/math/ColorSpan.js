@@ -10,8 +10,8 @@ export default class ColorSpan extends Span {
   /**
    * Constructs a ColorSpan instance.
    *
-   * @param {?array<string>} colors - An array of colors to select from,
-   * if falsey, a random color will be returned from getValue
+   * @param {string|array<string>} colors - A color or array of colors. If the
+   * string 'random' is provided, a random color will be returned from getValue
    * @return void
    */
   constructor(colors) {
@@ -21,7 +21,7 @@ export default class ColorSpan extends Span {
      * @desc Determines if a random color should be returned from the getValue method.
      * @type {boolean}
      */
-    this.shouldRandomize = !colors ? true : false;
+    this.shouldRandomize = colors === 'random' ? true : false;
 
     /**
      * @desc An array of colors to select from
@@ -37,7 +37,9 @@ export default class ColorSpan extends Span {
    * @return {string} a hex color
    */
   getValue() {
-    return this.shouldRandomize ? MathUtils.randomColor : _.sample(this.colors);
+    return this.shouldRandomize
+      ? MathUtils.randomColor()
+      : _.sample(this.colors);
   }
 }
 

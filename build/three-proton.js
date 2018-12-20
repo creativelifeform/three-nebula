@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 56);
+/******/ 	return __webpack_require__(__webpack_require__.s = 57);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -87,7 +87,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ArraySpan = __webpack_require__(70);
+var _ArraySpan = __webpack_require__(71);
 
 Object.defineProperty(exports, 'ArraySpan', {
   enumerable: true,
@@ -102,7 +102,22 @@ Object.defineProperty(exports, 'createArraySpan', {
   }
 });
 
-var _Box = __webpack_require__(71);
+var _ColorSpan = __webpack_require__(73);
+
+Object.defineProperty(exports, 'ColorSpan', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_ColorSpan).default;
+  }
+});
+Object.defineProperty(exports, 'createColorSpan', {
+  enumerable: true,
+  get: function get() {
+    return _ColorSpan.createColorSpan;
+  }
+});
+
+var _Box = __webpack_require__(72);
 
 Object.defineProperty(exports, 'Box', {
   enumerable: true,
@@ -111,7 +126,7 @@ Object.defineProperty(exports, 'Box', {
   }
 });
 
-var _integration = __webpack_require__(73);
+var _integration = __webpack_require__(75);
 
 Object.defineProperty(exports, 'integrate', {
   enumerable: true,
@@ -129,7 +144,7 @@ Object.defineProperty(exports, 'MathUtils', {
   }
 });
 
-var _Polar3D = __webpack_require__(72);
+var _Polar3D = __webpack_require__(74);
 
 Object.defineProperty(exports, 'Polar3D', {
   enumerable: true,
@@ -138,7 +153,7 @@ Object.defineProperty(exports, 'Polar3D', {
   }
 });
 
-var _Span = __webpack_require__(30);
+var _Span = __webpack_require__(18);
 
 Object.defineProperty(exports, 'Span', {
   enumerable: true,
@@ -162,7 +177,7 @@ Object.defineProperty(exports, 'Vector3D', {
   }
 });
 
-var _constants = __webpack_require__(18);
+var _constants = __webpack_require__(19);
 
 Object.defineProperty(exports, 'INTEGRATION_TYPE_EULER', {
   enumerable: true,
@@ -49310,7 +49325,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ColorUtil = __webpack_require__(78);
+var _ColorUtil = __webpack_require__(80);
 
 Object.defineProperty(exports, 'ColorUtil', {
   enumerable: true,
@@ -49319,7 +49334,7 @@ Object.defineProperty(exports, 'ColorUtil', {
   }
 });
 
-var _PUID = __webpack_require__(20);
+var _PUID = __webpack_require__(21);
 
 Object.defineProperty(exports, 'PUID', {
   enumerable: true,
@@ -49328,7 +49343,7 @@ Object.defineProperty(exports, 'PUID', {
   }
 });
 
-var _THREEUtil = __webpack_require__(21);
+var _THREEUtil = __webpack_require__(22);
 
 Object.defineProperty(exports, 'THREEUtil', {
   enumerable: true,
@@ -49392,7 +49407,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Body = __webpack_require__(57);
+var _Body = __webpack_require__(58);
 
 Object.defineProperty(exports, 'Body', {
   enumerable: true,
@@ -49401,7 +49416,7 @@ Object.defineProperty(exports, 'Body', {
   }
 });
 
-var _BodySprite = __webpack_require__(58);
+var _BodySprite = __webpack_require__(59);
 
 Object.defineProperty(exports, 'BodySprite', {
   enumerable: true,
@@ -49410,7 +49425,7 @@ Object.defineProperty(exports, 'BodySprite', {
   }
 });
 
-var _InitializerUtil = __webpack_require__(59);
+var _InitializerUtil = __webpack_require__(60);
 
 Object.defineProperty(exports, 'InitializerUtil', {
   enumerable: true,
@@ -49419,7 +49434,7 @@ Object.defineProperty(exports, 'InitializerUtil', {
   }
 });
 
-var _Life = __webpack_require__(60);
+var _Life = __webpack_require__(61);
 
 Object.defineProperty(exports, 'Life', {
   enumerable: true,
@@ -49428,7 +49443,7 @@ Object.defineProperty(exports, 'Life', {
   }
 });
 
-var _Mass = __webpack_require__(61);
+var _Mass = __webpack_require__(62);
 
 Object.defineProperty(exports, 'Mass', {
   enumerable: true,
@@ -49437,7 +49452,7 @@ Object.defineProperty(exports, 'Mass', {
   }
 });
 
-var _Position = __webpack_require__(62);
+var _Position = __webpack_require__(63);
 
 Object.defineProperty(exports, 'Position', {
   enumerable: true,
@@ -49446,7 +49461,7 @@ Object.defineProperty(exports, 'Position', {
   }
 });
 
-var _Radius = __webpack_require__(63);
+var _Radius = __webpack_require__(64);
 
 Object.defineProperty(exports, 'Radius', {
   enumerable: true,
@@ -49455,7 +49470,7 @@ Object.defineProperty(exports, 'Radius', {
   }
 });
 
-var _Rate = __webpack_require__(29);
+var _Rate = __webpack_require__(30);
 
 Object.defineProperty(exports, 'Rate', {
   enumerable: true,
@@ -49464,7 +49479,7 @@ Object.defineProperty(exports, 'Rate', {
   }
 });
 
-var _Velocity = __webpack_require__(67);
+var _Velocity = __webpack_require__(68);
 
 Object.defineProperty(exports, 'VectorVelocity', {
   enumerable: true,
@@ -49499,13 +49514,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SUPPORTED_JSON_ZONE_TYPES = exports.SUPPORTED_JSON_RENDERER_TYPES = exports.SUPPORTED_JSON_BEHAVIOUR_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = exports.DEFAULT_PROTON_DELTA = exports.DEFAULT_EASING = exports.DEFAULT_USE_ALPHA = exports.DEFAULT_USE_COLOR = exports.DEFAULT_SCALE = exports.DEFAULT_ALPHA = exports.DEFAULT_RADIUS = exports.DEFAULT_MASS = exports.DEFAULT_PARENT = exports.DEFAULT_BODY = exports.DEFAULT_SLEEP = exports.DEFAULT_DEAD = exports.DEFAULT_ENERGY = exports.DEFAULT_AGE = exports.DEFAULT_LIFE = undefined;
 
-var _types = __webpack_require__(46);
+var _types = __webpack_require__(47);
 
-var _types2 = __webpack_require__(69);
+var _types2 = __webpack_require__(70);
 
-var _types3 = __webpack_require__(85);
+var _types3 = __webpack_require__(87);
 
-var _types4 = __webpack_require__(77);
+var _types4 = __webpack_require__(79);
 
 var _ease = __webpack_require__(1);
 
@@ -49623,9 +49638,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(54);
+var _constants = __webpack_require__(55);
 
-var _events = __webpack_require__(28);
+var _events = __webpack_require__(29);
 
 var _events2 = _interopRequireDefault(_events);
 
@@ -49633,7 +49648,7 @@ var _math = __webpack_require__(0);
 
 var _initializer = __webpack_require__(11);
 
-var _Particle2 = __webpack_require__(25);
+var _Particle2 = __webpack_require__(26);
 
 var _Particle3 = _interopRequireDefault(_Particle2);
 
@@ -50299,7 +50314,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Particle = __webpack_require__(25);
+var _Particle = __webpack_require__(26);
 
 Object.defineProperty(exports, 'Particle', {
   enumerable: true,
@@ -50308,7 +50323,7 @@ Object.defineProperty(exports, 'Particle', {
   }
 });
 
-var _Pool = __webpack_require__(26);
+var _Pool = __webpack_require__(27);
 
 Object.defineProperty(exports, 'Pool', {
   enumerable: true,
@@ -50317,7 +50332,7 @@ Object.defineProperty(exports, 'Pool', {
   }
 });
 
-var _Proton = __webpack_require__(47);
+var _Proton = __webpack_require__(48);
 
 Object.defineProperty(exports, 'Proton', {
   enumerable: true,
@@ -50339,7 +50354,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _BoxZone = __webpack_require__(79);
+var _BoxZone = __webpack_require__(81);
 
 Object.defineProperty(exports, 'BoxZone', {
   enumerable: true,
@@ -50348,7 +50363,7 @@ Object.defineProperty(exports, 'BoxZone', {
   }
 });
 
-var _LineZone = __webpack_require__(80);
+var _LineZone = __webpack_require__(82);
 
 Object.defineProperty(exports, 'LineZone', {
   enumerable: true,
@@ -50357,7 +50372,7 @@ Object.defineProperty(exports, 'LineZone', {
   }
 });
 
-var _MeshZone = __webpack_require__(81);
+var _MeshZone = __webpack_require__(83);
 
 Object.defineProperty(exports, 'MeshZone', {
   enumerable: true,
@@ -50366,7 +50381,7 @@ Object.defineProperty(exports, 'MeshZone', {
   }
 });
 
-var _PointZone = __webpack_require__(82);
+var _PointZone = __webpack_require__(84);
 
 Object.defineProperty(exports, 'PointZone', {
   enumerable: true,
@@ -50375,7 +50390,7 @@ Object.defineProperty(exports, 'PointZone', {
   }
 });
 
-var _ScreenZone = __webpack_require__(83);
+var _ScreenZone = __webpack_require__(85);
 
 Object.defineProperty(exports, 'ScreenZone', {
   enumerable: true,
@@ -50384,7 +50399,7 @@ Object.defineProperty(exports, 'ScreenZone', {
   }
 });
 
-var _SphereZone = __webpack_require__(84);
+var _SphereZone = __webpack_require__(86);
 
 Object.defineProperty(exports, 'SphereZone', {
   enumerable: true,
@@ -50499,6 +50514,95 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.createSpan = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _MathUtils = __webpack_require__(14);
+
+var _MathUtils2 = _interopRequireDefault(_MathUtils);
+
+var _Util = __webpack_require__(6);
+
+var _Util2 = _interopRequireDefault(_Util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Span = function () {
+  /**
+   * Span Class. Get a random Number from a to b. Or from c-a to c+b
+   * @param {Number|Array} a - min number
+   * @param {Number} b - max number
+   * @param {Number} center - the center's z value
+   * @example
+   * var span = new Span(0,30);
+   * or
+   * var span = new Span(["#fff","#ff0","#000"]);
+   * or
+   * var span = new Span(5,1,"center");
+   * @extends {Zone}
+   * @constructor
+   */
+  function Span(a, b, center) {
+    _classCallCheck(this, Span);
+
+    this._isArray = false;
+
+    if (_Util2.default.isArray(a)) {
+      this._isArray = true;
+      this.a = a;
+    } else {
+      this.a = _Util2.default.initValue(a, 1);
+      this.b = _Util2.default.initValue(b, this.a);
+      this._center = _Util2.default.initValue(center, false);
+    }
+  }
+
+  /**
+   * Span.getValue function
+   * @name get a random Number from a to b. Or get a random Number from c-a to c+b
+   * @param {number} INT or int
+   * @return {number} a random Number
+   */
+
+
+  _createClass(Span, [{
+    key: 'getValue',
+    value: function getValue(INT) {
+      if (this._isArray) {
+        return this.a[this.a.length * Math.random() >> 0];
+      } else {
+        if (!this._center) return _MathUtils2.default.randomAToB(this.a, this.b, INT);else return _MathUtils2.default.randomFloating(this.a, this.b, INT);
+      }
+    }
+  }]);
+
+  return Span;
+}();
+
+exports.default = Span;
+var createSpan = exports.createSpan = function createSpan(a, b, c) {
+  if (a instanceof Span) return a;
+
+  if (b === undefined) {
+    return new Span(a);
+  } else {
+    if (c === undefined) return new Span(a, b);else return new Span(a, b, c);
+  }
+};
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 /**
  * @see https://en.wikipedia.org/wiki/Euler_method
  * @type {string}
@@ -50524,7 +50628,7 @@ var INTEGRATION_TYPE_RK4 = exports.INTEGRATION_TYPE_RK4 = 'RUNGE_KUTTA_4';
 var INTEGRATION_TYPE_VERLET = exports.INTEGRATION_TYPE_VERLET = 'VERLET';
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50536,7 +50640,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(27);
+var _constants = __webpack_require__(28);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -50622,7 +50726,7 @@ exports.default = BaseRenderer;
 module.exports = exports['default'];
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50651,7 +50755,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50665,7 +50769,7 @@ var _three = __webpack_require__(4);
 
 var THREE = _interopRequireWildcard(_three);
 
-var _PUID = __webpack_require__(20);
+var _PUID = __webpack_require__(21);
 
 var _PUID2 = _interopRequireDefault(_PUID);
 
@@ -50735,7 +50839,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50745,7 +50849,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Alpha = __webpack_require__(36);
+var _Alpha = __webpack_require__(37);
 
 Object.defineProperty(exports, 'Alpha', {
   enumerable: true,
@@ -50754,7 +50858,7 @@ Object.defineProperty(exports, 'Alpha', {
   }
 });
 
-var _Attraction = __webpack_require__(23);
+var _Attraction = __webpack_require__(24);
 
 Object.defineProperty(exports, 'Attraction', {
   enumerable: true,
@@ -50763,7 +50867,7 @@ Object.defineProperty(exports, 'Attraction', {
   }
 });
 
-var _Collision = __webpack_require__(37);
+var _Collision = __webpack_require__(38);
 
 Object.defineProperty(exports, 'Collision', {
   enumerable: true,
@@ -50772,7 +50876,7 @@ Object.defineProperty(exports, 'Collision', {
   }
 });
 
-var _Color = __webpack_require__(38);
+var _Color = __webpack_require__(39);
 
 Object.defineProperty(exports, 'Color', {
   enumerable: true,
@@ -50781,7 +50885,7 @@ Object.defineProperty(exports, 'Color', {
   }
 });
 
-var _CrossZone = __webpack_require__(39);
+var _CrossZone = __webpack_require__(40);
 
 Object.defineProperty(exports, 'CrossZone', {
   enumerable: true,
@@ -50790,7 +50894,7 @@ Object.defineProperty(exports, 'CrossZone', {
   }
 });
 
-var _Force = __webpack_require__(24);
+var _Force = __webpack_require__(25);
 
 Object.defineProperty(exports, 'Force', {
   enumerable: true,
@@ -50799,7 +50903,7 @@ Object.defineProperty(exports, 'Force', {
   }
 });
 
-var _Gravity = __webpack_require__(40);
+var _Gravity = __webpack_require__(41);
 
 Object.defineProperty(exports, 'Gravity', {
   enumerable: true,
@@ -50808,7 +50912,7 @@ Object.defineProperty(exports, 'Gravity', {
   }
 });
 
-var _RandomDrift = __webpack_require__(41);
+var _RandomDrift = __webpack_require__(42);
 
 Object.defineProperty(exports, 'RandomDrift', {
   enumerable: true,
@@ -50817,7 +50921,7 @@ Object.defineProperty(exports, 'RandomDrift', {
   }
 });
 
-var _Repulsion = __webpack_require__(42);
+var _Repulsion = __webpack_require__(43);
 
 Object.defineProperty(exports, 'Repulsion', {
   enumerable: true,
@@ -50826,7 +50930,7 @@ Object.defineProperty(exports, 'Repulsion', {
   }
 });
 
-var _Rotate = __webpack_require__(43);
+var _Rotate = __webpack_require__(44);
 
 Object.defineProperty(exports, 'Rotate', {
   enumerable: true,
@@ -50835,7 +50939,7 @@ Object.defineProperty(exports, 'Rotate', {
   }
 });
 
-var _Scale = __webpack_require__(44);
+var _Scale = __webpack_require__(45);
 
 Object.defineProperty(exports, 'Scale', {
   enumerable: true,
@@ -50844,7 +50948,7 @@ Object.defineProperty(exports, 'Scale', {
   }
 });
 
-var _Spring = __webpack_require__(45);
+var _Spring = __webpack_require__(46);
 
 Object.defineProperty(exports, 'Spring', {
   enumerable: true,
@@ -50856,7 +50960,7 @@ Object.defineProperty(exports, 'Spring', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51049,7 +51153,7 @@ exports.default = Attraction;
 module.exports = exports['default'];
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51176,7 +51280,7 @@ exports.default = Force;
 module.exports = exports['default'];
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51539,7 +51643,7 @@ exports.default = Particle;
 module.exports = exports['default'];
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51551,7 +51655,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _PUID = __webpack_require__(20);
+var _PUID = __webpack_require__(21);
 
 var _PUID2 = _interopRequireDefault(_PUID);
 
@@ -51744,7 +51848,7 @@ exports.default = Pool;
 module.exports = exports['default'];
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51762,7 +51866,7 @@ var EMITTER_REMOVED = exports.EMITTER_REMOVED = 'EMITTER_REMOVED';
 var PROTON_UPDATE_AFTER = exports.PROTON_UPDATE_AFTER = 'PROTON_UPDATE_AFTER';
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51773,9 +51877,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.PROTON_UPDATE = exports.PROTON_UPDATE_AFTER = exports.PARTICLE_UPDATE = exports.PARTICLE_DEAD = exports.PARTICLE_CREATED = exports.EMITTER_REMOVED = exports.EMITTER_ADDED = undefined;
 
-var _constants = __webpack_require__(27);
+var _constants = __webpack_require__(28);
 
-var _EventDispatcher = __webpack_require__(55);
+var _EventDispatcher = __webpack_require__(56);
 
 var _EventDispatcher2 = _interopRequireDefault(_EventDispatcher);
 
@@ -51791,7 +51895,7 @@ exports.PROTON_UPDATE_AFTER = _constants.PROTON_UPDATE_AFTER;
 exports.PROTON_UPDATE = _constants.PROTON_UPDATE;
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51942,95 +52046,6 @@ exports.default = Rate;
 module.exports = exports['default'];
 
 /***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createSpan = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _MathUtils = __webpack_require__(14);
-
-var _MathUtils2 = _interopRequireDefault(_MathUtils);
-
-var _Util = __webpack_require__(6);
-
-var _Util2 = _interopRequireDefault(_Util);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Span = function () {
-  /**
-   * Span Class. Get a random Number from a to b. Or from c-a to c+b
-   * @param {Number|Array} a - min number
-   * @param {Number} b - max number
-   * @param {Number} center - the center's z value
-   * @example
-   * var span = new Span(0,30);
-   * or
-   * var span = new Span(["#fff","#ff0","#000"]);
-   * or
-   * var span = new Span(5,1,"center");
-   * @extends {Zone}
-   * @constructor
-   */
-  function Span(a, b, center) {
-    _classCallCheck(this, Span);
-
-    this._isArray = false;
-
-    if (_Util2.default.isArray(a)) {
-      this._isArray = true;
-      this.a = a;
-    } else {
-      this.a = _Util2.default.initValue(a, 1);
-      this.b = _Util2.default.initValue(b, this.a);
-      this._center = _Util2.default.initValue(center, false);
-    }
-  }
-
-  /**
-   * Span.getValue function
-   * @name get a random Number from a to b. Or get a random Number from c-a to c+b
-   * @param {number} INT or int
-   * @return {number} a random Number
-   */
-
-
-  _createClass(Span, [{
-    key: 'getValue',
-    value: function getValue(INT) {
-      if (this._isArray) {
-        return this.a[this.a.length * Math.random() >> 0];
-      } else {
-        if (!this._center) return _MathUtils2.default.randomAToB(this.a, this.b, INT);else return _MathUtils2.default.randomFloating(this.a, this.b, INT);
-      }
-    }
-  }]);
-
-  return Span;
-}();
-
-exports.default = Span;
-var createSpan = exports.createSpan = function createSpan(a, b, c) {
-  if (a instanceof Span) return a;
-
-  if (b === undefined) {
-    return new Span(a);
-  } else {
-    if (c === undefined) return new Span(a, b);else return new Span(a, b, c);
-  }
-};
-
-/***/ }),
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52045,7 +52060,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _three = __webpack_require__(4);
 
-var _BaseRenderer2 = __webpack_require__(19);
+var _BaseRenderer2 = __webpack_require__(20);
 
 var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
@@ -52153,7 +52168,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _v = __webpack_require__(89);
+var _v = __webpack_require__(90);
 
 var _v2 = _interopRequireDefault(_v);
 
@@ -52164,5397 +52179,6 @@ module.exports = exports['default'];
 
 /***/ }),
 /* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Debug = __webpack_require__(49);
-
-Object.defineProperty(exports, 'Debug', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Debug).default;
-  }
-});
-
-var _log = __webpack_require__(51);
-
-Object.defineProperty(exports, 'log', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_log).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _BehaviourEmitter = __webpack_require__(52);
-
-Object.defineProperty(exports, 'BehaviourEmitter', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_BehaviourEmitter).default;
-  }
-});
-
-var _FollowEmitter = __webpack_require__(53);
-
-Object.defineProperty(exports, 'FollowEmitter', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_FollowEmitter).default;
-  }
-});
-
-var _Emitter = __webpack_require__(13);
-
-Object.defineProperty(exports, 'Emitter', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Emitter).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _CustomRenderer = __webpack_require__(74);
-
-Object.defineProperty(exports, 'CustomRenderer', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_CustomRenderer).default;
-  }
-});
-
-var _MeshRenderer = __webpack_require__(31);
-
-Object.defineProperty(exports, 'MeshRenderer', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_MeshRenderer).default;
-  }
-});
-
-var _PointsRenderer = __webpack_require__(75);
-
-Object.defineProperty(exports, 'PointsRenderer', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_PointsRenderer).default;
-  }
-});
-
-var _SpriteRenderer = __webpack_require__(76);
-
-Object.defineProperty(exports, 'SpriteRenderer', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_SpriteRenderer).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _math = __webpack_require__(0);
-
-var _Behaviour2 = __webpack_require__(3);
-
-var _Behaviour3 = _interopRequireDefault(_Behaviour2);
-
-var _constants = __webpack_require__(10);
-
-var _ease = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Behaviour that applies an alpha transition effect to particles.
- *
- */
-var Alpha = function (_Behaviour) {
-  _inherits(Alpha, _Behaviour);
-
-  /**
-   * Constructs an Alpha behaviour instance.
-   *
-   * @param {number} alphaA - The starting alpha value
-   * @param {?number} alphaB - The ending alpha value
-   * @param {number} life - The life of the behaviour
-   * @param {function} easing - The easing equation to use for transforms
-   * @return void
-   */
-  function Alpha() {
-    var alphaA = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    var alphaB = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-    var life = arguments[2];
-    var easing = arguments[3];
-
-    _classCallCheck(this, Alpha);
-
-    /**
-     * @desc The starting alpha value
-     * @type {number|Span}
-     */
-    var _this = _possibleConstructorReturn(this, (Alpha.__proto__ || Object.getPrototypeOf(Alpha)).call(this, life, easing));
-
-    _this.alphaA = alphaA;
-
-    /**
-     * @desc The ending alpha value
-     * @type {number|Span}
-     */
-    _this.alphaB = alphaB;
-
-    _this.reset(alphaA, alphaB);
-    return _this;
-  }
-
-  /**
-   * Gets the _same property which determines if the alpha are the same.
-   *
-   * @return {boolean}
-   */
-
-
-  _createClass(Alpha, [{
-    key: 'reset',
-
-
-    /**
-     * Resets the behaviour properties.
-     *
-     * @param {number} alphaA - the starting alpha value
-     * @param {?number} alphaB - the ending alpha value
-     * @param {number} life - the life of the behaviour
-     * @param {function} easing - the easing equation to use for transforms
-     * @return void
-     */
-    value: function reset() {
-      var alphaA = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      var alphaB = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-      var life = arguments[2];
-      var easing = arguments[3];
-
-      this.same = alphaB === null || alphaB === undefined ? true : false;
-      this.alphaA = (0, _math.createSpan)(alphaA);
-      this.alphaB = (0, _math.createSpan)(alphaB);
-
-      life && _get(Alpha.prototype.__proto__ || Object.getPrototypeOf(Alpha.prototype), 'reset', this).call(this, life, easing);
-    }
-
-    /**
-     * Initializes the behaviour on a particle.
-     *
-     * @param {object} particle - the particle to initialize the behaviour on
-     * @return void
-     */
-
-  }, {
-    key: 'initialize',
-    value: function initialize(particle) {
-      particle.useAlpha = true;
-      particle.transform.alphaA = this.alphaA.getValue();
-
-      particle.transform.alphaB = this.same ? particle.transform.alphaA : this.alphaB.getValue();
-    }
-
-    /**
-     * Applies the behaviour to the particle.
-     *
-     * @param {object} particle - the particle to apply the behaviour to
-     * @param {number} time - engine time
-     * @param {integer} index - the particle index
-     * @return void
-     */
-
-  }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
-      _get(Alpha.prototype.__proto__ || Object.getPrototypeOf(Alpha.prototype), 'applyBehaviour', this).call(this, particle, time, index);
-
-      particle.alpha = _math.MathUtils.lerp(particle.transform.alphaA, particle.transform.alphaB, this.energy);
-
-      if (particle.alpha < _constants.PARTICLE_ALPHA_THRESHOLD) {
-        particle.alpha = 0;
-      }
-    }
-
-    /**
-     * Creates a Body initializer from JSON.
-     *
-     * @param {object} json - The JSON to construct the instance from.
-     * @property {number} json.alphaA - The starting alpha value
-     * @property {number} json.alphaB - The ending alpha value
-     * @property {number} json.life - The life of the behaviour
-     * @property {string} json.easing - The easing equation to use for transforms
-     * @return {Body}
-     */
-
-  }, {
-    key: 'same',
-    get: function get() {
-      return this._same;
-    }
-
-    /**
-     * Sets the _same property which determines if the alpha are the same.
-     *
-     * @param {boolean} same
-     * @return {boolean}
-     */
-    ,
-    set: function set(same) {
-      /**
-       * @type {boolean}
-       */
-      this._same = same;
-    }
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var alphaA = json.alphaA,
-          alphaB = json.alphaB,
-          life = json.life,
-          easing = json.easing;
-
-
-      return new Alpha(alphaA, alphaB, life, (0, _ease.getEasingByName)(easing));
-    }
-  }]);
-
-  return Alpha;
-}(_Behaviour3.default);
-
-exports.default = Alpha;
-module.exports = exports['default'];
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _Behaviour2 = __webpack_require__(3);
-
-var _Behaviour3 = _interopRequireDefault(_Behaviour2);
-
-var _math = __webpack_require__(0);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Collision = function (_Behaviour) {
-  _inherits(Collision, _Behaviour);
-
-  /**
-   * The Scale class is the base for the other Behaviour
-   *
-   * @class Behaviour
-   * @constructor
-   */
-  //can use Collision(emitter,true,function(){}) or Collision();
-  function Collision(emitter, useMass, callback, life, easing) {
-    _classCallCheck(this, Collision);
-
-    var _this = _possibleConstructorReturn(this, (Collision.__proto__ || Object.getPrototypeOf(Collision)).call(this, life, easing));
-
-    _this.reset(emitter, useMass, callback);
-    _this.name = 'Collision';
-    return _this;
-  }
-
-  _createClass(Collision, [{
-    key: 'reset',
-    value: function reset(emitter, useMass, callback, life, easing) {
-      this.emitter = emitter;
-      this.useMass = useMass;
-      this.callback = callback;
-      this.particles = [];
-      this.delta = new _math.Vector3D();
-
-      life && _get(Collision.prototype.__proto__ || Object.getPrototypeOf(Collision.prototype), 'reset', this).call(this, life, easing);
-    }
-  }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
-      var particles = this.emitter ? this.emitter.particles.slice(index) : this.particles.slice(index);
-      var otherParticle, lengthSq, overlap, distance;
-      var averageMass1, averageMass2;
-
-      var i = particles.length;
-
-      while (i--) {
-        otherParticle = particles[i];
-        if (otherParticle == particle) continue;
-
-        this.delta.copy(otherParticle.p).sub(particle.p);
-        lengthSq = this.delta.lengthSq();
-        distance = particle.radius + otherParticle.radius;
-
-        if (lengthSq <= distance * distance) {
-          overlap = distance - Math.sqrt(lengthSq);
-          overlap += 0.5;
-
-          averageMass1 = this._getAverageMass(particle, otherParticle);
-          averageMass2 = this._getAverageMass(otherParticle, particle);
-
-          particle.p.add(this.delta.clone().normalize().scalar(overlap * -averageMass1));
-          otherParticle.p.add(this.delta.normalize().scalar(overlap * averageMass2));
-
-          this.callback && this.callback(particle, otherParticle);
-        }
-      }
-    }
-  }, {
-    key: '_getAverageMass',
-    value: function _getAverageMass(aPartcile, bParticle) {
-      return this.useMass ? bParticle.mass / (aPartcile.mass + bParticle.mass) : 0.5;
-    }
-  }, {
-    key: 'fromJSON',
-    value: function fromJSON(json) {// eslint-disable-line
-      // TODO
-    }
-  }]);
-
-  return Collision;
-}(_Behaviour3.default);
-
-exports.default = Collision;
-module.exports = exports['default'];
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _math = __webpack_require__(0);
-
-var _Behaviour2 = __webpack_require__(3);
-
-var _Behaviour3 = _interopRequireDefault(_Behaviour2);
-
-var _utils = __webpack_require__(9);
-
-var _ease = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * A behaviour which mutates the color of a particle over time.
- *
- */
-var Color = function (_Behaviour) {
-  _inherits(Color, _Behaviour);
-
-  /**
-   * Constructs a Color behaviour instance.
-   *
-   * @param {number|string} colorA - the starting color
-   * @param {number|string} colorB - the ending color
-   * @param {number} life - the life of the particle
-   * @param {function} easing - The behaviour's decaying trend
-   */
-  function Color(colorA, colorB, life, easing) {
-    _classCallCheck(this, Color);
-
-    var _this = _possibleConstructorReturn(this, (Color.__proto__ || Object.getPrototypeOf(Color)).call(this, life, easing));
-
-    _this.reset(colorA, colorB);
-    _this.name = 'Color';
-    return _this;
-  }
-
-  /**
-   * Gets the _same property which determines if the alpha are the same.
-   *
-   * @return {boolean}
-   */
-
-
-  _createClass(Color, [{
-    key: 'reset',
-    value: function reset(colorA, colorB, life, easing) {
-      this.same = colorB === null || colorB === undefined ? true : false;
-
-      this.colorA = (0, _math.createArraySpan)(colorA);
-      this.colorB = (0, _math.createArraySpan)(colorB);
-      life && _get(Color.prototype.__proto__ || Object.getPrototypeOf(Color.prototype), 'reset', this).call(this, life, easing);
-    }
-  }, {
-    key: 'initialize',
-    value: function initialize(particle) {
-      particle.transform.colorA = _utils.ColorUtil.getRGB(this.colorA.getValue());
-
-      particle.useColor = true;
-      particle.transform.colorB = this.same ? particle.transform.colorA : _utils.ColorUtil.getRGB(this.colorB.getValue());
-    }
-  }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
-      _get(Color.prototype.__proto__ || Object.getPrototypeOf(Color.prototype), 'applyBehaviour', this).call(this, particle, time, index);
-
-      if (!this._same) {
-        particle.color.r = _math.MathUtils.lerp(particle.transform.colorA.r, particle.transform.colorB.r, this.energy);
-        particle.color.g = _math.MathUtils.lerp(particle.transform.colorA.g, particle.transform.colorB.g, this.energy);
-        particle.color.b = _math.MathUtils.lerp(particle.transform.colorA.b, particle.transform.colorB.b, this.energy);
-      } else {
-        particle.color.r = particle.transform.colorA.r;
-        particle.color.g = particle.transform.colorA.g;
-        particle.color.b = particle.transform.colorA.b;
-      }
-    }
-
-    /**
-     * Creates a Color initializer from JSON.
-     *
-     * @param {object} json - The JSON to construct the instance from.
-     * @property {number} json.colorA - The starting color
-     * @property {number} json.colorB - The ending color
-     * @property {number} json.life - The life of the particle
-     * @property {string} json.easing - The behaviour's decaying trend
-     * @return {Color}
-     */
-
-  }, {
-    key: 'same',
-    get: function get() {
-      return this._same;
-    }
-
-    /**
-     * Sets the _same property which determines if the alpha are the same.
-     *
-     * @param {boolean} same
-     * @return {boolean}
-     */
-    ,
-    set: function set(same) {
-      /**
-       * @type {boolean}
-       */
-      this._same = same;
-    }
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var colorA = json.colorA,
-          colorB = json.colorB,
-          life = json.life,
-          easing = json.easing;
-
-
-      return new Color(colorA, colorB, life, (0, _ease.getEasingByName)(easing));
-    }
-  }]);
-
-  return Color;
-}(_Behaviour3.default);
-
-exports.default = Color;
-module.exports = exports['default'];
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _zone = __webpack_require__(16);
-
-var Zone = _interopRequireWildcard(_zone);
-
-var _Behaviour2 = __webpack_require__(3);
-
-var _Behaviour3 = _interopRequireDefault(_Behaviour2);
-
-var _constants = __webpack_require__(10);
-
-var _ease = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Behaviour that allows for specific functions to be called on particles when
- * they interact with a zone.
- *
- */
-var CrossZone = function (_Behaviour) {
-  _inherits(CrossZone, _Behaviour);
-
-  /**
-   * Constructs a CrossZone behaviour instance.
-   *
-   * @param {Zone} zone - the zone used to apply to particles with this behaviour
-   * @param {string} [crossType=DEFAULT_CROSS_TYPE] - enum of cross types, valid strings include 'dead', 'bound', 'cross'
-   * @param {number} life - The life of the particle
-   * @param {function} easing - The behaviour's decaying trend
-   */
-  function CrossZone(zone, crossType, life, easing) {
-    _classCallCheck(this, CrossZone);
-
-    var _this = _possibleConstructorReturn(this, (CrossZone.__proto__ || Object.getPrototypeOf(CrossZone)).call(this, life, easing));
-
-    _this.reset(zone, crossType);
-    _this.name = 'CrossZone';
-    return _this;
-  }
-
-  /**
-   * Resets the behaviour properties.
-   *
-   * @param {Zone} zone - the zone used to apply to particles with this behaviour
-   * @param {string} [crossType=DEFAULT_CROSS_TYPE] - enum of cross types, valid strings include 'dead', 'bound', 'cross'
-   * @param {number} life - The life of the particle
-   * @param {function} easing - The behaviour's decaying trend
-   */
-
-
-  _createClass(CrossZone, [{
-    key: 'reset',
-    value: function reset(zone) {
-      var crossType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_CROSS_TYPE;
-      var life = arguments[2];
-      var easing = arguments[3];
-
-      /**
-       * @desc The zone used to apply to particles with this behaviour
-       * @type {Zone}
-       */
-      this.zone = zone;
-      this.zone.crossType = crossType;
-
-      life && _get(CrossZone.prototype.__proto__ || Object.getPrototypeOf(CrossZone.prototype), 'reset', this).call(this, life, easing);
-    }
-
-    /**
-     * Applies the behaviour to the particle.
-     *
-     * @see {@link '../zone/Zone.js'} crossing
-     * @param {object} particle - the particle to apply the behaviour to
-     * @param {number} time - engine time
-     * @param {integer} index - the particle index
-     * @return void
-     */
-
-  }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
-      _get(CrossZone.prototype.__proto__ || Object.getPrototypeOf(CrossZone.prototype), 'applyBehaviour', this).call(this, particle, time, index);
-
-      this.zone.crossing.call(this.zone, particle);
-    }
-
-    /**
-     * Creates a CrossZone initializer from JSON.
-     *
-     * @param {object} json - The JSON to construct the instance from.
-     * @return {CrossZone}
-     */
-
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var zoneType = json.zoneType,
-          zoneParams = json.zoneParams,
-          crossType = json.crossType,
-          life = json.life,
-          easing = json.easing;
-
-
-      var zone = new (Function.prototype.bind.apply(Zone[zoneType], [null].concat(_toConsumableArray(Object.values(zoneParams)))))();
-
-      return new CrossZone(zone, crossType, life, (0, _ease.getEasingByName)(easing));
-    }
-  }]);
-
-  return CrossZone;
-}(_Behaviour3.default);
-
-exports.default = CrossZone;
-module.exports = exports['default'];
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Force2 = __webpack_require__(24);
-
-var _Force3 = _interopRequireDefault(_Force2);
-
-var _ease = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Behaviour that forces particles down the y axis.
- *
- */
-var Gravity = function (_Force) {
-  _inherits(Gravity, _Force);
-
-  /**
-   * Constructs a Gravity behaviour instance.
-   *
-   * @param {number} gravity - the force to pull the particle down the y axis
-   * @param {number} life - the life of the particle
-   * @param {string} easing - the easing equation to use
-   * @return void
-   */
-  function Gravity(gravity, life, easing) {
-    _classCallCheck(this, Gravity);
-
-    return _possibleConstructorReturn(this, (Gravity.__proto__ || Object.getPrototypeOf(Gravity)).call(this, 0, -gravity, 0, life, easing));
-  }
-
-  _createClass(Gravity, null, [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var gravity = json.gravity,
-          life = json.life,
-          easing = json.easing;
-
-
-      return new Gravity(gravity, life, (0, _ease.getEasingByName)(easing));
-    }
-  }]);
-
-  return Gravity;
-}(_Force3.default);
-
-exports.default = Gravity;
-module.exports = exports['default'];
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _math = __webpack_require__(0);
-
-var _Behaviour2 = __webpack_require__(3);
-
-var _Behaviour3 = _interopRequireDefault(_Behaviour2);
-
-var _constants = __webpack_require__(10);
-
-var _ease = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Behaviour that causes particles to drift to random coordinates in 3D space.
- *
- */
-var RandomDrift = function (_Behaviour) {
-  _inherits(RandomDrift, _Behaviour);
-
-  /**
-   * Constructs a RandomDrift behaviour instance.
-   *
-   * @param {number} driftX - x axis drift
-   * @param {number} driftY - y axis drift
-   * @param {number} driftZ - z axis drift
-   * @param {number} [delay=DEFAULT_RANDOM_DRIFT_DELAY] - drift delay
-   * @param {number} life - The life of the particle
-   * @param {function} easing - The behaviour's decaying trend
-   * @return void
-   */
-  function RandomDrift(driftX, driftY, driftZ) {
-    var delay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.DEFAULT_RANDOM_DRIFT_DELAY;
-    var life = arguments[4];
-    var easing = arguments[5];
-
-    _classCallCheck(this, RandomDrift);
-
-    var _this = _possibleConstructorReturn(this, (RandomDrift.__proto__ || Object.getPrototypeOf(RandomDrift)).call(this, life, easing));
-
-    _this.reset(driftX, driftY, driftZ, delay);
-
-    /**
-     * @desc Internal time used for calculating drift vs internal delay.
-     * @type {number}
-     */
-    _this.time = 0;
-    _this.name = 'RandomDrift';
-    return _this;
-  }
-
-  /**
-   * Resets the behaviour properties.
-   *
-   * @param {number} driftX - x axis drift
-   * @param {number} driftY - y axis drift
-   * @param {number} driftZ - z axis drift
-   * @param {number} [delay=DEFAULT_RANDOM_DRIFT_DELAY] - drift delay
-   * @param {number} life - The life of the particle
-   * @param {function} easing - The behaviour's decaying trend
-   */
-
-
-  _createClass(RandomDrift, [{
-    key: 'reset',
-    value: function reset(driftX, driftY, driftZ) {
-      var delay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.DEFAULT_RANDOM_DRIFT_DELAY;
-      var life = arguments[4];
-      var easing = arguments[5];
-
-      /**
-       * @desc A Vector3D that stores the drift properties.
-       * @type {Vector3D}
-       */
-      this.randomForce = this.normalizeForce(new _math.Vector3D(driftX, driftY, driftZ));
-      /**
-       * @desc A Span containing the delay supplied.
-       * @type {Span}
-       */
-      this.delayPan = (0, _math.createSpan)(delay);
-      this.time = 0;
-
-      life && _get(RandomDrift.prototype.__proto__ || Object.getPrototypeOf(RandomDrift.prototype), 'reset', this).call(this, life, easing);
-    }
-
-    /**
-     * Applies the behaviour to the particle.
-     * Mutates the particle.a property.
-     *
-     * @param {object} particle - the particle to apply the behaviour to
-     * @param {number} time - engine time
-     * @param {integer} index - the particle index
-     * @return void
-     */
-
-  }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
-      _get(RandomDrift.prototype.__proto__ || Object.getPrototypeOf(RandomDrift.prototype), 'applyBehaviour', this).call(this, particle, time, index);
-
-      this.time += time;
-
-      if (this.time >= this.delayPan.getValue()) {
-        var ax = _math.MathUtils.randomAToB(-this.randomForce.x, this.randomForce.x);
-        var ay = _math.MathUtils.randomAToB(-this.randomForce.y, this.randomForce.y);
-        var az = _math.MathUtils.randomAToB(-this.randomForce.z, this.randomForce.z);
-
-        particle.a.addValue(ax, ay, az);
-
-        this.time = 0;
-      }
-    }
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var x = json.x,
-          y = json.y,
-          z = json.z,
-          delay = json.delay,
-          life = json.life,
-          easing = json.easing;
-
-
-      return new RandomDrift(x, y, z, delay, life, (0, _ease.getEasingByName)(easing));
-    }
-  }]);
-
-  return RandomDrift;
-}(_Behaviour3.default);
-
-exports.default = RandomDrift;
-module.exports = exports['default'];
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _Attraction2 = __webpack_require__(23);
-
-var _Attraction3 = _interopRequireDefault(_Attraction2);
-
-var _math = __webpack_require__(0);
-
-var _ease = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Behaviour that causes particles to be repelled from a target position.
- *
- */
-var Repulsion = function (_Attraction) {
-  _inherits(Repulsion, _Attraction);
-
-  /**
-   * Constructs an Repulsion behaviour instance.
-   *
-   * @param {Vector3D} targetPosition - The position the particles will be repelled from
-   * @param {number} force - The repulsion force scalar multiplier
-   * @param {number} radius - The repulsion radius
-   * @param {number} life - The life of the particle
-   * @param {function} easing - The behaviour's decaying trend
-   * @return void
-   */
-  function Repulsion(targetPosition, force, radius, life, easing) {
-    _classCallCheck(this, Repulsion);
-
-    var _this = _possibleConstructorReturn(this, (Repulsion.__proto__ || Object.getPrototypeOf(Repulsion)).call(this, targetPosition, force, radius, life, easing));
-
-    _this.force *= -1;
-    _this.name = 'Repulsion';
-    return _this;
-  }
-
-  /**
-   * Resets the behaviour properties.
-   *
-   * @param {Vector3D} targetPosition - the position the particles will be attracted to
-   * @param {number} force - the attraction force multiplier
-   * @param {number} radius - the attraction radius
-   * @param {number} life - the life of the particle
-   * @param {function} easing - The behaviour's decaying trend
-   * @return void
-   */
-
-
-  _createClass(Repulsion, [{
-    key: 'reset',
-    value: function reset(targetPosition, force, radius, life, easing) {
-      _get(Repulsion.prototype.__proto__ || Object.getPrototypeOf(Repulsion.prototype), 'reset', this).call(this, targetPosition, force, radius, life, easing);
-      this.force *= -1;
-    }
-
-    /**
-     * Creates a Body initializer from JSON.
-     *
-     * @param {object} json - The JSON to construct the instance from.
-     * @property {number} json.x - The target position x value
-     * @property {number} json.y - The target position y value
-     * @property {number} json.z - The target position z value
-     * @property {number} json.force - The attraction force scalar multiplier
-     * @property {number} json.life - The life of the particle
-     * @property {string} json.easing - The behaviour's decaying trend
-     * @return {Body}
-     */
-
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var x = json.x,
-          y = json.y,
-          z = json.z,
-          force = json.force,
-          radius = json.radius,
-          life = json.life,
-          easing = json.easing;
-
-
-      return new Repulsion(new _math.Vector3D(x, y, z), force, radius, life, (0, _ease.getEasingByName)(easing));
-    }
-  }]);
-
-  return Repulsion;
-}(_Attraction3.default);
-
-exports.default = Repulsion;
-module.exports = exports['default'];
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _constants = __webpack_require__(2);
-
-var _math = __webpack_require__(0);
-
-var _Behaviour2 = __webpack_require__(3);
-
-var _Behaviour3 = _interopRequireDefault(_Behaviour2);
-
-var _ease = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Behaviour that rotates particles.
- */
-var Rotate = function (_Behaviour) {
-  _inherits(Rotate, _Behaviour);
-
-  /**
-   * Constructs a Rotate behaviour instance.
-   *
-   * @param {number} x - X axis rotation
-   * @param {number} y - Y axis rotation
-   * @param {number} z - Z axis rotation
-   * @param {number} life - The life of the behaviour
-   * @param {function} easing - The easing equation to use for transforms
-   * @return void
-   */
-  function Rotate(x, y, z, life, easing) {
-    _classCallCheck(this, Rotate);
-
-    var _this = _possibleConstructorReturn(this, (Rotate.__proto__ || Object.getPrototypeOf(Rotate)).call(this, life, easing));
-
-    _this.reset(x, y, z);
-    _this.name = 'Rotate';
-    return _this;
-  }
-
-  /**
-   * Gets the rotation type.
-   *
-   * @return {string}
-   */
-
-
-  _createClass(Rotate, [{
-    key: 'reset',
-
-
-    /**
-     * Resets the behaviour properties.
-     *
-     * @param {number} x - X axis rotation
-     * @param {number} y - Y axis rotation
-     * @param {number} z - Z axis rotation
-     * @param {number} life - the life of the behaviour
-     * @param {function} easing - the easing equation to use for transforms
-     * @return void
-     */
-    value: function reset(x, y, z, life, easing) {
-      /**
-       * @desc X axis rotation.
-       * @type {number|Span}
-       */
-      this.x = x || 0;
-
-      /**
-       * @desc Y axis rotation.
-       * @type {number|Span}
-       */
-      this.y = y || 0;
-
-      /**
-       * @desc Z axis rotation.
-       * @type {number|Span}
-       */
-      this.z = z || 0;
-
-      if (x === undefined || x == 'same') {
-        this._type = 'same';
-      } else if (y == undefined) {
-        this._type = 'set';
-      } else if (z === undefined) {
-        this._type = 'to';
-      } else {
-        this._type = 'add';
-        this.x = (0, _math.createSpan)(this.x * _constants.DR);
-        this.y = (0, _math.createSpan)(this.y * _constants.DR);
-        this.z = (0, _math.createSpan)(this.z * _constants.DR);
-      }
-
-      life && _get(Rotate.prototype.__proto__ || Object.getPrototypeOf(Rotate.prototype), 'reset', this).call(this, life, easing);
-    }
-
-    /**
-     * Initializes the behaviour on a particle.
-     *
-     * @param {object} particle - the particle to initialize the behaviour on
-     * @return void
-     */
-
-  }, {
-    key: 'initialize',
-    value: function initialize(particle) {
-      switch (this._type) {
-        case 'same':
-          break;
-
-        case 'set':
-          this._setRotation(particle.rotation, this.x);
-          break;
-
-        case 'to':
-          particle.transform.fR = particle.transform.fR || new _math.Vector3D();
-          particle.transform.tR = particle.transform.tR || new _math.Vector3D();
-          this._setRotation(particle.transform.fR, this.x);
-          this._setRotation(particle.transform.tR, this.y);
-          break;
-
-        case 'add':
-          particle.transform.addR = new _math.Vector3D(this.x.getValue(), this.y.getValue(), this.z.getValue());
-          break;
-      }
-    }
-
-    /**
-     * Sets the particle's rotation prior to the behaviour being applied.
-     *
-     * NOTE It's hard to see here, but this is mutating the particle's rotation
-     * even though the particle is not being passed in directly.
-     *
-     * NOTE the else if below will never be reached because the value being passed in
-     * will never be of type Vector3D.
-     *
-     * @param {Vector3D} particleRotation - the particle's rotation vector
-     * @param {string|number} value - the value to set the rotation value to, if 'random'
-     * rotation is randomised
-     * @return void
-     */
-
-  }, {
-    key: '_setRotation',
-    value: function _setRotation(particleRotation, value) {
-      particleRotation = particleRotation || new _math.Vector3D();
-      if (value == 'random') {
-        var x = _math.MathUtils.randomAToB(-_constants.PI, _constants.PI);
-        var y = _math.MathUtils.randomAToB(-_constants.PI, _constants.PI);
-        var z = _math.MathUtils.randomAToB(-_constants.PI, _constants.PI);
-
-        particleRotation.set(x, y, z);
-      }
-      // we can't ever get here because value will never be a Vector3D!
-      // consider refactoring to
-      //  if (value instance of Span) { vec3.add(value.getValue()); }
-      else if (value instanceof _math.Vector3D) {
-          particleRotation.copy(value);
-        }
-    }
-
-    /**
-     * Applies the behaviour to the particle.
-     * Mutates the particle.a property.
-     *
-     * @see http://stackoverflow.com/questions/21622956/how-to-convert-direction-vector-to-euler-angles
-     * @param {object} particle - the particle to apply the behaviour to
-     * @param {number} time - engine time
-     * @param {integer} index - the particle index
-     * @return void
-     */
-
-  }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
-      _get(Rotate.prototype.__proto__ || Object.getPrototypeOf(Rotate.prototype), 'applyBehaviour', this).call(this, particle, time, index);
-
-      switch (this._type) {
-        // orients the particle in the direction it is moving
-        case 'same':
-          if (!particle.rotation) {
-            particle.rotation = new _math.Vector3D();
-          }
-
-          particle.rotation.eulerFromDir(particle.v);
-          break;
-
-        case 'set':
-          //
-          break;
-
-        case 'to':
-          particle.rotation.x = _math.MathUtils.lerp(particle.transform.fR.x, particle.transform.tR.x, this.energy);
-          particle.rotation.y = _math.MathUtils.lerp(particle.transform.fR.y, particle.transform.tR.y, this.energy);
-          particle.rotation.z = _math.MathUtils.lerp(particle.transform.fR.z, particle.transform.tR.z, this.energy);
-          break;
-
-        case 'add':
-          particle.rotation.add(particle.transform.addR);
-          break;
-      }
-    }
-  }, {
-    key: 'type',
-    get: function get() {
-      return this._type;
-    }
-
-    /**
-     * Sets the rotation type.
-     *
-     * @param {string}
-     * @return void
-     */
-    ,
-    set: function set(type) {
-      /**
-       * @desc The rotation type. ENUM of ['same', 'set', 'to', 'add'].
-       * @type {string}
-       */
-      this._type = type;
-    }
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var x = json.x,
-          y = json.y,
-          z = json.z,
-          life = json.life,
-          easing = json.easing;
-
-
-      return new Rotate(x, y, z, life, (0, _ease.getEasingByName)(easing));
-    }
-  }]);
-
-  return Rotate;
-}(_Behaviour3.default);
-
-exports.default = Rotate;
-module.exports = exports['default'];
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _math = __webpack_require__(0);
-
-var _Behaviour2 = __webpack_require__(3);
-
-var _Behaviour3 = _interopRequireDefault(_Behaviour2);
-
-var _ease = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Behaviour that scales particles.
- *
- */
-var Scale = function (_Behaviour) {
-  _inherits(Scale, _Behaviour);
-
-  /**
-   * Constructs a Scale behaviour instance.
-   *
-   * @param {number} scaleA - the starting scale value
-   * @param {?number} scaleB - the ending scale value
-   * @param {number} life - the life of the behaviour
-   * @param {function} easing - the easing equation to use for transforms
-   * @return void
-   */
-  function Scale(scaleA, scaleB, life, easing) {
-    _classCallCheck(this, Scale);
-
-    var _this = _possibleConstructorReturn(this, (Scale.__proto__ || Object.getPrototypeOf(Scale)).call(this, life, easing));
-
-    _this.reset(scaleA, scaleB);
-    _this.name = 'Scale';
-    return _this;
-  }
-
-  /**
-   * Gets the _same property which determines if the scale props are the same.
-   *
-   * @return {boolean}
-   */
-
-
-  _createClass(Scale, [{
-    key: 'reset',
-
-
-    /**
-     * Resets the behaviour properties.
-     *
-     * @param {number} scaleA - the starting scale value
-     * @param {?number} scaleB - the ending scale value
-     * @param {number} life - the life of the behaviour
-     * @param {function} easing - the easing equation to use for transforms
-     * @return void
-     */
-    value: function reset(scaleA, scaleB, life, easing) {
-      this.same = scaleB === null || scaleB === undefined ? true : false;
-
-      /**
-       * @desc The starting scale.
-       * @type {Span}
-       */
-      this.scaleA = (0, _math.createSpan)(scaleA || 1);
-
-      /**
-       * @desc The ending scale.
-       * @type {Span}
-       */
-      this.scaleB = (0, _math.createSpan)(scaleB);
-
-      life && _get(Scale.prototype.__proto__ || Object.getPrototypeOf(Scale.prototype), 'reset', this).call(this, life, easing);
-    }
-
-    /**
-     * Initializes the behaviour on a particle.
-     * Stores initial values for comparison and mutation in the applyBehaviour method.
-     *
-     * @param {object} particle - the particle to initialize the behaviour on
-     * @return void
-     */
-
-  }, {
-    key: 'initialize',
-    value: function initialize(particle) {
-      particle.transform.scaleA = this.scaleA.getValue();
-      particle.transform.oldRadius = particle.radius;
-
-      particle.transform.scaleB = this.same ? particle.transform.scaleA : this.scaleB.getValue();
-    }
-
-    /**
-     * Applies the behaviour to the particle.
-     * Mutates the particle's scale and its radius according to this scale.
-     *
-     * @param {object} particle - the particle to apply the behaviour to
-     * @param {number} time - engine time
-     * @param {integer} index - the particle index
-     * @return void
-     */
-
-  }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
-      _get(Scale.prototype.__proto__ || Object.getPrototypeOf(Scale.prototype), 'applyBehaviour', this).call(this, particle, time, index);
-
-      particle.scale = _math.MathUtils.lerp(particle.transform.scaleA, particle.transform.scaleB, this.energy);
-
-      if (particle.scale < 0.0005) {
-        particle.scale = 0;
-      }
-
-      particle.radius = particle.transform.oldRadius * particle.scale;
-    }
-  }, {
-    key: 'same',
-    get: function get() {
-      return this._same;
-    }
-
-    /**
-     * Sets the _same property which determines if the scale props are the same.
-     *
-     * @param {boolean} same
-     * @return {boolean}
-     */
-    ,
-    set: function set(same) {
-      /**
-       * @type {boolean}
-       */
-      this._same = same;
-    }
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var scaleA = json.scaleA,
-          scaleB = json.scaleB,
-          life = json.life,
-          easing = json.easing;
-
-
-      return new Scale(scaleA, scaleB, life, (0, _ease.getEasingByName)(easing));
-    }
-  }]);
-
-  return Scale;
-}(_Behaviour3.default);
-
-exports.default = Scale;
-module.exports = exports['default'];
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _Behaviour2 = __webpack_require__(3);
-
-var _Behaviour3 = _interopRequireDefault(_Behaviour2);
-
-var _math = __webpack_require__(0);
-
-var _ease = __webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Spring = function (_Behaviour) {
-  _inherits(Spring, _Behaviour);
-
-  /**
-   * The Behaviour class is the base for the other Behaviour
-   *
-   * @class Behaviour
-   * @constructor
-   */
-  function Spring(x, y, z, spring, friction, life, easing) {
-    _classCallCheck(this, Spring);
-
-    var _this = _possibleConstructorReturn(this, (Spring.__proto__ || Object.getPrototypeOf(Spring)).call(this, life, easing));
-
-    _this.reset(x, y, z, spring, friction);
-    _this.name = 'Spring';
-    return _this;
-  }
-
-  _createClass(Spring, [{
-    key: 'reset',
-    value: function reset(x, y, z, spring, friction) {
-      if (!this.pos) this.pos = new _math.Vector3D(x, y, z);else this.pos.set(x, y, z);
-      this.spring = spring || 0.1;
-      this.friction = friction || 0.98;
-    }
-  }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
-      _get(Spring.prototype.__proto__ || Object.getPrototypeOf(Spring.prototype), 'applyBehaviour', this).call(this, particle, time, index);
-
-      particle.v.x += (this.pos.x - particle.p.x) * this.spring;
-      particle.v.y += (this.pos.y - particle.p.y) * this.spring;
-      particle.v.z += (this.pos.z - particle.p.z) * this.spring;
-    }
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var x = json.x,
-          y = json.y,
-          z = json.z,
-          spring = json.spring,
-          friction = json.friction,
-          life = json.life,
-          easing = json.easing;
-
-
-      return new Spring(x, y, z, spring, friction, life, (0, _ease.getEasingByName)(easing));
-    }
-  }]);
-
-  return Spring;
-}(_Behaviour3.default);
-
-exports.default = Spring;
-module.exports = exports['default'];
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var BEHAVIOUR_TYPE_ALPHA = exports.BEHAVIOUR_TYPE_ALPHA = 'Alpha';
-var BEHAVIOUR_TYPE_ATTRACTION = exports.BEHAVIOUR_TYPE_ATTRACTION = 'Attraction';
-var BEHAVIOUR_TYPE_COLLISION = exports.BEHAVIOUR_TYPE_COLLISION = 'Collision';
-var BEHAVIOUR_TYPE_COLOR = exports.BEHAVIOUR_TYPE_COLOR = 'Color';
-var BEHAVIOUR_TYPE_CROSS_ZONE = exports.BEHAVIOUR_TYPE_CROSS_ZONE = 'CrossZone';
-var BEHAVIOUR_TYPE_FORCE = exports.BEHAVIOUR_TYPE_FORCE = 'Force';
-var BEHAVIOUR_TYPE_GRAVITY = exports.BEHAVIOUR_TYPE_GRAVITY = 'Gravity';
-var BEHAVIOUR_TYPE_RANDOM_DRIFT = exports.BEHAVIOUR_TYPE_RANDOM_DRIFT = 'RandomDrift';
-var BEHAVIOUR_TYPE_REPULSION = exports.BEHAVIOUR_TYPE_REPULSION = 'Repulsion';
-var BEHAVIOUR_TYPE_ROTATE = exports.BEHAVIOUR_TYPE_ROTATE = 'Rotate';
-var BEHAVIOUR_TYPE_SCALE = exports.BEHAVIOUR_TYPE_SCALE = 'Scale';
-var BEHAVIOUR_TYPE_SPRING = exports.BEHAVIOUR_TYPE_SPRING = 'Spring';
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _events = __webpack_require__(28);
-
-var _events2 = _interopRequireDefault(_events);
-
-var _constants = __webpack_require__(12);
-
-var _Emitter = __webpack_require__(13);
-
-var _Emitter2 = _interopRequireDefault(_Emitter);
-
-var _constants2 = __webpack_require__(18);
-
-var _constants3 = __webpack_require__(2);
-
-var _Pool = __webpack_require__(26);
-
-var _Pool2 = _interopRequireDefault(_Pool);
-
-var _fromJSON2 = __webpack_require__(48);
-
-var _fromJSON3 = _interopRequireDefault(_fromJSON2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * The core of the three-proton particle engine.
- * A Proton instance can contain multiple emitters, each with their own initializers
- * and behaviours.
- *
- */
-var Proton = function () {
-  /**
-   * Constructs a Proton instance.
-   *
-   * TODO the proton instance should have an integrator set as a property.
-   * It is only required from the emitter class, and therefore can be accessed within
-   * that class from emitter.parent.integrator
-   *
-   * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
-   * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
-   * @return void
-   */
-  function Proton() {
-    var preParticles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants3.POOL_MAX;
-    var integrationType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants2.INTEGRATION_TYPE_EULER;
-
-    _classCallCheck(this, Proton);
-
-    /**
-     * @desc The number of particles to start with
-     * @type {number}
-     */
-    this.preParticles = preParticles;
-
-    /**
-     * @desc The integration algorithm type to use
-     * @param {string}
-     */
-    this.integrationType = integrationType;
-
-    /**
-     * @desc The emitters in the particle system
-     * @type {array<Emitter>}
-     */
-    this.emitters = [];
-
-    /**
-     * @desc The renderers for the system
-     * @type {array<Renderer>}
-     */
-    this.renderers = [];
-
-    /**
-     * @desc A pool used to manage the internal proton cache of objects
-     * @type {Pool}
-     */
-    this.pool = new _Pool2.default();
-
-    /**
-     * @desc Internal event dispatcher
-     * @type {EventDispatcher}
-     */
-    this.eventDispatcher = new _events2.default();
-  }
-
-  /**
-   * Creates a Proton instance from a JSON object.
-   *
-   * @param {object} json - The JSON to create the Proton instance from
-   * @param {number} json.preParticles - The predetermined number of particles
-   * @param {string} json.integrationType - The integration algorithm to use
-   * @param {array<object>} json.emitters - The emitters for the proton instance
-   * @return {Proton}
-   */
-
-
-  _createClass(Proton, [{
-    key: 'dispatch',
-
-
-    /**
-     * Proxy method for the internal event dispatcher's dispatchEvent method.
-     *
-     * @param {string} event - The event to dispatch
-     * @param {object<Proton|Emitter|Particle>} [target=this] - The event target
-     */
-    value: function dispatch(event) {
-      var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this;
-
-      this.eventDispatcher.dispatchEvent(event, target);
-    }
-
-    /**
-     * Adds a renderer to the Proton instance and initializes it.
-     *
-     * @param {Renderer} renderer - The renderer to add
-     * @return {Proton}
-     */
-
-  }, {
-    key: 'addRenderer',
-    value: function addRenderer(renderer) {
-      this.renderers.push(renderer);
-      renderer.init(this);
-
-      return this;
-    }
-
-    /**
-     * Removes a renderer from the Proton instance.
-     *
-     * @param {Renderer} renderer
-     * @return {Proton}
-     */
-
-  }, {
-    key: 'removeRenderer',
-    value: function removeRenderer(renderer) {
-      this.renderers.splice(this.renderers.indexOf(renderer), 1);
-      renderer.remove(this);
-
-      return this;
-    }
-
-    /**
-     * Adds an emitter to the Proton instance.
-     * Dispatches the EMITTER_ADDED event.
-     *
-     * @param {Emitter} emitter - The emitter to add
-     * @return {Proton}
-     */
-
-  }, {
-    key: 'addEmitter',
-    value: function addEmitter(emitter) {
-      emitter.parent = this;
-
-      this.emitters.push(emitter);
-      this.dispatch(_events.EMITTER_ADDED, emitter);
-
-      return this;
-    }
-
-    /**
-     * Removes an emitter from the Proton instance.
-     * Dispatches the EMITTER_REMOVED event.
-     *
-     * @param {Emitter} emitter - The emitter to remove
-     * @return {Proton}
-     */
-
-  }, {
-    key: 'removeEmitter',
-    value: function removeEmitter(emitter) {
-      if (emitter.parent !== this) {
-        return this;
-      }
-
-      emitter.parent = null;
-
-      this.emitters.splice(this.emitters.indexOf(emitter), 1);
-      this.dispatch(_events.EMITTER_REMOVED, emitter);
-
-      return this;
-    }
-
-    /**
-     * Updates the particle system based on the delta passed.
-     *
-     * @example
-     * animate = () => {
-     *   threeRenderer.render(threeScene, threeCamera);
-     *   proton.update();
-     *   requestAnimationFrame(animate);
-     * }
-     * animate();
-     *
-     * @param {number} delta - Delta time
-     * @return {Promise}
-     */
-
-  }, {
-    key: 'update',
-    value: function update() {
-      var delta = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants.DEFAULT_PROTON_DELTA;
-
-      var d = delta || _constants.DEFAULT_PROTON_DELTA;
-
-      this.dispatch(_events.PROTON_UPDATE);
-
-      if (d > 0) {
-        var i = this.emitters.length;
-
-        while (i--) {
-          this.emitters[i].update(d);
-        }
-      }
-
-      this.dispatch(_events.PROTON_UPDATE_AFTER);
-
-      return Promise.resolve();
-    }
-
-    /**
-     * Gets a count of the total number of particles in the system.
-     *
-     * @return {integer}
-     */
-
-  }, {
-    key: 'getCount',
-    value: function getCount() {
-      var length = this.emitters.length;
-      var total = 0;
-      var i = void 0;
-
-      for (i = 0; i < length; i++) {
-        total += this.emitters[i].particles.length;
-      }
-
-      return total;
-    }
-
-    /**
-     * Destroys all emitters and the Proton pool.
-     *
-     * @return void
-     */
-
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      var length = this.emitters.length;
-      var i = 0;
-
-      for (i; i < length; i++) {
-        this.emitters[i].destroy();
-        delete this.emitters[i];
-      }
-
-      this.emitters.length = 0;
-      this.pool.destroy();
-    }
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      return (0, _fromJSON3.default)(json, Proton, _Emitter2.default);
-    }
-  }]);
-
-  return Proton;
-}();
-
-exports.default = Proton;
-module.exports = exports['default'];
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _behaviour = __webpack_require__(22);
-
-var Behaviour = _interopRequireWildcard(_behaviour);
-
-var _initializer = __webpack_require__(11);
-
-var Initializer = _interopRequireWildcard(_initializer);
-
-var _constants = __webpack_require__(2);
-
-var _constants2 = __webpack_require__(12);
-
-var _Rate = __webpack_require__(29);
-
-var _Rate2 = _interopRequireDefault(_Rate);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-/**
- * Makes a rate instance.
- *
- * @param {object} json - The data required to construct a Rate instance
- * @return {Rate}
- */
-var makeRate = function makeRate(json) {
-  return new _Rate2.default.fromJSON(json);
-};
-
-/**
- * Makes initializers from json items.
- *
- * @param {array<object>} items - An array of objects which provide initializer constructor params
- * @return {array<Initializer>}
- */
-var makeInitializers = function makeInitializers(items) {
-  var initializers = [];
-
-  items.forEach(function (data) {
-    var type = data.type,
-        properties = data.properties;
-
-
-    if (!_constants2.SUPPORTED_JSON_INITIALIZER_TYPES.includes(type)) {
-      throw new Error('The initializer type ' + type + ' is invalid or not yet supported');
-    }
-
-    initializers.push(new Initializer[type].fromJSON(properties));
-  });
-
-  return initializers;
-};
-
-/**
- * Makes behaviours from json items.
- *
- * @param {array<object>} items - An array of objects which provide behaviour constructor params
- * @return {array<Behaviour>}
- */
-var makeBehaviours = function makeBehaviours(items) {
-  var behaviours = [];
-
-  items.forEach(function (data) {
-    var type = data.type,
-        properties = data.properties;
-
-
-    if (!_constants2.SUPPORTED_JSON_BEHAVIOUR_TYPES.includes(type)) {
-      throw new Error('The behaviour type ' + type + ' is invalid or not yet supported');
-    }
-
-    behaviours.push(new Behaviour[type].fromJSON(properties));
-  });
-
-  return behaviours;
-};
-
-/**
- * Creates a Proton instance from a JSON object.
- *
- * @param {object} json - The JSON to create the Proton instance from
- * @param {function} Proton - The proton class
- * @param {function} Emitter - The emitter class
- * @param {number} json.preParticles - The predetermined number of particles
- * @param {string} json.integrationType - The integration algorithm to use
- * @param {array<object>} json.emitters - The emitters for the proton instance
- * @return {Proton}
- */
-
-exports.default = function (json, Proton, Emitter) {
-  var _json$preParticles = json.preParticles,
-      preParticles = _json$preParticles === undefined ? _constants.POOL_MAX : _json$preParticles,
-      _json$integrationType = json.integrationType,
-      integrationType = _json$integrationType === undefined ? _constants.EULER : _json$integrationType,
-      _json$emitters = json.emitters,
-      emitters = _json$emitters === undefined ? [] : _json$emitters;
-
-  var proton = new Proton(preParticles, integrationType);
-
-  emitters.forEach(function (data) {
-    var emitter = new Emitter();
-    var rate = data.rate,
-        initializers = data.initializers,
-        behaviours = data.behaviours,
-        position = data.position;
-
-
-    emitter.setRate(makeRate(rate)).setInitializers(makeInitializers(initializers)).setBehaviours(makeBehaviours(behaviours)).setPosition(position).emit();
-
-    proton.addEmitter(emitter);
-  });
-
-  return proton;
-};
-
-module.exports = exports['default'];
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _three = __webpack_require__(4);
-
-var THREE = _interopRequireWildcard(_three);
-
-var _constants = __webpack_require__(50);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-/**
- * @exports Debug - methods and helpers for debugging Proton emitters, zones and particles.
- */
-exports.default = {
-  /**
-    * Adds an event listener to the proton instance's PROTON_UPDATE event.
-    *
-    * @param {Proton} proton - the proton instance
-    * @param {function} onProtonUpdated - the function to call when proton has been updated
-    * @return {Debug}
-    */
-  addEventListener: function addEventListener(proton, onProtonUpdated) {
-    proton.eventDispatcher.addEventListener('PROTON_UPDATE', onProtonUpdated);
-
-    return this;
-  },
-
-  /**
-    * Draws a wireframe mesh around the zone for debugging purposes.
-    *
-    * @param {Proton} proton - the proton instance
-    * @param {object} container - a three Object3D (usually the scene)
-    * @param {Zone} zone - a Zone instance
-    * @return void
-    */
-  drawZone: function drawZone(proton, container) {
-    var zone = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-    var color = '#2194ce';
-    var wireframe = true;
-    var _zone$width = zone.width,
-        width = _zone$width === undefined ? _constants.DEFAULT_SIZE : _zone$width,
-        _zone$height = zone.height,
-        height = _zone$height === undefined ? _constants.DEFAULT_SIZE : _zone$height,
-        _zone$depth = zone.depth,
-        depth = _zone$depth === undefined ? _constants.DEFAULT_SIZE : _zone$depth,
-        _zone$radius = zone.radius,
-        radius = _zone$radius === undefined ? _constants.DEFAULT_SIZE : _zone$radius,
-        _zone$x = zone.x,
-        x = _zone$x === undefined ? _constants.DEFAULT_POSITION : _zone$x,
-        _zone$y = zone.y,
-        y = _zone$y === undefined ? _constants.DEFAULT_POSITION : _zone$y,
-        _zone$z = zone.z,
-        z = _zone$z === undefined ? _constants.DEFAULT_POSITION : _zone$z;
-
-    var geometry = void 0;
-
-    if (zone.isPointZone()) {
-      geometry = new THREE.SphereGeometry(15);
-    }
-
-    if (zone.isLineZone()) {
-      // TODO
-    }
-
-    if (zone.isBoxZone()) {
-      geometry = new THREE.BoxGeometry(width, height, depth);
-    }
-
-    if (zone.isSphereZone()) {
-      geometry = new THREE.SphereGeometry(radius, _constants.DEFAULT_SIZE, _constants.DEFAULT_SIZE);
-    }
-
-    if (zone.isMeshZone()) {
-      geometry = zone.geometry.geometry ? zone.geometry.geometry.clone() : zone.geometry.clone();
-    }
-
-    if (!geometry) {
-      geometry = new THREE.BoxGeometry(width, height, depth);
-    }
-
-    var material = new THREE.MeshBasicMaterial({ color: color, wireframe: wireframe });
-    // NOTE! geometry.clone is required for UNKNOWN reasons,
-    // three does not render the mesh correctly without doing this since r88
-    var mesh = new THREE.Mesh(geometry.clone(), material);
-
-    container.add(mesh);
-
-    this.addEventListener(proton, function () {
-      mesh.position.set(x, y, z);
-    });
-  },
-
-  /**
-    * Draws a mesh for each particle emitted in order to help debug particles.
-    *
-    * @param {object} proton - the proton instance
-    * @param {object} container - a three Object3D (usually the scene)
-    * @param {object} emitter - the emitter to debug
-    * @param {string} color - the color for the debug mesh material
-    * @return void
-    */
-  drawEmitter: function drawEmitter(proton, container, emitter, color) {
-    var geometry = new THREE.OctahedronGeometry(_constants.DEFAULT_SIZE);
-    var material = new THREE.MeshBasicMaterial({
-      color: color || '#aaa',
-      wireframe: true
-    });
-    // NOTE! geometry.clone is required for UNKNOWN reasons,
-    // three does not render the mesh correctly without doing this since r88
-    var mesh = new THREE.Mesh(geometry.clone(), material);
-
-    container.add(mesh);
-
-    this.addEventListener(proton, function () {
-      mesh.position.copy(emitter.p);
-      mesh.rotation.set(emitter.rotation.x, emitter.rotation.y, emitter.rotation.z);
-    });
-  },
-
-  /**
-   * Renders emitter / particle information into the info element.
-   *
-   * @param {object} proton - the proton instance
-   * @param {integer} style - style to apply (see the addInfo method's switch statement)
-   * @return void
-   */
-  renderInfo: function () {
-    function getCreatedNumber(type, proton) {
-      var pool = type == 'material' ? '_materialPool' : '_targetPool';
-      var renderer = proton.renderers[0];
-
-      return renderer[pool].cID;
-    }
-
-    function getEmitterPos(proton) {
-      var e = proton.emitters[0];
-
-      return Math.round(e.p.x) + ',' + Math.round(e.p.y) + ',' + Math.round(e.p.z);
-    }
-
-    return function (proton, style) {
-      this.addInfo(style);
-      var str = '';
-
-      switch (this._infoType) {
-        case 2:
-          str += 'emitter:' + proton.emitters.length + '<br>';
-          str += 'em speed:' + proton.emitters[0].cID + '<br>';
-          str += 'pos:' + getEmitterPos(proton);
-          break;
-
-        case 3:
-          str += proton.renderers[0].name + '<br>';
-          str += 'target:' + getCreatedNumber('target') + '<br>';
-          str += 'material:' + getCreatedNumber('material');
-          break;
-
-        default:
-          str += 'particles:' + proton.getCount() + '<br>';
-          str += 'pool:' + proton.pool.getCount() + '<br>';
-          str += 'total:' + (proton.getCount() + proton.pool.getCount());
-      }
-      this._infoCon.innerHTML = str;
-    };
-  }(),
-
-  /**
-   * Appends the info element into the dom.
-   *
-   * @param {integer} style - the style type to apply
-   * @return void
-   */
-  addInfo: function () {
-    return function (style) {
-      var self = this;
-
-      if (!this._infoCon) {
-        this._infoCon = document.createElement('div');
-        this._infoCon.style.cssText = ['position:fixed;bottom:0px;left:0;cursor:pointer;', 'opacity:0.9;z-index:10000;padding:10px;font-size:12px;', 'width:120px;height:50px;background-color:#002;color:#0ff;'].join('');
-
-        this._infoType = 1;
-        this._infoCon.addEventListener('click', function () {
-          self._infoType++;
-          if (self._infoType > 3) self._infoType = 1;
-        }, false);
-
-        var bg, color;
-
-        switch (style) {
-          case 2:
-            bg = '#201';
-            color = '#f08';
-            break;
-
-          case 3:
-            bg = '#020';
-            color = '#0f0';
-            break;
-
-          default:
-            bg = '#002';
-            color = '#0ff';
-        }
-
-        this._infoCon.style['background-color'] = bg;
-        this._infoCon.style['color'] = color;
-      }
-
-      if (!this._infoCon.parentNode) document.body.appendChild(this._infoCon);
-    };
-  }()
-};
-module.exports = exports['default'];
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var DEFAULT_WIDTH = exports.DEFAULT_WIDTH = 10;
-var DEFAULT_HEIGHT = exports.DEFAULT_HEIGHT = 10;
-var DEFAULT_DEPTH = exports.DEFAULT_DEPTH = 10;
-var DEFAULT_RADIUS = exports.DEFAULT_RADIUS = 15;
-var DEFAULT_SIZE = exports.DEFAULT_SIZE = 15;
-var DEFAULT_POSITION = exports.DEFAULT_POSITION = 0;
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function () {
-  var once = 0;
-
-  if (window.console && window.console.trace) {
-    var arg = Array.prototype.slice.call(arguments);
-    var s1 = arguments[0] + '';
-
-    if (s1.indexOf('+') == 0) {
-      var n = parseInt(arguments[0]);
-
-      if (once < n) {
-        arg.shift();
-        console.trace.apply(console, arg);
-        once++;
-      }
-    } else {
-      arg.unshift('+15');
-      this.apply(console, arg);
-    }
-  }
-};
-
-module.exports = exports['default']; /**
-                                      * You can use this emit particles.
-                                      *
-                                      * This method will console.log the fixed number of your info  in updata or requestAnimationFrame
-                                      *
-                                      * use like this log('+12',mc); log 12 times
-                                      *
-                                      * @return void
-                                      */
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _Emitter2 = __webpack_require__(13);
-
-var _Emitter3 = _interopRequireDefault(_Emitter2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var BehaviourEmitter = function (_Emitter) {
-  _inherits(BehaviourEmitter, _Emitter);
-
-  /**
-   * The BehaviourEmitter class inherits from Proton.Emitter
-   *
-   * use the BehaviourEmitter you can add behaviours to self;
-   * @class Proton.BehaviourEmitter
-   * @constructor
-   * @param {Object} pObj the parameters object;
-   */
-  function BehaviourEmitter(pObj) {
-    _classCallCheck(this, BehaviourEmitter);
-
-    var _this = _possibleConstructorReturn(this, (BehaviourEmitter.__proto__ || Object.getPrototypeOf(BehaviourEmitter)).call(this, pObj));
-
-    _this.selfBehaviours = [];
-    return _this;
-  }
-
-  /**
-   * add the Behaviour to emitter;
-   *
-   * you can use Behaviours array:emitter.addSelfBehaviour(Behaviour1,Behaviour2,Behaviour3);
-   * @method addSelfBehaviour
-   * @param {Proton.Behaviour} behaviour like this new Proton.Color('random')
-   */
-
-
-  _createClass(BehaviourEmitter, [{
-    key: 'addSelfBehaviour',
-    value: function addSelfBehaviour() {
-      var length = arguments.length,
-          i;
-
-      for (i = 0; i < length; i++) {
-        this.selfBehaviours.push(arguments[i]);
-      }
-    }
-
-    /**
-     * remove the Behaviour for self
-     * @method removeSelfBehaviour
-     * @param {Proton.Behaviour} behaviour a behaviour
-     */
-
-  }, {
-    key: 'removeSelfBehaviour',
-    value: function removeSelfBehaviour(behaviour) {
-      var index = this.selfBehaviours.indexOf(behaviour);
-
-      if (index > -1) this.selfBehaviours.splice(index, 1);
-    }
-  }, {
-    key: 'update',
-    value: function update(time) {
-      _get(BehaviourEmitter.prototype.__proto__ || Object.getPrototypeOf(BehaviourEmitter.prototype), 'update', this).call(this, time);
-
-      if (!this.sleep) {
-        var length = this.selfBehaviours.length,
-            i;
-
-        for (i = 0; i < length; i++) {
-          this.selfBehaviours[i].applyBehaviour(this, time, i);
-        }
-      }
-    }
-  }]);
-
-  return BehaviourEmitter;
-}(_Emitter3.default);
-
-exports.default = BehaviourEmitter;
-module.exports = exports['default'];
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _Emitter2 = __webpack_require__(13);
-
-var _Emitter3 = _interopRequireDefault(_Emitter2);
-
-var _THREEUtil = __webpack_require__(21);
-
-var _THREEUtil2 = _interopRequireDefault(_THREEUtil);
-
-var _Util = __webpack_require__(6);
-
-var _Util2 = _interopRequireDefault(_Util);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var FollowEmitter = function (_Emitter) {
-  _inherits(FollowEmitter, _Emitter);
-
-  /**
-   * The FollowEmitter class inherits from Proton.Emitter
-   *
-   * use the FollowEmitter will emit particle when mousemoving
-   *
-   * @class Proton.FollowEmitter
-   * @constructor
-   * @param {Element} mouseTarget mouseevent's target;
-   * @param {Number} ease the easing of following speed;
-   * @default 0.7
-   * @param {Object} pObj the parameters object;
-   */
-  function FollowEmitter(mouseTarget, ease, pObj) {
-    _classCallCheck(this, FollowEmitter);
-
-    var _this = _possibleConstructorReturn(this, (FollowEmitter.__proto__ || Object.getPrototypeOf(FollowEmitter)).call(this, pObj));
-
-    _this.mouseTarget = _Util2.default.initValue(mouseTarget, window);
-    _this.ease = _Util2.default.initValue(ease, 0.7);
-    _this._allowEmitting = false;
-    _this.initEventHandler();
-    return _this;
-  }
-
-  _createClass(FollowEmitter, [{
-    key: 'initEventHandler',
-    value: function initEventHandler() {
-      var self = this;
-
-      this.mousemoveHandler = function (e) {
-        self.mousemove.call(self, e);
-      };
-
-      this.mousedownHandler = function (e) {
-        self.mousedown.call(self, e);
-      };
-
-      this.mouseupHandler = function (e) {
-        self.mouseup.call(self, e);
-      };
-
-      this.mouseTarget.addEventListener('mousemove', this.mousemoveHandler, false);
-    }
-
-    /**
-     * start emit particle
-     * @method emit
-     */
-
-  }, {
-    key: 'emit',
-    value: function emit() {
-      this._allowEmitting = true;
-    }
-
-    /**
-     * stop emiting
-     * @method stopEmit
-     */
-
-  }, {
-    key: 'stopEmit',
-    value: function stopEmit() {
-      this._allowEmitting = false;
-    }
-  }, {
-    key: 'setCameraAndCanvas',
-    value: function setCameraAndCanvas(camera, canvas) {
-      this.camera = camera;
-      this.canvas = canvas;
-    }
-  }, {
-    key: 'mousemove',
-    value: function mousemove(e) {
-      if (e.layerX || e.layerX == 0) {
-        this.p.x += (e.layerX - this.p.x) * this.ease;
-        this.p.y += (e.layerY - this.p.y) * this.ease;
-      } else if (e.offsetX || e.offsetX == 0) {
-        this.p.x += (e.offsetX - this.p.x) * this.ease;
-        this.p.y += (e.offsetY - this.p.y) * this.ease;
-      }
-
-      this.p.copy(_THREEUtil2.default.toSpacePos(this.p, this.camera, this.canvas));
-
-      if (this._allowEmitting) _get(FollowEmitter.prototype.__proto__ || Object.getPrototypeOf(FollowEmitter.prototype), 'emit', this).call(this, 'once');
-    }
-
-    /**
-     * Destory this Emitter
-     * @method destroy
-     */
-
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      _get(FollowEmitter.prototype.__proto__ || Object.getPrototypeOf(FollowEmitter.prototype), 'destroy', this).call(this);
-      this.mouseTarget.removeEventListener('mousemove', this.mousemoveHandler, false);
-    }
-  }]);
-
-  return FollowEmitter;
-}(_Emitter3.default);
-
-exports.default = FollowEmitter;
-module.exports = exports['default'];
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DEFAULT_BIND_EMITTER_EVENT = exports.DEFAULT_EMITTER_RATE = exports.DEFAULT_BIND_EMITTER = exports.DEFAULT_DAMPING = undefined;
-
-var _initializer = __webpack_require__(11);
-
-var DEFAULT_DAMPING = exports.DEFAULT_DAMPING = 0.006;
-var DEFAULT_BIND_EMITTER = exports.DEFAULT_BIND_EMITTER = true;
-var DEFAULT_EMITTER_RATE = exports.DEFAULT_EMITTER_RATE = new _initializer.Rate(1, 0.1);
-var DEFAULT_BIND_EMITTER_EVENT = exports.DEFAULT_BIND_EMITTER_EVENT = false;
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/*
- * EventDispatcher
- * Visit http://createjs.com/ for documentation, updates and examples.
- *
- **/
-
-var EventDispatcher = function () {
-  function EventDispatcher() {
-    _classCallCheck(this, EventDispatcher);
-
-    this.listeners = null;
-  }
-
-  _createClass(EventDispatcher, [{
-    key: "addEventListener",
-    value: function addEventListener(type, listener) {
-      if (!this.listeners) {
-        this.listeners = {};
-      } else {
-        this.removeEventListener(type, listener);
-      }
-
-      if (!this.listeners[type]) this.listeners[type] = [];
-      this.listeners[type].push(listener);
-
-      return listener;
-    }
-  }, {
-    key: "removeEventListener",
-    value: function removeEventListener(type, listener) {
-      if (!this.listeners) return;
-      if (!this.listeners[type]) return;
-
-      var arr = this.listeners[type];
-
-      for (var i = 0, l = arr.length; i < l; i++) {
-        if (arr[i] == listener) {
-          if (l == 1) {
-            delete this.listeners[type];
-          }
-          // allows for faster checks.
-          else {
-              arr.splice(i, 1);
-            }
-          break;
-        }
-      }
-    }
-  }, {
-    key: "removeAllEventListeners",
-    value: function removeAllEventListeners(type) {
-      if (!type) this.listeners = null;else if (this.listeners) delete this.listeners[type];
-    }
-  }, {
-    key: "dispatchEvent",
-    value: function dispatchEvent(eventName, eventTarget) {
-      var ret = false,
-          listeners = this.listeners;
-
-      if (eventName && listeners) {
-        var arr = listeners[eventName];
-
-        if (!arr) return ret;
-
-        arr = arr.slice();
-        // to avoid issues with items being removed or added during the dispatch
-
-        var handler,
-            i = arr.length;
-
-        while (i--) {
-          handler = arr[i];
-
-          ret = ret || handler(eventTarget);
-        }
-      }
-
-      return !!ret;
-    }
-  }, {
-    key: "hasEventListener",
-    value: function hasEventListener(type) {
-      var listeners = this.listeners;
-
-      return !!(listeners && listeners[type]);
-    }
-  }, {
-    key: "listeners",
-    set: function set(listeners) {
-      this._listeners = listeners;
-    },
-    get: function get() {
-      return this._listeners;
-    }
-  }]);
-
-  return EventDispatcher;
-}();
-
-exports.default = EventDispatcher;
-module.exports = exports["default"];
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Pool = exports.Particle = exports.Proton = undefined;
-
-var _behaviour = __webpack_require__(22);
-
-Object.keys(_behaviour).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _behaviour[key];
-    }
-  });
-});
-
-var _debug = __webpack_require__(33);
-
-Object.keys(_debug).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _debug[key];
-    }
-  });
-});
-
-var _ease = __webpack_require__(1);
-
-Object.keys(_ease).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _ease[key];
-    }
-  });
-});
-
-var _emitter = __webpack_require__(34);
-
-Object.keys(_emitter).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _emitter[key];
-    }
-  });
-});
-
-var _initializer = __webpack_require__(11);
-
-Object.keys(_initializer).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _initializer[key];
-    }
-  });
-});
-
-var _math = __webpack_require__(0);
-
-Object.keys(_math).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _math[key];
-    }
-  });
-});
-
-var _renderer = __webpack_require__(35);
-
-Object.keys(_renderer).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _renderer[key];
-    }
-  });
-});
-
-var _utils = __webpack_require__(9);
-
-Object.keys(_utils).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _utils[key];
-    }
-  });
-});
-
-var _zone = __webpack_require__(16);
-
-Object.keys(_zone).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _zone[key];
-    }
-  });
-});
-
-var _core = __webpack_require__(15);
-
-Object.defineProperty(exports, 'Proton', {
-  enumerable: true,
-  get: function get() {
-    return _core.Proton;
-  }
-});
-Object.defineProperty(exports, 'Particle', {
-  enumerable: true,
-  get: function get() {
-    return _core.Particle;
-  }
-});
-Object.defineProperty(exports, 'Pool', {
-  enumerable: true,
-  get: function get() {
-    return _core.Pool;
-  }
-});
-exports.default = _core.Proton;
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Initializer2 = __webpack_require__(5);
-
-var _Initializer3 = _interopRequireDefault(_Initializer2);
-
-var _math = __webpack_require__(0);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Sets the body property on initialized particles.
- *
- */
-var Body = function (_Initializer) {
-  _inherits(Body, _Initializer);
-
-  /**
-   * Constructs a Body initalizer instance.
-   *
-   * @param {string|number} body - The color for the particle body
-   * @param {?number} w - The width of the particle body
-   * @param {?number} h - The height of the particle body
-   * @return void
-   */
-  function Body(body, w, h) {
-    _classCallCheck(this, Body);
-
-    /**
-     * @desc The color for the particle body
-     * @type {ArraySpan}
-     */
-    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
-
-    _this.body = (0, _math.createArraySpan)(body);
-
-    /**
-     * @desc The width of the particle Body
-     * @type {number}
-     */
-    _this.w = w;
-
-    /**
-     * @desc The height of the particle Body
-     * @type {number}
-     */
-    _this.h = h || w;
-    return _this;
-  }
-
-  /**
-   * Sets the particle's initial body.
-   *
-   * @param {Particle} particle - the particle to initialize the property on
-   * @return void
-   */
-
-
-  _createClass(Body, [{
-    key: 'initialize',
-    value: function initialize(particle) {
-      var body = this.body.getValue();
-
-      if (this.w) {
-        particle.body = {
-          width: this.w,
-          height: this.h,
-          body: body
-        };
-      } else {
-        particle.body = body;
-      }
-    }
-
-    /**
-     * Creates a Body initializer from JSON.
-     *
-     * @param {object} json - The JSON to construct the instance from.
-     * @property {number} json.body - The color for the particle body
-     * @property {number} json.width - The width of the particle body
-     * @property {number} json.height - The height of the particle body
-     * @return {Body}
-     */
-
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var body = json.body,
-          width = json.width,
-          height = json.height;
-
-
-      return new Body(body, width, height);
-    }
-  }]);
-
-  return Body;
-}(_Initializer3.default);
-
-exports.default = Body;
-module.exports = exports['default'];
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _three = __webpack_require__(4);
-
-var _constants = __webpack_require__(68);
-
-var _Initializer2 = __webpack_require__(5);
-
-var _Initializer3 = _interopRequireDefault(_Initializer2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Sets the body property to be a THREE.Sprite on initialized particles.
- *
- * NOTE The texture map MUST be set on the SpriteMaterial in the TextureLoader.load
- * callback. Not doing so will cause WebGL buffer errors.
- */
-var BodySprite = function (_Initializer) {
-  _inherits(BodySprite, _Initializer);
-
-  /**
-   * Constructs a BodySprite initializer.
-   *
-   * @param {string} texture - The sprite texture
-   * @param {object} materialProperties - The sprite material properties
-   * @throws {Error} If the TextureLoader fails to load the supplied texture
-   * @return void
-   */
-  function BodySprite(texture) {
-    var materialProperties = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_MATERIAL_PROPERTIES;
-
-    _classCallCheck(this, BodySprite);
-
-    var _this = _possibleConstructorReturn(this, (BodySprite.__proto__ || Object.getPrototypeOf(BodySprite)).call(this));
-
-    new _three.TextureLoader().load(texture, function (map) {
-      /**
-       * @desc The texture for the THREE.SpriteMaterial map.
-       * @type {Texture}
-       */
-      _this.texture = map;
-
-      /**
-       * @desc THREE.SpriteMaterial instance.
-       * @type {SpriteMaterial}
-       */
-      _this.material = new _three.SpriteMaterial(_extends({ map: map }, materialProperties));
-
-      /**
-       * @desc THREE.Sprite instance.
-       * @type {Sprite}
-       */
-      _this.sprite = new _three.Sprite(_this.material);
-    }, undefined, function (error) {
-      throw new Error(error);
-    });
-    return _this;
-  }
-
-  /**
-   * Sets the particle body to the sprite.
-   *
-   * @param {Particle} particle - The particle to set the body of
-   * @return void
-   */
-
-
-  _createClass(BodySprite, [{
-    key: 'initialize',
-    value: function initialize(particle) {
-      particle.body = this.sprite;
-    }
-
-    /**
-     * Creates a BodySprite initializer from JSON.
-     *
-     * @param {object} json - The JSON to construct the instance from.
-     * @param {string} json.texture - The sprite texture
-     * @param {object} json.materialProperties - The sprite material properties
-     * @return {BodySprite}
-     */
-
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var texture = json.texture,
-          _json$materialPropert = json.materialProperties,
-          materialProperties = _json$materialPropert === undefined ? _constants.DEFAULT_MATERIAL_PROPERTIES : _json$materialPropert;
-
-
-      return new BodySprite(texture, materialProperties);
-    }
-  }]);
-
-  return BodySprite;
-}(_Initializer3.default);
-
-exports.default = BodySprite;
-module.exports = exports['default'];
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _three = __webpack_require__(4);
-
-var particleEuler = new _three.Euler();
-
-exports.default = {
-  /**
-   * Loops through the initializers array and calls each initializer's initialize method
-   * on the supplied particle. This sets the particle's initial properties.
-   *
-   * @see {@link '../emitter/Emitter'} setupParticle
-   * @param {Emitter} emitter - The emitter that has called this method
-   * @param {Particle} particle - The particle that has just been created
-   * @param {array<Initializer>} initializers - All of the emitter's initializers
-   * @return void
-   */
-  initialize: function initialize(emitter, particle, initializers) {
-    var i = initializers.length;
-
-    while (i--) {
-      initializers[i].init(emitter, particle);
-    }
-
-    emitter.bindEmitter && this.bindEmitter(emitter, particle);
-  },
-
-  /**
-   * Ensures that the emitter's position, velocity and accleration are added
-   * to each created particle.
-   *
-   * @param {Emitter} emitter - The emitter that is emitting the particles
-   * @param {Particle} particle - The newly created particle
-   * @return void
-   */
-  bindEmitter: function bindEmitter(emitter, particle) {
-    var _emitter$rotation = emitter.rotation,
-        x = _emitter$rotation.x,
-        y = _emitter$rotation.y,
-        z = _emitter$rotation.z;
-
-
-    particle.p.add(emitter.p);
-    particle.v.add(emitter.v);
-    particle.a.add(emitter.a);
-    particle.v.applyEuler(particleEuler.set(x, y, z));
-  }
-};
-module.exports = exports['default'];
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Initializer2 = __webpack_require__(5);
-
-var _Initializer3 = _interopRequireDefault(_Initializer2);
-
-var _math = __webpack_require__(0);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Sets the life property on initialized particles.
- *
- */
-var Life = function (_Initializer) {
-  _inherits(Life, _Initializer);
-
-  /**
-   * Constructs a Life property instance.
-   *
-   * @param {number} min - The minimum life
-   * @param {number} max - The maximum life
-   * @param {boolean} [center] - Determines whether to average the life value
-   * @return void
-   */
-  function Life(min, max, center) {
-    _classCallCheck(this, Life);
-
-    /**
-     * @desc The life span of the particle.
-     * @type {Span}
-     */
-    var _this = _possibleConstructorReturn(this, (Life.__proto__ || Object.getPrototypeOf(Life)).call(this));
-
-    _this.lifePan = (0, _math.createSpan)(min, max, center);
-    return _this;
-  }
-
-  /**
-   * Sets the particle's initial life.
-   *
-   * @param {Particle} particle - the particle to initialize the property on
-   * @return void
-   */
-
-
-  _createClass(Life, [{
-    key: 'initialize',
-    value: function initialize(particle) {
-      if (this.lifePan.a == Infinity || this.lifePan.a == 'infi') particle.life = Infinity;else particle.life = this.lifePan.getValue();
-    }
-
-    /**
-     * Creates a Life initializer from JSON.
-     *
-     * @param {object} json - The JSON to construct the instance from.
-     * @property {number} json.min - The minimum life time
-     * @property {number} json.max - The maximum life time
-     * @property {number} json.center - The center of the life time
-     * @return {Life}
-     */
-
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var min = json.min,
-          max = json.max,
-          _json$center = json.center,
-          center = _json$center === undefined ? false : _json$center;
-
-
-      return new Life(min, max, center);
-    }
-  }]);
-
-  return Life;
-}(_Initializer3.default);
-
-exports.default = Life;
-module.exports = exports['default'];
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Initializer2 = __webpack_require__(5);
-
-var _Initializer3 = _interopRequireDefault(_Initializer2);
-
-var _math = __webpack_require__(0);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Sets the mass property on initialized particles.
- *
- */
-var Mass = function (_Initializer) {
-  _inherits(Mass, _Initializer);
-
-  /**
-   * Constructs a Mass initializer instance.
-   *
-   * @param {number} min - The minumum mass for the particle
-   * @param {number} max - The maximum mass for the particle
-   * @param {boolean} [center] - Determines whether to average the mass value
-   * @return void
-   */
-  function Mass(min, max) {
-    var center = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-    _classCallCheck(this, Mass);
-
-    /**
-     * @desc The mass span which is used to set the particle mass value.
-     * @type {Span}
-     */
-    var _this = _possibleConstructorReturn(this, (Mass.__proto__ || Object.getPrototypeOf(Mass)).call(this));
-
-    _this.massPan = (0, _math.createSpan)(min, max, center);
-    return _this;
-  }
-
-  /**
-   * Sets the particle's initial mass.
-   *
-   * @param {Particle} particle - the particle to initialize the property on
-   * @return void
-   */
-
-
-  _createClass(Mass, [{
-    key: 'initialize',
-    value: function initialize(particle) {
-      particle.mass = this.massPan.getValue();
-    }
-
-    /**
-     * Creates a Mass initializer from JSON.
-     *
-     * @param {object} json - The JSON to construct the instance from.
-     * @property {number} json.min - The minimum mass
-     * @property {number} json.max - The maximum mass
-     * @property {number} json.center - The center of the mass
-     * @return {Mass}
-     */
-
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var min = json.min,
-          max = json.max,
-          _json$center = json.center,
-          center = _json$center === undefined ? false : _json$center;
-
-
-      return new Mass(min, max, center);
-    }
-  }]);
-
-  return Mass;
-}(_Initializer3.default);
-
-exports.default = Mass;
-module.exports = exports['default'];
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _zone = __webpack_require__(16);
-
-var Zone = _interopRequireWildcard(_zone);
-
-var _Initializer2 = __webpack_require__(5);
-
-var _Initializer3 = _interopRequireDefault(_Initializer2);
-
-var _constants = __webpack_require__(12);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Sets the starting position property for initialized particles.
- * This is respective to the supplied zones.
- *
- */
-var Position = function (_Initializer) {
-  _inherits(Position, _Initializer);
-
-  /**
-   * Constructs a Position initializer instance.
-   *
-   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
-   * @return void
-   */
-  function Position() {
-    _classCallCheck(this, Position);
-
-    var _this = _possibleConstructorReturn(this, (Position.__proto__ || Object.getPrototypeOf(Position)).call(this));
-
-    _this.reset.apply(_this, arguments);
-    return _this;
-  }
-
-  /**
-   * Resets the initializer properties.
-   * Clears all previously set zones and resets the zones according to args passed.
-   *
-   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
-   * @return void
-   */
-
-
-  _createClass(Position, [{
-    key: 'reset',
-    value: function reset() {
-      if (!this.zones) this.zones = [];else this.zones.length = 0;
-
-      var args = Array.prototype.slice.call(arguments);
-
-      /**
-       * @desc The zones to use as bounds for calculating the particle's starting position.
-       * @type {array<Zone>}
-       */
-      this.zones = this.zones.concat(args);
-    }
-
-    /**
-     * Adds a zone or zones to this.zones.
-     *
-     * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
-     * @return void
-     */
-
-  }, {
-    key: 'addZone',
-    value: function addZone() {
-      var args = Array.prototype.slice.call(arguments);
-
-      this.zones = this.zones.concat(args);
-    }
-
-    /**
-     * Creates a Position initializer from JSON.
-     *
-     * @param {object} json - The JSON to construct the instance from.
-     * @property {string} json.zoneType - The type of zone to use for initial position
-     * @return {Position}
-     */
-
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var zoneType = json.zoneType,
-          params = _objectWithoutProperties(json, ['zoneType']);
-
-      if (!_constants.SUPPORTED_JSON_ZONE_TYPES.includes(zoneType)) {
-        throw new Error('The zone type ' + zoneType + ' is invalid or not yet supported');
-      }
-
-      return new Position(new (Function.prototype.bind.apply(Zone[zoneType], [null].concat(_toConsumableArray(Object.values(params)))))());
-    }
-  }]);
-
-  return Position;
-}(_Initializer3.default);
-
-/**
- * Sets the particle's initial position.
- *
- * @param {Particle} particle - the particle to initialize the property on
- * @return void
- */
-
-
-exports.default = Position;
-Position.prototype.initialize = function () {
-  var zone = void 0;
-
-  return function (target) {
-    zone = this.zones[Math.random() * this.zones.length >> 0];
-
-    zone.getPosition();
-
-    target.p.x = zone.vector.x;
-    target.p.y = zone.vector.y;
-    target.p.z = zone.vector.z;
-  };
-}();
-module.exports = exports['default'];
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Initializer2 = __webpack_require__(5);
-
-var _Initializer3 = _interopRequireDefault(_Initializer2);
-
-var _math = __webpack_require__(0);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Sets the radius property on initialized particles.
- *
- */
-var Radius = function (_Initializer) {
-  _inherits(Radius, _Initializer);
-
-  /**
-   * Constructs a Radius initializer instance.
-   *
-   * @param {number} width - The width of the particle radius
-   * @param {number} height - The height of the particle radius
-   * @param {boolean} [center=false] - Determines whether to average the radius value
-   * @return void
-   */
-  function Radius(width, height) {
-    var center = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-    _classCallCheck(this, Radius);
-
-    /**
-     * @desc The radius span which is used to set the particle radius value.
-     * @type {Span}
-     */
-    var _this = _possibleConstructorReturn(this, (Radius.__proto__ || Object.getPrototypeOf(Radius)).call(this));
-
-    _this.radius = (0, _math.createSpan)(width, height, center);
-    return _this;
-  }
-
-  /**
-   * Resets the initializer properties.
-   * Clears all previously set zones and resets the zones according to args passed.
-   *
-   * @param {number} width - The width of the particle radius
-   * @param {number} height - The height of the particle radius
-   * @param {boolean} [center=false] - Determines whether to average the radius value
-   * @return void
-   */
-
-
-  _createClass(Radius, [{
-    key: 'reset',
-    value: function reset(width, height) {
-      var center = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-      this.radius = (0, _math.createSpan)(width, height, center);
-    }
-
-    /**
-     * Sets the particle's initial radius.
-     *
-     * @param {Particle} particle - the particle to initialize the property on
-     * @return void
-     */
-
-  }, {
-    key: 'initialize',
-    value: function initialize(particle) {
-      particle.radius = this.radius.getValue();
-      particle.transform.oldRadius = particle.radius;
-    }
-
-    /**
-     * Creates a Radius initializer from JSON.
-     *
-     * @param {object} json - The JSON to construct the instance from.
-     * @property {number} json.width - The width of the particle radius
-     * @property {number} json.height - The height of the particle radius
-     * @property {number} json.center - The center of the particle radius
-     * @return {Radius}
-     */
-
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var width = json.width,
-          height = json.height,
-          _json$center = json.center,
-          center = _json$center === undefined ? false : _json$center;
-
-
-      return new Radius(width, height, center);
-    }
-  }]);
-
-  return Radius;
-}(_Initializer3.default);
-
-exports.default = Radius;
-module.exports = exports['default'];
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _constants = __webpack_require__(2);
-
-var _math = __webpack_require__(0);
-
-var _Velocity2 = __webpack_require__(17);
-
-var _Velocity3 = _interopRequireDefault(_Velocity2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Sets the velocity property on initialized particles.
- *
- */
-var PolarVelocity = function (_Velocity) {
-  _inherits(PolarVelocity, _Velocity);
-
-  /**
-   * Constructs a PolarVelocity initializer.
-   *
-   * @param {Polar3D} polar3d - The polar vector for the velocity
-   * @param {number} theta - The theta angle to use
-   * @return void
-   */
-  function PolarVelocity(polar3d, theta) {
-    _classCallCheck(this, PolarVelocity);
-
-    /**
-     * @desc Theta.
-     * @type {number}
-     */
-    var _this = _possibleConstructorReturn(this, (PolarVelocity.__proto__ || Object.getPrototypeOf(PolarVelocity)).call(this));
-
-    _this.tha = theta * _constants.DR;
-
-    /**
-     * @desc Directional vector
-     * @type {Vector3D}
-     */
-    _this.dirVec = polar3d.toVector3D();
-
-    /**
-     * @desc Determines whether to use the directional vector or not.
-     * @type {boolean}
-     */
-    _this._useV = false;
-    return _this;
-  }
-
-  /**
-   * Creates a PolarVelocity initializer from JSON.
-   *
-   * @param {object} json - The JSON to construct the instance from.
-   * @param {number} json.polarRadius - The Polar3D radius
-   * @param {number} json.polarTheta - The Polar3D theta
-   * @param {number} json.polarPhi - The Polar3D phi
-   * @param {number} json.velocityTheta - The velocity theta
-   * @return {PolarVelocity}
-   */
-
-
-  _createClass(PolarVelocity, null, [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var polarRadius = json.polarRadius,
-          polarTheta = json.polarTheta,
-          polarPhi = json.polarPhi,
-          velocityTheta = json.velocityTheta;
-
-
-      return new PolarVelocity(new _math.Polar3D(polarRadius, polarTheta, polarPhi), velocityTheta);
-    }
-  }]);
-
-  return PolarVelocity;
-}(_Velocity3.default);
-
-exports.default = PolarVelocity;
-module.exports = exports['default'];
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _math = __webpack_require__(0);
-
-var _constants = __webpack_require__(2);
-
-var _Velocity2 = __webpack_require__(17);
-
-var _Velocity3 = _interopRequireDefault(_Velocity2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Sets the velocity property on initialized particles.
- *
- */
-var RadialVelocity = function (_Velocity) {
-  _inherits(RadialVelocity, _Velocity);
-
-  /**
-   * Constructs a RadialVelocity initializer.
-   *
-   * @param {number|Span} radius - The velocity radius
-   * @param {Vector3D} vector3d - The directional vector for the velocity
-   * @param {number} theta - The theta angle to use
-   * @return void
-   */
-  function RadialVelocity(radius, vector3d, theta) {
-    _classCallCheck(this, RadialVelocity);
-
-    /**
-     * @desc Velocity radius span.
-     * @type {Span}
-     */
-    var _this = _possibleConstructorReturn(this, (RadialVelocity.__proto__ || Object.getPrototypeOf(RadialVelocity)).call(this));
-
-    _this.radiusPan = (0, _math.createSpan)(radius);
-
-    /**
-     * @desc Direction vector.
-     * @type {Vector3D}
-     */
-    _this.dir = vector3d.clone().normalize();
-
-    /**
-     * @desc Theta.
-     * @type {number}
-     */
-    _this.tha = theta * _constants.DR;
-
-    /**
-     * @desc Determines whether to use the directional vector or not.
-     * @type {boolean}
-     */
-    _this._useV = true;
-    return _this;
-  }
-
-  /**
-   * Creates a RadialVelocity initializer from JSON.
-   *
-   * @param {object} json - The JSON to construct the instance from.
-   * @param {number} json.radius - The velocity radius
-   * @param {number} json.x - The velocity x axis direction
-   * @param {number} json.y - The velocity y axis direction
-   * @param {number} json.z - The velocity z axis direction
-   * @param {number} json.theta - The velocity theta
-   * @return {RadialVelocity}
-   */
-
-
-  _createClass(RadialVelocity, null, [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var radius = json.radius,
-          x = json.x,
-          y = json.y,
-          z = json.z,
-          theta = json.theta;
-
-
-      return new RadialVelocity(radius, new _math.Vector3D(x, y, z), theta);
-    }
-  }]);
-
-  return RadialVelocity;
-}(_Velocity3.default);
-
-exports.default = RadialVelocity;
-module.exports = exports['default'];
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _math = __webpack_require__(0);
-
-var _constants = __webpack_require__(2);
-
-var _Velocity2 = __webpack_require__(17);
-
-var _Velocity3 = _interopRequireDefault(_Velocity2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Sets the velocity property on initialized particles.
- *
- */
-var VectorVelocity = function (_Velocity) {
-  _inherits(VectorVelocity, _Velocity);
-
-  /**
-   * Constructs a VectorVelocity initializer.
-   *
-   * @param {Vector3D} vector3d - The directional vector for the velocity
-   * @param {number} theta - The theta angle to use
-   * @return void
-   */
-  function VectorVelocity(vector3d, theta) {
-    _classCallCheck(this, VectorVelocity);
-
-    /**
-     * @desc Velocity radius span.
-     * @type {Span}
-     */
-    var _this = _possibleConstructorReturn(this, (VectorVelocity.__proto__ || Object.getPrototypeOf(VectorVelocity)).call(this));
-
-    _this.radiusPan = (0, _math.createSpan)(1);
-
-    /**
-     * @desc Direction vector.
-     * @type {Vector3D}
-     */
-    _this.dir = vector3d.clone();
-
-    /**
-     * @desc Theta.
-     * @type {number}
-     */
-    _this.tha = theta * _constants.DR;
-
-    /**
-     * @desc Determines whether to use the directional vector or not.
-     * @type {boolean}
-     */
-    _this._useV = true;
-    return _this;
-  }
-
-  /**
-   * Creates a VectorVelocity initializer from JSON.
-   *
-   * @param {object} json - The JSON to construct the instance from.
-   * @param {number} json.x - The velocity x axis direction
-   * @param {number} json.y - The velocity y axis direction
-   * @param {number} json.z - The velocity z axis direction
-   * @param {number} json.theta - The velocity theta
-   * @return {VectorVelocity}
-   */
-
-
-  _createClass(VectorVelocity, null, [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var x = json.x,
-          y = json.y,
-          z = json.z,
-          theta = json.theta;
-
-
-      return new VectorVelocity(new _math.Vector3D(x, y, z), theta);
-    }
-  }]);
-
-  return VectorVelocity;
-}(_Velocity3.default);
-
-exports.default = VectorVelocity;
-module.exports = exports['default'];
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _PolarVelocity = __webpack_require__(64);
-
-Object.defineProperty(exports, 'PolarVelocity', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_PolarVelocity).default;
-  }
-});
-
-var _RadialVelocity = __webpack_require__(65);
-
-Object.defineProperty(exports, 'RadialVelocity', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_RadialVelocity).default;
-  }
-});
-
-var _VectorVelocity = __webpack_require__(66);
-
-Object.defineProperty(exports, 'VectorVelocity', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_VectorVelocity).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DEFAULT_MATERIAL_PROPERTIES = undefined;
-
-var _three = __webpack_require__(4);
-
-var DEFAULT_MATERIAL_PROPERTIES = exports.DEFAULT_MATERIAL_PROPERTIES = {
-  color: 0xff0000,
-  blending: _three.AdditiveBlending,
-  fog: true
-};
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var INITIALIZER_TYPE_BODY = exports.INITIALIZER_TYPE_BODY = 'Body';
-var INITIALIZER_TYPE_BODY_SPRITE = exports.INITIALIZER_TYPE_BODY_SPRITE = 'BodySprite';
-var INITIALIZER_TYPE_LIFE = exports.INITIALIZER_TYPE_LIFE = 'Life';
-var INITIALIZER_TYPE_MASS = exports.INITIALIZER_TYPE_MASS = 'Mass';
-var INITIALIZER_TYPE_POSITION = exports.INITIALIZER_TYPE_POSITION = 'Position';
-var INITIALIZER_TYPE_RADIUS = exports.INITIALIZER_TYPE_RADIUS = 'Radius';
-var INITIALIZER_TYPE_ZONE = exports.INITIALIZER_TYPE_ZONE = 'Zone';
-var INITIALIZER_TYPE_VECTOR_VELOCITY = exports.INITIALIZER_TYPE_VECTOR_VELOCITY = 'VectorVelocity';
-var INITIALIZER_TYPE_POLAR_VELOCITY = exports.INITIALIZER_TYPE_POLAR_VELOCITY = 'PolarVelocity';
-var INITIALIZER_TYPE_RADIAL_VELOCITY = exports.INITIALIZER_TYPE_RADIAL_VELOCITY = 'RadialVelocity';
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createArraySpan = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _MathUtils = __webpack_require__(14);
-
-var _MathUtils2 = _interopRequireDefault(_MathUtils);
-
-var _Span2 = __webpack_require__(30);
-
-var _Span3 = _interopRequireDefault(_Span2);
-
-var _lodash = __webpack_require__(86);
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Class for storing and interacting with an array of colours.
- *
- * NOTE Rename this to ColorSpan
- */
-var ArraySpan = function (_Span) {
-  _inherits(ArraySpan, _Span);
-
-  /**
-   * Constructs an ArraySpan instance.
-   *
-   * @param {string|array} colors - single or multiple colors,
-   * if the string 'random' is passed, a random color will be returned
-   * from the getValue method
-   * @return void
-   */
-  function ArraySpan() {
-    var colors = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'random';
-
-    _classCallCheck(this, ArraySpan);
-
-    /**
-     * @desc An array of colors
-     * @type {array}
-     */
-    var _this = _possibleConstructorReturn(this, (ArraySpan.__proto__ || Object.getPrototypeOf(ArraySpan)).call(this));
-
-    _this._arr = Array.isArray(colors) ? colors : [colors];
-    return _this;
-  }
-
-  /**
-   * Gets a color from the color array.
-   *
-   * @return {string} a hex color
-   */
-
-
-  _createClass(ArraySpan, [{
-    key: 'getValue',
-    value: function getValue() {
-      var color = _lodash2.default.sample(this._arr);
-
-      return this.isRandomColor(color) ? _MathUtils2.default.randomColor() : color;
-    }
-
-    /**
-     * Determines if the color supplied is 'random'.
-     *
-     * @param {string} color - the color to check
-     */
-
-  }, {
-    key: 'isRandomColor',
-    value: function isRandomColor(color) {
-      return typeof color === 'string' && color.toLowerCase() === 'random';
-    }
-  }]);
-
-  return ArraySpan;
-}(_Span3.default);
-
-/**
- * Attempts to create an ArraySpan from the colors provided.
- *
- * @param {mixed} colors - colors to try and create an ArraySpan from
- * @return {?ArraySpan}
- */
-
-
-exports.default = ArraySpan;
-var createArraySpan = exports.createArraySpan = function createArraySpan(colors) {
-  if (!colors) {
-    return null;
-  }
-
-  if (colors instanceof ArraySpan) {
-    return colors;
-  }
-
-  return new ArraySpan(colors);
-};
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Box = function () {
-  function Box(x, y, z, w, h, d) {
-    _classCallCheck(this, Box);
-
-    this.x = x;
-    this.y = y;
-    this.z = z;
-    this.width = w;
-    this.height = h;
-    this.depth = d;
-    this.bottom = this.y + this.height;
-    this.right = this.x + this.width;
-    this.right = this.x + this.width;
-  }
-
-  _createClass(Box, [{
-    key: "contains",
-    value: function contains(x, y, z) {
-      if (x <= this.right && x >= this.x && y <= this.bottom && y >= this.y && z <= this.depth && z >= this.z) return true;else return false;
-    }
-  }]);
-
-  return Box;
-}();
-
-exports.default = Box;
-module.exports = exports["default"];
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Vector3D = __webpack_require__(7);
-
-var _Vector3D2 = _interopRequireDefault(_Vector3D);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Polar3D = function () {
-  function Polar3D(radius, theta, phi) {
-    _classCallCheck(this, Polar3D);
-
-    this.radius = radius || 1;
-    this.phi = phi || 0;
-    this.theta = theta || 0;
-  }
-
-  _createClass(Polar3D, [{
-    key: 'set',
-    value: function set(radius, theta, phi) {
-      this.radius = radius || 1;
-      this.phi = phi || 0;
-      this.theta = theta || 0;
-
-      return this;
-    }
-  }, {
-    key: 'setRadius',
-    value: function setRadius(radius) {
-      this.radius = radius;
-
-      return this;
-    }
-  }, {
-    key: 'setPhi',
-    value: function setPhi(phi) {
-      this.phi = phi;
-
-      return this;
-    }
-  }, {
-    key: 'setTheta',
-    value: function setTheta(theta) {
-      this.theta = theta;
-
-      return this;
-    }
-  }, {
-    key: 'copy',
-    value: function copy(p) {
-      this.radius = p.radius;
-      this.phi = p.phi;
-      this.theta = p.theta;
-
-      return this;
-    }
-  }, {
-    key: 'toVector3D',
-    value: function toVector3D() {
-      return new _Vector3D2.default(this.getX(), this.getY(), this.getZ());
-    }
-  }, {
-    key: 'getX',
-    value: function getX() {
-      return this.radius * Math.sin(this.theta) * Math.cos(this.phi);
-    }
-  }, {
-    key: 'getY',
-    value: function getY() {
-      return -this.radius * Math.sin(this.theta) * Math.sin(this.phi);
-    }
-  }, {
-    key: 'getZ',
-    value: function getZ() {
-      return this.radius * Math.cos(this.theta);
-    }
-  }, {
-    key: 'normalize',
-    value: function normalize() {
-      this.radius = 1;
-
-      return this;
-    }
-  }, {
-    key: 'equals',
-    value: function equals(v) {
-      return v.radius === this.radius && v.phi === this.phi && v.theta === this.theta;
-    }
-  }, {
-    key: 'clear',
-    value: function clear() {
-      this.radius = 0.0;
-      this.phi = 0.0;
-      this.theta = 0.0;
-
-      return this;
-    }
-  }, {
-    key: 'clone',
-    value: function clone() {
-      return new Polar3D(this.radius, this.phi, this.theta);
-    }
-  }]);
-
-  return Polar3D;
-}();
-
-exports.default = Polar3D;
-module.exports = exports['default'];
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.integrate = undefined;
-
-var _constants = __webpack_require__(18);
-
-/**
- * Performs euler integration on the particle.
- *
- * @param {Particle} particle - The particle to integrate
- * @param {number} time - The factor of time to use
- * @param {number} damping - The damping to use
- * @return void
- */
-var eulerIntegration = function eulerIntegration(particle, time, damping) {
-  if (particle.sleep) {
-    return;
-  }
-
-  particle.old.p.copy(particle.p);
-  particle.old.v.copy(particle.v);
-  particle.a.scalar(1 / particle.mass);
-  particle.v.add(particle.a.scalar(time));
-  particle.p.add(particle.old.v.scalar(time));
-  damping && particle.v.scalar(damping);
-  particle.a.clear();
-};
-
-/**
- * Performs the chosen integration on the particle.
- * Defaults to euler integration.
- *
- * @param {Particle} particle - The particle to integrate
- * @param {number} time - The factor of time to use
- * @param {number} damping - The damping to use
- * @param {string} [type=INTEGRATION_TYPE_EULER] - The algorithm to use
- * @return void
- */
-var integrate = exports.integrate = function integrate(particle, time, damping) {
-  var type = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.INTEGRATION_TYPE_EULER;
-
-  switch (type) {
-    case _constants.INTEGRATION_TYPE_EULER:
-      eulerIntegration(particle, time, damping);
-      break;
-    default:
-      eulerIntegration(particle, time, damping);
-  }
-};
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _BaseRenderer2 = __webpack_require__(19);
-
-var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
-
-var _core = __webpack_require__(15);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var CustomRenderer = function (_BaseRenderer) {
-  _inherits(CustomRenderer, _BaseRenderer);
-
-  function CustomRenderer() {
-    _classCallCheck(this, CustomRenderer);
-
-    var _this = _possibleConstructorReturn(this, (CustomRenderer.__proto__ || Object.getPrototypeOf(CustomRenderer)).call(this));
-
-    _this.targetPool = new _core.Pool();
-    _this.materialPool = new _core.Pool();
-    return _this;
-  }
-
-  _createClass(CustomRenderer, [{
-    key: 'onProtonUpdate',
-    value: function onProtonUpdate() {}
-  }, {
-    key: 'onParticleCreated',
-    value: function onParticleCreated(particle) {} // eslint-disable-line
-
-  }, {
-    key: 'onParticleUpdate',
-    value: function onParticleUpdate(particle) {} // eslint-disable-line
-
-  }, {
-    key: 'onParticleDead',
-    value: function onParticleDead(particle) {} // eslint-disable-line
-
-  }]);
-
-  return CustomRenderer;
-}(_BaseRenderer3.default);
-
-exports.default = CustomRenderer;
-module.exports = exports['default'];
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _BaseRenderer2 = __webpack_require__(19);
-
-var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
-
-var _three = __webpack_require__(4);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var PointsRenderer = function (_BaseRenderer) {
-  _inherits(PointsRenderer, _BaseRenderer);
-
-  function PointsRenderer(ps) {
-    _classCallCheck(this, PointsRenderer);
-
-    var _this = _possibleConstructorReturn(this, (PointsRenderer.__proto__ || Object.getPrototypeOf(PointsRenderer)).call(this));
-
-    _this.points = ps;
-    return _this;
-  }
-
-  _createClass(PointsRenderer, [{
-    key: 'onProtonUpdate',
-    value: function onProtonUpdate() {}
-  }, {
-    key: 'onParticleCreated',
-    value: function onParticleCreated(particle) {
-      if (!particle.target) {
-        particle.target = new _three.Vector3();
-      }
-
-      particle.target.copy(particle.p);
-      this.points.geometry.vertices.push(particle.target);
-    }
-  }, {
-    key: 'onParticleUpdate',
-    value: function onParticleUpdate(particle) {
-      if (particle.target) {
-        particle.target.copy(particle.p);
-      }
-    }
-  }, {
-    key: 'onParticleDead',
-    value: function onParticleDead(particle) {
-      if (particle.target) {
-        var index = this.points.geometry.vertices.indexOf(particle.target);
-
-        if (index > -1) this.points.geometry.vertices.splice(index, 1);
-
-        particle.target = null;
-      }
-    }
-  }]);
-
-  return PointsRenderer;
-}(_BaseRenderer3.default);
-
-exports.default = PointsRenderer;
-module.exports = exports['default'];
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _three = __webpack_require__(4);
-
-var _MeshRenderer2 = __webpack_require__(31);
-
-var _MeshRenderer3 = _interopRequireDefault(_MeshRenderer2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var SpriteRenderer = function (_MeshRenderer) {
-  _inherits(SpriteRenderer, _MeshRenderer);
-
-  function SpriteRenderer(container) {
-    _classCallCheck(this, SpriteRenderer);
-
-    var _this = _possibleConstructorReturn(this, (SpriteRenderer.__proto__ || Object.getPrototypeOf(SpriteRenderer)).call(this, container));
-
-    _this._body = new _three.Sprite(new _three.SpriteMaterial({ color: 0xffffff }));
-    return _this;
-  }
-
-  _createClass(SpriteRenderer, [{
-    key: 'scale',
-    value: function scale(particle) {
-      particle.target.scale.set(particle.scale * particle.radius, particle.scale * particle.radius, 1);
-    }
-  }]);
-
-  return SpriteRenderer;
-}(_MeshRenderer3.default);
-
-exports.default = SpriteRenderer;
-module.exports = exports['default'];
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var RENDERER_TYPE_CUSTOM = exports.RENDERER_TYPE_CUSTOM = 'CustomRenderer';
-var RENDERER_TYPE_SPRITE = exports.RENDERER_TYPE_SPRITE = 'SpriteRenderer';
-var RENDERER_TYPE_MESH = exports.RENDERER_TYPE_MESH = 'MeshRenderer';
-var RENDERER_TYPE_POINTS = exports.RENDERER_TYPE_POINTS = 'PointsRenderer';
-
-/***/ }),
-/* 78 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
-  getRGB: function getRGB(color) {
-    var rgb = {};
-
-    if (typeof color === 'number') {
-      hex = Math.floor(color);
-      rgb.r = (color >> 16 & 255) / 255;
-      rgb.g = (color >> 8 & 255) / 255;
-      rgb.b = (color & 255) / 255;
-    } else if (typeof color === 'string') {
-      var m;
-
-      if (m = /^(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(,\s*([0-9]*\.?[0-9]+)\s*)?$/.exec(color)) {
-        rgb.r = Math.min(255, parseInt(m[1], 10)) / 255;
-        rgb.g = Math.min(255, parseInt(m[2], 10)) / 255;
-        rgb.b = Math.min(255, parseInt(m[3], 10)) / 255;
-      } else if (m = /^\#([A-Fa-f0-9]+)$/.exec(color)) {
-        var hex = m[1];
-
-        rgb.r = parseInt(hex.charAt(0) + hex.charAt(1), 16) / 255;
-        rgb.g = parseInt(hex.charAt(2) + hex.charAt(3), 16) / 255;
-        rgb.b = parseInt(hex.charAt(4) + hex.charAt(5), 16) / 255;
-      }
-    } else {
-      rgb.r = color.r;
-      rgb.g = color.g;
-      rgb.b = color.b;
-    }
-
-    return rgb;
-  }
-};
-module.exports = exports['default'];
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _MathUtils = __webpack_require__(14);
-
-var _MathUtils2 = _interopRequireDefault(_MathUtils);
-
-var _Util = __webpack_require__(6);
-
-var _Util2 = _interopRequireDefault(_Util);
-
-var _Zone2 = __webpack_require__(8);
-
-var _Zone3 = _interopRequireDefault(_Zone2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var BoxZone = function (_Zone) {
-  _inherits(BoxZone, _Zone);
-
-  /**
-   * BoxZone is a box zone
-   * @param {Number|Vector3D} x - the position's x value or a Vector3D Object
-   * @param {Number} y - the position's y value
-   * @param {Number} z - the position's z value
-   * @param {Number} w - the Box's width
-   * @param {Number} h - the Box's height
-   * @param {Number} d - the Box's depth
-   * @example
-   * var boxZone = new BoxZone(0,0,0,50,50,50);
-   * or
-   * var boxZone = new BoxZone(new Vector3D(0,0,0), 50, 50, 50);
-   * @extends {Zone}
-   * @constructor
-   */
-  function BoxZone(a, b, c, d, e, f) {
-    _classCallCheck(this, BoxZone);
-
-    // TODO this reassigning of arguments is pretty dangerous, need to fix it.
-    // eslint-disable-next-line
-    var _this = _possibleConstructorReturn(this, (BoxZone.__proto__ || Object.getPrototypeOf(BoxZone)).call(this));
-
-    var x, y, z, w, h, d;
-
-    if (_Util2.default.isUndefined(b, c, d, e, f)) {
-      x = y = z = 0;
-      w = h = d = a || 100;
-    } else if (_Util2.default.isUndefined(d, e, f)) {
-      x = y = z = 0;
-      w = a;
-      h = b;
-      d = c;
-    } else {
-      x = a;
-      y = b;
-      z = c;
-      w = d;
-      h = e;
-      d = f;
-    }
-
-    _this.x = x;
-    _this.y = y;
-    _this.z = z;
-    _this.width = w;
-    _this.height = h;
-    _this.depth = d;
-    // TODO Set this via an argument to the constructor
-    _this.friction = 0.85;
-    // TODO Set this via an argument to the constructor
-    _this.max = 6;
-    return _this;
-  }
-
-  /**
-   * Returns true to indicate this is a BoxZone.
-   *
-   * @return {boolean}
-   */
-
-
-  _createClass(BoxZone, [{
-    key: 'isBoxZone',
-    value: function isBoxZone() {
-      return true;
-    }
-  }, {
-    key: 'getPosition',
-    value: function getPosition() {
-      this.vector.x = this.x + _MathUtils2.default.randomAToB(-0.5, 0.5) * this.width;
-      this.vector.y = this.y + _MathUtils2.default.randomAToB(-0.5, 0.5) * this.height;
-      this.vector.z = this.z + _MathUtils2.default.randomAToB(-0.5, 0.5) * this.depth;
-
-      return this.vector;
-    }
-  }, {
-    key: '_dead',
-    value: function _dead(particle) {
-      if (particle.p.x + particle.radius < this.x - this.width / 2) particle.dead = true;else if (particle.p.x - particle.radius > this.x + this.width / 2) particle.dead = true;
-
-      if (particle.p.y + particle.radius < this.y - this.height / 2) particle.dead = true;else if (particle.p.y - particle.radius > this.y + this.height / 2) particle.dead = true;
-
-      if (particle.p.z + particle.radius < this.z - this.depth / 2) particle.dead = true;else if (particle.p.z - particle.radius > this.z + this.depth / 2) particle.dead = true;
-    }
-  }, {
-    key: '_bound',
-    value: function _bound(particle) {
-      if (particle.p.x - particle.radius < this.x - this.width / 2) {
-        particle.p.x = this.x - this.width / 2 + particle.radius;
-        particle.v.x *= -this.friction;
-        this._static(particle, 'x');
-      } else if (particle.p.x + particle.radius > this.x + this.width / 2) {
-        particle.p.x = this.x + this.width / 2 - particle.radius;
-        particle.v.x *= -this.friction;
-        this._static(particle, 'x');
-      }
-
-      if (particle.p.y - particle.radius < this.y - this.height / 2) {
-        particle.p.y = this.y - this.height / 2 + particle.radius;
-        particle.v.y *= -this.friction;
-        this._static(particle, 'y');
-      } else if (particle.p.y + particle.radius > this.y + this.height / 2) {
-        particle.p.y = this.y + this.height / 2 - particle.radius;
-        particle.v.y *= -this.friction;
-        this._static(particle, 'y');
-      }
-
-      if (particle.p.z - particle.radius < this.z - this.depth / 2) {
-        particle.p.z = this.z - this.depth / 2 + particle.radius;
-        particle.v.z *= -this.friction;
-        this._static(particle, 'z');
-      } else if (particle.p.z + particle.radius > this.z + this.depth / 2) {
-        particle.p.z = this.z + this.depth / 2 - particle.radius;
-        particle.v.z *= -this.friction;
-        this._static(particle, 'z');
-      }
-    }
-  }, {
-    key: '_static',
-    value: function _static(particle, axis) {
-      if (particle.v[axis] * particle.a[axis] > 0) return;
-      if (Math.abs(particle.v[axis]) < Math.abs(particle.a[axis]) * 0.0167 * this.max) {
-        particle.v[axis] = 0;
-        particle.a[axis] = 0;
-      }
-    }
-  }, {
-    key: '_cross',
-    value: function _cross(particle) {
-      if (particle.p.x + particle.radius < this.x - this.width / 2 && particle.v.x <= 0) particle.p.x = this.x + this.width / 2 + particle.radius;else if (particle.p.x - particle.radius > this.x + this.width / 2 && particle.v.x >= 0) particle.p.x = this.x - this.width / 2 - particle.radius;
-
-      if (particle.p.y + particle.radius < this.y - this.height / 2 && particle.v.y <= 0) particle.p.y = this.y + this.height / 2 + particle.radius;else if (particle.p.y - particle.radius > this.y + this.height / 2 && particle.v.y >= 0) particle.p.y = this.y - this.height / 2 - particle.radius;
-
-      if (particle.p.z + particle.radius < this.z - this.depth / 2 && particle.v.z <= 0) particle.p.z = this.z + this.depth / 2 + particle.radius;else if (particle.p.z - particle.radius > this.z + this.depth / 2 && particle.v.z >= 0) particle.p.z = this.z - this.depth / 2 - particle.radius;
-    }
-  }]);
-
-  return BoxZone;
-}(_Zone3.default);
-
-exports.default = BoxZone;
-module.exports = exports['default'];
-
-/***/ }),
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Vector3D = __webpack_require__(7);
-
-var _Vector3D2 = _interopRequireDefault(_Vector3D);
-
-var _Zone2 = __webpack_require__(8);
-
-var _Zone3 = _interopRequireDefault(_Zone2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var LineZone = function (_Zone) {
-  _inherits(LineZone, _Zone);
-
-  /**
-   * LineZone is a 3d line zone
-   * @param {Number|Vector3D} x1 - the line's start point of x value or a Vector3D Object
-   * @param {Number|Vector3D} y1 - the line's start point of y value or a Vector3D Object
-   * @param {Number} z1 - the line's start point of z value
-   * @param {Number} x2 - the line's end point of x value
-   * @param {Number} y2 - the line's end point of y value
-   * @param {Number} z2 - the line's end point of z value
-   * @example
-   * var lineZone = new Proton.LineZone(0,0,0,100,100,0);
-   * or
-   * var lineZone = new Proton.LineZone(new Proton.Vector3D(0,0,0),new Proton.Vector3D(100,100,0));
-   * @extends {Zone}
-   * @constructor
-   */
-  function LineZone(x1, y1, z1, x2, y2, z2) {
-    _classCallCheck(this, LineZone);
-
-    var _this = _possibleConstructorReturn(this, (LineZone.__proto__ || Object.getPrototypeOf(LineZone)).call(this));
-
-    if (x1 instanceof _Vector3D2.default) {
-      _this.x1 = x1.x;
-      _this.y1 = x1.y;
-      _this.z1 = x1.z;
-
-      _this.x2 = x2.x;
-      _this.y2 = x2.y;
-      _this.z2 = x2.z;
-    } else {
-      _this.x1 = x1;
-      _this.y1 = y1;
-      _this.z1 = z1;
-
-      _this.x2 = x2;
-      _this.y2 = y2;
-      _this.z2 = z2;
-    }
-
-    _this.supportsCrossing = false;
-    return _this;
-  }
-
-  /**
-   * Returns true to indicate this is a LineZone.
-   *
-   * @return {boolean}
-   */
-
-
-  _createClass(LineZone, [{
-    key: 'isLineZone',
-    value: function isLineZone() {
-      return true;
-    }
-  }, {
-    key: 'getPosition',
-    value: function getPosition() {
-      this.random = Math.random();
-      this.vector.x = this.x1 + this.random * (this.x2 - this.x1);
-      this.vector.y = this.y1 + this.random * (this.y2 - this.y1);
-      this.vector.z = this.z1 + this.random * (this.z2 - this.z1);
-
-      return this.vector;
-    }
-  }]);
-
-  return LineZone;
-}(_Zone3.default);
-
-exports.default = LineZone;
-module.exports = exports['default'];
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _three = __webpack_require__(4);
-
-var _Zone2 = __webpack_require__(8);
-
-var _Zone3 = _interopRequireDefault(_Zone2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Uses a three Geometry to determine the zone parameters.
- *
- */
-var MeshZone = function (_Zone) {
-  _inherits(MeshZone, _Zone);
-
-  /**
-   * @constructs {MeshZone}
-   *
-   * TODO BREAKING_CHANGE remove support for nested MeshZones and only accept
-   * Geometry as the first argument
-   *
-   * @param {Geometry} geometry - the geometry that will determine the zone bounds
-   * @param {number} scale - the zone scale
-   * @return void
-   */
-  function MeshZone(geometry) {
-    var scale = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-
-    _classCallCheck(this, MeshZone);
-
-    var _this = _possibleConstructorReturn(this, (MeshZone.__proto__ || Object.getPrototypeOf(MeshZone)).call(this));
-
-    if (geometry instanceof _three.Geometry) {
-      _this.geometry = geometry;
-    } else {
-      _this.geometry = geometry.geometry;
-    }
-
-    _this.scale = scale;
-    _this.supportsCrossing = false;
-    return _this;
-  }
-
-  /**
-   * Returns true to indicate this is a MeshZone.
-   *
-   * @return {boolean}
-   */
-
-
-  _createClass(MeshZone, [{
-    key: 'isMeshZone',
-    value: function isMeshZone() {
-      return true;
-    }
-  }, {
-    key: 'getPosition',
-    value: function getPosition() {
-      var vertices = this.geometry.vertices;
-      var rVector = vertices[vertices.length * Math.random() >> 0];
-
-      this.vector.x = rVector.x * this.scale;
-      this.vector.y = rVector.y * this.scale;
-      this.vector.z = rVector.z * this.scale;
-
-      return this.vector;
-    }
-  }]);
-
-  return MeshZone;
-}(_Zone3.default);
-
-exports.default = MeshZone;
-module.exports = exports['default'];
-
-/***/ }),
-/* 82 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Util = __webpack_require__(6);
-
-var _Util2 = _interopRequireDefault(_Util);
-
-var _Zone2 = __webpack_require__(8);
-
-var _Zone3 = _interopRequireDefault(_Zone2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var PointZone = function (_Zone) {
-  _inherits(PointZone, _Zone);
-
-  /**
-   * PointZone is a point zone
-   * @param {Number|Vector3D} x - the center's x value or a Vector3D Object
-   * @param {Number} y - the center's y value
-   * @param {Number} z - the center's z value
-   * @example
-   * var pointZone = new Proton.PointZone(0,30,10);
-   * or
-   * var pointZone = new Proton.PointZone(new Proton.Vector3D(0,30,10));
-   * @extends {Zone}
-   * @constructor
-   */
-  function PointZone(a, b, c) {
-    _classCallCheck(this, PointZone);
-
-    // TODO see below, these should probably be assigned properly
-    // eslint-disable-next-line
-    var _this = _possibleConstructorReturn(this, (PointZone.__proto__ || Object.getPrototypeOf(PointZone)).call(this));
-
-    var x, y, z;
-
-    if (_Util2.default.isUndefined(a, b, c)) {
-      x = y = z = 0;
-    } else {
-      x = a;
-      y = b;
-      z = c;
-    }
-
-    _this.x = x;
-
-    // TODO shouldn't this be set to y?
-    _this.y = x;
-
-    // TODO shouldn't this be set to z?
-    _this.z = x;
-    _this.supportsCrossing = false;
-    return _this;
-  }
-
-  /**
-   * Returns true to indicate this is a PointZone.
-   *
-   * @return {boolean}
-   */
-
-
-  _createClass(PointZone, [{
-    key: 'isPointZone',
-    value: function isPointZone() {
-      return true;
-    }
-  }, {
-    key: 'getPosition',
-    value: function getPosition() {
-      this.vector.x = this.x;
-      this.vector.y = this.y;
-      this.vector.z = this.z;
-
-      return this.vector;
-    }
-  }]);
-
-  return PointZone;
-}(_Zone3.default);
-
-exports.default = PointZone;
-module.exports = exports['default'];
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _THREEUtil = __webpack_require__(21);
-
-var _THREEUtil2 = _interopRequireDefault(_THREEUtil);
-
-var _Vector3D = __webpack_require__(7);
-
-var _Vector3D2 = _interopRequireDefault(_Vector3D);
-
-var _Zone2 = __webpack_require__(8);
-
-var _Zone3 = _interopRequireDefault(_Zone2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ScreenZone = function (_Zone) {
-  _inherits(ScreenZone, _Zone);
-
-  /**
-   * ScreenZone is a 3d line zone
-   * @param {Number|Vector3D} x1 - the line's start point of x value or a Vector3D Object
-   * @param {Number|Vector3D} y1 - the line's start point of y value or a Vector3D Object
-   * @param {Number} z1 - the line's start point of z value
-   * @param {Number} x2 - the line's end point of x value
-   * @param {Number} y2 - the line's end point of y value
-   * @param {Number} z2 - the line's end point of z value
-   * @example
-   * var lineZone = new ScreenZone(0,0,0,100,100,0);
-   * or
-   * var lineZone = new ScreenZone(new Vector3D(0,0,0),new Vector3D(100,100,0));
-   * @extends {Zone}
-   * @constructor
-   */
-  function ScreenZone(camera, renderer, dis, dir) {
-    _classCallCheck(this, ScreenZone);
-
-    var _this = _possibleConstructorReturn(this, (ScreenZone.__proto__ || Object.getPrototypeOf(ScreenZone)).call(this));
-
-    _this.camera = camera;
-    _this.renderer = renderer;
-    _this.dis = dis || 20;
-    dir = dir || '1234';
-
-    for (var i = 1; i < 5; i++) {
-      _this['d' + i] = dir.indexOf(i + '') >= 0;
-    }_this.name = 'ScreenZone';
-    return _this;
-  }
-
-  /**
-   * Returns true to indicate this is a ScreenZone.
-   *
-   * @return {boolean}
-   */
-
-
-  _createClass(ScreenZone, [{
-    key: 'isScreenZone',
-    value: function isScreenZone() {
-      return true;
-    }
-  }, {
-    key: '_dead',
-    value: function _dead(particle) {
-      var pos = _THREEUtil2.default.toScreenPos(particle.p, this.camera, this.renderer.domElement);
-      var canvas = this.renderer.domElement;
-
-      if (pos.y + particle.radius < -this.dis && this.d1) {
-        particle.dead = true;
-      } else if (pos.y - particle.radius > canvas.height + this.dis && this.d3) {
-        particle.dead = true;
-      }
-
-      if (pos.x + particle.radius < -this.dis && this.d4) {
-        particle.dead = true;
-      } else if (pos.x - particle.radius > canvas.width + this.dis && this.d2) {
-        particle.dead = true;
-      }
-    }
-  }, {
-    key: '_bound',
-    value: function _bound(particle) {
-      var pos = _THREEUtil2.default.toScreenPos(particle.p, this.camera, this.renderer.domElement);
-      var canvas = this.renderer.domElement;
-
-      if (pos.y + particle.radius < -this.dis) {
-        particle.v.y *= -1;
-      } else if (pos.y - particle.radius > canvas.height + this.dis) {
-        particle.v.y *= -1;
-      }
-
-      if (pos.x + particle.radius < -this.dis) {
-        particle.v.y *= -1;
-      } else if (pos.x - particle.radius > canvas.width + this.dis) {
-        particle.v.y *= -1;
-      }
-    }
-  }]);
-
-  return ScreenZone;
-}(_Zone3.default);
-
-exports.default = ScreenZone;
-
-
-ScreenZone.prototype.getPosition = function () {
-  var vec2 = new _Vector3D2.default(),
-      canvas;
-
-  return function () {
-    canvas = this.renderer.domElement;
-    vec2.x = Math.random() * canvas.width;
-    vec2.y = Math.random() * canvas.height;
-    this.vector.copy(_THREEUtil2.default.toSpacePos(vec2, this.camera, canvas));
-
-    return this.vector;
-  };
-}();
-
-ScreenZone.prototype._cross = function () {
-  var vec2 = new _Vector3D2.default();
-
-  return function (particle) {
-    var pos = _THREEUtil2.default.toScreenPos(particle.p, this.camera, this.renderer.domElement);
-    var canvas = this.renderer.domElement;
-
-    if (pos.y + particle.radius < -this.dis) {
-      vec2.x = pos.x;
-      vec2.y = canvas.height + this.dis + particle.radius;
-      particle.p.y = _THREEUtil2.default.toSpacePos(vec2, this.camera, canvas).y;
-    } else if (pos.y - particle.radius > canvas.height + this.dis) {
-      vec2.x = pos.x;
-      vec2.y = -this.dis - particle.radius;
-      particle.p.y = _THREEUtil2.default.toSpacePos(vec2, this.camera, canvas).y;
-    }
-
-    if (pos.x + particle.radius < -this.dis) {
-      vec2.y = pos.y;
-      vec2.x = canvas.width + this.dis + particle.radius;
-      particle.p.x = _THREEUtil2.default.toSpacePos(vec2, this.camera, canvas).x;
-    } else if (pos.x - particle.radius > canvas.width + this.dis) {
-      vec2.y = pos.y;
-      vec2.x = -this.dis - particle.radius;
-      particle.p.x = _THREEUtil2.default.toSpacePos(vec2, this.camera, canvas).x;
-    }
-  };
-}();
-module.exports = exports['default'];
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _constants = __webpack_require__(2);
-
-var _Util = __webpack_require__(6);
-
-var _Util2 = _interopRequireDefault(_Util);
-
-var _Vector3D = __webpack_require__(7);
-
-var _Vector3D2 = _interopRequireDefault(_Vector3D);
-
-var _Zone2 = __webpack_require__(8);
-
-var _Zone3 = _interopRequireDefault(_Zone2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * A spherical zone for particles to be emitted within.
- *
- */
-var SphereZone = function (_Zone) {
-  _inherits(SphereZone, _Zone);
-
-  /**
-   * @constructs {SphereZone}
-   *
-   * @param {number} centerX - the sphere's center x coordinate
-   * @param {number} centerY - the sphere's center y coordinate
-   * @param {number} centerZ - the sphere's center z coordinate
-   * @param {number} radius - the sphere's radius value
-   * @return void
-   */
-  function SphereZone(centerX, centerY, centerZ, radius) {
-    _classCallCheck(this, SphereZone);
-
-    // TODO see below, these should probably be assigned properly
-    // eslint-disable-next-line
-    var _this = _possibleConstructorReturn(this, (SphereZone.__proto__ || Object.getPrototypeOf(SphereZone)).call(this));
-
-    var x = void 0,
-        y = void 0,
-        z = void 0,
-        r = void 0;
-
-    if (_Util2.default.isUndefined(centerY, centerZ, radius)) {
-      x = y = z = 0;
-      r = centerX || 100;
-    } else {
-      x = centerX;
-      y = centerY;
-      z = centerZ;
-      r = radius;
-    }
-
-    _this.x = x;
-
-    // TODO shouldn't this be set to y?
-    _this.y = x;
-
-    // TODO shouldn't this be set to z?
-    _this.z = x;
-    _this.radius = r;
-    _this.the = _this.phi = 0;
-    return _this;
-  }
-
-  /**
-   * Returns true to indicate this is a SphereZone.
-   *
-   * @return {boolean}
-   */
-
-
-  _createClass(SphereZone, [{
-    key: 'isSphereZone',
-    value: function isSphereZone() {
-      return true;
-    }
-
-    /**
-     * Sets the particle to dead if the particle collides with the sphere.
-     *
-     * @param {object} particle
-     * @return void
-     */
-
-  }, {
-    key: '_dead',
-    value: function _dead(particle) {
-      var d = particle.p.distanceTo(this);
-
-      if (d - particle.radius > this.radius) particle.dead = true;
-    }
-
-    /**
-     * Warns that this zone does not support the _cross method.
-     *
-     * @return void
-     */
-
-  }, {
-    key: '_cross',
-    value: function _cross() {
-      console.warn(this.constructor.name + ' does not support the _cross method');
-    }
-  }]);
-
-  return SphereZone;
-}(_Zone3.default);
-
-exports.default = SphereZone;
-
-
-SphereZone.prototype.getPosition = function () {
-  var tha, phi, r;
-
-  return function () {
-    this.random = Math.random();
-
-    r = this.random * this.radius;
-    tha = _constants.PI * Math.random(); //[0-pi]
-    phi = _constants.PI * 2 * Math.random(); //[0-2pi]
-
-    this.vector.x = this.x + r * Math.sin(tha) * Math.cos(phi);
-    this.vector.y = this.y + r * Math.sin(phi) * Math.sin(tha);
-    this.vector.z = this.z + r * Math.cos(tha);
-
-    return this.vector;
-  };
-}();
-
-SphereZone.prototype._bound = function () {
-  var normal = new _Vector3D2.default(),
-      v = new _Vector3D2.default(),
-      k;
-
-  return function (particle) {
-    var d = particle.p.distanceTo(this);
-
-    if (d + particle.radius >= this.radius) {
-      normal.copy(particle.p).sub(this).normalize();
-      v.copy(particle.v);
-      k = 2 * v.dot(normal);
-      particle.v.sub(normal.scalar(k));
-    }
-  };
-}();
-module.exports = exports['default'];
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var ZONE_TYPE_BOX = exports.ZONE_TYPE_BOX = 'BoxZone';
-var ZONE_TYPE_LINE = exports.ZONE_TYPE_LINE = 'LineZone';
-var ZONE_TYPE_MESH = exports.ZONE_TYPE_MESH = 'MeshZone';
-var ZONE_TYPE_POINT = exports.ZONE_TYPE_POINT = 'PointZone';
-var ZONE_TYPE_SCREEN = exports.ZONE_TYPE_SCREEN = 'ScreenZone';
-var ZONE_TYPE_SPHERE = exports.ZONE_TYPE_SPHERE = 'SphereZone';
-
-/***/ }),
-/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -74666,10 +69290,5486 @@ var ZONE_TYPE_SPHERE = exports.ZONE_TYPE_SPHERE = 'SphereZone';
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(90), __webpack_require__(91)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(91), __webpack_require__(92)(module)))
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Debug = __webpack_require__(50);
+
+Object.defineProperty(exports, 'Debug', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Debug).default;
+  }
+});
+
+var _log = __webpack_require__(52);
+
+Object.defineProperty(exports, 'log', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_log).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _BehaviourEmitter = __webpack_require__(53);
+
+Object.defineProperty(exports, 'BehaviourEmitter', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_BehaviourEmitter).default;
+  }
+});
+
+var _FollowEmitter = __webpack_require__(54);
+
+Object.defineProperty(exports, 'FollowEmitter', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_FollowEmitter).default;
+  }
+});
+
+var _Emitter = __webpack_require__(13);
+
+Object.defineProperty(exports, 'Emitter', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Emitter).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _CustomRenderer = __webpack_require__(76);
+
+Object.defineProperty(exports, 'CustomRenderer', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_CustomRenderer).default;
+  }
+});
+
+var _MeshRenderer = __webpack_require__(31);
+
+Object.defineProperty(exports, 'MeshRenderer', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_MeshRenderer).default;
+  }
+});
+
+var _PointsRenderer = __webpack_require__(77);
+
+Object.defineProperty(exports, 'PointsRenderer', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_PointsRenderer).default;
+  }
+});
+
+var _SpriteRenderer = __webpack_require__(78);
+
+Object.defineProperty(exports, 'SpriteRenderer', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_SpriteRenderer).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _math = __webpack_require__(0);
+
+var _Behaviour2 = __webpack_require__(3);
+
+var _Behaviour3 = _interopRequireDefault(_Behaviour2);
+
+var _constants = __webpack_require__(10);
+
+var _ease = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Behaviour that applies an alpha transition effect to particles.
+ *
+ */
+var Alpha = function (_Behaviour) {
+  _inherits(Alpha, _Behaviour);
+
+  /**
+   * Constructs an Alpha behaviour instance.
+   *
+   * @param {number} alphaA - The starting alpha value
+   * @param {?number} alphaB - The ending alpha value
+   * @param {number} life - The life of the behaviour
+   * @param {function} easing - The easing equation to use for transforms
+   * @return void
+   */
+  function Alpha() {
+    var alphaA = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+    var alphaB = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    var life = arguments[2];
+    var easing = arguments[3];
+
+    _classCallCheck(this, Alpha);
+
+    /**
+     * @desc The starting alpha value
+     * @type {number|Span}
+     */
+    var _this = _possibleConstructorReturn(this, (Alpha.__proto__ || Object.getPrototypeOf(Alpha)).call(this, life, easing));
+
+    _this.alphaA = alphaA;
+
+    /**
+     * @desc The ending alpha value
+     * @type {number|Span}
+     */
+    _this.alphaB = alphaB;
+
+    _this.reset(alphaA, alphaB);
+    return _this;
+  }
+
+  /**
+   * Gets the _same property which determines if the alpha are the same.
+   *
+   * @return {boolean}
+   */
+
+
+  _createClass(Alpha, [{
+    key: 'reset',
+
+
+    /**
+     * Resets the behaviour properties.
+     *
+     * @param {number} alphaA - the starting alpha value
+     * @param {?number} alphaB - the ending alpha value
+     * @param {number} life - the life of the behaviour
+     * @param {function} easing - the easing equation to use for transforms
+     * @return void
+     */
+    value: function reset() {
+      var alphaA = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      var alphaB = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var life = arguments[2];
+      var easing = arguments[3];
+
+      this.same = alphaB === null || alphaB === undefined ? true : false;
+      this.alphaA = (0, _math.createSpan)(alphaA);
+      this.alphaB = (0, _math.createSpan)(alphaB);
+
+      life && _get(Alpha.prototype.__proto__ || Object.getPrototypeOf(Alpha.prototype), 'reset', this).call(this, life, easing);
+    }
+
+    /**
+     * Initializes the behaviour on a particle.
+     *
+     * @param {object} particle - the particle to initialize the behaviour on
+     * @return void
+     */
+
+  }, {
+    key: 'initialize',
+    value: function initialize(particle) {
+      particle.useAlpha = true;
+      particle.transform.alphaA = this.alphaA.getValue();
+
+      particle.transform.alphaB = this.same ? particle.transform.alphaA : this.alphaB.getValue();
+    }
+
+    /**
+     * Applies the behaviour to the particle.
+     *
+     * @param {object} particle - the particle to apply the behaviour to
+     * @param {number} time - engine time
+     * @param {integer} index - the particle index
+     * @return void
+     */
+
+  }, {
+    key: 'applyBehaviour',
+    value: function applyBehaviour(particle, time, index) {
+      _get(Alpha.prototype.__proto__ || Object.getPrototypeOf(Alpha.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+
+      particle.alpha = _math.MathUtils.lerp(particle.transform.alphaA, particle.transform.alphaB, this.energy);
+
+      if (particle.alpha < _constants.PARTICLE_ALPHA_THRESHOLD) {
+        particle.alpha = 0;
+      }
+    }
+
+    /**
+     * Creates a Body initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.alphaA - The starting alpha value
+     * @property {number} json.alphaB - The ending alpha value
+     * @property {number} json.life - The life of the behaviour
+     * @property {string} json.easing - The easing equation to use for transforms
+     * @return {Body}
+     */
+
+  }, {
+    key: 'same',
+    get: function get() {
+      return this._same;
+    }
+
+    /**
+     * Sets the _same property which determines if the alpha are the same.
+     *
+     * @param {boolean} same
+     * @return {boolean}
+     */
+    ,
+    set: function set(same) {
+      /**
+       * @type {boolean}
+       */
+      this._same = same;
+    }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var alphaA = json.alphaA,
+          alphaB = json.alphaB,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Alpha(alphaA, alphaB, life, (0, _ease.getEasingByName)(easing));
+    }
+  }]);
+
+  return Alpha;
+}(_Behaviour3.default);
+
+exports.default = Alpha;
+module.exports = exports['default'];
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _Behaviour2 = __webpack_require__(3);
+
+var _Behaviour3 = _interopRequireDefault(_Behaviour2);
+
+var _math = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Collision = function (_Behaviour) {
+  _inherits(Collision, _Behaviour);
+
+  /**
+   * The Scale class is the base for the other Behaviour
+   *
+   * @class Behaviour
+   * @constructor
+   */
+  //can use Collision(emitter,true,function(){}) or Collision();
+  function Collision(emitter, useMass, callback, life, easing) {
+    _classCallCheck(this, Collision);
+
+    var _this = _possibleConstructorReturn(this, (Collision.__proto__ || Object.getPrototypeOf(Collision)).call(this, life, easing));
+
+    _this.reset(emitter, useMass, callback);
+    _this.name = 'Collision';
+    return _this;
+  }
+
+  _createClass(Collision, [{
+    key: 'reset',
+    value: function reset(emitter, useMass, callback, life, easing) {
+      this.emitter = emitter;
+      this.useMass = useMass;
+      this.callback = callback;
+      this.particles = [];
+      this.delta = new _math.Vector3D();
+
+      life && _get(Collision.prototype.__proto__ || Object.getPrototypeOf(Collision.prototype), 'reset', this).call(this, life, easing);
+    }
+  }, {
+    key: 'applyBehaviour',
+    value: function applyBehaviour(particle, time, index) {
+      var particles = this.emitter ? this.emitter.particles.slice(index) : this.particles.slice(index);
+      var otherParticle, lengthSq, overlap, distance;
+      var averageMass1, averageMass2;
+
+      var i = particles.length;
+
+      while (i--) {
+        otherParticle = particles[i];
+        if (otherParticle == particle) continue;
+
+        this.delta.copy(otherParticle.p).sub(particle.p);
+        lengthSq = this.delta.lengthSq();
+        distance = particle.radius + otherParticle.radius;
+
+        if (lengthSq <= distance * distance) {
+          overlap = distance - Math.sqrt(lengthSq);
+          overlap += 0.5;
+
+          averageMass1 = this._getAverageMass(particle, otherParticle);
+          averageMass2 = this._getAverageMass(otherParticle, particle);
+
+          particle.p.add(this.delta.clone().normalize().scalar(overlap * -averageMass1));
+          otherParticle.p.add(this.delta.normalize().scalar(overlap * averageMass2));
+
+          this.callback && this.callback(particle, otherParticle);
+        }
+      }
+    }
+  }, {
+    key: '_getAverageMass',
+    value: function _getAverageMass(aPartcile, bParticle) {
+      return this.useMass ? bParticle.mass / (aPartcile.mass + bParticle.mass) : 0.5;
+    }
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(json) {// eslint-disable-line
+      // TODO
+    }
+  }]);
+
+  return Collision;
+}(_Behaviour3.default);
+
+exports.default = Collision;
+module.exports = exports['default'];
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _math = __webpack_require__(0);
+
+var _Behaviour2 = __webpack_require__(3);
+
+var _Behaviour3 = _interopRequireDefault(_Behaviour2);
+
+var _utils = __webpack_require__(9);
+
+var _ease = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * A behaviour which mutates the color of a particle over time.
+ *
+ */
+var Color = function (_Behaviour) {
+  _inherits(Color, _Behaviour);
+
+  /**
+   * Constructs a Color behaviour instance.
+   *
+   * @param {number|string} colorA - the starting color
+   * @param {number|string} colorB - the ending color
+   * @param {number} life - the life of the particle
+   * @param {function} easing - The behaviour's decaying trend
+   */
+  function Color(colorA, colorB, life, easing) {
+    _classCallCheck(this, Color);
+
+    var _this = _possibleConstructorReturn(this, (Color.__proto__ || Object.getPrototypeOf(Color)).call(this, life, easing));
+
+    _this.reset(colorA, colorB);
+    _this.name = 'Color';
+    return _this;
+  }
+
+  /**
+   * Gets the _same property which determines if the alpha are the same.
+   *
+   * @return {boolean}
+   */
+
+
+  _createClass(Color, [{
+    key: 'reset',
+    value: function reset(colorA, colorB, life, easing) {
+      this.same = colorB === null || colorB === undefined ? true : false;
+
+      this.colorA = (0, _math.createColorSpan)(colorA);
+      this.colorB = (0, _math.createColorSpan)(colorB);
+      life && _get(Color.prototype.__proto__ || Object.getPrototypeOf(Color.prototype), 'reset', this).call(this, life, easing);
+    }
+  }, {
+    key: 'initialize',
+    value: function initialize(particle) {
+      particle.transform.colorA = _utils.ColorUtil.getRGB(this.colorA.getValue());
+
+      particle.useColor = true;
+      particle.transform.colorB = this.same ? particle.transform.colorA : _utils.ColorUtil.getRGB(this.colorB.getValue());
+    }
+  }, {
+    key: 'applyBehaviour',
+    value: function applyBehaviour(particle, time, index) {
+      _get(Color.prototype.__proto__ || Object.getPrototypeOf(Color.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+
+      if (!this._same) {
+        particle.color.r = _math.MathUtils.lerp(particle.transform.colorA.r, particle.transform.colorB.r, this.energy);
+        particle.color.g = _math.MathUtils.lerp(particle.transform.colorA.g, particle.transform.colorB.g, this.energy);
+        particle.color.b = _math.MathUtils.lerp(particle.transform.colorA.b, particle.transform.colorB.b, this.energy);
+      } else {
+        particle.color.r = particle.transform.colorA.r;
+        particle.color.g = particle.transform.colorA.g;
+        particle.color.b = particle.transform.colorA.b;
+      }
+    }
+
+    /**
+     * Creates a Color initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.colorA - The starting color
+     * @property {number} json.colorB - The ending color
+     * @property {number} json.life - The life of the particle
+     * @property {string} json.easing - The behaviour's decaying trend
+     * @return {Color}
+     */
+
+  }, {
+    key: 'same',
+    get: function get() {
+      return this._same;
+    }
+
+    /**
+     * Sets the _same property which determines if the alpha are the same.
+     *
+     * @param {boolean} same
+     * @return {boolean}
+     */
+    ,
+    set: function set(same) {
+      /**
+       * @type {boolean}
+       */
+      this._same = same;
+    }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var colorA = json.colorA,
+          colorB = json.colorB,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Color(colorA, colorB, life, (0, _ease.getEasingByName)(easing));
+    }
+  }]);
+
+  return Color;
+}(_Behaviour3.default);
+
+exports.default = Color;
+module.exports = exports['default'];
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _zone = __webpack_require__(16);
+
+var Zone = _interopRequireWildcard(_zone);
+
+var _Behaviour2 = __webpack_require__(3);
+
+var _Behaviour3 = _interopRequireDefault(_Behaviour2);
+
+var _constants = __webpack_require__(10);
+
+var _ease = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Behaviour that allows for specific functions to be called on particles when
+ * they interact with a zone.
+ *
+ */
+var CrossZone = function (_Behaviour) {
+  _inherits(CrossZone, _Behaviour);
+
+  /**
+   * Constructs a CrossZone behaviour instance.
+   *
+   * @param {Zone} zone - the zone used to apply to particles with this behaviour
+   * @param {string} [crossType=DEFAULT_CROSS_TYPE] - enum of cross types, valid strings include 'dead', 'bound', 'cross'
+   * @param {number} life - The life of the particle
+   * @param {function} easing - The behaviour's decaying trend
+   */
+  function CrossZone(zone, crossType, life, easing) {
+    _classCallCheck(this, CrossZone);
+
+    var _this = _possibleConstructorReturn(this, (CrossZone.__proto__ || Object.getPrototypeOf(CrossZone)).call(this, life, easing));
+
+    _this.reset(zone, crossType);
+    _this.name = 'CrossZone';
+    return _this;
+  }
+
+  /**
+   * Resets the behaviour properties.
+   *
+   * @param {Zone} zone - the zone used to apply to particles with this behaviour
+   * @param {string} [crossType=DEFAULT_CROSS_TYPE] - enum of cross types, valid strings include 'dead', 'bound', 'cross'
+   * @param {number} life - The life of the particle
+   * @param {function} easing - The behaviour's decaying trend
+   */
+
+
+  _createClass(CrossZone, [{
+    key: 'reset',
+    value: function reset(zone) {
+      var crossType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_CROSS_TYPE;
+      var life = arguments[2];
+      var easing = arguments[3];
+
+      /**
+       * @desc The zone used to apply to particles with this behaviour
+       * @type {Zone}
+       */
+      this.zone = zone;
+      this.zone.crossType = crossType;
+
+      life && _get(CrossZone.prototype.__proto__ || Object.getPrototypeOf(CrossZone.prototype), 'reset', this).call(this, life, easing);
+    }
+
+    /**
+     * Applies the behaviour to the particle.
+     *
+     * @see {@link '../zone/Zone.js'} crossing
+     * @param {object} particle - the particle to apply the behaviour to
+     * @param {number} time - engine time
+     * @param {integer} index - the particle index
+     * @return void
+     */
+
+  }, {
+    key: 'applyBehaviour',
+    value: function applyBehaviour(particle, time, index) {
+      _get(CrossZone.prototype.__proto__ || Object.getPrototypeOf(CrossZone.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+
+      this.zone.crossing.call(this.zone, particle);
+    }
+
+    /**
+     * Creates a CrossZone initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @return {CrossZone}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var zoneType = json.zoneType,
+          zoneParams = json.zoneParams,
+          crossType = json.crossType,
+          life = json.life,
+          easing = json.easing;
+
+
+      var zone = new (Function.prototype.bind.apply(Zone[zoneType], [null].concat(_toConsumableArray(Object.values(zoneParams)))))();
+
+      return new CrossZone(zone, crossType, life, (0, _ease.getEasingByName)(easing));
+    }
+  }]);
+
+  return CrossZone;
+}(_Behaviour3.default);
+
+exports.default = CrossZone;
+module.exports = exports['default'];
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Force2 = __webpack_require__(25);
+
+var _Force3 = _interopRequireDefault(_Force2);
+
+var _ease = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Behaviour that forces particles down the y axis.
+ *
+ */
+var Gravity = function (_Force) {
+  _inherits(Gravity, _Force);
+
+  /**
+   * Constructs a Gravity behaviour instance.
+   *
+   * @param {number} gravity - the force to pull the particle down the y axis
+   * @param {number} life - the life of the particle
+   * @param {string} easing - the easing equation to use
+   * @return void
+   */
+  function Gravity(gravity, life, easing) {
+    _classCallCheck(this, Gravity);
+
+    return _possibleConstructorReturn(this, (Gravity.__proto__ || Object.getPrototypeOf(Gravity)).call(this, 0, -gravity, 0, life, easing));
+  }
+
+  _createClass(Gravity, null, [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var gravity = json.gravity,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Gravity(gravity, life, (0, _ease.getEasingByName)(easing));
+    }
+  }]);
+
+  return Gravity;
+}(_Force3.default);
+
+exports.default = Gravity;
+module.exports = exports['default'];
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _math = __webpack_require__(0);
+
+var _Behaviour2 = __webpack_require__(3);
+
+var _Behaviour3 = _interopRequireDefault(_Behaviour2);
+
+var _constants = __webpack_require__(10);
+
+var _ease = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Behaviour that causes particles to drift to random coordinates in 3D space.
+ *
+ */
+var RandomDrift = function (_Behaviour) {
+  _inherits(RandomDrift, _Behaviour);
+
+  /**
+   * Constructs a RandomDrift behaviour instance.
+   *
+   * @param {number} driftX - x axis drift
+   * @param {number} driftY - y axis drift
+   * @param {number} driftZ - z axis drift
+   * @param {number} [delay=DEFAULT_RANDOM_DRIFT_DELAY] - drift delay
+   * @param {number} life - The life of the particle
+   * @param {function} easing - The behaviour's decaying trend
+   * @return void
+   */
+  function RandomDrift(driftX, driftY, driftZ) {
+    var delay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.DEFAULT_RANDOM_DRIFT_DELAY;
+    var life = arguments[4];
+    var easing = arguments[5];
+
+    _classCallCheck(this, RandomDrift);
+
+    var _this = _possibleConstructorReturn(this, (RandomDrift.__proto__ || Object.getPrototypeOf(RandomDrift)).call(this, life, easing));
+
+    _this.reset(driftX, driftY, driftZ, delay);
+
+    /**
+     * @desc Internal time used for calculating drift vs internal delay.
+     * @type {number}
+     */
+    _this.time = 0;
+    _this.name = 'RandomDrift';
+    return _this;
+  }
+
+  /**
+   * Resets the behaviour properties.
+   *
+   * @param {number} driftX - x axis drift
+   * @param {number} driftY - y axis drift
+   * @param {number} driftZ - z axis drift
+   * @param {number} [delay=DEFAULT_RANDOM_DRIFT_DELAY] - drift delay
+   * @param {number} life - The life of the particle
+   * @param {function} easing - The behaviour's decaying trend
+   */
+
+
+  _createClass(RandomDrift, [{
+    key: 'reset',
+    value: function reset(driftX, driftY, driftZ) {
+      var delay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.DEFAULT_RANDOM_DRIFT_DELAY;
+      var life = arguments[4];
+      var easing = arguments[5];
+
+      /**
+       * @desc A Vector3D that stores the drift properties.
+       * @type {Vector3D}
+       */
+      this.randomForce = this.normalizeForce(new _math.Vector3D(driftX, driftY, driftZ));
+      /**
+       * @desc A Span containing the delay supplied.
+       * @type {Span}
+       */
+      this.delayPan = (0, _math.createSpan)(delay);
+      this.time = 0;
+
+      life && _get(RandomDrift.prototype.__proto__ || Object.getPrototypeOf(RandomDrift.prototype), 'reset', this).call(this, life, easing);
+    }
+
+    /**
+     * Applies the behaviour to the particle.
+     * Mutates the particle.a property.
+     *
+     * @param {object} particle - the particle to apply the behaviour to
+     * @param {number} time - engine time
+     * @param {integer} index - the particle index
+     * @return void
+     */
+
+  }, {
+    key: 'applyBehaviour',
+    value: function applyBehaviour(particle, time, index) {
+      _get(RandomDrift.prototype.__proto__ || Object.getPrototypeOf(RandomDrift.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+
+      this.time += time;
+
+      if (this.time >= this.delayPan.getValue()) {
+        var ax = _math.MathUtils.randomAToB(-this.randomForce.x, this.randomForce.x);
+        var ay = _math.MathUtils.randomAToB(-this.randomForce.y, this.randomForce.y);
+        var az = _math.MathUtils.randomAToB(-this.randomForce.z, this.randomForce.z);
+
+        particle.a.addValue(ax, ay, az);
+
+        this.time = 0;
+      }
+    }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var x = json.x,
+          y = json.y,
+          z = json.z,
+          delay = json.delay,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new RandomDrift(x, y, z, delay, life, (0, _ease.getEasingByName)(easing));
+    }
+  }]);
+
+  return RandomDrift;
+}(_Behaviour3.default);
+
+exports.default = RandomDrift;
+module.exports = exports['default'];
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _Attraction2 = __webpack_require__(24);
+
+var _Attraction3 = _interopRequireDefault(_Attraction2);
+
+var _math = __webpack_require__(0);
+
+var _ease = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Behaviour that causes particles to be repelled from a target position.
+ *
+ */
+var Repulsion = function (_Attraction) {
+  _inherits(Repulsion, _Attraction);
+
+  /**
+   * Constructs an Repulsion behaviour instance.
+   *
+   * @param {Vector3D} targetPosition - The position the particles will be repelled from
+   * @param {number} force - The repulsion force scalar multiplier
+   * @param {number} radius - The repulsion radius
+   * @param {number} life - The life of the particle
+   * @param {function} easing - The behaviour's decaying trend
+   * @return void
+   */
+  function Repulsion(targetPosition, force, radius, life, easing) {
+    _classCallCheck(this, Repulsion);
+
+    var _this = _possibleConstructorReturn(this, (Repulsion.__proto__ || Object.getPrototypeOf(Repulsion)).call(this, targetPosition, force, radius, life, easing));
+
+    _this.force *= -1;
+    _this.name = 'Repulsion';
+    return _this;
+  }
+
+  /**
+   * Resets the behaviour properties.
+   *
+   * @param {Vector3D} targetPosition - the position the particles will be attracted to
+   * @param {number} force - the attraction force multiplier
+   * @param {number} radius - the attraction radius
+   * @param {number} life - the life of the particle
+   * @param {function} easing - The behaviour's decaying trend
+   * @return void
+   */
+
+
+  _createClass(Repulsion, [{
+    key: 'reset',
+    value: function reset(targetPosition, force, radius, life, easing) {
+      _get(Repulsion.prototype.__proto__ || Object.getPrototypeOf(Repulsion.prototype), 'reset', this).call(this, targetPosition, force, radius, life, easing);
+      this.force *= -1;
+    }
+
+    /**
+     * Creates a Body initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.x - The target position x value
+     * @property {number} json.y - The target position y value
+     * @property {number} json.z - The target position z value
+     * @property {number} json.force - The attraction force scalar multiplier
+     * @property {number} json.life - The life of the particle
+     * @property {string} json.easing - The behaviour's decaying trend
+     * @return {Body}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var x = json.x,
+          y = json.y,
+          z = json.z,
+          force = json.force,
+          radius = json.radius,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Repulsion(new _math.Vector3D(x, y, z), force, radius, life, (0, _ease.getEasingByName)(easing));
+    }
+  }]);
+
+  return Repulsion;
+}(_Attraction3.default);
+
+exports.default = Repulsion;
+module.exports = exports['default'];
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _constants = __webpack_require__(2);
+
+var _math = __webpack_require__(0);
+
+var _Behaviour2 = __webpack_require__(3);
+
+var _Behaviour3 = _interopRequireDefault(_Behaviour2);
+
+var _ease = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Behaviour that rotates particles.
+ */
+var Rotate = function (_Behaviour) {
+  _inherits(Rotate, _Behaviour);
+
+  /**
+   * Constructs a Rotate behaviour instance.
+   *
+   * @param {number} x - X axis rotation
+   * @param {number} y - Y axis rotation
+   * @param {number} z - Z axis rotation
+   * @param {number} life - The life of the behaviour
+   * @param {function} easing - The easing equation to use for transforms
+   * @return void
+   */
+  function Rotate(x, y, z, life, easing) {
+    _classCallCheck(this, Rotate);
+
+    var _this = _possibleConstructorReturn(this, (Rotate.__proto__ || Object.getPrototypeOf(Rotate)).call(this, life, easing));
+
+    _this.reset(x, y, z);
+    _this.name = 'Rotate';
+    return _this;
+  }
+
+  /**
+   * Gets the rotation type.
+   *
+   * @return {string}
+   */
+
+
+  _createClass(Rotate, [{
+    key: 'reset',
+
+
+    /**
+     * Resets the behaviour properties.
+     *
+     * @param {number} x - X axis rotation
+     * @param {number} y - Y axis rotation
+     * @param {number} z - Z axis rotation
+     * @param {number} life - the life of the behaviour
+     * @param {function} easing - the easing equation to use for transforms
+     * @return void
+     */
+    value: function reset(x, y, z, life, easing) {
+      /**
+       * @desc X axis rotation.
+       * @type {number|Span}
+       */
+      this.x = x || 0;
+
+      /**
+       * @desc Y axis rotation.
+       * @type {number|Span}
+       */
+      this.y = y || 0;
+
+      /**
+       * @desc Z axis rotation.
+       * @type {number|Span}
+       */
+      this.z = z || 0;
+
+      if (x === undefined || x == 'same') {
+        this._type = 'same';
+      } else if (y == undefined) {
+        this._type = 'set';
+      } else if (z === undefined) {
+        this._type = 'to';
+      } else {
+        this._type = 'add';
+        this.x = (0, _math.createSpan)(this.x * _constants.DR);
+        this.y = (0, _math.createSpan)(this.y * _constants.DR);
+        this.z = (0, _math.createSpan)(this.z * _constants.DR);
+      }
+
+      life && _get(Rotate.prototype.__proto__ || Object.getPrototypeOf(Rotate.prototype), 'reset', this).call(this, life, easing);
+    }
+
+    /**
+     * Initializes the behaviour on a particle.
+     *
+     * @param {object} particle - the particle to initialize the behaviour on
+     * @return void
+     */
+
+  }, {
+    key: 'initialize',
+    value: function initialize(particle) {
+      switch (this._type) {
+        case 'same':
+          break;
+
+        case 'set':
+          this._setRotation(particle.rotation, this.x);
+          break;
+
+        case 'to':
+          particle.transform.fR = particle.transform.fR || new _math.Vector3D();
+          particle.transform.tR = particle.transform.tR || new _math.Vector3D();
+          this._setRotation(particle.transform.fR, this.x);
+          this._setRotation(particle.transform.tR, this.y);
+          break;
+
+        case 'add':
+          particle.transform.addR = new _math.Vector3D(this.x.getValue(), this.y.getValue(), this.z.getValue());
+          break;
+      }
+    }
+
+    /**
+     * Sets the particle's rotation prior to the behaviour being applied.
+     *
+     * NOTE It's hard to see here, but this is mutating the particle's rotation
+     * even though the particle is not being passed in directly.
+     *
+     * NOTE the else if below will never be reached because the value being passed in
+     * will never be of type Vector3D.
+     *
+     * @param {Vector3D} particleRotation - the particle's rotation vector
+     * @param {string|number} value - the value to set the rotation value to, if 'random'
+     * rotation is randomised
+     * @return void
+     */
+
+  }, {
+    key: '_setRotation',
+    value: function _setRotation(particleRotation, value) {
+      particleRotation = particleRotation || new _math.Vector3D();
+      if (value == 'random') {
+        var x = _math.MathUtils.randomAToB(-_constants.PI, _constants.PI);
+        var y = _math.MathUtils.randomAToB(-_constants.PI, _constants.PI);
+        var z = _math.MathUtils.randomAToB(-_constants.PI, _constants.PI);
+
+        particleRotation.set(x, y, z);
+      }
+      // we can't ever get here because value will never be a Vector3D!
+      // consider refactoring to
+      //  if (value instance of Span) { vec3.add(value.getValue()); }
+      else if (value instanceof _math.Vector3D) {
+          particleRotation.copy(value);
+        }
+    }
+
+    /**
+     * Applies the behaviour to the particle.
+     * Mutates the particle.a property.
+     *
+     * @see http://stackoverflow.com/questions/21622956/how-to-convert-direction-vector-to-euler-angles
+     * @param {object} particle - the particle to apply the behaviour to
+     * @param {number} time - engine time
+     * @param {integer} index - the particle index
+     * @return void
+     */
+
+  }, {
+    key: 'applyBehaviour',
+    value: function applyBehaviour(particle, time, index) {
+      _get(Rotate.prototype.__proto__ || Object.getPrototypeOf(Rotate.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+
+      switch (this._type) {
+        // orients the particle in the direction it is moving
+        case 'same':
+          if (!particle.rotation) {
+            particle.rotation = new _math.Vector3D();
+          }
+
+          particle.rotation.eulerFromDir(particle.v);
+          break;
+
+        case 'set':
+          //
+          break;
+
+        case 'to':
+          particle.rotation.x = _math.MathUtils.lerp(particle.transform.fR.x, particle.transform.tR.x, this.energy);
+          particle.rotation.y = _math.MathUtils.lerp(particle.transform.fR.y, particle.transform.tR.y, this.energy);
+          particle.rotation.z = _math.MathUtils.lerp(particle.transform.fR.z, particle.transform.tR.z, this.energy);
+          break;
+
+        case 'add':
+          particle.rotation.add(particle.transform.addR);
+          break;
+      }
+    }
+  }, {
+    key: 'type',
+    get: function get() {
+      return this._type;
+    }
+
+    /**
+     * Sets the rotation type.
+     *
+     * @param {string}
+     * @return void
+     */
+    ,
+    set: function set(type) {
+      /**
+       * @desc The rotation type. ENUM of ['same', 'set', 'to', 'add'].
+       * @type {string}
+       */
+      this._type = type;
+    }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var x = json.x,
+          y = json.y,
+          z = json.z,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Rotate(x, y, z, life, (0, _ease.getEasingByName)(easing));
+    }
+  }]);
+
+  return Rotate;
+}(_Behaviour3.default);
+
+exports.default = Rotate;
+module.exports = exports['default'];
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _math = __webpack_require__(0);
+
+var _Behaviour2 = __webpack_require__(3);
+
+var _Behaviour3 = _interopRequireDefault(_Behaviour2);
+
+var _ease = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Behaviour that scales particles.
+ *
+ */
+var Scale = function (_Behaviour) {
+  _inherits(Scale, _Behaviour);
+
+  /**
+   * Constructs a Scale behaviour instance.
+   *
+   * @param {number} scaleA - the starting scale value
+   * @param {?number} scaleB - the ending scale value
+   * @param {number} life - the life of the behaviour
+   * @param {function} easing - the easing equation to use for transforms
+   * @return void
+   */
+  function Scale(scaleA, scaleB, life, easing) {
+    _classCallCheck(this, Scale);
+
+    var _this = _possibleConstructorReturn(this, (Scale.__proto__ || Object.getPrototypeOf(Scale)).call(this, life, easing));
+
+    _this.reset(scaleA, scaleB);
+    _this.name = 'Scale';
+    return _this;
+  }
+
+  /**
+   * Gets the _same property which determines if the scale props are the same.
+   *
+   * @return {boolean}
+   */
+
+
+  _createClass(Scale, [{
+    key: 'reset',
+
+
+    /**
+     * Resets the behaviour properties.
+     *
+     * @param {number} scaleA - the starting scale value
+     * @param {?number} scaleB - the ending scale value
+     * @param {number} life - the life of the behaviour
+     * @param {function} easing - the easing equation to use for transforms
+     * @return void
+     */
+    value: function reset(scaleA, scaleB, life, easing) {
+      this.same = scaleB === null || scaleB === undefined ? true : false;
+
+      /**
+       * @desc The starting scale.
+       * @type {Span}
+       */
+      this.scaleA = (0, _math.createSpan)(scaleA || 1);
+
+      /**
+       * @desc The ending scale.
+       * @type {Span}
+       */
+      this.scaleB = (0, _math.createSpan)(scaleB);
+
+      life && _get(Scale.prototype.__proto__ || Object.getPrototypeOf(Scale.prototype), 'reset', this).call(this, life, easing);
+    }
+
+    /**
+     * Initializes the behaviour on a particle.
+     * Stores initial values for comparison and mutation in the applyBehaviour method.
+     *
+     * @param {object} particle - the particle to initialize the behaviour on
+     * @return void
+     */
+
+  }, {
+    key: 'initialize',
+    value: function initialize(particle) {
+      particle.transform.scaleA = this.scaleA.getValue();
+      particle.transform.oldRadius = particle.radius;
+
+      particle.transform.scaleB = this.same ? particle.transform.scaleA : this.scaleB.getValue();
+    }
+
+    /**
+     * Applies the behaviour to the particle.
+     * Mutates the particle's scale and its radius according to this scale.
+     *
+     * @param {object} particle - the particle to apply the behaviour to
+     * @param {number} time - engine time
+     * @param {integer} index - the particle index
+     * @return void
+     */
+
+  }, {
+    key: 'applyBehaviour',
+    value: function applyBehaviour(particle, time, index) {
+      _get(Scale.prototype.__proto__ || Object.getPrototypeOf(Scale.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+
+      particle.scale = _math.MathUtils.lerp(particle.transform.scaleA, particle.transform.scaleB, this.energy);
+
+      if (particle.scale < 0.0005) {
+        particle.scale = 0;
+      }
+
+      particle.radius = particle.transform.oldRadius * particle.scale;
+    }
+  }, {
+    key: 'same',
+    get: function get() {
+      return this._same;
+    }
+
+    /**
+     * Sets the _same property which determines if the scale props are the same.
+     *
+     * @param {boolean} same
+     * @return {boolean}
+     */
+    ,
+    set: function set(same) {
+      /**
+       * @type {boolean}
+       */
+      this._same = same;
+    }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var scaleA = json.scaleA,
+          scaleB = json.scaleB,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Scale(scaleA, scaleB, life, (0, _ease.getEasingByName)(easing));
+    }
+  }]);
+
+  return Scale;
+}(_Behaviour3.default);
+
+exports.default = Scale;
+module.exports = exports['default'];
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _Behaviour2 = __webpack_require__(3);
+
+var _Behaviour3 = _interopRequireDefault(_Behaviour2);
+
+var _math = __webpack_require__(0);
+
+var _ease = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Spring = function (_Behaviour) {
+  _inherits(Spring, _Behaviour);
+
+  /**
+   * The Behaviour class is the base for the other Behaviour
+   *
+   * @class Behaviour
+   * @constructor
+   */
+  function Spring(x, y, z, spring, friction, life, easing) {
+    _classCallCheck(this, Spring);
+
+    var _this = _possibleConstructorReturn(this, (Spring.__proto__ || Object.getPrototypeOf(Spring)).call(this, life, easing));
+
+    _this.reset(x, y, z, spring, friction);
+    _this.name = 'Spring';
+    return _this;
+  }
+
+  _createClass(Spring, [{
+    key: 'reset',
+    value: function reset(x, y, z, spring, friction) {
+      if (!this.pos) this.pos = new _math.Vector3D(x, y, z);else this.pos.set(x, y, z);
+      this.spring = spring || 0.1;
+      this.friction = friction || 0.98;
+    }
+  }, {
+    key: 'applyBehaviour',
+    value: function applyBehaviour(particle, time, index) {
+      _get(Spring.prototype.__proto__ || Object.getPrototypeOf(Spring.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+
+      particle.v.x += (this.pos.x - particle.p.x) * this.spring;
+      particle.v.y += (this.pos.y - particle.p.y) * this.spring;
+      particle.v.z += (this.pos.z - particle.p.z) * this.spring;
+    }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var x = json.x,
+          y = json.y,
+          z = json.z,
+          spring = json.spring,
+          friction = json.friction,
+          life = json.life,
+          easing = json.easing;
+
+
+      return new Spring(x, y, z, spring, friction, life, (0, _ease.getEasingByName)(easing));
+    }
+  }]);
+
+  return Spring;
+}(_Behaviour3.default);
+
+exports.default = Spring;
+module.exports = exports['default'];
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var BEHAVIOUR_TYPE_ALPHA = exports.BEHAVIOUR_TYPE_ALPHA = 'Alpha';
+var BEHAVIOUR_TYPE_ATTRACTION = exports.BEHAVIOUR_TYPE_ATTRACTION = 'Attraction';
+var BEHAVIOUR_TYPE_COLLISION = exports.BEHAVIOUR_TYPE_COLLISION = 'Collision';
+var BEHAVIOUR_TYPE_COLOR = exports.BEHAVIOUR_TYPE_COLOR = 'Color';
+var BEHAVIOUR_TYPE_CROSS_ZONE = exports.BEHAVIOUR_TYPE_CROSS_ZONE = 'CrossZone';
+var BEHAVIOUR_TYPE_FORCE = exports.BEHAVIOUR_TYPE_FORCE = 'Force';
+var BEHAVIOUR_TYPE_GRAVITY = exports.BEHAVIOUR_TYPE_GRAVITY = 'Gravity';
+var BEHAVIOUR_TYPE_RANDOM_DRIFT = exports.BEHAVIOUR_TYPE_RANDOM_DRIFT = 'RandomDrift';
+var BEHAVIOUR_TYPE_REPULSION = exports.BEHAVIOUR_TYPE_REPULSION = 'Repulsion';
+var BEHAVIOUR_TYPE_ROTATE = exports.BEHAVIOUR_TYPE_ROTATE = 'Rotate';
+var BEHAVIOUR_TYPE_SCALE = exports.BEHAVIOUR_TYPE_SCALE = 'Scale';
+var BEHAVIOUR_TYPE_SPRING = exports.BEHAVIOUR_TYPE_SPRING = 'Spring';
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _events = __webpack_require__(29);
+
+var _events2 = _interopRequireDefault(_events);
+
+var _constants = __webpack_require__(12);
+
+var _Emitter = __webpack_require__(13);
+
+var _Emitter2 = _interopRequireDefault(_Emitter);
+
+var _constants2 = __webpack_require__(19);
+
+var _constants3 = __webpack_require__(2);
+
+var _Pool = __webpack_require__(27);
+
+var _Pool2 = _interopRequireDefault(_Pool);
+
+var _fromJSON2 = __webpack_require__(49);
+
+var _fromJSON3 = _interopRequireDefault(_fromJSON2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * The core of the three-proton particle engine.
+ * A Proton instance can contain multiple emitters, each with their own initializers
+ * and behaviours.
+ *
+ */
+var Proton = function () {
+  /**
+   * Constructs a Proton instance.
+   *
+   * TODO the proton instance should have an integrator set as a property.
+   * It is only required from the emitter class, and therefore can be accessed within
+   * that class from emitter.parent.integrator
+   *
+   * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
+   * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
+   * @return void
+   */
+  function Proton() {
+    var preParticles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants3.POOL_MAX;
+    var integrationType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants2.INTEGRATION_TYPE_EULER;
+
+    _classCallCheck(this, Proton);
+
+    /**
+     * @desc The number of particles to start with
+     * @type {number}
+     */
+    this.preParticles = preParticles;
+
+    /**
+     * @desc The integration algorithm type to use
+     * @param {string}
+     */
+    this.integrationType = integrationType;
+
+    /**
+     * @desc The emitters in the particle system
+     * @type {array<Emitter>}
+     */
+    this.emitters = [];
+
+    /**
+     * @desc The renderers for the system
+     * @type {array<Renderer>}
+     */
+    this.renderers = [];
+
+    /**
+     * @desc A pool used to manage the internal proton cache of objects
+     * @type {Pool}
+     */
+    this.pool = new _Pool2.default();
+
+    /**
+     * @desc Internal event dispatcher
+     * @type {EventDispatcher}
+     */
+    this.eventDispatcher = new _events2.default();
+  }
+
+  /**
+   * Creates a Proton instance from a JSON object.
+   *
+   * @param {object} json - The JSON to create the Proton instance from
+   * @param {number} json.preParticles - The predetermined number of particles
+   * @param {string} json.integrationType - The integration algorithm to use
+   * @param {array<object>} json.emitters - The emitters for the proton instance
+   * @return {Proton}
+   */
+
+
+  _createClass(Proton, [{
+    key: 'dispatch',
+
+
+    /**
+     * Proxy method for the internal event dispatcher's dispatchEvent method.
+     *
+     * @param {string} event - The event to dispatch
+     * @param {object<Proton|Emitter|Particle>} [target=this] - The event target
+     */
+    value: function dispatch(event) {
+      var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this;
+
+      this.eventDispatcher.dispatchEvent(event, target);
+    }
+
+    /**
+     * Adds a renderer to the Proton instance and initializes it.
+     *
+     * @param {Renderer} renderer - The renderer to add
+     * @return {Proton}
+     */
+
+  }, {
+    key: 'addRenderer',
+    value: function addRenderer(renderer) {
+      this.renderers.push(renderer);
+      renderer.init(this);
+
+      return this;
+    }
+
+    /**
+     * Removes a renderer from the Proton instance.
+     *
+     * @param {Renderer} renderer
+     * @return {Proton}
+     */
+
+  }, {
+    key: 'removeRenderer',
+    value: function removeRenderer(renderer) {
+      this.renderers.splice(this.renderers.indexOf(renderer), 1);
+      renderer.remove(this);
+
+      return this;
+    }
+
+    /**
+     * Adds an emitter to the Proton instance.
+     * Dispatches the EMITTER_ADDED event.
+     *
+     * @param {Emitter} emitter - The emitter to add
+     * @return {Proton}
+     */
+
+  }, {
+    key: 'addEmitter',
+    value: function addEmitter(emitter) {
+      emitter.parent = this;
+
+      this.emitters.push(emitter);
+      this.dispatch(_events.EMITTER_ADDED, emitter);
+
+      return this;
+    }
+
+    /**
+     * Removes an emitter from the Proton instance.
+     * Dispatches the EMITTER_REMOVED event.
+     *
+     * @param {Emitter} emitter - The emitter to remove
+     * @return {Proton}
+     */
+
+  }, {
+    key: 'removeEmitter',
+    value: function removeEmitter(emitter) {
+      if (emitter.parent !== this) {
+        return this;
+      }
+
+      emitter.parent = null;
+
+      this.emitters.splice(this.emitters.indexOf(emitter), 1);
+      this.dispatch(_events.EMITTER_REMOVED, emitter);
+
+      return this;
+    }
+
+    /**
+     * Updates the particle system based on the delta passed.
+     *
+     * @example
+     * animate = () => {
+     *   threeRenderer.render(threeScene, threeCamera);
+     *   proton.update();
+     *   requestAnimationFrame(animate);
+     * }
+     * animate();
+     *
+     * @param {number} delta - Delta time
+     * @return {Promise}
+     */
+
+  }, {
+    key: 'update',
+    value: function update() {
+      var delta = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants.DEFAULT_PROTON_DELTA;
+
+      var d = delta || _constants.DEFAULT_PROTON_DELTA;
+
+      this.dispatch(_events.PROTON_UPDATE);
+
+      if (d > 0) {
+        var i = this.emitters.length;
+
+        while (i--) {
+          this.emitters[i].update(d);
+        }
+      }
+
+      this.dispatch(_events.PROTON_UPDATE_AFTER);
+
+      return Promise.resolve();
+    }
+
+    /**
+     * Gets a count of the total number of particles in the system.
+     *
+     * @return {integer}
+     */
+
+  }, {
+    key: 'getCount',
+    value: function getCount() {
+      var length = this.emitters.length;
+      var total = 0;
+      var i = void 0;
+
+      for (i = 0; i < length; i++) {
+        total += this.emitters[i].particles.length;
+      }
+
+      return total;
+    }
+
+    /**
+     * Destroys all emitters and the Proton pool.
+     *
+     * @return void
+     */
+
+  }, {
+    key: 'destroy',
+    value: function destroy() {
+      var length = this.emitters.length;
+      var i = 0;
+
+      for (i; i < length; i++) {
+        this.emitters[i].destroy();
+        delete this.emitters[i];
+      }
+
+      this.emitters.length = 0;
+      this.pool.destroy();
+    }
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      return (0, _fromJSON3.default)(json, Proton, _Emitter2.default);
+    }
+  }]);
+
+  return Proton;
+}();
+
+exports.default = Proton;
+module.exports = exports['default'];
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _behaviour = __webpack_require__(23);
+
+var Behaviour = _interopRequireWildcard(_behaviour);
+
+var _initializer = __webpack_require__(11);
+
+var Initializer = _interopRequireWildcard(_initializer);
+
+var _constants = __webpack_require__(2);
+
+var _constants2 = __webpack_require__(12);
+
+var _Rate = __webpack_require__(30);
+
+var _Rate2 = _interopRequireDefault(_Rate);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+/**
+ * Makes a rate instance.
+ *
+ * @param {object} json - The data required to construct a Rate instance
+ * @return {Rate}
+ */
+var makeRate = function makeRate(json) {
+  return new _Rate2.default.fromJSON(json);
+};
+
+/**
+ * Makes initializers from json items.
+ *
+ * @param {array<object>} items - An array of objects which provide initializer constructor params
+ * @return {array<Initializer>}
+ */
+var makeInitializers = function makeInitializers(items) {
+  var initializers = [];
+
+  items.forEach(function (data) {
+    var type = data.type,
+        properties = data.properties;
+
+
+    if (!_constants2.SUPPORTED_JSON_INITIALIZER_TYPES.includes(type)) {
+      throw new Error('The initializer type ' + type + ' is invalid or not yet supported');
+    }
+
+    initializers.push(new Initializer[type].fromJSON(properties));
+  });
+
+  return initializers;
+};
+
+/**
+ * Makes behaviours from json items.
+ *
+ * @param {array<object>} items - An array of objects which provide behaviour constructor params
+ * @return {array<Behaviour>}
+ */
+var makeBehaviours = function makeBehaviours(items) {
+  var behaviours = [];
+
+  items.forEach(function (data) {
+    var type = data.type,
+        properties = data.properties;
+
+
+    if (!_constants2.SUPPORTED_JSON_BEHAVIOUR_TYPES.includes(type)) {
+      throw new Error('The behaviour type ' + type + ' is invalid or not yet supported');
+    }
+
+    behaviours.push(new Behaviour[type].fromJSON(properties));
+  });
+
+  return behaviours;
+};
+
+/**
+ * Creates a Proton instance from a JSON object.
+ *
+ * @param {object} json - The JSON to create the Proton instance from
+ * @param {function} Proton - The proton class
+ * @param {function} Emitter - The emitter class
+ * @param {number} json.preParticles - The predetermined number of particles
+ * @param {string} json.integrationType - The integration algorithm to use
+ * @param {array<object>} json.emitters - The emitters for the proton instance
+ * @return {Proton}
+ */
+
+exports.default = function (json, Proton, Emitter) {
+  var _json$preParticles = json.preParticles,
+      preParticles = _json$preParticles === undefined ? _constants.POOL_MAX : _json$preParticles,
+      _json$integrationType = json.integrationType,
+      integrationType = _json$integrationType === undefined ? _constants.EULER : _json$integrationType,
+      _json$emitters = json.emitters,
+      emitters = _json$emitters === undefined ? [] : _json$emitters;
+
+  var proton = new Proton(preParticles, integrationType);
+
+  emitters.forEach(function (data) {
+    var emitter = new Emitter();
+    var rate = data.rate,
+        initializers = data.initializers,
+        behaviours = data.behaviours,
+        position = data.position;
+
+
+    emitter.setRate(makeRate(rate)).setInitializers(makeInitializers(initializers)).setBehaviours(makeBehaviours(behaviours)).setPosition(position).emit();
+
+    proton.addEmitter(emitter);
+  });
+
+  return proton;
+};
+
+module.exports = exports['default'];
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _three = __webpack_require__(4);
+
+var THREE = _interopRequireWildcard(_three);
+
+var _constants = __webpack_require__(51);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+/**
+ * @exports Debug - methods and helpers for debugging Proton emitters, zones and particles.
+ */
+exports.default = {
+  /**
+    * Adds an event listener to the proton instance's PROTON_UPDATE event.
+    *
+    * @param {Proton} proton - the proton instance
+    * @param {function} onProtonUpdated - the function to call when proton has been updated
+    * @return {Debug}
+    */
+  addEventListener: function addEventListener(proton, onProtonUpdated) {
+    proton.eventDispatcher.addEventListener('PROTON_UPDATE', onProtonUpdated);
+
+    return this;
+  },
+
+  /**
+    * Draws a wireframe mesh around the zone for debugging purposes.
+    *
+    * @param {Proton} proton - the proton instance
+    * @param {object} container - a three Object3D (usually the scene)
+    * @param {Zone} zone - a Zone instance
+    * @return void
+    */
+  drawZone: function drawZone(proton, container) {
+    var zone = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+    var color = '#2194ce';
+    var wireframe = true;
+    var _zone$width = zone.width,
+        width = _zone$width === undefined ? _constants.DEFAULT_SIZE : _zone$width,
+        _zone$height = zone.height,
+        height = _zone$height === undefined ? _constants.DEFAULT_SIZE : _zone$height,
+        _zone$depth = zone.depth,
+        depth = _zone$depth === undefined ? _constants.DEFAULT_SIZE : _zone$depth,
+        _zone$radius = zone.radius,
+        radius = _zone$radius === undefined ? _constants.DEFAULT_SIZE : _zone$radius,
+        _zone$x = zone.x,
+        x = _zone$x === undefined ? _constants.DEFAULT_POSITION : _zone$x,
+        _zone$y = zone.y,
+        y = _zone$y === undefined ? _constants.DEFAULT_POSITION : _zone$y,
+        _zone$z = zone.z,
+        z = _zone$z === undefined ? _constants.DEFAULT_POSITION : _zone$z;
+
+    var geometry = void 0;
+
+    if (zone.isPointZone()) {
+      geometry = new THREE.SphereGeometry(15);
+    }
+
+    if (zone.isLineZone()) {
+      // TODO
+    }
+
+    if (zone.isBoxZone()) {
+      geometry = new THREE.BoxGeometry(width, height, depth);
+    }
+
+    if (zone.isSphereZone()) {
+      geometry = new THREE.SphereGeometry(radius, _constants.DEFAULT_SIZE, _constants.DEFAULT_SIZE);
+    }
+
+    if (zone.isMeshZone()) {
+      geometry = zone.geometry.geometry ? zone.geometry.geometry.clone() : zone.geometry.clone();
+    }
+
+    if (!geometry) {
+      geometry = new THREE.BoxGeometry(width, height, depth);
+    }
+
+    var material = new THREE.MeshBasicMaterial({ color: color, wireframe: wireframe });
+    // NOTE! geometry.clone is required for UNKNOWN reasons,
+    // three does not render the mesh correctly without doing this since r88
+    var mesh = new THREE.Mesh(geometry.clone(), material);
+
+    container.add(mesh);
+
+    this.addEventListener(proton, function () {
+      mesh.position.set(x, y, z);
+    });
+  },
+
+  /**
+    * Draws a mesh for each particle emitted in order to help debug particles.
+    *
+    * @param {object} proton - the proton instance
+    * @param {object} container - a three Object3D (usually the scene)
+    * @param {object} emitter - the emitter to debug
+    * @param {string} color - the color for the debug mesh material
+    * @return void
+    */
+  drawEmitter: function drawEmitter(proton, container, emitter, color) {
+    var geometry = new THREE.OctahedronGeometry(_constants.DEFAULT_SIZE);
+    var material = new THREE.MeshBasicMaterial({
+      color: color || '#aaa',
+      wireframe: true
+    });
+    // NOTE! geometry.clone is required for UNKNOWN reasons,
+    // three does not render the mesh correctly without doing this since r88
+    var mesh = new THREE.Mesh(geometry.clone(), material);
+
+    container.add(mesh);
+
+    this.addEventListener(proton, function () {
+      mesh.position.copy(emitter.p);
+      mesh.rotation.set(emitter.rotation.x, emitter.rotation.y, emitter.rotation.z);
+    });
+  },
+
+  /**
+   * Renders emitter / particle information into the info element.
+   *
+   * @param {object} proton - the proton instance
+   * @param {integer} style - style to apply (see the addInfo method's switch statement)
+   * @return void
+   */
+  renderInfo: function () {
+    function getCreatedNumber(type, proton) {
+      var pool = type == 'material' ? '_materialPool' : '_targetPool';
+      var renderer = proton.renderers[0];
+
+      return renderer[pool].cID;
+    }
+
+    function getEmitterPos(proton) {
+      var e = proton.emitters[0];
+
+      return Math.round(e.p.x) + ',' + Math.round(e.p.y) + ',' + Math.round(e.p.z);
+    }
+
+    return function (proton, style) {
+      this.addInfo(style);
+      var str = '';
+
+      switch (this._infoType) {
+        case 2:
+          str += 'emitter:' + proton.emitters.length + '<br>';
+          str += 'em speed:' + proton.emitters[0].cID + '<br>';
+          str += 'pos:' + getEmitterPos(proton);
+          break;
+
+        case 3:
+          str += proton.renderers[0].name + '<br>';
+          str += 'target:' + getCreatedNumber('target') + '<br>';
+          str += 'material:' + getCreatedNumber('material');
+          break;
+
+        default:
+          str += 'particles:' + proton.getCount() + '<br>';
+          str += 'pool:' + proton.pool.getCount() + '<br>';
+          str += 'total:' + (proton.getCount() + proton.pool.getCount());
+      }
+      this._infoCon.innerHTML = str;
+    };
+  }(),
+
+  /**
+   * Appends the info element into the dom.
+   *
+   * @param {integer} style - the style type to apply
+   * @return void
+   */
+  addInfo: function () {
+    return function (style) {
+      var self = this;
+
+      if (!this._infoCon) {
+        this._infoCon = document.createElement('div');
+        this._infoCon.style.cssText = ['position:fixed;bottom:0px;left:0;cursor:pointer;', 'opacity:0.9;z-index:10000;padding:10px;font-size:12px;', 'width:120px;height:50px;background-color:#002;color:#0ff;'].join('');
+
+        this._infoType = 1;
+        this._infoCon.addEventListener('click', function () {
+          self._infoType++;
+          if (self._infoType > 3) self._infoType = 1;
+        }, false);
+
+        var bg, color;
+
+        switch (style) {
+          case 2:
+            bg = '#201';
+            color = '#f08';
+            break;
+
+          case 3:
+            bg = '#020';
+            color = '#0f0';
+            break;
+
+          default:
+            bg = '#002';
+            color = '#0ff';
+        }
+
+        this._infoCon.style['background-color'] = bg;
+        this._infoCon.style['color'] = color;
+      }
+
+      if (!this._infoCon.parentNode) document.body.appendChild(this._infoCon);
+    };
+  }()
+};
+module.exports = exports['default'];
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var DEFAULT_WIDTH = exports.DEFAULT_WIDTH = 10;
+var DEFAULT_HEIGHT = exports.DEFAULT_HEIGHT = 10;
+var DEFAULT_DEPTH = exports.DEFAULT_DEPTH = 10;
+var DEFAULT_RADIUS = exports.DEFAULT_RADIUS = 15;
+var DEFAULT_SIZE = exports.DEFAULT_SIZE = 15;
+var DEFAULT_POSITION = exports.DEFAULT_POSITION = 0;
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var once = 0;
+
+  if (window.console && window.console.trace) {
+    var arg = Array.prototype.slice.call(arguments);
+    var s1 = arguments[0] + '';
+
+    if (s1.indexOf('+') == 0) {
+      var n = parseInt(arguments[0]);
+
+      if (once < n) {
+        arg.shift();
+        console.trace.apply(console, arg);
+        once++;
+      }
+    } else {
+      arg.unshift('+15');
+      this.apply(console, arg);
+    }
+  }
+};
+
+module.exports = exports['default']; /**
+                                      * You can use this emit particles.
+                                      *
+                                      * This method will console.log the fixed number of your info  in updata or requestAnimationFrame
+                                      *
+                                      * use like this log('+12',mc); log 12 times
+                                      *
+                                      * @return void
+                                      */
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _Emitter2 = __webpack_require__(13);
+
+var _Emitter3 = _interopRequireDefault(_Emitter2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var BehaviourEmitter = function (_Emitter) {
+  _inherits(BehaviourEmitter, _Emitter);
+
+  /**
+   * The BehaviourEmitter class inherits from Proton.Emitter
+   *
+   * use the BehaviourEmitter you can add behaviours to self;
+   * @class Proton.BehaviourEmitter
+   * @constructor
+   * @param {Object} pObj the parameters object;
+   */
+  function BehaviourEmitter(pObj) {
+    _classCallCheck(this, BehaviourEmitter);
+
+    var _this = _possibleConstructorReturn(this, (BehaviourEmitter.__proto__ || Object.getPrototypeOf(BehaviourEmitter)).call(this, pObj));
+
+    _this.selfBehaviours = [];
+    return _this;
+  }
+
+  /**
+   * add the Behaviour to emitter;
+   *
+   * you can use Behaviours array:emitter.addSelfBehaviour(Behaviour1,Behaviour2,Behaviour3);
+   * @method addSelfBehaviour
+   * @param {Proton.Behaviour} behaviour like this new Proton.Color('random')
+   */
+
+
+  _createClass(BehaviourEmitter, [{
+    key: 'addSelfBehaviour',
+    value: function addSelfBehaviour() {
+      var length = arguments.length,
+          i;
+
+      for (i = 0; i < length; i++) {
+        this.selfBehaviours.push(arguments[i]);
+      }
+    }
+
+    /**
+     * remove the Behaviour for self
+     * @method removeSelfBehaviour
+     * @param {Proton.Behaviour} behaviour a behaviour
+     */
+
+  }, {
+    key: 'removeSelfBehaviour',
+    value: function removeSelfBehaviour(behaviour) {
+      var index = this.selfBehaviours.indexOf(behaviour);
+
+      if (index > -1) this.selfBehaviours.splice(index, 1);
+    }
+  }, {
+    key: 'update',
+    value: function update(time) {
+      _get(BehaviourEmitter.prototype.__proto__ || Object.getPrototypeOf(BehaviourEmitter.prototype), 'update', this).call(this, time);
+
+      if (!this.sleep) {
+        var length = this.selfBehaviours.length,
+            i;
+
+        for (i = 0; i < length; i++) {
+          this.selfBehaviours[i].applyBehaviour(this, time, i);
+        }
+      }
+    }
+  }]);
+
+  return BehaviourEmitter;
+}(_Emitter3.default);
+
+exports.default = BehaviourEmitter;
+module.exports = exports['default'];
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _Emitter2 = __webpack_require__(13);
+
+var _Emitter3 = _interopRequireDefault(_Emitter2);
+
+var _THREEUtil = __webpack_require__(22);
+
+var _THREEUtil2 = _interopRequireDefault(_THREEUtil);
+
+var _Util = __webpack_require__(6);
+
+var _Util2 = _interopRequireDefault(_Util);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FollowEmitter = function (_Emitter) {
+  _inherits(FollowEmitter, _Emitter);
+
+  /**
+   * The FollowEmitter class inherits from Proton.Emitter
+   *
+   * use the FollowEmitter will emit particle when mousemoving
+   *
+   * @class Proton.FollowEmitter
+   * @constructor
+   * @param {Element} mouseTarget mouseevent's target;
+   * @param {Number} ease the easing of following speed;
+   * @default 0.7
+   * @param {Object} pObj the parameters object;
+   */
+  function FollowEmitter(mouseTarget, ease, pObj) {
+    _classCallCheck(this, FollowEmitter);
+
+    var _this = _possibleConstructorReturn(this, (FollowEmitter.__proto__ || Object.getPrototypeOf(FollowEmitter)).call(this, pObj));
+
+    _this.mouseTarget = _Util2.default.initValue(mouseTarget, window);
+    _this.ease = _Util2.default.initValue(ease, 0.7);
+    _this._allowEmitting = false;
+    _this.initEventHandler();
+    return _this;
+  }
+
+  _createClass(FollowEmitter, [{
+    key: 'initEventHandler',
+    value: function initEventHandler() {
+      var self = this;
+
+      this.mousemoveHandler = function (e) {
+        self.mousemove.call(self, e);
+      };
+
+      this.mousedownHandler = function (e) {
+        self.mousedown.call(self, e);
+      };
+
+      this.mouseupHandler = function (e) {
+        self.mouseup.call(self, e);
+      };
+
+      this.mouseTarget.addEventListener('mousemove', this.mousemoveHandler, false);
+    }
+
+    /**
+     * start emit particle
+     * @method emit
+     */
+
+  }, {
+    key: 'emit',
+    value: function emit() {
+      this._allowEmitting = true;
+    }
+
+    /**
+     * stop emiting
+     * @method stopEmit
+     */
+
+  }, {
+    key: 'stopEmit',
+    value: function stopEmit() {
+      this._allowEmitting = false;
+    }
+  }, {
+    key: 'setCameraAndCanvas',
+    value: function setCameraAndCanvas(camera, canvas) {
+      this.camera = camera;
+      this.canvas = canvas;
+    }
+  }, {
+    key: 'mousemove',
+    value: function mousemove(e) {
+      if (e.layerX || e.layerX == 0) {
+        this.p.x += (e.layerX - this.p.x) * this.ease;
+        this.p.y += (e.layerY - this.p.y) * this.ease;
+      } else if (e.offsetX || e.offsetX == 0) {
+        this.p.x += (e.offsetX - this.p.x) * this.ease;
+        this.p.y += (e.offsetY - this.p.y) * this.ease;
+      }
+
+      this.p.copy(_THREEUtil2.default.toSpacePos(this.p, this.camera, this.canvas));
+
+      if (this._allowEmitting) _get(FollowEmitter.prototype.__proto__ || Object.getPrototypeOf(FollowEmitter.prototype), 'emit', this).call(this, 'once');
+    }
+
+    /**
+     * Destory this Emitter
+     * @method destroy
+     */
+
+  }, {
+    key: 'destroy',
+    value: function destroy() {
+      _get(FollowEmitter.prototype.__proto__ || Object.getPrototypeOf(FollowEmitter.prototype), 'destroy', this).call(this);
+      this.mouseTarget.removeEventListener('mousemove', this.mousemoveHandler, false);
+    }
+  }]);
+
+  return FollowEmitter;
+}(_Emitter3.default);
+
+exports.default = FollowEmitter;
+module.exports = exports['default'];
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DEFAULT_BIND_EMITTER_EVENT = exports.DEFAULT_EMITTER_RATE = exports.DEFAULT_BIND_EMITTER = exports.DEFAULT_DAMPING = undefined;
+
+var _initializer = __webpack_require__(11);
+
+var DEFAULT_DAMPING = exports.DEFAULT_DAMPING = 0.006;
+var DEFAULT_BIND_EMITTER = exports.DEFAULT_BIND_EMITTER = true;
+var DEFAULT_EMITTER_RATE = exports.DEFAULT_EMITTER_RATE = new _initializer.Rate(1, 0.1);
+var DEFAULT_BIND_EMITTER_EVENT = exports.DEFAULT_BIND_EMITTER_EVENT = false;
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/*
+ * EventDispatcher
+ * Visit http://createjs.com/ for documentation, updates and examples.
+ *
+ **/
+
+var EventDispatcher = function () {
+  function EventDispatcher() {
+    _classCallCheck(this, EventDispatcher);
+
+    this.listeners = null;
+  }
+
+  _createClass(EventDispatcher, [{
+    key: "addEventListener",
+    value: function addEventListener(type, listener) {
+      if (!this.listeners) {
+        this.listeners = {};
+      } else {
+        this.removeEventListener(type, listener);
+      }
+
+      if (!this.listeners[type]) this.listeners[type] = [];
+      this.listeners[type].push(listener);
+
+      return listener;
+    }
+  }, {
+    key: "removeEventListener",
+    value: function removeEventListener(type, listener) {
+      if (!this.listeners) return;
+      if (!this.listeners[type]) return;
+
+      var arr = this.listeners[type];
+
+      for (var i = 0, l = arr.length; i < l; i++) {
+        if (arr[i] == listener) {
+          if (l == 1) {
+            delete this.listeners[type];
+          }
+          // allows for faster checks.
+          else {
+              arr.splice(i, 1);
+            }
+          break;
+        }
+      }
+    }
+  }, {
+    key: "removeAllEventListeners",
+    value: function removeAllEventListeners(type) {
+      if (!type) this.listeners = null;else if (this.listeners) delete this.listeners[type];
+    }
+  }, {
+    key: "dispatchEvent",
+    value: function dispatchEvent(eventName, eventTarget) {
+      var ret = false,
+          listeners = this.listeners;
+
+      if (eventName && listeners) {
+        var arr = listeners[eventName];
+
+        if (!arr) return ret;
+
+        arr = arr.slice();
+        // to avoid issues with items being removed or added during the dispatch
+
+        var handler,
+            i = arr.length;
+
+        while (i--) {
+          handler = arr[i];
+
+          ret = ret || handler(eventTarget);
+        }
+      }
+
+      return !!ret;
+    }
+  }, {
+    key: "hasEventListener",
+    value: function hasEventListener(type) {
+      var listeners = this.listeners;
+
+      return !!(listeners && listeners[type]);
+    }
+  }, {
+    key: "listeners",
+    set: function set(listeners) {
+      this._listeners = listeners;
+    },
+    get: function get() {
+      return this._listeners;
+    }
+  }]);
+
+  return EventDispatcher;
+}();
+
+exports.default = EventDispatcher;
+module.exports = exports["default"];
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Pool = exports.Particle = exports.Proton = undefined;
+
+var _behaviour = __webpack_require__(23);
+
+Object.keys(_behaviour).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _behaviour[key];
+    }
+  });
+});
+
+var _debug = __webpack_require__(34);
+
+Object.keys(_debug).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _debug[key];
+    }
+  });
+});
+
+var _ease = __webpack_require__(1);
+
+Object.keys(_ease).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _ease[key];
+    }
+  });
+});
+
+var _emitter = __webpack_require__(35);
+
+Object.keys(_emitter).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _emitter[key];
+    }
+  });
+});
+
+var _initializer = __webpack_require__(11);
+
+Object.keys(_initializer).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _initializer[key];
+    }
+  });
+});
+
+var _math = __webpack_require__(0);
+
+Object.keys(_math).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _math[key];
+    }
+  });
+});
+
+var _renderer = __webpack_require__(36);
+
+Object.keys(_renderer).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _renderer[key];
+    }
+  });
+});
+
+var _utils = __webpack_require__(9);
+
+Object.keys(_utils).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _utils[key];
+    }
+  });
+});
+
+var _zone = __webpack_require__(16);
+
+Object.keys(_zone).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _zone[key];
+    }
+  });
+});
+
+var _core = __webpack_require__(15);
+
+Object.defineProperty(exports, 'Proton', {
+  enumerable: true,
+  get: function get() {
+    return _core.Proton;
+  }
+});
+Object.defineProperty(exports, 'Particle', {
+  enumerable: true,
+  get: function get() {
+    return _core.Particle;
+  }
+});
+Object.defineProperty(exports, 'Pool', {
+  enumerable: true,
+  get: function get() {
+    return _core.Pool;
+  }
+});
+exports.default = _core.Proton;
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Initializer2 = __webpack_require__(5);
+
+var _Initializer3 = _interopRequireDefault(_Initializer2);
+
+var _math = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Sets the body property on initialized particles.
+ *
+ */
+var Body = function (_Initializer) {
+  _inherits(Body, _Initializer);
+
+  /**
+   * Constructs a Body initalizer instance.
+   *
+   * @param {string|number|object} body - The content for the particle body, can
+   * be a color or an object (mesh)
+   * @param {?number} w - The width of the particle body
+   * @param {?number} h - The height of the particle body
+   * @return void
+   */
+  function Body(body, w, h) {
+    _classCallCheck(this, Body);
+
+    /**
+     * @desc The content for the particle body
+     * @type {ArraySpan}
+     */
+    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
+
+    _this.body = (0, _math.createArraySpan)(body);
+
+    /**
+     * @desc The width of the particle Body
+     * @type {number}
+     */
+    _this.w = w;
+
+    /**
+     * @desc The height of the particle Body
+     * @type {number}
+     */
+    _this.h = h || w;
+    return _this;
+  }
+
+  /**
+   * Sets the particle's initial body.
+   *
+   * @param {Particle} particle - the particle to initialize the property on
+   * @return void
+   */
+
+
+  _createClass(Body, [{
+    key: 'initialize',
+    value: function initialize(particle) {
+      var body = this.body.getValue();
+
+      if (this.w) {
+        particle.body = {
+          width: this.w,
+          height: this.h,
+          body: body
+        };
+      } else {
+        particle.body = body;
+      }
+    }
+
+    /**
+     * Creates a Body initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.body - The color for the particle body
+     * @property {number} json.width - The width of the particle body
+     * @property {number} json.height - The height of the particle body
+     * @return {Body}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var body = json.body,
+          width = json.width,
+          height = json.height;
+
+
+      return new Body(body, width, height);
+    }
+  }]);
+
+  return Body;
+}(_Initializer3.default);
+
+exports.default = Body;
+module.exports = exports['default'];
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _three = __webpack_require__(4);
+
+var _constants = __webpack_require__(69);
+
+var _Initializer2 = __webpack_require__(5);
+
+var _Initializer3 = _interopRequireDefault(_Initializer2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Sets the body property to be a THREE.Sprite on initialized particles.
+ *
+ * NOTE The texture map MUST be set on the SpriteMaterial in the TextureLoader.load
+ * callback. Not doing so will cause WebGL buffer errors.
+ */
+var BodySprite = function (_Initializer) {
+  _inherits(BodySprite, _Initializer);
+
+  /**
+   * Constructs a BodySprite initializer.
+   *
+   * @param {string} texture - The sprite texture
+   * @param {object} materialProperties - The sprite material properties
+   * @throws {Error} If the TextureLoader fails to load the supplied texture
+   * @return void
+   */
+  function BodySprite(texture) {
+    var materialProperties = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_MATERIAL_PROPERTIES;
+
+    _classCallCheck(this, BodySprite);
+
+    var _this = _possibleConstructorReturn(this, (BodySprite.__proto__ || Object.getPrototypeOf(BodySprite)).call(this));
+
+    new _three.TextureLoader().load(texture, function (map) {
+      /**
+       * @desc The texture for the THREE.SpriteMaterial map.
+       * @type {Texture}
+       */
+      _this.texture = map;
+
+      /**
+       * @desc THREE.SpriteMaterial instance.
+       * @type {SpriteMaterial}
+       */
+      _this.material = new _three.SpriteMaterial(_extends({ map: map }, materialProperties));
+
+      /**
+       * @desc THREE.Sprite instance.
+       * @type {Sprite}
+       */
+      _this.sprite = new _three.Sprite(_this.material);
+    }, undefined, function (error) {
+      throw new Error(error);
+    });
+    return _this;
+  }
+
+  /**
+   * Sets the particle body to the sprite.
+   *
+   * @param {Particle} particle - The particle to set the body of
+   * @return void
+   */
+
+
+  _createClass(BodySprite, [{
+    key: 'initialize',
+    value: function initialize(particle) {
+      particle.body = this.sprite;
+    }
+
+    /**
+     * Creates a BodySprite initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @param {string} json.texture - The sprite texture
+     * @param {object} json.materialProperties - The sprite material properties
+     * @return {BodySprite}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var texture = json.texture,
+          _json$materialPropert = json.materialProperties,
+          materialProperties = _json$materialPropert === undefined ? _constants.DEFAULT_MATERIAL_PROPERTIES : _json$materialPropert;
+
+
+      return new BodySprite(texture, materialProperties);
+    }
+  }]);
+
+  return BodySprite;
+}(_Initializer3.default);
+
+exports.default = BodySprite;
+module.exports = exports['default'];
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _three = __webpack_require__(4);
+
+var particleEuler = new _three.Euler();
+
+exports.default = {
+  /**
+   * Loops through the initializers array and calls each initializer's initialize method
+   * on the supplied particle. This sets the particle's initial properties.
+   *
+   * @see {@link '../emitter/Emitter'} setupParticle
+   * @param {Emitter} emitter - The emitter that has called this method
+   * @param {Particle} particle - The particle that has just been created
+   * @param {array<Initializer>} initializers - All of the emitter's initializers
+   * @return void
+   */
+  initialize: function initialize(emitter, particle, initializers) {
+    var i = initializers.length;
+
+    while (i--) {
+      initializers[i].init(emitter, particle);
+    }
+
+    emitter.bindEmitter && this.bindEmitter(emitter, particle);
+  },
+
+  /**
+   * Ensures that the emitter's position, velocity and accleration are added
+   * to each created particle.
+   *
+   * @param {Emitter} emitter - The emitter that is emitting the particles
+   * @param {Particle} particle - The newly created particle
+   * @return void
+   */
+  bindEmitter: function bindEmitter(emitter, particle) {
+    var _emitter$rotation = emitter.rotation,
+        x = _emitter$rotation.x,
+        y = _emitter$rotation.y,
+        z = _emitter$rotation.z;
+
+
+    particle.p.add(emitter.p);
+    particle.v.add(emitter.v);
+    particle.a.add(emitter.a);
+    particle.v.applyEuler(particleEuler.set(x, y, z));
+  }
+};
+module.exports = exports['default'];
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Initializer2 = __webpack_require__(5);
+
+var _Initializer3 = _interopRequireDefault(_Initializer2);
+
+var _math = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Sets the life property on initialized particles.
+ *
+ */
+var Life = function (_Initializer) {
+  _inherits(Life, _Initializer);
+
+  /**
+   * Constructs a Life property instance.
+   *
+   * @param {number} min - The minimum life
+   * @param {number} max - The maximum life
+   * @param {boolean} [center] - Determines whether to average the life value
+   * @return void
+   */
+  function Life(min, max, center) {
+    _classCallCheck(this, Life);
+
+    /**
+     * @desc The life span of the particle.
+     * @type {Span}
+     */
+    var _this = _possibleConstructorReturn(this, (Life.__proto__ || Object.getPrototypeOf(Life)).call(this));
+
+    _this.lifePan = (0, _math.createSpan)(min, max, center);
+    return _this;
+  }
+
+  /**
+   * Sets the particle's initial life.
+   *
+   * @param {Particle} particle - the particle to initialize the property on
+   * @return void
+   */
+
+
+  _createClass(Life, [{
+    key: 'initialize',
+    value: function initialize(particle) {
+      if (this.lifePan.a == Infinity || this.lifePan.a == 'infi') particle.life = Infinity;else particle.life = this.lifePan.getValue();
+    }
+
+    /**
+     * Creates a Life initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.min - The minimum life time
+     * @property {number} json.max - The maximum life time
+     * @property {number} json.center - The center of the life time
+     * @return {Life}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var min = json.min,
+          max = json.max,
+          _json$center = json.center,
+          center = _json$center === undefined ? false : _json$center;
+
+
+      return new Life(min, max, center);
+    }
+  }]);
+
+  return Life;
+}(_Initializer3.default);
+
+exports.default = Life;
+module.exports = exports['default'];
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Initializer2 = __webpack_require__(5);
+
+var _Initializer3 = _interopRequireDefault(_Initializer2);
+
+var _math = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Sets the mass property on initialized particles.
+ *
+ */
+var Mass = function (_Initializer) {
+  _inherits(Mass, _Initializer);
+
+  /**
+   * Constructs a Mass initializer instance.
+   *
+   * @param {number} min - The minumum mass for the particle
+   * @param {number} max - The maximum mass for the particle
+   * @param {boolean} [center] - Determines whether to average the mass value
+   * @return void
+   */
+  function Mass(min, max) {
+    var center = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+    _classCallCheck(this, Mass);
+
+    /**
+     * @desc The mass span which is used to set the particle mass value.
+     * @type {Span}
+     */
+    var _this = _possibleConstructorReturn(this, (Mass.__proto__ || Object.getPrototypeOf(Mass)).call(this));
+
+    _this.massPan = (0, _math.createSpan)(min, max, center);
+    return _this;
+  }
+
+  /**
+   * Sets the particle's initial mass.
+   *
+   * @param {Particle} particle - the particle to initialize the property on
+   * @return void
+   */
+
+
+  _createClass(Mass, [{
+    key: 'initialize',
+    value: function initialize(particle) {
+      particle.mass = this.massPan.getValue();
+    }
+
+    /**
+     * Creates a Mass initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.min - The minimum mass
+     * @property {number} json.max - The maximum mass
+     * @property {number} json.center - The center of the mass
+     * @return {Mass}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var min = json.min,
+          max = json.max,
+          _json$center = json.center,
+          center = _json$center === undefined ? false : _json$center;
+
+
+      return new Mass(min, max, center);
+    }
+  }]);
+
+  return Mass;
+}(_Initializer3.default);
+
+exports.default = Mass;
+module.exports = exports['default'];
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _zone = __webpack_require__(16);
+
+var Zone = _interopRequireWildcard(_zone);
+
+var _Initializer2 = __webpack_require__(5);
+
+var _Initializer3 = _interopRequireDefault(_Initializer2);
+
+var _constants = __webpack_require__(12);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Sets the starting position property for initialized particles.
+ * This is respective to the supplied zones.
+ *
+ */
+var Position = function (_Initializer) {
+  _inherits(Position, _Initializer);
+
+  /**
+   * Constructs a Position initializer instance.
+   *
+   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
+   * @return void
+   */
+  function Position() {
+    _classCallCheck(this, Position);
+
+    var _this = _possibleConstructorReturn(this, (Position.__proto__ || Object.getPrototypeOf(Position)).call(this));
+
+    _this.reset.apply(_this, arguments);
+    return _this;
+  }
+
+  /**
+   * Resets the initializer properties.
+   * Clears all previously set zones and resets the zones according to args passed.
+   *
+   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
+   * @return void
+   */
+
+
+  _createClass(Position, [{
+    key: 'reset',
+    value: function reset() {
+      if (!this.zones) this.zones = [];else this.zones.length = 0;
+
+      var args = Array.prototype.slice.call(arguments);
+
+      /**
+       * @desc The zones to use as bounds for calculating the particle's starting position.
+       * @type {array<Zone>}
+       */
+      this.zones = this.zones.concat(args);
+    }
+
+    /**
+     * Adds a zone or zones to this.zones.
+     *
+     * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
+     * @return void
+     */
+
+  }, {
+    key: 'addZone',
+    value: function addZone() {
+      var args = Array.prototype.slice.call(arguments);
+
+      this.zones = this.zones.concat(args);
+    }
+
+    /**
+     * Creates a Position initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {string} json.zoneType - The type of zone to use for initial position
+     * @return {Position}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var zoneType = json.zoneType,
+          params = _objectWithoutProperties(json, ['zoneType']);
+
+      if (!_constants.SUPPORTED_JSON_ZONE_TYPES.includes(zoneType)) {
+        throw new Error('The zone type ' + zoneType + ' is invalid or not yet supported');
+      }
+
+      return new Position(new (Function.prototype.bind.apply(Zone[zoneType], [null].concat(_toConsumableArray(Object.values(params)))))());
+    }
+  }]);
+
+  return Position;
+}(_Initializer3.default);
+
+/**
+ * Sets the particle's initial position.
+ *
+ * @param {Particle} particle - the particle to initialize the property on
+ * @return void
+ */
+
+
+exports.default = Position;
+Position.prototype.initialize = function () {
+  var zone = void 0;
+
+  return function (target) {
+    zone = this.zones[Math.random() * this.zones.length >> 0];
+
+    zone.getPosition();
+
+    target.p.x = zone.vector.x;
+    target.p.y = zone.vector.y;
+    target.p.z = zone.vector.z;
+  };
+}();
+module.exports = exports['default'];
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Initializer2 = __webpack_require__(5);
+
+var _Initializer3 = _interopRequireDefault(_Initializer2);
+
+var _math = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Sets the radius property on initialized particles.
+ *
+ */
+var Radius = function (_Initializer) {
+  _inherits(Radius, _Initializer);
+
+  /**
+   * Constructs a Radius initializer instance.
+   *
+   * @param {number} width - The width of the particle radius
+   * @param {number} height - The height of the particle radius
+   * @param {boolean} [center=false] - Determines whether to average the radius value
+   * @return void
+   */
+  function Radius(width, height) {
+    var center = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+    _classCallCheck(this, Radius);
+
+    /**
+     * @desc The radius span which is used to set the particle radius value.
+     * @type {Span}
+     */
+    var _this = _possibleConstructorReturn(this, (Radius.__proto__ || Object.getPrototypeOf(Radius)).call(this));
+
+    _this.radius = (0, _math.createSpan)(width, height, center);
+    return _this;
+  }
+
+  /**
+   * Resets the initializer properties.
+   * Clears all previously set zones and resets the zones according to args passed.
+   *
+   * @param {number} width - The width of the particle radius
+   * @param {number} height - The height of the particle radius
+   * @param {boolean} [center=false] - Determines whether to average the radius value
+   * @return void
+   */
+
+
+  _createClass(Radius, [{
+    key: 'reset',
+    value: function reset(width, height) {
+      var center = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+      this.radius = (0, _math.createSpan)(width, height, center);
+    }
+
+    /**
+     * Sets the particle's initial radius.
+     *
+     * @param {Particle} particle - the particle to initialize the property on
+     * @return void
+     */
+
+  }, {
+    key: 'initialize',
+    value: function initialize(particle) {
+      particle.radius = this.radius.getValue();
+      particle.transform.oldRadius = particle.radius;
+    }
+
+    /**
+     * Creates a Radius initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.width - The width of the particle radius
+     * @property {number} json.height - The height of the particle radius
+     * @property {number} json.center - The center of the particle radius
+     * @return {Radius}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var width = json.width,
+          height = json.height,
+          _json$center = json.center,
+          center = _json$center === undefined ? false : _json$center;
+
+
+      return new Radius(width, height, center);
+    }
+  }]);
+
+  return Radius;
+}(_Initializer3.default);
+
+exports.default = Radius;
+module.exports = exports['default'];
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _constants = __webpack_require__(2);
+
+var _math = __webpack_require__(0);
+
+var _Velocity2 = __webpack_require__(17);
+
+var _Velocity3 = _interopRequireDefault(_Velocity2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Sets the velocity property on initialized particles.
+ *
+ */
+var PolarVelocity = function (_Velocity) {
+  _inherits(PolarVelocity, _Velocity);
+
+  /**
+   * Constructs a PolarVelocity initializer.
+   *
+   * @param {Polar3D} polar3d - The polar vector for the velocity
+   * @param {number} theta - The theta angle to use
+   * @return void
+   */
+  function PolarVelocity(polar3d, theta) {
+    _classCallCheck(this, PolarVelocity);
+
+    /**
+     * @desc Theta.
+     * @type {number}
+     */
+    var _this = _possibleConstructorReturn(this, (PolarVelocity.__proto__ || Object.getPrototypeOf(PolarVelocity)).call(this));
+
+    _this.tha = theta * _constants.DR;
+
+    /**
+     * @desc Directional vector
+     * @type {Vector3D}
+     */
+    _this.dirVec = polar3d.toVector3D();
+
+    /**
+     * @desc Determines whether to use the directional vector or not.
+     * @type {boolean}
+     */
+    _this._useV = false;
+    return _this;
+  }
+
+  /**
+   * Creates a PolarVelocity initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @param {number} json.polarRadius - The Polar3D radius
+   * @param {number} json.polarTheta - The Polar3D theta
+   * @param {number} json.polarPhi - The Polar3D phi
+   * @param {number} json.velocityTheta - The velocity theta
+   * @return {PolarVelocity}
+   */
+
+
+  _createClass(PolarVelocity, null, [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var polarRadius = json.polarRadius,
+          polarTheta = json.polarTheta,
+          polarPhi = json.polarPhi,
+          velocityTheta = json.velocityTheta;
+
+
+      return new PolarVelocity(new _math.Polar3D(polarRadius, polarTheta, polarPhi), velocityTheta);
+    }
+  }]);
+
+  return PolarVelocity;
+}(_Velocity3.default);
+
+exports.default = PolarVelocity;
+module.exports = exports['default'];
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _constants = __webpack_require__(2);
+
+var _Velocity2 = __webpack_require__(17);
+
+var _Velocity3 = _interopRequireDefault(_Velocity2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Sets the velocity property on initialized particles.
+ *
+ */
+var RadialVelocity = function (_Velocity) {
+  _inherits(RadialVelocity, _Velocity);
+
+  /**
+   * Constructs a RadialVelocity initializer.
+   *
+   * @param {number|Span} radius - The velocity radius
+   * @param {Vector3D} vector3d - The directional vector for the velocity
+   * @param {number} theta - The theta angle to use
+   * @return void
+   */
+  function RadialVelocity(radius, vector3d, theta) {
+    _classCallCheck(this, RadialVelocity);
+
+    /**
+     * @desc Velocity radius span.
+     * @type {Span}
+     */
+    var _this = _possibleConstructorReturn(this, (RadialVelocity.__proto__ || Object.getPrototypeOf(RadialVelocity)).call(this));
+
+    _this.radiusPan = (0, _math.createSpan)(radius);
+
+    /**
+     * @desc Direction vector.
+     * @type {Vector3D}
+     */
+    _this.dir = vector3d.clone().normalize();
+
+    /**
+     * @desc Theta.
+     * @type {number}
+     */
+    _this.tha = theta * _constants.DR;
+
+    /**
+     * @desc Determines whether to use the directional vector or not.
+     * @type {boolean}
+     */
+    _this._useV = true;
+    return _this;
+  }
+
+  /**
+   * Creates a RadialVelocity initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @param {number} json.radius - The velocity radius
+   * @param {number} json.x - The velocity x axis direction
+   * @param {number} json.y - The velocity y axis direction
+   * @param {number} json.z - The velocity z axis direction
+   * @param {number} json.theta - The velocity theta
+   * @return {RadialVelocity}
+   */
+
+
+  _createClass(RadialVelocity, null, [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var radius = json.radius,
+          x = json.x,
+          y = json.y,
+          z = json.z,
+          theta = json.theta;
+
+
+      return new RadialVelocity(radius, new _math.Vector3D(x, y, z), theta);
+    }
+  }]);
+
+  return RadialVelocity;
+}(_Velocity3.default);
+
+exports.default = RadialVelocity;
+module.exports = exports['default'];
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _constants = __webpack_require__(2);
+
+var _Velocity2 = __webpack_require__(17);
+
+var _Velocity3 = _interopRequireDefault(_Velocity2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Sets the velocity property on initialized particles.
+ *
+ */
+var VectorVelocity = function (_Velocity) {
+  _inherits(VectorVelocity, _Velocity);
+
+  /**
+   * Constructs a VectorVelocity initializer.
+   *
+   * @param {Vector3D} vector3d - The directional vector for the velocity
+   * @param {number} theta - The theta angle to use
+   * @return void
+   */
+  function VectorVelocity(vector3d, theta) {
+    _classCallCheck(this, VectorVelocity);
+
+    /**
+     * @desc Velocity radius span.
+     * @type {Span}
+     */
+    var _this = _possibleConstructorReturn(this, (VectorVelocity.__proto__ || Object.getPrototypeOf(VectorVelocity)).call(this));
+
+    _this.radiusPan = (0, _math.createSpan)(1);
+
+    /**
+     * @desc Direction vector.
+     * @type {Vector3D}
+     */
+    _this.dir = vector3d.clone();
+
+    /**
+     * @desc Theta.
+     * @type {number}
+     */
+    _this.tha = theta * _constants.DR;
+
+    /**
+     * @desc Determines whether to use the directional vector or not.
+     * @type {boolean}
+     */
+    _this._useV = true;
+    return _this;
+  }
+
+  /**
+   * Creates a VectorVelocity initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @param {number} json.x - The velocity x axis direction
+   * @param {number} json.y - The velocity y axis direction
+   * @param {number} json.z - The velocity z axis direction
+   * @param {number} json.theta - The velocity theta
+   * @return {VectorVelocity}
+   */
+
+
+  _createClass(VectorVelocity, null, [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var x = json.x,
+          y = json.y,
+          z = json.z,
+          theta = json.theta;
+
+
+      return new VectorVelocity(new _math.Vector3D(x, y, z), theta);
+    }
+  }]);
+
+  return VectorVelocity;
+}(_Velocity3.default);
+
+exports.default = VectorVelocity;
+module.exports = exports['default'];
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _PolarVelocity = __webpack_require__(65);
+
+Object.defineProperty(exports, 'PolarVelocity', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_PolarVelocity).default;
+  }
+});
+
+var _RadialVelocity = __webpack_require__(66);
+
+Object.defineProperty(exports, 'RadialVelocity', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_RadialVelocity).default;
+  }
+});
+
+var _VectorVelocity = __webpack_require__(67);
+
+Object.defineProperty(exports, 'VectorVelocity', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_VectorVelocity).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DEFAULT_MATERIAL_PROPERTIES = undefined;
+
+var _three = __webpack_require__(4);
+
+var DEFAULT_MATERIAL_PROPERTIES = exports.DEFAULT_MATERIAL_PROPERTIES = {
+  color: 0xff0000,
+  blending: _three.AdditiveBlending,
+  fog: true
+};
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var INITIALIZER_TYPE_BODY = exports.INITIALIZER_TYPE_BODY = 'Body';
+var INITIALIZER_TYPE_BODY_SPRITE = exports.INITIALIZER_TYPE_BODY_SPRITE = 'BodySprite';
+var INITIALIZER_TYPE_LIFE = exports.INITIALIZER_TYPE_LIFE = 'Life';
+var INITIALIZER_TYPE_MASS = exports.INITIALIZER_TYPE_MASS = 'Mass';
+var INITIALIZER_TYPE_POSITION = exports.INITIALIZER_TYPE_POSITION = 'Position';
+var INITIALIZER_TYPE_RADIUS = exports.INITIALIZER_TYPE_RADIUS = 'Radius';
+var INITIALIZER_TYPE_ZONE = exports.INITIALIZER_TYPE_ZONE = 'Zone';
+var INITIALIZER_TYPE_VECTOR_VELOCITY = exports.INITIALIZER_TYPE_VECTOR_VELOCITY = 'VectorVelocity';
+var INITIALIZER_TYPE_POLAR_VELOCITY = exports.INITIALIZER_TYPE_POLAR_VELOCITY = 'PolarVelocity';
+var INITIALIZER_TYPE_RADIAL_VELOCITY = exports.INITIALIZER_TYPE_RADIAL_VELOCITY = 'RadialVelocity';
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createArraySpan = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Span2 = __webpack_require__(18);
+
+var _Span3 = _interopRequireDefault(_Span2);
+
+var _lodash = __webpack_require__(33);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Class for storing items of mixed type and fetching a randomised
+ * value from these items.
+ *
+ */
+var ArraySpan = function (_Span) {
+  _inherits(ArraySpan, _Span);
+
+  /**
+   * Constructs an ArraySpan instance.
+   *
+   * @param {mixed|array<mixed>} items - Items
+   * @return void
+   */
+  function ArraySpan(items) {
+    _classCallCheck(this, ArraySpan);
+
+    /**
+     * @desc An array of colors
+     * @type {array}
+     */
+    var _this = _possibleConstructorReturn(this, (ArraySpan.__proto__ || Object.getPrototypeOf(ArraySpan)).call(this));
+
+    _this.items = Array.isArray(items) ? items : [items];
+    return _this;
+  }
+
+  /**
+   * Gets a random item.
+   *
+   * @return {mixed}
+   */
+
+
+  _createClass(ArraySpan, [{
+    key: 'getValue',
+    value: function getValue() {
+      return _lodash2.default.sample(this.items);
+    }
+  }]);
+
+  return ArraySpan;
+}(_Span3.default);
+
+/**
+ * Attempts to create an ArraySpan from the items provided.
+ *
+ * @param {mixed} items - Items to try and create an ArraySpan from
+ * @return {?ArraySpan}
+ */
+
+
+exports.default = ArraySpan;
+var createArraySpan = exports.createArraySpan = function createArraySpan(items) {
+  if (!items) {
+    return null;
+  }
+
+  if (items instanceof ArraySpan) {
+    return items;
+  }
+
+  return new ArraySpan(items);
+};
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Box = function () {
+  function Box(x, y, z, w, h, d) {
+    _classCallCheck(this, Box);
+
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.width = w;
+    this.height = h;
+    this.depth = d;
+    this.bottom = this.y + this.height;
+    this.right = this.x + this.width;
+    this.right = this.x + this.width;
+  }
+
+  _createClass(Box, [{
+    key: "contains",
+    value: function contains(x, y, z) {
+      if (x <= this.right && x >= this.x && y <= this.bottom && y >= this.y && z <= this.depth && z >= this.z) return true;else return false;
+    }
+  }]);
+
+  return Box;
+}();
+
+exports.default = Box;
+module.exports = exports["default"];
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createColorSpan = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _MathUtils = __webpack_require__(14);
+
+var _MathUtils2 = _interopRequireDefault(_MathUtils);
+
+var _Span2 = __webpack_require__(18);
+
+var _Span3 = _interopRequireDefault(_Span2);
+
+var _lodash = __webpack_require__(33);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Class for storing and interacting with an array of colours.
+ *
+ */
+var ColorSpan = function (_Span) {
+  _inherits(ColorSpan, _Span);
+
+  /**
+   * Constructs a ColorSpan instance.
+   *
+   * @param {string|array<string>} colors - A color or array of colors. If the
+   * string 'random' is provided, a random color will be returned from getValue
+   * @return void
+   */
+  function ColorSpan(colors) {
+    _classCallCheck(this, ColorSpan);
+
+    /**
+     * @desc Determines if a random color should be returned from the getValue method.
+     * @type {boolean}
+     */
+    var _this = _possibleConstructorReturn(this, (ColorSpan.__proto__ || Object.getPrototypeOf(ColorSpan)).call(this));
+
+    _this.shouldRandomize = colors === 'random' ? true : false;
+
+    /**
+     * @desc An array of colors to select from
+     * @type {array<string>}
+     */
+    _this.colors = Array.isArray(colors) ? colors : [colors];
+    return _this;
+  }
+
+  /**
+   * Gets a color from the color array
+   * or a random color if this.shouldRandomize is true.
+   *
+   * @return {string} a hex color
+   */
+
+
+  _createClass(ColorSpan, [{
+    key: 'getValue',
+    value: function getValue() {
+      return this.shouldRandomize ? _MathUtils2.default.randomColor() : _lodash2.default.sample(this.colors);
+    }
+  }]);
+
+  return ColorSpan;
+}(_Span3.default);
+
+/**
+ * Attempts to create an ArraySpan from the colors provided.
+ *
+ * @param {mixed} colors - colors to try and create an ArraySpan from
+ * @return {?ColorSpan}
+ */
+
+
+exports.default = ColorSpan;
+var createColorSpan = exports.createColorSpan = function createColorSpan(colors) {
+  if (!colors) {
+    return null;
+  }
+
+  if (colors instanceof ColorSpan) {
+    return colors;
+  }
+
+  return new ColorSpan(colors);
+};
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Vector3D = __webpack_require__(7);
+
+var _Vector3D2 = _interopRequireDefault(_Vector3D);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Polar3D = function () {
+  function Polar3D(radius, theta, phi) {
+    _classCallCheck(this, Polar3D);
+
+    this.radius = radius || 1;
+    this.phi = phi || 0;
+    this.theta = theta || 0;
+  }
+
+  _createClass(Polar3D, [{
+    key: 'set',
+    value: function set(radius, theta, phi) {
+      this.radius = radius || 1;
+      this.phi = phi || 0;
+      this.theta = theta || 0;
+
+      return this;
+    }
+  }, {
+    key: 'setRadius',
+    value: function setRadius(radius) {
+      this.radius = radius;
+
+      return this;
+    }
+  }, {
+    key: 'setPhi',
+    value: function setPhi(phi) {
+      this.phi = phi;
+
+      return this;
+    }
+  }, {
+    key: 'setTheta',
+    value: function setTheta(theta) {
+      this.theta = theta;
+
+      return this;
+    }
+  }, {
+    key: 'copy',
+    value: function copy(p) {
+      this.radius = p.radius;
+      this.phi = p.phi;
+      this.theta = p.theta;
+
+      return this;
+    }
+  }, {
+    key: 'toVector3D',
+    value: function toVector3D() {
+      return new _Vector3D2.default(this.getX(), this.getY(), this.getZ());
+    }
+  }, {
+    key: 'getX',
+    value: function getX() {
+      return this.radius * Math.sin(this.theta) * Math.cos(this.phi);
+    }
+  }, {
+    key: 'getY',
+    value: function getY() {
+      return -this.radius * Math.sin(this.theta) * Math.sin(this.phi);
+    }
+  }, {
+    key: 'getZ',
+    value: function getZ() {
+      return this.radius * Math.cos(this.theta);
+    }
+  }, {
+    key: 'normalize',
+    value: function normalize() {
+      this.radius = 1;
+
+      return this;
+    }
+  }, {
+    key: 'equals',
+    value: function equals(v) {
+      return v.radius === this.radius && v.phi === this.phi && v.theta === this.theta;
+    }
+  }, {
+    key: 'clear',
+    value: function clear() {
+      this.radius = 0.0;
+      this.phi = 0.0;
+      this.theta = 0.0;
+
+      return this;
+    }
+  }, {
+    key: 'clone',
+    value: function clone() {
+      return new Polar3D(this.radius, this.phi, this.theta);
+    }
+  }]);
+
+  return Polar3D;
+}();
+
+exports.default = Polar3D;
+module.exports = exports['default'];
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.integrate = undefined;
+
+var _constants = __webpack_require__(19);
+
+/**
+ * Performs euler integration on the particle.
+ *
+ * @param {Particle} particle - The particle to integrate
+ * @param {number} time - The factor of time to use
+ * @param {number} damping - The damping to use
+ * @return void
+ */
+var eulerIntegration = function eulerIntegration(particle, time, damping) {
+  if (particle.sleep) {
+    return;
+  }
+
+  particle.old.p.copy(particle.p);
+  particle.old.v.copy(particle.v);
+  particle.a.scalar(1 / particle.mass);
+  particle.v.add(particle.a.scalar(time));
+  particle.p.add(particle.old.v.scalar(time));
+  damping && particle.v.scalar(damping);
+  particle.a.clear();
+};
+
+/**
+ * Performs the chosen integration on the particle.
+ * Defaults to euler integration.
+ *
+ * @param {Particle} particle - The particle to integrate
+ * @param {number} time - The factor of time to use
+ * @param {number} damping - The damping to use
+ * @param {string} [type=INTEGRATION_TYPE_EULER] - The algorithm to use
+ * @return void
+ */
+var integrate = exports.integrate = function integrate(particle, time, damping) {
+  var type = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.INTEGRATION_TYPE_EULER;
+
+  switch (type) {
+    case _constants.INTEGRATION_TYPE_EULER:
+      eulerIntegration(particle, time, damping);
+      break;
+    default:
+      eulerIntegration(particle, time, damping);
+  }
+};
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _BaseRenderer2 = __webpack_require__(20);
+
+var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
+
+var _core = __webpack_require__(15);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CustomRenderer = function (_BaseRenderer) {
+  _inherits(CustomRenderer, _BaseRenderer);
+
+  function CustomRenderer() {
+    _classCallCheck(this, CustomRenderer);
+
+    var _this = _possibleConstructorReturn(this, (CustomRenderer.__proto__ || Object.getPrototypeOf(CustomRenderer)).call(this));
+
+    _this.targetPool = new _core.Pool();
+    _this.materialPool = new _core.Pool();
+    return _this;
+  }
+
+  _createClass(CustomRenderer, [{
+    key: 'onProtonUpdate',
+    value: function onProtonUpdate() {}
+  }, {
+    key: 'onParticleCreated',
+    value: function onParticleCreated(particle) {} // eslint-disable-line
+
+  }, {
+    key: 'onParticleUpdate',
+    value: function onParticleUpdate(particle) {} // eslint-disable-line
+
+  }, {
+    key: 'onParticleDead',
+    value: function onParticleDead(particle) {} // eslint-disable-line
+
+  }]);
+
+  return CustomRenderer;
+}(_BaseRenderer3.default);
+
+exports.default = CustomRenderer;
+module.exports = exports['default'];
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _BaseRenderer2 = __webpack_require__(20);
+
+var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
+
+var _three = __webpack_require__(4);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var PointsRenderer = function (_BaseRenderer) {
+  _inherits(PointsRenderer, _BaseRenderer);
+
+  function PointsRenderer(ps) {
+    _classCallCheck(this, PointsRenderer);
+
+    var _this = _possibleConstructorReturn(this, (PointsRenderer.__proto__ || Object.getPrototypeOf(PointsRenderer)).call(this));
+
+    _this.points = ps;
+    return _this;
+  }
+
+  _createClass(PointsRenderer, [{
+    key: 'onProtonUpdate',
+    value: function onProtonUpdate() {}
+  }, {
+    key: 'onParticleCreated',
+    value: function onParticleCreated(particle) {
+      if (!particle.target) {
+        particle.target = new _three.Vector3();
+      }
+
+      particle.target.copy(particle.p);
+      this.points.geometry.vertices.push(particle.target);
+    }
+  }, {
+    key: 'onParticleUpdate',
+    value: function onParticleUpdate(particle) {
+      if (particle.target) {
+        particle.target.copy(particle.p);
+      }
+    }
+  }, {
+    key: 'onParticleDead',
+    value: function onParticleDead(particle) {
+      if (particle.target) {
+        var index = this.points.geometry.vertices.indexOf(particle.target);
+
+        if (index > -1) this.points.geometry.vertices.splice(index, 1);
+
+        particle.target = null;
+      }
+    }
+  }]);
+
+  return PointsRenderer;
+}(_BaseRenderer3.default);
+
+exports.default = PointsRenderer;
+module.exports = exports['default'];
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _three = __webpack_require__(4);
+
+var _MeshRenderer2 = __webpack_require__(31);
+
+var _MeshRenderer3 = _interopRequireDefault(_MeshRenderer2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SpriteRenderer = function (_MeshRenderer) {
+  _inherits(SpriteRenderer, _MeshRenderer);
+
+  function SpriteRenderer(container) {
+    _classCallCheck(this, SpriteRenderer);
+
+    var _this = _possibleConstructorReturn(this, (SpriteRenderer.__proto__ || Object.getPrototypeOf(SpriteRenderer)).call(this, container));
+
+    _this._body = new _three.Sprite(new _three.SpriteMaterial({ color: 0xffffff }));
+    return _this;
+  }
+
+  _createClass(SpriteRenderer, [{
+    key: 'scale',
+    value: function scale(particle) {
+      particle.target.scale.set(particle.scale * particle.radius, particle.scale * particle.radius, 1);
+    }
+  }]);
+
+  return SpriteRenderer;
+}(_MeshRenderer3.default);
+
+exports.default = SpriteRenderer;
+module.exports = exports['default'];
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var RENDERER_TYPE_CUSTOM = exports.RENDERER_TYPE_CUSTOM = 'CustomRenderer';
+var RENDERER_TYPE_SPRITE = exports.RENDERER_TYPE_SPRITE = 'SpriteRenderer';
+var RENDERER_TYPE_MESH = exports.RENDERER_TYPE_MESH = 'MeshRenderer';
+var RENDERER_TYPE_POINTS = exports.RENDERER_TYPE_POINTS = 'PointsRenderer';
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  getRGB: function getRGB(color) {
+    var rgb = {};
+
+    if (typeof color === 'number') {
+      hex = Math.floor(color);
+      rgb.r = (color >> 16 & 255) / 255;
+      rgb.g = (color >> 8 & 255) / 255;
+      rgb.b = (color & 255) / 255;
+    } else if (typeof color === 'string') {
+      var m;
+
+      if (m = /^(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(,\s*([0-9]*\.?[0-9]+)\s*)?$/.exec(color)) {
+        rgb.r = Math.min(255, parseInt(m[1], 10)) / 255;
+        rgb.g = Math.min(255, parseInt(m[2], 10)) / 255;
+        rgb.b = Math.min(255, parseInt(m[3], 10)) / 255;
+      } else if (m = /^\#([A-Fa-f0-9]+)$/.exec(color)) {
+        var hex = m[1];
+
+        rgb.r = parseInt(hex.charAt(0) + hex.charAt(1), 16) / 255;
+        rgb.g = parseInt(hex.charAt(2) + hex.charAt(3), 16) / 255;
+        rgb.b = parseInt(hex.charAt(4) + hex.charAt(5), 16) / 255;
+      }
+    } else {
+      rgb.r = color.r;
+      rgb.g = color.g;
+      rgb.b = color.b;
+    }
+
+    return rgb;
+  }
+};
+module.exports = exports['default'];
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _MathUtils = __webpack_require__(14);
+
+var _MathUtils2 = _interopRequireDefault(_MathUtils);
+
+var _Util = __webpack_require__(6);
+
+var _Util2 = _interopRequireDefault(_Util);
+
+var _Zone2 = __webpack_require__(8);
+
+var _Zone3 = _interopRequireDefault(_Zone2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var BoxZone = function (_Zone) {
+  _inherits(BoxZone, _Zone);
+
+  /**
+   * BoxZone is a box zone
+   * @param {Number|Vector3D} x - the position's x value or a Vector3D Object
+   * @param {Number} y - the position's y value
+   * @param {Number} z - the position's z value
+   * @param {Number} w - the Box's width
+   * @param {Number} h - the Box's height
+   * @param {Number} d - the Box's depth
+   * @example
+   * var boxZone = new BoxZone(0,0,0,50,50,50);
+   * or
+   * var boxZone = new BoxZone(new Vector3D(0,0,0), 50, 50, 50);
+   * @extends {Zone}
+   * @constructor
+   */
+  function BoxZone(a, b, c, d, e, f) {
+    _classCallCheck(this, BoxZone);
+
+    // TODO this reassigning of arguments is pretty dangerous, need to fix it.
+    // eslint-disable-next-line
+    var _this = _possibleConstructorReturn(this, (BoxZone.__proto__ || Object.getPrototypeOf(BoxZone)).call(this));
+
+    var x, y, z, w, h, d;
+
+    if (_Util2.default.isUndefined(b, c, d, e, f)) {
+      x = y = z = 0;
+      w = h = d = a || 100;
+    } else if (_Util2.default.isUndefined(d, e, f)) {
+      x = y = z = 0;
+      w = a;
+      h = b;
+      d = c;
+    } else {
+      x = a;
+      y = b;
+      z = c;
+      w = d;
+      h = e;
+      d = f;
+    }
+
+    _this.x = x;
+    _this.y = y;
+    _this.z = z;
+    _this.width = w;
+    _this.height = h;
+    _this.depth = d;
+    // TODO Set this via an argument to the constructor
+    _this.friction = 0.85;
+    // TODO Set this via an argument to the constructor
+    _this.max = 6;
+    return _this;
+  }
+
+  /**
+   * Returns true to indicate this is a BoxZone.
+   *
+   * @return {boolean}
+   */
+
+
+  _createClass(BoxZone, [{
+    key: 'isBoxZone',
+    value: function isBoxZone() {
+      return true;
+    }
+  }, {
+    key: 'getPosition',
+    value: function getPosition() {
+      this.vector.x = this.x + _MathUtils2.default.randomAToB(-0.5, 0.5) * this.width;
+      this.vector.y = this.y + _MathUtils2.default.randomAToB(-0.5, 0.5) * this.height;
+      this.vector.z = this.z + _MathUtils2.default.randomAToB(-0.5, 0.5) * this.depth;
+
+      return this.vector;
+    }
+  }, {
+    key: '_dead',
+    value: function _dead(particle) {
+      if (particle.p.x + particle.radius < this.x - this.width / 2) particle.dead = true;else if (particle.p.x - particle.radius > this.x + this.width / 2) particle.dead = true;
+
+      if (particle.p.y + particle.radius < this.y - this.height / 2) particle.dead = true;else if (particle.p.y - particle.radius > this.y + this.height / 2) particle.dead = true;
+
+      if (particle.p.z + particle.radius < this.z - this.depth / 2) particle.dead = true;else if (particle.p.z - particle.radius > this.z + this.depth / 2) particle.dead = true;
+    }
+  }, {
+    key: '_bound',
+    value: function _bound(particle) {
+      if (particle.p.x - particle.radius < this.x - this.width / 2) {
+        particle.p.x = this.x - this.width / 2 + particle.radius;
+        particle.v.x *= -this.friction;
+        this._static(particle, 'x');
+      } else if (particle.p.x + particle.radius > this.x + this.width / 2) {
+        particle.p.x = this.x + this.width / 2 - particle.radius;
+        particle.v.x *= -this.friction;
+        this._static(particle, 'x');
+      }
+
+      if (particle.p.y - particle.radius < this.y - this.height / 2) {
+        particle.p.y = this.y - this.height / 2 + particle.radius;
+        particle.v.y *= -this.friction;
+        this._static(particle, 'y');
+      } else if (particle.p.y + particle.radius > this.y + this.height / 2) {
+        particle.p.y = this.y + this.height / 2 - particle.radius;
+        particle.v.y *= -this.friction;
+        this._static(particle, 'y');
+      }
+
+      if (particle.p.z - particle.radius < this.z - this.depth / 2) {
+        particle.p.z = this.z - this.depth / 2 + particle.radius;
+        particle.v.z *= -this.friction;
+        this._static(particle, 'z');
+      } else if (particle.p.z + particle.radius > this.z + this.depth / 2) {
+        particle.p.z = this.z + this.depth / 2 - particle.radius;
+        particle.v.z *= -this.friction;
+        this._static(particle, 'z');
+      }
+    }
+  }, {
+    key: '_static',
+    value: function _static(particle, axis) {
+      if (particle.v[axis] * particle.a[axis] > 0) return;
+      if (Math.abs(particle.v[axis]) < Math.abs(particle.a[axis]) * 0.0167 * this.max) {
+        particle.v[axis] = 0;
+        particle.a[axis] = 0;
+      }
+    }
+  }, {
+    key: '_cross',
+    value: function _cross(particle) {
+      if (particle.p.x + particle.radius < this.x - this.width / 2 && particle.v.x <= 0) particle.p.x = this.x + this.width / 2 + particle.radius;else if (particle.p.x - particle.radius > this.x + this.width / 2 && particle.v.x >= 0) particle.p.x = this.x - this.width / 2 - particle.radius;
+
+      if (particle.p.y + particle.radius < this.y - this.height / 2 && particle.v.y <= 0) particle.p.y = this.y + this.height / 2 + particle.radius;else if (particle.p.y - particle.radius > this.y + this.height / 2 && particle.v.y >= 0) particle.p.y = this.y - this.height / 2 - particle.radius;
+
+      if (particle.p.z + particle.radius < this.z - this.depth / 2 && particle.v.z <= 0) particle.p.z = this.z + this.depth / 2 + particle.radius;else if (particle.p.z - particle.radius > this.z + this.depth / 2 && particle.v.z >= 0) particle.p.z = this.z - this.depth / 2 - particle.radius;
+    }
+  }]);
+
+  return BoxZone;
+}(_Zone3.default);
+
+exports.default = BoxZone;
+module.exports = exports['default'];
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Vector3D = __webpack_require__(7);
+
+var _Vector3D2 = _interopRequireDefault(_Vector3D);
+
+var _Zone2 = __webpack_require__(8);
+
+var _Zone3 = _interopRequireDefault(_Zone2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LineZone = function (_Zone) {
+  _inherits(LineZone, _Zone);
+
+  /**
+   * LineZone is a 3d line zone
+   * @param {Number|Vector3D} x1 - the line's start point of x value or a Vector3D Object
+   * @param {Number|Vector3D} y1 - the line's start point of y value or a Vector3D Object
+   * @param {Number} z1 - the line's start point of z value
+   * @param {Number} x2 - the line's end point of x value
+   * @param {Number} y2 - the line's end point of y value
+   * @param {Number} z2 - the line's end point of z value
+   * @example
+   * var lineZone = new Proton.LineZone(0,0,0,100,100,0);
+   * or
+   * var lineZone = new Proton.LineZone(new Proton.Vector3D(0,0,0),new Proton.Vector3D(100,100,0));
+   * @extends {Zone}
+   * @constructor
+   */
+  function LineZone(x1, y1, z1, x2, y2, z2) {
+    _classCallCheck(this, LineZone);
+
+    var _this = _possibleConstructorReturn(this, (LineZone.__proto__ || Object.getPrototypeOf(LineZone)).call(this));
+
+    if (x1 instanceof _Vector3D2.default) {
+      _this.x1 = x1.x;
+      _this.y1 = x1.y;
+      _this.z1 = x1.z;
+
+      _this.x2 = x2.x;
+      _this.y2 = x2.y;
+      _this.z2 = x2.z;
+    } else {
+      _this.x1 = x1;
+      _this.y1 = y1;
+      _this.z1 = z1;
+
+      _this.x2 = x2;
+      _this.y2 = y2;
+      _this.z2 = z2;
+    }
+
+    _this.supportsCrossing = false;
+    return _this;
+  }
+
+  /**
+   * Returns true to indicate this is a LineZone.
+   *
+   * @return {boolean}
+   */
+
+
+  _createClass(LineZone, [{
+    key: 'isLineZone',
+    value: function isLineZone() {
+      return true;
+    }
+  }, {
+    key: 'getPosition',
+    value: function getPosition() {
+      this.random = Math.random();
+      this.vector.x = this.x1 + this.random * (this.x2 - this.x1);
+      this.vector.y = this.y1 + this.random * (this.y2 - this.y1);
+      this.vector.z = this.z1 + this.random * (this.z2 - this.z1);
+
+      return this.vector;
+    }
+  }]);
+
+  return LineZone;
+}(_Zone3.default);
+
+exports.default = LineZone;
+module.exports = exports['default'];
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _three = __webpack_require__(4);
+
+var _Zone2 = __webpack_require__(8);
+
+var _Zone3 = _interopRequireDefault(_Zone2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Uses a three Geometry to determine the zone parameters.
+ *
+ */
+var MeshZone = function (_Zone) {
+  _inherits(MeshZone, _Zone);
+
+  /**
+   * @constructs {MeshZone}
+   *
+   * TODO BREAKING_CHANGE remove support for nested MeshZones and only accept
+   * Geometry as the first argument
+   *
+   * @param {Geometry} geometry - the geometry that will determine the zone bounds
+   * @param {number} scale - the zone scale
+   * @return void
+   */
+  function MeshZone(geometry) {
+    var scale = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+    _classCallCheck(this, MeshZone);
+
+    var _this = _possibleConstructorReturn(this, (MeshZone.__proto__ || Object.getPrototypeOf(MeshZone)).call(this));
+
+    if (geometry instanceof _three.Geometry) {
+      _this.geometry = geometry;
+    } else {
+      _this.geometry = geometry.geometry;
+    }
+
+    _this.scale = scale;
+    _this.supportsCrossing = false;
+    return _this;
+  }
+
+  /**
+   * Returns true to indicate this is a MeshZone.
+   *
+   * @return {boolean}
+   */
+
+
+  _createClass(MeshZone, [{
+    key: 'isMeshZone',
+    value: function isMeshZone() {
+      return true;
+    }
+  }, {
+    key: 'getPosition',
+    value: function getPosition() {
+      var vertices = this.geometry.vertices;
+      var rVector = vertices[vertices.length * Math.random() >> 0];
+
+      this.vector.x = rVector.x * this.scale;
+      this.vector.y = rVector.y * this.scale;
+      this.vector.z = rVector.z * this.scale;
+
+      return this.vector;
+    }
+  }]);
+
+  return MeshZone;
+}(_Zone3.default);
+
+exports.default = MeshZone;
+module.exports = exports['default'];
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Util = __webpack_require__(6);
+
+var _Util2 = _interopRequireDefault(_Util);
+
+var _Zone2 = __webpack_require__(8);
+
+var _Zone3 = _interopRequireDefault(_Zone2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var PointZone = function (_Zone) {
+  _inherits(PointZone, _Zone);
+
+  /**
+   * PointZone is a point zone
+   * @param {Number|Vector3D} x - the center's x value or a Vector3D Object
+   * @param {Number} y - the center's y value
+   * @param {Number} z - the center's z value
+   * @example
+   * var pointZone = new Proton.PointZone(0,30,10);
+   * or
+   * var pointZone = new Proton.PointZone(new Proton.Vector3D(0,30,10));
+   * @extends {Zone}
+   * @constructor
+   */
+  function PointZone(a, b, c) {
+    _classCallCheck(this, PointZone);
+
+    // TODO see below, these should probably be assigned properly
+    // eslint-disable-next-line
+    var _this = _possibleConstructorReturn(this, (PointZone.__proto__ || Object.getPrototypeOf(PointZone)).call(this));
+
+    var x, y, z;
+
+    if (_Util2.default.isUndefined(a, b, c)) {
+      x = y = z = 0;
+    } else {
+      x = a;
+      y = b;
+      z = c;
+    }
+
+    _this.x = x;
+
+    // TODO shouldn't this be set to y?
+    _this.y = x;
+
+    // TODO shouldn't this be set to z?
+    _this.z = x;
+    _this.supportsCrossing = false;
+    return _this;
+  }
+
+  /**
+   * Returns true to indicate this is a PointZone.
+   *
+   * @return {boolean}
+   */
+
+
+  _createClass(PointZone, [{
+    key: 'isPointZone',
+    value: function isPointZone() {
+      return true;
+    }
+  }, {
+    key: 'getPosition',
+    value: function getPosition() {
+      this.vector.x = this.x;
+      this.vector.y = this.y;
+      this.vector.z = this.z;
+
+      return this.vector;
+    }
+  }]);
+
+  return PointZone;
+}(_Zone3.default);
+
+exports.default = PointZone;
+module.exports = exports['default'];
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _THREEUtil = __webpack_require__(22);
+
+var _THREEUtil2 = _interopRequireDefault(_THREEUtil);
+
+var _Vector3D = __webpack_require__(7);
+
+var _Vector3D2 = _interopRequireDefault(_Vector3D);
+
+var _Zone2 = __webpack_require__(8);
+
+var _Zone3 = _interopRequireDefault(_Zone2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ScreenZone = function (_Zone) {
+  _inherits(ScreenZone, _Zone);
+
+  /**
+   * ScreenZone is a 3d line zone
+   * @param {Number|Vector3D} x1 - the line's start point of x value or a Vector3D Object
+   * @param {Number|Vector3D} y1 - the line's start point of y value or a Vector3D Object
+   * @param {Number} z1 - the line's start point of z value
+   * @param {Number} x2 - the line's end point of x value
+   * @param {Number} y2 - the line's end point of y value
+   * @param {Number} z2 - the line's end point of z value
+   * @example
+   * var lineZone = new ScreenZone(0,0,0,100,100,0);
+   * or
+   * var lineZone = new ScreenZone(new Vector3D(0,0,0),new Vector3D(100,100,0));
+   * @extends {Zone}
+   * @constructor
+   */
+  function ScreenZone(camera, renderer, dis, dir) {
+    _classCallCheck(this, ScreenZone);
+
+    var _this = _possibleConstructorReturn(this, (ScreenZone.__proto__ || Object.getPrototypeOf(ScreenZone)).call(this));
+
+    _this.camera = camera;
+    _this.renderer = renderer;
+    _this.dis = dis || 20;
+    dir = dir || '1234';
+
+    for (var i = 1; i < 5; i++) {
+      _this['d' + i] = dir.indexOf(i + '') >= 0;
+    }_this.name = 'ScreenZone';
+    return _this;
+  }
+
+  /**
+   * Returns true to indicate this is a ScreenZone.
+   *
+   * @return {boolean}
+   */
+
+
+  _createClass(ScreenZone, [{
+    key: 'isScreenZone',
+    value: function isScreenZone() {
+      return true;
+    }
+  }, {
+    key: '_dead',
+    value: function _dead(particle) {
+      var pos = _THREEUtil2.default.toScreenPos(particle.p, this.camera, this.renderer.domElement);
+      var canvas = this.renderer.domElement;
+
+      if (pos.y + particle.radius < -this.dis && this.d1) {
+        particle.dead = true;
+      } else if (pos.y - particle.radius > canvas.height + this.dis && this.d3) {
+        particle.dead = true;
+      }
+
+      if (pos.x + particle.radius < -this.dis && this.d4) {
+        particle.dead = true;
+      } else if (pos.x - particle.radius > canvas.width + this.dis && this.d2) {
+        particle.dead = true;
+      }
+    }
+  }, {
+    key: '_bound',
+    value: function _bound(particle) {
+      var pos = _THREEUtil2.default.toScreenPos(particle.p, this.camera, this.renderer.domElement);
+      var canvas = this.renderer.domElement;
+
+      if (pos.y + particle.radius < -this.dis) {
+        particle.v.y *= -1;
+      } else if (pos.y - particle.radius > canvas.height + this.dis) {
+        particle.v.y *= -1;
+      }
+
+      if (pos.x + particle.radius < -this.dis) {
+        particle.v.y *= -1;
+      } else if (pos.x - particle.radius > canvas.width + this.dis) {
+        particle.v.y *= -1;
+      }
+    }
+  }]);
+
+  return ScreenZone;
+}(_Zone3.default);
+
+exports.default = ScreenZone;
+
+
+ScreenZone.prototype.getPosition = function () {
+  var vec2 = new _Vector3D2.default(),
+      canvas;
+
+  return function () {
+    canvas = this.renderer.domElement;
+    vec2.x = Math.random() * canvas.width;
+    vec2.y = Math.random() * canvas.height;
+    this.vector.copy(_THREEUtil2.default.toSpacePos(vec2, this.camera, canvas));
+
+    return this.vector;
+  };
+}();
+
+ScreenZone.prototype._cross = function () {
+  var vec2 = new _Vector3D2.default();
+
+  return function (particle) {
+    var pos = _THREEUtil2.default.toScreenPos(particle.p, this.camera, this.renderer.domElement);
+    var canvas = this.renderer.domElement;
+
+    if (pos.y + particle.radius < -this.dis) {
+      vec2.x = pos.x;
+      vec2.y = canvas.height + this.dis + particle.radius;
+      particle.p.y = _THREEUtil2.default.toSpacePos(vec2, this.camera, canvas).y;
+    } else if (pos.y - particle.radius > canvas.height + this.dis) {
+      vec2.x = pos.x;
+      vec2.y = -this.dis - particle.radius;
+      particle.p.y = _THREEUtil2.default.toSpacePos(vec2, this.camera, canvas).y;
+    }
+
+    if (pos.x + particle.radius < -this.dis) {
+      vec2.y = pos.y;
+      vec2.x = canvas.width + this.dis + particle.radius;
+      particle.p.x = _THREEUtil2.default.toSpacePos(vec2, this.camera, canvas).x;
+    } else if (pos.x - particle.radius > canvas.width + this.dis) {
+      vec2.y = pos.y;
+      vec2.x = -this.dis - particle.radius;
+      particle.p.x = _THREEUtil2.default.toSpacePos(vec2, this.camera, canvas).x;
+    }
+  };
+}();
+module.exports = exports['default'];
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _constants = __webpack_require__(2);
+
+var _Util = __webpack_require__(6);
+
+var _Util2 = _interopRequireDefault(_Util);
+
+var _Vector3D = __webpack_require__(7);
+
+var _Vector3D2 = _interopRequireDefault(_Vector3D);
+
+var _Zone2 = __webpack_require__(8);
+
+var _Zone3 = _interopRequireDefault(_Zone2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * A spherical zone for particles to be emitted within.
+ *
+ */
+var SphereZone = function (_Zone) {
+  _inherits(SphereZone, _Zone);
+
+  /**
+   * @constructs {SphereZone}
+   *
+   * @param {number} centerX - the sphere's center x coordinate
+   * @param {number} centerY - the sphere's center y coordinate
+   * @param {number} centerZ - the sphere's center z coordinate
+   * @param {number} radius - the sphere's radius value
+   * @return void
+   */
+  function SphereZone(centerX, centerY, centerZ, radius) {
+    _classCallCheck(this, SphereZone);
+
+    // TODO see below, these should probably be assigned properly
+    // eslint-disable-next-line
+    var _this = _possibleConstructorReturn(this, (SphereZone.__proto__ || Object.getPrototypeOf(SphereZone)).call(this));
+
+    var x = void 0,
+        y = void 0,
+        z = void 0,
+        r = void 0;
+
+    if (_Util2.default.isUndefined(centerY, centerZ, radius)) {
+      x = y = z = 0;
+      r = centerX || 100;
+    } else {
+      x = centerX;
+      y = centerY;
+      z = centerZ;
+      r = radius;
+    }
+
+    _this.x = x;
+
+    // TODO shouldn't this be set to y?
+    _this.y = x;
+
+    // TODO shouldn't this be set to z?
+    _this.z = x;
+    _this.radius = r;
+    _this.the = _this.phi = 0;
+    return _this;
+  }
+
+  /**
+   * Returns true to indicate this is a SphereZone.
+   *
+   * @return {boolean}
+   */
+
+
+  _createClass(SphereZone, [{
+    key: 'isSphereZone',
+    value: function isSphereZone() {
+      return true;
+    }
+
+    /**
+     * Sets the particle to dead if the particle collides with the sphere.
+     *
+     * @param {object} particle
+     * @return void
+     */
+
+  }, {
+    key: '_dead',
+    value: function _dead(particle) {
+      var d = particle.p.distanceTo(this);
+
+      if (d - particle.radius > this.radius) particle.dead = true;
+    }
+
+    /**
+     * Warns that this zone does not support the _cross method.
+     *
+     * @return void
+     */
+
+  }, {
+    key: '_cross',
+    value: function _cross() {
+      console.warn(this.constructor.name + ' does not support the _cross method');
+    }
+  }]);
+
+  return SphereZone;
+}(_Zone3.default);
+
+exports.default = SphereZone;
+
+
+SphereZone.prototype.getPosition = function () {
+  var tha, phi, r;
+
+  return function () {
+    this.random = Math.random();
+
+    r = this.random * this.radius;
+    tha = _constants.PI * Math.random(); //[0-pi]
+    phi = _constants.PI * 2 * Math.random(); //[0-2pi]
+
+    this.vector.x = this.x + r * Math.sin(tha) * Math.cos(phi);
+    this.vector.y = this.y + r * Math.sin(phi) * Math.sin(tha);
+    this.vector.z = this.z + r * Math.cos(tha);
+
+    return this.vector;
+  };
+}();
+
+SphereZone.prototype._bound = function () {
+  var normal = new _Vector3D2.default(),
+      v = new _Vector3D2.default(),
+      k;
+
+  return function (particle) {
+    var d = particle.p.distanceTo(this);
+
+    if (d + particle.radius >= this.radius) {
+      normal.copy(particle.p).sub(this).normalize();
+      v.copy(particle.v);
+      k = 2 * v.dot(normal);
+      particle.v.sub(normal.scalar(k));
+    }
+  };
+}();
+module.exports = exports['default'];
 
 /***/ }),
 /* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var ZONE_TYPE_BOX = exports.ZONE_TYPE_BOX = 'BoxZone';
+var ZONE_TYPE_LINE = exports.ZONE_TYPE_LINE = 'LineZone';
+var ZONE_TYPE_MESH = exports.ZONE_TYPE_MESH = 'MeshZone';
+var ZONE_TYPE_POINT = exports.ZONE_TYPE_POINT = 'PointZone';
+var ZONE_TYPE_SCREEN = exports.ZONE_TYPE_SCREEN = 'ScreenZone';
+var ZONE_TYPE_SPHERE = exports.ZONE_TYPE_SPHERE = 'SphereZone';
+
+/***/ }),
+/* 88 */
 /***/ (function(module, exports) {
 
 /**
@@ -74699,7 +74799,7 @@ module.exports = bytesToUuid;
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports) {
 
 // Unique ID creation requires a high quality random # generator.  In the
@@ -74739,11 +74839,11 @@ if (getRandomValues) {
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var rng = __webpack_require__(88);
-var bytesToUuid = __webpack_require__(87);
+var rng = __webpack_require__(89);
+var bytesToUuid = __webpack_require__(88);
 
 // **`v1()` - Generate time-based UUID**
 //
@@ -74854,7 +74954,7 @@ module.exports = v1;
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports) {
 
 var g;
@@ -74881,7 +74981,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {

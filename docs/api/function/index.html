@@ -155,10 +155,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Velocity/Velocity.js~Velocity.html">Velocity</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#math">math</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Box.js~Box.html">Box</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/ColorSpan.js~ColorSpan.html">ColorSpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Polar3D.js~Polar3D.html">Polar3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Span.js~Span.html">Span</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createArraySpan">createArraySpan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createColorSpan">createColorSpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createSpan">createSpan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integrate">integrate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEGRATION_TYPE_EULER">INTEGRATION_TYPE_EULER</a></span></span></li>
@@ -210,7 +212,36 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-createArraySpan">createArraySpan</a></span></span><span class="code" data-ice="signature">(colors: <span>mixed</span>): <span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-createArraySpan">createArraySpan</a></span></span><span class="code" data-ice="signature">(items: <span>mixed</span>): <span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Attempts to create an ArraySpan from the items provided.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-createColorSpan">createColorSpan</a></span></span><span class="code" data-ice="signature">(colors: <span>mixed</span>): <span><a href="class/src/math/ColorSpan.js~ColorSpan.html">ColorSpan</a></span></span>
         </p>
       </div>
       <div>
@@ -409,15 +440,88 @@
     
     
     
-    <span class="code" data-ice="name">createArraySpan</span><span class="code" data-ice="signature">(colors: <span>mixed</span>): <span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span>
+    <span class="code" data-ice="name">createArraySpan</span><span class="code" data-ice="signature">(items: <span>mixed</span>): <span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/math/ArraySpan.js.html#lineNumber56">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/math/ArraySpan.js.html#lineNumber42">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {createArraySpan} from &apos;<span><a href="file/src/math/ArraySpan.js.html#lineNumber56">@rohandeshpande/three-proton/src/math/ArraySpan.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {createArraySpan} from &apos;<span><a href="file/src/math/ArraySpan.js.html#lineNumber42">@rohandeshpande/three-proton/src/math/ArraySpan.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Attempts to create an ArraySpan from the items provided.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">items</td>
+      <td data-ice="type" class="code"><span>mixed</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Items to try and create an ArraySpan from</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span> (nullable: true)</td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-createColorSpan">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">createColorSpan</span><span class="code" data-ice="signature">(colors: <span>mixed</span>): <span><a href="class/src/math/ColorSpan.js~ColorSpan.html">ColorSpan</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/math/ColorSpan.js.html#lineNumber52">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {createColorSpan} from &apos;<span><a href="file/src/math/ColorSpan.js.html#lineNumber52">@rohandeshpande/three-proton/src/math/ColorSpan.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Attempts to create an ArraySpan from the colors provided.</p>
@@ -450,7 +554,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="class/src/math/ArraySpan.js~ArraySpan.html">ArraySpan</a></span> (nullable: true)</td>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/math/ColorSpan.js~ColorSpan.html">ColorSpan</a></span> (nullable: true)</td>
           
         </tr>
       </tbody>
