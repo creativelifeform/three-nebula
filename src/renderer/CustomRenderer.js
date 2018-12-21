@@ -1,9 +1,10 @@
 import BaseRenderer from './BaseRenderer';
 import { Pool } from '../core';
+import { RENDERER_TYPE_CUSTOM as type } from './types';
 
 export default class CustomRenderer extends BaseRenderer {
   constructor() {
-    super();
+    super(type);
 
     this.targetPool = new Pool();
     this.materialPool = new Pool();

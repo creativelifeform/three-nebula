@@ -4,35 +4,35 @@
     "filePath": "src/emitter/BehaviourEmitter.js",
     "lines": [
       {
-        "lineNumber": 17,
+        "lineNumber": 24,
         "line": "  /**"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 25,
         "line": "   * add the Behaviour to emitter;"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 26,
         "line": "   *"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 27,
         "line": "   * you can use Behaviours array:emitter.addSelfBehaviour(Behaviour1,Behaviour2,Behaviour3);"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 28,
         "line": "   * @method addSelfBehaviour"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 29,
         "line": "   * @param {Proton.Behaviour} behaviour like this new Proton.Color('random')"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 30,
         "line": "   */"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 31,
         "line": "  addSelfBehaviour() {"
       }
     ],
@@ -46,47 +46,47 @@
     "filePath": "src/emitter/Emitter.js",
     "lines": [
       {
-        "lineNumber": 347,
+        "lineNumber": 354,
         "line": "  /**"
       },
       {
-        "lineNumber": 348,
+        "lineNumber": 355,
         "line": "   * Sets up a particle by running all initializers on it and setting its behaviours."
       },
       {
-        "lineNumber": 349,
+        "lineNumber": 356,
         "line": "   * Also adds the particle to this.particles."
       },
       {
-        "lineNumber": 350,
+        "lineNumber": 357,
         "line": "   *"
       },
       {
-        "lineNumber": 351,
+        "lineNumber": 358,
         "line": "   * TODO This method is only ever called from createParticle and never with arguments"
       },
       {
-        "lineNumber": 352,
+        "lineNumber": 359,
         "line": "   * so it's safe to remove the arguments."
       },
       {
-        "lineNumber": 353,
+        "lineNumber": 360,
         "line": "   *"
       },
       {
-        "lineNumber": 354,
+        "lineNumber": 361,
         "line": "   * @param {Particle} particle - The particle to setup"
       },
       {
-        "lineNumber": 355,
+        "lineNumber": 362,
         "line": "   * @return void"
       },
       {
-        "lineNumber": 356,
+        "lineNumber": 363,
         "line": "   */"
       },
       {
-        "lineNumber": 357,
+        "lineNumber": 364,
         "line": "  setupParticle(particle, initialize, behaviour) {"
       }
     ],
@@ -104,35 +104,35 @@
     "filePath": "src/initializer/Position.js",
     "lines": [
       {
-        "lineNumber": 22,
+        "lineNumber": 24,
         "line": "  /**"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 25,
         "line": "   * Resets the initializer properties."
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 26,
         "line": "   * Clears all previously set zones and resets the zones according to args passed."
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 27,
         "line": "   *"
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 28,
         "line": "   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position."
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 29,
         "line": "   * @return void"
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 30,
         "line": "   */"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 31,
         "line": "  reset() {"
       }
     ],
@@ -146,31 +146,31 @@
     "filePath": "src/initializer/Position.js",
     "lines": [
       {
-        "lineNumber": 42,
+        "lineNumber": 44,
         "line": "  /**"
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 45,
         "line": "   * Adds a zone or zones to this.zones."
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 46,
         "line": "   *"
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 47,
         "line": "   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position."
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 48,
         "line": "   * @return void"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 49,
         "line": "   */"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 50,
         "line": "  addZone() {"
       }
     ],

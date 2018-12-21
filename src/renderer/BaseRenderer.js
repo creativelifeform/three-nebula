@@ -5,13 +5,15 @@ import {
   PROTON_UPDATE
 } from '../events/constants';
 
-export default class BaseRenderer {
-  constructor() {
-    this.setName();
-  }
+import { RENDERER_TYPE_BASE } from './types';
 
-  setName() {
-    this.name = this.constructor.name;
+export default class BaseRenderer {
+  constructor(type = RENDERER_TYPE_BASE) {
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
   }
 
   init(proton) {
