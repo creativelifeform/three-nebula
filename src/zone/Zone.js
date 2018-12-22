@@ -1,4 +1,5 @@
 import Vector3D from '../math/Vector3D';
+import { ZONE_TYPE_ABSTRACT } from './types';
 
 /**
  * A Zone determines the area in 3D space where an emitter's particles can position
@@ -10,7 +11,14 @@ import Vector3D from '../math/Vector3D';
  * @abstract
  */
 export default class Zone {
-  constructor() {
+  /**
+   * Constructs a Zone instance.
+   *
+   * @param {string} type - The zone type
+   * @return void
+   */
+  constructor(type = ZONE_TYPE_ABSTRACT) {
+    this.type = type;
     this.vector = new Vector3D(0, 0, 0);
     this.random = 0;
     this.crossType = 'dead';
