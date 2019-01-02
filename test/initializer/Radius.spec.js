@@ -16,6 +16,7 @@ describe('initializer -> Radius', () => {
       radius: { _isArray, a, b, _center }
     } = initializer;
 
+    assert.equal(initializer.type, 'Radius');
     assert.instanceOf(radius, Proton.Span);
     assert.isFalse(_isArray);
     assert.isFalse(_center);

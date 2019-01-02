@@ -2,6 +2,7 @@ import * as Zone from '../zone';
 
 import Initializer from './Initializer';
 import { SUPPORTED_JSON_ZONE_TYPES } from '../core/constants';
+import { INITIALIZER_TYPE_POSITION as type } from './types';
 
 /**
  * Sets the starting position property for initialized particles.
@@ -16,7 +17,8 @@ export default class Position extends Initializer {
    * @return void
    */
   constructor() {
-    super();
+    super(type);
+
     this.reset.apply(this, arguments);
   }
 

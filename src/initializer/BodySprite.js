@@ -2,6 +2,7 @@ import { Sprite, SpriteMaterial, TextureLoader } from 'three';
 
 import { DEFAULT_MATERIAL_PROPERTIES } from './constants';
 import Initializer from './Initializer';
+import { INITIALIZER_TYPE_BODY_SPRITE as type } from './types';
 
 /**
  * Sets the body property to be a THREE.Sprite on initialized particles.
@@ -19,7 +20,7 @@ export default class BodySprite extends Initializer {
    * @return void
    */
   constructor(texture, materialProperties = DEFAULT_MATERIAL_PROPERTIES) {
-    super();
+    super(type);
 
     new TextureLoader().load(
       texture,

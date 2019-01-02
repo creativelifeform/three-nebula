@@ -5,3 +5,5 @@ export const DEFAULT_MATERIAL_PROPERTIES = {
   blending: AdditiveBlending,
   fog: true
 };
+export const DEFAULT_RATE_NUM_PAN = 1;
+export const DEFAULT_RATE_TIME_PAN = 1;

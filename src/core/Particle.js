@@ -18,6 +18,7 @@ import { Util, uid } from '../utils';
 
 import { PI } from '../constants';
 import { Vector3D } from '../math';
+import { CORE_TYPE_PARTICLE as type } from './types';
 
 /**
  * A Particle is an object that is emitted by an emitter.
@@ -55,7 +56,12 @@ export default class Particle {
      * @type {number}
      */
     this.id = `particle-${uid()}`;
-    this.name = 'Particle';
+
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
     /**
      * @desc The particle's life
      * @type {number}

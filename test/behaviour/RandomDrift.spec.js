@@ -23,6 +23,7 @@ describe('behaviour -> RandomDrift', () => {
       delayPan
     } = behaviour;
 
+    assert.equal(behaviour.type, 'RandomDrift');
     assert.strictEqual(life, Infinity);
     assert.isFunction(easing);
     assert.strictEqual(age, 0);

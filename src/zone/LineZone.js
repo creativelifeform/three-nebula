@@ -1,5 +1,6 @@
 import Vector3D from '../math/Vector3D';
 import Zone from './Zone';
+import { ZONE_TYPE_LINE as type } from './types';
 
 export default class LineZone extends Zone {
   /**
@@ -18,7 +19,7 @@ export default class LineZone extends Zone {
    * @constructor
    */
   constructor(x1, y1, z1, x2, y2, z2) {
-    super();
+    super(type);
 
     if (x1 instanceof Vector3D) {
       this.x1 = x1.x;

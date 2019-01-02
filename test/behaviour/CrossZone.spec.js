@@ -17,6 +17,7 @@ describe('behaviour -> CrossZone', () => {
   it('should instantiate with the correct properties', done => {
     const { life, easing, age, energy, dead, zone } = behaviour;
 
+    assert.equal(behaviour.type, 'CrossZone');
     assert.strictEqual(life, Infinity);
     assert.isFunction(easing);
     assert.strictEqual(age, 0);

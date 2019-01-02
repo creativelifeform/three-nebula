@@ -1,5 +1,6 @@
 import Initializer from './Initializer';
 import { createSpan } from '../math';
+import { INITIALIZER_TYPE_MASS as type } from './types';
 
 /**
  * Sets the mass property on initialized particles.
@@ -15,7 +16,7 @@ export default class Mass extends Initializer {
    * @return void
    */
   constructor(min, max, center = false) {
-    super();
+    super(type);
 
     /**
      * @desc The mass span which is used to set the particle mass value.

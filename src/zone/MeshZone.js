@@ -1,12 +1,12 @@
 import { Geometry } from 'three';
 import Zone from './Zone';
+import { ZONE_TYPE_MESH as type } from './types';
 
 /**
  * Uses a three Geometry to determine the zone parameters.
  *
  */
 export default class MeshZone extends Zone {
-  
   /**
    * @constructs {MeshZone}
    *
@@ -18,7 +18,7 @@ export default class MeshZone extends Zone {
    * @return void
    */
   constructor(geometry, scale = 1) {
-    super();
+    super(type);
 
     if (geometry instanceof Geometry) {
       this.geometry = geometry;

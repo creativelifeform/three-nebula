@@ -11,6 +11,7 @@ import { INTEGRATION_TYPE_EULER } from '../math/constants';
 import { POOL_MAX } from '../constants';
 import Pool from './Pool';
 import fromJSON from './fromJSON';
+import { CORE_TYPE_PROTON as type } from './types';
 
 /**
  * The core of the three-proton particle engine.
@@ -34,6 +35,12 @@ export default class Proton {
     preParticles = POOL_MAX,
     integrationType = INTEGRATION_TYPE_EULER
   ) {
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
+
     /**
      * @desc The number of particles to start with
      * @type {number}

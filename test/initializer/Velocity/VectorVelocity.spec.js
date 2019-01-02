@@ -20,6 +20,7 @@ describe('initializer -> Vector Velocity', () => {
       dirVec
     } = velocity;
 
+    assert.equal(velocity.type, 'VectorVelocity');
     assert.equal(a, 1);
     assert.equal(b, 1);
     assert.equal(x, 9);

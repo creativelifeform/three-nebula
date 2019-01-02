@@ -11,8 +11,9 @@ describe('behaviour -> Behaviour', () => {
   const behaviour = new Behaviour();
 
   it('should instantiate with the correct properties and methods', done => {
-    const { id, life, easing, age, energy, dead } = behaviour;
+    const { type, id, life, easing, age, energy, dead } = behaviour;
 
+    assert.equal(type, 'Behaviour');
     assert.isString(id);
     assert.strictEqual(life, Infinity);
     assert.isFunction(easing);

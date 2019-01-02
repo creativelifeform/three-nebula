@@ -14,6 +14,7 @@ describe('behaviour -> Force', () => {
   it('should instantiate with the correct properties', done => {
     const { life, easing, age, energy, dead, force } = behaviour;
 
+    assert.equal(behaviour.type, 'Force');
     assert.strictEqual(life, Infinity);
     assert.isFunction(easing);
     assert.strictEqual(age, 0);

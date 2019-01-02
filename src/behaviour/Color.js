@@ -3,6 +3,7 @@ import { MathUtils, createColorSpan } from '../math';
 import Behaviour from './Behaviour';
 import { ColorUtil } from '../utils';
 import { getEasingByName } from '../ease';
+import { BEHAVIOUR_TYPE_COLOR as type } from './types';
 
 /**
  * A behaviour which mutates the color of a particle over time.
@@ -18,10 +19,9 @@ export default class Color extends Behaviour {
    * @param {function} easing - The behaviour's decaying trend
    */
   constructor(colorA, colorB, life, easing) {
-    super(life, easing);
+    super(life, easing, type);
 
     this.reset(colorA, colorB);
-    this.name = 'Color';
   }
 
   /**

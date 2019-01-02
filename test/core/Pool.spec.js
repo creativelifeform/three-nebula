@@ -11,8 +11,9 @@ const { Pool } = Proton;
 
 describe('core -> Pool', () => {
   it('should instantiate with the correct properties', done => {
-    const { cID, list } = new Pool();
+    const { type, cID, list } = new Pool();
 
+    assert.equal(type, 'Pool');
     assert.equal(cID, 0);
     assert.isObject(list);
     assert.isEmpty(list);

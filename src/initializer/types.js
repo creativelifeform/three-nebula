@@ -1,3 +1,4 @@
+export const INITIALIZER_TYPE_ABSTRACT = 'Initializer';
 export const INITIALIZER_TYPE_BODY = 'Body';
 export const INITIALIZER_TYPE_BODY_SPRITE = 'BodySprite';
 export const INITIALIZER_TYPE_LIFE = 'Life';
@@ -8,3 +9,4 @@ export const INITIALIZER_TYPE_ZONE = 'Zone';
 export const INITIALIZER_TYPE_VECTOR_VELOCITY = 'VectorVelocity';
 export const INITIALIZER_TYPE_POLAR_VELOCITY = 'PolarVelocity';
 export const INITIALIZER_TYPE_RADIAL_VELOCITY = 'RadialVelocity';
+export const INITIALIZER_TYPE_RATE = 'Rate';

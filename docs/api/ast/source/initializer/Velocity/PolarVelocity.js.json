@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 1426,
+  "end": 1498,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 58,
+      "line": 59,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 1426,
+    "end": 1498,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 58,
+        "line": 59,
         "column": 0
       }
     },
@@ -267,20 +267,106 @@
             "raw": "'./Velocity'"
           },
           "value": "./Velocity"
+        }
+      },
+      {
+        "type": "ImportDeclaration",
+        "start": 111,
+        "end": 178,
+        "loc": {
+          "start": {
+            "line": 4,
+            "column": 0
+          },
+          "end": {
+            "line": 4,
+            "column": 67
+          }
+        },
+        "specifiers": [
+          {
+            "type": "ImportSpecifier",
+            "start": 120,
+            "end": 159,
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 9
+              },
+              "end": {
+                "line": 4,
+                "column": 48
+              }
+            },
+            "imported": {
+              "type": "Identifier",
+              "start": 120,
+              "end": 151,
+              "loc": {
+                "start": {
+                  "line": 4,
+                  "column": 9
+                },
+                "end": {
+                  "line": 4,
+                  "column": 40
+                },
+                "identifierName": "INITIALIZER_TYPE_POLAR_VELOCITY"
+              },
+              "name": "INITIALIZER_TYPE_POLAR_VELOCITY"
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 155,
+              "end": 159,
+              "loc": {
+                "start": {
+                  "line": 4,
+                  "column": 44
+                },
+                "end": {
+                  "line": 4,
+                  "column": 48
+                },
+                "identifierName": "type"
+              },
+              "name": "type"
+            }
+          }
+        ],
+        "source": {
+          "type": "StringLiteral",
+          "start": 167,
+          "end": 177,
+          "loc": {
+            "start": {
+              "line": 4,
+              "column": 56
+            },
+            "end": {
+              "line": 4,
+              "column": 66
+            }
+          },
+          "extra": {
+            "rawValue": "../types",
+            "raw": "'../types'"
+          },
+          "value": "../types"
         },
         "trailingComments": [
           {
             "type": "CommentBlock",
             "value": "*\n * Sets the velocity property on initialized particles.\n *\n ",
-            "start": 112,
-            "end": 178,
+            "start": 180,
+            "end": 246,
             "loc": {
               "start": {
-                "line": 5,
+                "line": 6,
                 "column": 0
               },
               "end": {
-                "line": 8,
+                "line": 9,
                 "column": 3
               }
             }
@@ -289,43 +375,43 @@
       },
       {
         "type": "ExportDefaultDeclaration",
-        "start": 179,
-        "end": 1425,
+        "start": 247,
+        "end": 1497,
         "loc": {
           "start": {
-            "line": 9,
+            "line": 10,
             "column": 0
           },
           "end": {
-            "line": 57,
+            "line": 58,
             "column": 1
           }
         },
         "declaration": {
           "type": "ClassDeclaration",
-          "start": 194,
-          "end": 1425,
+          "start": 262,
+          "end": 1497,
           "loc": {
             "start": {
-              "line": 9,
+              "line": 10,
               "column": 15
             },
             "end": {
-              "line": 57,
+              "line": 58,
               "column": 1
             }
           },
           "id": {
             "type": "Identifier",
-            "start": 200,
-            "end": 213,
+            "start": 268,
+            "end": 281,
             "loc": {
               "start": {
-                "line": 9,
+                "line": 10,
                 "column": 21
               },
               "end": {
-                "line": 9,
+                "line": 10,
                 "column": 34
               },
               "identifierName": "PolarVelocity"
@@ -335,15 +421,15 @@
           },
           "superClass": {
             "type": "Identifier",
-            "start": 222,
-            "end": 230,
+            "start": 290,
+            "end": 298,
             "loc": {
               "start": {
-                "line": 9,
+                "line": 10,
                 "column": 43
               },
               "end": {
-                "line": 9,
+                "line": 10,
                 "column": 51
               },
               "identifierName": "Velocity"
@@ -352,30 +438,30 @@
           },
           "body": {
             "type": "ClassBody",
-            "start": 231,
-            "end": 1425,
+            "start": 299,
+            "end": 1497,
             "loc": {
               "start": {
-                "line": 9,
+                "line": 10,
                 "column": 52
               },
               "end": {
-                "line": 57,
+                "line": 58,
                 "column": 1
               }
             },
             "body": [
               {
                 "type": "ClassMethod",
-                "start": 433,
-                "end": 812,
+                "start": 501,
+                "end": 884,
                 "loc": {
                   "start": {
-                    "line": 17,
+                    "line": 18,
                     "column": 2
                   },
                   "end": {
-                    "line": 37,
+                    "line": 38,
                     "column": 3
                   }
                 },
@@ -383,15 +469,15 @@
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 433,
-                  "end": 444,
+                  "start": 501,
+                  "end": 512,
                   "loc": {
                     "start": {
-                      "line": 17,
+                      "line": 18,
                       "column": 2
                     },
                     "end": {
-                      "line": 17,
+                      "line": 18,
                       "column": 13
                     },
                     "identifierName": "constructor"
@@ -407,15 +493,15 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 445,
-                    "end": 452,
+                    "start": 513,
+                    "end": 520,
                     "loc": {
                       "start": {
-                        "line": 17,
+                        "line": 18,
                         "column": 14
                       },
                       "end": {
-                        "line": 17,
+                        "line": 18,
                         "column": 21
                       },
                       "identifierName": "polar3d"
@@ -424,15 +510,15 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 454,
-                    "end": 459,
+                    "start": 522,
+                    "end": 527,
                     "loc": {
                       "start": {
-                        "line": 17,
+                        "line": 18,
                         "column": 23
                       },
                       "end": {
-                        "line": 17,
+                        "line": 18,
                         "column": 28
                       },
                       "identifierName": "theta"
@@ -442,77 +528,95 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 461,
-                  "end": 812,
+                  "start": 529,
+                  "end": 884,
                   "loc": {
                     "start": {
-                      "line": 17,
+                      "line": 18,
                       "column": 30
                     },
                     "end": {
-                      "line": 37,
+                      "line": 38,
                       "column": 3
                     }
                   },
                   "body": [
                     {
                       "type": "ExpressionStatement",
-                      "start": 467,
-                      "end": 475,
+                      "start": 535,
+                      "end": 547,
                       "loc": {
                         "start": {
-                          "line": 18,
+                          "line": 19,
                           "column": 4
                         },
                         "end": {
-                          "line": 18,
-                          "column": 12
+                          "line": 19,
+                          "column": 16
                         }
                       },
                       "expression": {
                         "type": "CallExpression",
-                        "start": 467,
-                        "end": 474,
+                        "start": 535,
+                        "end": 546,
                         "loc": {
                           "start": {
-                            "line": 18,
+                            "line": 19,
                             "column": 4
                           },
                           "end": {
-                            "line": 18,
-                            "column": 11
+                            "line": 19,
+                            "column": 15
                           }
                         },
                         "callee": {
                           "type": "Super",
-                          "start": 467,
-                          "end": 472,
+                          "start": 535,
+                          "end": 540,
                           "loc": {
                             "start": {
-                              "line": 18,
+                              "line": 19,
                               "column": 4
                             },
                             "end": {
-                              "line": 18,
+                              "line": 19,
                               "column": 9
                             }
                           }
                         },
-                        "arguments": []
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "start": 541,
+                            "end": 545,
+                            "loc": {
+                              "start": {
+                                "line": 19,
+                                "column": 10
+                              },
+                              "end": {
+                                "line": 19,
+                                "column": 14
+                              },
+                              "identifierName": "type"
+                            },
+                            "name": "type"
+                          }
+                        ]
                       },
                       "trailingComments": [
                         {
                           "type": "CommentBlock",
                           "value": "*\n     * @desc Theta.\n     * @type {number}\n     ",
-                          "start": 481,
-                          "end": 534,
+                          "start": 553,
+                          "end": 606,
                           "loc": {
                             "start": {
-                              "line": 20,
+                              "line": 21,
                               "column": 4
                             },
                             "end": {
-                              "line": 23,
+                              "line": 24,
                               "column": 7
                             }
                           }
@@ -521,58 +625,58 @@
                     },
                     {
                       "type": "ExpressionStatement",
-                      "start": 539,
-                      "end": 561,
+                      "start": 611,
+                      "end": 633,
                       "loc": {
                         "start": {
-                          "line": 24,
+                          "line": 25,
                           "column": 4
                         },
                         "end": {
-                          "line": 24,
+                          "line": 25,
                           "column": 26
                         }
                       },
                       "expression": {
                         "type": "AssignmentExpression",
-                        "start": 539,
-                        "end": 560,
+                        "start": 611,
+                        "end": 632,
                         "loc": {
                           "start": {
-                            "line": 24,
+                            "line": 25,
                             "column": 4
                           },
                           "end": {
-                            "line": 24,
+                            "line": 25,
                             "column": 25
                           }
                         },
                         "operator": "=",
                         "left": {
                           "type": "MemberExpression",
-                          "start": 539,
-                          "end": 547,
+                          "start": 611,
+                          "end": 619,
                           "loc": {
                             "start": {
-                              "line": 24,
+                              "line": 25,
                               "column": 4
                             },
                             "end": {
-                              "line": 24,
+                              "line": 25,
                               "column": 12
                             }
                           },
                           "object": {
                             "type": "ThisExpression",
-                            "start": 539,
-                            "end": 543,
+                            "start": 611,
+                            "end": 615,
                             "loc": {
                               "start": {
-                                "line": 24,
+                                "line": 25,
                                 "column": 4
                               },
                               "end": {
-                                "line": 24,
+                                "line": 25,
                                 "column": 8
                               }
                             },
@@ -580,15 +684,15 @@
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 544,
-                            "end": 547,
+                            "start": 616,
+                            "end": 619,
                             "loc": {
                               "start": {
-                                "line": 24,
+                                "line": 25,
                                 "column": 9
                               },
                               "end": {
-                                "line": 24,
+                                "line": 25,
                                 "column": 12
                               },
                               "identifierName": "tha"
@@ -600,29 +704,29 @@
                         },
                         "right": {
                           "type": "BinaryExpression",
-                          "start": 550,
-                          "end": 560,
+                          "start": 622,
+                          "end": 632,
                           "loc": {
                             "start": {
-                              "line": 24,
+                              "line": 25,
                               "column": 15
                             },
                             "end": {
-                              "line": 24,
+                              "line": 25,
                               "column": 25
                             }
                           },
                           "left": {
                             "type": "Identifier",
-                            "start": 550,
-                            "end": 555,
+                            "start": 622,
+                            "end": 627,
                             "loc": {
                               "start": {
-                                "line": 24,
+                                "line": 25,
                                 "column": 15
                               },
                               "end": {
-                                "line": 24,
+                                "line": 25,
                                 "column": 20
                               },
                               "identifierName": "theta"
@@ -632,15 +736,15 @@
                           "operator": "*",
                           "right": {
                             "type": "Identifier",
-                            "start": 558,
-                            "end": 560,
+                            "start": 630,
+                            "end": 632,
                             "loc": {
                               "start": {
-                                "line": 24,
+                                "line": 25,
                                 "column": 23
                               },
                               "end": {
-                                "line": 24,
+                                "line": 25,
                                 "column": 25
                               },
                               "identifierName": "DR"
@@ -654,15 +758,15 @@
                         {
                           "type": "CommentBlock",
                           "value": "*\n     * @desc Theta.\n     * @type {number}\n     ",
-                          "start": 481,
-                          "end": 534,
+                          "start": 553,
+                          "end": 606,
                           "loc": {
                             "start": {
-                              "line": 20,
+                              "line": 21,
                               "column": 4
                             },
                             "end": {
-                              "line": 23,
+                              "line": 24,
                               "column": 7
                             }
                           }
@@ -672,15 +776,15 @@
                         {
                           "type": "CommentBlock",
                           "value": "*\n     * @desc Directional vector\n     * @type {Vector3D}\n     ",
-                          "start": 567,
-                          "end": 634,
+                          "start": 639,
+                          "end": 706,
                           "loc": {
                             "start": {
-                              "line": 26,
+                              "line": 27,
                               "column": 4
                             },
                             "end": {
-                              "line": 29,
+                              "line": 30,
                               "column": 7
                             }
                           }
@@ -689,58 +793,58 @@
                     },
                     {
                       "type": "ExpressionStatement",
-                      "start": 639,
-                      "end": 674,
+                      "start": 711,
+                      "end": 746,
                       "loc": {
                         "start": {
-                          "line": 30,
+                          "line": 31,
                           "column": 4
                         },
                         "end": {
-                          "line": 30,
+                          "line": 31,
                           "column": 39
                         }
                       },
                       "expression": {
                         "type": "AssignmentExpression",
-                        "start": 639,
-                        "end": 673,
+                        "start": 711,
+                        "end": 745,
                         "loc": {
                           "start": {
-                            "line": 30,
+                            "line": 31,
                             "column": 4
                           },
                           "end": {
-                            "line": 30,
+                            "line": 31,
                             "column": 38
                           }
                         },
                         "operator": "=",
                         "left": {
                           "type": "MemberExpression",
-                          "start": 639,
-                          "end": 650,
+                          "start": 711,
+                          "end": 722,
                           "loc": {
                             "start": {
-                              "line": 30,
+                              "line": 31,
                               "column": 4
                             },
                             "end": {
-                              "line": 30,
+                              "line": 31,
                               "column": 15
                             }
                           },
                           "object": {
                             "type": "ThisExpression",
-                            "start": 639,
-                            "end": 643,
+                            "start": 711,
+                            "end": 715,
                             "loc": {
                               "start": {
-                                "line": 30,
+                                "line": 31,
                                 "column": 4
                               },
                               "end": {
-                                "line": 30,
+                                "line": 31,
                                 "column": 8
                               }
                             },
@@ -748,15 +852,15 @@
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 644,
-                            "end": 650,
+                            "start": 716,
+                            "end": 722,
                             "loc": {
                               "start": {
-                                "line": 30,
+                                "line": 31,
                                 "column": 9
                               },
                               "end": {
-                                "line": 30,
+                                "line": 31,
                                 "column": 15
                               },
                               "identifierName": "dirVec"
@@ -768,43 +872,43 @@
                         },
                         "right": {
                           "type": "CallExpression",
-                          "start": 653,
-                          "end": 673,
+                          "start": 725,
+                          "end": 745,
                           "loc": {
                             "start": {
-                              "line": 30,
+                              "line": 31,
                               "column": 18
                             },
                             "end": {
-                              "line": 30,
+                              "line": 31,
                               "column": 38
                             }
                           },
                           "callee": {
                             "type": "MemberExpression",
-                            "start": 653,
-                            "end": 671,
+                            "start": 725,
+                            "end": 743,
                             "loc": {
                               "start": {
-                                "line": 30,
+                                "line": 31,
                                 "column": 18
                               },
                               "end": {
-                                "line": 30,
+                                "line": 31,
                                 "column": 36
                               }
                             },
                             "object": {
                               "type": "Identifier",
-                              "start": 653,
-                              "end": 660,
+                              "start": 725,
+                              "end": 732,
                               "loc": {
                                 "start": {
-                                  "line": 30,
+                                  "line": 31,
                                   "column": 18
                                 },
                                 "end": {
-                                  "line": 30,
+                                  "line": 31,
                                   "column": 25
                                 },
                                 "identifierName": "polar3d"
@@ -813,15 +917,15 @@
                             },
                             "property": {
                               "type": "Identifier",
-                              "start": 661,
-                              "end": 671,
+                              "start": 733,
+                              "end": 743,
                               "loc": {
                                 "start": {
-                                  "line": 30,
+                                  "line": 31,
                                   "column": 26
                                 },
                                 "end": {
-                                  "line": 30,
+                                  "line": 31,
                                   "column": 36
                                 },
                                 "identifierName": "toVector3D"
@@ -838,15 +942,15 @@
                         {
                           "type": "CommentBlock",
                           "value": "*\n     * @desc Directional vector\n     * @type {Vector3D}\n     ",
-                          "start": 567,
-                          "end": 634,
+                          "start": 639,
+                          "end": 706,
                           "loc": {
                             "start": {
-                              "line": 26,
+                              "line": 27,
                               "column": 4
                             },
                             "end": {
-                              "line": 29,
+                              "line": 30,
                               "column": 7
                             }
                           }
@@ -856,15 +960,15 @@
                         {
                           "type": "CommentBlock",
                           "value": "*\n     * @desc Determines whether to use the directional vector or not.\n     * @type {boolean}\n     ",
-                          "start": 680,
-                          "end": 784,
+                          "start": 752,
+                          "end": 856,
                           "loc": {
                             "start": {
-                              "line": 32,
+                              "line": 33,
                               "column": 4
                             },
                             "end": {
-                              "line": 35,
+                              "line": 36,
                               "column": 7
                             }
                           }
@@ -873,58 +977,58 @@
                     },
                     {
                       "type": "ExpressionStatement",
-                      "start": 789,
-                      "end": 808,
+                      "start": 861,
+                      "end": 880,
                       "loc": {
                         "start": {
-                          "line": 36,
+                          "line": 37,
                           "column": 4
                         },
                         "end": {
-                          "line": 36,
+                          "line": 37,
                           "column": 23
                         }
                       },
                       "expression": {
                         "type": "AssignmentExpression",
-                        "start": 789,
-                        "end": 807,
+                        "start": 861,
+                        "end": 879,
                         "loc": {
                           "start": {
-                            "line": 36,
+                            "line": 37,
                             "column": 4
                           },
                           "end": {
-                            "line": 36,
+                            "line": 37,
                             "column": 22
                           }
                         },
                         "operator": "=",
                         "left": {
                           "type": "MemberExpression",
-                          "start": 789,
-                          "end": 799,
+                          "start": 861,
+                          "end": 871,
                           "loc": {
                             "start": {
-                              "line": 36,
+                              "line": 37,
                               "column": 4
                             },
                             "end": {
-                              "line": 36,
+                              "line": 37,
                               "column": 14
                             }
                           },
                           "object": {
                             "type": "ThisExpression",
-                            "start": 789,
-                            "end": 793,
+                            "start": 861,
+                            "end": 865,
                             "loc": {
                               "start": {
-                                "line": 36,
+                                "line": 37,
                                 "column": 4
                               },
                               "end": {
-                                "line": 36,
+                                "line": 37,
                                 "column": 8
                               }
                             },
@@ -932,15 +1036,15 @@
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 794,
-                            "end": 799,
+                            "start": 866,
+                            "end": 871,
                             "loc": {
                               "start": {
-                                "line": 36,
+                                "line": 37,
                                 "column": 9
                               },
                               "end": {
-                                "line": 36,
+                                "line": 37,
                                 "column": 14
                               },
                               "identifierName": "_useV"
@@ -952,15 +1056,15 @@
                         },
                         "right": {
                           "type": "BooleanLiteral",
-                          "start": 802,
-                          "end": 807,
+                          "start": 874,
+                          "end": 879,
                           "loc": {
                             "start": {
-                              "line": 36,
+                              "line": 37,
                               "column": 17
                             },
                             "end": {
-                              "line": 36,
+                              "line": 37,
                               "column": 22
                             }
                           },
@@ -972,15 +1076,15 @@
                         {
                           "type": "CommentBlock",
                           "value": "*\n     * @desc Determines whether to use the directional vector or not.\n     * @type {boolean}\n     ",
-                          "start": 680,
-                          "end": 784,
+                          "start": 752,
+                          "end": 856,
                           "loc": {
                             "start": {
-                              "line": 32,
+                              "line": 33,
                               "column": 4
                             },
                             "end": {
-                              "line": 35,
+                              "line": 36,
                               "column": 7
                             }
                           }
@@ -995,15 +1099,15 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n   * Constructs a PolarVelocity initializer.\n   *\n   * @param {Polar3D} polar3d - The polar vector for the velocity\n   * @param {number} theta - The theta angle to use\n   * @return void\n   ",
-                    "start": 235,
-                    "end": 430,
+                    "start": 303,
+                    "end": 498,
                     "loc": {
                       "start": {
-                        "line": 10,
+                        "line": 11,
                         "column": 2
                       },
                       "end": {
-                        "line": 16,
+                        "line": 17,
                         "column": 5
                       }
                     }
@@ -1013,15 +1117,15 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n   * Creates a PolarVelocity initializer from JSON.\n   *\n   * @param {object} json - The JSON to construct the instance from.\n   * @param {number} json.polarRadius - The Polar3D radius\n   * @param {number} json.polarTheta - The Polar3D theta\n   * @param {number} json.polarPhi - The Polar3D phi\n   * @param {number} json.velocityTheta - The velocity theta\n   * @return {PolarVelocity}\n   ",
-                    "start": 816,
-                    "end": 1210,
+                    "start": 888,
+                    "end": 1282,
                     "loc": {
                       "start": {
-                        "line": 39,
+                        "line": 40,
                         "column": 2
                       },
                       "end": {
-                        "line": 48,
+                        "line": 49,
                         "column": 5
                       }
                     }
@@ -1030,15 +1134,15 @@
               },
               {
                 "type": "ClassMethod",
-                "start": 1213,
-                "end": 1423,
+                "start": 1285,
+                "end": 1495,
                 "loc": {
                   "start": {
-                    "line": 49,
+                    "line": 50,
                     "column": 2
                   },
                   "end": {
-                    "line": 56,
+                    "line": 57,
                     "column": 3
                   }
                 },
@@ -1046,15 +1150,15 @@
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 1220,
-                  "end": 1228,
+                  "start": 1292,
+                  "end": 1300,
                   "loc": {
                     "start": {
-                      "line": 49,
+                      "line": 50,
                       "column": 9
                     },
                     "end": {
-                      "line": 49,
+                      "line": 50,
                       "column": 17
                     },
                     "identifierName": "fromJSON"
@@ -1069,15 +1173,15 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 1229,
-                    "end": 1233,
+                    "start": 1301,
+                    "end": 1305,
                     "loc": {
                       "start": {
-                        "line": 49,
+                        "line": 50,
                         "column": 18
                       },
                       "end": {
-                        "line": 49,
+                        "line": 50,
                         "column": 22
                       },
                       "identifierName": "json"
@@ -1087,74 +1191,74 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 1235,
-                  "end": 1423,
+                  "start": 1307,
+                  "end": 1495,
                   "loc": {
                     "start": {
-                      "line": 49,
+                      "line": 50,
                       "column": 24
                     },
                     "end": {
-                      "line": 56,
+                      "line": 57,
                       "column": 3
                     }
                   },
                   "body": [
                     {
                       "type": "VariableDeclaration",
-                      "start": 1241,
-                      "end": 1307,
+                      "start": 1313,
+                      "end": 1379,
                       "loc": {
                         "start": {
-                          "line": 50,
+                          "line": 51,
                           "column": 4
                         },
                         "end": {
-                          "line": 50,
+                          "line": 51,
                           "column": 70
                         }
                       },
                       "declarations": [
                         {
                           "type": "VariableDeclarator",
-                          "start": 1247,
-                          "end": 1306,
+                          "start": 1319,
+                          "end": 1378,
                           "loc": {
                             "start": {
-                              "line": 50,
+                              "line": 51,
                               "column": 10
                             },
                             "end": {
-                              "line": 50,
+                              "line": 51,
                               "column": 69
                             }
                           },
                           "id": {
                             "type": "ObjectPattern",
-                            "start": 1247,
-                            "end": 1299,
+                            "start": 1319,
+                            "end": 1371,
                             "loc": {
                               "start": {
-                                "line": 50,
+                                "line": 51,
                                 "column": 10
                               },
                               "end": {
-                                "line": 50,
+                                "line": 51,
                                 "column": 62
                               }
                             },
                             "properties": [
                               {
                                 "type": "ObjectProperty",
-                                "start": 1249,
-                                "end": 1260,
+                                "start": 1321,
+                                "end": 1332,
                                 "loc": {
                                   "start": {
-                                    "line": 50,
+                                    "line": 51,
                                     "column": 12
                                   },
                                   "end": {
-                                    "line": 50,
+                                    "line": 51,
                                     "column": 23
                                   }
                                 },
@@ -1163,15 +1267,15 @@
                                 "computed": false,
                                 "key": {
                                   "type": "Identifier",
-                                  "start": 1249,
-                                  "end": 1260,
+                                  "start": 1321,
+                                  "end": 1332,
                                   "loc": {
                                     "start": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 12
                                     },
                                     "end": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 23
                                     },
                                     "identifierName": "polarRadius"
@@ -1180,15 +1284,15 @@
                                 },
                                 "value": {
                                   "type": "Identifier",
-                                  "start": 1249,
-                                  "end": 1260,
+                                  "start": 1321,
+                                  "end": 1332,
                                   "loc": {
                                     "start": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 12
                                     },
                                     "end": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 23
                                     },
                                     "identifierName": "polarRadius"
@@ -1201,15 +1305,15 @@
                               },
                               {
                                 "type": "ObjectProperty",
-                                "start": 1262,
-                                "end": 1272,
+                                "start": 1334,
+                                "end": 1344,
                                 "loc": {
                                   "start": {
-                                    "line": 50,
+                                    "line": 51,
                                     "column": 25
                                   },
                                   "end": {
-                                    "line": 50,
+                                    "line": 51,
                                     "column": 35
                                   }
                                 },
@@ -1218,15 +1322,15 @@
                                 "computed": false,
                                 "key": {
                                   "type": "Identifier",
-                                  "start": 1262,
-                                  "end": 1272,
+                                  "start": 1334,
+                                  "end": 1344,
                                   "loc": {
                                     "start": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 25
                                     },
                                     "end": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 35
                                     },
                                     "identifierName": "polarTheta"
@@ -1235,15 +1339,15 @@
                                 },
                                 "value": {
                                   "type": "Identifier",
-                                  "start": 1262,
-                                  "end": 1272,
+                                  "start": 1334,
+                                  "end": 1344,
                                   "loc": {
                                     "start": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 25
                                     },
                                     "end": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 35
                                     },
                                     "identifierName": "polarTheta"
@@ -1256,15 +1360,15 @@
                               },
                               {
                                 "type": "ObjectProperty",
-                                "start": 1274,
-                                "end": 1282,
+                                "start": 1346,
+                                "end": 1354,
                                 "loc": {
                                   "start": {
-                                    "line": 50,
+                                    "line": 51,
                                     "column": 37
                                   },
                                   "end": {
-                                    "line": 50,
+                                    "line": 51,
                                     "column": 45
                                   }
                                 },
@@ -1273,15 +1377,15 @@
                                 "computed": false,
                                 "key": {
                                   "type": "Identifier",
-                                  "start": 1274,
-                                  "end": 1282,
+                                  "start": 1346,
+                                  "end": 1354,
                                   "loc": {
                                     "start": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 37
                                     },
                                     "end": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 45
                                     },
                                     "identifierName": "polarPhi"
@@ -1290,15 +1394,15 @@
                                 },
                                 "value": {
                                   "type": "Identifier",
-                                  "start": 1274,
-                                  "end": 1282,
+                                  "start": 1346,
+                                  "end": 1354,
                                   "loc": {
                                     "start": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 37
                                     },
                                     "end": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 45
                                     },
                                     "identifierName": "polarPhi"
@@ -1311,15 +1415,15 @@
                               },
                               {
                                 "type": "ObjectProperty",
-                                "start": 1284,
-                                "end": 1297,
+                                "start": 1356,
+                                "end": 1369,
                                 "loc": {
                                   "start": {
-                                    "line": 50,
+                                    "line": 51,
                                     "column": 47
                                   },
                                   "end": {
-                                    "line": 50,
+                                    "line": 51,
                                     "column": 60
                                   }
                                 },
@@ -1328,15 +1432,15 @@
                                 "computed": false,
                                 "key": {
                                   "type": "Identifier",
-                                  "start": 1284,
-                                  "end": 1297,
+                                  "start": 1356,
+                                  "end": 1369,
                                   "loc": {
                                     "start": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 47
                                     },
                                     "end": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 60
                                     },
                                     "identifierName": "velocityTheta"
@@ -1345,15 +1449,15 @@
                                 },
                                 "value": {
                                   "type": "Identifier",
-                                  "start": 1284,
-                                  "end": 1297,
+                                  "start": 1356,
+                                  "end": 1369,
                                   "loc": {
                                     "start": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 47
                                     },
                                     "end": {
-                                      "line": 50,
+                                      "line": 51,
                                       "column": 60
                                     },
                                     "identifierName": "velocityTheta"
@@ -1368,15 +1472,15 @@
                           },
                           "init": {
                             "type": "Identifier",
-                            "start": 1302,
-                            "end": 1306,
+                            "start": 1374,
+                            "end": 1378,
                             "loc": {
                               "start": {
-                                "line": 50,
+                                "line": 51,
                                 "column": 65
                               },
                               "end": {
-                                "line": 50,
+                                "line": 51,
                                 "column": 69
                               },
                               "identifierName": "json"
@@ -1389,43 +1493,43 @@
                     },
                     {
                       "type": "ReturnStatement",
-                      "start": 1313,
-                      "end": 1419,
+                      "start": 1385,
+                      "end": 1491,
                       "loc": {
                         "start": {
-                          "line": 52,
+                          "line": 53,
                           "column": 4
                         },
                         "end": {
-                          "line": 55,
+                          "line": 56,
                           "column": 6
                         }
                       },
                       "argument": {
                         "type": "NewExpression",
-                        "start": 1320,
-                        "end": 1418,
+                        "start": 1392,
+                        "end": 1490,
                         "loc": {
                           "start": {
-                            "line": 52,
+                            "line": 53,
                             "column": 11
                           },
                           "end": {
-                            "line": 55,
+                            "line": 56,
                             "column": 5
                           }
                         },
                         "callee": {
                           "type": "Identifier",
-                          "start": 1324,
-                          "end": 1337,
+                          "start": 1396,
+                          "end": 1409,
                           "loc": {
                             "start": {
-                              "line": 52,
+                              "line": 53,
                               "column": 15
                             },
                             "end": {
-                              "line": 52,
+                              "line": 53,
                               "column": 28
                             },
                             "identifierName": "PolarVelocity"
@@ -1435,29 +1539,29 @@
                         "arguments": [
                           {
                             "type": "NewExpression",
-                            "start": 1345,
-                            "end": 1391,
+                            "start": 1417,
+                            "end": 1463,
                             "loc": {
                               "start": {
-                                "line": 53,
+                                "line": 54,
                                 "column": 6
                               },
                               "end": {
-                                "line": 53,
+                                "line": 54,
                                 "column": 52
                               }
                             },
                             "callee": {
                               "type": "Identifier",
-                              "start": 1349,
-                              "end": 1356,
+                              "start": 1421,
+                              "end": 1428,
                               "loc": {
                                 "start": {
-                                  "line": 53,
+                                  "line": 54,
                                   "column": 10
                                 },
                                 "end": {
-                                  "line": 53,
+                                  "line": 54,
                                   "column": 17
                                 },
                                 "identifierName": "Polar3D"
@@ -1467,15 +1571,15 @@
                             "arguments": [
                               {
                                 "type": "Identifier",
-                                "start": 1357,
-                                "end": 1368,
+                                "start": 1429,
+                                "end": 1440,
                                 "loc": {
                                   "start": {
-                                    "line": 53,
+                                    "line": 54,
                                     "column": 18
                                   },
                                   "end": {
-                                    "line": 53,
+                                    "line": 54,
                                     "column": 29
                                   },
                                   "identifierName": "polarRadius"
@@ -1484,15 +1588,15 @@
                               },
                               {
                                 "type": "Identifier",
-                                "start": 1370,
-                                "end": 1380,
+                                "start": 1442,
+                                "end": 1452,
                                 "loc": {
                                   "start": {
-                                    "line": 53,
+                                    "line": 54,
                                     "column": 31
                                   },
                                   "end": {
-                                    "line": 53,
+                                    "line": 54,
                                     "column": 41
                                   },
                                   "identifierName": "polarTheta"
@@ -1501,15 +1605,15 @@
                               },
                               {
                                 "type": "Identifier",
-                                "start": 1382,
-                                "end": 1390,
+                                "start": 1454,
+                                "end": 1462,
                                 "loc": {
                                   "start": {
-                                    "line": 53,
+                                    "line": 54,
                                     "column": 43
                                   },
                                   "end": {
-                                    "line": 53,
+                                    "line": 54,
                                     "column": 51
                                   },
                                   "identifierName": "polarPhi"
@@ -1520,15 +1624,15 @@
                           },
                           {
                             "type": "Identifier",
-                            "start": 1399,
-                            "end": 1412,
+                            "start": 1471,
+                            "end": 1484,
                             "loc": {
                               "start": {
-                                "line": 54,
+                                "line": 55,
                                 "column": 6
                               },
                               "end": {
-                                "line": 54,
+                                "line": 55,
                                 "column": 19
                               },
                               "identifierName": "velocityTheta"
@@ -1545,15 +1649,15 @@
                   {
                     "type": "CommentBlock",
                     "value": "*\n   * Creates a PolarVelocity initializer from JSON.\n   *\n   * @param {object} json - The JSON to construct the instance from.\n   * @param {number} json.polarRadius - The Polar3D radius\n   * @param {number} json.polarTheta - The Polar3D theta\n   * @param {number} json.polarPhi - The Polar3D phi\n   * @param {number} json.velocityTheta - The velocity theta\n   * @return {PolarVelocity}\n   ",
-                    "start": 816,
-                    "end": 1210,
+                    "start": 888,
+                    "end": 1282,
                     "loc": {
                       "start": {
-                        "line": 39,
+                        "line": 40,
                         "column": 2
                       },
                       "end": {
-                        "line": 48,
+                        "line": 49,
                         "column": 5
                       }
                     }
@@ -1566,15 +1670,15 @@
             {
               "type": "CommentBlock",
               "value": "*\n * Sets the velocity property on initialized particles.\n *\n ",
-              "start": 112,
-              "end": 178,
+              "start": 180,
+              "end": 246,
               "loc": {
                 "start": {
-                  "line": 5,
+                  "line": 6,
                   "column": 0
                 },
                 "end": {
-                  "line": 8,
+                  "line": 9,
                   "column": 3
                 }
               }
@@ -1586,15 +1690,15 @@
           {
             "type": "CommentBlock",
             "value": "*\n * Sets the velocity property on initialized particles.\n *\n ",
-            "start": 112,
-            "end": 178,
+            "start": 180,
+            "end": 246,
             "loc": {
               "start": {
-                "line": 5,
+                "line": 6,
                 "column": 0
               },
               "end": {
-                "line": 8,
+                "line": 9,
                 "column": 3
               }
             }
@@ -1608,15 +1712,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n * Sets the velocity property on initialized particles.\n *\n ",
-      "start": 112,
-      "end": 178,
+      "start": 180,
+      "end": 246,
       "loc": {
         "start": {
-          "line": 5,
+          "line": 6,
           "column": 0
         },
         "end": {
-          "line": 8,
+          "line": 9,
           "column": 3
         }
       }
@@ -1624,15 +1728,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n   * Constructs a PolarVelocity initializer.\n   *\n   * @param {Polar3D} polar3d - The polar vector for the velocity\n   * @param {number} theta - The theta angle to use\n   * @return void\n   ",
-      "start": 235,
-      "end": 430,
+      "start": 303,
+      "end": 498,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 11,
           "column": 2
         },
         "end": {
-          "line": 16,
+          "line": 17,
           "column": 5
         }
       }
@@ -1640,15 +1744,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * @desc Theta.\n     * @type {number}\n     ",
-      "start": 481,
-      "end": 534,
+      "start": 553,
+      "end": 606,
       "loc": {
         "start": {
-          "line": 20,
+          "line": 21,
           "column": 4
         },
         "end": {
-          "line": 23,
+          "line": 24,
           "column": 7
         }
       }
@@ -1656,15 +1760,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * @desc Directional vector\n     * @type {Vector3D}\n     ",
-      "start": 567,
-      "end": 634,
+      "start": 639,
+      "end": 706,
       "loc": {
         "start": {
-          "line": 26,
+          "line": 27,
           "column": 4
         },
         "end": {
-          "line": 29,
+          "line": 30,
           "column": 7
         }
       }
@@ -1672,15 +1776,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * @desc Determines whether to use the directional vector or not.\n     * @type {boolean}\n     ",
-      "start": 680,
-      "end": 784,
+      "start": 752,
+      "end": 856,
       "loc": {
         "start": {
-          "line": 32,
+          "line": 33,
           "column": 4
         },
         "end": {
-          "line": 35,
+          "line": 36,
           "column": 7
         }
       }
@@ -1688,15 +1792,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n   * Creates a PolarVelocity initializer from JSON.\n   *\n   * @param {object} json - The JSON to construct the instance from.\n   * @param {number} json.polarRadius - The Polar3D radius\n   * @param {number} json.polarTheta - The Polar3D theta\n   * @param {number} json.polarPhi - The Polar3D phi\n   * @param {number} json.velocityTheta - The velocity theta\n   * @return {PolarVelocity}\n   ",
-      "start": 816,
-      "end": 1210,
+      "start": 888,
+      "end": 1282,
       "loc": {
         "start": {
-          "line": 39,
+          "line": 40,
           "column": 2
         },
         "end": {
-          "line": 48,
+          "line": 49,
           "column": 5
         }
       }
@@ -2203,17 +2307,252 @@
       }
     },
     {
-      "type": "CommentBlock",
-      "value": "*\n * Sets the velocity property on initialized particles.\n *\n ",
-      "start": 112,
-      "end": 178,
+      "type": {
+        "label": "import",
+        "keyword": "import",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "import",
+      "start": 111,
+      "end": 117,
       "loc": {
         "start": {
-          "line": 5,
+          "line": 4,
           "column": 0
         },
         "end": {
-          "line": 8,
+          "line": 4,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 118,
+      "end": 119,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 7
+        },
+        "end": {
+          "line": 4,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "INITIALIZER_TYPE_POLAR_VELOCITY",
+      "start": 120,
+      "end": 151,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 9
+        },
+        "end": {
+          "line": 4,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "as",
+      "start": 152,
+      "end": 154,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 41
+        },
+        "end": {
+          "line": 4,
+          "column": 43
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "type",
+      "start": 155,
+      "end": 159,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 44
+        },
+        "end": {
+          "line": 4,
+          "column": 48
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 160,
+      "end": 161,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 49
+        },
+        "end": {
+          "line": 4,
+          "column": 50
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "from",
+      "start": 162,
+      "end": 166,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 51
+        },
+        "end": {
+          "line": 4,
+          "column": 55
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "../types",
+      "start": 167,
+      "end": 177,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 56
+        },
+        "end": {
+          "line": 4,
+          "column": 66
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 177,
+      "end": 178,
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 66
+        },
+        "end": {
+          "line": 4,
+          "column": 67
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * Sets the velocity property on initialized particles.\n *\n ",
+      "start": 180,
+      "end": 246,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
           "column": 3
         }
       }
@@ -2233,15 +2572,15 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 179,
-      "end": 185,
+      "start": 247,
+      "end": 253,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 10,
           "column": 0
         },
         "end": {
-          "line": 9,
+          "line": 10,
           "column": 6
         }
       }
@@ -2261,15 +2600,15 @@
         "updateContext": null
       },
       "value": "default",
-      "start": 186,
-      "end": 193,
+      "start": 254,
+      "end": 261,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 10,
           "column": 7
         },
         "end": {
-          "line": 9,
+          "line": 10,
           "column": 14
         }
       }
@@ -2289,15 +2628,15 @@
         "updateContext": null
       },
       "value": "class",
-      "start": 194,
-      "end": 199,
+      "start": 262,
+      "end": 267,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 10,
           "column": 15
         },
         "end": {
-          "line": 9,
+          "line": 10,
           "column": 20
         }
       }
@@ -2315,15 +2654,15 @@
         "binop": null
       },
       "value": "PolarVelocity",
-      "start": 200,
-      "end": 213,
+      "start": 268,
+      "end": 281,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 10,
           "column": 21
         },
         "end": {
-          "line": 9,
+          "line": 10,
           "column": 34
         }
       }
@@ -2343,15 +2682,15 @@
         "updateContext": null
       },
       "value": "extends",
-      "start": 214,
-      "end": 221,
+      "start": 282,
+      "end": 289,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 10,
           "column": 35
         },
         "end": {
-          "line": 9,
+          "line": 10,
           "column": 42
         }
       }
@@ -2369,15 +2708,15 @@
         "binop": null
       },
       "value": "Velocity",
-      "start": 222,
-      "end": 230,
+      "start": 290,
+      "end": 298,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 10,
           "column": 43
         },
         "end": {
-          "line": 9,
+          "line": 10,
           "column": 51
         }
       }
@@ -2394,15 +2733,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 231,
-      "end": 232,
+      "start": 299,
+      "end": 300,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 10,
           "column": 52
         },
         "end": {
-          "line": 9,
+          "line": 10,
           "column": 53
         }
       }
@@ -2410,15 +2749,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n   * Constructs a PolarVelocity initializer.\n   *\n   * @param {Polar3D} polar3d - The polar vector for the velocity\n   * @param {number} theta - The theta angle to use\n   * @return void\n   ",
-      "start": 235,
-      "end": 430,
+      "start": 303,
+      "end": 498,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 11,
           "column": 2
         },
         "end": {
-          "line": 16,
+          "line": 17,
           "column": 5
         }
       }
@@ -2436,15 +2775,15 @@
         "binop": null
       },
       "value": "constructor",
-      "start": 433,
-      "end": 444,
+      "start": 501,
+      "end": 512,
       "loc": {
         "start": {
-          "line": 17,
+          "line": 18,
           "column": 2
         },
         "end": {
-          "line": 17,
+          "line": 18,
           "column": 13
         }
       }
@@ -2461,15 +2800,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 444,
-      "end": 445,
+      "start": 512,
+      "end": 513,
       "loc": {
         "start": {
-          "line": 17,
+          "line": 18,
           "column": 13
         },
         "end": {
-          "line": 17,
+          "line": 18,
           "column": 14
         }
       }
@@ -2487,15 +2826,15 @@
         "binop": null
       },
       "value": "polar3d",
-      "start": 445,
-      "end": 452,
+      "start": 513,
+      "end": 520,
       "loc": {
         "start": {
-          "line": 17,
+          "line": 18,
           "column": 14
         },
         "end": {
-          "line": 17,
+          "line": 18,
           "column": 21
         }
       }
@@ -2513,15 +2852,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 452,
-      "end": 453,
+      "start": 520,
+      "end": 521,
       "loc": {
         "start": {
-          "line": 17,
+          "line": 18,
           "column": 21
         },
         "end": {
-          "line": 17,
+          "line": 18,
           "column": 22
         }
       }
@@ -2539,15 +2878,15 @@
         "binop": null
       },
       "value": "theta",
-      "start": 454,
-      "end": 459,
+      "start": 522,
+      "end": 527,
       "loc": {
         "start": {
-          "line": 17,
+          "line": 18,
           "column": 23
         },
         "end": {
-          "line": 17,
+          "line": 18,
           "column": 28
         }
       }
@@ -2564,15 +2903,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 459,
-      "end": 460,
+      "start": 527,
+      "end": 528,
       "loc": {
         "start": {
-          "line": 17,
+          "line": 18,
           "column": 28
         },
         "end": {
-          "line": 17,
+          "line": 18,
           "column": 29
         }
       }
@@ -2589,15 +2928,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 461,
-      "end": 462,
+      "start": 529,
+      "end": 530,
       "loc": {
         "start": {
-          "line": 17,
+          "line": 18,
           "column": 30
         },
         "end": {
-          "line": 17,
+          "line": 18,
           "column": 31
         }
       }
@@ -2617,15 +2956,15 @@
         "updateContext": null
       },
       "value": "super",
-      "start": 467,
-      "end": 472,
+      "start": 535,
+      "end": 540,
       "loc": {
         "start": {
-          "line": 18,
+          "line": 19,
           "column": 4
         },
         "end": {
-          "line": 18,
+          "line": 19,
           "column": 9
         }
       }
@@ -2642,16 +2981,42 @@
         "postfix": false,
         "binop": null
       },
-      "start": 472,
-      "end": 473,
+      "start": 540,
+      "end": 541,
       "loc": {
         "start": {
-          "line": 18,
+          "line": 19,
           "column": 9
         },
         "end": {
-          "line": 18,
+          "line": 19,
           "column": 10
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "type",
+      "start": 541,
+      "end": 545,
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 10
+        },
+        "end": {
+          "line": 19,
+          "column": 14
         }
       }
     },
@@ -2667,16 +3032,16 @@
         "postfix": false,
         "binop": null
       },
-      "start": 473,
-      "end": 474,
+      "start": 545,
+      "end": 546,
       "loc": {
         "start": {
-          "line": 18,
-          "column": 10
+          "line": 19,
+          "column": 14
         },
         "end": {
-          "line": 18,
-          "column": 11
+          "line": 19,
+          "column": 15
         }
       }
     },
@@ -2693,31 +3058,31 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 474,
-      "end": 475,
+      "start": 546,
+      "end": 547,
       "loc": {
         "start": {
-          "line": 18,
-          "column": 11
+          "line": 19,
+          "column": 15
         },
         "end": {
-          "line": 18,
-          "column": 12
+          "line": 19,
+          "column": 16
         }
       }
     },
     {
       "type": "CommentBlock",
       "value": "*\n     * @desc Theta.\n     * @type {number}\n     ",
-      "start": 481,
-      "end": 534,
+      "start": 553,
+      "end": 606,
       "loc": {
         "start": {
-          "line": 20,
+          "line": 21,
           "column": 4
         },
         "end": {
-          "line": 23,
+          "line": 24,
           "column": 7
         }
       }
@@ -2737,15 +3102,15 @@
         "updateContext": null
       },
       "value": "this",
-      "start": 539,
-      "end": 543,
+      "start": 611,
+      "end": 615,
       "loc": {
         "start": {
-          "line": 24,
+          "line": 25,
           "column": 4
         },
         "end": {
-          "line": 24,
+          "line": 25,
           "column": 8
         }
       }
@@ -2763,15 +3128,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 543,
-      "end": 544,
+      "start": 615,
+      "end": 616,
       "loc": {
         "start": {
-          "line": 24,
+          "line": 25,
           "column": 8
         },
         "end": {
-          "line": 24,
+          "line": 25,
           "column": 9
         }
       }
@@ -2789,15 +3154,15 @@
         "binop": null
       },
       "value": "tha",
-      "start": 544,
-      "end": 547,
+      "start": 616,
+      "end": 619,
       "loc": {
         "start": {
-          "line": 24,
+          "line": 25,
           "column": 9
         },
         "end": {
-          "line": 24,
+          "line": 25,
           "column": 12
         }
       }
@@ -2816,15 +3181,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 548,
-      "end": 549,
+      "start": 620,
+      "end": 621,
       "loc": {
         "start": {
-          "line": 24,
+          "line": 25,
           "column": 13
         },
         "end": {
-          "line": 24,
+          "line": 25,
           "column": 14
         }
       }
@@ -2842,15 +3207,15 @@
         "binop": null
       },
       "value": "theta",
-      "start": 550,
-      "end": 555,
+      "start": 622,
+      "end": 627,
       "loc": {
         "start": {
-          "line": 24,
+          "line": 25,
           "column": 15
         },
         "end": {
-          "line": 24,
+          "line": 25,
           "column": 20
         }
       }
@@ -2869,15 +3234,15 @@
         "updateContext": null
       },
       "value": "*",
-      "start": 556,
-      "end": 557,
+      "start": 628,
+      "end": 629,
       "loc": {
         "start": {
-          "line": 24,
+          "line": 25,
           "column": 21
         },
         "end": {
-          "line": 24,
+          "line": 25,
           "column": 22
         }
       }
@@ -2895,15 +3260,15 @@
         "binop": null
       },
       "value": "DR",
-      "start": 558,
-      "end": 560,
+      "start": 630,
+      "end": 632,
       "loc": {
         "start": {
-          "line": 24,
+          "line": 25,
           "column": 23
         },
         "end": {
-          "line": 24,
+          "line": 25,
           "column": 25
         }
       }
@@ -2921,15 +3286,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 560,
-      "end": 561,
+      "start": 632,
+      "end": 633,
       "loc": {
         "start": {
-          "line": 24,
+          "line": 25,
           "column": 25
         },
         "end": {
-          "line": 24,
+          "line": 25,
           "column": 26
         }
       }
@@ -2937,15 +3302,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * @desc Directional vector\n     * @type {Vector3D}\n     ",
-      "start": 567,
-      "end": 634,
+      "start": 639,
+      "end": 706,
       "loc": {
         "start": {
-          "line": 26,
+          "line": 27,
           "column": 4
         },
         "end": {
-          "line": 29,
+          "line": 30,
           "column": 7
         }
       }
@@ -2965,15 +3330,15 @@
         "updateContext": null
       },
       "value": "this",
-      "start": 639,
-      "end": 643,
+      "start": 711,
+      "end": 715,
       "loc": {
         "start": {
-          "line": 30,
+          "line": 31,
           "column": 4
         },
         "end": {
-          "line": 30,
+          "line": 31,
           "column": 8
         }
       }
@@ -2991,15 +3356,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 643,
-      "end": 644,
+      "start": 715,
+      "end": 716,
       "loc": {
         "start": {
-          "line": 30,
+          "line": 31,
           "column": 8
         },
         "end": {
-          "line": 30,
+          "line": 31,
           "column": 9
         }
       }
@@ -3017,15 +3382,15 @@
         "binop": null
       },
       "value": "dirVec",
-      "start": 644,
-      "end": 650,
+      "start": 716,
+      "end": 722,
       "loc": {
         "start": {
-          "line": 30,
+          "line": 31,
           "column": 9
         },
         "end": {
-          "line": 30,
+          "line": 31,
           "column": 15
         }
       }
@@ -3044,15 +3409,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 651,
-      "end": 652,
+      "start": 723,
+      "end": 724,
       "loc": {
         "start": {
-          "line": 30,
+          "line": 31,
           "column": 16
         },
         "end": {
-          "line": 30,
+          "line": 31,
           "column": 17
         }
       }
@@ -3070,15 +3435,15 @@
         "binop": null
       },
       "value": "polar3d",
-      "start": 653,
-      "end": 660,
+      "start": 725,
+      "end": 732,
       "loc": {
         "start": {
-          "line": 30,
+          "line": 31,
           "column": 18
         },
         "end": {
-          "line": 30,
+          "line": 31,
           "column": 25
         }
       }
@@ -3096,15 +3461,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 660,
-      "end": 661,
+      "start": 732,
+      "end": 733,
       "loc": {
         "start": {
-          "line": 30,
+          "line": 31,
           "column": 25
         },
         "end": {
-          "line": 30,
+          "line": 31,
           "column": 26
         }
       }
@@ -3122,15 +3487,15 @@
         "binop": null
       },
       "value": "toVector3D",
-      "start": 661,
-      "end": 671,
+      "start": 733,
+      "end": 743,
       "loc": {
         "start": {
-          "line": 30,
+          "line": 31,
           "column": 26
         },
         "end": {
-          "line": 30,
+          "line": 31,
           "column": 36
         }
       }
@@ -3147,15 +3512,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 671,
-      "end": 672,
+      "start": 743,
+      "end": 744,
       "loc": {
         "start": {
-          "line": 30,
+          "line": 31,
           "column": 36
         },
         "end": {
-          "line": 30,
+          "line": 31,
           "column": 37
         }
       }
@@ -3172,15 +3537,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 672,
-      "end": 673,
+      "start": 744,
+      "end": 745,
       "loc": {
         "start": {
-          "line": 30,
+          "line": 31,
           "column": 37
         },
         "end": {
-          "line": 30,
+          "line": 31,
           "column": 38
         }
       }
@@ -3198,15 +3563,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 673,
-      "end": 674,
+      "start": 745,
+      "end": 746,
       "loc": {
         "start": {
-          "line": 30,
+          "line": 31,
           "column": 38
         },
         "end": {
-          "line": 30,
+          "line": 31,
           "column": 39
         }
       }
@@ -3214,15 +3579,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n     * @desc Determines whether to use the directional vector or not.\n     * @type {boolean}\n     ",
-      "start": 680,
-      "end": 784,
+      "start": 752,
+      "end": 856,
       "loc": {
         "start": {
-          "line": 32,
+          "line": 33,
           "column": 4
         },
         "end": {
-          "line": 35,
+          "line": 36,
           "column": 7
         }
       }
@@ -3242,15 +3607,15 @@
         "updateContext": null
       },
       "value": "this",
-      "start": 789,
-      "end": 793,
+      "start": 861,
+      "end": 865,
       "loc": {
         "start": {
-          "line": 36,
+          "line": 37,
           "column": 4
         },
         "end": {
-          "line": 36,
+          "line": 37,
           "column": 8
         }
       }
@@ -3268,15 +3633,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 793,
-      "end": 794,
+      "start": 865,
+      "end": 866,
       "loc": {
         "start": {
-          "line": 36,
+          "line": 37,
           "column": 8
         },
         "end": {
-          "line": 36,
+          "line": 37,
           "column": 9
         }
       }
@@ -3294,15 +3659,15 @@
         "binop": null
       },
       "value": "_useV",
-      "start": 794,
-      "end": 799,
+      "start": 866,
+      "end": 871,
       "loc": {
         "start": {
-          "line": 36,
+          "line": 37,
           "column": 9
         },
         "end": {
-          "line": 36,
+          "line": 37,
           "column": 14
         }
       }
@@ -3321,15 +3686,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 800,
-      "end": 801,
+      "start": 872,
+      "end": 873,
       "loc": {
         "start": {
-          "line": 36,
+          "line": 37,
           "column": 15
         },
         "end": {
-          "line": 36,
+          "line": 37,
           "column": 16
         }
       }
@@ -3349,15 +3714,15 @@
         "updateContext": null
       },
       "value": "false",
-      "start": 802,
-      "end": 807,
+      "start": 874,
+      "end": 879,
       "loc": {
         "start": {
-          "line": 36,
+          "line": 37,
           "column": 17
         },
         "end": {
-          "line": 36,
+          "line": 37,
           "column": 22
         }
       }
@@ -3375,15 +3740,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 807,
-      "end": 808,
+      "start": 879,
+      "end": 880,
       "loc": {
         "start": {
-          "line": 36,
+          "line": 37,
           "column": 22
         },
         "end": {
-          "line": 36,
+          "line": 37,
           "column": 23
         }
       }
@@ -3400,15 +3765,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 811,
-      "end": 812,
+      "start": 883,
+      "end": 884,
       "loc": {
         "start": {
-          "line": 37,
+          "line": 38,
           "column": 2
         },
         "end": {
-          "line": 37,
+          "line": 38,
           "column": 3
         }
       }
@@ -3416,15 +3781,15 @@
     {
       "type": "CommentBlock",
       "value": "*\n   * Creates a PolarVelocity initializer from JSON.\n   *\n   * @param {object} json - The JSON to construct the instance from.\n   * @param {number} json.polarRadius - The Polar3D radius\n   * @param {number} json.polarTheta - The Polar3D theta\n   * @param {number} json.polarPhi - The Polar3D phi\n   * @param {number} json.velocityTheta - The velocity theta\n   * @return {PolarVelocity}\n   ",
-      "start": 816,
-      "end": 1210,
+      "start": 888,
+      "end": 1282,
       "loc": {
         "start": {
-          "line": 39,
+          "line": 40,
           "column": 2
         },
         "end": {
-          "line": 48,
+          "line": 49,
           "column": 5
         }
       }
@@ -3442,15 +3807,15 @@
         "binop": null
       },
       "value": "static",
-      "start": 1213,
-      "end": 1219,
+      "start": 1285,
+      "end": 1291,
       "loc": {
         "start": {
-          "line": 49,
+          "line": 50,
           "column": 2
         },
         "end": {
-          "line": 49,
+          "line": 50,
           "column": 8
         }
       }
@@ -3468,15 +3833,15 @@
         "binop": null
       },
       "value": "fromJSON",
-      "start": 1220,
-      "end": 1228,
+      "start": 1292,
+      "end": 1300,
       "loc": {
         "start": {
-          "line": 49,
+          "line": 50,
           "column": 9
         },
         "end": {
-          "line": 49,
+          "line": 50,
           "column": 17
         }
       }
@@ -3493,15 +3858,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1228,
-      "end": 1229,
+      "start": 1300,
+      "end": 1301,
       "loc": {
         "start": {
-          "line": 49,
+          "line": 50,
           "column": 17
         },
         "end": {
-          "line": 49,
+          "line": 50,
           "column": 18
         }
       }
@@ -3519,15 +3884,15 @@
         "binop": null
       },
       "value": "json",
-      "start": 1229,
-      "end": 1233,
+      "start": 1301,
+      "end": 1305,
       "loc": {
         "start": {
-          "line": 49,
+          "line": 50,
           "column": 18
         },
         "end": {
-          "line": 49,
+          "line": 50,
           "column": 22
         }
       }
@@ -3544,15 +3909,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1233,
-      "end": 1234,
+      "start": 1305,
+      "end": 1306,
       "loc": {
         "start": {
-          "line": 49,
+          "line": 50,
           "column": 22
         },
         "end": {
-          "line": 49,
+          "line": 50,
           "column": 23
         }
       }
@@ -3569,15 +3934,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1235,
-      "end": 1236,
+      "start": 1307,
+      "end": 1308,
       "loc": {
         "start": {
-          "line": 49,
+          "line": 50,
           "column": 24
         },
         "end": {
-          "line": 49,
+          "line": 50,
           "column": 25
         }
       }
@@ -3597,15 +3962,15 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 1241,
-      "end": 1246,
+      "start": 1313,
+      "end": 1318,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 51,
           "column": 4
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 9
         }
       }
@@ -3622,15 +3987,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1247,
-      "end": 1248,
+      "start": 1319,
+      "end": 1320,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 51,
           "column": 10
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 11
         }
       }
@@ -3648,15 +4013,15 @@
         "binop": null
       },
       "value": "polarRadius",
-      "start": 1249,
-      "end": 1260,
+      "start": 1321,
+      "end": 1332,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 51,
           "column": 12
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 23
         }
       }
@@ -3674,15 +4039,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1260,
-      "end": 1261,
+      "start": 1332,
+      "end": 1333,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 51,
           "column": 23
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 24
         }
       }
@@ -3700,15 +4065,15 @@
         "binop": null
       },
       "value": "polarTheta",
-      "start": 1262,
-      "end": 1272,
+      "start": 1334,
+      "end": 1344,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 51,
           "column": 25
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 35
         }
       }
@@ -3726,15 +4091,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1272,
-      "end": 1273,
+      "start": 1344,
+      "end": 1345,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 51,
           "column": 35
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 36
         }
       }
@@ -3752,15 +4117,15 @@
         "binop": null
       },
       "value": "polarPhi",
-      "start": 1274,
-      "end": 1282,
+      "start": 1346,
+      "end": 1354,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 51,
           "column": 37
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 45
         }
       }
@@ -3778,15 +4143,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1282,
-      "end": 1283,
+      "start": 1354,
+      "end": 1355,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 51,
           "column": 45
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 46
         }
       }
@@ -3804,15 +4169,15 @@
         "binop": null
       },
       "value": "velocityTheta",
-      "start": 1284,
-      "end": 1297,
+      "start": 1356,
+      "end": 1369,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 51,
           "column": 47
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 60
         }
       }
@@ -3829,15 +4194,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1298,
-      "end": 1299,
+      "start": 1370,
+      "end": 1371,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 51,
           "column": 61
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 62
         }
       }
@@ -3856,15 +4221,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 1300,
-      "end": 1301,
+      "start": 1372,
+      "end": 1373,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 51,
           "column": 63
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 64
         }
       }
@@ -3882,15 +4247,15 @@
         "binop": null
       },
       "value": "json",
-      "start": 1302,
-      "end": 1306,
+      "start": 1374,
+      "end": 1378,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 51,
           "column": 65
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 69
         }
       }
@@ -3908,15 +4273,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1306,
-      "end": 1307,
+      "start": 1378,
+      "end": 1379,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 51,
           "column": 69
         },
         "end": {
-          "line": 50,
+          "line": 51,
           "column": 70
         }
       }
@@ -3936,15 +4301,15 @@
         "updateContext": null
       },
       "value": "return",
-      "start": 1313,
-      "end": 1319,
+      "start": 1385,
+      "end": 1391,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 53,
           "column": 4
         },
         "end": {
-          "line": 52,
+          "line": 53,
           "column": 10
         }
       }
@@ -3964,15 +4329,15 @@
         "updateContext": null
       },
       "value": "new",
-      "start": 1320,
-      "end": 1323,
+      "start": 1392,
+      "end": 1395,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 53,
           "column": 11
         },
         "end": {
-          "line": 52,
+          "line": 53,
           "column": 14
         }
       }
@@ -3990,15 +4355,15 @@
         "binop": null
       },
       "value": "PolarVelocity",
-      "start": 1324,
-      "end": 1337,
+      "start": 1396,
+      "end": 1409,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 53,
           "column": 15
         },
         "end": {
-          "line": 52,
+          "line": 53,
           "column": 28
         }
       }
@@ -4015,15 +4380,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1337,
-      "end": 1338,
+      "start": 1409,
+      "end": 1410,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 53,
           "column": 28
         },
         "end": {
-          "line": 52,
+          "line": 53,
           "column": 29
         }
       }
@@ -4043,15 +4408,15 @@
         "updateContext": null
       },
       "value": "new",
-      "start": 1345,
-      "end": 1348,
+      "start": 1417,
+      "end": 1420,
       "loc": {
         "start": {
-          "line": 53,
+          "line": 54,
           "column": 6
         },
         "end": {
-          "line": 53,
+          "line": 54,
           "column": 9
         }
       }
@@ -4069,15 +4434,15 @@
         "binop": null
       },
       "value": "Polar3D",
-      "start": 1349,
-      "end": 1356,
+      "start": 1421,
+      "end": 1428,
       "loc": {
         "start": {
-          "line": 53,
+          "line": 54,
           "column": 10
         },
         "end": {
-          "line": 53,
+          "line": 54,
           "column": 17
         }
       }
@@ -4094,15 +4459,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1356,
-      "end": 1357,
+      "start": 1428,
+      "end": 1429,
       "loc": {
         "start": {
-          "line": 53,
+          "line": 54,
           "column": 17
         },
         "end": {
-          "line": 53,
+          "line": 54,
           "column": 18
         }
       }
@@ -4120,15 +4485,15 @@
         "binop": null
       },
       "value": "polarRadius",
-      "start": 1357,
-      "end": 1368,
+      "start": 1429,
+      "end": 1440,
       "loc": {
         "start": {
-          "line": 53,
+          "line": 54,
           "column": 18
         },
         "end": {
-          "line": 53,
+          "line": 54,
           "column": 29
         }
       }
@@ -4146,15 +4511,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1368,
-      "end": 1369,
+      "start": 1440,
+      "end": 1441,
       "loc": {
         "start": {
-          "line": 53,
+          "line": 54,
           "column": 29
         },
         "end": {
-          "line": 53,
+          "line": 54,
           "column": 30
         }
       }
@@ -4172,15 +4537,15 @@
         "binop": null
       },
       "value": "polarTheta",
-      "start": 1370,
-      "end": 1380,
+      "start": 1442,
+      "end": 1452,
       "loc": {
         "start": {
-          "line": 53,
+          "line": 54,
           "column": 31
         },
         "end": {
-          "line": 53,
+          "line": 54,
           "column": 41
         }
       }
@@ -4198,15 +4563,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1380,
-      "end": 1381,
+      "start": 1452,
+      "end": 1453,
       "loc": {
         "start": {
-          "line": 53,
+          "line": 54,
           "column": 41
         },
         "end": {
-          "line": 53,
+          "line": 54,
           "column": 42
         }
       }
@@ -4224,15 +4589,15 @@
         "binop": null
       },
       "value": "polarPhi",
-      "start": 1382,
-      "end": 1390,
+      "start": 1454,
+      "end": 1462,
       "loc": {
         "start": {
-          "line": 53,
+          "line": 54,
           "column": 43
         },
         "end": {
-          "line": 53,
+          "line": 54,
           "column": 51
         }
       }
@@ -4249,15 +4614,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1390,
-      "end": 1391,
+      "start": 1462,
+      "end": 1463,
       "loc": {
         "start": {
-          "line": 53,
+          "line": 54,
           "column": 51
         },
         "end": {
-          "line": 53,
+          "line": 54,
           "column": 52
         }
       }
@@ -4275,15 +4640,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1391,
-      "end": 1392,
+      "start": 1463,
+      "end": 1464,
       "loc": {
         "start": {
-          "line": 53,
+          "line": 54,
           "column": 52
         },
         "end": {
-          "line": 53,
+          "line": 54,
           "column": 53
         }
       }
@@ -4301,15 +4666,15 @@
         "binop": null
       },
       "value": "velocityTheta",
-      "start": 1399,
-      "end": 1412,
+      "start": 1471,
+      "end": 1484,
       "loc": {
         "start": {
-          "line": 54,
+          "line": 55,
           "column": 6
         },
         "end": {
-          "line": 54,
+          "line": 55,
           "column": 19
         }
       }
@@ -4326,15 +4691,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1417,
-      "end": 1418,
+      "start": 1489,
+      "end": 1490,
       "loc": {
         "start": {
-          "line": 55,
+          "line": 56,
           "column": 4
         },
         "end": {
-          "line": 55,
+          "line": 56,
           "column": 5
         }
       }
@@ -4352,15 +4717,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1418,
-      "end": 1419,
+      "start": 1490,
+      "end": 1491,
       "loc": {
         "start": {
-          "line": 55,
+          "line": 56,
           "column": 5
         },
         "end": {
-          "line": 55,
+          "line": 56,
           "column": 6
         }
       }
@@ -4377,15 +4742,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1422,
-      "end": 1423,
+      "start": 1494,
+      "end": 1495,
       "loc": {
         "start": {
-          "line": 56,
+          "line": 57,
           "column": 2
         },
         "end": {
-          "line": 56,
+          "line": 57,
           "column": 3
         }
       }
@@ -4402,15 +4767,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1424,
-      "end": 1425,
+      "start": 1496,
+      "end": 1497,
       "loc": {
         "start": {
-          "line": 57,
+          "line": 58,
           "column": 0
         },
         "end": {
-          "line": 57,
+          "line": 58,
           "column": 1
         }
       }
@@ -4428,15 +4793,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1426,
-      "end": 1426,
+      "start": 1498,
+      "end": 1498,
       "loc": {
         "start": {
-          "line": 58,
+          "line": 59,
           "column": 0
         },
         "end": {
-          "line": 58,
+          "line": 59,
           "column": 0
         }
       }

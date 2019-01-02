@@ -1,6 +1,7 @@
 import MathUtils from '../math/MathUtils';
 import Util from '../utils/Util';
 import Zone from './Zone';
+import { ZONE_TYPE_BOX as type } from './types';
 
 export default class BoxZone extends Zone {
   /**
@@ -19,7 +20,7 @@ export default class BoxZone extends Zone {
    * @constructor
    */
   constructor(a, b, c, d, e, f) {
-    super();
+    super(type);
 
     // TODO this reassigning of arguments is pretty dangerous, need to fix it.
     // eslint-disable-next-line

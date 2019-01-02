@@ -66,7 +66,7 @@ export default {
   },
 
   _getValue: function(pan) {
-    if (pan.constructor.name === 'Span') return pan.getValue();
+    if (pan.constructor.type === 'Span') return pan.getValue();
     else return pan;
   }
 };

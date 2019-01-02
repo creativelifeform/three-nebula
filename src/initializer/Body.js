@@ -1,6 +1,6 @@
 import Initializer from './Initializer';
 import { createArraySpan } from '../math';
-
+import { INITIALIZER_TYPE_BODY as type } from './types';
 /**
  * Sets the body property on initialized particles.
  *
@@ -16,7 +16,7 @@ export default class Body extends Initializer {
    * @return void
    */
   constructor(body, w, h) {
-    super();
+    super(type);
 
     /**
      * @desc The content for the particle body

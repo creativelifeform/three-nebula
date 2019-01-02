@@ -3,10 +3,11 @@ import { BoxGeometry, Mesh, MeshLambertMaterial } from 'three';
 import BaseRenderer from './BaseRenderer';
 import { PUID } from '../utils';
 import { Pool } from '../core';
+import { RENDERER_TYPE_MESH as type } from './types';
 
 export default class MeshRenderer extends BaseRenderer {
   constructor(container) {
-    super();
+    super(type);
 
     this.container = container;
 

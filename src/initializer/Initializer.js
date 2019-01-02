@@ -1,3 +1,5 @@
+import { INITIALIZER_TYPE_ABSTRACT } from './types';
+
 /**
  * The base Emitter / Particle property class.
  *
@@ -9,8 +11,8 @@ export default class Initializer {
    *
    * @return void
    */
-  constructor() {
-    this.name = 'Initializer';
+  constructor(type = INITIALIZER_TYPE_ABSTRACT) {
+    this.type = type;
   }
 
   /**

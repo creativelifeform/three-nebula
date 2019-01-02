@@ -1,9 +1,10 @@
 import BaseRenderer from './BaseRenderer';
 import { Vector3 } from 'three';
+import { RENDERER_TYPE_POINTS as type } from './types';
 
 export default class PointsRenderer extends BaseRenderer {
   constructor(ps) {
-    super();
+    super(type);
 
     this.points = ps;
   }

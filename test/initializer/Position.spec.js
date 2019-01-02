@@ -13,6 +13,7 @@ describe('initializer -> Position', () => {
   it('can instantiate with a single zone', done => {
     const position = new Proton.Position(zoneA);
 
+    assert.equal(position.type, 'Position');
     assert.lengthOf(position.zones, 1);
     assert.instanceOf(position.zones[0], Proton.BoxZone);
 

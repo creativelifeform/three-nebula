@@ -20,6 +20,7 @@ describe('behaviour -> Color', () => {
   it('should instantiate with the correct properties', done => {
     const { colorA, colorB } = behaviour;
 
+    assert.equal(behaviour.type, 'Color');
     assert.strictEqual(behaviour.life, Infinity);
     assert.isFunction(behaviour.easing);
     assert.strictEqual(behaviour.age, 0);

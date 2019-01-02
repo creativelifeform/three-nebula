@@ -11,6 +11,7 @@ describe('initializer -> Initializer', () => {
   it('should have the required methods after instantiation', done => {
     const initializer = new Initializer();
 
+    assert.equal(initializer.type, 'Initializer');
     assert.isFunction(initializer.init);
     assert.isFunction(initializer.reset);
     assert.isFunction(initializer.initialize);

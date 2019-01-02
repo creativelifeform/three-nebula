@@ -27,6 +27,7 @@ describe('emitter -> Emitter', () => {
     const emitter = new Emitter();
 
     const {
+      type,
       particles,
       initializers,
       behaviours,
@@ -39,6 +40,7 @@ describe('emitter -> Emitter', () => {
       eventDispatcher
     } = emitter;
 
+    assert.equal(type, 'Emitter');
     assert.isArray(particles);
     assert.isEmpty(particles);
     assert.isArray(initializers);

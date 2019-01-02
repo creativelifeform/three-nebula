@@ -21,6 +21,7 @@ const System = Proton.Proton;
 describe('core -> Proton', () => {
   it('should instantiate with the correct properties', done => {
     const {
+      type,
       preParticles,
       integrationType,
       emitters,
@@ -29,6 +30,7 @@ describe('core -> Proton', () => {
       eventDispatcher
     } = new System();
 
+    assert.equal(type, 'Proton');
     assert.equal(preParticles, POOL_MAX);
     assert.equal(integrationType, INTEGRATION_TYPE_EULER);
     assert.isArray(emitters);

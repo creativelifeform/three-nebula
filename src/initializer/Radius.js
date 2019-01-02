@@ -1,6 +1,6 @@
 import Initializer from './Initializer';
 import { createSpan } from '../math';
-
+import { INITIALIZER_TYPE_RADIUS as type } from './types';
 /**
  * Sets the radius property on initialized particles.
  *
@@ -15,7 +15,7 @@ export default class Radius extends Initializer {
    * @return void
    */
   constructor(width, height, center = false) {
-    super();
+    super(type);
 
     /**
      * @desc The radius span which is used to set the particle radius value.

@@ -19,11 +19,11 @@ global.document = window.document;
 describe('initializer -> BodySprite', () => {
   const texture = '../fixtures/dot.png';
 
-  it('should call the TextureLoader.load method passing the texture on instantiation', done => {
+  it('should set the type and call the TextureLoader.load method passing the texture on instantiation', done => {
     const textureLoaderSpy = spy(TextureLoader.prototype, 'load');
+    const bodySprite = new Proton.BodySprite(texture);
 
-    new Proton.BodySprite(texture);
-
+    assert.equal(bodySprite.type, 'BodySprite');
     assert(textureLoaderSpy.calledOnceWith(texture));
 
     textureLoaderSpy.restore();

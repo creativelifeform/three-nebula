@@ -1,6 +1,7 @@
 import THREEUtil from '../utils/THREEUtil';
 import Vector3D from '../math/Vector3D';
 import Zone from './Zone';
+import { ZONE_TYPE_SCREEN as type } from './types';
 
 export default class ScreenZone extends Zone {
   /**
@@ -19,7 +20,7 @@ export default class ScreenZone extends Zone {
    * @constructor
    */
   constructor(camera, renderer, dis, dir) {
-    super();
+    super(type);
 
     this.camera = camera;
     this.renderer = renderer;
@@ -27,8 +28,6 @@ export default class ScreenZone extends Zone {
     dir = dir || '1234';
 
     for (var i = 1; i < 5; i++) this['d' + i] = dir.indexOf(i + '') >= 0;
-
-    this.name = 'ScreenZone';
   }
 
   /**

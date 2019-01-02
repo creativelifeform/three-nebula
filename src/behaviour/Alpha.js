@@ -3,6 +3,7 @@ import { MathUtils, createSpan } from '../math';
 import Behaviour from './Behaviour';
 import { PARTICLE_ALPHA_THRESHOLD } from './constants';
 import { getEasingByName } from '../ease';
+import { BEHAVIOUR_TYPE_ALPHA as type } from './types';
 
 /**
  * Behaviour that applies an alpha transition effect to particles.
@@ -19,7 +20,7 @@ export default class Alpha extends Behaviour {
    * @return void
    */
   constructor(alphaA = 1, alphaB = null, life, easing) {
-    super(life, easing);
+    super(life, easing, type);
 
     /**
      * @desc The starting alpha value

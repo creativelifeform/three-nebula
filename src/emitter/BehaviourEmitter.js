@@ -1,4 +1,5 @@
 import Emitter from './Emitter';
+import { EMITTER_TYPE_BEHAVIOUR as type } from './types';
 
 export default class BehaviourEmitter extends Emitter {
   /**
@@ -11,6 +12,12 @@ export default class BehaviourEmitter extends Emitter {
    */
   constructor(pObj) {
     super(pObj);
+
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
 
     this.selfBehaviours = [];
   }

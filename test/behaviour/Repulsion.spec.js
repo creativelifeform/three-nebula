@@ -26,6 +26,7 @@ describe('behaviour -> Repulsion', () => {
       lengthSq
     } = behaviour;
 
+    assert.equal(behaviour.type, 'Repulsion');
     assert.strictEqual(life, Infinity);
     assert.isFunction(easing);
     assert.strictEqual(age, 0);

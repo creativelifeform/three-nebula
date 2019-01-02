@@ -2,6 +2,7 @@ import { Vector3D, createSpan } from '../../math';
 
 import { DR } from '../../constants';
 import Velocity from './Velocity';
+import { INITIALIZER_TYPE_VECTOR_VELOCITY as type } from '../types';
 
 /**
  * Sets the velocity property on initialized particles.
@@ -16,7 +17,7 @@ export default class VectorVelocity extends Velocity {
    * @return void
    */
   constructor(vector3d, theta) {
-    super();
+    super(type);
 
     /**
      * @desc Velocity radius span.

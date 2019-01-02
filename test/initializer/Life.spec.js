@@ -17,6 +17,7 @@ describe('initializer -> Life', () => {
       lifePan: { _isArray, a, b, _center }
     } = initializer;
 
+    assert.equal(initializer.type, 'Life');
     assert.instanceOf(lifePan, Proton.Span);
     assert.isFalse(_isArray);
     assert.isFalse(_center);

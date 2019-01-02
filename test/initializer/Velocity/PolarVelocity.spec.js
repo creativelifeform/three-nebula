@@ -14,6 +14,7 @@ describe('initializer -> Polar Velocity', () => {
   it('should set the correct properties', done => {
     const { tha, dirVec, _useV, radiusPan, dir } = velocity;
 
+    assert.equal(velocity.type, 'PolarVelocity');
     assert.equal(tha, 0.1571);
     assert.instanceOf(dirVec, Proton.Vector3D);
     assert.deepEqual(Object.values(dirVec), [
