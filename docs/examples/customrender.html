@@ -83,12 +83,12 @@
         renderer.onParticleCreated = function(p) {
             //p.target = mesh.clone();
             p.target = this.targetPool.get(mesh);
-            p.target.position.copy(p.p);
+            p.target.position.copy(p.position);
             scene.add(p.target);
         }
 
         renderer.onParticleUpdate = function(p) {
-            p.target.position.copy(p.p);
+            p.target.position.copy(p.position);
             p.target.rotation.set(p.rotation.x, p.rotation.y, p.rotation.z);
 
             var scale = p.scale * 30;
@@ -135,8 +135,8 @@
         emitter.addBehaviour(new Proton.CrossZone(zone, "bound"));
         emitter.addBehaviour(new Proton.Color(0xff0000, 'random', Infinity, Proton.ease.easeOutQuart));
 
-        emitter.p.x = 0;
-        emitter.p.y = 0;
+        emitter.position.x = 0;
+        emitter.position.y = 0;
         emitter.emit();
 
         Proton.Debug.drawZone(proton, scene, zone);

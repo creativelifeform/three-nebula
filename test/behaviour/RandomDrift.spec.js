@@ -45,14 +45,14 @@ describe('behaviour -> RandomDrift', () => {
   it('should have set the correct properties on the particle after applying the behaviour', done => {
     const particle = new Proton.Particle();
 
-    assert.equal(particle.a.x, 0);
-    assert.equal(particle.a.y, 0);
-    assert.equal(particle.a.z, 0);
+    assert.equal(particle.acceleration.x, 0);
+    assert.equal(particle.acceleration.y, 0);
+    assert.equal(particle.acceleration.z, 0);
 
     behaviour.applyBehaviour(particle, TIME);
 
     const {
-      a: { x, y, z }
+      acceleration: { x, y, z }
     } = particle;
 
     assert.notEqual(x, 0);

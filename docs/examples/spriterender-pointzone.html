@@ -165,9 +165,9 @@
         delta < 5 / 60 && proton.update(delta);
         tha += Math.PI / 150;
         var p = 300 * Math.sin(2 * tha)
-        emitter.p.x = p * Math.cos(tha);
-        emitter.p.y = p * Math.sin(tha);
-        emitter.p.z = p * Math.tan(tha) / 2;
+        emitter.position.x = p * Math.cos(tha);
+        emitter.position.y = p * Math.sin(tha);
+        emitter.position.z = p * Math.tan(tha) / 2;
 
         renderer.render(scene, camera);
         //controls.update();

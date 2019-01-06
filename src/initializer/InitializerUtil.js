@@ -36,9 +36,9 @@ export default {
       rotation: { x, y, z }
     } = emitter;
 
-    particle.p.add(emitter.p);
-    particle.v.add(emitter.v);
-    particle.a.add(emitter.a);
-    particle.v.applyEuler(particleEuler.set(x, y, z));
+    particle.position.add(emitter.position);
+    particle.velocity.add(emitter.velocity);
+    particle.acceleration.add(emitter.acceleration);
+    particle.velocity.applyEuler(particleEuler.set(x, y, z));
   }
 };

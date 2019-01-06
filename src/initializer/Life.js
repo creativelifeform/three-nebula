@@ -32,9 +32,11 @@ export default class Life extends Initializer {
    * @return void
    */
   initialize(particle) {
-    if (this.lifePan.a == Infinity || this.lifePan.a == 'infi')
+    if (this.lifePan.a == Infinity || this.lifePan.a == 'infi') {
       particle.life = Infinity;
-    else particle.life = this.lifePan.getValue();
+    } else {
+      particle.life = this.lifePan.getValue();
+    }
   }
 
   /**

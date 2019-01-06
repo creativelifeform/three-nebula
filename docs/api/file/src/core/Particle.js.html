@@ -201,6 +201,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/ScreenZone.js~ScreenZone.html">ScreenZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/SphereZone.js~SphereZone.html">SphereZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_ABSTRACT">ZONE_TYPE_ABSTRACT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_BOX">ZONE_TYPE_BOX</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_LINE">ZONE_TYPE_LINE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_MESH">ZONE_TYPE_MESH</a></span></span></li>
@@ -257,9 +258,9 @@ export default class Particle {
    * @property {number} properties.rotation - The particle&apos;s rotation
    * @property {string|number} properties.color - The particle&apos;s color
    * @property {function} properties.easing - The particle&apos;s easing
-   * @property {Vector3D} properties.p - The particle&apos;s position
-   * @property {Vector3D} properties.v - The particle&apos;s velocity
-   * @property {Vector3D} properties.a - The particle&apos;s acceleration
+   * @property {Vector3D} properties.position - The particle&apos;s position
+   * @property {Vector3D} properties.velocity - The particle&apos;s velocity
+   * @property {Vector3D} properties.acceleration - The particle&apos;s acceleration
    * @property {array} properties.behaviours - The particle&apos;s behaviours array
    * @property {object} properties.transform - The particle&apos;s transform collection
    * @return void
@@ -350,17 +351,17 @@ export default class Particle {
      * @desc The particle&apos;s position
      * @type {Vector3D}
      */
-    this.p = new Vector3D();
+    this.position = new Vector3D();
     /**
      * @desc The particle&apos;s velocity
      * @type {Vector3D}
      */
-    this.v = new Vector3D();
+    this.velocity = new Vector3D();
     /**
      * @desc The particle&apos;s acceleration
      * @type {Vector3D}
      */
-    this.a = new Vector3D();
+    this.acceleration = new Vector3D();
     /**
      * @desc The particle&apos;s last position, velocity and acceleration
      * @type {object}
@@ -370,17 +371,17 @@ export default class Particle {
      * @desc The particle&apos;s old position
      * @type {number}
      */
-    this.old.p = this.p.clone();
+    this.old.position = this.position.clone();
     /**
      * @desc The particle&apos;s old velocity
      * @type {number}
      */
-    this.old.v = this.v.clone();
+    this.old.velocity = this.velocity.clone();
     /**
      * @desc The particle&apos;s old acceleration
      * @type {number}
      */
-    this.old.a = this.a.clone();
+    this.old.acceleration = this.acceleration.clone();
     /**
      * @desc The particle&apos;s behaviours array
      * @type {number}
@@ -412,7 +413,7 @@ export default class Particle {
    * @return {number}
    */
   getDirection() {
-    return Math.atan2(this.v.x, -this.v.y) * (180 / PI);
+    return Math.atan2(this.velocity.x, -this.velocity.y) * (180 / PI);
   }
 
   /**
@@ -437,12 +438,12 @@ export default class Particle {
     this.useColor = DEFAULT_USE_COLOR;
     this.useAlpha = DEFAULT_USE_ALPHA;
     this.easing = DEFAULT_EASING;
-    this.p.set(0, 0, 0);
-    this.v.set(0, 0, 0);
-    this.a.set(0, 0, 0);
-    this.old.p.set(0, 0, 0);
-    this.old.v.set(0, 0, 0);
-    this.old.a.set(0, 0, 0);
+    this.position.set(0, 0, 0);
+    this.velocity.set(0, 0, 0);
+    this.acceleration.set(0, 0, 0);
+    this.old.position.set(0, 0, 0);
+    this.old.velocity.set(0, 0, 0);
+    this.old.acceleration.set(0, 0, 0);
     this.color.r = 0;
     this.color.g = 0;
     this.color.b = 0;

@@ -75,14 +75,14 @@ export default class FollowEmitter extends Emitter {
 
   mousemove(e) {
     if (e.layerX || e.layerX == 0) {
-      this.p.x += (e.layerX - this.p.x) * this.ease;
-      this.p.y += (e.layerY - this.p.y) * this.ease;
+      this.position.x += (e.layerX - this.position.x) * this.ease;
+      this.position.y += (e.layerY - this.position.y) * this.ease;
     } else if (e.offsetX || e.offsetX == 0) {
-      this.p.x += (e.offsetX - this.p.x) * this.ease;
-      this.p.y += (e.offsetY - this.p.y) * this.ease;
+      this.position.x += (e.offsetX - this.position.x) * this.ease;
+      this.position.y += (e.offsetY - this.position.y) * this.ease;
     }
 
-    this.p.copy(THREEUtil.toSpacePos(this.p, this.camera, this.canvas));
+    this.position.copy(THREEUtil.toSpacePos(this.position, this.camera, this.canvas));
 
     if (this._allowEmitting) super.emit('once');
   }

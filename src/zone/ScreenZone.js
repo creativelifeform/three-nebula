@@ -41,7 +41,7 @@ export default class ScreenZone extends Zone {
 
   _dead(particle) {
     var pos = THREEUtil.toScreenPos(
-      particle.p,
+      particle.position,
       this.camera,
       this.renderer.domElement
     );
@@ -62,22 +62,22 @@ export default class ScreenZone extends Zone {
 
   _bound(particle) {
     var pos = THREEUtil.toScreenPos(
-      particle.p,
+      particle.position,
       this.camera,
       this.renderer.domElement
     );
     var canvas = this.renderer.domElement;
 
     if (pos.y + particle.radius < -this.dis) {
-      particle.v.y *= -1;
+      particle.velocity.y *= -1;
     } else if (pos.y - particle.radius > canvas.height + this.dis) {
-      particle.v.y *= -1;
+      particle.velocity.y *= -1;
     }
 
     if (pos.x + particle.radius < -this.dis) {
-      particle.v.y *= -1;
+      particle.velocity.y *= -1;
     } else if (pos.x - particle.radius > canvas.width + this.dis) {
-      particle.v.y *= -1;
+      particle.velocity.y *= -1;
     }
   }
 }
@@ -101,7 +101,7 @@ ScreenZone.prototype._cross = (function() {
 
   return function(particle) {
     var pos = THREEUtil.toScreenPos(
-      particle.p,
+      particle.position,
       this.camera,
       this.renderer.domElement
     );
@@ -110,21 +110,21 @@ ScreenZone.prototype._cross = (function() {
     if (pos.y + particle.radius < -this.dis) {
       vec2.x = pos.x;
       vec2.y = canvas.height + this.dis + particle.radius;
-      particle.p.y = THREEUtil.toSpacePos(vec2, this.camera, canvas).y;
+      particle.position.y = THREEUtil.toSpacePos(vec2, this.camera, canvas).y;
     } else if (pos.y - particle.radius > canvas.height + this.dis) {
       vec2.x = pos.x;
       vec2.y = -this.dis - particle.radius;
-      particle.p.y = THREEUtil.toSpacePos(vec2, this.camera, canvas).y;
+      particle.position.y = THREEUtil.toSpacePos(vec2, this.camera, canvas).y;
     }
 
     if (pos.x + particle.radius < -this.dis) {
       vec2.y = pos.y;
       vec2.x = canvas.width + this.dis + particle.radius;
-      particle.p.x = THREEUtil.toSpacePos(vec2, this.camera, canvas).x;
+      particle.position.x = THREEUtil.toSpacePos(vec2, this.camera, canvas).x;
     } else if (pos.x - particle.radius > canvas.width + this.dis) {
       vec2.y = pos.y;
       vec2.x = -this.dis - particle.radius;
-      particle.p.x = THREEUtil.toSpacePos(vec2, this.camera, canvas).x;
+      particle.position.x = THREEUtil.toSpacePos(vec2, this.camera, canvas).x;
     }
   };
 })();

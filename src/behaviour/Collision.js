@@ -65,7 +65,7 @@ export default class Collision extends Behaviour {
         continue;
       }
 
-      this.delta.copy(otherParticle.p).sub(particle.p);
+      this.delta.copy(otherParticle.position).sub(particle.position);
 
       lengthSq = this.delta.lengthSq();
       distance = particle.radius + otherParticle.radius;
@@ -77,14 +77,14 @@ export default class Collision extends Behaviour {
         averageMass1 = this._getAverageMass(particle, otherParticle);
         averageMass2 = this._getAverageMass(otherParticle, particle);
 
-        particle.p.add(
+        particle.position.add(
           this.delta
             .clone()
             .normalize()
             .scalar(overlap * -averageMass1)
         );
 
-        otherParticle.p.add(
+        otherParticle.position.add(
           this.delta.normalize().scalar(overlap * averageMass2)
         );
 

@@ -28,25 +28,26 @@ export default {
   },
 
   setVectorByObj: function(target, pOBJ) {
-    if (pOBJ['x'] !== undefined) target.p.x = pOBJ['x'];
-    if (pOBJ['y'] !== undefined) target.p.y = pOBJ['y'];
-    if (pOBJ['z'] !== undefined) target.p.z = pOBJ['z'];
+    if (pOBJ['x'] !== undefined) target.position.x = pOBJ['x'];
+    if (pOBJ['y'] !== undefined) target.position.y = pOBJ['y'];
+    if (pOBJ['z'] !== undefined) target.position.z = pOBJ['z'];
 
-    if (pOBJ['vx'] !== undefined) target.v.x = pOBJ['vx'];
-    if (pOBJ['vy'] !== undefined) target.v.y = pOBJ['vy'];
-    if (pOBJ['vz'] !== undefined) target.v.z = pOBJ['vz'];
+    if (pOBJ['vx'] !== undefined) target.velocity.x = pOBJ['vx'];
+    if (pOBJ['vy'] !== undefined) target.velocity.y = pOBJ['vy'];
+    if (pOBJ['vz'] !== undefined) target.velocity.z = pOBJ['vz'];
 
-    if (pOBJ['ax'] !== undefined) target.a.x = pOBJ['ax'];
-    if (pOBJ['ay'] !== undefined) target.a.y = pOBJ['ay'];
-    if (pOBJ['az'] !== undefined) target.a.z = pOBJ['az'];
+    if (pOBJ['ax'] !== undefined) target.acceleration.x = pOBJ['ax'];
+    if (pOBJ['ay'] !== undefined) target.acceleration.y = pOBJ['ay'];
+    if (pOBJ['az'] !== undefined) target.acceleration.z = pOBJ['az'];
 
-    if (pOBJ['p'] !== undefined) target.p.copy(pOBJ['p']);
-    if (pOBJ['v'] !== undefined) target.v.copy(pOBJ['v']);
-    if (pOBJ['a'] !== undefined) target.a.copy(pOBJ['a']);
+    if (pOBJ['p'] !== undefined) target.position.copy(pOBJ['p']);
+    if (pOBJ['v'] !== undefined) target.velocity.copy(pOBJ['v']);
+    if (pOBJ['a'] !== undefined) target.acceleration.copy(pOBJ['a']);
 
-    if (pOBJ['position'] !== undefined) target.p.copy(pOBJ['position']);
-    if (pOBJ['velocity'] !== undefined) target.v.copy(pOBJ['velocity']);
-    if (pOBJ['accelerate'] !== undefined) target.a.copy(pOBJ['accelerate']);
+    if (pOBJ['position'] !== undefined) target.position.copy(pOBJ['position']);
+    if (pOBJ['velocity'] !== undefined) target.velocity.copy(pOBJ['velocity']);
+    if (pOBJ['accelerate'] !== undefined)
+      target.acceleration.copy(pOBJ['accelerate']);
   },
 
   //set prototype

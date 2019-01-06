@@ -59,9 +59,9 @@ export default class Spring extends Behaviour {
   applyBehaviour(particle, time, index) {
     super.applyBehaviour(particle, time, index);
 
-    particle.v.x += (this.pos.x - particle.p.x) * this.spring;
-    particle.v.y += (this.pos.y - particle.p.y) * this.spring;
-    particle.v.z += (this.pos.z - particle.p.z) * this.spring;
+    particle.velocity.x += (this.pos.x - particle.position.x) * this.spring;
+    particle.velocity.y += (this.pos.y - particle.position.y) * this.spring;
+    particle.velocity.z += (this.pos.z - particle.position.z) * this.spring;
   }
 
   /**

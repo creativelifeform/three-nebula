@@ -174,7 +174,7 @@
         proton = new Proton.default();
 
         emitter1 = createEmitter({
-            p: {
+            position: {
                 x: -100,
                 y: 0
             },
@@ -182,7 +182,7 @@
         })
 
         emitter2 = createEmitter({
-            p: {
+            position: {
                 x: 100,
                 y: 0
             },
@@ -232,8 +232,8 @@
         //Gravity
         emitter.addBehaviour(new Proton.Gravity(3));
 
-        emitter.p.x = obj.p.x;
-        emitter.p.y = obj.p.y;
+        emitter.position.x = obj.position.x;
+        emitter.position.y = obj.position.y;
         emitter.emit();
         return emitter;
     }

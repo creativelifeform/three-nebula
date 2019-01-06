@@ -43,9 +43,9 @@ export default class Particle {
    * @property {number} properties.rotation - The particle's rotation
    * @property {string|number} properties.color - The particle's color
    * @property {function} properties.easing - The particle's easing
-   * @property {Vector3D} properties.p - The particle's position
-   * @property {Vector3D} properties.v - The particle's velocity
-   * @property {Vector3D} properties.a - The particle's acceleration
+   * @property {Vector3D} properties.position - The particle's position
+   * @property {Vector3D} properties.velocity - The particle's velocity
+   * @property {Vector3D} properties.acceleration - The particle's acceleration
    * @property {array} properties.behaviours - The particle's behaviours array
    * @property {object} properties.transform - The particle's transform collection
    * @return void
@@ -136,17 +136,17 @@ export default class Particle {
      * @desc The particle's position
      * @type {Vector3D}
      */
-    this.p = new Vector3D();
+    this.position = new Vector3D();
     /**
      * @desc The particle's velocity
      * @type {Vector3D}
      */
-    this.v = new Vector3D();
+    this.velocity = new Vector3D();
     /**
      * @desc The particle's acceleration
      * @type {Vector3D}
      */
-    this.a = new Vector3D();
+    this.acceleration = new Vector3D();
     /**
      * @desc The particle's last position, velocity and acceleration
      * @type {object}
@@ -156,17 +156,17 @@ export default class Particle {
      * @desc The particle's old position
      * @type {number}
      */
-    this.old.p = this.p.clone();
+    this.old.position = this.position.clone();
     /**
      * @desc The particle's old velocity
      * @type {number}
      */
-    this.old.v = this.v.clone();
+    this.old.velocity = this.velocity.clone();
     /**
      * @desc The particle's old acceleration
      * @type {number}
      */
-    this.old.a = this.a.clone();
+    this.old.acceleration = this.acceleration.clone();
     /**
      * @desc The particle's behaviours array
      * @type {number}
@@ -198,7 +198,7 @@ export default class Particle {
    * @return {number}
    */
   getDirection() {
-    return Math.atan2(this.v.x, -this.v.y) * (180 / PI);
+    return Math.atan2(this.velocity.x, -this.velocity.y) * (180 / PI);
   }
 
   /**
@@ -223,12 +223,12 @@ export default class Particle {
     this.useColor = DEFAULT_USE_COLOR;
     this.useAlpha = DEFAULT_USE_ALPHA;
     this.easing = DEFAULT_EASING;
-    this.p.set(0, 0, 0);
-    this.v.set(0, 0, 0);
-    this.a.set(0, 0, 0);
-    this.old.p.set(0, 0, 0);
-    this.old.v.set(0, 0, 0);
-    this.old.a.set(0, 0, 0);
+    this.position.set(0, 0, 0);
+    this.velocity.set(0, 0, 0);
+    this.acceleration.set(0, 0, 0);
+    this.old.position.set(0, 0, 0);
+    this.old.velocity.set(0, 0, 0);
+    this.old.acceleration.set(0, 0, 0);
     this.color.r = 0;
     this.color.g = 0;
     this.color.b = 0;

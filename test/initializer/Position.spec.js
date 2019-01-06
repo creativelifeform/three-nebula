@@ -55,17 +55,17 @@ describe('initializer -> Position', () => {
   });
 
   it('should set the correct properties on the particle after initialization', done => {
-    const position = new Proton.Position(zoneA);
+    const initializer = new Proton.Position(zoneA);
     const particle = new Proton.Particle();
 
-    position.initialize(particle);
+    initializer.initialize(particle);
 
     const {
-      p,
-      p: { x, y, z }
+      position,
+      position: { x, y, z }
     } = particle;
 
-    assert.instanceOf(p, Proton.Vector3D);
+    assert.instanceOf(position, Proton.Vector3D);
     assert.notEqual(x, 0);
     assert.notEqual(y, 0);
     assert.notEqual(z, 0);

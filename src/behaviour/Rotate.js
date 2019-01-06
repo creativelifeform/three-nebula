@@ -158,7 +158,7 @@ export default class Rotate extends Behaviour {
 
   /**
    * Applies the behaviour to the particle.
-   * Mutates the particle.a property.
+   * Mutates the particle.rotation property.
    *
    * @see http://stackoverflow.com/questions/21622956/how-to-convert-direction-vector-to-euler-angles
    * @param {object} particle - the particle to apply the behaviour to
@@ -176,7 +176,7 @@ export default class Rotate extends Behaviour {
           particle.rotation = new Vector3D();
         }
 
-        particle.rotation.eulerFromDir(particle.v);
+        particle.rotation.eulerFromDir(particle.velocity);
         break;
 
       case 'set':

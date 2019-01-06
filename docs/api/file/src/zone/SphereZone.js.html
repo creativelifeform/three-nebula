@@ -201,6 +201,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/ScreenZone.js~ScreenZone.html">ScreenZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/SphereZone.js~SphereZone.html">SphereZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_ABSTRACT">ZONE_TYPE_ABSTRACT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_BOX">ZONE_TYPE_BOX</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_LINE">ZONE_TYPE_LINE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_MESH">ZONE_TYPE_MESH</a></span></span></li>
@@ -216,13 +217,13 @@
 import Util from &apos;../utils/Util&apos;;
 import Vector3D from &apos;../math/Vector3D&apos;;
 import Zone from &apos;./Zone&apos;;
+import { ZONE_TYPE_SPHERE as type } from &apos;./types&apos;;
 
 /**
  * A spherical zone for particles to be emitted within.
  *
  */
 export default class SphereZone extends Zone {
-
   /**
    * @constructs {SphereZone}
    *
@@ -233,7 +234,7 @@ export default class SphereZone extends Zone {
    * @return void
    */
   constructor(centerX, centerY, centerZ, radius) {
-    super();
+    super(type);
 
     // TODO see below, these should probably be assigned properly
     // eslint-disable-next-line
@@ -276,7 +277,7 @@ export default class SphereZone extends Zone {
    * @return void
    */
   _dead(particle) {
-    var d = particle.p.distanceTo(this);
+    var d = particle.position.distanceTo(this);
 
     if (d - particle.radius &gt; this.radius) particle.dead = true;
   }
@@ -315,16 +316,16 @@ SphereZone.prototype._bound = (function() {
     k;
 
   return function(particle) {
-    var d = particle.p.distanceTo(this);
+    var d = particle.position.distanceTo(this);
 
     if (d + particle.radius &gt;= this.radius) {
       normal
-        .copy(particle.p)
+        .copy(particle.position)
         .sub(this)
         .normalize();
-      v.copy(particle.v);
+      v.copy(particle.velocity);
       k = 2 * v.dot(normal);
-      particle.v.sub(normal.scalar(k));
+      particle.velocity.sub(normal.scalar(k));
     }
   };
 })();

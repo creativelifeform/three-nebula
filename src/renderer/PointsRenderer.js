@@ -16,13 +16,13 @@ export default class PointsRenderer extends BaseRenderer {
       particle.target = new Vector3();
     }
 
-    particle.target.copy(particle.p);
+    particle.target.copy(particle.position);
     this.points.geometry.vertices.push(particle.target);
   }
 
   onParticleUpdate(particle) {
     if (particle.target) {
-      particle.target.copy(particle.p);
+      particle.target.copy(particle.position);
     }
   }
 

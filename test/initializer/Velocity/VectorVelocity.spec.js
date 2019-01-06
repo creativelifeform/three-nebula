@@ -8,7 +8,7 @@ const { assert } = chai;
 
 describe('initializer -> Vector Velocity', () => {
   const vector3d = new Proton.Vector3D(9, 4, 1);
-  const velocity = new Proton.VectorVelocity(vector3d, 23);
+  const initializer = new Proton.VectorVelocity(vector3d, 23);
   const particle = new Proton.Particle();
 
   it('should set the correct properties', done => {
@@ -18,9 +18,9 @@ describe('initializer -> Vector Velocity', () => {
       tha,
       _useV,
       dirVec
-    } = velocity;
+    } = initializer;
 
-    assert.equal(velocity.type, 'VectorVelocity');
+    assert.equal(initializer.type, 'VectorVelocity');
     assert.equal(a, 1);
     assert.equal(b, 1);
     assert.equal(x, 9);
@@ -34,15 +34,15 @@ describe('initializer -> Vector Velocity', () => {
     done();
   });
 
-  it('should set the particle velocity', done => {
-    velocity.initialize(particle);
+  it('should set the particle initializer', done => {
+    initializer.initialize(particle);
 
     const {
-      v,
-      v: { x, y, z }
+      velocity,
+      velocity: { x, y, z }
     } = particle;
 
-    assert.instanceOf(v, Proton.Vector3D);
+    assert.instanceOf(velocity, Proton.Vector3D);
     assert.notEqual(x, 0);
     assert.notEqual(y, 0);
     assert.notEqual(z, 0);

@@ -46,10 +46,10 @@ describe('initializer -> InitializeUtil', () => {
 
   it('should call the bindEmitter method if the emitter has its bindEmitter prop set to true', done => {
     const bindEmitterSpy = spy(InitializerUtil, 'bindEmitter');
-    const particlePositionAddSpy = spy(particle.p, 'add');
-    const particleVelocityAddSpy = spy(particle.v, 'add');
-    const particleVelocityApplyEulerSpy = spy(particle.v, 'applyEuler');
-    const particleAccelerationAddSpy = spy(particle.a, 'add');
+    const particlePositionAddSpy = spy(particle.position, 'add');
+    const particleVelocityAddSpy = spy(particle.velocity, 'add');
+    const particleVelocityApplyEulerSpy = spy(particle.velocity, 'applyEuler');
+    const particleAccelerationAddSpy = spy(particle.acceleration, 'add');
     const spies = [
       bindEmitterSpy,
       particlePositionAddSpy,

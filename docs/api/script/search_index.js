@@ -966,6 +966,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_abstract",
+    "variable/index.html#static-variable-ZONE_TYPE_ABSTRACT",
+    "<span>ZONE_TYPE_ABSTRACT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/zone/types.js~zone_type_box",
     "variable/index.html#static-variable-ZONE_TYPE_BOX",
     "<span>ZONE_TYPE_BOX</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
@@ -1399,13 +1405,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -1933,13 +1939,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#rotationtype",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-rotationType",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-rotationType",
     "src/behaviour/Rotate.js~Rotate#rotationType",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#rotationtype",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-rotationType",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-rotationType",
     "src/behaviour/Rotate.js~Rotate#rotationType",
     "member"
   ],
@@ -2005,13 +2011,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
@@ -2112,9 +2118,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/core/particle.js~particle#a",
-    "class/src/core/Particle.js~Particle.html#instance-member-a",
-    "src/core/Particle.js~Particle#a",
+    "src/core/particle.js~particle#acceleration",
+    "class/src/core/Particle.js~Particle.html#instance-member-acceleration",
+    "src/core/Particle.js~Particle#acceleration",
     "member"
   ],
   [
@@ -2220,15 +2226,15 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/core/particle.js~particle#p",
-    "class/src/core/Particle.js~Particle.html#instance-member-p",
-    "src/core/Particle.js~Particle#p",
-    "member"
-  ],
-  [
     "src/core/particle.js~particle#parent",
     "class/src/core/Particle.js~Particle.html#instance-member-parent",
     "src/core/Particle.js~Particle#parent",
+    "member"
+  ],
+  [
+    "src/core/particle.js~particle#position",
+    "class/src/core/Particle.js~Particle.html#instance-member-position",
+    "src/core/Particle.js~Particle#position",
     "member"
   ],
   [
@@ -2304,9 +2310,9 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/core/particle.js~particle#v",
-    "class/src/core/Particle.js~Particle.html#instance-member-v",
-    "src/core/Particle.js~Particle#v",
+    "src/core/particle.js~particle#velocity",
+    "class/src/core/Particle.js~Particle.html#instance-member-velocity",
+    "src/core/Particle.js~Particle#velocity",
     "member"
   ],
   [
@@ -2995,13 +3001,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -4506,12 +4512,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/zone/screenzone.js~screenzone#name",
-    "class/src/zone/ScreenZone.js~ScreenZone.html#instance-member-name",
-    "src/zone/ScreenZone.js~ScreenZone#name",
-    "member"
-  ],
-  [
     "src/zone/screenzone.js~screenzone#renderer",
     "class/src/zone/ScreenZone.js~ScreenZone.html#instance-member-renderer",
     "src/zone/ScreenZone.js~ScreenZone#renderer",
@@ -4677,6 +4677,12 @@ window.esdocSearchIndex = [
     "src/zone/zone.js~zone#supportscrossing",
     "class/src/zone/Zone.js~Zone.html#instance-member-supportsCrossing",
     "src/zone/Zone.js~Zone#supportsCrossing",
+    "member"
+  ],
+  [
+    "src/zone/zone.js~zone#type",
+    "class/src/zone/Zone.js~Zone.html#instance-member-type",
+    "src/zone/Zone.js~Zone#type",
     "member"
   ],
   [
