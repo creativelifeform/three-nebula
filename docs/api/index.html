@@ -214,26 +214,12 @@
 
 <div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="three-proton">three-proton</h1><p><a href="https://travis-ci.org/rohan-deshpande/three-proton"><img src="https://travis-ci.org/rohan-deshpande/three-proton.svg?branch=master" alt="Build Status"></a>
 <a href="https://coveralls.io/github/rohan-deshpande/three-proton?branch=master&amp;kill_cache=1"><img src="https://coveralls.io/repos/github/rohan-deshpande/three-proton/badge.svg?branch=master" alt="Coverage Status"></a></p>
-<p><strong>Three Proton</strong> is a magical, WebGL based 3D particle engine that has been designed to work in concert with <a href="https://github.com/mrdoob/three.js"><code>three.js</code></a>. It is based on the <a href="https://github.com/a-jie/Proton">Proton</a> particle engine library and shares much of its API.</p>
-<p>Check out the examples and API reference documentation at <a href="https://rohan-deshpande.github.io/three-proton/">https://rohan-deshpande.github.io/three-proton/</a></p>
+<p><strong>Three Proton</strong> is a magical, WebGL based 3D particle engine that has been designed to work alongside <a href="https://github.com/mrdoob/three.js"><code>three.js</code></a>. Check out the <a href="https://rohan-deshpande.github.io/three-proton/examples">examples</a> and <a href="https://rohan-deshpande.github.io/three-proton/api">API reference documentation</a> for more.</p>
 <h2 id="features">Features</h2><ul>
-<li>Four kinds of renderers<ul>
-<li><code>MeshRenderer</code></li>
-<li><code>SpriteRenderer</code></li>
-<li><code>PointsRenderer</code></li>
-<li><code>CustomRenderer</code></li>
-</ul>
-</li>
-<li><p>Three kinds of emitters which can simulate many different physical effects</p>
-<ul>
-<li><code>Emitter</code></li>
-<li><code>BehaviourEmitter</code></li>
-<li><code>FollowEmitter</code></li>
-</ul>
-</li>
-<li><p>Many kinds of particle behaviours and initializers</p>
-</li>
-<li>Perfect compatibility with <a href="https://github.com/mrdoob/three.js"><code>three@0.98.0</code></a>.</li>
+<li>Perfect compatibility with <a href="https://github.com/mrdoob/three.js"><code>three@0.98.0</code></a></li>
+<li>The ability to instantiate Proton particle systems from JSON objects using the static <code>Proton.fromJSON</code> method</li>
+<li>The ability to create particle systems from sprites as well as 3D meshes</li>
+<li>Many kinds of particle behaviours and initializers</li>
 </ul>
 <h2 id="installation">Installation</h2><h3 id="npm">npm</h3><pre><code><code class="source-code prettyprint">npm i --save @rohandeshpande/three-proton</code>
 </code></pre><h3 id="script">script</h3><pre><code><code class="source-code prettyprint">&lt;script type=&apos;text/javascript&apos; src=&apos;node_modules/three-proton/build/three-proton.js&apos;&gt;&lt;/script&gt;</code>
@@ -258,7 +244,7 @@ const proton = new Proton();
 const emitter = new Emitter();
 const renderer = new SpriteRenderer(threeScene);
 
-// Set emitter rate (particles per second), particle initializers and behaviours
+// Set emitter rate (particles per second) as well as the particle initializers and behaviours
 emitter
   .setRate(new Rate(new Span(4, 16), new Span(0.01)))
   .setInitializers([
@@ -272,16 +258,176 @@ emitter
     new Alpha(1, 0),
     new Scale(0.1, 1.3),
     new Color(new THREE.Color(), new THREE.Color())
-  ]);
+  ])
+  .emit();
 
 // add the emitter and a renderer to proton
-proton.addEmitter(emitter.emit()).addRenderer(renderer);</code>
+proton
+  .addEmitter(emitter)
+  .addRenderer(renderer);</code>
 </code></pre>
-<h3 id="script">Script</h3><p>If you are adding <code>three-proton</code> to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so</p>
+<p>You can also instantiate your system from a JSON object  </p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">import Proton from &apos;@rohandeshpande/three-proton&apos;;
+
+const json = {
+  &quot;preParticles&quot;: 500,
+  &quot;integrationType&quot;: &quot;euler&quot;,
+  &quot;emitters&quot;: [
+    {
+      &quot;rate&quot;: {
+        &quot;particlesMin&quot;: 5,
+        &quot;particlesMax&quot;: 7,
+        &quot;perSecondMin&quot;: 0.01,
+        &quot;perSecondMax&quot;: 0.02
+      },
+      &quot;position&quot;: {
+        &quot;x&quot;: 70,
+        &quot;y&quot;: 0
+      },
+      &quot;initializers&quot;: [
+        {
+          &quot;type&quot;: &quot;Mass&quot;,
+          &quot;properties&quot;: {
+            &quot;min&quot;: 1,
+            &quot;max&quot;: 1
+          }
+        },
+        {
+          &quot;type&quot;: &quot;Life&quot;,
+          &quot;properties&quot;: {
+            &quot;min&quot;: 2,
+            &quot;max&quot;: 2
+          }
+        },
+        {
+          &quot;type&quot;: &quot;BodySprite&quot;,
+          &quot;properties&quot;: {
+            &quot;texture&quot;: &quot;./img/dot.png&quot;
+          }
+        },
+        {
+          &quot;type&quot;: &quot;Radius&quot;,
+          &quot;properties&quot;: {
+            &quot;width&quot;: 80,
+            &quot;height&quot;: 80
+          }
+        }
+      ],
+      &quot;behaviours&quot;: [
+        {
+          &quot;type&quot;: &quot;Alpha&quot;,
+          &quot;properties&quot;: {
+            &quot;alphaA&quot;: 1,
+            &quot;alphaB&quot;: 0
+          }
+        },
+        {
+          &quot;type&quot;: &quot;Color&quot;,
+          &quot;properties&quot;: {
+            &quot;colorA&quot;: &quot;#4F1500&quot;,
+            &quot;colorB&quot;: &quot;#0029FF&quot;
+          }
+        },
+        {
+          &quot;type&quot;: &quot;Scale&quot;,
+          &quot;properties&quot;: {
+            &quot;scaleA&quot;: 1,
+            &quot;scaleB&quot;: 0.5
+          }
+        },
+        {
+          &quot;type&quot;: &quot;Force&quot;,
+          &quot;properties&quot;: {
+            &quot;fx&quot;: 0,
+            &quot;fy&quot;: 0,
+            &quot;fz&quot;: -20
+          }
+        }
+      ]
+    },
+    {
+      &quot;rate&quot;: {
+        &quot;particlesMin&quot;: 5,
+        &quot;particlesMax&quot;: 7,
+        &quot;perSecondMin&quot;: 0.01,
+        &quot;perSecondMax&quot;: 0.02
+      },
+      &quot;position&quot;: {
+        &quot;x&quot;: -70,
+        &quot;y&quot;: 0
+      },
+      &quot;initializers&quot;: [
+        {
+          &quot;type&quot;: &quot;Mass&quot;,
+          &quot;properties&quot;: {
+            &quot;min&quot;: 1,
+            &quot;max&quot;: 1
+          }
+        },
+        {
+          &quot;type&quot;: &quot;Life&quot;,
+          &quot;properties&quot;: {
+            &quot;min&quot;: 2,
+            &quot;max&quot;: 2
+          }
+        },
+        {
+          &quot;type&quot;: &quot;BodySprite&quot;,
+          &quot;properties&quot;: {
+            &quot;texture&quot;: &quot;./img/dot.png&quot;
+          }
+        },
+        {
+          &quot;type&quot;: &quot;Radius&quot;,
+          &quot;properties&quot;: {
+            &quot;width&quot;: 80,
+            &quot;height&quot;: 80
+          }
+        }
+      ],
+      &quot;behaviours&quot;: [
+        {
+          &quot;type&quot;: &quot;Alpha&quot;,
+          &quot;properties&quot;: {
+            &quot;alphaA&quot;: 1,
+            &quot;alphaB&quot;: 0
+          }
+        },
+        {
+          &quot;type&quot;: &quot;Color&quot;,
+          &quot;properties&quot;: {
+            &quot;colorA&quot;: &quot;#004CFE&quot;,
+            &quot;colorB&quot;: &quot;#6600FF&quot;
+          }
+        },
+        {
+          &quot;type&quot;: &quot;Scale&quot;,
+          &quot;properties&quot;: {
+            &quot;scaleA&quot;: 1,
+            &quot;scaleB&quot;: 0.5
+          }
+        },
+        {
+          &quot;type&quot;: &quot;Force&quot;,
+          &quot;properties&quot;: {
+            &quot;fx&quot;: 0,
+            &quot;fy&quot;: 0,
+            &quot;fz&quot;: -20
+          }
+        }
+      ]
+    }
+  ]
+}
+
+const proton = new Proton.fromJSON(json)</code>
+</code></pre>
+<h3 id="script-tag">Script Tag</h3><p>If you are adding <code>three-proton</code> to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">const { Proton, Emitter, Rate, Span } = window.Proton;
 const proton = new Proton();</code>
 </code></pre>
-<h2 id="npm-scripts">NPM Scripts</h2><ul>
+<h2 id="development">Development</h2><h3 id="scripts">Scripts</h3><p>There are a few NPM scripts in the root package.json:</p>
+<ul>
 <li><code>build</code> - Builds the module and writes the code into <code>./build/three-proton.js</code></li>
 <li><code>docs</code> - Serves the docs at <a href="http://localhost:8080">http://localhost:8080</a></li>
 <li><code>docs:build</code> - Copies the latest build to <code>./docs/js</code> and builds the API reference docs</li>
