@@ -10,24 +10,30 @@ export default class MeshZone extends Zone {
   /**
    * @constructs {MeshZone}
    *
-   * TODO BREAKING_CHANGE remove support for nested MeshZones and only accept
-   * Geometry as the first argument
-   *
-   * @param {Geometry} geometry - the geometry that will determine the zone bounds
+   * @param {Geometry|Mesh} bounds - the geometry or mesh that will determine the zone bounds
    * @param {number} scale - the zone scale
    * @return void
    */
-  constructor(geometry, scale = 1) {
+  constructor(bounds, scale = 1) {
     super(type);
 
-    if (geometry instanceof Geometry) {
-      this.geometry = geometry;
-    } else {
-      this.geometry = geometry.geometry;
-    }
-
+    this.geometry = null;
     this.scale = scale;
     this.supportsCrossing = false;
+
+    if (bounds instanceof Geometry) {
+      this.geometry = bounds;
+    }
+
+    if (bounds.geometry) {
+      this.geometry = bounds.geometry;
+    }
+
+    if (!this.geometry) {
+      throw new Error(
+        'MeshZone unable to set geometry from the supplied bounds'
+      );
+    }
   }
 
   /**

@@ -49,7 +49,7 @@ describe('behaviour -> Behaviour', () => {
     const hasLife = new Behaviour(life);
     const particle = new Proton.Particle();
 
-    hasLife.applyBehaviour(particle, life + 1);
+    hasLife.energize(particle, life + 1);
 
     assert.isTrue(hasLife.dead);
     assert.equal(hasLife.energy, 0);

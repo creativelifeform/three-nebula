@@ -7,7 +7,7 @@ import { INITIALIZER_TYPE_RATE as type } from './types';
 /**
  * Calculates the rate of particle emission.
  *
- * TODO This doesn't need to be an initializer, it doesn't have an initialize
+ * NOTE This doesn't need to be an initializer, it doesn't have an initialize
  * method, it overrides the base init method and it is only relevent to the Emitter class.
  * It would be better to move this to the Emitter module itself as a standalone class.
  *

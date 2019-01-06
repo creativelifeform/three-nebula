@@ -43,6 +43,18 @@ describe('core -> Pool', () => {
     done();
   });
 
+  it('should throw an error if the supplied argument can neither be instantiated or cloned', done => {
+    const pool = new Pool();
+
+    assert.throws(
+      () => pool.get(true),
+      Error,
+      'The pool is unable to create or clone the object supplied'
+    );
+
+    done();
+  });
+
   it('should return an empty array if a pooled item id does not exist', done => {
     const pool = new Pool();
     const pooled = pool._getList(Math.random());

@@ -42,64 +42,6 @@
     ]
   },
   {
-    "name": "Emitter#setupParticle",
-    "filePath": "src/emitter/Emitter.js",
-    "lines": [
-      {
-        "lineNumber": 354,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 355,
-        "line": "   * Sets up a particle by running all initializers on it and setting its behaviours."
-      },
-      {
-        "lineNumber": 356,
-        "line": "   * Also adds the particle to this.particles."
-      },
-      {
-        "lineNumber": 357,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 358,
-        "line": "   * TODO This method is only ever called from createParticle and never with arguments"
-      },
-      {
-        "lineNumber": 359,
-        "line": "   * so it's safe to remove the arguments."
-      },
-      {
-        "lineNumber": 360,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 361,
-        "line": "   * @param {Particle} particle - The particle to setup"
-      },
-      {
-        "lineNumber": 362,
-        "line": "   * @return void"
-      },
-      {
-        "lineNumber": 363,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 364,
-        "line": "  setupParticle(particle, initialize, behaviour) {"
-      }
-    ],
-    "codeParams": [
-      "particle",
-      "initialize",
-      "behaviour"
-    ],
-    "docParams": [
-      "particle"
-    ]
-  },
-  {
     "name": "Position#reset",
     "filePath": "src/initializer/Position.js",
     "lines": [

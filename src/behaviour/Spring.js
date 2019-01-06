@@ -57,7 +57,7 @@ export default class Spring extends Behaviour {
    * @return void
    */
   applyBehaviour(particle, time, index) {
-    super.applyBehaviour(particle, time, index);
+    this.energize(particle, time, index);
 
     particle.velocity.x += (this.pos.x - particle.position.x) * this.spring;
     particle.velocity.y += (this.pos.y - particle.position.y) * this.spring;

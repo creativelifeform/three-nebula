@@ -510,7 +510,7 @@ Behaviours manage a particle&apos;s behaviour after they have been emitted.</p>
       <span class="access" data-ice="access">public</span>
       
       
-      
+      <span class="abstract" data-ice="abstract">abstract</span>
       <span class="override" data-ice="override"></span>
     </td>
     <td>
@@ -525,8 +525,7 @@ Behaviours manage a particle&apos;s behaviour after they have been emitted.</p>
       <div>
         
         
-        <div data-ice="description"><p>Compares the age of the behaviour vs integration time and determines
-if the behaviour should be set to dead or not.</p>
+        <div data-ice="description"><p>Apply behaviour to the particle as a factor of time.</p>
 </div>
       </div>
     </td>
@@ -556,6 +555,36 @@ if the behaviour should be set to dead or not.</p>
         
         
         <div data-ice="description"><p>Destory this behaviour.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-energize">energize</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Compares the age of the behaviour vs integration time and determines
+if the behaviour should be set to dead or not.</p>
 </div>
       </div>
     </td>
@@ -1121,14 +1150,139 @@ if the behaviour should be set to dead or not.</p>
     <span class="access" data-ice="access">public</span>
     
     
-    
+    <span class="abstract" data-ice="abstract">abstract</span>
     
     
     <span class="code" data-ice="name">applyBehaviour</span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber121">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber115">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Apply behaviour to the particle as a factor of time.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">particle</td>
+      <td data-ice="type" class="code"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle to apply the behaviour to</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">time</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>the proton integration time</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>mixed</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-destroy">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    <span class="abstract" data-ice="abstract">abstract</span>
+    
+    
+    <span class="code" data-ice="name">destroy</span><span class="code" data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber150">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Destory this behaviour.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-energize">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">energize</span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber126">source</a></span></span>
     </span>
   </h3>
 
@@ -1138,10 +1292,6 @@ if the behaviour should be set to dead or not.</p>
   <div data-ice="description"><p>Compares the age of the behaviour vs integration time and determines
 if the behaviour should be set to dead or not.
 Sets the behaviour energy as a factor of particle age and life.</p>
-<p>TODO It&apos;s a little weird that sub class behaviours override this method and
-also call it from within their own applyBehaviour method. Since this method
-primarily sets energy, consider renaming it to setEnergy or energise. Then
-each sub class can simply call this.setEnergy instead of super.applyBehaviour.</p>
 </div>
 
   
@@ -1204,50 +1354,6 @@ each sub class can simply call this.setEnergy instead of super.applyBehaviour.</
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-destroy">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    <span class="abstract" data-ice="abstract">abstract</span>
-    
-    
-    <span class="code" data-ice="name">destroy</span><span class="code" data-ice="signature">()</span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber145">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Destory this behaviour.</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-fromJSON">
     <span class="access" data-ice="access">public</span>
     
@@ -1259,7 +1365,7 @@ each sub class can simply call this.setEnergy instead of super.applyBehaviour.</
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber154">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber159">source</a></span></span>
     </span>
   </h3>
 

@@ -100,7 +100,7 @@ export default class Alpha extends Behaviour {
    * @return void
    */
   applyBehaviour(particle, time, index) {
-    super.applyBehaviour(particle, time, index);
+    this.energize(particle, time, index);
 
     particle.alpha = MathUtils.lerp(
       particle.transform.alphaA,

@@ -109,7 +109,7 @@ export default class Attraction extends Behaviour {
    * @return void
    */
   applyBehaviour(particle, time, index) {
-    super.applyBehaviour(particle, time, index);
+    this.energize(particle, time, index);
 
     this.attractionForce.copy(this.targetPosition);
     this.attractionForce.sub(particle.position);

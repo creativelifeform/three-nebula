@@ -105,20 +105,25 @@ export default class Behaviour {
   initialize(particle) {} // eslint-disable-line
 
   /**
+   * Apply behaviour to the particle as a factor of time.
+   *
+   * @abstract
+   * @param {Particle} particle - The particle to apply the behaviour to
+   * @param {Number} time - the proton integration time
+   * @return mixed
+   */
+  applyBehaviour(particle, time) {} // eslint-disable-line
+
+  /**
    * Compares the age of the behaviour vs integration time and determines
    * if the behaviour should be set to dead or not.
    * Sets the behaviour energy as a factor of particle age and life.
-   *
-   * TODO It's a little weird that sub class behaviours override this method and
-   * also call it from within their own applyBehaviour method. Since this method
-   * primarily sets energy, consider renaming it to setEnergy or energise. Then
-   * each sub class can simply call this.setEnergy instead of super.applyBehaviour.
    *
    * @param {Particle} particle - The particle to apply the behaviour to
    * @param {Number} time - the proton integration time
    * @return void
    */
-  applyBehaviour(particle, time) {
+  energize(particle, time) {
     if (this.dead) {
       return;
     }
