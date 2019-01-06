@@ -107,16 +107,16 @@
 
         emitter = new Proton.Emitter();
         emitter.rate = new Proton.Rate(new Proton.Span(34, 48), new Proton.Span(.2, .5));
-        emitter.addInitialize(new Proton.Mass(1));
-        emitter.addInitialize(new Proton.Radius(new Proton.Span(10, 20)));
+        emitter.addInitializer(new Proton.Mass(1));
+        emitter.addInitializer(new Proton.Radius(new Proton.Span(10, 20)));
 
         var position = new Proton.Position();
         position.addZone(new Proton.BoxZone(2500, 10, 2500));
-        emitter.addInitialize(position);
+        emitter.addInitializer(position);
 
-        emitter.addInitialize(new Proton.Life(5, 10));
-        emitter.addInitialize(new Proton.Body(createSnow()));
-        emitter.addInitialize(new Proton.Velocity(0, new Proton.Vector3D(0, -1, 0), 90));
+        emitter.addInitializer(new Proton.Life(5, 10));
+        emitter.addInitializer(new Proton.Body(createSnow()));
+        emitter.addInitializer(new Proton.RadialVelocity(0, new Proton.Vector3D(0, -1, 0), 90));
 
         emitter.addBehaviour(new Proton.RandomDrift(10, 1, 10, .05));
         emitter.addBehaviour(new Proton.Rotate("random", "random"));
@@ -125,12 +125,12 @@
         var sceenZone = new Proton.ScreenZone(camera, renderer, 20, "234");
         emitter.addBehaviour(new Proton.CrossZone(sceenZone, "dead"));
 
-        emitter.p.x = 0;
-        emitter.p.y = 800;
+        emitter.position.x = 0;
+        emitter.position.y = 800;
         emitter.emit();
 
         proton.addEmitter(emitter);
-        proton.addRender(new Proton.SpriteRender(scene));
+        proton.addRenderer(new Proton.SpriteRenderer(scene));
 
         //Proton.Debug.drawZone(proton,scene,new Proton.BoxZone(800, 10, 800));
     }
@@ -157,9 +157,9 @@
             pos.x = event.clientX;
             pos.y = event.clientY;
             var target = Proton.THREEUtil.toSpacePos(pos, camera, renderer.domElement);
-            emitter.p.x += (target.x - emitter.p.x) / 10;
-            emitter.p.y += (target.y - emitter.p.y) / 10;
-            emitter.p.z += (target.z - emitter.p.z) / 10;
+            emitter.position.x += (target.x - emitter.position.x) / 10;
+            emitter.position.y += (target.y - emitter.position.y) / 10;
+            emitter.position.z += (target.z - emitter.position.z) / 10;
         }
     }
 

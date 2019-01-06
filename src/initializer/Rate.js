@@ -1,11 +1,13 @@
+import { DEFAULT_RATE_NUM_PAN, DEFAULT_RATE_TIME_PAN } from './constants';
+import { Span, createSpan } from '../math';
+
 import Initializer from './Initializer';
-import Util from '../utils/Util';
-import { createSpan } from '../math';
+import { INITIALIZER_TYPE_RATE as type } from './types';
 
 /**
  * Calculates the rate of particle emission.
  *
- * TODO This doesn't need to be an initializer, it doesn't have an initialize
+ * NOTE This doesn't need to be an initializer, it doesn't have an initialize
  * method, it overrides the base init method and it is only relevent to the Emitter class.
  * It would be better to move this to the Emitter module itself as a standalone class.
  *
@@ -18,20 +20,20 @@ export default class Rate extends Initializer {
    * @param {number|array|Span} timePan - The time between each particle emission
    * @return void
    */
-  constructor(numPan, timePan) {
-    super();
+  constructor(numPan = DEFAULT_RATE_NUM_PAN, timePan = DEFAULT_RATE_TIME_PAN) {
+    super(type);
 
     /**
      * @desc Sets the number of particles to emit.
      * @type {Span}
      */
-    this.numPan = createSpan(Util.initValue(numPan, 1));
+    this.numPan = createSpan(numPan);
 
     /**
      * @desc Sets the time between each particle emission.
      * @type {Span}
      */
-    this.timePan = createSpan(Util.initValue(timePan, 1));
+    this.timePan = createSpan(timePan);
 
     /**
      * @desc The rate's start time.
@@ -79,5 +81,24 @@ export default class Rate extends Initializer {
     }
 
     return 0;
+  }
+
+  /**
+   * Creates a Rate initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @property {number} json.particlesMin - The minimum number of particles to emit
+   * @property {number} json.particlesMax - The maximum number of particles to emit
+   * @property {number} json.perSecondMin - The minimum per second emit rate
+   * @property {number} json.perSecondMax - The maximum per second emit rate
+   * @return {Rate}
+   */
+  static fromJSON(json) {
+    const { particlesMin, particlesMax, perSecondMin, perSecondMax } = json;
+
+    return new Rate(
+      new Span(particlesMin, particlesMax),
+      new Span(perSecondMin, perSecondMax)
+    );
   }
 }

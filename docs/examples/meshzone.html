@@ -91,7 +91,7 @@
     function initProton() {
         proton = new Proton.default();
         proton.addEmitter(createEmitter());
-        proton.addRender(new Proton.SpriteRender(scene));
+        proton.addRenderer(new Proton.SpriteRenderer(scene));
     }
 
     //load model
@@ -106,12 +106,12 @@
     function createEmitter() {
         emitter = new Proton.Emitter();
         emitter.rate = new Proton.Rate(new Proton.Span(11, 15), new Proton.Span(.02));
-        //addInitialize
-        emitter.addInitialize(new Proton.Position(new Proton.MeshZone(mesh, 200)));
-        emitter.addInitialize(new Proton.Mass(1));
-        emitter.addInitialize(new Proton.Radius(26, 50));
-        emitter.addInitialize(new Proton.Life(1.5));
-        emitter.addInitialize(new Proton.Body(createSprite()));
+        //addInitializer
+        emitter.addInitializer(new Proton.Position(new Proton.MeshZone(mesh, 200)));
+        emitter.addInitializer(new Proton.Mass(1));
+        emitter.addInitializer(new Proton.Radius(26, 50));
+        emitter.addInitializer(new Proton.Life(1.5));
+        emitter.addInitializer(new Proton.Body(createSprite()));
 
         //addBehaviour
         randomBehaviour = new Proton.RandomDrift(2, 2, 2);
@@ -122,8 +122,8 @@
         emitter.addBehaviour(new Proton.Color(['#00aeff', '#0fa954', '#54396e', '#e61d5f']));
         emitter.addBehaviour(new Proton.Color('random'));
 
-        emitter.p.x = 0;
-        emitter.p.y = -120;
+        emitter.position.x = 0;
+        emitter.position.y = -120;
         emitter.emit();
 
         return emitter;

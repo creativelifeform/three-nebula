@@ -3,11 +3,11 @@ import { BoxGeometry, Mesh, MeshLambertMaterial } from 'three';
 import BaseRenderer from './BaseRenderer';
 import { PUID } from '../utils';
 import { Pool } from '../core';
-import { classDeprecationWarning } from '../compatibility';
+import { RENDERER_TYPE_MESH as type } from './types';
 
 export default class MeshRenderer extends BaseRenderer {
   constructor(container) {
-    super();
+    super(type);
 
     this.container = container;
 
@@ -37,14 +37,14 @@ export default class MeshRenderer extends BaseRenderer {
     }
 
     if (particle.target) {
-      particle.target.position.copy(particle.p);
+      particle.target.position.copy(particle.position);
       this.container.add(particle.target);
     }
   }
 
   onParticleUpdate(particle) {
     if (particle.target) {
-      particle.target.position.copy(particle.p);
+      particle.target.position.copy(particle.position);
       particle.target.rotation.set(
         particle.rotation.x,
         particle.rotation.y,
@@ -76,12 +76,5 @@ export default class MeshRenderer extends BaseRenderer {
       this.container.remove(particle.target);
       particle.target = null;
     }
-  }
-}
-
-export class MeshRender extends MeshRenderer {
-  constructor(...args) {
-    super(...args);
-    console.warn(classDeprecationWarning('MeshRender', 'MeshRenderer'));
   }
 }

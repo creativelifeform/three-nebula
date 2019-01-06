@@ -3,25 +3,14 @@
 [![Build Status](https://travis-ci.org/rohan-deshpande/three-proton.svg?branch=master)](https://travis-ci.org/rohan-deshpande/three-proton)
 [![Coverage Status](https://coveralls.io/repos/github/rohan-deshpande/three-proton/badge.svg?branch=master)](https://coveralls.io/github/rohan-deshpande/three-proton?branch=master&kill_cache=1)
 
-**Three Proton** is a magical, WebGL based 3D particle engine that has been designed to work in concert with [`three.js`](https://github.com/mrdoob/three.js). It is based on the [Proton](https://github.com/a-jie/Proton) particle engine library and shares much of its API.
-
-Check out the examples and API reference documentation at [https://rohan-deshpande.github.io/three-proton/](https://rohan-deshpande.github.io/three-proton/)
+**Three Proton** is a magical, WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [examples](https://rohan-deshpande.github.io/three-proton/examples) and [API reference documentation](https://rohan-deshpande.github.io/three-proton/api) for more.
 
 ## Features
 
-- Four kinds of renderers
-  - `MeshRenderer`
-  - `SpriteRenderer`
-  - `PointsRenderer`
-  - `CustomRenderer`
-- Three kinds of emitters which can simulate many different physical effects
-
-  - `Emitter`
-  - `BehaviourEmitter`
-  - `FollowEmitter`
-
+- Perfect compatibility with [`three@0.98.0`](https://github.com/mrdoob/three.js)
+- The ability to instantiate Proton particle systems from JSON objects using the static `Proton.fromJSON` method
+- The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers
-- Perfect compatibility with [`three@0.98.0`](https://github.com/mrdoob/three.js).
 
 ## Installation
 
@@ -36,21 +25,6 @@ npm i --save @rohandeshpande/three-proton
 ```
 <script type='text/javascript' src='node_modules/three-proton/build/three-proton.js'></script>
 ```
-
-## Commands
-
-- `build` - Builds the module and writes the code into `./build/three-proton.js`
-- `docs` - Serves the docs at http://localhost:8080
-- `docs:build` - Copies the latest build to `./docs/js` and builds the API reference docs
-- `test` - Runs all specs
-- `test:only <spec>` - Runs a specific spec
-- `test:watch` - Watches tests
-- `test:watch-only <spec>` - Watches a specific spec
-- `lint` - Lints code and circular dependencies in `./src`
-- `coverage:generate` - Generates a code coverage report
-- `coverage:view` - View the code coverage report
-- `coverage:publish` - Publishes the coverage report
-- `git:publish <commit-message>` - Builds the module, adds all changed files commits with the message you supply and pushes to remote
 
 ## Usage
 
@@ -78,7 +52,7 @@ const proton = new Proton();
 const emitter = new Emitter();
 const renderer = new SpriteRenderer(threeScene);
 
-// Set emitter rate (particles per second), particle initializers and behaviours
+// Set emitter rate (particles per second) as well as the particle initializers and behaviours
 emitter
   .setRate(new Rate(new Span(4, 16), new Span(0.01)))
   .setInitializers([
@@ -86,19 +60,181 @@ emitter
     new Mass(1),
     new Radius(6, 12),
     new Life(3),
-    new Velocity(45, new Vector3D(0, 1, 0), 180)
+    new RadialVelocity(45, new Vector3D(0, 1, 0), 180)
   ])
   .setBehaviours([
     new Alpha(1, 0),
     new Scale(0.1, 1.3),
     new Color(new THREE.Color(), new THREE.Color())
-  ]);
+  ])
+  .emit();
 
 // add the emitter and a renderer to proton
-proton.addEmitter(emitter.emit()).addRenderer(renderer);
+proton
+  .addEmitter(emitter)
+  .addRenderer(renderer);
 ```
 
-### Script
+You can also instantiate your system from a JSON object  
+
+```javascript
+import Proton from '@rohandeshpande/three-proton';
+
+const json = {
+  "preParticles": 500,
+  "integrationType": "euler",
+  "emitters": [
+    {
+      "rate": {
+        "particlesMin": 5,
+        "particlesMax": 7,
+        "perSecondMin": 0.01,
+        "perSecondMax": 0.02
+      },
+      "position": {
+        "x": 70,
+        "y": 0
+      },
+      "initializers": [
+        {
+          "type": "Mass",
+          "properties": {
+            "min": 1,
+            "max": 1
+          }
+        },
+        {
+          "type": "Life",
+          "properties": {
+            "min": 2,
+            "max": 2
+          }
+        },
+        {
+          "type": "BodySprite",
+          "properties": {
+            "texture": "./img/dot.png"
+          }
+        },
+        {
+          "type": "Radius",
+          "properties": {
+            "width": 80,
+            "height": 80
+          }
+        }
+      ],
+      "behaviours": [
+        {
+          "type": "Alpha",
+          "properties": {
+            "alphaA": 1,
+            "alphaB": 0
+          }
+        },
+        {
+          "type": "Color",
+          "properties": {
+            "colorA": "#4F1500",
+            "colorB": "#0029FF"
+          }
+        },
+        {
+          "type": "Scale",
+          "properties": {
+            "scaleA": 1,
+            "scaleB": 0.5
+          }
+        },
+        {
+          "type": "Force",
+          "properties": {
+            "fx": 0,
+            "fy": 0,
+            "fz": -20
+          }
+        }
+      ]
+    },
+    {
+      "rate": {
+        "particlesMin": 5,
+        "particlesMax": 7,
+        "perSecondMin": 0.01,
+        "perSecondMax": 0.02
+      },
+      "position": {
+        "x": -70,
+        "y": 0
+      },
+      "initializers": [
+        {
+          "type": "Mass",
+          "properties": {
+            "min": 1,
+            "max": 1
+          }
+        },
+        {
+          "type": "Life",
+          "properties": {
+            "min": 2,
+            "max": 2
+          }
+        },
+        {
+          "type": "BodySprite",
+          "properties": {
+            "texture": "./img/dot.png"
+          }
+        },
+        {
+          "type": "Radius",
+          "properties": {
+            "width": 80,
+            "height": 80
+          }
+        }
+      ],
+      "behaviours": [
+        {
+          "type": "Alpha",
+          "properties": {
+            "alphaA": 1,
+            "alphaB": 0
+          }
+        },
+        {
+          "type": "Color",
+          "properties": {
+            "colorA": "#004CFE",
+            "colorB": "#6600FF"
+          }
+        },
+        {
+          "type": "Scale",
+          "properties": {
+            "scaleA": 1,
+            "scaleB": 0.5
+          }
+        },
+        {
+          "type": "Force",
+          "properties": {
+            "fx": 0,
+            "fy": 0,
+            "fz": -20
+          }
+        }
+      ]
+    }
+  ]
+}
+
+const proton = new Proton.fromJSON(json)
+```
+
+### Script Tag
 
 If you are adding `three-proton` to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so
 
@@ -106,6 +242,25 @@ If you are adding `three-proton` to your project in the script tag, the only dif
 const { Proton, Emitter, Rate, Span } = window.Proton;
 const proton = new Proton();
 ```
+
+## Development
+
+### Scripts
+
+There are a few NPM scripts in the root package.json:
+
+- `build` - Builds the module and writes the code into `./build/three-proton.js`
+- `docs` - Serves the docs at http://localhost:8080
+- `docs:build` - Copies the latest build to `./docs/js` and builds the API reference docs
+- `test` - Runs all specs
+- `test:only <spec>` - Runs a specific spec
+- `test:watch` - Watches tests
+- `test:watch-only <spec>` - Watches a specific spec
+- `lint` - Lints code and circular dependencies in `./src`
+- `coverage:generate` - Generates a code coverage report
+- `coverage:view` - View the code coverage report
+- `coverage:publish` - Publishes the coverage report
+- `git:publish <commit-message>` - Builds the module, adds all changed files commits with the message you supply and pushes to remote
 
 ## License
 

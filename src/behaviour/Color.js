@@ -1,7 +1,9 @@
-import { MathUtils, createArraySpan } from '../math';
+import { MathUtils, createColorSpan } from '../math';
 
 import Behaviour from './Behaviour';
 import { ColorUtil } from '../utils';
+import { getEasingByName } from '../ease';
+import { BEHAVIOUR_TYPE_COLOR as type } from './types';
 
 /**
  * A behaviour which mutates the color of a particle over time.
@@ -11,37 +13,58 @@ export default class Color extends Behaviour {
   /**
    * Constructs a Color behaviour instance.
    *
-   * @param {number|string} a - the starting color
-   * @param {number|string} b - the ending color
+   * @param {number|string} colorA - the starting color
+   * @param {number|string} colorB - the ending color
    * @param {number} life - the life of the particle
    * @param {function} easing - The behaviour's decaying trend
    */
-  constructor(a, b, life, easing) {
-    super(life, easing);
+  constructor(colorA, colorB, life, easing) {
+    super(life, easing, type);
 
-    this.reset(a, b);
-    this.name = 'Color';
+    this.reset(colorA, colorB);
   }
 
-  reset(a, b, life, easing) {
-    if (b == null || b == undefined) this._same = true;
-    else this._same = false;
+  /**
+   * Gets the _same property which determines if the alpha are the same.
+   *
+   * @return {boolean}
+   */
+  get same() {
+    return this._same;
+  }
 
-    this.a = createArraySpan(a);
-    this.b = createArraySpan(b);
+  /**
+   * Sets the _same property which determines if the alpha are the same.
+   *
+   * @param {boolean} same
+   * @return {boolean}
+   */
+  set same(same) {
+    /**
+     * @type {boolean}
+     */
+    this._same = same;
+  }
+
+  reset(colorA, colorB, life, easing) {
+    this.same = colorB === null || colorB === undefined ? true : false;
+
+    this.colorA = createColorSpan(colorA);
+    this.colorB = createColorSpan(colorB);
     life && super.reset(life, easing);
   }
 
   initialize(particle) {
-    particle.transform.colorA = ColorUtil.getRGB(this.a.getValue());
+    particle.transform.colorA = ColorUtil.getRGB(this.colorA.getValue());
 
     particle.useColor = true;
-    if (this._same) particle.transform.colorB = particle.transform.colorA;
-    else particle.transform.colorB = ColorUtil.getRGB(this.b.getValue());
+    particle.transform.colorB = this.same
+      ? particle.transform.colorA
+      : ColorUtil.getRGB(this.colorB.getValue());
   }
 
   applyBehaviour(particle, time, index) {
-    super.applyBehaviour(particle, time, index);
+    this.energize(particle, time, index);
 
     if (!this._same) {
       particle.color.r = MathUtils.lerp(
@@ -64,5 +87,21 @@ export default class Color extends Behaviour {
       particle.color.g = particle.transform.colorA.g;
       particle.color.b = particle.transform.colorA.b;
     }
+  }
+
+  /**
+   * Creates a Color initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @property {number} json.colorA - The starting color
+   * @property {number} json.colorB - The ending color
+   * @property {number} json.life - The life of the particle
+   * @property {string} json.easing - The behaviour's decaying trend
+   * @return {Color}
+   */
+  static fromJSON(json) {
+    const { colorA, colorB, life, easing } = json;
+
+    return new Color(colorA, colorB, life, getEasingByName(easing));
   }
 }

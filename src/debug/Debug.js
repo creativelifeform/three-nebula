@@ -7,12 +7,12 @@ import { DEFAULT_POSITION, DEFAULT_SIZE as size } from './constants';
  */
 export default {
   /**
-    * Adds an event listener to the proton instance's PROTON_UPDATE event.
-    *
-    * @param {Proton} proton - the proton instance
-    * @param {function} onProtonUpdated - the function to call when proton has been updated
-    * @return {Debug}
-    */
+   * Adds an event listener to the proton instance's PROTON_UPDATE event.
+   *
+   * @param {Proton} proton - the proton instance
+   * @param {function} onProtonUpdated - the function to call when proton has been updated
+   * @return {Debug}
+   */
   addEventListener: function(proton, onProtonUpdated) {
     proton.eventDispatcher.addEventListener('PROTON_UPDATE', onProtonUpdated);
 
@@ -20,13 +20,13 @@ export default {
   },
 
   /**
-    * Draws a wireframe mesh around the zone for debugging purposes.
-    *
-    * @param {Proton} proton - the proton instance
-    * @param {object} container - a three Object3D (usually the scene)
-    * @param {Zone} zone - a Zone instance
-    * @return void
-    */
+   * Draws a wireframe mesh around the zone for debugging purposes.
+   *
+   * @param {Proton} proton - the proton instance
+   * @param {object} container - a three Object3D (usually the scene)
+   * @param {Zone} zone - a Zone instance
+   * @return void
+   */
   drawZone: function(proton, container, zone = {}) {
     const color = '#2194ce';
     const wireframe = true;
@@ -80,14 +80,14 @@ export default {
   },
 
   /**
-    * Draws a mesh for each particle emitted in order to help debug particles.
-    *
-    * @param {object} proton - the proton instance
-    * @param {object} container - a three Object3D (usually the scene)
-    * @param {object} emitter - the emitter to debug
-    * @param {string} color - the color for the debug mesh material
-    * @return void
-    */
+   * Draws a mesh for each particle emitted in order to help debug particles.
+   *
+   * @param {object} proton - the proton instance
+   * @param {object} container - a three Object3D (usually the scene)
+   * @param {object} emitter - the emitter to debug
+   * @param {string} color - the color for the debug mesh material
+   * @return void
+   */
   drawEmitter: function(proton, container, emitter, color) {
     const geometry = new THREE.OctahedronGeometry(size);
     const material = new THREE.MeshBasicMaterial({
@@ -101,7 +101,7 @@ export default {
     container.add(mesh);
 
     this.addEventListener(proton, function() {
-      mesh.position.copy(emitter.p);
+      mesh.position.copy(emitter.position);
       mesh.rotation.set(
         emitter.rotation.x,
         emitter.rotation.y,

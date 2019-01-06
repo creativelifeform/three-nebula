@@ -1,10 +1,9 @@
 import { MathUtils, createSpan } from '../math';
-import {
-  PARTICLE_ALPHA_THRESHOLD,
-  DEFAULT_BEHAVIOUR_EASING as defaultEasing
-} from './constants';
 
 import Behaviour from './Behaviour';
+import { PARTICLE_ALPHA_THRESHOLD } from './constants';
+import { getEasingByName } from '../ease';
+import { BEHAVIOUR_TYPE_ALPHA as type } from './types';
 
 /**
  * Behaviour that applies an alpha transition effect to particles.
@@ -20,13 +19,8 @@ export default class Alpha extends Behaviour {
    * @param {function} easing - The easing equation to use for transforms
    * @return void
    */
-  constructor(
-    alphaA = 1,
-    alphaB = null,
-    life = Infinity,
-    easing = defaultEasing
-  ) {
-    super(life, easing);
+  constructor(alphaA = 1, alphaB = null, life, easing) {
+    super(life, easing, type);
 
     /**
      * @desc The starting alpha value
@@ -74,7 +68,7 @@ export default class Alpha extends Behaviour {
    * @param {function} easing - the easing equation to use for transforms
    * @return void
    */
-  reset(alphaA = 1, alphaB = null, life = Infinity, easing = defaultEasing) {
+  reset(alphaA = 1, alphaB = null, life, easing) {
     this.same = alphaB === null || alphaB === undefined ? true : false;
     this.alphaA = createSpan(alphaA);
     this.alphaB = createSpan(alphaB);
@@ -92,13 +86,9 @@ export default class Alpha extends Behaviour {
     particle.useAlpha = true;
     particle.transform.alphaA = this.alphaA.getValue();
 
-    if (this.same) {
-      particle.transform.alphaB = particle.transform.alphaA;
-    }
-
-    if (!this.same) {
-      particle.transform.alphaB = this.alphaB.getValue();
-    }
+    particle.transform.alphaB = this.same
+      ? particle.transform.alphaA
+      : this.alphaB.getValue();
   }
 
   /**
@@ -110,7 +100,7 @@ export default class Alpha extends Behaviour {
    * @return void
    */
   applyBehaviour(particle, time, index) {
-    super.applyBehaviour(particle, time, index);
+    this.energize(particle, time, index);
 
     particle.alpha = MathUtils.lerp(
       particle.transform.alphaA,
@@ -121,5 +111,21 @@ export default class Alpha extends Behaviour {
     if (particle.alpha < PARTICLE_ALPHA_THRESHOLD) {
       particle.alpha = 0;
     }
+  }
+
+  /**
+   * Creates a Body initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @property {number} json.alphaA - The starting alpha value
+   * @property {number} json.alphaB - The ending alpha value
+   * @property {number} json.life - The life of the behaviour
+   * @property {string} json.easing - The easing equation to use for transforms
+   * @return {Body}
+   */
+  static fromJSON(json) {
+    const { alphaA, alphaB, life, easing } = json;
+
+    return new Alpha(alphaA, alphaB, life, getEasingByName(easing));
   }
 }

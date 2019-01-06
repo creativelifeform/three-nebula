@@ -1,6 +1,7 @@
 import Behaviour from './Behaviour';
 import { Vector3D } from '../math';
-
+import { getEasingByName } from '../ease';
+import { BEHAVIOUR_TYPE_FORCE as type } from './types';
 /**
  * Behaviour that forces particles along a specific axis.
  *
@@ -17,7 +18,7 @@ export default class Force extends Behaviour {
    * @return void
    */
   constructor(fx, fy, fz, life, easing) {
-    super(life, easing);
+    super(life, easing, type);
 
     this.reset(fx, fy, fz);
   }
@@ -45,7 +46,7 @@ export default class Force extends Behaviour {
 
   /**
    * Applies the behaviour to the particle.
-   * Mutates the particle.a property.
+   * Mutates the particle.acceleration property.
    *
    * @param {object} particle - the particle to apply the behaviour to
    * @param {number} time - engine time
@@ -53,8 +54,20 @@ export default class Force extends Behaviour {
    * @return void
    */
   applyBehaviour(particle, time, index) {
-    super.applyBehaviour(particle, time, index);
+    this.energize(particle, time, index);
 
-    particle.a.add(this.force);
+    particle.acceleration.add(this.force);
+  }
+
+  /**
+   * Creates a Force initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @return {Force}
+   */
+  static fromJSON(json) {
+    const { fx, fy, fz, life, easing } = json;
+
+    return new Force(fx, fy, fz, life, getEasingByName(easing));
   }
 }

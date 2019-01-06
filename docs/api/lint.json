@@ -1,432 +1,44 @@
 [
   {
-    "name": "Rotate#reset",
-    "filePath": "src/behaviour/Rotate.js",
-    "lines": [
-      {
-        "lineNumber": 49,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 50,
-        "line": "   * Resets the behaviour properties."
-      },
-      {
-        "lineNumber": 51,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 52,
-        "line": "   * @param {number} x - X axis rotation"
-      },
-      {
-        "lineNumber": 53,
-        "line": "   * @param {number} y - Y axis rotation"
-      },
-      {
-        "lineNumber": 54,
-        "line": "   * @param {number} z - Z axis rotation"
-      },
-      {
-        "lineNumber": 55,
-        "line": "   * @param {number} life - the life of the behaviour"
-      },
-      {
-        "lineNumber": 56,
-        "line": "   * @param {function} easing - the easing equation to use for transforms"
-      },
-      {
-        "lineNumber": 57,
-        "line": "   * @return void"
-      },
-      {
-        "lineNumber": 58,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 59,
-        "line": "  reset(a, b, c, life, easing) {"
-      }
-    ],
-    "codeParams": [
-      "a",
-      "b",
-      "c",
-      "life",
-      "easing"
-    ],
-    "docParams": [
-      "x",
-      "y",
-      "z",
-      "life",
-      "easing"
-    ]
-  },
-  {
-    "name": "Scale#reset",
-    "filePath": "src/behaviour/Scale.js",
-    "lines": [
-      {
-        "lineNumber": 23,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 24,
-        "line": "   * Resets the behaviour properties."
-      },
-      {
-        "lineNumber": 25,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 26,
-        "line": "   * @param {number} scaleA - the starting scale value"
-      },
-      {
-        "lineNumber": 27,
-        "line": "   * @param {?number} scaleB - the ending scale value"
-      },
-      {
-        "lineNumber": 28,
-        "line": "   * @param {number} life - the life of the behaviour"
-      },
-      {
-        "lineNumber": 29,
-        "line": "   * @param {function} easing - the easing equation to use for transforms"
-      },
-      {
-        "lineNumber": 30,
-        "line": "   * @return void"
-      },
-      {
-        "lineNumber": 31,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 32,
-        "line": "  reset(a, b, life, easing) {"
-      }
-    ],
-    "codeParams": [
-      "a",
-      "b",
-      "life",
-      "easing"
-    ],
-    "docParams": [
-      "scaleA",
-      "scaleB",
-      "life",
-      "easing"
-    ]
-  },
-  {
-    "name": "Proton#update",
-    "filePath": "src/core/Proton.js",
-    "lines": [
-      {
-        "lineNumber": 170,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 171,
-        "line": "   * Updates the particle system based on the delta passed."
-      },
-      {
-        "lineNumber": 172,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 173,
-        "line": "   * @example"
-      },
-      {
-        "lineNumber": 174,
-        "line": "   * animate = timestamp => {"
-      },
-      {
-        "lineNumber": 175,
-        "line": "   *   threeRenderer.render(threeScene, threeCamera);"
-      },
-      {
-        "lineNumber": 176,
-        "line": "   *   proton.update();"
-      },
-      {
-        "lineNumber": 177,
-        "line": "   *   requestAnimationFrame(animate);"
-      },
-      {
-        "lineNumber": 178,
-        "line": "   * }"
-      },
-      {
-        "lineNumber": 179,
-        "line": "   * animate();"
-      },
-      {
-        "lineNumber": 180,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 181,
-        "line": "   * @param {number}"
-      },
-      {
-        "lineNumber": 182,
-        "line": "   * @return {Promise}"
-      },
-      {
-        "lineNumber": 183,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 184,
-        "line": "  update(delta = DEFAULT_PROTON_DELTA) {"
-      }
-    ],
-    "codeParams": [
-      "delta"
-    ],
-    "docParams": []
-  },
-  {
-    "name": "log",
-    "filePath": "src/debug/log.js",
-    "lines": [
-      {
-        "lineNumber": 0,
-        "line": "/**"
-      },
-      {
-        "lineNumber": 1,
-        "line": " * You can use this emit particles."
-      },
-      {
-        "lineNumber": 2,
-        "line": " *"
-      },
-      {
-        "lineNumber": 3,
-        "line": " * This method will console.log the fixed number of your info  in updata or requestAnimationFrame"
-      },
-      {
-        "lineNumber": 4,
-        "line": " *"
-      },
-      {
-        "lineNumber": 5,
-        "line": " * use like this log('+12',mc); log 12 times"
-      },
-      {
-        "lineNumber": 6,
-        "line": " *"
-      },
-      {
-        "lineNumber": 7,
-        "line": " * @class Log"
-      },
-      {
-        "lineNumber": 8,
-        "line": " * @constructor"
-      },
-      {
-        "lineNumber": 9,
-        "line": " * @param {*} logInfo;"
-      },
-      {
-        "lineNumber": 10,
-        "line": " */"
-      },
-      {
-        "lineNumber": 11,
-        "line": "export default function() {"
-      }
-    ],
-    "codeParams": [],
-    "docParams": [
-      "logInfo;"
-    ]
-  },
-  {
     "name": "BehaviourEmitter#addSelfBehaviour",
     "filePath": "src/emitter/BehaviourEmitter.js",
     "lines": [
       {
-        "lineNumber": 17,
+        "lineNumber": 24,
         "line": "  /**"
       },
       {
-        "lineNumber": 18,
+        "lineNumber": 25,
         "line": "   * add the Behaviour to emitter;"
       },
       {
-        "lineNumber": 19,
+        "lineNumber": 26,
         "line": "   *"
       },
       {
-        "lineNumber": 20,
+        "lineNumber": 27,
         "line": "   * you can use Behaviours array:emitter.addSelfBehaviour(Behaviour1,Behaviour2,Behaviour3);"
       },
       {
-        "lineNumber": 21,
+        "lineNumber": 28,
         "line": "   * @method addSelfBehaviour"
       },
       {
-        "lineNumber": 22,
+        "lineNumber": 29,
         "line": "   * @param {Proton.Behaviour} behaviour like this new Proton.Color('random')"
       },
       {
-        "lineNumber": 23,
+        "lineNumber": 30,
         "line": "   */"
       },
       {
-        "lineNumber": 24,
+        "lineNumber": 31,
         "line": "  addSelfBehaviour() {"
       }
     ],
     "codeParams": [],
     "docParams": [
       "behaviour"
-    ]
-  },
-  {
-    "name": "Emitter#setupParticle",
-    "filePath": "src/emitter/Emitter.js",
-    "lines": [
-      {
-        "lineNumber": 393,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 394,
-        "line": "   * Sets up a particle by running all initializers on it and setting its behaviours."
-      },
-      {
-        "lineNumber": 395,
-        "line": "   * Also adds the particle to this.particles."
-      },
-      {
-        "lineNumber": 396,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 397,
-        "line": "   * TODO This method is only ever called from createParticle and never with arguments"
-      },
-      {
-        "lineNumber": 398,
-        "line": "   * so it's safe to remove the arguments."
-      },
-      {
-        "lineNumber": 399,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 400,
-        "line": "   * @param {Particle} particle - The particle to setup"
-      },
-      {
-        "lineNumber": 401,
-        "line": "   * @return void"
-      },
-      {
-        "lineNumber": 402,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 403,
-        "line": "  setupParticle(particle, initialize, behaviour) {"
-      }
-    ],
-    "codeParams": [
-      "particle",
-      "initialize",
-      "behaviour"
-    ],
-    "docParams": [
-      "particle"
-    ]
-  },
-  {
-    "name": "Position#reset",
-    "filePath": "src/initializer/Position.js",
-    "lines": [
-      {
-        "lineNumber": 19,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 20,
-        "line": "   * Resets the initializer properties."
-      },
-      {
-        "lineNumber": 21,
-        "line": "   * Clears all previously set zones and resets the zones according to args passed."
-      },
-      {
-        "lineNumber": 22,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 23,
-        "line": "   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position."
-      },
-      {
-        "lineNumber": 24,
-        "line": "   * @return void"
-      },
-      {
-        "lineNumber": 25,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 26,
-        "line": "  reset() {"
-      }
-    ],
-    "codeParams": [],
-    "docParams": [
-      "zones"
-    ]
-  },
-  {
-    "name": "Position#addZone",
-    "filePath": "src/initializer/Position.js",
-    "lines": [
-      {
-        "lineNumber": 39,
-        "line": "  /**"
-      },
-      {
-        "lineNumber": 40,
-        "line": "   * Adds a zone or zones to this.zones."
-      },
-      {
-        "lineNumber": 41,
-        "line": "   *"
-      },
-      {
-        "lineNumber": 42,
-        "line": "   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position."
-      },
-      {
-        "lineNumber": 43,
-        "line": "   * @return void"
-      },
-      {
-        "lineNumber": 44,
-        "line": "   */"
-      },
-      {
-        "lineNumber": 45,
-        "line": "  addZone() {"
-      }
-    ],
-    "codeParams": [],
-    "docParams": [
-      "zones"
     ]
   }
 ]

@@ -9,11 +9,12 @@ import EventDispatcher, {
   PARTICLE_DEAD,
   PARTICLE_UPDATE
 } from '../events';
+import { INTEGRATION_TYPE_EULER, integrate } from '../math';
 
 import { InitializerUtil } from '../initializer';
 import Particle from '../core/Particle';
 import Util from '../utils/Util';
-import { integrator } from '../core/Proton';
+import { EMITTER_TYPE_EMITTER as type } from './types';
 import uid from '../utils/uid';
 
 /**
@@ -30,6 +31,12 @@ export default class Emitter extends Particle {
    */
   constructor(properties) {
     super(properties);
+
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
 
     /**
      * @desc The particles emitted by this emitter.
@@ -127,14 +134,14 @@ export default class Emitter extends Particle {
   /**
    * Sets the position of the emitter.
    *
-   * @param {object} position - an object containing x, y and z props
+   * @param {object} newPosition - an object the new x, y and z props
    * @return {Emitter}
    */
-  setPosition(position = {}) {
-    const { p } = this;
-    const { x = p.x, y = p.y, z = p.z } = position;
+  setPosition(newPosition = {}) {
+    const { position } = this;
+    const { x = position.x, y = position.y, z = position.z } = newPosition;
 
-    this.p.set(x, y, z);
+    this.position.set(x, y, z);
 
     return this;
   }
@@ -143,8 +150,6 @@ export default class Emitter extends Particle {
    * Sets the total number of times the emitter should emit particles as well as
    * the emitter's life. Also intializes the emitter rate.
    * This enables the emitter to emit particles.
-   *
-   * TODO Refactor this so that it does not accept mixed type arguments.
    *
    * @param {number} [totalEmitTimes=Infinity] - the total number of times to emit particles
    * @param {number} [life=Infinity] - the life of this emitter in milliseconds
@@ -178,8 +183,6 @@ export default class Emitter extends Particle {
   /**
    * Kills all of the emitter's particles.
    *
-   * TODO Rename this method to killAllParticles
-   *
    * @return void
    */
   removeAllParticles() {
@@ -188,40 +191,6 @@ export default class Emitter extends Particle {
     while (i--) {
       this.particles[i].dead = true;
     }
-  }
-
-  /**
-   * Add an initializer to this emitter.
-   *
-   * @deprecated This will be removed in the next major version.
-   * @param {object} pObj
-   * @return void
-   */
-  addSelfInitialize(pObj) {
-    /* istanbul ignore next */
-    if (pObj['init']) {
-      /* istanbul ignore next */
-      pObj.init(this);
-      /* istanbul ignore next */
-    } else {
-      /* istanbul ignore next */
-      this.initAll();
-    }
-  }
-
-  /**
-   * Adds particle initializer(s) to the emitter.
-   * Each initializer is run on each particle when they are created.
-   *
-   * @deprecated This will be removed in the next major version use addInitializer or addInitializers.
-   * @return {Emitter}
-   */
-  addInitialize() {
-    /* istanbul ignore next */
-    var i = arguments.length;
-
-    /* istanbul ignore next */
-    while (i--) this.initializers.push(arguments[i]);
   }
 
   /**
@@ -263,18 +232,6 @@ export default class Emitter extends Particle {
     this.initializers = initializers;
 
     return this;
-  }
-
-  /**
-   * @deprecated This will be removed in the next major version use removeInitializer instead.
-   * @param {Initializer} initializer - The initializer to remove
-   */
-  removeInitialize(initializer) {
-    /* istanbul ignore next */
-    var index = this.initializers.indexOf(initializer);
-
-    /* istanbul ignore next */
-    if (index > -1) this.initializers.splice(index, 1);
   }
 
   /**
@@ -376,15 +333,12 @@ export default class Emitter extends Particle {
    * Creates a particle by retreiving one from the pool and setting it up with
    * the supplied initializer and behaviour.
    *
-   * TODO This method is only ever called from generate and never with arguments
-   * so it's safe to remove the arguments.
-   *
    * @return {Emitter}
    */
-  createParticle(initializer, behaviour) {
+  createParticle() {
     const particle = this.parent.pool.get(Particle);
 
-    this.setupParticle(particle, initializer, behaviour);
+    this.setupParticle(particle);
     this.parent && this.parent.dispatch(PARTICLE_CREATED, particle);
     this.bindEmitterEvent && this.dispatch(PARTICLE_CREATED, particle);
 
@@ -395,27 +349,12 @@ export default class Emitter extends Particle {
    * Sets up a particle by running all initializers on it and setting its behaviours.
    * Also adds the particle to this.particles.
    *
-   * TODO This method is only ever called from createParticle and never with arguments
-   * so it's safe to remove the arguments.
-   *
    * @param {Particle} particle - The particle to setup
    * @return void
    */
-  setupParticle(particle, initialize, behaviour) {
+  setupParticle(particle) {
     var initializers = this.initializers;
     var behaviours = this.behaviours;
-
-    /* istanbul ignore if */
-    if (initialize) {
-      if (Util.isArray(initialize)) initializers = initialize;
-      else initializers = [initialize];
-    }
-
-    /* istanbul ignore if */
-    if (behaviour) {
-      if (Util.isArray(behaviour)) behaviours = behaviour;
-      else behaviours = [behaviour];
-    }
 
     InitializerUtil.initialize(this, particle, initializers);
 
@@ -467,9 +406,12 @@ export default class Emitter extends Particle {
    * @return void
    */
   integrate(time) {
+    const integrationType = this.parent
+      ? this.parent.integrationType
+      : INTEGRATION_TYPE_EULER;
     const damping = 1 - this.damping;
 
-    integrator.integrate(this, time, damping);
+    integrate(this, time, damping, integrationType);
 
     let i = this.particles.length;
 
@@ -477,7 +419,7 @@ export default class Emitter extends Particle {
       const particle = this.particles[i];
 
       particle.update(time, i);
-      integrator.integrate(particle, time, damping);
+      integrate(particle, time, damping, integrationType);
 
       this.parent && this.parent.dispatch(PARTICLE_UPDATE, particle);
       this.bindEmitterEvent && this.dispatch(PARTICLE_UPDATE, particle);

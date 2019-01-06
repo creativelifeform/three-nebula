@@ -1,7 +1,8 @@
 import { MathUtils, createSpan } from '../math';
 
 import Behaviour from './Behaviour';
-import { Util } from '../utils';
+import { getEasingByName } from '../ease';
+import { BEHAVIOUR_TYPE_SCALE as type } from './types';
 
 /**
  * Behaviour that scales particles.
@@ -9,16 +10,40 @@ import { Util } from '../utils';
  */
 export default class Scale extends Behaviour {
   /**
-   * The Scale class is the base for the other Behaviour
+   * Constructs a Scale behaviour instance.
    *
-   * @class Behaviour
-   * @constructor
+   * @param {number} scaleA - the starting scale value
+   * @param {?number} scaleB - the ending scale value
+   * @param {number} life - the life of the behaviour
+   * @param {function} easing - the easing equation to use for transforms
+   * @return void
    */
-  constructor(a, b, life, easing) {
-    super(life, easing);
+  constructor(scaleA, scaleB, life, easing) {
+    super(life, easing, type);
 
-    this.reset(a, b);
-    this.name = 'Scale';
+    this.reset(scaleA, scaleB);
+  }
+
+  /**
+   * Gets the _same property which determines if the scale props are the same.
+   *
+   * @return {boolean}
+   */
+  get same() {
+    return this._same;
+  }
+
+  /**
+   * Sets the _same property which determines if the scale props are the same.
+   *
+   * @param {boolean} same
+   * @return {boolean}
+   */
+  set same(same) {
+    /**
+     * @type {boolean}
+     */
+    this._same = same;
   }
 
   /**
@@ -30,21 +55,20 @@ export default class Scale extends Behaviour {
    * @param {function} easing - the easing equation to use for transforms
    * @return void
    */
-  reset(a, b, life, easing) {
-    if (b == null || b == undefined) this._same = true;
-    else this._same = false;
+  reset(scaleA, scaleB, life, easing) {
+    this.same = scaleB === null || scaleB === undefined ? true : false;
 
     /**
      * @desc The starting scale.
      * @type {Span}
      */
-    this.a = createSpan(Util.initValue(a, 1));
+    this.scaleA = createSpan(scaleA || 1);
 
     /**
      * @desc The ending scale.
      * @type {Span}
      */
-    this.b = createSpan(b);
+    this.scaleB = createSpan(scaleB);
 
     life && super.reset(life, easing);
   }
@@ -57,10 +81,12 @@ export default class Scale extends Behaviour {
    * @return void
    */
   initialize(particle) {
-    particle.transform.scaleA = this.a.getValue();
+    particle.transform.scaleA = this.scaleA.getValue();
     particle.transform.oldRadius = particle.radius;
-    if (this._same) particle.transform.scaleB = particle.transform.scaleA;
-    else particle.transform.scaleB = this.b.getValue();
+
+    particle.transform.scaleB = this.same
+      ? particle.transform.scaleA
+      : this.scaleB.getValue();
   }
 
   /**
@@ -73,7 +99,7 @@ export default class Scale extends Behaviour {
    * @return void
    */
   applyBehaviour(particle, time, index) {
-    super.applyBehaviour(particle, time, index);
+    this.energize(particle, time, index);
 
     particle.scale = MathUtils.lerp(
       particle.transform.scaleA,
@@ -86,5 +112,17 @@ export default class Scale extends Behaviour {
     }
 
     particle.radius = particle.transform.oldRadius * particle.scale;
+  }
+
+  /**
+   * Returns a new instance of the behaviour from the JSON object passed.
+   *
+   * @param {object} json - JSON object containing the required constructor properties
+   * @return {Spring}
+   */
+  static fromJSON(json) {
+    const { scaleA, scaleB, life, easing } = json;
+
+    return new Scale(scaleA, scaleB, life, getEasingByName(easing));
   }
 }

@@ -5,9 +5,7 @@
  *
  * use like this log('+12',mc); log 12 times
  *
- * @class Log
- * @constructor
- * @param {*} logInfo;
+ * @return void
  */
 export default function() {
   let once = 0;
