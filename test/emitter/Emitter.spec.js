@@ -157,7 +157,7 @@ describe('emitter -> Emitter', () => {
     const particle = emitter.createParticle(initializer, behaviour);
 
     assert.instanceOf(particle, Proton.Particle);
-    assert(setupParticleSpy.calledOnceWith(particle, initializer, behaviour));
+    assert(setupParticleSpy.calledOnceWith(particle));
     assert(protonDispatchSpy.secondCall.calledWith(PARTICLE_CREATED, particle));
     assert(emitterDispatchSpy.notCalled);
 

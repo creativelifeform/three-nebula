@@ -151,8 +151,6 @@ export default class Emitter extends Particle {
    * the emitter's life. Also intializes the emitter rate.
    * This enables the emitter to emit particles.
    *
-   * TODO Refactor this so that it does not accept mixed type arguments.
-   *
    * @param {number} [totalEmitTimes=Infinity] - the total number of times to emit particles
    * @param {number} [life=Infinity] - the life of this emitter in milliseconds
    * @return {Emitter}
@@ -337,15 +335,12 @@ export default class Emitter extends Particle {
    * Creates a particle by retreiving one from the pool and setting it up with
    * the supplied initializer and behaviour.
    *
-   * TODO This method is only ever called from generate and never with arguments
-   * so it's safe to remove the arguments.
-   *
    * @return {Emitter}
    */
-  createParticle(initializer, behaviour) {
+  createParticle() {
     const particle = this.parent.pool.get(Particle);
 
-    this.setupParticle(particle, initializer, behaviour);
+    this.setupParticle(particle);
     this.parent && this.parent.dispatch(PARTICLE_CREATED, particle);
     this.bindEmitterEvent && this.dispatch(PARTICLE_CREATED, particle);
 
@@ -356,27 +351,12 @@ export default class Emitter extends Particle {
    * Sets up a particle by running all initializers on it and setting its behaviours.
    * Also adds the particle to this.particles.
    *
-   * TODO This method is only ever called from createParticle and never with arguments
-   * so it's safe to remove the arguments.
-   *
    * @param {Particle} particle - The particle to setup
    * @return void
    */
-  setupParticle(particle, initialize, behaviour) {
+  setupParticle(particle) {
     var initializers = this.initializers;
     var behaviours = this.behaviours;
-
-    /* istanbul ignore if */
-    if (initialize) {
-      if (Util.isArray(initialize)) initializers = initialize;
-      else initializers = [initialize];
-    }
-
-    /* istanbul ignore if */
-    if (behaviour) {
-      if (Util.isArray(behaviour)) behaviours = behaviour;
-      else behaviours = [behaviour];
-    }
 
     InitializerUtil.initialize(this, particle, initializers);
 
