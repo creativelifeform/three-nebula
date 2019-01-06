@@ -238,10 +238,6 @@ export default class Proton {
   /**
    * Constructs a Proton instance.
    *
-   * TODO the proton instance should have an integrator set as a property.
-   * It is only required from the emitter class, and therefore can be accessed within
-   * that class from emitter.parent.integrator
-   *
    * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
    * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
    * @return void
@@ -257,25 +253,25 @@ export default class Proton {
     this.type = type;
 
     /**
-     * @desc The number of particles to start with
+     * @desc The number of particles to start with.
      * @type {number}
      */
     this.preParticles = preParticles;
 
     /**
-     * @desc The integration algorithm type to use
+     * @desc The integration algorithm type to use.
      * @param {string}
      */
     this.integrationType = integrationType;
 
     /**
-     * @desc The emitters in the particle system
+     * @desc The emitters in the particle system.
      * @type {array&lt;Emitter&gt;}
      */
     this.emitters = [];
 
     /**
-     * @desc The renderers for the system
+     * @desc The renderers for the system.
      * @type {array&lt;Renderer&gt;}
      */
     this.renderers = [];

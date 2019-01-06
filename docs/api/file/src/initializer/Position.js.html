@@ -221,14 +221,14 @@ import { INITIALIZER_TYPE_POSITION as type } from &apos;./types&apos;;
 
 /**
  * Sets the starting position property for initialized particles.
- * This is respective to the supplied zones.
+ * This is derived from a zone randomly chosen from those supplied to the constructor.
  *
  */
 export default class Position extends Initializer {
   /**
    * Constructs a Position initializer instance.
    *
-   * @param {Zone|array&lt;Zone&gt;} zones - The zones to use to calculate particle starting position.
+   * @param {Zone|array&lt;Zone&gt;}
    * @return void
    */
   constructor() {
@@ -241,39 +241,38 @@ export default class Position extends Initializer {
    * Resets the initializer properties.
    * Clears all previously set zones and resets the zones according to args passed.
    *
-   * @param {Zone|array&lt;Zone&gt;} zones - The zones to use to calculate particle starting position.
+   * @param {Zone|array&lt;Zone&gt;}
    * @return void
    */
   reset() {
-    if (!this.zones) this.zones = [];
-    else this.zones.length = 0;
-
-    var args = Array.prototype.slice.call(arguments);
+    if (!this.zones) {
+      this.zones = [];
+    } else {
+      this.zones.length = 0;
+    }
 
     /**
      * @desc The zones to use as bounds for calculating the particle&apos;s starting position.
      * @type {array&lt;Zone&gt;}
      */
-    this.zones = this.zones.concat(args);
+    this.zones = this.zones.concat(Array.prototype.slice.call(arguments));
   }
 
   /**
    * Adds a zone or zones to this.zones.
    *
-   * @param {Zone|array&lt;Zone&gt;} zones - The zones to use to calculate particle starting position.
+   * @param {Zone|array&lt;Zone&gt;}
    * @return void
    */
   addZone() {
-    var args = Array.prototype.slice.call(arguments);
-
-    this.zones = this.zones.concat(args);
+    this.zones = this.zones.concat(Array.prototype.slice.call(arguments));
   }
 
   /**
    * Creates a Position initializer from JSON.
    *
    * @param {object} json - The JSON to construct the instance from.
-   * @property {string} json.zoneType - The type of zone to use for initial position
+   * @param {string} json.zoneType - The type of zone to use for initial position
    * @return {Position}
    */
   static fromJSON(json) {

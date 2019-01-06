@@ -38,25 +38,25 @@ export default class Proton {
     this.type = type;
 
     /**
-     * @desc The number of particles to start with
+     * @desc The number of particles to start with.
      * @type {number}
      */
     this.preParticles = preParticles;
 
     /**
-     * @desc The integration algorithm type to use
+     * @desc The integration algorithm type to use.
      * @param {string}
      */
     this.integrationType = integrationType;
 
     /**
-     * @desc The emitters in the particle system
+     * @desc The emitters in the particle system.
      * @type {array<Emitter>}
      */
     this.emitters = [];
 
     /**
-     * @desc The renderers for the system
+     * @desc The renderers for the system.
      * @type {array<Renderer>}
      */
     this.renderers = [];

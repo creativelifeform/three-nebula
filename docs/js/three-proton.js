@@ -49991,8 +49991,6 @@ var Emitter = function (_Particle) {
     /**
      * Kills all of the emitter's particles.
      *
-     * TODO Rename this method to killAllParticles
-     *
      * @return void
      */
 
@@ -52092,7 +52090,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Calculates the rate of particle emission.
  *
- * TODO This doesn't need to be an initializer, it doesn't have an initialize
+ * NOTE This doesn't need to be an initializer, it doesn't have an initialize
  * method, it overrides the base init method and it is only relevent to the Emitter class.
  * It would be better to move this to the Emitter module itself as a standalone class.
  *
@@ -71225,10 +71223,6 @@ var Proton = function () {
   /**
    * Constructs a Proton instance.
    *
-   * TODO the proton instance should have an integrator set as a property.
-   * It is only required from the emitter class, and therefore can be accessed within
-   * that class from emitter.parent.integrator
-   *
    * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
    * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
    * @return void
@@ -71246,25 +71240,25 @@ var Proton = function () {
     this.type = _types.CORE_TYPE_PROTON;
 
     /**
-     * @desc The number of particles to start with
+     * @desc The number of particles to start with.
      * @type {number}
      */
     this.preParticles = preParticles;
 
     /**
-     * @desc The integration algorithm type to use
+     * @desc The integration algorithm type to use.
      * @param {string}
      */
     this.integrationType = integrationType;
 
     /**
-     * @desc The emitters in the particle system
+     * @desc The emitters in the particle system.
      * @type {array<Emitter>}
      */
     this.emitters = [];
 
     /**
-     * @desc The renderers for the system
+     * @desc The renderers for the system.
      * @type {array<Renderer>}
      */
     this.renderers = [];
@@ -72975,7 +72969,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 /**
  * Sets the starting position property for initialized particles.
- * This is respective to the supplied zones.
+ * This is derived from a zone randomly chosen from those supplied to the constructor.
  *
  */
 var Position = function (_Initializer) {
@@ -72984,7 +72978,7 @@ var Position = function (_Initializer) {
   /**
    * Constructs a Position initializer instance.
    *
-   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
+   * @param {Zone|array<Zone>}
    * @return void
    */
   function Position() {
@@ -73000,7 +72994,7 @@ var Position = function (_Initializer) {
    * Resets the initializer properties.
    * Clears all previously set zones and resets the zones according to args passed.
    *
-   * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
+   * @param {Zone|array<Zone>}
    * @return void
    */
 
@@ -73008,37 +73002,37 @@ var Position = function (_Initializer) {
   _createClass(Position, [{
     key: 'reset',
     value: function reset() {
-      if (!this.zones) this.zones = [];else this.zones.length = 0;
-
-      var args = Array.prototype.slice.call(arguments);
+      if (!this.zones) {
+        this.zones = [];
+      } else {
+        this.zones.length = 0;
+      }
 
       /**
        * @desc The zones to use as bounds for calculating the particle's starting position.
        * @type {array<Zone>}
        */
-      this.zones = this.zones.concat(args);
+      this.zones = this.zones.concat(Array.prototype.slice.call(arguments));
     }
 
     /**
      * Adds a zone or zones to this.zones.
      *
-     * @param {Zone|array<Zone>} zones - The zones to use to calculate particle starting position.
+     * @param {Zone|array<Zone>}
      * @return void
      */
 
   }, {
     key: 'addZone',
     value: function addZone() {
-      var args = Array.prototype.slice.call(arguments);
-
-      this.zones = this.zones.concat(args);
+      this.zones = this.zones.concat(Array.prototype.slice.call(arguments));
     }
 
     /**
      * Creates a Position initializer from JSON.
      *
      * @param {object} json - The JSON to construct the instance from.
-     * @property {string} json.zoneType - The type of zone to use for initial position
+     * @param {string} json.zoneType - The type of zone to use for initial position
      * @return {Position}
      */
 
