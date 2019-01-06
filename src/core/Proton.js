@@ -23,10 +23,6 @@ export default class Proton {
   /**
    * Constructs a Proton instance.
    *
-   * TODO the proton instance should have an integrator set as a property.
-   * It is only required from the emitter class, and therefore can be accessed within
-   * that class from emitter.parent.integrator
-   *
    * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
    * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
    * @return void

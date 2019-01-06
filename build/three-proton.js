@@ -615,14 +615,22 @@ var Behaviour = function () {
     value: function initialize(particle) {} // eslint-disable-line
 
     /**
+     * Apply behaviour to the particle as a factor of time.
+     *
+     * @abstract
+     * @param {Particle} particle - The particle to apply the behaviour to
+     * @param {Number} time - the proton integration time
+     * @return mixed
+     */
+
+  }, {
+    key: 'applyBehaviour',
+    value: function applyBehaviour(particle, time) {} // eslint-disable-line
+
+    /**
      * Compares the age of the behaviour vs integration time and determines
      * if the behaviour should be set to dead or not.
      * Sets the behaviour energy as a factor of particle age and life.
-     *
-     * TODO It's a little weird that sub class behaviours override this method and
-     * also call it from within their own applyBehaviour method. Since this method
-     * primarily sets energy, consider renaming it to setEnergy or energise. Then
-     * each sub class can simply call this.setEnergy instead of super.applyBehaviour.
      *
      * @param {Particle} particle - The particle to apply the behaviour to
      * @param {Number} time - the proton integration time
@@ -630,8 +638,8 @@ var Behaviour = function () {
      */
 
   }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time) {
+    key: 'energize',
+    value: function energize(particle, time) {
       if (this.dead) {
         return;
       }
@@ -49942,8 +49950,6 @@ var Emitter = function (_Particle) {
      * the emitter's life. Also intializes the emitter rate.
      * This enables the emitter to emit particles.
      *
-     * TODO Refactor this so that it does not accept mixed type arguments.
-     *
      * @param {number} [totalEmitTimes=Infinity] - the total number of times to emit particles
      * @param {number} [life=Infinity] - the life of this emitter in milliseconds
      * @return {Emitter}
@@ -50170,18 +50176,15 @@ var Emitter = function (_Particle) {
      * Creates a particle by retreiving one from the pool and setting it up with
      * the supplied initializer and behaviour.
      *
-     * TODO This method is only ever called from generate and never with arguments
-     * so it's safe to remove the arguments.
-     *
      * @return {Emitter}
      */
 
   }, {
     key: 'createParticle',
-    value: function createParticle(initializer, behaviour) {
+    value: function createParticle() {
       var particle = this.parent.pool.get(_Particle3.default);
 
-      this.setupParticle(particle, initializer, behaviour);
+      this.setupParticle(particle);
       this.parent && this.parent.dispatch(_events.PARTICLE_CREATED, particle);
       this.bindEmitterEvent && this.dispatch(_events.PARTICLE_CREATED, particle);
 
@@ -50192,28 +50195,15 @@ var Emitter = function (_Particle) {
      * Sets up a particle by running all initializers on it and setting its behaviours.
      * Also adds the particle to this.particles.
      *
-     * TODO This method is only ever called from createParticle and never with arguments
-     * so it's safe to remove the arguments.
-     *
      * @param {Particle} particle - The particle to setup
      * @return void
      */
 
   }, {
     key: 'setupParticle',
-    value: function setupParticle(particle, initialize, behaviour) {
+    value: function setupParticle(particle) {
       var initializers = this.initializers;
       var behaviours = this.behaviours;
-
-      /* istanbul ignore if */
-      if (initialize) {
-        if (_Util2.default.isArray(initialize)) initializers = initialize;else initializers = [initialize];
-      }
-
-      /* istanbul ignore if */
-      if (behaviour) {
-        if (_Util2.default.isArray(behaviour)) behaviours = behaviour;else behaviours = [behaviour];
-      }
 
       _initializer.InitializerUtil.initialize(this, particle, initializers);
 
@@ -51265,7 +51255,7 @@ var Attraction = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      _get(Attraction.prototype.__proto__ || Object.getPrototypeOf(Attraction.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+      this.energize(particle, time, index);
 
       this.attractionForce.copy(this.targetPosition);
       this.attractionForce.sub(particle.position);
@@ -51328,8 +51318,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
 var _Behaviour2 = __webpack_require__(5);
 
@@ -51413,7 +51401,7 @@ var Force = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      _get(Force.prototype.__proto__ || Object.getPrototypeOf(Force.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+      this.energize(particle, time, index);
 
       particle.acceleration.add(this.force);
     }
@@ -51874,9 +51862,6 @@ var Pool = function () {
    * Attempts to create a new object either by creating a new instance or calling its
    * clone method.
    *
-   * NOTE If unable to create an object this method will simply return undefined
-   * it should possibly throw an error in this case.
-   *
    * @param {function|object} functionOrObject - The object to instantiate or clone
    * @return {object|undefined}
    */
@@ -51886,8 +51871,7 @@ var Pool = function () {
     key: 'create',
     value: function create(functionOrObject) {
       if (!this.canCreateNewObject(functionOrObject)) {
-        // TODO throw an error here
-        return;
+        throw new Error('The pool is unable to create or clone the object supplied');
       }
 
       this.cID++;
@@ -69757,7 +69741,7 @@ var Alpha = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      _get(Alpha.prototype.__proto__ || Object.getPrototypeOf(Alpha.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+      this.energize(particle, time, index);
 
       particle.alpha = _math.MathUtils.lerp(particle.transform.alphaA, particle.transform.alphaB, this.energy);
 
@@ -70059,7 +70043,7 @@ var Color = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      _get(Color.prototype.__proto__ || Object.getPrototypeOf(Color.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+      this.energize(particle, time, index);
 
       if (!this._same) {
         particle.color.r = _math.MathUtils.lerp(particle.transform.colorA.r, particle.transform.colorB.r, this.energy);
@@ -70227,7 +70211,7 @@ var CrossZone = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      _get(CrossZone.prototype.__proto__ || Object.getPrototypeOf(CrossZone.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+      this.energize(particle, time, index);
 
       this.zone.crossing.call(this.zone, particle);
     }
@@ -70455,7 +70439,7 @@ var RandomDrift = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      _get(RandomDrift.prototype.__proto__ || Object.getPrototypeOf(RandomDrift.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+      this.energize(particle, time, index);
 
       this.time += time;
 
@@ -70808,7 +70792,7 @@ var Rotate = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      _get(Rotate.prototype.__proto__ || Object.getPrototypeOf(Rotate.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+      this.energize(particle, time, index);
 
       switch (this.rotationType) {
         // orients the particle in the direction it is moving
@@ -71001,7 +70985,7 @@ var Scale = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      _get(Scale.prototype.__proto__ || Object.getPrototypeOf(Scale.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+      this.energize(particle, time, index);
 
       particle.scale = _math.MathUtils.lerp(particle.transform.scaleA, particle.transform.scaleB, this.energy);
 
@@ -71069,8 +71053,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
 var _Behaviour2 = __webpack_require__(5);
 
@@ -71156,7 +71138,7 @@ var Spring = function (_Behaviour) {
   }, {
     key: 'applyBehaviour',
     value: function applyBehaviour(particle, time, index) {
-      _get(Spring.prototype.__proto__ || Object.getPrototypeOf(Spring.prototype), 'applyBehaviour', this).call(this, particle, time, index);
+      this.energize(particle, time, index);
 
       particle.velocity.x += (this.pos.x - particle.position.x) * this.spring;
       particle.velocity.y += (this.pos.y - particle.position.y) * this.spring;
@@ -74609,28 +74591,32 @@ var MeshZone = function (_Zone) {
   /**
    * @constructs {MeshZone}
    *
-   * TODO BREAKING_CHANGE remove support for nested MeshZones and only accept
-   * Geometry as the first argument
-   *
-   * @param {Geometry} geometry - the geometry that will determine the zone bounds
+   * @param {Geometry|Mesh} bounds - the geometry or mesh that will determine the zone bounds
    * @param {number} scale - the zone scale
    * @return void
    */
-  function MeshZone(geometry) {
+  function MeshZone(bounds) {
     var scale = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
     _classCallCheck(this, MeshZone);
 
     var _this = _possibleConstructorReturn(this, (MeshZone.__proto__ || Object.getPrototypeOf(MeshZone)).call(this, _types.ZONE_TYPE_MESH));
 
-    if (geometry instanceof _three.Geometry) {
-      _this.geometry = geometry;
-    } else {
-      _this.geometry = geometry.geometry;
-    }
-
+    _this.geometry = null;
     _this.scale = scale;
     _this.supportsCrossing = false;
+
+    if (bounds instanceof _three.Geometry) {
+      _this.geometry = bounds;
+    }
+
+    if (bounds.geometry) {
+      _this.geometry = bounds.geometry;
+    }
+
+    if (!_this.geometry) {
+      throw new Error('MeshZone unable to set geometry from the supplied bounds');
+    }
     return _this;
   }
 

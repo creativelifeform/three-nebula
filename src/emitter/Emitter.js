@@ -183,8 +183,6 @@ export default class Emitter extends Particle {
   /**
    * Kills all of the emitter's particles.
    *
-   * TODO Rename this method to killAllParticles
-   *
    * @return void
    */
   removeAllParticles() {
