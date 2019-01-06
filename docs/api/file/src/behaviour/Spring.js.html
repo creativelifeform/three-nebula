@@ -201,6 +201,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/ScreenZone.js~ScreenZone.html">ScreenZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/SphereZone.js~SphereZone.html">SphereZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_ABSTRACT">ZONE_TYPE_ABSTRACT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_BOX">ZONE_TYPE_BOX</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_LINE">ZONE_TYPE_LINE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_MESH">ZONE_TYPE_MESH</a></span></span></li>
@@ -273,9 +274,9 @@ export default class Spring extends Behaviour {
   applyBehaviour(particle, time, index) {
     super.applyBehaviour(particle, time, index);
 
-    particle.v.x += (this.pos.x - particle.p.x) * this.spring;
-    particle.v.y += (this.pos.y - particle.p.y) * this.spring;
-    particle.v.z += (this.pos.z - particle.p.z) * this.spring;
+    particle.velocity.x += (this.pos.x - particle.position.x) * this.spring;
+    particle.velocity.y += (this.pos.y - particle.position.y) * this.spring;
+    particle.velocity.z += (this.pos.z - particle.position.z) * this.spring;
   }
 
   /**

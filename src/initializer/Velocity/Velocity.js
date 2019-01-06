@@ -48,7 +48,7 @@ Velocity.prototype.initialize = (function() {
     v.copy(this.dirVec).applyAxisAngle(normal, tha);
     v.applyAxisAngle(this.dirVec.normalize(), Math.random() * PI * 2);
 
-    particle.v.copy(v);
+    particle.velocity.copy(v);
 
     return this;
   };

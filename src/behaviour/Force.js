@@ -46,7 +46,7 @@ export default class Force extends Behaviour {
 
   /**
    * Applies the behaviour to the particle.
-   * Mutates the particle.a property.
+   * Mutates the particle.acceleration property.
    *
    * @param {object} particle - the particle to apply the behaviour to
    * @param {number} time - engine time
@@ -56,7 +56,7 @@ export default class Force extends Behaviour {
   applyBehaviour(particle, time, index) {
     super.applyBehaviour(particle, time, index);
 
-    particle.a.add(this.force);
+    particle.acceleration.add(this.force);
   }
 
   /**

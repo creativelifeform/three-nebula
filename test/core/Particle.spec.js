@@ -47,19 +47,19 @@ describe('core -> Particle', () => {
     assert.isFalse(particle.useColor);
     assert.isFalse(particle.useAlpha);
     assert.isFunction(particle.easing);
-    assert.instanceOf(particle.p, Proton.Vector3D);
-    assert.instanceOf(particle.v, Proton.Vector3D);
-    assert.instanceOf(particle.a, Proton.Vector3D);
-    assert.deepEqual(values(particle.p), [0, 0, 0]);
-    assert.deepEqual(values(particle.v), [0, 0, 0]);
-    assert.deepEqual(values(particle.a), [0, 0, 0]);
+    assert.instanceOf(particle.position, Proton.Vector3D);
+    assert.instanceOf(particle.velocity, Proton.Vector3D);
+    assert.instanceOf(particle.acceleration, Proton.Vector3D);
+    assert.deepEqual(values(particle.position), [0, 0, 0]);
+    assert.deepEqual(values(particle.velocity), [0, 0, 0]);
+    assert.deepEqual(values(particle.acceleration), [0, 0, 0]);
     assert.isObject(particle.old);
-    assert.instanceOf(particle.old.p, Proton.Vector3D);
-    assert.instanceOf(particle.old.v, Proton.Vector3D);
-    assert.instanceOf(particle.old.a, Proton.Vector3D);
-    assert.deepEqual(values(particle.old.p), [0, 0, 0]);
-    assert.deepEqual(values(particle.old.v), [0, 0, 0]);
-    assert.deepEqual(values(particle.old.a), [0, 0, 0]);
+    assert.instanceOf(particle.old.position, Proton.Vector3D);
+    assert.instanceOf(particle.old.velocity, Proton.Vector3D);
+    assert.instanceOf(particle.old.acceleration, Proton.Vector3D);
+    assert.deepEqual(values(particle.old.position), [0, 0, 0]);
+    assert.deepEqual(values(particle.old.velocity), [0, 0, 0]);
+    assert.deepEqual(values(particle.old.acceleration), [0, 0, 0]);
     assert.isArray(particle.behaviours);
     assert.lengthOf(particle.behaviours, 0);
     assert.isObject(particle.transform);
@@ -89,9 +89,9 @@ describe('core -> Particle', () => {
     assert.strictEqual(particle.useColor, preset.useColor);
     assert.strictEqual(particle.useAlpha, preset.useAlpha);
     assert.strictEqual(particle.easing, preset.easing);
-    assert.strictEqual(particle.p, preset.p);
-    assert.strictEqual(particle.v, preset.v);
-    assert.strictEqual(particle.a, preset.a);
+    assert.strictEqual(particle.position, preset.position);
+    assert.strictEqual(particle.velocity, preset.velocity);
+    assert.strictEqual(particle.acceleration, preset.acceleration);
     assert.deepEqual(particle.old, preset.old);
     assert.deepEqual(particle.behaviours, preset.behaviours);
     assert.strictEqual(particle.transform, preset.transform);
@@ -113,7 +113,16 @@ describe('core -> Particle', () => {
     const particle = new Particle(preset);
     const reset = particle.reset();
 
-    const { p, v, a, old, color, transform, behaviours, rotation } = particle;
+    const {
+      position,
+      velocity,
+      acceleration,
+      old,
+      color,
+      transform,
+      behaviours,
+      rotation
+    } = particle;
 
     assert.strictEqual(reset.age, DEFAULT_AGE);
     assert.strictEqual(reset.alpha, DEFAULT_ALPHA);
@@ -129,12 +138,12 @@ describe('core -> Particle', () => {
     assert.strictEqual(reset.sleep, DEFAULT_SLEEP);
     assert.strictEqual(reset.useAlpha, DEFAULT_USE_ALPHA);
     assert.strictEqual(reset.useColor, DEFAULT_USE_COLOR);
-    assert.deepEqual(values(p), [0, 0, 0]);
-    assert.deepEqual(values(v), [0, 0, 0]);
-    assert.deepEqual(values(a), [0, 0, 0]);
-    assert.deepEqual(values(old.p), [0, 0, 0]);
-    assert.deepEqual(values(old.v), [0, 0, 0]);
-    assert.deepEqual(values(old.a), [0, 0, 0]);
+    assert.deepEqual(values(position), [0, 0, 0]);
+    assert.deepEqual(values(velocity), [0, 0, 0]);
+    assert.deepEqual(values(acceleration), [0, 0, 0]);
+    assert.deepEqual(values(old.position), [0, 0, 0]);
+    assert.deepEqual(values(old.velocity), [0, 0, 0]);
+    assert.deepEqual(values(old.acceleration), [0, 0, 0]);
     assert.deepEqual(values(color), [0, 0, 0]);
     assert.isEmpty(transform);
     assert.isEmpty(behaviours);

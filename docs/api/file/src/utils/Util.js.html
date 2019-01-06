@@ -201,6 +201,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/ScreenZone.js~ScreenZone.html">ScreenZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/SphereZone.js~SphereZone.html">SphereZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_ABSTRACT">ZONE_TYPE_ABSTRACT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_BOX">ZONE_TYPE_BOX</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_LINE">ZONE_TYPE_LINE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_MESH">ZONE_TYPE_MESH</a></span></span></li>
@@ -242,25 +243,26 @@
   },
 
   setVectorByObj: function(target, pOBJ) {
-    if (pOBJ[&apos;x&apos;] !== undefined) target.p.x = pOBJ[&apos;x&apos;];
-    if (pOBJ[&apos;y&apos;] !== undefined) target.p.y = pOBJ[&apos;y&apos;];
-    if (pOBJ[&apos;z&apos;] !== undefined) target.p.z = pOBJ[&apos;z&apos;];
+    if (pOBJ[&apos;x&apos;] !== undefined) target.position.x = pOBJ[&apos;x&apos;];
+    if (pOBJ[&apos;y&apos;] !== undefined) target.position.y = pOBJ[&apos;y&apos;];
+    if (pOBJ[&apos;z&apos;] !== undefined) target.position.z = pOBJ[&apos;z&apos;];
 
-    if (pOBJ[&apos;vx&apos;] !== undefined) target.v.x = pOBJ[&apos;vx&apos;];
-    if (pOBJ[&apos;vy&apos;] !== undefined) target.v.y = pOBJ[&apos;vy&apos;];
-    if (pOBJ[&apos;vz&apos;] !== undefined) target.v.z = pOBJ[&apos;vz&apos;];
+    if (pOBJ[&apos;vx&apos;] !== undefined) target.velocity.x = pOBJ[&apos;vx&apos;];
+    if (pOBJ[&apos;vy&apos;] !== undefined) target.velocity.y = pOBJ[&apos;vy&apos;];
+    if (pOBJ[&apos;vz&apos;] !== undefined) target.velocity.z = pOBJ[&apos;vz&apos;];
 
-    if (pOBJ[&apos;ax&apos;] !== undefined) target.a.x = pOBJ[&apos;ax&apos;];
-    if (pOBJ[&apos;ay&apos;] !== undefined) target.a.y = pOBJ[&apos;ay&apos;];
-    if (pOBJ[&apos;az&apos;] !== undefined) target.a.z = pOBJ[&apos;az&apos;];
+    if (pOBJ[&apos;ax&apos;] !== undefined) target.acceleration.x = pOBJ[&apos;ax&apos;];
+    if (pOBJ[&apos;ay&apos;] !== undefined) target.acceleration.y = pOBJ[&apos;ay&apos;];
+    if (pOBJ[&apos;az&apos;] !== undefined) target.acceleration.z = pOBJ[&apos;az&apos;];
 
-    if (pOBJ[&apos;p&apos;] !== undefined) target.p.copy(pOBJ[&apos;p&apos;]);
-    if (pOBJ[&apos;v&apos;] !== undefined) target.v.copy(pOBJ[&apos;v&apos;]);
-    if (pOBJ[&apos;a&apos;] !== undefined) target.a.copy(pOBJ[&apos;a&apos;]);
+    if (pOBJ[&apos;p&apos;] !== undefined) target.position.copy(pOBJ[&apos;p&apos;]);
+    if (pOBJ[&apos;v&apos;] !== undefined) target.velocity.copy(pOBJ[&apos;v&apos;]);
+    if (pOBJ[&apos;a&apos;] !== undefined) target.acceleration.copy(pOBJ[&apos;a&apos;]);
 
-    if (pOBJ[&apos;position&apos;] !== undefined) target.p.copy(pOBJ[&apos;position&apos;]);
-    if (pOBJ[&apos;velocity&apos;] !== undefined) target.v.copy(pOBJ[&apos;velocity&apos;]);
-    if (pOBJ[&apos;accelerate&apos;] !== undefined) target.a.copy(pOBJ[&apos;accelerate&apos;]);
+    if (pOBJ[&apos;position&apos;] !== undefined) target.position.copy(pOBJ[&apos;position&apos;]);
+    if (pOBJ[&apos;velocity&apos;] !== undefined) target.velocity.copy(pOBJ[&apos;velocity&apos;]);
+    if (pOBJ[&apos;accelerate&apos;] !== undefined)
+      target.acceleration.copy(pOBJ[&apos;accelerate&apos;]);
   },
 
   //set prototype

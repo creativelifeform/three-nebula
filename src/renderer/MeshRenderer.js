@@ -37,14 +37,14 @@ export default class MeshRenderer extends BaseRenderer {
     }
 
     if (particle.target) {
-      particle.target.position.copy(particle.p);
+      particle.target.position.copy(particle.position);
       this.container.add(particle.target);
     }
   }
 
   onParticleUpdate(particle) {
     if (particle.target) {
-      particle.target.position.copy(particle.p);
+      particle.target.position.copy(particle.position);
       particle.target.rotation.set(
         particle.rotation.x,
         particle.rotation.y,

@@ -118,8 +118,8 @@
         emitter.addBehaviour(spring);
         emitter.addBehaviour(new Proton.Color('random', 'random', Infinity, Proton.easeOutQuart));
 
-        emitter.p.x = 0;
-        emitter.p.y = 0;
+        emitter.position.x = 0;
+        emitter.position.y = 0;
         emitter.emit();
 
         ///Proton.Debug.drawZone(proton,scene,zone2);
@@ -142,8 +142,8 @@
         renderer.render(scene, camera);
 
         tha += .005;
-        proton.emitters[0].p.x = Math.cos(tha) * R;
-        proton.emitters[0].p.y = Math.sin(tha) * R;
+        proton.emitters[0].position.x = Math.cos(tha) * R;
+        proton.emitters[0].position.y = Math.sin(tha) * R;
         proton.emitters[0].rotation.x += 0.01;
         var x = Math.cos(tha) * 100;
         var y = Math.sin(tha) * 100;

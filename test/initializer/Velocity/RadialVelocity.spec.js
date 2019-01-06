@@ -9,7 +9,7 @@ const { assert } = chai;
 describe('initializer -> Radial Velocity', () => {
   const radius = 13;
   const vector3d = new Proton.Vector3D(1, 2, 1);
-  const velocity = new Proton.RadialVelocity(radius, vector3d, 5);
+  const initializer = new Proton.RadialVelocity(radius, vector3d, 5);
   const particle = new Proton.Particle();
 
   it('should set the correct properties', done => {
@@ -19,9 +19,9 @@ describe('initializer -> Radial Velocity', () => {
       tha,
       _useV,
       dirVec
-    } = velocity;
+    } = initializer;
 
-    assert.equal(velocity.type, 'RadialVelocity');
+    assert.equal(initializer.type, 'RadialVelocity');
     assert.equal(a, 13);
     assert.equal(b, 13);
     assert.equal(x, 0.4082482904638631);
@@ -35,15 +35,15 @@ describe('initializer -> Radial Velocity', () => {
     done();
   });
 
-  it('should set the particle velocity', done => {
-    velocity.initialize(particle);
+  it('should set the particle initializer', done => {
+    initializer.initialize(particle);
 
     const {
-      v,
-      v: { x, y, z }
+      velocity,
+      velocity: { x, y, z }
     } = particle;
 
-    assert.instanceOf(v, Proton.Vector3D);
+    assert.instanceOf(velocity, Proton.Vector3D);
     assert.isAbove(x, 0);
     assert.isAbove(y, 0);
     assert.isAbove(z, 0);

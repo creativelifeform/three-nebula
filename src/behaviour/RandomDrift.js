@@ -77,7 +77,7 @@ export default class RandomDrift extends Behaviour {
 
   /**
    * Applies the behaviour to the particle.
-   * Mutates the particle.a property.
+   * Mutates the particle.acceleration property.
    *
    * @param {object} particle - the particle to apply the behaviour to
    * @param {number} time - engine time
@@ -94,7 +94,7 @@ export default class RandomDrift extends Behaviour {
       const ay = MathUtils.randomAToB(-this.randomForce.y, this.randomForce.y);
       const az = MathUtils.randomAToB(-this.randomForce.z, this.randomForce.z);
 
-      particle.a.addValue(ax, ay, az);
+      particle.acceleration.addValue(ax, ay, az);
 
       this.time = 0;
     }

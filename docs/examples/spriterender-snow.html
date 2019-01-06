@@ -125,8 +125,8 @@
         var sceenZone = new Proton.ScreenZone(camera, renderer, 20, "234");
         emitter.addBehaviour(new Proton.CrossZone(sceenZone, "dead"));
 
-        emitter.p.x = 0;
-        emitter.p.y = 800;
+        emitter.position.x = 0;
+        emitter.position.y = 800;
         emitter.emit();
 
         proton.addEmitter(emitter);
@@ -157,9 +157,9 @@
             pos.x = event.clientX;
             pos.y = event.clientY;
             var target = Proton.THREEUtil.toSpacePos(pos, camera, renderer.domElement);
-            emitter.p.x += (target.x - emitter.p.x) / 10;
-            emitter.p.y += (target.y - emitter.p.y) / 10;
-            emitter.p.z += (target.z - emitter.p.z) / 10;
+            emitter.position.x += (target.x - emitter.position.x) / 10;
+            emitter.position.y += (target.y - emitter.position.y) / 10;
+            emitter.position.z += (target.z - emitter.position.z) / 10;
         }
     }
 

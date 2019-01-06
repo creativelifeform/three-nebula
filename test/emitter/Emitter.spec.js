@@ -76,14 +76,14 @@ describe('emitter -> Emitter', () => {
 
   it('should set the emitter postion and return the emitter', done => {
     const emitter = new Emitter();
-    const position = { x: 4, y: 2, z: 9 };
+    const _position = { x: 4, y: 2, z: 9 };
 
-    assert.instanceOf(emitter.setPosition(position), Emitter);
+    assert.instanceOf(emitter.setPosition(_position), Emitter);
 
-    const { p } = emitter;
+    const { position } = emitter;
     const { x, y, z } = position;
 
-    assert.deepEqual(Object.values(p), [x, y, z]);
+    assert.deepEqual(Object.values(position), [x, y, z]);
 
     done();
   });

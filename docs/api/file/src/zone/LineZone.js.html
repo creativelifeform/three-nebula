@@ -201,6 +201,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/ScreenZone.js~ScreenZone.html">ScreenZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/SphereZone.js~SphereZone.html">SphereZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_ABSTRACT">ZONE_TYPE_ABSTRACT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_BOX">ZONE_TYPE_BOX</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_LINE">ZONE_TYPE_LINE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_MESH">ZONE_TYPE_MESH</a></span></span></li>
@@ -214,6 +215,7 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/zone/LineZone.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Vector3D from &apos;../math/Vector3D&apos;;
 import Zone from &apos;./Zone&apos;;
+import { ZONE_TYPE_LINE as type } from &apos;./types&apos;;
 
 export default class LineZone extends Zone {
   /**
@@ -232,7 +234,7 @@ export default class LineZone extends Zone {
    * @constructor
    */
   constructor(x1, y1, z1, x2, y2, z2) {
-    super();
+    super(type);
 
     if (x1 instanceof Vector3D) {
       this.x1 = x1.x;

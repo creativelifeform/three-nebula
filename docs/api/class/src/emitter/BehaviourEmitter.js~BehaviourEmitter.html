@@ -201,6 +201,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/ScreenZone.js~ScreenZone.html">ScreenZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/SphereZone.js~SphereZone.html">SphereZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_ABSTRACT">ZONE_TYPE_ABSTRACT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_BOX">ZONE_TYPE_BOX</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_LINE">ZONE_TYPE_LINE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_MESH">ZONE_TYPE_MESH</a></span></span></li>
@@ -464,7 +465,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-a">a</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-acceleration">acceleration</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
         </p>
       </div>
       <div>
@@ -841,13 +842,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-p">p</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-parent">parent</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>The particle&apos;s position</p>
+        <div data-ice="description"><p>The particle&apos;s parent</p>
 </div>
       </div>
     </td>
@@ -870,13 +871,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-parent">parent</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-position">position</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>The particle&apos;s parent</p>
+        <div data-ice="description"><p>The particle&apos;s position</p>
 </div>
       </div>
     </td>
@@ -1131,7 +1132,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-v">v</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html#instance-member-velocity">velocity</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
         </p>
       </div>
       <div>
@@ -2446,7 +2447,7 @@ This enables the emitter to emit particles.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-setPosition">setPosition</a></span></span><span class="code" data-ice="signature">(position: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-setPosition">setPosition</a></span></span><span class="code" data-ice="signature">(newPosition: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
       <div>

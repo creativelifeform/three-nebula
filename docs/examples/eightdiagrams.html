@@ -152,7 +152,7 @@
             ),
             new Proton.Force(0, 0, -20)
           ])
-          .setPosition({ x, y })
+          // .setPosition({ x, y })
           .emit();
       }
 
@@ -183,11 +183,11 @@
 
       function animateEmitter() {
         tha += 0.13;
-        emitter1.p.x = radius * Math.cos(tha);
-        emitter1.p.y = radius * Math.sin(tha);
+        emitter1.position.x = radius * Math.cos(tha);
+        emitter1.position.y = radius * Math.sin(tha);
 
-        emitter2.p.x = radius * Math.cos(tha + Math.PI / 2);
-        emitter2.p.y = radius * Math.sin(tha + Math.PI / 2);
+        emitter2.position.x = radius * Math.cos(tha + Math.PI / 2);
+        emitter2.position.y = radius * Math.sin(tha + Math.PI / 2);
       }
 
       function onWindowResize() {}

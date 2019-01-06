@@ -16,13 +16,13 @@ export const preset = {
   scale: 11,
   useColor: true,
   useAlpha: true,
-  p: new Vector3D(1, 2, 2),
-  v: new Vector3D(1, 2, 2),
-  a: new Vector3D(1, 2, 2),
+  position: new Vector3D(1, 2, 2),
+  velocity: new Vector3D(1, 2, 2),
+  acceleration: new Vector3D(1, 2, 2),
   old: {
-    p: new Vector3D(0, 3, 1),
-    v: new Vector3D(5, 1, 5),
-    a: new Vector3D(0, 0, 1)
+    position: new Vector3D(0, 3, 1),
+    velocity: new Vector3D(5, 1, 5),
+    acceleration: new Vector3D(0, 0, 1)
   },
   behaviours: ['a', 'b', 'c'],
   transform: {

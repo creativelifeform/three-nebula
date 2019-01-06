@@ -129,8 +129,8 @@
         emitter.addBehaviour(new Proton.Scale(new Proton.Span(2, 3.5), 0));
         emitter.addBehaviour(new Proton.Gravity(6));
         emitter.addBehaviour(new Proton.Color('#FF0026', ['#ffff00', '#ffff11'], Infinity, Proton.easeOutSine));
-        emitter.p.x = 0;
-        emitter.p.y = -150;
+        emitter.position.x = 0;
+        emitter.position.y = -150;
         emitter.emit();
         return emitter;
     }
@@ -146,9 +146,9 @@
             pos.x = event.clientX;
             pos.y = event.clientY;
             var target = Proton.THREEUtil.toSpacePos(pos, camera, renderer.domElement);
-            emitter.p.x += (target.x - emitter.p.x) / 10;
-            emitter.p.y += (target.y - emitter.p.y) / 10;
-            emitter.p.z += (target.z - emitter.p.z) / 10;
+            emitter.position.x += (target.x - emitter.position.x) / 10;
+            emitter.position.y += (target.y - emitter.position.y) / 10;
+            emitter.position.z += (target.z - emitter.position.z) / 10;
         }
     }
 

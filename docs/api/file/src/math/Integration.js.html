@@ -201,6 +201,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/ScreenZone.js~ScreenZone.html">ScreenZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/SphereZone.js~SphereZone.html">SphereZone</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/zone/Zone.js~Zone.html">Zone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_ABSTRACT">ZONE_TYPE_ABSTRACT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_BOX">ZONE_TYPE_BOX</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_LINE">ZONE_TYPE_LINE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZONE_TYPE_MESH">ZONE_TYPE_MESH</a></span></span></li>
@@ -227,13 +228,13 @@ const eulerIntegration = (particle, time, damping) =&gt; {
     return;
   }
 
-  particle.old.p.copy(particle.p);
-  particle.old.v.copy(particle.v);
-  particle.a.scalar(1 / particle.mass);
-  particle.v.add(particle.a.scalar(time));
-  particle.p.add(particle.old.v.scalar(time));
-  damping &amp;&amp; particle.v.scalar(damping);
-  particle.a.clear();
+  particle.old.position.copy(particle.position);
+  particle.old.velocity.copy(particle.velocity);
+  particle.acceleration.scalar(1 / particle.mass);
+  particle.velocity.add(particle.acceleration.scalar(time));
+  particle.position.add(particle.old.velocity.scalar(time));
+  damping &amp;&amp; particle.velocity.scalar(damping);
+  particle.acceleration.clear();
 };
 
 /**

@@ -134,14 +134,14 @@ export default class Emitter extends Particle {
   /**
    * Sets the position of the emitter.
    *
-   * @param {object} position - an object containing x, y and z props
+   * @param {object} newPosition - an object the new x, y and z props
    * @return {Emitter}
    */
-  setPosition(position = {}) {
-    const { p } = this;
-    const { x = p.x, y = p.y, z = p.z } = position;
+  setPosition(newPosition = {}) {
+    const { position } = this;
+    const { x = position.x, y = position.y, z = position.z } = newPosition;
 
-    this.p.set(x, y, z);
+    this.position.set(x, y, z);
 
     return this;
   }

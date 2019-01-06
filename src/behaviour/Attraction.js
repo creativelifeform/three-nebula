@@ -112,7 +112,7 @@ export default class Attraction extends Behaviour {
     super.applyBehaviour(particle, time, index);
 
     this.attractionForce.copy(this.targetPosition);
-    this.attractionForce.sub(particle.p);
+    this.attractionForce.sub(particle.position);
 
     this.lengthSq = this.attractionForce.lengthSq();
 
@@ -123,7 +123,8 @@ export default class Attraction extends Behaviour {
       this.attractionForce.normalize();
       this.attractionForce.scalar(1 - this.lengthSq / this.radiusSq);
       this.attractionForce.scalar(this.force);
-      particle.a.add(this.attractionForce);
+
+      particle.acceleration.add(this.attractionForce);
     }
   }
 

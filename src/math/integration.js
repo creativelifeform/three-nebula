@@ -13,13 +13,13 @@ const eulerIntegration = (particle, time, damping) => {
     return;
   }
 
-  particle.old.p.copy(particle.p);
-  particle.old.v.copy(particle.v);
-  particle.a.scalar(1 / particle.mass);
-  particle.v.add(particle.a.scalar(time));
-  particle.p.add(particle.old.v.scalar(time));
-  damping && particle.v.scalar(damping);
-  particle.a.clear();
+  particle.old.position.copy(particle.position);
+  particle.old.velocity.copy(particle.velocity);
+  particle.acceleration.scalar(1 / particle.mass);
+  particle.velocity.add(particle.acceleration.scalar(time));
+  particle.position.add(particle.old.velocity.scalar(time));
+  damping && particle.velocity.scalar(damping);
+  particle.acceleration.clear();
 };
 
 /**

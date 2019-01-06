@@ -91,7 +91,7 @@ describe('behaviour -> Attraction', () => {
   it('should add the attraction force to the particle acceleration', done => {
     const attraction = new Proton.Attraction();
     const particle = new Proton.Particle();
-    const addSpy = spy(particle.a, 'add');
+    const addSpy = spy(particle.acceleration, 'add');
 
     attraction.targetPosition.set(100, 333, 664);
 
@@ -103,7 +103,7 @@ describe('behaviour -> Attraction', () => {
 
     addSpy.restore();
 
-    assert.deepEqual(Object.values(particle.a), [
+    assert.deepEqual(Object.values(particle.acceleration), [
       0.23744744021624944,
       0.7906999759201108,
       1.5766510030358964

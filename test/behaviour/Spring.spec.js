@@ -43,10 +43,10 @@ describe('behaviour -> Spring', () => {
 
     behaviour.applyBehaviour(particle, TIME);
 
-    const { v, old } = particle;
+    const { velocity, old } = particle;
 
-    assert.deepEqual(Object.values(v), [0.2, 0.5, 0.6000000000000001]);
-    assert.deepEqual(Object.values(old.v), [0, 0, 0]);
+    assert.deepEqual(Object.values(velocity), [0.2, 0.5, 0.6000000000000001]);
+    assert.deepEqual(Object.values(old.velocity), [0, 0, 0]);
 
     done();
   });

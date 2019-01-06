@@ -31,15 +31,15 @@ describe('behaviour -> Gravity', () => {
 
     behaviour.applyBehaviour(particle, TIME);
 
-    const { a, old } = particle;
+    const { acceleration, old } = particle;
 
-    assert.instanceOf(a, Proton.Vector3D);
-    assert.strictEqual(a.x, 0);
-    assert.strictEqual(a.y, -100);
-    assert.strictEqual(a.z, 0);
-    assert.strictEqual(old.a.x, 0);
-    assert.strictEqual(old.a.y, 0);
-    assert.strictEqual(old.a.z, 0);
+    assert.instanceOf(acceleration, Proton.Vector3D);
+    assert.strictEqual(acceleration.x, 0);
+    assert.strictEqual(acceleration.y, -100);
+    assert.strictEqual(acceleration.z, 0);
+    assert.strictEqual(old.acceleration.x, 0);
+    assert.strictEqual(old.acceleration.y, 0);
+    assert.strictEqual(old.acceleration.z, 0);
 
     done();
   });

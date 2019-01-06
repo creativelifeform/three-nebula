@@ -62,7 +62,7 @@ export default class SphereZone extends Zone {
    * @return void
    */
   _dead(particle) {
-    var d = particle.p.distanceTo(this);
+    var d = particle.position.distanceTo(this);
 
     if (d - particle.radius > this.radius) particle.dead = true;
   }
@@ -101,16 +101,16 @@ SphereZone.prototype._bound = (function() {
     k;
 
   return function(particle) {
-    var d = particle.p.distanceTo(this);
+    var d = particle.position.distanceTo(this);
 
     if (d + particle.radius >= this.radius) {
       normal
-        .copy(particle.p)
+        .copy(particle.position)
         .sub(this)
         .normalize();
-      v.copy(particle.v);
+      v.copy(particle.velocity);
       k = 2 * v.dot(normal);
-      particle.v.sub(normal.scalar(k));
+      particle.velocity.sub(normal.scalar(k));
     }
   };
 })();

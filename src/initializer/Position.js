@@ -88,8 +88,8 @@ Position.prototype.initialize = (function() {
 
     zone.getPosition();
 
-    target.p.x = zone.vector.x;
-    target.p.y = zone.vector.y;
-    target.p.z = zone.vector.z;
+    target.position.x = zone.vector.x;
+    target.position.y = zone.vector.y;
+    target.position.z = zone.vector.z;
   };
 })();
