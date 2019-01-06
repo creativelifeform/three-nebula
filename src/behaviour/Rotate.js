@@ -167,7 +167,7 @@ export default class Rotate extends Behaviour {
    * @return void
    */
   applyBehaviour(particle, time, index) {
-    super.applyBehaviour(particle, time, index);
+    this.energize(particle, time, index);
 
     switch (this.rotationType) {
       // orients the particle in the direction it is moving

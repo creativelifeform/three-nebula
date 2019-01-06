@@ -54,7 +54,7 @@ export default class CrossZone extends Behaviour {
    * @return void
    */
   applyBehaviour(particle, time, index) {
-    super.applyBehaviour(particle, time, index);
+    this.energize(particle, time, index);
 
     this.zone.crossing.call(this.zone, particle);
   }

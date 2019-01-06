@@ -64,7 +64,7 @@ export default class Color extends Behaviour {
   }
 
   applyBehaviour(particle, time, index) {
-    super.applyBehaviour(particle, time, index);
+    this.energize(particle, time, index);
 
     if (!this._same) {
       particle.color.r = MathUtils.lerp(
