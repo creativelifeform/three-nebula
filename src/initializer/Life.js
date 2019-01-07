@@ -1,5 +1,6 @@
 import Initializer from './Initializer';
 import { createSpan } from '../math';
+import { INITIALIZER_TYPE_LIFE as type } from './types';
 
 /**
  * Sets the life property on initialized particles.
@@ -15,7 +16,7 @@ export default class Life extends Initializer {
    * @return void
    */
   constructor(min, max, center) {
-    super();
+    super(type);
 
     /**
      * @desc The life span of the particle.
@@ -31,8 +32,25 @@ export default class Life extends Initializer {
    * @return void
    */
   initialize(particle) {
-    if (this.lifePan.a == Infinity || this.lifePan.a == 'infi')
+    if (this.lifePan.a == Infinity || this.lifePan.a == 'infi') {
       particle.life = Infinity;
-    else particle.life = this.lifePan.getValue();
+    } else {
+      particle.life = this.lifePan.getValue();
+    }
+  }
+
+  /**
+   * Creates a Life initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @property {number} json.min - The minimum life time
+   * @property {number} json.max - The maximum life time
+   * @property {number} json.center - The center of the life time
+   * @return {Life}
+   */
+  static fromJSON(json) {
+    const { min, max, center = false } = json;
+
+    return new Life(min, max, center);
   }
 }

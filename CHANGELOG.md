@@ -5,27 +5,60 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [1.0.13] - 2018-12-11
+## `v2.0.0` - 2019-01-07
+
+### Added
+
+- `initializer/Velocity` module
+- `VectorVelocity`, `PolarVelocity` and `RadialVelocity` classes to break up mixed argument types
+- `math/ColorSpan` class, which is to be specifically used for spans of colors that can do randomisation
+- Base `energize` method on the `Behaviour` abstract class. Sub classes now call this method in their `applyBehaviour` method rather than the parent's `applyBehaviour` method
+- `core/fromJSON` which provides a way to create Proton instances from JSON
+- `fromJSON` static method to the core Proton class and all supported initializers and behaviours
+- An example to illustrate how to use the `fromJSON` static method
+- `types.js` file to `initializer`, `behaviour`, `renderer` and `zone` modules which export class name types as constants
+- Tests to cover the new `fromJSON` functionality
+
+### Changed
+
+- All examples which used deprecated methods/classes
+- There is no longer a single `Velocity` initializer, this class is now the base class for the three kinds of velocity initializers provided
+- `math/ArraySpan` no longer takes the string `'random'` as an argument to the constructor and will no longer be able to return random colors from `getValue`
+- Tests updated
+- Moved `initializer` and `behaviour` tests outside of `emitter` test module into the root of the `tests` module
+- Pool now throws an error if it can neither instantiate or clone the object passed
+- Particles and Emitters no longer have `p`, `v`, and `a`, props, rather, these are now explicitly spelled out as `position`, `velocity` and `acceleration`
+- The same goes for the `old` cache object
+- All examples have been updated
+- The `math/Integration` class is now gone and has been replaced by `math/integration` functions
+
+### Removed
+
+- All deprecated methods and classes
+- `initializer/Velocity.js`
+- Unused args from Emitter `createParticle` and `setupParticle` methods
+
+## `v1.0.13` - 2018-12-11
 
 ### Added
 
 - Unit tests covering the `emitter/Emitter` class
 - Better coverage for the `behaviour/Attraction` and `behaviour/Gravity` classes
 
-## [1.0.12] - 2018-12-06
+## `v1.0.12` - 2018-12-06
 
 ### Added
 
 - Unit tests covering the `core/Pool` class
 - Doc blocks for this class
 
-## [1.0.11] - 2018-12-03
+## `v1.0.11` - 2018-12-03
 
 ### Added
 
 - Unit tests fully covering the `core/Proton` class
 
-## [1.0.10] - 2018-12-02
+## `v1.0.10` - 2018-12-02
 
 ### Added
 
@@ -36,7 +69,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Refactored the `Particle.reset` method and constructor
 
-## [1.0.9] - 2018-12-02
+## `v1.0.9` - 2018-12-02
 
 ### Changed
 
@@ -44,7 +77,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - All imports / exports / tests updated
 - `Behaviour` constructor refactored to add default args. Also added more doc blocks
 
-## [1.0.8] - 2018-12-02
+## `v1.0.8` - 2018-12-02
 
 ### Added
 
@@ -54,7 +87,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - The base `Initialize` class is now `Initializer`, will change the `initialize` module to `initializer` when some re-architecting is done
 
-## [1.0.7] - 2018-12-01
+## `v1.0.7` - 2018-12-01
 
 ## Added
 
@@ -62,7 +95,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Integration with coveralls
 - Some esdoc doc blocks
 
-## [1.0.6] - 2018-11-29
+## `v1.0.6` - 2018-11-29
 
 ### Added
 
@@ -79,7 +112,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - There was a bug in the `Attraction` constructor that was causing `force` to be set to `NaN`, this has been fixed
 
-## [1.0.5] - 2018-11-28
+## `v1.0.5` - 2018-11-28
 
 ### Fixed
 
@@ -90,7 +123,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - A `NOTES.md` to keep track of notes on the codebase as understanding of it improves
 - Some `esdoc` compatible doc blocks to some classes and methods. There's still a tonne of work to be done here.
 
-## [1.0.4] - 2018-11-26
+## `v1.0.4` - 2018-11-26
 
 ### Fixed
 
@@ -100,14 +133,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `spriterender-ghost-ball` example
 
-## [1.0.3] - 2018-11-24
+## `v1.0.3` - 2018-11-24
 
 ### Fixed
 
 - `Gravity` class was overriding a parent method when this was unnecessary, this was breaking the behaviour
 - The `helloworld` example's box meshes were being mutated by the debugger util somehow, I've commented that out for now
 
-## [1.0.2] - 2018-11-24
+## `v1.0.2` - 2018-11-24
 
 ### Fixed
 
@@ -122,13 +155,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `examples` is now `docs` so that GitHub pages can just use this directory
 
-## [1.0.1] - 2018-11-24
+## `v1.0.1` - 2018-11-24
 
 ### Changed
 
 - Package name to `@rohandeshpande/three-proton`
 
-## [1.0.0] - 2018-11-24
+## `v1.0.0` - 2018-11-24
 
 ### Added
 

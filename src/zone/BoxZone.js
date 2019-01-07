@@ -1,6 +1,7 @@
 import MathUtils from '../math/MathUtils';
 import Util from '../utils/Util';
 import Zone from './Zone';
+import { ZONE_TYPE_BOX as type } from './types';
 
 export default class BoxZone extends Zone {
   /**
@@ -19,7 +20,7 @@ export default class BoxZone extends Zone {
    * @constructor
    */
   constructor(a, b, c, d, e, f) {
-    super();
+    super(type);
 
     // TODO this reassigning of arguments is pretty dangerous, need to fix it.
     // eslint-disable-next-line
@@ -48,7 +49,9 @@ export default class BoxZone extends Zone {
     this.width = w;
     this.height = h;
     this.depth = d;
+    // TODO Set this via an argument to the constructor
     this.friction = 0.85;
+    // TODO Set this via an argument to the constructor
     this.max = 6;
   }
 
@@ -70,97 +73,97 @@ export default class BoxZone extends Zone {
   }
 
   _dead(particle) {
-    if (particle.p.x + particle.radius < this.x - this.width / 2)
+    if (particle.position.x + particle.radius < this.x - this.width / 2)
       particle.dead = true;
-    else if (particle.p.x - particle.radius > this.x + this.width / 2)
-      particle.dead = true;
-
-    if (particle.p.y + particle.radius < this.y - this.height / 2)
-      particle.dead = true;
-    else if (particle.p.y - particle.radius > this.y + this.height / 2)
+    else if (particle.position.x - particle.radius > this.x + this.width / 2)
       particle.dead = true;
 
-    if (particle.p.z + particle.radius < this.z - this.depth / 2)
+    if (particle.position.y + particle.radius < this.y - this.height / 2)
       particle.dead = true;
-    else if (particle.p.z - particle.radius > this.z + this.depth / 2)
+    else if (particle.position.y - particle.radius > this.y + this.height / 2)
+      particle.dead = true;
+
+    if (particle.position.z + particle.radius < this.z - this.depth / 2)
+      particle.dead = true;
+    else if (particle.position.z - particle.radius > this.z + this.depth / 2)
       particle.dead = true;
   }
 
   _bound(particle) {
-    if (particle.p.x - particle.radius < this.x - this.width / 2) {
-      particle.p.x = this.x - this.width / 2 + particle.radius;
-      particle.v.x *= -this.friction;
+    if (particle.position.x - particle.radius < this.x - this.width / 2) {
+      particle.position.x = this.x - this.width / 2 + particle.radius;
+      particle.velocity.x *= -this.friction;
       this._static(particle, 'x');
-    } else if (particle.p.x + particle.radius > this.x + this.width / 2) {
-      particle.p.x = this.x + this.width / 2 - particle.radius;
-      particle.v.x *= -this.friction;
+    } else if (particle.position.x + particle.radius > this.x + this.width / 2) {
+      particle.position.x = this.x + this.width / 2 - particle.radius;
+      particle.velocity.x *= -this.friction;
       this._static(particle, 'x');
     }
 
-    if (particle.p.y - particle.radius < this.y - this.height / 2) {
-      particle.p.y = this.y - this.height / 2 + particle.radius;
-      particle.v.y *= -this.friction;
+    if (particle.position.y - particle.radius < this.y - this.height / 2) {
+      particle.position.y = this.y - this.height / 2 + particle.radius;
+      particle.velocity.y *= -this.friction;
       this._static(particle, 'y');
-    } else if (particle.p.y + particle.radius > this.y + this.height / 2) {
-      particle.p.y = this.y + this.height / 2 - particle.radius;
-      particle.v.y *= -this.friction;
+    } else if (particle.position.y + particle.radius > this.y + this.height / 2) {
+      particle.position.y = this.y + this.height / 2 - particle.radius;
+      particle.velocity.y *= -this.friction;
       this._static(particle, 'y');
     }
 
-    if (particle.p.z - particle.radius < this.z - this.depth / 2) {
-      particle.p.z = this.z - this.depth / 2 + particle.radius;
-      particle.v.z *= -this.friction;
+    if (particle.position.z - particle.radius < this.z - this.depth / 2) {
+      particle.position.z = this.z - this.depth / 2 + particle.radius;
+      particle.velocity.z *= -this.friction;
       this._static(particle, 'z');
-    } else if (particle.p.z + particle.radius > this.z + this.depth / 2) {
-      particle.p.z = this.z + this.depth / 2 - particle.radius;
-      particle.v.z *= -this.friction;
+    } else if (particle.position.z + particle.radius > this.z + this.depth / 2) {
+      particle.position.z = this.z + this.depth / 2 - particle.radius;
+      particle.velocity.z *= -this.friction;
       this._static(particle, 'z');
     }
   }
 
   _static(particle, axis) {
-    if (particle.v[axis] * particle.a[axis] > 0) return;
+    if (particle.velocity[axis] * particle.acceleration[axis] > 0) return;
     if (
-      Math.abs(particle.v[axis]) <
-      Math.abs(particle.a[axis]) * 0.0167 * this.max
+      Math.abs(particle.velocity[axis]) <
+      Math.abs(particle.acceleration[axis]) * 0.0167 * this.max
     ) {
-      particle.v[axis] = 0;
-      particle.a[axis] = 0;
+      particle.velocity[axis] = 0;
+      particle.acceleration[axis] = 0;
     }
   }
 
   _cross(particle) {
     if (
-      particle.p.x + particle.radius < this.x - this.width / 2 &&
-      particle.v.x <= 0
+      particle.position.x + particle.radius < this.x - this.width / 2 &&
+      particle.velocity.x <= 0
     )
-      particle.p.x = this.x + this.width / 2 + particle.radius;
+      particle.position.x = this.x + this.width / 2 + particle.radius;
     else if (
-      particle.p.x - particle.radius > this.x + this.width / 2 &&
-      particle.v.x >= 0
+      particle.position.x - particle.radius > this.x + this.width / 2 &&
+      particle.velocity.x >= 0
     )
-      particle.p.x = this.x - this.width / 2 - particle.radius;
+      particle.position.x = this.x - this.width / 2 - particle.radius;
 
     if (
-      particle.p.y + particle.radius < this.y - this.height / 2 &&
-      particle.v.y <= 0
+      particle.position.y + particle.radius < this.y - this.height / 2 &&
+      particle.velocity.y <= 0
     )
-      particle.p.y = this.y + this.height / 2 + particle.radius;
+      particle.position.y = this.y + this.height / 2 + particle.radius;
     else if (
-      particle.p.y - particle.radius > this.y + this.height / 2 &&
-      particle.v.y >= 0
+      particle.position.y - particle.radius > this.y + this.height / 2 &&
+      particle.velocity.y >= 0
     )
-      particle.p.y = this.y - this.height / 2 - particle.radius;
+      particle.position.y = this.y - this.height / 2 - particle.radius;
 
     if (
-      particle.p.z + particle.radius < this.z - this.depth / 2 &&
-      particle.v.z <= 0
+      particle.position.z + particle.radius < this.z - this.depth / 2 &&
+      particle.velocity.z <= 0
     )
-      particle.p.z = this.z + this.depth / 2 + particle.radius;
+      particle.position.z = this.z + this.depth / 2 + particle.radius;
     else if (
-      particle.p.z - particle.radius > this.z + this.depth / 2 &&
-      particle.v.z >= 0
+      particle.position.z - particle.radius > this.z + this.depth / 2 &&
+      particle.velocity.z >= 0
     )
-      particle.p.z = this.z - this.depth / 2 - particle.radius;
+      particle.position.z = this.z - this.depth / 2 - particle.radius;
   }
 }

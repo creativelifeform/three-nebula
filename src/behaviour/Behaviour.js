@@ -1,4 +1,6 @@
-import { DEFAULT_BEHAVIOUR_EASING } from './constants';
+import { DEFAULT_BEHAVIOUR_EASING, DEFAULT_LIFE } from './constants';
+
+import { BEHAVIOUR_TYPE_ABSTRACT } from './types';
 import { MEASURE } from '../constants';
 import { uid } from '../utils';
 
@@ -15,7 +17,17 @@ export default class Behaviour {
    * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
    * @return void
    */
-  constructor(life = Infinity, easing = DEFAULT_BEHAVIOUR_EASING) {
+  constructor(
+    life = Infinity,
+    easing = DEFAULT_BEHAVIOUR_EASING,
+    type = BEHAVIOUR_TYPE_ABSTRACT
+  ) {
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
+
     /**
      * @desc The behaviour's id
      * @type {string} id
@@ -51,14 +63,6 @@ export default class Behaviour {
      * @type {boolean}
      */
     this.dead = false;
-
-    /**
-     * The behaviour name;
-     * @property name
-     * @type {string}
-     */
-
-    this.name = 'Behaviour';
   }
 
   /**
@@ -68,8 +72,8 @@ export default class Behaviour {
    * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
    */
   reset(life = Infinity, easing = DEFAULT_BEHAVIOUR_EASING) {
-    this.life = life;
-    this.easing = easing;
+    this.life = life || DEFAULT_LIFE;
+    this.easing = easing || DEFAULT_BEHAVIOUR_EASING;
   }
 
   /**
@@ -101,20 +105,25 @@ export default class Behaviour {
   initialize(particle) {} // eslint-disable-line
 
   /**
+   * Apply behaviour to the particle as a factor of time.
+   *
+   * @abstract
+   * @param {Particle} particle - The particle to apply the behaviour to
+   * @param {Number} time - the proton integration time
+   * @return mixed
+   */
+  applyBehaviour(particle, time) {} // eslint-disable-line
+
+  /**
    * Compares the age of the behaviour vs integration time and determines
    * if the behaviour should be set to dead or not.
    * Sets the behaviour energy as a factor of particle age and life.
-   *
-   * TODO It's a little weird that sub class behaviours override this method and
-   * also call it from within their own applyBehaviour method. Since this method
-   * primarily sets energy, consider renaming it to setEnergy or energise. Then
-   * each sub class can simply call this.setEnergy instead of super.applyBehaviour.
    *
    * @param {Particle} particle - The particle to apply the behaviour to
    * @param {Number} time - the proton integration time
    * @return void
    */
-  applyBehaviour(particle, time) {
+  energize(particle, time) {
     if (this.dead) {
       return;
     }
@@ -139,4 +148,13 @@ export default class Behaviour {
    * @abstract
    */
   destroy() {}
+
+  /**
+   * Returns a new instance of the behaviour from the JSON object passed.
+   *
+   * @abstract
+   * @param {object} json - JSON object containing the required constructor properties
+   * @return {Behaviour}
+   */
+  fromJSON(json) {} // eslint-disable-line
 }

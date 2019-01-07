@@ -1,7 +1,6 @@
 import Initializer from './Initializer';
-import Util from '../utils/Util';
 import { createArraySpan } from '../math';
-
+import { INITIALIZER_TYPE_BODY as type } from './types';
 /**
  * Sets the body property on initialized particles.
  *
@@ -10,16 +9,17 @@ export default class Body extends Initializer {
   /**
    * Constructs a Body initalizer instance.
    *
-   * @param {string|number} body - The color for the particle body
+   * @param {string|number|object} body - The content for the particle body, can
+   * be a color or an object (mesh)
    * @param {?number} w - The width of the particle body
    * @param {?number} h - The height of the particle body
    * @return void
    */
   constructor(body, w, h) {
-    super();
+    super(type);
 
     /**
-     * @desc The color for the particle body
+     * @desc The content for the particle body
      * @type {ArraySpan}
      */
     this.body = createArraySpan(body);
@@ -34,7 +34,7 @@ export default class Body extends Initializer {
      * @desc The height of the particle Body
      * @type {number}
      */
-    this.h = Util.initValue(h, this.w);
+    this.h = h || w;
   }
 
   /**
@@ -55,5 +55,20 @@ export default class Body extends Initializer {
     } else {
       particle.body = body;
     }
+  }
+
+  /**
+   * Creates a Body initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @property {number} json.body - The color for the particle body
+   * @property {number} json.width - The width of the particle body
+   * @property {number} json.height - The height of the particle body
+   * @return {Body}
+   */
+  static fromJSON(json) {
+    const { body, width, height } = json;
+
+    return new Body(body, width, height);
   }
 }

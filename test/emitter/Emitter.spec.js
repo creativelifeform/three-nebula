@@ -1,6 +1,7 @@
 /*global describe, it */
 
 import * as Proton from '../../src';
+import * as integration from '../../src/math/integration';
 
 import {
   DEFAULT_BIND_EMITTER,
@@ -13,7 +14,6 @@ import EventDispatcher, {
   PARTICLE_UPDATE
 } from '../../src/events/';
 
-import { Integration } from '../../src/math';
 import { TIME } from '../constants';
 import chai from 'chai';
 import sinon from 'sinon';
@@ -27,6 +27,7 @@ describe('emitter -> Emitter', () => {
     const emitter = new Emitter();
 
     const {
+      type,
       particles,
       initializers,
       behaviours,
@@ -39,6 +40,7 @@ describe('emitter -> Emitter', () => {
       eventDispatcher
     } = emitter;
 
+    assert.equal(type, 'Emitter');
     assert.isArray(particles);
     assert.isEmpty(particles);
     assert.isArray(initializers);
@@ -74,14 +76,14 @@ describe('emitter -> Emitter', () => {
 
   it('should set the emitter postion and return the emitter', done => {
     const emitter = new Emitter();
-    const position = { x: 4, y: 2, z: 9 };
+    const _position = { x: 4, y: 2, z: 9 };
 
-    assert.instanceOf(emitter.setPosition(position), Emitter);
+    assert.instanceOf(emitter.setPosition(_position), Emitter);
 
-    const { p } = emitter;
+    const { position } = emitter;
     const { x, y, z } = position;
 
-    assert.deepEqual(Object.values(p), [x, y, z]);
+    assert.deepEqual(Object.values(position), [x, y, z]);
 
     done();
   });
@@ -155,7 +157,7 @@ describe('emitter -> Emitter', () => {
     const particle = emitter.createParticle(initializer, behaviour);
 
     assert.instanceOf(particle, Proton.Particle);
-    assert(setupParticleSpy.calledOnceWith(particle, initializer, behaviour));
+    assert(setupParticleSpy.calledOnceWith(particle));
     assert(protonDispatchSpy.secondCall.calledWith(PARTICLE_CREATED, particle));
     assert(emitterDispatchSpy.notCalled);
 
@@ -607,7 +609,7 @@ describe('emitter -> Emitter -> update', () => {
 describe('emitter -> Emitter -> integrate', () => {
   it('should integrate the emitter', done => {
     const emitter = new Emitter();
-    const integrationSpy = spy(Integration.prototype, 'integrate');
+    const integrationSpy = spy(integration, 'integrate');
 
     emitter.integrate(TIME);
 
@@ -620,7 +622,7 @@ describe('emitter -> Emitter -> integrate', () => {
 
   it('should update and integrate each particle', done => {
     const emitter = new Emitter();
-    const integrationSpy = spy(Integration.prototype, 'integrate');
+    const integrationSpy = spy(integration, 'integrate');
     const particleUpdateSpy = spy(Proton.Particle.prototype, 'update');
     const particlesCount = 33;
 

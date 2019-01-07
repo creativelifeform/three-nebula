@@ -1,5 +1,12 @@
+import { MATH_TYPE_BOX as type } from './types';
+
 export default class Box {
   constructor(x, y, z, w, h, d) {
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
     this.x = x;
     this.y = y;
     this.z = z;

@@ -1,5 +1,6 @@
 import Util from '../utils/Util';
 import Zone from './Zone';
+import { ZONE_TYPE_POINT as type } from './types';
 
 export default class PointZone extends Zone {
   /**
@@ -15,7 +16,7 @@ export default class PointZone extends Zone {
    * @constructor
    */
   constructor(a, b, c) {
-    super();
+    super(type);
 
     // TODO see below, these should probably be assigned properly
     // eslint-disable-next-line

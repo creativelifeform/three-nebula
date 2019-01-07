@@ -1,3 +1,5 @@
+import { INITIALIZER_TYPE_ABSTRACT } from './types';
+
 /**
  * The base Emitter / Particle property class.
  *
@@ -9,8 +11,8 @@ export default class Initializer {
    *
    * @return void
    */
-  constructor() {
-    this.name = 'Initializer';
+  constructor(type = INITIALIZER_TYPE_ABSTRACT) {
+    this.type = type;
   }
 
   /**
@@ -43,4 +45,13 @@ export default class Initializer {
    * @abstract
    */
   initialize(target) {} // eslint-disable-line
+
+  /**
+   * Returns a new instance of the initializer from the JSON object passed.
+   *
+   * @abstract
+   * @param {object} json - JSON object containing the required constructor properties
+   * @return {Behaviour}
+   */
+  static fromJSON(json) {} // eslint-disable-line
 }

@@ -1,45 +1,72 @@
 import Behaviour from './Behaviour';
 import { Vector3D } from '../math';
+import { BEHAVIOUR_TYPE_COLLISION as type } from './types';
 
+/**
+ * Behaviour that causes particles to move away from other particles they collide with.
+ */
 export default class Collision extends Behaviour {
   /**
-   * The Scale class is the base for the other Behaviour
+   * Constructs a Collision behaviour instance.
    *
-   * @class Behaviour
-   * @constructor
+   * @param {Emitter} emitter - The emitter containing the particles to detect collisions against
+   * @param {boolean} useMass - Determiens whether to use mass or not
+   * @param {function} onCollide - Function to call when particles collide
+   * @param {number} life - The life of the particle
+   * @param {function} easing - The behaviour's decaying trend
+   * @return void
    */
-  //can use Collision(emitter,true,function(){}) or Collision();
-  constructor(emitter, useMass, callback, life, easing) {
-    super(life, easing);
+  constructor(emitter, useMass, onCollide, life, easing) {
+    super(life, easing, type);
 
-    this.reset(emitter, useMass, callback);
-    this.name = 'Collision';
+    this.reset(emitter, useMass, onCollide);
   }
 
-  reset(emitter, useMass, callback, life, easing) {
+  /**
+   * Resets the behaviour properties.
+   *
+   * @param {Emitter} emitter - The emitter containing the particles to detect collisions against
+   * @param {boolean} useMass - Determiens whether to use mass or not
+   * @param {function} onCollide - Function to call when particles collide
+   * @param {number} life - The life of the particle
+   * @param {function} easing - The behaviour's decaying trend
+   * @return void
+   */
+  reset(emitter, useMass, onCollide, life, easing) {
     this.emitter = emitter;
     this.useMass = useMass;
-    this.callback = callback;
+    this.onCollide = onCollide;
     this.particles = [];
     this.delta = new Vector3D();
 
     life && super.reset(life, easing);
   }
 
+  /**
+   * Detects collisions with other particles and calls the
+   * onCollide function on colliding particles.
+   *
+   * @param {Particle} particle - the particle to apply the behaviour to
+   * @param {number} time - particle engine time
+   * @param {integer} index - the particle index
+   * @return void
+   */
   applyBehaviour(particle, time, index) {
-    var particles = this.emitter
+    const particles = this.emitter
       ? this.emitter.particles.slice(index)
       : this.particles.slice(index);
-    var otherParticle, lengthSq, overlap, distance;
-    var averageMass1, averageMass2;
-
-    var i = particles.length;
+    let otherParticle, lengthSq, overlap, distance, averageMass1, averageMass2;
+    let i = particles.length;
 
     while (i--) {
       otherParticle = particles[i];
-      if (otherParticle == particle) continue;
 
-      this.delta.copy(otherParticle.p).sub(particle.p);
+      if (otherParticle == particle) {
+        continue;
+      }
+
+      this.delta.copy(otherParticle.position).sub(particle.position);
+
       lengthSq = this.delta.lengthSq();
       distance = particle.radius + otherParticle.radius;
 
@@ -50,24 +77,35 @@ export default class Collision extends Behaviour {
         averageMass1 = this._getAverageMass(particle, otherParticle);
         averageMass2 = this._getAverageMass(otherParticle, particle);
 
-        particle.p.add(
+        particle.position.add(
           this.delta
             .clone()
             .normalize()
             .scalar(overlap * -averageMass1)
         );
-        otherParticle.p.add(
+
+        otherParticle.position.add(
           this.delta.normalize().scalar(overlap * averageMass2)
         );
 
-        this.callback && this.callback(particle, otherParticle);
+        this.onCollide && this.onCollide(particle, otherParticle);
       }
     }
   }
 
-  _getAverageMass(aPartcile, bParticle) {
+  /**
+   * Gets the average mass of both particles.
+   *
+   * @param {Particle} particleA - The first particle
+   * @param {Particle} particleB - The second particle
+   * @return {number}
+   */
+  _getAverageMass(particleA, particleB) {
     return this.useMass
-      ? bParticle.mass / (aPartcile.mass + bParticle.mass)
+      ? particleB.mass / (particleA.mass + particleB.mass)
       : 0.5;
   }
+
+  // TODO
+  fromJSON(json) {} // eslint-disable-line
 }

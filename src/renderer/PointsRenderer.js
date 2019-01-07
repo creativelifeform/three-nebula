@@ -1,10 +1,10 @@
 import BaseRenderer from './BaseRenderer';
 import { Vector3 } from 'three';
-import { classDeprecationWarning } from '../compatibility';
+import { RENDERER_TYPE_POINTS as type } from './types';
 
 export default class PointsRenderer extends BaseRenderer {
   constructor(ps) {
-    super();
+    super(type);
 
     this.points = ps;
   }
@@ -16,13 +16,13 @@ export default class PointsRenderer extends BaseRenderer {
       particle.target = new Vector3();
     }
 
-    particle.target.copy(particle.p);
+    particle.target.copy(particle.position);
     this.points.geometry.vertices.push(particle.target);
   }
 
   onParticleUpdate(particle) {
     if (particle.target) {
-      particle.target.copy(particle.p);
+      particle.target.copy(particle.position);
     }
   }
 
@@ -34,12 +34,5 @@ export default class PointsRenderer extends BaseRenderer {
 
       particle.target = null;
     }
-  }
-}
-
-export class PointsRender extends PointsRenderer {
-  constructor(...args) {
-    super(...args);
-    console.warn(classDeprecationWarning('PointsRender', 'PointsRenderer'));
   }
 }

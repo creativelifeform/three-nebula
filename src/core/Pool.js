@@ -1,5 +1,5 @@
 import PUID from '../utils/PUID';
-
+import { CORE_TYPE_POOL as type } from './types';
 /**
  * An object pool implementation. Used for pooling objects to avoid unnecessary
  * garbage collection.
@@ -12,6 +12,11 @@ export default class Pool {
    * @return void
    */
   constructor() {
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
     /**
      * @desc Incrementing id that keeps a count of the number of objects created
      * @type {integer}
@@ -29,16 +34,14 @@ export default class Pool {
    * Attempts to create a new object either by creating a new instance or calling its
    * clone method.
    *
-   * NOTE If unable to create an object this method will simply return undefined
-   * it should possibly throw an error in this case.
-   *
    * @param {function|object} functionOrObject - The object to instantiate or clone
    * @return {object|undefined}
    */
   create(functionOrObject) {
     if (!this.canCreateNewObject(functionOrObject)) {
-      // TODO throw an error here
-      return;
+      throw new Error(
+        'The pool is unable to create or clone the object supplied'
+      );
     }
 
     this.cID++;

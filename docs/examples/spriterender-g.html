@@ -101,7 +101,7 @@
     function addProton() {
         proton = new Proton.default();
         proton.addEmitter(createEmitter());
-        proton.addRender(new Proton.SpriteRender(scene));
+        proton.addRenderer(new Proton.SpriteRenderer(scene));
     }
 
     function createSprite() {
@@ -119,18 +119,18 @@
     function createEmitter() {
         emitter = new Proton.Emitter();
         emitter.rate = new Proton.Rate(new Proton.Span(10, 15), new Proton.Span(.05, .1));
-        emitter.addInitialize(new Proton.Body(createSprite()));
-        emitter.addInitialize(new Proton.Mass(1));
-        emitter.addInitialize(new Proton.Life(1, 3));
-        emitter.addInitialize(new Proton.Position(new Proton.SphereZone(20)));
-        emitter.addInitialize(new Proton.Velocity(new Proton.Span(500, 800), new Proton.Vector3D(0, 1, 0), 30));
+        emitter.addInitializer(new Proton.Body(createSprite()));
+        emitter.addInitializer(new Proton.Mass(1));
+        emitter.addInitializer(new Proton.Life(1, 3));
+        emitter.addInitializer(new Proton.Position(new Proton.SphereZone(20)));
+        emitter.addInitializer(new Proton.RadialVelocity(new Proton.Span(500, 800), new Proton.Vector3D(0, 1, 0), 30));
         emitter.addBehaviour(new Proton.RandomDrift(10, 10, 10, .05));
         //emitter.addBehaviour(new Proton.Alpha(1, 0.1));
         emitter.addBehaviour(new Proton.Scale(new Proton.Span(2, 3.5), 0));
         emitter.addBehaviour(new Proton.Gravity(6));
         emitter.addBehaviour(new Proton.Color('#FF0026', ['#ffff00', '#ffff11'], Infinity, Proton.easeOutSine));
-        emitter.p.x = 0;
-        emitter.p.y = -150;
+        emitter.position.x = 0;
+        emitter.position.y = -150;
         emitter.emit();
         return emitter;
     }
@@ -146,9 +146,9 @@
             pos.x = event.clientX;
             pos.y = event.clientY;
             var target = Proton.THREEUtil.toSpacePos(pos, camera, renderer.domElement);
-            emitter.p.x += (target.x - emitter.p.x) / 10;
-            emitter.p.y += (target.y - emitter.p.y) / 10;
-            emitter.p.z += (target.z - emitter.p.z) / 10;
+            emitter.position.x += (target.x - emitter.position.x) / 10;
+            emitter.position.y += (target.y - emitter.position.y) / 10;
+            emitter.position.z += (target.z - emitter.position.z) / 10;
         }
     }
 

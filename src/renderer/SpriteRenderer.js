@@ -1,12 +1,17 @@
 import { Sprite, SpriteMaterial } from 'three';
 
 import MeshRenderer from './MeshRenderer';
-import { classDeprecationWarning } from '../compatibility';
+import { RENDERER_TYPE_SPRITE as type } from './types';
 
 export default class SpriteRenderer extends MeshRenderer {
   constructor(container) {
     super(container);
 
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
     this._body = new Sprite(new SpriteMaterial({ color: 0xffffff }));
   }
 
@@ -16,12 +21,5 @@ export default class SpriteRenderer extends MeshRenderer {
       particle.scale * particle.radius,
       1
     );
-  }
-}
-
-export class SpriteRender extends SpriteRenderer {
-  constructor(...args) {
-    super(...args);
-    console.warn(classDeprecationWarning('SpriteRender', 'SpriteRenderer'));
   }
 }

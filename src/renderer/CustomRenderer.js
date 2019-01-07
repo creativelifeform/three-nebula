@@ -1,10 +1,10 @@
 import BaseRenderer from './BaseRenderer';
 import { Pool } from '../core';
-import { classDeprecationWarning } from '../compatibility';
+import { RENDERER_TYPE_CUSTOM as type } from './types';
 
 export default class CustomRenderer extends BaseRenderer {
   constructor() {
-    super();
+    super(type);
 
     this.targetPool = new Pool();
     this.materialPool = new Pool();
@@ -17,11 +17,4 @@ export default class CustomRenderer extends BaseRenderer {
   onParticleUpdate(particle) {} // eslint-disable-line
 
   onParticleDead(particle) {} // eslint-disable-line
-}
-
-export class CustomRender extends CustomRenderer {
-  constructor(...args) {
-    super(...args);
-    console.warn(classDeprecationWarning('CustomRender', 'CustomRenderer'));
-  }
 }

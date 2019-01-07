@@ -1,6 +1,6 @@
 import Initializer from './Initializer';
 import { createSpan } from '../math';
-
+import { INITIALIZER_TYPE_RADIUS as type } from './types';
 /**
  * Sets the radius property on initialized particles.
  *
@@ -15,7 +15,7 @@ export default class Radius extends Initializer {
    * @return void
    */
   constructor(width, height, center = false) {
-    super();
+    super(type);
 
     /**
      * @desc The radius span which is used to set the particle radius value.
@@ -46,5 +46,20 @@ export default class Radius extends Initializer {
   initialize(particle) {
     particle.radius = this.radius.getValue();
     particle.transform.oldRadius = particle.radius;
+  }
+
+  /**
+   * Creates a Radius initializer from JSON.
+   *
+   * @param {object} json - The JSON to construct the instance from.
+   * @property {number} json.width - The width of the particle radius
+   * @property {number} json.height - The height of the particle radius
+   * @property {number} json.center - The center of the particle radius
+   * @return {Radius}
+   */
+  static fromJSON(json) {
+    const { width, height, center = false } = json;
+
+    return new Radius(width, height, center);
   }
 }

@@ -2,6 +2,8 @@ import { MathUtils, Vector3D, createSpan } from '../math';
 
 import Behaviour from './Behaviour';
 import { DEFAULT_RANDOM_DRIFT_DELAY } from './constants';
+import { getEasingByName } from '../ease';
+import { BEHAVIOUR_TYPE_RANDOM_DRIFT as type } from './types';
 
 /**
  * Behaviour that causes particles to drift to random coordinates in 3D space.
@@ -27,7 +29,7 @@ export default class RandomDrift extends Behaviour {
     life,
     easing
   ) {
-    super(life, easing);
+    super(life, easing, type);
 
     this.reset(driftX, driftY, driftZ, delay);
 
@@ -36,7 +38,6 @@ export default class RandomDrift extends Behaviour {
      * @type {number}
      */
     this.time = 0;
-    this.name = 'RandomDrift';
   }
 
   /**
@@ -76,7 +77,7 @@ export default class RandomDrift extends Behaviour {
 
   /**
    * Applies the behaviour to the particle.
-   * Mutates the particle.a property.
+   * Mutates the particle.acceleration property.
    *
    * @param {object} particle - the particle to apply the behaviour to
    * @param {number} time - engine time
@@ -84,7 +85,7 @@ export default class RandomDrift extends Behaviour {
    * @return void
    */
   applyBehaviour(particle, time, index) {
-    super.applyBehaviour(particle, time, index);
+    this.energize(particle, time, index);
 
     this.time += time;
 
@@ -93,9 +94,15 @@ export default class RandomDrift extends Behaviour {
       const ay = MathUtils.randomAToB(-this.randomForce.y, this.randomForce.y);
       const az = MathUtils.randomAToB(-this.randomForce.z, this.randomForce.z);
 
-      particle.a.addValue(ax, ay, az);
+      particle.acceleration.addValue(ax, ay, az);
 
       this.time = 0;
     }
+  }
+
+  static fromJSON(json) {
+    const { x, y, z, delay, life, easing } = json;
+
+    return new RandomDrift(x, y, z, delay, life, getEasingByName(easing));
   }
 }

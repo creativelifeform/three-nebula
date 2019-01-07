@@ -11,8 +11,9 @@ const { Pool } = Proton;
 
 describe('core -> Pool', () => {
   it('should instantiate with the correct properties', done => {
-    const { cID, list } = new Pool();
+    const { type, cID, list } = new Pool();
 
+    assert.equal(type, 'Pool');
     assert.equal(cID, 0);
     assert.isObject(list);
     assert.isEmpty(list);
@@ -38,6 +39,18 @@ describe('core -> Pool', () => {
     assert.instanceOf(cloned, Object3D);
     assert.notEqual(object3d.id, cloned.id);
     assert.isString(cloned.__puid);
+
+    done();
+  });
+
+  it('should throw an error if the supplied argument can neither be instantiated or cloned', done => {
+    const pool = new Pool();
+
+    assert.throws(
+      () => pool.get(true),
+      Error,
+      'The pool is unable to create or clone the object supplied'
+    );
 
     done();
   });

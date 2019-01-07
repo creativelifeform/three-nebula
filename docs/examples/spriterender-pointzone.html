@@ -108,12 +108,12 @@
         emitter = new Proton.Emitter();
         //setRate
         emitter.rate = new Proton.Rate(new Proton.Span(4, 16), new Proton.Span(.01));
-        //addInitialize
-        emitter.addInitialize(new Proton.Position(new Proton.PointZone(0, 0)));
-        emitter.addInitialize(new Proton.Mass(1));
-        emitter.addInitialize(new Proton.Radius(6, 12));
-        emitter.addInitialize(new Proton.Life(3));
-        emitter.addInitialize(new Proton.Velocity(45, new Proton.Vector3D(0, 1, 0), 180));
+        //addInitializer
+        emitter.addInitializer(new Proton.Position(new Proton.PointZone(0, 0)));
+        emitter.addInitializer(new Proton.Mass(1));
+        emitter.addInitializer(new Proton.Radius(6, 12));
+        emitter.addInitializer(new Proton.Life(3));
+        emitter.addInitializer(new Proton.RadialVelocity(45, new Proton.Vector3D(0, 1, 0), 180));
         //addBehaviour
         emitter.addBehaviour(new Proton.Alpha(1, 0));
         emitter.addBehaviour(new Proton.Scale(.1, 1.3));
@@ -126,7 +126,7 @@
         emitter.emit();
         //add emitter
         proton.addEmitter(emitter);
-        proton.addRender(new Proton.SpriteRender(scene));
+        proton.addRenderer(new Proton.SpriteRenderer(scene));
     }
 
     function createSprite() {
@@ -165,9 +165,9 @@
         delta < 5 / 60 && proton.update(delta);
         tha += Math.PI / 150;
         var p = 300 * Math.sin(2 * tha)
-        emitter.p.x = p * Math.cos(tha);
-        emitter.p.y = p * Math.sin(tha);
-        emitter.p.z = p * Math.tan(tha) / 2;
+        emitter.position.x = p * Math.cos(tha);
+        emitter.position.y = p * Math.sin(tha);
+        emitter.position.z = p * Math.tan(tha) / 2;
 
         renderer.render(scene, camera);
         //controls.update();

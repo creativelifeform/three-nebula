@@ -5,15 +5,15 @@ import {
   PROTON_UPDATE
 } from '../events/constants';
 
-import { classDeprecationWarning } from '../compatibility';
+import { RENDERER_TYPE_BASE } from './types';
 
 export default class BaseRenderer {
-  constructor() {
-    this.setName();
-  }
-
-  setName() {
-    this.name = this.constructor.name;
+  constructor(type = RENDERER_TYPE_BASE) {
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
   }
 
   init(proton) {
@@ -69,11 +69,4 @@ export default class BaseRenderer {
    * @abstract
    */
   onProtonUpdate(proton) {} // eslint-disable-line
-}
-
-export class BaseRender extends BaseRenderer {
-  constructor(...args) {
-    super(...args);
-    console.warn(classDeprecationWarning('BaseRender', 'BaseRenderer'));
-  }
 }

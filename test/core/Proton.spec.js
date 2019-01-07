@@ -2,7 +2,6 @@
 
 import * as Proton from '../../src';
 
-import { EULER, POOL_MAX } from '../../src/constants';
 import EventDispatcher, {
   EMITTER_ADDED,
   EMITTER_REMOVED,
@@ -10,6 +9,8 @@ import EventDispatcher, {
   PROTON_UPDATE_AFTER
 } from '../../src/events';
 
+import { INTEGRATION_TYPE_EULER } from '../../src/math';
+import { POOL_MAX } from '../../src/constants';
 import { Scene } from 'three';
 import chai from 'chai';
 import sinon from 'sinon';
@@ -20,6 +21,7 @@ const System = Proton.Proton;
 describe('core -> Proton', () => {
   it('should instantiate with the correct properties', done => {
     const {
+      type,
       preParticles,
       integrationType,
       emitters,
@@ -28,20 +30,15 @@ describe('core -> Proton', () => {
       eventDispatcher
     } = new System();
 
+    assert.equal(type, 'Proton');
     assert.equal(preParticles, POOL_MAX);
-    assert.equal(integrationType, EULER);
+    assert.equal(integrationType, INTEGRATION_TYPE_EULER);
     assert.isArray(emitters);
     assert.isEmpty(emitters);
     assert.isArray(renderers);
     assert.isEmpty(renderers);
     assert.instanceOf(pool, Proton.Pool);
     assert.instanceOf(eventDispatcher, EventDispatcher);
-
-    done();
-  });
-
-  it('should return an integrator from the static integrator method', done => {
-    assert.instanceOf(System.integrator(), Proton.Integration);
 
     done();
   });

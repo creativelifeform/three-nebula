@@ -72,7 +72,7 @@
     function initProton() {
         proton = new Proton.default();
         proton.addEmitter(createEmitter());
-        proton.addRender(new Proton.SpriteRender(scene));
+        proton.addRenderer(new Proton.SpriteRenderer(scene));
 
         //Proton.Debug.drawZone(proton,scene,zone2);
         //Proton.Debug.drawEmitter(proton,scene,emitter);
@@ -93,12 +93,12 @@
     function createEmitter() {
         emitter = new Proton.Emitter();
         emitter.rate = new Proton.Rate(new Proton.Span(5, 10), new Proton.Span(.1, .25));
-        emitter.addInitialize(new Proton.Mass(1));
-        emitter.addInitialize(new Proton.Radius(100));
-        emitter.addInitialize(new Proton.Life(2, 4));
-        emitter.addInitialize(new Proton.Body(createSprite()));
-        emitter.addInitialize(new Proton.Position(new Proton.BoxZone(100)));
-        emitter.addInitialize(new Proton.Velocity(200, new Proton.Vector3D(0, 1, 1), 180));
+        emitter.addInitializer(new Proton.Mass(1));
+        emitter.addInitializer(new Proton.Radius(100));
+        emitter.addInitializer(new Proton.Life(2, 4));
+        emitter.addInitializer(new Proton.Body(createSprite()));
+        emitter.addInitializer(new Proton.Position(new Proton.BoxZone(100)));
+        emitter.addInitializer(new Proton.RadialVelocity(200, new Proton.Vector3D(0, 1, 1), 180));
 
         // //emitter.addBehaviour(new Proton.RandomDrift(30, 30, 30, .05));
         emitter.addBehaviour(new Proton.Rotate("random", "random"));
@@ -109,8 +109,8 @@
         //emitter.addBehaviour(new Proton.Collision(emitter,true));
         emitter.addBehaviour(new Proton.Color(0xff0000, 'random', Infinity, Proton.easeOutQuart));
 
-        emitter.p.x = 0;
-        emitter.p.y = 0;
+        emitter.position.x = 0;
+        emitter.position.y = 0;
         emitter.emit();
         return emitter;
     }
