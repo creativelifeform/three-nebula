@@ -5,6 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2019-01-07
+
+### Added
+
+- `initializer/Velocity` module
+- `VectorVelocity`, `PolarVelocity` and `RadialVelocity` classes to break up mixed argument types
+- `math/ColorSpan` class, which is to be specifically used for spans of colors that can do randomisation
+- Base `energize` method on the `Behaviour` abstract class. Sub classes now call this method in their `applyBehaviour` method rather than the parent's `applyBehaviour` method
+- `core/fromJSON` which provides a way to create Proton instances from JSON
+- `fromJSON` static method to the core Proton class and all supported initializers and behaviours
+- An example to illustrate how to use the `fromJSON` static method
+- `types.js` file to `initializer`, `behaviour`, `renderer` and `zone` modules which export class name types as constants
+- Tests to cover the new `fromJSON` functionality
+
+### Changed
+
+- All examples which used deprecated methods/classes
+- There is no longer a single `Velocity` initializer, this class is now the base class for the three kinds of velocity initializers provided
+- `math/ArraySpan` no longer takes the string `'random'` as an argument to the constructor and will no longer be able to return random colors from `getValue`
+- Tests updated
+- Moved `initializer` and `behaviour` tests outside of `emitter` test module into the root of the `tests` module
+- Pool now throws an error if it can neither instantiate or clone the object passed
+- Particles and Emitters no longer have `p`, `v`, and `a`, props, rather, these are now explicitly spelled out as `position`, `velocity` and `acceleration`
+- The same goes for the `old` cache object
+- All examples have been updated
+- The `math/Integration` class is now gone and has been replaced by `math/integration` functions
+
+### Removed
+
+- All deprecated methods and classes
+- `initializer/Velocity.js`
+- Unused args from Emitter `createParticle` and `setupParticle` methods
+
 ## [1.0.13] - 2018-12-11
 
 ### Added
