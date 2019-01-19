@@ -86,14 +86,21 @@ export default (json, Proton, Emitter) => {
 
   emitters.forEach(data => {
     const emitter = new Emitter();
-    const { rate, initializers, behaviours, position } = data;
+    const {
+      rate,
+      initializers,
+      behaviours,
+      position,
+      totalEmitTimes = Infinity,
+      life = Infinity
+    } = data;
 
     emitter
       .setRate(makeRate(rate))
       .setInitializers(makeInitializers(initializers))
       .setBehaviours(makeBehaviours(behaviours))
       .setPosition(position)
-      .emit();
+      .emit(totalEmitTimes, life);
 
     proton.addEmitter(emitter);
   });
