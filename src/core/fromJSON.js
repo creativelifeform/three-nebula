@@ -1,13 +1,13 @@
-import * as Behaviour from '../behaviour';
-import * as Initializer from '../initializer';
+import * as Behaviour from "../behaviour";
+import * as Initializer from "../initializer";
 
-import { EULER, POOL_MAX } from '../constants';
+import { EULER, POOL_MAX } from "../constants";
 import {
   SUPPORTED_JSON_BEHAVIOUR_TYPES,
   SUPPORTED_JSON_INITIALIZER_TYPES
-} from './constants';
+} from "./constants";
 
-import Rate from '../initializer/Rate';
+import Rate from "../initializer/Rate";
 
 /**
  * Makes a rate instance.
@@ -86,14 +86,21 @@ export default (json, Proton, Emitter) => {
 
   emitters.forEach(data => {
     const emitter = new Emitter();
-    const { rate, initializers, behaviours, position } = data;
+    const {
+      rate,
+      initializers,
+      behaviours,
+      position,
+      totalEmitTimes = Infinity,
+      life = Infinity
+    } = data;
 
     emitter
       .setRate(makeRate(rate))
       .setInitializers(makeInitializers(initializers))
       .setBehaviours(makeBehaviours(behaviours))
       .setPosition(position)
-      .emit();
+      .emit(totalEmitTimes, life);
 
     proton.addEmitter(emitter);
   });
