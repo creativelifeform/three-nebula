@@ -71583,10 +71583,14 @@ exports.default = function (json, Proton, Emitter) {
     var rate = data.rate,
         initializers = data.initializers,
         behaviours = data.behaviours,
-        position = data.position;
+        position = data.position,
+        _data$totalEmitTimes = data.totalEmitTimes,
+        totalEmitTimes = _data$totalEmitTimes === undefined ? Infinity : _data$totalEmitTimes,
+        _data$life = data.life,
+        life = _data$life === undefined ? Infinity : _data$life;
 
 
-    emitter.setRate(makeRate(rate)).setInitializers(makeInitializers(initializers)).setBehaviours(makeBehaviours(behaviours)).setPosition(position).emit();
+    emitter.setRate(makeRate(rate)).setInitializers(makeInitializers(initializers)).setBehaviours(makeBehaviours(behaviours)).setPosition(position).emit(totalEmitTimes, life);
 
     proton.addEmitter(emitter);
   });
