@@ -7,6 +7,7 @@ import chai from 'chai';
 import containsInvalidBehaviour from './fixtures/json/containsInvalidBehaviour.json';
 import containsInvalidInitializer from './fixtures/json/containsInvalidInitializer.json';
 import containsInvalidZoneType from './fixtures/json/containsInvalidZoneType.json';
+import containsTotalEmitTimes from './fixtures/json/containsTotalEmitTimes.json';
 import domino from 'domino';
 import eightdiagrams from './fixtures/json/eightdiagrams.json';
 
@@ -53,6 +54,16 @@ describe('fromJSON', () => {
       proton.emitters[1].position.x,
       eightdiagrams.emitters[1].position.x
     );
+
+    done();
+  });
+
+  it('should instantiate and set the total emit times and life to 1 on the emitter', done => {
+    const proton = Particles.fromJSON(containsTotalEmitTimes);
+    const emitter = proton.emitters[0];
+
+    assert.equal(emitter.totalEmitTimes, 1);
+    assert.equal(emitter.life, 1);
 
     done();
   });
