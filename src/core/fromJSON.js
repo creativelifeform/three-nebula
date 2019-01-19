@@ -1,13 +1,13 @@
-import * as Behaviour from "../behaviour";
-import * as Initializer from "../initializer";
+import * as Behaviour from '../behaviour';
+import * as Initializer from '../initializer';
 
-import { EULER, POOL_MAX } from "../constants";
+import { EULER, POOL_MAX } from '../constants';
 import {
   SUPPORTED_JSON_BEHAVIOUR_TYPES,
   SUPPORTED_JSON_INITIALIZER_TYPES
-} from "./constants";
+} from './constants';
 
-import Rate from "../initializer/Rate";
+import Rate from '../initializer/Rate';
 
 /**
  * Makes a rate instance.
