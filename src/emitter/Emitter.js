@@ -2,20 +2,20 @@ import {
   DEFAULT_BIND_EMITTER,
   DEFAULT_BIND_EMITTER_EVENT,
   DEFAULT_DAMPING,
-  DEFAULT_EMITTER_RATE
-} from "./constants";
+  DEFAULT_EMITTER_RATE,
+} from './constants';
 import EventDispatcher, {
   PARTICLE_CREATED,
   PARTICLE_DEAD,
-  PARTICLE_UPDATE
-} from "../events";
-import { INTEGRATION_TYPE_EULER, integrate } from "../math";
+  PARTICLE_UPDATE,
+} from '../events';
+import { INTEGRATION_TYPE_EULER, integrate } from '../math';
 
-import { InitializerUtil } from "../initializer";
-import Particle from "../core/Particle";
-import Util from "../utils/Util";
-import { EMITTER_TYPE_EMITTER as type } from "./types";
-import uid from "../utils/uid";
+import { InitializerUtil } from '../initializer';
+import Particle from '../core/Particle';
+import Util from '../utils/Util';
+import { EMITTER_TYPE_EMITTER as type } from './types';
+import uid from '../utils/uid';
 
 /**
  * Emitters are the Proton engine's particle factories. They cause particles to
@@ -100,7 +100,7 @@ export default class Emitter extends Particle {
      */
     this.id = `emitter-${uid()}`;
     this.cID = 0;
-    this.name = "Emitter";
+    this.name = 'Emitter';
 
     /**
      * @desc The emitter's internal event dispatcher.
