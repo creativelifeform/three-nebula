@@ -14,7 +14,7 @@ describe('initializer -> Mass', () => {
   it('should have the correct properties after instantiation', done => {
     const {
       massPan,
-      massPan: { _isArray, a, b, _center }
+      massPan: { _isArray, a, b, _center },
     } = initializer;
 
     assert.equal(initializer.type, 'Mass');
@@ -44,13 +44,14 @@ describe('initializer -> Mass', () => {
     const instance = Proton.Mass.fromJSON({
       min: 3,
       max: 10,
-      center: true
+      center: true,
     });
 
     assert.instanceOf(instance, Proton.Mass);
     assert.instanceOf(instance.massPan, Proton.Span);
     assert.equal(instance.massPan.a, 3);
     assert.equal(instance.massPan.b, 10);
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

@@ -15,7 +15,7 @@ describe('initializer -> Body', () => {
       body,
       body: { _isArray, a, b, _center, items },
       w,
-      h
+      h,
     } = initializer;
 
     assert.equal(initializer.type, 'Body');
@@ -47,7 +47,7 @@ describe('initializer -> Body', () => {
     initializer.initialize(particle);
 
     const {
-      body: { width, height, body }
+      body: { width, height, body },
     } = particle;
 
     assert.strictEqual(width, 3);
@@ -61,13 +61,14 @@ describe('initializer -> Body', () => {
     const instance = Proton.Body.fromJSON({
       body: '#FF0000',
       width: 4,
-      height: 5
+      height: 5,
     });
 
     assert.instanceOf(instance, Proton.Body);
     assert.instanceOf(instance.body, Proton.ArraySpan);
     assert.equal(instance.w, 4);
     assert.equal(instance.h, 5);
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

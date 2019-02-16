@@ -17,7 +17,7 @@ describe('initializer -> Vector Velocity', () => {
       dir: { x, y, z },
       tha,
       _useV,
-      dirVec
+      dirVec,
     } = initializer;
 
     assert.equal(initializer.type, 'VectorVelocity');
@@ -39,7 +39,7 @@ describe('initializer -> Vector Velocity', () => {
 
     const {
       velocity,
-      velocity: { x, y, z }
+      velocity: { x, y, z },
     } = particle;
 
     assert.instanceOf(velocity, Proton.Vector3D);
@@ -55,7 +55,7 @@ describe('initializer -> Vector Velocity', () => {
       x: 0.96,
       y: 0.88,
       z: 0.45,
-      theta: 0.75
+      theta: 0.75,
     });
 
     assert.instanceOf(instance, Proton.VectorVelocity);
@@ -64,6 +64,7 @@ describe('initializer -> Vector Velocity', () => {
     assert.equal(instance.tha, 0.013091666666666665);
     assert.deepEqual(Object.values(instance.dir), [0.96, 0.88, 0.45]);
     assert.deepEqual([instance.radiusPan.a, instance.radiusPan.b], [1, 1]);
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

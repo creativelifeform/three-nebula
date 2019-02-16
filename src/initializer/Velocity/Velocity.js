@@ -13,8 +13,8 @@ export default class Velocity extends Initializer {
    *
    * @return void
    */
-  constructor(type) {
-    super(type);
+  constructor(type, isEnabled = true) {
+    super(type, isEnabled);
 
     /**
      * @desc Directional vector
