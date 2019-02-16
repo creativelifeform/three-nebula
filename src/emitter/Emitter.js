@@ -3,19 +3,19 @@ import {
   DEFAULT_BIND_EMITTER_EVENT,
   DEFAULT_DAMPING,
   DEFAULT_EMITTER_RATE
-} from './constants';
+} from "./constants";
 import EventDispatcher, {
   PARTICLE_CREATED,
   PARTICLE_DEAD,
   PARTICLE_UPDATE
-} from '../events';
-import { INTEGRATION_TYPE_EULER, integrate } from '../math';
+} from "../events";
+import { INTEGRATION_TYPE_EULER, integrate } from "../math";
 
-import { InitializerUtil } from '../initializer';
-import Particle from '../core/Particle';
-import Util from '../utils/Util';
-import { EMITTER_TYPE_EMITTER as type } from './types';
-import uid from '../utils/uid';
+import { InitializerUtil } from "../initializer";
+import Particle from "../core/Particle";
+import Util from "../utils/Util";
+import { EMITTER_TYPE_EMITTER as type } from "./types";
+import uid from "../utils/uid";
 
 /**
  * Emitters are the Proton engine's particle factories. They cause particles to
@@ -100,7 +100,7 @@ export default class Emitter extends Particle {
      */
     this.id = `emitter-${uid()}`;
     this.cID = 0;
-    this.name = 'Emitter';
+    this.name = "Emitter";
 
     /**
      * @desc The emitter's internal event dispatcher.
@@ -142,6 +142,21 @@ export default class Emitter extends Particle {
     const { x = position.x, y = position.y, z = position.z } = newPosition;
 
     this.position.set(x, y, z);
+
+    return this;
+  }
+
+  /**
+   * Sets the rotation of the emitter.
+   *
+   * @param {object} newRotation - an object the new x, y and z props
+   * @return {Emitter}
+   */
+  setRotation(newRotation = {}) {
+    const { rotation } = this;
+    const { x = rotation.x, y = rotation.y, z = rotation.z } = newRotation;
+
+    this.rotation.set(x, y, z);
 
     return this;
   }
