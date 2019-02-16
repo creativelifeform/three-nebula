@@ -17,10 +17,11 @@ export default class Rotate extends Behaviour {
    * @param {number} z - Z axis rotation
    * @param {number} life - The life of the behaviour
    * @param {function} easing - The easing equation to use for transforms
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
-  constructor(x, y, z, life, easing) {
-    super(life, easing, type);
+  constructor(x, y, z, life, easing, isEnabled = true) {
+    super(life, easing, type, isEnabled);
 
     this.reset(x, y, z);
   }
@@ -208,8 +209,8 @@ export default class Rotate extends Behaviour {
   }
 
   static fromJSON(json) {
-    const { x, y, z, life, easing } = json;
+    const { x, y, z, life, easing, isEnabled = true } = json;
 
-    return new Rotate(x, y, z, life, getEasingByName(easing));
+    return new Rotate(x, y, z, life, getEasingByName(easing), isEnabled);
   }
 }

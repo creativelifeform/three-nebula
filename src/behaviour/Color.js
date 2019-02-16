@@ -17,9 +17,11 @@ export default class Color extends Behaviour {
    * @param {number|string} colorB - the ending color
    * @param {number} life - the life of the particle
    * @param {function} easing - The behaviour's decaying trend
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
+   * @return void
    */
-  constructor(colorA, colorB, life, easing) {
-    super(life, easing, type);
+  constructor(colorA, colorB, life, easing, isEnabled = true) {
+    super(life, easing, type, isEnabled);
 
     this.reset(colorA, colorB);
   }
@@ -100,8 +102,8 @@ export default class Color extends Behaviour {
    * @return {Color}
    */
   static fromJSON(json) {
-    const { colorA, colorB, life, easing } = json;
+    const { colorA, colorB, life, easing, isEnabled = true } = json;
 
-    return new Color(colorA, colorB, life, getEasingByName(easing));
+    return new Color(colorA, colorB, life, getEasingByName(easing), isEnabled);
   }
 }

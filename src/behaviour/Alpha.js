@@ -17,10 +17,11 @@ export default class Alpha extends Behaviour {
    * @param {?number} alphaB - The ending alpha value
    * @param {number} life - The life of the behaviour
    * @param {function} easing - The easing equation to use for transforms
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
-  constructor(alphaA = 1, alphaB = null, life, easing) {
-    super(life, easing, type);
+  constructor(alphaA = 1, alphaB = null, life, easing, isEnabled = true) {
+    super(life, easing, type, isEnabled);
 
     /**
      * @desc The starting alpha value
@@ -124,8 +125,8 @@ export default class Alpha extends Behaviour {
    * @return {Body}
    */
   static fromJSON(json) {
-    const { alphaA, alphaB, life, easing } = json;
+    const { alphaA, alphaB, life, easing, isEnabled = true } = json;
 
-    return new Alpha(alphaA, alphaB, life, getEasingByName(easing));
+    return new Alpha(alphaA, alphaB, life, getEasingByName(easing), isEnabled);
   }
 }

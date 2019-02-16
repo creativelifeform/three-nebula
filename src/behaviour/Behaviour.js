@@ -15,18 +15,27 @@ export default class Behaviour {
    *
    * @param {number} [life=Infinity] - The life of the behaviour
    * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
+   * @param {string} [type=BEHAVIOUR_TYPE_ABSTRACT] - The behaviour type
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
   constructor(
     life = Infinity,
     easing = DEFAULT_BEHAVIOUR_EASING,
-    type = BEHAVIOUR_TYPE_ABSTRACT
+    type = BEHAVIOUR_TYPE_ABSTRACT,
+    isEnabled = true
   ) {
     /**
      * @desc The class type.
      * @type {string}
      */
     this.type = type;
+
+    /**
+     * @desc Determines if the behaviour will be applied or not
+     * @type {boolean}
+     */
+    this.isEnabled = isEnabled;
 
     /**
      * @desc The behaviour's id

@@ -14,10 +14,11 @@ export default class Collision extends Behaviour {
    * @param {function} onCollide - Function to call when particles collide
    * @param {number} life - The life of the particle
    * @param {function} easing - The behaviour's decaying trend
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
-  constructor(emitter, useMass, onCollide, life, easing) {
-    super(life, easing, type);
+  constructor(emitter, useMass, onCollide, life, easing, isEnabled = true) {
+    super(life, easing, type, isEnabled);
 
     this.reset(emitter, useMass, onCollide);
   }
