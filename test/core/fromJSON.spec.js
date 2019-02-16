@@ -54,6 +54,18 @@ describe('fromJSON', () => {
       proton.emitters[1].position.x,
       eightdiagrams.emitters[1].position.x
     );
+    assert.equal(
+      proton.emitters[0].rotation.x,
+      eightdiagrams.emitters[0].rotation.x
+    );
+    assert.equal(
+      proton.emitters[0].rotation.y,
+      eightdiagrams.emitters[0].rotation.y
+    );
+    assert.equal(
+      proton.emitters[0].rotation.z,
+      eightdiagrams.emitters[0].rotation.z
+    );
 
     done();
   });
