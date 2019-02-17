@@ -93,14 +93,14 @@ export default class Alpha extends Behaviour {
   }
 
   /**
-   * Applies the behaviour to the particle.
+   * Mutates the target's alpha/opacity property.
    *
    * @param {object} particle - the particle to apply the behaviour to
    * @param {number} time - engine time
    * @param {integer} index - the particle index
    * @return void
    */
-  applyBehaviour(particle, time, index) {
+  mutate(particle, time, index) {
     this.energize(particle, time, index);
 
     particle.alpha = MathUtils.lerp(

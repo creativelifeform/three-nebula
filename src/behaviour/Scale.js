@@ -99,7 +99,7 @@ export default class Scale extends Behaviour {
    * @param {integer} index - the particle index
    * @return void
    */
-  applyBehaviour(particle, time, index) {
+  mutate(particle, time, index) {
     this.energize(particle, time, index);
 
     particle.scale = MathUtils.lerp(

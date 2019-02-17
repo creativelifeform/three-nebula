@@ -84,7 +84,7 @@ describe('behaviour -> Rotate', () => {
 
     const {
       rotation,
-      rotation: { x, y, z }
+      rotation: { x, y, z },
     } = randomParticle;
 
     assert.instanceOf(rotation, Proton.Vector3D);
@@ -100,7 +100,7 @@ describe('behaviour -> Rotate', () => {
 
     const {
       rotation,
-      rotation: { x, y, z }
+      rotation: { x, y, z },
     } = sameParticle;
 
     assert.instanceOf(rotation, Proton.Vector3D);
@@ -116,7 +116,7 @@ describe('behaviour -> Rotate', () => {
 
     const {
       rotation,
-      rotation: { x, y, z }
+      rotation: { x, y, z },
     } = setParticle;
 
     assert.instanceOf(rotation, Proton.Vector3D);
@@ -132,7 +132,7 @@ describe('behaviour -> Rotate', () => {
 
     const {
       rotation,
-      transform: { fR, tR }
+      transform: { fR, tR },
     } = toParticle;
 
     assert.instanceOf(rotation, Proton.Vector3D);
@@ -149,8 +149,8 @@ describe('behaviour -> Rotate', () => {
       rotation,
       transform: {
         addR,
-        addR: { x, y, z }
-      }
+        addR: { x, y, z },
+      },
     } = addParticle;
 
     assert.instanceOf(rotation, Proton.Vector3D);
@@ -167,7 +167,7 @@ describe('behaviour -> Rotate', () => {
 
     const {
       rotation,
-      rotation: { x, y, z }
+      rotation: { x, y, z },
     } = sameParticle;
 
     assert.instanceOf(rotation, Proton.Vector3D);
@@ -183,7 +183,7 @@ describe('behaviour -> Rotate', () => {
 
     const {
       rotation,
-      rotation: { x, y, z }
+      rotation: { x, y, z },
     } = setParticle;
 
     assert.instanceOf(rotation, Proton.Vector3D);
@@ -199,7 +199,7 @@ describe('behaviour -> Rotate', () => {
 
     const {
       rotation,
-      transform: { fR, tR }
+      transform: { fR, tR },
     } = toParticle;
 
     assert.instanceOf(rotation, Proton.Vector3D);
@@ -216,8 +216,8 @@ describe('behaviour -> Rotate', () => {
       rotation,
       transform: {
         addR,
-        addR: { x, y, z }
-      }
+        addR: { x, y, z },
+      },
     } = addParticle;
 
     assert.instanceOf(rotation, Proton.Vector3D);
@@ -238,7 +238,7 @@ describe('behaviour -> Rotate', () => {
       y: 2,
       z: 3,
       life: 3,
-      easing: 'easeInOutExpo'
+      easing: 'easeInOutExpo',
     });
 
     assert.instanceOf(instance, Proton.Rotate);
@@ -247,6 +247,7 @@ describe('behaviour -> Rotate', () => {
     assert.instanceOf(instance.y, Proton.Span);
     assert.instanceOf(instance.z, Proton.Span);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

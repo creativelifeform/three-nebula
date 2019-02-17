@@ -158,7 +158,6 @@ export default class Rotate extends Behaviour {
   }
 
   /**
-   * Applies the behaviour to the particle.
    * Mutates the particle.rotation property.
    *
    * @see http://stackoverflow.com/questions/21622956/how-to-convert-direction-vector-to-euler-angles
@@ -167,7 +166,7 @@ export default class Rotate extends Behaviour {
    * @param {integer} index - the particle index
    * @return void
    */
-  applyBehaviour(particle, time, index) {
+  mutate(particle, time, index) {
     this.energize(particle, time, index);
 
     switch (this.rotationType) {

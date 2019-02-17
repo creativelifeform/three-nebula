@@ -65,7 +65,7 @@ export default class Color extends Behaviour {
       : ColorUtil.getRGB(this.colorB.getValue());
   }
 
-  applyBehaviour(particle, time, index) {
+  mutate(particle, time, index) {
     this.energize(particle, time, index);
 
     if (!this._same) {

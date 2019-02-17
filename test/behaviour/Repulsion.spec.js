@@ -23,7 +23,7 @@ describe('behaviour -> Repulsion', () => {
       force,
       radiusSq,
       attractionForce,
-      lengthSq
+      lengthSq,
     } = behaviour;
 
     assert.equal(behaviour.type, 'Repulsion');
@@ -54,7 +54,7 @@ describe('behaviour -> Repulsion', () => {
       force,
       radiusSq,
       attractionForce,
-      lengthSq
+      lengthSq,
     } = behaviour;
     const particle = new Proton.Particle();
 
@@ -83,7 +83,7 @@ describe('behaviour -> Repulsion', () => {
       force: 4,
       radius: 12,
       life: 3,
-      easing: 'easeInOutExpo'
+      easing: 'easeInOutExpo',
     });
 
     assert.instanceOf(instance, Proton.Repulsion);
@@ -93,6 +93,7 @@ describe('behaviour -> Repulsion', () => {
     assert.equal(instance.radius, 12);
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

@@ -114,14 +114,33 @@ export default class Behaviour {
   initialize(particle) {} // eslint-disable-line
 
   /**
-   * Apply behaviour to the particle as a factor of time.
+   * Apply behaviour to the target as a factor of time.
+   * Internally calls the mutate method to change properties on the target
+   * Will not do so if the behaviour is disabled
    *
    * @abstract
-   * @param {Particle} particle - The particle to apply the behaviour to
+   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to
+   * @param {Number} time - the proton integration time
+   * @param {integer} index - the target index
+   * @return mixed
+   */
+  applyBehaviour(target, time, index) {
+    if (!this.isEnabled) {
+      return;
+    }
+
+    this.mutate(target, time, index);
+  }
+
+  /**
+   * Change the target's properties according to specific behaviour logic.
+   *
+   * @abstract
+   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to
    * @param {Number} time - the proton integration time
    * @return mixed
    */
-  applyBehaviour(particle, time) {} // eslint-disable-line
+  mutate(target, time, index) {} // eslint-disable-line
 
   /**
    * Compares the age of the behaviour vs integration time and determines

@@ -77,7 +77,6 @@ export default class RandomDrift extends Behaviour {
   }
 
   /**
-   * Applies the behaviour to the particle.
    * Mutates the particle.acceleration property.
    *
    * @param {object} particle - the particle to apply the behaviour to
@@ -85,7 +84,7 @@ export default class RandomDrift extends Behaviour {
    * @param {integer} index - the particle index
    * @return void
    */
-  applyBehaviour(particle, time, index) {
+  mutate(particle, time, index) {
     this.energize(particle, time, index);
 
     this.time += time;

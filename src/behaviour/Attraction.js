@@ -102,7 +102,6 @@ export default class Attraction extends Behaviour {
   }
 
   /**
-   * Applies the behaviour to the particle.
    * Mutates particle acceleration.
    *
    * @param {Particle} particle - the particle to apply the behaviour to
@@ -110,7 +109,7 @@ export default class Attraction extends Behaviour {
    * @param {integer} index - the particle index
    * @return void
    */
-  applyBehaviour(particle, time, index) {
+  mutate(particle, time, index) {
     this.energize(particle, time, index);
 
     this.attractionForce.copy(this.targetPosition);

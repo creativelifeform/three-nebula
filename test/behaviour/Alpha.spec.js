@@ -21,7 +21,7 @@ describe('behaviour -> Alpha', () => {
       _same,
       easing,
       alphaA,
-      alphaB
+      alphaB,
     } = behaviour;
 
     assert.strictEqual(type, 'Alpha');
@@ -53,7 +53,7 @@ describe('behaviour -> Alpha', () => {
     const {
       alpha,
       useAlpha,
-      transform: { alphaA, alphaB }
+      transform: { alphaA, alphaB },
     } = particle;
 
     assert.strictEqual(alpha, 1);
@@ -78,7 +78,7 @@ describe('behaviour -> Alpha', () => {
       _same,
       easing,
       alphaA,
-      alphaB
+      alphaB,
     } = behaviour;
 
     assert.strictEqual(life, Infinity);
@@ -106,7 +106,7 @@ describe('behaviour -> Alpha', () => {
       alphaA: 0.4,
       alphaB: 1,
       life: 4,
-      easing: 'easeInOutExpo'
+      easing: 'easeInOutExpo',
     });
 
     assert.instanceOf(instance, Proton.Alpha);
@@ -114,6 +114,7 @@ describe('behaviour -> Alpha', () => {
     assert.instanceOf(instance.alphaB, Proton.Span);
     assert.equal(instance.life, 4);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
+    assert.isTrue(instance.isEnabled);
 
     done();
   });
