@@ -41,4 +41,15 @@ describe('initializer -> Initializer', () => {
 
     done();
   });
+
+  it('should not initialize the particle if the initializer is disabled', done => {
+    const particle = new Proton.Particle();
+    const initializer = new Initializer('test', false);
+
+    initializer.init(null, particle);
+
+    assert.isUndefined(particle.hasBeenInitialized);
+
+    done();
+  });
 });

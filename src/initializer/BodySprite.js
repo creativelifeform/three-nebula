@@ -19,8 +19,12 @@ export default class BodySprite extends Initializer {
    * @throws {Error} If the TextureLoader fails to load the supplied texture
    * @return void
    */
-  constructor(texture, materialProperties = DEFAULT_MATERIAL_PROPERTIES) {
-    super(type);
+  constructor(
+    texture,
+    materialProperties = DEFAULT_MATERIAL_PROPERTIES,
+    isEnabled = true
+  ) {
+    super(type, isEnabled);
 
     new TextureLoader().load(
       texture,
@@ -37,7 +41,7 @@ export default class BodySprite extends Initializer {
          */
         this.material = new SpriteMaterial({
           ...{ map },
-          ...materialProperties
+          ...materialProperties,
         });
 
         /**
@@ -72,8 +76,12 @@ export default class BodySprite extends Initializer {
    * @return {BodySprite}
    */
   static fromJSON(json) {
-    const { texture, materialProperties = DEFAULT_MATERIAL_PROPERTIES } = json;
+    const {
+      texture,
+      materialProperties = DEFAULT_MATERIAL_PROPERTIES,
+      isEnabled = true,
+    } = json;
 
-    return new BodySprite(texture, materialProperties);
+    return new BodySprite(texture, materialProperties, isEnabled);
   }
 }

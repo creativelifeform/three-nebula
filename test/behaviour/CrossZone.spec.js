@@ -47,11 +47,11 @@ describe('behaviour -> CrossZone', () => {
         x: 1,
         y: 1,
         z: 1,
-        radius: 10
+        radius: 10,
       },
       crossType: 'bound',
       life: 3,
-      easing: 'easeInOutExpo'
+      easing: 'easeInOutExpo',
     });
 
     assert.instanceOf(instance, Proton.CrossZone);
@@ -63,6 +63,7 @@ describe('behaviour -> CrossZone', () => {
     assert.equal(instance.zone.crossType, 'bound');
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

@@ -37,12 +37,13 @@ describe('initializer -> BodySprite', () => {
       texture,
       materialProperties: {
         fog: false,
-        color: 0xffffff
-      }
+        color: 0xffffff,
+      },
     });
 
     assert.instanceOf(instance, Proton.BodySprite);
     assert(textureLoaderSpy.calledOnceWith(texture));
+    assert.isTrue(instance.isEnabled);
 
     textureLoaderSpy.restore();
     done();

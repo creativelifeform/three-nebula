@@ -3,7 +3,7 @@ import {
   DEFAULT_ATTRACTION_FORCE_SCALAR,
   DEFAULT_BEHAVIOUR_EASING,
   DEFAULT_LIFE,
-  PARTICLE_LENGTH_SQ_THRESHOLD
+  PARTICLE_LENGTH_SQ_THRESHOLD,
 } from './constants';
 
 import Behaviour from './Behaviour';
@@ -24,6 +24,7 @@ export default class Attraction extends Behaviour {
    * @param {number} radius - The attraction radius
    * @param {number} [life=DEFAULT_LIFE] - The life of the particle
    * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
   constructor(
@@ -31,9 +32,10 @@ export default class Attraction extends Behaviour {
     force = DEFAULT_ATTRACTION_FORCE_SCALAR,
     radius = DEFAULT_ATTRACITON_RADIUS,
     life = DEFAULT_LIFE,
-    easing = DEFAULT_BEHAVIOUR_EASING
+    easing = DEFAULT_BEHAVIOUR_EASING,
+    isEnabled = true
   ) {
-    super(life, easing, type);
+    super(life, easing, type, isEnabled);
 
     /**
      * @desc The position the particles will be attracted to
@@ -100,7 +102,6 @@ export default class Attraction extends Behaviour {
   }
 
   /**
-   * Applies the behaviour to the particle.
    * Mutates particle acceleration.
    *
    * @param {Particle} particle - the particle to apply the behaviour to
@@ -108,7 +109,7 @@ export default class Attraction extends Behaviour {
    * @param {integer} index - the particle index
    * @return void
    */
-  applyBehaviour(particle, time, index) {
+  mutate(particle, time, index) {
     this.energize(particle, time, index);
 
     this.attractionForce.copy(this.targetPosition);
@@ -141,14 +142,15 @@ export default class Attraction extends Behaviour {
    * @return {Body}
    */
   static fromJSON(json) {
-    const { x, y, z, force, radius, life, easing } = json;
+    const { x, y, z, force, radius, life, easing, isEnabled = true } = json;
 
     return new Attraction(
       new Vector3D(x, y, z),
       force,
       radius,
       life,
-      getEasingByName(easing)
+      getEasingByName(easing),
+      isEnabled
     );
   }
 }
