@@ -31,7 +31,7 @@ describe('behaviour -> Scale', () => {
       dead,
       _same,
       scaleA,
-      scaleB
+      scaleB,
     } = behaviour;
 
     assert.equal(behaviour.type, 'Scale');
@@ -55,7 +55,7 @@ describe('behaviour -> Scale', () => {
     behaviour.initialize(particle);
 
     const {
-      transform: { scaleA, oldRadius, scaleB }
+      transform: { scaleA, oldRadius, scaleB },
     } = particle;
 
     assert.strictEqual(scaleA, 3);
@@ -81,7 +81,7 @@ describe('behaviour -> Scale', () => {
       scaleA: 0.4,
       scaleB: 1,
       life: 4,
-      easing: 'easeInOutExpo'
+      easing: 'easeInOutExpo',
     });
 
     assert.instanceOf(instance, Proton.Scale);
@@ -89,6 +89,7 @@ describe('behaviour -> Scale', () => {
     assert.instanceOf(instance.scaleB, Proton.Span);
     assert.equal(instance.life, 4);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

@@ -224,10 +224,13 @@ export default class Initializer {
   /**
    * Constructs an Initializer instance.
    *
+   * @param {string} [type=INITIALIZER_TYPE_ABSTRACT] - The intiializer type
+   * @param {boolean} [isEnabled=true] - Determines if the initializer should be enabled or not
    * @return void
    */
-  constructor(type = INITIALIZER_TYPE_ABSTRACT) {
+  constructor(type = INITIALIZER_TYPE_ABSTRACT, isEnabled = true) {
     this.type = type;
+    this.isEnabled = isEnabled;
   }
 
   /**
@@ -239,6 +242,10 @@ export default class Initializer {
    * @return void
    */
   init(emitter, particle) {
+    if (!this.isEnabled) {
+      return;
+    }
+
     if (particle) {
       this.initialize(particle);
       particle.hasBeenInitialized = true;

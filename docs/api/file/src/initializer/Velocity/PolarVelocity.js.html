@@ -230,8 +230,8 @@ export default class PolarVelocity extends Velocity {
    * @param {number} theta - The theta angle to use
    * @return void
    */
-  constructor(polar3d, theta) {
-    super(type);
+  constructor(polar3d, theta, isEnabled = true) {
+    super(type, isEnabled);
 
     /**
      * @desc Theta.
@@ -263,11 +263,18 @@ export default class PolarVelocity extends Velocity {
    * @return {PolarVelocity}
    */
   static fromJSON(json) {
-    const { polarRadius, polarTheta, polarPhi, velocityTheta } = json;
+    const {
+      polarRadius,
+      polarTheta,
+      polarPhi,
+      velocityTheta,
+      isEnabled = true,
+    } = json;
 
     return new PolarVelocity(
       new Polar3D(polarRadius, polarTheta, polarPhi),
-      velocityTheta
+      velocityTheta,
+      isEnabled
     );
   }
 }

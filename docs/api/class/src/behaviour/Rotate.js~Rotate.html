@@ -306,7 +306,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Rotate.js~Rotate.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(x: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, y: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, z: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Rotate.js~Rotate.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(x: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, y: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, z: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, isEnabled: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -529,13 +529,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Rotate.js~Rotate.html#instance-method-applyBehaviour">applyBehaviour</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Rotate.js~Rotate.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Applies the behaviour to the particle.</p>
+        <div data-ice="description"><p>Initializes the behaviour on a particle.</p>
 </div>
       </div>
     </td>
@@ -558,13 +558,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Rotate.js~Rotate.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Rotate.js~Rotate.html#instance-method-mutate">mutate</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Initializes the behaviour on a particle.</p>
+        <div data-ice="description"><p>Mutates the particle.rotation property.</p>
 </div>
       </div>
     </td>
@@ -808,6 +808,35 @@ will never be of type Vector3D.</p>
           
           
           
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-isEnabled">isEnabled</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Determines if the behaviour will be applied or not</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-life">life</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
@@ -866,13 +895,13 @@ will never be of type Vector3D.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-applyBehaviour">applyBehaviour</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-applyBehaviour">applyBehaviour</a></span></span><span class="code" data-ice="signature">(target: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span> | <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>, index: <span>integer</span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Apply behaviour to the particle as a factor of time.</p>
+        <div data-ice="description"><p>Apply behaviour to the target as a factor of time.</p>
 </div>
       </div>
     </td>
@@ -990,6 +1019,35 @@ if the behaviour should be set to dead or not.</p>
         
         
         <div data-ice="description"><p>Set the behaviour&apos;s initial properties on the particle.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      <span class="abstract" data-ice="abstract">abstract</span>
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-mutate">mutate</a></span></span><span class="code" data-ice="signature">(target: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span> | <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Change the target&apos;s properties according to specific behaviour logic.</p>
 </div>
       </div>
     </td>
@@ -1175,11 +1233,11 @@ if the behaviour should be set to dead or not.</p>
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(x: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, y: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, z: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span>*</span></span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(x: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, y: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, z: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, isEnabled: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber22">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber23">source</a></span></span>
     </span>
   </h3>
 
@@ -1234,6 +1292,14 @@ if the behaviour should be set to dead or not.</p>
       <td data-ice="description"><p>The easing equation to use for transforms</p>
 </td>
     </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">isEnabled</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: true</li></ul></td>
+      <td data-ice="description"><p>Determines if the behaviour will be applied or not</p>
+</td>
+    </tr>
 </tbody>
   </table>
 </div>
@@ -1284,7 +1350,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber33">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber34">source</a></span></span>
     </span>
   </h3>
 
@@ -1340,7 +1406,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber43">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber44">source</a></span></span>
     </span>
   </h3>
 
@@ -1397,7 +1463,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber66">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber67">source</a></span></span>
     </span>
   </h3>
 
@@ -1441,7 +1507,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber72">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber73">source</a></span></span>
     </span>
   </h3>
 
@@ -1485,7 +1551,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber78">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber79">source</a></span></span>
     </span>
   </h3>
 
@@ -1531,7 +1597,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber48">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber49">source</a></span></span>
     </span>
   </h3>
 
@@ -1567,14 +1633,88 @@ if the behaviour should be set to dead or not.</p>
 <div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-applyBehaviour">
+  <h3 data-ice="anchor" id="instance-method-initialize">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">applyBehaviour</span><span class="code" data-ice="signature">(particle: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
+    <span class="code" data-ice="name">initialize</span><span class="code" data-ice="signature">(particle: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber103">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Initializes the behaviour on a particle.</p>
+</div>
+
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-initialize">Behaviour#initialize</a></span></div>
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">particle</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>the particle to initialize the behaviour on</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-mutate">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">mutate</span><span class="code" data-ice="signature">(particle: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
     <span class="right-info">
       
       
@@ -1585,11 +1725,10 @@ if the behaviour should be set to dead or not.</p>
   
   
   
-  <div data-ice="description"><p>Applies the behaviour to the particle.
-Mutates the particle.rotation property.</p>
+  <div data-ice="description"><p>Mutates the particle.rotation property.</p>
 </div>
 
-  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-applyBehaviour">Behaviour#applyBehaviour</a></span></div>
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-mutate">Behaviour#mutate</a></span></div>
 
   <div data-ice="properties"><div data-ice="properties">
   <h4 data-ice="title">Params:</h4>
@@ -1656,80 +1795,6 @@ Mutates the particle.rotation property.</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-initialize">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">initialize</span><span class="code" data-ice="signature">(particle: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>*</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber102">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Initializes the behaviour on a particle.</p>
-</div>
-
-  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-initialize">Behaviour#initialize</a></span></div>
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">particle</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>the particle to initialize the behaviour on</p>
-</td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span>*</span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>void</p>
-</td>
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-reset">
     <span class="access" data-ice="access">public</span>
     
@@ -1741,7 +1806,7 @@ Mutates the particle.rotation property.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber61">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber62">source</a></span></span>
     </span>
   </h3>
 
@@ -1845,7 +1910,7 @@ Mutates the particle.rotation property.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber142">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Rotate.js.html#lineNumber143">source</a></span></span>
     </span>
   </h3>
 

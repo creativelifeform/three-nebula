@@ -27,9 +27,10 @@ export default class RandomDrift extends Behaviour {
     driftZ,
     delay = DEFAULT_RANDOM_DRIFT_DELAY,
     life,
-    easing
+    easing,
+    isEnabled = true
   ) {
-    super(life, easing, type);
+    super(life, easing, type, isEnabled);
 
     this.reset(driftX, driftY, driftZ, delay);
 
@@ -76,7 +77,6 @@ export default class RandomDrift extends Behaviour {
   }
 
   /**
-   * Applies the behaviour to the particle.
    * Mutates the particle.acceleration property.
    *
    * @param {object} particle - the particle to apply the behaviour to
@@ -84,7 +84,7 @@ export default class RandomDrift extends Behaviour {
    * @param {integer} index - the particle index
    * @return void
    */
-  applyBehaviour(particle, time, index) {
+  mutate(particle, time, index) {
     this.energize(particle, time, index);
 
     this.time += time;
@@ -101,8 +101,16 @@ export default class RandomDrift extends Behaviour {
   }
 
   static fromJSON(json) {
-    const { x, y, z, delay, life, easing } = json;
+    const { x, y, z, delay, life, easing, isEnabled = true } = json;
 
-    return new RandomDrift(x, y, z, delay, life, getEasingByName(easing));
+    return new RandomDrift(
+      x,
+      y,
+      z,
+      delay,
+      life,
+      getEasingByName(easing),
+      isEnabled
+    );
   }
 }

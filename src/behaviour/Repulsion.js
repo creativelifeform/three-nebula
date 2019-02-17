@@ -17,8 +17,8 @@ export default class Repulsion extends Attraction {
    * @param {function} easing - The behaviour's decaying trend
    * @return void
    */
-  constructor(targetPosition, force, radius, life, easing) {
-    super(targetPosition, force, radius, life, easing);
+  constructor(targetPosition, force, radius, life, easing, isEnabled = true) {
+    super(targetPosition, force, radius, life, easing, isEnabled);
 
     /**
      * @desc Repulsion is attraction with negative force.
@@ -61,14 +61,15 @@ export default class Repulsion extends Attraction {
    * @return {Body}
    */
   static fromJSON(json) {
-    const { x, y, z, force, radius, life, easing } = json;
+    const { x, y, z, force, radius, life, easing, isEnabled = true } = json;
 
     return new Repulsion(
       new Vector3D(x, y, z),
       force,
       radius,
       life,
-      getEasingByName(easing)
+      getEasingByName(easing),
+      isEnabled
     );
   }
 }

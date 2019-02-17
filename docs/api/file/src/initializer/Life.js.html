@@ -228,10 +228,11 @@ export default class Life extends Initializer {
    * @param {number} min - The minimum life
    * @param {number} max - The maximum life
    * @param {boolean} [center] - Determines whether to average the life value
+   * @param {boolean} [isEnabled=true] - Determines if the initializer should be enabled or not
    * @return void
    */
-  constructor(min, max, center) {
-    super(type);
+  constructor(min, max, center, isEnabled = true) {
+    super(type, isEnabled);
 
     /**
      * @desc The life span of the particle.
@@ -258,15 +259,16 @@ export default class Life extends Initializer {
    * Creates a Life initializer from JSON.
    *
    * @param {object} json - The JSON to construct the instance from.
-   * @property {number} json.min - The minimum life time
-   * @property {number} json.max - The maximum life time
-   * @property {number} json.center - The center of the life time
+   * @param {number} json.min - The minimum life time
+   * @param {number} json.max - The maximum life time
+   * @param {number} json.center - The center of the life time
+   * @param {boolean} [json.isEnabled=true] - Determines if the initializer should be enabled or not
    * @return {Life}
    */
   static fromJSON(json) {
-    const { min, max, center = false } = json;
+    const { min, max, center = false, isEnabled = true } = json;
 
-    return new Life(min, max, center);
+    return new Life(min, max, center, isEnabled);
   }
 }
 </code></pre>

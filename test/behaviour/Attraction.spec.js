@@ -25,7 +25,7 @@ describe('behaviour -> Attraction', () => {
       force,
       radiusSq,
       attractionForce,
-      lengthSq
+      lengthSq,
     } = behaviour;
 
     assert.equal(type, 'Attraction');
@@ -56,7 +56,7 @@ describe('behaviour -> Attraction', () => {
       force,
       radiusSq,
       attractionForce,
-      lengthSq
+      lengthSq,
     } = behaviour;
     const particle = new Proton.Particle();
 
@@ -106,7 +106,7 @@ describe('behaviour -> Attraction', () => {
     assert.deepEqual(Object.values(particle.acceleration), [
       0.23744744021624944,
       0.7906999759201108,
-      1.5766510030358964
+      1.5766510030358964,
     ]);
 
     done();
@@ -120,7 +120,7 @@ describe('behaviour -> Attraction', () => {
       force: 4,
       radius: 12,
       life: 3,
-      easing: 'easeInOutExpo'
+      easing: 'easeInOutExpo',
     });
 
     assert.instanceOf(instance, Proton.Attraction);
@@ -129,6 +129,7 @@ describe('behaviour -> Attraction', () => {
     assert.equal(instance.force, 400);
     assert.equal(instance.radius, 12);
     assert.equal(instance.life, 3);
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

@@ -2,12 +2,12 @@ import {
   DEFAULT_BIND_EMITTER,
   DEFAULT_BIND_EMITTER_EVENT,
   DEFAULT_DAMPING,
-  DEFAULT_EMITTER_RATE
+  DEFAULT_EMITTER_RATE,
 } from './constants';
 import EventDispatcher, {
   PARTICLE_CREATED,
   PARTICLE_DEAD,
-  PARTICLE_UPDATE
+  PARTICLE_UPDATE,
 } from '../events';
 import { INTEGRATION_TYPE_EULER, integrate } from '../math';
 
@@ -142,6 +142,21 @@ export default class Emitter extends Particle {
     const { x = position.x, y = position.y, z = position.z } = newPosition;
 
     this.position.set(x, y, z);
+
+    return this;
+  }
+
+  /**
+   * Sets the rotation of the emitter.
+   *
+   * @param {object} newRotation - an object the new x, y and z props
+   * @return {Emitter}
+   */
+  setRotation(newRotation = {}) {
+    const { rotation } = this;
+    const { x = rotation.x, y = rotation.y, z = rotation.z } = newRotation;
+
+    this.rotation.set(x, y, z);
 
     return this;
   }

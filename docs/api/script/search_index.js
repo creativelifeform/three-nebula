@@ -1380,12 +1380,6 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/behaviour/alpha.js~alpha#applybehaviour",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-method-applyBehaviour",
-    "src/behaviour/Alpha.js~Alpha#applyBehaviour",
-    "method"
-  ],
-  [
     "src/behaviour/alpha.js~alpha#constructor",
     "class/src/behaviour/Alpha.js~Alpha.html#instance-constructor-constructor",
     "src/behaviour/Alpha.js~Alpha#constructor",
@@ -1395,6 +1389,12 @@ window.esdocSearchIndex = [
     "src/behaviour/alpha.js~alpha#initialize",
     "class/src/behaviour/Alpha.js~Alpha.html#instance-method-initialize",
     "src/behaviour/Alpha.js~Alpha#initialize",
+    "method"
+  ],
+  [
+    "src/behaviour/alpha.js~alpha#mutate",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-method-mutate",
+    "src/behaviour/Alpha.js~Alpha#mutate",
     "method"
   ],
   [
@@ -1428,12 +1428,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/behaviour/attraction.js~attraction#applybehaviour",
-    "class/src/behaviour/Attraction.js~Attraction.html#instance-method-applyBehaviour",
-    "src/behaviour/Attraction.js~Attraction#applyBehaviour",
-    "method"
-  ],
-  [
     "src/behaviour/attraction.js~attraction#attractionforce",
     "class/src/behaviour/Attraction.js~Attraction.html#instance-member-attractionForce",
     "src/behaviour/Attraction.js~Attraction#attractionForce",
@@ -1456,6 +1450,12 @@ window.esdocSearchIndex = [
     "class/src/behaviour/Attraction.js~Attraction.html#instance-member-lengthSq",
     "src/behaviour/Attraction.js~Attraction#lengthSq",
     "member"
+  ],
+  [
+    "src/behaviour/attraction.js~attraction#mutate",
+    "class/src/behaviour/Attraction.js~Attraction.html#instance-method-mutate",
+    "src/behaviour/Attraction.js~Attraction#mutate",
+    "method"
   ],
   [
     "src/behaviour/attraction.js~attraction#radius",
@@ -1560,10 +1560,22 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/behaviour/behaviour.js~behaviour#isenabled",
+    "class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-isEnabled",
+    "src/behaviour/Behaviour.js~Behaviour#isEnabled",
+    "member"
+  ],
+  [
     "src/behaviour/behaviour.js~behaviour#life",
     "class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-life",
     "src/behaviour/Behaviour.js~Behaviour#life",
     "member"
+  ],
+  [
+    "src/behaviour/behaviour.js~behaviour#mutate",
+    "class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-mutate",
+    "src/behaviour/Behaviour.js~Behaviour#mutate",
+    "method"
   ],
   [
     "src/behaviour/behaviour.js~behaviour#normalizeforce",
@@ -1602,12 +1614,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/behaviour/collision.js~collision#applybehaviour",
-    "class/src/behaviour/Collision.js~Collision.html#instance-method-applyBehaviour",
-    "src/behaviour/Collision.js~Collision#applyBehaviour",
-    "method"
-  ],
-  [
     "src/behaviour/collision.js~collision#constructor",
     "class/src/behaviour/Collision.js~Collision.html#instance-constructor-constructor",
     "src/behaviour/Collision.js~Collision#constructor",
@@ -1629,6 +1635,12 @@ window.esdocSearchIndex = [
     "src/behaviour/collision.js~collision#fromjson",
     "class/src/behaviour/Collision.js~Collision.html#instance-method-fromJSON",
     "src/behaviour/Collision.js~Collision#fromJSON",
+    "method"
+  ],
+  [
+    "src/behaviour/collision.js~collision#mutate",
+    "class/src/behaviour/Collision.js~Collision.html#instance-method-mutate",
+    "src/behaviour/Collision.js~Collision#mutate",
     "method"
   ],
   [
@@ -1668,12 +1680,6 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/behaviour/color.js~color#applybehaviour",
-    "class/src/behaviour/Color.js~Color.html#instance-method-applyBehaviour",
-    "src/behaviour/Color.js~Color#applyBehaviour",
-    "method"
-  ],
-  [
     "src/behaviour/color.js~color#colora",
     "class/src/behaviour/Color.js~Color.html#instance-member-colorA",
     "src/behaviour/Color.js~Color#colorA",
@@ -1695,6 +1701,12 @@ window.esdocSearchIndex = [
     "src/behaviour/color.js~color#initialize",
     "class/src/behaviour/Color.js~Color.html#instance-method-initialize",
     "src/behaviour/Color.js~Color#initialize",
+    "method"
+  ],
+  [
+    "src/behaviour/color.js~color#mutate",
+    "class/src/behaviour/Color.js~Color.html#instance-method-mutate",
+    "src/behaviour/Color.js~Color#mutate",
     "method"
   ],
   [
@@ -1728,15 +1740,15 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/behaviour/crosszone.js~crosszone#applybehaviour",
-    "class/src/behaviour/CrossZone.js~CrossZone.html#instance-method-applyBehaviour",
-    "src/behaviour/CrossZone.js~CrossZone#applyBehaviour",
-    "method"
-  ],
-  [
     "src/behaviour/crosszone.js~crosszone#constructor",
     "class/src/behaviour/CrossZone.js~CrossZone.html#instance-constructor-constructor",
     "src/behaviour/CrossZone.js~CrossZone#constructor",
+    "method"
+  ],
+  [
+    "src/behaviour/crosszone.js~crosszone#mutate",
+    "class/src/behaviour/CrossZone.js~CrossZone.html#instance-method-mutate",
+    "src/behaviour/CrossZone.js~CrossZone#mutate",
     "method"
   ],
   [
@@ -1764,12 +1776,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/behaviour/force.js~force#applybehaviour",
-    "class/src/behaviour/Force.js~Force.html#instance-method-applyBehaviour",
-    "src/behaviour/Force.js~Force#applyBehaviour",
-    "method"
-  ],
-  [
     "src/behaviour/force.js~force#constructor",
     "class/src/behaviour/Force.js~Force.html#instance-constructor-constructor",
     "src/behaviour/Force.js~Force#constructor",
@@ -1780,6 +1786,12 @@ window.esdocSearchIndex = [
     "class/src/behaviour/Force.js~Force.html#instance-member-force",
     "src/behaviour/Force.js~Force#force",
     "member"
+  ],
+  [
+    "src/behaviour/force.js~force#mutate",
+    "class/src/behaviour/Force.js~Force.html#instance-method-mutate",
+    "src/behaviour/Force.js~Force#mutate",
+    "method"
   ],
   [
     "src/behaviour/force.js~force#reset",
@@ -1824,12 +1836,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/behaviour/randomdrift.js~randomdrift#applybehaviour",
-    "class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-method-applyBehaviour",
-    "src/behaviour/RandomDrift.js~RandomDrift#applyBehaviour",
-    "method"
-  ],
-  [
     "src/behaviour/randomdrift.js~randomdrift#constructor",
     "class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-constructor-constructor",
     "src/behaviour/RandomDrift.js~RandomDrift#constructor",
@@ -1840,6 +1846,12 @@ window.esdocSearchIndex = [
     "class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-member-delayPan",
     "src/behaviour/RandomDrift.js~RandomDrift#delayPan",
     "member"
+  ],
+  [
+    "src/behaviour/randomdrift.js~randomdrift#mutate",
+    "class/src/behaviour/RandomDrift.js~RandomDrift.html#instance-method-mutate",
+    "src/behaviour/RandomDrift.js~RandomDrift#mutate",
+    "method"
   ],
   [
     "src/behaviour/randomdrift.js~randomdrift#randomforce",
@@ -1920,12 +1932,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/behaviour/rotate.js~rotate#applybehaviour",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-method-applyBehaviour",
-    "src/behaviour/Rotate.js~Rotate#applyBehaviour",
-    "method"
-  ],
-  [
     "src/behaviour/rotate.js~rotate#constructor",
     "class/src/behaviour/Rotate.js~Rotate.html#instance-constructor-constructor",
     "src/behaviour/Rotate.js~Rotate#constructor",
@@ -1935,6 +1941,12 @@ window.esdocSearchIndex = [
     "src/behaviour/rotate.js~rotate#initialize",
     "class/src/behaviour/Rotate.js~Rotate.html#instance-method-initialize",
     "src/behaviour/Rotate.js~Rotate#initialize",
+    "method"
+  ],
+  [
+    "src/behaviour/rotate.js~rotate#mutate",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-method-mutate",
+    "src/behaviour/Rotate.js~Rotate#mutate",
     "method"
   ],
   [
@@ -1992,12 +2004,6 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/behaviour/scale.js~scale#applybehaviour",
-    "class/src/behaviour/Scale.js~Scale.html#instance-method-applyBehaviour",
-    "src/behaviour/Scale.js~Scale#applyBehaviour",
-    "method"
-  ],
-  [
     "src/behaviour/scale.js~scale#constructor",
     "class/src/behaviour/Scale.js~Scale.html#instance-constructor-constructor",
     "src/behaviour/Scale.js~Scale#constructor",
@@ -2007,6 +2013,12 @@ window.esdocSearchIndex = [
     "src/behaviour/scale.js~scale#initialize",
     "class/src/behaviour/Scale.js~Scale.html#instance-method-initialize",
     "src/behaviour/Scale.js~Scale#initialize",
+    "method"
+  ],
+  [
+    "src/behaviour/scale.js~scale#mutate",
+    "class/src/behaviour/Scale.js~Scale.html#instance-method-mutate",
+    "src/behaviour/Scale.js~Scale#mutate",
     "method"
   ],
   [
@@ -2052,12 +2064,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/behaviour/spring.js~spring#applybehaviour",
-    "class/src/behaviour/Spring.js~Spring.html#instance-method-applyBehaviour",
-    "src/behaviour/Spring.js~Spring#applyBehaviour",
-    "method"
-  ],
-  [
     "src/behaviour/spring.js~spring#constructor",
     "class/src/behaviour/Spring.js~Spring.html#instance-constructor-constructor",
     "src/behaviour/Spring.js~Spring#constructor",
@@ -2068,6 +2074,12 @@ window.esdocSearchIndex = [
     "class/src/behaviour/Spring.js~Spring.html#instance-member-friction",
     "src/behaviour/Spring.js~Spring#friction",
     "member"
+  ],
+  [
+    "src/behaviour/spring.js~spring#mutate",
+    "class/src/behaviour/Spring.js~Spring.html#instance-method-mutate",
+    "src/behaviour/Spring.js~Spring#mutate",
+    "method"
   ],
   [
     "src/behaviour/spring.js~spring#pos",
@@ -2838,6 +2850,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/emitter/emitter.js~emitter#setrotation",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-setRotation",
+    "src/emitter/Emitter.js~Emitter#setRotation",
+    "method"
+  ],
+  [
     "src/emitter/emitter.js~emitter#setupparticle",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-setupParticle",
     "src/emitter/Emitter.js~Emitter#setupParticle",
@@ -3154,6 +3172,12 @@ window.esdocSearchIndex = [
     "class/src/initializer/Initializer.js~Initializer.html#instance-method-initialize",
     "src/initializer/Initializer.js~Initializer#initialize",
     "method"
+  ],
+  [
+    "src/initializer/initializer.js~initializer#isenabled",
+    "class/src/initializer/Initializer.js~Initializer.html#instance-member-isEnabled",
+    "src/initializer/Initializer.js~Initializer#isEnabled",
+    "member"
   ],
   [
     "src/initializer/initializer.js~initializer#reset",

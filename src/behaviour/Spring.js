@@ -18,10 +18,11 @@ export default class Spring extends Behaviour {
    * @param {number} friction - Spring friction
    * @param {number} life - The life of the behaviour
    * @param {function} easing - The easing equation to use for transforms
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
-  constructor(x, y, z, spring, friction, life, easing) {
-    super(life, easing, type);
+  constructor(x, y, z, spring, friction, life, easing, isEnabled = true) {
+    super(life, easing, type, isEnabled);
 
     this.reset(x, y, z, spring, friction);
   }
@@ -56,7 +57,7 @@ export default class Spring extends Behaviour {
    * @param {integer} index - the particle index
    * @return void
    */
-  applyBehaviour(particle, time, index) {
+  mutate(particle, time, index) {
     this.energize(particle, time, index);
 
     particle.velocity.x += (this.pos.x - particle.position.x) * this.spring;
@@ -71,8 +72,17 @@ export default class Spring extends Behaviour {
    * @return {Spring}
    */
   static fromJSON(json) {
-    const { x, y, z, spring, friction, life, easing } = json;
+    const { x, y, z, spring, friction, life, easing, isEnabled = true } = json;
 
-    return new Spring(x, y, z, spring, friction, life, getEasingByName(easing));
+    return new Spring(
+      x,
+      y,
+      z,
+      spring,
+      friction,
+      life,
+      getEasingByName(easing),
+      isEnabled
+    );
   }
 }

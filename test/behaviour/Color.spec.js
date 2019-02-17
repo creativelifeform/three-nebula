@@ -100,7 +100,7 @@ describe('behaviour -> Color', () => {
       colorA: '#FF0000',
       colorB: '#000000',
       life: 3,
-      easing: 'easeInOutExpo'
+      easing: 'easeInOutExpo',
     });
 
     assert.instanceOf(instance, Proton.Color);
@@ -108,6 +108,7 @@ describe('behaviour -> Color', () => {
     assert.instanceOf(instance.colorB, Proton.ColorSpan);
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

@@ -88,6 +88,7 @@ export default (json, Proton, Emitter) => {
     const emitter = new Emitter();
     const {
       rate,
+      rotation,
       initializers,
       behaviours,
       position,
@@ -97,6 +98,7 @@ export default (json, Proton, Emitter) => {
 
     emitter
       .setRate(makeRate(rate))
+      .setRotation(rotation)
       .setInitializers(makeInitializers(initializers))
       .setBehaviours(makeBehaviours(behaviours))
       .setPosition(position)

@@ -229,8 +229,8 @@ export default class Radius extends Initializer {
    * @param {boolean} [center=false] - Determines whether to average the radius value
    * @return void
    */
-  constructor(width, height, center = false) {
-    super(type);
+  constructor(width, height, center = false, isEnabled = true) {
+    super(type, isEnabled);
 
     /**
      * @desc The radius span which is used to set the particle radius value.
@@ -273,9 +273,9 @@ export default class Radius extends Initializer {
    * @return {Radius}
    */
   static fromJSON(json) {
-    const { width, height, center = false } = json;
+    const { width, height, center = false, isEnabled = true } = json;
 
-    return new Radius(width, height, center);
+    return new Radius(width, height, center, isEnabled);
   }
 }
 </code></pre>

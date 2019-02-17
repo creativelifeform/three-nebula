@@ -21,7 +21,7 @@ describe('behaviour -> Spring', () => {
       pos,
       pos: { x, y, z },
       spring,
-      friction
+      friction,
     } = behaviour;
 
     assert.equal(behaviour.type, 'Spring');
@@ -59,7 +59,7 @@ describe('behaviour -> Spring', () => {
       spring: 0.4,
       friction: 0.12,
       life: 3,
-      easing: 'easeInOutExpo'
+      easing: 'easeInOutExpo',
     });
 
     assert.instanceOf(instance, Proton.Spring);
@@ -69,6 +69,7 @@ describe('behaviour -> Spring', () => {
     assert.equal(instance.friction, 0.12);
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

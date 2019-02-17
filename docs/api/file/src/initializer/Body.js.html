@@ -230,8 +230,8 @@ export default class Body extends Initializer {
    * @param {?number} h - The height of the particle body
    * @return void
    */
-  constructor(body, w, h) {
-    super(type);
+  constructor(body, w, h, isEnabled = true) {
+    super(type, isEnabled);
 
     /**
      * @desc The content for the particle body
@@ -265,7 +265,7 @@ export default class Body extends Initializer {
       particle.body = {
         width: this.w,
         height: this.h,
-        body: body
+        body: body,
       };
     } else {
       particle.body = body;
@@ -282,9 +282,9 @@ export default class Body extends Initializer {
    * @return {Body}
    */
   static fromJSON(json) {
-    const { body, width, height } = json;
+    const { body, width, height, isEnabled = true } = json;
 
-    return new Body(body, width, height);
+    return new Body(body, width, height, isEnabled);
   }
 }
 </code></pre>

@@ -5,11 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v2.2.0` - 2019-02-17
+
+### Added
+
+- `setRotation` method to `Emitter` class
+- `rotation` prop extraction when building emitters via the `core/fromJSON` method
+- `isEnabled` property to both initializers and behaviours
+- `mutate` method to behaviours that perform internal logic
+- Test coverage for new functionalities
+
+### Changed
+
+- The behaviour `applyBehaviour` method now checks to see if the behaviour is enabled or not before applying behaviour logic to the particle/emitter via a new `mutate` method
+
 ## `v2.1.0` - 2019-01-19
 
 ### Added
 
-* `totalEmitTimes` and `life` JSON props for emitters
+- `totalEmitTimes` and `life` JSON props for emitters
 
 ## `v2.0.0` - 2019-01-07
 

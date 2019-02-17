@@ -307,7 +307,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Attraction.js~Attraction.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(targetPosition: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span>, force: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, radius: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Attraction.js~Attraction.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(targetPosition: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span>, force: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, radius: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, isEnabled: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -524,13 +524,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Attraction.js~Attraction.html#instance-method-applyBehaviour">applyBehaviour</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Attraction.js~Attraction.html#instance-method-mutate">mutate</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Applies the behaviour to the particle.</p>
+        <div data-ice="description"><p>Mutates particle acceleration.</p>
 </div>
       </div>
     </td>
@@ -735,6 +735,35 @@
           
           
           
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-isEnabled">isEnabled</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Determines if the behaviour will be applied or not</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-life">life</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
@@ -793,13 +822,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-applyBehaviour">applyBehaviour</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-applyBehaviour">applyBehaviour</a></span></span><span class="code" data-ice="signature">(target: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span> | <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>, index: <span>integer</span>): <span>*</span></span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Apply behaviour to the particle as a factor of time.</p>
+        <div data-ice="description"><p>Apply behaviour to the target as a factor of time.</p>
 </div>
       </div>
     </td>
@@ -930,6 +959,35 @@ if the behaviour should be set to dead or not.</p>
       <span class="access" data-ice="access">public</span>
       
       
+      <span class="abstract" data-ice="abstract">abstract</span>
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-mutate">mutate</a></span></span><span class="code" data-ice="signature">(target: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span> | <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Change the target&apos;s properties according to specific behaviour logic.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
       
       <span class="override" data-ice="override"></span>
     </td>
@@ -1031,7 +1089,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber143">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber144">source</a></span></span>
     </span>
   </h3>
 
@@ -1155,11 +1213,11 @@ if the behaviour should be set to dead or not.</p>
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(targetPosition: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span>, force: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, radius: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span>*</span></span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(targetPosition: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span>, force: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, radius: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, isEnabled: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber29">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber30">source</a></span></span>
     </span>
   </h3>
 
@@ -1216,6 +1274,14 @@ if the behaviour should be set to dead or not.</p>
       <td data-ice="description"><p>The behaviour&apos;s decaying trend</p>
 </td>
     </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">isEnabled</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: true</li></ul></td>
+      <td data-ice="description"><p>Determines if the behaviour will be applied or not</p>
+</td>
+    </tr>
 </tbody>
   </table>
 </div>
@@ -1266,7 +1332,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber66">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber68">source</a></span></span>
     </span>
   </h3>
 
@@ -1310,7 +1376,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber54">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber56">source</a></span></span>
     </span>
   </h3>
 
@@ -1354,7 +1420,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber72">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber74">source</a></span></span>
     </span>
   </h3>
 
@@ -1398,7 +1464,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber48">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber50">source</a></span></span>
     </span>
   </h3>
 
@@ -1442,7 +1508,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber60">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber62">source</a></span></span>
     </span>
   </h3>
 
@@ -1486,7 +1552,7 @@ if the behaviour should be set to dead or not.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber42">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber44">source</a></span></span>
     </span>
   </h3>
 
@@ -1522,29 +1588,28 @@ if the behaviour should be set to dead or not.</p>
 <div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-applyBehaviour">
+  <h3 data-ice="anchor" id="instance-method-mutate">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">applyBehaviour</span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
+    <span class="code" data-ice="name">mutate</span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, index: <span>integer</span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber111">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber112">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Applies the behaviour to the particle.
-Mutates particle acceleration.</p>
+  <div data-ice="description"><p>Mutates particle acceleration.</p>
 </div>
 
-  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-applyBehaviour">Behaviour#applyBehaviour</a></span></div>
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-mutate">Behaviour#mutate</a></span></div>
 
   <div data-ice="properties"><div data-ice="properties">
   <h4 data-ice="title">Params:</h4>
@@ -1622,7 +1687,7 @@ Mutates particle acceleration.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber85">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/behaviour/Attraction.js.html#lineNumber87">source</a></span></span>
     </span>
   </h3>
 

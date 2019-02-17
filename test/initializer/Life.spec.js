@@ -14,7 +14,7 @@ describe('initializer -> Life', () => {
   it('should have the correct properties after instantiation', done => {
     const {
       lifePan,
-      lifePan: { _isArray, a, b, _center }
+      lifePan: { _isArray, a, b, _center },
     } = initializer;
 
     assert.equal(initializer.type, 'Life');
@@ -55,13 +55,14 @@ describe('initializer -> Life', () => {
     const instance = Proton.Life.fromJSON({
       min: 3,
       max: 10,
-      center: true
+      center: true,
     });
 
     assert.instanceOf(instance, Proton.Life);
     assert.instanceOf(instance.lifePan, Proton.Span);
     assert.equal(instance.lifePan.a, 3);
     assert.equal(instance.lifePan.b, 10);
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

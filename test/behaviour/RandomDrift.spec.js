@@ -20,7 +20,7 @@ describe('behaviour -> RandomDrift', () => {
       energy,
       dead,
       randomForce,
-      delayPan
+      delayPan,
     } = behaviour;
 
     assert.equal(behaviour.type, 'RandomDrift');
@@ -52,7 +52,7 @@ describe('behaviour -> RandomDrift', () => {
     behaviour.applyBehaviour(particle, TIME);
 
     const {
-      acceleration: { x, y, z }
+      acceleration: { x, y, z },
     } = particle;
 
     assert.notEqual(x, 0);
@@ -69,7 +69,7 @@ describe('behaviour -> RandomDrift', () => {
       z: 1,
       delay: 5,
       life: 3,
-      easing: 'easeInOutExpo'
+      easing: 'easeInOutExpo',
     });
 
     assert.instanceOf(instance, Proton.RandomDrift);
@@ -80,6 +80,7 @@ describe('behaviour -> RandomDrift', () => {
     assert.instanceOf(instance.delayPan, Proton.Span);
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

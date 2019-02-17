@@ -507,12 +507,15 @@ var Behaviour = function () {
    *
    * @param {number} [life=Infinity] - The life of the behaviour
    * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
+   * @param {string} [type=BEHAVIOUR_TYPE_ABSTRACT] - The behaviour type
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
   function Behaviour() {
     var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Infinity;
     var easing = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_BEHAVIOUR_EASING;
     var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _types.BEHAVIOUR_TYPE_ABSTRACT;
+    var isEnabled = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
 
     _classCallCheck(this, Behaviour);
 
@@ -521,6 +524,12 @@ var Behaviour = function () {
      * @type {string}
      */
     this.type = type;
+
+    /**
+     * @desc Determines if the behaviour will be applied or not
+     * @type {boolean}
+     */
+    this.isEnabled = isEnabled;
 
     /**
      * @desc The behaviour's id
@@ -615,17 +624,39 @@ var Behaviour = function () {
     value: function initialize(particle) {} // eslint-disable-line
 
     /**
-     * Apply behaviour to the particle as a factor of time.
+     * Apply behaviour to the target as a factor of time.
+     * Internally calls the mutate method to change properties on the target
+     * Will not do so if the behaviour is disabled
      *
      * @abstract
-     * @param {Particle} particle - The particle to apply the behaviour to
+     * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to
      * @param {Number} time - the proton integration time
+     * @param {integer} index - the target index
      * @return mixed
      */
 
   }, {
     key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time) {} // eslint-disable-line
+    value: function applyBehaviour(target, time, index) {
+      if (!this.isEnabled) {
+        return;
+      }
+
+      this.mutate(target, time, index);
+    }
+
+    /**
+     * Change the target's properties according to specific behaviour logic.
+     *
+     * @abstract
+     * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to
+     * @param {Number} time - the proton integration time
+     * @return mixed
+     */
+
+  }, {
+    key: 'mutate',
+    value: function mutate(target, time, index) {} // eslint-disable-line
 
     /**
      * Compares the age of the behaviour vs integration time and determines
@@ -48967,14 +48998,18 @@ var Initializer = function () {
   /**
    * Constructs an Initializer instance.
    *
+   * @param {string} [type=INITIALIZER_TYPE_ABSTRACT] - The intiializer type
+   * @param {boolean} [isEnabled=true] - Determines if the initializer should be enabled or not
    * @return void
    */
   function Initializer() {
     var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _types.INITIALIZER_TYPE_ABSTRACT;
+    var isEnabled = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
     _classCallCheck(this, Initializer);
 
     this.type = type;
+    this.isEnabled = isEnabled;
   }
 
   /**
@@ -48990,6 +49025,10 @@ var Initializer = function () {
   _createClass(Initializer, [{
     key: 'init',
     value: function init(emitter, particle) {
+      if (!this.isEnabled) {
+        return;
+      }
+
       if (particle) {
         this.initialize(particle);
         particle.hasBeenInitialized = true;
@@ -49946,6 +49985,31 @@ var Emitter = function (_Particle) {
     }
 
     /**
+     * Sets the rotation of the emitter.
+     *
+     * @param {object} newRotation - an object the new x, y and z props
+     * @return {Emitter}
+     */
+
+  }, {
+    key: 'setRotation',
+    value: function setRotation() {
+      var newRotation = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var rotation = this.rotation;
+      var _newRotation$x = newRotation.x,
+          x = _newRotation$x === undefined ? rotation.x : _newRotation$x,
+          _newRotation$y = newRotation.y,
+          y = _newRotation$y === undefined ? rotation.y : _newRotation$y,
+          _newRotation$z = newRotation.z,
+          z = _newRotation$z === undefined ? rotation.z : _newRotation$z;
+
+
+      this.rotation.set(x, y, z);
+
+      return this;
+    }
+
+    /**
      * Sets the total number of times the emitter should emit particles as well as
      * the emitter's life. Also intializes the emitter rate.
      * This enables the emitter to emit particles.
@@ -50590,13 +50654,15 @@ var Velocity = function (_Initializer) {
    * @return void
    */
   function Velocity(type) {
+    var isEnabled = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
     _classCallCheck(this, Velocity);
 
     /**
      * @desc Directional vector
      * @type {Vector3D}
      */
-    var _this = _possibleConstructorReturn(this, (Velocity.__proto__ || Object.getPrototypeOf(Velocity)).call(this, type));
+    var _this = _possibleConstructorReturn(this, (Velocity.__proto__ || Object.getPrototypeOf(Velocity)).call(this, type, isEnabled));
 
     _this.dirVec = new _math.Vector3D(0, 0, 0);
     return _this;
@@ -51158,6 +51224,7 @@ var Attraction = function (_Behaviour) {
    * @param {number} radius - The attraction radius
    * @param {number} [life=DEFAULT_LIFE] - The life of the particle
    * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
   function Attraction() {
@@ -51166,6 +51233,7 @@ var Attraction = function (_Behaviour) {
     var radius = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _constants.DEFAULT_ATTRACITON_RADIUS;
     var life = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.DEFAULT_LIFE;
     var easing = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : _constants.DEFAULT_BEHAVIOUR_EASING;
+    var isEnabled = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : true;
 
     _classCallCheck(this, Attraction);
 
@@ -51173,7 +51241,7 @@ var Attraction = function (_Behaviour) {
      * @desc The position the particles will be attracted to
      * @type {Vector3D}
      */
-    var _this = _possibleConstructorReturn(this, (Attraction.__proto__ || Object.getPrototypeOf(Attraction)).call(this, life, easing, _types.BEHAVIOUR_TYPE_ATTRACTION));
+    var _this = _possibleConstructorReturn(this, (Attraction.__proto__ || Object.getPrototypeOf(Attraction)).call(this, life, easing, _types.BEHAVIOUR_TYPE_ATTRACTION, isEnabled));
 
     _this.targetPosition = targetPosition;
 
@@ -51241,7 +51309,6 @@ var Attraction = function (_Behaviour) {
     }
 
     /**
-     * Applies the behaviour to the particle.
      * Mutates particle acceleration.
      *
      * @param {Particle} particle - the particle to apply the behaviour to
@@ -51251,8 +51318,8 @@ var Attraction = function (_Behaviour) {
      */
 
   }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
+    key: 'mutate',
+    value: function mutate(particle, time, index) {
       this.energize(particle, time, index);
 
       this.attractionForce.copy(this.targetPosition);
@@ -51291,10 +51358,12 @@ var Attraction = function (_Behaviour) {
           force = json.force,
           radius = json.radius,
           life = json.life,
-          easing = json.easing;
+          easing = json.easing,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new Attraction(new _math.Vector3D(x, y, z), force, radius, life, (0, _ease.getEasingByName)(easing));
+      return new Attraction(new _math.Vector3D(x, y, z), force, radius, life, (0, _ease.getEasingByName)(easing), isEnabled);
     }
   }]);
 
@@ -51350,12 +51419,15 @@ var Force = function (_Behaviour) {
    * @param {number} fz - the z axis force
    * @param {number} life - the life of the particle
    * @param {function} easing - The behaviour's decaying trend
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
   function Force(fx, fy, fz, life, easing) {
+    var isEnabled = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : true;
+
     _classCallCheck(this, Force);
 
-    var _this = _possibleConstructorReturn(this, (Force.__proto__ || Object.getPrototypeOf(Force)).call(this, life, easing, _types.BEHAVIOUR_TYPE_FORCE));
+    var _this = _possibleConstructorReturn(this, (Force.__proto__ || Object.getPrototypeOf(Force)).call(this, life, easing, _types.BEHAVIOUR_TYPE_FORCE, isEnabled));
 
     _this.reset(fx, fy, fz);
     return _this;
@@ -51387,7 +51459,6 @@ var Force = function (_Behaviour) {
     }
 
     /**
-     * Applies the behaviour to the particle.
      * Mutates the particle.acceleration property.
      *
      * @param {object} particle - the particle to apply the behaviour to
@@ -51397,8 +51468,8 @@ var Force = function (_Behaviour) {
      */
 
   }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
+    key: 'mutate',
+    value: function mutate(particle, time, index) {
       this.energize(particle, time, index);
 
       particle.acceleration.add(this.force);
@@ -51418,10 +51489,12 @@ var Force = function (_Behaviour) {
           fy = json.fy,
           fz = json.fz,
           life = json.life,
-          easing = json.easing;
+          easing = json.easing,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new Force(fx, fy, fz, life, (0, _ease.getEasingByName)(easing));
+      return new Force(fx, fy, fz, life, (0, _ease.getEasingByName)(easing), isEnabled);
     }
   }]);
 
@@ -69650,6 +69723,7 @@ var Alpha = function (_Behaviour) {
    * @param {?number} alphaB - The ending alpha value
    * @param {number} life - The life of the behaviour
    * @param {function} easing - The easing equation to use for transforms
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
   function Alpha() {
@@ -69657,6 +69731,7 @@ var Alpha = function (_Behaviour) {
     var alphaB = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
     var life = arguments[2];
     var easing = arguments[3];
+    var isEnabled = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
 
     _classCallCheck(this, Alpha);
 
@@ -69664,7 +69739,7 @@ var Alpha = function (_Behaviour) {
      * @desc The starting alpha value
      * @type {number|Span}
      */
-    var _this = _possibleConstructorReturn(this, (Alpha.__proto__ || Object.getPrototypeOf(Alpha)).call(this, life, easing, _types.BEHAVIOUR_TYPE_ALPHA));
+    var _this = _possibleConstructorReturn(this, (Alpha.__proto__ || Object.getPrototypeOf(Alpha)).call(this, life, easing, _types.BEHAVIOUR_TYPE_ALPHA, isEnabled));
 
     _this.alphaA = alphaA;
 
@@ -69728,7 +69803,7 @@ var Alpha = function (_Behaviour) {
     }
 
     /**
-     * Applies the behaviour to the particle.
+     * Mutates the target's alpha/opacity property.
      *
      * @param {object} particle - the particle to apply the behaviour to
      * @param {number} time - engine time
@@ -69737,8 +69812,8 @@ var Alpha = function (_Behaviour) {
      */
 
   }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
+    key: 'mutate',
+    value: function mutate(particle, time, index) {
       this.energize(particle, time, index);
 
       particle.alpha = _math.MathUtils.lerp(particle.transform.alphaA, particle.transform.alphaB, this.energy);
@@ -69784,10 +69859,12 @@ var Alpha = function (_Behaviour) {
       var alphaA = json.alphaA,
           alphaB = json.alphaB,
           life = json.life,
-          easing = json.easing;
+          easing = json.easing,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new Alpha(alphaA, alphaB, life, (0, _ease.getEasingByName)(easing));
+      return new Alpha(alphaA, alphaB, life, (0, _ease.getEasingByName)(easing), isEnabled);
     }
   }]);
 
@@ -69842,12 +69919,15 @@ var Collision = function (_Behaviour) {
    * @param {function} onCollide - Function to call when particles collide
    * @param {number} life - The life of the particle
    * @param {function} easing - The behaviour's decaying trend
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
   function Collision(emitter, useMass, onCollide, life, easing) {
+    var isEnabled = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : true;
+
     _classCallCheck(this, Collision);
 
-    var _this = _possibleConstructorReturn(this, (Collision.__proto__ || Object.getPrototypeOf(Collision)).call(this, life, easing, _types.BEHAVIOUR_TYPE_COLLISION));
+    var _this = _possibleConstructorReturn(this, (Collision.__proto__ || Object.getPrototypeOf(Collision)).call(this, life, easing, _types.BEHAVIOUR_TYPE_COLLISION, isEnabled));
 
     _this.reset(emitter, useMass, onCollide);
     return _this;
@@ -69888,8 +69968,8 @@ var Collision = function (_Behaviour) {
      */
 
   }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
+    key: 'mutate',
+    value: function mutate(particle, time, index) {
       var particles = this.emitter ? this.emitter.particles.slice(index) : this.particles.slice(index);
       var otherParticle = void 0,
           lengthSq = void 0,
@@ -70004,11 +70084,15 @@ var Color = function (_Behaviour) {
    * @param {number|string} colorB - the ending color
    * @param {number} life - the life of the particle
    * @param {function} easing - The behaviour's decaying trend
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
+   * @return void
    */
   function Color(colorA, colorB, life, easing) {
+    var isEnabled = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
+
     _classCallCheck(this, Color);
 
-    var _this = _possibleConstructorReturn(this, (Color.__proto__ || Object.getPrototypeOf(Color)).call(this, life, easing, _types.BEHAVIOUR_TYPE_COLOR));
+    var _this = _possibleConstructorReturn(this, (Color.__proto__ || Object.getPrototypeOf(Color)).call(this, life, easing, _types.BEHAVIOUR_TYPE_COLOR, isEnabled));
 
     _this.reset(colorA, colorB);
     return _this;
@@ -70039,8 +70123,8 @@ var Color = function (_Behaviour) {
       particle.transform.colorB = this.same ? particle.transform.colorA : _utils.ColorUtil.getRGB(this.colorB.getValue());
     }
   }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
+    key: 'mutate',
+    value: function mutate(particle, time, index) {
       this.energize(particle, time, index);
 
       if (!this._same) {
@@ -70090,10 +70174,12 @@ var Color = function (_Behaviour) {
       var colorA = json.colorA,
           colorB = json.colorB,
           life = json.life,
-          easing = json.easing;
+          easing = json.easing,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new Color(colorA, colorB, life, (0, _ease.getEasingByName)(easing));
+      return new Color(colorA, colorB, life, (0, _ease.getEasingByName)(easing), isEnabled);
     }
   }]);
 
@@ -70159,11 +70245,12 @@ var CrossZone = function (_Behaviour) {
    * @param {string} [crossType=DEFAULT_CROSS_TYPE] - enum of cross types, valid strings include 'dead', 'bound', 'cross'
    * @param {number} life - The life of the particle
    * @param {function} easing - The behaviour's decaying trend
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    */
-  function CrossZone(zone, crossType, life, easing) {
+  function CrossZone(zone, crossType, life, easing, isEnabled) {
     _classCallCheck(this, CrossZone);
 
-    var _this = _possibleConstructorReturn(this, (CrossZone.__proto__ || Object.getPrototypeOf(CrossZone)).call(this, life, easing, _types.BEHAVIOUR_TYPE_CROSS_ZONE));
+    var _this = _possibleConstructorReturn(this, (CrossZone.__proto__ || Object.getPrototypeOf(CrossZone)).call(this, life, easing, _types.BEHAVIOUR_TYPE_CROSS_ZONE, isEnabled));
 
     _this.reset(zone, crossType);
     return _this;
@@ -70207,8 +70294,8 @@ var CrossZone = function (_Behaviour) {
      */
 
   }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
+    key: 'mutate',
+    value: function mutate(particle, time, index) {
       this.energize(particle, time, index);
 
       this.zone.crossing.call(this.zone, particle);
@@ -70228,12 +70315,14 @@ var CrossZone = function (_Behaviour) {
           zoneParams = json.zoneParams,
           crossType = json.crossType,
           life = json.life,
-          easing = json.easing;
+          easing = json.easing,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
       var zone = new (Function.prototype.bind.apply(Zone[zoneType], [null].concat(_toConsumableArray(Object.values(zoneParams)))))();
 
-      return new CrossZone(zone, crossType, life, (0, _ease.getEasingByName)(easing));
+      return new CrossZone(zone, crossType, life, (0, _ease.getEasingByName)(easing), isEnabled);
     }
   }]);
 
@@ -70285,16 +70374,19 @@ var Gravity = function (_Force) {
    * @param {number} gravity - the force to pull the particle down the y axis
    * @param {number} life - the life of the particle
    * @param {string} easing - the easing equation to use
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
   function Gravity(gravity, life, easing) {
+    var isEnabled = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+
     _classCallCheck(this, Gravity);
 
     /**
      * @desc The class type.
      * @type {string}
      */
-    var _this = _possibleConstructorReturn(this, (Gravity.__proto__ || Object.getPrototypeOf(Gravity)).call(this, 0, -gravity, 0, life, easing));
+    var _this = _possibleConstructorReturn(this, (Gravity.__proto__ || Object.getPrototypeOf(Gravity)).call(this, 0, -gravity, 0, life, easing, isEnabled));
 
     _this.type = _types.BEHAVIOUR_TYPE_GRAVITY;
     return _this;
@@ -70305,10 +70397,12 @@ var Gravity = function (_Force) {
     value: function fromJSON(json) {
       var gravity = json.gravity,
           life = json.life,
-          easing = json.easing;
+          easing = json.easing,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new Gravity(gravity, life, (0, _ease.getEasingByName)(easing));
+      return new Gravity(gravity, life, (0, _ease.getEasingByName)(easing), isEnabled);
     }
   }]);
 
@@ -70375,10 +70469,11 @@ var RandomDrift = function (_Behaviour) {
     var delay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _constants.DEFAULT_RANDOM_DRIFT_DELAY;
     var life = arguments[4];
     var easing = arguments[5];
+    var isEnabled = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : true;
 
     _classCallCheck(this, RandomDrift);
 
-    var _this = _possibleConstructorReturn(this, (RandomDrift.__proto__ || Object.getPrototypeOf(RandomDrift)).call(this, life, easing, _types.BEHAVIOUR_TYPE_RANDOM_DRIFT));
+    var _this = _possibleConstructorReturn(this, (RandomDrift.__proto__ || Object.getPrototypeOf(RandomDrift)).call(this, life, easing, _types.BEHAVIOUR_TYPE_RANDOM_DRIFT, isEnabled));
 
     _this.reset(driftX, driftY, driftZ, delay);
 
@@ -70425,7 +70520,6 @@ var RandomDrift = function (_Behaviour) {
     }
 
     /**
-     * Applies the behaviour to the particle.
      * Mutates the particle.acceleration property.
      *
      * @param {object} particle - the particle to apply the behaviour to
@@ -70435,8 +70529,8 @@ var RandomDrift = function (_Behaviour) {
      */
 
   }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
+    key: 'mutate',
+    value: function mutate(particle, time, index) {
       this.energize(particle, time, index);
 
       this.time += time;
@@ -70459,10 +70553,12 @@ var RandomDrift = function (_Behaviour) {
           z = json.z,
           delay = json.delay,
           life = json.life,
-          easing = json.easing;
+          easing = json.easing,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new RandomDrift(x, y, z, delay, life, (0, _ease.getEasingByName)(easing));
+      return new RandomDrift(x, y, z, delay, life, (0, _ease.getEasingByName)(easing), isEnabled);
     }
   }]);
 
@@ -70523,13 +70619,15 @@ var Repulsion = function (_Attraction) {
    * @return void
    */
   function Repulsion(targetPosition, force, radius, life, easing) {
+    var isEnabled = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : true;
+
     _classCallCheck(this, Repulsion);
 
     /**
      * @desc Repulsion is attraction with negative force.
      * @type {number}
      */
-    var _this = _possibleConstructorReturn(this, (Repulsion.__proto__ || Object.getPrototypeOf(Repulsion)).call(this, targetPosition, force, radius, life, easing));
+    var _this = _possibleConstructorReturn(this, (Repulsion.__proto__ || Object.getPrototypeOf(Repulsion)).call(this, targetPosition, force, radius, life, easing, isEnabled));
 
     _this.force *= -1;
 
@@ -70582,10 +70680,12 @@ var Repulsion = function (_Attraction) {
           force = json.force,
           radius = json.radius,
           life = json.life,
-          easing = json.easing;
+          easing = json.easing,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new Repulsion(new _math.Vector3D(x, y, z), force, radius, life, (0, _ease.getEasingByName)(easing));
+      return new Repulsion(new _math.Vector3D(x, y, z), force, radius, life, (0, _ease.getEasingByName)(easing), isEnabled);
     }
   }]);
 
@@ -70644,12 +70744,15 @@ var Rotate = function (_Behaviour) {
    * @param {number} z - Z axis rotation
    * @param {number} life - The life of the behaviour
    * @param {function} easing - The easing equation to use for transforms
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
   function Rotate(x, y, z, life, easing) {
+    var isEnabled = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : true;
+
     _classCallCheck(this, Rotate);
 
-    var _this = _possibleConstructorReturn(this, (Rotate.__proto__ || Object.getPrototypeOf(Rotate)).call(this, life, easing, _types.BEHAVIOUR_TYPE_ROTATE));
+    var _this = _possibleConstructorReturn(this, (Rotate.__proto__ || Object.getPrototypeOf(Rotate)).call(this, life, easing, _types.BEHAVIOUR_TYPE_ROTATE, isEnabled));
 
     _this.reset(x, y, z);
     return _this;
@@ -70777,7 +70880,6 @@ var Rotate = function (_Behaviour) {
     }
 
     /**
-     * Applies the behaviour to the particle.
      * Mutates the particle.rotation property.
      *
      * @see http://stackoverflow.com/questions/21622956/how-to-convert-direction-vector-to-euler-angles
@@ -70788,8 +70890,8 @@ var Rotate = function (_Behaviour) {
      */
 
   }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
+    key: 'mutate',
+    value: function mutate(particle, time, index) {
       this.energize(particle, time, index);
 
       switch (this.rotationType) {
@@ -70844,10 +70946,12 @@ var Rotate = function (_Behaviour) {
           y = json.y,
           z = json.z,
           life = json.life,
-          easing = json.easing;
+          easing = json.easing,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new Rotate(x, y, z, life, (0, _ease.getEasingByName)(easing));
+      return new Rotate(x, y, z, life, (0, _ease.getEasingByName)(easing), isEnabled);
     }
   }]);
 
@@ -70904,12 +71008,15 @@ var Scale = function (_Behaviour) {
    * @param {?number} scaleB - the ending scale value
    * @param {number} life - the life of the behaviour
    * @param {function} easing - the easing equation to use for transforms
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
   function Scale(scaleA, scaleB, life, easing) {
+    var isEnabled = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
+
     _classCallCheck(this, Scale);
 
-    var _this = _possibleConstructorReturn(this, (Scale.__proto__ || Object.getPrototypeOf(Scale)).call(this, life, easing, _types.BEHAVIOUR_TYPE_SCALE));
+    var _this = _possibleConstructorReturn(this, (Scale.__proto__ || Object.getPrototypeOf(Scale)).call(this, life, easing, _types.BEHAVIOUR_TYPE_SCALE, isEnabled));
 
     _this.reset(scaleA, scaleB);
     return _this;
@@ -70981,8 +71088,8 @@ var Scale = function (_Behaviour) {
      */
 
   }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
+    key: 'mutate',
+    value: function mutate(particle, time, index) {
       this.energize(particle, time, index);
 
       particle.scale = _math.MathUtils.lerp(particle.transform.scaleA, particle.transform.scaleB, this.energy);
@@ -71026,10 +71133,12 @@ var Scale = function (_Behaviour) {
       var scaleA = json.scaleA,
           scaleB = json.scaleB,
           life = json.life,
-          easing = json.easing;
+          easing = json.easing,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new Scale(scaleA, scaleB, life, (0, _ease.getEasingByName)(easing));
+      return new Scale(scaleA, scaleB, life, (0, _ease.getEasingByName)(easing), isEnabled);
     }
   }]);
 
@@ -71087,12 +71196,15 @@ var Spring = function (_Behaviour) {
    * @param {number} friction - Spring friction
    * @param {number} life - The life of the behaviour
    * @param {function} easing - The easing equation to use for transforms
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
   function Spring(x, y, z, spring, friction, life, easing) {
+    var isEnabled = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : true;
+
     _classCallCheck(this, Spring);
 
-    var _this = _possibleConstructorReturn(this, (Spring.__proto__ || Object.getPrototypeOf(Spring)).call(this, life, easing, _types.BEHAVIOUR_TYPE_SPRING));
+    var _this = _possibleConstructorReturn(this, (Spring.__proto__ || Object.getPrototypeOf(Spring)).call(this, life, easing, _types.BEHAVIOUR_TYPE_SPRING, isEnabled));
 
     _this.reset(x, y, z, spring, friction);
     return _this;
@@ -71134,8 +71246,8 @@ var Spring = function (_Behaviour) {
      */
 
   }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(particle, time, index) {
+    key: 'mutate',
+    value: function mutate(particle, time, index) {
       this.energize(particle, time, index);
 
       particle.velocity.x += (this.pos.x - particle.position.x) * this.spring;
@@ -71159,10 +71271,12 @@ var Spring = function (_Behaviour) {
           spring = json.spring,
           friction = json.friction,
           life = json.life,
-          easing = json.easing;
+          easing = json.easing,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new Spring(x, y, z, spring, friction, life, (0, _ease.getEasingByName)(easing));
+      return new Spring(x, y, z, spring, friction, life, (0, _ease.getEasingByName)(easing), isEnabled);
     }
   }]);
 
@@ -71581,6 +71695,7 @@ exports.default = function (json, Proton, Emitter) {
   emitters.forEach(function (data) {
     var emitter = new Emitter();
     var rate = data.rate,
+        rotation = data.rotation,
         initializers = data.initializers,
         behaviours = data.behaviours,
         position = data.position,
@@ -71590,7 +71705,7 @@ exports.default = function (json, Proton, Emitter) {
         life = _data$life === undefined ? Infinity : _data$life;
 
 
-    emitter.setRate(makeRate(rate)).setInitializers(makeInitializers(initializers)).setBehaviours(makeBehaviours(behaviours)).setPosition(position).emit(totalEmitTimes, life);
+    emitter.setRate(makeRate(rate)).setRotation(rotation).setInitializers(makeInitializers(initializers)).setBehaviours(makeBehaviours(behaviours)).setPosition(position).emit(totalEmitTimes, life);
 
     proton.addEmitter(emitter);
   });
@@ -72469,13 +72584,15 @@ var Body = function (_Initializer) {
    * @return void
    */
   function Body(body, w, h) {
+    var isEnabled = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+
     _classCallCheck(this, Body);
 
     /**
      * @desc The content for the particle body
      * @type {ArraySpan}
      */
-    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this, _types.INITIALIZER_TYPE_BODY));
+    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this, _types.INITIALIZER_TYPE_BODY, isEnabled));
 
     _this.body = (0, _math.createArraySpan)(body);
 
@@ -72532,10 +72649,12 @@ var Body = function (_Initializer) {
     value: function fromJSON(json) {
       var body = json.body,
           width = json.width,
-          height = json.height;
+          height = json.height,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new Body(body, width, height);
+      return new Body(body, width, height, isEnabled);
     }
   }]);
 
@@ -72597,10 +72716,11 @@ var BodySprite = function (_Initializer) {
    */
   function BodySprite(texture) {
     var materialProperties = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_MATERIAL_PROPERTIES;
+    var isEnabled = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
 
     _classCallCheck(this, BodySprite);
 
-    var _this = _possibleConstructorReturn(this, (BodySprite.__proto__ || Object.getPrototypeOf(BodySprite)).call(this, _types.INITIALIZER_TYPE_BODY_SPRITE));
+    var _this = _possibleConstructorReturn(this, (BodySprite.__proto__ || Object.getPrototypeOf(BodySprite)).call(this, _types.INITIALIZER_TYPE_BODY_SPRITE, isEnabled));
 
     new _three.TextureLoader().load(texture, function (map) {
       /**
@@ -72654,10 +72774,12 @@ var BodySprite = function (_Initializer) {
     value: function fromJSON(json) {
       var texture = json.texture,
           _json$materialPropert = json.materialProperties,
-          materialProperties = _json$materialPropert === undefined ? _constants.DEFAULT_MATERIAL_PROPERTIES : _json$materialPropert;
+          materialProperties = _json$materialPropert === undefined ? _constants.DEFAULT_MATERIAL_PROPERTIES : _json$materialPropert,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new BodySprite(texture, materialProperties);
+      return new BodySprite(texture, materialProperties, isEnabled);
     }
   }]);
 
@@ -72768,16 +72890,19 @@ var Life = function (_Initializer) {
    * @param {number} min - The minimum life
    * @param {number} max - The maximum life
    * @param {boolean} [center] - Determines whether to average the life value
+   * @param {boolean} [isEnabled=true] - Determines if the initializer should be enabled or not
    * @return void
    */
   function Life(min, max, center) {
+    var isEnabled = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+
     _classCallCheck(this, Life);
 
     /**
      * @desc The life span of the particle.
      * @type {Span}
      */
-    var _this = _possibleConstructorReturn(this, (Life.__proto__ || Object.getPrototypeOf(Life)).call(this, _types.INITIALIZER_TYPE_LIFE));
+    var _this = _possibleConstructorReturn(this, (Life.__proto__ || Object.getPrototypeOf(Life)).call(this, _types.INITIALIZER_TYPE_LIFE, isEnabled));
 
     _this.lifePan = (0, _math.createSpan)(min, max, center);
     return _this;
@@ -72805,9 +72930,10 @@ var Life = function (_Initializer) {
      * Creates a Life initializer from JSON.
      *
      * @param {object} json - The JSON to construct the instance from.
-     * @property {number} json.min - The minimum life time
-     * @property {number} json.max - The maximum life time
-     * @property {number} json.center - The center of the life time
+     * @param {number} json.min - The minimum life time
+     * @param {number} json.max - The maximum life time
+     * @param {number} json.center - The center of the life time
+     * @param {boolean} [json.isEnabled=true] - Determines if the initializer should be enabled or not
      * @return {Life}
      */
 
@@ -72817,10 +72943,12 @@ var Life = function (_Initializer) {
       var min = json.min,
           max = json.max,
           _json$center = json.center,
-          center = _json$center === undefined ? false : _json$center;
+          center = _json$center === undefined ? false : _json$center,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new Life(min, max, center);
+      return new Life(min, max, center, isEnabled);
     }
   }]);
 
@@ -72876,6 +73004,7 @@ var Mass = function (_Initializer) {
    */
   function Mass(min, max) {
     var center = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    var isEnabled = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
 
     _classCallCheck(this, Mass);
 
@@ -72883,7 +73012,7 @@ var Mass = function (_Initializer) {
      * @desc The mass span which is used to set the particle mass value.
      * @type {Span}
      */
-    var _this = _possibleConstructorReturn(this, (Mass.__proto__ || Object.getPrototypeOf(Mass)).call(this, _types.INITIALIZER_TYPE_MASS));
+    var _this = _possibleConstructorReturn(this, (Mass.__proto__ || Object.getPrototypeOf(Mass)).call(this, _types.INITIALIZER_TYPE_MASS, isEnabled));
 
     _this.massPan = (0, _math.createSpan)(min, max, center);
     return _this;
@@ -72919,10 +73048,12 @@ var Mass = function (_Initializer) {
       var min = json.min,
           max = json.max,
           _json$center = json.center,
-          center = _json$center === undefined ? false : _json$center;
+          center = _json$center === undefined ? false : _json$center,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new Mass(min, max, center);
+      return new Mass(min, max, center, isEnabled);
     }
   }]);
 
@@ -73127,6 +73258,7 @@ var Radius = function (_Initializer) {
    */
   function Radius(width, height) {
     var center = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    var isEnabled = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
 
     _classCallCheck(this, Radius);
 
@@ -73134,7 +73266,7 @@ var Radius = function (_Initializer) {
      * @desc The radius span which is used to set the particle radius value.
      * @type {Span}
      */
-    var _this = _possibleConstructorReturn(this, (Radius.__proto__ || Object.getPrototypeOf(Radius)).call(this, _types.INITIALIZER_TYPE_RADIUS));
+    var _this = _possibleConstructorReturn(this, (Radius.__proto__ || Object.getPrototypeOf(Radius)).call(this, _types.INITIALIZER_TYPE_RADIUS, isEnabled));
 
     _this.radius = (0, _math.createSpan)(width, height, center);
     return _this;
@@ -73189,10 +73321,12 @@ var Radius = function (_Initializer) {
       var width = json.width,
           height = json.height,
           _json$center = json.center,
-          center = _json$center === undefined ? false : _json$center;
+          center = _json$center === undefined ? false : _json$center,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new Radius(width, height, center);
+      return new Radius(width, height, center, isEnabled);
     }
   }]);
 
@@ -73248,13 +73382,15 @@ var PolarVelocity = function (_Velocity) {
    * @return void
    */
   function PolarVelocity(polar3d, theta) {
+    var isEnabled = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
     _classCallCheck(this, PolarVelocity);
 
     /**
      * @desc Theta.
      * @type {number}
      */
-    var _this = _possibleConstructorReturn(this, (PolarVelocity.__proto__ || Object.getPrototypeOf(PolarVelocity)).call(this, _types.INITIALIZER_TYPE_POLAR_VELOCITY));
+    var _this = _possibleConstructorReturn(this, (PolarVelocity.__proto__ || Object.getPrototypeOf(PolarVelocity)).call(this, _types.INITIALIZER_TYPE_POLAR_VELOCITY, isEnabled));
 
     _this.tha = theta * _constants.DR;
 
@@ -73290,10 +73426,12 @@ var PolarVelocity = function (_Velocity) {
       var polarRadius = json.polarRadius,
           polarTheta = json.polarTheta,
           polarPhi = json.polarPhi,
-          velocityTheta = json.velocityTheta;
+          velocityTheta = json.velocityTheta,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new PolarVelocity(new _math.Polar3D(polarRadius, polarTheta, polarPhi), velocityTheta);
+      return new PolarVelocity(new _math.Polar3D(polarRadius, polarTheta, polarPhi), velocityTheta, isEnabled);
     }
   }]);
 
@@ -73350,13 +73488,15 @@ var RadialVelocity = function (_Velocity) {
    * @return void
    */
   function RadialVelocity(radius, vector3d, theta) {
+    var isEnabled = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+
     _classCallCheck(this, RadialVelocity);
 
     /**
      * @desc Velocity radius span.
      * @type {Span}
      */
-    var _this = _possibleConstructorReturn(this, (RadialVelocity.__proto__ || Object.getPrototypeOf(RadialVelocity)).call(this, _types.INITIALIZER_TYPE_RADIAL_VELOCITY));
+    var _this = _possibleConstructorReturn(this, (RadialVelocity.__proto__ || Object.getPrototypeOf(RadialVelocity)).call(this, _types.INITIALIZER_TYPE_RADIAL_VELOCITY, isEnabled));
 
     _this.radiusPan = (0, _math.createSpan)(radius);
 
@@ -73400,10 +73540,12 @@ var RadialVelocity = function (_Velocity) {
           x = json.x,
           y = json.y,
           z = json.z,
-          theta = json.theta;
+          theta = json.theta,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new RadialVelocity(radius, new _math.Vector3D(x, y, z), theta);
+      return new RadialVelocity(radius, new _math.Vector3D(x, y, z), theta, isEnabled);
     }
   }]);
 
@@ -73459,13 +73601,15 @@ var VectorVelocity = function (_Velocity) {
    * @return void
    */
   function VectorVelocity(vector3d, theta) {
+    var isEnabled = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
     _classCallCheck(this, VectorVelocity);
 
     /**
      * @desc Velocity radius span.
      * @type {Span}
      */
-    var _this = _possibleConstructorReturn(this, (VectorVelocity.__proto__ || Object.getPrototypeOf(VectorVelocity)).call(this, _types.INITIALIZER_TYPE_VECTOR_VELOCITY));
+    var _this = _possibleConstructorReturn(this, (VectorVelocity.__proto__ || Object.getPrototypeOf(VectorVelocity)).call(this, _types.INITIALIZER_TYPE_VECTOR_VELOCITY, isEnabled));
 
     _this.radiusPan = (0, _math.createSpan)(1);
 
@@ -73507,10 +73651,12 @@ var VectorVelocity = function (_Velocity) {
       var x = json.x,
           y = json.y,
           z = json.z,
-          theta = json.theta;
+          theta = json.theta,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new VectorVelocity(new _math.Vector3D(x, y, z), theta);
+      return new VectorVelocity(new _math.Vector3D(x, y, z), theta, isEnabled);
     }
   }]);
 
