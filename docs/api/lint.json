@@ -1,5 +1,56 @@
 [
   {
+    "name": "Behaviour#mutate",
+    "filePath": "src/behaviour/Behaviour.js",
+    "lines": [
+      {
+        "lineNumber": 134,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 135,
+        "line": "   * Change the target's properties according to specific behaviour logic."
+      },
+      {
+        "lineNumber": 136,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 137,
+        "line": "   * @abstract"
+      },
+      {
+        "lineNumber": 138,
+        "line": "   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to"
+      },
+      {
+        "lineNumber": 139,
+        "line": "   * @param {Number} time - the proton integration time"
+      },
+      {
+        "lineNumber": 140,
+        "line": "   * @return mixed"
+      },
+      {
+        "lineNumber": 141,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 142,
+        "line": "  mutate(target, time, index) {} // eslint-disable-line"
+      }
+    ],
+    "codeParams": [
+      "target",
+      "time",
+      "index"
+    ],
+    "docParams": [
+      "target",
+      "time"
+    ]
+  },
+  {
     "name": "BehaviourEmitter#addSelfBehaviour",
     "filePath": "src/emitter/BehaviourEmitter.js",
     "lines": [
