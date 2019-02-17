@@ -230,10 +230,11 @@ export default class Force extends Behaviour {
    * @param {number} fz - the z axis force
    * @param {number} life - the life of the particle
    * @param {function} easing - The behaviour&apos;s decaying trend
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
-  constructor(fx, fy, fz, life, easing) {
-    super(life, easing, type);
+  constructor(fx, fy, fz, life, easing, isEnabled = true) {
+    super(life, easing, type, isEnabled);
 
     this.reset(fx, fy, fz);
   }
@@ -260,7 +261,6 @@ export default class Force extends Behaviour {
   }
 
   /**
-   * Applies the behaviour to the particle.
    * Mutates the particle.acceleration property.
    *
    * @param {object} particle - the particle to apply the behaviour to
@@ -268,7 +268,7 @@ export default class Force extends Behaviour {
    * @param {integer} index - the particle index
    * @return void
    */
-  applyBehaviour(particle, time, index) {
+  mutate(particle, time, index) {
     this.energize(particle, time, index);
 
     particle.acceleration.add(this.force);
@@ -281,9 +281,9 @@ export default class Force extends Behaviour {
    * @return {Force}
    */
   static fromJSON(json) {
-    const { fx, fy, fz, life, easing } = json;
+    const { fx, fy, fz, life, easing, isEnabled = true } = json;
 
-    return new Force(fx, fy, fz, life, getEasingByName(easing));
+    return new Force(fx, fy, fz, life, getEasingByName(easing), isEnabled);
   }
 }
 </code></pre>

@@ -228,10 +228,11 @@ export default class Gravity extends Force {
    * @param {number} gravity - the force to pull the particle down the y axis
    * @param {number} life - the life of the particle
    * @param {string} easing - the easing equation to use
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
-  constructor(gravity, life, easing) {
-    super(0, -gravity, 0, life, easing);
+  constructor(gravity, life, easing, isEnabled = true) {
+    super(0, -gravity, 0, life, easing, isEnabled);
 
     /**
      * @desc The class type.
@@ -241,9 +242,9 @@ export default class Gravity extends Force {
   }
 
   static fromJSON(json) {
-    const { gravity, life, easing } = json;
+    const { gravity, life, easing, isEnabled = true } = json;
 
-    return new Gravity(gravity, life, getEasingByName(easing));
+    return new Gravity(gravity, life, getEasingByName(easing), isEnabled);
   }
 }
 </code></pre>
