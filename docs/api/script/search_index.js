@@ -294,6 +294,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/initializer/constants.js~default_json_material_properties",
+    "variable/index.html#static-variable-DEFAULT_JSON_MATERIAL_PROPERTIES",
+    "<span>DEFAULT_JSON_MATERIAL_PROPERTIES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/behaviour/constants.js~default_life",
     "variable/index.html#static-variable-DEFAULT_LIFE",
     "<span>DEFAULT_LIFE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
@@ -1074,6 +1080,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@rohandeshpande/three-proton/src/utils/index.js~withdefaults",
+    "function/index.html#static-function-withDefaults",
+    "<span>withDefaults</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/utils/index.js</span>",
+    "function"
+  ],
+  [
     "src/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
     "src/.external-ecmascript.js~Array",
@@ -1405,13 +1417,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -1717,13 +1729,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
@@ -1957,13 +1969,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#rotationtype",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-rotationType",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-rotationType",
     "src/behaviour/Rotate.js~Rotate#rotationType",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#rotationtype",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-rotationType",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-rotationType",
     "src/behaviour/Rotate.js~Rotate#rotationType",
     "member"
   ],
@@ -2029,13 +2041,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
@@ -3025,13 +3037,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -3129,6 +3141,12 @@ window.esdocSearchIndex = [
     "src/initializer/bodysprite.js~bodysprite#material",
     "class/src/initializer/BodySprite.js~BodySprite.html#instance-member-material",
     "src/initializer/BodySprite.js~BodySprite#material",
+    "member"
+  ],
+  [
+    "src/initializer/bodysprite.js~bodysprite#materialproperties",
+    "class/src/initializer/BodySprite.js~BodySprite.html#instance-member-materialProperties",
+    "src/initializer/BodySprite.js~BodySprite#materialProperties",
     "member"
   ],
   [
