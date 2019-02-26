@@ -168,7 +168,7 @@ Object.defineProperty(exports, 'createSpan', {
   }
 });
 
-var _Vector3D = __webpack_require__(10);
+var _Vector3D = __webpack_require__(11);
 
 Object.defineProperty(exports, 'Vector3D', {
   enumerable: true,
@@ -492,7 +492,7 @@ var _types = __webpack_require__(2);
 
 var _constants2 = __webpack_require__(3);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(10);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -49190,6 +49190,70 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _ColorUtil = __webpack_require__(84);
+
+Object.defineProperty(exports, 'ColorUtil', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_ColorUtil).default;
+  }
+});
+
+var _PUID = __webpack_require__(28);
+
+Object.defineProperty(exports, 'PUID', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_PUID).default;
+  }
+});
+
+var _THREEUtil = __webpack_require__(29);
+
+Object.defineProperty(exports, 'THREEUtil', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_THREEUtil).default;
+  }
+});
+
+var _Util = __webpack_require__(9);
+
+Object.defineProperty(exports, 'Util', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Util).default;
+  }
+});
+
+var _uid = __webpack_require__(40);
+
+Object.defineProperty(exports, 'uid', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_uid).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var withDefaults = exports.withDefaults = function withDefaults(defaults, properties) {
+  return _extends({}, defaults, properties);
+};
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _three = __webpack_require__(6);
@@ -49257,7 +49321,7 @@ exports.default = Vector3D;
 module.exports = exports['default'];
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49273,7 +49337,7 @@ var RENDERER_TYPE_MESH = exports.RENDERER_TYPE_MESH = 'MeshRenderer';
 var RENDERER_TYPE_POINTS = exports.RENDERER_TYPE_POINTS = 'PointsRenderer';
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49285,7 +49349,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Vector3D = __webpack_require__(10);
+var _Vector3D = __webpack_require__(11);
 
 var _Vector3D2 = _interopRequireDefault(_Vector3D);
 
@@ -49459,64 +49523,6 @@ exports.default = Zone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _ColorUtil = __webpack_require__(84);
-
-Object.defineProperty(exports, 'ColorUtil', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_ColorUtil).default;
-  }
-});
-
-var _PUID = __webpack_require__(28);
-
-Object.defineProperty(exports, 'PUID', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_PUID).default;
-  }
-});
-
-var _THREEUtil = __webpack_require__(29);
-
-Object.defineProperty(exports, 'THREEUtil', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_THREEUtil).default;
-  }
-});
-
-var _Util = __webpack_require__(9);
-
-Object.defineProperty(exports, 'Util', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Util).default;
-  }
-});
-
-var _uid = __webpack_require__(40);
-
-Object.defineProperty(exports, 'uid', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_uid).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49681,7 +49687,7 @@ var _types2 = __webpack_require__(4);
 
 var _types3 = __webpack_require__(8);
 
-var _types4 = __webpack_require__(11);
+var _types4 = __webpack_require__(12);
 
 var _ease = __webpack_require__(1);
 
@@ -50854,7 +50860,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _constants = __webpack_require__(35);
 
-var _types = __webpack_require__(11);
+var _types = __webpack_require__(12);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -51519,7 +51525,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _constants = __webpack_require__(17);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(10);
 
 var _constants2 = __webpack_require__(3);
 
@@ -52293,7 +52299,9 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DEFAULT_RATE_TIME_PAN = exports.DEFAULT_RATE_NUM_PAN = exports.DEFAULT_MATERIAL_PROPERTIES = undefined;
+exports.DEFAULT_RATE_TIME_PAN = exports.DEFAULT_RATE_NUM_PAN = exports.DEFAULT_JSON_MATERIAL_PROPERTIES = exports.DEFAULT_MATERIAL_PROPERTIES = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _three = __webpack_require__(6);
 
@@ -52302,6 +52310,9 @@ var DEFAULT_MATERIAL_PROPERTIES = exports.DEFAULT_MATERIAL_PROPERTIES = {
   blending: _three.AdditiveBlending,
   fog: true
 };
+var DEFAULT_JSON_MATERIAL_PROPERTIES = exports.DEFAULT_JSON_MATERIAL_PROPERTIES = _extends({}, DEFAULT_MATERIAL_PROPERTIES, {
+  blending: 'AdditiveBlending'
+});
 var DEFAULT_RATE_NUM_PAN = exports.DEFAULT_RATE_NUM_PAN = 1;
 var DEFAULT_RATE_TIME_PAN = exports.DEFAULT_RATE_TIME_PAN = 1;
 
@@ -52324,11 +52335,11 @@ var _BaseRenderer2 = __webpack_require__(27);
 
 var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(10);
 
 var _core = __webpack_require__(20);
 
-var _types = __webpack_require__(11);
+var _types = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -70056,7 +70067,7 @@ var _Behaviour2 = __webpack_require__(5);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(10);
 
 var _ease = __webpack_require__(1);
 
@@ -72492,7 +72503,7 @@ Object.keys(_renderer).forEach(function (key) {
   });
 });
 
-var _utils = __webpack_require__(13);
+var _utils = __webpack_require__(10);
 
 Object.keys(_utils).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -72681,6 +72692,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _three = __webpack_require__(6);
 
+var THREE = _interopRequireWildcard(_three);
+
 var _constants = __webpack_require__(38);
 
 var _Initializer2 = __webpack_require__(7);
@@ -72689,7 +72702,11 @@ var _Initializer3 = _interopRequireDefault(_Initializer2);
 
 var _types = __webpack_require__(4);
 
+var _utils = __webpack_require__(10);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -72697,12 +72714,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var Sprite = THREE.Sprite,
+    SpriteMaterial = THREE.SpriteMaterial,
+    TextureLoader = THREE.TextureLoader;
+
 /**
  * Sets the body property to be a THREE.Sprite on initialized particles.
  *
  * NOTE The texture map MUST be set on the SpriteMaterial in the TextureLoader.load
  * callback. Not doing so will cause WebGL buffer errors.
  */
+
 var BodySprite = function (_Initializer) {
   _inherits(BodySprite, _Initializer);
 
@@ -72720,9 +72742,16 @@ var BodySprite = function (_Initializer) {
 
     _classCallCheck(this, BodySprite);
 
+    /**
+     * @desc The material properties for this object's SpriteMaterial
+     * NOTE This is required for testing purposes
+     * @type {object}
+     */
     var _this = _possibleConstructorReturn(this, (BodySprite.__proto__ || Object.getPrototypeOf(BodySprite)).call(this, _types.INITIALIZER_TYPE_BODY_SPRITE, isEnabled));
 
-    new _three.TextureLoader().load(texture, function (map) {
+    _this.materialProperties = (0, _utils.withDefaults)(_constants.DEFAULT_MATERIAL_PROPERTIES, materialProperties);
+
+    new TextureLoader().load(texture, function (map) {
       /**
        * @desc The texture for the THREE.SpriteMaterial map.
        * @type {Texture}
@@ -72733,13 +72762,13 @@ var BodySprite = function (_Initializer) {
        * @desc THREE.SpriteMaterial instance.
        * @type {SpriteMaterial}
        */
-      _this.material = new _three.SpriteMaterial(_extends({ map: map }, materialProperties));
+      _this.material = new SpriteMaterial(_extends({ map: map }, _this.materialProperties));
 
       /**
        * @desc THREE.Sprite instance.
        * @type {Sprite}
        */
-      _this.sprite = new _three.Sprite(_this.material);
+      _this.sprite = new Sprite(_this.material);
     }, undefined, function (error) {
       throw new Error(error);
     });
@@ -72774,12 +72803,21 @@ var BodySprite = function (_Initializer) {
     value: function fromJSON(json) {
       var texture = json.texture,
           _json$materialPropert = json.materialProperties,
-          materialProperties = _json$materialPropert === undefined ? _constants.DEFAULT_MATERIAL_PROPERTIES : _json$materialPropert,
+          materialProperties = _json$materialPropert === undefined ? _constants.DEFAULT_JSON_MATERIAL_PROPERTIES : _json$materialPropert,
           _json$isEnabled = json.isEnabled,
           isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
 
 
-      return new BodySprite(texture, materialProperties, isEnabled);
+      var ensureMappedBlendingMode = function ensureMappedBlendingMode(properties) {
+        var blending = properties.blending;
+
+
+        return _extends({}, properties, {
+          blending: blending ? THREE[blending] : THREE[_constants.DEFAULT_JSON_MATERIAL_PROPERTIES.blending]
+        });
+      };
+
+      return new BodySprite(texture, (0, _utils.withDefaults)(_constants.DEFAULT_JSON_MATERIAL_PROPERTIES, ensureMappedBlendingMode(materialProperties)), isEnabled);
     }
   }]);
 
@@ -73986,7 +74024,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Vector3D = __webpack_require__(10);
+var _Vector3D = __webpack_require__(11);
 
 var _Vector3D2 = _interopRequireDefault(_Vector3D);
 
@@ -74180,7 +74218,7 @@ var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
 var _core = __webpack_require__(20);
 
-var _types = __webpack_require__(11);
+var _types = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -74245,7 +74283,7 @@ var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
 var _three = __webpack_require__(6);
 
-var _types = __webpack_require__(11);
+var _types = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -74325,7 +74363,7 @@ var _MeshRenderer2 = __webpack_require__(39);
 
 var _MeshRenderer3 = _interopRequireDefault(_MeshRenderer2);
 
-var _types = __webpack_require__(11);
+var _types = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -74430,7 +74468,7 @@ var _Util = __webpack_require__(9);
 
 var _Util2 = _interopRequireDefault(_Util);
 
-var _Zone2 = __webpack_require__(12);
+var _Zone2 = __webpack_require__(13);
 
 var _Zone3 = _interopRequireDefault(_Zone2);
 
@@ -74603,11 +74641,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Vector3D = __webpack_require__(10);
+var _Vector3D = __webpack_require__(11);
 
 var _Vector3D2 = _interopRequireDefault(_Vector3D);
 
-var _Zone2 = __webpack_require__(12);
+var _Zone2 = __webpack_require__(13);
 
 var _Zone3 = _interopRequireDefault(_Zone2);
 
@@ -74711,7 +74749,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _three = __webpack_require__(6);
 
-var _Zone2 = __webpack_require__(12);
+var _Zone2 = __webpack_require__(13);
 
 var _Zone3 = _interopRequireDefault(_Zone2);
 
@@ -74813,7 +74851,7 @@ var _Util = __webpack_require__(9);
 
 var _Util2 = _interopRequireDefault(_Util);
 
-var _Zone2 = __webpack_require__(12);
+var _Zone2 = __webpack_require__(13);
 
 var _Zone3 = _interopRequireDefault(_Zone2);
 
@@ -74916,11 +74954,11 @@ var _THREEUtil = __webpack_require__(29);
 
 var _THREEUtil2 = _interopRequireDefault(_THREEUtil);
 
-var _Vector3D = __webpack_require__(10);
+var _Vector3D = __webpack_require__(11);
 
 var _Vector3D2 = _interopRequireDefault(_Vector3D);
 
-var _Zone2 = __webpack_require__(12);
+var _Zone2 = __webpack_require__(13);
 
 var _Zone3 = _interopRequireDefault(_Zone2);
 
@@ -75086,11 +75124,11 @@ var _Util = __webpack_require__(9);
 
 var _Util2 = _interopRequireDefault(_Util);
 
-var _Vector3D = __webpack_require__(10);
+var _Vector3D = __webpack_require__(11);
 
 var _Vector3D2 = _interopRequireDefault(_Vector3D);
 
-var _Zone2 = __webpack_require__(12);
+var _Zone2 = __webpack_require__(13);
 
 var _Zone3 = _interopRequireDefault(_Zone2);
 
