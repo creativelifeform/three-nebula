@@ -1,8 +1,15 @@
-import { Sprite, SpriteMaterial, TextureLoader } from 'three';
+import * as THREE from 'three';
 
-import { DEFAULT_MATERIAL_PROPERTIES } from './constants';
+import {
+  DEFAULT_JSON_MATERIAL_PROPERTIES,
+  DEFAULT_MATERIAL_PROPERTIES,
+} from './constants';
+
 import Initializer from './Initializer';
 import { INITIALIZER_TYPE_BODY_SPRITE as type } from './types';
+import { withDefaults } from '../utils';
+
+const { Sprite, SpriteMaterial, TextureLoader } = THREE;
 
 /**
  * Sets the body property to be a THREE.Sprite on initialized particles.
@@ -26,6 +33,16 @@ export default class BodySprite extends Initializer {
   ) {
     super(type, isEnabled);
 
+    /**
+     * @desc The material properties for this object's SpriteMaterial
+     * NOTE This is required for testing purposes
+     * @type {object}
+     */
+    this.materialProperties = withDefaults(
+      DEFAULT_MATERIAL_PROPERTIES,
+      materialProperties
+    );
+
     new TextureLoader().load(
       texture,
       map => {
@@ -41,7 +58,7 @@ export default class BodySprite extends Initializer {
          */
         this.material = new SpriteMaterial({
           ...{ map },
-          ...materialProperties,
+          ...this.materialProperties,
         });
 
         /**
@@ -78,10 +95,28 @@ export default class BodySprite extends Initializer {
   static fromJSON(json) {
     const {
       texture,
-      materialProperties = DEFAULT_MATERIAL_PROPERTIES,
+      materialProperties = DEFAULT_JSON_MATERIAL_PROPERTIES,
       isEnabled = true,
     } = json;
 
-    return new BodySprite(texture, materialProperties, isEnabled);
+    const ensureMappedBlendingMode = properties => {
+      const { blending } = properties;
+
+      return {
+        ...properties,
+        blending: blending
+          ? THREE[blending]
+          : THREE[DEFAULT_JSON_MATERIAL_PROPERTIES.blending],
+      };
+    };
+
+    return new BodySprite(
+      texture,
+      withDefaults(
+        DEFAULT_JSON_MATERIAL_PROPERTIES,
+        ensureMappedBlendingMode(materialProperties)
+      ),
+      isEnabled
+    );
   }
 }
