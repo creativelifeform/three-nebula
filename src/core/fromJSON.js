@@ -4,7 +4,7 @@ import * as Initializer from '../initializer';
 import { EULER, POOL_MAX } from '../constants';
 import {
   SUPPORTED_JSON_BEHAVIOUR_TYPES,
-  SUPPORTED_JSON_INITIALIZER_TYPES
+  SUPPORTED_JSON_INITIALIZER_TYPES,
 } from './constants';
 
 import Rate from '../initializer/Rate';
@@ -80,7 +80,7 @@ export default (json, Proton, Emitter) => {
   const {
     preParticles = POOL_MAX,
     integrationType = EULER,
-    emitters = []
+    emitters = [],
   } = json;
   const proton = new Proton(preParticles, integrationType);
 
@@ -91,9 +91,10 @@ export default (json, Proton, Emitter) => {
       rotation,
       initializers,
       behaviours,
+      emitterBehaviours = [],
       position,
       totalEmitTimes = Infinity,
-      life = Infinity
+      life = Infinity,
     } = data;
 
     emitter
@@ -101,6 +102,7 @@ export default (json, Proton, Emitter) => {
       .setRotation(rotation)
       .setInitializers(makeInitializers(initializers))
       .setBehaviours(makeBehaviours(behaviours))
+      .setEmitterBehaviours(makeBehaviours(emitterBehaviours))
       .setPosition(position)
       .emit(totalEmitTimes, life);
 

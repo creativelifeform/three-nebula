@@ -24,7 +24,7 @@
     <script src="../js/three.min.js"></script>
     <script src="../js/three-proton.js"></script>
     <script src="../js/lib/TrackballControls.js"></script>
-    <script src="./json/eightDiagrams.js"></script>
+    <script src="./json/emitterBehaviours.js"></script>
     <script>
       var proton, camera, scene, renderer, stats, clock, spring, controls;
 
@@ -107,8 +107,7 @@
 
       function addProton() {
         proton = Proton.default
-          // imported from ./json/eightDiagrams.js
-          .fromJSON(EIGHT_DIAGRAMS_JSON)
+          .fromJSON(EMITTER_BEHAVIOURS_JSON)
           .addRenderer(new Proton.SpriteRenderer(scene));
       }
 
@@ -125,12 +124,6 @@
       function render() {
         proton.update();
         renderer.render(scene, camera);
-
-        camera.lookAt(scene.position);
-        ctha += 0.02;
-        camera.position.x = Math.sin(ctha) * 500;
-        camera.position.z = Math.cos(ctha) * 500;
-        camera.position.y = Math.sin(ctha) * 500;
 
         Proton.Debug.renderInfo(proton, 3);
       }

@@ -49848,7 +49848,7 @@ var Emitter = function (_Particle) {
   /**
    * Constructs an Emitter instance.
    *
-   * @param {object} properties - The properties to instantiate the particle with
+   * @param {object} properties - The properties to instantiate the emitter with
    * @return void
    */
   function Emitter(properties) {
@@ -49879,6 +49879,12 @@ var Emitter = function (_Particle) {
      * @type {array}
      */
     _this.behaviours = [];
+
+    /**
+     * @desc The behaviours for the emitter.
+     * @type {array}
+     */
+    _this.emitterBehaviours = [];
 
     /**
      * @desc The current emit iteration.
@@ -50241,6 +50247,88 @@ var Emitter = function (_Particle) {
     }
 
     /**
+     * Adds an emitter behaviour to the emitter.
+     *
+     * @param {Behaviour} behaviour - The behaviour to add to the emitter
+     * @return {Emitter}
+     */
+
+  }, {
+    key: 'addEmitterBehaviour',
+    value: function addEmitterBehaviour(behaviour) {
+      this.emitterBehaviours.push(behaviour);
+
+      return this;
+    }
+
+    /**
+     * Adds multiple behaviours to the emitter.
+     *
+     * @param {array<Behaviour>} behaviours - an array of emitter behaviours
+     * @return {Emitter}
+     */
+
+  }, {
+    key: 'addEmitterBehaviours',
+    value: function addEmitterBehaviours(behaviours) {
+      var i = behaviours.length;
+
+      while (i--) {
+        this.addEmitterBehaviour(behaviours[i]);
+      }
+
+      return this;
+    }
+
+    /**
+     * Sets the emitter's behaviours.
+     *
+     * @param {array<Behaviour>} behaviours - an array of emitter behaviours
+     * @return {Emitter}
+     */
+
+  }, {
+    key: 'setEmitterBehaviours',
+    value: function setEmitterBehaviours(behaviours) {
+      this.emitterBehaviours = behaviours;
+
+      return this;
+    }
+
+    /**
+     * Removes the behaviour from the emitter's behaviours array.
+     *
+     * @param {Behaviour} behaviour - The behaviour to remove
+     * @return {Emitter}
+     */
+
+  }, {
+    key: 'removeEmitterBehaviour',
+    value: function removeEmitterBehaviour(behaviour) {
+      var index = this.emitterBehaviours.indexOf(behaviour);
+
+      if (index > -1) {
+        this.emitterBehaviours.splice(index, 1);
+      }
+
+      return this;
+    }
+
+    /**
+     * Removes all behaviours from the emitter.
+     *
+     * @return {Emitter}
+     */
+
+  }, {
+    key: 'removeAllEmitterBehaviours',
+    value: function removeAllEmitterBehaviours() {
+      _Util2.default.destroyArray(this.emitterBehaviours);
+
+      return this;
+    }
+
+    /**
      * Creates a particle by retreiving one from the pool and setting it up with
      * the supplied initializer and behaviour.
      *
@@ -50315,6 +50403,29 @@ var Emitter = function (_Particle) {
           this.parent.pool.expire(particle.reset());
           this.particles.splice(i, 1);
         }
+      }
+
+      this.updateEmitterBehaviours(time);
+    }
+
+    /**
+     * Updates the emitter's emitter behaviours.
+     *
+     * @param {number} time - Proton engine time
+     * @return void
+     */
+
+  }, {
+    key: 'updateEmitterBehaviours',
+    value: function updateEmitterBehaviours(time) {
+      if (this.sleep) {
+        return;
+      }
+
+      var length = this.emitterBehaviours.length;
+
+      for (var i = 0; i < length; i++) {
+        this.emitterBehaviours[i].applyBehaviour(this, time, i);
       }
     }
 
@@ -71709,6 +71820,8 @@ exports.default = function (json, Proton, Emitter) {
         rotation = data.rotation,
         initializers = data.initializers,
         behaviours = data.behaviours,
+        _data$emitterBehaviou = data.emitterBehaviours,
+        emitterBehaviours = _data$emitterBehaviou === undefined ? [] : _data$emitterBehaviou,
         position = data.position,
         _data$totalEmitTimes = data.totalEmitTimes,
         totalEmitTimes = _data$totalEmitTimes === undefined ? Infinity : _data$totalEmitTimes,
@@ -71716,7 +71829,7 @@ exports.default = function (json, Proton, Emitter) {
         life = _data$life === undefined ? Infinity : _data$life;
 
 
-    emitter.setRate(makeRate(rate)).setRotation(rotation).setInitializers(makeInitializers(initializers)).setBehaviours(makeBehaviours(behaviours)).setPosition(position).emit(totalEmitTimes, life);
+    emitter.setRate(makeRate(rate)).setRotation(rotation).setInitializers(makeInitializers(initializers)).setBehaviours(makeBehaviours(behaviours)).setEmitterBehaviours(makeBehaviours(emitterBehaviours)).setPosition(position).emit(totalEmitTimes, life);
 
     proton.addEmitter(emitter);
   });

@@ -1729,13 +1729,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
@@ -1969,13 +1969,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#rotationtype",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-rotationType",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-rotationType",
     "src/behaviour/Rotate.js~Rotate#rotationType",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#rotationtype",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-rotationType",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-rotationType",
     "src/behaviour/Rotate.js~Rotate#rotationType",
     "member"
   ],
@@ -2041,13 +2041,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
@@ -2652,6 +2652,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/emitter/emitter.js~emitter#addemitterbehaviour",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-addEmitterBehaviour",
+    "src/emitter/Emitter.js~Emitter#addEmitterBehaviour",
+    "method"
+  ],
+  [
+    "src/emitter/emitter.js~emitter#addemitterbehaviours",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-addEmitterBehaviours",
+    "src/emitter/Emitter.js~Emitter#addEmitterBehaviours",
+    "method"
+  ],
+  [
     "src/emitter/emitter.js~emitter#addinitializer",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitializer",
     "src/emitter/Emitter.js~Emitter#addInitializer",
@@ -2742,6 +2754,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/emitter/emitter.js~emitter#emitterbehaviours",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-member-emitterBehaviours",
+    "src/emitter/Emitter.js~Emitter#emitterBehaviours",
+    "member"
+  ],
+  [
     "src/emitter/emitter.js~emitter#energy",
     "class/src/emitter/Emitter.js~Emitter.html#instance-member-energy",
     "src/emitter/Emitter.js~Emitter#energy",
@@ -2814,6 +2832,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/emitter/emitter.js~emitter#removeallemitterbehaviours",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeAllEmitterBehaviours",
+    "src/emitter/Emitter.js~Emitter#removeAllEmitterBehaviours",
+    "method"
+  ],
+  [
     "src/emitter/emitter.js~emitter#removeallinitializers",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeAllInitializers",
     "src/emitter/Emitter.js~Emitter#removeAllInitializers",
@@ -2832,6 +2856,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/emitter/emitter.js~emitter#removeemitterbehaviour",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeEmitterBehaviour",
+    "src/emitter/Emitter.js~Emitter#removeEmitterBehaviour",
+    "method"
+  ],
+  [
     "src/emitter/emitter.js~emitter#removeinitializer",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeInitializer",
     "src/emitter/Emitter.js~Emitter#removeInitializer",
@@ -2841,6 +2871,12 @@ window.esdocSearchIndex = [
     "src/emitter/emitter.js~emitter#setbehaviours",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-setBehaviours",
     "src/emitter/Emitter.js~Emitter#setBehaviours",
+    "method"
+  ],
+  [
+    "src/emitter/emitter.js~emitter#setemitterbehaviours",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-setEmitterBehaviours",
+    "src/emitter/Emitter.js~Emitter#setEmitterBehaviours",
     "method"
   ],
   [
@@ -2895,6 +2931,12 @@ window.esdocSearchIndex = [
     "src/emitter/emitter.js~emitter#update",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-update",
     "src/emitter/Emitter.js~Emitter#update",
+    "method"
+  ],
+  [
+    "src/emitter/emitter.js~emitter#updateemitterbehaviours",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-updateEmitterBehaviours",
+    "src/emitter/Emitter.js~Emitter#updateEmitterBehaviours",
     "method"
   ],
   [
@@ -3037,13 +3079,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
