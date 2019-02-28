@@ -26,7 +26,7 @@ export default class Emitter extends Particle {
   /**
    * Constructs an Emitter instance.
    *
-   * @param {object} properties - The properties to instantiate the particle with
+   * @param {object} properties - The properties to instantiate the emitter with
    * @return void
    */
   constructor(properties) {
@@ -55,6 +55,12 @@ export default class Emitter extends Particle {
      * @type {array}
      */
     this.behaviours = [];
+
+    /**
+     * @desc The behaviours for the emitter.
+     * @type {array}
+     */
+    this.emitterBehaviours = [];
 
     /**
      * @desc The current emit iteration.
@@ -345,6 +351,81 @@ export default class Emitter extends Particle {
   }
 
   /**
+   * Adds an emitter behaviour to the emitter.
+   *
+   * @param {Behaviour} behaviour - The behaviour to add to the emitter
+   * @return {Emitter}
+   */
+  addEmitterBehaviour(behaviour) {
+    this.emitterBehaviours.push(behaviour);
+
+    behaviour.initialize(this);
+
+    return this;
+  }
+
+  /**
+   * Adds multiple behaviours to the emitter.
+   *
+   * @param {array<Behaviour>} behaviours - an array of emitter behaviours
+   * @return {Emitter}
+   */
+  addEmitterBehaviours(behaviours) {
+    let i = behaviours.length;
+
+    while (i--) {
+      this.addEmitterBehaviour(behaviours[i]);
+    }
+
+    return this;
+  }
+
+  /**
+   * Sets the emitter's behaviours.
+   *
+   * @param {array<Behaviour>} behaviours - an array of emitter behaviours
+   * @return {Emitter}
+   */
+  setEmitterBehaviours(behaviours) {
+    const length = behaviours.length;
+
+    this.emitterBehaviours = behaviours;
+
+    for (let i = 0; i < length; i++) {
+      this.emitterBehaviours[i].initialize(this);
+    }
+
+    return this;
+  }
+
+  /**
+   * Removes the behaviour from the emitter's behaviours array.
+   *
+   * @param {Behaviour} behaviour - The behaviour to remove
+   * @return {Emitter}
+   */
+  removeEmitterBehaviour(behaviour) {
+    const index = this.emitterBehaviours.indexOf(behaviour);
+
+    if (index > -1) {
+      this.emitterBehaviours.splice(index, 1);
+    }
+
+    return this;
+  }
+
+  /**
+   * Removes all behaviours from the emitter.
+   *
+   * @return {Emitter}
+   */
+  removeAllEmitterBehaviours() {
+    Util.destroyArray(this.emitterBehaviours);
+
+    return this;
+  }
+
+  /**
    * Creates a particle by retreiving one from the pool and setting it up with
    * the supplied initializer and behaviour.
    *
@@ -368,8 +449,7 @@ export default class Emitter extends Particle {
    * @return void
    */
   setupParticle(particle) {
-    var initializers = this.initializers;
-    var behaviours = this.behaviours;
+    const { initializers, behaviours } = this;
 
     InitializerUtil.initialize(this, particle, initializers);
 
@@ -410,6 +490,26 @@ export default class Emitter extends Particle {
         this.parent.pool.expire(particle.reset());
         this.particles.splice(i, 1);
       }
+    }
+
+    this.updateEmitterBehaviours(time);
+  }
+
+  /**
+   * Updates the emitter's emitter behaviours.
+   *
+   * @param {number} time - Proton engine time
+   * @return void
+   */
+  updateEmitterBehaviours(time) {
+    if (this.sleep) {
+      return;
+    }
+
+    const length = this.emitterBehaviours.length;
+
+    for (let i = 0; i < length; i++) {
+      this.emitterBehaviours[i].applyBehaviour(this, time, i);
     }
   }
 
