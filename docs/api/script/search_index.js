@@ -114,12 +114,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/emitter/behaviouremitter.js~behaviouremitter",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html",
-    "<span>BehaviourEmitter</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/BehaviourEmitter.js</span>",
-    "class"
-  ],
-  [
     "@rohandeshpande/three-proton/src/initializer/body.js~body",
     "class/src/initializer/Body.js~Body.html",
     "<span>Body</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Body.js</span>",
@@ -435,12 +429,6 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/events/constants.js~emitter_removed",
     "variable/index.html#static-variable-EMITTER_REMOVED",
     "<span>EMITTER_REMOVED</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/events/constants.js</span>",
-    "variable"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/emitter/types.js~emitter_type_behaviour",
-    "variable/index.html#static-variable-EMITTER_TYPE_BEHAVIOUR",
-    "<span>EMITTER_TYPE_BEHAVIOUR</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/types.js</span>",
     "variable"
   ],
   [
@@ -1417,13 +1405,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -1729,13 +1717,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
@@ -1969,13 +1957,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#rotationtype",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-rotationType",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-rotationType",
     "src/behaviour/Rotate.js~Rotate#rotationType",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#rotationtype",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-rotationType",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-rotationType",
     "src/behaviour/Rotate.js~Rotate#rotationType",
     "member"
   ],
@@ -2590,48 +2578,6 @@ window.esdocSearchIndex = [
     "file/src/ease/index.js.html",
     "src/ease/index.js",
     "file"
-  ],
-  [
-    "src/emitter/behaviouremitter.js",
-    "file/src/emitter/BehaviourEmitter.js.html",
-    "src/emitter/BehaviourEmitter.js",
-    "file"
-  ],
-  [
-    "src/emitter/behaviouremitter.js~behaviouremitter#addselfbehaviour",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html#instance-method-addSelfBehaviour",
-    "src/emitter/BehaviourEmitter.js~BehaviourEmitter#addSelfBehaviour",
-    "method"
-  ],
-  [
-    "src/emitter/behaviouremitter.js~behaviouremitter#constructor",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html#instance-constructor-constructor",
-    "src/emitter/BehaviourEmitter.js~BehaviourEmitter#constructor",
-    "method"
-  ],
-  [
-    "src/emitter/behaviouremitter.js~behaviouremitter#removeselfbehaviour",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html#instance-method-removeSelfBehaviour",
-    "src/emitter/BehaviourEmitter.js~BehaviourEmitter#removeSelfBehaviour",
-    "method"
-  ],
-  [
-    "src/emitter/behaviouremitter.js~behaviouremitter#selfbehaviours",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html#instance-member-selfBehaviours",
-    "src/emitter/BehaviourEmitter.js~BehaviourEmitter#selfBehaviours",
-    "member"
-  ],
-  [
-    "src/emitter/behaviouremitter.js~behaviouremitter#type",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html#instance-member-type",
-    "src/emitter/BehaviourEmitter.js~BehaviourEmitter#type",
-    "member"
-  ],
-  [
-    "src/emitter/behaviouremitter.js~behaviouremitter#update",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html#instance-method-update",
-    "src/emitter/BehaviourEmitter.js~BehaviourEmitter#update",
-    "method"
   ],
   [
     "src/emitter/emitter.js",

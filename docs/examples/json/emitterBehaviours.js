@@ -154,9 +154,9 @@ const EMITTER_BEHAVIOURS_JSON = {
           id: '19ed8a38-399c-11e9-8047-93549ebdb1a0',
           type: 'Rotate',
           properties: {
-            x: 1,
+            x: 0,
             y: 0,
-            z: 0,
+            z: 10,
             life: null,
             easing: 'easeLinear',
           },
