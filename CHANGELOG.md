@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v3.0.0` - 2019-03-01
+
+### Added
+
+- The `emitterBehaviours` array property to the `Emitter` class
+- An API to facilitate interacting with this array
+- An `updateEmitterBehaviours` method. This is called from within the main `update` method
+- An example to show emitter behaviours working
+- Tests covering new functionality
+
+### Removed
+
+- The `BehaviourEmitter` class. All functionality is now bundled into the `Emitter` class. This is a breaking change.
+
 ## `v2.3.0` - 2019-02-27
 
 ### Added
