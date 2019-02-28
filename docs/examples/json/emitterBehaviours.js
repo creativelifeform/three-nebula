@@ -52,7 +52,7 @@ const EMITTER_BEHAVIOURS_JSON = {
           id: '19ed8a32-399c-11e9-8047-93549ebdb1ae',
           type: 'Radius',
           properties: {
-            width: 11,
+            width: 20,
             height: 4,
             isEnabled: true,
           },
@@ -96,7 +96,7 @@ const EMITTER_BEHAVIOURS_JSON = {
           type: 'Scale',
           properties: {
             scaleA: 1,
-            scaleB: 0.1,
+            scaleB: 0.5,
             life: null,
             easing: 'easeLinear',
           },
