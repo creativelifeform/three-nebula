@@ -97,4 +97,24 @@ describe('emitter -> Emitter -> updateEmitterBehaviours', () => {
 
     done();
   });
+
+  it("should update the emitter's properties after an emitter behaviour has been added and the emitter has been updated", done => {
+    const emitter = new Emitter();
+    const attraction = new Proton.Attraction();
+    const repulsion = new Proton.Repulsion();
+    const gravity = new Proton.Gravity();
+    const behaviours = [attraction, repulsion, gravity];
+    const emitterBehaviour = new Proton.Rotate(1, 0, 0);
+
+    console.log(
+      'TODO: You must call the behaviour.initializer method on each emitter behaviour for this test to pass'
+    );
+
+    emitter
+      .setBehaviours(behaviours)
+      .setEmitterBehaviours([emitterBehaviour])
+      .update(TIME);
+
+    done();
+  });
 });

@@ -4,6 +4,7 @@ import * as Proton from '../../src';
 
 import Particles from '../../src/core/Proton';
 import chai from 'chai';
+import containsEmitterBehaviours from './fixtures/json/containsEmitterBehaviours.json';
 import containsInvalidBehaviour from './fixtures/json/containsInvalidBehaviour.json';
 import containsInvalidInitializer from './fixtures/json/containsInvalidInitializer.json';
 import containsInvalidZoneType from './fixtures/json/containsInvalidZoneType.json';
@@ -76,6 +77,16 @@ describe('fromJSON', () => {
 
     assert.equal(emitter.totalEmitTimes, 1);
     assert.equal(emitter.life, 1);
+
+    done();
+  });
+
+  it('should set the emitter behaviours', done => {
+    const proton = Particles.fromJSON(containsEmitterBehaviours);
+    const emitter = proton.emitters[0];
+
+    assert.notEmpty(emitter.emitterBehaviours);
+    assert.lengthOf(emitter.emitterBehaviours, 1);
 
     done();
   });
