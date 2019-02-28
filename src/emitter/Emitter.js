@@ -359,6 +359,8 @@ export default class Emitter extends Particle {
   addEmitterBehaviour(behaviour) {
     this.emitterBehaviours.push(behaviour);
 
+    behaviour.initialize(this);
+
     return this;
   }
 
@@ -385,7 +387,13 @@ export default class Emitter extends Particle {
    * @return {Emitter}
    */
   setEmitterBehaviours(behaviours) {
+    const length = behaviours.length;
+
     this.emitterBehaviours = behaviours;
+
+    for (let i = 0; i < length; i++) {
+      this.emitterBehaviours[i].initialize(this);
+    }
 
     return this;
   }
@@ -441,8 +449,7 @@ export default class Emitter extends Particle {
    * @return void
    */
   setupParticle(particle) {
-    var initializers = this.initializers;
-    var behaviours = this.behaviours;
+    const { initializers, behaviours } = this;
 
     InitializerUtil.initialize(this, particle, initializers);
 

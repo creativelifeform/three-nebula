@@ -11,13 +11,17 @@ const { assert } = chai;
 const { Emitter } = Proton;
 
 describe('emitter -> Emitter -> emitterBehaviours', () => {
-  it("should add a behaviour to the emitter's behaviours", done => {
+  it("should add a behaviour to the emitter's behaviours and call the behaviour's initialize method passing the emitter", done => {
     const emitter = new Emitter();
     const attraction = new Proton.Attraction();
+    const attractionInitializeSpy = spy(attraction, 'initialize');
 
     assert.instanceOf(emitter.addEmitterBehaviour(attraction), Emitter);
     assert.lengthOf(emitter.emitterBehaviours, 1);
     assert.deepEqual(emitter.emitterBehaviours[0], attraction);
+    assert(attractionInitializeSpy.calledOnceWith(emitter));
+
+    attractionInitializeSpy.restore();
 
     done();
   });
@@ -105,15 +109,17 @@ describe('emitter -> Emitter -> updateEmitterBehaviours', () => {
     const gravity = new Proton.Gravity();
     const behaviours = [attraction, repulsion, gravity];
     const emitterBehaviour = new Proton.Rotate(1, 0, 0);
-
-    console.log(
-      'TODO: You must call the behaviour.initializer method on each emitter behaviour for this test to pass'
-    );
+    const before = { ...emitter.rotation };
+    let after;
 
     emitter
       .setBehaviours(behaviours)
       .setEmitterBehaviours([emitterBehaviour])
       .update(TIME);
+
+    after = emitter.rotation;
+
+    assert.notEqual(before.x, after.x);
 
     done();
   });
