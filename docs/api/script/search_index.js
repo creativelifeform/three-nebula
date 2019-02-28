@@ -114,12 +114,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/emitter/behaviouremitter.js~behaviouremitter",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html",
-    "<span>BehaviourEmitter</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/BehaviourEmitter.js</span>",
-    "class"
-  ],
-  [
     "@rohandeshpande/three-proton/src/initializer/body.js~body",
     "class/src/initializer/Body.js~Body.html",
     "<span>Body</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Body.js</span>",
@@ -435,12 +429,6 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/events/constants.js~emitter_removed",
     "variable/index.html#static-variable-EMITTER_REMOVED",
     "<span>EMITTER_REMOVED</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/events/constants.js</span>",
-    "variable"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/emitter/types.js~emitter_type_behaviour",
-    "variable/index.html#static-variable-EMITTER_TYPE_BEHAVIOUR",
-    "<span>EMITTER_TYPE_BEHAVIOUR</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/types.js</span>",
     "variable"
   ],
   [
@@ -1417,13 +1405,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -2041,13 +2029,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
@@ -2592,48 +2580,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/emitter/behaviouremitter.js",
-    "file/src/emitter/BehaviourEmitter.js.html",
-    "src/emitter/BehaviourEmitter.js",
-    "file"
-  ],
-  [
-    "src/emitter/behaviouremitter.js~behaviouremitter#addselfbehaviour",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html#instance-method-addSelfBehaviour",
-    "src/emitter/BehaviourEmitter.js~BehaviourEmitter#addSelfBehaviour",
-    "method"
-  ],
-  [
-    "src/emitter/behaviouremitter.js~behaviouremitter#constructor",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html#instance-constructor-constructor",
-    "src/emitter/BehaviourEmitter.js~BehaviourEmitter#constructor",
-    "method"
-  ],
-  [
-    "src/emitter/behaviouremitter.js~behaviouremitter#removeselfbehaviour",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html#instance-method-removeSelfBehaviour",
-    "src/emitter/BehaviourEmitter.js~BehaviourEmitter#removeSelfBehaviour",
-    "method"
-  ],
-  [
-    "src/emitter/behaviouremitter.js~behaviouremitter#selfbehaviours",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html#instance-member-selfBehaviours",
-    "src/emitter/BehaviourEmitter.js~BehaviourEmitter#selfBehaviours",
-    "member"
-  ],
-  [
-    "src/emitter/behaviouremitter.js~behaviouremitter#type",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html#instance-member-type",
-    "src/emitter/BehaviourEmitter.js~BehaviourEmitter#type",
-    "member"
-  ],
-  [
-    "src/emitter/behaviouremitter.js~behaviouremitter#update",
-    "class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html#instance-method-update",
-    "src/emitter/BehaviourEmitter.js~BehaviourEmitter#update",
-    "method"
-  ],
-  [
     "src/emitter/emitter.js",
     "file/src/emitter/Emitter.js.html",
     "src/emitter/Emitter.js",
@@ -2649,6 +2595,18 @@ window.esdocSearchIndex = [
     "src/emitter/emitter.js~emitter#addbehaviours",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-addBehaviours",
     "src/emitter/Emitter.js~Emitter#addBehaviours",
+    "method"
+  ],
+  [
+    "src/emitter/emitter.js~emitter#addemitterbehaviour",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-addEmitterBehaviour",
+    "src/emitter/Emitter.js~Emitter#addEmitterBehaviour",
+    "method"
+  ],
+  [
+    "src/emitter/emitter.js~emitter#addemitterbehaviours",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-addEmitterBehaviours",
+    "src/emitter/Emitter.js~Emitter#addEmitterBehaviours",
     "method"
   ],
   [
@@ -2742,6 +2700,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/emitter/emitter.js~emitter#emitterbehaviours",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-member-emitterBehaviours",
+    "src/emitter/Emitter.js~Emitter#emitterBehaviours",
+    "member"
+  ],
+  [
     "src/emitter/emitter.js~emitter#energy",
     "class/src/emitter/Emitter.js~Emitter.html#instance-member-energy",
     "src/emitter/Emitter.js~Emitter#energy",
@@ -2814,6 +2778,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/emitter/emitter.js~emitter#removeallemitterbehaviours",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeAllEmitterBehaviours",
+    "src/emitter/Emitter.js~Emitter#removeAllEmitterBehaviours",
+    "method"
+  ],
+  [
     "src/emitter/emitter.js~emitter#removeallinitializers",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeAllInitializers",
     "src/emitter/Emitter.js~Emitter#removeAllInitializers",
@@ -2832,6 +2802,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/emitter/emitter.js~emitter#removeemitterbehaviour",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeEmitterBehaviour",
+    "src/emitter/Emitter.js~Emitter#removeEmitterBehaviour",
+    "method"
+  ],
+  [
     "src/emitter/emitter.js~emitter#removeinitializer",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-removeInitializer",
     "src/emitter/Emitter.js~Emitter#removeInitializer",
@@ -2841,6 +2817,12 @@ window.esdocSearchIndex = [
     "src/emitter/emitter.js~emitter#setbehaviours",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-setBehaviours",
     "src/emitter/Emitter.js~Emitter#setBehaviours",
+    "method"
+  ],
+  [
+    "src/emitter/emitter.js~emitter#setemitterbehaviours",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-setEmitterBehaviours",
+    "src/emitter/Emitter.js~Emitter#setEmitterBehaviours",
     "method"
   ],
   [
@@ -2895,6 +2877,12 @@ window.esdocSearchIndex = [
     "src/emitter/emitter.js~emitter#update",
     "class/src/emitter/Emitter.js~Emitter.html#instance-method-update",
     "src/emitter/Emitter.js~Emitter#update",
+    "method"
+  ],
+  [
+    "src/emitter/emitter.js~emitter#updateemitterbehaviours",
+    "class/src/emitter/Emitter.js~Emitter.html#instance-method-updateEmitterBehaviours",
+    "src/emitter/Emitter.js~Emitter#updateEmitterBehaviours",
     "method"
   ],
   [
@@ -3037,13 +3025,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],

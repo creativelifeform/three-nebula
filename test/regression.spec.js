@@ -26,7 +26,6 @@ describe('regression', () => {
       'Debug',
       'log',
       'setEasingByName',
-      'BehaviourEmitter',
       'FollowEmitter',
       'Emitter',
       'Body',
@@ -63,7 +62,7 @@ describe('regression', () => {
       'PointZone',
       'ScreenZone',
       'SphereZone',
-      'ease'
+      'ease',
     ];
 
     modules.forEach(module => expect(Proton).to.have.property(module));

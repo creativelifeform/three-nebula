@@ -119,14 +119,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setEasingByName">setEasingByName</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ease">ease</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-easeLinear">easeLinear</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#emitter">emitter</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html">BehaviourEmitter</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#emitter">emitter</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/emitter/FollowEmitter.js~FollowEmitter.html">FollowEmitter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BIND_EMITTER">DEFAULT_BIND_EMITTER</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BIND_EMITTER_EVENT">DEFAULT_BIND_EMITTER_EVENT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_DAMPING">DEFAULT_DAMPING</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_EMITTER_RATE">DEFAULT_EMITTER_RATE</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_TYPE_BEHAVIOUR">EMITTER_TYPE_BEHAVIOUR</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_TYPE_EMITTER">EMITTER_TYPE_EMITTER</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-EMITTER_TYPE_FOLLOW">EMITTER_TYPE_FOLLOW</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#events">events</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/events/EventDispatcher.js~EventDispatcher.html">EventDispatcher</a></span></span></li>
@@ -232,7 +230,7 @@
   
   
   <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span> &#x2192; Emitter</div></div>
-  <div class="flat-list" data-ice="directSubclass"><h4>Direct Subclass:</h4><div><span><a href="class/src/emitter/BehaviourEmitter.js~BehaviourEmitter.html">BehaviourEmitter</a></span>, <span><a href="class/src/emitter/FollowEmitter.js~FollowEmitter.html">FollowEmitter</a></span></div></div>
+  <div class="flat-list" data-ice="directSubclass"><h4>Direct Subclass:</h4><div><span><a href="class/src/emitter/FollowEmitter.js~FollowEmitter.html">FollowEmitter</a></span></div></div>
   
   
   
@@ -520,6 +518,35 @@ according to the emitter&apos;s properties.</p>
         
         
         
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-member-emitterBehaviours">emitterBehaviours</a></span></span><span class="code" data-ice="signature">: <span>array</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The behaviours for the emitter.</p>
+</div>
       </div>
     </td>
     <td>
@@ -921,6 +948,64 @@ according to the emitter&apos;s properties.</p>
           
           
           
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-addEmitterBehaviour">addEmitterBehaviour</a></span></span><span class="code" data-ice="signature">(behaviour: <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Adds an emitter behaviour to the emitter.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-addEmitterBehaviours">addEmitterBehaviours</a></span></span><span class="code" data-ice="signature">(behaviours: <span>array</span>&lt;<span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>&gt;): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Adds multiple behaviours to the emitter.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-addInitializer">addInitializer</a></span></span><span class="code" data-ice="signature">(initializer: <span><a href="class/src/initializer/Initializer.js~Initializer.html">Initializer</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
@@ -1185,6 +1270,35 @@ This enables the emitter to emit particles.</p>
           
           
           
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeAllEmitterBehaviours">removeAllEmitterBehaviours</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Removes all behaviours from the emitter.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeAllInitializers">removeAllInitializers</a></span></span><span class="code" data-ice="signature">(): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
@@ -1272,6 +1386,35 @@ This enables the emitter to emit particles.</p>
           
           
           
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeEmitterBehaviour">removeEmitterBehaviour</a></span></span><span class="code" data-ice="signature">(behaviour: <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Removes the behaviour from the emitter&apos;s behaviours array.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-removeInitializer">removeInitializer</a></span></span><span class="code" data-ice="signature">(initializer: <span><a href="class/src/initializer/Initializer.js~Initializer.html">Initializer</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
@@ -1302,6 +1445,35 @@ This enables the emitter to emit particles.</p>
           
           
           <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-setBehaviours">setBehaviours</a></span></span><span class="code" data-ice="signature">(behaviours: <span>array</span>&lt;<span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>&gt;): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Sets the emitter&apos;s behaviours.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-setEmitterBehaviours">setEmitterBehaviours</a></span></span><span class="code" data-ice="signature">(behaviours: <span>array</span>&lt;<span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>&gt;): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
         </p>
       </div>
       <div>
@@ -1512,6 +1684,35 @@ This enables the emitter to emit particles.</p>
         
         <div data-ice="description"><p>Updates the emitter according to the time passed by calling the generate
 and integrate methods.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/emitter/Emitter.js~Emitter.html#instance-method-updateEmitterBehaviours">updateEmitterBehaviours</a></span></span><span class="code" data-ice="signature">(time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Updates the emitter&apos;s emitter behaviours.</p>
 </div>
       </div>
     </td>
@@ -2504,7 +2705,7 @@ in which case it will be destroyed.</p>
       <td data-ice="name" class="code" data-depth="0">properties</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"><p>The properties to instantiate the particle with</p>
+      <td data-ice="description"><p>The properties to instantiate the emitter with</p>
 </td>
     </tr>
 </tbody>
@@ -2557,7 +2758,7 @@ in which case it will be destroyed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber393">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber473">source</a></span></span>
     </span>
   </h3>
 
@@ -2645,7 +2846,7 @@ in which case it will be destroyed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber82">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber88">source</a></span></span>
     </span>
   </h3>
 
@@ -2690,7 +2891,7 @@ according to the emitter&apos;s properties.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber89">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber95">source</a></span></span>
     </span>
   </h3>
 
@@ -2735,7 +2936,7 @@ to false</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber102">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber108">source</a></span></span>
     </span>
   </h3>
 
@@ -2778,7 +2979,7 @@ to false</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber63">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber69">source</a></span></span>
     </span>
   </h3>
 
@@ -2822,7 +3023,7 @@ to false</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber75">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber81">source</a></span></span>
     </span>
   </h3>
 
@@ -2866,7 +3067,7 @@ to false</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber488">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber588">source</a></span></span>
     </span>
   </h3>
 
@@ -2877,6 +3078,50 @@ to false</p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/core/Particle.js~Particle.html#instance-member-dead">Particle#dead</a></span></div>
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-emitterBehaviours">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">emitterBehaviours</span><span class="code" data-ice="signature">: <span>array</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber63">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>The behaviours for the emitter.</p>
+</div>
+
+  
 
   <div data-ice="properties">
 </div>
@@ -2910,7 +3155,7 @@ to false</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber489">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber589">source</a></span></span>
     </span>
   </h3>
 
@@ -2954,7 +3199,7 @@ to false</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber109">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber115">source</a></span></span>
     </span>
   </h3>
 
@@ -2998,7 +3243,7 @@ to false</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber101">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber107">source</a></span></span>
     </span>
   </h3>
 
@@ -3086,7 +3331,7 @@ to false</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber178">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber184">source</a></span></span>
     </span>
   </h3>
 
@@ -3130,7 +3375,7 @@ to false</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber103">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber109">source</a></span></span>
     </span>
   </h3>
 
@@ -3173,7 +3418,7 @@ to false</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber357">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber438">source</a></span></span>
     </span>
   </h3>
 
@@ -3261,7 +3506,7 @@ to false</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber95">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber101">source</a></span></span>
     </span>
   </h3>
 
@@ -3305,7 +3550,7 @@ to false</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber69">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber75">source</a></span></span>
     </span>
   </h3>
 
@@ -3396,7 +3641,7 @@ to false</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber286">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber292">source</a></span></span>
     </span>
   </h3>
 
@@ -3470,7 +3715,7 @@ they are emitted.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber298">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber304">source</a></span></span>
     </span>
   </h3>
 
@@ -3481,6 +3726,152 @@ they are emitted.</p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/core/Particle.js~Particle.html#instance-method-addBehaviours">Particle#addBehaviours</a></span></div>
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">behaviours</td>
+      <td data-ice="type" class="code"><span>array</span>&lt;<span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>&gt;</td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>an array of emitter behaviours</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-addEmitterBehaviour">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">addEmitterBehaviour</span><span class="code" data-ice="signature">(behaviour: <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber359">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Adds an emitter behaviour to the emitter.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">behaviour</td>
+      <td data-ice="type" class="code"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The behaviour to add to the emitter</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-addEmitterBehaviours">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">addEmitterBehaviours</span><span class="code" data-ice="signature">(behaviours: <span>array</span>&lt;<span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>&gt;): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber373">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Adds multiple behaviours to the emitter.</p>
+</div>
+
+  
 
   <div data-ice="properties"><div data-ice="properties">
   <h4 data-ice="title">Params:</h4>
@@ -3543,7 +3934,7 @@ they are emitted.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber218">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber224">source</a></span></span>
     </span>
   </h3>
 
@@ -3617,7 +4008,7 @@ Each initializer is run on each particle when they are created.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber230">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber236">source</a></span></span>
     </span>
   </h3>
 
@@ -3690,7 +4081,7 @@ Each initializer is run on each particle when they are created.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber353">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber434">source</a></span></span>
     </span>
   </h3>
 
@@ -3747,7 +4138,7 @@ the supplied initializer and behaviour.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber487">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber587">source</a></span></span>
     </span>
   </h3>
 
@@ -3804,7 +4195,7 @@ the supplied initializer and behaviour.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber118">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber124">source</a></span></span>
     </span>
   </h3>
 
@@ -3873,7 +4264,7 @@ the supplied initializer and behaviour.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber173">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber179">source</a></span></span>
     </span>
   </h3>
 
@@ -3957,7 +4348,7 @@ This enables the emitter to emit particles.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber450">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber550">source</a></span></span>
     </span>
   </h3>
 
@@ -4031,7 +4422,7 @@ This enables the emitter to emit particles.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber423">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber523">source</a></span></span>
     </span>
   </h3>
 
@@ -4106,7 +4497,7 @@ Updates the particles with the timstamp passed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber341">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber347">source</a></span></span>
     </span>
   </h3>
 
@@ -4117,6 +4508,62 @@ Updates the particles with the timstamp passed.</p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/core/Particle.js~Particle.html#instance-method-removeAllBehaviours">Particle#removeAllBehaviours</a></span></div>
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-removeAllEmitterBehaviours">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">removeAllEmitterBehaviours</span><span class="code" data-ice="signature">(): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber422">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Removes all behaviours from the emitter.</p>
+</div>
+
+  
 
   <div data-ice="properties">
 </div>
@@ -4162,7 +4609,7 @@ Updates the particles with the timstamp passed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber273">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber279">source</a></span></span>
     </span>
   </h3>
 
@@ -4218,7 +4665,7 @@ Updates the particles with the timstamp passed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber203">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber209">source</a></span></span>
     </span>
   </h3>
 
@@ -4275,7 +4722,7 @@ Updates the particles with the timstamp passed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber326">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber332">source</a></span></span>
     </span>
   </h3>
 
@@ -4286,6 +4733,79 @@ Updates the particles with the timstamp passed.</p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/core/Particle.js~Particle.html#instance-method-removeBehaviour">Particle#removeBehaviour</a></span></div>
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">behaviour</td>
+      <td data-ice="type" class="code"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The behaviour to remove</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-removeEmitterBehaviour">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">removeEmitterBehaviour</span><span class="code" data-ice="signature">(behaviour: <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber407">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Removes the behaviour from the emitter&apos;s behaviours array.</p>
+</div>
+
+  
 
   <div data-ice="properties"><div data-ice="properties">
   <h4 data-ice="title">Params:</h4>
@@ -4348,7 +4868,7 @@ Updates the particles with the timstamp passed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber258">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber264">source</a></span></span>
     </span>
   </h3>
 
@@ -4421,7 +4941,80 @@ Updates the particles with the timstamp passed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber314">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber320">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Sets the emitter&apos;s behaviours.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">behaviours</td>
+      <td data-ice="type" class="code"><span>array</span>&lt;<span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>&gt;</td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>an array of emitter behaviours</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-setEmitterBehaviours">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">setEmitterBehaviours</span><span class="code" data-ice="signature">(behaviours: <span>array</span>&lt;<span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span>&gt;): <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber389">source</a></span></span>
     </span>
   </h3>
 
@@ -4494,7 +5087,7 @@ Updates the particles with the timstamp passed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber246">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber252">source</a></span></span>
     </span>
   </h3>
 
@@ -4567,7 +5160,7 @@ Updates the particles with the timstamp passed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber140">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber146">source</a></span></span>
     </span>
   </h3>
 
@@ -4640,7 +5233,7 @@ Updates the particles with the timstamp passed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber128">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber134">source</a></span></span>
     </span>
   </h3>
 
@@ -4713,7 +5306,7 @@ Updates the particles with the timstamp passed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber155">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber161">source</a></span></span>
     </span>
   </h3>
 
@@ -4786,7 +5379,7 @@ Updates the particles with the timstamp passed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber370">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber451">source</a></span></span>
     </span>
   </h3>
 
@@ -4861,7 +5454,7 @@ Also adds the particle to this.particles.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber193">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber199">source</a></span></span>
     </span>
   </h3>
 
@@ -4918,7 +5511,7 @@ Also adds the particle to this.particles.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber392">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber472">source</a></span></span>
     </span>
   </h3>
 
@@ -4932,6 +5525,80 @@ method updates existing particles.</p>
 </div>
 
   <div data-ice="override"><h4>Override:</h4><span><a href="class/src/core/Particle.js~Particle.html#instance-method-update">Particle#update</a></span></div>
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">time</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>Proton engine time</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-updateEmitterBehaviours">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">updateEmitterBehaviours</span><span class="code" data-ice="signature">(time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/emitter/Emitter.js.html#lineNumber504">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Updates the emitter&apos;s emitter behaviours.</p>
+</div>
+
+  
 
   <div data-ice="properties"><div data-ice="properties">
   <h4 data-ice="title">Params:</h4>
