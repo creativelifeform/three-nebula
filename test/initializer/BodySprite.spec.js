@@ -2,7 +2,9 @@
 
 import * as Proton from '../../src';
 
-import { TextureLoader } from 'three';
+import { NormalBlending, TextureLoader } from 'three';
+
+import { DEFAULT_MATERIAL_PROPERTIES } from '../../src/initializer/constants';
 import chai from 'chai';
 import domino from 'domino';
 import sinon from 'sinon';
@@ -31,20 +33,42 @@ describe('initializer -> BodySprite', () => {
     done();
   });
 
-  it('should construct the initializer from a JSON object', done => {
+  it('should construct the initializer from a JSON object and set the default blending mode', done => {
     const textureLoaderSpy = spy(TextureLoader.prototype, 'load');
     const instance = Proton.BodySprite.fromJSON({
       texture,
       materialProperties: {
         fog: false,
-        color: 0xffffff
-      }
+        color: 0xffff33,
+      },
     });
 
     assert.instanceOf(instance, Proton.BodySprite);
+    assert.strictEqual(
+      instance.materialProperties.blending,
+      DEFAULT_MATERIAL_PROPERTIES.blending
+    );
     assert(textureLoaderSpy.calledOnceWith(texture));
+    assert.isTrue(instance.isEnabled);
 
     textureLoaderSpy.restore();
+
+    done();
+  });
+
+  it('should set the material blending properties correctly when loaded from a JSON object', done => {
+    const instance = Proton.BodySprite.fromJSON({
+      texture,
+      materialProperties: {
+        fog: false,
+        color: 0xffffff,
+        blending: 'NormalBlending',
+      },
+    });
+
+    assert.instanceOf(instance, Proton.BodySprite);
+    assert.strictEqual(instance.materialProperties.blending, NormalBlending);
+
     done();
   });
 });

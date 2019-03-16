@@ -1,80 +1,77 @@
-import { Sprite, SpriteMaterial, TextureLoader } from 'three';
+import * as THREE from 'three';
 
-import { DEFAULT_MATERIAL_PROPERTIES } from './constants';
+import {
+  DEFAULT_JSON_MATERIAL_PROPERTIES,
+  DEFAULT_MATERIAL_PROPERTIES,
+} from './constants';
+
 import Initializer from './Initializer';
+import { INITIALIZER_TYPE_BODY_SPRITE as type } from './types';
+import { withDefaults } from '../utils';
+
+const { Sprite, SpriteMaterial, TextureLoader } = THREE;
 
 /**
  * Sets the body property to be a THREE.Sprite on initialized particles.
  *
- * NOTE The Texture MUST be loaded either prior to instantiation or within this class'
- * constructor. Not doing so will cause WebGL buffer errors.
+ * NOTE The texture map MUST be set on the SpriteMaterial in the TextureLoader.load
+ * callback. Not doing so will cause WebGL buffer errors.
  */
 export default class BodySprite extends Initializer {
   /**
    * Constructs a BodySprite initializer.
    *
    * @param {string} texture - The sprite texture
-   * @param {object|undefined} materialProperties - The sprite material properties
-   * @param {?Texture} loadedTexture - Preloaded THREE.Texture instance
+   * @param {object} materialProperties - The sprite material properties
+   * @throws {Error} If the TextureLoader fails to load the supplied texture
+   * @return void
    */
   constructor(
     texture,
     materialProperties = DEFAULT_MATERIAL_PROPERTIES,
-    loadedTexture = null
+    isEnabled = true
   ) {
-    super();
+    super(type, isEnabled);
 
-    // Ensures that even if no materialProperties are passed, defaults are set
-    // This can happen if a loaded texture is provided
-    const matProps = materialProperties || DEFAULT_MATERIAL_PROPERTIES;
+    /**
+     * @desc The material properties for this object's SpriteMaterial
+     * NOTE This is required for testing purposes
+     * @type {object}
+     */
+    this.materialProperties = withDefaults(
+      DEFAULT_MATERIAL_PROPERTIES,
+      materialProperties
+    );
 
-    if (loadedTexture) {
-      /**
-       * @desc The texture for the THREE.SpriteMaterial map.
-       * @type {Texture}
-       */
-      this.texture = loadedTexture;
+    new TextureLoader().load(
+      texture,
+      map => {
+        /**
+         * @desc The texture for the THREE.SpriteMaterial map.
+         * @type {Texture}
+         */
+        this.texture = map;
 
-      /**
-       * @desc THREE.SpriteMaterial instance.
-       * @type {SpriteMaterial}
-       */
-      this.material = new SpriteMaterial({
-        ...{ map: loadedTexture },
-        ...matProps
-      });
+        /**
+         * @desc THREE.SpriteMaterial instance.
+         * @type {SpriteMaterial}
+         */
+        this.material = new SpriteMaterial({
+          ...{ map },
+          ...this.materialProperties,
+        });
 
-      /**
-       * @desc THREE.Sprite instance.
-       * @type {Sprite}
-       */
-      this.sprite = new Sprite(this.material);
-
-      return;
-    }
-
-    new TextureLoader().load(texture, map => {
-      /**
-       * @desc The texture for the THREE.SpriteMaterial map.
-       * @type {Texture}
-       */
-      this.texture = map;
-
-      /**
-       * @desc THREE.SpriteMaterial instance.
-       * @type {SpriteMaterial}
-       */
-      this.material = new SpriteMaterial({
-        ...{ map },
-        ...materialProperties
-      });
-
-      /**
-       * @desc THREE.Sprite instance.
-       * @type {Sprite}
-       */
-      this.sprite = new Sprite(this.material);
-    });
+        /**
+         * @desc THREE.Sprite instance.
+         * @type {Sprite}
+         */
+        this.sprite = new Sprite(this.material);
+      },
+      undefined,
+      error => {
+        throw new Error(error);
+      }
+    );
   }
 
   /**
@@ -93,16 +90,33 @@ export default class BodySprite extends Initializer {
    * @param {object} json - The JSON to construct the instance from.
    * @param {string} json.texture - The sprite texture
    * @param {object} json.materialProperties - The sprite material properties
-   * @param {?Texture} loadedTexture - Preloaded THREE.Texture instance
    * @return {BodySprite}
    */
   static fromJSON(json) {
     const {
       texture,
-      materialProperties = DEFAULT_MATERIAL_PROPERTIES,
-      loadedTexture = null
+      materialProperties = DEFAULT_JSON_MATERIAL_PROPERTIES,
+      isEnabled = true,
     } = json;
 
-    return new BodySprite(texture, materialProperties, loadedTexture);
+    const ensureMappedBlendingMode = properties => {
+      const { blending } = properties;
+
+      return {
+        ...properties,
+        blending: blending
+          ? THREE[blending]
+          : THREE[DEFAULT_JSON_MATERIAL_PROPERTIES.blending],
+      };
+    };
+
+    return new BodySprite(
+      texture,
+      withDefaults(
+        DEFAULT_JSON_MATERIAL_PROPERTIES,
+        ensureMappedBlendingMode(materialProperties)
+      ),
+      isEnabled
+    );
   }
 }

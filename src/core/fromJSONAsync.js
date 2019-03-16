@@ -4,7 +4,7 @@ import * as Initializer from '../initializer';
 import { EULER, POOL_MAX } from '../constants';
 import {
   SUPPORTED_JSON_BEHAVIOUR_TYPES,
-  SUPPORTED_JSON_INITIALIZER_TYPES
+  SUPPORTED_JSON_INITIALIZER_TYPES,
 } from './constants';
 
 import Rate from '../initializer/Rate';
@@ -55,7 +55,7 @@ const makeInitializers = items =>
       const {
         type,
         properties,
-        properties: { texture }
+        properties: { texture },
       } = data;
       const textureLoader = new TextureLoader();
 
@@ -71,7 +71,7 @@ const makeInitializers = items =>
           madeInitializers.push(
             new Initializer[type].fromJSON({
               ...properties,
-              loadedTexture
+              loadedTexture,
             })
           );
 
@@ -124,7 +124,21 @@ const makeEmitters = (emitters, Emitter) =>
 
     emitters.forEach(data => {
       const emitter = new Emitter();
-      const { rate, initializers, behaviours, position } = data;
+      const {
+        rate,
+        rotation,
+        initializers,
+        behaviours,
+        emitterBehaviours = [],
+        position,
+        totalEmitTimes = Infinity,
+        life = Infinity,
+      } = data;
+
+      emitter
+        .setRate(makeRate(rate))
+        .setRotation(rotation)
+        .setPosition(position);
 
       makeInitializers(initializers)
         .then(madeInitializers => {
@@ -133,13 +147,17 @@ const makeEmitters = (emitters, Emitter) =>
           return makeBehaviours(behaviours);
         })
         .then(madeBehaviours => {
-          emitter
-            .setBehaviours(madeBehaviours)
-            .setPosition(position)
-            .setRate(makeRate(rate))
-            .emit();
+          emitter.setBehaviours(madeBehaviours);
 
-          madeEmitters.push(emitter);
+          return makeBehaviours(emitterBehaviours);
+        })
+        .then(madeEmitterBehaviours => {
+          emitter.setEmitterBehaviours(madeEmitterBehaviours);
+
+          return Promise.resolve(emitter);
+        })
+        .then(emitter => {
+          madeEmitters.push(emitter.emit(totalEmitTimes, life));
 
           if (madeEmitters.length === numberOfEmitters) {
             return resolve(madeEmitters);
@@ -165,7 +183,7 @@ export default (json, Proton, Emitter) =>
     const {
       preParticles = POOL_MAX,
       integrationType = EULER,
-      emitters = []
+      emitters = [],
     } = json;
     const proton = new Proton(preParticles, integrationType);
 

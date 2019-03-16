@@ -1,44 +1,53 @@
 [
   {
-    "name": "BehaviourEmitter#addSelfBehaviour",
-    "filePath": "src/emitter/BehaviourEmitter.js",
+    "name": "Behaviour#mutate",
+    "filePath": "src/behaviour/Behaviour.js",
     "lines": [
       {
-        "lineNumber": 24,
+        "lineNumber": 134,
         "line": "  /**"
       },
       {
-        "lineNumber": 25,
-        "line": "   * add the Behaviour to emitter;"
+        "lineNumber": 135,
+        "line": "   * Change the target's properties according to specific behaviour logic."
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 136,
         "line": "   *"
       },
       {
-        "lineNumber": 27,
-        "line": "   * you can use Behaviours array:emitter.addSelfBehaviour(Behaviour1,Behaviour2,Behaviour3);"
+        "lineNumber": 137,
+        "line": "   * @abstract"
       },
       {
-        "lineNumber": 28,
-        "line": "   * @method addSelfBehaviour"
+        "lineNumber": 138,
+        "line": "   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to"
       },
       {
-        "lineNumber": 29,
-        "line": "   * @param {Proton.Behaviour} behaviour like this new Proton.Color('random')"
+        "lineNumber": 139,
+        "line": "   * @param {Number} time - the proton integration time"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 140,
+        "line": "   * @return mixed"
+      },
+      {
+        "lineNumber": 141,
         "line": "   */"
       },
       {
-        "lineNumber": 31,
-        "line": "  addSelfBehaviour() {"
+        "lineNumber": 142,
+        "line": "  mutate(target, time, index) {} // eslint-disable-line"
       }
     ],
-    "codeParams": [],
+    "codeParams": [
+      "target",
+      "time",
+      "index"
+    ],
     "docParams": [
-      "behaviour"
+      "target",
+      "time"
     ]
   }
 ]

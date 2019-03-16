@@ -52,7 +52,7 @@ describe('behaviour -> Force', () => {
       fy: 2,
       fz: 1,
       life: 3,
-      easing: 'easeInOutExpo'
+      easing: 'easeInOutExpo',
     });
 
     assert.instanceOf(instance, Proton.Force);
@@ -62,6 +62,7 @@ describe('behaviour -> Force', () => {
     assert.strictEqual(instance.force.z, 100);
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

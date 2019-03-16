@@ -16,10 +16,11 @@ export default class Scale extends Behaviour {
    * @param {?number} scaleB - the ending scale value
    * @param {number} life - the life of the behaviour
    * @param {function} easing - the easing equation to use for transforms
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    * @return void
    */
-  constructor(scaleA, scaleB, life, easing) {
-    super(life, easing, type);
+  constructor(scaleA, scaleB, life, easing, isEnabled = true) {
+    super(life, easing, type, isEnabled);
 
     this.reset(scaleA, scaleB);
   }
@@ -98,7 +99,7 @@ export default class Scale extends Behaviour {
    * @param {integer} index - the particle index
    * @return void
    */
-  applyBehaviour(particle, time, index) {
+  mutate(particle, time, index) {
     this.energize(particle, time, index);
 
     particle.scale = MathUtils.lerp(
@@ -121,8 +122,8 @@ export default class Scale extends Behaviour {
    * @return {Spring}
    */
   static fromJSON(json) {
-    const { scaleA, scaleB, life, easing } = json;
+    const { scaleA, scaleB, life, easing, isEnabled = true } = json;
 
-    return new Scale(scaleA, scaleB, life, getEasingByName(easing));
+    return new Scale(scaleA, scaleB, life, getEasingByName(easing), isEnabled);
   }
 }

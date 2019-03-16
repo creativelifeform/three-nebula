@@ -13,7 +13,7 @@ describe('initializer -> Radius', () => {
   it('should have the correct properties after instantiation', done => {
     const {
       radius,
-      radius: { _isArray, a, b, _center }
+      radius: { _isArray, a, b, _center },
     } = initializer;
 
     assert.equal(initializer.type, 'Radius');
@@ -33,7 +33,7 @@ describe('initializer -> Radius', () => {
 
     const {
       radius,
-      transform: { oldRadius }
+      transform: { oldRadius },
     } = particle;
 
     assert.strictEqual(radius, 5);
@@ -46,13 +46,14 @@ describe('initializer -> Radius', () => {
     const instance = Proton.Radius.fromJSON({
       width: 3,
       height: 10,
-      center: true
+      center: true,
     });
 
     assert.instanceOf(instance, Proton.Radius);
     assert.instanceOf(instance.radius, Proton.Span);
     assert.equal(instance.radius.a, 3);
     assert.equal(instance.radius.b, 10);
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

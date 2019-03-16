@@ -18,9 +18,10 @@ export default class CrossZone extends Behaviour {
    * @param {string} [crossType=DEFAULT_CROSS_TYPE] - enum of cross types, valid strings include 'dead', 'bound', 'cross'
    * @param {number} life - The life of the particle
    * @param {function} easing - The behaviour's decaying trend
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
    */
-  constructor(zone, crossType, life, easing) {
-    super(life, easing, type);
+  constructor(zone, crossType, life, easing, isEnabled) {
+    super(life, easing, type, isEnabled);
 
     this.reset(zone, crossType);
   }
@@ -53,7 +54,7 @@ export default class CrossZone extends Behaviour {
    * @param {integer} index - the particle index
    * @return void
    */
-  applyBehaviour(particle, time, index) {
+  mutate(particle, time, index) {
     this.energize(particle, time, index);
 
     this.zone.crossing.call(this.zone, particle);
@@ -66,10 +67,23 @@ export default class CrossZone extends Behaviour {
    * @return {CrossZone}
    */
   static fromJSON(json) {
-    const { zoneType, zoneParams, crossType, life, easing } = json;
+    const {
+      zoneType,
+      zoneParams,
+      crossType,
+      life,
+      easing,
+      isEnabled = true,
+    } = json;
 
     const zone = new Zone[zoneType](...Object.values(zoneParams));
 
-    return new CrossZone(zone, crossType, life, getEasingByName(easing));
+    return new CrossZone(
+      zone,
+      crossType,
+      life,
+      getEasingByName(easing),
+      isEnabled
+    );
   }
 }

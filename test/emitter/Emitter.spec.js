@@ -6,12 +6,12 @@ import * as integration from '../../src/math/integration';
 import {
   DEFAULT_BIND_EMITTER,
   DEFAULT_DAMPING,
-  DEFAULT_EMITTER_RATE
+  DEFAULT_EMITTER_RATE,
 } from '../../src/emitter/constants';
 import EventDispatcher, {
   PARTICLE_CREATED,
   PARTICLE_DEAD,
-  PARTICLE_UPDATE
+  PARTICLE_UPDATE,
 } from '../../src/events/';
 
 import { TIME } from '../constants';
@@ -31,13 +31,14 @@ describe('emitter -> Emitter', () => {
       particles,
       initializers,
       behaviours,
+      emitterBehaviours,
       currentEmitTime,
       totalEmitTimes,
       damping,
       bindEmitter,
       rate,
       id,
-      eventDispatcher
+      eventDispatcher,
     } = emitter;
 
     assert.equal(type, 'Emitter');
@@ -47,6 +48,8 @@ describe('emitter -> Emitter', () => {
     assert.isEmpty(initializers);
     assert.isArray(behaviours);
     assert.isEmpty(behaviours);
+    assert.isArray(emitterBehaviours);
+    assert.isEmpty(emitterBehaviours);
     assert.equal(currentEmitTime, 0);
     assert.equal(totalEmitTimes, -1);
     assert.equal(damping, DEFAULT_DAMPING);
@@ -129,7 +132,7 @@ describe('emitter -> Emitter', () => {
     done();
   });
 
-  it('should kill all of the emitter\'s particles', done => {
+  it("should kill all of the emitter's particles", done => {
     const emitter = new Emitter();
 
     for (let i = 0; i < 500; i++) {
@@ -165,7 +168,7 @@ describe('emitter -> Emitter', () => {
     done();
   });
 
-  it('should call the emitter\'s dispatch when creating a particle with bindEmitterEvent set to true', done => {
+  it("should call the emitter's dispatch when creating a particle with bindEmitterEvent set to true", done => {
     const proton = new Proton.Proton();
     const emitter = new Emitter();
     const emitterDispatchSpy = spy(emitter, 'dispatch');
@@ -320,7 +323,7 @@ describe('emitter -> Emitter', () => {
     emitter.setBehaviours([
       new Proton.Attraction(),
       new Proton.Repulsion(),
-      new Proton.Gravity()
+      new Proton.Gravity(),
     ]);
 
     assert.instanceOf(emitter.removeAllBehaviours(), Emitter);
@@ -385,7 +388,7 @@ describe('emitter -> Emitter', () => {
     done();
   });
 
-  it('should call the InitializerUtil.initialize method on the particle passing the correct arguments. This should call every initializer\'s init method on the particle', done => {
+  it("should call the InitializerUtil.initialize method on the particle passing the correct arguments. This should call every initializer's init method on the particle", done => {
     const emitter = new Emitter();
     const particle = new Proton.Particle();
     const initializeSpy = spy(Proton.InitializerUtil, 'initialize');
@@ -400,7 +403,7 @@ describe('emitter -> Emitter', () => {
     const initSpies = [
       spy(mass, 'init'),
       spy(life, 'init'),
-      spy(radius, 'init')
+      spy(radius, 'init'),
     ];
 
     emitter

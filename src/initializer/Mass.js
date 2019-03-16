@@ -15,8 +15,8 @@ export default class Mass extends Initializer {
    * @param {boolean} [center] - Determines whether to average the mass value
    * @return void
    */
-  constructor(min, max, center = false) {
-    super(type);
+  constructor(min, max, center = false, isEnabled = true) {
+    super(type, isEnabled);
 
     /**
      * @desc The mass span which is used to set the particle mass value.
@@ -45,8 +45,8 @@ export default class Mass extends Initializer {
    * @return {Mass}
    */
   static fromJSON(json) {
-    const { min, max, center = false } = json;
+    const { min, max, center = false, isEnabled = true } = json;
 
-    return new Mass(min, max, center);
+    return new Mass(min, max, center, isEnabled);
   }
 }

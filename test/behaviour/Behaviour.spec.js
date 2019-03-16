@@ -4,8 +4,10 @@ import * as Proton from '../../src';
 
 import Behaviour from '../../src/behaviour/Behaviour';
 import chai from 'chai';
+import sinon from 'sinon';
 
 const { assert } = chai;
+const { spy } = sinon;
 
 describe('behaviour -> Behaviour', () => {
   const behaviour = new Behaviour();
@@ -25,6 +27,7 @@ describe('behaviour -> Behaviour', () => {
     assert.isFunction(behaviour.normalizeValue);
     assert.isFunction(behaviour.initialize);
     assert.isFunction(behaviour.applyBehaviour);
+    assert.isFunction(behaviour.mutate);
     assert.isFunction(behaviour.destroy);
 
     done();
@@ -40,6 +43,17 @@ describe('behaviour -> Behaviour', () => {
 
   it('should normalize the value correctly', done => {
     assert.strictEqual(behaviour.normalizeValue(1.22), 122);
+
+    done();
+  });
+
+  it('should not call the mutate method if the behaviour is disabled', done => {
+    const disabled = new Behaviour(Infinity, () => {}, 'test', false);
+    const particle = new Proton.Particle();
+    const mutateSpy = spy(disabled, 'mutate');
+
+    disabled.applyBehaviour(particle);
+    assert(mutateSpy.notCalled);
 
     done();
   });

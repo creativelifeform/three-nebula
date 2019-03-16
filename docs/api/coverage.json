@@ -1,7 +1,7 @@
 {
-  "coverage": "57.18%",
-  "expectCount": 654,
-  "actualCount": 374,
+  "coverage": "57.63%",
+  "expectCount": 661,
+  "actualCount": 381,
   "files": {
     "src/behaviour/Alpha.js": {
       "expectCount": 11,
@@ -14,31 +14,31 @@
       "undocumentLines": []
     },
     "src/behaviour/Behaviour.js": {
-      "expectCount": 17,
-      "actualCount": 17,
+      "expectCount": 19,
+      "actualCount": 19,
       "undocumentLines": []
     },
     "src/behaviour/Collision.js": {
       "expectCount": 11,
       "actualCount": 5,
       "undocumentLines": [
-        36,
         37,
         38,
         39,
         40,
-        110
+        41,
+        111
       ]
     },
     "src/behaviour/Color.js": {
       "expectCount": 11,
       "actualCount": 6,
       "undocumentLines": [
-        49,
-        52,
-        53,
-        57,
-        66
+        51,
+        54,
+        55,
+        59,
+        68
       ]
     },
     "src/behaviour/CrossZone.js": {
@@ -55,7 +55,7 @@
       "expectCount": 4,
       "actualCount": 3,
       "undocumentLines": [
-        28
+        29
       ]
     },
     "src/behaviour/RandomDrift.js": {
@@ -86,9 +86,9 @@
       "expectCount": 8,
       "actualCount": 5,
       "undocumentLines": [
-        41,
-        46,
-        47
+        42,
+        47,
+        48
       ]
     },
     "src/behaviour/constants.js": {
@@ -207,26 +207,17 @@
         147
       ]
     },
-    "src/emitter/BehaviourEmitter.js": {
-      "expectCount": 7,
-      "actualCount": 4,
-      "undocumentLines": [
-        4,
-        22,
-        52
-      ]
-    },
     "src/emitter/Emitter.js": {
-      "expectCount": 43,
-      "actualCount": 36,
+      "expectCount": 51,
+      "actualCount": 44,
       "undocumentLines": [
-        102,
-        103,
-        163,
-        342,
-        378,
+        108,
+        109,
+        184,
+        438,
         473,
-        474
+        588,
+        589
       ]
     },
     "src/emitter/FollowEmitter.js": {
@@ -255,12 +246,11 @@
       ]
     },
     "src/emitter/types.js": {
-      "expectCount": 3,
+      "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
         1,
-        2,
-        3
+        2
       ]
     },
     "src/events/EventDispatcher.js": {
@@ -298,15 +288,18 @@
       "undocumentLines": []
     },
     "src/initializer/BodySprite.js": {
-      "expectCount": 7,
-      "actualCount": 7,
-      "undocumentLines": []
+      "expectCount": 9,
+      "actualCount": 8,
+      "undocumentLines": [
+        12
+      ]
     },
     "src/initializer/Initializer.js": {
-      "expectCount": 7,
+      "expectCount": 8,
       "actualCount": 6,
       "undocumentLines": [
-        15
+        17,
+        18
       ]
     },
     "src/initializer/InitializerUtil.js": {
@@ -366,12 +359,13 @@
       ]
     },
     "src/initializer/constants.js": {
-      "expectCount": 3,
+      "expectCount": 4,
       "actualCount": 0,
       "undocumentLines": [
         3,
         8,
-        9
+        12,
+        13
       ]
     },
     "src/initializer/types.js": {
@@ -566,6 +560,13 @@
         3,
         4,
         5
+      ]
+    },
+    "src/utils/index.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        7
       ]
     },
     "src/zone/BoxZone.js": {

@@ -48,7 +48,7 @@ describe('behaviour -> Gravity', () => {
     const instance = Proton.Gravity.fromJSON({
       gravity: 1,
       life: 3,
-      easing: 'easeInOutExpo'
+      easing: 'easeInOutExpo',
     });
 
     assert.instanceOf(instance, Proton.Gravity);
@@ -58,6 +58,7 @@ describe('behaviour -> Gravity', () => {
     assert.strictEqual(instance.force.z, 0);
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
+    assert.isTrue(instance.isEnabled);
 
     done();
   });

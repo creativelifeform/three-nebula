@@ -20,7 +20,7 @@ describe('initializer -> Polar Velocity', () => {
     assert.deepEqual(Object.values(dirVec), [
       -0.6860072156638288,
       -1.4989531127105078,
-      -3.6445210475387078
+      -3.6445210475387078,
     ]);
     assert.isUndefined(radiusPan);
     assert.isUndefined(dir);
@@ -34,7 +34,7 @@ describe('initializer -> Polar Velocity', () => {
 
     const {
       velocity,
-      velocity: { x, y, z }
+      velocity: { x, y, z },
     } = particle;
 
     assert.instanceOf(velocity, Proton.Vector3D);
@@ -50,7 +50,7 @@ describe('initializer -> Polar Velocity', () => {
       polarRadius: 1,
       polarTheta: 0.96,
       polarPhi: 0.88,
-      velocityTheta: 0.45
+      velocityTheta: 0.45,
     });
 
     assert.instanceOf(instance, Proton.PolarVelocity);
@@ -59,8 +59,9 @@ describe('initializer -> Polar Velocity', () => {
     assert.deepEqual(Object.values(instance.dirVec), [
       0.5219488450608104,
       -0.6313827909557999,
-      0.5735199860724567
+      0.5735199860724567,
     ]);
+    assert.isTrue(instance.isEnabled);
 
     done();
   });
