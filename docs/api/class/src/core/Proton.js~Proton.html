@@ -86,6 +86,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromJSON">fromJSON</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromJSONAsync">fromJSONAsync</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_AGE">DEFAULT_AGE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_ALPHA">DEFAULT_ALPHA</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_BODY">DEFAULT_BODY</a></span></span></li>
@@ -135,7 +136,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_UPDATE">PARTICLE_UPDATE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initializer">initializer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Body.js~Body.html">Body</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initializer">initializer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/AsyncTexture.js~AsyncTexture.html">AsyncTexture</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Body.js~Body.html">Body</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/BodySprite.js~BodySprite.html">BodySprite</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Initializer.js~Initializer.html">Initializer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Life.js~Life.html">Life</a></span></span></li>
@@ -148,6 +150,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RATE_NUM_PAN">DEFAULT_RATE_NUM_PAN</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RATE_TIME_PAN">DEFAULT_RATE_TIME_PAN</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_ABSTRACT">INITIALIZER_TYPE_ABSTRACT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_ASYNC_TEXTURE">INITIALIZER_TYPE_ASYNC_TEXTURE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_BODY">INITIALIZER_TYPE_BODY</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_BODY_SPRITE">INITIALIZER_TYPE_BODY_SPRITE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_LIFE">INITIALIZER_TYPE_LIFE</a></span></span></li>
@@ -213,13 +216,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Proton from &apos;<span><a href="file/src/core/Proton.js.html#lineNumber22">@rohandeshpande/three-proton/src/core/Proton.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Proton from &apos;<span><a href="file/src/core/Proton.js.html#lineNumber23">@rohandeshpande/three-proton/src/core/Proton.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/core/Proton.js.html#lineNumber22">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/core/Proton.js.html#lineNumber23">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -280,6 +283,35 @@ and behaviours.</p>
         
         
         <div data-ice="description"><p>Creates a Proton instance from a JSON object.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html#static-method-fromJSONAsync">fromJSONAsync</a></span></span><span class="code" data-ice="signature">(json: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span>&gt;</span>
+        </p>
+      </div>
+      <div>
+        
+        <div class="experimental" data-ice="experimental">this method is experimental.</div>
+        <div data-ice="description"><p>Creates a Proton instance from a JSON object asynchronously.</p>
 </div>
       </div>
     </td>
@@ -794,7 +826,7 @@ and behaviours.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber86">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber87">source</a></span></span>
     </span>
   </h3>
 
@@ -876,6 +908,101 @@ and behaviours.</p>
   
   
 </div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-method-fromJSONAsync">
+    <span class="access" data-ice="access">public</span>
+    <span data-ice="static">static</span>
+    
+    
+    
+    
+    <span class="code" data-ice="name">fromJSONAsync</span><span class="code" data-ice="signature">(json: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span>&gt;</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber102">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  <div class="experimental" data-ice="experimental">this method is experimental.</div>
+  <div data-ice="description"><p>Creates a Proton instance from a JSON object asynchronously.
+NOTE This is an experimental method, it may not work</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">json</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The JSON to create the Proton instance from</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">json.preParticles</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The predetermined number of particles</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">json.integrationType</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The integration algorithm to use</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="1">
+      <td data-ice="name" class="code" data-depth="1">json.emitters</td>
+      <td data-ice="type" class="code"><span>array</span>&lt;<span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>&gt;</td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The emitters for the proton instance</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span>&lt;<span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span>&gt;</td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
 </div>
 <div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
 
@@ -891,7 +1018,7 @@ and behaviours.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber30">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber31">source</a></span></span>
     </span>
   </h3>
 
@@ -977,7 +1104,7 @@ and behaviours.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber56">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber57">source</a></span></span>
     </span>
   </h3>
 
@@ -1021,7 +1148,7 @@ and behaviours.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber74">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber75">source</a></span></span>
     </span>
   </h3>
 
@@ -1065,7 +1192,7 @@ and behaviours.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber50">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber51">source</a></span></span>
     </span>
   </h3>
 
@@ -1109,7 +1236,7 @@ and behaviours.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber68">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber69">source</a></span></span>
     </span>
   </h3>
 
@@ -1153,7 +1280,7 @@ and behaviours.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber44">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber45">source</a></span></span>
     </span>
   </h3>
 
@@ -1197,7 +1324,7 @@ and behaviours.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber62">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber63">source</a></span></span>
     </span>
   </h3>
 
@@ -1241,7 +1368,7 @@ and behaviours.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber38">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber39">source</a></span></span>
     </span>
   </h3>
 
@@ -1288,7 +1415,7 @@ and behaviours.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber133">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber149">source</a></span></span>
     </span>
   </h3>
 
@@ -1362,7 +1489,7 @@ Dispatches the EMITTER_ADDED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber106">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber122">source</a></span></span>
     </span>
   </h3>
 
@@ -1435,7 +1562,7 @@ Dispatches the EMITTER_ADDED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber216">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber232">source</a></span></span>
     </span>
   </h3>
 
@@ -1492,7 +1619,7 @@ Dispatches the EMITTER_ADDED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber96">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber112">source</a></span></span>
     </span>
   </h3>
 
@@ -1561,7 +1688,7 @@ Dispatches the EMITTER_ADDED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber199">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber215">source</a></span></span>
     </span>
   </h3>
 
@@ -1617,7 +1744,7 @@ Dispatches the EMITTER_ADDED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber149">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber165">source</a></span></span>
     </span>
   </h3>
 
@@ -1691,7 +1818,7 @@ Dispatches the EMITTER_REMOVED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber119">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber135">source</a></span></span>
     </span>
   </h3>
 
@@ -1763,7 +1890,7 @@ Dispatches the EMITTER_REMOVED event.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber176">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/core/Proton.js.html#lineNumber192">source</a></span></span>
     </span>
   </h3>
 

@@ -33,9 +33,15 @@ export default class AsyncTexture extends Initializer {
   ) {
     super(type, isEnabled);
 
-    // Ensures that even if no materialProperties are passed, defaults are set
-    // This can happen if a loaded texture is provided
-    const matProps = materialProperties || DEFAULT_MATERIAL_PROPERTIES;
+    /**
+     * @desc The material properties for this object's SpriteMaterial
+     * NOTE This is required for testing purposes
+     * @type {object}
+     */
+    this.materialProperties = withDefaults(
+      DEFAULT_MATERIAL_PROPERTIES,
+      materialProperties
+    );
 
     if (loadedTexture) {
       /**
@@ -50,7 +56,7 @@ export default class AsyncTexture extends Initializer {
        */
       this.material = new SpriteMaterial({
         ...{ map: loadedTexture },
-        ...matProps,
+        ...this.materialProperties,
       });
 
       /**
@@ -75,7 +81,7 @@ export default class AsyncTexture extends Initializer {
        */
       this.material = new SpriteMaterial({
         ...{ map },
-        ...materialProperties,
+        ...this.materialProperties,
       });
 
       /**

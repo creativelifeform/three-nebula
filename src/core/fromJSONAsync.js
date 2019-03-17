@@ -26,6 +26,10 @@ const makeRate = json => new Rate.fromJSON(json);
  */
 const makeInitializers = items =>
   new Promise((resolve, reject) => {
+    if (!items.length) {
+      return resolve([]);
+    }
+
     const numberOfInitializers = items.length;
     const madeInitializers = [];
     const doNotRequireTextureLoading = items.filter(
@@ -93,6 +97,10 @@ const makeInitializers = items =>
  */
 const makeBehaviours = items =>
   new Promise((resolve, reject) => {
+    if (!items.length) {
+      return resolve([]);
+    }
+
     const numberOfBehaviours = items.length;
     const madeBehaviours = [];
 
@@ -115,6 +123,10 @@ const makeBehaviours = items =>
 
 const makeEmitters = (emitters, Emitter) =>
   new Promise((resolve, reject) => {
+    if (!emitters.length) {
+      return resolve([]);
+    }
+
     const madeEmitters = [];
     const numberOfEmitters = emitters.length;
 

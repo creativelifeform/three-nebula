@@ -49,5 +49,58 @@
       "target",
       "time"
     ]
+  },
+  {
+    "name": "AsyncTexture.fromJSON",
+    "filePath": "src/initializer/AsyncTexture.js",
+    "lines": [
+      {
+        "lineNumber": 104,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 105,
+        "line": "   * Creates a BodySprite initializer from JSON."
+      },
+      {
+        "lineNumber": 106,
+        "line": "   *"
+      },
+      {
+        "lineNumber": 107,
+        "line": "   * @param {object} json - The JSON to construct the instance from."
+      },
+      {
+        "lineNumber": 108,
+        "line": "   * @param {string} json.texture - The sprite texture"
+      },
+      {
+        "lineNumber": 109,
+        "line": "   * @param {object} json.materialProperties - The sprite material properties"
+      },
+      {
+        "lineNumber": 110,
+        "line": "   * @param {?Texture} loadedTexture - Preloaded THREE.Texture instance"
+      },
+      {
+        "lineNumber": 111,
+        "line": "   * @return {BodySprite}"
+      },
+      {
+        "lineNumber": 112,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 113,
+        "line": "  static fromJSON(json) {"
+      }
+    ],
+    "codeParams": [
+      "json"
+    ],
+    "docParams": [
+      "json",
+      "loadedTexture"
+    ]
   }
 ]

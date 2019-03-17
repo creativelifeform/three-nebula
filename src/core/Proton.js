@@ -2,7 +2,7 @@ import EventDispatcher, {
   EMITTER_ADDED,
   EMITTER_REMOVED,
   PROTON_UPDATE,
-  PROTON_UPDATE_AFTER
+  PROTON_UPDATE_AFTER,
 } from '../events';
 
 import { DEFAULT_PROTON_DELTA } from './constants';

@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 63);
+/******/ 	return __webpack_require__(__webpack_require__.s = 64);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -87,7 +87,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ArraySpan = __webpack_require__(75);
+var _ArraySpan = __webpack_require__(77);
 
 Object.defineProperty(exports, 'ArraySpan', {
   enumerable: true,
@@ -102,7 +102,7 @@ Object.defineProperty(exports, 'createArraySpan', {
   }
 });
 
-var _ColorSpan = __webpack_require__(77);
+var _ColorSpan = __webpack_require__(79);
 
 Object.defineProperty(exports, 'ColorSpan', {
   enumerable: true,
@@ -117,7 +117,7 @@ Object.defineProperty(exports, 'createColorSpan', {
   }
 });
 
-var _Box = __webpack_require__(76);
+var _Box = __webpack_require__(78);
 
 Object.defineProperty(exports, 'Box', {
   enumerable: true,
@@ -126,7 +126,7 @@ Object.defineProperty(exports, 'Box', {
   }
 });
 
-var _integration = __webpack_require__(79);
+var _integration = __webpack_require__(81);
 
 Object.defineProperty(exports, 'integrate', {
   enumerable: true,
@@ -144,7 +144,7 @@ Object.defineProperty(exports, 'MathUtils', {
   }
 });
 
-var _Polar3D = __webpack_require__(78);
+var _Polar3D = __webpack_require__(80);
 
 Object.defineProperty(exports, 'Polar3D', {
   enumerable: true,
@@ -153,7 +153,7 @@ Object.defineProperty(exports, 'Polar3D', {
   }
 });
 
-var _Span = __webpack_require__(24);
+var _Span = __webpack_require__(27);
 
 Object.defineProperty(exports, 'Span', {
   enumerable: true,
@@ -177,7 +177,7 @@ Object.defineProperty(exports, 'Vector3D', {
   }
 });
 
-var _constants = __webpack_require__(25);
+var _constants = __webpack_require__(28);
 
 Object.defineProperty(exports, 'INTEGRATION_TYPE_EULER', {
   enumerable: true,
@@ -218,7 +218,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getEasingByName = exports.setEasingByName = exports.easeInOutBack = exports.easeOutBack = exports.easeInBack = exports.easeInOutCirc = exports.easeOutCirc = exports.easeInCirc = exports.easeInOutExpo = exports.easeOutExpo = exports.easeInExpo = exports.easeInOutSine = exports.easeOutSine = exports.easeInSine = exports.easeInOutQuart = exports.easeOutQuart = exports.easeInQuart = exports.easeInOutCubic = exports.easeOutCubic = exports.easeInCubic = exports.easeInOutQuad = exports.easeOutQuad = exports.easeInQuad = exports.easeLinear = exports.ease = undefined;
 
-var _constants = __webpack_require__(3);
+var _constants = __webpack_require__(4);
 
 /**
  * The Ease class provides a collection of easing functions for use with Proton
@@ -411,316 +411,6 @@ var BEHAVIOUR_TYPE_SPRING = exports.BEHAVIOUR_TYPE_SPRING = 'Spring';
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var PI = exports.PI = 3.142;
-
-/**
- * The max particle number in pool.
- *
- * @const {integer}
- */
-var POOL_MAX = exports.POOL_MAX = 500;
-var TIME_STEP = exports.TIME_STEP = 60;
-var DR = exports.DR = PI / 180;
-
-/**
- * 1:100
- *
- * @const {integer}
- */
-var MEASURE = exports.MEASURE = 100;
-var EULER = exports.EULER = 'euler';
-var RK2 = exports.RK2 = 'runge-kutta2';
-var RK4 = exports.RK4 = 'runge-kutta4';
-var VERLET = exports.VERLET = 'verlet';
-var PARTICLE_CREATED = exports.PARTICLE_CREATED = 'partilcleCreated';
-var PARTICLE_UPDATE = exports.PARTICLE_UPDATE = 'partilcleUpdate';
-var PARTICLE_SLEEP = exports.PARTICLE_SLEEP = 'particleSleep';
-var PARTICLE_DEAD = exports.PARTICLE_DEAD = 'partilcleDead';
-var PROTON_UPDATE = exports.PROTON_UPDATE = 'protonUpdate';
-var PROTON_UPDATE_AFTER = exports.PROTON_UPDATE_AFTER = 'protonUpdateAfter';
-var EMITTER_ADDED = exports.EMITTER_ADDED = 'emitterAdded';
-var EMITTER_REMOVED = exports.EMITTER_REMOVED = 'emitterRemoved';
-var BIND_EMITTER_EVENT = exports.BIND_EMITTER_EVENT = false;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var INITIALIZER_TYPE_ABSTRACT = exports.INITIALIZER_TYPE_ABSTRACT = 'Initializer';
-var INITIALIZER_TYPE_BODY = exports.INITIALIZER_TYPE_BODY = 'Body';
-var INITIALIZER_TYPE_BODY_SPRITE = exports.INITIALIZER_TYPE_BODY_SPRITE = 'BodySprite';
-var INITIALIZER_TYPE_LIFE = exports.INITIALIZER_TYPE_LIFE = 'Life';
-var INITIALIZER_TYPE_MASS = exports.INITIALIZER_TYPE_MASS = 'Mass';
-var INITIALIZER_TYPE_POSITION = exports.INITIALIZER_TYPE_POSITION = 'Position';
-var INITIALIZER_TYPE_RADIUS = exports.INITIALIZER_TYPE_RADIUS = 'Radius';
-var INITIALIZER_TYPE_ZONE = exports.INITIALIZER_TYPE_ZONE = 'Zone';
-var INITIALIZER_TYPE_VECTOR_VELOCITY = exports.INITIALIZER_TYPE_VECTOR_VELOCITY = 'VectorVelocity';
-var INITIALIZER_TYPE_POLAR_VELOCITY = exports.INITIALIZER_TYPE_POLAR_VELOCITY = 'PolarVelocity';
-var INITIALIZER_TYPE_RADIAL_VELOCITY = exports.INITIALIZER_TYPE_RADIAL_VELOCITY = 'RadialVelocity';
-var INITIALIZER_TYPE_RATE = exports.INITIALIZER_TYPE_RATE = 'Rate';
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _constants = __webpack_require__(14);
-
-var _types = __webpack_require__(2);
-
-var _constants2 = __webpack_require__(3);
-
-var _utils = __webpack_require__(10);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * The base behaviour class.
- * Behaviours manage a particle's behaviour after they have been emitted.
- *
- */
-var Behaviour = function () {
-  /**
-   * Constructs a Behaviour instance.
-   *
-   * @param {number} [life=Infinity] - The life of the behaviour
-   * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
-   * @param {string} [type=BEHAVIOUR_TYPE_ABSTRACT] - The behaviour type
-   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
-   * @return void
-   */
-  function Behaviour() {
-    var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Infinity;
-    var easing = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_BEHAVIOUR_EASING;
-    var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _types.BEHAVIOUR_TYPE_ABSTRACT;
-    var isEnabled = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
-
-    _classCallCheck(this, Behaviour);
-
-    /**
-     * @desc The class type.
-     * @type {string}
-     */
-    this.type = type;
-
-    /**
-     * @desc Determines if the behaviour will be applied or not
-     * @type {boolean}
-     */
-    this.isEnabled = isEnabled;
-
-    /**
-     * @desc The behaviour's id
-     * @type {string} id
-     */
-    this.id = 'behaviour-' + (0, _utils.uid)();
-
-    /**
-     * @desc The life of the behaviour
-     * @type {number}
-     */
-    this.life = life;
-
-    /**
-     * @desc The behaviour's decaying trend
-     * @type {function}
-     */
-    this.easing = easing;
-
-    /**
-     * @desc The age of the behaviour
-     * @type {number}
-     */
-    this.age = 0;
-
-    /**
-     * @desc The energy of the behaviour
-     * @type {number}
-     */
-    this.energy = 1;
-
-    /**
-     * Determines if the behaviour is dead or not
-     * @type {boolean}
-     */
-    this.dead = false;
-  }
-
-  /**
-   * Reset this behaviour's parameters
-   *
-   * @param {number} [life=Infinity] - The life of the behaviour
-   * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
-   */
-
-
-  _createClass(Behaviour, [{
-    key: 'reset',
-    value: function reset() {
-      var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Infinity;
-      var easing = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_BEHAVIOUR_EASING;
-
-      this.life = life || _constants.DEFAULT_LIFE;
-      this.easing = easing || _constants.DEFAULT_BEHAVIOUR_EASING;
-    }
-
-    /**
-     * Normalize a force by 1:100;
-     *
-     * @param {Vector3D} force - The force to normalize.
-     * @return {Vector3D}
-     */
-
-  }, {
-    key: 'normalizeForce',
-    value: function normalizeForce(force) {
-      return force.scalar(_constants2.MEASURE);
-    }
-
-    /**
-     * Normalize a value by 1:100;
-     *
-     * @param {number} value - The value to normalize
-     * @return {number}
-     */
-
-  }, {
-    key: 'normalizeValue',
-    value: function normalizeValue(value) {
-      return value * _constants2.MEASURE;
-    }
-
-    /**
-     * Set the behaviour's initial properties on the particle.
-     *
-     * @param {Particle} particle
-     * @abstract
-     */
-
-  }, {
-    key: 'initialize',
-    value: function initialize(particle) {} // eslint-disable-line
-
-    /**
-     * Apply behaviour to the target as a factor of time.
-     * Internally calls the mutate method to change properties on the target
-     * Will not do so if the behaviour is disabled
-     *
-     * @abstract
-     * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to
-     * @param {Number} time - the proton integration time
-     * @param {integer} index - the target index
-     * @return mixed
-     */
-
-  }, {
-    key: 'applyBehaviour',
-    value: function applyBehaviour(target, time, index) {
-      if (!this.isEnabled) {
-        return;
-      }
-
-      this.mutate(target, time, index);
-    }
-
-    /**
-     * Change the target's properties according to specific behaviour logic.
-     *
-     * @abstract
-     * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to
-     * @param {Number} time - the proton integration time
-     * @return mixed
-     */
-
-  }, {
-    key: 'mutate',
-    value: function mutate(target, time, index) {} // eslint-disable-line
-
-    /**
-     * Compares the age of the behaviour vs integration time and determines
-     * if the behaviour should be set to dead or not.
-     * Sets the behaviour energy as a factor of particle age and life.
-     *
-     * @param {Particle} particle - The particle to apply the behaviour to
-     * @param {Number} time - the proton integration time
-     * @return void
-     */
-
-  }, {
-    key: 'energize',
-    value: function energize(particle, time) {
-      if (this.dead) {
-        return;
-      }
-
-      this.age += time;
-
-      if (this.age >= this.life) {
-        this.energy = 0;
-        this.dead = true;
-
-        return;
-      }
-
-      var scale = this.easing(particle.age / particle.life);
-
-      this.energy = Math.max(1 - scale, 0);
-    }
-
-    /**
-     * Destory this behaviour.
-     *
-     * @abstract
-     */
-
-  }, {
-    key: 'destroy',
-    value: function destroy() {}
-
-    /**
-     * Returns a new instance of the behaviour from the JSON object passed.
-     *
-     * @abstract
-     * @param {object} json - JSON object containing the required constructor properties
-     * @return {Behaviour}
-     */
-
-  }, {
-    key: 'fromJSON',
-    value: function fromJSON(json) {} // eslint-disable-line
-
-  }]);
-
-  return Behaviour;
-}();
-
-exports.default = Behaviour;
-module.exports = exports['default'];
-
-/***/ }),
-/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48973,6 +48663,317 @@ function LensFlare() {
 
 
 /***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var PI = exports.PI = 3.142;
+
+/**
+ * The max particle number in pool.
+ *
+ * @const {integer}
+ */
+var POOL_MAX = exports.POOL_MAX = 500;
+var TIME_STEP = exports.TIME_STEP = 60;
+var DR = exports.DR = PI / 180;
+
+/**
+ * 1:100
+ *
+ * @const {integer}
+ */
+var MEASURE = exports.MEASURE = 100;
+var EULER = exports.EULER = 'euler';
+var RK2 = exports.RK2 = 'runge-kutta2';
+var RK4 = exports.RK4 = 'runge-kutta4';
+var VERLET = exports.VERLET = 'verlet';
+var PARTICLE_CREATED = exports.PARTICLE_CREATED = 'partilcleCreated';
+var PARTICLE_UPDATE = exports.PARTICLE_UPDATE = 'partilcleUpdate';
+var PARTICLE_SLEEP = exports.PARTICLE_SLEEP = 'particleSleep';
+var PARTICLE_DEAD = exports.PARTICLE_DEAD = 'partilcleDead';
+var PROTON_UPDATE = exports.PROTON_UPDATE = 'protonUpdate';
+var PROTON_UPDATE_AFTER = exports.PROTON_UPDATE_AFTER = 'protonUpdateAfter';
+var EMITTER_ADDED = exports.EMITTER_ADDED = 'emitterAdded';
+var EMITTER_REMOVED = exports.EMITTER_REMOVED = 'emitterRemoved';
+var BIND_EMITTER_EVENT = exports.BIND_EMITTER_EVENT = false;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var INITIALIZER_TYPE_ABSTRACT = exports.INITIALIZER_TYPE_ABSTRACT = 'Initializer';
+var INITIALIZER_TYPE_BODY = exports.INITIALIZER_TYPE_BODY = 'Body';
+var INITIALIZER_TYPE_BODY_SPRITE = exports.INITIALIZER_TYPE_BODY_SPRITE = 'BodySprite';
+var INITIALIZER_TYPE_ASYNC_TEXTURE = exports.INITIALIZER_TYPE_ASYNC_TEXTURE = 'AsyncTexture';
+var INITIALIZER_TYPE_LIFE = exports.INITIALIZER_TYPE_LIFE = 'Life';
+var INITIALIZER_TYPE_MASS = exports.INITIALIZER_TYPE_MASS = 'Mass';
+var INITIALIZER_TYPE_POSITION = exports.INITIALIZER_TYPE_POSITION = 'Position';
+var INITIALIZER_TYPE_RADIUS = exports.INITIALIZER_TYPE_RADIUS = 'Radius';
+var INITIALIZER_TYPE_ZONE = exports.INITIALIZER_TYPE_ZONE = 'Zone';
+var INITIALIZER_TYPE_VECTOR_VELOCITY = exports.INITIALIZER_TYPE_VECTOR_VELOCITY = 'VectorVelocity';
+var INITIALIZER_TYPE_POLAR_VELOCITY = exports.INITIALIZER_TYPE_POLAR_VELOCITY = 'PolarVelocity';
+var INITIALIZER_TYPE_RADIAL_VELOCITY = exports.INITIALIZER_TYPE_RADIAL_VELOCITY = 'RadialVelocity';
+var INITIALIZER_TYPE_RATE = exports.INITIALIZER_TYPE_RATE = 'Rate';
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _constants = __webpack_require__(15);
+
+var _types = __webpack_require__(2);
+
+var _constants2 = __webpack_require__(4);
+
+var _utils = __webpack_require__(9);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * The base behaviour class.
+ * Behaviours manage a particle's behaviour after they have been emitted.
+ *
+ */
+var Behaviour = function () {
+  /**
+   * Constructs a Behaviour instance.
+   *
+   * @param {number} [life=Infinity] - The life of the behaviour
+   * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
+   * @param {string} [type=BEHAVIOUR_TYPE_ABSTRACT] - The behaviour type
+   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
+   * @return void
+   */
+  function Behaviour() {
+    var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Infinity;
+    var easing = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_BEHAVIOUR_EASING;
+    var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _types.BEHAVIOUR_TYPE_ABSTRACT;
+    var isEnabled = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+
+    _classCallCheck(this, Behaviour);
+
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
+
+    /**
+     * @desc Determines if the behaviour will be applied or not
+     * @type {boolean}
+     */
+    this.isEnabled = isEnabled;
+
+    /**
+     * @desc The behaviour's id
+     * @type {string} id
+     */
+    this.id = 'behaviour-' + (0, _utils.uid)();
+
+    /**
+     * @desc The life of the behaviour
+     * @type {number}
+     */
+    this.life = life;
+
+    /**
+     * @desc The behaviour's decaying trend
+     * @type {function}
+     */
+    this.easing = easing;
+
+    /**
+     * @desc The age of the behaviour
+     * @type {number}
+     */
+    this.age = 0;
+
+    /**
+     * @desc The energy of the behaviour
+     * @type {number}
+     */
+    this.energy = 1;
+
+    /**
+     * Determines if the behaviour is dead or not
+     * @type {boolean}
+     */
+    this.dead = false;
+  }
+
+  /**
+   * Reset this behaviour's parameters
+   *
+   * @param {number} [life=Infinity] - The life of the behaviour
+   * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
+   */
+
+
+  _createClass(Behaviour, [{
+    key: 'reset',
+    value: function reset() {
+      var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Infinity;
+      var easing = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_BEHAVIOUR_EASING;
+
+      this.life = life || _constants.DEFAULT_LIFE;
+      this.easing = easing || _constants.DEFAULT_BEHAVIOUR_EASING;
+    }
+
+    /**
+     * Normalize a force by 1:100;
+     *
+     * @param {Vector3D} force - The force to normalize.
+     * @return {Vector3D}
+     */
+
+  }, {
+    key: 'normalizeForce',
+    value: function normalizeForce(force) {
+      return force.scalar(_constants2.MEASURE);
+    }
+
+    /**
+     * Normalize a value by 1:100;
+     *
+     * @param {number} value - The value to normalize
+     * @return {number}
+     */
+
+  }, {
+    key: 'normalizeValue',
+    value: function normalizeValue(value) {
+      return value * _constants2.MEASURE;
+    }
+
+    /**
+     * Set the behaviour's initial properties on the particle.
+     *
+     * @param {Particle} particle
+     * @abstract
+     */
+
+  }, {
+    key: 'initialize',
+    value: function initialize(particle) {} // eslint-disable-line
+
+    /**
+     * Apply behaviour to the target as a factor of time.
+     * Internally calls the mutate method to change properties on the target
+     * Will not do so if the behaviour is disabled
+     *
+     * @abstract
+     * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to
+     * @param {Number} time - the proton integration time
+     * @param {integer} index - the target index
+     * @return mixed
+     */
+
+  }, {
+    key: 'applyBehaviour',
+    value: function applyBehaviour(target, time, index) {
+      if (!this.isEnabled) {
+        return;
+      }
+
+      this.mutate(target, time, index);
+    }
+
+    /**
+     * Change the target's properties according to specific behaviour logic.
+     *
+     * @abstract
+     * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to
+     * @param {Number} time - the proton integration time
+     * @return mixed
+     */
+
+  }, {
+    key: 'mutate',
+    value: function mutate(target, time, index) {} // eslint-disable-line
+
+    /**
+     * Compares the age of the behaviour vs integration time and determines
+     * if the behaviour should be set to dead or not.
+     * Sets the behaviour energy as a factor of particle age and life.
+     *
+     * @param {Particle} particle - The particle to apply the behaviour to
+     * @param {Number} time - the proton integration time
+     * @return void
+     */
+
+  }, {
+    key: 'energize',
+    value: function energize(particle, time) {
+      if (this.dead) {
+        return;
+      }
+
+      this.age += time;
+
+      if (this.age >= this.life) {
+        this.energy = 0;
+        this.dead = true;
+
+        return;
+      }
+
+      var scale = this.easing(particle.age / particle.life);
+
+      this.energy = Math.max(1 - scale, 0);
+    }
+
+    /**
+     * Destory this behaviour.
+     *
+     * @abstract
+     */
+
+  }, {
+    key: 'destroy',
+    value: function destroy() {}
+
+    /**
+     * Returns a new instance of the behaviour from the JSON object passed.
+     *
+     * @abstract
+     * @param {object} json - JSON object containing the required constructor properties
+     * @return {Behaviour}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(json) {} // eslint-disable-line
+
+  }]);
+
+  return Behaviour;
+}();
+
+exports.default = Behaviour;
+module.exports = exports['default'];
+
+/***/ }),
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48985,7 +48986,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _types = __webpack_require__(4);
+var _types = __webpack_require__(5);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -49105,6 +49106,70 @@ var ZONE_TYPE_SPHERE = exports.ZONE_TYPE_SPHERE = 'SphereZone';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _ColorUtil = __webpack_require__(85);
+
+Object.defineProperty(exports, 'ColorUtil', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_ColorUtil).default;
+  }
+});
+
+var _PUID = __webpack_require__(30);
+
+Object.defineProperty(exports, 'PUID', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_PUID).default;
+  }
+});
+
+var _THREEUtil = __webpack_require__(31);
+
+Object.defineProperty(exports, 'THREEUtil', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_THREEUtil).default;
+  }
+});
+
+var _Util = __webpack_require__(10);
+
+Object.defineProperty(exports, 'Util', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Util).default;
+  }
+});
+
+var _uid = __webpack_require__(40);
+
+Object.defineProperty(exports, 'uid', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_uid).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var withDefaults = exports.withDefaults = function withDefaults(defaults, properties) {
+  return _extends({}, defaults, properties);
+};
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.default = {
   initValue: function initValue(value, defaults) {
     var _value = value != null && value != undefined ? value : defaults;
@@ -49180,70 +49245,6 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _ColorUtil = __webpack_require__(83);
-
-Object.defineProperty(exports, 'ColorUtil', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_ColorUtil).default;
-  }
-});
-
-var _PUID = __webpack_require__(27);
-
-Object.defineProperty(exports, 'PUID', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_PUID).default;
-  }
-});
-
-var _THREEUtil = __webpack_require__(28);
-
-Object.defineProperty(exports, 'THREEUtil', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_THREEUtil).default;
-  }
-});
-
-var _Util = __webpack_require__(9);
-
-Object.defineProperty(exports, 'Util', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Util).default;
-  }
-});
-
-var _uid = __webpack_require__(40);
-
-Object.defineProperty(exports, 'uid', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_uid).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var withDefaults = exports.withDefaults = function withDefaults(defaults, properties) {
-  return _extends({}, defaults, properties);
-};
-
-/***/ }),
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49256,7 +49257,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _three = __webpack_require__(6);
+var _three = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -49532,49 +49533,8 @@ module.exports = exports['default'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DEFAULT_CROSS_TYPE = exports.PARTICLE_LENGTH_SQ_THRESHOLD = exports.PARTICLE_ALPHA_THRESHOLD = exports.DEFAULT_RANDOM_DRIFT_DELAY = exports.DEFAULT_BEHAVIOUR_EASING_TYPE = exports.DEFAULT_BEHAVIOUR_EASING = exports.DEFAULT_ATTRACTION_FORCE_SCALAR = exports.DEFAULT_ATTRACITON_RADIUS = exports.DEFAULT_LIFE = undefined;
 
-var _ease = __webpack_require__(1);
-
-var DEFAULT_LIFE = exports.DEFAULT_LIFE = Infinity;
-var DEFAULT_ATTRACITON_RADIUS = exports.DEFAULT_ATTRACITON_RADIUS = 1000;
-var DEFAULT_ATTRACTION_FORCE_SCALAR = exports.DEFAULT_ATTRACTION_FORCE_SCALAR = 100;
-var DEFAULT_BEHAVIOUR_EASING = exports.DEFAULT_BEHAVIOUR_EASING = _ease.easeLinear;
-var DEFAULT_BEHAVIOUR_EASING_TYPE = exports.DEFAULT_BEHAVIOUR_EASING_TYPE = 'easeLinear';
-var DEFAULT_RANDOM_DRIFT_DELAY = exports.DEFAULT_RANDOM_DRIFT_DELAY = 0.03;
-var PARTICLE_ALPHA_THRESHOLD = exports.PARTICLE_ALPHA_THRESHOLD = 0.002;
-var PARTICLE_LENGTH_SQ_THRESHOLD = exports.PARTICLE_LENGTH_SQ_THRESHOLD = 0.000004;
-var DEFAULT_CROSS_TYPE = exports.DEFAULT_CROSS_TYPE = 'dead';
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var MATH_TYPE_ARRAY_SPAN = exports.MATH_TYPE_ARRAY_SPAN = 'ArraySpan';
-var MATH_TYPE_COLOR_SPAN = exports.MATH_TYPE_COLOR_SPAN = 'ColorSpan';
-var MATH_TYPE_BOX = exports.MATH_TYPE_BOX = 'Box';
-var MATH_TYPE_POLAR_3D = exports.MATH_TYPE_POLAR_3D = 'Polar3D';
-var MATH_TYPE_SPAN = exports.MATH_TYPE_SPAN = 'Span';
-var MATH_TYPE_VECTOR_3D = exports.MATH_TYPE_VECTOR_3D = 'Vector3D';
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Body = __webpack_require__(64);
+var _Body = __webpack_require__(66);
 
 Object.defineProperty(exports, 'Body', {
   enumerable: true,
@@ -49583,7 +49543,7 @@ Object.defineProperty(exports, 'Body', {
   }
 });
 
-var _BodySprite = __webpack_require__(65);
+var _BodySprite = __webpack_require__(67);
 
 Object.defineProperty(exports, 'BodySprite', {
   enumerable: true,
@@ -49592,7 +49552,7 @@ Object.defineProperty(exports, 'BodySprite', {
   }
 });
 
-var _InitializerUtil = __webpack_require__(66);
+var _InitializerUtil = __webpack_require__(68);
 
 Object.defineProperty(exports, 'InitializerUtil', {
   enumerable: true,
@@ -49601,7 +49561,7 @@ Object.defineProperty(exports, 'InitializerUtil', {
   }
 });
 
-var _Life = __webpack_require__(67);
+var _Life = __webpack_require__(69);
 
 Object.defineProperty(exports, 'Life', {
   enumerable: true,
@@ -49610,7 +49570,7 @@ Object.defineProperty(exports, 'Life', {
   }
 });
 
-var _Mass = __webpack_require__(68);
+var _Mass = __webpack_require__(70);
 
 Object.defineProperty(exports, 'Mass', {
   enumerable: true,
@@ -49619,7 +49579,7 @@ Object.defineProperty(exports, 'Mass', {
   }
 });
 
-var _Position = __webpack_require__(69);
+var _Position = __webpack_require__(71);
 
 Object.defineProperty(exports, 'Position', {
   enumerable: true,
@@ -49628,7 +49588,7 @@ Object.defineProperty(exports, 'Position', {
   }
 });
 
-var _Radius = __webpack_require__(70);
+var _Radius = __webpack_require__(72);
 
 Object.defineProperty(exports, 'Radius', {
   enumerable: true,
@@ -49637,7 +49597,7 @@ Object.defineProperty(exports, 'Radius', {
   }
 });
 
-var _Rate = __webpack_require__(37);
+var _Rate = __webpack_require__(24);
 
 Object.defineProperty(exports, 'Rate', {
   enumerable: true,
@@ -49646,7 +49606,16 @@ Object.defineProperty(exports, 'Rate', {
   }
 });
 
-var _Velocity = __webpack_require__(74);
+var _AsyncTexture = __webpack_require__(65);
+
+Object.defineProperty(exports, 'AsyncTexture', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_AsyncTexture).default;
+  }
+});
+
+var _Velocity = __webpack_require__(76);
 
 Object.defineProperty(exports, 'VectorVelocity', {
   enumerable: true,
@@ -49670,7 +49639,31 @@ Object.defineProperty(exports, 'RadialVelocity', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 17 */
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DEFAULT_CROSS_TYPE = exports.PARTICLE_LENGTH_SQ_THRESHOLD = exports.PARTICLE_ALPHA_THRESHOLD = exports.DEFAULT_RANDOM_DRIFT_DELAY = exports.DEFAULT_BEHAVIOUR_EASING_TYPE = exports.DEFAULT_BEHAVIOUR_EASING = exports.DEFAULT_ATTRACTION_FORCE_SCALAR = exports.DEFAULT_ATTRACITON_RADIUS = exports.DEFAULT_LIFE = undefined;
+
+var _ease = __webpack_require__(1);
+
+var DEFAULT_LIFE = exports.DEFAULT_LIFE = Infinity;
+var DEFAULT_ATTRACITON_RADIUS = exports.DEFAULT_ATTRACITON_RADIUS = 1000;
+var DEFAULT_ATTRACTION_FORCE_SCALAR = exports.DEFAULT_ATTRACTION_FORCE_SCALAR = 100;
+var DEFAULT_BEHAVIOUR_EASING = exports.DEFAULT_BEHAVIOUR_EASING = _ease.easeLinear;
+var DEFAULT_BEHAVIOUR_EASING_TYPE = exports.DEFAULT_BEHAVIOUR_EASING_TYPE = 'easeLinear';
+var DEFAULT_RANDOM_DRIFT_DELAY = exports.DEFAULT_RANDOM_DRIFT_DELAY = 0.03;
+var PARTICLE_ALPHA_THRESHOLD = exports.PARTICLE_ALPHA_THRESHOLD = 0.002;
+var PARTICLE_LENGTH_SQ_THRESHOLD = exports.PARTICLE_LENGTH_SQ_THRESHOLD = 0.000004;
+var DEFAULT_CROSS_TYPE = exports.DEFAULT_CROSS_TYPE = 'dead';
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49683,7 +49676,7 @@ exports.SUPPORTED_JSON_ZONE_TYPES = exports.SUPPORTED_JSON_RENDERER_TYPES = expo
 
 var _types = __webpack_require__(2);
 
-var _types2 = __webpack_require__(4);
+var _types2 = __webpack_require__(5);
 
 var _types3 = __webpack_require__(8);
 
@@ -49772,7 +49765,7 @@ var DEFAULT_PROTON_DELTA = exports.DEFAULT_PROTON_DELTA = 0.0167;
  * @desc The types of initializers supported by the Proton.fromJSON method.
  * @type {array<string>}
  */
-var SUPPORTED_JSON_INITIALIZER_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = [_types2.INITIALIZER_TYPE_POSITION, _types2.INITIALIZER_TYPE_LIFE, _types2.INITIALIZER_TYPE_RADIUS, _types2.INITIALIZER_TYPE_MASS, _types2.INITIALIZER_TYPE_BODY, _types2.INITIALIZER_TYPE_BODY_SPRITE, _types2.INITIALIZER_TYPE_POLAR_VELOCITY, _types2.INITIALIZER_TYPE_RADIAL_VELOCITY, _types2.INITIALIZER_TYPE_VECTOR_VELOCITY];
+var SUPPORTED_JSON_INITIALIZER_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = [_types2.INITIALIZER_TYPE_POSITION, _types2.INITIALIZER_TYPE_LIFE, _types2.INITIALIZER_TYPE_RADIUS, _types2.INITIALIZER_TYPE_MASS, _types2.INITIALIZER_TYPE_BODY, _types2.INITIALIZER_TYPE_BODY_SPRITE, _types2.INITIALIZER_TYPE_ASYNC_TEXTURE, _types2.INITIALIZER_TYPE_POLAR_VELOCITY, _types2.INITIALIZER_TYPE_RADIAL_VELOCITY, _types2.INITIALIZER_TYPE_VECTOR_VELOCITY];
 
 /**
  * @desc The types of behaviours supported by the Proton.fromJSON method.
@@ -49793,6 +49786,23 @@ var SUPPORTED_JSON_RENDERER_TYPES = exports.SUPPORTED_JSON_RENDERER_TYPES = [_ty
 var SUPPORTED_JSON_ZONE_TYPES = exports.SUPPORTED_JSON_ZONE_TYPES = [_types3.ZONE_TYPE_BOX, _types3.ZONE_TYPE_LINE, _types3.ZONE_TYPE_MESH, _types3.ZONE_TYPE_POINT, _types3.ZONE_TYPE_SPHERE];
 
 /***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var MATH_TYPE_ARRAY_SPAN = exports.MATH_TYPE_ARRAY_SPAN = 'ArraySpan';
+var MATH_TYPE_COLOR_SPAN = exports.MATH_TYPE_COLOR_SPAN = 'ColorSpan';
+var MATH_TYPE_BOX = exports.MATH_TYPE_BOX = 'Box';
+var MATH_TYPE_POLAR_3D = exports.MATH_TYPE_POLAR_3D = 'Polar3D';
+var MATH_TYPE_SPAN = exports.MATH_TYPE_SPAN = 'Span';
+var MATH_TYPE_VECTOR_3D = exports.MATH_TYPE_VECTOR_3D = 'Vector3D';
+
+/***/ }),
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49803,7 +49813,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _constants = __webpack_require__(3);
+var _constants = __webpack_require__(4);
 
 exports.default = {
   randomAToB: function randomAToB(a, b, INT) {
@@ -49870,7 +49880,128 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Particle = __webpack_require__(32);
+var _Alpha = __webpack_require__(45);
+
+Object.defineProperty(exports, 'Alpha', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Alpha).default;
+  }
+});
+
+var _Attraction = __webpack_require__(32);
+
+Object.defineProperty(exports, 'Attraction', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Attraction).default;
+  }
+});
+
+var _Collision = __webpack_require__(46);
+
+Object.defineProperty(exports, 'Collision', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Collision).default;
+  }
+});
+
+var _Color = __webpack_require__(47);
+
+Object.defineProperty(exports, 'Color', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Color).default;
+  }
+});
+
+var _CrossZone = __webpack_require__(48);
+
+Object.defineProperty(exports, 'CrossZone', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_CrossZone).default;
+  }
+});
+
+var _Force = __webpack_require__(33);
+
+Object.defineProperty(exports, 'Force', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Force).default;
+  }
+});
+
+var _Gravity = __webpack_require__(49);
+
+Object.defineProperty(exports, 'Gravity', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Gravity).default;
+  }
+});
+
+var _RandomDrift = __webpack_require__(50);
+
+Object.defineProperty(exports, 'RandomDrift', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_RandomDrift).default;
+  }
+});
+
+var _Repulsion = __webpack_require__(51);
+
+Object.defineProperty(exports, 'Repulsion', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Repulsion).default;
+  }
+});
+
+var _Rotate = __webpack_require__(52);
+
+Object.defineProperty(exports, 'Rotate', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Rotate).default;
+  }
+});
+
+var _Scale = __webpack_require__(53);
+
+Object.defineProperty(exports, 'Scale', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Scale).default;
+  }
+});
+
+var _Spring = __webpack_require__(54);
+
+Object.defineProperty(exports, 'Spring', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_Spring).default;
+  }
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Particle = __webpack_require__(34);
 
 Object.defineProperty(exports, 'Particle', {
   enumerable: true,
@@ -49879,7 +50010,7 @@ Object.defineProperty(exports, 'Particle', {
   }
 });
 
-var _Pool = __webpack_require__(33);
+var _Pool = __webpack_require__(35);
 
 Object.defineProperty(exports, 'Pool', {
   enumerable: true,
@@ -49900,7 +50031,7 @@ Object.defineProperty(exports, 'Proton', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49910,7 +50041,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _BoxZone = __webpack_require__(84);
+var _BoxZone = __webpack_require__(86);
 
 Object.defineProperty(exports, 'BoxZone', {
   enumerable: true,
@@ -49919,7 +50050,7 @@ Object.defineProperty(exports, 'BoxZone', {
   }
 });
 
-var _LineZone = __webpack_require__(85);
+var _LineZone = __webpack_require__(87);
 
 Object.defineProperty(exports, 'LineZone', {
   enumerable: true,
@@ -49928,7 +50059,7 @@ Object.defineProperty(exports, 'LineZone', {
   }
 });
 
-var _MeshZone = __webpack_require__(86);
+var _MeshZone = __webpack_require__(88);
 
 Object.defineProperty(exports, 'MeshZone', {
   enumerable: true,
@@ -49937,7 +50068,7 @@ Object.defineProperty(exports, 'MeshZone', {
   }
 });
 
-var _PointZone = __webpack_require__(87);
+var _PointZone = __webpack_require__(89);
 
 Object.defineProperty(exports, 'PointZone', {
   enumerable: true,
@@ -49946,7 +50077,7 @@ Object.defineProperty(exports, 'PointZone', {
   }
 });
 
-var _ScreenZone = __webpack_require__(88);
+var _ScreenZone = __webpack_require__(90);
 
 Object.defineProperty(exports, 'ScreenZone', {
   enumerable: true,
@@ -49955,7 +50086,7 @@ Object.defineProperty(exports, 'ScreenZone', {
   }
 });
 
-var _SphereZone = __webpack_require__(89);
+var _SphereZone = __webpack_require__(91);
 
 Object.defineProperty(exports, 'SphereZone', {
   enumerable: true,
@@ -49967,7 +50098,7 @@ Object.defineProperty(exports, 'SphereZone', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49981,7 +50112,7 @@ var CORE_TYPE_POOL = exports.CORE_TYPE_POOL = 'Pool';
 var CORE_TYPE_PROTON = exports.CORE_TYPE_PROTON = 'Proton';
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49993,25 +50124,25 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(61);
+var _constants = __webpack_require__(62);
 
-var _events = __webpack_require__(36);
+var _events = __webpack_require__(38);
 
 var _events2 = _interopRequireDefault(_events);
 
 var _math = __webpack_require__(0);
 
-var _initializer = __webpack_require__(16);
+var _initializer = __webpack_require__(14);
 
-var _Particle2 = __webpack_require__(32);
+var _Particle2 = __webpack_require__(34);
 
 var _Particle3 = _interopRequireDefault(_Particle2);
 
-var _Util = __webpack_require__(9);
+var _Util = __webpack_require__(10);
 
 var _Util2 = _interopRequireDefault(_Util);
 
-var _types = __webpack_require__(34);
+var _types = __webpack_require__(36);
 
 var _uid = __webpack_require__(40);
 
@@ -50725,7 +50856,7 @@ exports.default = Emitter;
 module.exports = exports['default'];
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50737,7 +50868,161 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(3);
+var _constants = __webpack_require__(26);
+
+var _math = __webpack_require__(0);
+
+var _Initializer2 = __webpack_require__(7);
+
+var _Initializer3 = _interopRequireDefault(_Initializer2);
+
+var _types = __webpack_require__(5);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Calculates the rate of particle emission.
+ *
+ * NOTE This doesn't need to be an initializer, it doesn't have an initialize
+ * method, it overrides the base init method and it is only relevent to the Emitter class.
+ * It would be better to move this to the Emitter module itself as a standalone class.
+ *
+ */
+var Rate = function (_Initializer) {
+  _inherits(Rate, _Initializer);
+
+  /**
+   * Constructs a Rate instance.
+   *
+   * @param {number|array|Span} numPan - The number of particles to emit
+   * @param {number|array|Span} timePan - The time between each particle emission
+   * @return void
+   */
+  function Rate() {
+    var numPan = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants.DEFAULT_RATE_NUM_PAN;
+    var timePan = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_RATE_TIME_PAN;
+
+    _classCallCheck(this, Rate);
+
+    /**
+     * @desc Sets the number of particles to emit.
+     * @type {Span}
+     */
+    var _this = _possibleConstructorReturn(this, (Rate.__proto__ || Object.getPrototypeOf(Rate)).call(this, _types.INITIALIZER_TYPE_RATE));
+
+    _this.numPan = (0, _math.createSpan)(numPan);
+
+    /**
+     * @desc Sets the time between each particle emission.
+     * @type {Span}
+     */
+    _this.timePan = (0, _math.createSpan)(timePan);
+
+    /**
+     * @desc The rate's start time.
+     * @type {number}
+     */
+    _this.startTime = 0;
+
+    /**
+     * @desc The rate's next time.
+     * @type {number}
+     */
+    _this.nextTime = 0;
+
+    _this.init();
+    return _this;
+  }
+
+  /**
+   * Sets the startTime and nextTime properties.
+   *
+   * @return void
+   */
+
+
+  _createClass(Rate, [{
+    key: 'init',
+    value: function init() {
+      this.startTime = 0;
+      this.nextTime = this.timePan.getValue();
+    }
+
+    /**
+     * Gets the number of particles to emit.
+     *
+     * @param {number} time - Current particle engine time
+     * @return {number}
+     */
+
+  }, {
+    key: 'getValue',
+    value: function getValue(time) {
+      this.startTime += time;
+
+      if (this.startTime >= this.nextTime) {
+        this.init();
+
+        if (this.numPan.b == 1) {
+          if (this.numPan.getValue('Float') > 0.5) return 1;else return 0;
+        } else {
+          return this.numPan.getValue('Int');
+        }
+      }
+
+      return 0;
+    }
+
+    /**
+     * Creates a Rate initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @property {number} json.particlesMin - The minimum number of particles to emit
+     * @property {number} json.particlesMax - The maximum number of particles to emit
+     * @property {number} json.perSecondMin - The minimum per second emit rate
+     * @property {number} json.perSecondMax - The maximum per second emit rate
+     * @return {Rate}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var particlesMin = json.particlesMin,
+          particlesMax = json.particlesMax,
+          perSecondMin = json.perSecondMin,
+          perSecondMax = json.perSecondMax;
+
+
+      return new Rate(new _math.Span(particlesMin, particlesMax), new _math.Span(perSecondMin, perSecondMax));
+    }
+  }]);
+
+  return Rate;
+}(_Initializer3.default);
+
+exports.default = Rate;
+module.exports = exports['default'];
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _constants = __webpack_require__(4);
 
 var _math = __webpack_require__(0);
 
@@ -50821,7 +51106,34 @@ Velocity.prototype.initialize = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 24 */
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DEFAULT_RATE_TIME_PAN = exports.DEFAULT_RATE_NUM_PAN = exports.DEFAULT_JSON_MATERIAL_PROPERTIES = exports.DEFAULT_MATERIAL_PROPERTIES = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _three = __webpack_require__(3);
+
+var DEFAULT_MATERIAL_PROPERTIES = exports.DEFAULT_MATERIAL_PROPERTIES = {
+  color: 0xff0000,
+  blending: _three.AdditiveBlending,
+  fog: true
+};
+var DEFAULT_JSON_MATERIAL_PROPERTIES = exports.DEFAULT_JSON_MATERIAL_PROPERTIES = _extends({}, DEFAULT_MATERIAL_PROPERTIES, {
+  blending: 'AdditiveBlending'
+});
+var DEFAULT_RATE_NUM_PAN = exports.DEFAULT_RATE_NUM_PAN = 1;
+var DEFAULT_RATE_TIME_PAN = exports.DEFAULT_RATE_TIME_PAN = 1;
+
+/***/ }),
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50838,11 +51150,11 @@ var _MathUtils = __webpack_require__(18);
 
 var _MathUtils2 = _interopRequireDefault(_MathUtils);
 
-var _Util = __webpack_require__(9);
+var _Util = __webpack_require__(10);
 
 var _Util2 = _interopRequireDefault(_Util);
 
-var _types = __webpack_require__(15);
+var _types = __webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50918,7 +51230,7 @@ var createSpan = exports.createSpan = function createSpan(a, b, c) {
 };
 
 /***/ }),
-/* 25 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50952,7 +51264,7 @@ var INTEGRATION_TYPE_RK4 = exports.INTEGRATION_TYPE_RK4 = 'RUNGE_KUTTA_4';
 var INTEGRATION_TYPE_VERLET = exports.INTEGRATION_TYPE_VERLET = 'VERLET';
 
 /***/ }),
-/* 26 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -50964,7 +51276,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(35);
+var _constants = __webpack_require__(37);
 
 var _types = __webpack_require__(12);
 
@@ -51053,7 +51365,7 @@ exports.default = BaseRenderer;
 module.exports = exports['default'];
 
 /***/ }),
-/* 27 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51082,7 +51394,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 28 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51092,11 +51404,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _three = __webpack_require__(6);
+var _three = __webpack_require__(3);
 
 var THREE = _interopRequireWildcard(_three);
 
-var _PUID = __webpack_require__(27);
+var _PUID = __webpack_require__(30);
 
 var _PUID2 = _interopRequireDefault(_PUID);
 
@@ -51166,128 +51478,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Alpha = __webpack_require__(45);
-
-Object.defineProperty(exports, 'Alpha', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Alpha).default;
-  }
-});
-
-var _Attraction = __webpack_require__(30);
-
-Object.defineProperty(exports, 'Attraction', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Attraction).default;
-  }
-});
-
-var _Collision = __webpack_require__(46);
-
-Object.defineProperty(exports, 'Collision', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Collision).default;
-  }
-});
-
-var _Color = __webpack_require__(47);
-
-Object.defineProperty(exports, 'Color', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Color).default;
-  }
-});
-
-var _CrossZone = __webpack_require__(48);
-
-Object.defineProperty(exports, 'CrossZone', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_CrossZone).default;
-  }
-});
-
-var _Force = __webpack_require__(31);
-
-Object.defineProperty(exports, 'Force', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Force).default;
-  }
-});
-
-var _Gravity = __webpack_require__(49);
-
-Object.defineProperty(exports, 'Gravity', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Gravity).default;
-  }
-});
-
-var _RandomDrift = __webpack_require__(50);
-
-Object.defineProperty(exports, 'RandomDrift', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_RandomDrift).default;
-  }
-});
-
-var _Repulsion = __webpack_require__(51);
-
-Object.defineProperty(exports, 'Repulsion', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Repulsion).default;
-  }
-});
-
-var _Rotate = __webpack_require__(52);
-
-Object.defineProperty(exports, 'Rotate', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Rotate).default;
-  }
-});
-
-var _Scale = __webpack_require__(53);
-
-Object.defineProperty(exports, 'Scale', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Scale).default;
-  }
-});
-
-var _Spring = __webpack_require__(54);
-
-Object.defineProperty(exports, 'Spring', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_Spring).default;
-  }
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51301,9 +51492,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _constants = __webpack_require__(14);
+var _constants = __webpack_require__(15);
 
-var _Behaviour2 = __webpack_require__(5);
+var _Behaviour2 = __webpack_require__(6);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
@@ -51486,7 +51677,7 @@ exports.default = Attraction;
 module.exports = exports['default'];
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51498,7 +51689,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Behaviour2 = __webpack_require__(5);
+var _Behaviour2 = __webpack_require__(6);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
@@ -51617,7 +51808,7 @@ exports.default = Force;
 module.exports = exports['default'];
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51629,15 +51820,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(17);
+var _constants = __webpack_require__(16);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(9);
 
-var _constants2 = __webpack_require__(3);
+var _constants2 = __webpack_require__(4);
 
 var _math = __webpack_require__(0);
 
-var _types = __webpack_require__(21);
+var _types = __webpack_require__(22);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -51987,7 +52178,7 @@ exports.default = Particle;
 module.exports = exports['default'];
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51999,11 +52190,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _PUID = __webpack_require__(27);
+var _PUID = __webpack_require__(30);
 
 var _PUID2 = _interopRequireDefault(_PUID);
 
-var _types = __webpack_require__(21);
+var _types = __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52195,7 +52386,7 @@ exports.default = Pool;
 module.exports = exports['default'];
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52208,7 +52399,7 @@ var EMITTER_TYPE_EMITTER = exports.EMITTER_TYPE_EMITTER = 'Emitter';
 var EMITTER_TYPE_FOLLOW = exports.EMITTER_TYPE_FOLLOW = 'FollowEmitter';
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52226,7 +52417,7 @@ var EMITTER_REMOVED = exports.EMITTER_REMOVED = 'EMITTER_REMOVED';
 var PROTON_UPDATE_AFTER = exports.PROTON_UPDATE_AFTER = 'PROTON_UPDATE_AFTER';
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52237,9 +52428,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.PROTON_UPDATE = exports.PROTON_UPDATE_AFTER = exports.PARTICLE_UPDATE = exports.PARTICLE_DEAD = exports.PARTICLE_CREATED = exports.EMITTER_REMOVED = exports.EMITTER_ADDED = undefined;
 
-var _constants = __webpack_require__(35);
+var _constants = __webpack_require__(37);
 
-var _EventDispatcher = __webpack_require__(62);
+var _EventDispatcher = __webpack_require__(63);
 
 var _EventDispatcher2 = _interopRequireDefault(_EventDispatcher);
 
@@ -52255,187 +52446,6 @@ exports.PROTON_UPDATE_AFTER = _constants.PROTON_UPDATE_AFTER;
 exports.PROTON_UPDATE = _constants.PROTON_UPDATE;
 
 /***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _constants = __webpack_require__(38);
-
-var _math = __webpack_require__(0);
-
-var _Initializer2 = __webpack_require__(7);
-
-var _Initializer3 = _interopRequireDefault(_Initializer2);
-
-var _types = __webpack_require__(4);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Calculates the rate of particle emission.
- *
- * NOTE This doesn't need to be an initializer, it doesn't have an initialize
- * method, it overrides the base init method and it is only relevent to the Emitter class.
- * It would be better to move this to the Emitter module itself as a standalone class.
- *
- */
-var Rate = function (_Initializer) {
-  _inherits(Rate, _Initializer);
-
-  /**
-   * Constructs a Rate instance.
-   *
-   * @param {number|array|Span} numPan - The number of particles to emit
-   * @param {number|array|Span} timePan - The time between each particle emission
-   * @return void
-   */
-  function Rate() {
-    var numPan = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants.DEFAULT_RATE_NUM_PAN;
-    var timePan = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_RATE_TIME_PAN;
-
-    _classCallCheck(this, Rate);
-
-    /**
-     * @desc Sets the number of particles to emit.
-     * @type {Span}
-     */
-    var _this = _possibleConstructorReturn(this, (Rate.__proto__ || Object.getPrototypeOf(Rate)).call(this, _types.INITIALIZER_TYPE_RATE));
-
-    _this.numPan = (0, _math.createSpan)(numPan);
-
-    /**
-     * @desc Sets the time between each particle emission.
-     * @type {Span}
-     */
-    _this.timePan = (0, _math.createSpan)(timePan);
-
-    /**
-     * @desc The rate's start time.
-     * @type {number}
-     */
-    _this.startTime = 0;
-
-    /**
-     * @desc The rate's next time.
-     * @type {number}
-     */
-    _this.nextTime = 0;
-
-    _this.init();
-    return _this;
-  }
-
-  /**
-   * Sets the startTime and nextTime properties.
-   *
-   * @return void
-   */
-
-
-  _createClass(Rate, [{
-    key: 'init',
-    value: function init() {
-      this.startTime = 0;
-      this.nextTime = this.timePan.getValue();
-    }
-
-    /**
-     * Gets the number of particles to emit.
-     *
-     * @param {number} time - Current particle engine time
-     * @return {number}
-     */
-
-  }, {
-    key: 'getValue',
-    value: function getValue(time) {
-      this.startTime += time;
-
-      if (this.startTime >= this.nextTime) {
-        this.init();
-
-        if (this.numPan.b == 1) {
-          if (this.numPan.getValue('Float') > 0.5) return 1;else return 0;
-        } else {
-          return this.numPan.getValue('Int');
-        }
-      }
-
-      return 0;
-    }
-
-    /**
-     * Creates a Rate initializer from JSON.
-     *
-     * @param {object} json - The JSON to construct the instance from.
-     * @property {number} json.particlesMin - The minimum number of particles to emit
-     * @property {number} json.particlesMax - The maximum number of particles to emit
-     * @property {number} json.perSecondMin - The minimum per second emit rate
-     * @property {number} json.perSecondMax - The maximum per second emit rate
-     * @return {Rate}
-     */
-
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var particlesMin = json.particlesMin,
-          particlesMax = json.particlesMax,
-          perSecondMin = json.perSecondMin,
-          perSecondMax = json.perSecondMax;
-
-
-      return new Rate(new _math.Span(particlesMin, particlesMax), new _math.Span(perSecondMin, perSecondMax));
-    }
-  }]);
-
-  return Rate;
-}(_Initializer3.default);
-
-exports.default = Rate;
-module.exports = exports['default'];
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.DEFAULT_RATE_TIME_PAN = exports.DEFAULT_RATE_NUM_PAN = exports.DEFAULT_JSON_MATERIAL_PROPERTIES = exports.DEFAULT_MATERIAL_PROPERTIES = undefined;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _three = __webpack_require__(6);
-
-var DEFAULT_MATERIAL_PROPERTIES = exports.DEFAULT_MATERIAL_PROPERTIES = {
-  color: 0xff0000,
-  blending: _three.AdditiveBlending,
-  fog: true
-};
-var DEFAULT_JSON_MATERIAL_PROPERTIES = exports.DEFAULT_JSON_MATERIAL_PROPERTIES = _extends({}, DEFAULT_MATERIAL_PROPERTIES, {
-  blending: 'AdditiveBlending'
-});
-var DEFAULT_RATE_NUM_PAN = exports.DEFAULT_RATE_NUM_PAN = 1;
-var DEFAULT_RATE_TIME_PAN = exports.DEFAULT_RATE_TIME_PAN = 1;
-
-/***/ }),
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52448,15 +52458,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _three = __webpack_require__(6);
+var _three = __webpack_require__(3);
 
-var _BaseRenderer2 = __webpack_require__(26);
+var _BaseRenderer2 = __webpack_require__(29);
 
 var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(9);
 
-var _core = __webpack_require__(19);
+var _core = __webpack_require__(20);
 
 var _types = __webpack_require__(12);
 
@@ -52560,7 +52570,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _v = __webpack_require__(92);
+var _v = __webpack_require__(94);
 
 var _v2 = _interopRequireDefault(_v);
 
@@ -69682,7 +69692,7 @@ module.exports = exports['default'];
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(93), __webpack_require__(94)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(95), __webpack_require__(96)(module)))
 
 /***/ }),
 /* 42 */
@@ -69695,7 +69705,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Debug = __webpack_require__(57);
+var _Debug = __webpack_require__(58);
 
 Object.defineProperty(exports, 'Debug', {
   enumerable: true,
@@ -69704,7 +69714,7 @@ Object.defineProperty(exports, 'Debug', {
   }
 });
 
-var _log = __webpack_require__(59);
+var _log = __webpack_require__(60);
 
 Object.defineProperty(exports, 'log', {
   enumerable: true,
@@ -69726,7 +69736,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _FollowEmitter = __webpack_require__(60);
+var _FollowEmitter = __webpack_require__(61);
 
 Object.defineProperty(exports, 'FollowEmitter', {
   enumerable: true,
@@ -69735,7 +69745,7 @@ Object.defineProperty(exports, 'FollowEmitter', {
   }
 });
 
-var _Emitter = __webpack_require__(22);
+var _Emitter = __webpack_require__(23);
 
 Object.defineProperty(exports, 'Emitter', {
   enumerable: true,
@@ -69757,7 +69767,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _CustomRenderer = __webpack_require__(80);
+var _CustomRenderer = __webpack_require__(82);
 
 Object.defineProperty(exports, 'CustomRenderer', {
   enumerable: true,
@@ -69775,7 +69785,7 @@ Object.defineProperty(exports, 'MeshRenderer', {
   }
 });
 
-var _PointsRenderer = __webpack_require__(81);
+var _PointsRenderer = __webpack_require__(83);
 
 Object.defineProperty(exports, 'PointsRenderer', {
   enumerable: true,
@@ -69784,7 +69794,7 @@ Object.defineProperty(exports, 'PointsRenderer', {
   }
 });
 
-var _SpriteRenderer = __webpack_require__(82);
+var _SpriteRenderer = __webpack_require__(84);
 
 Object.defineProperty(exports, 'SpriteRenderer', {
   enumerable: true,
@@ -69812,11 +69822,11 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _math = __webpack_require__(0);
 
-var _Behaviour2 = __webpack_require__(5);
+var _Behaviour2 = __webpack_require__(6);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
-var _constants = __webpack_require__(14);
+var _constants = __webpack_require__(15);
 
 var _ease = __webpack_require__(1);
 
@@ -70010,7 +70020,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _Behaviour2 = __webpack_require__(5);
+var _Behaviour2 = __webpack_require__(6);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
@@ -70173,11 +70183,11 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _math = __webpack_require__(0);
 
-var _Behaviour2 = __webpack_require__(5);
+var _Behaviour2 = __webpack_require__(6);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(9);
 
 var _ease = __webpack_require__(1);
 
@@ -70325,15 +70335,15 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _zone = __webpack_require__(20);
+var _zone = __webpack_require__(21);
 
 var Zone = _interopRequireWildcard(_zone);
 
-var _Behaviour2 = __webpack_require__(5);
+var _Behaviour2 = __webpack_require__(6);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
-var _constants = __webpack_require__(14);
+var _constants = __webpack_require__(15);
 
 var _ease = __webpack_require__(1);
 
@@ -70466,7 +70476,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Force2 = __webpack_require__(31);
+var _Force2 = __webpack_require__(33);
 
 var _Force3 = _interopRequireDefault(_Force2);
 
@@ -70550,11 +70560,11 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _math = __webpack_require__(0);
 
-var _Behaviour2 = __webpack_require__(5);
+var _Behaviour2 = __webpack_require__(6);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
-var _constants = __webpack_require__(14);
+var _constants = __webpack_require__(15);
 
 var _ease = __webpack_require__(1);
 
@@ -70704,7 +70714,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _Attraction2 = __webpack_require__(30);
+var _Attraction2 = __webpack_require__(32);
 
 var _Attraction3 = _interopRequireDefault(_Attraction2);
 
@@ -70831,11 +70841,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _constants = __webpack_require__(3);
+var _constants = __webpack_require__(4);
 
 var _math = __webpack_require__(0);
 
-var _Behaviour2 = __webpack_require__(5);
+var _Behaviour2 = __webpack_require__(6);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
@@ -71099,7 +71109,7 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _math = __webpack_require__(0);
 
-var _Behaviour2 = __webpack_require__(5);
+var _Behaviour2 = __webpack_require__(6);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
@@ -71282,7 +71292,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Behaviour2 = __webpack_require__(5);
+var _Behaviour2 = __webpack_require__(6);
 
 var _Behaviour3 = _interopRequireDefault(_Behaviour2);
 
@@ -71420,21 +71430,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _events = __webpack_require__(36);
+var _events = __webpack_require__(38);
 
 var _events2 = _interopRequireDefault(_events);
 
-var _constants = __webpack_require__(17);
+var _constants = __webpack_require__(16);
 
-var _Emitter = __webpack_require__(22);
+var _Emitter = __webpack_require__(23);
 
 var _Emitter2 = _interopRequireDefault(_Emitter);
 
-var _constants2 = __webpack_require__(25);
+var _constants2 = __webpack_require__(28);
 
-var _constants3 = __webpack_require__(3);
+var _constants3 = __webpack_require__(4);
 
-var _Pool = __webpack_require__(33);
+var _Pool = __webpack_require__(35);
 
 var _Pool2 = _interopRequireDefault(_Pool);
 
@@ -71442,7 +71452,11 @@ var _fromJSON2 = __webpack_require__(56);
 
 var _fromJSON3 = _interopRequireDefault(_fromJSON2);
 
-var _types = __webpack_require__(21);
+var _fromJSONAsync2 = __webpack_require__(57);
+
+var _fromJSONAsync3 = _interopRequireDefault(_fromJSONAsync2);
+
+var _types = __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -71694,6 +71708,24 @@ var Proton = function () {
     value: function fromJSON(json) {
       return (0, _fromJSON3.default)(json, Proton, _Emitter2.default);
     }
+
+    /**
+     * Creates a Proton instance from a JSON object asynchronously.
+     * NOTE This is an experimental method, it may not work
+     *
+     * @experimental
+     * @param {object} json - The JSON to create the Proton instance from
+     * @param {number} json.preParticles - The predetermined number of particles
+     * @param {string} json.integrationType - The integration algorithm to use
+     * @param {array<object>} json.emitters - The emitters for the proton instance
+     * @return {Promise<Proton>}
+     */
+
+  }, {
+    key: 'fromJSONAsync',
+    value: function fromJSONAsync(json) {
+      return (0, _fromJSONAsync3.default)(json, Proton, _Emitter2.default);
+    }
   }]);
 
   return Proton;
@@ -71713,19 +71745,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _behaviour = __webpack_require__(29);
+var _behaviour = __webpack_require__(19);
 
 var Behaviour = _interopRequireWildcard(_behaviour);
 
-var _initializer = __webpack_require__(16);
+var _initializer = __webpack_require__(14);
 
 var Initializer = _interopRequireWildcard(_initializer);
 
-var _constants = __webpack_require__(3);
+var _constants = __webpack_require__(4);
 
-var _constants2 = __webpack_require__(17);
+var _constants2 = __webpack_require__(16);
 
-var _Rate = __webpack_require__(37);
+var _Rate = __webpack_require__(24);
 
 var _Rate2 = _interopRequireDefault(_Rate);
 
@@ -71849,11 +71881,248 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _three = __webpack_require__(6);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _behaviour = __webpack_require__(19);
+
+var Behaviour = _interopRequireWildcard(_behaviour);
+
+var _initializer = __webpack_require__(14);
+
+var Initializer = _interopRequireWildcard(_initializer);
+
+var _constants = __webpack_require__(4);
+
+var _constants2 = __webpack_require__(16);
+
+var _Rate = __webpack_require__(24);
+
+var _Rate2 = _interopRequireDefault(_Rate);
+
+var _three = __webpack_require__(3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+/**
+ * Makes a rate instance.
+ *
+ * @param {object} json - The data required to construct a Rate instance
+ * @return {Rate}
+ */
+var makeRate = function makeRate(json) {
+  return new _Rate2.default.fromJSON(json);
+};
+
+/**
+ * Makes initializers from json items.
+ *
+ * @param {array<object>} items - An array of objects which provide initializer constructor params
+ * @return {array<Initializer>}
+ */
+var makeInitializers = function makeInitializers(items) {
+  return new Promise(function (resolve, reject) {
+    if (!items.length) {
+      return resolve([]);
+    }
+
+    var numberOfInitializers = items.length;
+    var madeInitializers = [];
+    var doNotRequireTextureLoading = items.filter(function (_ref) {
+      var properties = _ref.properties;
+      return !properties.texture;
+    });
+    var doRequireTextureLoading = items.filter(function (_ref2) {
+      var properties = _ref2.properties;
+      return properties.texture;
+    });
+
+    doNotRequireTextureLoading.forEach(function (data) {
+      var type = data.type,
+          properties = data.properties;
+
+
+      if (!_constants2.SUPPORTED_JSON_INITIALIZER_TYPES.includes(type)) {
+        return reject('The initializer type ' + type + ' is invalid or not yet supported');
+      }
+
+      madeInitializers.push(new Initializer[type].fromJSON(properties));
+
+      if (madeInitializers.length === numberOfInitializers) {
+        return resolve(madeInitializers);
+      }
+    });
+
+    doRequireTextureLoading.forEach(function (data) {
+      var type = data.type,
+          properties = data.properties,
+          texture = data.properties.texture;
+
+      var textureLoader = new _three.TextureLoader();
+
+      if (!_constants2.SUPPORTED_JSON_INITIALIZER_TYPES.includes(type)) {
+        return reject('The initializer type ' + type + ' is invalid or not yet supported');
+      }
+
+      textureLoader.load(texture, function (loadedTexture) {
+        madeInitializers.push(new Initializer[type].fromJSON(_extends({}, properties, {
+          loadedTexture: loadedTexture
+        })));
+
+        if (madeInitializers.length === numberOfInitializers) {
+          return resolve(madeInitializers);
+        }
+      }, undefined, reject);
+    });
+  });
+};
+
+/**
+ * Makes behaviours from json items.
+ *
+ * @param {array<object>} items - An array of objects which provide behaviour constructor params
+ * @return {Promise<array>}
+ */
+var makeBehaviours = function makeBehaviours(items) {
+  return new Promise(function (resolve, reject) {
+    if (!items.length) {
+      return resolve([]);
+    }
+
+    var numberOfBehaviours = items.length;
+    var madeBehaviours = [];
+
+    items.forEach(function (data) {
+      var type = data.type,
+          properties = data.properties;
+
+
+      if (!_constants2.SUPPORTED_JSON_BEHAVIOUR_TYPES.includes(type)) {
+        return reject('The behaviour type ' + type + ' is invalid or not yet supported');
+      }
+
+      madeBehaviours.push(new Behaviour[type].fromJSON(properties));
+
+      if (madeBehaviours.length === numberOfBehaviours) {
+        return resolve(madeBehaviours);
+      }
+    });
+  });
+};
+
+var makeEmitters = function makeEmitters(emitters, Emitter) {
+  return new Promise(function (resolve, reject) {
+    if (!emitters.length) {
+      return resolve([]);
+    }
+
+    var madeEmitters = [];
+    var numberOfEmitters = emitters.length;
+
+    if (!numberOfEmitters) {
+      return resolve(madeEmitters);
+    }
+
+    emitters.forEach(function (data) {
+      var emitter = new Emitter();
+      var rate = data.rate,
+          rotation = data.rotation,
+          initializers = data.initializers,
+          behaviours = data.behaviours,
+          _data$emitterBehaviou = data.emitterBehaviours,
+          emitterBehaviours = _data$emitterBehaviou === undefined ? [] : _data$emitterBehaviou,
+          position = data.position,
+          _data$totalEmitTimes = data.totalEmitTimes,
+          totalEmitTimes = _data$totalEmitTimes === undefined ? Infinity : _data$totalEmitTimes,
+          _data$life = data.life,
+          life = _data$life === undefined ? Infinity : _data$life;
+
+
+      emitter.setRate(makeRate(rate)).setRotation(rotation).setPosition(position);
+
+      makeInitializers(initializers).then(function (madeInitializers) {
+        emitter.setInitializers(madeInitializers);
+
+        return makeBehaviours(behaviours);
+      }).then(function (madeBehaviours) {
+        emitter.setBehaviours(madeBehaviours);
+
+        return makeBehaviours(emitterBehaviours);
+      }).then(function (madeEmitterBehaviours) {
+        emitter.setEmitterBehaviours(madeEmitterBehaviours);
+
+        return Promise.resolve(emitter);
+      }).then(function (emitter) {
+        madeEmitters.push(emitter.emit(totalEmitTimes, life));
+
+        if (madeEmitters.length === numberOfEmitters) {
+          return resolve(madeEmitters);
+        }
+      }).catch(reject);
+    });
+  });
+};
+
+/**
+ * Creates a Proton instance from a JSON object.
+ *
+ * @param {object} json - The JSON to create the Proton instance from
+ * @param {function} Proton - The proton class
+ * @param {function} Emitter - The emitter class
+ * @param {number} json.preParticles - The predetermined number of particles
+ * @param {string} json.integrationType - The integration algorithm to use
+ * @param {array<object>} json.emitters - The emitters for the proton instance
+ * @return {Promise<Proton>}
+ */
+
+exports.default = function (json, Proton, Emitter) {
+  return new Promise(function (resolve, reject) {
+    var _json$preParticles = json.preParticles,
+        preParticles = _json$preParticles === undefined ? _constants.POOL_MAX : _json$preParticles,
+        _json$integrationType = json.integrationType,
+        integrationType = _json$integrationType === undefined ? _constants.EULER : _json$integrationType,
+        _json$emitters = json.emitters,
+        emitters = _json$emitters === undefined ? [] : _json$emitters;
+
+    var proton = new Proton(preParticles, integrationType);
+
+    makeEmitters(emitters, Emitter).then(function (madeEmitters) {
+      var numberOfEmitters = madeEmitters.length;
+
+      if (!numberOfEmitters) {
+        return resolve(proton);
+      }
+
+      madeEmitters.forEach(function (madeEmitter) {
+        proton.addEmitter(madeEmitter);
+
+        if (proton.emitters.length === numberOfEmitters) {
+          resolve(proton);
+        }
+      });
+    }).catch(reject);
+  });
+};
+
+module.exports = exports['default'];
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _three = __webpack_require__(3);
 
 var THREE = _interopRequireWildcard(_three);
 
-var _constants = __webpack_require__(58);
+var _constants = __webpack_require__(59);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -72063,7 +72332,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72080,7 +72349,7 @@ var DEFAULT_SIZE = exports.DEFAULT_SIZE = 15;
 var DEFAULT_POSITION = exports.DEFAULT_POSITION = 0;
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72123,7 +72392,7 @@ module.exports = exports['default']; /**
                                       */
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72137,19 +72406,19 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _Emitter2 = __webpack_require__(22);
+var _Emitter2 = __webpack_require__(23);
 
 var _Emitter3 = _interopRequireDefault(_Emitter2);
 
-var _THREEUtil = __webpack_require__(28);
+var _THREEUtil = __webpack_require__(31);
 
 var _THREEUtil2 = _interopRequireDefault(_THREEUtil);
 
-var _Util = __webpack_require__(9);
+var _Util = __webpack_require__(10);
 
 var _Util2 = _interopRequireDefault(_Util);
 
-var _types = __webpack_require__(34);
+var _types = __webpack_require__(36);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -72274,7 +72543,7 @@ exports.default = FollowEmitter;
 module.exports = exports['default'];
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72285,7 +72554,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.DEFAULT_BIND_EMITTER_EVENT = exports.DEFAULT_EMITTER_RATE = exports.DEFAULT_BIND_EMITTER = exports.DEFAULT_DAMPING = undefined;
 
-var _initializer = __webpack_require__(16);
+var _initializer = __webpack_require__(14);
 
 var DEFAULT_DAMPING = exports.DEFAULT_DAMPING = 0.006;
 var DEFAULT_BIND_EMITTER = exports.DEFAULT_BIND_EMITTER = true;
@@ -72293,7 +72562,7 @@ var DEFAULT_EMITTER_RATE = exports.DEFAULT_EMITTER_RATE = new _initializer.Rate(
 var DEFAULT_BIND_EMITTER_EVENT = exports.DEFAULT_BIND_EMITTER_EVENT = false;
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72410,7 +72679,7 @@ exports.default = EventDispatcher;
 module.exports = exports["default"];
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72419,9 +72688,9 @@ module.exports = exports["default"];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Pool = exports.Particle = exports.Proton = undefined;
+exports.THREE = exports.Pool = exports.Particle = exports.Proton = undefined;
 
-var _behaviour = __webpack_require__(29);
+var _behaviour = __webpack_require__(19);
 
 Object.keys(_behaviour).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -72469,7 +72738,7 @@ Object.keys(_emitter).forEach(function (key) {
   });
 });
 
-var _initializer = __webpack_require__(16);
+var _initializer = __webpack_require__(14);
 
 Object.keys(_initializer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -72505,7 +72774,7 @@ Object.keys(_renderer).forEach(function (key) {
   });
 });
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(9);
 
 Object.keys(_utils).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -72517,7 +72786,7 @@ Object.keys(_utils).forEach(function (key) {
   });
 });
 
-var _zone = __webpack_require__(20);
+var _zone = __webpack_require__(21);
 
 Object.keys(_zone).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -72529,7 +72798,7 @@ Object.keys(_zone).forEach(function (key) {
   });
 });
 
-var _core = __webpack_require__(19);
+var _core = __webpack_require__(20);
 
 Object.defineProperty(exports, 'Proton', {
   enumerable: true,
@@ -72549,10 +72818,193 @@ Object.defineProperty(exports, 'Pool', {
     return _core.Pool;
   }
 });
+
+var _three = __webpack_require__(3);
+
+var THREE = _interopRequireWildcard(_three);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 exports.default = _core.Proton;
+exports.THREE = THREE;
 
 /***/ }),
-/* 64 */
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _three = __webpack_require__(3);
+
+var THREE = _interopRequireWildcard(_three);
+
+var _constants = __webpack_require__(26);
+
+var _Initializer2 = __webpack_require__(7);
+
+var _Initializer3 = _interopRequireDefault(_Initializer2);
+
+var _types = __webpack_require__(5);
+
+var _utils = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Sprite = THREE.Sprite,
+    SpriteMaterial = THREE.SpriteMaterial,
+    TextureLoader = THREE.TextureLoader;
+
+/**
+ * Sets the body property to be a THREE.Sprite on initialized particles.
+ *
+ * NOTE The Texture MUST be loaded either prior to instantiation or within this class'
+ * constructor. Not doing so will cause WebGL buffer errors.
+ */
+
+var AsyncTexture = function (_Initializer) {
+  _inherits(AsyncTexture, _Initializer);
+
+  /**
+   * Constructs an AsyncTexture initializer.
+   *
+   * @param {string} texture - The sprite texture
+   * @param {object|undefined} materialProperties - The sprite material properties
+   * @param {?Texture} loadedTexture - Preloaded THREE.Texture instance
+   */
+  function AsyncTexture(texture) {
+    var materialProperties = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_MATERIAL_PROPERTIES;
+    var loadedTexture = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+    var isEnabled = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+
+    _classCallCheck(this, AsyncTexture);
+
+    /**
+     * @desc The material properties for this object's SpriteMaterial
+     * NOTE This is required for testing purposes
+     * @type {object}
+     */
+    var _this = _possibleConstructorReturn(this, (AsyncTexture.__proto__ || Object.getPrototypeOf(AsyncTexture)).call(this, _types.INITIALIZER_TYPE_ASYNC_TEXTURE, isEnabled));
+
+    _this.materialProperties = (0, _utils.withDefaults)(_constants.DEFAULT_MATERIAL_PROPERTIES, materialProperties);
+
+    if (loadedTexture) {
+      /**
+       * @desc The texture for the THREE.SpriteMaterial map.
+       * @type {Texture}
+       */
+      _this.texture = loadedTexture;
+
+      /**
+       * @desc THREE.SpriteMaterial instance.
+       * @type {SpriteMaterial}
+       */
+      _this.material = new SpriteMaterial(_extends({ map: loadedTexture }, _this.materialProperties));
+
+      /**
+       * @desc THREE.Sprite instance.
+       * @type {Sprite}
+       */
+      _this.sprite = new Sprite(_this.material);
+
+      return _possibleConstructorReturn(_this);
+    }
+
+    new TextureLoader().load(texture, function (map) {
+      /**
+       * @desc The texture for the THREE.SpriteMaterial map.
+       * @type {Texture}
+       */
+      _this.texture = map;
+
+      /**
+       * @desc THREE.SpriteMaterial instance.
+       * @type {SpriteMaterial}
+       */
+      _this.material = new SpriteMaterial(_extends({ map: map }, _this.materialProperties));
+
+      /**
+       * @desc THREE.Sprite instance.
+       * @type {Sprite}
+       */
+      _this.sprite = new Sprite(_this.material);
+    });
+    return _this;
+  }
+
+  /**
+   * Sets the particle body to the sprite.
+   *
+   * @param {Particle} particle - The particle to set the body of
+   * @return void
+   */
+
+
+  _createClass(AsyncTexture, [{
+    key: 'initialize',
+    value: function initialize(particle) {
+      particle.body = this.sprite;
+    }
+
+    /**
+     * Creates a BodySprite initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @param {string} json.texture - The sprite texture
+     * @param {object} json.materialProperties - The sprite material properties
+     * @param {?Texture} loadedTexture - Preloaded THREE.Texture instance
+     * @return {BodySprite}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var texture = json.texture,
+          _json$materialPropert = json.materialProperties,
+          materialProperties = _json$materialPropert === undefined ? _constants.DEFAULT_JSON_MATERIAL_PROPERTIES : _json$materialPropert,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled,
+          _json$loadedTexture = json.loadedTexture,
+          loadedTexture = _json$loadedTexture === undefined ? null : _json$loadedTexture;
+
+
+      var ensureMappedBlendingMode = function ensureMappedBlendingMode(properties) {
+        var blending = properties.blending;
+
+
+        return _extends({}, properties, {
+          blending: blending ? THREE[blending] : THREE[_constants.DEFAULT_JSON_MATERIAL_PROPERTIES.blending]
+        });
+      };
+
+      return new AsyncTexture(texture, (0, _utils.withDefaults)(_constants.DEFAULT_JSON_MATERIAL_PROPERTIES, ensureMappedBlendingMode(materialProperties)), loadedTexture, isEnabled);
+    }
+  }]);
+
+  return AsyncTexture;
+}(_Initializer3.default);
+
+exports.default = AsyncTexture;
+module.exports = exports['default'];
+
+/***/ }),
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72570,7 +73022,7 @@ var _Initializer3 = _interopRequireDefault(_Initializer2);
 
 var _math = __webpack_require__(0);
 
-var _types = __webpack_require__(4);
+var _types = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -72678,7 +73130,7 @@ exports.default = Body;
 module.exports = exports['default'];
 
 /***/ }),
-/* 65 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72692,19 +73144,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _three = __webpack_require__(6);
+var _three = __webpack_require__(3);
 
 var THREE = _interopRequireWildcard(_three);
 
-var _constants = __webpack_require__(38);
+var _constants = __webpack_require__(26);
 
 var _Initializer2 = __webpack_require__(7);
 
 var _Initializer3 = _interopRequireDefault(_Initializer2);
 
-var _types = __webpack_require__(4);
+var _types = __webpack_require__(5);
 
-var _utils = __webpack_require__(10);
+var _utils = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -72830,7 +73282,7 @@ exports.default = BodySprite;
 module.exports = exports['default'];
 
 /***/ }),
-/* 66 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72840,7 +73292,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _three = __webpack_require__(6);
+var _three = __webpack_require__(3);
 
 var particleEuler = new _three.Euler();
 
@@ -72889,7 +73341,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 67 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72907,7 +73359,7 @@ var _Initializer3 = _interopRequireDefault(_Initializer2);
 
 var _math = __webpack_require__(0);
 
-var _types = __webpack_require__(4);
+var _types = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -72999,7 +73451,7 @@ exports.default = Life;
 module.exports = exports['default'];
 
 /***/ }),
-/* 68 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73017,7 +73469,7 @@ var _Initializer3 = _interopRequireDefault(_Initializer2);
 
 var _math = __webpack_require__(0);
 
-var _types = __webpack_require__(4);
+var _types = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73104,7 +73556,7 @@ exports.default = Mass;
 module.exports = exports['default'];
 
 /***/ }),
-/* 69 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73116,7 +73568,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _zone = __webpack_require__(20);
+var _zone = __webpack_require__(21);
 
 var Zone = _interopRequireWildcard(_zone);
 
@@ -73124,9 +73576,9 @@ var _Initializer2 = __webpack_require__(7);
 
 var _Initializer3 = _interopRequireDefault(_Initializer2);
 
-var _constants = __webpack_require__(17);
+var _constants = __webpack_require__(16);
 
-var _types = __webpack_require__(4);
+var _types = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73253,7 +73705,7 @@ Position.prototype.initialize = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 70 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73271,7 +73723,7 @@ var _Initializer3 = _interopRequireDefault(_Initializer2);
 
 var _math = __webpack_require__(0);
 
-var _types = __webpack_require__(4);
+var _types = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73377,7 +73829,7 @@ exports.default = Radius;
 module.exports = exports['default'];
 
 /***/ }),
-/* 71 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73389,15 +73841,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(3);
+var _constants = __webpack_require__(4);
 
 var _math = __webpack_require__(0);
 
-var _Velocity2 = __webpack_require__(23);
+var _Velocity2 = __webpack_require__(25);
 
 var _Velocity3 = _interopRequireDefault(_Velocity2);
 
-var _types = __webpack_require__(4);
+var _types = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73482,7 +73934,7 @@ exports.default = PolarVelocity;
 module.exports = exports['default'];
 
 /***/ }),
-/* 72 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73496,13 +73948,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _constants = __webpack_require__(3);
+var _constants = __webpack_require__(4);
 
-var _Velocity2 = __webpack_require__(23);
+var _Velocity2 = __webpack_require__(25);
 
 var _Velocity3 = _interopRequireDefault(_Velocity2);
 
-var _types = __webpack_require__(4);
+var _types = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73596,7 +74048,7 @@ exports.default = RadialVelocity;
 module.exports = exports['default'];
 
 /***/ }),
-/* 73 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73610,13 +74062,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _constants = __webpack_require__(3);
+var _constants = __webpack_require__(4);
 
-var _Velocity2 = __webpack_require__(23);
+var _Velocity2 = __webpack_require__(25);
 
 var _Velocity3 = _interopRequireDefault(_Velocity2);
 
-var _types = __webpack_require__(4);
+var _types = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73707,7 +74159,7 @@ exports.default = VectorVelocity;
 module.exports = exports['default'];
 
 /***/ }),
-/* 74 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73717,7 +74169,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _PolarVelocity = __webpack_require__(71);
+var _PolarVelocity = __webpack_require__(73);
 
 Object.defineProperty(exports, 'PolarVelocity', {
   enumerable: true,
@@ -73726,7 +74178,7 @@ Object.defineProperty(exports, 'PolarVelocity', {
   }
 });
 
-var _RadialVelocity = __webpack_require__(72);
+var _RadialVelocity = __webpack_require__(74);
 
 Object.defineProperty(exports, 'RadialVelocity', {
   enumerable: true,
@@ -73735,7 +74187,7 @@ Object.defineProperty(exports, 'RadialVelocity', {
   }
 });
 
-var _VectorVelocity = __webpack_require__(73);
+var _VectorVelocity = __webpack_require__(75);
 
 Object.defineProperty(exports, 'VectorVelocity', {
   enumerable: true,
@@ -73747,7 +74199,7 @@ Object.defineProperty(exports, 'VectorVelocity', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 75 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73760,7 +74212,7 @@ exports.createArraySpan = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Span2 = __webpack_require__(24);
+var _Span2 = __webpack_require__(27);
 
 var _Span3 = _interopRequireDefault(_Span2);
 
@@ -73768,7 +74220,7 @@ var _lodash = __webpack_require__(41);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _types = __webpack_require__(15);
+var _types = __webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -73850,7 +74302,7 @@ var createArraySpan = exports.createArraySpan = function createArraySpan(items) 
 };
 
 /***/ }),
-/* 76 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73862,7 +74314,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _types = __webpack_require__(15);
+var _types = __webpack_require__(17);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -73900,7 +74352,7 @@ exports.default = Box;
 module.exports = exports['default'];
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -73917,7 +74369,7 @@ var _MathUtils = __webpack_require__(18);
 
 var _MathUtils2 = _interopRequireDefault(_MathUtils);
 
-var _Span2 = __webpack_require__(24);
+var _Span2 = __webpack_require__(27);
 
 var _Span3 = _interopRequireDefault(_Span2);
 
@@ -73925,7 +74377,7 @@ var _lodash = __webpack_require__(41);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _types = __webpack_require__(15);
+var _types = __webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -74014,7 +74466,7 @@ var createColorSpan = exports.createColorSpan = function createColorSpan(colors)
 };
 
 /***/ }),
-/* 78 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74030,7 +74482,7 @@ var _Vector3D = __webpack_require__(11);
 
 var _Vector3D2 = _interopRequireDefault(_Vector3D);
 
-var _types = __webpack_require__(15);
+var _types = __webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -74144,7 +74596,7 @@ exports.default = Polar3D;
 module.exports = exports['default'];
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74155,7 +74607,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.integrate = undefined;
 
-var _constants = __webpack_require__(25);
+var _constants = __webpack_require__(28);
 
 /**
  * Performs euler integration on the particle.
@@ -74202,7 +74654,7 @@ var integrate = exports.integrate = function integrate(particle, time, damping) 
 };
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74214,11 +74666,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _BaseRenderer2 = __webpack_require__(26);
+var _BaseRenderer2 = __webpack_require__(29);
 
 var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
-var _core = __webpack_require__(19);
+var _core = __webpack_require__(20);
 
 var _types = __webpack_require__(12);
 
@@ -74267,7 +74719,7 @@ exports.default = CustomRenderer;
 module.exports = exports['default'];
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74279,11 +74731,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _BaseRenderer2 = __webpack_require__(26);
+var _BaseRenderer2 = __webpack_require__(29);
 
 var _BaseRenderer3 = _interopRequireDefault(_BaseRenderer2);
 
-var _three = __webpack_require__(6);
+var _three = __webpack_require__(3);
 
 var _types = __webpack_require__(12);
 
@@ -74347,7 +74799,7 @@ exports.default = PointsRenderer;
 module.exports = exports['default'];
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74359,7 +74811,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _three = __webpack_require__(6);
+var _three = __webpack_require__(3);
 
 var _MeshRenderer2 = __webpack_require__(39);
 
@@ -74406,7 +74858,7 @@ exports.default = SpriteRenderer;
 module.exports = exports['default'];
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74450,7 +74902,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74466,7 +74918,7 @@ var _MathUtils = __webpack_require__(18);
 
 var _MathUtils2 = _interopRequireDefault(_MathUtils);
 
-var _Util = __webpack_require__(9);
+var _Util = __webpack_require__(10);
 
 var _Util2 = _interopRequireDefault(_Util);
 
@@ -74631,7 +75083,7 @@ exports.default = BoxZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74737,7 +75189,7 @@ exports.default = LineZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74749,7 +75201,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _three = __webpack_require__(6);
+var _three = __webpack_require__(3);
 
 var _Zone2 = __webpack_require__(13);
 
@@ -74837,7 +75289,7 @@ exports.default = MeshZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74849,7 +75301,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Util = __webpack_require__(9);
+var _Util = __webpack_require__(10);
 
 var _Util2 = _interopRequireDefault(_Util);
 
@@ -74940,7 +75392,7 @@ exports.default = PointZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74952,7 +75404,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _THREEUtil = __webpack_require__(28);
+var _THREEUtil = __webpack_require__(31);
 
 var _THREEUtil2 = _interopRequireDefault(_THREEUtil);
 
@@ -75108,7 +75560,7 @@ ScreenZone.prototype._cross = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75120,9 +75572,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(3);
+var _constants = __webpack_require__(4);
 
-var _Util = __webpack_require__(9);
+var _Util = __webpack_require__(10);
 
 var _Util2 = _interopRequireDefault(_Util);
 
@@ -75278,7 +75730,7 @@ SphereZone.prototype._bound = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports) {
 
 /**
@@ -75308,7 +75760,7 @@ module.exports = bytesToUuid;
 
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, exports) {
 
 // Unique ID creation requires a high quality random # generator.  In the
@@ -75348,11 +75800,11 @@ if (getRandomValues) {
 
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var rng = __webpack_require__(91);
-var bytesToUuid = __webpack_require__(90);
+var rng = __webpack_require__(93);
+var bytesToUuid = __webpack_require__(92);
 
 // **`v1()` - Generate time-based UUID**
 //
@@ -75463,7 +75915,7 @@ module.exports = v1;
 
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports) {
 
 var g;
@@ -75490,7 +75942,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
