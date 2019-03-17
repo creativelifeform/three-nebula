@@ -30,7 +30,7 @@ const EIGHT_DIAGRAMS_JSON = {
           },
         },
         {
-          type: 'AsyncTexture',
+          type: 'BodySprite',
           properties: {
             texture: './img/dot.png',
           },
@@ -112,7 +112,7 @@ const EIGHT_DIAGRAMS_JSON = {
           },
         },
         {
-          type: 'AsyncTexture',
+          type: 'BodySprite',
           properties: {
             texture: './img/dot.png',
           },

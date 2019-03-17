@@ -8,6 +8,7 @@ import {
 } from './constants';
 
 import Rate from '../initializer/Rate';
+import TextureInitializer from '../initializer/Texture';
 import { TextureLoader } from 'three';
 
 /**
@@ -73,7 +74,7 @@ const makeInitializers = items =>
         texture,
         loadedTexture => {
           madeInitializers.push(
-            new Initializer[type].fromJSON({
+            new TextureInitializer.fromJSON({
               ...properties,
               loadedTexture,
             })

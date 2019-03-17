@@ -12,12 +12,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/asynctexture.js~asynctexture",
-    "class/src/initializer/AsyncTexture.js~AsyncTexture.html",
-    "<span>AsyncTexture</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/AsyncTexture.js</span>",
-    "class"
-  ],
-  [
     "@rohandeshpande/three-proton/src/behaviour/attraction.js~attraction",
     "class/src/behaviour/Attraction.js~Attraction.html",
     "<span>Attraction</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Attraction.js</span>",
@@ -492,12 +486,6 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_async_texture",
-    "variable/index.html#static-variable-INITIALIZER_TYPE_ASYNC_TEXTURE",
-    "<span>INITIALIZER_TYPE_ASYNC_TEXTURE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
-    "variable"
-  ],
-  [
     "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_body",
     "variable/index.html#static-variable-INITIALIZER_TYPE_BODY",
     "<span>INITIALIZER_TYPE_BODY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
@@ -549,6 +537,12 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_rate",
     "variable/index.html#static-variable-INITIALIZER_TYPE_RATE",
     "<span>INITIALIZER_TYPE_RATE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_texture",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_TEXTURE",
+    "<span>INITIALIZER_TYPE_TEXTURE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
     "variable"
   ],
   [
@@ -946,6 +940,12 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-TIME_STEP",
     "<span>TIME_STEP</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
     "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/texture.js~texture",
+    "class/src/initializer/Texture.js~Texture.html",
+    "<span>Texture</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Texture.js</span>",
+    "class"
   ],
   [
     "@rohandeshpande/three-proton/src/constants/index.js~verlet",
@@ -1735,13 +1735,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
@@ -1975,13 +1975,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#rotationtype",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-rotationType",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-rotationType",
     "src/behaviour/Rotate.js~Rotate#rotationType",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#rotationtype",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-rotationType",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-rotationType",
     "src/behaviour/Rotate.js~Rotate#rotationType",
     "member"
   ],
@@ -3055,13 +3055,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -3094,54 +3094,6 @@ window.esdocSearchIndex = [
     "file/src/index.js.html",
     "src/index.js",
     "file"
-  ],
-  [
-    "src/initializer/asynctexture.js",
-    "file/src/initializer/AsyncTexture.js.html",
-    "src/initializer/AsyncTexture.js",
-    "file"
-  ],
-  [
-    "src/initializer/asynctexture.js~asynctexture#constructor",
-    "class/src/initializer/AsyncTexture.js~AsyncTexture.html#instance-constructor-constructor",
-    "src/initializer/AsyncTexture.js~AsyncTexture#constructor",
-    "method"
-  ],
-  [
-    "src/initializer/asynctexture.js~asynctexture#initialize",
-    "class/src/initializer/AsyncTexture.js~AsyncTexture.html#instance-method-initialize",
-    "src/initializer/AsyncTexture.js~AsyncTexture#initialize",
-    "method"
-  ],
-  [
-    "src/initializer/asynctexture.js~asynctexture#material",
-    "class/src/initializer/AsyncTexture.js~AsyncTexture.html#instance-member-material",
-    "src/initializer/AsyncTexture.js~AsyncTexture#material",
-    "member"
-  ],
-  [
-    "src/initializer/asynctexture.js~asynctexture#materialproperties",
-    "class/src/initializer/AsyncTexture.js~AsyncTexture.html#instance-member-materialProperties",
-    "src/initializer/AsyncTexture.js~AsyncTexture#materialProperties",
-    "member"
-  ],
-  [
-    "src/initializer/asynctexture.js~asynctexture#sprite",
-    "class/src/initializer/AsyncTexture.js~AsyncTexture.html#instance-member-sprite",
-    "src/initializer/AsyncTexture.js~AsyncTexture#sprite",
-    "member"
-  ],
-  [
-    "src/initializer/asynctexture.js~asynctexture#texture",
-    "class/src/initializer/AsyncTexture.js~AsyncTexture.html#instance-member-texture",
-    "src/initializer/AsyncTexture.js~AsyncTexture#texture",
-    "member"
-  ],
-  [
-    "src/initializer/asynctexture.js~asynctexture.fromjson",
-    "class/src/initializer/AsyncTexture.js~AsyncTexture.html#static-method-fromJSON",
-    "src/initializer/AsyncTexture.js~AsyncTexture.fromJSON",
-    "method"
   ],
   [
     "src/initializer/body.js",
@@ -3471,6 +3423,54 @@ window.esdocSearchIndex = [
     "src/initializer/rate.js~rate.fromjson",
     "class/src/initializer/Rate.js~Rate.html#static-method-fromJSON",
     "src/initializer/Rate.js~Rate.fromJSON",
+    "method"
+  ],
+  [
+    "src/initializer/texture.js",
+    "file/src/initializer/Texture.js.html",
+    "src/initializer/Texture.js",
+    "file"
+  ],
+  [
+    "src/initializer/texture.js~texture#constructor",
+    "class/src/initializer/Texture.js~Texture.html#instance-constructor-constructor",
+    "src/initializer/Texture.js~Texture#constructor",
+    "method"
+  ],
+  [
+    "src/initializer/texture.js~texture#initialize",
+    "class/src/initializer/Texture.js~Texture.html#instance-method-initialize",
+    "src/initializer/Texture.js~Texture#initialize",
+    "method"
+  ],
+  [
+    "src/initializer/texture.js~texture#material",
+    "class/src/initializer/Texture.js~Texture.html#instance-member-material",
+    "src/initializer/Texture.js~Texture#material",
+    "member"
+  ],
+  [
+    "src/initializer/texture.js~texture#materialproperties",
+    "class/src/initializer/Texture.js~Texture.html#instance-member-materialProperties",
+    "src/initializer/Texture.js~Texture#materialProperties",
+    "member"
+  ],
+  [
+    "src/initializer/texture.js~texture#sprite",
+    "class/src/initializer/Texture.js~Texture.html#instance-member-sprite",
+    "src/initializer/Texture.js~Texture#sprite",
+    "member"
+  ],
+  [
+    "src/initializer/texture.js~texture#texture",
+    "class/src/initializer/Texture.js~Texture.html#instance-member-texture",
+    "src/initializer/Texture.js~Texture#texture",
+    "member"
+  ],
+  [
+    "src/initializer/texture.js~texture.fromjson",
+    "class/src/initializer/Texture.js~Texture.html#static-method-fromJSON",
+    "src/initializer/Texture.js~Texture.fromJSON",
     "method"
   ],
   [

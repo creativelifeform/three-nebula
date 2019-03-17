@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 64);
+/******/ 	return __webpack_require__(__webpack_require__.s = 65);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -48716,7 +48716,7 @@ Object.defineProperty(exports, "__esModule", {
 var INITIALIZER_TYPE_ABSTRACT = exports.INITIALIZER_TYPE_ABSTRACT = 'Initializer';
 var INITIALIZER_TYPE_BODY = exports.INITIALIZER_TYPE_BODY = 'Body';
 var INITIALIZER_TYPE_BODY_SPRITE = exports.INITIALIZER_TYPE_BODY_SPRITE = 'BodySprite';
-var INITIALIZER_TYPE_ASYNC_TEXTURE = exports.INITIALIZER_TYPE_ASYNC_TEXTURE = 'AsyncTexture';
+var INITIALIZER_TYPE_TEXTURE = exports.INITIALIZER_TYPE_TEXTURE = 'Texture';
 var INITIALIZER_TYPE_LIFE = exports.INITIALIZER_TYPE_LIFE = 'Life';
 var INITIALIZER_TYPE_MASS = exports.INITIALIZER_TYPE_MASS = 'Mass';
 var INITIALIZER_TYPE_POSITION = exports.INITIALIZER_TYPE_POSITION = 'Position';
@@ -49145,7 +49145,7 @@ Object.defineProperty(exports, 'Util', {
   }
 });
 
-var _uid = __webpack_require__(40);
+var _uid = __webpack_require__(41);
 
 Object.defineProperty(exports, 'uid', {
   enumerable: true,
@@ -49606,12 +49606,12 @@ Object.defineProperty(exports, 'Rate', {
   }
 });
 
-var _AsyncTexture = __webpack_require__(65);
+var _Texture = __webpack_require__(39);
 
-Object.defineProperty(exports, 'AsyncTexture', {
+Object.defineProperty(exports, 'Texture', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_AsyncTexture).default;
+    return _interopRequireDefault(_Texture).default;
   }
 });
 
@@ -49765,7 +49765,7 @@ var DEFAULT_PROTON_DELTA = exports.DEFAULT_PROTON_DELTA = 0.0167;
  * @desc The types of initializers supported by the Proton.fromJSON method.
  * @type {array<string>}
  */
-var SUPPORTED_JSON_INITIALIZER_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = [_types2.INITIALIZER_TYPE_POSITION, _types2.INITIALIZER_TYPE_LIFE, _types2.INITIALIZER_TYPE_RADIUS, _types2.INITIALIZER_TYPE_MASS, _types2.INITIALIZER_TYPE_BODY, _types2.INITIALIZER_TYPE_BODY_SPRITE, _types2.INITIALIZER_TYPE_ASYNC_TEXTURE, _types2.INITIALIZER_TYPE_POLAR_VELOCITY, _types2.INITIALIZER_TYPE_RADIAL_VELOCITY, _types2.INITIALIZER_TYPE_VECTOR_VELOCITY];
+var SUPPORTED_JSON_INITIALIZER_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = [_types2.INITIALIZER_TYPE_POSITION, _types2.INITIALIZER_TYPE_LIFE, _types2.INITIALIZER_TYPE_RADIUS, _types2.INITIALIZER_TYPE_MASS, _types2.INITIALIZER_TYPE_BODY, _types2.INITIALIZER_TYPE_BODY_SPRITE, _types2.INITIALIZER_TYPE_TEXTURE, _types2.INITIALIZER_TYPE_POLAR_VELOCITY, _types2.INITIALIZER_TYPE_RADIAL_VELOCITY, _types2.INITIALIZER_TYPE_VECTOR_VELOCITY];
 
 /**
  * @desc The types of behaviours supported by the Proton.fromJSON method.
@@ -49880,7 +49880,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Alpha = __webpack_require__(45);
+var _Alpha = __webpack_require__(46);
 
 Object.defineProperty(exports, 'Alpha', {
   enumerable: true,
@@ -49898,7 +49898,7 @@ Object.defineProperty(exports, 'Attraction', {
   }
 });
 
-var _Collision = __webpack_require__(46);
+var _Collision = __webpack_require__(47);
 
 Object.defineProperty(exports, 'Collision', {
   enumerable: true,
@@ -49907,7 +49907,7 @@ Object.defineProperty(exports, 'Collision', {
   }
 });
 
-var _Color = __webpack_require__(47);
+var _Color = __webpack_require__(48);
 
 Object.defineProperty(exports, 'Color', {
   enumerable: true,
@@ -49916,7 +49916,7 @@ Object.defineProperty(exports, 'Color', {
   }
 });
 
-var _CrossZone = __webpack_require__(48);
+var _CrossZone = __webpack_require__(49);
 
 Object.defineProperty(exports, 'CrossZone', {
   enumerable: true,
@@ -49934,7 +49934,7 @@ Object.defineProperty(exports, 'Force', {
   }
 });
 
-var _Gravity = __webpack_require__(49);
+var _Gravity = __webpack_require__(50);
 
 Object.defineProperty(exports, 'Gravity', {
   enumerable: true,
@@ -49943,7 +49943,7 @@ Object.defineProperty(exports, 'Gravity', {
   }
 });
 
-var _RandomDrift = __webpack_require__(50);
+var _RandomDrift = __webpack_require__(51);
 
 Object.defineProperty(exports, 'RandomDrift', {
   enumerable: true,
@@ -49952,7 +49952,7 @@ Object.defineProperty(exports, 'RandomDrift', {
   }
 });
 
-var _Repulsion = __webpack_require__(51);
+var _Repulsion = __webpack_require__(52);
 
 Object.defineProperty(exports, 'Repulsion', {
   enumerable: true,
@@ -49961,7 +49961,7 @@ Object.defineProperty(exports, 'Repulsion', {
   }
 });
 
-var _Rotate = __webpack_require__(52);
+var _Rotate = __webpack_require__(53);
 
 Object.defineProperty(exports, 'Rotate', {
   enumerable: true,
@@ -49970,7 +49970,7 @@ Object.defineProperty(exports, 'Rotate', {
   }
 });
 
-var _Scale = __webpack_require__(53);
+var _Scale = __webpack_require__(54);
 
 Object.defineProperty(exports, 'Scale', {
   enumerable: true,
@@ -49979,7 +49979,7 @@ Object.defineProperty(exports, 'Scale', {
   }
 });
 
-var _Spring = __webpack_require__(54);
+var _Spring = __webpack_require__(55);
 
 Object.defineProperty(exports, 'Spring', {
   enumerable: true,
@@ -50019,7 +50019,7 @@ Object.defineProperty(exports, 'Pool', {
   }
 });
 
-var _Proton = __webpack_require__(55);
+var _Proton = __webpack_require__(56);
 
 Object.defineProperty(exports, 'Proton', {
   enumerable: true,
@@ -50124,7 +50124,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constants = __webpack_require__(62);
+var _constants = __webpack_require__(63);
 
 var _events = __webpack_require__(38);
 
@@ -50144,7 +50144,7 @@ var _Util2 = _interopRequireDefault(_Util);
 
 var _types = __webpack_require__(36);
 
-var _uid = __webpack_require__(40);
+var _uid = __webpack_require__(41);
 
 var _uid2 = _interopRequireDefault(_uid);
 
@@ -52430,7 +52430,7 @@ exports.PROTON_UPDATE = exports.PROTON_UPDATE_AFTER = exports.PARTICLE_UPDATE = 
 
 var _constants = __webpack_require__(37);
 
-var _EventDispatcher = __webpack_require__(63);
+var _EventDispatcher = __webpack_require__(64);
 
 var _EventDispatcher2 = _interopRequireDefault(_EventDispatcher);
 
@@ -52447,6 +52447,150 @@ exports.PROTON_UPDATE = _constants.PROTON_UPDATE;
 
 /***/ }),
 /* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _three = __webpack_require__(3);
+
+var THREE = _interopRequireWildcard(_three);
+
+var _constants = __webpack_require__(26);
+
+var _Initializer2 = __webpack_require__(7);
+
+var _Initializer3 = _interopRequireDefault(_Initializer2);
+
+var _types = __webpack_require__(5);
+
+var _utils = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Sprite = THREE.Sprite,
+    SpriteMaterial = THREE.SpriteMaterial;
+
+/**
+ * Sets the body property to be a THREE.Sprite with a texture map on initialized particles.
+ *
+ */
+
+var Texture = function (_Initializer) {
+  _inherits(Texture, _Initializer);
+
+  /**
+   * Constructs an Texture initializer.
+   *
+   * @param {string} texture - The sprite texture
+   * @param {object|undefined} materialProperties - The sprite material properties
+   * @param {?Texture} loadedTexture - Preloaded THREE.Texture instance
+   */
+  function Texture(loadedTexture) {
+    var materialProperties = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_MATERIAL_PROPERTIES;
+    var isEnabled = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+    _classCallCheck(this, Texture);
+
+    /**
+     * @desc The material properties for this object's SpriteMaterial
+     * NOTE This is required for testing purposes
+     * @type {object}
+     */
+    var _this = _possibleConstructorReturn(this, (Texture.__proto__ || Object.getPrototypeOf(Texture)).call(this, _types.INITIALIZER_TYPE_TEXTURE, isEnabled));
+
+    _this.materialProperties = (0, _utils.withDefaults)(_constants.DEFAULT_MATERIAL_PROPERTIES, materialProperties);
+
+    /**
+     * @desc The texture for the THREE.SpriteMaterial map.
+     * @type {Texture}
+     */
+    _this.texture = loadedTexture;
+
+    /**
+     * @desc THREE.SpriteMaterial instance.
+     * @type {SpriteMaterial}
+     */
+    _this.material = new SpriteMaterial(_extends({ map: loadedTexture }, _this.materialProperties));
+
+    /**
+     * @desc THREE.Sprite instance.
+     * @type {Sprite}
+     */
+    _this.sprite = new Sprite(_this.material);
+    return _this;
+  }
+
+  /**
+   * Sets the particle body to the sprite.
+   *
+   * @param {Particle} particle - The particle to set the body of
+   * @return void
+   */
+
+
+  _createClass(Texture, [{
+    key: 'initialize',
+    value: function initialize(particle) {
+      particle.body = this.sprite;
+    }
+
+    /**
+     * Creates a Texture initializer from JSON.
+     *
+     * @param {object} json - The JSON to construct the instance from.
+     * @param {Texture} json.loadedTexture - The loaded sprite texture
+     * @param {object} json.materialProperties - The sprite material properties
+     * @return {BodySprite}
+     */
+
+  }], [{
+    key: 'fromJSON',
+    value: function fromJSON(json) {
+      var loadedTexture = json.loadedTexture,
+          _json$materialPropert = json.materialProperties,
+          materialProperties = _json$materialPropert === undefined ? _constants.DEFAULT_JSON_MATERIAL_PROPERTIES : _json$materialPropert,
+          _json$isEnabled = json.isEnabled,
+          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled;
+
+
+      var ensureMappedBlendingMode = function ensureMappedBlendingMode(properties) {
+        var blending = properties.blending;
+
+
+        return _extends({}, properties, {
+          blending: blending ? THREE[blending] : THREE[_constants.DEFAULT_JSON_MATERIAL_PROPERTIES.blending]
+        });
+      };
+
+      return new Texture(loadedTexture, (0, _utils.withDefaults)(_constants.DEFAULT_JSON_MATERIAL_PROPERTIES, ensureMappedBlendingMode(materialProperties)), isEnabled);
+    }
+  }]);
+
+  return Texture;
+}(_Initializer3.default);
+
+exports.default = Texture;
+module.exports = exports['default'];
+
+/***/ }),
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52560,7 +52704,7 @@ exports.default = MeshRenderer;
 module.exports = exports['default'];
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52580,7 +52724,7 @@ exports.default = _v2.default;
 module.exports = exports['default'];
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -69695,7 +69839,7 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(95), __webpack_require__(96)(module)))
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69705,7 +69849,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Debug = __webpack_require__(58);
+var _Debug = __webpack_require__(59);
 
 Object.defineProperty(exports, 'Debug', {
   enumerable: true,
@@ -69714,7 +69858,7 @@ Object.defineProperty(exports, 'Debug', {
   }
 });
 
-var _log = __webpack_require__(60);
+var _log = __webpack_require__(61);
 
 Object.defineProperty(exports, 'log', {
   enumerable: true,
@@ -69726,7 +69870,7 @@ Object.defineProperty(exports, 'log', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69736,7 +69880,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _FollowEmitter = __webpack_require__(61);
+var _FollowEmitter = __webpack_require__(62);
 
 Object.defineProperty(exports, 'FollowEmitter', {
   enumerable: true,
@@ -69757,7 +69901,7 @@ Object.defineProperty(exports, 'Emitter', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69776,7 +69920,7 @@ Object.defineProperty(exports, 'CustomRenderer', {
   }
 });
 
-var _MeshRenderer = __webpack_require__(39);
+var _MeshRenderer = __webpack_require__(40);
 
 Object.defineProperty(exports, 'MeshRenderer', {
   enumerable: true,
@@ -69806,7 +69950,7 @@ Object.defineProperty(exports, 'SpriteRenderer', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70006,7 +70150,7 @@ exports.default = Alpha;
 module.exports = exports['default'];
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70167,7 +70311,7 @@ exports.default = Collision;
 module.exports = exports['default'];
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70321,7 +70465,7 @@ exports.default = Color;
 module.exports = exports['default'];
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70464,7 +70608,7 @@ exports.default = CrossZone;
 module.exports = exports['default'];
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70544,7 +70688,7 @@ exports.default = Gravity;
 module.exports = exports['default'];
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70700,7 +70844,7 @@ exports.default = RandomDrift;
 module.exports = exports['default'];
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70827,7 +70971,7 @@ exports.default = Repulsion;
 module.exports = exports['default'];
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71093,7 +71237,7 @@ exports.default = Rotate;
 module.exports = exports['default'];
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71280,7 +71424,7 @@ exports.default = Scale;
 module.exports = exports['default'];
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71418,7 +71562,7 @@ exports.default = Spring;
 module.exports = exports['default'];
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71448,11 +71592,11 @@ var _Pool = __webpack_require__(35);
 
 var _Pool2 = _interopRequireDefault(_Pool);
 
-var _fromJSON2 = __webpack_require__(56);
+var _fromJSON2 = __webpack_require__(57);
 
 var _fromJSON3 = _interopRequireDefault(_fromJSON2);
 
-var _fromJSONAsync2 = __webpack_require__(57);
+var _fromJSONAsync2 = __webpack_require__(58);
 
 var _fromJSONAsync3 = _interopRequireDefault(_fromJSONAsync2);
 
@@ -71735,7 +71879,7 @@ exports.default = Proton;
 module.exports = exports['default'];
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71871,7 +72015,7 @@ exports.default = function (json, Proton, Emitter) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71898,6 +72042,10 @@ var _constants2 = __webpack_require__(16);
 var _Rate = __webpack_require__(24);
 
 var _Rate2 = _interopRequireDefault(_Rate);
+
+var _Texture = __webpack_require__(39);
+
+var _Texture2 = _interopRequireDefault(_Texture);
 
 var _three = __webpack_require__(3);
 
@@ -71966,7 +72114,7 @@ var makeInitializers = function makeInitializers(items) {
       }
 
       textureLoader.load(texture, function (loadedTexture) {
-        madeInitializers.push(new Initializer[type].fromJSON(_extends({}, properties, {
+        madeInitializers.push(new _Texture2.default.fromJSON(_extends({}, properties, {
           loadedTexture: loadedTexture
         })));
 
@@ -72108,7 +72256,7 @@ exports.default = function (json, Proton, Emitter) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72122,7 +72270,7 @@ var _three = __webpack_require__(3);
 
 var THREE = _interopRequireWildcard(_three);
 
-var _constants = __webpack_require__(59);
+var _constants = __webpack_require__(60);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -72332,7 +72480,7 @@ exports.default = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72349,7 +72497,7 @@ var DEFAULT_SIZE = exports.DEFAULT_SIZE = 15;
 var DEFAULT_POSITION = exports.DEFAULT_POSITION = 0;
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72392,7 +72540,7 @@ module.exports = exports['default']; /**
                                       */
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72543,7 +72691,7 @@ exports.default = FollowEmitter;
 module.exports = exports['default'];
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72562,7 +72710,7 @@ var DEFAULT_EMITTER_RATE = exports.DEFAULT_EMITTER_RATE = new _initializer.Rate(
 var DEFAULT_BIND_EMITTER_EVENT = exports.DEFAULT_BIND_EMITTER_EVENT = false;
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72679,7 +72827,7 @@ exports.default = EventDispatcher;
 module.exports = exports["default"];
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72702,7 +72850,7 @@ Object.keys(_behaviour).forEach(function (key) {
   });
 });
 
-var _debug = __webpack_require__(42);
+var _debug = __webpack_require__(43);
 
 Object.keys(_debug).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -72726,7 +72874,7 @@ Object.keys(_ease).forEach(function (key) {
   });
 });
 
-var _emitter = __webpack_require__(43);
+var _emitter = __webpack_require__(44);
 
 Object.keys(_emitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -72762,7 +72910,7 @@ Object.keys(_math).forEach(function (key) {
   });
 });
 
-var _renderer = __webpack_require__(44);
+var _renderer = __webpack_require__(45);
 
 Object.keys(_renderer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -72827,181 +72975,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 exports.default = _core.Proton;
 exports.THREE = THREE;
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _three = __webpack_require__(3);
-
-var THREE = _interopRequireWildcard(_three);
-
-var _constants = __webpack_require__(26);
-
-var _Initializer2 = __webpack_require__(7);
-
-var _Initializer3 = _interopRequireDefault(_Initializer2);
-
-var _types = __webpack_require__(5);
-
-var _utils = __webpack_require__(9);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Sprite = THREE.Sprite,
-    SpriteMaterial = THREE.SpriteMaterial,
-    TextureLoader = THREE.TextureLoader;
-
-/**
- * Sets the body property to be a THREE.Sprite on initialized particles.
- *
- * NOTE The Texture MUST be loaded either prior to instantiation or within this class'
- * constructor. Not doing so will cause WebGL buffer errors.
- */
-
-var AsyncTexture = function (_Initializer) {
-  _inherits(AsyncTexture, _Initializer);
-
-  /**
-   * Constructs an AsyncTexture initializer.
-   *
-   * @param {string} texture - The sprite texture
-   * @param {object|undefined} materialProperties - The sprite material properties
-   * @param {?Texture} loadedTexture - Preloaded THREE.Texture instance
-   */
-  function AsyncTexture(texture) {
-    var materialProperties = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants.DEFAULT_MATERIAL_PROPERTIES;
-    var loadedTexture = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-    var isEnabled = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
-
-    _classCallCheck(this, AsyncTexture);
-
-    /**
-     * @desc The material properties for this object's SpriteMaterial
-     * NOTE This is required for testing purposes
-     * @type {object}
-     */
-    var _this = _possibleConstructorReturn(this, (AsyncTexture.__proto__ || Object.getPrototypeOf(AsyncTexture)).call(this, _types.INITIALIZER_TYPE_ASYNC_TEXTURE, isEnabled));
-
-    _this.materialProperties = (0, _utils.withDefaults)(_constants.DEFAULT_MATERIAL_PROPERTIES, materialProperties);
-
-    if (loadedTexture) {
-      /**
-       * @desc The texture for the THREE.SpriteMaterial map.
-       * @type {Texture}
-       */
-      _this.texture = loadedTexture;
-
-      /**
-       * @desc THREE.SpriteMaterial instance.
-       * @type {SpriteMaterial}
-       */
-      _this.material = new SpriteMaterial(_extends({ map: loadedTexture }, _this.materialProperties));
-
-      /**
-       * @desc THREE.Sprite instance.
-       * @type {Sprite}
-       */
-      _this.sprite = new Sprite(_this.material);
-
-      return _possibleConstructorReturn(_this);
-    }
-
-    new TextureLoader().load(texture, function (map) {
-      /**
-       * @desc The texture for the THREE.SpriteMaterial map.
-       * @type {Texture}
-       */
-      _this.texture = map;
-
-      /**
-       * @desc THREE.SpriteMaterial instance.
-       * @type {SpriteMaterial}
-       */
-      _this.material = new SpriteMaterial(_extends({ map: map }, _this.materialProperties));
-
-      /**
-       * @desc THREE.Sprite instance.
-       * @type {Sprite}
-       */
-      _this.sprite = new Sprite(_this.material);
-    });
-    return _this;
-  }
-
-  /**
-   * Sets the particle body to the sprite.
-   *
-   * @param {Particle} particle - The particle to set the body of
-   * @return void
-   */
-
-
-  _createClass(AsyncTexture, [{
-    key: 'initialize',
-    value: function initialize(particle) {
-      particle.body = this.sprite;
-    }
-
-    /**
-     * Creates a BodySprite initializer from JSON.
-     *
-     * @param {object} json - The JSON to construct the instance from.
-     * @param {string} json.texture - The sprite texture
-     * @param {object} json.materialProperties - The sprite material properties
-     * @param {?Texture} loadedTexture - Preloaded THREE.Texture instance
-     * @return {BodySprite}
-     */
-
-  }], [{
-    key: 'fromJSON',
-    value: function fromJSON(json) {
-      var texture = json.texture,
-          _json$materialPropert = json.materialProperties,
-          materialProperties = _json$materialPropert === undefined ? _constants.DEFAULT_JSON_MATERIAL_PROPERTIES : _json$materialPropert,
-          _json$isEnabled = json.isEnabled,
-          isEnabled = _json$isEnabled === undefined ? true : _json$isEnabled,
-          _json$loadedTexture = json.loadedTexture,
-          loadedTexture = _json$loadedTexture === undefined ? null : _json$loadedTexture;
-
-
-      var ensureMappedBlendingMode = function ensureMappedBlendingMode(properties) {
-        var blending = properties.blending;
-
-
-        return _extends({}, properties, {
-          blending: blending ? THREE[blending] : THREE[_constants.DEFAULT_JSON_MATERIAL_PROPERTIES.blending]
-        });
-      };
-
-      return new AsyncTexture(texture, (0, _utils.withDefaults)(_constants.DEFAULT_JSON_MATERIAL_PROPERTIES, ensureMappedBlendingMode(materialProperties)), loadedTexture, isEnabled);
-    }
-  }]);
-
-  return AsyncTexture;
-}(_Initializer3.default);
-
-exports.default = AsyncTexture;
-module.exports = exports['default'];
 
 /***/ }),
 /* 66 */
@@ -74216,7 +74189,7 @@ var _Span2 = __webpack_require__(27);
 
 var _Span3 = _interopRequireDefault(_Span2);
 
-var _lodash = __webpack_require__(41);
+var _lodash = __webpack_require__(42);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -74373,7 +74346,7 @@ var _Span2 = __webpack_require__(27);
 
 var _Span3 = _interopRequireDefault(_Span2);
 
-var _lodash = __webpack_require__(41);
+var _lodash = __webpack_require__(42);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -74813,7 +74786,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _three = __webpack_require__(3);
 
-var _MeshRenderer2 = __webpack_require__(39);
+var _MeshRenderer2 = __webpack_require__(40);
 
 var _MeshRenderer3 = _interopRequireDefault(_MeshRenderer2);
 
