@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 import { Proton } from './core';
 
 export * from './behaviour';
@@ -13,4 +11,3 @@ export * from './utils';
 export * from './zone';
 export { Proton, Particle, Pool } from './core';
 export default Proton;
-export { THREE };

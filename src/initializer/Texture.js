@@ -1,15 +1,13 @@
-import * as THREE from 'three';
-
 import {
   DEFAULT_JSON_MATERIAL_PROPERTIES,
   DEFAULT_MATERIAL_PROPERTIES,
+  SUPPORTED_MATERIAL_BLENDING_MODES,
 } from './constants';
+import { Sprite, SpriteMaterial } from 'three';
 
 import Initializer from './Initializer';
 import { INITIALIZER_TYPE_TEXTURE as type } from './types';
 import { withDefaults } from '../utils';
-
-const { Sprite, SpriteMaterial } = THREE;
 
 /**
  * Sets the body property to be a THREE.Sprite with a texture map on initialized particles.
@@ -93,8 +91,10 @@ export default class Texture extends Initializer {
       return {
         ...properties,
         blending: blending
-          ? THREE[blending]
-          : THREE[DEFAULT_JSON_MATERIAL_PROPERTIES.blending],
+          ? SUPPORTED_MATERIAL_BLENDING_MODES[blending]
+          : SUPPORTED_MATERIAL_BLENDING_MODES[
+              DEFAULT_JSON_MATERIAL_PROPERTIES.blending
+            ],
       };
     };
 
