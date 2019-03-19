@@ -149,6 +149,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_MATERIAL_PROPERTIES">DEFAULT_MATERIAL_PROPERTIES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RATE_NUM_PAN">DEFAULT_RATE_NUM_PAN</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RATE_TIME_PAN">DEFAULT_RATE_TIME_PAN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SUPPORTED_MATERIAL_BLENDING_MODES">SUPPORTED_MATERIAL_BLENDING_MODES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_ABSTRACT">INITIALIZER_TYPE_ABSTRACT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_BODY">INITIALIZER_TYPE_BODY</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_BODY_SPRITE">INITIALIZER_TYPE_BODY_SPRITE</a></span></span></li>
@@ -216,7 +217,23 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/initializer/constants.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { AdditiveBlending } from &apos;three&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {
+  AdditiveBlending,
+  CustomBlending,
+  MultiplyBlending,
+  NoBlending,
+  NormalBlending,
+  SubtractiveBlending,
+} from &apos;three&apos;;
+
+export const SUPPORTED_MATERIAL_BLENDING_MODES = [
+  AdditiveBlending,
+  CustomBlending,
+  MultiplyBlending,
+  NoBlending,
+  NormalBlending,
+  SubtractiveBlending,
+];
 
 export const DEFAULT_MATERIAL_PROPERTIES = {
   color: 0xff0000,

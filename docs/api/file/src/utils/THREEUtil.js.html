@@ -149,6 +149,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_MATERIAL_PROPERTIES">DEFAULT_MATERIAL_PROPERTIES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RATE_NUM_PAN">DEFAULT_RATE_NUM_PAN</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RATE_TIME_PAN">DEFAULT_RATE_TIME_PAN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SUPPORTED_MATERIAL_BLENDING_MODES">SUPPORTED_MATERIAL_BLENDING_MODES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_ABSTRACT">INITIALIZER_TYPE_ABSTRACT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_BODY">INITIALIZER_TYPE_BODY</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_BODY_SPRITE">INITIALIZER_TYPE_BODY_SPRITE</a></span></span></li>
@@ -216,13 +217,13 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/utils/THREEUtil.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import * as THREE from &apos;three&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Texture, Vector3 } from &apos;three&apos;;
 
 import PUID from &apos;./PUID&apos;;
 
 export default {
   toScreenPos: (function() {
-    var vector = new THREE.Vector3();
+    var vector = new Vector3();
 
     return function(pos, camera, canvas) {
       vector.copy(pos);
@@ -238,8 +239,8 @@ export default {
   })(),
 
   toSpacePos: (function() {
-    var vector = new THREE.Vector3(),
-      dir = new THREE.Vector3(),
+    var vector = new Vector3(),
+      dir = new Vector3(),
       distance;
 
     return function(pos, camera, canvas) {
@@ -265,23 +266,23 @@ export default {
     return function(img) {
       let id;
 
-      if (img instanceof THREE.Texture) {
+      if (img instanceof Texture) {
         return img;
       } else if (typeof img == &apos;string&apos;) {
         id = PUID.hash(img);
 
-        if (!store[id]) store[id] = new THREE.Texture(img);
+        if (!store[id]) store[id] = new Texture(img);
 
         return store[id];
       } else if (img instanceof Image) {
         id = PUID.hash(img.src);
 
-        if (!store[id]) store[id] = new THREE.Texture(img);
+        if (!store[id]) store[id] = new Texture(img);
 
         return store[id];
       }
     };
-  })()
+  })(),
 };
 </code></pre>
 

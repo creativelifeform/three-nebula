@@ -149,6 +149,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_MATERIAL_PROPERTIES">DEFAULT_MATERIAL_PROPERTIES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RATE_NUM_PAN">DEFAULT_RATE_NUM_PAN</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RATE_TIME_PAN">DEFAULT_RATE_TIME_PAN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SUPPORTED_MATERIAL_BLENDING_MODES">SUPPORTED_MATERIAL_BLENDING_MODES</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_ABSTRACT">INITIALIZER_TYPE_ABSTRACT</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_BODY">INITIALIZER_TYPE_BODY</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INITIALIZER_TYPE_BODY_SPRITE">INITIALIZER_TYPE_BODY_SPRITE</a></span></span></li>
@@ -216,18 +217,16 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/initializer/BodySprite.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import * as THREE from &apos;three&apos;;
-
-import {
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {
   DEFAULT_JSON_MATERIAL_PROPERTIES,
   DEFAULT_MATERIAL_PROPERTIES,
+  SUPPORTED_MATERIAL_BLENDING_MODES,
 } from &apos;./constants&apos;;
+import { Sprite, SpriteMaterial, TextureLoader } from &apos;three&apos;;
 
 import Initializer from &apos;./Initializer&apos;;
 import { INITIALIZER_TYPE_BODY_SPRITE as type } from &apos;./types&apos;;
 import { withDefaults } from &apos;../utils&apos;;
-
-const { Sprite, SpriteMaterial, TextureLoader } = THREE;
 
 /**
  * Sets the body property to be a THREE.Sprite on initialized particles.
@@ -323,8 +322,10 @@ export default class BodySprite extends Initializer {
       return {
         ...properties,
         blending: blending
-          ? THREE[blending]
-          : THREE[DEFAULT_JSON_MATERIAL_PROPERTIES.blending],
+          ? SUPPORTED_MATERIAL_BLENDING_MODES[blending]
+          : SUPPORTED_MATERIAL_BLENDING_MODES[
+              DEFAULT_JSON_MATERIAL_PROPERTIES.blending
+            ],
       };
     };
 
