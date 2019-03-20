@@ -7,14 +7,14 @@ import {
   SubtractiveBlending,
 } from 'three';
 
-export const SUPPORTED_MATERIAL_BLENDING_MODES = [
+export const SUPPORTED_MATERIAL_BLENDING_MODES = {
   AdditiveBlending,
   CustomBlending,
   MultiplyBlending,
   NoBlending,
   NormalBlending,
   SubtractiveBlending,
-];
+};
 
 export const DEFAULT_MATERIAL_PROPERTIES = {
   color: 0xff0000,
