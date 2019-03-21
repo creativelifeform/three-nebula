@@ -132,6 +132,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/three.js~boxgeometry",
+    "variable/index.html#static-variable-BoxGeometry",
+    "<span>BoxGeometry</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/three.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/zone/boxzone.js~boxzone",
     "class/src/zone/BoxZone.js~BoxZone.html",
     "<span>BoxZone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/BoxZone.js</span>",
@@ -540,6 +546,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_texture",
+    "variable/index.html#static-variable-INITIALIZER_TYPE_TEXTURE",
+    "<span>INITIALIZER_TYPE_TEXTURE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_vector_velocity",
     "variable/index.html#static-variable-INITIALIZER_TYPE_VECTOR_VELOCITY",
     "<span>INITIALIZER_TYPE_VECTOR_VELOCITY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
@@ -894,6 +906,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@rohandeshpande/three-proton/src/initializer/constants.js~supported_material_blending_modes",
+    "variable/index.html#static-variable-SUPPORTED_MATERIAL_BLENDING_MODES",
+    "<span>SUPPORTED_MATERIAL_BLENDING_MODES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/constants.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/behaviour/scale.js~scale",
     "class/src/behaviour/Scale.js~Scale.html",
     "<span>Scale</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Scale.js</span>",
@@ -934,6 +952,12 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-TIME_STEP",
     "<span>TIME_STEP</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
     "variable"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/initializer/texture.js~texture",
+    "class/src/initializer/Texture.js~Texture.html",
+    "<span>Texture</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Texture.js</span>",
+    "class"
   ],
   [
     "@rohandeshpande/three-proton/src/constants/index.js~verlet",
@@ -1041,6 +1065,12 @@ window.esdocSearchIndex = [
     "@rohandeshpande/three-proton/src/core/fromjson.js~fromjson",
     "function/index.html#static-function-fromJSON",
     "<span>fromJSON</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/fromJSON.js</span>",
+    "function"
+  ],
+  [
+    "@rohandeshpande/three-proton/src/core/fromjsonasync.js~fromjsonasync",
+    "function/index.html#static-function-fromJSONAsync",
+    "<span>fromJSONAsync</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/fromJSONAsync.js</span>",
     "function"
   ],
   [
@@ -1717,13 +1747,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
@@ -2029,13 +2059,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
@@ -2526,6 +2556,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/core/proton.js~proton.fromjsonasync",
+    "class/src/core/Proton.js~Proton.html#static-method-fromJSONAsync",
+    "src/core/Proton.js~Proton.fromJSONAsync",
+    "method"
+  ],
+  [
     "src/core/constants.js",
     "file/src/core/constants.js.html",
     "src/core/constants.js",
@@ -2538,9 +2574,21 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/core/fromjsonasync.js",
+    "file/src/core/fromJSONAsync.js.html",
+    "src/core/fromJSONAsync.js",
+    "file"
+  ],
+  [
     "src/core/index.js",
     "file/src/core/index.js.html",
     "src/core/index.js",
+    "file"
+  ],
+  [
+    "src/core/three.js",
+    "file/src/core/three.js.html",
+    "src/core/three.js",
     "file"
   ],
   [
@@ -3025,13 +3073,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -3393,6 +3441,54 @@ window.esdocSearchIndex = [
     "src/initializer/rate.js~rate.fromjson",
     "class/src/initializer/Rate.js~Rate.html#static-method-fromJSON",
     "src/initializer/Rate.js~Rate.fromJSON",
+    "method"
+  ],
+  [
+    "src/initializer/texture.js",
+    "file/src/initializer/Texture.js.html",
+    "src/initializer/Texture.js",
+    "file"
+  ],
+  [
+    "src/initializer/texture.js~texture#constructor",
+    "class/src/initializer/Texture.js~Texture.html#instance-constructor-constructor",
+    "src/initializer/Texture.js~Texture#constructor",
+    "method"
+  ],
+  [
+    "src/initializer/texture.js~texture#initialize",
+    "class/src/initializer/Texture.js~Texture.html#instance-method-initialize",
+    "src/initializer/Texture.js~Texture#initialize",
+    "method"
+  ],
+  [
+    "src/initializer/texture.js~texture#material",
+    "class/src/initializer/Texture.js~Texture.html#instance-member-material",
+    "src/initializer/Texture.js~Texture#material",
+    "member"
+  ],
+  [
+    "src/initializer/texture.js~texture#materialproperties",
+    "class/src/initializer/Texture.js~Texture.html#instance-member-materialProperties",
+    "src/initializer/Texture.js~Texture#materialProperties",
+    "member"
+  ],
+  [
+    "src/initializer/texture.js~texture#sprite",
+    "class/src/initializer/Texture.js~Texture.html#instance-member-sprite",
+    "src/initializer/Texture.js~Texture#sprite",
+    "member"
+  ],
+  [
+    "src/initializer/texture.js~texture#texture",
+    "class/src/initializer/Texture.js~Texture.html#instance-member-texture",
+    "src/initializer/Texture.js~Texture#texture",
+    "member"
+  ],
+  [
+    "src/initializer/texture.js~texture.fromjson",
+    "class/src/initializer/Texture.js~Texture.html#static-method-fromJSON",
+    "src/initializer/Texture.js~Texture.fromJSON",
     "method"
   ],
   [

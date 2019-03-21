@@ -1,7 +1,7 @@
 {
-  "coverage": "57.63%",
-  "expectCount": 661,
-  "actualCount": 381,
+  "coverage": "58.02%",
+  "expectCount": 679,
+  "actualCount": 394,
   "files": {
     "src/behaviour/Alpha.js": {
       "expectCount": 11,
@@ -158,8 +158,8 @@
       "undocumentLines": []
     },
     "src/core/Proton.js": {
-      "expectCount": 18,
-      "actualCount": 18,
+      "expectCount": 19,
+      "actualCount": 19,
       "undocumentLines": []
     },
     "src/core/constants.js": {
@@ -171,6 +171,22 @@
       "expectCount": 4,
       "actualCount": 4,
       "undocumentLines": []
+    },
+    "src/core/fromJSONAsync.js": {
+      "expectCount": 5,
+      "actualCount": 4,
+      "undocumentLines": [
+        125
+      ]
+    },
+    "src/core/three.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        4
+      ]
     },
     "src/core/types.js": {
       "expectCount": 3,
@@ -288,11 +304,9 @@
       "undocumentLines": []
     },
     "src/initializer/BodySprite.js": {
-      "expectCount": 9,
+      "expectCount": 8,
       "actualCount": 8,
-      "undocumentLines": [
-        12
-      ]
+      "undocumentLines": []
     },
     "src/initializer/Initializer.js": {
       "expectCount": 8,
@@ -336,6 +350,11 @@
       "actualCount": 9,
       "undocumentLines": []
     },
+    "src/initializer/Texture.js": {
+      "expectCount": 8,
+      "actualCount": 8,
+      "undocumentLines": []
+    },
     "src/initializer/Velocity/PolarVelocity.js": {
       "expectCount": 6,
       "actualCount": 6,
@@ -359,17 +378,18 @@
       ]
     },
     "src/initializer/constants.js": {
-      "expectCount": 4,
+      "expectCount": 5,
       "actualCount": 0,
       "undocumentLines": [
-        3,
-        8,
-        12,
-        13
+        10,
+        19,
+        24,
+        28,
+        29
       ]
     },
     "src/initializer/types.js": {
-      "expectCount": 12,
+      "expectCount": 13,
       "actualCount": 0,
       "undocumentLines": [
         1,
@@ -383,7 +403,8 @@
         9,
         10,
         11,
-        12
+        12,
+        13
       ]
     },
     "src/math/ArraySpan.js": {

@@ -1,10 +1,10 @@
-import * as THREE from 'three';
+import { Texture, Vector3 } from '../core/three';
 
 import PUID from './PUID';
 
 export default {
   toScreenPos: (function() {
-    var vector = new THREE.Vector3();
+    var vector = new Vector3();
 
     return function(pos, camera, canvas) {
       vector.copy(pos);
@@ -20,8 +20,8 @@ export default {
   })(),
 
   toSpacePos: (function() {
-    var vector = new THREE.Vector3(),
-      dir = new THREE.Vector3(),
+    var vector = new Vector3(),
+      dir = new Vector3(),
       distance;
 
     return function(pos, camera, canvas) {
@@ -47,21 +47,21 @@ export default {
     return function(img) {
       let id;
 
-      if (img instanceof THREE.Texture) {
+      if (img instanceof Texture) {
         return img;
       } else if (typeof img == 'string') {
         id = PUID.hash(img);
 
-        if (!store[id]) store[id] = new THREE.Texture(img);
+        if (!store[id]) store[id] = new Texture(img);
 
         return store[id];
       } else if (img instanceof Image) {
         id = PUID.hash(img.src);
 
-        if (!store[id]) store[id] = new THREE.Texture(img);
+        if (!store[id]) store[id] = new Texture(img);
 
         return store[id];
       }
     };
-  })()
+  })(),
 };

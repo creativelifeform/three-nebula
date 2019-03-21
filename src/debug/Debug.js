@@ -1,5 +1,10 @@
-import * as THREE from 'three';
-
+import {
+  BoxGeometry,
+  Mesh,
+  MeshBasicMaterial,
+  OctahedronGeometry,
+  SphereGeometry,
+} from '../core/three';
 import { DEFAULT_POSITION, DEFAULT_SIZE as size } from './constants';
 
 /**
@@ -37,12 +42,12 @@ export default {
       radius = size,
       x = DEFAULT_POSITION,
       y = DEFAULT_POSITION,
-      z = DEFAULT_POSITION
+      z = DEFAULT_POSITION,
     } = zone;
     let geometry;
 
     if (zone.isPointZone()) {
-      geometry = new THREE.SphereGeometry(15);
+      geometry = new SphereGeometry(15);
     }
 
     if (zone.isLineZone()) {
@@ -50,11 +55,11 @@ export default {
     }
 
     if (zone.isBoxZone()) {
-      geometry = new THREE.BoxGeometry(width, height, depth);
+      geometry = new BoxGeometry(width, height, depth);
     }
 
     if (zone.isSphereZone()) {
-      geometry = new THREE.SphereGeometry(radius, size, size);
+      geometry = new SphereGeometry(radius, size, size);
     }
 
     if (zone.isMeshZone()) {
@@ -64,13 +69,13 @@ export default {
     }
 
     if (!geometry) {
-      geometry = new THREE.BoxGeometry(width, height, depth);
+      geometry = new BoxGeometry(width, height, depth);
     }
 
-    const material = new THREE.MeshBasicMaterial({ color, wireframe });
+    const material = new MeshBasicMaterial({ color, wireframe });
     // NOTE! geometry.clone is required for UNKNOWN reasons,
     // three does not render the mesh correctly without doing this since r88
-    const mesh = new THREE.Mesh(geometry.clone(), material);
+    const mesh = new Mesh(geometry.clone(), material);
 
     container.add(mesh);
 
@@ -89,14 +94,14 @@ export default {
    * @return void
    */
   drawEmitter: function(proton, container, emitter, color) {
-    const geometry = new THREE.OctahedronGeometry(size);
-    const material = new THREE.MeshBasicMaterial({
+    const geometry = new OctahedronGeometry(size);
+    const material = new MeshBasicMaterial({
       color: color || '#aaa',
-      wireframe: true
+      wireframe: true,
     });
     // NOTE! geometry.clone is required for UNKNOWN reasons,
     // three does not render the mesh correctly without doing this since r88
-    const mesh = new THREE.Mesh(geometry.clone(), material);
+    const mesh = new Mesh(geometry.clone(), material);
 
     container.add(mesh);
 
@@ -174,7 +179,7 @@ export default {
         this._infoCon.style.cssText = [
           'position:fixed;bottom:0px;left:0;cursor:pointer;',
           'opacity:0.9;z-index:10000;padding:10px;font-size:12px;',
-          'width:120px;height:50px;background-color:#002;color:#0ff;'
+          'width:120px;height:50px;background-color:#002;color:#0ff;',
         ].join('');
 
         this._infoType = 1;
@@ -211,5 +216,5 @@ export default {
 
       if (!this._infoCon.parentNode) document.body.appendChild(this._infoCon);
     };
-  })()
+  })(),
 };

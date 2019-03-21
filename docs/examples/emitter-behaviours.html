@@ -36,7 +36,6 @@
         addLights();
         addProton();
         addStats();
-        animate();
       }
 
       function addScene() {
@@ -105,10 +104,15 @@
       }
 
       function addProton() {
-        proton = Proton.default
+        Proton.default
           // imported from ./json
-          .fromJSON(EMITTER_BEHAVIOURS_JSON)
-          .addRenderer(new Proton.SpriteRenderer(scene));
+          .fromJSONAsync(EMITTER_BEHAVIOURS_JSON)
+          .then(instance => {
+            proton = instance;
+
+            proton.addRenderer(new Proton.SpriteRenderer(scene));
+            animate();
+          });
       }
 
       function animate() {
