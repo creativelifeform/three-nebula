@@ -309,10 +309,9 @@ export default class Proton {
   }
 
   /**
-   * Creates a Proton instance from a JSON object asynchronously.
-   * NOTE This is an experimental method, it may not work
+   * Loads a Proton instance from JSON asynchronously. Ensures all textures are
+   * fully loaded before resolving with the instantiated Proton instance.
    *
-   * @experimental
    * @param {object} json - The JSON to create the Proton instance from
    * @param {number} json.preParticles - The predetermined number of particles
    * @param {string} json.integrationType - The integration algorithm to use
