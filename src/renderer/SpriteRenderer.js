@@ -1,4 +1,4 @@
-import { Sprite, SpriteMaterial } from 'three';
+import { Sprite, SpriteMaterial } from '../core/three';
 
 import MeshRenderer from './MeshRenderer';
 import { RENDERER_TYPE_SPRITE as type } from './types';

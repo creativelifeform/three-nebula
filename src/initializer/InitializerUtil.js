@@ -1,4 +1,4 @@
-import { Euler } from 'three';
+import { Euler } from '../core/three';
 
 const particleEuler = new Euler();
 
@@ -33,12 +33,12 @@ export default {
    */
   bindEmitter: function(emitter, particle) {
     const {
-      rotation: { x, y, z }
+      rotation: { x, y, z },
     } = emitter;
 
     particle.position.add(emitter.position);
     particle.velocity.add(emitter.velocity);
     particle.acceleration.add(emitter.acceleration);
     particle.velocity.applyEuler(particleEuler.set(x, y, z));
-  }
+  },
 };

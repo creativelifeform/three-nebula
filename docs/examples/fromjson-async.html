@@ -21,19 +21,18 @@
   <body>
     <div id="container"></div>
     <script src="../js/stats.min.js"></script>
-    <!-- <script src="../js/three.js"></script> -->
+    <script src="../js/three.js"></script>
     <script src="../js/three-proton.js"></script>
-    <!-- <script src="../js/lib/TrackballControls.js"></script> -->
+    <script src="../js/lib/TrackballControls.js"></script>
     <script src="./json/eightDiagramsAsync.js"></script>
     <script>
-      const { THREE } = Proton;
       var proton, camera, scene, renderer, stats, clock, spring, controls;
 
       init();
 
       function init() {
         addScene();
-        // addControls();
+        addControls();
         addLights();
         addStars();
         addProton();

@@ -1,4 +1,4 @@
-import { Geometry } from 'three';
+import { Geometry } from '../core/three';
 import Zone from './Zone';
 import { ZONE_TYPE_MESH as type } from './types';
 

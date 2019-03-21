@@ -5,7 +5,7 @@ import {
   NoBlending,
   NormalBlending,
   SubtractiveBlending,
-} from 'three';
+} from '../core/three';
 
 export const SUPPORTED_MATERIAL_BLENDING_MODES = {
   AdditiveBlending,

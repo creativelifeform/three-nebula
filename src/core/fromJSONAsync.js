@@ -9,7 +9,7 @@ import {
 
 import Rate from '../initializer/Rate';
 import TextureInitializer from '../initializer/Texture';
-import { TextureLoader } from 'three';
+import { TextureLoader } from './three';
 
 /**
  * Makes a rate instance.

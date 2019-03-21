@@ -4,7 +4,7 @@ import {
   MeshBasicMaterial,
   OctahedronGeometry,
   SphereGeometry,
-} from 'three';
+} from '../core/three';
 import { DEFAULT_POSITION, DEFAULT_SIZE as size } from './constants';
 
 /**

@@ -3,7 +3,7 @@ import {
   DEFAULT_MATERIAL_PROPERTIES,
   SUPPORTED_MATERIAL_BLENDING_MODES,
 } from './constants';
-import { Sprite, SpriteMaterial } from 'three';
+import { Sprite, SpriteMaterial } from '../core/three';
 
 import Initializer from './Initializer';
 import { INITIALIZER_TYPE_TEXTURE as type } from './types';

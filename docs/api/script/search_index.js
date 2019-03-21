@@ -132,6 +132,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "@rohandeshpande/three-proton/src/core/three.js~boxgeometry",
+    "variable/index.html#static-variable-BoxGeometry",
+    "<span>BoxGeometry</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/three.js</span>",
+    "variable"
+  ],
+  [
     "@rohandeshpande/three-proton/src/zone/boxzone.js~boxzone",
     "class/src/zone/BoxZone.js~BoxZone.html",
     "<span>BoxZone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/BoxZone.js</span>",
@@ -1429,13 +1435,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -2053,13 +2059,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
@@ -2577,6 +2583,12 @@ window.esdocSearchIndex = [
     "src/core/index.js",
     "file/src/core/index.js.html",
     "src/core/index.js",
+    "file"
+  ],
+  [
+    "src/core/three.js",
+    "file/src/core/three.js.html",
+    "src/core/three.js",
     "file"
   ],
   [

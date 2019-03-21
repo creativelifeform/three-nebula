@@ -1,4 +1,4 @@
-import { Texture, Vector3 } from 'three';
+import { Texture, Vector3 } from '../core/three';
 
 import PUID from './PUID';
 
