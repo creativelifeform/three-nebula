@@ -1,4 +1,4 @@
-import { BoxGeometry, Mesh, MeshLambertMaterial } from 'three';
+import { BoxGeometry, Mesh, MeshLambertMaterial } from '../core/three';
 
 import BaseRenderer from './BaseRenderer';
 import { PUID } from '../utils';

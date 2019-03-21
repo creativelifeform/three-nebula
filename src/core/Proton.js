@@ -2,7 +2,7 @@ import EventDispatcher, {
   EMITTER_ADDED,
   EMITTER_REMOVED,
   PROTON_UPDATE,
-  PROTON_UPDATE_AFTER
+  PROTON_UPDATE_AFTER,
 } from '../events';
 
 import { DEFAULT_PROTON_DELTA } from './constants';
@@ -11,6 +11,7 @@ import { INTEGRATION_TYPE_EULER } from '../math/constants';
 import { POOL_MAX } from '../constants';
 import Pool from './Pool';
 import fromJSON from './fromJSON';
+import fromJSONAsync from './fromJSONAsync';
 import { CORE_TYPE_PROTON as type } from './types';
 
 /**
@@ -85,6 +86,20 @@ export default class Proton {
    */
   static fromJSON(json) {
     return fromJSON(json, Proton, Emitter);
+  }
+
+  /**
+   * Loads a Proton instance from JSON asynchronously. Ensures all textures are
+   * fully loaded before resolving with the instantiated Proton instance.
+   *
+   * @param {object} json - The JSON to create the Proton instance from
+   * @param {number} json.preParticles - The predetermined number of particles
+   * @param {string} json.integrationType - The integration algorithm to use
+   * @param {array<object>} json.emitters - The emitters for the proton instance
+   * @return {Promise<Proton>}
+   */
+  static fromJSONAsync(json) {
+    return fromJSONAsync(json, Proton, Emitter);
   }
 
   /**
