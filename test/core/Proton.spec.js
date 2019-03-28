@@ -6,7 +6,7 @@ import EventDispatcher, {
   EMITTER_ADDED,
   EMITTER_REMOVED,
   PROTON_UPDATE,
-  PROTON_UPDATE_AFTER,
+  PROTON_UPDATE_AFTER
 } from '../../src/events';
 
 import { INTEGRATION_TYPE_EULER } from '../../src/math';
@@ -27,7 +27,7 @@ describe('core -> Proton', () => {
       emitters,
       renderers,
       pool,
-      eventDispatcher,
+      eventDispatcher
     } = new System();
 
     assert.equal(type, 'Proton');
@@ -127,28 +127,6 @@ describe('core -> Proton', () => {
 
     emitterSpy.restore();
     dispatchSpy.restore();
-
-    done();
-  });
-
-  it('should not dispatch from within the update method if the canUpdate prop is set to false', done => {
-    const proton = new System();
-    const emitter = new Proton.Emitter();
-
-    proton.canUpdate = false;
-    proton.addEmitter(emitter);
-
-    // add spies here so that the dispatch in addEmitter isn't spied on
-    const emitterUpdateSpy = sinon.spy(emitter, 'update');
-    const dispatchSpy = sinon.spy(proton, 'dispatch');
-
-    proton.update();
-
-    assert(dispatchSpy.notCalled);
-    assert(emitterUpdateSpy.notCalled);
-
-    dispatchSpy.restore();
-    emitterUpdateSpy.restore();
 
     done();
   });

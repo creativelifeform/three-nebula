@@ -1747,13 +1747,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
@@ -1987,13 +1987,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/rotate.js~rotate#rotationtype",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-rotationType",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-rotationType",
     "src/behaviour/Rotate.js~Rotate#rotationType",
     "member"
   ],
   [
     "src/behaviour/rotate.js~rotate#rotationtype",
-    "class/src/behaviour/Rotate.js~Rotate.html#instance-get-rotationType",
+    "class/src/behaviour/Rotate.js~Rotate.html#instance-set-rotationType",
     "src/behaviour/Rotate.js~Rotate#rotationType",
     "member"
   ],
@@ -2059,13 +2059,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
@@ -2464,6 +2464,12 @@ window.esdocSearchIndex = [
     "class/src/core/Proton.js~Proton.html#instance-method-addRenderer",
     "src/core/Proton.js~Proton#addRenderer",
     "method"
+  ],
+  [
+    "src/core/proton.js~proton#canupdate",
+    "class/src/core/Proton.js~Proton.html#instance-member-canUpdate",
+    "src/core/Proton.js~Proton#canUpdate",
+    "member"
   ],
   [
     "src/core/proton.js~proton#constructor",
@@ -3073,13 +3079,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
