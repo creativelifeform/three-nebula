@@ -1,15 +1,15 @@
 {
-  "name": "nebula-engine",
-  "version": "4.0.1",
+  "name": "three-nebula",
+  "version": "4.0.0",
   "description": "WebGL based 3D particle engine",
-  "main": "./build/nebula-engine.js",
+  "main": "./build/three-nebula.js",
   "directories": {
     "docs": "docs"
   },
   "scripts": {
     "build": "webpack --env build && npm run docs:build",
     "docs": "./scripts/docs",
-    "docs:build": "cp ./build/nebula-engine.js docs/js && ./node_modules/.bin/esdoc",
+    "docs:build": "cp ./build/three-nebula.js docs/js && ./node_modules/.bin/esdoc",
     "test": "mocha --require babel-core/register --colors './test/**/*.spec.js'",
     "test:only": "mocha --require babel-core/register --colors",
     "test:watch": "mocha --require babel-core/register --colors -w './test/**/*.spec.js'",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rohan-deshpande/nebula-engine.git"
+    "url": "git+https://github.com/creativelifeform/three-nebula.git"
   },
   "keywords": [
     "particle",
@@ -35,9 +35,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/creativelifeform/nebula-engine/issues"
+    "url": "https://github.com/creativelifeform/three-nebula/issues"
   },
-  "homepage": "https://github.com/creativelifeform/nebula-engine#readme",
+  "homepage": "https://github.com/creativelifeform/three-nebula#readme",
   "dependencies": {
     "lodash": "^4.17.11",
     "three": "^0.98.0",

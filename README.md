@@ -1,14 +1,14 @@
-# Nebula Engine
+# Three Nebula
 
-[![Build Status](https://travis-ci.org/creativelifeform/nebula-engine.svg?branch=master)](https://travis-ci.org/creativelifeform/nebula-engine)
-[![Coverage Status](https://coveralls.io/repos/github/creativelifeform/nebula-engine/badge.svg)](https://coveralls.io/github/creativelifeform/nebula-engine?branch=master&kill_cache=1)
+[![Build Status](https://travis-ci.org/creativelifeform/three-nebula.svg?branch=master)](https://travis-ci.org/creativelifeform/three-nebula)
+[![Coverage Status](https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg)](https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1)
 
-**Nebula Engine** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [examples](https://creativelifeform.github.io/nebula-engine/) and [API reference documentation](https://creativelifeform.github.io/nebula-engine/api) for more.
+**Nebula Engine** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [examples](https://creativelifeform.github.io/three-nebula/) and [API reference documentation](https://creativelifeform.github.io/three-nebula/api) for more.
 
 ## Features
 
 - Perfect compatibility with [`three@0.98.0`](https://github.com/mrdoob/three.js)
-- The ability to instantiate Nebula Engine particle systems from JSON objects using the static `System.fromJSON` method
+- The ability to instantiate `three-nebula` particle systems from JSON objects using the static `System.fromJSON` method
 - The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers
 
@@ -17,13 +17,13 @@
 ### npm
 
 ```
-npm i --save nebula-engine
+npm i --save three-nebula
 ```
 
 ### script
 
 ```
-<script type='text/javascript' src='node_modules/nebula-engine/build/nebula-engine.js'></script>
+<script type='text/javascript' src='node_modules/three-nebula/build/three-nebula.js'></script>
 ```
 
 ## Usage
@@ -45,7 +45,7 @@ import System, {
   Alpha,
   Scale,
   Color,
-} from 'nebula-engine';
+} from 'three-nebula';
 import * as THREE from 'three';
 
 const system = new System();
@@ -76,7 +76,7 @@ system.addEmitter(emitter).addRenderer(renderer);
 You can also instantiate your system from a JSON object
 
 ```javascript
-import System from 'nebula-engine';
+import System from 'three-nebula';
 
 const json = {
   preParticles: 500,
@@ -234,7 +234,7 @@ const system = new System.fromJSON(json);
 
 ### Script Tag
 
-If you are adding `nebula-engine` to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so
+If you are adding `three-nebula` to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so
 
 ```javascript
 const { System, Emitter, Rate, Span } = window.System;
@@ -247,7 +247,7 @@ const system = new System();
 
 There are a few NPM scripts in the root package.json:
 
-- `build` - Builds the module and writes the code into `./build/nebula-engine.js`
+- `build` - Builds the module and writes the code into `./build/three-nebula.js`
 - `docs` - Serves the docs at http://localhost:8080
 - `docs:build` - Copies the latest build to `./docs/js` and builds the API reference docs
 - `test` - Runs all specs
