@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>three.proton - eightdiagrams</title>
+    <title>three.system - eightdiagrams</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <style type="text/css">
@@ -21,10 +21,10 @@
     <div id="container"></div>
     <script src="../js/stats.min.js"></script>
     <script src="../js/three.min.js"></script>
-    <script src='../js/three-proton.js'></script>
+    <script src='../js/nebula-engine.js'></script>
     <script src="../js/lib/TrackballControls.js"></script>
     <script>
-    var proton, emitter, color1, color2;
+    var system, emitter, color1, color2;
     var camera, scene, renderer, stats, clock, spring, controls;
 
     init();
@@ -83,29 +83,29 @@
     }
 
     function addProton() {
-        proton = new Proton.default();
-        emitter = new Proton.Emitter();
+        system = new Nebula.default();
+        emitter = new Nebula.Emitter();
         color1 = new THREE.Color();
         color2 = new THREE.Color();
 
         emitter
-            .setRate(new Proton.Rate(new Proton.Span(4, 16), new Proton.Span(.01)))
+            .setRate(new Nebula.Rate(new Nebula.Span(4, 16), new Nebula.Span(.01)))
             .setInitializers([
-                new Proton.Position(new Proton.PointZone(0, 0)),
-                new Proton.Mass(1),
-                new Proton.Radius(6, 12),
-                new Proton.Body(createSprite()),
-                new Proton.Life(3),
-                new Proton.RadialVelocity(45, new Proton.Vector3D(0, 1, 0), 180)
+                new Nebula.Position(new Nebula.PointZone(0, 0)),
+                new Nebula.Mass(1),
+                new Nebula.Radius(6, 12),
+                new Nebula.Body(createSprite()),
+                new Nebula.Life(3),
+                new Nebula.RadialVelocity(45, new Nebula.Vector3D(0, 1, 0), 180)
             ])
             .setBehaviours([
-                new Proton.Alpha(1, 0),
-                new Proton.Scale(.1, 1.3),
-                new Proton.Color(color1, color2),
+                new Nebula.Alpha(1, 0),
+                new Nebula.Scale(.1, 1.3),
+                new Nebula.Color(color1, color2),
             ]);
 
-        proton.addEmitter(emitter.emit());
-        proton.addRenderer(new Proton.SpriteRenderer(scene));
+        system.addEmitter(emitter.emit());
+        system.addRenderer(new Nebula.SpriteRenderer(scene));
     }
 
     function createSprite() {
@@ -130,7 +130,7 @@
 
     var ctha = 0;
     function render() {
-        proton.update();
+        system.update();
         renderer.render(scene, camera);
         //controls.update();
 
@@ -140,7 +140,7 @@
         camera.position.z = Math.cos(ctha) * 500;
         camera.position.y = Math.sin(ctha) * 500;
 
-        Proton.Debug.renderInfo(proton, 3);
+        Nebula.Debug.renderInfo(system, 3);
     }
 
     var tha = 0;

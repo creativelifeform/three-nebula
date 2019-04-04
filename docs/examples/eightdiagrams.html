@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>three.proton - eightdiagrams</title>
+    <title>three.system - eightdiagrams</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -22,10 +22,10 @@
     <div id="container"></div>
     <script src="../js/stats.min.js"></script>
     <script src="../js/three.min.js"></script>
-    <script src="../js/three-proton.js"></script>
+    <script src="../js/nebula-engine.js"></script>
     <script src="../js/lib/TrackballControls.js"></script>
     <script>
-      var proton, emitter1, emitter2, radius;
+      var system, emitter1, emitter2, radius;
       var camera, scene, renderer, stats, clock, spring, controls;
 
       init();
@@ -100,21 +100,21 @@
         var particles = new THREE.Points(
           geometry,
           new THREE.PointsMaterial({
-            color: 0x888888
+            color: 0x888888,
           })
         );
         scene.add(particles);
       }
 
       function addProton() {
-        proton = new Proton.default();
+        system = new Nebula.default();
         radius = 70;
         emitter1 = createEmitter(radius, 0, '#4F1500', '#0029FF');
         emitter2 = createEmitter(-radius, 0, '#004CFE', '#6600FF');
 
-        proton.addEmitter(emitter1);
-        proton.addEmitter(emitter2);
-        proton.addRenderer(new Proton.SpriteRenderer(scene));
+        system.addEmitter(emitter1);
+        system.addEmitter(emitter2);
+        system.addRenderer(new Nebula.SpriteRenderer(scene));
       }
 
       function createSprite() {
@@ -123,37 +123,42 @@
           map: map,
           color: 0xff0000,
           blending: THREE.AdditiveBlending,
-          fog: true
+          fog: true,
         });
         return new THREE.Sprite(material);
       }
 
       function createEmitter(x, y, color1, color2) {
-        var emitter = new Proton.Emitter();
+        var emitter = new Nebula.Emitter();
 
-        return emitter
-          .setRate(
-            new Proton.Rate(new Proton.Span(5, 7), new Proton.Span(0.01, 0.02))
-          )
-          .setInitializers([
-            new Proton.Mass(1),
-            new Proton.Life(2),
-            new Proton.Body(createSprite()),
-            new Proton.Radius(80),
-            new Proton.RadialVelocity(200, new Proton.Vector3D(0, 0, -1), 0)
-          ])
-          .setBehaviours([
-            new Proton.Alpha(1, 0),
-            new Proton.Color(color1, color2),
-            new Proton.Scale(1, 0.5),
-            new Proton.CrossZone(
-              new Proton.ScreenZone(camera, renderer),
-              'dead'
-            ),
-            new Proton.Force(0, 0, -20)
-          ])
-          // .setPosition({ x, y })
-          .emit();
+        return (
+          emitter
+            .setRate(
+              new Nebula.Rate(
+                new Nebula.Span(5, 7),
+                new Nebula.Span(0.01, 0.02)
+              )
+            )
+            .setInitializers([
+              new Nebula.Mass(1),
+              new Nebula.Life(2),
+              new Nebula.Body(createSprite()),
+              new Nebula.Radius(80),
+              new Nebula.RadialVelocity(200, new Nebula.Vector3D(0, 0, -1), 0),
+            ])
+            .setBehaviours([
+              new Nebula.Alpha(1, 0),
+              new Nebula.Color(color1, color2),
+              new Nebula.Scale(1, 0.5),
+              new Nebula.CrossZone(
+                new Nebula.ScreenZone(camera, renderer),
+                'dead'
+              ),
+              new Nebula.Force(0, 0, -20),
+            ])
+            // .setPosition({ x, y })
+            .emit()
+        );
       }
 
       function animate() {
@@ -166,7 +171,7 @@
 
       var ctha = 0;
       function render() {
-        proton.update();
+        system.update();
         renderer.render(scene, camera);
         //controls.update();
 
@@ -176,7 +181,7 @@
         camera.position.z = Math.cos(ctha) * 500;
         camera.position.y = Math.sin(ctha) * 500;
 
-        Proton.Debug.renderInfo(proton, 3);
+        Nebula.Debug.renderInfo(system, 3);
       }
 
       var tha = 0;

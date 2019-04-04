@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>three.proton - helloworld</title>
+    <title>three.system - helloworld</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <style type="text/css">
@@ -20,10 +20,10 @@
     <div id="container"></div>
     <script src="../js/stats.min.js"></script>
     <script src="../js/three.min.js"></script>
-    <script src="../js/three-proton.js"></script>
+    <script src="../js/nebula-engine.js"></script>
     <script src="../js/lib/TrackballControls.js"></script>
     <script>
-    var controls, camera, scene, renderer, proton;
+    var controls, camera, scene, renderer, system;
     var cameraCube, sceneCube;
     var textureEquirec, textureCube, textureSphere;
     var cubeMesh, sphereMesh;
@@ -118,22 +118,22 @@
     }
 
     function createProton() {
-        proton = new Proton.default();
-        var emitter = new Proton.Emitter();
-        emitter.rate = new Proton.Rate(new Proton.Span(2, 5), new Proton.Span(.5, 1));
-        emitter.addInitializer(new Proton.Mass(1));
-        emitter.addInitializer(new Proton.Radius(100));
-        emitter.addInitializer(new Proton.Life(5, 6));
-        emitter.addInitializer(new Proton.Body(sphereMesh));
-        emitter.addInitializer(new Proton.RadialVelocity(new Proton.Span(300, 500), new Proton.Vector3D(0, 1, 0), 30));
-        //emitter.addBehaviour(new Proton.Alpha(1, 0));
-        emitter.addBehaviour(new Proton.Scale(1));
-        emitter.addBehaviour(new Proton.Gravity(4));
-        emitter.addBehaviour(new Proton.Collision(emitter));
+        system = new Nebula.default();
+        var emitter = new Nebula.Emitter();
+        emitter.rate = new Nebula.Rate(new Nebula.Span(2, 5), new Nebula.Span(.5, 1));
+        emitter.addInitializer(new Nebula.Mass(1));
+        emitter.addInitializer(new Nebula.Radius(100));
+        emitter.addInitializer(new Nebula.Life(5, 6));
+        emitter.addInitializer(new Nebula.Body(sphereMesh));
+        emitter.addInitializer(new Nebula.RadialVelocity(new Nebula.Span(300, 500), new Nebula.Vector3D(0, 1, 0), 30));
+        //emitter.addBehaviour(new Nebula.Alpha(1, 0));
+        emitter.addBehaviour(new Nebula.Scale(1));
+        emitter.addBehaviour(new Nebula.Gravity(4));
+        emitter.addBehaviour(new Nebula.Collision(emitter));
 
         emitter.emit();
-        proton.addEmitter(emitter);
-        proton.addRenderer(new Proton.MeshRenderer(scene));
+        system.addEmitter(emitter);
+        system.addRenderer(new Nebula.MeshRenderer(scene));
     }
 
     function onWindowResize() {
@@ -156,7 +156,7 @@
         cameraCube.rotation.copy(camera.rotation);
         renderer.render(sceneCube, cameraCube);
         renderer.render(scene, camera);
-        proton.update();
+        system.update();
     }
     </script>
 </body>

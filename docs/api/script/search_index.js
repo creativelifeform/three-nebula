@@ -1,1106 +1,1106 @@
 window.esdocSearchIndex = [
   [
-    "@rohandeshpande/three-proton/src/behaviour/alpha.js~alpha",
+    "nebula-engine/src/behaviour/alpha.js~alpha",
     "class/src/behaviour/Alpha.js~Alpha.html",
-    "<span>Alpha</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Alpha.js</span>",
+    "<span>Alpha</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/Alpha.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/arrayspan.js~arrayspan",
+    "nebula-engine/src/math/arrayspan.js~arrayspan",
     "class/src/math/ArraySpan.js~ArraySpan.html",
-    "<span>ArraySpan</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/ArraySpan.js</span>",
+    "<span>ArraySpan</span> <span class=\"search-result-import-path\">nebula-engine/src/math/ArraySpan.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/attraction.js~attraction",
+    "nebula-engine/src/behaviour/attraction.js~attraction",
     "class/src/behaviour/Attraction.js~Attraction.html",
-    "<span>Attraction</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Attraction.js</span>",
+    "<span>Attraction</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/Attraction.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_abstract",
+    "nebula-engine/src/behaviour/types.js~behaviour_type_abstract",
     "variable/index.html#static-variable-BEHAVIOUR_TYPE_ABSTRACT",
-    "<span>BEHAVIOUR_TYPE_ABSTRACT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "<span>BEHAVIOUR_TYPE_ABSTRACT</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_alpha",
+    "nebula-engine/src/behaviour/types.js~behaviour_type_alpha",
     "variable/index.html#static-variable-BEHAVIOUR_TYPE_ALPHA",
-    "<span>BEHAVIOUR_TYPE_ALPHA</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "<span>BEHAVIOUR_TYPE_ALPHA</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_attraction",
+    "nebula-engine/src/behaviour/types.js~behaviour_type_attraction",
     "variable/index.html#static-variable-BEHAVIOUR_TYPE_ATTRACTION",
-    "<span>BEHAVIOUR_TYPE_ATTRACTION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "<span>BEHAVIOUR_TYPE_ATTRACTION</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_collision",
+    "nebula-engine/src/behaviour/types.js~behaviour_type_collision",
     "variable/index.html#static-variable-BEHAVIOUR_TYPE_COLLISION",
-    "<span>BEHAVIOUR_TYPE_COLLISION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "<span>BEHAVIOUR_TYPE_COLLISION</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_color",
+    "nebula-engine/src/behaviour/types.js~behaviour_type_color",
     "variable/index.html#static-variable-BEHAVIOUR_TYPE_COLOR",
-    "<span>BEHAVIOUR_TYPE_COLOR</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "<span>BEHAVIOUR_TYPE_COLOR</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_cross_zone",
+    "nebula-engine/src/behaviour/types.js~behaviour_type_cross_zone",
     "variable/index.html#static-variable-BEHAVIOUR_TYPE_CROSS_ZONE",
-    "<span>BEHAVIOUR_TYPE_CROSS_ZONE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "<span>BEHAVIOUR_TYPE_CROSS_ZONE</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_force",
+    "nebula-engine/src/behaviour/types.js~behaviour_type_force",
     "variable/index.html#static-variable-BEHAVIOUR_TYPE_FORCE",
-    "<span>BEHAVIOUR_TYPE_FORCE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "<span>BEHAVIOUR_TYPE_FORCE</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_gravity",
+    "nebula-engine/src/behaviour/types.js~behaviour_type_gravity",
     "variable/index.html#static-variable-BEHAVIOUR_TYPE_GRAVITY",
-    "<span>BEHAVIOUR_TYPE_GRAVITY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "<span>BEHAVIOUR_TYPE_GRAVITY</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_random_drift",
+    "nebula-engine/src/behaviour/types.js~behaviour_type_random_drift",
     "variable/index.html#static-variable-BEHAVIOUR_TYPE_RANDOM_DRIFT",
-    "<span>BEHAVIOUR_TYPE_RANDOM_DRIFT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "<span>BEHAVIOUR_TYPE_RANDOM_DRIFT</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_repulsion",
+    "nebula-engine/src/behaviour/types.js~behaviour_type_repulsion",
     "variable/index.html#static-variable-BEHAVIOUR_TYPE_REPULSION",
-    "<span>BEHAVIOUR_TYPE_REPULSION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "<span>BEHAVIOUR_TYPE_REPULSION</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_rotate",
+    "nebula-engine/src/behaviour/types.js~behaviour_type_rotate",
     "variable/index.html#static-variable-BEHAVIOUR_TYPE_ROTATE",
-    "<span>BEHAVIOUR_TYPE_ROTATE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "<span>BEHAVIOUR_TYPE_ROTATE</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_scale",
+    "nebula-engine/src/behaviour/types.js~behaviour_type_scale",
     "variable/index.html#static-variable-BEHAVIOUR_TYPE_SCALE",
-    "<span>BEHAVIOUR_TYPE_SCALE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "<span>BEHAVIOUR_TYPE_SCALE</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/types.js~behaviour_type_spring",
+    "nebula-engine/src/behaviour/types.js~behaviour_type_spring",
     "variable/index.html#static-variable-BEHAVIOUR_TYPE_SPRING",
-    "<span>BEHAVIOUR_TYPE_SPRING</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/types.js</span>",
+    "<span>BEHAVIOUR_TYPE_SPRING</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~bind_emitter_event",
+    "nebula-engine/src/constants/index.js~bind_emitter_event",
     "variable/index.html#static-variable-BIND_EMITTER_EVENT",
-    "<span>BIND_EMITTER_EVENT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>BIND_EMITTER_EVENT</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/baserenderer.js~baserenderer",
+    "nebula-engine/src/renderer/baserenderer.js~baserenderer",
     "class/src/renderer/BaseRenderer.js~BaseRenderer.html",
-    "<span>BaseRenderer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/BaseRenderer.js</span>",
+    "<span>BaseRenderer</span> <span class=\"search-result-import-path\">nebula-engine/src/renderer/BaseRenderer.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/behaviour.js~behaviour",
+    "nebula-engine/src/behaviour/behaviour.js~behaviour",
     "class/src/behaviour/Behaviour.js~Behaviour.html",
-    "<span>Behaviour</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Behaviour.js</span>",
+    "<span>Behaviour</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/Behaviour.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/body.js~body",
+    "nebula-engine/src/initializer/body.js~body",
     "class/src/initializer/Body.js~Body.html",
-    "<span>Body</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Body.js</span>",
+    "<span>Body</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/Body.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/bodysprite.js~bodysprite",
+    "nebula-engine/src/initializer/bodysprite.js~bodysprite",
     "class/src/initializer/BodySprite.js~BodySprite.html",
-    "<span>BodySprite</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/BodySprite.js</span>",
+    "<span>BodySprite</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/BodySprite.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/box.js~box",
+    "nebula-engine/src/math/box.js~box",
     "class/src/math/Box.js~Box.html",
-    "<span>Box</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/Box.js</span>",
+    "<span>Box</span> <span class=\"search-result-import-path\">nebula-engine/src/math/Box.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/three.js~boxgeometry",
+    "nebula-engine/src/core/three.js~boxgeometry",
     "variable/index.html#static-variable-BoxGeometry",
-    "<span>BoxGeometry</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/three.js</span>",
+    "<span>BoxGeometry</span> <span class=\"search-result-import-path\">nebula-engine/src/core/three.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/boxzone.js~boxzone",
+    "nebula-engine/src/zone/boxzone.js~boxzone",
     "class/src/zone/BoxZone.js~BoxZone.html",
-    "<span>BoxZone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/BoxZone.js</span>",
+    "<span>BoxZone</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/BoxZone.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/types.js~core_type_particle",
+    "nebula-engine/src/core/types.js~core_type_particle",
     "variable/index.html#static-variable-CORE_TYPE_PARTICLE",
-    "<span>CORE_TYPE_PARTICLE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/types.js</span>",
+    "<span>CORE_TYPE_PARTICLE</span> <span class=\"search-result-import-path\">nebula-engine/src/core/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/types.js~core_type_pool",
+    "nebula-engine/src/core/types.js~core_type_pool",
     "variable/index.html#static-variable-CORE_TYPE_POOL",
-    "<span>CORE_TYPE_POOL</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/types.js</span>",
+    "<span>CORE_TYPE_POOL</span> <span class=\"search-result-import-path\">nebula-engine/src/core/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/types.js~core_type_proton",
-    "variable/index.html#static-variable-CORE_TYPE_PROTON",
-    "<span>CORE_TYPE_PROTON</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/types.js</span>",
+    "nebula-engine/src/core/types.js~core_type_system",
+    "variable/index.html#static-variable-CORE_TYPE_SYSTEM",
+    "<span>CORE_TYPE_SYSTEM</span> <span class=\"search-result-import-path\">nebula-engine/src/core/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/collision.js~collision",
+    "nebula-engine/src/behaviour/collision.js~collision",
     "class/src/behaviour/Collision.js~Collision.html",
-    "<span>Collision</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Collision.js</span>",
+    "<span>Collision</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/Collision.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/color.js~color",
+    "nebula-engine/src/behaviour/color.js~color",
     "class/src/behaviour/Color.js~Color.html",
-    "<span>Color</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Color.js</span>",
+    "<span>Color</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/Color.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/colorspan.js~colorspan",
+    "nebula-engine/src/math/colorspan.js~colorspan",
     "class/src/math/ColorSpan.js~ColorSpan.html",
-    "<span>ColorSpan</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/ColorSpan.js</span>",
+    "<span>ColorSpan</span> <span class=\"search-result-import-path\">nebula-engine/src/math/ColorSpan.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/crosszone.js~crosszone",
+    "nebula-engine/src/behaviour/crosszone.js~crosszone",
     "class/src/behaviour/CrossZone.js~CrossZone.html",
-    "<span>CrossZone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/CrossZone.js</span>",
+    "<span>CrossZone</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/CrossZone.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/customrenderer.js~customrenderer",
+    "nebula-engine/src/renderer/customrenderer.js~customrenderer",
     "class/src/renderer/CustomRenderer.js~CustomRenderer.html",
-    "<span>CustomRenderer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/CustomRenderer.js</span>",
+    "<span>CustomRenderer</span> <span class=\"search-result-import-path\">nebula-engine/src/renderer/CustomRenderer.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_age",
+    "nebula-engine/src/core/constants.js~default_age",
     "variable/index.html#static-variable-DEFAULT_AGE",
-    "<span>DEFAULT_AGE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_AGE</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_alpha",
+    "nebula-engine/src/core/constants.js~default_alpha",
     "variable/index.html#static-variable-DEFAULT_ALPHA",
-    "<span>DEFAULT_ALPHA</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_ALPHA</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_attraciton_radius",
+    "nebula-engine/src/behaviour/constants.js~default_attraciton_radius",
     "variable/index.html#static-variable-DEFAULT_ATTRACITON_RADIUS",
-    "<span>DEFAULT_ATTRACITON_RADIUS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
+    "<span>DEFAULT_ATTRACITON_RADIUS</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_attraction_force_scalar",
+    "nebula-engine/src/behaviour/constants.js~default_attraction_force_scalar",
     "variable/index.html#static-variable-DEFAULT_ATTRACTION_FORCE_SCALAR",
-    "<span>DEFAULT_ATTRACTION_FORCE_SCALAR</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
+    "<span>DEFAULT_ATTRACTION_FORCE_SCALAR</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_behaviour_easing",
+    "nebula-engine/src/behaviour/constants.js~default_behaviour_easing",
     "variable/index.html#static-variable-DEFAULT_BEHAVIOUR_EASING",
-    "<span>DEFAULT_BEHAVIOUR_EASING</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
+    "<span>DEFAULT_BEHAVIOUR_EASING</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_behaviour_easing_type",
+    "nebula-engine/src/behaviour/constants.js~default_behaviour_easing_type",
     "variable/index.html#static-variable-DEFAULT_BEHAVIOUR_EASING_TYPE",
-    "<span>DEFAULT_BEHAVIOUR_EASING_TYPE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
+    "<span>DEFAULT_BEHAVIOUR_EASING_TYPE</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/emitter/constants.js~default_bind_emitter",
+    "nebula-engine/src/emitter/constants.js~default_bind_emitter",
     "variable/index.html#static-variable-DEFAULT_BIND_EMITTER",
-    "<span>DEFAULT_BIND_EMITTER</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/constants.js</span>",
+    "<span>DEFAULT_BIND_EMITTER</span> <span class=\"search-result-import-path\">nebula-engine/src/emitter/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/emitter/constants.js~default_bind_emitter_event",
+    "nebula-engine/src/emitter/constants.js~default_bind_emitter_event",
     "variable/index.html#static-variable-DEFAULT_BIND_EMITTER_EVENT",
-    "<span>DEFAULT_BIND_EMITTER_EVENT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/constants.js</span>",
+    "<span>DEFAULT_BIND_EMITTER_EVENT</span> <span class=\"search-result-import-path\">nebula-engine/src/emitter/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_body",
+    "nebula-engine/src/core/constants.js~default_body",
     "variable/index.html#static-variable-DEFAULT_BODY",
-    "<span>DEFAULT_BODY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_BODY</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_cross_type",
+    "nebula-engine/src/behaviour/constants.js~default_cross_type",
     "variable/index.html#static-variable-DEFAULT_CROSS_TYPE",
-    "<span>DEFAULT_CROSS_TYPE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
+    "<span>DEFAULT_CROSS_TYPE</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/emitter/constants.js~default_damping",
+    "nebula-engine/src/emitter/constants.js~default_damping",
     "variable/index.html#static-variable-DEFAULT_DAMPING",
-    "<span>DEFAULT_DAMPING</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/constants.js</span>",
+    "<span>DEFAULT_DAMPING</span> <span class=\"search-result-import-path\">nebula-engine/src/emitter/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_dead",
+    "nebula-engine/src/core/constants.js~default_dead",
     "variable/index.html#static-variable-DEFAULT_DEAD",
-    "<span>DEFAULT_DEAD</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_DEAD</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/debug/constants.js~default_depth",
+    "nebula-engine/src/debug/constants.js~default_depth",
     "variable/index.html#static-variable-DEFAULT_DEPTH",
-    "<span>DEFAULT_DEPTH</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
+    "<span>DEFAULT_DEPTH</span> <span class=\"search-result-import-path\">nebula-engine/src/debug/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_easing",
+    "nebula-engine/src/core/constants.js~default_easing",
     "variable/index.html#static-variable-DEFAULT_EASING",
-    "<span>DEFAULT_EASING</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_EASING</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/emitter/constants.js~default_emitter_rate",
+    "nebula-engine/src/emitter/constants.js~default_emitter_rate",
     "variable/index.html#static-variable-DEFAULT_EMITTER_RATE",
-    "<span>DEFAULT_EMITTER_RATE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/constants.js</span>",
+    "<span>DEFAULT_EMITTER_RATE</span> <span class=\"search-result-import-path\">nebula-engine/src/emitter/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_energy",
+    "nebula-engine/src/core/constants.js~default_energy",
     "variable/index.html#static-variable-DEFAULT_ENERGY",
-    "<span>DEFAULT_ENERGY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_ENERGY</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/debug/constants.js~default_height",
+    "nebula-engine/src/debug/constants.js~default_height",
     "variable/index.html#static-variable-DEFAULT_HEIGHT",
-    "<span>DEFAULT_HEIGHT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
+    "<span>DEFAULT_HEIGHT</span> <span class=\"search-result-import-path\">nebula-engine/src/debug/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/constants.js~default_json_material_properties",
+    "nebula-engine/src/initializer/constants.js~default_json_material_properties",
     "variable/index.html#static-variable-DEFAULT_JSON_MATERIAL_PROPERTIES",
-    "<span>DEFAULT_JSON_MATERIAL_PROPERTIES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/constants.js</span>",
+    "<span>DEFAULT_JSON_MATERIAL_PROPERTIES</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_life",
+    "nebula-engine/src/behaviour/constants.js~default_life",
     "variable/index.html#static-variable-DEFAULT_LIFE",
-    "<span>DEFAULT_LIFE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
+    "<span>DEFAULT_LIFE</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_life",
+    "nebula-engine/src/core/constants.js~default_life",
     "variable/index.html#static-variable-DEFAULT_LIFE",
-    "<span>DEFAULT_LIFE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_LIFE</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_mass",
+    "nebula-engine/src/core/constants.js~default_mass",
     "variable/index.html#static-variable-DEFAULT_MASS",
-    "<span>DEFAULT_MASS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_MASS</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/constants.js~default_material_properties",
+    "nebula-engine/src/initializer/constants.js~default_material_properties",
     "variable/index.html#static-variable-DEFAULT_MATERIAL_PROPERTIES",
-    "<span>DEFAULT_MATERIAL_PROPERTIES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/constants.js</span>",
+    "<span>DEFAULT_MATERIAL_PROPERTIES</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_parent",
+    "nebula-engine/src/core/constants.js~default_parent",
     "variable/index.html#static-variable-DEFAULT_PARENT",
-    "<span>DEFAULT_PARENT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_PARENT</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/debug/constants.js~default_position",
+    "nebula-engine/src/debug/constants.js~default_position",
     "variable/index.html#static-variable-DEFAULT_POSITION",
-    "<span>DEFAULT_POSITION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
+    "<span>DEFAULT_POSITION</span> <span class=\"search-result-import-path\">nebula-engine/src/debug/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_proton_delta",
-    "variable/index.html#static-variable-DEFAULT_PROTON_DELTA",
-    "<span>DEFAULT_PROTON_DELTA</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
-    "variable"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_radius",
+    "nebula-engine/src/core/constants.js~default_radius",
     "variable/index.html#static-variable-DEFAULT_RADIUS",
-    "<span>DEFAULT_RADIUS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_RADIUS</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/debug/constants.js~default_radius",
+    "nebula-engine/src/debug/constants.js~default_radius",
     "variable/index.html#static-variable-DEFAULT_RADIUS",
-    "<span>DEFAULT_RADIUS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
+    "<span>DEFAULT_RADIUS</span> <span class=\"search-result-import-path\">nebula-engine/src/debug/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/constants.js~default_random_drift_delay",
+    "nebula-engine/src/behaviour/constants.js~default_random_drift_delay",
     "variable/index.html#static-variable-DEFAULT_RANDOM_DRIFT_DELAY",
-    "<span>DEFAULT_RANDOM_DRIFT_DELAY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
+    "<span>DEFAULT_RANDOM_DRIFT_DELAY</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/constants.js~default_rate_num_pan",
+    "nebula-engine/src/initializer/constants.js~default_rate_num_pan",
     "variable/index.html#static-variable-DEFAULT_RATE_NUM_PAN",
-    "<span>DEFAULT_RATE_NUM_PAN</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/constants.js</span>",
+    "<span>DEFAULT_RATE_NUM_PAN</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/constants.js~default_rate_time_pan",
+    "nebula-engine/src/initializer/constants.js~default_rate_time_pan",
     "variable/index.html#static-variable-DEFAULT_RATE_TIME_PAN",
-    "<span>DEFAULT_RATE_TIME_PAN</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/constants.js</span>",
+    "<span>DEFAULT_RATE_TIME_PAN</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_scale",
+    "nebula-engine/src/core/constants.js~default_scale",
     "variable/index.html#static-variable-DEFAULT_SCALE",
-    "<span>DEFAULT_SCALE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_SCALE</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/debug/constants.js~default_size",
+    "nebula-engine/src/debug/constants.js~default_size",
     "variable/index.html#static-variable-DEFAULT_SIZE",
-    "<span>DEFAULT_SIZE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
+    "<span>DEFAULT_SIZE</span> <span class=\"search-result-import-path\">nebula-engine/src/debug/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_sleep",
+    "nebula-engine/src/core/constants.js~default_sleep",
     "variable/index.html#static-variable-DEFAULT_SLEEP",
-    "<span>DEFAULT_SLEEP</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_SLEEP</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_use_alpha",
+    "nebula-engine/src/core/constants.js~default_system_delta",
+    "variable/index.html#static-variable-DEFAULT_SYSTEM_DELTA",
+    "<span>DEFAULT_SYSTEM_DELTA</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
+    "variable"
+  ],
+  [
+    "nebula-engine/src/core/constants.js~default_use_alpha",
     "variable/index.html#static-variable-DEFAULT_USE_ALPHA",
-    "<span>DEFAULT_USE_ALPHA</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_USE_ALPHA</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~default_use_color",
+    "nebula-engine/src/core/constants.js~default_use_color",
     "variable/index.html#static-variable-DEFAULT_USE_COLOR",
-    "<span>DEFAULT_USE_COLOR</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>DEFAULT_USE_COLOR</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/debug/constants.js~default_width",
+    "nebula-engine/src/debug/constants.js~default_width",
     "variable/index.html#static-variable-DEFAULT_WIDTH",
-    "<span>DEFAULT_WIDTH</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/constants.js</span>",
+    "<span>DEFAULT_WIDTH</span> <span class=\"search-result-import-path\">nebula-engine/src/debug/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~dr",
+    "nebula-engine/src/constants/index.js~dr",
     "variable/index.html#static-variable-DR",
-    "<span>DR</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>DR</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~emitter_added",
+    "nebula-engine/src/constants/index.js~emitter_added",
     "variable/index.html#static-variable-EMITTER_ADDED",
-    "<span>EMITTER_ADDED</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>EMITTER_ADDED</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/events/constants.js~emitter_added",
+    "nebula-engine/src/events/constants.js~emitter_added",
     "variable/index.html#static-variable-EMITTER_ADDED",
-    "<span>EMITTER_ADDED</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/events/constants.js</span>",
+    "<span>EMITTER_ADDED</span> <span class=\"search-result-import-path\">nebula-engine/src/events/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~emitter_removed",
+    "nebula-engine/src/constants/index.js~emitter_removed",
     "variable/index.html#static-variable-EMITTER_REMOVED",
-    "<span>EMITTER_REMOVED</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>EMITTER_REMOVED</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/events/constants.js~emitter_removed",
+    "nebula-engine/src/events/constants.js~emitter_removed",
     "variable/index.html#static-variable-EMITTER_REMOVED",
-    "<span>EMITTER_REMOVED</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/events/constants.js</span>",
+    "<span>EMITTER_REMOVED</span> <span class=\"search-result-import-path\">nebula-engine/src/events/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/emitter/types.js~emitter_type_emitter",
+    "nebula-engine/src/emitter/types.js~emitter_type_emitter",
     "variable/index.html#static-variable-EMITTER_TYPE_EMITTER",
-    "<span>EMITTER_TYPE_EMITTER</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/types.js</span>",
+    "<span>EMITTER_TYPE_EMITTER</span> <span class=\"search-result-import-path\">nebula-engine/src/emitter/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/emitter/types.js~emitter_type_follow",
+    "nebula-engine/src/emitter/types.js~emitter_type_follow",
     "variable/index.html#static-variable-EMITTER_TYPE_FOLLOW",
-    "<span>EMITTER_TYPE_FOLLOW</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/types.js</span>",
+    "<span>EMITTER_TYPE_FOLLOW</span> <span class=\"search-result-import-path\">nebula-engine/src/emitter/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~euler",
+    "nebula-engine/src/constants/index.js~euler",
     "variable/index.html#static-variable-EULER",
-    "<span>EULER</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>EULER</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/emitter/emitter.js~emitter",
+    "nebula-engine/src/emitter/emitter.js~emitter",
     "class/src/emitter/Emitter.js~Emitter.html",
-    "<span>Emitter</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/Emitter.js</span>",
+    "<span>Emitter</span> <span class=\"search-result-import-path\">nebula-engine/src/emitter/Emitter.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/events/eventdispatcher.js~eventdispatcher",
+    "nebula-engine/src/events/eventdispatcher.js~eventdispatcher",
     "class/src/events/EventDispatcher.js~EventDispatcher.html",
-    "<span>EventDispatcher</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/events/EventDispatcher.js</span>",
+    "<span>EventDispatcher</span> <span class=\"search-result-import-path\">nebula-engine/src/events/EventDispatcher.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/emitter/followemitter.js~followemitter",
+    "nebula-engine/src/emitter/followemitter.js~followemitter",
     "class/src/emitter/FollowEmitter.js~FollowEmitter.html",
-    "<span>FollowEmitter</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/emitter/FollowEmitter.js</span>",
+    "<span>FollowEmitter</span> <span class=\"search-result-import-path\">nebula-engine/src/emitter/FollowEmitter.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/force.js~force",
+    "nebula-engine/src/behaviour/force.js~force",
     "class/src/behaviour/Force.js~Force.html",
-    "<span>Force</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Force.js</span>",
+    "<span>Force</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/Force.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/gravity.js~gravity",
+    "nebula-engine/src/behaviour/gravity.js~gravity",
     "class/src/behaviour/Gravity.js~Gravity.html",
-    "<span>Gravity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Gravity.js</span>",
+    "<span>Gravity</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/Gravity.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_abstract",
+    "nebula-engine/src/initializer/types.js~initializer_type_abstract",
     "variable/index.html#static-variable-INITIALIZER_TYPE_ABSTRACT",
-    "<span>INITIALIZER_TYPE_ABSTRACT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "<span>INITIALIZER_TYPE_ABSTRACT</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_body",
+    "nebula-engine/src/initializer/types.js~initializer_type_body",
     "variable/index.html#static-variable-INITIALIZER_TYPE_BODY",
-    "<span>INITIALIZER_TYPE_BODY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "<span>INITIALIZER_TYPE_BODY</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_body_sprite",
+    "nebula-engine/src/initializer/types.js~initializer_type_body_sprite",
     "variable/index.html#static-variable-INITIALIZER_TYPE_BODY_SPRITE",
-    "<span>INITIALIZER_TYPE_BODY_SPRITE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "<span>INITIALIZER_TYPE_BODY_SPRITE</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_life",
+    "nebula-engine/src/initializer/types.js~initializer_type_life",
     "variable/index.html#static-variable-INITIALIZER_TYPE_LIFE",
-    "<span>INITIALIZER_TYPE_LIFE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "<span>INITIALIZER_TYPE_LIFE</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_mass",
+    "nebula-engine/src/initializer/types.js~initializer_type_mass",
     "variable/index.html#static-variable-INITIALIZER_TYPE_MASS",
-    "<span>INITIALIZER_TYPE_MASS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "<span>INITIALIZER_TYPE_MASS</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_polar_velocity",
+    "nebula-engine/src/initializer/types.js~initializer_type_polar_velocity",
     "variable/index.html#static-variable-INITIALIZER_TYPE_POLAR_VELOCITY",
-    "<span>INITIALIZER_TYPE_POLAR_VELOCITY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "<span>INITIALIZER_TYPE_POLAR_VELOCITY</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_position",
+    "nebula-engine/src/initializer/types.js~initializer_type_position",
     "variable/index.html#static-variable-INITIALIZER_TYPE_POSITION",
-    "<span>INITIALIZER_TYPE_POSITION</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "<span>INITIALIZER_TYPE_POSITION</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_radial_velocity",
+    "nebula-engine/src/initializer/types.js~initializer_type_radial_velocity",
     "variable/index.html#static-variable-INITIALIZER_TYPE_RADIAL_VELOCITY",
-    "<span>INITIALIZER_TYPE_RADIAL_VELOCITY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "<span>INITIALIZER_TYPE_RADIAL_VELOCITY</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_radius",
+    "nebula-engine/src/initializer/types.js~initializer_type_radius",
     "variable/index.html#static-variable-INITIALIZER_TYPE_RADIUS",
-    "<span>INITIALIZER_TYPE_RADIUS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "<span>INITIALIZER_TYPE_RADIUS</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_rate",
+    "nebula-engine/src/initializer/types.js~initializer_type_rate",
     "variable/index.html#static-variable-INITIALIZER_TYPE_RATE",
-    "<span>INITIALIZER_TYPE_RATE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "<span>INITIALIZER_TYPE_RATE</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_texture",
+    "nebula-engine/src/initializer/types.js~initializer_type_texture",
     "variable/index.html#static-variable-INITIALIZER_TYPE_TEXTURE",
-    "<span>INITIALIZER_TYPE_TEXTURE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "<span>INITIALIZER_TYPE_TEXTURE</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_vector_velocity",
+    "nebula-engine/src/initializer/types.js~initializer_type_vector_velocity",
     "variable/index.html#static-variable-INITIALIZER_TYPE_VECTOR_VELOCITY",
-    "<span>INITIALIZER_TYPE_VECTOR_VELOCITY</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "<span>INITIALIZER_TYPE_VECTOR_VELOCITY</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/types.js~initializer_type_zone",
+    "nebula-engine/src/initializer/types.js~initializer_type_zone",
     "variable/index.html#static-variable-INITIALIZER_TYPE_ZONE",
-    "<span>INITIALIZER_TYPE_ZONE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/types.js</span>",
+    "<span>INITIALIZER_TYPE_ZONE</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/constants.js~integration_type_euler",
+    "nebula-engine/src/math/constants.js~integration_type_euler",
     "variable/index.html#static-variable-INTEGRATION_TYPE_EULER",
-    "<span>INTEGRATION_TYPE_EULER</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/constants.js</span>",
+    "<span>INTEGRATION_TYPE_EULER</span> <span class=\"search-result-import-path\">nebula-engine/src/math/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/constants.js~integration_type_rk2",
+    "nebula-engine/src/math/constants.js~integration_type_rk2",
     "variable/index.html#static-variable-INTEGRATION_TYPE_RK2",
-    "<span>INTEGRATION_TYPE_RK2</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/constants.js</span>",
+    "<span>INTEGRATION_TYPE_RK2</span> <span class=\"search-result-import-path\">nebula-engine/src/math/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/constants.js~integration_type_rk4",
+    "nebula-engine/src/math/constants.js~integration_type_rk4",
     "variable/index.html#static-variable-INTEGRATION_TYPE_RK4",
-    "<span>INTEGRATION_TYPE_RK4</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/constants.js</span>",
+    "<span>INTEGRATION_TYPE_RK4</span> <span class=\"search-result-import-path\">nebula-engine/src/math/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/constants.js~integration_type_verlet",
+    "nebula-engine/src/math/constants.js~integration_type_verlet",
     "variable/index.html#static-variable-INTEGRATION_TYPE_VERLET",
-    "<span>INTEGRATION_TYPE_VERLET</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/constants.js</span>",
+    "<span>INTEGRATION_TYPE_VERLET</span> <span class=\"search-result-import-path\">nebula-engine/src/math/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/initializer.js~initializer",
+    "nebula-engine/src/initializer/initializer.js~initializer",
     "class/src/initializer/Initializer.js~Initializer.html",
-    "<span>Initializer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Initializer.js</span>",
+    "<span>Initializer</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/Initializer.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/life.js~life",
+    "nebula-engine/src/initializer/life.js~life",
     "class/src/initializer/Life.js~Life.html",
-    "<span>Life</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Life.js</span>",
+    "<span>Life</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/Life.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/linezone.js~linezone",
+    "nebula-engine/src/zone/linezone.js~linezone",
     "class/src/zone/LineZone.js~LineZone.html",
-    "<span>LineZone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/LineZone.js</span>",
+    "<span>LineZone</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/LineZone.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/types.js~math_type_array_span",
+    "nebula-engine/src/math/types.js~math_type_array_span",
     "variable/index.html#static-variable-MATH_TYPE_ARRAY_SPAN",
-    "<span>MATH_TYPE_ARRAY_SPAN</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/types.js</span>",
+    "<span>MATH_TYPE_ARRAY_SPAN</span> <span class=\"search-result-import-path\">nebula-engine/src/math/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/types.js~math_type_box",
+    "nebula-engine/src/math/types.js~math_type_box",
     "variable/index.html#static-variable-MATH_TYPE_BOX",
-    "<span>MATH_TYPE_BOX</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/types.js</span>",
+    "<span>MATH_TYPE_BOX</span> <span class=\"search-result-import-path\">nebula-engine/src/math/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/types.js~math_type_color_span",
+    "nebula-engine/src/math/types.js~math_type_color_span",
     "variable/index.html#static-variable-MATH_TYPE_COLOR_SPAN",
-    "<span>MATH_TYPE_COLOR_SPAN</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/types.js</span>",
+    "<span>MATH_TYPE_COLOR_SPAN</span> <span class=\"search-result-import-path\">nebula-engine/src/math/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/types.js~math_type_polar_3d",
+    "nebula-engine/src/math/types.js~math_type_polar_3d",
     "variable/index.html#static-variable-MATH_TYPE_POLAR_3D",
-    "<span>MATH_TYPE_POLAR_3D</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/types.js</span>",
+    "<span>MATH_TYPE_POLAR_3D</span> <span class=\"search-result-import-path\">nebula-engine/src/math/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/types.js~math_type_span",
+    "nebula-engine/src/math/types.js~math_type_span",
     "variable/index.html#static-variable-MATH_TYPE_SPAN",
-    "<span>MATH_TYPE_SPAN</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/types.js</span>",
+    "<span>MATH_TYPE_SPAN</span> <span class=\"search-result-import-path\">nebula-engine/src/math/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/types.js~math_type_vector_3d",
+    "nebula-engine/src/math/types.js~math_type_vector_3d",
     "variable/index.html#static-variable-MATH_TYPE_VECTOR_3D",
-    "<span>MATH_TYPE_VECTOR_3D</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/types.js</span>",
+    "<span>MATH_TYPE_VECTOR_3D</span> <span class=\"search-result-import-path\">nebula-engine/src/math/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~measure",
+    "nebula-engine/src/constants/index.js~measure",
     "variable/index.html#static-variable-MEASURE",
-    "<span>MEASURE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>MEASURE</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/mass.js~mass",
+    "nebula-engine/src/initializer/mass.js~mass",
     "class/src/initializer/Mass.js~Mass.html",
-    "<span>Mass</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Mass.js</span>",
+    "<span>Mass</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/Mass.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/meshrenderer.js~meshrenderer",
+    "nebula-engine/src/renderer/meshrenderer.js~meshrenderer",
     "class/src/renderer/MeshRenderer.js~MeshRenderer.html",
-    "<span>MeshRenderer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/MeshRenderer.js</span>",
+    "<span>MeshRenderer</span> <span class=\"search-result-import-path\">nebula-engine/src/renderer/MeshRenderer.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/meshzone.js~meshzone",
+    "nebula-engine/src/zone/meshzone.js~meshzone",
     "class/src/zone/MeshZone.js~MeshZone.html",
-    "<span>MeshZone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/MeshZone.js</span>",
+    "<span>MeshZone</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/MeshZone.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/constants.js~particle_alpha_threshold",
+    "nebula-engine/src/behaviour/constants.js~particle_alpha_threshold",
     "variable/index.html#static-variable-PARTICLE_ALPHA_THRESHOLD",
-    "<span>PARTICLE_ALPHA_THRESHOLD</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
+    "<span>PARTICLE_ALPHA_THRESHOLD</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~particle_created",
+    "nebula-engine/src/constants/index.js~particle_created",
     "variable/index.html#static-variable-PARTICLE_CREATED",
-    "<span>PARTICLE_CREATED</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>PARTICLE_CREATED</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/events/constants.js~particle_created",
+    "nebula-engine/src/events/constants.js~particle_created",
     "variable/index.html#static-variable-PARTICLE_CREATED",
-    "<span>PARTICLE_CREATED</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/events/constants.js</span>",
+    "<span>PARTICLE_CREATED</span> <span class=\"search-result-import-path\">nebula-engine/src/events/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~particle_dead",
+    "nebula-engine/src/constants/index.js~particle_dead",
     "variable/index.html#static-variable-PARTICLE_DEAD",
-    "<span>PARTICLE_DEAD</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>PARTICLE_DEAD</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/events/constants.js~particle_dead",
+    "nebula-engine/src/events/constants.js~particle_dead",
     "variable/index.html#static-variable-PARTICLE_DEAD",
-    "<span>PARTICLE_DEAD</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/events/constants.js</span>",
+    "<span>PARTICLE_DEAD</span> <span class=\"search-result-import-path\">nebula-engine/src/events/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/constants.js~particle_length_sq_threshold",
+    "nebula-engine/src/behaviour/constants.js~particle_length_sq_threshold",
     "variable/index.html#static-variable-PARTICLE_LENGTH_SQ_THRESHOLD",
-    "<span>PARTICLE_LENGTH_SQ_THRESHOLD</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/constants.js</span>",
+    "<span>PARTICLE_LENGTH_SQ_THRESHOLD</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~particle_sleep",
+    "nebula-engine/src/constants/index.js~particle_sleep",
     "variable/index.html#static-variable-PARTICLE_SLEEP",
-    "<span>PARTICLE_SLEEP</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>PARTICLE_SLEEP</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~particle_update",
+    "nebula-engine/src/constants/index.js~particle_update",
     "variable/index.html#static-variable-PARTICLE_UPDATE",
-    "<span>PARTICLE_UPDATE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>PARTICLE_UPDATE</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/events/constants.js~particle_update",
+    "nebula-engine/src/events/constants.js~particle_update",
     "variable/index.html#static-variable-PARTICLE_UPDATE",
-    "<span>PARTICLE_UPDATE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/events/constants.js</span>",
+    "<span>PARTICLE_UPDATE</span> <span class=\"search-result-import-path\">nebula-engine/src/events/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~pi",
+    "nebula-engine/src/constants/index.js~pi",
     "variable/index.html#static-variable-PI",
-    "<span>PI</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>PI</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~pool_max",
+    "nebula-engine/src/constants/index.js~pool_max",
     "variable/index.html#static-variable-POOL_MAX",
-    "<span>POOL_MAX</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>POOL_MAX</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~proton_update",
-    "variable/index.html#static-variable-PROTON_UPDATE",
-    "<span>PROTON_UPDATE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
-    "variable"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/events/constants.js~proton_update",
-    "variable/index.html#static-variable-PROTON_UPDATE",
-    "<span>PROTON_UPDATE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/events/constants.js</span>",
-    "variable"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/constants/index.js~proton_update_after",
-    "variable/index.html#static-variable-PROTON_UPDATE_AFTER",
-    "<span>PROTON_UPDATE_AFTER</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
-    "variable"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/events/constants.js~proton_update_after",
-    "variable/index.html#static-variable-PROTON_UPDATE_AFTER",
-    "<span>PROTON_UPDATE_AFTER</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/events/constants.js</span>",
-    "variable"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/core/particle.js~particle",
+    "nebula-engine/src/core/particle.js~particle",
     "class/src/core/Particle.js~Particle.html",
-    "<span>Particle</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/Particle.js</span>",
+    "<span>Particle</span> <span class=\"search-result-import-path\">nebula-engine/src/core/Particle.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/pointzone.js~pointzone",
+    "nebula-engine/src/zone/pointzone.js~pointzone",
     "class/src/zone/PointZone.js~PointZone.html",
-    "<span>PointZone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/PointZone.js</span>",
+    "<span>PointZone</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/PointZone.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/pointsrenderer.js~pointsrenderer",
+    "nebula-engine/src/renderer/pointsrenderer.js~pointsrenderer",
     "class/src/renderer/PointsRenderer.js~PointsRenderer.html",
-    "<span>PointsRenderer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/PointsRenderer.js</span>",
+    "<span>PointsRenderer</span> <span class=\"search-result-import-path\">nebula-engine/src/renderer/PointsRenderer.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/polar3d.js~polar3d",
+    "nebula-engine/src/math/polar3d.js~polar3d",
     "class/src/math/Polar3D.js~Polar3D.html",
-    "<span>Polar3D</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/Polar3D.js</span>",
+    "<span>Polar3D</span> <span class=\"search-result-import-path\">nebula-engine/src/math/Polar3D.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/velocity/polarvelocity.js~polarvelocity",
+    "nebula-engine/src/initializer/velocity/polarvelocity.js~polarvelocity",
     "class/src/initializer/Velocity/PolarVelocity.js~PolarVelocity.html",
-    "<span>PolarVelocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity/PolarVelocity.js</span>",
+    "<span>PolarVelocity</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/Velocity/PolarVelocity.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/pool.js~pool",
+    "nebula-engine/src/core/pool.js~pool",
     "class/src/core/Pool.js~Pool.html",
-    "<span>Pool</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/Pool.js</span>",
+    "<span>Pool</span> <span class=\"search-result-import-path\">nebula-engine/src/core/Pool.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/position.js~position",
+    "nebula-engine/src/initializer/position.js~position",
     "class/src/initializer/Position.js~Position.html",
-    "<span>Position</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Position.js</span>",
+    "<span>Position</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/Position.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/proton.js~proton",
-    "class/src/core/Proton.js~Proton.html",
-    "<span>Proton</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/Proton.js</span>",
-    "class"
-  ],
-  [
-    "@rohandeshpande/three-proton/src/renderer/types.js~renderer_type_base",
+    "nebula-engine/src/renderer/types.js~renderer_type_base",
     "variable/index.html#static-variable-RENDERER_TYPE_BASE",
-    "<span>RENDERER_TYPE_BASE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/types.js</span>",
+    "<span>RENDERER_TYPE_BASE</span> <span class=\"search-result-import-path\">nebula-engine/src/renderer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/types.js~renderer_type_custom",
+    "nebula-engine/src/renderer/types.js~renderer_type_custom",
     "variable/index.html#static-variable-RENDERER_TYPE_CUSTOM",
-    "<span>RENDERER_TYPE_CUSTOM</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/types.js</span>",
+    "<span>RENDERER_TYPE_CUSTOM</span> <span class=\"search-result-import-path\">nebula-engine/src/renderer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/types.js~renderer_type_mesh",
+    "nebula-engine/src/renderer/types.js~renderer_type_mesh",
     "variable/index.html#static-variable-RENDERER_TYPE_MESH",
-    "<span>RENDERER_TYPE_MESH</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/types.js</span>",
+    "<span>RENDERER_TYPE_MESH</span> <span class=\"search-result-import-path\">nebula-engine/src/renderer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/types.js~renderer_type_points",
+    "nebula-engine/src/renderer/types.js~renderer_type_points",
     "variable/index.html#static-variable-RENDERER_TYPE_POINTS",
-    "<span>RENDERER_TYPE_POINTS</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/types.js</span>",
+    "<span>RENDERER_TYPE_POINTS</span> <span class=\"search-result-import-path\">nebula-engine/src/renderer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/types.js~renderer_type_sprite",
+    "nebula-engine/src/renderer/types.js~renderer_type_sprite",
     "variable/index.html#static-variable-RENDERER_TYPE_SPRITE",
-    "<span>RENDERER_TYPE_SPRITE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/types.js</span>",
+    "<span>RENDERER_TYPE_SPRITE</span> <span class=\"search-result-import-path\">nebula-engine/src/renderer/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~rk2",
+    "nebula-engine/src/constants/index.js~rk2",
     "variable/index.html#static-variable-RK2",
-    "<span>RK2</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>RK2</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~rk4",
+    "nebula-engine/src/constants/index.js~rk4",
     "variable/index.html#static-variable-RK4",
-    "<span>RK4</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>RK4</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/velocity/radialvelocity.js~radialvelocity",
+    "nebula-engine/src/initializer/velocity/radialvelocity.js~radialvelocity",
     "class/src/initializer/Velocity/RadialVelocity.js~RadialVelocity.html",
-    "<span>RadialVelocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity/RadialVelocity.js</span>",
+    "<span>RadialVelocity</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/Velocity/RadialVelocity.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/radius.js~radius",
+    "nebula-engine/src/initializer/radius.js~radius",
     "class/src/initializer/Radius.js~Radius.html",
-    "<span>Radius</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Radius.js</span>",
+    "<span>Radius</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/Radius.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/randomdrift.js~randomdrift",
+    "nebula-engine/src/behaviour/randomdrift.js~randomdrift",
     "class/src/behaviour/RandomDrift.js~RandomDrift.html",
-    "<span>RandomDrift</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/RandomDrift.js</span>",
+    "<span>RandomDrift</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/RandomDrift.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/rate.js~rate",
+    "nebula-engine/src/initializer/rate.js~rate",
     "class/src/initializer/Rate.js~Rate.html",
-    "<span>Rate</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Rate.js</span>",
+    "<span>Rate</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/Rate.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/repulsion.js~repulsion",
+    "nebula-engine/src/behaviour/repulsion.js~repulsion",
     "class/src/behaviour/Repulsion.js~Repulsion.html",
-    "<span>Repulsion</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Repulsion.js</span>",
+    "<span>Repulsion</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/Repulsion.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/rotate.js~rotate",
+    "nebula-engine/src/behaviour/rotate.js~rotate",
     "class/src/behaviour/Rotate.js~Rotate.html",
-    "<span>Rotate</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Rotate.js</span>",
+    "<span>Rotate</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/Rotate.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~supported_json_behaviour_types",
+    "nebula-engine/src/core/constants.js~supported_json_behaviour_types",
     "variable/index.html#static-variable-SUPPORTED_JSON_BEHAVIOUR_TYPES",
-    "<span>SUPPORTED_JSON_BEHAVIOUR_TYPES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>SUPPORTED_JSON_BEHAVIOUR_TYPES</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~supported_json_initializer_types",
+    "nebula-engine/src/core/constants.js~supported_json_initializer_types",
     "variable/index.html#static-variable-SUPPORTED_JSON_INITIALIZER_TYPES",
-    "<span>SUPPORTED_JSON_INITIALIZER_TYPES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>SUPPORTED_JSON_INITIALIZER_TYPES</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~supported_json_renderer_types",
+    "nebula-engine/src/core/constants.js~supported_json_renderer_types",
     "variable/index.html#static-variable-SUPPORTED_JSON_RENDERER_TYPES",
-    "<span>SUPPORTED_JSON_RENDERER_TYPES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>SUPPORTED_JSON_RENDERER_TYPES</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/constants.js~supported_json_zone_types",
+    "nebula-engine/src/core/constants.js~supported_json_zone_types",
     "variable/index.html#static-variable-SUPPORTED_JSON_ZONE_TYPES",
-    "<span>SUPPORTED_JSON_ZONE_TYPES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/constants.js</span>",
+    "<span>SUPPORTED_JSON_ZONE_TYPES</span> <span class=\"search-result-import-path\">nebula-engine/src/core/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/constants.js~supported_material_blending_modes",
+    "nebula-engine/src/initializer/constants.js~supported_material_blending_modes",
     "variable/index.html#static-variable-SUPPORTED_MATERIAL_BLENDING_MODES",
-    "<span>SUPPORTED_MATERIAL_BLENDING_MODES</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/constants.js</span>",
+    "<span>SUPPORTED_MATERIAL_BLENDING_MODES</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/constants.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/scale.js~scale",
+    "nebula-engine/src/constants/index.js~system_update",
+    "variable/index.html#static-variable-SYSTEM_UPDATE",
+    "<span>SYSTEM_UPDATE</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
+    "variable"
+  ],
+  [
+    "nebula-engine/src/events/constants.js~system_update",
+    "variable/index.html#static-variable-SYSTEM_UPDATE",
+    "<span>SYSTEM_UPDATE</span> <span class=\"search-result-import-path\">nebula-engine/src/events/constants.js</span>",
+    "variable"
+  ],
+  [
+    "nebula-engine/src/constants/index.js~system_update_after",
+    "variable/index.html#static-variable-SYSTEM_UPDATE_AFTER",
+    "<span>SYSTEM_UPDATE_AFTER</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
+    "variable"
+  ],
+  [
+    "nebula-engine/src/events/constants.js~system_update_after",
+    "variable/index.html#static-variable-SYSTEM_UPDATE_AFTER",
+    "<span>SYSTEM_UPDATE_AFTER</span> <span class=\"search-result-import-path\">nebula-engine/src/events/constants.js</span>",
+    "variable"
+  ],
+  [
+    "nebula-engine/src/behaviour/scale.js~scale",
     "class/src/behaviour/Scale.js~Scale.html",
-    "<span>Scale</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Scale.js</span>",
+    "<span>Scale</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/Scale.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/screenzone.js~screenzone",
+    "nebula-engine/src/zone/screenzone.js~screenzone",
     "class/src/zone/ScreenZone.js~ScreenZone.html",
-    "<span>ScreenZone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/ScreenZone.js</span>",
+    "<span>ScreenZone</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/ScreenZone.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/span.js~span",
+    "nebula-engine/src/math/span.js~span",
     "class/src/math/Span.js~Span.html",
-    "<span>Span</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/Span.js</span>",
+    "<span>Span</span> <span class=\"search-result-import-path\">nebula-engine/src/math/Span.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/spherezone.js~spherezone",
+    "nebula-engine/src/zone/spherezone.js~spherezone",
     "class/src/zone/SphereZone.js~SphereZone.html",
-    "<span>SphereZone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/SphereZone.js</span>",
+    "<span>SphereZone</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/SphereZone.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/behaviour/spring.js~spring",
+    "nebula-engine/src/behaviour/spring.js~spring",
     "class/src/behaviour/Spring.js~Spring.html",
-    "<span>Spring</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/behaviour/Spring.js</span>",
+    "<span>Spring</span> <span class=\"search-result-import-path\">nebula-engine/src/behaviour/Spring.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/renderer/spriterenderer.js~spriterenderer",
+    "nebula-engine/src/renderer/spriterenderer.js~spriterenderer",
     "class/src/renderer/SpriteRenderer.js~SpriteRenderer.html",
-    "<span>SpriteRenderer</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/renderer/SpriteRenderer.js</span>",
+    "<span>SpriteRenderer</span> <span class=\"search-result-import-path\">nebula-engine/src/renderer/SpriteRenderer.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~time_step",
+    "nebula-engine/src/core/system.js~system",
+    "class/src/core/System.js~System.html",
+    "<span>System</span> <span class=\"search-result-import-path\">nebula-engine/src/core/System.js</span>",
+    "class"
+  ],
+  [
+    "nebula-engine/src/constants/index.js~time_step",
     "variable/index.html#static-variable-TIME_STEP",
-    "<span>TIME_STEP</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>TIME_STEP</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/texture.js~texture",
+    "nebula-engine/src/initializer/texture.js~texture",
     "class/src/initializer/Texture.js~Texture.html",
-    "<span>Texture</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Texture.js</span>",
+    "<span>Texture</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/Texture.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/constants/index.js~verlet",
+    "nebula-engine/src/constants/index.js~verlet",
     "variable/index.html#static-variable-VERLET",
-    "<span>VERLET</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/constants/index.js</span>",
+    "<span>VERLET</span> <span class=\"search-result-import-path\">nebula-engine/src/constants/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/vector3d.js~vector3d",
+    "nebula-engine/src/math/vector3d.js~vector3d",
     "class/src/math/Vector3D.js~Vector3D.html",
-    "<span>Vector3D</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/Vector3D.js</span>",
+    "<span>Vector3D</span> <span class=\"search-result-import-path\">nebula-engine/src/math/Vector3D.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/velocity/vectorvelocity.js~vectorvelocity",
+    "nebula-engine/src/initializer/velocity/vectorvelocity.js~vectorvelocity",
     "class/src/initializer/Velocity/VectorVelocity.js~VectorVelocity.html",
-    "<span>VectorVelocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity/VectorVelocity.js</span>",
+    "<span>VectorVelocity</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/Velocity/VectorVelocity.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/initializer/velocity/velocity.js~velocity",
+    "nebula-engine/src/initializer/velocity/velocity.js~velocity",
     "class/src/initializer/Velocity/Velocity.js~Velocity.html",
-    "<span>Velocity</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/initializer/Velocity/Velocity.js</span>",
+    "<span>Velocity</span> <span class=\"search-result-import-path\">nebula-engine/src/initializer/Velocity/Velocity.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_abstract",
+    "nebula-engine/src/zone/types.js~zone_type_abstract",
     "variable/index.html#static-variable-ZONE_TYPE_ABSTRACT",
-    "<span>ZONE_TYPE_ABSTRACT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "<span>ZONE_TYPE_ABSTRACT</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_box",
+    "nebula-engine/src/zone/types.js~zone_type_box",
     "variable/index.html#static-variable-ZONE_TYPE_BOX",
-    "<span>ZONE_TYPE_BOX</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "<span>ZONE_TYPE_BOX</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_line",
+    "nebula-engine/src/zone/types.js~zone_type_line",
     "variable/index.html#static-variable-ZONE_TYPE_LINE",
-    "<span>ZONE_TYPE_LINE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "<span>ZONE_TYPE_LINE</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_mesh",
+    "nebula-engine/src/zone/types.js~zone_type_mesh",
     "variable/index.html#static-variable-ZONE_TYPE_MESH",
-    "<span>ZONE_TYPE_MESH</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "<span>ZONE_TYPE_MESH</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_point",
+    "nebula-engine/src/zone/types.js~zone_type_point",
     "variable/index.html#static-variable-ZONE_TYPE_POINT",
-    "<span>ZONE_TYPE_POINT</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "<span>ZONE_TYPE_POINT</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_screen",
+    "nebula-engine/src/zone/types.js~zone_type_screen",
     "variable/index.html#static-variable-ZONE_TYPE_SCREEN",
-    "<span>ZONE_TYPE_SCREEN</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "<span>ZONE_TYPE_SCREEN</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/types.js~zone_type_sphere",
+    "nebula-engine/src/zone/types.js~zone_type_sphere",
     "variable/index.html#static-variable-ZONE_TYPE_SPHERE",
-    "<span>ZONE_TYPE_SPHERE</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/types.js</span>",
+    "<span>ZONE_TYPE_SPHERE</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/types.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/zone/zone.js~zone",
+    "nebula-engine/src/zone/zone.js~zone",
     "class/src/zone/Zone.js~Zone.html",
-    "<span>Zone</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/zone/Zone.js</span>",
+    "<span>Zone</span> <span class=\"search-result-import-path\">nebula-engine/src/zone/Zone.js</span>",
     "class"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/arrayspan.js~createarrayspan",
+    "nebula-engine/src/math/arrayspan.js~createarrayspan",
     "function/index.html#static-function-createArraySpan",
-    "<span>createArraySpan</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/ArraySpan.js</span>",
+    "<span>createArraySpan</span> <span class=\"search-result-import-path\">nebula-engine/src/math/ArraySpan.js</span>",
     "function"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/colorspan.js~createcolorspan",
+    "nebula-engine/src/math/colorspan.js~createcolorspan",
     "function/index.html#static-function-createColorSpan",
-    "<span>createColorSpan</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/ColorSpan.js</span>",
+    "<span>createColorSpan</span> <span class=\"search-result-import-path\">nebula-engine/src/math/ColorSpan.js</span>",
     "function"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/span.js~createspan",
+    "nebula-engine/src/math/span.js~createspan",
     "function/index.html#static-function-createSpan",
-    "<span>createSpan</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/Span.js</span>",
+    "<span>createSpan</span> <span class=\"search-result-import-path\">nebula-engine/src/math/Span.js</span>",
     "function"
   ],
   [
-    "@rohandeshpande/three-proton/src/ease/index.js~ease",
+    "nebula-engine/src/ease/index.js~ease",
     "variable/index.html#static-variable-ease",
-    "<span>ease</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/ease/index.js</span>",
+    "<span>ease</span> <span class=\"search-result-import-path\">nebula-engine/src/ease/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/ease/index.js~easelinear",
+    "nebula-engine/src/ease/index.js~easelinear",
     "variable/index.html#static-variable-easeLinear",
-    "<span>easeLinear</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/ease/index.js</span>",
+    "<span>easeLinear</span> <span class=\"search-result-import-path\">nebula-engine/src/ease/index.js</span>",
     "variable"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/fromjson.js~fromjson",
+    "nebula-engine/src/core/fromjson.js~fromjson",
     "function/index.html#static-function-fromJSON",
-    "<span>fromJSON</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/fromJSON.js</span>",
+    "<span>fromJSON</span> <span class=\"search-result-import-path\">nebula-engine/src/core/fromJSON.js</span>",
     "function"
   ],
   [
-    "@rohandeshpande/three-proton/src/core/fromjsonasync.js~fromjsonasync",
+    "nebula-engine/src/core/fromjsonasync.js~fromjsonasync",
     "function/index.html#static-function-fromJSONAsync",
-    "<span>fromJSONAsync</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/core/fromJSONAsync.js</span>",
+    "<span>fromJSONAsync</span> <span class=\"search-result-import-path\">nebula-engine/src/core/fromJSONAsync.js</span>",
     "function"
   ],
   [
-    "@rohandeshpande/three-proton/src/ease/index.js~geteasingbyname",
+    "nebula-engine/src/ease/index.js~geteasingbyname",
     "function/index.html#static-function-getEasingByName",
-    "<span>getEasingByName</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/ease/index.js</span>",
+    "<span>getEasingByName</span> <span class=\"search-result-import-path\">nebula-engine/src/ease/index.js</span>",
     "function"
   ],
   [
-    "@rohandeshpande/three-proton/src/math/integration.js~integrate",
+    "nebula-engine/src/math/integration.js~integrate",
     "function/index.html#static-function-integrate",
-    "<span>integrate</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/math/integration.js</span>",
+    "<span>integrate</span> <span class=\"search-result-import-path\">nebula-engine/src/math/integration.js</span>",
     "function"
   ],
   [
-    "@rohandeshpande/three-proton/src/debug/log.js~log",
+    "nebula-engine/src/debug/log.js~log",
     "function/index.html#static-function-log",
-    "<span>log</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/debug/log.js</span>",
+    "<span>log</span> <span class=\"search-result-import-path\">nebula-engine/src/debug/log.js</span>",
     "function"
   ],
   [
-    "@rohandeshpande/three-proton/src/ease/index.js~seteasingbyname",
+    "nebula-engine/src/ease/index.js~seteasingbyname",
     "function/index.html#static-function-setEasingByName",
-    "<span>setEasingByName</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/ease/index.js</span>",
+    "<span>setEasingByName</span> <span class=\"search-result-import-path\">nebula-engine/src/ease/index.js</span>",
     "function"
   ],
   [
-    "@rohandeshpande/three-proton/src/utils/index.js~withdefaults",
+    "nebula-engine/src/utils/index.js~withdefaults",
     "function/index.html#static-function-withDefaults",
-    "<span>withDefaults</span> <span class=\"search-result-import-path\">@rohandeshpande/three-proton/src/utils/index.js</span>",
+    "<span>withDefaults</span> <span class=\"search-result-import-path\">nebula-engine/src/utils/index.js</span>",
     "function"
   ],
   [
@@ -1435,13 +1435,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -1747,13 +1747,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
@@ -2059,13 +2059,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
@@ -2448,123 +2448,117 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/core/proton.js",
-    "file/src/core/Proton.js.html",
-    "src/core/Proton.js",
+    "src/core/system.js",
+    "file/src/core/System.js.html",
+    "src/core/System.js",
     "file"
   ],
   [
-    "src/core/proton.js~proton#addemitter",
-    "class/src/core/Proton.js~Proton.html#instance-method-addEmitter",
-    "src/core/Proton.js~Proton#addEmitter",
+    "src/core/system.js~system#addemitter",
+    "class/src/core/System.js~System.html#instance-method-addEmitter",
+    "src/core/System.js~System#addEmitter",
     "method"
   ],
   [
-    "src/core/proton.js~proton#addrenderer",
-    "class/src/core/Proton.js~Proton.html#instance-method-addRenderer",
-    "src/core/Proton.js~Proton#addRenderer",
+    "src/core/system.js~system#addrenderer",
+    "class/src/core/System.js~System.html#instance-method-addRenderer",
+    "src/core/System.js~System#addRenderer",
     "method"
   ],
   [
-    "src/core/proton.js~proton#canupdate",
-    "class/src/core/Proton.js~Proton.html#instance-member-canUpdate",
-    "src/core/Proton.js~Proton#canUpdate",
+    "src/core/system.js~system#constructor",
+    "class/src/core/System.js~System.html#instance-constructor-constructor",
+    "src/core/System.js~System#constructor",
+    "method"
+  ],
+  [
+    "src/core/system.js~system#destroy",
+    "class/src/core/System.js~System.html#instance-method-destroy",
+    "src/core/System.js~System#destroy",
+    "method"
+  ],
+  [
+    "src/core/system.js~system#dispatch",
+    "class/src/core/System.js~System.html#instance-method-dispatch",
+    "src/core/System.js~System#dispatch",
+    "method"
+  ],
+  [
+    "src/core/system.js~system#emitters",
+    "class/src/core/System.js~System.html#instance-member-emitters",
+    "src/core/System.js~System#emitters",
     "member"
   ],
   [
-    "src/core/proton.js~proton#constructor",
-    "class/src/core/Proton.js~Proton.html#instance-constructor-constructor",
-    "src/core/Proton.js~Proton#constructor",
-    "method"
-  ],
-  [
-    "src/core/proton.js~proton#destroy",
-    "class/src/core/Proton.js~Proton.html#instance-method-destroy",
-    "src/core/Proton.js~Proton#destroy",
-    "method"
-  ],
-  [
-    "src/core/proton.js~proton#dispatch",
-    "class/src/core/Proton.js~Proton.html#instance-method-dispatch",
-    "src/core/Proton.js~Proton#dispatch",
-    "method"
-  ],
-  [
-    "src/core/proton.js~proton#emitters",
-    "class/src/core/Proton.js~Proton.html#instance-member-emitters",
-    "src/core/Proton.js~Proton#emitters",
+    "src/core/system.js~system#eventdispatcher",
+    "class/src/core/System.js~System.html#instance-member-eventDispatcher",
+    "src/core/System.js~System#eventDispatcher",
     "member"
   ],
   [
-    "src/core/proton.js~proton#eventdispatcher",
-    "class/src/core/Proton.js~Proton.html#instance-member-eventDispatcher",
-    "src/core/Proton.js~Proton#eventDispatcher",
-    "member"
-  ],
-  [
-    "src/core/proton.js~proton#getcount",
-    "class/src/core/Proton.js~Proton.html#instance-method-getCount",
-    "src/core/Proton.js~Proton#getCount",
+    "src/core/system.js~system#getcount",
+    "class/src/core/System.js~System.html#instance-method-getCount",
+    "src/core/System.js~System#getCount",
     "method"
   ],
   [
-    "src/core/proton.js~proton#integrationtype",
-    "class/src/core/Proton.js~Proton.html#instance-member-integrationType",
-    "src/core/Proton.js~Proton#integrationType",
+    "src/core/system.js~system#integrationtype",
+    "class/src/core/System.js~System.html#instance-member-integrationType",
+    "src/core/System.js~System#integrationType",
     "member"
   ],
   [
-    "src/core/proton.js~proton#pool",
-    "class/src/core/Proton.js~Proton.html#instance-member-pool",
-    "src/core/Proton.js~Proton#pool",
+    "src/core/system.js~system#pool",
+    "class/src/core/System.js~System.html#instance-member-pool",
+    "src/core/System.js~System#pool",
     "member"
   ],
   [
-    "src/core/proton.js~proton#preparticles",
-    "class/src/core/Proton.js~Proton.html#instance-member-preParticles",
-    "src/core/Proton.js~Proton#preParticles",
+    "src/core/system.js~system#preparticles",
+    "class/src/core/System.js~System.html#instance-member-preParticles",
+    "src/core/System.js~System#preParticles",
     "member"
   ],
   [
-    "src/core/proton.js~proton#removeemitter",
-    "class/src/core/Proton.js~Proton.html#instance-method-removeEmitter",
-    "src/core/Proton.js~Proton#removeEmitter",
+    "src/core/system.js~system#removeemitter",
+    "class/src/core/System.js~System.html#instance-method-removeEmitter",
+    "src/core/System.js~System#removeEmitter",
     "method"
   ],
   [
-    "src/core/proton.js~proton#removerenderer",
-    "class/src/core/Proton.js~Proton.html#instance-method-removeRenderer",
-    "src/core/Proton.js~Proton#removeRenderer",
+    "src/core/system.js~system#removerenderer",
+    "class/src/core/System.js~System.html#instance-method-removeRenderer",
+    "src/core/System.js~System#removeRenderer",
     "method"
   ],
   [
-    "src/core/proton.js~proton#renderers",
-    "class/src/core/Proton.js~Proton.html#instance-member-renderers",
-    "src/core/Proton.js~Proton#renderers",
+    "src/core/system.js~system#renderers",
+    "class/src/core/System.js~System.html#instance-member-renderers",
+    "src/core/System.js~System#renderers",
     "member"
   ],
   [
-    "src/core/proton.js~proton#type",
-    "class/src/core/Proton.js~Proton.html#instance-member-type",
-    "src/core/Proton.js~Proton#type",
+    "src/core/system.js~system#type",
+    "class/src/core/System.js~System.html#instance-member-type",
+    "src/core/System.js~System#type",
     "member"
   ],
   [
-    "src/core/proton.js~proton#update",
-    "class/src/core/Proton.js~Proton.html#instance-method-update",
-    "src/core/Proton.js~Proton#update",
+    "src/core/system.js~system#update",
+    "class/src/core/System.js~System.html#instance-method-update",
+    "src/core/System.js~System#update",
     "method"
   ],
   [
-    "src/core/proton.js~proton.fromjson",
-    "class/src/core/Proton.js~Proton.html#static-method-fromJSON",
-    "src/core/Proton.js~Proton.fromJSON",
+    "src/core/system.js~system.fromjson",
+    "class/src/core/System.js~System.html#static-method-fromJSON",
+    "src/core/System.js~System.fromJSON",
     "method"
   ],
   [
-    "src/core/proton.js~proton.fromjsonasync",
-    "class/src/core/Proton.js~Proton.html#static-method-fromJSONAsync",
-    "src/core/Proton.js~Proton.fromJSONAsync",
+    "src/core/system.js~system.fromjsonasync",
+    "class/src/core/System.js~System.html#static-method-fromJSONAsync",
+    "src/core/System.js~System.fromJSONAsync",
     "method"
   ],
   [
@@ -3079,13 +3073,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -4086,22 +4080,22 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/renderer/baserenderer.js~baserenderer#onprotonupdate",
-    "class/src/renderer/BaseRenderer.js~BaseRenderer.html#instance-method-onProtonUpdate",
-    "src/renderer/BaseRenderer.js~BaseRenderer#onProtonUpdate",
+    "src/renderer/baserenderer.js~baserenderer#onsystemupdate",
+    "class/src/renderer/BaseRenderer.js~BaseRenderer.html#instance-method-onSystemUpdate",
+    "src/renderer/BaseRenderer.js~BaseRenderer#onSystemUpdate",
     "method"
-  ],
-  [
-    "src/renderer/baserenderer.js~baserenderer#proton",
-    "class/src/renderer/BaseRenderer.js~BaseRenderer.html#instance-member-proton",
-    "src/renderer/BaseRenderer.js~BaseRenderer#proton",
-    "member"
   ],
   [
     "src/renderer/baserenderer.js~baserenderer#remove",
     "class/src/renderer/BaseRenderer.js~BaseRenderer.html#instance-method-remove",
     "src/renderer/BaseRenderer.js~BaseRenderer#remove",
     "method"
+  ],
+  [
+    "src/renderer/baserenderer.js~baserenderer#system",
+    "class/src/renderer/BaseRenderer.js~BaseRenderer.html#instance-member-system",
+    "src/renderer/BaseRenderer.js~BaseRenderer#system",
+    "member"
   ],
   [
     "src/renderer/baserenderer.js~baserenderer#type",
@@ -4146,9 +4140,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/renderer/customrenderer.js~customrenderer#onprotonupdate",
-    "class/src/renderer/CustomRenderer.js~CustomRenderer.html#instance-method-onProtonUpdate",
-    "src/renderer/CustomRenderer.js~CustomRenderer#onProtonUpdate",
+    "src/renderer/customrenderer.js~customrenderer#onsystemupdate",
+    "class/src/renderer/CustomRenderer.js~CustomRenderer.html#instance-method-onSystemUpdate",
+    "src/renderer/CustomRenderer.js~CustomRenderer#onSystemUpdate",
     "method"
   ],
   [
@@ -4212,9 +4206,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/renderer/meshrenderer.js~meshrenderer#onprotonupdate",
-    "class/src/renderer/MeshRenderer.js~MeshRenderer.html#instance-method-onProtonUpdate",
-    "src/renderer/MeshRenderer.js~MeshRenderer#onProtonUpdate",
+    "src/renderer/meshrenderer.js~meshrenderer#onsystemupdate",
+    "class/src/renderer/MeshRenderer.js~MeshRenderer.html#instance-method-onSystemUpdate",
+    "src/renderer/MeshRenderer.js~MeshRenderer#onSystemUpdate",
     "method"
   ],
   [
@@ -4254,9 +4248,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/renderer/pointsrenderer.js~pointsrenderer#onprotonupdate",
-    "class/src/renderer/PointsRenderer.js~PointsRenderer.html#instance-method-onProtonUpdate",
-    "src/renderer/PointsRenderer.js~PointsRenderer#onProtonUpdate",
+    "src/renderer/pointsrenderer.js~pointsrenderer#onsystemupdate",
+    "class/src/renderer/PointsRenderer.js~PointsRenderer.html#instance-method-onSystemUpdate",
+    "src/renderer/PointsRenderer.js~PointsRenderer#onSystemUpdate",
     "method"
   ],
   [

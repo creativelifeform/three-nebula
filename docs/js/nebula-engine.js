@@ -2,11 +2,11 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("Proton", [], factory);
+		define("Nebula", [], factory);
 	else if(typeof exports === 'object')
-		exports["Proton"] = factory();
+		exports["Nebula"] = factory();
 	else
-		root["Proton"] = factory();
+		root["Nebula"] = factory();
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -221,7 +221,7 @@ exports.getEasingByName = exports.setEasingByName = exports.easeInOutBack = expo
 var _constants = __webpack_require__(3);
 
 /**
- * The Ease class provides a collection of easing functions for use with Proton
+ * The Ease class provides a collection of easing functions for use with System
  */
 var ease = exports.ease = {
   easeLinear: function easeLinear(value) {
@@ -444,8 +444,8 @@ var PARTICLE_CREATED = exports.PARTICLE_CREATED = 'partilcleCreated';
 var PARTICLE_UPDATE = exports.PARTICLE_UPDATE = 'partilcleUpdate';
 var PARTICLE_SLEEP = exports.PARTICLE_SLEEP = 'particleSleep';
 var PARTICLE_DEAD = exports.PARTICLE_DEAD = 'partilcleDead';
-var PROTON_UPDATE = exports.PROTON_UPDATE = 'protonUpdate';
-var PROTON_UPDATE_AFTER = exports.PROTON_UPDATE_AFTER = 'protonUpdateAfter';
+var SYSTEM_UPDATE = exports.SYSTEM_UPDATE = 'systemUpdate';
+var SYSTEM_UPDATE_AFTER = exports.SYSTEM_UPDATE_AFTER = 'systemUpdateAfter';
 var EMITTER_ADDED = exports.EMITTER_ADDED = 'emitterAdded';
 var EMITTER_REMOVED = exports.EMITTER_REMOVED = 'emitterRemoved';
 var BIND_EMITTER_EVENT = exports.BIND_EMITTER_EVENT = false;
@@ -683,7 +683,7 @@ var Behaviour = function () {
      *
      * @abstract
      * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to
-     * @param {Number} time - the proton integration time
+     * @param {Number} time - the system integration time
      * @param {integer} index - the target index
      * @return mixed
      */
@@ -703,7 +703,7 @@ var Behaviour = function () {
      *
      * @abstract
      * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to
-     * @param {Number} time - the proton integration time
+     * @param {Number} time - the system integration time
      * @return mixed
      */
 
@@ -717,7 +717,7 @@ var Behaviour = function () {
      * Sets the behaviour energy as a factor of particle age and life.
      *
      * @param {Particle} particle - The particle to apply the behaviour to
-     * @param {Number} time - the proton integration time
+     * @param {Number} time - the system integration time
      * @return void
      */
 
@@ -1471,7 +1471,7 @@ var DEFAULT_CROSS_TYPE = exports.DEFAULT_CROSS_TYPE = 'dead';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SUPPORTED_JSON_ZONE_TYPES = exports.SUPPORTED_JSON_RENDERER_TYPES = exports.SUPPORTED_JSON_BEHAVIOUR_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = exports.DEFAULT_PROTON_DELTA = exports.DEFAULT_EASING = exports.DEFAULT_USE_ALPHA = exports.DEFAULT_USE_COLOR = exports.DEFAULT_SCALE = exports.DEFAULT_ALPHA = exports.DEFAULT_RADIUS = exports.DEFAULT_MASS = exports.DEFAULT_PARENT = exports.DEFAULT_BODY = exports.DEFAULT_SLEEP = exports.DEFAULT_DEAD = exports.DEFAULT_ENERGY = exports.DEFAULT_AGE = exports.DEFAULT_LIFE = undefined;
+exports.SUPPORTED_JSON_ZONE_TYPES = exports.SUPPORTED_JSON_RENDERER_TYPES = exports.SUPPORTED_JSON_BEHAVIOUR_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = exports.DEFAULT_SYSTEM_DELTA = exports.DEFAULT_EASING = exports.DEFAULT_USE_ALPHA = exports.DEFAULT_USE_COLOR = exports.DEFAULT_SCALE = exports.DEFAULT_ALPHA = exports.DEFAULT_RADIUS = exports.DEFAULT_MASS = exports.DEFAULT_PARENT = exports.DEFAULT_BODY = exports.DEFAULT_SLEEP = exports.DEFAULT_DEAD = exports.DEFAULT_ENERGY = exports.DEFAULT_AGE = exports.DEFAULT_LIFE = undefined;
 
 var _types = __webpack_require__(2);
 
@@ -1555,31 +1555,31 @@ var DEFAULT_USE_ALPHA = exports.DEFAULT_USE_ALPHA = false;
 var DEFAULT_EASING = exports.DEFAULT_EASING = _ease.easeLinear;
 
 /**
- * @desc The default delta provided to the Proton instance
+ * @desc The default delta provided to the System instance
  * @type {number}
  */
-var DEFAULT_PROTON_DELTA = exports.DEFAULT_PROTON_DELTA = 0.0167;
+var DEFAULT_SYSTEM_DELTA = exports.DEFAULT_SYSTEM_DELTA = 0.0167;
 
 /**
- * @desc The types of initializers supported by the Proton.fromJSON method.
+ * @desc The types of initializers supported by the System.fromJSON method.
  * @type {array<string>}
  */
 var SUPPORTED_JSON_INITIALIZER_TYPES = exports.SUPPORTED_JSON_INITIALIZER_TYPES = [_types2.INITIALIZER_TYPE_POSITION, _types2.INITIALIZER_TYPE_LIFE, _types2.INITIALIZER_TYPE_RADIUS, _types2.INITIALIZER_TYPE_MASS, _types2.INITIALIZER_TYPE_BODY, _types2.INITIALIZER_TYPE_BODY_SPRITE, _types2.INITIALIZER_TYPE_TEXTURE, _types2.INITIALIZER_TYPE_POLAR_VELOCITY, _types2.INITIALIZER_TYPE_RADIAL_VELOCITY, _types2.INITIALIZER_TYPE_VECTOR_VELOCITY];
 
 /**
- * @desc The types of behaviours supported by the Proton.fromJSON method.
+ * @desc The types of behaviours supported by the System.fromJSON method.
  * @type {array<string>}
  */
 var SUPPORTED_JSON_BEHAVIOUR_TYPES = exports.SUPPORTED_JSON_BEHAVIOUR_TYPES = [_types.BEHAVIOUR_TYPE_ALPHA, _types.BEHAVIOUR_TYPE_ATTRACTION, _types.BEHAVIOUR_TYPE_COLOR, _types.BEHAVIOUR_TYPE_CROSS_ZONE, _types.BEHAVIOUR_TYPE_FORCE, _types.BEHAVIOUR_TYPE_GRAVITY, _types.BEHAVIOUR_TYPE_RANDOM_DRIFT, _types.BEHAVIOUR_TYPE_REPULSION, _types.BEHAVIOUR_TYPE_ROTATE, _types.BEHAVIOUR_TYPE_SCALE, _types.BEHAVIOUR_TYPE_SPRING];
 
 /**
- * @desc The types of renderers supported by the Proton.fromJSON method.
+ * @desc The types of renderers supported by the System.fromJSON method.
  * @type {array<string>}
  */
 var SUPPORTED_JSON_RENDERER_TYPES = exports.SUPPORTED_JSON_RENDERER_TYPES = [_types4.RENDERER_TYPE_SPRITE];
 
 /**
- * @desc The types of zones supported by the Proton.fromJSON method.
+ * @desc The types of zones supported by the System.fromJSON method.
  * @type {array<string>}
  */
 var SUPPORTED_JSON_ZONE_TYPES = exports.SUPPORTED_JSON_ZONE_TYPES = [_types3.ZONE_TYPE_BOX, _types3.ZONE_TYPE_LINE, _types3.ZONE_TYPE_MESH, _types3.ZONE_TYPE_POINT, _types3.ZONE_TYPE_SPHERE];
@@ -1818,12 +1818,12 @@ Object.defineProperty(exports, 'Pool', {
   }
 });
 
-var _Proton = __webpack_require__(56);
+var _System = __webpack_require__(56);
 
-Object.defineProperty(exports, 'Proton', {
+Object.defineProperty(exports, 'System', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_Proton).default;
+    return _interopRequireDefault(_System).default;
   }
 });
 
@@ -1908,7 +1908,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var CORE_TYPE_PARTICLE = exports.CORE_TYPE_PARTICLE = 'Particle';
 var CORE_TYPE_POOL = exports.CORE_TYPE_POOL = 'Pool';
-var CORE_TYPE_PROTON = exports.CORE_TYPE_PROTON = 'Proton';
+var CORE_TYPE_SYSTEM = exports.CORE_TYPE_SYSTEM = 'System';
 
 /***/ }),
 /* 23 */
@@ -1956,7 +1956,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Emitters are the Proton engine's particle factories. They cause particles to
+ * Emitters are the System engine's particle factories. They cause particles to
  * be rendered by emitting them, and store all particle initializers and behaviours.
  *
  */
@@ -2503,7 +2503,7 @@ var Emitter = function (_Particle) {
      *
      * If the emitter age is greater than time, the emitter is killed.
      *
-     * @param {number} time - Proton engine time
+     * @param {number} time - System engine time
      * @return void
      */
 
@@ -2538,7 +2538,7 @@ var Emitter = function (_Particle) {
     /**
      * Updates the emitter's emitter behaviours.
      *
-     * @param {number} time - Proton engine time
+     * @param {number} time - System engine time
      * @return void
      */
 
@@ -2560,7 +2560,7 @@ var Emitter = function (_Particle) {
      * Runs the integration algorithm on the emitter and all particles.
      * Updates the particles with the timstamp passed.
      *
-     * @param {number} time - Proton engine time
+     * @param {number} time - System engine time
      * @return void
      */
 
@@ -2588,7 +2588,7 @@ var Emitter = function (_Particle) {
     /**
      * Generates new particles.
      *
-     * @param {number} time - Proton engine time
+     * @param {number} time - System engine time
      * @return void
      */
 
@@ -3105,31 +3105,31 @@ var BaseRenderer = function () {
 
   _createClass(BaseRenderer, [{
     key: 'init',
-    value: function init(proton) {
+    value: function init(system) {
       var self = this;
 
-      this.proton = proton;
+      this.system = system;
 
-      this.proton.eventDispatcher.addEventListener(_constants.PROTON_UPDATE, function (proton) {
-        self.onProtonUpdate.call(self, proton);
+      this.system.eventDispatcher.addEventListener(_constants.SYSTEM_UPDATE, function (system) {
+        self.onSystemUpdate.call(self, system);
       });
 
-      this.proton.eventDispatcher.addEventListener(_constants.PARTICLE_CREATED, function (particle) {
+      this.system.eventDispatcher.addEventListener(_constants.PARTICLE_CREATED, function (particle) {
         self.onParticleCreated.call(self, particle);
       });
 
-      this.proton.eventDispatcher.addEventListener(_constants.PARTICLE_UPDATE, function (particle) {
+      this.system.eventDispatcher.addEventListener(_constants.PARTICLE_UPDATE, function (particle) {
         self.onParticleUpdate.call(self, particle);
       });
 
-      this.proton.eventDispatcher.addEventListener(_constants.PARTICLE_DEAD, function (particle) {
+      this.system.eventDispatcher.addEventListener(_constants.PARTICLE_DEAD, function (particle) {
         self.onParticleDead.call(self, particle);
       });
     }
   }, {
     key: 'remove',
     value: function remove() {
-      this.proton = null;
+      this.system = null;
     }
 
     /**
@@ -3161,8 +3161,8 @@ var BaseRenderer = function () {
      */
 
   }, {
-    key: 'onProtonUpdate',
-    value: function onProtonUpdate(proton) {} // eslint-disable-line
+    key: 'onSystemUpdate',
+    value: function onSystemUpdate(system) {} // eslint-disable-line
 
   }]);
 
@@ -4212,13 +4212,13 @@ var EMITTER_TYPE_FOLLOW = exports.EMITTER_TYPE_FOLLOW = 'FollowEmitter';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var PROTON_UPDATE = exports.PROTON_UPDATE = 'PROTON_UPDATE';
+var SYSTEM_UPDATE = exports.SYSTEM_UPDATE = 'SYSTEM_UPDATE';
 var PARTICLE_CREATED = exports.PARTICLE_CREATED = 'PARTICLE_CREATED';
 var PARTICLE_UPDATE = exports.PARTICLE_UPDATE = 'PARTICLE_UPDATE';
 var PARTICLE_DEAD = exports.PARTICLE_DEAD = 'PARTICLE_DEAD';
 var EMITTER_ADDED = exports.EMITTER_ADDED = 'EMITTER_ADDED';
 var EMITTER_REMOVED = exports.EMITTER_REMOVED = 'EMITTER_REMOVED';
-var PROTON_UPDATE_AFTER = exports.PROTON_UPDATE_AFTER = 'PROTON_UPDATE_AFTER';
+var SYSTEM_UPDATE_AFTER = exports.SYSTEM_UPDATE_AFTER = 'SYSTEM_UPDATE_AFTER';
 
 /***/ }),
 /* 38 */
@@ -4230,7 +4230,7 @@ var PROTON_UPDATE_AFTER = exports.PROTON_UPDATE_AFTER = 'PROTON_UPDATE_AFTER';
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.PROTON_UPDATE = exports.PROTON_UPDATE_AFTER = exports.PARTICLE_UPDATE = exports.PARTICLE_DEAD = exports.PARTICLE_CREATED = exports.EMITTER_REMOVED = exports.EMITTER_ADDED = undefined;
+exports.SYSTEM_UPDATE = exports.SYSTEM_UPDATE_AFTER = exports.PARTICLE_UPDATE = exports.PARTICLE_DEAD = exports.PARTICLE_CREATED = exports.EMITTER_REMOVED = exports.EMITTER_ADDED = undefined;
 
 var _constants = __webpack_require__(37);
 
@@ -4246,8 +4246,8 @@ exports.EMITTER_REMOVED = _constants.EMITTER_REMOVED;
 exports.PARTICLE_CREATED = _constants.PARTICLE_CREATED;
 exports.PARTICLE_DEAD = _constants.PARTICLE_DEAD;
 exports.PARTICLE_UPDATE = _constants.PARTICLE_UPDATE;
-exports.PROTON_UPDATE_AFTER = _constants.PROTON_UPDATE_AFTER;
-exports.PROTON_UPDATE = _constants.PROTON_UPDATE;
+exports.SYSTEM_UPDATE_AFTER = _constants.SYSTEM_UPDATE_AFTER;
+exports.SYSTEM_UPDATE = _constants.SYSTEM_UPDATE;
 
 /***/ }),
 /* 39 */
@@ -4435,8 +4435,8 @@ var MeshRenderer = function (_BaseRenderer) {
   }
 
   _createClass(MeshRenderer, [{
-    key: 'onProtonUpdate',
-    value: function onProtonUpdate() {}
+    key: 'onSystemUpdate',
+    value: function onSystemUpdate() {}
   }, {
     key: 'onParticleCreated',
     value: function onParticleCreated(particle) {
@@ -23403,37 +23403,30 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * The core of the three-proton particle engine.
- * A Proton instance can contain multiple emitters, each with their own initializers
+ * The core of the three-system particle engine.
+ * A System instance can contain multiple emitters, each with their own initializers
  * and behaviours.
  *
  */
-var Proton = function () {
+var System = function () {
   /**
-   * Constructs a Proton instance.
+   * Constructs a System instance.
    *
    * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
    * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
    * @return void
    */
-  function Proton() {
+  function System() {
     var preParticles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants3.POOL_MAX;
     var integrationType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _constants2.INTEGRATION_TYPE_EULER;
 
-    _classCallCheck(this, Proton);
+    _classCallCheck(this, System);
 
     /**
      * @desc The class type.
      * @type {string}
      */
-    this.type = _types.CORE_TYPE_PROTON;
-
-    /**
-     * @desc Determines if the system can update or not. Set to false when destroying
-     * to ensure that external calls to update do not throw errors.
-     * @type {boolean}
-     */
-    this.canUpdate = true;
+    this.type = _types.CORE_TYPE_SYSTEM;
 
     /**
      * @desc The number of particles to start with.
@@ -23460,7 +23453,7 @@ var Proton = function () {
     this.renderers = [];
 
     /**
-     * @desc A pool used to manage the internal proton cache of objects
+     * @desc A pool used to manage the internal system cache of objects
      * @type {Pool}
      */
     this.pool = new _Pool2.default();
@@ -23473,17 +23466,17 @@ var Proton = function () {
   }
 
   /**
-   * Creates a Proton instance from a JSON object.
+   * Creates a System instance from a JSON object.
    *
-   * @param {object} json - The JSON to create the Proton instance from
+   * @param {object} json - The JSON to create the System instance from
    * @param {number} json.preParticles - The predetermined number of particles
    * @param {string} json.integrationType - The integration algorithm to use
-   * @param {array<object>} json.emitters - The emitters for the proton instance
-   * @return {Proton}
+   * @param {array<object>} json.emitters - The emitters for the system instance
+   * @return {System}
    */
 
 
-  _createClass(Proton, [{
+  _createClass(System, [{
     key: 'dispatch',
 
 
@@ -23491,7 +23484,7 @@ var Proton = function () {
      * Proxy method for the internal event dispatcher's dispatchEvent method.
      *
      * @param {string} event - The event to dispatch
-     * @param {object<Proton|Emitter|Particle>} [target=this] - The event target
+     * @param {object<System|Emitter|Particle>} [target=this] - The event target
      */
     value: function dispatch(event) {
       var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this;
@@ -23500,10 +23493,10 @@ var Proton = function () {
     }
 
     /**
-     * Adds a renderer to the Proton instance and initializes it.
+     * Adds a renderer to the System instance and initializes it.
      *
      * @param {Renderer} renderer - The renderer to add
-     * @return {Proton}
+     * @return {System}
      */
 
   }, {
@@ -23516,10 +23509,10 @@ var Proton = function () {
     }
 
     /**
-     * Removes a renderer from the Proton instance.
+     * Removes a renderer from the System instance.
      *
      * @param {Renderer} renderer
-     * @return {Proton}
+     * @return {System}
      */
 
   }, {
@@ -23532,11 +23525,11 @@ var Proton = function () {
     }
 
     /**
-     * Adds an emitter to the Proton instance.
+     * Adds an emitter to the System instance.
      * Dispatches the EMITTER_ADDED event.
      *
      * @param {Emitter} emitter - The emitter to add
-     * @return {Proton}
+     * @return {System}
      */
 
   }, {
@@ -23551,11 +23544,11 @@ var Proton = function () {
     }
 
     /**
-     * Removes an emitter from the Proton instance.
+     * Removes an emitter from the System instance.
      * Dispatches the EMITTER_REMOVED event.
      *
      * @param {Emitter} emitter - The emitter to remove
-     * @return {Proton}
+     * @return {System}
      */
 
   }, {
@@ -23579,7 +23572,7 @@ var Proton = function () {
      * @example
      * animate = () => {
      *   threeRenderer.render(threeScene, threeCamera);
-     *   proton.update();
+     *   system.update();
      *   requestAnimationFrame(animate);
      * }
      * animate();
@@ -23591,23 +23584,21 @@ var Proton = function () {
   }, {
     key: 'update',
     value: function update() {
-      var delta = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants.DEFAULT_PROTON_DELTA;
+      var delta = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants.DEFAULT_SYSTEM_DELTA;
 
-      var d = delta || _constants.DEFAULT_PROTON_DELTA;
+      var d = delta || _constants.DEFAULT_SYSTEM_DELTA;
 
-      if (this.canUpdate) {
-        this.dispatch(_events.PROTON_UPDATE);
+      this.dispatch(_events.SYSTEM_UPDATE);
 
-        if (d > 0) {
-          var i = this.emitters.length;
+      if (d > 0) {
+        var i = this.emitters.length;
 
-          while (i--) {
-            this.emitters[i].update(d);
-          }
+        while (i--) {
+          this.emitters[i].update(d);
         }
-
-        this.dispatch(_events.PROTON_UPDATE_AFTER);
       }
+
+      this.dispatch(_events.SYSTEM_UPDATE_AFTER);
 
       return Promise.resolve();
     }
@@ -23633,9 +23624,7 @@ var Proton = function () {
     }
 
     /**
-     * Destroys all emitters and the Proton pool.
-     * Ensures that this.update will not perform any operations while the system
-     * is being destroyed.
+     * Destroys all emitters and the System pool.
      *
      * @return void
      */
@@ -23644,46 +23633,44 @@ var Proton = function () {
     key: 'destroy',
     value: function destroy() {
       var length = this.emitters.length;
+      var i = 0;
 
-      this.canUpdate = false;
-
-      for (var i = 0; i < length; i++) {
-        this.emitters[i] && this.emitters[i].destroy();
+      for (i; i < length; i++) {
+        this.emitters[i].destroy();
         delete this.emitters[i];
       }
 
       this.emitters.length = 0;
       this.pool.destroy();
-      this.canUpdate = true;
     }
   }], [{
     key: 'fromJSON',
     value: function fromJSON(json) {
-      return (0, _fromJSON3.default)(json, Proton, _Emitter2.default);
+      return (0, _fromJSON3.default)(json, System, _Emitter2.default);
     }
 
     /**
-     * Loads a Proton instance from JSON asynchronously. Ensures all textures are
-     * fully loaded before resolving with the instantiated Proton instance.
+     * Loads a System instance from JSON asynchronously. Ensures all textures are
+     * fully loaded before resolving with the instantiated System instance.
      *
-     * @param {object} json - The JSON to create the Proton instance from
+     * @param {object} json - The JSON to create the System instance from
      * @param {number} json.preParticles - The predetermined number of particles
      * @param {string} json.integrationType - The integration algorithm to use
-     * @param {array<object>} json.emitters - The emitters for the proton instance
-     * @return {Promise<Proton>}
+     * @param {array<object>} json.emitters - The emitters for the system instance
+     * @return {Promise<System>}
      */
 
   }, {
     key: 'fromJSONAsync',
     value: function fromJSONAsync(json) {
-      return (0, _fromJSONAsync3.default)(json, Proton, _Emitter2.default);
+      return (0, _fromJSONAsync3.default)(json, System, _Emitter2.default);
     }
   }]);
 
-  return Proton;
+  return System;
 }();
 
-exports.default = Proton;
+exports.default = System;
 module.exports = exports['default'];
 
 /***/ }),
@@ -23776,18 +23763,18 @@ var makeBehaviours = function makeBehaviours(items) {
 };
 
 /**
- * Creates a Proton instance from a JSON object.
+ * Creates a System instance from a JSON object.
  *
- * @param {object} json - The JSON to create the Proton instance from
- * @param {function} Proton - The proton class
+ * @param {object} json - The JSON to create the System instance from
+ * @param {function} System - The system class
  * @param {function} Emitter - The emitter class
  * @param {number} json.preParticles - The predetermined number of particles
  * @param {string} json.integrationType - The integration algorithm to use
- * @param {array<object>} json.emitters - The emitters for the proton instance
- * @return {Proton}
+ * @param {array<object>} json.emitters - The emitters for the system instance
+ * @return {System}
  */
 
-exports.default = function (json, Proton, Emitter) {
+exports.default = function (json, System, Emitter) {
   var _json$preParticles = json.preParticles,
       preParticles = _json$preParticles === undefined ? _constants.POOL_MAX : _json$preParticles,
       _json$integrationType = json.integrationType,
@@ -23795,7 +23782,7 @@ exports.default = function (json, Proton, Emitter) {
       _json$emitters = json.emitters,
       emitters = _json$emitters === undefined ? [] : _json$emitters;
 
-  var proton = new Proton(preParticles, integrationType);
+  var system = new System(preParticles, integrationType);
 
   emitters.forEach(function (data) {
     var emitter = new Emitter();
@@ -23814,10 +23801,10 @@ exports.default = function (json, Proton, Emitter) {
 
     emitter.setRate(makeRate(rate)).setRotation(rotation).setInitializers(makeInitializers(initializers)).setBehaviours(makeBehaviours(behaviours)).setEmitterBehaviours(makeBehaviours(emitterBehaviours)).setPosition(position).emit(totalEmitTimes, life);
 
-    proton.addEmitter(emitter);
+    system.addEmitter(emitter);
   });
 
-  return proton;
+  return system;
 };
 
 module.exports = exports['default'];
@@ -24021,18 +24008,18 @@ var makeEmitters = function makeEmitters(emitters, Emitter) {
 };
 
 /**
- * Creates a Proton instance from a JSON object.
+ * Creates a System instance from a JSON object.
  *
- * @param {object} json - The JSON to create the Proton instance from
- * @param {function} Proton - The proton class
+ * @param {object} json - The JSON to create the System instance from
+ * @param {function} System - The system class
  * @param {function} Emitter - The emitter class
  * @param {number} json.preParticles - The predetermined number of particles
  * @param {string} json.integrationType - The integration algorithm to use
- * @param {array<object>} json.emitters - The emitters for the proton instance
- * @return {Promise<Proton>}
+ * @param {array<object>} json.emitters - The emitters for the system instance
+ * @return {Promise<System>}
  */
 
-exports.default = function (json, Proton, Emitter) {
+exports.default = function (json, System, Emitter) {
   return new Promise(function (resolve, reject) {
     var _json$preParticles = json.preParticles,
         preParticles = _json$preParticles === undefined ? _constants.POOL_MAX : _json$preParticles,
@@ -24041,20 +24028,20 @@ exports.default = function (json, Proton, Emitter) {
         _json$emitters = json.emitters,
         emitters = _json$emitters === undefined ? [] : _json$emitters;
 
-    var proton = new Proton(preParticles, integrationType);
+    var system = new System(preParticles, integrationType);
 
     makeEmitters(emitters, Emitter).then(function (madeEmitters) {
       var numberOfEmitters = madeEmitters.length;
 
       if (!numberOfEmitters) {
-        return resolve(proton);
+        return resolve(system);
       }
 
       madeEmitters.forEach(function (madeEmitter) {
-        proton.addEmitter(madeEmitter);
+        system.addEmitter(madeEmitter);
 
-        if (proton.emitters.length === numberOfEmitters) {
-          resolve(proton);
+        if (system.emitters.length === numberOfEmitters) {
+          resolve(system);
         }
       });
     }).catch(reject);
@@ -24079,18 +24066,18 @@ var _three = __webpack_require__(5);
 var _constants = __webpack_require__(60);
 
 /**
- * @exports Debug - methods and helpers for debugging Proton emitters, zones and particles.
+ * @exports Debug - methods and helpers for debugging System emitters, zones and particles.
  */
 exports.default = {
   /**
-   * Adds an event listener to the proton instance's PROTON_UPDATE event.
+   * Adds an event listener to the system instance's SYSTEM_UPDATE event.
    *
-   * @param {Proton} proton - the proton instance
-   * @param {function} onProtonUpdated - the function to call when proton has been updated
+   * @param {System} system - the system instance
+   * @param {function} onSystemUpdated - the function to call when system has been updated
    * @return {Debug}
    */
-  addEventListener: function addEventListener(proton, onProtonUpdated) {
-    proton.eventDispatcher.addEventListener('PROTON_UPDATE', onProtonUpdated);
+  addEventListener: function addEventListener(system, onSystemUpdated) {
+    system.eventDispatcher.addEventListener('SYSTEM_UPDATE', onSystemUpdated);
 
     return this;
   },
@@ -24098,12 +24085,12 @@ exports.default = {
   /**
    * Draws a wireframe mesh around the zone for debugging purposes.
    *
-   * @param {Proton} proton - the proton instance
+   * @param {System} system - the system instance
    * @param {object} container - a three Object3D (usually the scene)
    * @param {Zone} zone - a Zone instance
    * @return void
    */
-  drawZone: function drawZone(proton, container) {
+  drawZone: function drawZone(system, container) {
     var zone = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
     var color = '#2194ce';
@@ -24156,7 +24143,7 @@ exports.default = {
 
     container.add(mesh);
 
-    this.addEventListener(proton, function () {
+    this.addEventListener(system, function () {
       mesh.position.set(x, y, z);
     });
   },
@@ -24164,13 +24151,13 @@ exports.default = {
   /**
    * Draws a mesh for each particle emitted in order to help debug particles.
    *
-   * @param {object} proton - the proton instance
+   * @param {object} system - the system instance
    * @param {object} container - a three Object3D (usually the scene)
    * @param {object} emitter - the emitter to debug
    * @param {string} color - the color for the debug mesh material
    * @return void
    */
-  drawEmitter: function drawEmitter(proton, container, emitter, color) {
+  drawEmitter: function drawEmitter(system, container, emitter, color) {
     var geometry = new _three.OctahedronGeometry(_constants.DEFAULT_SIZE);
     var material = new _three.MeshBasicMaterial({
       color: color || '#aaa',
@@ -24182,7 +24169,7 @@ exports.default = {
 
     container.add(mesh);
 
-    this.addEventListener(proton, function () {
+    this.addEventListener(system, function () {
       mesh.position.copy(emitter.position);
       mesh.rotation.set(emitter.rotation.x, emitter.rotation.y, emitter.rotation.z);
     });
@@ -24191,45 +24178,45 @@ exports.default = {
   /**
    * Renders emitter / particle information into the info element.
    *
-   * @param {object} proton - the proton instance
+   * @param {object} system - the system instance
    * @param {integer} style - style to apply (see the addInfo method's switch statement)
    * @return void
    */
   renderInfo: function () {
-    function getCreatedNumber(type, proton) {
+    function getCreatedNumber(type, system) {
       var pool = type == 'material' ? '_materialPool' : '_targetPool';
-      var renderer = proton.renderers[0];
+      var renderer = system.renderers[0];
 
       return renderer[pool].cID;
     }
 
-    function getEmitterPos(proton) {
-      var e = proton.emitters[0];
+    function getEmitterPos(system) {
+      var e = system.emitters[0];
 
       return Math.round(e.p.x) + ',' + Math.round(e.p.y) + ',' + Math.round(e.p.z);
     }
 
-    return function (proton, style) {
+    return function (system, style) {
       this.addInfo(style);
       var str = '';
 
       switch (this._infoType) {
         case 2:
-          str += 'emitter:' + proton.emitters.length + '<br>';
-          str += 'em speed:' + proton.emitters[0].cID + '<br>';
-          str += 'pos:' + getEmitterPos(proton);
+          str += 'emitter:' + system.emitters.length + '<br>';
+          str += 'em speed:' + system.emitters[0].cID + '<br>';
+          str += 'pos:' + getEmitterPos(system);
           break;
 
         case 3:
-          str += proton.renderers[0].name + '<br>';
+          str += system.renderers[0].name + '<br>';
           str += 'target:' + getCreatedNumber('target') + '<br>';
           str += 'material:' + getCreatedNumber('material');
           break;
 
         default:
-          str += 'particles:' + proton.getCount() + '<br>';
-          str += 'pool:' + proton.pool.getCount() + '<br>';
-          str += 'total:' + (proton.getCount() + proton.pool.getCount());
+          str += 'particles:' + system.getCount() + '<br>';
+          str += 'pool:' + system.pool.getCount() + '<br>';
+          str += 'total:' + (system.getCount() + system.pool.getCount());
       }
       this._infoCon.innerHTML = str;
     };
@@ -24384,11 +24371,11 @@ var FollowEmitter = function (_Emitter) {
   _inherits(FollowEmitter, _Emitter);
 
   /**
-   * The FollowEmitter class inherits from Proton.Emitter
+   * The FollowEmitter class inherits from System.Emitter
    *
    * use the FollowEmitter will emit particle when mousemoving
    *
-   * @class Proton.FollowEmitter
+   * @class System.FollowEmitter
    * @constructor
    * @param {Element} mouseTarget mouseevent's target;
    * @param {Number} ease the easing of following speed;
@@ -24640,7 +24627,7 @@ module.exports = exports["default"];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Pool = exports.Particle = exports.Proton = undefined;
+exports.Pool = exports.Particle = exports.System = undefined;
 
 var _behaviour = __webpack_require__(19);
 
@@ -24752,10 +24739,10 @@ Object.keys(_zone).forEach(function (key) {
 
 var _core = __webpack_require__(20);
 
-Object.defineProperty(exports, 'Proton', {
+Object.defineProperty(exports, 'System', {
   enumerable: true,
   get: function get() {
-    return _core.Proton;
+    return _core.System;
   }
 });
 Object.defineProperty(exports, 'Particle', {
@@ -24770,7 +24757,7 @@ Object.defineProperty(exports, 'Pool', {
     return _core.Pool;
   }
 });
-exports.default = _core.Proton;
+exports.default = _core.System;
 
 /***/ }),
 /* 66 */
@@ -26456,8 +26443,8 @@ var CustomRenderer = function (_BaseRenderer) {
   }
 
   _createClass(CustomRenderer, [{
-    key: 'onProtonUpdate',
-    value: function onProtonUpdate() {}
+    key: 'onSystemUpdate',
+    value: function onSystemUpdate() {}
   }, {
     key: 'onParticleCreated',
     value: function onParticleCreated(particle) {} // eslint-disable-line
@@ -26520,8 +26507,8 @@ var PointsRenderer = function (_BaseRenderer) {
   }
 
   _createClass(PointsRenderer, [{
-    key: 'onProtonUpdate',
-    value: function onProtonUpdate() {}
+    key: 'onSystemUpdate',
+    value: function onSystemUpdate() {}
   }, {
     key: 'onParticleCreated',
     value: function onParticleCreated(particle) {
@@ -26885,9 +26872,9 @@ var LineZone = function (_Zone) {
    * @param {Number} y2 - the line's end point of y value
    * @param {Number} z2 - the line's end point of z value
    * @example
-   * var lineZone = new Proton.LineZone(0,0,0,100,100,0);
+   * var lineZone = new System.LineZone(0,0,0,100,100,0);
    * or
-   * var lineZone = new Proton.LineZone(new Proton.Vector3D(0,0,0),new Proton.Vector3D(100,100,0));
+   * var lineZone = new System.LineZone(new System.Vector3D(0,0,0),new System.Vector3D(100,100,0));
    * @extends {Zone}
    * @constructor
    */
@@ -27088,9 +27075,9 @@ var PointZone = function (_Zone) {
    * @param {Number} y - the center's y value
    * @param {Number} z - the center's z value
    * @example
-   * var pointZone = new Proton.PointZone(0,30,10);
+   * var pointZone = new System.PointZone(0,30,10);
    * or
-   * var pointZone = new Proton.PointZone(new Proton.Vector3D(0,30,10));
+   * var pointZone = new System.PointZone(new System.Vector3D(0,30,10));
    * @extends {Zone}
    * @constructor
    */
@@ -75985,4 +75972,4 @@ module.exports = function(module) {
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=three-proton.js.map
+//# sourceMappingURL=nebula-engine.js.map

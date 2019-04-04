@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>three.proton - eightdiagrams</title>
+    <title>three.system - eightdiagrams</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -22,11 +22,11 @@
     <div id="container"></div>
     <script src="../js/stats.min.js"></script>
     <script src="../js/three.min.js"></script>
-    <script src="../js/three-proton.js"></script>
+    <script src="../js/nebula-engine.js"></script>
     <script src="../js/lib/TrackballControls.js"></script>
     <script src="./json/emitterBehaviours.js"></script>
     <script>
-      var proton, camera, scene, renderer, stats, clock, spring, controls;
+      var system, camera, scene, renderer, stats, clock, spring, controls;
 
       init();
 
@@ -104,13 +104,13 @@
       }
 
       function addProton() {
-        Proton.default
+        Nebula.default
           // imported from ./json
           .fromJSONAsync(EMITTER_BEHAVIOURS_JSON)
           .then(instance => {
-            proton = instance;
+            system = instance;
 
-            proton.addRenderer(new Proton.SpriteRenderer(scene));
+            system.addRenderer(new Nebula.SpriteRenderer(scene));
             animate();
           });
       }
@@ -126,10 +126,10 @@
 
       var ctha = 0;
       function render() {
-        proton.update();
+        system.update();
         renderer.render(scene, camera);
 
-        Proton.Debug.renderInfo(proton, 3);
+        Nebula.Debug.renderInfo(system, 3);
       }
 
       function onWindowResize() {}

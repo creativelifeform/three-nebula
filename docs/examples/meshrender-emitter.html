@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>three.proton - helloworld</title>
+    <title>three.system - helloworld</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <style type="text/css">
@@ -20,10 +20,10 @@
     <div id="container"></div>
     <script src="../js/stats.min.js"></script>
     <script src="../js/three.min.js"></script>
-    <script src="../js/three-proton.js"></script>
+    <script src="../js/nebula-engine.js"></script>
     <script src="../js/lib/TrackballControls.js"></script>
     <script>
-    var proton, emitter;
+    var system, emitter;
     var camera, scene, renderer, stats, clock, spring, controls;
 
     init();
@@ -83,9 +83,9 @@
     }
 
     function initProton() {
-        proton = new Proton.default();
-        proton.addEmitter(createEmitter());
-        proton.addRenderer(new Proton.MeshRenderer(scene));
+        system = new Nebula.default();
+        system.addEmitter(createEmitter());
+        system.addRenderer(new Nebula.MeshRenderer(scene));
     }
 
     function createBox() {
@@ -99,31 +99,31 @@
 
 
     function createEmitter() {
-        emitter = new Proton.Emitter();
-        emitter.rate = new Proton.Rate(new Proton.Span(6, 12), new Proton.Span(.2, .5));
-        emitter.addInitializer(new Proton.Mass(1));
-        emitter.addInitializer(new Proton.Radius(100));
-        emitter.addInitializer(new Proton.Life(2, 4));
-        emitter.addInitializer(new Proton.Body(createBox()));
+        emitter = new Nebula.Emitter();
+        emitter.rate = new Nebula.Rate(new Nebula.Span(6, 12), new Nebula.Span(.2, .5));
+        emitter.addInitializer(new Nebula.Mass(1));
+        emitter.addInitializer(new Nebula.Radius(100));
+        emitter.addInitializer(new Nebula.Life(2, 4));
+        emitter.addInitializer(new Nebula.Body(createBox()));
 
-        emitter.addInitializer(new Proton.RadialVelocity(300, new Proton.Vector3D(0, 1, 0), 50));
+        emitter.addInitializer(new Nebula.RadialVelocity(300, new Nebula.Vector3D(0, 1, 0), 50));
 
-        // //emitter.addBehaviour(new Proton.RandomDrift(30, 30, 30, .05));
-        emitter.addBehaviour(new Proton.Rotate("random", "random"));
-        emitter.addBehaviour(new Proton.Scale(1, .1));
-        // emitter.addBehaviour(new Proton.Alpha(1, 0, Infinity, Proton.easeInQuart));
-        var zone2 = new Proton.BoxZone(500);
-        //emitter.addBehaviour(new Proton.CrossZone(zone2, "bound"));
-        spring = new Proton.Spring(100, 100, 100);
+        // //emitter.addBehaviour(new Nebula.RandomDrift(30, 30, 30, .05));
+        emitter.addBehaviour(new Nebula.Rotate("random", "random"));
+        emitter.addBehaviour(new Nebula.Scale(1, .1));
+        // emitter.addBehaviour(new Nebula.Alpha(1, 0, Infinity, Nebula.easeInQuart));
+        var zone2 = new Nebula.BoxZone(500);
+        //emitter.addBehaviour(new Nebula.CrossZone(zone2, "bound"));
+        spring = new Nebula.Spring(100, 100, 100);
         emitter.addBehaviour(spring);
-        emitter.addBehaviour(new Proton.Color('random', 'random', Infinity, Proton.easeOutQuart));
+        emitter.addBehaviour(new Nebula.Color('random', 'random', Infinity, Nebula.easeOutQuart));
 
         emitter.position.x = 0;
         emitter.position.y = 0;
         emitter.emit();
 
-        ///Proton.Debug.drawZone(proton,scene,zone2);
-        Proton.Debug.drawEmitter(proton, scene, emitter);
+        ///Nebula.Debug.drawZone(system,scene,zone2);
+        Nebula.Debug.drawEmitter(system, scene, emitter);
         return emitter;
     }
 
@@ -138,19 +138,19 @@
         R = 200;
 
     function render() {
-        proton.update(clock.getDelta());
+        system.update(clock.getDelta());
         renderer.render(scene, camera);
 
         tha += .005;
-        proton.emitters[0].position.x = Math.cos(tha) * R;
-        proton.emitters[0].position.y = Math.sin(tha) * R;
-        proton.emitters[0].rotation.x += 0.01;
+        system.emitters[0].position.x = Math.cos(tha) * R;
+        system.emitters[0].position.y = Math.sin(tha) * R;
+        system.emitters[0].rotation.x += 0.01;
         var x = Math.cos(tha) * 100;
         var y = Math.sin(tha) * 100;
         spring.reset(x, y, 100);
         controls.update();
 
-        Proton.Debug.renderInfo(proton, 3);
+        Nebula.Debug.renderInfo(system, 3);
     }
 
     function onWindowResize() {

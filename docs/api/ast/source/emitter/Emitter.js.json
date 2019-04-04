@@ -993,7 +993,7 @@
         "trailingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Emitters are the Proton engine's particle factories. They cause particles to\n * be rendered by emitting them, and store all particle initializers and behaviours.\n *\n ",
+            "value": "*\n * Emitters are the System engine's particle factories. They cause particles to\n * be rendered by emitting them, and store all particle initializers and behaviours.\n *\n ",
             "start": 506,
             "end": 681,
             "loc": {
@@ -14665,7 +14665,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Updates the emitter according to the time passed by calling the generate\n   * and integrate methods. The generate method creates particles, the integrate\n   * method updates existing particles.\n   *\n   * If the emitter age is greater than time, the emitter is killed.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+                    "value": "*\n   * Updates the emitter according to the time passed by calling the generate\n   * and integrate methods. The generate method creates particles, the integrate\n   * method updates existing particles.\n   *\n   * If the emitter age is greater than time, the emitter is killed.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
                     "start": 10296,
                     "end": 10648,
                     "loc": {
@@ -16601,7 +16601,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Updates the emitter according to the time passed by calling the generate\n   * and integrate methods. The generate method creates particles, the integrate\n   * method updates existing particles.\n   *\n   * If the emitter age is greater than time, the emitter is killed.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+                    "value": "*\n   * Updates the emitter according to the time passed by calling the generate\n   * and integrate methods. The generate method creates particles, the integrate\n   * method updates existing particles.\n   *\n   * If the emitter age is greater than time, the emitter is killed.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
                     "start": 10296,
                     "end": 10648,
                     "loc": {
@@ -16619,7 +16619,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Updates the emitter's emitter behaviours.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+                    "value": "*\n   * Updates the emitter's emitter behaviours.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
                     "start": 11233,
                     "end": 11359,
                     "loc": {
@@ -17326,7 +17326,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Updates the emitter's emitter behaviours.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+                    "value": "*\n   * Updates the emitter's emitter behaviours.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
                     "start": 11233,
                     "end": 11359,
                     "loc": {
@@ -17344,7 +17344,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Runs the integration algorithm on the emitter and all particles.\n   * Updates the particles with the timstamp passed.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+                    "value": "*\n   * Runs the integration algorithm on the emitter and all particles.\n   * Updates the particles with the timstamp passed.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
                     "start": 11603,
                     "end": 11805,
                     "loc": {
@@ -18851,7 +18851,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Runs the integration algorithm on the emitter and all particles.\n   * Updates the particles with the timstamp passed.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+                    "value": "*\n   * Runs the integration algorithm on the emitter and all particles.\n   * Updates the particles with the timstamp passed.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
                     "start": 11603,
                     "end": 11805,
                     "loc": {
@@ -18869,7 +18869,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Generates new particles.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+                    "value": "*\n   * Generates new particles.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
                     "start": 12372,
                     "end": 12481,
                     "loc": {
@@ -20431,7 +20431,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Generates new particles.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+                    "value": "*\n   * Generates new particles.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
                     "start": 12372,
                     "end": 12481,
                     "loc": {
@@ -21361,7 +21361,7 @@
           "leadingComments": [
             {
               "type": "CommentBlock",
-              "value": "*\n * Emitters are the Proton engine's particle factories. They cause particles to\n * be rendered by emitting them, and store all particle initializers and behaviours.\n *\n ",
+              "value": "*\n * Emitters are the System engine's particle factories. They cause particles to\n * be rendered by emitting them, and store all particle initializers and behaviours.\n *\n ",
               "start": 506,
               "end": 681,
               "loc": {
@@ -21381,7 +21381,7 @@
         "leadingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Emitters are the Proton engine's particle factories. They cause particles to\n * be rendered by emitting them, and store all particle initializers and behaviours.\n *\n ",
+            "value": "*\n * Emitters are the System engine's particle factories. They cause particles to\n * be rendered by emitting them, and store all particle initializers and behaviours.\n *\n ",
             "start": 506,
             "end": 681,
             "loc": {
@@ -21403,7 +21403,7 @@
   "comments": [
     {
       "type": "CommentBlock",
-      "value": "*\n * Emitters are the Proton engine's particle factories. They cause particles to\n * be rendered by emitting them, and store all particle initializers and behaviours.\n *\n ",
+      "value": "*\n * Emitters are the System engine's particle factories. They cause particles to\n * be rendered by emitting them, and store all particle initializers and behaviours.\n *\n ",
       "start": 506,
       "end": 681,
       "loc": {
@@ -22027,7 +22027,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Updates the emitter according to the time passed by calling the generate\n   * and integrate methods. The generate method creates particles, the integrate\n   * method updates existing particles.\n   *\n   * If the emitter age is greater than time, the emitter is killed.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+      "value": "*\n   * Updates the emitter according to the time passed by calling the generate\n   * and integrate methods. The generate method creates particles, the integrate\n   * method updates existing particles.\n   *\n   * If the emitter age is greater than time, the emitter is killed.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
       "start": 10296,
       "end": 10648,
       "loc": {
@@ -22043,7 +22043,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Updates the emitter's emitter behaviours.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+      "value": "*\n   * Updates the emitter's emitter behaviours.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
       "start": 11233,
       "end": 11359,
       "loc": {
@@ -22059,7 +22059,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Runs the integration algorithm on the emitter and all particles.\n   * Updates the particles with the timstamp passed.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+      "value": "*\n   * Runs the integration algorithm on the emitter and all particles.\n   * Updates the particles with the timstamp passed.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
       "start": 11603,
       "end": 11805,
       "loc": {
@@ -22075,7 +22075,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Generates new particles.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+      "value": "*\n   * Generates new particles.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
       "start": 12372,
       "end": 12481,
       "loc": {
@@ -23891,7 +23891,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * Emitters are the Proton engine's particle factories. They cause particles to\n * be rendered by emitting them, and store all particle initializers and behaviours.\n *\n ",
+      "value": "*\n * Emitters are the System engine's particle factories. They cause particles to\n * be rendered by emitting them, and store all particle initializers and behaviours.\n *\n ",
       "start": 506,
       "end": 681,
       "loc": {
@@ -47966,7 +47966,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Updates the emitter according to the time passed by calling the generate\n   * and integrate methods. The generate method creates particles, the integrate\n   * method updates existing particles.\n   *\n   * If the emitter age is greater than time, the emitter is killed.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+      "value": "*\n   * Updates the emitter according to the time passed by calling the generate\n   * and integrate methods. The generate method creates particles, the integrate\n   * method updates existing particles.\n   *\n   * If the emitter age is greater than time, the emitter is killed.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
       "start": 10296,
       "end": 10648,
       "loc": {
@@ -51716,7 +51716,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Updates the emitter's emitter behaviours.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+      "value": "*\n   * Updates the emitter's emitter behaviours.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
       "start": 11233,
       "end": 11359,
       "loc": {
@@ -53222,7 +53222,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Runs the integration algorithm on the emitter and all particles.\n   * Updates the particles with the timstamp passed.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+      "value": "*\n   * Runs the integration algorithm on the emitter and all particles.\n   * Updates the particles with the timstamp passed.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
       "start": 11603,
       "end": 11805,
       "loc": {
@@ -56248,7 +56248,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Generates new particles.\n   *\n   * @param {number} time - Proton engine time\n   * @return void\n   ",
+      "value": "*\n   * Generates new particles.\n   *\n   * @param {number} time - System engine time\n   * @return void\n   ",
       "start": 12372,
       "end": 12481,
       "loc": {

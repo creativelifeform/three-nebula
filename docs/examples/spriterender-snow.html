@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>three.proton - helloworld</title>
+    <title>three.system - helloworld</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <style type="text/css">
@@ -20,9 +20,9 @@
     <div id="container"></div>
     <script src="../js/stats.min.js"></script>
     <script src="../js/three.min.js"></script>
-    <script src="../js/three-proton.js"></script>
+    <script src="../js/nebula-engine.js"></script>
     <script>
-    var proton, emitter;
+    var system, emitter;
     var camera, scene, renderer, stats, clock, mouseXpercent, mouseYpercent, cameraTarget;
 
     init();
@@ -103,36 +103,36 @@
     }
 
     function addProton() {
-        proton = new Proton.default();
+        system = new Nebula.default();
 
-        emitter = new Proton.Emitter();
-        emitter.rate = new Proton.Rate(new Proton.Span(34, 48), new Proton.Span(.2, .5));
-        emitter.addInitializer(new Proton.Mass(1));
-        emitter.addInitializer(new Proton.Radius(new Proton.Span(10, 20)));
+        emitter = new Nebula.Emitter();
+        emitter.rate = new Nebula.Rate(new Nebula.Span(34, 48), new Nebula.Span(.2, .5));
+        emitter.addInitializer(new Nebula.Mass(1));
+        emitter.addInitializer(new Nebula.Radius(new Nebula.Span(10, 20)));
 
-        var position = new Proton.Position();
-        position.addZone(new Proton.BoxZone(2500, 10, 2500));
+        var position = new Nebula.Position();
+        position.addZone(new Nebula.BoxZone(2500, 10, 2500));
         emitter.addInitializer(position);
 
-        emitter.addInitializer(new Proton.Life(5, 10));
-        emitter.addInitializer(new Proton.Body(createSnow()));
-        emitter.addInitializer(new Proton.RadialVelocity(0, new Proton.Vector3D(0, -1, 0), 90));
+        emitter.addInitializer(new Nebula.Life(5, 10));
+        emitter.addInitializer(new Nebula.Body(createSnow()));
+        emitter.addInitializer(new Nebula.RadialVelocity(0, new Nebula.Vector3D(0, -1, 0), 90));
 
-        emitter.addBehaviour(new Proton.RandomDrift(10, 1, 10, .05));
-        emitter.addBehaviour(new Proton.Rotate("random", "random"));
-        emitter.addBehaviour(new Proton.Gravity(2));
+        emitter.addBehaviour(new Nebula.RandomDrift(10, 1, 10, .05));
+        emitter.addBehaviour(new Nebula.Rotate("random", "random"));
+        emitter.addBehaviour(new Nebula.Gravity(2));
 
-        var sceenZone = new Proton.ScreenZone(camera, renderer, 20, "234");
-        emitter.addBehaviour(new Proton.CrossZone(sceenZone, "dead"));
+        var sceenZone = new Nebula.ScreenZone(camera, renderer, 20, "234");
+        emitter.addBehaviour(new Nebula.CrossZone(sceenZone, "dead"));
 
         emitter.position.x = 0;
         emitter.position.y = 800;
         emitter.emit();
 
-        proton.addEmitter(emitter);
-        proton.addRenderer(new Proton.SpriteRenderer(scene));
+        system.addEmitter(emitter);
+        system.addRenderer(new Nebula.SpriteRenderer(scene));
 
-        //Proton.Debug.drawZone(proton,scene,new Proton.BoxZone(800, 10, 800));
+        //Nebula.Debug.drawZone(system,scene,new Nebula.BoxZone(800, 10, 800));
     }
 
     function createSnow() {
@@ -156,7 +156,7 @@
         function onMouseMove(event) {
             pos.x = event.clientX;
             pos.y = event.clientY;
-            var target = Proton.THREEUtil.toSpacePos(pos, camera, renderer.domElement);
+            var target = Nebula.THREEUtil.toSpacePos(pos, camera, renderer.domElement);
             emitter.position.x += (target.x - emitter.position.x) / 10;
             emitter.position.y += (target.y - emitter.position.y) / 10;
             emitter.position.z += (target.z - emitter.position.z) / 10;
@@ -171,10 +171,10 @@
     }
 
     function render() {
-        proton.update();
+        system.update();
         renderer.render(scene, camera);
         controlCamera();
-        Proton.Debug.renderInfo(proton, 3);
+        Nebula.Debug.renderInfo(system, 3);
     }
 
     function addInteraction() {

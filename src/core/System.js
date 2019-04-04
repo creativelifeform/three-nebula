@@ -12,7 +12,7 @@ import { POOL_MAX } from '../constants';
 import Pool from './Pool';
 import fromJSON from './fromJSON';
 import fromJSONAsync from './fromJSONAsync';
-import { CORE_TYPE_PROTON as type } from './types';
+import { CORE_TYPE_SYSTEM as type } from './types';
 
 /**
  * The core of the three-system particle engine.

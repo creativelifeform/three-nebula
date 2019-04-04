@@ -1,14 +1,14 @@
-# three-proton
+# Nebula Engine
 
-[![Build Status](https://travis-ci.org/rohan-deshpande/three-proton.svg?branch=master)](https://travis-ci.org/rohan-deshpande/three-proton)
-[![Coverage Status](https://coveralls.io/repos/github/rohan-deshpande/three-proton/badge.svg?branch=master)](https://coveralls.io/github/rohan-deshpande/three-proton?branch=master&kill_cache=1)
+[![Build Status](https://travis-ci.org/creativelifeform/nebula-engine.svg?branch=master)](https://travis-ci.org/creativelifeform/nebula-engine)
+[![Coverage Status](https://coveralls.io/repos/github/creativelifeform/nebula-engine/badge.svg?branch=master)](https://coveralls.io/github/creativelifeform/nebula-engine?branch=master&kill_cache=1)
 
-**Three Proton** is a magical, WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [examples](https://rohan-deshpande.github.io/three-proton/examples) and [API reference documentation](https://rohan-deshpande.github.io/three-proton/api) for more.
+**Nebula Engine** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [examples](https://creativelifeform.github.io/nebula-engine/examples) and [API reference documentation](https://creativelifeform.github.io/nebula-engine/api) for more.
 
 ## Features
 
 - Perfect compatibility with [`three@0.98.0`](https://github.com/mrdoob/three.js)
-- The ability to instantiate Proton particle systems from JSON objects using the static `Proton.fromJSON` method
+- The ability to instantiate Nebula Engine particle systems from JSON objects using the static `System.fromJSON` method
 - The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers
 
@@ -17,13 +17,13 @@
 ### npm
 
 ```
-npm i --save @rohandeshpande/three-proton
+npm i --save nebula-engine
 ```
 
 ### script
 
 ```
-<script type='text/javascript' src='node_modules/three-proton/build/three-proton.js'></script>
+<script type='text/javascript' src='node_modules/nebula-engine/build/nebula-engine.js'></script>
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ npm i --save @rohandeshpande/three-proton
 ### Module
 
 ```javascript
-import Proton, {
+import System, {
   Emitter,
   Rate,
   Span,
@@ -44,11 +44,11 @@ import Proton, {
   Vector3D,
   Alpha,
   Scale,
-  Color
-} from '@rohandeshpande/three-proton';
+  Color,
+} from 'nebula-engine';
 import * as THREE from 'three';
 
-const proton = new Proton();
+const system = new System();
 const emitter = new Emitter();
 const renderer = new SpriteRenderer(threeScene);
 
@@ -60,187 +60,185 @@ emitter
     new Mass(1),
     new Radius(6, 12),
     new Life(3),
-    new RadialVelocity(45, new Vector3D(0, 1, 0), 180)
+    new RadialVelocity(45, new Vector3D(0, 1, 0), 180),
   ])
   .setBehaviours([
     new Alpha(1, 0),
     new Scale(0.1, 1.3),
-    new Color(new THREE.Color(), new THREE.Color())
+    new Color(new THREE.Color(), new THREE.Color()),
   ])
   .emit();
 
-// add the emitter and a renderer to proton
-proton
-  .addEmitter(emitter)
-  .addRenderer(renderer);
+// add the emitter and a renderer to your particle system
+system.addEmitter(emitter).addRenderer(renderer);
 ```
 
-You can also instantiate your system from a JSON object  
+You can also instantiate your system from a JSON object
 
 ```javascript
-import Proton from '@rohandeshpande/three-proton';
+import System from 'nebula-engine';
 
 const json = {
-  "preParticles": 500,
-  "integrationType": "euler",
-  "emitters": [
+  preParticles: 500,
+  integrationType: 'euler',
+  emitters: [
     {
-      "rate": {
-        "particlesMin": 5,
-        "particlesMax": 7,
-        "perSecondMin": 0.01,
-        "perSecondMax": 0.02
+      rate: {
+        particlesMin: 5,
+        particlesMax: 7,
+        perSecondMin: 0.01,
+        perSecondMax: 0.02,
       },
-      "position": {
-        "x": 70,
-        "y": 0
+      position: {
+        x: 70,
+        y: 0,
       },
-      "initializers": [
+      initializers: [
         {
-          "type": "Mass",
-          "properties": {
-            "min": 1,
-            "max": 1
-          }
+          type: 'Mass',
+          properties: {
+            min: 1,
+            max: 1,
+          },
         },
         {
-          "type": "Life",
-          "properties": {
-            "min": 2,
-            "max": 2
-          }
+          type: 'Life',
+          properties: {
+            min: 2,
+            max: 2,
+          },
         },
         {
-          "type": "BodySprite",
-          "properties": {
-            "texture": "./img/dot.png"
-          }
+          type: 'BodySprite',
+          properties: {
+            texture: './img/dot.png',
+          },
         },
         {
-          "type": "Radius",
-          "properties": {
-            "width": 80,
-            "height": 80
-          }
-        }
+          type: 'Radius',
+          properties: {
+            width: 80,
+            height: 80,
+          },
+        },
       ],
-      "behaviours": [
+      behaviours: [
         {
-          "type": "Alpha",
-          "properties": {
-            "alphaA": 1,
-            "alphaB": 0
-          }
+          type: 'Alpha',
+          properties: {
+            alphaA: 1,
+            alphaB: 0,
+          },
         },
         {
-          "type": "Color",
-          "properties": {
-            "colorA": "#4F1500",
-            "colorB": "#0029FF"
-          }
+          type: 'Color',
+          properties: {
+            colorA: '#4F1500',
+            colorB: '#0029FF',
+          },
         },
         {
-          "type": "Scale",
-          "properties": {
-            "scaleA": 1,
-            "scaleB": 0.5
-          }
+          type: 'Scale',
+          properties: {
+            scaleA: 1,
+            scaleB: 0.5,
+          },
         },
         {
-          "type": "Force",
-          "properties": {
-            "fx": 0,
-            "fy": 0,
-            "fz": -20
-          }
-        }
-      ]
+          type: 'Force',
+          properties: {
+            fx: 0,
+            fy: 0,
+            fz: -20,
+          },
+        },
+      ],
     },
     {
-      "rate": {
-        "particlesMin": 5,
-        "particlesMax": 7,
-        "perSecondMin": 0.01,
-        "perSecondMax": 0.02
+      rate: {
+        particlesMin: 5,
+        particlesMax: 7,
+        perSecondMin: 0.01,
+        perSecondMax: 0.02,
       },
-      "position": {
-        "x": -70,
-        "y": 0
+      position: {
+        x: -70,
+        y: 0,
       },
-      "initializers": [
+      initializers: [
         {
-          "type": "Mass",
-          "properties": {
-            "min": 1,
-            "max": 1
-          }
+          type: 'Mass',
+          properties: {
+            min: 1,
+            max: 1,
+          },
         },
         {
-          "type": "Life",
-          "properties": {
-            "min": 2,
-            "max": 2
-          }
+          type: 'Life',
+          properties: {
+            min: 2,
+            max: 2,
+          },
         },
         {
-          "type": "BodySprite",
-          "properties": {
-            "texture": "./img/dot.png"
-          }
+          type: 'BodySprite',
+          properties: {
+            texture: './img/dot.png',
+          },
         },
         {
-          "type": "Radius",
-          "properties": {
-            "width": 80,
-            "height": 80
-          }
-        }
+          type: 'Radius',
+          properties: {
+            width: 80,
+            height: 80,
+          },
+        },
       ],
-      "behaviours": [
+      behaviours: [
         {
-          "type": "Alpha",
-          "properties": {
-            "alphaA": 1,
-            "alphaB": 0
-          }
+          type: 'Alpha',
+          properties: {
+            alphaA: 1,
+            alphaB: 0,
+          },
         },
         {
-          "type": "Color",
-          "properties": {
-            "colorA": "#004CFE",
-            "colorB": "#6600FF"
-          }
+          type: 'Color',
+          properties: {
+            colorA: '#004CFE',
+            colorB: '#6600FF',
+          },
         },
         {
-          "type": "Scale",
-          "properties": {
-            "scaleA": 1,
-            "scaleB": 0.5
-          }
+          type: 'Scale',
+          properties: {
+            scaleA: 1,
+            scaleB: 0.5,
+          },
         },
         {
-          "type": "Force",
-          "properties": {
-            "fx": 0,
-            "fy": 0,
-            "fz": -20
-          }
-        }
-      ]
-    }
-  ]
-}
+          type: 'Force',
+          properties: {
+            fx: 0,
+            fy: 0,
+            fz: -20,
+          },
+        },
+      ],
+    },
+  ],
+};
 
-const proton = new Proton.fromJSON(json)
+const system = new System.fromJSON(json);
 ```
 
 ### Script Tag
 
-If you are adding `three-proton` to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so
+If you are adding `nebula-engine` to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so
 
 ```javascript
-const { Proton, Emitter, Rate, Span } = window.Proton;
-const proton = new Proton();
+const { System, Emitter, Rate, Span } = window.System;
+const system = new System();
 ```
 
 ## Development
@@ -249,7 +247,7 @@ const proton = new Proton();
 
 There are a few NPM scripts in the root package.json:
 
-- `build` - Builds the module and writes the code into `./build/three-proton.js`
+- `build` - Builds the module and writes the code into `./build/nebula-engine.js`
 - `docs` - Serves the docs at http://localhost:8080
 - `docs:build` - Copies the latest build to `./docs/js` and builds the API reference docs
 - `test` - Runs all specs
