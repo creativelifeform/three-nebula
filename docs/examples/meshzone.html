@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>three.proton - meshzone</title>
+    <title>three.system - meshzone</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <style type="text/css">
@@ -20,10 +20,10 @@
     <div id="container"></div>
     <script src="../js/stats.min.js"></script>
     <script src="../js/three.min.js"></script>
-    <script src="../js/three-proton.js"></script>
+    <script src="../js/nebula-engine.js"></script>
     <script>
 
-    var proton, emitter;
+    var system, emitter;
     var camera, scene, renderer, stats, clock, spring;
     var mesh, randomBehaviour, gravity;
 
@@ -89,9 +89,9 @@
     }
 
     function initProton() {
-        proton = new Proton.default();
-        proton.addEmitter(createEmitter());
-        proton.addRenderer(new Proton.SpriteRenderer(scene));
+        system = new Nebula.default();
+        system.addEmitter(createEmitter());
+        system.addRenderer(new Nebula.SpriteRenderer(scene));
     }
 
     //load model
@@ -104,23 +104,23 @@
     }
 
     function createEmitter() {
-        emitter = new Proton.Emitter();
-        emitter.rate = new Proton.Rate(new Proton.Span(11, 15), new Proton.Span(.02));
+        emitter = new Nebula.Emitter();
+        emitter.rate = new Nebula.Rate(new Nebula.Span(11, 15), new Nebula.Span(.02));
         //addInitializer
-        emitter.addInitializer(new Proton.Position(new Proton.MeshZone(mesh, 200)));
-        emitter.addInitializer(new Proton.Mass(1));
-        emitter.addInitializer(new Proton.Radius(26, 50));
-        emitter.addInitializer(new Proton.Life(1.5));
-        emitter.addInitializer(new Proton.Body(createSprite()));
+        emitter.addInitializer(new Nebula.Position(new Nebula.MeshZone(mesh, 200)));
+        emitter.addInitializer(new Nebula.Mass(1));
+        emitter.addInitializer(new Nebula.Radius(26, 50));
+        emitter.addInitializer(new Nebula.Life(1.5));
+        emitter.addInitializer(new Nebula.Body(createSprite()));
 
         //addBehaviour
-        randomBehaviour = new Proton.RandomDrift(2, 2, 2);
-        gravity = new Proton.Gravity(0);
+        randomBehaviour = new Nebula.RandomDrift(2, 2, 2);
+        gravity = new Nebula.Gravity(0);
         emitter.addBehaviour(customScaleBehaviour());
         emitter.addBehaviour(gravity);
         emitter.addBehaviour(randomBehaviour);
-        emitter.addBehaviour(new Proton.Color(['#00aeff', '#0fa954', '#54396e', '#e61d5f']));
-        emitter.addBehaviour(new Proton.Color('random'));
+        emitter.addBehaviour(new Nebula.Color(['#00aeff', '#0fa954', '#54396e', '#e61d5f']));
+        emitter.addBehaviour(new Nebula.Color('random'));
 
         emitter.position.x = 0;
         emitter.position.y = -120;
@@ -185,14 +185,14 @@
     var tha = 0;
 
     function render() {
-        proton.update();
+        system.update();
         renderer.render(scene, camera);
 
         tha += .005;
         camera.lookAt(scene.position);
         camera.position.x = Math.sin(tha) * 500;
         camera.position.z = Math.cos(tha) * 500;
-        Proton.Debug.renderInfo(proton, 3);
+        Nebula.Debug.renderInfo(system, 3);
     }
 
     function onWindowResize() {

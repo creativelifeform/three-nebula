@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
 import chai from 'chai';
@@ -9,21 +9,21 @@ import { getEasingByName } from '../../src/ease';
 const { assert } = chai;
 
 describe('behaviour -> Rotate', () => {
-  const random = new Proton.Rotate('random');
-  const same = new Proton.Rotate();
-  const set = new Proton.Rotate(1);
-  const to = new Proton.Rotate(1, 2);
-  const add = new Proton.Rotate(1, 2, 3);
-  const randomParticle = new Proton.Particle();
-  const sameParticle = new Proton.Particle();
-  const setParticle = new Proton.Particle();
-  const toParticle = new Proton.Particle();
-  const addParticle = new Proton.Particle();
+  const random = new Nebula.Rotate('random');
+  const same = new Nebula.Rotate();
+  const set = new Nebula.Rotate(1);
+  const to = new Nebula.Rotate(1, 2);
+  const add = new Nebula.Rotate(1, 2, 3);
+  const randomParticle = new Nebula.Particle();
+  const sameParticle = new Nebula.Particle();
+  const setParticle = new Nebula.Particle();
+  const toParticle = new Nebula.Particle();
+  const addParticle = new Nebula.Particle();
 
   it('should set the rotation type to "same" if the first argument is undefined or "same"', done => {
     assert.strictEqual(same.rotationType, 'same');
 
-    const _same = new Proton.Rotate('same');
+    const _same = new Nebula.Rotate('same');
 
     assert.strictEqual(_same.rotationType, 'same');
 
@@ -60,9 +60,9 @@ describe('behaviour -> Rotate', () => {
     assert.strictEqual(to.x, 1);
     assert.strictEqual(to.y, 2);
     assert.strictEqual(to.z, 0);
-    assert.instanceOf(add.x, Proton.Span);
-    assert.instanceOf(add.y, Proton.Span);
-    assert.instanceOf(add.z, Proton.Span);
+    assert.instanceOf(add.x, Nebula.Span);
+    assert.instanceOf(add.y, Nebula.Span);
+    assert.instanceOf(add.z, Nebula.Span);
     assert.isFalse(add.x._isArray);
     assert.isFalse(add.y._center);
     assert.isFalse(add.z._isArray);
@@ -87,7 +87,7 @@ describe('behaviour -> Rotate', () => {
       rotation: { x, y, z },
     } = randomParticle;
 
-    assert.instanceOf(rotation, Proton.Vector3D);
+    assert.instanceOf(rotation, Nebula.Vector3D);
     assert.notEqual(x, 0);
     assert.notEqual(y, 0);
     assert.notEqual(z, 0);
@@ -103,7 +103,7 @@ describe('behaviour -> Rotate', () => {
       rotation: { x, y, z },
     } = sameParticle;
 
-    assert.instanceOf(rotation, Proton.Vector3D);
+    assert.instanceOf(rotation, Nebula.Vector3D);
     assert.equal(x, 0);
     assert.equal(y, 0);
     assert.equal(z, 0);
@@ -119,7 +119,7 @@ describe('behaviour -> Rotate', () => {
       rotation: { x, y, z },
     } = setParticle;
 
-    assert.instanceOf(rotation, Proton.Vector3D);
+    assert.instanceOf(rotation, Nebula.Vector3D);
     assert.equal(x, 0);
     assert.equal(y, 0);
     assert.equal(z, 0);
@@ -135,9 +135,9 @@ describe('behaviour -> Rotate', () => {
       transform: { fR, tR },
     } = toParticle;
 
-    assert.instanceOf(rotation, Proton.Vector3D);
-    assert.instanceOf(fR, Proton.Vector3D);
-    assert.instanceOf(tR, Proton.Vector3D);
+    assert.instanceOf(rotation, Nebula.Vector3D);
+    assert.instanceOf(fR, Nebula.Vector3D);
+    assert.instanceOf(tR, Nebula.Vector3D);
 
     done();
   });
@@ -153,8 +153,8 @@ describe('behaviour -> Rotate', () => {
       },
     } = addParticle;
 
-    assert.instanceOf(rotation, Proton.Vector3D);
-    assert.instanceOf(addR, Proton.Vector3D);
+    assert.instanceOf(rotation, Nebula.Vector3D);
+    assert.instanceOf(addR, Nebula.Vector3D);
     assert.strictEqual(x, 0.017455555555555554);
     assert.strictEqual(y, 0.03491111111111111);
     assert.strictEqual(z, 0.05236666666666666);
@@ -170,7 +170,7 @@ describe('behaviour -> Rotate', () => {
       rotation: { x, y, z },
     } = sameParticle;
 
-    assert.instanceOf(rotation, Proton.Vector3D);
+    assert.instanceOf(rotation, Nebula.Vector3D);
     assert.equal(x, 0);
     assert.equal(y, 0);
     assert.equal(z, 0);
@@ -186,7 +186,7 @@ describe('behaviour -> Rotate', () => {
       rotation: { x, y, z },
     } = setParticle;
 
-    assert.instanceOf(rotation, Proton.Vector3D);
+    assert.instanceOf(rotation, Nebula.Vector3D);
     assert.equal(x, 0);
     assert.equal(y, 0);
     assert.equal(z, 0);
@@ -202,9 +202,9 @@ describe('behaviour -> Rotate', () => {
       transform: { fR, tR },
     } = toParticle;
 
-    assert.instanceOf(rotation, Proton.Vector3D);
-    assert.instanceOf(fR, Proton.Vector3D);
-    assert.instanceOf(tR, Proton.Vector3D);
+    assert.instanceOf(rotation, Nebula.Vector3D);
+    assert.instanceOf(fR, Nebula.Vector3D);
+    assert.instanceOf(tR, Nebula.Vector3D);
 
     done();
   });
@@ -220,8 +220,8 @@ describe('behaviour -> Rotate', () => {
       },
     } = addParticle;
 
-    assert.instanceOf(rotation, Proton.Vector3D);
-    assert.instanceOf(addR, Proton.Vector3D);
+    assert.instanceOf(rotation, Nebula.Vector3D);
+    assert.instanceOf(addR, Nebula.Vector3D);
     assert.strictEqual(x, 0.017455555555555554);
     assert.strictEqual(y, 0.03491111111111111);
     assert.strictEqual(z, 0.05236666666666666);
@@ -233,7 +233,7 @@ describe('behaviour -> Rotate', () => {
   });
 
   it('should construct the behaviour from a JSON object', done => {
-    const instance = Proton.Rotate.fromJSON({
+    const instance = Nebula.Rotate.fromJSON({
       x: 1,
       y: 2,
       z: 3,
@@ -241,11 +241,11 @@ describe('behaviour -> Rotate', () => {
       easing: 'easeInOutExpo',
     });
 
-    assert.instanceOf(instance, Proton.Rotate);
+    assert.instanceOf(instance, Nebula.Rotate);
     assert.equal(instance.life, 3);
-    assert.instanceOf(instance.x, Proton.Span);
-    assert.instanceOf(instance.y, Proton.Span);
-    assert.instanceOf(instance.z, Proton.Span);
+    assert.instanceOf(instance.x, Nebula.Span);
+    assert.instanceOf(instance.y, Nebula.Span);
+    assert.instanceOf(instance.z, Nebula.Span);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
 

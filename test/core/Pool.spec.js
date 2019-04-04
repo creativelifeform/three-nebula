@@ -1,13 +1,13 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import { Object3D } from 'three';
 import chai from 'chai';
 import sinon from 'sinon';
 
 const { assert } = chai;
-const { Pool } = Proton;
+const { Pool } = Nebula;
 
 describe('core -> Pool', () => {
   it('should instantiate with the correct properties', done => {
@@ -23,9 +23,9 @@ describe('core -> Pool', () => {
 
   it('should get a new object with a unique id if the object can be instantiated', done => {
     const pool = new Pool();
-    const particle = pool.get(Proton.Particle);
+    const particle = pool.get(Nebula.Particle);
 
-    assert.instanceOf(particle, Proton.Particle);
+    assert.instanceOf(particle, Nebula.Particle);
     assert.isString(particle.__puid);
 
     done();
@@ -67,7 +67,7 @@ describe('core -> Pool', () => {
 
   it('should store the object in the mapped list', done => {
     const pool = new Pool();
-    const particle = pool.get(Proton.Particle);
+    const particle = pool.get(Nebula.Particle);
     const poolId = particle.__puid;
 
     pool.expire(particle);
@@ -80,7 +80,7 @@ describe('core -> Pool', () => {
 
   it('should get the object out of the pool if it was previously expired', done => {
     const pool = new Pool();
-    const particle = pool.get(Proton.Particle);
+    const particle = pool.get(Nebula.Particle);
     const createSpy = sinon.spy(pool, 'create');
 
     pool.expire(particle);
@@ -100,7 +100,7 @@ describe('core -> Pool', () => {
     const particles = [];
 
     for (let i = 0; i < count; i++) {
-      particles.push(pool.get(Proton.Particle));
+      particles.push(pool.get(Nebula.Particle));
     }
 
     particles.forEach(particle => pool.expire(particle));
@@ -116,7 +116,7 @@ describe('core -> Pool', () => {
     const particles = [];
 
     for (let i = 0; i < count; i++) {
-      const particle = pool.get(Proton.Particle);
+      const particle = pool.get(Nebula.Particle);
 
       pool.get(new Object3D());
       particles.push(particle);

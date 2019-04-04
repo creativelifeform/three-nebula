@@ -20,10 +20,10 @@
     <div id="container"></div>
     <script src="../js/stats.min.js"></script>
     <script src="../js/three.min.js"></script>
-    <script src="../js/three-proton.js"></script>
+    <script src="../js/nebula-engine.js"></script>
     <script src="../js/lib/TrackballControls.js"></script>
     <script>
-    var proton, emitter;
+    var system, emitter;
     var camera, scene, renderer, stats, clock, spring, controls;
 
     init();
@@ -88,9 +88,9 @@
     }
 
     function addProton() {
-        proton = new Proton.default();
-        proton.addEmitter(createEmitter());
-        proton.addRenderer(new Proton.SpriteRenderer(scene));
+        system = new Nebula.default();
+        system.addEmitter(createEmitter());
+        system.addRenderer(new Nebula.SpriteRenderer(scene));
     }
 
     function createBox() {
@@ -105,16 +105,16 @@
 
     function createEmitter() {
         var colors = ['#529B88', '#CDD180', '#FFFA32', '#FB6255', '#FB4A53', '#FF4E50', '#F9D423'];
-        emitter = new Proton.Emitter();
-        emitter.rate = new Proton.Rate(new Proton.Span(3, 6), new Proton.Span(.05, .2));
-        emitter.addInitializer(new Proton.Mass(1));
-        emitter.addInitializer(new Proton.Radius(200, 400));
-        emitter.addInitializer(new Proton.Life(2, 4));
-        emitter.addInitializer(new Proton.Body(createSprite()));
-        emitter.addInitializer(new Proton.Position(new Proton.ScreenZone(camera, renderer)));
-        emitter.addBehaviour(new Proton.Alpha(0, 1, Infinity, Proton.easeOutCubic));
-        emitter.addBehaviour(new Proton.Scale(2, 0, Infinity, Proton.easeOutCubic));
-        emitter.addBehaviour(new Proton.Color(colors, 'random'));
+        emitter = new Nebula.Emitter();
+        emitter.rate = new Nebula.Rate(new Nebula.Span(3, 6), new Nebula.Span(.05, .2));
+        emitter.addInitializer(new Nebula.Mass(1));
+        emitter.addInitializer(new Nebula.Radius(200, 400));
+        emitter.addInitializer(new Nebula.Life(2, 4));
+        emitter.addInitializer(new Nebula.Body(createSprite()));
+        emitter.addInitializer(new Nebula.Position(new Nebula.ScreenZone(camera, renderer)));
+        emitter.addBehaviour(new Nebula.Alpha(0, 1, Infinity, Nebula.easeOutCubic));
+        emitter.addBehaviour(new Nebula.Scale(2, 0, Infinity, Nebula.easeOutCubic));
+        emitter.addBehaviour(new Nebula.Color(colors, 'random'));
         emitter.emit();
         return emitter;
     }
@@ -138,11 +138,11 @@
     }
 
     function render() {
-        proton.update();
+        system.update();
         renderer.render(scene, camera);
         controls.update();
 
-        Proton.Debug.renderInfo(proton, 3);
+        Nebula.Debug.renderInfo(system, 3);
     }
 
     function onWindowResize() {

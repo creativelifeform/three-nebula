@@ -9,9 +9,9 @@ export default class PointZone extends Zone {
    * @param {Number} y - the center's y value
    * @param {Number} z - the center's z value
    * @example
-   * var pointZone = new Proton.PointZone(0,30,10);
+   * var pointZone = new System.PointZone(0,30,10);
    * or
-   * var pointZone = new Proton.PointZone(new Proton.Vector3D(0,30,10));
+   * var pointZone = new System.PointZone(new System.Vector3D(0,30,10));
    * @extends {Zone}
    * @constructor
    */

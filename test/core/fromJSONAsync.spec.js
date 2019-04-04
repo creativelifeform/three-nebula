@@ -1,6 +1,6 @@
 /*global describe, it, before, after */
 
-import Particles from '../../src/core/Proton';
+import Particles from '../../src/core/System';
 import Texture from '../../src/initializer/Texture';
 import { TextureLoader } from 'three';
 import chai from 'chai';
@@ -42,44 +42,44 @@ describe('fromJSONAsync', () => {
   });
 
   it('should instantiate the eightdiagramsAsync example', async () => {
-    const proton = await Particles.fromJSONAsync(eightdiagrams);
+    const system = await Particles.fromJSONAsync(eightdiagrams);
 
-    assert.lengthOf(proton.emitters, eightdiagrams.emitters.length);
+    assert.lengthOf(system.emitters, eightdiagrams.emitters.length);
     assert.lengthOf(
-      proton.emitters[0].initializers,
+      system.emitters[0].initializers,
       eightdiagrams.emitters[0].initializers.length
     );
     assert.lengthOf(
-      proton.emitters[1].initializers,
+      system.emitters[1].initializers,
       eightdiagrams.emitters[1].initializers.length
     );
     assert.lengthOf(
-      proton.emitters[0].behaviours,
+      system.emitters[0].behaviours,
       eightdiagrams.emitters[0].behaviours.length
     );
     assert.lengthOf(
-      proton.emitters[1].behaviours,
+      system.emitters[1].behaviours,
       eightdiagrams.emitters[1].behaviours.length
     );
 
     assert.equal(
-      proton.emitters[0].position.x,
+      system.emitters[0].position.x,
       eightdiagrams.emitters[0].position.x
     );
     assert.equal(
-      proton.emitters[1].position.x,
+      system.emitters[1].position.x,
       eightdiagrams.emitters[1].position.x
     );
     assert.equal(
-      proton.emitters[0].rotation.x,
+      system.emitters[0].rotation.x,
       eightdiagrams.emitters[0].rotation.x
     );
     assert.equal(
-      proton.emitters[0].rotation.y,
+      system.emitters[0].rotation.y,
       eightdiagrams.emitters[0].rotation.y
     );
     assert.equal(
-      proton.emitters[0].rotation.z,
+      system.emitters[0].rotation.z,
       eightdiagrams.emitters[0].rotation.z
     );
 

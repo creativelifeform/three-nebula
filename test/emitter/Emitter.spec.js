@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 import * as integration from '../../src/math/integration';
 
 import {
@@ -20,7 +20,7 @@ import sinon from 'sinon';
 
 const { spy } = sinon;
 const { assert } = chai;
-const { Emitter } = Proton;
+const { Emitter } = Nebula;
 
 describe('emitter -> Emitter', () => {
   it('should instantiate with the correct properties', done => {
@@ -63,7 +63,7 @@ describe('emitter -> Emitter', () => {
 
   it('should set the emitter rate and return the emitter', done => {
     const emitter = new Emitter();
-    const rate = new Proton.Rate(1, 2);
+    const rate = new Nebula.Rate(1, 2);
 
     assert.instanceOf(emitter.setRate(rate), Emitter);
 
@@ -136,7 +136,7 @@ describe('emitter -> Emitter', () => {
     const emitter = new Emitter();
 
     for (let i = 0; i < 500; i++) {
-      emitter.particles.push(new Proton.Particle());
+      emitter.particles.push(new Nebula.Particle());
     }
 
     emitter.removeAllParticles();
@@ -146,22 +146,22 @@ describe('emitter -> Emitter', () => {
   });
 
   it('should get a particle from the pool, call the setupParticle method, dispatch events and return the particle', done => {
-    const proton = new Proton.Proton();
+    const system = new Nebula.System();
     const emitter = new Emitter();
-    const initializer = new Proton.Mass();
-    const behaviour = new Proton.Attraction();
+    const initializer = new Nebula.Mass();
+    const behaviour = new Nebula.Attraction();
     const setupParticleSpy = spy(emitter, 'setupParticle');
-    const protonDispatchSpy = spy(proton, 'dispatch');
+    const systemDispatchSpy = spy(system, 'dispatch');
     const emitterDispatchSpy = spy(emitter, 'dispatch');
-    const spies = [setupParticleSpy, protonDispatchSpy, emitterDispatchSpy];
+    const spies = [setupParticleSpy, systemDispatchSpy, emitterDispatchSpy];
 
-    proton.addEmitter(emitter);
+    system.addEmitter(emitter);
 
     const particle = emitter.createParticle(initializer, behaviour);
 
-    assert.instanceOf(particle, Proton.Particle);
+    assert.instanceOf(particle, Nebula.Particle);
     assert(setupParticleSpy.calledOnceWith(particle));
-    assert(protonDispatchSpy.secondCall.calledWith(PARTICLE_CREATED, particle));
+    assert(systemDispatchSpy.secondCall.calledWith(PARTICLE_CREATED, particle));
     assert(emitterDispatchSpy.notCalled);
 
     spies.forEach(spy => spy.restore());
@@ -169,17 +169,17 @@ describe('emitter -> Emitter', () => {
   });
 
   it("should call the emitter's dispatch when creating a particle with bindEmitterEvent set to true", done => {
-    const proton = new Proton.Proton();
+    const system = new Nebula.System();
     const emitter = new Emitter();
     const emitterDispatchSpy = spy(emitter, 'dispatch');
     const spies = [emitterDispatchSpy];
 
-    proton.addEmitter(emitter);
+    system.addEmitter(emitter);
     emitter.bindEmitterEvent = true;
 
     const particle = emitter.createParticle(
-      new Proton.Mass(),
-      new Proton.Attraction()
+      new Nebula.Mass(),
+      new Nebula.Attraction()
     );
 
     assert(emitterDispatchSpy.calledOnceWith(PARTICLE_CREATED, particle));
@@ -190,36 +190,36 @@ describe('emitter -> Emitter', () => {
 
   it('should add an initializer to the emitter', done => {
     const emitter = new Emitter();
-    const mass = new Proton.Mass();
+    const mass = new Nebula.Mass();
 
     assert.instanceOf(emitter.addInitializer(mass), Emitter);
     assert.notEmpty(emitter.initializers);
-    assert.instanceOf(emitter.initializers[0], Proton.Mass);
+    assert.instanceOf(emitter.initializers[0], Nebula.Mass);
 
     done();
   });
 
   it('should add all the initializers passed', done => {
     const emitter = new Emitter();
-    const mass = new Proton.Mass();
-    const life = new Proton.Life();
-    const radius = new Proton.Radius();
+    const mass = new Nebula.Mass();
+    const life = new Nebula.Life();
+    const radius = new Nebula.Radius();
     const initializers = [mass, life, radius];
 
     assert.instanceOf(emitter.addInitializers(initializers), Emitter);
     assert.lengthOf(emitter.initializers, initializers.length);
-    assert.instanceOf(emitter.initializers[0], Proton.Radius);
-    assert.instanceOf(emitter.initializers[1], Proton.Life);
-    assert.instanceOf(emitter.initializers[2], Proton.Mass);
+    assert.instanceOf(emitter.initializers[0], Nebula.Radius);
+    assert.instanceOf(emitter.initializers[1], Nebula.Life);
+    assert.instanceOf(emitter.initializers[2], Nebula.Mass);
 
     done();
   });
 
   it('should set the emitter initializers to the initializers passed', done => {
     const emitter = new Emitter();
-    const mass = new Proton.Mass();
-    const life = new Proton.Life();
-    const radius = new Proton.Radius();
+    const mass = new Nebula.Mass();
+    const life = new Nebula.Life();
+    const radius = new Nebula.Radius();
     const initializers = [mass, life, radius];
 
     assert.instanceOf(emitter.setInitializers(initializers), Emitter);
@@ -230,8 +230,8 @@ describe('emitter -> Emitter', () => {
 
   it('should remove the initializer', done => {
     const emitter = new Emitter();
-    const mass = new Proton.Mass();
-    const life = new Proton.Life();
+    const mass = new Nebula.Mass();
+    const life = new Nebula.Life();
 
     emitter.addInitializers([mass, life]);
 
@@ -240,16 +240,16 @@ describe('emitter -> Emitter', () => {
     emitter.removeInitializer(mass);
 
     assert.lengthOf(emitter.initializers, 1);
-    assert.instanceOf(emitter.initializers[0], Proton.Life);
+    assert.instanceOf(emitter.initializers[0], Nebula.Life);
 
     done();
   });
 
   it('should remove all the initializers from the emitter', done => {
     const emitter = new Emitter();
-    const mass = new Proton.Mass();
-    const life = new Proton.Life();
-    const radius = new Proton.Radius();
+    const mass = new Nebula.Mass();
+    const life = new Nebula.Life();
+    const radius = new Nebula.Radius();
     const initializers = [mass, life, radius];
 
     emitter.addInitializers(initializers);
@@ -262,7 +262,7 @@ describe('emitter -> Emitter', () => {
 
   it('should add a behaviour to the emitter', done => {
     const emitter = new Emitter();
-    const attraction = new Proton.Attraction();
+    const attraction = new Nebula.Attraction();
 
     assert.instanceOf(emitter.addBehaviour(attraction), Emitter);
     assert.lengthOf(emitter.behaviours, 1);
@@ -273,25 +273,25 @@ describe('emitter -> Emitter', () => {
 
   it('should add all the behaviours to the emitter', done => {
     const emitter = new Emitter();
-    const attraction = new Proton.Attraction();
-    const repulsion = new Proton.Repulsion();
-    const gravity = new Proton.Gravity();
+    const attraction = new Nebula.Attraction();
+    const repulsion = new Nebula.Repulsion();
+    const gravity = new Nebula.Gravity();
     const behaviours = [attraction, repulsion, gravity];
 
     assert.instanceOf(emitter.addBehaviours(behaviours), Emitter);
     assert.lengthOf(emitter.behaviours, behaviours.length);
-    assert.instanceOf(emitter.behaviours[0], Proton.Gravity);
-    assert.instanceOf(emitter.behaviours[1], Proton.Repulsion);
-    assert.instanceOf(emitter.behaviours[2], Proton.Attraction);
+    assert.instanceOf(emitter.behaviours[0], Nebula.Gravity);
+    assert.instanceOf(emitter.behaviours[1], Nebula.Repulsion);
+    assert.instanceOf(emitter.behaviours[2], Nebula.Attraction);
 
     done();
   });
 
   it('should set the emitter behaviours to the behaviours passed', done => {
     const emitter = new Emitter();
-    const attraction = new Proton.Attraction();
-    const repulsion = new Proton.Repulsion();
-    const gravity = new Proton.Gravity();
+    const attraction = new Nebula.Attraction();
+    const repulsion = new Nebula.Repulsion();
+    const gravity = new Nebula.Gravity();
     const behaviours = [attraction, repulsion, gravity];
 
     assert.instanceOf(emitter.setBehaviours(behaviours), Emitter);
@@ -303,9 +303,9 @@ describe('emitter -> Emitter', () => {
 
   it('should remove the emitter behaviour', done => {
     const emitter = new Emitter();
-    const attraction = new Proton.Attraction();
-    const repulsion = new Proton.Repulsion();
-    const gravity = new Proton.Gravity();
+    const attraction = new Nebula.Attraction();
+    const repulsion = new Nebula.Repulsion();
+    const gravity = new Nebula.Gravity();
     const behaviours = [attraction, repulsion, gravity];
 
     emitter.setBehaviours(behaviours);
@@ -321,9 +321,9 @@ describe('emitter -> Emitter', () => {
     const emitter = new Emitter();
 
     emitter.setBehaviours([
-      new Proton.Attraction(),
-      new Proton.Repulsion(),
-      new Proton.Gravity(),
+      new Nebula.Attraction(),
+      new Nebula.Repulsion(),
+      new Nebula.Gravity(),
     ]);
 
     assert.instanceOf(emitter.removeAllBehaviours(), Emitter);
@@ -333,14 +333,14 @@ describe('emitter -> Emitter', () => {
   });
 
   it('should get a particle from the pool when creating the particle and return the particle', done => {
-    const proton = new Proton.Proton();
+    const system = new Nebula.System();
     const emitter = new Emitter();
 
-    proton.addEmitter(emitter);
+    system.addEmitter(emitter);
 
-    const poolSpy = spy(proton.pool, 'get');
+    const poolSpy = spy(system.pool, 'get');
 
-    assert.instanceOf(emitter.createParticle(), Proton.Particle);
+    assert.instanceOf(emitter.createParticle(), Nebula.Particle);
     assert(poolSpy.calledOnce);
 
     poolSpy.restore();
@@ -349,10 +349,10 @@ describe('emitter -> Emitter', () => {
   });
 
   it('should call the setupParticle method on the particle when creating it', done => {
-    const proton = new Proton.Proton();
+    const system = new Nebula.System();
     const emitter = new Emitter();
 
-    proton.addEmitter(emitter);
+    system.addEmitter(emitter);
 
     const setupParticleSpy = spy(emitter, 'setupParticle');
     const particle = emitter.createParticle();
@@ -365,16 +365,16 @@ describe('emitter -> Emitter', () => {
   });
 
   it('should dispatch the correct events when creating a particle', done => {
-    const proton = new Proton.Proton();
+    const system = new Nebula.System();
     const emitter = new Emitter();
-    const protonDispatchSpy = spy(proton, 'dispatch');
+    const systemDispatchSpy = spy(system, 'dispatch');
     const emitterDispatchSpy = spy(emitter, 'dispatch');
 
-    proton.addEmitter(emitter);
+    system.addEmitter(emitter);
 
     const particle = emitter.createParticle();
 
-    assert(protonDispatchSpy.secondCall.calledWith(PARTICLE_CREATED, particle));
+    assert(systemDispatchSpy.secondCall.calledWith(PARTICLE_CREATED, particle));
 
     emitter.bindEmitterEvent = true;
 
@@ -382,7 +382,7 @@ describe('emitter -> Emitter', () => {
 
     assert(emitterDispatchSpy.calledOnceWith(PARTICLE_CREATED, particle2));
 
-    protonDispatchSpy.restore();
+    systemDispatchSpy.restore();
     emitterDispatchSpy.restore();
 
     done();
@@ -390,14 +390,14 @@ describe('emitter -> Emitter', () => {
 
   it("should call the InitializerUtil.initialize method on the particle passing the correct arguments. This should call every initializer's init method on the particle", done => {
     const emitter = new Emitter();
-    const particle = new Proton.Particle();
-    const initializeSpy = spy(Proton.InitializerUtil, 'initialize');
-    const mass = new Proton.Mass();
-    const life = new Proton.Life();
-    const radius = new Proton.Radius();
-    const attraction = new Proton.Attraction();
-    const repulsion = new Proton.Repulsion();
-    const gravity = new Proton.Gravity();
+    const particle = new Nebula.Particle();
+    const initializeSpy = spy(Nebula.InitializerUtil, 'initialize');
+    const mass = new Nebula.Mass();
+    const life = new Nebula.Life();
+    const radius = new Nebula.Radius();
+    const attraction = new Nebula.Attraction();
+    const repulsion = new Nebula.Repulsion();
+    const gravity = new Nebula.Gravity();
     const behaviours = [attraction, repulsion, gravity];
     const initializers = [mass, life, radius];
     const initSpies = [
@@ -424,10 +424,10 @@ describe('emitter -> Emitter', () => {
 
   it('should set the particle beahviours as well as its parent and push the particle into the emitter.particles array', done => {
     const emitter = new Emitter();
-    const particle = new Proton.Particle();
-    const attraction = new Proton.Attraction();
-    const repulsion = new Proton.Repulsion();
-    const gravity = new Proton.Gravity();
+    const particle = new Nebula.Particle();
+    const attraction = new Nebula.Attraction();
+    const repulsion = new Nebula.Repulsion();
+    const gravity = new Nebula.Gravity();
     const behaviours = [attraction, repulsion, gravity];
     const addBehavioursSpy = spy(particle, 'addBehaviours');
 
@@ -446,18 +446,18 @@ describe('emitter -> Emitter', () => {
   });
 
   it('should destroy the emitter and clear all initializers, behaviour and the parent if there are no particles', done => {
-    const proton = new Proton.Proton();
+    const system = new Nebula.System();
     const emitter = new Emitter();
-    const mass = new Proton.Mass();
-    const life = new Proton.Life();
-    const radius = new Proton.Radius();
-    const attraction = new Proton.Attraction();
-    const repulsion = new Proton.Repulsion();
-    const gravity = new Proton.Gravity();
+    const mass = new Nebula.Mass();
+    const life = new Nebula.Life();
+    const radius = new Nebula.Radius();
+    const attraction = new Nebula.Attraction();
+    const repulsion = new Nebula.Repulsion();
+    const gravity = new Nebula.Gravity();
     const behaviours = [attraction, repulsion, gravity];
     const initializers = [mass, life, radius];
 
-    proton.addEmitter(emitter);
+    system.addEmitter(emitter);
     emitter.setBehaviours(behaviours).setInitializers(initializers);
 
     assert.empty(emitter.particles);
@@ -469,26 +469,26 @@ describe('emitter -> Emitter', () => {
     assert.equal(emitter.totalEmitTimes, -1);
     assert.isEmpty(emitter.initializers);
     assert.isEmpty(emitter.behaviours);
-    assert.isEmpty(proton.emitters);
+    assert.isEmpty(system.emitters);
     assert.isNull(emitter.parent);
 
     done();
   });
 
   it('should stop the emitter but not clear initializers, behaviours or the parent if the emitter has particles', done => {
-    const proton = new Proton.Proton();
+    const system = new Nebula.System();
     const emitter = new Emitter();
-    const particle = new Proton.Particle();
-    const mass = new Proton.Mass();
-    const life = new Proton.Life();
-    const radius = new Proton.Radius();
-    const attraction = new Proton.Attraction();
-    const repulsion = new Proton.Repulsion();
-    const gravity = new Proton.Gravity();
+    const particle = new Nebula.Particle();
+    const mass = new Nebula.Mass();
+    const life = new Nebula.Life();
+    const radius = new Nebula.Radius();
+    const attraction = new Nebula.Attraction();
+    const repulsion = new Nebula.Repulsion();
+    const gravity = new Nebula.Gravity();
     const behaviours = [attraction, repulsion, gravity];
     const initializers = [mass, life, radius];
 
-    proton.addEmitter(emitter);
+    system.addEmitter(emitter);
     emitter
       .setBehaviours(behaviours)
       .setInitializers(initializers)
@@ -503,7 +503,7 @@ describe('emitter -> Emitter', () => {
     assert.equal(emitter.totalEmitTimes, -1);
     assert.isNotEmpty(emitter.initializers);
     assert.isNotEmpty(emitter.behaviours);
-    assert.isNotEmpty(proton.emitters);
+    assert.isNotEmpty(system.emitters);
     assert.isNotNull(emitter.parent);
 
     done();
@@ -578,22 +578,22 @@ describe('emitter -> Emitter -> update', () => {
   });
 
   it('should call the required methods while updating the emitter if a particle is dead', done => {
-    const proton = new Proton.Proton();
+    const system = new Nebula.System();
     const emitter = new Emitter();
     const liveParticlesCount = 10;
     const deadParticlesCount = 23;
-    const protonDispatchSpy = spy(proton, 'dispatch');
-    const poolExpireSpy = spy(proton.pool, 'expire');
-    const particleResetSpy = spy(Proton.Particle.prototype, 'reset');
+    const systemDispatchSpy = spy(system, 'dispatch');
+    const poolExpireSpy = spy(system.pool, 'expire');
+    const particleResetSpy = spy(Nebula.Particle.prototype, 'reset');
 
-    proton.addEmitter(emitter);
+    system.addEmitter(emitter);
 
     for (let i = 0; i < liveParticlesCount; i++) {
-      emitter.particles.push(new Proton.Particle());
+      emitter.particles.push(new Nebula.Particle());
     }
 
     for (let i = 0; i < deadParticlesCount; i++) {
-      emitter.particles.push(new Proton.Particle({ dead: true }));
+      emitter.particles.push(new Nebula.Particle({ dead: true }));
     }
 
     emitter.update(TIME);
@@ -602,8 +602,8 @@ describe('emitter -> Emitter -> update', () => {
     assert.equal(particleResetSpy.callCount, deadParticlesCount);
     assert.lengthOf(emitter.particles, liveParticlesCount);
     // +1 for the add emitter dispatch
-    assert(protonDispatchSpy.callCount, deadParticlesCount + 1);
-    assert(protonDispatchSpy.calledWith(PARTICLE_DEAD));
+    assert(systemDispatchSpy.callCount, deadParticlesCount + 1);
+    assert(systemDispatchSpy.calledWith(PARTICLE_DEAD));
 
     done();
   });
@@ -626,11 +626,11 @@ describe('emitter -> Emitter -> integrate', () => {
   it('should update and integrate each particle', done => {
     const emitter = new Emitter();
     const integrationSpy = spy(integration, 'integrate');
-    const particleUpdateSpy = spy(Proton.Particle.prototype, 'update');
+    const particleUpdateSpy = spy(Nebula.Particle.prototype, 'update');
     const particlesCount = 33;
 
     for (let i = 0; i < particlesCount; i++) {
-      emitter.particles.push(new Proton.Particle());
+      emitter.particles.push(new Nebula.Particle());
     }
 
     emitter.integrate(TIME);
@@ -646,19 +646,19 @@ describe('emitter -> Emitter -> integrate', () => {
   });
 
   it('should dispatch the correct events after updating and integrating particles', done => {
-    const proton = new Proton.Proton();
+    const system = new Nebula.System();
     const emitter = new Emitter();
-    const protonDispatchSpy = spy(proton, 'dispatch');
-    const particle = new Proton.Particle();
+    const systemDispatchSpy = spy(system, 'dispatch');
+    const particle = new Nebula.Particle();
 
-    proton.addEmitter(emitter);
+    system.addEmitter(emitter);
     emitter.particles.push(particle);
 
     emitter.integrate(TIME);
 
-    assert(protonDispatchSpy.secondCall.calledWith(PARTICLE_UPDATE, particle));
+    assert(systemDispatchSpy.secondCall.calledWith(PARTICLE_UPDATE, particle));
 
-    protonDispatchSpy.restore();
+    systemDispatchSpy.restore();
 
     done();
   });
@@ -666,11 +666,11 @@ describe('emitter -> Emitter -> integrate', () => {
 
 describe('emitter -> Emitter -> generate', () => {
   it('should set the cID, call createParticle the right number of times and set the totalEmitTimes to 0 if the totalEmitTimes was 1', done => {
-    const proton = new Proton.Proton();
+    const system = new Nebula.System();
     const emitter = new Emitter();
     const createParticleSpy = spy(emitter, 'createParticle');
 
-    proton.addEmitter(emitter.emit(1));
+    system.addEmitter(emitter.emit(1));
     emitter.generate(TIME);
 
     assert.equal(emitter.cID, 1);
@@ -683,10 +683,10 @@ describe('emitter -> Emitter -> generate', () => {
   });
 
   it('should set the currentEmitTime', done => {
-    const proton = new Proton.Proton();
+    const system = new Nebula.System();
     const emitter = new Emitter();
 
-    proton.addEmitter(emitter.emit());
+    system.addEmitter(emitter.emit());
     emitter.generate(0.01);
 
     assert.equal(emitter.currentEmitTime, 0.01);
@@ -695,14 +695,14 @@ describe('emitter -> Emitter -> generate', () => {
   });
 
   it('should create the correct number of particles if currentEmitTime < totalEmitTimes', done => {
-    const proton = new Proton.Proton();
+    const system = new Nebula.System();
     const emitter = new Emitter();
-    const getValueSpy = spy(Proton.Rate.prototype, 'getValue');
+    const getValueSpy = spy(Nebula.Rate.prototype, 'getValue');
     const createParticleSpy = spy(emitter, 'createParticle');
     const time = 0.0184;
 
-    proton.addEmitter(emitter.emit());
-    emitter.setRate(new Proton.Rate(5, 0.01));
+    system.addEmitter(emitter.emit());
+    emitter.setRate(new Nebula.Rate(5, 0.01));
     emitter.generate(time);
 
     assert(getValueSpy.calledOnceWith(time));

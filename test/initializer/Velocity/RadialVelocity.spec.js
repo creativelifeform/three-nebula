@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../../src';
+import * as Nebula from '../../../src';
 
 import chai from 'chai';
 
@@ -8,9 +8,9 @@ const { assert } = chai;
 
 describe('initializer -> Radial Velocity', () => {
   const radius = 13;
-  const vector3d = new Proton.Vector3D(1, 2, 1);
-  const initializer = new Proton.RadialVelocity(radius, vector3d, 5);
-  const particle = new Proton.Particle();
+  const vector3d = new Nebula.Vector3D(1, 2, 1);
+  const initializer = new Nebula.RadialVelocity(radius, vector3d, 5);
+  const particle = new Nebula.Particle();
 
   it('should set the correct properties', done => {
     const {
@@ -29,7 +29,7 @@ describe('initializer -> Radial Velocity', () => {
     assert.equal(z, 0.4082482904638631);
     assert.equal(tha, 0.08727777777777777);
     assert.isTrue(_useV);
-    assert.instanceOf(dirVec, Proton.Vector3D);
+    assert.instanceOf(dirVec, Nebula.Vector3D);
     assert.deepEqual(Object.values(dirVec), [0, 0, 0]);
 
     done();
@@ -43,7 +43,7 @@ describe('initializer -> Radial Velocity', () => {
       velocity: { x, y, z },
     } = particle;
 
-    assert.instanceOf(velocity, Proton.Vector3D);
+    assert.instanceOf(velocity, Nebula.Vector3D);
     assert.isAbove(x, 0);
     assert.isAbove(y, 0);
     assert.isAbove(z, 0);
@@ -52,7 +52,7 @@ describe('initializer -> Radial Velocity', () => {
   });
 
   it('should construct the initializer from a JSON object', done => {
-    const instance = Proton.RadialVelocity.fromJSON({
+    const instance = Nebula.RadialVelocity.fromJSON({
       radius: 1.6,
       x: 0.96,
       y: 0.88,
@@ -60,9 +60,9 @@ describe('initializer -> Radial Velocity', () => {
       theta: 0.75,
     });
 
-    assert.instanceOf(instance, Proton.RadialVelocity);
-    assert.instanceOf(instance.radiusPan, Proton.Span);
-    assert.instanceOf(instance.dir, Proton.Vector3D);
+    assert.instanceOf(instance, Nebula.RadialVelocity);
+    assert.instanceOf(instance.radiusPan, Nebula.Span);
+    assert.instanceOf(instance.dir, Nebula.Vector3D);
     assert.equal(instance.tha, 0.013091666666666665);
     assert.deepEqual(Object.values(instance.dir), [
       0.696732280308598,

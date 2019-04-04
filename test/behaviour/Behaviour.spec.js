@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import Behaviour from '../../src/behaviour/Behaviour';
 import chai from 'chai';
@@ -34,7 +34,7 @@ describe('behaviour -> Behaviour', () => {
   });
 
   it('should normalize force correctly', done => {
-    const force = behaviour.normalizeForce(new Proton.Vector3D(1, 2.4, 3));
+    const force = behaviour.normalizeForce(new Nebula.Vector3D(1, 2.4, 3));
 
     assert.deepEqual(Object.values(force), [100, 240, 300]);
 
@@ -49,7 +49,7 @@ describe('behaviour -> Behaviour', () => {
 
   it('should not call the mutate method if the behaviour is disabled', done => {
     const disabled = new Behaviour(Infinity, () => {}, 'test', false);
-    const particle = new Proton.Particle();
+    const particle = new Nebula.Particle();
     const mutateSpy = spy(disabled, 'mutate');
 
     disabled.applyBehaviour(particle);
@@ -61,7 +61,7 @@ describe('behaviour -> Behaviour', () => {
   it('should set the particle to dead when age is > life', done => {
     const life = 1;
     const hasLife = new Behaviour(life);
-    const particle = new Proton.Particle();
+    const particle = new Nebula.Particle();
 
     hasLife.energize(particle, life + 1);
 

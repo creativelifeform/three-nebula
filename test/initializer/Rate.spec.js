@@ -1,15 +1,15 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import chai from 'chai';
 
 const { assert } = chai;
 
 describe('initializer -> Rate', () => {
-  const rate = new Proton.Rate(
-    new Proton.Span(1, 4),
-    new Proton.Span(0.1, 0.5)
+  const rate = new Nebula.Rate(
+    new Nebula.Span(1, 4),
+    new Nebula.Span(0.1, 0.5)
   );
 
   it('should have the correct properties after instantiation', done => {
@@ -27,7 +27,7 @@ describe('initializer -> Rate', () => {
   });
 
   it('the Rate.getValue method should return the correct value', done => {
-    const rate = new Proton.Rate();
+    const rate = new Nebula.Rate();
     const time = 4;
 
     assert.strictEqual(rate.getValue(time), 1);
@@ -40,16 +40,16 @@ describe('initializer -> Rate', () => {
   });
 
   it('should construct the initializer from a JSON object', done => {
-    const instance = Proton.Rate.fromJSON({
+    const instance = Nebula.Rate.fromJSON({
       particlesMin: 3,
       particlesMax: 10,
       perSecondMin: 0.01,
       perSecondMax: 0.05
     });
 
-    assert.instanceOf(instance, Proton.Rate);
-    assert.instanceOf(instance.numPan, Proton.Span);
-    assert.instanceOf(instance.timePan, Proton.Span);
+    assert.instanceOf(instance, Nebula.Rate);
+    assert.instanceOf(instance.numPan, Nebula.Span);
+    assert.instanceOf(instance.timePan, Nebula.Span);
     assert.equal(instance.numPan.a, 3);
     assert.equal(instance.numPan.b, 10);
     assert.equal(instance.timePan.a, 0.01);

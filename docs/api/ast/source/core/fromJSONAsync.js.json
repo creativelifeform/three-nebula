@@ -9153,7 +9153,7 @@
         "trailingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Creates a Proton instance from a JSON object.\n *\n * @param {object} json - The JSON to create the Proton instance from\n * @param {function} Proton - The proton class\n * @param {function} Emitter - The emitter class\n * @param {number} json.preParticles - The predetermined number of particles\n * @param {string} json.integrationType - The integration algorithm to use\n * @param {array<object>} json.emitters - The emitters for the proton instance\n * @return {Promise<Proton>}\n ",
+            "value": "*\n * Creates a System instance from a JSON object.\n *\n * @param {object} json - The JSON to create the System instance from\n * @param {function} System - The system class\n * @param {function} Emitter - The emitter class\n * @param {number} json.preParticles - The predetermined number of particles\n * @param {string} json.integrationType - The integration algorithm to use\n * @param {array<object>} json.emitters - The emitters for the system instance\n * @return {Promise<System>}\n ",
             "start": 4662,
             "end": 5147,
             "loc": {
@@ -9233,9 +9233,9 @@
                   "line": 194,
                   "column": 28
                 },
-                "identifierName": "Proton"
+                "identifierName": "System"
               },
-              "name": "Proton"
+              "name": "System"
             },
             {
               "type": "Identifier",
@@ -9725,9 +9725,9 @@
                                 "line": 201,
                                 "column": 16
                               },
-                              "identifierName": "proton"
+                              "identifierName": "system"
                             },
-                            "name": "proton"
+                            "name": "system"
                           },
                           "init": {
                             "type": "NewExpression",
@@ -9756,9 +9756,9 @@
                                   "line": 201,
                                   "column": 29
                                 },
-                                "identifierName": "Proton"
+                                "identifierName": "System"
                               },
-                              "name": "Proton"
+                              "name": "System"
                             },
                             "arguments": [
                               {
@@ -10236,9 +10236,9 @@
                                                       "line": 208,
                                                       "column": 31
                                                     },
-                                                    "identifierName": "proton"
+                                                    "identifierName": "system"
                                                   },
-                                                  "name": "proton"
+                                                  "name": "system"
                                                 }
                                               ]
                                             }
@@ -10434,9 +10434,9 @@
                                                             "line": 212,
                                                             "column": 16
                                                           },
-                                                          "identifierName": "proton"
+                                                          "identifierName": "system"
                                                         },
-                                                        "name": "proton"
+                                                        "name": "system"
                                                       },
                                                       "property": {
                                                         "type": "Identifier",
@@ -10547,9 +10547,9 @@
                                                               "line": 214,
                                                               "column": 20
                                                             },
-                                                            "identifierName": "proton"
+                                                            "identifierName": "system"
                                                           },
-                                                          "name": "proton"
+                                                          "name": "system"
                                                         },
                                                         "property": {
                                                           "type": "Identifier",
@@ -10682,9 +10682,9 @@
                                                                   "line": 215,
                                                                   "column": 26
                                                                 },
-                                                                "identifierName": "proton"
+                                                                "identifierName": "system"
                                                               },
-                                                              "name": "proton"
+                                                              "name": "system"
                                                             }
                                                           ]
                                                         }
@@ -10756,7 +10756,7 @@
           "leadingComments": [
             {
               "type": "CommentBlock",
-              "value": "*\n * Creates a Proton instance from a JSON object.\n *\n * @param {object} json - The JSON to create the Proton instance from\n * @param {function} Proton - The proton class\n * @param {function} Emitter - The emitter class\n * @param {number} json.preParticles - The predetermined number of particles\n * @param {string} json.integrationType - The integration algorithm to use\n * @param {array<object>} json.emitters - The emitters for the proton instance\n * @return {Promise<Proton>}\n ",
+              "value": "*\n * Creates a System instance from a JSON object.\n *\n * @param {object} json - The JSON to create the System instance from\n * @param {function} System - The system class\n * @param {function} Emitter - The emitter class\n * @param {number} json.preParticles - The predetermined number of particles\n * @param {string} json.integrationType - The integration algorithm to use\n * @param {array<object>} json.emitters - The emitters for the system instance\n * @return {Promise<System>}\n ",
               "start": 4662,
               "end": 5147,
               "loc": {
@@ -10776,7 +10776,7 @@
         "leadingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Creates a Proton instance from a JSON object.\n *\n * @param {object} json - The JSON to create the Proton instance from\n * @param {function} Proton - The proton class\n * @param {function} Emitter - The emitter class\n * @param {number} json.preParticles - The predetermined number of particles\n * @param {string} json.integrationType - The integration algorithm to use\n * @param {array<object>} json.emitters - The emitters for the proton instance\n * @return {Promise<Proton>}\n ",
+            "value": "*\n * Creates a System instance from a JSON object.\n *\n * @param {object} json - The JSON to create the System instance from\n * @param {function} System - The system class\n * @param {function} Emitter - The emitter class\n * @param {number} json.preParticles - The predetermined number of particles\n * @param {string} json.integrationType - The integration algorithm to use\n * @param {array<object>} json.emitters - The emitters for the system instance\n * @return {Promise<System>}\n ",
             "start": 4662,
             "end": 5147,
             "loc": {
@@ -10846,7 +10846,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * Creates a Proton instance from a JSON object.\n *\n * @param {object} json - The JSON to create the Proton instance from\n * @param {function} Proton - The proton class\n * @param {function} Emitter - The emitter class\n * @param {number} json.preParticles - The predetermined number of particles\n * @param {string} json.integrationType - The integration algorithm to use\n * @param {array<object>} json.emitters - The emitters for the proton instance\n * @return {Promise<Proton>}\n ",
+      "value": "*\n * Creates a System instance from a JSON object.\n *\n * @param {object} json - The JSON to create the System instance from\n * @param {function} System - The system class\n * @param {function} Emitter - The emitter class\n * @param {number} json.preParticles - The predetermined number of particles\n * @param {string} json.integrationType - The integration algorithm to use\n * @param {array<object>} json.emitters - The emitters for the system instance\n * @return {Promise<System>}\n ",
       "start": 4662,
       "end": 5147,
       "loc": {
@@ -28986,7 +28986,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * Creates a Proton instance from a JSON object.\n *\n * @param {object} json - The JSON to create the Proton instance from\n * @param {function} Proton - The proton class\n * @param {function} Emitter - The emitter class\n * @param {number} json.preParticles - The predetermined number of particles\n * @param {string} json.integrationType - The integration algorithm to use\n * @param {array<object>} json.emitters - The emitters for the proton instance\n * @return {Promise<Proton>}\n ",
+      "value": "*\n * Creates a System instance from a JSON object.\n *\n * @param {object} json - The JSON to create the System instance from\n * @param {function} System - The system class\n * @param {function} Emitter - The emitter class\n * @param {number} json.preParticles - The predetermined number of particles\n * @param {string} json.integrationType - The integration algorithm to use\n * @param {array<object>} json.emitters - The emitters for the system instance\n * @return {Promise<System>}\n ",
       "start": 4662,
       "end": 5147,
       "loc": {
@@ -29145,7 +29145,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "Proton",
+      "value": "System",
       "start": 5170,
       "end": 5176,
       "loc": {
@@ -30058,7 +30058,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 5346,
       "end": 5352,
       "loc": {
@@ -30139,7 +30139,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "Proton",
+      "value": "System",
       "start": 5359,
       "end": 5365,
       "loc": {
@@ -31047,7 +31047,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 5578,
       "end": 5584,
       "loc": {
@@ -31329,7 +31329,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 5654,
       "end": 5660,
       "loc": {
@@ -31562,7 +31562,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 5701,
       "end": 5707,
       "loc": {
@@ -31846,7 +31846,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 5768,
       "end": 5774,
       "loc": {

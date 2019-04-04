@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
 import chai from 'chai';
@@ -9,13 +9,13 @@ import { getEasingByName } from '../../src/ease';
 const { assert } = chai;
 
 describe('behaviour -> Color', () => {
-  const behaviour = new Proton.Color(
+  const behaviour = new Nebula.Color(
     0xff0000,
     'random',
     Infinity,
-    Proton.ease.easeOutQuart
+    Nebula.ease.easeOutQuart
   );
-  const particle = new Proton.Particle();
+  const particle = new Nebula.Particle();
 
   it('should instantiate with the correct properties', done => {
     const { colorA, colorB } = behaviour;
@@ -27,8 +27,8 @@ describe('behaviour -> Color', () => {
     assert.strictEqual(behaviour.energy, 1);
     assert.isFalse(behaviour.dead);
     assert.isFalse(behaviour._same);
-    assert.isTrue(colorA instanceof Proton.ColorSpan);
-    assert.isTrue(colorB instanceof Proton.ColorSpan);
+    assert.isTrue(colorA instanceof Nebula.ColorSpan);
+    assert.isTrue(colorB instanceof Nebula.ColorSpan);
     assert.isFalse(colorA._isArray);
     assert.strictEqual(colorA.a, 1);
     assert.strictEqual(colorA.b, 1);
@@ -62,13 +62,13 @@ describe('behaviour -> Color', () => {
     assert.isTrue(particle.useColor);
     assert.isFalse(particle.useAlpha);
     assert.isFunction(particle.easing);
-    assert.instanceOf(particle.position, Proton.Vector3D);
-    assert.instanceOf(particle.velocity, Proton.Vector3D);
-    assert.instanceOf(particle.acceleration, Proton.Vector3D);
+    assert.instanceOf(particle.position, Nebula.Vector3D);
+    assert.instanceOf(particle.velocity, Nebula.Vector3D);
+    assert.instanceOf(particle.acceleration, Nebula.Vector3D);
     assert.isObject(particle.old);
-    assert.instanceOf(particle.old.position, Proton.Vector3D);
-    assert.instanceOf(particle.old.velocity, Proton.Vector3D);
-    assert.instanceOf(particle.old.acceleration, Proton.Vector3D);
+    assert.instanceOf(particle.old.position, Nebula.Vector3D);
+    assert.instanceOf(particle.old.velocity, Nebula.Vector3D);
+    assert.instanceOf(particle.old.acceleration, Nebula.Vector3D);
     assert.isArray(particle.behaviours);
     assert.isObject(particle.transform);
     assert.deepEqual(particle.transform.colorA, { r: 1, g: 0, b: 0 });
@@ -77,7 +77,7 @@ describe('behaviour -> Color', () => {
       assert.isNumber(value)
     );
     assert.deepEqual(particle.color, { r: 0, g: 0, b: 0 });
-    assert.instanceOf(particle.rotation, Proton.Vector3D);
+    assert.instanceOf(particle.rotation, Nebula.Vector3D);
 
     done();
   });
@@ -96,16 +96,16 @@ describe('behaviour -> Color', () => {
   });
 
   it('should construct the behaviour from a JSON object', done => {
-    const instance = Proton.Color.fromJSON({
+    const instance = Nebula.Color.fromJSON({
       colorA: '#FF0000',
       colorB: '#000000',
       life: 3,
       easing: 'easeInOutExpo',
     });
 
-    assert.instanceOf(instance, Proton.Color);
-    assert.instanceOf(instance.colorA, Proton.ColorSpan);
-    assert.instanceOf(instance.colorB, Proton.ColorSpan);
+    assert.instanceOf(instance, Nebula.Color);
+    assert.instanceOf(instance.colorA, Nebula.ColorSpan);
+    assert.instanceOf(instance.colorB, Nebula.ColorSpan);
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);

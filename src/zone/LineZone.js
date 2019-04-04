@@ -12,9 +12,9 @@ export default class LineZone extends Zone {
    * @param {Number} y2 - the line's end point of y value
    * @param {Number} z2 - the line's end point of z value
    * @example
-   * var lineZone = new Proton.LineZone(0,0,0,100,100,0);
+   * var lineZone = new System.LineZone(0,0,0,100,100,0);
    * or
-   * var lineZone = new Proton.LineZone(new Proton.Vector3D(0,0,0),new Proton.Vector3D(100,100,0));
+   * var lineZone = new System.LineZone(new System.Vector3D(0,0,0),new System.Vector3D(100,100,0));
    * @extends {Zone}
    * @constructor
    */

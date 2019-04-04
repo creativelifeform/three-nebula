@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
 import chai from 'chai';
@@ -11,8 +11,8 @@ const { spy } = sinon;
 const { assert } = chai;
 
 describe('behaviour -> CrossZone', () => {
-  const zone = new Proton.BoxZone(0, 0, 0, 1, 1, 1);
-  const behaviour = new Proton.CrossZone(zone, 'dead');
+  const zone = new Nebula.BoxZone(0, 0, 0, 1, 1, 1);
+  const behaviour = new Nebula.CrossZone(zone, 'dead');
 
   it('should instantiate with the correct properties', done => {
     const { life, easing, age, energy, dead, zone } = behaviour;
@@ -23,14 +23,14 @@ describe('behaviour -> CrossZone', () => {
     assert.strictEqual(age, 0);
     assert.strictEqual(energy, 1);
     assert.isFalse(dead);
-    assert.instanceOf(zone, Proton.BoxZone);
+    assert.instanceOf(zone, Nebula.BoxZone);
     assert.strictEqual(zone.crossType, 'dead');
 
     done();
   });
 
   it('should call the zone.crossing method when applying the behaviour', done => {
-    const particle = new Proton.Particle();
+    const particle = new Nebula.Particle();
 
     spy(behaviour.zone, 'crossing');
     behaviour.applyBehaviour(particle, TIME);
@@ -41,7 +41,7 @@ describe('behaviour -> CrossZone', () => {
   });
 
   it('should construct the behaviour from a JSON object', done => {
-    const instance = Proton.CrossZone.fromJSON({
+    const instance = Nebula.CrossZone.fromJSON({
       zoneType: 'SphereZone',
       zoneParams: {
         x: 1,
@@ -54,8 +54,8 @@ describe('behaviour -> CrossZone', () => {
       easing: 'easeInOutExpo',
     });
 
-    assert.instanceOf(instance, Proton.CrossZone);
-    assert.instanceOf(instance.zone, Proton.SphereZone);
+    assert.instanceOf(instance, Nebula.CrossZone);
+    assert.instanceOf(instance.zone, Nebula.SphereZone);
     assert.equal(instance.zone.x, 1);
     assert.equal(instance.zone.y, 1);
     assert.equal(instance.zone.z, 1);

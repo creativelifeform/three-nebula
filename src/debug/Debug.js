@@ -8,18 +8,18 @@ import {
 import { DEFAULT_POSITION, DEFAULT_SIZE as size } from './constants';
 
 /**
- * @exports Debug - methods and helpers for debugging Proton emitters, zones and particles.
+ * @exports Debug - methods and helpers for debugging System emitters, zones and particles.
  */
 export default {
   /**
-   * Adds an event listener to the proton instance's PROTON_UPDATE event.
+   * Adds an event listener to the system instance's SYSTEM_UPDATE event.
    *
-   * @param {Proton} proton - the proton instance
-   * @param {function} onProtonUpdated - the function to call when proton has been updated
+   * @param {System} system - the system instance
+   * @param {function} onSystemUpdated - the function to call when system has been updated
    * @return {Debug}
    */
-  addEventListener: function(proton, onProtonUpdated) {
-    proton.eventDispatcher.addEventListener('PROTON_UPDATE', onProtonUpdated);
+  addEventListener: function(system, onSystemUpdated) {
+    system.eventDispatcher.addEventListener('SYSTEM_UPDATE', onSystemUpdated);
 
     return this;
   },
@@ -27,12 +27,12 @@ export default {
   /**
    * Draws a wireframe mesh around the zone for debugging purposes.
    *
-   * @param {Proton} proton - the proton instance
+   * @param {System} system - the system instance
    * @param {object} container - a three Object3D (usually the scene)
    * @param {Zone} zone - a Zone instance
    * @return void
    */
-  drawZone: function(proton, container, zone = {}) {
+  drawZone: function(system, container, zone = {}) {
     const color = '#2194ce';
     const wireframe = true;
     const {
@@ -79,7 +79,7 @@ export default {
 
     container.add(mesh);
 
-    this.addEventListener(proton, function() {
+    this.addEventListener(system, function() {
       mesh.position.set(x, y, z);
     });
   },
@@ -87,13 +87,13 @@ export default {
   /**
    * Draws a mesh for each particle emitted in order to help debug particles.
    *
-   * @param {object} proton - the proton instance
+   * @param {object} system - the system instance
    * @param {object} container - a three Object3D (usually the scene)
    * @param {object} emitter - the emitter to debug
    * @param {string} color - the color for the debug mesh material
    * @return void
    */
-  drawEmitter: function(proton, container, emitter, color) {
+  drawEmitter: function(system, container, emitter, color) {
     const geometry = new OctahedronGeometry(size);
     const material = new MeshBasicMaterial({
       color: color || '#aaa',
@@ -105,7 +105,7 @@ export default {
 
     container.add(mesh);
 
-    this.addEventListener(proton, function() {
+    this.addEventListener(system, function() {
       mesh.position.copy(emitter.position);
       mesh.rotation.set(
         emitter.rotation.x,
@@ -118,47 +118,47 @@ export default {
   /**
    * Renders emitter / particle information into the info element.
    *
-   * @param {object} proton - the proton instance
+   * @param {object} system - the system instance
    * @param {integer} style - style to apply (see the addInfo method's switch statement)
    * @return void
    */
   renderInfo: (function() {
-    function getCreatedNumber(type, proton) {
+    function getCreatedNumber(type, system) {
       var pool = type == 'material' ? '_materialPool' : '_targetPool';
-      var renderer = proton.renderers[0];
+      var renderer = system.renderers[0];
 
       return renderer[pool].cID;
     }
 
-    function getEmitterPos(proton) {
-      var e = proton.emitters[0];
+    function getEmitterPos(system) {
+      var e = system.emitters[0];
 
       return (
         Math.round(e.p.x) + ',' + Math.round(e.p.y) + ',' + Math.round(e.p.z)
       );
     }
 
-    return function(proton, style) {
+    return function(system, style) {
       this.addInfo(style);
       var str = '';
 
       switch (this._infoType) {
         case 2:
-          str += 'emitter:' + proton.emitters.length + '<br>';
-          str += 'em speed:' + proton.emitters[0].cID + '<br>';
-          str += 'pos:' + getEmitterPos(proton);
+          str += 'emitter:' + system.emitters.length + '<br>';
+          str += 'em speed:' + system.emitters[0].cID + '<br>';
+          str += 'pos:' + getEmitterPos(system);
           break;
 
         case 3:
-          str += proton.renderers[0].name + '<br>';
+          str += system.renderers[0].name + '<br>';
           str += 'target:' + getCreatedNumber('target') + '<br>';
           str += 'material:' + getCreatedNumber('material');
           break;
 
         default:
-          str += 'particles:' + proton.getCount() + '<br>';
-          str += 'pool:' + proton.pool.getCount() + '<br>';
-          str += 'total:' + (proton.getCount() + proton.pool.getCount());
+          str += 'particles:' + system.getCount() + '<br>';
+          str += 'pool:' + system.pool.getCount() + '<br>';
+          str += 'total:' + (system.getCount() + system.pool.getCount());
       }
       this._infoCon.innerHTML = str;
     };

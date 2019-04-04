@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>three.proton - eightdiagrams</title>
+    <title>three.system - eightdiagrams</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -22,11 +22,11 @@
     <div id="container"></div>
     <script src="../js/stats.min.js"></script>
     <script src="../js/three.min.js"></script>
-    <script src="../js/three-proton.js"></script>
+    <script src="../js/nebula-engine.js"></script>
     <script src="../js/lib/TrackballControls.js"></script>
     <script src="./json/eightDiagrams.js"></script>
     <script>
-      var proton, camera, scene, renderer, stats, clock, spring, controls;
+      var system, camera, scene, renderer, stats, clock, spring, controls;
 
       init();
 
@@ -106,10 +106,10 @@
       }
 
       function addProton() {
-        proton = Proton.default
+        system = Nebula.default
           // imported from ./json
           .fromJSON(EIGHT_DIAGRAMS_JSON)
-          .addRenderer(new Proton.SpriteRenderer(scene));
+          .addRenderer(new Nebula.SpriteRenderer(scene));
       }
 
       function animate() {
@@ -123,7 +123,7 @@
 
       var ctha = 0;
       function render() {
-        proton.update();
+        system.update();
         renderer.render(scene, camera);
 
         camera.lookAt(scene.position);
@@ -132,7 +132,7 @@
         camera.position.z = Math.cos(ctha) * 500;
         camera.position.y = Math.sin(ctha) * 500;
 
-        Proton.Debug.renderInfo(proton, 3);
+        Nebula.Debug.renderInfo(system, 3);
       }
 
       function onWindowResize() {}

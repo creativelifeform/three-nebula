@@ -18,7 +18,7 @@ import { EMITTER_TYPE_EMITTER as type } from './types';
 import uid from '../utils/uid';
 
 /**
- * Emitters are the Proton engine's particle factories. They cause particles to
+ * Emitters are the System engine's particle factories. They cause particles to
  * be rendered by emitting them, and store all particle initializers and behaviours.
  *
  */
@@ -466,7 +466,7 @@ export default class Emitter extends Particle {
    *
    * If the emitter age is greater than time, the emitter is killed.
    *
-   * @param {number} time - Proton engine time
+   * @param {number} time - System engine time
    * @return void
    */
   update(time) {
@@ -498,7 +498,7 @@ export default class Emitter extends Particle {
   /**
    * Updates the emitter's emitter behaviours.
    *
-   * @param {number} time - Proton engine time
+   * @param {number} time - System engine time
    * @return void
    */
   updateEmitterBehaviours(time) {
@@ -517,7 +517,7 @@ export default class Emitter extends Particle {
    * Runs the integration algorithm on the emitter and all particles.
    * Updates the particles with the timstamp passed.
    *
-   * @param {number} time - Proton engine time
+   * @param {number} time - System engine time
    * @return void
    */
   integrate(time) {
@@ -544,7 +544,7 @@ export default class Emitter extends Particle {
   /**
    * Generates new particles.
    *
-   * @param {number} time - Proton engine time
+   * @param {number} time - System engine time
    * @return void
    */
   generate(time) {

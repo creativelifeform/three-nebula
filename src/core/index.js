@@ -1,3 +1,3 @@
 export { default as Particle } from './Particle';
 export { default as Pool } from './Pool';
-export { default as Proton } from './Proton';
+export { default as System } from './System';

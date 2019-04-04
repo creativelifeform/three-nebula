@@ -2894,7 +2894,7 @@
                   },
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Apply behaviour to the target as a factor of time.\n   * Internally calls the mutate method to change properties on the target\n   * Will not do so if the behaviour is disabled\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the proton integration time\n   * @param {integer} index - the target index\n   * @return mixed\n   ",
+                    "value": "*\n   * Apply behaviour to the target as a factor of time.\n   * Internally calls the mutate method to change properties on the target\n   * Will not do so if the behaviour is disabled\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the system integration time\n   * @param {integer} index - the target index\n   * @return mixed\n   ",
                     "start": 2657,
                     "end": 3078,
                     "loc": {
@@ -3289,7 +3289,7 @@
                   },
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Apply behaviour to the target as a factor of time.\n   * Internally calls the mutate method to change properties on the target\n   * Will not do so if the behaviour is disabled\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the proton integration time\n   * @param {integer} index - the target index\n   * @return mixed\n   ",
+                    "value": "*\n   * Apply behaviour to the target as a factor of time.\n   * Internally calls the mutate method to change properties on the target\n   * Will not do so if the behaviour is disabled\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the system integration time\n   * @param {integer} index - the target index\n   * @return mixed\n   ",
                     "start": 2657,
                     "end": 3078,
                     "loc": {
@@ -3307,7 +3307,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Change the target's properties according to specific behaviour logic.\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the proton integration time\n   * @return mixed\n   ",
+                    "value": "*\n   * Change the target's properties according to specific behaviour logic.\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the system integration time\n   * @return mixed\n   ",
                     "start": 3212,
                     "end": 3481,
                     "loc": {
@@ -3437,7 +3437,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Change the target's properties according to specific behaviour logic.\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the proton integration time\n   * @return mixed\n   ",
+                    "value": "*\n   * Change the target's properties according to specific behaviour logic.\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the system integration time\n   * @return mixed\n   ",
                     "start": 3212,
                     "end": 3481,
                     "loc": {
@@ -3471,7 +3471,7 @@
                   },
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Compares the age of the behaviour vs integration time and determines\n   * if the behaviour should be set to dead or not.\n   * Sets the behaviour energy as a factor of particle age and life.\n   *\n   * @param {Particle} particle - The particle to apply the behaviour to\n   * @param {Number} time - the proton integration time\n   * @return void\n   ",
+                    "value": "*\n   * Compares the age of the behaviour vs integration time and determines\n   * if the behaviour should be set to dead or not.\n   * Sets the behaviour energy as a factor of particle age and life.\n   *\n   * @param {Particle} particle - The particle to apply the behaviour to\n   * @param {Number} time - the system integration time\n   * @return void\n   ",
                     "start": 3541,
                     "end": 3897,
                     "loc": {
@@ -4600,7 +4600,7 @@
                   },
                   {
                     "type": "CommentBlock",
-                    "value": "*\n   * Compares the age of the behaviour vs integration time and determines\n   * if the behaviour should be set to dead or not.\n   * Sets the behaviour energy as a factor of particle age and life.\n   *\n   * @param {Particle} particle - The particle to apply the behaviour to\n   * @param {Number} time - the proton integration time\n   * @return void\n   ",
+                    "value": "*\n   * Compares the age of the behaviour vs integration time and determines\n   * if the behaviour should be set to dead or not.\n   * Sets the behaviour energy as a factor of particle age and life.\n   *\n   * @param {Particle} particle - The particle to apply the behaviour to\n   * @param {Number} time - the system integration time\n   * @return void\n   ",
                     "start": 3541,
                     "end": 3897,
                     "loc": {
@@ -5131,7 +5131,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Apply behaviour to the target as a factor of time.\n   * Internally calls the mutate method to change properties on the target\n   * Will not do so if the behaviour is disabled\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the proton integration time\n   * @param {integer} index - the target index\n   * @return mixed\n   ",
+      "value": "*\n   * Apply behaviour to the target as a factor of time.\n   * Internally calls the mutate method to change properties on the target\n   * Will not do so if the behaviour is disabled\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the system integration time\n   * @param {integer} index - the target index\n   * @return mixed\n   ",
       "start": 2657,
       "end": 3078,
       "loc": {
@@ -5147,7 +5147,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Change the target's properties according to specific behaviour logic.\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the proton integration time\n   * @return mixed\n   ",
+      "value": "*\n   * Change the target's properties according to specific behaviour logic.\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the system integration time\n   * @return mixed\n   ",
       "start": 3212,
       "end": 3481,
       "loc": {
@@ -5179,7 +5179,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Compares the age of the behaviour vs integration time and determines\n   * if the behaviour should be set to dead or not.\n   * Sets the behaviour energy as a factor of particle age and life.\n   *\n   * @param {Particle} particle - The particle to apply the behaviour to\n   * @param {Number} time - the proton integration time\n   * @return void\n   ",
+      "value": "*\n   * Compares the age of the behaviour vs integration time and determines\n   * if the behaviour should be set to dead or not.\n   * Sets the behaviour energy as a factor of particle age and life.\n   *\n   * @param {Particle} particle - The particle to apply the behaviour to\n   * @param {Number} time - the system integration time\n   * @return void\n   ",
       "start": 3541,
       "end": 3897,
       "loc": {
@@ -9937,7 +9937,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Apply behaviour to the target as a factor of time.\n   * Internally calls the mutate method to change properties on the target\n   * Will not do so if the behaviour is disabled\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the proton integration time\n   * @param {integer} index - the target index\n   * @return mixed\n   ",
+      "value": "*\n   * Apply behaviour to the target as a factor of time.\n   * Internally calls the mutate method to change properties on the target\n   * Will not do so if the behaviour is disabled\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the system integration time\n   * @param {integer} index - the target index\n   * @return mixed\n   ",
       "start": 2657,
       "end": 3078,
       "loc": {
@@ -10784,7 +10784,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Change the target's properties according to specific behaviour logic.\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the proton integration time\n   * @return mixed\n   ",
+      "value": "*\n   * Change the target's properties according to specific behaviour logic.\n   *\n   * @abstract\n   * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to\n   * @param {Number} time - the system integration time\n   * @return mixed\n   ",
       "start": 3212,
       "end": 3481,
       "loc": {
@@ -11072,7 +11072,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Compares the age of the behaviour vs integration time and determines\n   * if the behaviour should be set to dead or not.\n   * Sets the behaviour energy as a factor of particle age and life.\n   *\n   * @param {Particle} particle - The particle to apply the behaviour to\n   * @param {Number} time - the proton integration time\n   * @return void\n   ",
+      "value": "*\n   * Compares the age of the behaviour vs integration time and determines\n   * if the behaviour should be set to dead or not.\n   * Sets the behaviour energy as a factor of particle age and life.\n   *\n   * @param {Particle} particle - The particle to apply the behaviour to\n   * @param {Number} time - the system integration time\n   * @return void\n   ",
       "start": 3541,
       "end": 3897,
       "loc": {
