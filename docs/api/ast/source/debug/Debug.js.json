@@ -447,7 +447,7 @@
         "trailingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * @exports Debug - methods and helpers for debugging Proton emitters, zones and particles.\n ",
+            "value": "*\n * @exports Debug - methods and helpers for debugging System emitters, zones and particles.\n ",
             "start": 188,
             "end": 287,
             "loc": {
@@ -559,9 +559,9 @@
                         "line": 21,
                         "column": 35
                       },
-                      "identifierName": "proton"
+                      "identifierName": "system"
                     },
-                    "name": "proton"
+                    "name": "system"
                   },
                   {
                     "type": "Identifier",
@@ -576,9 +576,9 @@
                         "line": 21,
                         "column": 52
                       },
-                      "identifierName": "onProtonUpdated"
+                      "identifierName": "onSystemUpdated"
                     },
-                    "name": "onProtonUpdated"
+                    "name": "onSystemUpdated"
                   }
                 ],
                 "body": {
@@ -665,9 +665,9 @@
                                   "line": 22,
                                   "column": 10
                                 },
-                                "identifierName": "proton"
+                                "identifierName": "system"
                               },
-                              "name": "proton"
+                              "name": "system"
                             },
                             "property": {
                               "type": "Identifier",
@@ -723,10 +723,10 @@
                               }
                             },
                             "extra": {
-                              "rawValue": "PROTON_UPDATE",
-                              "raw": "'PROTON_UPDATE'"
+                              "rawValue": "SYSTEM_UPDATE",
+                              "raw": "'SYSTEM_UPDATE'"
                             },
-                            "value": "PROTON_UPDATE"
+                            "value": "SYSTEM_UPDATE"
                           },
                           {
                             "type": "Identifier",
@@ -741,9 +741,9 @@
                                 "line": 22,
                                 "column": 76
                               },
-                              "identifierName": "onProtonUpdated"
+                              "identifierName": "onSystemUpdated"
                             },
-                            "name": "onProtonUpdated"
+                            "name": "onSystemUpdated"
                           }
                         ]
                       }
@@ -785,7 +785,7 @@
               "leadingComments": [
                 {
                   "type": "CommentBlock",
-                  "value": "*\n   * Adds an event listener to the proton instance's PROTON_UPDATE event.\n   *\n   * @param {Proton} proton - the proton instance\n   * @param {function} onProtonUpdated - the function to call when proton has been updated\n   * @return {Debug}\n   ",
+                  "value": "*\n   * Adds an event listener to the system instance's SYSTEM_UPDATE event.\n   *\n   * @param {System} system - the system instance\n   * @param {function} onSystemUpdated - the function to call when system has been updated\n   * @return {Debug}\n   ",
                   "start": 307,
                   "end": 557,
                   "loc": {
@@ -868,9 +868,9 @@
                         "line": 35,
                         "column": 27
                       },
-                      "identifierName": "proton"
+                      "identifierName": "system"
                     },
-                    "name": "proton"
+                    "name": "system"
                   },
                   {
                     "type": "Identifier",
@@ -3920,9 +3920,9 @@
                                 "line": 82,
                                 "column": 32
                               },
-                              "identifierName": "proton"
+                              "identifierName": "system"
                             },
-                            "name": "proton"
+                            "name": "system"
                           },
                           {
                             "type": "FunctionExpression",
@@ -4138,7 +4138,7 @@
               "leadingComments": [
                 {
                   "type": "CommentBlock",
-                  "value": "*\n   * Draws a wireframe mesh around the zone for debugging purposes.\n   *\n   * @param {Proton} proton - the proton instance\n   * @param {object} container - a three Object3D (usually the scene)\n   * @param {Zone} zone - a Zone instance\n   * @return void\n   ",
+                  "value": "*\n   * Draws a wireframe mesh around the zone for debugging purposes.\n   *\n   * @param {System} system - the system instance\n   * @param {object} container - a three Object3D (usually the scene)\n   * @param {Zone} zone - a Zone instance\n   * @return void\n   ",
                   "start": 719,
                   "end": 981,
                   "loc": {
@@ -4221,9 +4221,9 @@
                         "line": 96,
                         "column": 30
                       },
-                      "identifierName": "proton"
+                      "identifierName": "system"
                     },
-                    "name": "proton"
+                    "name": "system"
                   },
                   {
                     "type": "Identifier",
@@ -5059,9 +5059,9 @@
                                 "line": 108,
                                 "column": 32
                               },
-                              "identifierName": "proton"
+                              "identifierName": "system"
                             },
-                            "name": "proton"
+                            "name": "system"
                           },
                           {
                             "type": "FunctionExpression",
@@ -5640,7 +5640,7 @@
               "leadingComments": [
                 {
                   "type": "CommentBlock",
-                  "value": "*\n   * Draws a mesh for each particle emitted in order to help debug particles.\n   *\n   * @param {object} proton - the proton instance\n   * @param {object} container - a three Object3D (usually the scene)\n   * @param {object} emitter - the emitter to debug\n   * @param {string} color - the color for the debug mesh material\n   * @return void\n   ",
+                  "value": "*\n   * Draws a mesh for each particle emitted in order to help debug particles.\n   *\n   * @param {object} system - the system instance\n   * @param {object} container - a three Object3D (usually the scene)\n   * @param {object} emitter - the emitter to debug\n   * @param {string} color - the color for the debug mesh material\n   * @return void\n   ",
                   "start": 2234,
                   "end": 2583,
                   "loc": {
@@ -5804,9 +5804,9 @@
                                 "line": 126,
                                 "column": 42
                               },
-                              "identifierName": "proton"
+                              "identifierName": "system"
                             },
-                            "name": "proton"
+                            "name": "system"
                           }
                         ],
                         "body": {
@@ -6069,9 +6069,9 @@
                                             "line": 128,
                                             "column": 27
                                           },
-                                          "identifierName": "proton"
+                                          "identifierName": "system"
                                         },
-                                        "name": "proton"
+                                        "name": "system"
                                       },
                                       "property": {
                                         "type": "Identifier",
@@ -6268,9 +6268,9 @@
                                 "line": 133,
                                 "column": 33
                               },
-                              "identifierName": "proton"
+                              "identifierName": "system"
                             },
-                            "name": "proton"
+                            "name": "system"
                           }
                         ],
                         "body": {
@@ -6375,9 +6375,9 @@
                                             "line": 134,
                                             "column": 20
                                           },
-                                          "identifierName": "proton"
+                                          "identifierName": "system"
                                         },
-                                        "name": "proton"
+                                        "name": "system"
                                       },
                                       "property": {
                                         "type": "Identifier",
@@ -7047,9 +7047,9 @@
                                   "line": 141,
                                   "column": 26
                                 },
-                                "identifierName": "proton"
+                                "identifierName": "system"
                               },
-                              "name": "proton"
+                              "name": "system"
                             },
                             {
                               "type": "Identifier",
@@ -7465,9 +7465,9 @@
                                                         "line": 147,
                                                         "column": 36
                                                       },
-                                                      "identifierName": "proton"
+                                                      "identifierName": "system"
                                                     },
-                                                    "name": "proton"
+                                                    "name": "system"
                                                   },
                                                   "property": {
                                                     "type": "Identifier",
@@ -7682,9 +7682,9 @@
                                                           "line": 148,
                                                           "column": 37
                                                         },
-                                                        "identifierName": "proton"
+                                                        "identifierName": "system"
                                                       },
-                                                      "name": "proton"
+                                                      "name": "system"
                                                     },
                                                     "property": {
                                                       "type": "Identifier",
@@ -7897,9 +7897,9 @@
                                                       "line": 149,
                                                       "column": 46
                                                     },
-                                                    "identifierName": "proton"
+                                                    "identifierName": "system"
                                                   },
-                                                  "name": "proton"
+                                                  "name": "system"
                                                 }
                                               ]
                                             }
@@ -8074,9 +8074,9 @@
                                                         "line": 153,
                                                         "column": 23
                                                       },
-                                                      "identifierName": "proton"
+                                                      "identifierName": "system"
                                                     },
-                                                    "name": "proton"
+                                                    "name": "system"
                                                   },
                                                   "property": {
                                                     "type": "Identifier",
@@ -8663,9 +8663,9 @@
                                                         "line": 159,
                                                         "column": 38
                                                       },
-                                                      "identifierName": "proton"
+                                                      "identifierName": "system"
                                                     },
-                                                    "name": "proton"
+                                                    "name": "system"
                                                   },
                                                   "property": {
                                                     "type": "Identifier",
@@ -8863,9 +8863,9 @@
                                                           "line": 160,
                                                           "column": 33
                                                         },
-                                                        "identifierName": "proton"
+                                                        "identifierName": "system"
                                                       },
-                                                      "name": "proton"
+                                                      "name": "system"
                                                     },
                                                     "property": {
                                                       "type": "Identifier",
@@ -9068,9 +9068,9 @@
                                                         "line": 161,
                                                         "column": 35
                                                       },
-                                                      "identifierName": "proton"
+                                                      "identifierName": "system"
                                                     },
-                                                    "name": "proton"
+                                                    "name": "system"
                                                   },
                                                   "property": {
                                                     "type": "Identifier",
@@ -9149,9 +9149,9 @@
                                                           "line": 161,
                                                           "column": 55
                                                         },
-                                                        "identifierName": "proton"
+                                                        "identifierName": "system"
                                                       },
-                                                      "name": "proton"
+                                                      "name": "system"
                                                     },
                                                     "property": {
                                                       "type": "Identifier",
@@ -9353,7 +9353,7 @@
               "leadingComments": [
                 {
                   "type": "CommentBlock",
-                  "value": "*\n   * Renders emitter / particle information into the info element.\n   *\n   * @param {object} proton - the proton instance\n   * @param {integer} style - style to apply (see the addInfo method's switch statement)\n   * @return void\n   ",
+                  "value": "*\n   * Renders emitter / particle information into the info element.\n   *\n   * @param {object} system - the system instance\n   * @param {integer} style - style to apply (see the addInfo method's switch statement)\n   * @return void\n   ",
                   "start": 3246,
                   "end": 3484,
                   "loc": {
@@ -12012,7 +12012,7 @@
           "leadingComments": [
             {
               "type": "CommentBlock",
-              "value": "*\n * @exports Debug - methods and helpers for debugging Proton emitters, zones and particles.\n ",
+              "value": "*\n * @exports Debug - methods and helpers for debugging System emitters, zones and particles.\n ",
               "start": 188,
               "end": 287,
               "loc": {
@@ -12032,7 +12032,7 @@
         "leadingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * @exports Debug - methods and helpers for debugging Proton emitters, zones and particles.\n ",
+            "value": "*\n * @exports Debug - methods and helpers for debugging System emitters, zones and particles.\n ",
             "start": 188,
             "end": 287,
             "loc": {
@@ -12054,7 +12054,7 @@
   "comments": [
     {
       "type": "CommentBlock",
-      "value": "*\n * @exports Debug - methods and helpers for debugging Proton emitters, zones and particles.\n ",
+      "value": "*\n * @exports Debug - methods and helpers for debugging System emitters, zones and particles.\n ",
       "start": 188,
       "end": 287,
       "loc": {
@@ -12070,7 +12070,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Adds an event listener to the proton instance's PROTON_UPDATE event.\n   *\n   * @param {Proton} proton - the proton instance\n   * @param {function} onProtonUpdated - the function to call when proton has been updated\n   * @return {Debug}\n   ",
+      "value": "*\n   * Adds an event listener to the system instance's SYSTEM_UPDATE event.\n   *\n   * @param {System} system - the system instance\n   * @param {function} onSystemUpdated - the function to call when system has been updated\n   * @return {Debug}\n   ",
       "start": 307,
       "end": 557,
       "loc": {
@@ -12086,7 +12086,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Draws a wireframe mesh around the zone for debugging purposes.\n   *\n   * @param {Proton} proton - the proton instance\n   * @param {object} container - a three Object3D (usually the scene)\n   * @param {Zone} zone - a Zone instance\n   * @return void\n   ",
+      "value": "*\n   * Draws a wireframe mesh around the zone for debugging purposes.\n   *\n   * @param {System} system - the system instance\n   * @param {object} container - a three Object3D (usually the scene)\n   * @param {Zone} zone - a Zone instance\n   * @return void\n   ",
       "start": 719,
       "end": 981,
       "loc": {
@@ -12150,7 +12150,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Draws a mesh for each particle emitted in order to help debug particles.\n   *\n   * @param {object} proton - the proton instance\n   * @param {object} container - a three Object3D (usually the scene)\n   * @param {object} emitter - the emitter to debug\n   * @param {string} color - the color for the debug mesh material\n   * @return void\n   ",
+      "value": "*\n   * Draws a mesh for each particle emitted in order to help debug particles.\n   *\n   * @param {object} system - the system instance\n   * @param {object} container - a three Object3D (usually the scene)\n   * @param {object} emitter - the emitter to debug\n   * @param {string} color - the color for the debug mesh material\n   * @return void\n   ",
       "start": 2234,
       "end": 2583,
       "loc": {
@@ -12198,7 +12198,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Renders emitter / particle information into the info element.\n   *\n   * @param {object} proton - the proton instance\n   * @param {integer} style - style to apply (see the addInfo method's switch statement)\n   * @return void\n   ",
+      "value": "*\n   * Renders emitter / particle information into the info element.\n   *\n   * @param {object} system - the system instance\n   * @param {integer} style - style to apply (see the addInfo method's switch statement)\n   * @return void\n   ",
       "start": 3246,
       "end": 3484,
       "loc": {
@@ -12936,7 +12936,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @exports Debug - methods and helpers for debugging Proton emitters, zones and particles.\n ",
+      "value": "*\n * @exports Debug - methods and helpers for debugging System emitters, zones and particles.\n ",
       "start": 188,
       "end": 287,
       "loc": {
@@ -13033,7 +13033,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Adds an event listener to the proton instance's PROTON_UPDATE event.\n   *\n   * @param {Proton} proton - the proton instance\n   * @param {function} onProtonUpdated - the function to call when proton has been updated\n   * @return {Debug}\n   ",
+      "value": "*\n   * Adds an event listener to the system instance's SYSTEM_UPDATE event.\n   *\n   * @param {System} system - the system instance\n   * @param {function} onSystemUpdated - the function to call when system has been updated\n   * @return {Debug}\n   ",
       "start": 307,
       "end": 557,
       "loc": {
@@ -13163,7 +13163,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 587,
       "end": 593,
       "loc": {
@@ -13215,7 +13215,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "onProtonUpdated",
+      "value": "onSystemUpdated",
       "start": 595,
       "end": 610,
       "loc": {
@@ -13291,7 +13291,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 618,
       "end": 624,
       "loc": {
@@ -13447,7 +13447,7 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "PROTON_UPDATE",
+      "value": "SYSTEM_UPDATE",
       "start": 658,
       "end": 673,
       "loc": {
@@ -13499,7 +13499,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "onProtonUpdated",
+      "value": "onSystemUpdated",
       "start": 675,
       "end": 690,
       "loc": {
@@ -13699,7 +13699,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Draws a wireframe mesh around the zone for debugging purposes.\n   *\n   * @param {Proton} proton - the proton instance\n   * @param {object} container - a three Object3D (usually the scene)\n   * @param {Zone} zone - a Zone instance\n   * @return void\n   ",
+      "value": "*\n   * Draws a wireframe mesh around the zone for debugging purposes.\n   *\n   * @param {System} system - the system instance\n   * @param {object} container - a three Object3D (usually the scene)\n   * @param {Zone} zone - a Zone instance\n   * @return void\n   ",
       "start": 719,
       "end": 981,
       "loc": {
@@ -13829,7 +13829,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 1003,
       "end": 1009,
       "loc": {
@@ -19673,7 +19673,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 2163,
       "end": 2169,
       "loc": {
@@ -20280,7 +20280,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Draws a mesh for each particle emitted in order to help debug particles.\n   *\n   * @param {object} proton - the proton instance\n   * @param {object} container - a three Object3D (usually the scene)\n   * @param {object} emitter - the emitter to debug\n   * @param {string} color - the color for the debug mesh material\n   * @return void\n   ",
+      "value": "*\n   * Draws a mesh for each particle emitted in order to help debug particles.\n   *\n   * @param {object} system - the system instance\n   * @param {object} container - a three Object3D (usually the scene)\n   * @param {object} emitter - the emitter to debug\n   * @param {string} color - the color for the debug mesh material\n   * @return void\n   ",
       "start": 2234,
       "end": 2583,
       "loc": {
@@ -20410,7 +20410,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 2608,
       "end": 2614,
       "loc": {
@@ -22112,7 +22112,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 3048,
       "end": 3054,
       "loc": {
@@ -23315,7 +23315,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n   * Renders emitter / particle information into the info element.\n   *\n   * @param {object} proton - the proton instance\n   * @param {integer} style - style to apply (see the addInfo method's switch statement)\n   * @return void\n   ",
+      "value": "*\n   * Renders emitter / particle information into the info element.\n   *\n   * @param {object} system - the system instance\n   * @param {integer} style - style to apply (see the addInfo method's switch statement)\n   * @return void\n   ",
       "start": 3246,
       "end": 3484,
       "loc": {
@@ -23650,7 +23650,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 3549,
       "end": 3555,
       "loc": {
@@ -24100,7 +24100,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 3651,
       "end": 3657,
       "loc": {
@@ -24596,7 +24596,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 3740,
       "end": 3746,
       "loc": {
@@ -24753,7 +24753,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 3764,
       "end": 3770,
       "loc": {
@@ -26081,7 +26081,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 3914,
       "end": 3920,
       "loc": {
@@ -26896,7 +26896,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 4057,
       "end": 4063,
       "loc": {
@@ -27213,7 +27213,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 4121,
       "end": 4127,
       "loc": {
@@ -27660,7 +27660,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 4194,
       "end": 4200,
       "loc": {
@@ -27925,7 +27925,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 4254,
       "end": 4260,
       "loc": {
@@ -28955,7 +28955,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 4483,
       "end": 4489,
       "loc": {
@@ -29270,7 +29270,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 4538,
       "end": 4544,
       "loc": {
@@ -29662,7 +29662,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 4600,
       "end": 4606,
       "loc": {
@@ -29817,7 +29817,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "proton",
+      "value": "system",
       "start": 4620,
       "end": 4626,
       "loc": {

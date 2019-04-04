@@ -2,7 +2,7 @@ import {
   PARTICLE_CREATED,
   PARTICLE_DEAD,
   PARTICLE_UPDATE,
-  PROTON_UPDATE
+  SYSTEM_UPDATE,
 } from '../events/constants';
 
 import { RENDERER_TYPE_BASE } from './types';
@@ -16,30 +16,30 @@ export default class BaseRenderer {
     this.type = type;
   }
 
-  init(proton) {
+  init(system) {
     var self = this;
 
-    this.proton = proton;
+    this.system = system;
 
-    this.proton.eventDispatcher.addEventListener(PROTON_UPDATE, function(
-      proton
+    this.system.eventDispatcher.addEventListener(SYSTEM_UPDATE, function(
+      system
     ) {
-      self.onProtonUpdate.call(self, proton);
+      self.onSystemUpdate.call(self, system);
     });
 
-    this.proton.eventDispatcher.addEventListener(PARTICLE_CREATED, function(
+    this.system.eventDispatcher.addEventListener(PARTICLE_CREATED, function(
       particle
     ) {
       self.onParticleCreated.call(self, particle);
     });
 
-    this.proton.eventDispatcher.addEventListener(PARTICLE_UPDATE, function(
+    this.system.eventDispatcher.addEventListener(PARTICLE_UPDATE, function(
       particle
     ) {
       self.onParticleUpdate.call(self, particle);
     });
 
-    this.proton.eventDispatcher.addEventListener(PARTICLE_DEAD, function(
+    this.system.eventDispatcher.addEventListener(PARTICLE_DEAD, function(
       particle
     ) {
       self.onParticleDead.call(self, particle);
@@ -47,7 +47,7 @@ export default class BaseRenderer {
   }
 
   remove() {
-    this.proton = null;
+    this.system = null;
   }
 
   /**
@@ -68,5 +68,5 @@ export default class BaseRenderer {
   /**
    * @abstract
    */
-  onProtonUpdate(proton) {} // eslint-disable-line
+  onSystemUpdate(system) {} // eslint-disable-line
 }

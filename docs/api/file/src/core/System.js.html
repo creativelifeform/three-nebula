@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/core/Proton.js | @rohandeshpande/three-proton</title>
+  <title data-ice="title">src/core/System.js | nebula-engine</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
   <script src="script/manual.js"></script>
-<meta name="description" content="A magical, WebGL based 3D particle engine"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="@rohandeshpande/three-proton"><meta property="twitter:description" content="A magical, WebGL based 3D particle engine"></head>
+<meta name="description" content="WebGL based 3D particle engine"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="nebula-engine"><meta property="twitter:description" content="WebGL based 3D particle engine"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
@@ -24,7 +24,7 @@
   </span>
     <ul class="search-result"></ul>
   </div>
-<a style="position:relative; top:3px;" href="https://github.com/rohan-deshpande/three-proton"><img width="20px" src="./image/github.png"></a></header>
+<a style="position:relative; top:3px;" href="https://github.com/rohan-deshpande/nebula-engine"><img width="20px" src="./image/github.png"></a></header>
 
 <nav class="navigation" data-ice="nav"><div>
   <ul>
@@ -76,15 +76,15 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_UPDATE">PARTICLE_UPDATE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PI">PI</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-POOL_MAX">POOL_MAX</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RK2">RK2</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-RK4">RK4</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SYSTEM_UPDATE">SYSTEM_UPDATE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SYSTEM_UPDATE_AFTER">SYSTEM_UPDATE_AFTER</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TIME_STEP">TIME_STEP</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-VERLET">VERLET</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core">core</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Pool.js~Pool.html">Pool</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Proton.js~Proton.html">Proton</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/System.js~System.html">System</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromJSON">fromJSON</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fromJSONAsync">fromJSONAsync</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_AGE">DEFAULT_AGE</a></span></span></li>
@@ -96,10 +96,10 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_LIFE">DEFAULT_LIFE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_MASS">DEFAULT_MASS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_PARENT">DEFAULT_PARENT</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_PROTON_DELTA">DEFAULT_PROTON_DELTA</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_RADIUS">DEFAULT_RADIUS</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_SCALE">DEFAULT_SCALE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_SLEEP">DEFAULT_SLEEP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_SYSTEM_DELTA">DEFAULT_SYSTEM_DELTA</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_USE_ALPHA">DEFAULT_USE_ALPHA</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_USE_COLOR">DEFAULT_USE_COLOR</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SUPPORTED_JSON_BEHAVIOUR_TYPES">SUPPORTED_JSON_BEHAVIOUR_TYPES</a></span></span></li>
@@ -109,7 +109,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BoxGeometry">BoxGeometry</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CORE_TYPE_PARTICLE">CORE_TYPE_PARTICLE</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CORE_TYPE_POOL">CORE_TYPE_POOL</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CORE_TYPE_PROTON">CORE_TYPE_PROTON</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CORE_TYPE_SYSTEM">CORE_TYPE_SYSTEM</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#debug">debug</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-log">log</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_DEPTH">DEFAULT_DEPTH</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DEFAULT_HEIGHT">DEFAULT_HEIGHT</a></span></span></li>
@@ -135,8 +135,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_CREATED">PARTICLE_CREATED</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_DEAD">PARTICLE_DEAD</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PARTICLE_UPDATE">PARTICLE_UPDATE</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE">PROTON_UPDATE</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PROTON_UPDATE_AFTER">PROTON_UPDATE_AFTER</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SYSTEM_UPDATE">SYSTEM_UPDATE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SYSTEM_UPDATE_AFTER">SYSTEM_UPDATE_AFTER</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#initializer">initializer</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Body.js~Body.html">Body</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/BodySprite.js~BodySprite.html">BodySprite</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/initializer/Initializer.js~Initializer.html">Initializer</a></span></span></li>
@@ -217,32 +217,32 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/core/Proton.js</h1>
+<div class="content" data-ice="content"><h1 data-ice="title">src/core/System.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import EventDispatcher, {
   EMITTER_ADDED,
   EMITTER_REMOVED,
-  PROTON_UPDATE,
-  PROTON_UPDATE_AFTER,
+  SYSTEM_UPDATE,
+  SYSTEM_UPDATE_AFTER,
 } from &apos;../events&apos;;
 
-import { DEFAULT_PROTON_DELTA } from &apos;./constants&apos;;
+import { DEFAULT_SYSTEM_DELTA } from &apos;./constants&apos;;
 import Emitter from &apos;../emitter/Emitter&apos;;
 import { INTEGRATION_TYPE_EULER } from &apos;../math/constants&apos;;
 import { POOL_MAX } from &apos;../constants&apos;;
 import Pool from &apos;./Pool&apos;;
 import fromJSON from &apos;./fromJSON&apos;;
 import fromJSONAsync from &apos;./fromJSONAsync&apos;;
-import { CORE_TYPE_PROTON as type } from &apos;./types&apos;;
+import { CORE_TYPE_SYSTEM as type } from &apos;./types&apos;;
 
 /**
- * The core of the three-proton particle engine.
- * A Proton instance can contain multiple emitters, each with their own initializers
+ * The core of the three-system particle engine.
+ * A System instance can contain multiple emitters, each with their own initializers
  * and behaviours.
  *
  */
-export default class Proton {
+export default class System {
   /**
-   * Constructs a Proton instance.
+   * Constructs a System instance.
    *
    * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
    * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
@@ -257,13 +257,6 @@ export default class Proton {
      * @type {string}
      */
     this.type = type;
-
-    /**
-     * @desc Determines if the system can update or not. Set to false when destroying
-     * to ensure that external calls to update do not throw errors.
-     * @type {boolean}
-     */
-    this.canUpdate = true;
 
     /**
      * @desc The number of particles to start with.
@@ -290,7 +283,7 @@ export default class Proton {
     this.renderers = [];
 
     /**
-     * @desc A pool used to manage the internal proton cache of objects
+     * @desc A pool used to manage the internal system cache of objects
      * @type {Pool}
      */
     this.pool = new Pool();
@@ -303,47 +296,47 @@ export default class Proton {
   }
 
   /**
-   * Creates a Proton instance from a JSON object.
+   * Creates a System instance from a JSON object.
    *
-   * @param {object} json - The JSON to create the Proton instance from
+   * @param {object} json - The JSON to create the System instance from
    * @param {number} json.preParticles - The predetermined number of particles
    * @param {string} json.integrationType - The integration algorithm to use
-   * @param {array&lt;object&gt;} json.emitters - The emitters for the proton instance
-   * @return {Proton}
+   * @param {array&lt;object&gt;} json.emitters - The emitters for the system instance
+   * @return {System}
    */
   static fromJSON(json) {
-    return fromJSON(json, Proton, Emitter);
+    return fromJSON(json, System, Emitter);
   }
 
   /**
-   * Loads a Proton instance from JSON asynchronously. Ensures all textures are
-   * fully loaded before resolving with the instantiated Proton instance.
+   * Loads a System instance from JSON asynchronously. Ensures all textures are
+   * fully loaded before resolving with the instantiated System instance.
    *
-   * @param {object} json - The JSON to create the Proton instance from
+   * @param {object} json - The JSON to create the System instance from
    * @param {number} json.preParticles - The predetermined number of particles
    * @param {string} json.integrationType - The integration algorithm to use
-   * @param {array&lt;object&gt;} json.emitters - The emitters for the proton instance
-   * @return {Promise&lt;Proton&gt;}
+   * @param {array&lt;object&gt;} json.emitters - The emitters for the system instance
+   * @return {Promise&lt;System&gt;}
    */
   static fromJSONAsync(json) {
-    return fromJSONAsync(json, Proton, Emitter);
+    return fromJSONAsync(json, System, Emitter);
   }
 
   /**
    * Proxy method for the internal event dispatcher&apos;s dispatchEvent method.
    *
    * @param {string} event - The event to dispatch
-   * @param {object&lt;Proton|Emitter|Particle&gt;} [target=this] - The event target
+   * @param {object&lt;System|Emitter|Particle&gt;} [target=this] - The event target
    */
   dispatch(event, target = this) {
     this.eventDispatcher.dispatchEvent(event, target);
   }
 
   /**
-   * Adds a renderer to the Proton instance and initializes it.
+   * Adds a renderer to the System instance and initializes it.
    *
    * @param {Renderer} renderer - The renderer to add
-   * @return {Proton}
+   * @return {System}
    */
   addRenderer(renderer) {
     this.renderers.push(renderer);
@@ -353,10 +346,10 @@ export default class Proton {
   }
 
   /**
-   * Removes a renderer from the Proton instance.
+   * Removes a renderer from the System instance.
    *
    * @param {Renderer} renderer
-   * @return {Proton}
+   * @return {System}
    */
   removeRenderer(renderer) {
     this.renderers.splice(this.renderers.indexOf(renderer), 1);
@@ -366,11 +359,11 @@ export default class Proton {
   }
 
   /**
-   * Adds an emitter to the Proton instance.
+   * Adds an emitter to the System instance.
    * Dispatches the EMITTER_ADDED event.
    *
    * @param {Emitter} emitter - The emitter to add
-   * @return {Proton}
+   * @return {System}
    */
   addEmitter(emitter) {
     emitter.parent = this;
@@ -382,11 +375,11 @@ export default class Proton {
   }
 
   /**
-   * Removes an emitter from the Proton instance.
+   * Removes an emitter from the System instance.
    * Dispatches the EMITTER_REMOVED event.
    *
    * @param {Emitter} emitter - The emitter to remove
-   * @return {Proton}
+   * @return {System}
    */
   removeEmitter(emitter) {
     if (emitter.parent !== this) {
@@ -407,7 +400,7 @@ export default class Proton {
    * @example
    * animate = () =&gt; {
    *   threeRenderer.render(threeScene, threeCamera);
-   *   proton.update();
+   *   system.update();
    *   requestAnimationFrame(animate);
    * }
    * animate();
@@ -415,22 +408,20 @@ export default class Proton {
    * @param {number} delta - Delta time
    * @return {Promise}
    */
-  update(delta = DEFAULT_PROTON_DELTA) {
-    const d = delta || DEFAULT_PROTON_DELTA;
+  update(delta = DEFAULT_SYSTEM_DELTA) {
+    const d = delta || DEFAULT_SYSTEM_DELTA;
 
-    if (this.canUpdate) {
-      this.dispatch(PROTON_UPDATE);
+    this.dispatch(SYSTEM_UPDATE);
 
-      if (d &gt; 0) {
-        let i = this.emitters.length;
+    if (d &gt; 0) {
+      let i = this.emitters.length;
 
-        while (i--) {
-          this.emitters[i].update(d);
-        }
+      while (i--) {
+        this.emitters[i].update(d);
       }
-
-      this.dispatch(PROTON_UPDATE_AFTER);
     }
+
+    this.dispatch(SYSTEM_UPDATE_AFTER);
 
     return Promise.resolve();
   }
@@ -453,25 +444,21 @@ export default class Proton {
   }
 
   /**
-   * Destroys all emitters and the Proton pool.
-   * Ensures that this.update will not perform any operations while the system
-   * is being destroyed.
+   * Destroys all emitters and the System pool.
    *
    * @return void
    */
   destroy() {
     const length = this.emitters.length;
+    let i = 0;
 
-    this.canUpdate = false;
-
-    for (let i = 0; i &lt; length; i++) {
-      this.emitters[i] &amp;&amp; this.emitters[i].destroy();
+    for (i; i &lt; length; i++) {
+      this.emitters[i].destroy();
       delete this.emitters[i];
     }
 
     this.emitters.length = 0;
     this.pool.destroy();
-    this.canUpdate = true;
   }
 }
 </code></pre>

@@ -1,8 +1,8 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
-import Particles from '../../src/core/Proton';
+import Particles from '../../src/core/System';
 import chai from 'chai';
 import containsEmitterBehaviours from './fixtures/json/containsEmitterBehaviours.json';
 import containsInvalidBehaviour from './fixtures/json/containsInvalidBehaviour.json';
@@ -18,53 +18,53 @@ global.window = domino.createWindow();
 global.document = window.document;
 
 describe('fromJSON', () => {
-  it('should return a proton instance', done => {
-    const proton = Particles.fromJSON({});
+  it('should return a system instance', done => {
+    const system = Particles.fromJSON({});
 
-    assert.instanceOf(proton, Proton.Proton);
+    assert.instanceOf(system, Nebula.System);
 
     done();
   });
 
   it('should instantiate the eightdiagrams example from JSON', done => {
-    const proton = Particles.fromJSON(eightdiagrams);
+    const system = Particles.fromJSON(eightdiagrams);
 
-    assert.lengthOf(proton.emitters, eightdiagrams.emitters.length);
+    assert.lengthOf(system.emitters, eightdiagrams.emitters.length);
     assert.lengthOf(
-      proton.emitters[0].initializers,
+      system.emitters[0].initializers,
       eightdiagrams.emitters[0].initializers.length
     );
     assert.lengthOf(
-      proton.emitters[1].initializers,
+      system.emitters[1].initializers,
       eightdiagrams.emitters[1].initializers.length
     );
     assert.lengthOf(
-      proton.emitters[0].behaviours,
+      system.emitters[0].behaviours,
       eightdiagrams.emitters[0].behaviours.length
     );
     assert.lengthOf(
-      proton.emitters[1].behaviours,
+      system.emitters[1].behaviours,
       eightdiagrams.emitters[1].behaviours.length
     );
 
     assert.equal(
-      proton.emitters[0].position.x,
+      system.emitters[0].position.x,
       eightdiagrams.emitters[0].position.x
     );
     assert.equal(
-      proton.emitters[1].position.x,
+      system.emitters[1].position.x,
       eightdiagrams.emitters[1].position.x
     );
     assert.equal(
-      proton.emitters[0].rotation.x,
+      system.emitters[0].rotation.x,
       eightdiagrams.emitters[0].rotation.x
     );
     assert.equal(
-      proton.emitters[0].rotation.y,
+      system.emitters[0].rotation.y,
       eightdiagrams.emitters[0].rotation.y
     );
     assert.equal(
-      proton.emitters[0].rotation.z,
+      system.emitters[0].rotation.z,
       eightdiagrams.emitters[0].rotation.z
     );
 
@@ -72,8 +72,8 @@ describe('fromJSON', () => {
   });
 
   it('should instantiate and set the total emit times and life to 1 on the emitter', done => {
-    const proton = Particles.fromJSON(containsTotalEmitTimes);
-    const emitter = proton.emitters[0];
+    const system = Particles.fromJSON(containsTotalEmitTimes);
+    const emitter = system.emitters[0];
 
     assert.equal(emitter.totalEmitTimes, 1);
     assert.equal(emitter.life, 1);
@@ -82,8 +82,8 @@ describe('fromJSON', () => {
   });
 
   it('should set the emitter behaviours', done => {
-    const proton = Particles.fromJSON(containsEmitterBehaviours);
-    const emitter = proton.emitters[0];
+    const system = Particles.fromJSON(containsEmitterBehaviours);
+    const emitter = system.emitters[0];
 
     assert.notEmpty(emitter.emitterBehaviours);
     assert.lengthOf(emitter.emitterBehaviours, 1);

@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import InitializerUtil from '../../src/initializer/InitializerUtil';
 import chai from 'chai';
@@ -10,17 +10,17 @@ const { assert } = chai;
 const { spy } = sinon;
 
 describe('initializer -> InitializeUtil', () => {
-  const mass = new Proton.Mass(1);
-  const life = new Proton.Life(2);
-  const body = new Proton.Body('#FF0000');
-  const radius = new Proton.Radius(80);
-  const velocity = new Proton.RadialVelocity(
+  const mass = new Nebula.Mass(1);
+  const life = new Nebula.Life(2);
+  const body = new Nebula.Body('#FF0000');
+  const radius = new Nebula.Radius(80);
+  const velocity = new Nebula.RadialVelocity(
     200,
-    new Proton.Vector3D(0, 0, -1),
+    new Nebula.Vector3D(0, 0, -1),
     0
   );
-  const emitter = new Proton.Emitter();
-  const particle = new Proton.Particle();
+  const emitter = new Nebula.Emitter();
+  const particle = new Nebula.Particle();
   const initializers = [mass, life, body, radius, velocity];
 
   it('should run each initializer\'s initialize method on all particles', done => {

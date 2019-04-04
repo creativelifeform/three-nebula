@@ -19,7 +19,7 @@ export default class MeshRenderer extends BaseRenderer {
     );
   }
 
-  onProtonUpdate() {}
+  onSystemUpdate() {}
 
   onParticleCreated(particle) {
     if (!particle.target) {

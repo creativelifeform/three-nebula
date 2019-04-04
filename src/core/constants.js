@@ -106,13 +106,13 @@ export const DEFAULT_USE_ALPHA = false;
 export const DEFAULT_EASING = easeLinear;
 
 /**
- * @desc The default delta provided to the Proton instance
+ * @desc The default delta provided to the System instance
  * @type {number}
  */
-export const DEFAULT_PROTON_DELTA = 0.0167;
+export const DEFAULT_SYSTEM_DELTA = 0.0167;
 
 /**
- * @desc The types of initializers supported by the Proton.fromJSON method.
+ * @desc The types of initializers supported by the System.fromJSON method.
  * @type {array<string>}
  */
 export const SUPPORTED_JSON_INITIALIZER_TYPES = [
@@ -129,7 +129,7 @@ export const SUPPORTED_JSON_INITIALIZER_TYPES = [
 ];
 
 /**
- * @desc The types of behaviours supported by the Proton.fromJSON method.
+ * @desc The types of behaviours supported by the System.fromJSON method.
  * @type {array<string>}
  */
 export const SUPPORTED_JSON_BEHAVIOUR_TYPES = [
@@ -147,13 +147,13 @@ export const SUPPORTED_JSON_BEHAVIOUR_TYPES = [
 ];
 
 /**
- * @desc The types of renderers supported by the Proton.fromJSON method.
+ * @desc The types of renderers supported by the System.fromJSON method.
  * @type {array<string>}
  */
 export const SUPPORTED_JSON_RENDERER_TYPES = [RENDERER_TYPE_SPRITE];
 
 /**
- * @desc The types of zones supported by the Proton.fromJSON method.
+ * @desc The types of zones supported by the System.fromJSON method.
  * @type {array<string>}
  */
 export const SUPPORTED_JSON_ZONE_TYPES = [

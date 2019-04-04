@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
 import chai from 'chai';
@@ -9,7 +9,7 @@ import { getEasingByName } from '../../src/ease';
 const { assert } = chai;
 
 describe('behaviour -> Force', () => {
-  const behaviour = new Proton.Force(1, 2, 1);
+  const behaviour = new Nebula.Force(1, 2, 1);
 
   it('should instantiate with the correct properties', done => {
     const { life, easing, age, energy, dead, force } = behaviour;
@@ -20,7 +20,7 @@ describe('behaviour -> Force', () => {
     assert.strictEqual(age, 0);
     assert.strictEqual(energy, 1);
     assert.isFalse(dead);
-    assert.instanceOf(force, Proton.Vector3D);
+    assert.instanceOf(force, Nebula.Vector3D);
     assert.strictEqual(force.x, 100);
     assert.strictEqual(force.y, 200);
     assert.strictEqual(force.z, 100);
@@ -29,13 +29,13 @@ describe('behaviour -> Force', () => {
   });
 
   it('should have set the correct properties on the particle after applying the behaviour', done => {
-    const particle = new Proton.Particle();
+    const particle = new Nebula.Particle();
 
     behaviour.applyBehaviour(particle, TIME);
 
     const { acceleration, old } = particle;
 
-    assert.instanceOf(acceleration, Proton.Vector3D);
+    assert.instanceOf(acceleration, Nebula.Vector3D);
     assert.strictEqual(acceleration.x, 100);
     assert.strictEqual(acceleration.y, 200);
     assert.strictEqual(acceleration.z, 100);
@@ -47,7 +47,7 @@ describe('behaviour -> Force', () => {
   });
 
   it('should construct the behaviour from a JSON object', done => {
-    const instance = Proton.Force.fromJSON({
+    const instance = Nebula.Force.fromJSON({
       fx: 1,
       fy: 2,
       fz: 1,
@@ -55,8 +55,8 @@ describe('behaviour -> Force', () => {
       easing: 'easeInOutExpo',
     });
 
-    assert.instanceOf(instance, Proton.Force);
-    assert.instanceOf(instance.force, Proton.Vector3D);
+    assert.instanceOf(instance, Nebula.Force);
+    assert.instanceOf(instance.force, Nebula.Vector3D);
     assert.strictEqual(instance.force.x, 100);
     assert.strictEqual(instance.force.y, 200);
     assert.strictEqual(instance.force.z, 100);

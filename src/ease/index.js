@@ -1,7 +1,7 @@
 import { PI } from '../constants';
 
 /**
- * The Ease class provides a collection of easing functions for use with Proton
+ * The Ease class provides a collection of easing functions for use with System
  */
 export const ease = {
   easeLinear: function(value) {

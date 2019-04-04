@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v4.0.0` - 2019-04-04
+
+### Changed
+
+- Library name changed internally to `nebula-engine`
+- The `core/Proton` class is now `core/System`
+- README, docs and source code all updated to reflect this change
+
 ## `v3.2.0` - 2019-03-29
 
 ### Added

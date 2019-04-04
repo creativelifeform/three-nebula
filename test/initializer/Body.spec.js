@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import chai from 'chai';
 
@@ -8,7 +8,7 @@ const { assert } = chai;
 
 describe('initializer -> Body', () => {
   const color = '#FF0000';
-  const initializer = new Proton.Body(color, 3, 4);
+  const initializer = new Nebula.Body(color, 3, 4);
 
   it('should have the correct properties after instantiation', done => {
     const {
@@ -19,7 +19,7 @@ describe('initializer -> Body', () => {
     } = initializer;
 
     assert.equal(initializer.type, 'Body');
-    assert.instanceOf(body, Proton.ArraySpan);
+    assert.instanceOf(body, Nebula.ArraySpan);
     assert.isFalse(_isArray);
     assert.isFalse(_center);
     assert.strictEqual(w, 3);
@@ -33,7 +33,7 @@ describe('initializer -> Body', () => {
   });
 
   it('should set height to width if height not supplied', done => {
-    const { w, h } = new Proton.Body(color, 2);
+    const { w, h } = new Nebula.Body(color, 2);
 
     assert.strictEqual(w, 2);
     assert.strictEqual(h, 2);
@@ -42,7 +42,7 @@ describe('initializer -> Body', () => {
   });
 
   it('should set the correct properties on the particle after initialization', done => {
-    const particle = new Proton.Particle();
+    const particle = new Nebula.Particle();
 
     initializer.initialize(particle);
 
@@ -58,14 +58,14 @@ describe('initializer -> Body', () => {
   });
 
   it('should construct the initializer from a JSON object', done => {
-    const instance = Proton.Body.fromJSON({
+    const instance = Nebula.Body.fromJSON({
       body: '#FF0000',
       width: 4,
       height: 5,
     });
 
-    assert.instanceOf(instance, Proton.Body);
-    assert.instanceOf(instance.body, Proton.ArraySpan);
+    assert.instanceOf(instance, Nebula.Body);
+    assert.instanceOf(instance.body, Nebula.ArraySpan);
     assert.equal(instance.w, 4);
     assert.equal(instance.h, 5);
     assert.isTrue(instance.isEnabled);

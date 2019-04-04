@@ -9,7 +9,7 @@ export default class PointsRenderer extends BaseRenderer {
     this.points = ps;
   }
 
-  onProtonUpdate() {}
+  onSystemUpdate() {}
 
   onParticleCreated(particle) {
     if (!particle.target) {

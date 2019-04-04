@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import {
   DEFAULT_AGE,
@@ -16,7 +16,7 @@ import {
   DEFAULT_SCALE,
   DEFAULT_SLEEP,
   DEFAULT_USE_ALPHA,
-  DEFAULT_USE_COLOR
+  DEFAULT_USE_COLOR,
 } from '../../src/core/constants';
 
 import chai from 'chai';
@@ -24,7 +24,7 @@ import { preset } from './fixtures/particle';
 import sinon from 'sinon';
 
 const { assert } = chai;
-const { Particle } = Proton;
+const { Particle } = Nebula;
 const { values, keys } = Object;
 const { spy } = sinon;
 
@@ -47,16 +47,16 @@ describe('core -> Particle', () => {
     assert.isFalse(particle.useColor);
     assert.isFalse(particle.useAlpha);
     assert.isFunction(particle.easing);
-    assert.instanceOf(particle.position, Proton.Vector3D);
-    assert.instanceOf(particle.velocity, Proton.Vector3D);
-    assert.instanceOf(particle.acceleration, Proton.Vector3D);
+    assert.instanceOf(particle.position, Nebula.Vector3D);
+    assert.instanceOf(particle.velocity, Nebula.Vector3D);
+    assert.instanceOf(particle.acceleration, Nebula.Vector3D);
     assert.deepEqual(values(particle.position), [0, 0, 0]);
     assert.deepEqual(values(particle.velocity), [0, 0, 0]);
     assert.deepEqual(values(particle.acceleration), [0, 0, 0]);
     assert.isObject(particle.old);
-    assert.instanceOf(particle.old.position, Proton.Vector3D);
-    assert.instanceOf(particle.old.velocity, Proton.Vector3D);
-    assert.instanceOf(particle.old.acceleration, Proton.Vector3D);
+    assert.instanceOf(particle.old.position, Nebula.Vector3D);
+    assert.instanceOf(particle.old.velocity, Nebula.Vector3D);
+    assert.instanceOf(particle.old.acceleration, Nebula.Vector3D);
     assert.deepEqual(values(particle.old.position), [0, 0, 0]);
     assert.deepEqual(values(particle.old.velocity), [0, 0, 0]);
     assert.deepEqual(values(particle.old.acceleration), [0, 0, 0]);
@@ -66,7 +66,7 @@ describe('core -> Particle', () => {
     assert.isObject(particle.color);
     assert.deepEqual(keys(particle.color), ['r', 'g', 'b']);
     assert.deepEqual(values(particle.color), [0, 0, 0]);
-    assert.instanceOf(particle.rotation, Proton.Vector3D);
+    assert.instanceOf(particle.rotation, Nebula.Vector3D);
     assert.deepEqual(values(particle.rotation), [0, 0, 0]);
 
     done();
@@ -109,7 +109,7 @@ describe('core -> Particle', () => {
     done();
   });
 
-  it('should reset the particle\'s clearable properties and return the particle', done => {
+  it("should reset the particle's clearable properties and return the particle", done => {
     const particle = new Particle(preset);
     const reset = particle.reset();
 
@@ -121,7 +121,7 @@ describe('core -> Particle', () => {
       color,
       transform,
       behaviours,
-      rotation
+      rotation,
     } = particle;
 
     assert.strictEqual(reset.age, DEFAULT_AGE);
@@ -155,13 +155,13 @@ describe('core -> Particle', () => {
 
   it('should add a behaviour to the particle and call the behaviour initialize method with the particle', done => {
     const particle = new Particle();
-    const behaviour = new Proton.Attraction();
+    const behaviour = new Nebula.Attraction();
     const spyInitialize = spy(behaviour, 'initialize');
 
     particle.addBehaviour(behaviour);
 
     assert.isNotEmpty(particle.behaviours);
-    assert.instanceOf(particle.behaviours[0], Proton.Attraction);
+    assert.instanceOf(particle.behaviours[0], Nebula.Attraction);
     assert(spyInitialize.calledOnce);
     assert(spyInitialize.calledWith(particle));
 
@@ -169,9 +169,9 @@ describe('core -> Particle', () => {
     done();
   });
 
-  it('should add a behaviours to the particle and call the behaviours\'s initialize method with the particle', done => {
+  it("should add a behaviours to the particle and call the behaviours's initialize method with the particle", done => {
     const particle = new Particle();
-    const behaviours = [new Proton.Attraction(), new Proton.Repulsion()];
+    const behaviours = [new Nebula.Attraction(), new Nebula.Repulsion()];
     const spyAttraction = spy(behaviours[0], 'initialize');
     const spyRepulsion = spy(behaviours[1], 'initialize');
     const spies = [spyAttraction, spyRepulsion];
@@ -179,8 +179,8 @@ describe('core -> Particle', () => {
     particle.addBehaviours(behaviours);
 
     assert.lengthOf(particle.behaviours, 2);
-    assert.instanceOf(particle.behaviours[0], Proton.Repulsion);
-    assert.instanceOf(particle.behaviours[1], Proton.Attraction);
+    assert.instanceOf(particle.behaviours[0], Nebula.Repulsion);
+    assert.instanceOf(particle.behaviours[1], Nebula.Attraction);
 
     spies.forEach(spy => {
       assert(spy.calledOnce);
@@ -193,22 +193,22 @@ describe('core -> Particle', () => {
   });
 
   it('should remove the behaviour from the particle', done => {
-    const attraction = new Proton.Attraction();
+    const attraction = new Nebula.Attraction();
     const particle = new Particle();
-    const behaviours = [attraction, new Proton.Repulsion()];
+    const behaviours = [attraction, new Nebula.Repulsion()];
 
     particle.addBehaviours(behaviours);
     particle.removeBehaviour(attraction);
 
     assert.lengthOf(particle.behaviours, 1);
-    assert.instanceOf(particle.behaviours[0], Proton.Repulsion);
+    assert.instanceOf(particle.behaviours[0], Nebula.Repulsion);
 
     done();
   });
 
   it('should remove all behaviours from the particle', done => {
     const particle = new Particle();
-    const behaviours = [new Proton.Attraction(), new Proton.Repulsion()];
+    const behaviours = [new Nebula.Attraction(), new Nebula.Repulsion()];
 
     particle.addBehaviours(behaviours);
     particle.removeAllBehaviours();
@@ -221,7 +221,7 @@ describe('core -> Particle', () => {
   it('should kill the particle', done => {
     const particle = new Particle();
 
-    particle.addBehaviours([new Proton.Attraction(), new Proton.Repulsion()]);
+    particle.addBehaviours([new Nebula.Attraction(), new Nebula.Repulsion()]);
     particle.parent = {};
 
     particle.destroy();
@@ -240,7 +240,7 @@ describe('core -> Particle', () => {
 describe('particle update', () => {
   it('should set the particle age, apply behaviours to the particle and set its energy if particle.sleep === false', done => {
     const particle = new Particle(preset);
-    const attraction = new Proton.Attraction();
+    const attraction = new Nebula.Attraction();
     const time = 2;
     const attractionSpy = spy(attraction, 'applyBehaviour');
     const easingSpy = spy(particle, 'easing');
@@ -272,7 +272,7 @@ describe('particle update', () => {
 
   it('should not set age or apply behaviours if particle.sleep === true', done => {
     const particle = new Particle(preset);
-    const attraction = new Proton.Attraction();
+    const attraction = new Nebula.Attraction();
     const time = 2;
     const attractionSpy = spy(attraction, 'applyBehaviour');
     const spies = [attractionSpy];
