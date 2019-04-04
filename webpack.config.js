@@ -7,7 +7,7 @@ let libraryName = 'Nebula';
 let plugins = [],
   outputFile;
 
-outputFile = 'nebula-engine.js';
+outputFile = 'three-nebula.js';
 
 const config = {
   entry: __dirname + '/src/index.js',
