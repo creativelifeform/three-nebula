@@ -66,23 +66,23 @@ const makeBehaviours = items => {
 };
 
 /**
- * Creates a Proton instance from a JSON object.
+ * Creates a System instance from a JSON object.
  *
- * @param {object} json - The JSON to create the Proton instance from
- * @param {function} Proton - The proton class
+ * @param {object} json - The JSON to create the System instance from
+ * @param {function} System - The system class
  * @param {function} Emitter - The emitter class
  * @param {number} json.preParticles - The predetermined number of particles
  * @param {string} json.integrationType - The integration algorithm to use
- * @param {array<object>} json.emitters - The emitters for the proton instance
- * @return {Proton}
+ * @param {array<object>} json.emitters - The emitters for the system instance
+ * @return {System}
  */
-export default (json, Proton, Emitter) => {
+export default (json, System, Emitter) => {
   const {
     preParticles = POOL_MAX,
     integrationType = EULER,
     emitters = [],
   } = json;
-  const proton = new Proton(preParticles, integrationType);
+  const system = new System(preParticles, integrationType);
 
   emitters.forEach(data => {
     const emitter = new Emitter();
@@ -106,8 +106,8 @@ export default (json, Proton, Emitter) => {
       .setPosition(position)
       .emit(totalEmitTimes, life);
 
-    proton.addEmitter(emitter);
+    system.addEmitter(emitter);
   });
 
-  return proton;
+  return system;
 };

@@ -5,11 +5,11 @@ import { EMITTER_TYPE_FOLLOW as type } from './types';
 
 export default class FollowEmitter extends Emitter {
   /**
-   * The FollowEmitter class inherits from Proton.Emitter
+   * The FollowEmitter class inherits from System.Emitter
    *
    * use the FollowEmitter will emit particle when mousemoving
    *
-   * @class Proton.FollowEmitter
+   * @class System.FollowEmitter
    * @constructor
    * @param {Element} mouseTarget mouseevent's target;
    * @param {Number} ease the easing of following speed;
@@ -82,7 +82,9 @@ export default class FollowEmitter extends Emitter {
       this.position.y += (e.offsetY - this.position.y) * this.ease;
     }
 
-    this.position.copy(THREEUtil.toSpacePos(this.position, this.camera, this.canvas));
+    this.position.copy(
+      THREEUtil.toSpacePos(this.position, this.camera, this.canvas)
+    );
 
     if (this._allowEmitting) super.emit('once');
   }

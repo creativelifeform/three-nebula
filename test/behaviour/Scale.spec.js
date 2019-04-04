@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
 import chai from 'chai';
@@ -9,12 +9,12 @@ import { getEasingByName } from '../../src/ease';
 const { assert } = chai;
 
 describe('behaviour -> Scale', () => {
-  const behaviour = new Proton.Scale(3, 11);
-  const particle = new Proton.Particle();
+  const behaviour = new Nebula.Scale(3, 11);
+  const particle = new Nebula.Particle();
 
   it('will set the same property to true if second arg is null or undefined', done => {
-    const scaleA = new Proton.Scale(1, null);
-    const scaleB = new Proton.Scale(1);
+    const scaleA = new Nebula.Scale(1, null);
+    const scaleB = new Nebula.Scale(1);
 
     assert.isTrue(scaleA._same);
     assert.isTrue(scaleB._same);
@@ -41,8 +41,8 @@ describe('behaviour -> Scale', () => {
     assert.strictEqual(energy, 1);
     assert.isFalse(dead);
     assert.isFalse(_same);
-    assert.instanceOf(scaleA, Proton.Span);
-    assert.instanceOf(scaleB, Proton.Span);
+    assert.instanceOf(scaleA, Nebula.Span);
+    assert.instanceOf(scaleB, Nebula.Span);
     assert.strictEqual(scaleA.a, 3);
     assert.strictEqual(scaleA.b, 3);
     assert.strictEqual(scaleB.a, 11);
@@ -77,16 +77,16 @@ describe('behaviour -> Scale', () => {
   });
 
   it('should construct the behaviour from a JSON object', done => {
-    const instance = Proton.Scale.fromJSON({
+    const instance = Nebula.Scale.fromJSON({
       scaleA: 0.4,
       scaleB: 1,
       life: 4,
       easing: 'easeInOutExpo',
     });
 
-    assert.instanceOf(instance, Proton.Scale);
-    assert.instanceOf(instance.scaleA, Proton.Span);
-    assert.instanceOf(instance.scaleB, Proton.Span);
+    assert.instanceOf(instance, Nebula.Scale);
+    assert.instanceOf(instance.scaleA, Nebula.Span);
+    assert.instanceOf(instance.scaleB, Nebula.Span);
     assert.equal(instance.life, 4);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);

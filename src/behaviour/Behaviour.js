@@ -120,7 +120,7 @@ export default class Behaviour {
    *
    * @abstract
    * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to
-   * @param {Number} time - the proton integration time
+   * @param {Number} time - the system integration time
    * @param {integer} index - the target index
    * @return mixed
    */
@@ -137,7 +137,7 @@ export default class Behaviour {
    *
    * @abstract
    * @param {Particle|Emitter} target - The particle or emitter to apply the behaviour to
-   * @param {Number} time - the proton integration time
+   * @param {Number} time - the system integration time
    * @return mixed
    */
   mutate(target, time, index) {} // eslint-disable-line
@@ -148,7 +148,7 @@ export default class Behaviour {
    * Sets the behaviour energy as a factor of particle age and life.
    *
    * @param {Particle} particle - The particle to apply the behaviour to
-   * @param {Number} time - the proton integration time
+   * @param {Number} time - the system integration time
    * @return void
    */
   energize(particle, time) {

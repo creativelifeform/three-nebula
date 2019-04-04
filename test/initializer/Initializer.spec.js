@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import Initializer from '../../src/initializer/Initializer';
 import chai from 'chai';
@@ -19,7 +19,7 @@ describe('initializer -> Initializer', () => {
     done();
   });
   it('should initialize the emitter', done => {
-    const emitter = new Proton.Emitter();
+    const emitter = new Nebula.Emitter();
     const initializer = new Initializer();
 
     initializer.init(emitter);
@@ -30,8 +30,8 @@ describe('initializer -> Initializer', () => {
   });
 
   it('should initialize the particle', done => {
-    const emitter = new Proton.Emitter();
-    const particle = new Proton.Particle();
+    const emitter = new Nebula.Emitter();
+    const particle = new Nebula.Particle();
     const initializer = new Initializer();
 
     initializer.init(emitter, particle);
@@ -43,7 +43,7 @@ describe('initializer -> Initializer', () => {
   });
 
   it('should not initialize the particle if the initializer is disabled', done => {
-    const particle = new Proton.Particle();
+    const particle = new Nebula.Particle();
     const initializer = new Initializer('test', false);
 
     initializer.init(null, particle);

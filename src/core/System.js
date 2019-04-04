@@ -1,11 +1,11 @@
 import EventDispatcher, {
   EMITTER_ADDED,
   EMITTER_REMOVED,
-  PROTON_UPDATE,
-  PROTON_UPDATE_AFTER,
+  SYSTEM_UPDATE,
+  SYSTEM_UPDATE_AFTER,
 } from '../events';
 
-import { DEFAULT_PROTON_DELTA } from './constants';
+import { DEFAULT_SYSTEM_DELTA } from './constants';
 import Emitter from '../emitter/Emitter';
 import { INTEGRATION_TYPE_EULER } from '../math/constants';
 import { POOL_MAX } from '../constants';
@@ -15,14 +15,14 @@ import fromJSONAsync from './fromJSONAsync';
 import { CORE_TYPE_PROTON as type } from './types';
 
 /**
- * The core of the three-proton particle engine.
- * A Proton instance can contain multiple emitters, each with their own initializers
+ * The core of the three-system particle engine.
+ * A System instance can contain multiple emitters, each with their own initializers
  * and behaviours.
  *
  */
-export default class Proton {
+export default class System {
   /**
-   * Constructs a Proton instance.
+   * Constructs a System instance.
    *
    * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
    * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
@@ -63,7 +63,7 @@ export default class Proton {
     this.renderers = [];
 
     /**
-     * @desc A pool used to manage the internal proton cache of objects
+     * @desc A pool used to manage the internal system cache of objects
      * @type {Pool}
      */
     this.pool = new Pool();
@@ -76,47 +76,47 @@ export default class Proton {
   }
 
   /**
-   * Creates a Proton instance from a JSON object.
+   * Creates a System instance from a JSON object.
    *
-   * @param {object} json - The JSON to create the Proton instance from
+   * @param {object} json - The JSON to create the System instance from
    * @param {number} json.preParticles - The predetermined number of particles
    * @param {string} json.integrationType - The integration algorithm to use
-   * @param {array<object>} json.emitters - The emitters for the proton instance
-   * @return {Proton}
+   * @param {array<object>} json.emitters - The emitters for the system instance
+   * @return {System}
    */
   static fromJSON(json) {
-    return fromJSON(json, Proton, Emitter);
+    return fromJSON(json, System, Emitter);
   }
 
   /**
-   * Loads a Proton instance from JSON asynchronously. Ensures all textures are
-   * fully loaded before resolving with the instantiated Proton instance.
+   * Loads a System instance from JSON asynchronously. Ensures all textures are
+   * fully loaded before resolving with the instantiated System instance.
    *
-   * @param {object} json - The JSON to create the Proton instance from
+   * @param {object} json - The JSON to create the System instance from
    * @param {number} json.preParticles - The predetermined number of particles
    * @param {string} json.integrationType - The integration algorithm to use
-   * @param {array<object>} json.emitters - The emitters for the proton instance
-   * @return {Promise<Proton>}
+   * @param {array<object>} json.emitters - The emitters for the system instance
+   * @return {Promise<System>}
    */
   static fromJSONAsync(json) {
-    return fromJSONAsync(json, Proton, Emitter);
+    return fromJSONAsync(json, System, Emitter);
   }
 
   /**
    * Proxy method for the internal event dispatcher's dispatchEvent method.
    *
    * @param {string} event - The event to dispatch
-   * @param {object<Proton|Emitter|Particle>} [target=this] - The event target
+   * @param {object<System|Emitter|Particle>} [target=this] - The event target
    */
   dispatch(event, target = this) {
     this.eventDispatcher.dispatchEvent(event, target);
   }
 
   /**
-   * Adds a renderer to the Proton instance and initializes it.
+   * Adds a renderer to the System instance and initializes it.
    *
    * @param {Renderer} renderer - The renderer to add
-   * @return {Proton}
+   * @return {System}
    */
   addRenderer(renderer) {
     this.renderers.push(renderer);
@@ -126,10 +126,10 @@ export default class Proton {
   }
 
   /**
-   * Removes a renderer from the Proton instance.
+   * Removes a renderer from the System instance.
    *
    * @param {Renderer} renderer
-   * @return {Proton}
+   * @return {System}
    */
   removeRenderer(renderer) {
     this.renderers.splice(this.renderers.indexOf(renderer), 1);
@@ -139,11 +139,11 @@ export default class Proton {
   }
 
   /**
-   * Adds an emitter to the Proton instance.
+   * Adds an emitter to the System instance.
    * Dispatches the EMITTER_ADDED event.
    *
    * @param {Emitter} emitter - The emitter to add
-   * @return {Proton}
+   * @return {System}
    */
   addEmitter(emitter) {
     emitter.parent = this;
@@ -155,11 +155,11 @@ export default class Proton {
   }
 
   /**
-   * Removes an emitter from the Proton instance.
+   * Removes an emitter from the System instance.
    * Dispatches the EMITTER_REMOVED event.
    *
    * @param {Emitter} emitter - The emitter to remove
-   * @return {Proton}
+   * @return {System}
    */
   removeEmitter(emitter) {
     if (emitter.parent !== this) {
@@ -180,7 +180,7 @@ export default class Proton {
    * @example
    * animate = () => {
    *   threeRenderer.render(threeScene, threeCamera);
-   *   proton.update();
+   *   system.update();
    *   requestAnimationFrame(animate);
    * }
    * animate();
@@ -188,10 +188,10 @@ export default class Proton {
    * @param {number} delta - Delta time
    * @return {Promise}
    */
-  update(delta = DEFAULT_PROTON_DELTA) {
-    const d = delta || DEFAULT_PROTON_DELTA;
+  update(delta = DEFAULT_SYSTEM_DELTA) {
+    const d = delta || DEFAULT_SYSTEM_DELTA;
 
-    this.dispatch(PROTON_UPDATE);
+    this.dispatch(SYSTEM_UPDATE);
 
     if (d > 0) {
       let i = this.emitters.length;
@@ -201,7 +201,7 @@ export default class Proton {
       }
     }
 
-    this.dispatch(PROTON_UPDATE_AFTER);
+    this.dispatch(SYSTEM_UPDATE_AFTER);
 
     return Promise.resolve();
   }
@@ -224,7 +224,7 @@ export default class Proton {
   }
 
   /**
-   * Destroys all emitters and the Proton pool.
+   * Destroys all emitters and the System pool.
    *
    * @return void
    */

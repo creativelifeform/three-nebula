@@ -181,38 +181,38 @@ const makeEmitters = (emitters, Emitter) =>
   });
 
 /**
- * Creates a Proton instance from a JSON object.
+ * Creates a System instance from a JSON object.
  *
- * @param {object} json - The JSON to create the Proton instance from
- * @param {function} Proton - The proton class
+ * @param {object} json - The JSON to create the System instance from
+ * @param {function} System - The system class
  * @param {function} Emitter - The emitter class
  * @param {number} json.preParticles - The predetermined number of particles
  * @param {string} json.integrationType - The integration algorithm to use
- * @param {array<object>} json.emitters - The emitters for the proton instance
- * @return {Promise<Proton>}
+ * @param {array<object>} json.emitters - The emitters for the system instance
+ * @return {Promise<System>}
  */
-export default (json, Proton, Emitter) =>
+export default (json, System, Emitter) =>
   new Promise((resolve, reject) => {
     const {
       preParticles = POOL_MAX,
       integrationType = EULER,
       emitters = [],
     } = json;
-    const proton = new Proton(preParticles, integrationType);
+    const system = new System(preParticles, integrationType);
 
     makeEmitters(emitters, Emitter)
       .then(madeEmitters => {
         const numberOfEmitters = madeEmitters.length;
 
         if (!numberOfEmitters) {
-          return resolve(proton);
+          return resolve(system);
         }
 
         madeEmitters.forEach(madeEmitter => {
-          proton.addEmitter(madeEmitter);
+          system.addEmitter(madeEmitter);
 
-          if (proton.emitters.length === numberOfEmitters) {
-            resolve(proton);
+          if (system.emitters.length === numberOfEmitters) {
+            resolve(system);
           }
         });
       })

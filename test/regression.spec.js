@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../src';
+import * as Nebula from '../src';
 
 import chai from 'chai';
 
@@ -65,27 +65,27 @@ describe('regression', () => {
       'ease',
     ];
 
-    modules.forEach(module => expect(Proton).to.have.property(module));
+    modules.forEach(module => expect(Nebula).to.have.property(module));
 
     done();
   });
 
-  it('should export a default module which is the Proton class', done => {
-    assert.isFunction(Proton.default);
+  it('should export a default module which is the System class', done => {
+    assert.isFunction(Nebula.default);
 
-    const proton = new Proton.default();
+    const system = new Nebula.default();
 
-    assert.strictEqual(proton.constructor.name, 'Proton');
+    assert.strictEqual(system.constructor.name, 'System');
 
     done();
   });
 
-  it('should export a named module which is the Proton class', done => {
-    assert.isFunction(Proton.Proton);
+  it('should export a named module which is the System class', done => {
+    assert.isFunction(Nebula.System);
 
-    const proton = new Proton.Proton();
+    const system = new Nebula.System();
 
-    assert.strictEqual(proton.constructor.name, 'Proton');
+    assert.strictEqual(system.constructor.name, 'System');
 
     done();
   });

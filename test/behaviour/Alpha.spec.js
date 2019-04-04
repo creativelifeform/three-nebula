@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
 import chai from 'chai';
@@ -9,7 +9,7 @@ import { getEasingByName } from '../../src/ease';
 const { assert } = chai;
 
 describe('behaviour -> Alpha', () => {
-  const behaviour = new Proton.Alpha(1, 0);
+  const behaviour = new Nebula.Alpha(1, 0);
 
   it('should instantiate with the correct properties', done => {
     const {
@@ -31,8 +31,8 @@ describe('behaviour -> Alpha', () => {
     assert.isFalse(dead);
     assert.isFalse(_same);
     assert.isFunction(easing);
-    assert.isTrue(alphaA instanceof Proton.Span);
-    assert.isTrue(alphaB instanceof Proton.Span);
+    assert.isTrue(alphaA instanceof Nebula.Span);
+    assert.isTrue(alphaB instanceof Nebula.Span);
     assert.isFalse(alphaA._isArray);
     assert.isFalse(alphaA._center);
     assert.strictEqual(alphaA.a, 1);
@@ -46,7 +46,7 @@ describe('behaviour -> Alpha', () => {
   });
 
   it('should initialize the particle with the correct properties', done => {
-    const particle = new Proton.Particle();
+    const particle = new Nebula.Particle();
 
     behaviour.initialize(particle);
 
@@ -65,7 +65,7 @@ describe('behaviour -> Alpha', () => {
   });
 
   it('should have the correct properties after applying behaviour', done => {
-    const particle = new Proton.Particle();
+    const particle = new Nebula.Particle();
 
     behaviour.initialize(particle);
     behaviour.applyBehaviour(particle, TIME);
@@ -87,8 +87,8 @@ describe('behaviour -> Alpha', () => {
     assert.isFalse(dead);
     assert.isFalse(_same);
     assert.isFunction(easing);
-    assert.isTrue(alphaA instanceof Proton.Span);
-    assert.isTrue(alphaB instanceof Proton.Span);
+    assert.isTrue(alphaA instanceof Nebula.Span);
+    assert.isTrue(alphaB instanceof Nebula.Span);
     assert.isFalse(alphaA._isArray);
     assert.isFalse(alphaA._center);
     assert.strictEqual(alphaA.a, 1);
@@ -102,16 +102,16 @@ describe('behaviour -> Alpha', () => {
   });
 
   it('should construct the behaviour from a JSON object', done => {
-    const instance = Proton.Alpha.fromJSON({
+    const instance = Nebula.Alpha.fromJSON({
       alphaA: 0.4,
       alphaB: 1,
       life: 4,
       easing: 'easeInOutExpo',
     });
 
-    assert.instanceOf(instance, Proton.Alpha);
-    assert.instanceOf(instance.alphaA, Proton.Span);
-    assert.instanceOf(instance.alphaB, Proton.Span);
+    assert.instanceOf(instance, Nebula.Alpha);
+    assert.instanceOf(instance.alphaA, Nebula.Span);
+    assert.instanceOf(instance.alphaB, Nebula.Span);
     assert.equal(instance.life, 4);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);

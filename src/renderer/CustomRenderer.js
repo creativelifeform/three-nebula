@@ -10,7 +10,7 @@ export default class CustomRenderer extends BaseRenderer {
     this.materialPool = new Pool();
   }
 
-  onProtonUpdate() {}
+  onSystemUpdate() {}
 
   onParticleCreated(particle) {} // eslint-disable-line
 

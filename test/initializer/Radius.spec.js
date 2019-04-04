@@ -1,6 +1,6 @@
 /*global describe, it */
 
-import * as Proton from '../../src';
+import * as Nebula from '../../src';
 
 import chai from 'chai';
 
@@ -8,7 +8,7 @@ const { assert } = chai;
 
 describe('initializer -> Radius', () => {
   const radius = 5;
-  const initializer = new Proton.Radius(radius);
+  const initializer = new Nebula.Radius(radius);
 
   it('should have the correct properties after instantiation', done => {
     const {
@@ -17,7 +17,7 @@ describe('initializer -> Radius', () => {
     } = initializer;
 
     assert.equal(initializer.type, 'Radius');
-    assert.instanceOf(radius, Proton.Span);
+    assert.instanceOf(radius, Nebula.Span);
     assert.isFalse(_isArray);
     assert.isFalse(_center);
     assert.strictEqual(a, 5);
@@ -27,7 +27,7 @@ describe('initializer -> Radius', () => {
   });
 
   it('should set the correct properties on the particle after initialization', done => {
-    const particle = new Proton.Particle();
+    const particle = new Nebula.Particle();
 
     initializer.initialize(particle);
 
@@ -43,14 +43,14 @@ describe('initializer -> Radius', () => {
   });
 
   it('should construct the initializer from a JSON object', done => {
-    const instance = Proton.Radius.fromJSON({
+    const instance = Nebula.Radius.fromJSON({
       width: 3,
       height: 10,
       center: true,
     });
 
-    assert.instanceOf(instance, Proton.Radius);
-    assert.instanceOf(instance.radius, Proton.Span);
+    assert.instanceOf(instance, Nebula.Radius);
+    assert.instanceOf(instance.radius, Nebula.Span);
     assert.equal(instance.radius.a, 3);
     assert.equal(instance.radius.b, 10);
     assert.isTrue(instance.isEnabled);
