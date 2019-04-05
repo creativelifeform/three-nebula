@@ -39,6 +39,13 @@ export default class System {
     this.type = type;
 
     /**
+     * @desc Determines if the system can update or not. Set to false when destroying
+     * to ensure that external calls to update do not throw errors.
+     * @type {boolean}
+     */
+    this.canUpdate = true;
+
+    /**
      * @desc The number of particles to start with.
      * @type {number}
      */
@@ -191,17 +198,19 @@ export default class System {
   update(delta = DEFAULT_SYSTEM_DELTA) {
     const d = delta || DEFAULT_SYSTEM_DELTA;
 
-    this.dispatch(SYSTEM_UPDATE);
+    if (this.canUpdate) {
+      this.dispatch(SYSTEM_UPDATE);
 
-    if (d > 0) {
-      let i = this.emitters.length;
+      if (d > 0) {
+        let i = this.emitters.length;
 
-      while (i--) {
-        this.emitters[i].update(d);
+        while (i--) {
+          this.emitters[i].update(d);
+        }
       }
-    }
 
-    this.dispatch(SYSTEM_UPDATE_AFTER);
+      this.dispatch(SYSTEM_UPDATE_AFTER);
+    }
 
     return Promise.resolve();
   }
@@ -224,20 +233,24 @@ export default class System {
   }
 
   /**
-   * Destroys all emitters and the System pool.
+   * Destroys all emitters and the Proton pool.
+   * Ensures that this.update will not perform any operations while the system
+   * is being destroyed.
    *
    * @return void
    */
   destroy() {
     const length = this.emitters.length;
-    let i = 0;
 
-    for (i; i < length; i++) {
-      this.emitters[i].destroy();
+    this.canUpdate = false;
+
+    for (let i = 0; i < length; i++) {
+      this.emitters[i] && this.emitters[i].destroy();
       delete this.emitters[i];
     }
 
     this.emitters.length = 0;
     this.pool.destroy();
+    this.canUpdate = true;
   }
 }

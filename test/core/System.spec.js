@@ -131,6 +131,28 @@ describe('core -> System', () => {
     done();
   });
 
+  it('should not dispatch from within the update method if the canUpdate prop is set to false', done => {
+    const proton = new System();
+    const emitter = new Nebula.Emitter();
+
+    proton.canUpdate = false;
+    proton.addEmitter(emitter);
+
+    // add spies here so that the dispatch in addEmitter isn't spied on
+    const emitterUpdateSpy = sinon.spy(emitter, 'update');
+    const dispatchSpy = sinon.spy(proton, 'dispatch');
+
+    proton.update();
+
+    assert(dispatchSpy.notCalled);
+    assert(emitterUpdateSpy.notCalled);
+
+    dispatchSpy.restore();
+    emitterUpdateSpy.restore();
+
+    done();
+  });
+
   it('should get the count of particles in the system', done => {
     const system = new System();
     const emitter = new Nebula.Emitter();
