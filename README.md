@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/creativelifeform/three-nebula.svg?branch=master)](https://travis-ci.org/creativelifeform/three-nebula)
 [![Coverage Status](https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg)](https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1)
 
-**Nebula Engine** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [examples](https://creativelifeform.github.io/three-nebula/) and [API reference documentation](https://creativelifeform.github.io/three-nebula/api) for more.
+**Three Nebula** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [examples](https://creativelifeform.github.io/three-nebula/) and [API reference documentation](https://creativelifeform.github.io/three-nebula/api) for more.
 
 ## Features
 
