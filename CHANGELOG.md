@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v4.0.4` - 2019-06-22
+
+### Fixed
+
+- Security vulnerabilities re: [`esdoc`](https://github.com/esdoc/esdoc/issues/542)
+
+### Removed
+
+- `esdoc`, `esdoc-standard-plugin`, `esdoc-ecmascript-proposal-plugin` dev deps
+
 ## `v4.0.3` - 2019-05-06
 
 ### Removed
