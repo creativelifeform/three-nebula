@@ -5,6 +5,8 @@
 
 **Three Nebula** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [examples](https://creativelifeform.github.io/three-nebula/) and [API reference documentation](https://creativelifeform.github.io/three-nebula/api) for more.
 
+> **Note**: Due to an as of yet unpatched security vulnerability in [`esdoc`](https://github.com/esdoc/esdoc/issues/542) I've removed this dev dependency from the repo. The API docs might be slightly out of date because of this, They'll be updated as soon as esdoc is patched.
+
 ## Features
 
 - Perfect compatibility with [`three@0.98.0`](https://github.com/mrdoob/three.js)

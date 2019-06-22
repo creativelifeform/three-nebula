@@ -1,6 +1,6 @@
 {
   "name": "three-nebula",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "WebGL based 3D particle engine",
   "main": "./build/three-nebula.js",
   "directories": {
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "webpack --env build && npm run docs:build",
     "docs": "./scripts/docs",
-    "docs:build": "cp ./build/three-nebula.js docs/js && ./node_modules/.bin/esdoc",
+    "docs:build": "cp ./build/three-nebula.js docs/js",
     "test": "mocha --require babel-core/register --colors './test/**/*.spec.js'",
     "test:only": "mocha --require babel-core/register --colors",
     "test:watch": "mocha --require babel-core/register --colors -w './test/**/*.spec.js'",
@@ -56,9 +56,6 @@
     "chai-as-promised": "^7.1.1",
     "coveralls": "^3.0.3",
     "domino": "^2.1.1",
-    "esdoc": "^1.1.0",
-    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
-    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^3.19.0",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-import": "^2.8.0",
