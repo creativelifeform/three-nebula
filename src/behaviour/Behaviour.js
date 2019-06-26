@@ -47,7 +47,7 @@ export default class Behaviour {
      * @desc The life of the behaviour
      * @type {number}
      */
-    this.life = life;
+    this.life = life || Infinity;
 
     /**
      * @desc The behaviour's decaying trend
