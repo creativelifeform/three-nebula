@@ -1,0 +1,173 @@
+{
+  "preParticles": 500,
+  "integrationType": "EULER",
+  "emitters": [
+    {
+      "id": "51ca9450-3d8b-11e9-a1e8-4785d9606b75",
+      "totalEmitTimes": 2,
+      "life": null,
+      "cache": {
+        "totalEmitTimes": 0,
+        "life": 0.28
+      },
+      "rate": {
+        "particlesMin": 30,
+        "particlesMax": 40,
+        "perSecondMin": 0.02,
+        "perSecondMax": 0.28
+      },
+      "position": {
+        "x": -87,
+        "y": -56,
+        "z": 0
+      },
+      "rotation": {
+        "x": -0.48,
+        "y": 0,
+        "z": 0
+      },
+      "initializers": [
+        {
+          "id": "51ca9451-3d8b-11e9-a1e8-4785d9606b75",
+          "type": "Mass",
+          "properties": {
+            "min": 100,
+            "max": 3,
+            "isEnabled": true,
+            "center": true
+          }
+        },
+        {
+          "id": "51ca9452-3d8b-11e9-a1e8-4785d9606b75",
+          "type": "Life",
+          "properties": {
+            "min": 1.13,
+            "max": 3,
+            "isEnabled": true,
+            "center": true
+          }
+        },
+        {
+          "id": "51ca9453-3d8b-11e9-a1e8-4785d9606b75",
+          "type": "BodySprite",
+          "properties": {
+            "texture": "./img/dot.png",
+            "isEnabled": true
+          }
+        },
+        {
+          "id": "51ca9454-3d8b-11e9-a1e8-4785d9606b75",
+          "type": "Radius",
+          "properties": {
+            "width": 10,
+            "height": 4,
+            "isEnabled": true
+          }
+        },
+        {
+          "id": "51ca9455-3d8b-11e9-a1e8-4785d9606b75",
+          "type": "RadialVelocity",
+          "properties": {
+            "radius": 47,
+            "x": 32,
+            "y": 5,
+            "z": 0,
+            "theta": 37,
+            "isEnabled": true
+          }
+        },
+        {
+          "id": "df0cdac0-5d71-11e9-91d4-f9d5e69385ac",
+          "type": "VectorVelocity",
+          "properties": {
+            "x": 5,
+            "y": 10,
+            "z": -31,
+            "theta": 30,
+            "isEnabled": true
+          }
+        }
+      ],
+      "behaviours": [
+        {
+          "id": "51ca9456-3d8b-11e9-a1e8-4785d9606b75",
+          "type": "Alpha",
+          "properties": {
+            "alphaA": 1,
+            "alphaB": 0,
+            "life": null,
+            "easing": "easeLinear"
+          }
+        },
+        {
+          "id": "51ca9457-3d8b-11e9-a1e8-4785d9606b75",
+          "type": "Color",
+          "properties": {
+            "colorA": "#4f0000",
+            "colorB": "#0029FF",
+            "life": null,
+            "easing": "easeOutCubic"
+          }
+        },
+        {
+          "id": "51ca9458-3d8b-11e9-a1e8-4785d9606b75",
+          "type": "Scale",
+          "properties": {
+            "scaleA": 1,
+            "scaleB": 1.28,
+            "life": null,
+            "easing": "easeLinear"
+          }
+        },
+        {
+          "id": "51ca9459-3d8b-11e9-a1e8-4785d9606b75",
+          "type": "Force",
+          "properties": {
+            "fx": 0,
+            "fy": 0,
+            "fz": -2,
+            "life": null,
+            "easing": "easeLinear"
+          }
+        },
+        {
+          "id": "51ca945a-3d8b-11e9-a1e8-4785d9606b75",
+          "type": "Rotate",
+          "properties": {
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "life": null,
+            "easing": "easeLinear"
+          }
+        },
+        {
+          "id": "51ca945b-3d8b-11e9-a1e8-4785d9606b75",
+          "type": "RandomDrift",
+          "properties": {
+            "driftX": 88,
+            "driftY": 292,
+            "driftZ": 4,
+            "delay": 1,
+            "life": null,
+            "easing": "easeLinear"
+          }
+        },
+        {
+          "id": "51ca945c-3d8b-11e9-a1e8-4785d9606b75",
+          "type": "Spring",
+          "properties": {
+            "x": 1,
+            "y": 2,
+            "z": 0,
+            "spring": 0.01,
+            "friction": 1,
+            "life": null,
+            "easing": "easeLinear"
+          }
+        }
+      ],
+      "emitterBehaviours": []
+    }
+  ]
+}
