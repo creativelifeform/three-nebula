@@ -178,12 +178,12 @@ export default class Emitter extends Particle {
    */
   emit(totalEmitTimes = Infinity, life = Infinity) {
     this.currentEmitTime = 0;
-    this.totalEmitTimes = totalEmitTimes;
+    this.totalEmitTimes = totalEmitTimes || Infinity;
 
     if (totalEmitTimes === 1) {
       this.life = totalEmitTimes;
     } else {
-      this.life = life;
+      this.life = life || Infinity;
     }
 
     this.rate.init();
