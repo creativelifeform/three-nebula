@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v4.0.4` - 2019-06-27
+
+### Changed
+
+- Emitters and behaviours will now ensure that non-nullable properties which can be either a number or infinite will default to `Infinity` if `null` is supplied eg., `life` & `totalEmitTimes`
+
+### Added
+
+- Tests covering this change
+
 ## `v4.0.4` - 2019-06-22
 
 ### Fixed
