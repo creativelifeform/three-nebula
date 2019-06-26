@@ -6,6 +6,9 @@ import { TextureLoader } from 'three';
 import chai from 'chai';
 import domino from 'domino';
 import eightdiagrams from './fixtures/json/eightdiagramsAsync.json';
+import hasEmitterBehavioursWithLifeNull from './fixtures/json/hasEmitterBehavioursWithLifeNull.json';
+import hasEmitterWithLifeNull from './fixtures/json/hasEmitterWithLifeNull.json';
+import hasEmitterWithTotalEmitTimesNull from './fixtures/json/hasEmitterWithTotalEmitTimesNull.json';
 import sinon from 'sinon';
 
 const { stub, spy } = sinon;
@@ -82,7 +85,29 @@ describe('fromJSONAsync', () => {
       system.emitters[0].rotation.z,
       eightdiagrams.emitters[0].rotation.z
     );
+  });
 
-    textureLoaderStub.restore();
+  it('should set null life for the emitter as Infinity when emitting', async () => {
+    const system = await Particles.fromJSONAsync(hasEmitterWithLifeNull);
+    const emitter = system.emitters[0];
+
+    assert.equal(emitter.life, Infinity);
+  });
+
+  it('should instantiate null totalEmitTimes for the emitter as Infinity', async () => {
+    const system = await Particles.fromJSON(hasEmitterWithTotalEmitTimesNull);
+    const emitter = system.emitters[0];
+
+    assert.equal(emitter.totalEmitTimes, Infinity);
+  });
+
+  it("should instantiate null life for the emitter's behaviours as Infinity", async () => {
+    const system = await Particles.fromJSON(hasEmitterBehavioursWithLifeNull);
+    const emitter = system.emitters[0];
+    const behaviours = emitter.behaviours;
+
+    behaviours.forEach(behaviour => {
+      assert.equal(behaviour.life, Infinity);
+    });
   });
 });

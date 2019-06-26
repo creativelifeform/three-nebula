@@ -594,7 +594,7 @@ var Behaviour = function () {
      * @desc The life of the behaviour
      * @type {number}
      */
-    this.life = life;
+    this.life = life || Infinity;
 
     /**
      * @desc The behaviour's decaying trend
@@ -2156,12 +2156,12 @@ var Emitter = function (_Particle) {
       var life = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Infinity;
 
       this.currentEmitTime = 0;
-      this.totalEmitTimes = totalEmitTimes;
+      this.totalEmitTimes = totalEmitTimes || Infinity;
 
       if (totalEmitTimes === 1) {
         this.life = totalEmitTimes;
       } else {
-        this.life = life;
+        this.life = life || Infinity;
       }
 
       this.rate.init();
