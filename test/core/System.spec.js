@@ -1,6 +1,7 @@
 /*global describe, it */
 
 import * as Nebula from '../../src';
+import * as THREE from 'three';
 
 import EventDispatcher, {
   EMITTER_ADDED,
@@ -11,12 +12,13 @@ import EventDispatcher, {
 
 import { INTEGRATION_TYPE_EULER } from '../../src/math';
 import { POOL_MAX } from '../../src/constants';
-import { Scene } from 'three';
 import chai from 'chai';
 import sinon from 'sinon';
 
 const { assert } = chai;
 const System = Nebula.System;
+const getSystem = () => new System(THREE);
+const { Scene } = THREE;
 
 describe('core -> System', () => {
   it('should instantiate with the correct properties', done => {
@@ -28,7 +30,7 @@ describe('core -> System', () => {
       renderers,
       pool,
       eventDispatcher,
-    } = new System();
+    } = getSystem();
 
     assert.equal(type, 'System');
     assert.equal(preParticles, POOL_MAX);
@@ -44,7 +46,7 @@ describe('core -> System', () => {
   });
 
   it('should add a renderer', done => {
-    const system = new System();
+    const system = getSystem();
     const renderer = new Nebula.SpriteRenderer();
 
     assert.instanceOf(system.addRenderer(renderer), System);
@@ -55,7 +57,7 @@ describe('core -> System', () => {
   });
 
   it('should remove the renderer', done => {
-    const system = new System();
+    const system = getSystem();
     const renderer = new Nebula.SpriteRenderer();
 
     system.addRenderer(renderer).removeRenderer(renderer);
@@ -66,7 +68,7 @@ describe('core -> System', () => {
   });
 
   it('should add an emitter and dispatch the EMITTER_ADDED', done => {
-    const system = new System();
+    const system = getSystem();
     const emitter = new Nebula.Emitter();
     const spy = sinon.spy(system, 'dispatch');
 
@@ -81,7 +83,7 @@ describe('core -> System', () => {
   });
 
   it('should remove an emitter and dispatch the EMITTER_REMOVED event', done => {
-    const system = new System();
+    const system = getSystem();
     const emitter = new Nebula.Emitter();
     const spy = sinon.spy(system, 'dispatch');
 
@@ -97,7 +99,7 @@ describe('core -> System', () => {
   });
 
   it('should not remove an emitter that is not a child of the system instance', done => {
-    const system = new System();
+    const system = getSystem();
     const emitterA = new Nebula.Emitter();
     const emitterB = new Nebula.Emitter();
 
@@ -111,7 +113,7 @@ describe('core -> System', () => {
   });
 
   it('should call the update method for all emitters and also dispatch the required events', done => {
-    const system = new System();
+    const system = getSystem();
     const emitter = new Nebula.Emitter();
     const emitterSpy = sinon.spy(emitter, 'update');
     const dispatchSpy = sinon.spy(system, 'dispatch');
@@ -132,7 +134,7 @@ describe('core -> System', () => {
   });
 
   it('should not dispatch from within the update method if the canUpdate prop is set to false', done => {
-    const proton = new System();
+    const proton = getSystem();
     const emitter = new Nebula.Emitter();
 
     proton.canUpdate = false;
@@ -154,7 +156,7 @@ describe('core -> System', () => {
   });
 
   it('should get the count of particles in the system', done => {
-    const system = new System();
+    const system = getSystem();
     const emitter = new Nebula.Emitter();
     const rate = new Nebula.Rate(500, 0.01);
     const renderer = new Nebula.SpriteRenderer(new Scene());
@@ -172,7 +174,7 @@ describe('core -> System', () => {
   });
 
   it('should destroy all emitters and the empty the pool', done => {
-    const system = new System();
+    const system = getSystem();
     const emitter = new Nebula.Emitter();
     const rate = new Nebula.Rate(500, 0.01);
     const renderer = new Nebula.SpriteRenderer(new Scene());
