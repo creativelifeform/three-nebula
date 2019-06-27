@@ -1,6 +1,6 @@
-import { Texture, Vector3 } from '../core/three';
-
 import PUID from './PUID';
+import { THREE } from '../core';
+import { Vector3 } from '../core/three/';
 
 export default {
   toScreenPos: (function() {
@@ -47,18 +47,18 @@ export default {
     return function(img) {
       let id;
 
-      if (img instanceof Texture) {
+      if (img instanceof THREE.Texture) {
         return img;
       } else if (typeof img == 'string') {
         id = PUID.hash(img);
 
-        if (!store[id]) store[id] = new Texture(img);
+        if (!store[id]) store[id] = new THREE.Texture(img);
 
         return store[id];
       } else if (img instanceof Image) {
         id = PUID.hash(img.src);
 
-        if (!store[id]) store[id] = new Texture(img);
+        if (!store[id]) store[id] = new THREE.Texture(img);
 
         return store[id];
       }

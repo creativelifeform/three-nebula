@@ -1,8 +1,7 @@
-import { BoxGeometry, Mesh, MeshLambertMaterial } from '../core/three';
+import { Pool, THREE } from '../core';
 
 import BaseRenderer from './BaseRenderer';
 import { PUID } from '../utils';
-import { Pool } from '../core';
 import { RENDERER_TYPE_MESH as type } from './types';
 
 export default class MeshRenderer extends BaseRenderer {
@@ -13,9 +12,9 @@ export default class MeshRenderer extends BaseRenderer {
 
     this._targetPool = new Pool();
     this._materialPool = new Pool();
-    this._body = new Mesh(
-      new BoxGeometry(50, 50, 50),
-      new MeshLambertMaterial({ color: '#ff0000' })
+    this._body = new THREE.Mesh(
+      new THREE.BoxGeometry(50, 50, 50),
+      new THREE.MeshLambertMaterial({ color: '#ff0000' })
     );
   }
 

@@ -1,16 +1,16 @@
 import {
-  DEFAULT_JSON_MATERIAL_PROPERTIES,
-  DEFAULT_MATERIAL_PROPERTIES,
-  SUPPORTED_MATERIAL_BLENDING_MODES,
+  getDefaultJsonMaterialProperties,
+  getDefaultMaterialProperties,
+  getSupportedMaterialBlendingModes,
 } from './constants';
-import { Sprite, SpriteMaterial } from '../core/three';
 
 import Initializer from './Initializer';
+import { THREE } from '../core';
 import { INITIALIZER_TYPE_TEXTURE as type } from './types';
 import { withDefaults } from '../utils';
 
 /**
- * Sets the body property to be a THREE.Sprite with a texture map on initialized particles.
+ * Sets the body property to be a THREE.THREE.Sprite with a texture map on initialized particles.
  *
  */
 export default class Texture extends Initializer {
@@ -23,41 +23,41 @@ export default class Texture extends Initializer {
    */
   constructor(
     loadedTexture,
-    materialProperties = DEFAULT_MATERIAL_PROPERTIES,
+    materialProperties = getDefaultMaterialProperties(),
     isEnabled = true
   ) {
     super(type, isEnabled);
 
     /**
-     * @desc The material properties for this object's SpriteMaterial
+     * @desc The material properties for this object's THREE.SpriteMaterial
      * NOTE This is required for testing purposes
      * @type {object}
      */
     this.materialProperties = withDefaults(
-      DEFAULT_MATERIAL_PROPERTIES,
+      getDefaultMaterialProperties(),
       materialProperties
     );
 
     /**
-     * @desc The texture for the THREE.SpriteMaterial map.
+     * @desc The texture for the THREE.THREE.SpriteMaterial map.
      * @type {Texture}
      */
     this.texture = loadedTexture;
 
     /**
-     * @desc THREE.SpriteMaterial instance.
-     * @type {SpriteMaterial}
+     * @desc THREE.THREE.SpriteMaterial instance.
+     * @type {THREE.SpriteMaterial}
      */
-    this.material = new SpriteMaterial({
+    this.material = new THREE.SpriteMaterial({
       ...{ map: loadedTexture },
       ...this.materialProperties,
     });
 
     /**
-     * @desc THREE.Sprite instance.
-     * @type {Sprite}
+     * @desc THREE.THREE.Sprite instance.
+     * @type {THREE.Sprite}
      */
-    this.sprite = new Sprite(this.material);
+    this.sprite = new THREE.Sprite(this.material);
   }
 
   /**
@@ -76,14 +76,15 @@ export default class Texture extends Initializer {
    * @param {object} json - The JSON to construct the instance from.
    * @param {Texture} json.loadedTexture - The loaded sprite texture
    * @param {object} json.materialProperties - The sprite material properties
-   * @return {BodySprite}
+   * @return {BodyTHREE.Sprite}
    */
   static fromJSON(json) {
     const {
       loadedTexture,
-      materialProperties = DEFAULT_JSON_MATERIAL_PROPERTIES,
+      materialProperties = getDefaultJsonMaterialProperties(),
       isEnabled = true,
     } = json;
+    const SUPPORTED_MATERIAL_BLENDING_MODES = getSupportedMaterialBlendingModes();
 
     const ensureMappedBlendingMode = properties => {
       const { blending } = properties;
@@ -93,7 +94,7 @@ export default class Texture extends Initializer {
         blending: blending
           ? SUPPORTED_MATERIAL_BLENDING_MODES[blending]
           : SUPPORTED_MATERIAL_BLENDING_MODES[
-              DEFAULT_JSON_MATERIAL_PROPERTIES.blending
+              getDefaultJsonMaterialProperties().blending
             ],
       };
     };
@@ -101,7 +102,7 @@ export default class Texture extends Initializer {
     return new Texture(
       loadedTexture,
       withDefaults(
-        DEFAULT_JSON_MATERIAL_PROPERTIES,
+        getDefaultJsonMaterialProperties(),
         ensureMappedBlendingMode(materialProperties)
       ),
       isEnabled

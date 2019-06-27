@@ -1,6 +1,5 @@
-import { Sprite, SpriteMaterial } from '../core/three';
-
 import MeshRenderer from './MeshRenderer';
+import { THREE } from '../core';
 import { RENDERER_TYPE_SPRITE as type } from './types';
 
 export default class SpriteRenderer extends MeshRenderer {
@@ -12,7 +11,9 @@ export default class SpriteRenderer extends MeshRenderer {
      * @type {string}
      */
     this.type = type;
-    this._body = new Sprite(new SpriteMaterial({ color: 0xffffff }));
+    this._body = new THREE.Sprite(
+      new THREE.SpriteMaterial({ color: 0xffffff })
+    );
   }
 
   scale(particle) {

@@ -10,6 +10,7 @@ import Emitter from '../emitter/Emitter';
 import { INTEGRATION_TYPE_EULER } from '../math/constants';
 import { POOL_MAX } from '../constants';
 import Pool from './Pool';
+import THREE from './Three';
 import fromJSON from './fromJSON';
 import fromJSONAsync from './fromJSONAsync';
 import { CORE_TYPE_SYSTEM as type } from './types';
@@ -24,14 +25,19 @@ export default class System {
   /**
    * Constructs a System instance.
    *
+   * @param {object} webGlApi - ThreeJs
    * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
    * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
    * @return void
    */
   constructor(
+    webGlApi,
     preParticles = POOL_MAX,
     integrationType = INTEGRATION_TYPE_EULER
   ) {
+    // Set up the THREE api container
+    THREE.set(webGlApi);
+
     /**
      * @desc The class type.
      * @type {string}
@@ -86,13 +92,13 @@ export default class System {
    * Creates a System instance from a JSON object.
    *
    * @param {object} json - The JSON to create the System instance from
-   * @param {number} json.preParticles - The predetermined number of particles
-   * @param {string} json.integrationType - The integration algorithm to use
-   * @param {array<object>} json.emitters - The emitters for the system instance
+   * @param {object} webGlApi - The Web GL Api to use
    * @return {System}
+   *
+   * @deprecated use fromJSONAsync instead
    */
-  static fromJSON(json) {
-    return fromJSON(json, System, Emitter);
+  static fromJSON(json, webGlApi) {
+    return fromJSON(json, webGlApi, System, Emitter);
   }
 
   /**
@@ -100,13 +106,11 @@ export default class System {
    * fully loaded before resolving with the instantiated System instance.
    *
    * @param {object} json - The JSON to create the System instance from
-   * @param {number} json.preParticles - The predetermined number of particles
-   * @param {string} json.integrationType - The integration algorithm to use
-   * @param {array<object>} json.emitters - The emitters for the system instance
+   * @param {object} webGlApi - The Web GL Api to use
    * @return {Promise<System>}
    */
-  static fromJSONAsync(json) {
-    return fromJSONAsync(json, System, Emitter);
+  static fromJSONAsync(json, webGlApi) {
+    return fromJSONAsync(json, webGlApi, System, Emitter);
   }
 
   /**

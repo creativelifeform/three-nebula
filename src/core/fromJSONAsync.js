@@ -184,6 +184,7 @@ const makeEmitters = (emitters, Emitter) =>
  * Creates a System instance from a JSON object.
  *
  * @param {object} json - The JSON to create the System instance from
+ * @param {object} webGlApi - The Web GL Api to use
  * @param {function} System - The system class
  * @param {function} Emitter - The emitter class
  * @param {number} json.preParticles - The predetermined number of particles
@@ -191,14 +192,14 @@ const makeEmitters = (emitters, Emitter) =>
  * @param {array<object>} json.emitters - The emitters for the system instance
  * @return {Promise<System>}
  */
-export default (json, System, Emitter) =>
+export default (json, webGlApi, System, Emitter) =>
   new Promise((resolve, reject) => {
     const {
       preParticles = POOL_MAX,
       integrationType = EULER,
       emitters = [],
     } = json;
-    const system = new System(preParticles, integrationType);
+    const system = new System(webGlApi, preParticles, integrationType);
 
     makeEmitters(emitters, Emitter)
       .then(madeEmitters => {

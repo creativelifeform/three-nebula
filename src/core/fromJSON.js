@@ -69,6 +69,7 @@ const makeBehaviours = items => {
  * Creates a System instance from a JSON object.
  *
  * @param {object} json - The JSON to create the System instance from
+ * @param {object} webGlApi - The Web GL Api to use
  * @param {function} System - The system class
  * @param {function} Emitter - The emitter class
  * @param {number} json.preParticles - The predetermined number of particles
@@ -76,13 +77,13 @@ const makeBehaviours = items => {
  * @param {array<object>} json.emitters - The emitters for the system instance
  * @return {System}
  */
-export default (json, System, Emitter) => {
+export default (json, webGlApi, System, Emitter) => {
   const {
     preParticles = POOL_MAX,
     integrationType = EULER,
     emitters = [],
   } = json;
-  const system = new System(preParticles, integrationType);
+  const system = new System(webGlApi, preParticles, integrationType);
 
   emitters.forEach(data => {
     const emitter = new Emitter();

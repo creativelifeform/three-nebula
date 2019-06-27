@@ -1,8 +1,7 @@
-import { Euler } from '../core/three';
-
-const particleEuler = new Euler();
+import { THREE } from '../core';
 
 export default {
+  particleEuler: null,
   /**
    * Loops through the initializers array and calls each initializer's initialize method
    * on the supplied particle. This sets the particle's initial properties.
@@ -35,6 +34,8 @@ export default {
     const {
       rotation: { x, y, z },
     } = emitter;
+
+    const { particleEuler = new THREE.Euler() } = this;
 
     particle.position.add(emitter.position);
     particle.velocity.add(emitter.velocity);

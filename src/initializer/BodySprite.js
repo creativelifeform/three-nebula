@@ -3,25 +3,25 @@ import {
   DEFAULT_MATERIAL_PROPERTIES,
   SUPPORTED_MATERIAL_BLENDING_MODES,
 } from './constants';
-import { Sprite, SpriteMaterial, TextureLoader } from '../core/three';
 
 import Initializer from './Initializer';
+import { THREE } from '../core';
 import { INITIALIZER_TYPE_BODY_SPRITE as type } from './types';
 import { withDefaults } from '../utils';
 
 /**
- * Sets the body property to be a THREE.Sprite on initialized particles.
+ * Sets the body property to be a THREE.THREE.Sprite on initialized particles.
  *
- * NOTE The texture map MUST be set on the SpriteMaterial in the TextureLoader.load
+ * NOTE The texture map MUST be set on the THREE.SpriteMaterial in the THREE.TextureLoader.load
  * callback. Not doing so will cause WebGL buffer errors.
  */
 export default class BodySprite extends Initializer {
   /**
-   * Constructs a BodySprite initializer.
+   * Constructs a BodyTHREE.Sprite initializer.
    *
    * @param {string} texture - The sprite texture
    * @param {object} materialProperties - The sprite material properties
-   * @throws {Error} If the TextureLoader fails to load the supplied texture
+   * @throws {Error} If the THREE.TextureLoader fails to load the supplied texture
    * @return void
    */
   constructor(
@@ -32,7 +32,7 @@ export default class BodySprite extends Initializer {
     super(type, isEnabled);
 
     /**
-     * @desc The material properties for this object's SpriteMaterial
+     * @desc The material properties for this object's THREE.SpriteMaterial
      * NOTE This is required for testing purposes
      * @type {object}
      */
@@ -41,29 +41,29 @@ export default class BodySprite extends Initializer {
       materialProperties
     );
 
-    new TextureLoader().load(
+    new THREE.TextureLoader().load(
       texture,
       map => {
         /**
-         * @desc The texture for the THREE.SpriteMaterial map.
+         * @desc The texture for the THREE.THREE.SpriteMaterial map.
          * @type {Texture}
          */
         this.texture = map;
 
         /**
-         * @desc THREE.SpriteMaterial instance.
-         * @type {SpriteMaterial}
+         * @desc THREE.THREE.SpriteMaterial instance.
+         * @type {THREE.SpriteMaterial}
          */
-        this.material = new SpriteMaterial({
+        this.material = new THREE.SpriteMaterial({
           ...{ map },
           ...this.materialProperties,
         });
 
         /**
-         * @desc THREE.Sprite instance.
-         * @type {Sprite}
+         * @desc THREE.THREE.Sprite instance.
+         * @type {THREE.Sprite}
          */
-        this.sprite = new Sprite(this.material);
+        this.sprite = new THREE.Sprite(this.material);
       },
       undefined,
       error => {
@@ -83,12 +83,12 @@ export default class BodySprite extends Initializer {
   }
 
   /**
-   * Creates a BodySprite initializer from JSON.
+   * Creates a BodyTHREE.Sprite initializer from JSON.
    *
    * @param {object} json - The JSON to construct the instance from.
    * @param {string} json.texture - The sprite texture
    * @param {object} json.materialProperties - The sprite material properties
-   * @return {BodySprite}
+   * @return {BodyTHREE.Sprite}
    */
   static fromJSON(json) {
     const {
