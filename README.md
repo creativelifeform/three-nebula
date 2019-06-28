@@ -9,7 +9,7 @@
 
 ## Features
 
-- Perfect compatibility with [`three@0.98.0`](https://github.com/mrdoob/three.js)
+- Perfect compatibility with [`three@r106`](https://github.com/mrdoob/three.js)
 - The ability to instantiate `three-nebula` particle systems from JSON objects using the static `System.fromJSON` method
 - The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers

@@ -1,10 +1,9 @@
 import MeshRenderer from './MeshRenderer';
-import { THREE } from '../core';
 import { RENDERER_TYPE_SPRITE as type } from './types';
 
 export default class SpriteRenderer extends MeshRenderer {
-  constructor(container) {
-    super(container);
+  constructor(THREE, container) {
+    super(THREE, container);
 
     /**
      * @desc The class type.

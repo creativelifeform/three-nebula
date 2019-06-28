@@ -18,6 +18,8 @@ import sinon from 'sinon';
 const { assert } = chai;
 const System = Nebula.System;
 const getSystem = () => new System(THREE);
+const getSpriteRenderer = container =>
+  new Nebula.SpriteRenderer(THREE, container);
 const { Scene } = THREE;
 
 describe('core -> System', () => {
@@ -47,7 +49,7 @@ describe('core -> System', () => {
 
   it('should add a renderer', done => {
     const system = getSystem();
-    const renderer = new Nebula.SpriteRenderer();
+    const renderer = getSpriteRenderer();
 
     assert.instanceOf(system.addRenderer(renderer), System);
     assert.notEmpty(system.renderers);
@@ -58,7 +60,7 @@ describe('core -> System', () => {
 
   it('should remove the renderer', done => {
     const system = getSystem();
-    const renderer = new Nebula.SpriteRenderer();
+    const renderer = getSpriteRenderer();
 
     system.addRenderer(renderer).removeRenderer(renderer);
 
@@ -159,7 +161,7 @@ describe('core -> System', () => {
     const system = getSystem();
     const emitter = new Nebula.Emitter();
     const rate = new Nebula.Rate(500, 0.01);
-    const renderer = new Nebula.SpriteRenderer(new Scene());
+    const renderer = getSpriteRenderer(new Scene());
 
     system
       .addRenderer(renderer)
@@ -177,7 +179,7 @@ describe('core -> System', () => {
     const system = getSystem();
     const emitter = new Nebula.Emitter();
     const rate = new Nebula.Rate(500, 0.01);
-    const renderer = new Nebula.SpriteRenderer(new Scene());
+    const renderer = getSpriteRenderer(new Scene());
 
     system
       .addRenderer(renderer)
