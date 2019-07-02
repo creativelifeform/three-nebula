@@ -4,7 +4,11 @@ import { Pool } from '../core';
 import { RENDERER_TYPE_MESH as type } from './types';
 
 export default class MeshRenderer extends BaseRenderer {
-  constructor(THREE, container) {
+  /**
+   * @param {object} container - An Object3D container, usually a THREE.Scene
+   * @param {object} THREE - THREE Api
+   */
+  constructor(container, THREE) {
     super(type);
 
     this.container = container;

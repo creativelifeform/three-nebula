@@ -19,7 +19,7 @@ const { assert } = chai;
 const System = Nebula.System;
 const getSystem = () => new System();
 const getSpriteRenderer = container =>
-  new Nebula.SpriteRenderer(THREE, container);
+  new Nebula.SpriteRenderer(container, THREE);
 const { Scene } = THREE;
 
 describe('core -> System', () => {
