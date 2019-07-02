@@ -1,7 +1,5 @@
 import { DEFAULT_POSITION, DEFAULT_SIZE as size } from './constants';
 
-import { THREE } from '../core';
-
 /**
  * @exports Debug - methods and helpers for debugging System emitters, zones and particles.
  */
@@ -27,7 +25,7 @@ export default {
    * @param {Zone} zone - a Zone instance
    * @return void
    */
-  drawZone: function(system, container, zone = {}) {
+  drawZone: function(THREE, system, container, zone = {}) {
     const color = '#2194ce';
     const wireframe = true;
     const {
@@ -88,7 +86,7 @@ export default {
    * @param {string} color - the color for the debug mesh material
    * @return void
    */
-  drawEmitter: function(system, container, emitter, color) {
+  drawEmitter: function(THREE, system, container, emitter, color) {
     const geometry = new THREE.OctahedronGeometry(size);
     const material = new THREE.MeshBasicMaterial({
       color: color || '#aaa',
