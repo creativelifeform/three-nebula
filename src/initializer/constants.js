@@ -1,6 +1,4 @@
-import { THREE } from '../core';
-
-export const getSupportedMaterialBlendingModes = () => ({
+export const getSupportedMaterialBlendingModes = THREE => ({
   AdditiveBlending: THREE.AdditiveBlending,
   CustomBlending: THREE.CustomBlending,
   MultiplyBlending: THREE.MultiplyBlending,
@@ -9,14 +7,14 @@ export const getSupportedMaterialBlendingModes = () => ({
   SubtractiveBlending: THREE.SubtractiveBlending,
 });
 
-export const getDefaultMaterialProperties = () => ({
+export const getDefaultMaterialProperties = THREE => ({
   color: 0xff0000,
   blending: THREE.AdditiveBlending,
   fog: true,
 });
 
-export const getDefaultJsonMaterialProperties = () => ({
-  ...getDefaultMaterialProperties(),
+export const getDefaultJsonMaterialProperties = THREE => ({
+  ...getDefaultMaterialProperties(THREE),
   blending: 'AdditiveBlending',
 });
 

@@ -1,11 +1,10 @@
 import {
-  DEFAULT_JSON_MATERIAL_PROPERTIES,
-  DEFAULT_MATERIAL_PROPERTIES,
-  SUPPORTED_MATERIAL_BLENDING_MODES,
+  getDefaultJsonMaterialProperties,
+  getDefaultMaterialProperties,
+  getSupportedMaterialBlendingModes,
 } from './constants';
 
 import Initializer from './Initializer';
-import { THREE } from '../core';
 import { INITIALIZER_TYPE_BODY_SPRITE as type } from './types';
 import { withDefaults } from '../utils';
 
@@ -19,17 +18,16 @@ export default class BodySprite extends Initializer {
   /**
    * Constructs a BodyTHREE.Sprite initializer.
    *
+   * @param {object} THREE - The WebGL API to use
    * @param {string} texture - The sprite texture
    * @param {object} materialProperties - The sprite material properties
    * @throws {Error} If the THREE.TextureLoader fails to load the supplied texture
    * @return void
    */
-  constructor(
-    texture,
-    materialProperties = DEFAULT_MATERIAL_PROPERTIES,
-    isEnabled = true
-  ) {
+  constructor(THREE, texture, materialProperties, isEnabled = true) {
     super(type, isEnabled);
+
+    const DEFAULT_MATERIAL_PROPERTIES = getDefaultMaterialProperties(THREE);
 
     /**
      * @desc The material properties for this object's THREE.SpriteMaterial
@@ -38,7 +36,7 @@ export default class BodySprite extends Initializer {
      */
     this.materialProperties = withDefaults(
       DEFAULT_MATERIAL_PROPERTIES,
-      materialProperties
+      materialProperties || DEFAULT_MATERIAL_PROPERTIES
     );
 
     new THREE.TextureLoader().load(
@@ -83,6 +81,15 @@ export default class BodySprite extends Initializer {
   }
 
   /**
+   * Ensures a WebGL API will be provided to the constructor and fromJSON methods.
+   *
+   * @return {boolean}
+   */
+  static requiresWebGlApi() {
+    return true;
+  }
+
+  /**
    * Creates a BodyTHREE.Sprite initializer from JSON.
    *
    * @param {object} json - The JSON to construct the instance from.
@@ -90,7 +97,13 @@ export default class BodySprite extends Initializer {
    * @param {object} json.materialProperties - The sprite material properties
    * @return {BodyTHREE.Sprite}
    */
-  static fromJSON(json) {
+  static fromJSON(THREE, json) {
+    const DEFAULT_JSON_MATERIAL_PROPERTIES = getDefaultJsonMaterialProperties(
+      THREE
+    );
+    const SUPPORTED_MATERIAL_BLENDING_MODES = getSupportedMaterialBlendingModes(
+      THREE
+    );
     const {
       texture,
       materialProperties = DEFAULT_JSON_MATERIAL_PROPERTIES,
@@ -111,6 +124,7 @@ export default class BodySprite extends Initializer {
     };
 
     return new BodySprite(
+      THREE,
       texture,
       withDefaults(
         DEFAULT_JSON_MATERIAL_PROPERTIES,

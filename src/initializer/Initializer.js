@@ -11,6 +11,7 @@ export default class Initializer {
    *
    * @param {string} [type=INITIALIZER_TYPE_ABSTRACT] - The intiializer type
    * @param {boolean} [isEnabled=true] - Determines if the initializer should be enabled or not
+
    * @return void
    */
   constructor(type = INITIALIZER_TYPE_ABSTRACT, isEnabled = true) {
@@ -52,6 +53,17 @@ export default class Initializer {
    * @abstract
    */
   initialize(target) {} // eslint-disable-line
+
+  /**
+   * Determines if the initializer requires a Web GL API to be provided to its constructor.
+   * If true, the WebGL API will need to be provided as the first argument to the constructor
+   * and fromJSON methods.
+   *
+   * @return {boolean}
+   */
+  static requiresWebGlApi() {
+    return false;
+  }
 
   /**
    * Returns a new instance of the initializer from the JSON object passed.

@@ -10,7 +10,6 @@ import Emitter from '../emitter/Emitter';
 import { INTEGRATION_TYPE_EULER } from '../math/constants';
 import { POOL_MAX } from '../constants';
 import Pool from './Pool';
-import THREE from './Three';
 import fromJSON from './fromJSON';
 import fromJSONAsync from './fromJSONAsync';
 import { CORE_TYPE_SYSTEM as type } from './types';
@@ -35,8 +34,11 @@ export default class System {
     preParticles = POOL_MAX,
     integrationType = INTEGRATION_TYPE_EULER
   ) {
-    // Set up the THREE api container
-    THREE.set(webGlApi);
+    /**
+     * @desc The Web GL API we are using eg., THREE
+     * @type {object}
+     */
+    this.webGlApi = webGlApi;
 
     /**
      * @desc The class type.

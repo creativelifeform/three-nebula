@@ -1,14 +1,15 @@
 /*global describe, it */
 
 import * as Nebula from '../../src';
+import * as THREE from 'three';
 
-import { NormalBlending, TextureLoader } from 'three';
-
-import { DEFAULT_MATERIAL_PROPERTIES } from '../../src/initializer/constants';
 import chai from 'chai';
 import domino from 'domino';
+import { getDefaultMaterialProperties } from '../../src/initializer/constants';
 import sinon from 'sinon';
 
+const { NormalBlending, TextureLoader } = THREE;
+const DEFAULT_MATERIAL_PROPERTIES = getDefaultMaterialProperties(THREE);
 const { assert } = chai;
 const { spy } = sinon;
 
@@ -23,7 +24,7 @@ describe('initializer -> BodySprite', () => {
 
   it('should set the type and call the TextureLoader.load method passing the texture on instantiation', done => {
     const textureLoaderSpy = spy(TextureLoader.prototype, 'load');
-    const bodySprite = new Nebula.BodySprite(texture);
+    const bodySprite = new Nebula.BodySprite(THREE, texture);
 
     assert.equal(bodySprite.type, 'BodySprite');
     assert(textureLoaderSpy.calledOnceWith(texture));
@@ -35,7 +36,7 @@ describe('initializer -> BodySprite', () => {
 
   it('should construct the initializer from a JSON object and set the default blending mode', done => {
     const textureLoaderSpy = spy(TextureLoader.prototype, 'load');
-    const instance = Nebula.BodySprite.fromJSON({
+    const instance = Nebula.BodySprite.fromJSON(THREE, {
       texture,
       materialProperties: {
         fog: false,
@@ -57,7 +58,7 @@ describe('initializer -> BodySprite', () => {
   });
 
   it('should set the material blending properties correctly when loaded from a JSON object', done => {
-    const instance = Nebula.BodySprite.fromJSON({
+    const instance = Nebula.BodySprite.fromJSON(THREE, {
       texture,
       materialProperties: {
         fog: false,
