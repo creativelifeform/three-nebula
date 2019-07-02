@@ -1,5 +1,3 @@
-import PUID from './PUID';
-import { THREE } from '../core';
 import { Vector3 } from '../core/three/';
 
 export default {
@@ -38,30 +36,6 @@ export default {
       vector.add(dir.multiplyScalar(distance));
 
       return vector;
-    };
-  })(),
-
-  getTexture: (function() {
-    var store = {};
-
-    return function(img) {
-      let id;
-
-      if (img instanceof THREE.Texture) {
-        return img;
-      } else if (typeof img == 'string') {
-        id = PUID.hash(img);
-
-        if (!store[id]) store[id] = new THREE.Texture(img);
-
-        return store[id];
-      } else if (img instanceof Image) {
-        id = PUID.hash(img.src);
-
-        if (!store[id]) store[id] = new THREE.Texture(img);
-
-        return store[id];
-      }
     };
   })(),
 };

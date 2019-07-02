@@ -3,13 +3,13 @@ import * as Initializer from '../initializer';
 
 import { EULER, POOL_MAX } from '../constants';
 import {
+  INITIALIZER_TYPES_THAT_REQUIRE_THREE,
   SUPPORTED_JSON_BEHAVIOUR_TYPES,
   SUPPORTED_JSON_INITIALIZER_TYPES,
 } from './constants';
 
 import Rate from '../initializer/Rate';
 import TextureInitializer from '../initializer/Texture';
-import { TextureLoader } from './three';
 
 /**
  * Makes a rate instance.
@@ -25,7 +25,7 @@ const makeRate = json => new Rate.fromJSON(json);
  * @param {array<object>} items - An array of objects which provide initializer constructor params
  * @return {array<Initializer>}
  */
-const makeInitializers = items =>
+const makeInitializers = (items, THREE) =>
   new Promise((resolve, reject) => {
     if (!items.length) {
       return resolve([]);
@@ -49,7 +49,13 @@ const makeInitializers = items =>
         );
       }
 
-      madeInitializers.push(new Initializer[type].fromJSON(properties));
+      if (INITIALIZER_TYPES_THAT_REQUIRE_THREE.includes(type)) {
+        madeInitializers.push(
+          new Initializer[type].fromJSON(properties, THREE)
+        );
+      } else {
+        madeInitializers.push(new Initializer[type].fromJSON(properties));
+      }
 
       if (madeInitializers.length === numberOfInitializers) {
         return resolve(madeInitializers);
@@ -62,7 +68,7 @@ const makeInitializers = items =>
         properties,
         properties: { texture },
       } = data;
-      const textureLoader = new TextureLoader();
+      const textureLoader = new THREE.TextureLoader();
 
       if (!SUPPORTED_JSON_INITIALIZER_TYPES.includes(type)) {
         return reject(
@@ -74,10 +80,13 @@ const makeInitializers = items =>
         texture,
         loadedTexture => {
           madeInitializers.push(
-            new TextureInitializer.fromJSON({
-              ...properties,
-              loadedTexture,
-            })
+            new TextureInitializer.fromJSON(
+              {
+                ...properties,
+                loadedTexture,
+              },
+              THREE
+            )
           );
 
           if (madeInitializers.length === numberOfInitializers) {
@@ -122,7 +131,7 @@ const makeBehaviours = items =>
     });
   });
 
-const makeEmitters = (emitters, Emitter) =>
+const makeEmitters = (emitters, Emitter, THREE) =>
   new Promise((resolve, reject) => {
     if (!emitters.length) {
       return resolve([]);
@@ -153,7 +162,7 @@ const makeEmitters = (emitters, Emitter) =>
         .setRotation(rotation)
         .setPosition(position);
 
-      makeInitializers(initializers)
+      makeInitializers(initializers, THREE)
         .then(madeInitializers => {
           emitter.setInitializers(madeInitializers);
 
@@ -184,7 +193,7 @@ const makeEmitters = (emitters, Emitter) =>
  * Creates a System instance from a JSON object.
  *
  * @param {object} json - The JSON to create the System instance from
- * @param {object} webGlApi - The Web GL Api to use
+ * @param {object} THREE - The Web GL Api to use
  * @param {function} System - The system class
  * @param {function} Emitter - The emitter class
  * @param {number} json.preParticles - The predetermined number of particles
@@ -192,16 +201,16 @@ const makeEmitters = (emitters, Emitter) =>
  * @param {array<object>} json.emitters - The emitters for the system instance
  * @return {Promise<System>}
  */
-export default (json, webGlApi, System, Emitter) =>
+export default (json, THREE, System, Emitter) =>
   new Promise((resolve, reject) => {
     const {
       preParticles = POOL_MAX,
       integrationType = EULER,
       emitters = [],
     } = json;
-    const system = new System(webGlApi, preParticles, integrationType);
+    const system = new System(preParticles, integrationType);
 
-    makeEmitters(emitters, Emitter)
+    makeEmitters(emitters, Emitter, THREE)
       .then(madeEmitters => {
         const numberOfEmitters = madeEmitters.length;
 

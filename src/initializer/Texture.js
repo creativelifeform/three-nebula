@@ -1,7 +1,7 @@
 import {
-  getDefaultJsonMaterialProperties,
-  getDefaultMaterialProperties,
-  getSupportedMaterialBlendingModes,
+  DEFAULT_JSON_MATERIAL_PROPERTIES,
+  DEFAULT_MATERIAL_PROPERTIES,
+  SUPPORTED_MATERIAL_BLENDING_MODES,
 } from './constants';
 
 import Initializer from './Initializer';
@@ -9,79 +9,80 @@ import { INITIALIZER_TYPE_TEXTURE as type } from './types';
 import { withDefaults } from '../utils';
 
 /**
- * Sets the body property to be a THREE.THREE.Sprite with a texture map on initialized particles.
+ * Sets the body property to be a THREE.Sprite with a texture map on initialized particles.
  *
  */
 export default class Texture extends Initializer {
   /**
    * Constructs an Texture initializer.
    *
+   * @param {object} THREE - The Web GL API we are using eg., THREE
    * @param {string} texture - The sprite texture
    * @param {object|undefined} materialProperties - The sprite material properties
    * @param {?Texture} loadedTexture - Preloaded THREE.Texture instance
    */
-  constructor(THREE, loadedTexture, materialProperties, isEnabled = true) {
+  constructor(
+    THREE,
+    loadedTexture,
+    materialProperties = DEFAULT_MATERIAL_PROPERTIES,
+    isEnabled = true
+  ) {
     super(type, isEnabled);
 
-    const DEFAULT_MATERIAL_PROPERTIES = getDefaultMaterialProperties(THREE);
+    const { Sprite, SpriteMaterial } = THREE;
 
     /**
-     * @desc The material properties for this object's THREE.SpriteMaterial
+     * @desc The material properties for this object's SpriteMaterial
      * NOTE This is required for testing purposes
      * @type {object}
      */
     this.materialProperties = withDefaults(
       DEFAULT_MATERIAL_PROPERTIES,
-      materialProperties || DEFAULT_MATERIAL_PROPERTIES
+      materialProperties
     );
 
     /**
-     * @desc The texture for the THREE.THREE.SpriteMaterial map.
+     * @desc The texture for the THREE.SpriteMaterial map.
      * @type {Texture}
      */
     this.texture = loadedTexture;
 
     /**
-     * @desc THREE.THREE.SpriteMaterial instance.
-     * @type {THREE.SpriteMaterial}
+     * @desc THREE.SpriteMaterial instance.
+     * @type {SpriteMaterial}
      */
-    this.material = new THREE.SpriteMaterial({
+    this.material = new SpriteMaterial({
       ...{ map: loadedTexture },
       ...this.materialProperties,
     });
 
     /**
-     * @desc THREE.THREE.Sprite instance.
-     * @type {THREE.Sprite}
+     * @desc THREE.Sprite instance.
+     * @type {Sprite}
      */
-    this.sprite = new THREE.Sprite(this.material);
+    this.sprite = new Sprite(this.material);
   }
 
   /**
-   * Ensures a WebGL API will be provided to the constructor and fromJSON methods.
+   * Sets the particle body to the sprite.
    *
-   * @return {boolean}
+   * @param {Particle} particle - The particle to set the body of
+   * @return void
    */
-  static requiresWebGlApi() {
-    return true;
+  initialize(particle) {
+    particle.body = this.sprite;
   }
 
   /**
    * Creates a Texture initializer from JSON.
    *
-   * @param {object} THREE - The Web GL API to use
-   * @param {object} json - The JSON to construct the instance from.
+   * @param {object} json - The JSON to construct the instance from
+   * @param {object} THREE - The Web GL API we are using eg., THREE
    * @param {Texture} json.loadedTexture - The loaded sprite texture
    * @param {object} json.materialProperties - The sprite material properties
-   * @return {BodyTHREE.Sprite}
+   * @return {BodySprite}
    */
-  static fromJSON(THREE, json) {
-    const DEFAULT_JSON_MATERIAL_PROPERTIES = getDefaultJsonMaterialProperties(
-      THREE
-    );
-    const SUPPORTED_MATERIAL_BLENDING_MODES = getSupportedMaterialBlendingModes(
-      THREE
-    );
+  static fromJSON(json, THREE) {
     const {
       loadedTexture,
       materialProperties = DEFAULT_JSON_MATERIAL_PROPERTIES,
@@ -102,6 +103,7 @@ export default class Texture extends Initializer {
     };
 
     return new Texture(
+      THREE,
       loadedTexture,
       withDefaults(
         DEFAULT_JSON_MATERIAL_PROPERTIES,
@@ -109,15 +111,5 @@ export default class Texture extends Initializer {
       ),
       isEnabled
     );
-  }
-
-  /**
-   * Sets the particle body to the sprite.
-   *
-   * @param {Particle} particle - The particle to set the body of
-   * @return void
-   */
-  initialize(particle) {
-    particle.body = this.sprite;
   }
 }

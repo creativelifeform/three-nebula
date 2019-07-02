@@ -1,22 +1,29 @@
-export const getSupportedMaterialBlendingModes = THREE => ({
-  AdditiveBlending: THREE.AdditiveBlending,
-  CustomBlending: THREE.CustomBlending,
-  MultiplyBlending: THREE.MultiplyBlending,
-  NoBlending: THREE.NoBlending,
-  NormalBlending: THREE.NormalBlending,
-  SubtractiveBlending: THREE.SubtractiveBlending,
-});
+import {
+  AdditiveBlending,
+  CustomBlending,
+  MultiplyBlending,
+  NoBlending,
+  NormalBlending,
+  SubtractiveBlending,
+} from '../core/three/';
 
-export const getDefaultMaterialProperties = THREE => ({
+export const SUPPORTED_MATERIAL_BLENDING_MODES = {
+  AdditiveBlending,
+  CustomBlending,
+  MultiplyBlending,
+  NoBlending,
+  NormalBlending,
+  SubtractiveBlending,
+};
+
+export const DEFAULT_MATERIAL_PROPERTIES = {
   color: 0xff0000,
-  blending: THREE.AdditiveBlending,
+  blending: AdditiveBlending,
   fog: true,
-});
-
-export const getDefaultJsonMaterialProperties = THREE => ({
-  ...getDefaultMaterialProperties(THREE),
+};
+export const DEFAULT_JSON_MATERIAL_PROPERTIES = {
+  ...DEFAULT_MATERIAL_PROPERTIES,
   blending: 'AdditiveBlending',
-});
-
+};
 export const DEFAULT_RATE_NUM_PAN = 1;
 export const DEFAULT_RATE_TIME_PAN = 1;

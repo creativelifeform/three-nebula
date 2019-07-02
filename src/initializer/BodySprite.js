@@ -1,7 +1,7 @@
 import {
-  getDefaultJsonMaterialProperties,
-  getDefaultMaterialProperties,
-  getSupportedMaterialBlendingModes,
+  DEFAULT_JSON_MATERIAL_PROPERTIES,
+  DEFAULT_MATERIAL_PROPERTIES,
+  SUPPORTED_MATERIAL_BLENDING_MODES,
 } from './constants';
 
 import Initializer from './Initializer';
@@ -9,59 +9,64 @@ import { INITIALIZER_TYPE_BODY_SPRITE as type } from './types';
 import { withDefaults } from '../utils';
 
 /**
- * Sets the body property to be a THREE.THREE.Sprite on initialized particles.
+ * Sets the body property to be a THREE.Sprite on initialized particles.
  *
- * NOTE The texture map MUST be set on the THREE.SpriteMaterial in the THREE.TextureLoader.load
+ * NOTE The texture map MUST be set on the SpriteMaterial in the TextureLoader.load
  * callback. Not doing so will cause WebGL buffer errors.
  */
 export default class BodySprite extends Initializer {
   /**
-   * Constructs a BodyTHREE.Sprite initializer.
+   * Constructs a BodySprite initializer.
    *
-   * @param {object} THREE - The WebGL API to use
+   * @param {object} THREE - The Web GL API we are using eg., THREE
    * @param {string} texture - The sprite texture
    * @param {object} materialProperties - The sprite material properties
-   * @throws {Error} If the THREE.TextureLoader fails to load the supplied texture
+   * @throws {Error} If the TextureLoader fails to load the supplied texture
    * @return void
    */
-  constructor(THREE, texture, materialProperties, isEnabled = true) {
+  constructor(
+    THREE,
+    texture,
+    materialProperties = DEFAULT_MATERIAL_PROPERTIES,
+    isEnabled = true
+  ) {
     super(type, isEnabled);
 
-    const DEFAULT_MATERIAL_PROPERTIES = getDefaultMaterialProperties(THREE);
+    const { Sprite, SpriteMaterial, TextureLoader } = THREE;
 
     /**
-     * @desc The material properties for this object's THREE.SpriteMaterial
+     * @desc The material properties for this object's SpriteMaterial
      * NOTE This is required for testing purposes
      * @type {object}
      */
     this.materialProperties = withDefaults(
       DEFAULT_MATERIAL_PROPERTIES,
-      materialProperties || DEFAULT_MATERIAL_PROPERTIES
+      materialProperties
     );
 
-    new THREE.TextureLoader().load(
+    new TextureLoader().load(
       texture,
       map => {
         /**
-         * @desc The texture for the THREE.THREE.SpriteMaterial map.
+         * @desc The texture for the THREE.SpriteMaterial map.
          * @type {Texture}
          */
         this.texture = map;
 
         /**
-         * @desc THREE.THREE.SpriteMaterial instance.
-         * @type {THREE.SpriteMaterial}
+         * @desc THREE.SpriteMaterial instance.
+         * @type {SpriteMaterial}
          */
-        this.material = new THREE.SpriteMaterial({
+        this.material = new SpriteMaterial({
           ...{ map },
           ...this.materialProperties,
         });
 
         /**
-         * @desc THREE.THREE.Sprite instance.
-         * @type {THREE.Sprite}
+         * @desc THREE.Sprite instance.
+         * @type {Sprite}
          */
-        this.sprite = new THREE.Sprite(this.material);
+        this.sprite = new Sprite(this.material);
       },
       undefined,
       error => {
@@ -81,29 +86,15 @@ export default class BodySprite extends Initializer {
   }
 
   /**
-   * Ensures a WebGL API will be provided to the constructor and fromJSON methods.
+   * Creates a BodySprite initializer from JSON.
    *
-   * @return {boolean}
-   */
-  static requiresWebGlApi() {
-    return true;
-  }
-
-  /**
-   * Creates a BodyTHREE.Sprite initializer from JSON.
-   *
-   * @param {object} json - The JSON to construct the instance from.
+   * @param {object} json - The JSON to construct the instance from
+   * @param {object} THREE - The Web GL API we are using eg., THREE
    * @param {string} json.texture - The sprite texture
    * @param {object} json.materialProperties - The sprite material properties
-   * @return {BodyTHREE.Sprite}
+   * @return {BodySprite}
    */
-  static fromJSON(THREE, json) {
-    const DEFAULT_JSON_MATERIAL_PROPERTIES = getDefaultJsonMaterialProperties(
-      THREE
-    );
-    const SUPPORTED_MATERIAL_BLENDING_MODES = getSupportedMaterialBlendingModes(
-      THREE
-    );
+  static fromJSON(json, THREE) {
     const {
       texture,
       materialProperties = DEFAULT_JSON_MATERIAL_PROPERTIES,

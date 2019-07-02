@@ -24,22 +24,15 @@ export default class System {
   /**
    * Constructs a System instance.
    *
-   * @param {object} webGlApi - ThreeJs
+   * @param {object} THREE - ThreeJs
    * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
    * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
    * @return void
    */
   constructor(
-    webGlApi,
     preParticles = POOL_MAX,
     integrationType = INTEGRATION_TYPE_EULER
   ) {
-    /**
-     * @desc The Web GL API we are using eg., THREE
-     * @type {object}
-     */
-    this.webGlApi = webGlApi;
-
     /**
      * @desc The class type.
      * @type {string}
@@ -94,13 +87,13 @@ export default class System {
    * Creates a System instance from a JSON object.
    *
    * @param {object} json - The JSON to create the System instance from
-   * @param {object} webGlApi - The Web GL Api to use
+   * @param {object} THREE - The Web GL Api to use eg., THREE
    * @return {System}
    *
    * @deprecated use fromJSONAsync instead
    */
-  static fromJSON(json, webGlApi) {
-    return fromJSON(json, webGlApi, System, Emitter);
+  static fromJSON(json, THREE) {
+    return fromJSON(json, THREE, System, Emitter);
   }
 
   /**
@@ -108,11 +101,11 @@ export default class System {
    * fully loaded before resolving with the instantiated System instance.
    *
    * @param {object} json - The JSON to create the System instance from
-   * @param {object} webGlApi - The Web GL Api to use
+   * @param {object} THREE - The Web GL Api to use eg., THREE
    * @return {Promise<System>}
    */
-  static fromJSONAsync(json, webGlApi) {
-    return fromJSONAsync(json, webGlApi, System, Emitter);
+  static fromJSONAsync(json, THREE) {
+    return fromJSONAsync(json, THREE, System, Emitter);
   }
 
   /**

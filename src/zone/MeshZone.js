@@ -1,4 +1,3 @@
-import { THREE } from '../core';
 import Zone from './Zone';
 import { ZONE_TYPE_MESH as type } from './types';
 
@@ -21,7 +20,7 @@ export default class MeshZone extends Zone {
     this.scale = scale;
     this.supportsCrossing = false;
 
-    if (bounds instanceof THREE.Geometry) {
+    if (bounds.type && bounds.type === 'Geometry') {
       this.geometry = bounds;
     }
 

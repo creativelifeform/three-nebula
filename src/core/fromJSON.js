@@ -3,6 +3,7 @@ import * as Initializer from '../initializer';
 
 import { EULER, POOL_MAX } from '../constants';
 import {
+  INITIALIZER_TYPES_THAT_REQUIRE_THREE,
   SUPPORTED_JSON_BEHAVIOUR_TYPES,
   SUPPORTED_JSON_INITIALIZER_TYPES,
 } from './constants';
@@ -23,7 +24,7 @@ const makeRate = json => new Rate.fromJSON(json);
  * @param {array<object>} items - An array of objects which provide initializer constructor params
  * @return {array<Initializer>}
  */
-const makeInitializers = items => {
+const makeInitializers = (items, THREE) => {
   const initializers = [];
 
   items.forEach(data => {
@@ -35,7 +36,11 @@ const makeInitializers = items => {
       );
     }
 
-    initializers.push(new Initializer[type].fromJSON(properties));
+    if (INITIALIZER_TYPES_THAT_REQUIRE_THREE.includes(type)) {
+      initializers.push(new Initializer[type].fromJSON(properties, THREE));
+    } else {
+      initializers.push(new Initializer[type].fromJSON(properties));
+    }
   });
 
   return initializers;
@@ -69,7 +74,7 @@ const makeBehaviours = items => {
  * Creates a System instance from a JSON object.
  *
  * @param {object} json - The JSON to create the System instance from
- * @param {object} webGlApi - The Web GL Api to use
+ * @param {object} THREE - The Web GL Api to use
  * @param {function} System - The system class
  * @param {function} Emitter - The emitter class
  * @param {number} json.preParticles - The predetermined number of particles
@@ -77,13 +82,13 @@ const makeBehaviours = items => {
  * @param {array<object>} json.emitters - The emitters for the system instance
  * @return {System}
  */
-export default (json, webGlApi, System, Emitter) => {
+export default (json, THREE, System, Emitter) => {
   const {
     preParticles = POOL_MAX,
     integrationType = EULER,
     emitters = [],
   } = json;
-  const system = new System(webGlApi, preParticles, integrationType);
+  const system = new System(THREE, preParticles, integrationType);
 
   emitters.forEach(data => {
     const emitter = new Emitter();
@@ -101,7 +106,7 @@ export default (json, webGlApi, System, Emitter) => {
     emitter
       .setRate(makeRate(rate))
       .setRotation(rotation)
-      .setInitializers(makeInitializers(initializers))
+      .setInitializers(makeInitializers(initializers, THREE))
       .setBehaviours(makeBehaviours(behaviours))
       .setEmitterBehaviours(makeBehaviours(emitterBehaviours))
       .setPosition(position)

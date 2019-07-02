@@ -163,3 +163,5 @@ export const SUPPORTED_JSON_ZONE_TYPES = [
   ZONE_TYPE_POINT,
   ZONE_TYPE_SPHERE,
 ];
+
+export { INITIALIZER_TYPES_THAT_REQUIRE_THREE } from '../initializer/types';

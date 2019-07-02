@@ -17,7 +17,7 @@ import sinon from 'sinon';
 
 const { assert } = chai;
 const System = Nebula.System;
-const getSystem = () => new System(THREE);
+const getSystem = () => new System();
 const getSpriteRenderer = container =>
   new Nebula.SpriteRenderer(THREE, container);
 const { Scene } = THREE;
