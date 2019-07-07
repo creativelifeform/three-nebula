@@ -109,8 +109,8 @@ export default class BodySprite extends Initializer {
         blending: blending
           ? SUPPORTED_MATERIAL_BLENDING_MODES[blending]
           : SUPPORTED_MATERIAL_BLENDING_MODES[
-              DEFAULT_JSON_MATERIAL_PROPERTIES.blending
-            ],
+            DEFAULT_JSON_MATERIAL_PROPERTIES.blending
+          ],
       };
     };
 
