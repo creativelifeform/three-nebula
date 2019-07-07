@@ -55,7 +55,7 @@ export default {
       geometry = new THREE.SphereGeometry(radius, size, size);
     }
 
-    if (zone.isTHREE.MeshZone()) {
+    if (zone.isMeshZone()) {
       geometry = zone.geometry.geometry
         ? zone.geometry.geometry.clone()
         : zone.geometry.clone();
