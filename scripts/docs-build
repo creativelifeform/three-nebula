@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Esdoc has a security vulnerability in it so we install all deps, build the docs and then uninstall
+
+ESDOC="esdoc esdoc-ecmascript-proposal-plugin esdoc-standard-plugin"
+
+npm i $ESDOC -D
+cp ./build/three-nebula.js docs/js && ./node_modules/.bin/esdoc
+npm uninstall $ESDOC -D

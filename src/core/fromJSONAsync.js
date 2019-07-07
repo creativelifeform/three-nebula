@@ -23,6 +23,7 @@ const makeRate = json => new Rate.fromJSON(json);
  * Makes initializers from json items.
  *
  * @param {array<object>} items - An array of objects which provide initializer constructor params
+ * @param {object} THREE - The Web GL Api to use
  * @return {array<Initializer>}
  */
 const makeInitializers = (items, THREE) =>

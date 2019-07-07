@@ -3,9 +3,9 @@
 [![Build Status](https://travis-ci.org/creativelifeform/three-nebula.svg?branch=master)](https://travis-ci.org/creativelifeform/three-nebula)
 [![Coverage Status](https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg)](https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1)
 
-**Three Nebula** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [examples](https://creativelifeform.github.io/three-nebula/) and [API reference documentation](https://creativelifeform.github.io/three-nebula/api) for more.
+[CHANGELOG](https://github.com/creativelifeform/three-nebula/blob/master/CHANGELOG.md)
 
-> **Note**: Due to an as of yet unpatched security vulnerability in [`esdoc`](https://github.com/esdoc/esdoc/issues/542) I've removed this dev dependency from the repo. The API docs might be slightly out of date because of this, They'll be updated as soon as esdoc is patched.
+**Three Nebula** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [examples](https://creativelifeform.github.io/three-nebula/) and [API reference documentation](https://creativelifeform.github.io/three-nebula/api) for more.
 
 ## Features
 
@@ -52,7 +52,7 @@ import * as THREE from 'three';
 
 const system = new System();
 const emitter = new Emitter();
-const renderer = new SpriteRenderer(threeScene);
+const renderer = new SpriteRenderer(threeScene, THREE);
 
 // Set emitter rate (particles per second) as well as the particle initializers and behaviours
 emitter
@@ -231,7 +231,7 @@ const json = {
   ],
 };
 
-const system = new System.fromJSON(json);
+const system = new System.fromJSONAsync(json, THREE).then(console.log);
 ```
 
 ### Script Tag
