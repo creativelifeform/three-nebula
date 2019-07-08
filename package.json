@@ -1,6 +1,6 @@
 {
   "name": "three-nebula",
-  "version": "4.0.5",
+  "version": "5.0.0-alpha",
   "description": "WebGL based 3D particle engine",
   "main": "./build/three-nebula.js",
   "directories": {
@@ -8,7 +8,6 @@
   },
   "scripts": {
     "build": "webpack && npm run docs:build",
-    "parcel": "parcel build src/index.js --global three-nebula --experimental-scope-hoisting",
     "docs": "./scripts/docs",
     "docs:build": "./scripts/docs-build",
     "test": "mocha --require @babel/register --colors './test/**/*.spec.js'",
