@@ -1,9 +1,45 @@
 window.esdocSearchIndex = [
   [
+    "three-nebula/src/core/three/constants.js~acesfilmictonemapping",
+    "variable/index.html#static-variable-ACESFilmicToneMapping",
+    "<span>ACESFilmicToneMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~addequation",
+    "variable/index.html#static-variable-AddEquation",
+    "<span>AddEquation</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~addoperation",
+    "variable/index.html#static-variable-AddOperation",
+    "<span>AddOperation</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~additiveblending",
+    "variable/index.html#static-variable-AdditiveBlending",
+    "<span>AdditiveBlending</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
     "three-nebula/src/behaviour/alpha.js~alpha",
     "class/src/behaviour/Alpha.js~Alpha.html",
     "<span>Alpha</span> <span class=\"search-result-import-path\">three-nebula/src/behaviour/Alpha.js</span>",
     "class"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~alphaformat",
+    "variable/index.html#static-variable-AlphaFormat",
+    "<span>AlphaFormat</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~alwaysdepth",
+    "variable/index.html#static-variable-AlwaysDepth",
+    "<span>AlwaysDepth</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/math/arrayspan.js~arrayspan",
@@ -102,10 +138,28 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "three-nebula/src/core/three/constants.js~backside",
+    "variable/index.html#static-variable-BackSide",
+    "<span>BackSide</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
     "three-nebula/src/renderer/baserenderer.js~baserenderer",
     "class/src/renderer/BaseRenderer.js~BaseRenderer.html",
     "<span>BaseRenderer</span> <span class=\"search-result-import-path\">three-nebula/src/renderer/BaseRenderer.js</span>",
     "class"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~basicdepthpacking",
+    "variable/index.html#static-variable-BasicDepthPacking",
+    "<span>BasicDepthPacking</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~basicshadowmap",
+    "variable/index.html#static-variable-BasicShadowMap",
+    "<span>BasicShadowMap</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/behaviour/behaviour.js~behaviour",
@@ -132,9 +186,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "three-nebula/src/core/three.js~boxgeometry",
+    "three-nebula/src/core/three.backup.js~boxgeometry",
     "variable/index.html#static-variable-BoxGeometry",
-    "<span>BoxGeometry</span> <span class=\"search-result-import-path\">three-nebula/src/core/three.js</span>",
+    "<span>BoxGeometry</span> <span class=\"search-result-import-path\">three-nebula/src/core/three.backup.js</span>",
     "variable"
   ],
   [
@@ -142,6 +196,12 @@ window.esdocSearchIndex = [
     "class/src/zone/BoxZone.js~BoxZone.html",
     "<span>BoxZone</span> <span class=\"search-result-import-path\">three-nebula/src/zone/BoxZone.js</span>",
     "class"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~bytetype",
+    "variable/index.html#static-variable-ByteType",
+    "<span>ByteType</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/core/types.js~core_type_particle",
@@ -159,6 +219,18 @@ window.esdocSearchIndex = [
     "three-nebula/src/core/types.js~core_type_system",
     "variable/index.html#static-variable-CORE_TYPE_SYSTEM",
     "<span>CORE_TYPE_SYSTEM</span> <span class=\"search-result-import-path\">three-nebula/src/core/types.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~cineontonemapping",
+    "variable/index.html#static-variable-CineonToneMapping",
+    "<span>CineonToneMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~clamptoedgewrapping",
+    "variable/index.html#static-variable-ClampToEdgeWrapping",
+    "<span>ClampToEdgeWrapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
     "variable"
   ],
   [
@@ -184,6 +256,60 @@ window.esdocSearchIndex = [
     "class/src/behaviour/CrossZone.js~CrossZone.html",
     "<span>CrossZone</span> <span class=\"search-result-import-path\">three-nebula/src/behaviour/CrossZone.js</span>",
     "class"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~cubereflectionmapping",
+    "variable/index.html#static-variable-CubeReflectionMapping",
+    "<span>CubeReflectionMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~cuberefractionmapping",
+    "variable/index.html#static-variable-CubeRefractionMapping",
+    "<span>CubeRefractionMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~cubeuvreflectionmapping",
+    "variable/index.html#static-variable-CubeUVReflectionMapping",
+    "<span>CubeUVReflectionMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~cubeuvrefractionmapping",
+    "variable/index.html#static-variable-CubeUVRefractionMapping",
+    "<span>CubeUVRefractionMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~cullfaceback",
+    "variable/index.html#static-variable-CullFaceBack",
+    "<span>CullFaceBack</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~cullfacefront",
+    "variable/index.html#static-variable-CullFaceFront",
+    "<span>CullFaceFront</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~cullfacefrontback",
+    "variable/index.html#static-variable-CullFaceFrontBack",
+    "<span>CullFaceFrontBack</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~cullfacenone",
+    "variable/index.html#static-variable-CullFaceNone",
+    "<span>CullFaceNone</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~customblending",
+    "variable/index.html#static-variable-CustomBlending",
+    "<span>CustomBlending</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/renderer/customrenderer.js~customrenderer",
@@ -414,6 +540,36 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "three-nebula/src/core/three/constants.js~depthformat",
+    "variable/index.html#static-variable-DepthFormat",
+    "<span>DepthFormat</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~depthstencilformat",
+    "variable/index.html#static-variable-DepthStencilFormat",
+    "<span>DepthStencilFormat</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~doubleside",
+    "variable/index.html#static-variable-DoubleSide",
+    "<span>DoubleSide</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~dstalphafactor",
+    "variable/index.html#static-variable-DstAlphaFactor",
+    "<span>DstAlphaFactor</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~dstcolorfactor",
+    "variable/index.html#static-variable-DstColorFactor",
+    "<span>DstColorFactor</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
     "three-nebula/src/constants/index.js~emitter_added",
     "variable/index.html#static-variable-EMITTER_ADDED",
     "<span>EMITTER_ADDED</span> <span class=\"search-result-import-path\">three-nebula/src/constants/index.js</span>",
@@ -462,10 +618,52 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "three-nebula/src/core/three/constants.js~equaldepth",
+    "variable/index.html#static-variable-EqualDepth",
+    "<span>EqualDepth</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~equirectangularreflectionmapping",
+    "variable/index.html#static-variable-EquirectangularReflectionMapping",
+    "<span>EquirectangularReflectionMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~equirectangularrefractionmapping",
+    "variable/index.html#static-variable-EquirectangularRefractionMapping",
+    "<span>EquirectangularRefractionMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/euler.js~euler",
+    "function/index.html#static-function-Euler",
+    "<span>Euler</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/Euler.js</span>",
+    "function"
+  ],
+  [
     "three-nebula/src/events/eventdispatcher.js~eventdispatcher",
     "class/src/events/EventDispatcher.js~EventDispatcher.html",
     "<span>EventDispatcher</span> <span class=\"search-result-import-path\">three-nebula/src/events/EventDispatcher.js</span>",
     "class"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~facecolors",
+    "variable/index.html#static-variable-FaceColors",
+    "<span>FaceColors</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~flatshading",
+    "variable/index.html#static-variable-FlatShading",
+    "<span>FlatShading</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~floattype",
+    "variable/index.html#static-variable-FloatType",
+    "<span>FloatType</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/emitter/followemitter.js~followemitter",
@@ -480,10 +678,58 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "three-nebula/src/core/three/constants.js~frontfacedirectionccw",
+    "variable/index.html#static-variable-FrontFaceDirectionCCW",
+    "<span>FrontFaceDirectionCCW</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~frontfacedirectioncw",
+    "variable/index.html#static-variable-FrontFaceDirectionCW",
+    "<span>FrontFaceDirectionCW</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~frontside",
+    "variable/index.html#static-variable-FrontSide",
+    "<span>FrontSide</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~gammaencoding",
+    "variable/index.html#static-variable-GammaEncoding",
+    "<span>GammaEncoding</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
     "three-nebula/src/behaviour/gravity.js~gravity",
     "class/src/behaviour/Gravity.js~Gravity.html",
     "<span>Gravity</span> <span class=\"search-result-import-path\">three-nebula/src/behaviour/Gravity.js</span>",
     "class"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~greaterdepth",
+    "variable/index.html#static-variable-GreaterDepth",
+    "<span>GreaterDepth</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~greaterequaldepth",
+    "variable/index.html#static-variable-GreaterEqualDepth",
+    "<span>GreaterEqualDepth</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~halffloattype",
+    "variable/index.html#static-variable-HalfFloatType",
+    "<span>HalfFloatType</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/initializer/types.js~initializer_types_that_require_three",
+    "variable/index.html#static-variable-INITIALIZER_TYPES_THAT_REQUIRE_THREE",
+    "<span>INITIALIZER_TYPES_THAT_REQUIRE_THREE</span> <span class=\"search-result-import-path\">three-nebula/src/initializer/types.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/initializer/types.js~initializer_type_abstract",
@@ -594,6 +840,42 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "three-nebula/src/core/three/constants.js~inttype",
+    "variable/index.html#static-variable-IntType",
+    "<span>IntType</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~interpolatediscrete",
+    "variable/index.html#static-variable-InterpolateDiscrete",
+    "<span>InterpolateDiscrete</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~interpolatelinear",
+    "variable/index.html#static-variable-InterpolateLinear",
+    "<span>InterpolateLinear</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~interpolatesmooth",
+    "variable/index.html#static-variable-InterpolateSmooth",
+    "<span>InterpolateSmooth</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~lessdepth",
+    "variable/index.html#static-variable-LessDepth",
+    "<span>LessDepth</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~lessequaldepth",
+    "variable/index.html#static-variable-LessEqualDepth",
+    "<span>LessEqualDepth</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
     "three-nebula/src/initializer/life.js~life",
     "class/src/initializer/Life.js~Life.html",
     "<span>Life</span> <span class=\"search-result-import-path\">three-nebula/src/initializer/Life.js</span>",
@@ -604,6 +886,72 @@ window.esdocSearchIndex = [
     "class/src/zone/LineZone.js~LineZone.html",
     "<span>LineZone</span> <span class=\"search-result-import-path\">three-nebula/src/zone/LineZone.js</span>",
     "class"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~linearencoding",
+    "variable/index.html#static-variable-LinearEncoding",
+    "<span>LinearEncoding</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~linearfilter",
+    "variable/index.html#static-variable-LinearFilter",
+    "<span>LinearFilter</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~linearmipmaplinearfilter",
+    "variable/index.html#static-variable-LinearMipMapLinearFilter",
+    "<span>LinearMipMapLinearFilter</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~linearmipmapnearestfilter",
+    "variable/index.html#static-variable-LinearMipMapNearestFilter",
+    "<span>LinearMipMapNearestFilter</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~lineartonemapping",
+    "variable/index.html#static-variable-LinearToneMapping",
+    "<span>LinearToneMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~logluvencoding",
+    "variable/index.html#static-variable-LogLuvEncoding",
+    "<span>LogLuvEncoding</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~looponce",
+    "variable/index.html#static-variable-LoopOnce",
+    "<span>LoopOnce</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~looppingpong",
+    "variable/index.html#static-variable-LoopPingPong",
+    "<span>LoopPingPong</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~looprepeat",
+    "variable/index.html#static-variable-LoopRepeat",
+    "<span>LoopRepeat</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~luminancealphaformat",
+    "variable/index.html#static-variable-LuminanceAlphaFormat",
+    "<span>LuminanceAlphaFormat</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~luminanceformat",
+    "variable/index.html#static-variable-LuminanceFormat",
+    "<span>LuminanceFormat</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/math/types.js~math_type_array_span",
@@ -648,10 +996,28 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "three-nebula/src/core/three/constants.js~mouse",
+    "variable/index.html#static-variable-MOUSE",
+    "<span>MOUSE</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
     "three-nebula/src/initializer/mass.js~mass",
     "class/src/initializer/Mass.js~Mass.html",
     "<span>Mass</span> <span class=\"search-result-import-path\">three-nebula/src/initializer/Mass.js</span>",
     "class"
+  ],
+  [
+    "three-nebula/src/core/three/matrix4.js~matrix4",
+    "function/index.html#static-function-Matrix4",
+    "<span>Matrix4</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/Matrix4.js</span>",
+    "function"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~maxequation",
+    "variable/index.html#static-variable-MaxEquation",
+    "<span>MaxEquation</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/renderer/meshrenderer.js~meshrenderer",
@@ -664,6 +1030,126 @@ window.esdocSearchIndex = [
     "class/src/zone/MeshZone.js~MeshZone.html",
     "<span>MeshZone</span> <span class=\"search-result-import-path\">three-nebula/src/zone/MeshZone.js</span>",
     "class"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~minequation",
+    "variable/index.html#static-variable-MinEquation",
+    "<span>MinEquation</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~mirroredrepeatwrapping",
+    "variable/index.html#static-variable-MirroredRepeatWrapping",
+    "<span>MirroredRepeatWrapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~mixoperation",
+    "variable/index.html#static-variable-MixOperation",
+    "<span>MixOperation</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~multiplyblending",
+    "variable/index.html#static-variable-MultiplyBlending",
+    "<span>MultiplyBlending</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~multiplyoperation",
+    "variable/index.html#static-variable-MultiplyOperation",
+    "<span>MultiplyOperation</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~nearestfilter",
+    "variable/index.html#static-variable-NearestFilter",
+    "<span>NearestFilter</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~nearestmipmaplinearfilter",
+    "variable/index.html#static-variable-NearestMipMapLinearFilter",
+    "<span>NearestMipMapLinearFilter</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~nearestmipmapnearestfilter",
+    "variable/index.html#static-variable-NearestMipMapNearestFilter",
+    "<span>NearestMipMapNearestFilter</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~neverdepth",
+    "variable/index.html#static-variable-NeverDepth",
+    "<span>NeverDepth</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~noblending",
+    "variable/index.html#static-variable-NoBlending",
+    "<span>NoBlending</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~nocolors",
+    "variable/index.html#static-variable-NoColors",
+    "<span>NoColors</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~notonemapping",
+    "variable/index.html#static-variable-NoToneMapping",
+    "<span>NoToneMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~normalblending",
+    "variable/index.html#static-variable-NormalBlending",
+    "<span>NormalBlending</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~notequaldepth",
+    "variable/index.html#static-variable-NotEqualDepth",
+    "<span>NotEqualDepth</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~objectspacenormalmap",
+    "variable/index.html#static-variable-ObjectSpaceNormalMap",
+    "<span>ObjectSpaceNormalMap</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~onefactor",
+    "variable/index.html#static-variable-OneFactor",
+    "<span>OneFactor</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~oneminusdstalphafactor",
+    "variable/index.html#static-variable-OneMinusDstAlphaFactor",
+    "<span>OneMinusDstAlphaFactor</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~oneminusdstcolorfactor",
+    "variable/index.html#static-variable-OneMinusDstColorFactor",
+    "<span>OneMinusDstColorFactor</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~oneminussrcalphafactor",
+    "variable/index.html#static-variable-OneMinusSrcAlphaFactor",
+    "<span>OneMinusSrcAlphaFactor</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~oneminussrccolorfactor",
+    "variable/index.html#static-variable-OneMinusSrcColorFactor",
+    "<span>OneMinusSrcColorFactor</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/behaviour/constants.js~particle_alpha_threshold",
@@ -717,6 +1203,18 @@ window.esdocSearchIndex = [
     "three-nebula/src/events/constants.js~particle_update",
     "variable/index.html#static-variable-PARTICLE_UPDATE",
     "<span>PARTICLE_UPDATE</span> <span class=\"search-result-import-path\">three-nebula/src/events/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~pcfshadowmap",
+    "variable/index.html#static-variable-PCFShadowMap",
+    "<span>PCFShadowMap</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~pcfsoftshadowmap",
+    "variable/index.html#static-variable-PCFSoftShadowMap",
+    "<span>PCFSoftShadowMap</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
     "variable"
   ],
   [
@@ -774,6 +1272,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "three-nebula/src/core/three/quaternion.js~quaternion",
+    "function/index.html#static-function-Quaternion",
+    "<span>Quaternion</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/Quaternion.js</span>",
+    "function"
+  ],
+  [
     "three-nebula/src/renderer/types.js~renderer_type_base",
     "variable/index.html#static-variable-RENDERER_TYPE_BASE",
     "<span>RENDERER_TYPE_BASE</span> <span class=\"search-result-import-path\">three-nebula/src/renderer/types.js</span>",
@@ -801,6 +1305,198 @@ window.esdocSearchIndex = [
     "three-nebula/src/renderer/types.js~renderer_type_sprite",
     "variable/index.html#static-variable-RENDERER_TYPE_SPRITE",
     "<span>RENDERER_TYPE_SPRITE</span> <span class=\"search-result-import-path\">three-nebula/src/renderer/types.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~revision",
+    "variable/index.html#static-variable-REVISION",
+    "<span>REVISION</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgbadepthpacking",
+    "variable/index.html#static-variable-RGBADepthPacking",
+    "<span>RGBADepthPacking</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgbaformat",
+    "variable/index.html#static-variable-RGBAFormat",
+    "<span>RGBAFormat</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_10x10_format",
+    "variable/index.html#static-variable-RGBA_ASTC_10x10_Format",
+    "<span>RGBA_ASTC_10x10_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_10x5_format",
+    "variable/index.html#static-variable-RGBA_ASTC_10x5_Format",
+    "<span>RGBA_ASTC_10x5_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_10x6_format",
+    "variable/index.html#static-variable-RGBA_ASTC_10x6_Format",
+    "<span>RGBA_ASTC_10x6_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_10x8_format",
+    "variable/index.html#static-variable-RGBA_ASTC_10x8_Format",
+    "<span>RGBA_ASTC_10x8_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_12x10_format",
+    "variable/index.html#static-variable-RGBA_ASTC_12x10_Format",
+    "<span>RGBA_ASTC_12x10_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_12x12_format",
+    "variable/index.html#static-variable-RGBA_ASTC_12x12_Format",
+    "<span>RGBA_ASTC_12x12_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_4x4_format",
+    "variable/index.html#static-variable-RGBA_ASTC_4x4_Format",
+    "<span>RGBA_ASTC_4x4_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_5x4_format",
+    "variable/index.html#static-variable-RGBA_ASTC_5x4_Format",
+    "<span>RGBA_ASTC_5x4_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_5x5_format",
+    "variable/index.html#static-variable-RGBA_ASTC_5x5_Format",
+    "<span>RGBA_ASTC_5x5_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_6x5_format",
+    "variable/index.html#static-variable-RGBA_ASTC_6x5_Format",
+    "<span>RGBA_ASTC_6x5_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_6x6_format",
+    "variable/index.html#static-variable-RGBA_ASTC_6x6_Format",
+    "<span>RGBA_ASTC_6x6_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_8x5_format",
+    "variable/index.html#static-variable-RGBA_ASTC_8x5_Format",
+    "<span>RGBA_ASTC_8x5_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_8x6_format",
+    "variable/index.html#static-variable-RGBA_ASTC_8x6_Format",
+    "<span>RGBA_ASTC_8x6_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_astc_8x8_format",
+    "variable/index.html#static-variable-RGBA_ASTC_8x8_Format",
+    "<span>RGBA_ASTC_8x8_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_pvrtc_2bppv1_format",
+    "variable/index.html#static-variable-RGBA_PVRTC_2BPPV1_Format",
+    "<span>RGBA_PVRTC_2BPPV1_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_pvrtc_4bppv1_format",
+    "variable/index.html#static-variable-RGBA_PVRTC_4BPPV1_Format",
+    "<span>RGBA_PVRTC_4BPPV1_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_s3tc_dxt1_format",
+    "variable/index.html#static-variable-RGBA_S3TC_DXT1_Format",
+    "<span>RGBA_S3TC_DXT1_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_s3tc_dxt3_format",
+    "variable/index.html#static-variable-RGBA_S3TC_DXT3_Format",
+    "<span>RGBA_S3TC_DXT3_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgba_s3tc_dxt5_format",
+    "variable/index.html#static-variable-RGBA_S3TC_DXT5_Format",
+    "<span>RGBA_S3TC_DXT5_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgbdencoding",
+    "variable/index.html#static-variable-RGBDEncoding",
+    "<span>RGBDEncoding</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgbeencoding",
+    "variable/index.html#static-variable-RGBEEncoding",
+    "<span>RGBEEncoding</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgbeformat",
+    "variable/index.html#static-variable-RGBEFormat",
+    "<span>RGBEFormat</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgbformat",
+    "variable/index.html#static-variable-RGBFormat",
+    "<span>RGBFormat</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgbm16encoding",
+    "variable/index.html#static-variable-RGBM16Encoding",
+    "<span>RGBM16Encoding</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgbm7encoding",
+    "variable/index.html#static-variable-RGBM7Encoding",
+    "<span>RGBM7Encoding</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgb_etc1_format",
+    "variable/index.html#static-variable-RGB_ETC1_Format",
+    "<span>RGB_ETC1_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgb_pvrtc_2bppv1_format",
+    "variable/index.html#static-variable-RGB_PVRTC_2BPPV1_Format",
+    "<span>RGB_PVRTC_2BPPV1_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgb_pvrtc_4bppv1_format",
+    "variable/index.html#static-variable-RGB_PVRTC_4BPPV1_Format",
+    "<span>RGB_PVRTC_4BPPV1_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~rgb_s3tc_dxt1_format",
+    "variable/index.html#static-variable-RGB_S3TC_DXT1_Format",
+    "<span>RGB_S3TC_DXT1_Format</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
     "variable"
   ],
   [
@@ -840,10 +1536,34 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "three-nebula/src/core/three/constants.js~redformat",
+    "variable/index.html#static-variable-RedFormat",
+    "<span>RedFormat</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~reinhardtonemapping",
+    "variable/index.html#static-variable-ReinhardToneMapping",
+    "<span>ReinhardToneMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~repeatwrapping",
+    "variable/index.html#static-variable-RepeatWrapping",
+    "<span>RepeatWrapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
     "three-nebula/src/behaviour/repulsion.js~repulsion",
     "class/src/behaviour/Repulsion.js~Repulsion.html",
     "<span>Repulsion</span> <span class=\"search-result-import-path\">three-nebula/src/behaviour/Repulsion.js</span>",
     "class"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~reversesubtractequation",
+    "variable/index.html#static-variable-ReverseSubtractEquation",
+    "<span>ReverseSubtractEquation</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/behaviour/rotate.js~rotate",
@@ -918,6 +1638,18 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "three-nebula/src/core/three/constants.js~shorttype",
+    "variable/index.html#static-variable-ShortType",
+    "<span>ShortType</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~smoothshading",
+    "variable/index.html#static-variable-SmoothShading",
+    "<span>SmoothShading</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
     "three-nebula/src/math/span.js~span",
     "class/src/math/Span.js~Span.html",
     "<span>Span</span> <span class=\"search-result-import-path\">three-nebula/src/math/Span.js</span>",
@@ -928,6 +1660,12 @@ window.esdocSearchIndex = [
     "class/src/zone/SphereZone.js~SphereZone.html",
     "<span>SphereZone</span> <span class=\"search-result-import-path\">three-nebula/src/zone/SphereZone.js</span>",
     "class"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~sphericalreflectionmapping",
+    "variable/index.html#static-variable-SphericalReflectionMapping",
+    "<span>SphericalReflectionMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/behaviour/spring.js~spring",
@@ -942,6 +1680,36 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "three-nebula/src/core/three/constants.js~srcalphafactor",
+    "variable/index.html#static-variable-SrcAlphaFactor",
+    "<span>SrcAlphaFactor</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~srcalphasaturatefactor",
+    "variable/index.html#static-variable-SrcAlphaSaturateFactor",
+    "<span>SrcAlphaSaturateFactor</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~srccolorfactor",
+    "variable/index.html#static-variable-SrcColorFactor",
+    "<span>SrcColorFactor</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~subtractequation",
+    "variable/index.html#static-variable-SubtractEquation",
+    "<span>SubtractEquation</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~subtractiveblending",
+    "variable/index.html#static-variable-SubtractiveBlending",
+    "<span>SubtractiveBlending</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
     "three-nebula/src/core/system.js~system",
     "class/src/core/System.js~System.html",
     "<span>System</span> <span class=\"search-result-import-path\">three-nebula/src/core/System.js</span>",
@@ -954,16 +1722,100 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "three-nebula/src/core/three/constants.js~tangentspacenormalmap",
+    "variable/index.html#static-variable-TangentSpaceNormalMap",
+    "<span>TangentSpaceNormalMap</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
     "three-nebula/src/initializer/texture.js~texture",
     "class/src/initializer/Texture.js~Texture.html",
     "<span>Texture</span> <span class=\"search-result-import-path\">three-nebula/src/initializer/Texture.js</span>",
     "class"
   ],
   [
+    "three-nebula/src/core/three/constants.js~trianglefandrawmode",
+    "variable/index.html#static-variable-TriangleFanDrawMode",
+    "<span>TriangleFanDrawMode</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~trianglestripdrawmode",
+    "variable/index.html#static-variable-TriangleStripDrawMode",
+    "<span>TriangleStripDrawMode</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~trianglesdrawmode",
+    "variable/index.html#static-variable-TrianglesDrawMode",
+    "<span>TrianglesDrawMode</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~uvmapping",
+    "variable/index.html#static-variable-UVMapping",
+    "<span>UVMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~uncharted2tonemapping",
+    "variable/index.html#static-variable-Uncharted2ToneMapping",
+    "<span>Uncharted2ToneMapping</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~unsignedbytetype",
+    "variable/index.html#static-variable-UnsignedByteType",
+    "<span>UnsignedByteType</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~unsignedint248type",
+    "variable/index.html#static-variable-UnsignedInt248Type",
+    "<span>UnsignedInt248Type</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~unsignedinttype",
+    "variable/index.html#static-variable-UnsignedIntType",
+    "<span>UnsignedIntType</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~unsignedshort4444type",
+    "variable/index.html#static-variable-UnsignedShort4444Type",
+    "<span>UnsignedShort4444Type</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~unsignedshort5551type",
+    "variable/index.html#static-variable-UnsignedShort5551Type",
+    "<span>UnsignedShort5551Type</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~unsignedshort565type",
+    "variable/index.html#static-variable-UnsignedShort565Type",
+    "<span>UnsignedShort565Type</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~unsignedshorttype",
+    "variable/index.html#static-variable-UnsignedShortType",
+    "<span>UnsignedShortType</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
     "three-nebula/src/constants/index.js~verlet",
     "variable/index.html#static-variable-VERLET",
     "<span>VERLET</span> <span class=\"search-result-import-path\">three-nebula/src/constants/index.js</span>",
     "variable"
+  ],
+  [
+    "three-nebula/src/core/three/vector3.js~vector3",
+    "function/index.html#static-function-Vector3",
+    "<span>Vector3</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/Vector3.js</span>",
+    "function"
   ],
   [
     "three-nebula/src/math/vector3d.js~vector3d",
@@ -982,6 +1834,18 @@ window.esdocSearchIndex = [
     "class/src/initializer/Velocity/Velocity.js~Velocity.html",
     "<span>Velocity</span> <span class=\"search-result-import-path\">three-nebula/src/initializer/Velocity/Velocity.js</span>",
     "class"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~vertexcolors",
+    "variable/index.html#static-variable-VertexColors",
+    "<span>VertexColors</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~wraparoundending",
+    "variable/index.html#static-variable-WrapAroundEnding",
+    "<span>WrapAroundEnding</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/zone/types.js~zone_type_abstract",
@@ -1026,10 +1890,34 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "three-nebula/src/core/three/constants.js~zerocurvatureending",
+    "variable/index.html#static-variable-ZeroCurvatureEnding",
+    "<span>ZeroCurvatureEnding</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~zerofactor",
+    "variable/index.html#static-variable-ZeroFactor",
+    "<span>ZeroFactor</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~zeroslopeending",
+    "variable/index.html#static-variable-ZeroSlopeEnding",
+    "<span>ZeroSlopeEnding</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
+  ],
+  [
     "three-nebula/src/zone/zone.js~zone",
     "class/src/zone/Zone.js~Zone.html",
     "<span>Zone</span> <span class=\"search-result-import-path\">three-nebula/src/zone/Zone.js</span>",
     "class"
+  ],
+  [
+    "three-nebula/src/core/three/math.js~_math",
+    "variable/index.html#static-variable-_Math",
+    "<span>_Math</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/Math.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/math/arrayspan.js~createarrayspan",
@@ -1090,6 +1978,12 @@ window.esdocSearchIndex = [
     "function/index.html#static-function-log",
     "<span>log</span> <span class=\"search-result-import-path\">three-nebula/src/debug/log.js</span>",
     "function"
+  ],
+  [
+    "three-nebula/src/core/three/constants.js~srgbencoding",
+    "variable/index.html#static-variable-sRGBEncoding",
+    "<span>sRGBEncoding</span> <span class=\"search-result-import-path\">three-nebula/src/core/three/constants.js</span>",
+    "variable"
   ],
   [
     "three-nebula/src/ease/index.js~seteasingbyname",
@@ -1747,13 +2641,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
@@ -2059,13 +2953,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
   [
     "src/behaviour/scale.js~scale#same",
-    "class/src/behaviour/Scale.js~Scale.html#instance-get-same",
+    "class/src/behaviour/Scale.js~Scale.html#instance-set-same",
     "src/behaviour/Scale.js~Scale#same",
     "member"
   ],
@@ -2592,9 +3486,51 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/core/three.js",
-    "file/src/core/three.js.html",
-    "src/core/three.js",
+    "src/core/three.backup.js",
+    "file/src/core/three.backup.js.html",
+    "src/core/three.backup.js",
+    "file"
+  ],
+  [
+    "src/core/three/euler.js",
+    "file/src/core/three/Euler.js.html",
+    "src/core/three/Euler.js",
+    "file"
+  ],
+  [
+    "src/core/three/math.js",
+    "file/src/core/three/Math.js.html",
+    "src/core/three/Math.js",
+    "file"
+  ],
+  [
+    "src/core/three/matrix4.js",
+    "file/src/core/three/Matrix4.js.html",
+    "src/core/three/Matrix4.js",
+    "file"
+  ],
+  [
+    "src/core/three/quaternion.js",
+    "file/src/core/three/Quaternion.js.html",
+    "src/core/three/Quaternion.js",
+    "file"
+  ],
+  [
+    "src/core/three/vector3.js",
+    "file/src/core/three/Vector3.js.html",
+    "src/core/three/Vector3.js",
+    "file"
+  ],
+  [
+    "src/core/three/constants.js",
+    "file/src/core/three/constants.js.html",
+    "src/core/three/constants.js",
+    "file"
+  ],
+  [
+    "src/core/three/index.js",
+    "file/src/core/three/index.js.html",
+    "src/core/three/index.js",
     "file"
   ],
   [
@@ -3079,13 +4015,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
@@ -3255,6 +4191,12 @@ window.esdocSearchIndex = [
     "src/initializer/initializer.js~initializer.fromjson",
     "class/src/initializer/Initializer.js~Initializer.html#static-method-fromJSON",
     "src/initializer/Initializer.js~Initializer.fromJSON",
+    "method"
+  ],
+  [
+    "src/initializer/initializer.js~initializer.requireswebglapi",
+    "class/src/initializer/Initializer.js~Initializer.html#static-method-requiresWebGlApi",
+    "src/initializer/Initializer.js~Initializer.requiresWebGlApi",
     "method"
   ],
   [

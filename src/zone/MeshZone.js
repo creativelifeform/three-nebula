@@ -1,16 +1,15 @@
-import { Geometry } from '../core/three';
 import Zone from './Zone';
 import { ZONE_TYPE_MESH as type } from './types';
 
 /**
- * Uses a three Geometry to determine the zone parameters.
+ * Uses a three THREE.Geometry to determine the zone parameters.
  *
  */
 export default class MeshZone extends Zone {
   /**
    * @constructs {MeshZone}
    *
-   * @param {Geometry|Mesh} bounds - the geometry or mesh that will determine the zone bounds
+   * @param {THREE.Geometry|Mesh} bounds - the geometry or mesh that will determine the zone bounds
    * @param {number} scale - the zone scale
    * @return void
    */
@@ -21,7 +20,7 @@ export default class MeshZone extends Zone {
     this.scale = scale;
     this.supportsCrossing = false;
 
-    if (bounds instanceof Geometry) {
+    if (bounds.type && bounds.type === 'Geometry') {
       this.geometry = bounds;
     }
 

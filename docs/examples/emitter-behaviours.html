@@ -106,11 +106,11 @@
       function addProton() {
         Nebula.default
           // imported from ./json
-          .fromJSONAsync(EMITTER_BEHAVIOURS_JSON)
+          .fromJSONAsync(EMITTER_BEHAVIOURS_JSON, THREE)
           .then(instance => {
             system = instance;
 
-            system.addRenderer(new Nebula.SpriteRenderer(scene));
+            system.addRenderer(new Nebula.SpriteRenderer(scene, THREE));
             animate();
           });
       }

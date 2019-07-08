@@ -53,6 +53,7 @@ export default {
   //set prototype
   setPrototypeByObj: function(target, proObj, filters) {
     for (var key in proObj) {
+      // eslint-disable-next-line no-prototype-builtins
       if (target.hasOwnProperty(key)) {
         if (filters) {
           if (filters.indexOf(key) < 0)
@@ -69,5 +70,5 @@ export default {
   _getValue: function(pan) {
     if (pan.constructor.type === 'Span') return pan.getValue();
     else return pan;
-  }
+  },
 };

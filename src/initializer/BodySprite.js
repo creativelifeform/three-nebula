@@ -3,7 +3,6 @@ import {
   DEFAULT_MATERIAL_PROPERTIES,
   SUPPORTED_MATERIAL_BLENDING_MODES,
 } from './constants';
-import { Sprite, SpriteMaterial, TextureLoader } from '../core/three';
 
 import Initializer from './Initializer';
 import { INITIALIZER_TYPE_BODY_SPRITE as type } from './types';
@@ -19,17 +18,21 @@ export default class BodySprite extends Initializer {
   /**
    * Constructs a BodySprite initializer.
    *
+   * @param {object} THREE - The Web GL API we are using eg., THREE
    * @param {string} texture - The sprite texture
    * @param {object} materialProperties - The sprite material properties
    * @throws {Error} If the TextureLoader fails to load the supplied texture
    * @return void
    */
   constructor(
+    THREE,
     texture,
     materialProperties = DEFAULT_MATERIAL_PROPERTIES,
     isEnabled = true
   ) {
     super(type, isEnabled);
+
+    const { Sprite, SpriteMaterial, TextureLoader } = THREE;
 
     /**
      * @desc The material properties for this object's SpriteMaterial
@@ -85,12 +88,13 @@ export default class BodySprite extends Initializer {
   /**
    * Creates a BodySprite initializer from JSON.
    *
-   * @param {object} json - The JSON to construct the instance from.
+   * @param {object} json - The JSON to construct the instance from
+   * @param {object} THREE - The Web GL API we are using eg., THREE
    * @param {string} json.texture - The sprite texture
    * @param {object} json.materialProperties - The sprite material properties
    * @return {BodySprite}
    */
-  static fromJSON(json) {
+  static fromJSON(json, THREE) {
     const {
       texture,
       materialProperties = DEFAULT_JSON_MATERIAL_PROPERTIES,
@@ -105,12 +109,13 @@ export default class BodySprite extends Initializer {
         blending: blending
           ? SUPPORTED_MATERIAL_BLENDING_MODES[blending]
           : SUPPORTED_MATERIAL_BLENDING_MODES[
-              DEFAULT_JSON_MATERIAL_PROPERTIES.blending
-            ],
+            DEFAULT_JSON_MATERIAL_PROPERTIES.blending
+          ],
       };
     };
 
     return new BodySprite(
+      THREE,
       texture,
       withDefaults(
         DEFAULT_JSON_MATERIAL_PROPERTIES,

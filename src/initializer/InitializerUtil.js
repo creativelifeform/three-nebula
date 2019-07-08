@@ -1,8 +1,9 @@
-import { Euler } from '../core/three';
+import { Euler } from '../core/three/';
 
 const particleEuler = new Euler();
 
 export default {
+  particleEuler: null,
   /**
    * Loops through the initializers array and calls each initializer's initialize method
    * on the supplied particle. This sets the particle's initial properties.

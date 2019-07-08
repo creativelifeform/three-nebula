@@ -1,6 +1,6 @@
 import MathUtils from './MathUtils';
 import Span from './Span';
-import _ from 'lodash';
+import sample from 'lodash/sample';
 import { MATH_TYPE_COLOR_SPAN as type } from './types';
 
 /**
@@ -44,9 +44,7 @@ export default class ColorSpan extends Span {
    * @return {string} a hex color
    */
   getValue() {
-    return this.shouldRandomize
-      ? MathUtils.randomColor()
-      : _.sample(this.colors);
+    return this.shouldRandomize ? MathUtils.randomColor() : sample(this.colors);
   }
 }
 

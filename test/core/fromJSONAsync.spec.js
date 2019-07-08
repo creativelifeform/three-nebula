@@ -1,8 +1,9 @@
 /*global describe, it, before, after */
 
+import * as THREE from 'three';
+
 import Particles from '../../src/core/System';
 import Texture from '../../src/initializer/Texture';
-import { TextureLoader } from 'three';
 import chai from 'chai';
 import domino from 'domino';
 import eightdiagrams from './fixtures/json/eightdiagramsAsync.json';
@@ -11,6 +12,7 @@ import hasEmitterWithLifeNull from './fixtures/json/hasEmitterWithLifeNull.json'
 import hasEmitterWithTotalEmitTimesNull from './fixtures/json/hasEmitterWithTotalEmitTimesNull.json';
 import sinon from 'sinon';
 
+const { TextureLoader } = THREE;
 const { stub, spy } = sinon;
 const { assert } = chai;
 
@@ -37,7 +39,7 @@ describe('fromJSONAsync', () => {
   it('should call the Texture initializer fromJSON method if the properties contain a texture', async () => {
     const fromJSONSpy = spy(Texture, 'fromJSON');
 
-    await Particles.fromJSONAsync(eightdiagrams);
+    await Particles.fromJSONAsync(eightdiagrams, THREE);
 
     assert(fromJSONSpy.calledTwice);
 
@@ -45,7 +47,7 @@ describe('fromJSONAsync', () => {
   });
 
   it('should instantiate the eightdiagramsAsync example', async () => {
-    const system = await Particles.fromJSONAsync(eightdiagrams);
+    const system = await Particles.fromJSONAsync(eightdiagrams, THREE);
 
     assert.lengthOf(system.emitters, eightdiagrams.emitters.length);
     assert.lengthOf(
@@ -88,21 +90,27 @@ describe('fromJSONAsync', () => {
   });
 
   it('should set null life for the emitter as Infinity when emitting', async () => {
-    const system = await Particles.fromJSONAsync(hasEmitterWithLifeNull);
+    const system = await Particles.fromJSONAsync(hasEmitterWithLifeNull, THREE);
     const emitter = system.emitters[0];
 
     assert.equal(emitter.life, Infinity);
   });
 
   it('should instantiate null totalEmitTimes for the emitter as Infinity', async () => {
-    const system = await Particles.fromJSON(hasEmitterWithTotalEmitTimesNull);
+    const system = await Particles.fromJSON(
+      hasEmitterWithTotalEmitTimesNull,
+      THREE
+    );
     const emitter = system.emitters[0];
 
     assert.equal(emitter.totalEmitTimes, Infinity);
   });
 
   it("should instantiate null life for the emitter's behaviours as Infinity", async () => {
-    const system = await Particles.fromJSON(hasEmitterBehavioursWithLifeNull);
+    const system = await Particles.fromJSON(
+      hasEmitterBehavioursWithLifeNull,
+      THREE
+    );
     const emitter = system.emitters[0];
     const behaviours = emitter.behaviours;
 

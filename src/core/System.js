@@ -24,6 +24,7 @@ export default class System {
   /**
    * Constructs a System instance.
    *
+   * @param {object} THREE - ThreeJs
    * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
    * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
    * @return void
@@ -86,13 +87,13 @@ export default class System {
    * Creates a System instance from a JSON object.
    *
    * @param {object} json - The JSON to create the System instance from
-   * @param {number} json.preParticles - The predetermined number of particles
-   * @param {string} json.integrationType - The integration algorithm to use
-   * @param {array<object>} json.emitters - The emitters for the system instance
+   * @param {object} THREE - The Web GL Api to use eg., THREE
    * @return {System}
+   *
+   * @deprecated use fromJSONAsync instead
    */
-  static fromJSON(json) {
-    return fromJSON(json, System, Emitter);
+  static fromJSON(json, THREE) {
+    return fromJSON(json, THREE, System, Emitter);
   }
 
   /**
@@ -100,13 +101,11 @@ export default class System {
    * fully loaded before resolving with the instantiated System instance.
    *
    * @param {object} json - The JSON to create the System instance from
-   * @param {number} json.preParticles - The predetermined number of particles
-   * @param {string} json.integrationType - The integration algorithm to use
-   * @param {array<object>} json.emitters - The emitters for the system instance
+   * @param {object} THREE - The Web GL Api to use eg., THREE
    * @return {Promise<System>}
    */
-  static fromJSONAsync(json) {
-    return fromJSONAsync(json, System, Emitter);
+  static fromJSONAsync(json, THREE) {
+    return fromJSONAsync(json, THREE, System, Emitter);
   }
 
   /**

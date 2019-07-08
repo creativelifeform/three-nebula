@@ -3,7 +3,6 @@ import {
   DEFAULT_MATERIAL_PROPERTIES,
   SUPPORTED_MATERIAL_BLENDING_MODES,
 } from './constants';
-import { Sprite, SpriteMaterial } from '../core/three';
 
 import Initializer from './Initializer';
 import { INITIALIZER_TYPE_TEXTURE as type } from './types';
@@ -17,16 +16,20 @@ export default class Texture extends Initializer {
   /**
    * Constructs an Texture initializer.
    *
+   * @param {object} THREE - The Web GL API we are using eg., THREE
    * @param {string} texture - The sprite texture
    * @param {object|undefined} materialProperties - The sprite material properties
    * @param {?Texture} loadedTexture - Preloaded THREE.Texture instance
    */
   constructor(
+    THREE,
     loadedTexture,
     materialProperties = DEFAULT_MATERIAL_PROPERTIES,
     isEnabled = true
   ) {
     super(type, isEnabled);
+
+    const { Sprite, SpriteMaterial } = THREE;
 
     /**
      * @desc The material properties for this object's SpriteMaterial
@@ -73,12 +76,13 @@ export default class Texture extends Initializer {
   /**
    * Creates a Texture initializer from JSON.
    *
-   * @param {object} json - The JSON to construct the instance from.
+   * @param {object} json - The JSON to construct the instance from
+   * @param {object} THREE - The Web GL API we are using eg., THREE
    * @param {Texture} json.loadedTexture - The loaded sprite texture
    * @param {object} json.materialProperties - The sprite material properties
    * @return {BodySprite}
    */
-  static fromJSON(json) {
+  static fromJSON(json, THREE) {
     const {
       loadedTexture,
       materialProperties = DEFAULT_JSON_MATERIAL_PROPERTIES,
@@ -93,12 +97,13 @@ export default class Texture extends Initializer {
         blending: blending
           ? SUPPORTED_MATERIAL_BLENDING_MODES[blending]
           : SUPPORTED_MATERIAL_BLENDING_MODES[
-              DEFAULT_JSON_MATERIAL_PROPERTIES.blending
-            ],
+            DEFAULT_JSON_MATERIAL_PROPERTIES.blending
+          ],
       };
     };
 
     return new Texture(
+      THREE,
       loadedTexture,
       withDefaults(
         DEFAULT_JSON_MATERIAL_PROPERTIES,

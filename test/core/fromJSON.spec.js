@@ -1,6 +1,7 @@
 /*global describe, it */
 
 import * as Nebula from '../../src';
+import * as THREE from 'three';
 
 import Particles from '../../src/core/System';
 import chai from 'chai';
@@ -27,7 +28,7 @@ describe('fromJSON', () => {
   });
 
   it('should instantiate the eightdiagrams example from JSON', done => {
-    const system = Particles.fromJSON(eightdiagrams);
+    const system = Particles.fromJSON(eightdiagrams, THREE);
 
     assert.lengthOf(system.emitters, eightdiagrams.emitters.length);
     assert.lengthOf(
@@ -72,7 +73,7 @@ describe('fromJSON', () => {
   });
 
   it('should instantiate and set the total emit times and life to 1 on the emitter', done => {
-    const system = Particles.fromJSON(containsTotalEmitTimes);
+    const system = Particles.fromJSON(containsTotalEmitTimes, THREE);
     const emitter = system.emitters[0];
 
     assert.equal(emitter.totalEmitTimes, 1);
@@ -82,7 +83,7 @@ describe('fromJSON', () => {
   });
 
   it('should set the emitter behaviours', done => {
-    const system = Particles.fromJSON(containsEmitterBehaviours);
+    const system = Particles.fromJSON(containsEmitterBehaviours, THREE);
     const emitter = system.emitters[0];
 
     assert.notEmpty(emitter.emitterBehaviours);
@@ -93,7 +94,7 @@ describe('fromJSON', () => {
 
   it('should throw an error if an invalid initializer type is supplied', done => {
     assert.throws(
-      () => Particles.fromJSON(containsInvalidInitializer),
+      () => Particles.fromJSON(containsInvalidInitializer, THREE),
       Error,
       'The initializer type MrDoob is invalid or not yet supported'
     );
@@ -103,7 +104,7 @@ describe('fromJSON', () => {
 
   it('should throw an error if an invalid behavour type is supplied', done => {
     assert.throws(
-      () => Particles.fromJSON(containsInvalidBehaviour),
+      () => Particles.fromJSON(containsInvalidBehaviour, THREE),
       Error,
       'The behaviour type MrDoob is invalid or not yet supported'
     );
@@ -113,7 +114,7 @@ describe('fromJSON', () => {
 
   it('should throw an error if an invalid zoneType is supplied as a position initializer property', done => {
     assert.throws(
-      () => Particles.fromJSON(containsInvalidZoneType),
+      () => Particles.fromJSON(containsInvalidZoneType, THREE),
       Error,
       'The zone type MrDoob is invalid or not yet supported'
     );
