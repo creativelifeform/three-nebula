@@ -1,24 +1,15 @@
-/*global __dirname, require, module*/
-
 const path = require('path');
 
-let libraryName = 'Nebula';
-
-let plugins = [],
-  outputFile;
-
-outputFile = 'three-nebula.js';
-
-const config = {
-  entry: __dirname + '/src/index.js',
-  devtool: 'source-map',
+module.exports = {
+  mode: 'production',
+  entry: './src/index.js',
   output: {
-    path: __dirname + '/build',
-    filename: outputFile,
-    library: libraryName,
+    path: path.resolve(__dirname, 'build'),
+    filename: 'three-nebula.js',
+    library: 'Nebula',
     libraryTarget: 'umd',
-    umdNamedDefine: true,
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -37,7 +28,4 @@ const config = {
     modules: [path.resolve('./src'), path.resolve('./node_modules')],
     extensions: ['.json', '.js'],
   },
-  plugins: plugins,
 };
-
-module.exports = config;

@@ -18,6 +18,7 @@ export default {
         rgb.r = Math.min(255, parseInt(m[1], 10)) / 255;
         rgb.g = Math.min(255, parseInt(m[2], 10)) / 255;
         rgb.b = Math.min(255, parseInt(m[3], 10)) / 255;
+        // eslint-disable-next-line no-useless-escape
       } else if ((m = /^\#([A-Fa-f0-9]+)$/.exec(color))) {
         var hex = m[1];
 
@@ -32,5 +33,5 @@ export default {
     }
 
     return rgb;
-  }
+  },
 };

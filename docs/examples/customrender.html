@@ -22,6 +22,7 @@
     <div id="container"></div>
     <script src="../js/stats.min.js"></script>
     <script src="../js/three.min.js"></script>
+    <script src="../js/lib/LegacyJSONLoader.js"></script>
     <script src="../js/three-nebula.js"></script>
     <script>
       var system, emitter;
@@ -114,7 +115,7 @@
       //load model
       function loadModel(callback) {
         var material = new THREE.MeshNormalMaterial();
-        var loader = new THREE.JSONLoader();
+        var loader = new THREE.LegacyJSONLoader();
 
         loader.load('./assets/suzanne.js', function(geometry) {
           geometry.computeVertexNormals();
@@ -158,7 +159,7 @@
         emitter.position.y = 0;
         emitter.emit();
 
-        Nebula.Debug.drawZone(system, scene, zone);
+        Nebula.Debug.drawZone(THREE, system, scene, zone);
 
         return emitter;
       }

@@ -1,10 +1,3 @@
-import {
-  BoxGeometry,
-  Mesh,
-  MeshBasicMaterial,
-  OctahedronGeometry,
-  SphereGeometry,
-} from '../core/three';
 import { DEFAULT_POSITION, DEFAULT_SIZE as size } from './constants';
 
 /**
@@ -32,7 +25,7 @@ export default {
    * @param {Zone} zone - a Zone instance
    * @return void
    */
-  drawZone: function(system, container, zone = {}) {
+  drawZone: function(THREE, system, container, zone = {}) {
     const color = '#2194ce';
     const wireframe = true;
     const {
@@ -47,7 +40,7 @@ export default {
     let geometry;
 
     if (zone.isPointZone()) {
-      geometry = new SphereGeometry(15);
+      geometry = new THREE.SphereGeometry(15);
     }
 
     if (zone.isLineZone()) {
@@ -55,11 +48,11 @@ export default {
     }
 
     if (zone.isBoxZone()) {
-      geometry = new BoxGeometry(width, height, depth);
+      geometry = new THREE.BoxGeometry(width, height, depth);
     }
 
     if (zone.isSphereZone()) {
-      geometry = new SphereGeometry(radius, size, size);
+      geometry = new THREE.SphereGeometry(radius, size, size);
     }
 
     if (zone.isMeshZone()) {
@@ -69,13 +62,13 @@ export default {
     }
 
     if (!geometry) {
-      geometry = new BoxGeometry(width, height, depth);
+      geometry = new THREE.BoxGeometry(width, height, depth);
     }
 
-    const material = new MeshBasicMaterial({ color, wireframe });
+    const material = new THREE.MeshBasicMaterial({ color, wireframe });
     // NOTE! geometry.clone is required for UNKNOWN reasons,
     // three does not render the mesh correctly without doing this since r88
-    const mesh = new Mesh(geometry.clone(), material);
+    const mesh = new THREE.Mesh(geometry.clone(), material);
 
     container.add(mesh);
 
@@ -93,15 +86,15 @@ export default {
    * @param {string} color - the color for the debug mesh material
    * @return void
    */
-  drawEmitter: function(system, container, emitter, color) {
-    const geometry = new OctahedronGeometry(size);
-    const material = new MeshBasicMaterial({
+  drawEmitter: function(THREE, system, container, emitter, color) {
+    const geometry = new THREE.OctahedronGeometry(size);
+    const material = new THREE.MeshBasicMaterial({
       color: color || '#aaa',
       wireframe: true,
     });
     // NOTE! geometry.clone is required for UNKNOWN reasons,
     // three does not render the mesh correctly without doing this since r88
-    const mesh = new Mesh(geometry.clone(), material);
+    const mesh = new THREE.Mesh(geometry.clone(), material);
 
     container.add(mesh);
 

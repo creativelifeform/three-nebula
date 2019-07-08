@@ -1,5 +1,5 @@
 import Span from './Span';
-import _ from 'lodash';
+import sample from 'lodash/sample';
 import { MATH_TYPE_ARRAY_SPAN as type } from './types';
 
 /**
@@ -36,7 +36,7 @@ export default class ArraySpan extends Span {
    * @return {mixed}
    */
   getValue() {
-    return _.sample(this.items);
+    return sample(this.items);
   }
 }
 

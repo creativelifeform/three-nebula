@@ -34,7 +34,7 @@
         addScene();
         addControls();
         addLights();
-        addStars();
+        // addStars();
         addProton();
         addStats();
         animate();
@@ -108,8 +108,8 @@
       function addProton() {
         system = Nebula.default
           // imported from ./json
-          .fromJSON(EIGHT_DIAGRAMS_JSON)
-          .addRenderer(new Nebula.SpriteRenderer(scene));
+          .fromJSON(EIGHT_DIAGRAMS_JSON, THREE)
+          .addRenderer(new Nebula.SpriteRenderer(scene, THREE));
       }
 
       function animate() {
