@@ -10,10 +10,11 @@ import EventDispatcher, {
   PARTICLE_UPDATE,
 } from '../events';
 import { INTEGRATION_TYPE_EULER, integrate } from '../math';
-import { Util, shouldBeInfinite, uid } from '../utils';
+import { Util, uid } from '../utils';
 
 import { InitializerUtil } from '../initializer';
 import Particle from '../core/Particle';
+import isNumber from 'lodash/isNumber';
 import { EMITTER_TYPE_EMITTER as type } from './types';
 
 /**
@@ -177,14 +178,12 @@ export default class Emitter extends Particle {
    */
   emit(totalEmitTimes = Infinity, life = Infinity) {
     this.currentEmitTime = 0;
-    this.totalEmitTimes = shouldBeInfinite(totalEmitTimes)
-      ? Infinity
-      : totalEmitTimes;
+    this.totalEmitTimes = isNumber(totalEmitTimes) ? totalEmitTimes : Infinity;
 
     if (totalEmitTimes === 1) {
       this.life = totalEmitTimes;
     } else {
-      this.life = shouldBeInfinite(life) ? Infinity : life;
+      this.life = isNumber(life) ? life : Infinity;
     }
 
     this.rate.init();

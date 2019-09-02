@@ -1,8 +1,9 @@
 import { DEFAULT_BEHAVIOUR_EASING, DEFAULT_LIFE } from './constants';
-import { shouldBeInfinite, uid } from '../utils';
 
 import { BEHAVIOUR_TYPE_ABSTRACT } from './types';
 import { MEASURE } from '../constants';
+import isNumber from 'lodash/isNumber';
+import { uid } from '../utils';
 
 /**
  * The base behaviour class.
@@ -77,10 +78,10 @@ export default class Behaviour {
   /**
    * Reset this behaviour's parameters
    *
-   * @param {number} [life=Infinity] - The life of the behaviour
+   * @param {number} [life=DEFAULT_LIFE] - The life of the behaviour
    * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
    */
-  reset(life = Infinity, easing = DEFAULT_BEHAVIOUR_EASING) {
+  reset(life = DEFAULT_LIFE, easing = DEFAULT_BEHAVIOUR_EASING) {
     this.life = life;
     this.easing = easing || DEFAULT_BEHAVIOUR_EASING;
   }
@@ -91,7 +92,7 @@ export default class Behaviour {
    * @return void
    */
   set life(life) {
-    this._life = shouldBeInfinite(life) ? DEFAULT_LIFE : life;
+    this._life = isNumber(life) ? life : DEFAULT_LIFE;
   }
 
   /**
