@@ -1,8 +1,8 @@
 import { DEFAULT_BEHAVIOUR_EASING, DEFAULT_LIFE } from './constants';
+import { shouldBeInfinite, uid } from '../utils';
 
 import { BEHAVIOUR_TYPE_ABSTRACT } from './types';
 import { MEASURE } from '../constants';
-import { uid } from '../utils';
 
 /**
  * The base behaviour class.
@@ -47,7 +47,7 @@ export default class Behaviour {
      * @desc The life of the behaviour
      * @type {number}
      */
-    this.life = life || Infinity;
+    this.life = life;
 
     /**
      * @desc The behaviour's decaying trend
@@ -81,8 +81,26 @@ export default class Behaviour {
    * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
    */
   reset(life = Infinity, easing = DEFAULT_BEHAVIOUR_EASING) {
-    this.life = life || DEFAULT_LIFE;
+    this.life = life;
     this.easing = easing || DEFAULT_BEHAVIOUR_EASING;
+  }
+
+  /**
+   * Ensures that life is infinity if an invalid value is supplied.
+   *
+   * @return void
+   */
+  set life(life) {
+    this._life = shouldBeInfinite(life) ? DEFAULT_LIFE : life;
+  }
+
+  /**
+   * Gets the behaviour's life.
+   *
+   * @return {Number}
+   */
+  get life() {
+    return this._life;
   }
 
   /**

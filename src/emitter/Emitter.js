@@ -10,12 +10,11 @@ import EventDispatcher, {
   PARTICLE_UPDATE,
 } from '../events';
 import { INTEGRATION_TYPE_EULER, integrate } from '../math';
+import { Util, shouldBeInfinite, uid } from '../utils';
 
 import { InitializerUtil } from '../initializer';
 import Particle from '../core/Particle';
-import Util from '../utils/Util';
 import { EMITTER_TYPE_EMITTER as type } from './types';
-import uid from '../utils/uid';
 
 /**
  * Emitters are the System engine's particle factories. They cause particles to
@@ -178,12 +177,14 @@ export default class Emitter extends Particle {
    */
   emit(totalEmitTimes = Infinity, life = Infinity) {
     this.currentEmitTime = 0;
-    this.totalEmitTimes = isNaN(totalEmitTimes) ? Infinity : totalEmitTimes;
+    this.totalEmitTimes = shouldBeInfinite(totalEmitTimes)
+      ? Infinity
+      : totalEmitTimes;
 
     if (totalEmitTimes === 1) {
       this.life = totalEmitTimes;
     } else {
-      this.life = isNaN(life) ? Infinity : life;
+      this.life = shouldBeInfinite(life) ? Infinity : life;
     }
 
     this.rate.init();

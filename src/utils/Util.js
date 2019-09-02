@@ -72,3 +72,5 @@ export default {
     else return pan;
   },
 };
+
+export const shouldBeInfinite = value => isNaN(value) || value === null;
