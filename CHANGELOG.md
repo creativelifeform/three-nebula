@@ -5,20 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## `v5.0.0-alpha` - 2019-07-09 
+## `v5.0.1` - 2019-09-02
+
+### Fixed
+
+- Emitters will now accept 0 as an allowed value for `totalEmitTimes` and `life` and not default to `Infinity` in these cases
+- Behaviours will now accept 0 as an allowed value for `life` and not default to `Infinity` in these cases
+- Security vulnerabilities
 
 ### Added
 
-* `docs-build` script which installs esdoc, builds the docs, then uninstalls it to get around the security vulns
+- Tests to cover this
+
+## `v5.0.0-alpha` - 2019-07-09
+
+### Added
+
+- `docs-build` script which installs esdoc, builds the docs, then uninstalls it to get around the security vulns
 
 ### Changed
 
-* Moved `three` to a peer/dev dependency
-* Have copied core math classes which are absolutely needed internally, other dependencies are now passed in to functions/constructors as arguments
-* Tests and examples all updated to be working
-* Updated to webpack 4
-* Updated to babel 7
-* Bundle size is now **~103kb**
+- Moved `three` to a peer/dev dependency
+- Have copied core math classes which are absolutely needed internally, other dependencies are now passed in to functions/constructors as arguments
+- Tests and examples all updated to be working
+- Updated to webpack 4
+- Updated to babel 7
+- Bundle size is now **~103kb**
 
 ## `v4.0.4` - 2019-06-27
 
