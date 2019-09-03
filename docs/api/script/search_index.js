@@ -2329,13 +2329,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
   [
     "src/behaviour/alpha.js~alpha#same",
-    "class/src/behaviour/Alpha.js~Alpha.html#instance-get-same",
+    "class/src/behaviour/Alpha.js~Alpha.html#instance-set-same",
     "src/behaviour/Alpha.js~Alpha#same",
     "member"
   ],
@@ -2418,6 +2418,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/behaviour/behaviour.js~behaviour#_life",
+    "class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-_life",
+    "src/behaviour/Behaviour.js~Behaviour#_life",
+    "member"
+  ],
+  [
     "src/behaviour/behaviour.js~behaviour#age",
     "class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-age",
     "src/behaviour/Behaviour.js~Behaviour#age",
@@ -2491,7 +2497,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/behaviour.js~behaviour#life",
-    "class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-life",
+    "class/src/behaviour/Behaviour.js~Behaviour.html#instance-set-life",
+    "src/behaviour/Behaviour.js~Behaviour#life",
+    "member"
+  ],
+  [
+    "src/behaviour/behaviour.js~behaviour#life",
+    "class/src/behaviour/Behaviour.js~Behaviour.html#instance-get-life",
     "src/behaviour/Behaviour.js~Behaviour#life",
     "member"
   ],
@@ -2641,13 +2653,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-set-same",
+    "class/src/behaviour/Color.js~Color.html#instance-get-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
   [
     "src/behaviour/color.js~color#same",
-    "class/src/behaviour/Color.js~Color.html#instance-get-same",
+    "class/src/behaviour/Color.js~Color.html#instance-set-same",
     "src/behaviour/Color.js~Color#same",
     "member"
   ],
@@ -4015,13 +4027,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],
   [
     "src/events/eventdispatcher.js~eventdispatcher#listeners",
-    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-set-listeners",
+    "class/src/events/EventDispatcher.js~EventDispatcher.html#instance-get-listeners",
     "src/events/EventDispatcher.js~EventDispatcher#listeners",
     "member"
   ],

@@ -121,6 +121,28 @@ describe('emitter -> Emitter', () => {
     done();
   });
 
+  it('should set the life to 0 if a life of 0 is provided', done => {
+    const emitter = new Emitter();
+
+    emitter.emit(2, 0);
+
+    assert.equal(emitter.totalEmitTimes, 2);
+    assert.equal(emitter.life, 0);
+
+    done();
+  });
+
+  it('should set the totalEmitTimes to 0 if a life of 0 is provided', done => {
+    const emitter = new Emitter();
+
+    emitter.emit(0, 1);
+
+    assert.equal(emitter.totalEmitTimes, 0);
+    assert.equal(emitter.life, 1);
+
+    done();
+  });
+
   it('should set the correct properties to stop particles emitting', done => {
     const emitter = new Emitter();
 

@@ -33,6 +33,22 @@ describe('behaviour -> Behaviour', () => {
     done();
   });
 
+  it('should set life to infinity if null is supplied', done => {
+    const { life } = new Behaviour(null);
+
+    assert.strictEqual(life, Infinity);
+
+    done();
+  });
+
+  it('should set life to infinity if NaN is supplied', done => {
+    const { life } = new Behaviour('null');
+
+    assert.strictEqual(life, Infinity);
+
+    done();
+  });
+
   it('should normalize force correctly', done => {
     const force = behaviour.normalizeForce(new Nebula.Vector3D(1, 2.4, 3));
 
