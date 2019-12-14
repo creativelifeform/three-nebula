@@ -1,6 +1,9 @@
 export default {
   _id: 0,
   _uids: {},
+  getNewId: function() {
+    return `PUID_${this._id++}`;
+  },
   id: function(functionOrObject) {
     for (let id in this._uids) {
       if (this._uids[id] == functionOrObject) {
@@ -8,10 +11,10 @@ export default {
       }
     }
 
-    const nid = 'PUID_' + this._id++;
+    const newId = this.getNewId();
 
-    this._uids[nid] = functionOrObject;
+    this._uids[newId] = functionOrObject;
 
-    return nid;
-  }
+    return newId;
+  },
 };
