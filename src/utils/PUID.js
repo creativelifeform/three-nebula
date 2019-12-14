@@ -1,6 +1,6 @@
 export default {
   _id: 0,
-  _uids: {},
+  _uids: new Map(),
   getNewId: function() {
     return `PUID_${this._id++}`;
   },
