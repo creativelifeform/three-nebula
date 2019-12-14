@@ -3,6 +3,13 @@
   "version": "5.0.2",
   "description": "WebGL based 3D particle engine",
   "main": "./build/three-nebula.js",
+  "bundlesize": [
+    {
+      "path": "./build/three-nebula.js",
+      "maxSize": "104 kB",
+      "compression": "none"
+    }
+  ],
   "directories": {
     "docs": "docs"
   },
@@ -19,7 +26,8 @@
     "coverage:view": "open ./coverage/lcov-report/index.html",
     "coverage:generate": "istanbul cover -x 'src/core/three/*.js' -x 'src/debug/*.js' ./node_modules/.bin/_mocha './test/**/*.spec.js' -- --require @babel/register",
     "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "git:publish": "./scripts/publish"
+    "git:publish": "./scripts/publish",
+    "bundlesize": "bundlesize"
   },
   "repository": {
     "type": "git",
@@ -56,6 +64,7 @@
     "@babel/runtime": "^7.5.1",
     "babel-eslint": "^7.2.1",
     "babel-loader": "^8.0.6",
+    "bundlesize": "^0.18.0",
     "chai": "^4.2.0",
     "coveralls": "^3.0.3",
     "domino": "^2.1.1",
