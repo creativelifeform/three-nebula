@@ -4,6 +4,7 @@ node_js:
 script:
   - npm run lint
   - npm run test
+  - npm run bundlesize
   - npm run coverage:generate
   - npm run coverage:publish
 branches:
