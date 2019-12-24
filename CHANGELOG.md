@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v5.0.3` - 2019-12-24
+
+### Fixed
+
+- Broken examples that used the `LegacyJSONLoader`
+
 ## `v5.0.2` - 2019-12-14
 
 ### Added
