@@ -1,0 +1,66 @@
+.Grid {
+  display: grid;
+  margin: auto;
+
+  .Item {
+    .Media {
+      display: block;
+      max-width: 100%;
+      height: 300px;
+      background: $app-accent;
+      margin-bottom: $padding-xxl;
+    }
+    .Details {
+      line-height: 1.4em;
+    }
+  }
+
+  &.About {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 72px 32px;
+  }
+}
+
+.Hero {
+  .Grid {
+    position: relative;
+    grid-template-columns: 1fr 1.8fr;
+    grid-gap: 50px;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 $padding-l;
+    height: calc(100vh - #{$header-h});
+    text-align: left;
+  }
+}
+
+@include phone {
+  .Grid {
+    display: block;
+
+    .Item {
+      margin-bottom: $padding-xxl;
+    }
+  }
+
+  .Hero {
+    .Grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@include tablet {
+  .Grid {
+    display: grid;
+  }
+
+  .Hero {
+    .Grid {
+      display: grid;
+    }
+  }
+}

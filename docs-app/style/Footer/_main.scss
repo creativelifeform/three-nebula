@@ -1,0 +1,24 @@
+.Footer {
+  position: relative;
+  text-align: center;
+  font-size: 0.8em;
+
+  opacity: 0.6;
+
+  a {
+    color: $app-color;
+  }
+}
+
+@include phone {
+  .Footer {
+    padding: $padding-m;
+    padding-top: 0;
+  }
+}
+
+@include tablet {
+  .Footer {
+    padding: $padding-xl $padding-m;
+  }
+}

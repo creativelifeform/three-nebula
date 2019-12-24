@@ -1,0 +1,21 @@
+.Header {
+  width: 100%;
+  padding: 0 $padding-l;
+  height: $header-h;
+  background-color: $header-bg;
+  font-family: $app-font-header;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  position: fixed;
+  top: $gdpr-h;
+
+  a {
+    text-decoration: none;
+    color: $app-color;
+  }
+
+  a.active {
+  }
+}

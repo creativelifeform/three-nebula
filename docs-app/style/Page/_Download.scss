@@ -1,0 +1,64 @@
+.Page.Download {
+  padding-left: 0;
+  padding-right: 0;
+
+  .Content {
+    max-width: 100%;
+
+    header,
+    .main,
+    footer {
+      padding-left: $padding-l;
+      padding-right: $padding-l;
+    }
+
+    .main {
+      margin: $padding-xxl * 2 0;
+      background: darken($app-bg, 2);
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .Form {
+      align-self: center;
+      a {
+        display: inline-block;
+        margin-top: $padding-l;
+      }
+
+      .Error {
+        margin-top: $padding-m;
+        padding: $padding-m;
+        font-size: 0.9em;
+        background: $app-error;
+        border-radius: $radius-s;
+
+        span.message {
+          padding-left: $padding-s;
+        }
+      }
+    }
+  }
+}
+
+@include phone {
+  .Page.Download {
+    .Content {
+      .main {
+        height: 300px;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .Page.Download {
+    .Content {
+      .main {
+        height: 400px;
+      }
+    }
+  }
+}

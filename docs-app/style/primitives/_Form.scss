@@ -1,0 +1,62 @@
+.Form {
+  input {
+    padding: $padding-s;
+    border: none;
+    border-radius: $radius-s;
+  }
+
+  .PlatformSelect {
+    .SelectWrap {
+      position: relative;
+      margin-left: $padding-s;
+      display: inline-block;
+      border-bottom: 1px dotted $app-color;
+
+      select {
+        border: none;
+        box-shadow: none;
+        border-radius: 0px;
+        background: none;
+        padding-right: $padding-xl;
+        padding-bottom: $padding-xs;
+        color: $app-color;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+
+      .arrow {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        pointer-events: none;
+      }
+    }
+  }
+
+  .EmailWithButton {
+    height: $input-submit-h;
+    margin-top: $padding-l;
+
+    input,
+    button {
+      display: inline-block;
+      height: $input-submit-h;
+      vertical-align: middle;
+    }
+
+    input {
+      border-radius: $radius-s 0px 0px $radius-s;
+    }
+
+    button {
+      padding: $padding-s;
+      border-radius: 0px $radius-s $radius-s 0px;
+      width: $input-submit-w;
+    }
+
+    a {
+      display: inline-block;
+    }
+  }
+}

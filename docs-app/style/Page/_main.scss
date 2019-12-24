@@ -1,0 +1,30 @@
+.Page {
+  padding-top: $header-h;
+
+  .Content {
+    padding: 0 $padding-l;
+    header {
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+    }
+
+    .main {
+      padding-top: $padding-xxl * 2;
+    }
+
+    padding: $padding-letterbox;
+    max-width: 1200px;
+    margin: auto;
+  }
+}
+
+.Page.with-gdpr-consent {
+  padding-top: $header-h;
+}
+
+.Page.without-gdpr-consent {
+  padding-top: $header-h + $gdpr-h;
+}

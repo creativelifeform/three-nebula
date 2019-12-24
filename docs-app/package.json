@@ -1,0 +1,76 @@
+{
+  "name": "three-nebula-docs",
+  "version": "0.0.1",
+  "scripts": {
+    "link-src": "./scripts/link-three-nebula",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  },
+  "dependencies": {
+    "next": "^9.0.4",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "reset-css": "4.0.1",
+    "typeface-barlow": "0.0.71",
+    "typeface-dosis": "0.0.72",
+    "universal-analytics": "^0.4.20"
+  },
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "@zeit/next-sass": "^1.0.1",
+    "babel-eslint": "^10.0.2",
+    "dotenv": "^8.0.0",
+    "eslint": "^6.2.1",
+    "eslint-config-react-app": "^5.0.1",
+    "eslint-plugin-flowtype": "^4.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "import-sort-cli": "^6.0.0",
+    "import-sort-parser-babylon": "^5.2.0",
+    "import-sort-style-absolute": "^1.0.1",
+    "madge": "^3.4.4",
+    "next-assets-import": "0.0.2",
+    "next-progressbar": "^1.0.0",
+    "node-sass": "^4.12.0",
+    "prettier": "^1.15.2",
+    "prop-types": "^15.7.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+    ],
+    "plugins": [
+      "prettier",
+      "react"
+    ],
+    "rules": {
+      "prettier/prettier": "error",
+      "react/prop-types": [
+        "error",
+        {
+          "ignore": [],
+          "customValidators": [],
+          "skipUndeclared": false
+        }
+      ],
+      "react/no-typos": "error"
+    }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
