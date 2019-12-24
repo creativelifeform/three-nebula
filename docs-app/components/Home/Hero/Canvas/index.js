@@ -19,10 +19,7 @@ export default class Canvas extends Component {
       return;
     }
 
-    const { offsetWidth: width = 0, offsetHeight: height = 0 } =
-      this.container || {};
-
-    this.setState({ width, height }, async () => {
+    this.setCanvasSize(async () => {
       const { Visualisation } = require('./Visualisation');
 
       this.visualisation = await new Visualisation(this.canvas).start();
@@ -37,10 +34,17 @@ export default class Canvas extends Component {
     visualisation && visualisation.stop();
   }
 
+  setCanvasSize(callback) {
+    const { offsetWidth: width = 0, offsetHeight: height = 0 } =
+      this.container || {};
+
+    this.setState({ width, height }, callback);
+  }
+
   handleResize = e => {
     const { visualisation } = this;
 
-    visualisation && visualisation.resize();
+    this.setCanvasSize(() => visualisation && visualisation.resize());
   };
 
   get canvas() {
@@ -55,10 +59,7 @@ export default class Canvas extends Component {
     const { width, height } = this.state;
 
     return (
-      <div
-        ref={this.containerRef}
-        style={{ width: '100%', height: 250, position: 'relative' }}
-      >
+      <div className="canvas-container" ref={this.containerRef}>
         <canvas
           ref={this.canvasRef}
           className="canvas"

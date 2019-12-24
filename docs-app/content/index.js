@@ -1,12 +1,11 @@
 const content = {
   callout: {
     small: 'Download',
-    large: 'Try Nebula For Free',
+    large: 'See Examples',
   },
   home: {
-    title: 'Design particle systems for the web.',
-    text:
-      'Design rich, eye-catching 3D particle systems and effects for any JavaScript application on Windows, Mac or Linux — with Nebula.',
+    title: 'Three Nebula',
+    text: 'A particle system engine for three.js',
   },
 };
 

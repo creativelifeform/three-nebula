@@ -13,6 +13,12 @@
   max-height: 300px;
   position: relative;
 
+  .canvas-container {
+    height: $hero-canvas-h;
+    position: relative;
+    width: 100%;
+  }
+
   canvas {
     vertical-align: bottom;
     // opacity: 0.5;
@@ -32,6 +38,11 @@
   }
 
   .Blurb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     p {
       line-height: 1.4em;
       margin-bottom: $padding-l;
@@ -86,11 +97,11 @@
       text-align: center;
 
       h2 {
-        font-size: 1.2em;
+        font-size: 2.2em;
       }
 
       p {
-        font-size: 0.9em;
+        font-size: 1em;
       }
     }
     video {
@@ -108,7 +119,7 @@
       }
 
       p {
-        font-size: 1.1em;
+        font-size: 1.3em;
       }
     }
     video {
@@ -121,7 +132,7 @@
   .Hero {
     .Blurb {
       h2 {
-        font-size: 3.8em;
+        font-size: 3em;
       }
     }
   }
