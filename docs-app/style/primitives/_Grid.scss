@@ -21,17 +21,17 @@
   }
 }
 
-.Hero {
+.Guide {
   .Grid {
-    position: relative;
-    grid-template-columns: 1fr 1.8fr;
-    grid-gap: 50px;
-    align-items: center;
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 $padding-l;
-    height: calc(100vh - #{$header-h});
-    text-align: left;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 72px 32px;
+  }
+}
+
+.Examples {
+  .Grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 32px 32px;
   }
 }
 

@@ -15,7 +15,7 @@ export const Content = ({
         {text && <p>{text}</p>}
       </header>
     )}
-    <section className="main">{children}</section>
+    {children}
   </section>
 );
 

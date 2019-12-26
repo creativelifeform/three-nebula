@@ -19,7 +19,7 @@ const Link = ({ href, name, router: { pathname }, url = null }) => {
 };
 
 Link.propTypes = {
-  href: string.isRequired,
+  href: string,
   name: string.isRequired,
   router: shape({
     pathname: string,

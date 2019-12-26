@@ -4,13 +4,22 @@
     padding: 0;
     max-width: 100%;
   }
+
+  .Content.Guide {
+    padding: $padding-letterbox;
+    max-width: $content-max-width;
+  }
+
+  .Content.Examples {
+    padding: $padding-letterbox;
+    background: black;
+  }
 }
 
 .Hero {
   background: black;
   padding: 0 $padding-l;
   width: 100%;
-  max-height: 300px;
   position: relative;
 
   .canvas-container {
@@ -22,19 +31,6 @@
   canvas {
     vertical-align: bottom;
     // opacity: 0.5;
-  }
-
-  .content {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1.8fr;
-    grid-gap: 50px;
-    align-items: center;
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 $padding-l;
-    height: calc(100vh - #{$header-h});
-    text-align: left;
   }
 
   .Blurb {
@@ -58,37 +54,14 @@
     width: 100%;
   }
 
-  .container {
-    position: relative;
-
-    .content {
-      position: absolute;
-      z-index: 2;
-      top: 10%;
-      left: 50%;
-      text-align: center;
-      font-size: 2em;
-
-      .content-wrap {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        .blurb {
-          width: 100%;
-        }
-
-        .image {
-          width: $hero-image-w / 3;
-          height: $hero-image-h / 3;
-          transform: translateX(-50%) translateY(0%);
-          margin: auto;
-        }
-      }
-    }
-  }
-
   text-align: center;
+}
+
+.Examples {
+  .wrap {
+    margin: auto;
+    max-width: $content-max-width;
+  }
 }
 
 @include phone {

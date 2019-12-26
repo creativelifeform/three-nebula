@@ -1,6 +1,6 @@
+import { Callout, ThreeLink } from '../../primitives';
 import { shape, string } from 'prop-types';
 
-import { Callout } from '../../primitives';
 import React from 'react';
 import { withContent } from '../../../common/utils';
 
@@ -12,7 +12,10 @@ const Blurb = ({
 }) => (
   <div className="Blurb">
     <h2>{title}</h2>
-    <p>{text}</p>
+    <p>
+      {text}
+      <ThreeLink text={'three.js'} />
+    </p>
     <Callout text={large} />
   </div>
 );
