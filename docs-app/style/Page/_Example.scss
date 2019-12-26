@@ -1,0 +1,12 @@
+.Page.Example {
+  .Content {
+    max-width: 100%;
+    height: calc(100vh - #{$header-h});
+    padding: 0;
+  }
+
+  .canvas-container,
+  .canvas {
+    height: calc(100vh - #{$header-h});
+  }
+}

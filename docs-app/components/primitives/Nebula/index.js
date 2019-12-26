@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { array, func, number, shape, string } from 'prop-types';
+import { array, bool, func, number, shape, string } from 'prop-types';
 
 export class Nebula extends Component {
   state = {
@@ -22,7 +22,7 @@ export class Nebula extends Component {
 
     this.setCanvasSize(async () => {
       const { canvas } = this;
-      const { json, init } = this.props;
+      const { json, init, shouldRotateCamera } = this.props;
 
       if (json) {
         const { Renderer } = require('./Renderer/Json');
@@ -33,7 +33,11 @@ export class Nebula extends Component {
       if (init) {
         const { Renderer } = require('./Renderer/Procedural');
 
-        this.renderer = await new Renderer(canvas, init).start();
+        this.renderer = await new Renderer(
+          canvas,
+          init,
+          shouldRotateCamera
+        ).start();
       }
 
       window.addEventListener('resize', this.handleResize);
@@ -88,7 +92,12 @@ export class Nebula extends Component {
   }
 }
 
+Nebula.defaultProps = {
+  shouldRotateCamera: false,
+};
+
 Nebula.propTypes = {
+  shouldRotateCamera: bool,
   init: func,
   json: shape({
     headerState: shape({

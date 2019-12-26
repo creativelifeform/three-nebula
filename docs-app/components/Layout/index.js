@@ -24,7 +24,6 @@ const Layout = ({ children, router: { pathname }, routes }) => (
     <main className="App">
       <Header routes={routes} />
       {children}
-      <Footer />
     </main>
   </>
 );

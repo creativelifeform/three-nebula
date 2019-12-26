@@ -13,7 +13,7 @@ export default () => {
   const router = useRouter();
 
   return (
-    <Page>
+    <Page className="Example">
       <Content>
         <CustomRenderer />
       </Content>

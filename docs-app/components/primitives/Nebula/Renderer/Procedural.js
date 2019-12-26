@@ -8,10 +8,11 @@ const { PerspectiveCamera, Scene, WebGLRenderer } = THREE;
  *
  */
 export class Renderer {
-  constructor(canvas, init) {
+  constructor(canvas, init, shouldRotateCamera = false) {
     this.canvas = canvas;
     this.init = init;
     this.shouldAnimate = true;
+    this.shouldRotateCamera = shouldRotateCamera;
   }
 
   /**
@@ -53,6 +54,7 @@ export class Renderer {
 
       this.particleSystem.update();
       this.webGlRenderer.render(this.scene, this.camera);
+      this.rotateCamera();
     };
 
     animate();
@@ -115,8 +117,22 @@ export class Renderer {
 
     this.camera.position.copy(position);
     this.camera.rotation.set(rotation.x, rotation.y, rotation.z);
+    this.camera.userData.tha = 0;
 
     return this;
+  }
+
+  rotateCamera() {
+    const { scene, camera, shouldRotateCamera } = this;
+
+    if (!shouldRotateCamera) {
+      return;
+    }
+
+    camera.userData.tha += 0.005;
+    camera.lookAt(scene.position);
+    camera.position.x = Math.sin(camera.userData.tha) * 500;
+    camera.position.z = Math.cos(camera.userData.tha) * 500;
   }
 
   makeWebGlRenderer(options = { alpha: true, antialias: true }) {
@@ -133,7 +149,7 @@ export class Renderer {
   }
 
   async makeParticleSystem() {
-    this.particleSystem = await this.init(this.scene);
+    this.particleSystem = await this.init(this.scene, this.camera);
 
     return Promise.resolve(this.render());
   }
