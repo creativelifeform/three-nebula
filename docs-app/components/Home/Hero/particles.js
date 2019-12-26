@@ -21,7 +21,7 @@ export default {
           perSecondMax: 0.02,
         },
         position: {
-          x: -70,
+          x: -40,
           y: -56,
           z: 0,
         },

@@ -27,17 +27,21 @@ export class Nebula extends Component {
       if (json) {
         const { Renderer } = require('./Renderer/Json');
 
-        this.renderer = await new Renderer(canvas, json).start();
+        this.renderer = await new Renderer({
+          canvas,
+          json,
+          shouldRotateCamera,
+        }).start();
       }
 
       if (init) {
         const { Renderer } = require('./Renderer/Procedural');
 
-        this.renderer = await new Renderer(
+        this.renderer = await new Renderer({
           canvas,
           init,
-          shouldRotateCamera
-        ).start();
+          shouldRotateCamera,
+        }).start();
       }
 
       window.addEventListener('resize', this.handleResize);
