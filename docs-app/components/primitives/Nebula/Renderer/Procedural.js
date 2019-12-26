@@ -149,7 +149,13 @@ export class Renderer {
   }
 
   async makeParticleSystem() {
-    this.particleSystem = await this.init(this.scene, this.camera);
+    const { scene, camera, webGlRenderer } = this;
+
+    this.particleSystem = await this.init({
+      scene,
+      camera,
+      renderer: webGlRenderer,
+    });
 
     return Promise.resolve(this.render());
   }

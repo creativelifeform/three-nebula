@@ -59,7 +59,7 @@ const createEmitter = zone => {
   return emitter;
 };
 
-export default async (scene, camera) => {
+export default async ({ scene, camera }) => {
   const system = new ParticleSystem();
   const renderer = new CustomRenderer();
   const mesh = new Mesh(new BoxGeometry(1, 1, 1), new MeshNormalMaterial());

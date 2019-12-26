@@ -1,21 +1,15 @@
-import { Content, Page } from '../../components';
+import { Content, Examples, Page } from '../../components';
 
 import React from 'react';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
-const CustomRenderer = dynamic(
-  () => import('../../components/Examples/CustomRenderer'),
-  { ssr: false }
-);
-
 export default () => {
-  const router = useRouter();
+  const { query } = useRouter();
 
   return (
     <Page className="Example">
       <Content>
-        <CustomRenderer />
+        <Examples query={query} />
       </Content>
     </Page>
   );
