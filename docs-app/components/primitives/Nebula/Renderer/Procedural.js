@@ -1,7 +1,5 @@
 import * as THREE from 'three';
 
-import { test as DEFAULT_DATA } from './data.js';
-
 const { PerspectiveCamera, Scene, WebGLRenderer } = THREE;
 
 /**
@@ -9,10 +7,10 @@ const { PerspectiveCamera, Scene, WebGLRenderer } = THREE;
  * into the editor's Stage component.
  *
  */
-export class Visualisation {
-  constructor(canvas, data = DEFAULT_DATA) {
+export class Renderer {
+  constructor(canvas, init) {
     this.canvas = canvas;
-    this.data = data;
+    this.init = init;
     this.shouldAnimate = true;
   }
 
@@ -135,20 +133,8 @@ export class Visualisation {
   }
 
   async makeParticleSystem() {
-    const {
-      default: ParticleSystem,
-      SpriteRenderer,
-    } = await import('three-nebula');
+    this.particleSystem = await this.init(this.scene);
 
-    return new Promise(resolve => {
-      ParticleSystem.fromJSONAsync(this.data.particleSystemState, THREE)
-        .then(particleSystem => {
-          this.particleSystem = particleSystem;
-          particleSystem.addRenderer(new SpriteRenderer(this.scene, THREE));
-
-          return resolve(this.render());
-        })
-        .catch(console.error);
-    });
+    return Promise.resolve(this.render());
   }
 }

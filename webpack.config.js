@@ -8,6 +8,7 @@ module.exports = {
     filename: 'three-nebula.js',
     library: 'Nebula',
     libraryTarget: 'umd',
+    globalObject: 'this',
   },
   devtool: 'source-map',
   module: {

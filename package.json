@@ -15,6 +15,7 @@
   },
   "scripts": {
     "build": "webpack && npm run docs:build",
+    "dev": "webpack --watch",
     "docs": "./scripts/docs",
     "docs:build": "./scripts/docs-build",
     "test": "mocha --require @babel/register --colors './test/**/*.spec.js'",

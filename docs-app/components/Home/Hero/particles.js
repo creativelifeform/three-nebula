@@ -1,24 +1,4 @@
-// eslint-disable-next-line
-const prepare = data => {
-  data.particleSystemState.emitters.forEach(emitter => {
-    emitter.totalEmitTimes = Infinity;
-    emitter.life = Infinity;
-    emitter.behaviours.forEach(behaviour => {
-      behaviour.life = Infinity;
-    });
-    emitter.emitterBehaviours.forEach(behaviour => {
-      behaviour.life = Infinity;
-    });
-  });
-
-  return data;
-};
-
-// const prepared = prepare(data);
-//
-// export default prepared;
-
-export const test = {
+export default {
   headerState: {
     projectName: 'Web System v4',
   },

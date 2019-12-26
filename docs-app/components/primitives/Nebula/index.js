@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { array, func, number, shape, string } from 'prop-types';
 
-export default class Canvas extends Component {
+export class Nebula extends Component {
   state = {
-    width: 100,
-    height: 100,
+    width: 0,
+    height: 0,
   };
 
   constructor(props) {
@@ -20,18 +21,34 @@ export default class Canvas extends Component {
     }
 
     this.setCanvasSize(async () => {
-      const { Visualisation } = require('./Visualisation');
+      const { canvas } = this;
+      const { json, init } = this.props;
 
-      this.visualisation = await new Visualisation(this.canvas).start();
+      if (json) {
+        const { Renderer } = require('./Renderer/Json');
+
+        this.renderer = await new Renderer(canvas, json).start();
+      }
+
+      if (init) {
+        const { Renderer } = require('./Renderer/Procedural');
+
+        this.renderer = await new Renderer(canvas, init).start();
+      }
 
       window.addEventListener('resize', this.handleResize);
     });
   }
 
   componentWillUnmount() {
-    const { visualisation } = this;
+    const { renderer } = this;
 
-    visualisation && visualisation.stop();
+    if (!renderer) {
+      return;
+    }
+
+    renderer.stop();
+    window.removeEventListener('resize', this.handleResize);
   }
 
   setCanvasSize(callback) {
@@ -42,9 +59,9 @@ export default class Canvas extends Component {
   }
 
   handleResize = e => {
-    const { visualisation } = this;
+    const { renderer } = this;
 
-    this.setCanvasSize(() => visualisation && visualisation.resize());
+    this.setCanvasSize(() => renderer && renderer.resize());
   };
 
   get canvas() {
@@ -70,3 +87,17 @@ export default class Canvas extends Component {
     );
   }
 }
+
+Nebula.propTypes = {
+  init: func,
+  json: shape({
+    headerState: shape({
+      projectName: string,
+    }),
+    particleSystemState: shape({
+      preParticles: number,
+      integrationType: string,
+      emitters: array,
+    }),
+  }),
+};

@@ -1,11 +1,12 @@
+import { Content, Nebula } from '../../primitives';
+
 import Blurb from './Blurb';
-import Canvas from './Canvas';
-import { Content } from '../../primitives';
 import React from 'react';
+import json from './particles';
 
 export default () => (
   <Content className="Hero">
-    <Canvas />
+    <Nebula json={json} />
     <Blurb />
   </Content>
 );
