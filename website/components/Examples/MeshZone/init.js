@@ -19,7 +19,13 @@ import ParticleSystem, {
 import GLTFLoader from 'three-gltf-loader';
 import dot from '../../../assets/dot.png';
 
-const { TextureLoader, SpriteMaterial, AdditiveBlending, Sprite } = THREE;
+const {
+  TextureLoader,
+  SpriteMaterial,
+  AdditiveBlending,
+  Sprite,
+  Geometry,
+} = THREE;
 
 const createSprite = () => {
   var map = new TextureLoader().load(dot);
@@ -37,22 +43,22 @@ const loadMeshFromGLTF = () =>
     new GLTFLoader().load('/sword.glb', ({ scene }) =>
       scene.traverse(child => {
         if (child.isMesh) {
+          child.material.wireframe = true;
           return resolve(child);
         }
       })
     );
   });
 
-const createEmitter = async () => {
+const createEmitter = async mesh => {
   const emitter = new Emitter();
-  const mesh = await loadMeshFromGLTF();
 
   return emitter
     .setRate(new Rate(new Span(11, 15), new Span(0.02)))
     .addInitializers([
-      new Position(new MeshZone(mesh, 200)),
+      new Position(new MeshZone(mesh, 200, Geometry)),
       new Mass(1),
-      new Radius(5, 10),
+      new Radius(1, 3),
       new Life(1.5),
       new Body(createSprite()),
     ])
@@ -68,11 +74,10 @@ const createEmitter = async () => {
 
 export default async ({ scene, camera }) => {
   const system = new ParticleSystem();
-  const emitter = await createEmitter();
+  const mesh = await loadMeshFromGLTF();
+  const emitter = await createEmitter(mesh);
 
-  throw new Error(
-    'Currently broken as MeshZone does not support BufferGeometry see https://github.com/creativelifeform/three-nebula/issues/74'
-  );
+  scene.add(mesh);
 
   return system
     .addEmitter(emitter)

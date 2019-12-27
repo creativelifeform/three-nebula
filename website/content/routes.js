@@ -7,9 +7,9 @@ module.exports = [
     path: '/',
   },
   {
-    title: 'Three Nebula - Examples',
+    title: 'Three Nebula - Particle System Examples',
     name: 'Examples',
-    path: '#examples',
+    path: '/examples',
   },
   {
     title: 'Three Nebula - Documentation',

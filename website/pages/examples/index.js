@@ -1,15 +1,12 @@
 import { Content, Examples, Page } from '../../components';
 
 import React from 'react';
-import { useRouter } from 'next/router';
 
 export default () => {
-  const { query } = useRouter();
-
   return (
-    <Page className="Example">
+    <Page className="Examples">
       <Content>
-        <Examples query={query} />
+        <Examples query={{ name: 'custom-renderer' }} />
       </Content>
     </Page>
   );

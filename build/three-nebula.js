@@ -10143,7 +10143,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! exports provided: Alpha, Attraction, Collision, Color, CrossZone, Force, Gravity, RandomDrift, Repulsion, Rotate, Scale, Spring, Debug, log, ease, easeLinear, easeInQuad, easeOutQuad, easeInOutQuad, easeInCubic, easeOutCubic, easeInOutCubic, easeInQuart, easeOutQuart, easeInOutQuart, easeInSine, easeOutSine, easeInOutSine, easeInExpo, easeOutExpo, easeInOutExpo, easeInCirc, easeOutCirc, easeInOutCirc, easeInBack, easeOutBack, easeInOutBack, setEasingByName, getEasingByName, FollowEmitter, Emitter, Body, BodySprite, InitializerUtil, Life, Mass, Position, Radius, Rate, Texture, VectorVelocity, PolarVelocity, RadialVelocity, ArraySpan, createArraySpan, ColorSpan, createColorSpan, Box, integrate, MathUtils, Polar3D, Span, createSpan, Vector3D, INTEGRATION_TYPE_EULER, INTEGRATION_TYPE_RK2, INTEGRATION_TYPE_RK4, INTEGRATION_TYPE_VERLET, CustomRenderer, MeshRenderer, PointsRenderer, SpriteRenderer, ColorUtil, PUID, THREEUtil, Util, uid, withDefaults, BoxZone, LineZone, MeshZone, PointZone, ScreenZone, SphereZone, System, Particle, Pool, default */
+/*! exports provided: System, Particle, Pool, default, Alpha, Attraction, Collision, Color, CrossZone, Force, Gravity, RandomDrift, Repulsion, Rotate, Scale, Spring, Debug, log, ease, easeLinear, easeInQuad, easeOutQuad, easeInOutQuad, easeInCubic, easeOutCubic, easeInOutCubic, easeInQuart, easeOutQuart, easeInOutQuart, easeInSine, easeOutSine, easeInOutSine, easeInExpo, easeOutExpo, easeInOutExpo, easeInCirc, easeOutCirc, easeInOutCirc, easeInBack, easeOutBack, easeInOutBack, setEasingByName, getEasingByName, FollowEmitter, Emitter, Body, BodySprite, InitializerUtil, Life, Mass, Position, Radius, Rate, Texture, VectorVelocity, PolarVelocity, RadialVelocity, ArraySpan, createArraySpan, ColorSpan, createColorSpan, Box, integrate, MathUtils, Polar3D, Span, createSpan, Vector3D, INTEGRATION_TYPE_EULER, INTEGRATION_TYPE_RK2, INTEGRATION_TYPE_RK4, INTEGRATION_TYPE_VERLET, CustomRenderer, MeshRenderer, PointsRenderer, SpriteRenderer, ColorUtil, PUID, THREEUtil, Util, uid, withDefaults, BoxZone, LineZone, MeshZone, PointZone, ScreenZone, SphereZone */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14138,12 +14138,14 @@ function (_Zone) {
    *
    * @param {THREE.Geometry|Mesh} bounds - the geometry or mesh that will determine the zone bounds
    * @param {number} scale - the zone scale
+   * @param {THREE.Geometry} ThreeGeometry - the three geometry class
    * @return void
    */
   function MeshZone(bounds) {
     var _this;
 
     var scale = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+    var ThreeGeometry = arguments.length > 2 ? arguments[2] : undefined;
 
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, MeshZone);
 
@@ -14162,6 +14164,10 @@ function (_Zone) {
 
     if (!_this.geometry) {
       throw new Error('MeshZone unable to set geometry from the supplied bounds');
+    }
+
+    if (_this.geometry.isBufferGeometry) {
+      _this.geometry = new ThreeGeometry().fromBufferGeometry(_this.geometry);
     }
 
     return _this;
