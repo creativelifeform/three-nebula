@@ -9,6 +9,7 @@ import MeshZone from './MeshZone';
 import React from 'react';
 import SpriteRendererGravity from './SpriteRendererGravity';
 import SpriteRendererPointZone from './SpriteRendererPointZone';
+import SpriteRendererSnow from './SpriteRendererSnow';
 
 const Examples = ({ query: { name } }) => {
   switch (name) {
@@ -28,6 +29,8 @@ const Examples = ({ query: { name } }) => {
       return <SpriteRendererGravity />;
     case 'sprite-renderer-point-zone':
       return <SpriteRendererPointZone />;
+    case 'sprite-renderer-snow':
+      return <SpriteRendererSnow />;
     default:
       return null;
   }
