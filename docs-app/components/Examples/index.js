@@ -7,6 +7,7 @@ import MeshRenderer from './MeshRenderer';
 import MeshRendererCollision from './MeshRendererCollision';
 import MeshZone from './MeshZone';
 import React from 'react';
+import SpriteRendererGravity from './SpriteRendererGravity';
 
 const Examples = ({ query: { name } }) => {
   switch (name) {
@@ -22,6 +23,8 @@ const Examples = ({ query: { name } }) => {
       return <MeshRendererCollision />;
     case 'mesh-zone':
       return <MeshZone />;
+    case 'sprite-renderer-gravity':
+      return <SpriteRendererGravity />;
     default:
       return null;
   }
