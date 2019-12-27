@@ -91,7 +91,7 @@ export default class {
     const cameraState = {
       type: 'PerspectiveCamera',
       params: {
-        fov: 75,
+        fov: 70,
         nearPlane: 0.1,
         farPlane: 1000,
       },

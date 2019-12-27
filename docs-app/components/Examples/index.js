@@ -4,6 +4,7 @@ import CustomRenderer from './CustomRenderer';
 import EightDiagrams from './EightDiagrams';
 import EmitterBehaviors from './EmitterBehaviors';
 import MeshRenderer from './MeshRenderer';
+import MeshRendererCollision from './MeshRendererCollision';
 import React from 'react';
 
 const Examples = ({ query: { name } }) => {
@@ -16,6 +17,8 @@ const Examples = ({ query: { name } }) => {
       return <EmitterBehaviors />;
     case 'mesh-renderer':
       return <MeshRenderer />;
+    case 'mesh-renderer-collision':
+      return <MeshRendererCollision />;
     default:
       return null;
   }
