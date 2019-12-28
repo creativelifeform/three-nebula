@@ -1,9 +1,13 @@
 import { Content, Page } from '../primitives';
-import { shape, string } from 'prop-types';
 
 import { EXAMPLE_NAME_TO_COMPONENT_MAP } from './constants';
 import React from 'react';
 import { Sidebar } from './Sidebar';
+import { string } from 'prop-types';
+
+const examplePropTypes = {
+  name: string,
+};
 
 const Example = ({ name }) => {
   const Component = EXAMPLE_NAME_TO_COMPONENT_MAP[name];
@@ -11,7 +15,7 @@ const Example = ({ name }) => {
   return Component ? <Component /> : null;
 };
 
-const Examples = ({ query: { name } }) => {
+const Examples = ({ name }) => {
   return (
     <Page className="Examples">
       <Content>
@@ -22,10 +26,7 @@ const Examples = ({ query: { name } }) => {
   );
 };
 
-Examples.propTypes = {
-  query: shape({
-    name: string,
-  }),
-};
+Example.propTypes = examplePropTypes;
+Examples.propTypes = examplePropTypes;
 
 export default Examples;

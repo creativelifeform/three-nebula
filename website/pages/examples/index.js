@@ -1,11 +1,24 @@
+import React, { Component } from 'react';
 import { shape, string } from 'prop-types';
 
 import { Examples } from '../../components';
-import React from 'react';
+import Router from 'next/router';
 
-const ExamplesPage = ({ query = { name: 'custom-renderer' } }) => {
-  return <Examples query={query} />;
-};
+class ExamplesPage extends Component {
+  static defaultProps = {
+    query: undefined,
+  };
+
+  componentDidMount() {
+    !this.props.query && Router.push('/examples/custom-renderer');
+  }
+
+  render() {
+    const { query } = this.props;
+
+    return <Examples name={query ? query.name : undefined} />;
+  }
+}
 
 ExamplesPage.propTypes = {
   query: shape({
