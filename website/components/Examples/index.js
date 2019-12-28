@@ -1,39 +1,25 @@
+import { Content, Page } from '../primitives';
 import { shape, string } from 'prop-types';
 
-import CustomRenderer from './CustomRenderer';
-import EightDiagrams from './EightDiagrams';
-import EmitterBehaviors from './EmitterBehaviors';
-import MeshRenderer from './MeshRenderer';
-import MeshRendererCollision from './MeshRendererCollision';
-import MeshZone from './MeshZone';
+import { EXAMPLE_NAME_TO_COMPONENT_MAP } from './constants';
 import React from 'react';
-import SpriteRendererGravity from './SpriteRendererGravity';
-import SpriteRendererPointZone from './SpriteRendererPointZone';
-import SpriteRendererSnow from './SpriteRendererSnow';
+import { Sidebar } from './Sidebar';
+
+const Example = ({ name }) => {
+  const Component = EXAMPLE_NAME_TO_COMPONENT_MAP[name];
+
+  return Component ? <Component /> : null;
+};
 
 const Examples = ({ query: { name } }) => {
-  switch (name) {
-    case 'custom-renderer':
-      return <CustomRenderer />;
-    case 'eight-diagrams':
-      return <EightDiagrams />;
-    case 'emitter-behaviors':
-      return <EmitterBehaviors />;
-    case 'mesh-renderer':
-      return <MeshRenderer />;
-    case 'mesh-renderer-collision':
-      return <MeshRendererCollision />;
-    case 'mesh-zone':
-      return <MeshZone />;
-    case 'sprite-renderer-gravity':
-      return <SpriteRendererGravity />;
-    case 'sprite-renderer-point-zone':
-      return <SpriteRendererPointZone />;
-    case 'sprite-renderer-snow':
-      return <SpriteRendererSnow />;
-    default:
-      return null;
-  }
+  return (
+    <Page className="Examples">
+      <Content>
+        <Sidebar />
+        <Example name={name} />
+      </Content>
+    </Page>
+  );
 };
 
 Examples.propTypes = {

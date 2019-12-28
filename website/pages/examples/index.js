@@ -1,13 +1,16 @@
-import { Content, Examples, Page } from '../../components';
+import { shape, string } from 'prop-types';
 
+import { Examples } from '../../components';
 import React from 'react';
 
-export default () => {
-  return (
-    <Page className="Examples">
-      <Content>
-        <Examples query={{ name: 'custom-renderer' }} />
-      </Content>
-    </Page>
-  );
+const ExamplesPage = ({ query = { name: 'custom-renderer' } }) => {
+  return <Examples query={query} />;
 };
+
+ExamplesPage.propTypes = {
+  query: shape({
+    name: string,
+  }),
+};
+
+export default ExamplesPage;

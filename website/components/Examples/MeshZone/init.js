@@ -28,27 +28,23 @@ const {
 } = THREE;
 
 const createSprite = () => {
-  var map = new TextureLoader().load(dot);
-  var material = new SpriteMaterial({
+  const map = new TextureLoader().load(dot);
+  const material = new SpriteMaterial({
     map: map,
     color: 0xff0000,
     blending: AdditiveBlending,
     fog: true,
   });
+
   return new Sprite(material);
 };
 
 const loadMeshFromGLTF = () =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve, reject) =>
     new GLTFLoader().load('/sword.glb', ({ scene }) =>
-      scene.traverse(child => {
-        if (child.isMesh) {
-          child.material.wireframe = true;
-          return resolve(child);
-        }
-      })
-    );
-  });
+      scene.traverse(child => child.isMesh && resolve(child))
+    )
+  );
 
 const createEmitter = async mesh => {
   const emitter = new Emitter();
@@ -77,6 +73,7 @@ export default async ({ scene, camera }) => {
   const mesh = await loadMeshFromGLTF();
   const emitter = await createEmitter(mesh);
 
+  mesh.material.wireframe = true;
   scene.add(mesh);
 
   return system

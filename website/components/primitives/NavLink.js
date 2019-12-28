@@ -9,9 +9,15 @@ const Link = ({ href, name, router: { pathname }, url = null }) => {
     return <a href={url}>{name}</a>;
   }
 
+  let route = pathname;
+
+  if (pathname.includes('[')) {
+    route = `/${pathname.split('/')[1]}`;
+  }
+
   return (
     <NextLink href={href}>
-      <a className={href === pathname ? 'active' : ''} href={href}>
+      <a className={href === route ? 'active' : ''} href={href}>
         {name}
       </a>
     </NextLink>

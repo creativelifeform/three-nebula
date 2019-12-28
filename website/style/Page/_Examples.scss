@@ -1,12 +1,61 @@
 .Page.Examples {
   .Content {
-    max-width: 100%;
+    max-width: 100vw;
     height: calc(100vh - #{$header-h});
     padding: 0;
+    clear: both;
+
+    .Sidebar {
+      float: left;
+
+      header {
+        padding: $padding-l;
+      }
+
+      header {
+        text-align: left;
+        padding-bottom: $padding-l;
+        font-weight: bold;
+        border-bottom: $sidebar-border;
+      }
+
+      ul {
+        padding-top: $padding-l;
+
+        li {
+          a {
+            text-decoration: none;
+            display: inline-block;
+            padding: $padding-s $padding-l;
+            width: 100%;
+
+            &:hover {
+              text-decoration: underline;
+            }
+
+            &.active {
+              // color: #049ef4;
+              background: $sidebar-border-color;
+              background: $app-accent;
+              font-weight: bold;
+
+              &:hover {
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .canvas-container {
+    float: left;
   }
 
   .canvas-container,
   .canvas {
+    width: calc(100vw - #{$sidebar-w});
     height: calc(100vh - #{$header-h});
   }
 }

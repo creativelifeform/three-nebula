@@ -12,7 +12,10 @@ $gdpr-h: 50px;
 $header-h: 60px;
 $header-bg: #000;
 
-$sidebar-w: 200px;
+$sidebar-border-width: 1px;
+$sidebar-w: calc(200px + #{$sidebar-border-width});
+$sidebar-border-color: #333;
+$sidebar-border: $sidebar-border-width solid #333;
 
 $content-max-width: 1200px;
 
