@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 
+import { stats } from '../Stats';
+
 const {
   PerspectiveCamera,
   Scene,
@@ -19,6 +21,7 @@ export default class {
     this.canvas = canvas;
     this.shouldAnimate = true;
     this.shouldRotateCamera = shouldRotateCamera || false;
+    this.stats = stats;
   }
 
   /**
@@ -57,11 +60,15 @@ export default class {
         return;
       }
 
-      requestAnimationFrame(animate);
+      this.stats.begin();
 
       this.particleSystem.update();
       this.webGlRenderer.render(this.scene, this.camera);
       this.rotateCamera();
+
+      this.stats.end();
+
+      requestAnimationFrame(animate);
     };
 
     animate();

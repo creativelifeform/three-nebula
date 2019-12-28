@@ -1,4 +1,3 @@
-import Examples from './Examples';
 import Guide from './Guide';
 import Hero from './Hero';
 import { Page } from '../primitives';
@@ -8,6 +7,5 @@ export default () => (
   <Page className="Home">
     <Hero />
     <Guide />
-    <Examples />
   </Page>
 );

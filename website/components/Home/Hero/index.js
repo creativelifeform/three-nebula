@@ -6,7 +6,7 @@ import json from './particles';
 
 export default () => (
   <Content className="Hero">
-    <Nebula json={json} />
+    <Nebula json={json} shouldShowStats={false} />
     <Blurb />
   </Content>
 );

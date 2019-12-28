@@ -12,6 +12,11 @@ button,
   font-family: $app-font-header;
 }
 
+a.button {
+  text-decoration: none;
+  display: inline-block;
+}
+
 button:hover,
 .button:hover {
   background: darken($button-bg, 10);

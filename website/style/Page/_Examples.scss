@@ -58,4 +58,12 @@
     width: calc(100vw - #{$sidebar-w});
     height: calc(100vh - #{$header-h});
   }
+
+  #stats {
+    div {
+      position: absolute !important;
+      top: $header-h + $padding-xs !important;
+      left: $sidebar-w + $padding-xs !important;
+    }
+  }
 }
