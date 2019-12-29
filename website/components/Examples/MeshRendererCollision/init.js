@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 
 import ParticleSystem, {
-  Alpha,
   Body,
   Collision,
   Emitter,

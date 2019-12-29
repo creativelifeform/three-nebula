@@ -3,6 +3,7 @@ node_js:
   - 'node'
 script:
   - npm run lint
+  - npm run lint:website
   - npm run test
   - npm run bundlesize
   - npm run coverage:generate

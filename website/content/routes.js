@@ -1,6 +1,4 @@
-// using module.exports as this file is required by node
-
-import { HREF_DOCS, HREF_GITHUB } from '../common/constants';
+// this file is used in a node environment so import/export syntax is not allowed
 
 module.exports = [
   {
@@ -16,11 +14,11 @@ module.exports = [
   {
     title: 'Three Nebula - Documentation',
     name: 'Docs',
-    url: HREF_DOCS,
+    url: 'https://three-nebula-docs.netlify.com/',
   },
   {
     title: 'Three Nebula - GitHub',
     name: 'GitHub',
-    url: HREF_GITHUB,
+    url: 'https://github.com/creativelifeform/three-nebula',
   },
 ];

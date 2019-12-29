@@ -5,7 +5,8 @@ import App from 'next/app';
 import { Layout } from '../components';
 import React from 'react';
 import Router from 'next/router';
-import routes from '../content/routes';
+
+const routes = require('../content/routes');
 
 class MyApp extends App {
   render() {

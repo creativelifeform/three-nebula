@@ -1,16 +1,26 @@
-# Nebula Web
+# Three Nebula Website
 
-This is the website for [Nebula](https://getnebula.app), a 3D particle system designer for desktops and the web.
+This is source code for the [`three-nebula`](https://github.com/creativelifeform/three-nebula) website. It's been built with [`next.js`](https://github.com/zeit/next.js), so please check their docs before opening issues.
 
-This app has been built with [nextjs](https://github.com/zeit/next.js/)
+## Parallel Development
 
-## Installation
+In order to develop the `three-nebula` source code and the website in parallel with all the live update goodness, you just need to do three things.
+
+1. Open two terminal windows/tabs
+2. In the first tab, run the following commands
 
 ```
-git clone git@github.com:creativelifeform/nebula-web.git
-npm i
+cd /path/to/three-nebula
+npm run dev
 ```
 
-### Environment
+3. Now from the second tab run these commands
 
-You'll need to set up a couple of environment variables, examples can be found in the `.env.example` file
+```
+cd /path/to/three-nebula/website
+npm run link-src && npm run dev
+```
+
+This will make sure that changes to `three-nebula/src` will appear in `three-nebula/website` in dev mode.
+
+Just visit `http://localhost:3000` and start hacking!

@@ -1,12 +1,12 @@
-import { Callout, NavLink } from '../../primitives';
 import React, { Component } from 'react';
-import { array, object } from 'prop-types';
+import { array, bool, func, object } from 'prop-types';
 
+import { NavLink } from '../../primitives';
 import { withRouter } from 'next/router';
 
 const Hamburger = ({ isOpen, toggle }) => (
   <div className="Hamburger" onClick={toggle}>
-    menu
+    {isOpen ? 'menu' : 'close'}
   </div>
 );
 
@@ -53,6 +53,11 @@ class Nav extends Component {
     );
   }
 }
+
+Hamburger.propTypes = {
+  isOpen: bool,
+  toggle: func,
+};
 
 Nav.propTypes = {
   routes: array.isRequired,

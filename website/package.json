@@ -1,12 +1,13 @@
 {
-  "name": "three-nebula-docs",
+  "name": "three-nebula-website",
   "version": "0.0.1",
   "scripts": {
     "link-src": "./scripts/link-three-nebula",
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "next export"
+    "export": "next export",
+    "lint": "eslint common components content context pages && ./node_modules/.bin/madge --circular common components content context pages"
   },
   "dependencies": {
     "next": "^9.1.6",
@@ -34,18 +35,19 @@
     "eslint-plugin-flowtype": "^4.2.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     "import-sort-cli": "^6.0.0",
     "import-sort-parser-babylon": "^5.2.0",
     "import-sort-style-absolute": "^1.0.1",
-    "madge": "^3.4.4",
+    "madge": "^3.6.0",
     "next-assets-import": "0.0.2",
     "next-progressbar": "^1.0.0",
     "node-sass": "^4.12.0",
     "prettier": "^1.15.2",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "three-nebula": "^5.0.2"
   },
   "eslintConfig": {
     "extends": [
