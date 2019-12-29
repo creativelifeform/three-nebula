@@ -8,6 +8,7 @@
     "start": "next start",
     "export": "next export",
     "lint": "eslint common components content context pages && ./node_modules/.bin/madge --circular common components content context pages",
+    "analyze": "ANALYZE=true npm run build",
     "ci": "npm install && npm run lint"
   },
   "dependencies": {
@@ -26,6 +27,7 @@
   "keywords": [],
   "description": "",
   "devDependencies": {
+    "@next/bundle-analyzer": "^9.1.6",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
     "@zeit/next-sass": "^1.0.1",

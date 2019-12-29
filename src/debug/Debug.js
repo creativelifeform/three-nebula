@@ -2,6 +2,7 @@ import { DEFAULT_POSITION, DEFAULT_SIZE as size } from './constants';
 
 /**
  * @exports Debug - methods and helpers for debugging System emitters, zones and particles.
+ * @requires THREE - { SphereGeometry, BoxGeometry, MeshBasicMaterial, OctahedronGeometry, Mesh }
  */
 export default {
   /**
