@@ -24,13 +24,14 @@
     "test:watch": "mocha --require @babel/register --colors -w './test/**/*.spec.js'",
     "test:watch-only": "mocha --require @babel/register --colors -w ",
     "lint": "eslint src test && ./node_modules/.bin/madge --circular src",
-    "lint:website": "npm run lint --prefix website",
     "lint:fix": "eslint --fix",
     "coverage:view": "open ./coverage/lcov-report/index.html",
     "coverage:generate": "istanbul cover -x 'src/core/three/*.js' -x 'src/debug/*.js' ./node_modules/.bin/_mocha './test/**/*.spec.js' -- --require @babel/register",
     "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "git:publish": "./scripts/publish",
-    "bundlesize": "bundlesize"
+    "bundlesize": "bundlesize",
+    "ci:src": "npm run lint && npm run test && npm run bundlesize && npm run coverage:generate && npm run coverage:publish",
+    "ci:website": "npm run ci --prefix website"
   },
   "repository": {
     "type": "git",

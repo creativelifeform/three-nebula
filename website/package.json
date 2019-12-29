@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "lint": "eslint common components content context pages && ./node_modules/.bin/madge --circular common components content context pages"
+    "lint": "eslint common components content context pages && ./node_modules/.bin/madge --circular common components content context pages",
+    "ci": "npm install && npm run lint"
   },
   "dependencies": {
     "next": "^9.1.6",
