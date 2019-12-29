@@ -1,9 +1,7 @@
-import { Hyperlink } from "./Hyperlink";
-import React from "react";
+import { HREF_NPM } from '../../../common/constants';
+import { Hyperlink } from './Hyperlink';
+import React from 'react';
 
 export const ThreeNebulaLink = () => (
-  <Hyperlink
-    href="https://www.npmjs.com/package/three-nebula"
-    text="three-nebula"
-  />
+  <Hyperlink href={HREF_NPM} text="three-nebula" />
 );

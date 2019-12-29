@@ -1,5 +1,7 @@
 // using module.exports as this file is required by node
 
+import { HREF_DOCS, HREF_GITHUB } from '../common/constants';
+
 module.exports = [
   {
     title: 'Three Nebula - A Particle System Engine For Three Js',
@@ -14,11 +16,11 @@ module.exports = [
   {
     title: 'Three Nebula - Documentation',
     name: 'Docs',
-    url: 'https://three-nebula-docs.netlify.com/',
+    url: HREF_DOCS,
   },
   {
     title: 'Three Nebula - GitHub',
     name: 'GitHub',
-    url: 'https://github.com/creativelifeform/three-nebula',
+    url: HREF_GITHUB,
   },
 ];

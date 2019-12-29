@@ -4,7 +4,7 @@ const content = {
     large: 'See Examples',
   },
   home: {
-    title: 'Three Nebula',
+    title: 'three-nebula',
     text: 'A lightweight, modular and powerful particle system engine for ',
   },
   features: {
@@ -36,6 +36,7 @@ const content = {
       ],
     },
   },
+  footer: {},
 };
 
 const { home } = content;

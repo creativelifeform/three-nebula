@@ -1,4 +1,4 @@
-import { CalloutLink, ThreeLink } from '../../primitives';
+import { CalloutLink, Code, ThreeLink } from '../../primitives';
 import { func, shape, string } from 'prop-types';
 
 import React from 'react';
@@ -13,7 +13,9 @@ const Blurb = ({
   router,
 }) => (
   <div className="Blurb">
-    <h2>{title}</h2>
+    <h2>
+      <Code>{title}</Code>
+    </h2>
     <p>
       {text}
       <ThreeLink text={'three.js'} />

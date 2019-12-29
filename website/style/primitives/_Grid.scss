@@ -58,6 +58,13 @@
   }
 }
 
+.Footer {
+  .Grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0px $padding-xl;
+  }
+}
+
 @include phone {
   .Grid {
     display: block;

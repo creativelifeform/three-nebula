@@ -9,6 +9,7 @@ import {
 } from '../primitives';
 import { shape, string } from 'prop-types';
 
+import { HREF_NEBULA } from '../../common/constants';
 import React from 'react';
 import { withContent } from '../../common/utils';
 
@@ -35,10 +36,7 @@ const AboutNebula = ({
             return <p>{paragraph}</p>;
           })}
 
-          <CalloutLink
-            href={'https://getnebula.app/download'}
-            text={'Get the desktop app'}
-          />
+          <CalloutLink href={HREF_NEBULA} text={'Get the desktop app'} />
         </GridItemDetails>
       </GridItem>
       <GridItem>

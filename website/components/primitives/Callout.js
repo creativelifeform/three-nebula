@@ -1,7 +1,6 @@
 import { func, object, string } from 'prop-types';
 
 import { AnalyticsConsumer } from '../../context';
-import { DOWNLOAD_PATH } from '../../common/constants';
 import React from 'react';
 import { withRouter } from 'next/router';
 
@@ -9,7 +8,7 @@ const Component = ({
   text = 'Get the GUI',
   className = '',
   router,
-  onClick = e => router.push(DOWNLOAD_PATH),
+  onClick = e => router.push('/'),
 }) => (
   <AnalyticsConsumer>
     {track => (
