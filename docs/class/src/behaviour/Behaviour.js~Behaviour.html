@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Home | three-nebula</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">Behaviour | three-nebula</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -365,235 +365,1881 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="three-nebula">Three Nebula</h1><p><a href="https://travis-ci.org/creativelifeform/three-nebula"><img src="https://travis-ci.org/creativelifeform/three-nebula.svg?branch=master" alt="Build Status"></a>
-<a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&amp;kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg" alt="Coverage Status"></a></p>
-<p><a href="https://github.com/creativelifeform/three-nebula/blob/master/CHANGELOG.md">CHANGELOG</a></p>
-<p><strong>Three Nebula</strong> is a WebGL based 3D particle engine that has been designed to work alongside <a href="https://github.com/mrdoob/three.js"><code>three.js</code></a>. Check out the <a href="https://creativelifeform.github.io/three-nebula/examples">examples</a> and <a href="https://three-nebula-docs.netlify.com/">API reference documentation</a> for more.</p>
-<h2 id="features">Features</h2><ul>
-<li>Perfect compatibility with <a href="https://github.com/mrdoob/three.js"><code>three@r106</code></a></li>
-<li>The ability to instantiate <code>three-nebula</code> particle systems from JSON objects using the static <code>System.fromJSON</code> method</li>
-<li>The ability to create particle systems from sprites as well as 3D meshes</li>
-<li>Many kinds of particle behaviours and initializers</li>
-</ul>
-<h2 id="installation">Installation</h2><h3 id="npm">npm</h3><pre><code><code class="source-code prettyprint">npm i --save three-nebula</code>
-</code></pre><h3 id="script">script</h3><pre><code><code class="source-code prettyprint">&lt;script type=&apos;text/javascript&apos; src=&apos;node_modules/three-nebula/build/three-nebula.js&apos;&gt;&lt;/script&gt;</code>
-</code></pre><h2 id="usage">Usage</h2><h3 id="module">Module</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import System, {
-  Emitter,
-  Rate,
-  Span,
-  Position,
-  Mass,
-  Radius,
-  Life,
-  Velocity,
-  PointZone,
-  Vector3D,
-  Alpha,
-  Scale,
-  Color,
-} from &apos;three-nebula&apos;;
-import * as THREE from &apos;three&apos;;
+<div class="content" data-ice="content"><div class="header-notice">
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Behaviour from &apos;<span><a href="file/src/behaviour/Behaviour.js.html#lineNumber13">three-nebula/src/behaviour/Behaviour.js</a></span>&apos;</code></pre></div>
+  <span data-ice="access">public</span>
+  <span data-ice="kind">class</span>
+  
+  
+  
+  <span data-ice="source">| <span><a href="file/src/behaviour/Behaviour.js.html#lineNumber13">source</a></span></span>
+</div>
 
-const system = new System();
-const emitter = new Emitter();
-const renderer = new SpriteRenderer(threeScene, THREE);
+<div class="self-detail detail">
+  <h1 data-ice="name">Behaviour</h1>
 
-// Set emitter rate (particles per second) as well as the particle initializers and behaviours
-emitter
-  .setRate(new Rate(new Span(4, 16), new Span(0.01)))
-  .setInitializers([
-    new Position(new PointZone(0, 0)),
-    new Mass(1),
-    new Radius(6, 12),
-    new Life(3),
-    new RadialVelocity(45, new Vector3D(0, 1, 0), 180),
-  ])
-  .setBehaviours([
-    new Alpha(1, 0),
-    new Scale(0.1, 1.3),
-    new Color(new THREE.Color(), new THREE.Color()),
-  ])
-  .emit();
+  
 
-// add the emitter and a renderer to your particle system
-system.addEmitter(emitter).addRenderer(renderer);</code>
-</code></pre>
-<p>You can also instantiate your system from a JSON object</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">import System from &apos;three-nebula&apos;;
+  
+  
+  
+  <div class="flat-list" data-ice="directSubclass"><h4>Direct Subclass:</h4><div><span><a href="class/src/behaviour/Alpha.js~Alpha.html">Alpha</a></span>, <span><a href="class/src/behaviour/Attraction.js~Attraction.html">Attraction</a></span>, <span><a href="class/src/behaviour/Collision.js~Collision.html">Collision</a></span>, <span><a href="class/src/behaviour/Color.js~Color.html">Color</a></span>, <span><a href="class/src/behaviour/CrossZone.js~CrossZone.html">CrossZone</a></span>, <span><a href="class/src/behaviour/Force.js~Force.html">Force</a></span>, <span><a href="class/src/behaviour/RandomDrift.js~RandomDrift.html">RandomDrift</a></span>, <span><a href="class/src/behaviour/Rotate.js~Rotate.html">Rotate</a></span>, <span><a href="class/src/behaviour/Scale.js~Scale.html">Scale</a></span>, <span><a href="class/src/behaviour/Spring.js~Spring.html">Spring</a></span></div></div>
+  <div class="flat-list" data-ice="indirectSubclass"><h4>Indirect Subclass:</h4><div><span><a href="class/src/behaviour/Gravity.js~Gravity.html">Gravity</a></span>, <span><a href="class/src/behaviour/Repulsion.js~Repulsion.html">Repulsion</a></span></div></div>
+  
+  
+  
+  
 
-const json = {
-  preParticles: 500,
-  integrationType: &apos;euler&apos;,
-  emitters: [
-    {
-      rate: {
-        particlesMin: 5,
-        particlesMax: 7,
-        perSecondMin: 0.01,
-        perSecondMax: 0.02,
-      },
-      position: {
-        x: 70,
-        y: 0,
-      },
-      initializers: [
-        {
-          type: &apos;Mass&apos;,
-          properties: {
-            min: 1,
-            max: 1,
-          },
-        },
-        {
-          type: &apos;Life&apos;,
-          properties: {
-            min: 2,
-            max: 2,
-          },
-        },
-        {
-          type: &apos;BodySprite&apos;,
-          properties: {
-            texture: &apos;./img/dot.png&apos;,
-          },
-        },
-        {
-          type: &apos;Radius&apos;,
-          properties: {
-            width: 80,
-            height: 80,
-          },
-        },
-      ],
-      behaviours: [
-        {
-          type: &apos;Alpha&apos;,
-          properties: {
-            alphaA: 1,
-            alphaB: 0,
-          },
-        },
-        {
-          type: &apos;Color&apos;,
-          properties: {
-            colorA: &apos;#4F1500&apos;,
-            colorB: &apos;#0029FF&apos;,
-          },
-        },
-        {
-          type: &apos;Scale&apos;,
-          properties: {
-            scaleA: 1,
-            scaleB: 0.5,
-          },
-        },
-        {
-          type: &apos;Force&apos;,
-          properties: {
-            fx: 0,
-            fy: 0,
-            fz: -20,
-          },
-        },
-      ],
-    },
-    {
-      rate: {
-        particlesMin: 5,
-        particlesMax: 7,
-        perSecondMin: 0.01,
-        perSecondMax: 0.02,
-      },
-      position: {
-        x: -70,
-        y: 0,
-      },
-      initializers: [
-        {
-          type: &apos;Mass&apos;,
-          properties: {
-            min: 1,
-            max: 1,
-          },
-        },
-        {
-          type: &apos;Life&apos;,
-          properties: {
-            min: 2,
-            max: 2,
-          },
-        },
-        {
-          type: &apos;BodySprite&apos;,
-          properties: {
-            texture: &apos;./img/dot.png&apos;,
-          },
-        },
-        {
-          type: &apos;Radius&apos;,
-          properties: {
-            width: 80,
-            height: 80,
-          },
-        },
-      ],
-      behaviours: [
-        {
-          type: &apos;Alpha&apos;,
-          properties: {
-            alphaA: 1,
-            alphaB: 0,
-          },
-        },
-        {
-          type: &apos;Color&apos;,
-          properties: {
-            colorA: &apos;#004CFE&apos;,
-            colorB: &apos;#6600FF&apos;,
-          },
-        },
-        {
-          type: &apos;Scale&apos;,
-          properties: {
-            scaleA: 1,
-            scaleB: 0.5,
-          },
-        },
-        {
-          type: &apos;Force&apos;,
-          properties: {
-            fx: 0,
-            fy: 0,
-            fz: -20,
-          },
-        },
-      ],
-    },
-  ],
-};
+  
+  
+  <div class="description" data-ice="description"><p>The base behaviour class.
+Behaviours manage a particle&apos;s behaviour after they have been emitted.</p>
+</div>
+  
 
-const system = new System.fromJSONAsync(json, THREE).then(console.log);</code>
-</code></pre>
-<h3 id="script-tag">Script Tag</h3><p>If you are adding <code>three-nebula</code> to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const { System, Emitter, Rate, Span } = window.System;
-const system = new System();</code>
-</code></pre>
-<h2 id="development">Development</h2><h3 id="scripts">Scripts</h3><p>There are a few NPM scripts in the root package.json:</p>
-<ul>
-<li><code>build</code> - Builds the module and writes the code into <code>./build/three-nebula.js</code></li>
-<li><code>docs</code> - Serves the docs at <a href="http://localhost:8080">http://localhost:8080</a></li>
-<li><code>docs:build</code> - Copies the latest build to <code>./docs/js</code> and builds the API reference docs</li>
-<li><code>test</code> - Runs all specs</li>
-<li><code>test:only &lt;spec&gt;</code> - Runs a specific spec</li>
-<li><code>test:watch</code> - Watches tests</li>
-<li><code>test:watch-only &lt;spec&gt;</code> - Watches a specific spec</li>
-<li><code>lint</code> - Lints code and circular dependencies in <code>./src</code></li>
-<li><code>coverage:generate</code> - Generates a code coverage report</li>
-<li><code>coverage:view</code> - View the code coverage report</li>
-<li><code>coverage:publish</code> - Publishes the coverage report</li>
-<li><code>git:publish &lt;commit-message&gt;</code> - Builds the module, adds all changed files commits with the message you supply and pushes to remote</li>
-</ul>
-<h2 id="license">License</h2><p><a href="LICENSE.md">MIT</a></p>
+  
+
+  
+
+  
+
+  
+</div>
+
+
+
+<div data-ice="constructorSummary"><h2>Constructor Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Constructor</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, type: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, isEnabled: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Constructs a Behaviour instance.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div data-ice="memberSummary"><h2>Member Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Members</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-age">age</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The age of the behaviour</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-dead">dead</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Determines if the behaviour is dead or not</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-easing">easing</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The behaviour&apos;s decaying trend</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-energy">energy</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The energy of the behaviour</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-id">id</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The behaviour&apos;s id</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-isEnabled">isEnabled</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Determines if the behaviour will be applied or not</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      <span class="kind" data-ice="kind">set</span>
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-set-life">life</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Ensures that life is infinity if an invalid value is supplied.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      <span class="kind" data-ice="kind">get</span>
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-get-life">life</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Gets the behaviour&apos;s life.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-type">type</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The class type.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+<table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Private Members</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">private</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-member-_life">_life</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div data-ice="methodSummary"><h2>Method Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      <span class="abstract" data-ice="abstract">abstract</span>
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-applyBehaviour">applyBehaviour</a></span></span><span class="code" data-ice="signature">(target: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span> | <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>, index: <span>integer</span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Apply behaviour to the target as a factor of time.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      <span class="abstract" data-ice="abstract">abstract</span>
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-destroy">destroy</a></span></span><span class="code" data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Destory this behaviour.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-energize">energize</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Compares the age of the behaviour vs integration time and determines
+if the behaviour should be set to dead or not.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      <span class="abstract" data-ice="abstract">abstract</span>
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-fromJSON">fromJSON</a></span></span><span class="code" data-ice="signature">(json: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Returns a new instance of the behaviour from the JSON object passed.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      <span class="abstract" data-ice="abstract">abstract</span>
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-initialize">initialize</a></span></span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Set the behaviour&apos;s initial properties on the particle.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      <span class="abstract" data-ice="abstract">abstract</span>
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-mutate">mutate</a></span></span><span class="code" data-ice="signature">(target: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span> | <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Change the target&apos;s properties according to specific behaviour logic.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-normalizeForce">normalizeForce</a></span></span><span class="code" data-ice="signature">(force: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span>): <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Normalize a force by 1:100;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-normalizeValue">normalizeValue</a></span></span><span class="code" data-ice="signature">(value: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Normalize a value by 1:100;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html#instance-method-reset">reset</a></span></span><span class="code" data-ice="signature">(life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Reset this behaviour&apos;s parameters</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+
+<div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-constructor-constructor">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>, type: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, isEnabled: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber23">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Constructs a Behaviour instance.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">life</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: Infinity</li></ul></td>
+      <td data-ice="description"><p>The life of the behaviour</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">easing</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: DEFAULT_BEHAVIOUR_EASING</li></ul></td>
+      <td data-ice="description"><p>The behaviour&apos;s decaying trend</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">type</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: BEHAVIOUR_TYPE_ABSTRACT</li></ul></td>
+      <td data-ice="description"><p>The behaviour type</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">isEnabled</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: true</li></ul></td>
+      <td data-ice="description"><p>Determines if the behaviour will be applied or not</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+<div data-ice="memberDetails"><h2 data-ice="title">Public Members</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-age">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">age</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber63">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>The age of the behaviour</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-dead">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">dead</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber75">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Determines if the behaviour is dead or not</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-easing">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">easing</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber57">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>The behaviour&apos;s decaying trend</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-energy">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">energy</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber69">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>The energy of the behaviour</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-id">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">id</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber45">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>The behaviour&apos;s id</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-isEnabled">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">isEnabled</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber39">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Determines if the behaviour will be applied or not</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-set-life">
+    <span class="access" data-ice="access">public</span>
+    
+    <span class="kind" data-ice="kind">set</span>
+    
+    
+    
+    <span class="code" data-ice="name">life</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber94">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Ensures that life is infinity if an invalid value is supplied.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-get-life">
+    <span class="access" data-ice="access">public</span>
+    
+    <span class="kind" data-ice="kind">get</span>
+    
+    
+    
+    <span class="code" data-ice="name">life</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber103">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Gets the behaviour&apos;s life.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-type">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">type</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber33">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>The class type.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<h2 data-ice="title">Private Members</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-_life">
+    <span class="access" data-ice="access">private</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">_life</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber95">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+<div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-applyBehaviour">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    <span class="abstract" data-ice="abstract">abstract</span>
+    
+    
+    <span class="code" data-ice="name">applyBehaviour</span><span class="code" data-ice="signature">(target: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span> | <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>, index: <span>integer</span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber146">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Apply behaviour to the target as a factor of time.
+Internally calls the mutate method to change properties on the target
+Will not do so if the behaviour is disabled</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">target</td>
+      <td data-ice="type" class="code"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span> | <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle or emitter to apply the behaviour to</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">time</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>the system integration time</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">index</td>
+      <td data-ice="type" class="code"><span>integer</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>the target index</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>mixed</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-destroy">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    <span class="abstract" data-ice="abstract">abstract</span>
+    
+    
+    <span class="code" data-ice="name">destroy</span><span class="code" data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber197">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Destory this behaviour.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-energize">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">energize</span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber173">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Compares the age of the behaviour vs integration time and determines
+if the behaviour should be set to dead or not.
+Sets the behaviour energy as a factor of particle age and life.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">particle</td>
+      <td data-ice="type" class="code"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle to apply the behaviour to</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">time</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>the system integration time</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>void</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-fromJSON">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    <span class="abstract" data-ice="abstract">abstract</span>
+    
+    
+    <span class="code" data-ice="name">fromJSON</span><span class="code" data-ice="signature">(json: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber206">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Returns a new instance of the behaviour from the JSON object passed.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">json</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>JSON object containing the required constructor properties</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/behaviour/Behaviour.js~Behaviour.html">Behaviour</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-initialize">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    <span class="abstract" data-ice="abstract">abstract</span>
+    
+    
+    <span class="code" data-ice="name">initialize</span><span class="code" data-ice="signature">(particle: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber133">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Set the behaviour&apos;s initial properties on the particle.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">particle</td>
+      <td data-ice="type" class="code"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-mutate">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    <span class="abstract" data-ice="abstract">abstract</span>
+    
+    
+    <span class="code" data-ice="name">mutate</span><span class="code" data-ice="signature">(target: <span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span> | <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span>, time: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber162">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Change the target&apos;s properties according to specific behaviour logic.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">target</td>
+      <td data-ice="type" class="code"><span><a href="class/src/core/Particle.js~Particle.html">Particle</a></span> | <span><a href="class/src/emitter/Emitter.js~Emitter.html">Emitter</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The particle or emitter to apply the behaviour to</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">time</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>the system integration time</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>mixed</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-normalizeForce">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">normalizeForce</span><span class="code" data-ice="signature">(force: <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span>): <span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber113">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Normalize a force by 1:100;</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">force</td>
+      <td data-ice="type" class="code"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The force to normalize.</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/math/Vector3D.js~Vector3D.html">Vector3D</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-normalizeValue">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">normalizeValue</span><span class="code" data-ice="signature">(value: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber123">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Normalize a value by 1:100;</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">value</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>The value to normalize</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-reset">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">reset</span><span class="code" data-ice="signature">(life: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, easing: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/behaviour/Behaviour.js.html#lineNumber84">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Reset this behaviour&apos;s parameters</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">life</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: DEFAULT_LIFE</li></ul></td>
+      <td data-ice="description"><p>The life of the behaviour</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">easing</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: DEFAULT_BEHAVIOUR_EASING</li></ul></td>
+      <td data-ice="description"><p>The behaviour&apos;s decaying trend</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
 </div>
 </div>
 

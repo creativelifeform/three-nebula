@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Home | three-nebula</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/core/fromJSONAsync.js | three-nebula</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -365,236 +365,240 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="three-nebula">Three Nebula</h1><p><a href="https://travis-ci.org/creativelifeform/three-nebula"><img src="https://travis-ci.org/creativelifeform/three-nebula.svg?branch=master" alt="Build Status"></a>
-<a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&amp;kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg" alt="Coverage Status"></a></p>
-<p><a href="https://github.com/creativelifeform/three-nebula/blob/master/CHANGELOG.md">CHANGELOG</a></p>
-<p><strong>Three Nebula</strong> is a WebGL based 3D particle engine that has been designed to work alongside <a href="https://github.com/mrdoob/three.js"><code>three.js</code></a>. Check out the <a href="https://creativelifeform.github.io/three-nebula/examples">examples</a> and <a href="https://three-nebula-docs.netlify.com/">API reference documentation</a> for more.</p>
-<h2 id="features">Features</h2><ul>
-<li>Perfect compatibility with <a href="https://github.com/mrdoob/three.js"><code>three@r106</code></a></li>
-<li>The ability to instantiate <code>three-nebula</code> particle systems from JSON objects using the static <code>System.fromJSON</code> method</li>
-<li>The ability to create particle systems from sprites as well as 3D meshes</li>
-<li>Many kinds of particle behaviours and initializers</li>
-</ul>
-<h2 id="installation">Installation</h2><h3 id="npm">npm</h3><pre><code><code class="source-code prettyprint">npm i --save three-nebula</code>
-</code></pre><h3 id="script">script</h3><pre><code><code class="source-code prettyprint">&lt;script type=&apos;text/javascript&apos; src=&apos;node_modules/three-nebula/build/three-nebula.js&apos;&gt;&lt;/script&gt;</code>
-</code></pre><h2 id="usage">Usage</h2><h3 id="module">Module</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import System, {
-  Emitter,
-  Rate,
-  Span,
-  Position,
-  Mass,
-  Radius,
-  Life,
-  Velocity,
-  PointZone,
-  Vector3D,
-  Alpha,
-  Scale,
-  Color,
-} from &apos;three-nebula&apos;;
-import * as THREE from &apos;three&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/core/fromJSONAsync.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import * as Behaviour from &apos;../behaviour&apos;;
+import * as Initializer from &apos;../initializer&apos;;
 
-const system = new System();
-const emitter = new Emitter();
-const renderer = new SpriteRenderer(threeScene, THREE);
+import { EULER, POOL_MAX } from &apos;../constants&apos;;
+import {
+  INITIALIZER_TYPES_THAT_REQUIRE_THREE,
+  SUPPORTED_JSON_BEHAVIOUR_TYPES,
+  SUPPORTED_JSON_INITIALIZER_TYPES,
+} from &apos;./constants&apos;;
 
-// Set emitter rate (particles per second) as well as the particle initializers and behaviours
-emitter
-  .setRate(new Rate(new Span(4, 16), new Span(0.01)))
-  .setInitializers([
-    new Position(new PointZone(0, 0)),
-    new Mass(1),
-    new Radius(6, 12),
-    new Life(3),
-    new RadialVelocity(45, new Vector3D(0, 1, 0), 180),
-  ])
-  .setBehaviours([
-    new Alpha(1, 0),
-    new Scale(0.1, 1.3),
-    new Color(new THREE.Color(), new THREE.Color()),
-  ])
-  .emit();
+import Rate from &apos;../initializer/Rate&apos;;
+import TextureInitializer from &apos;../initializer/Texture&apos;;
 
-// add the emitter and a renderer to your particle system
-system.addEmitter(emitter).addRenderer(renderer);</code>
+/**
+ * Makes a rate instance.
+ *
+ * @param {object} json - The data required to construct a Rate instance
+ * @return {Rate}
+ */
+const makeRate = json =&gt; new Rate.fromJSON(json);
+
+/**
+ * Makes initializers from json items.
+ *
+ * @param {array&lt;object&gt;} items - An array of objects which provide initializer constructor params
+ * @param {object} THREE - The Web GL Api to use
+ * @return {array&lt;Initializer&gt;}
+ */
+const makeInitializers = (items, THREE) =&gt;
+  new Promise((resolve, reject) =&gt; {
+    if (!items.length) {
+      return resolve([]);
+    }
+
+    const numberOfInitializers = items.length;
+    const madeInitializers = [];
+    const doNotRequireTextureLoading = items.filter(
+      ({ properties }) =&gt; !properties.texture
+    );
+    const doRequireTextureLoading = items.filter(
+      ({ properties }) =&gt; properties.texture
+    );
+
+    doNotRequireTextureLoading.forEach(data =&gt; {
+      const { type, properties } = data;
+
+      if (!SUPPORTED_JSON_INITIALIZER_TYPES.includes(type)) {
+        return reject(
+          `The initializer type ${type} is invalid or not yet supported`
+        );
+      }
+
+      if (INITIALIZER_TYPES_THAT_REQUIRE_THREE.includes(type)) {
+        madeInitializers.push(
+          new Initializer[type].fromJSON(properties, THREE)
+        );
+      } else {
+        madeInitializers.push(new Initializer[type].fromJSON(properties));
+      }
+
+      if (madeInitializers.length === numberOfInitializers) {
+        return resolve(madeInitializers);
+      }
+    });
+
+    doRequireTextureLoading.forEach(data =&gt; {
+      const {
+        type,
+        properties,
+        properties: { texture },
+      } = data;
+      const textureLoader = new THREE.TextureLoader();
+
+      if (!SUPPORTED_JSON_INITIALIZER_TYPES.includes(type)) {
+        return reject(
+          `The initializer type ${type} is invalid or not yet supported`
+        );
+      }
+
+      textureLoader.load(
+        texture,
+        loadedTexture =&gt; {
+          madeInitializers.push(
+            new TextureInitializer.fromJSON(
+              {
+                ...properties,
+                loadedTexture,
+              },
+              THREE
+            )
+          );
+
+          if (madeInitializers.length === numberOfInitializers) {
+            return resolve(madeInitializers);
+          }
+        },
+        undefined,
+        reject
+      );
+    });
+  });
+
+/**
+ * Makes behaviours from json items.
+ *
+ * @param {array&lt;object&gt;} items - An array of objects which provide behaviour constructor params
+ * @return {Promise&lt;array&gt;}
+ */
+const makeBehaviours = items =&gt;
+  new Promise((resolve, reject) =&gt; {
+    if (!items.length) {
+      return resolve([]);
+    }
+
+    const numberOfBehaviours = items.length;
+    const madeBehaviours = [];
+
+    items.forEach(data =&gt; {
+      const { type, properties } = data;
+
+      if (!SUPPORTED_JSON_BEHAVIOUR_TYPES.includes(type)) {
+        return reject(
+          `The behaviour type ${type} is invalid or not yet supported`
+        );
+      }
+
+      madeBehaviours.push(new Behaviour[type].fromJSON(properties));
+
+      if (madeBehaviours.length === numberOfBehaviours) {
+        return resolve(madeBehaviours);
+      }
+    });
+  });
+
+const makeEmitters = (emitters, Emitter, THREE) =&gt;
+  new Promise((resolve, reject) =&gt; {
+    if (!emitters.length) {
+      return resolve([]);
+    }
+
+    const madeEmitters = [];
+    const numberOfEmitters = emitters.length;
+
+    if (!numberOfEmitters) {
+      return resolve(madeEmitters);
+    }
+
+    emitters.forEach(data =&gt; {
+      const emitter = new Emitter();
+      const {
+        rate,
+        rotation,
+        initializers,
+        behaviours,
+        emitterBehaviours = [],
+        position,
+        totalEmitTimes = Infinity,
+        life = Infinity,
+      } = data;
+
+      emitter
+        .setRate(makeRate(rate))
+        .setRotation(rotation)
+        .setPosition(position);
+
+      makeInitializers(initializers, THREE)
+        .then(madeInitializers =&gt; {
+          emitter.setInitializers(madeInitializers);
+
+          return makeBehaviours(behaviours);
+        })
+        .then(madeBehaviours =&gt; {
+          emitter.setBehaviours(madeBehaviours);
+
+          return makeBehaviours(emitterBehaviours);
+        })
+        .then(madeEmitterBehaviours =&gt; {
+          emitter.setEmitterBehaviours(madeEmitterBehaviours);
+
+          return Promise.resolve(emitter);
+        })
+        .then(emitter =&gt; {
+          madeEmitters.push(emitter.emit(totalEmitTimes, life));
+
+          if (madeEmitters.length === numberOfEmitters) {
+            return resolve(madeEmitters);
+          }
+        })
+        .catch(reject);
+    });
+  });
+
+/**
+ * Creates a System instance from a JSON object.
+ *
+ * @param {object} json - The JSON to create the System instance from
+ * @param {object} THREE - The Web GL Api to use
+ * @param {function} System - The system class
+ * @param {function} Emitter - The emitter class
+ * @param {number} json.preParticles - The predetermined number of particles
+ * @param {string} json.integrationType - The integration algorithm to use
+ * @param {array&lt;object&gt;} json.emitters - The emitters for the system instance
+ * @return {Promise&lt;System&gt;}
+ */
+export default (json, THREE, System, Emitter) =&gt;
+  new Promise((resolve, reject) =&gt; {
+    const {
+      preParticles = POOL_MAX,
+      integrationType = EULER,
+      emitters = [],
+    } = json;
+    const system = new System(preParticles, integrationType);
+
+    makeEmitters(emitters, Emitter, THREE)
+      .then(madeEmitters =&gt; {
+        const numberOfEmitters = madeEmitters.length;
+
+        if (!numberOfEmitters) {
+          return resolve(system);
+        }
+
+        madeEmitters.forEach(madeEmitter =&gt; {
+          system.addEmitter(madeEmitter);
+
+          if (system.emitters.length === numberOfEmitters) {
+            resolve(system);
+          }
+        });
+      })
+      .catch(reject);
+  });
 </code></pre>
-<p>You can also instantiate your system from a JSON object</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">import System from &apos;three-nebula&apos;;
 
-const json = {
-  preParticles: 500,
-  integrationType: &apos;euler&apos;,
-  emitters: [
-    {
-      rate: {
-        particlesMin: 5,
-        particlesMax: 7,
-        perSecondMin: 0.01,
-        perSecondMax: 0.02,
-      },
-      position: {
-        x: 70,
-        y: 0,
-      },
-      initializers: [
-        {
-          type: &apos;Mass&apos;,
-          properties: {
-            min: 1,
-            max: 1,
-          },
-        },
-        {
-          type: &apos;Life&apos;,
-          properties: {
-            min: 2,
-            max: 2,
-          },
-        },
-        {
-          type: &apos;BodySprite&apos;,
-          properties: {
-            texture: &apos;./img/dot.png&apos;,
-          },
-        },
-        {
-          type: &apos;Radius&apos;,
-          properties: {
-            width: 80,
-            height: 80,
-          },
-        },
-      ],
-      behaviours: [
-        {
-          type: &apos;Alpha&apos;,
-          properties: {
-            alphaA: 1,
-            alphaB: 0,
-          },
-        },
-        {
-          type: &apos;Color&apos;,
-          properties: {
-            colorA: &apos;#4F1500&apos;,
-            colorB: &apos;#0029FF&apos;,
-          },
-        },
-        {
-          type: &apos;Scale&apos;,
-          properties: {
-            scaleA: 1,
-            scaleB: 0.5,
-          },
-        },
-        {
-          type: &apos;Force&apos;,
-          properties: {
-            fx: 0,
-            fy: 0,
-            fz: -20,
-          },
-        },
-      ],
-    },
-    {
-      rate: {
-        particlesMin: 5,
-        particlesMax: 7,
-        perSecondMin: 0.01,
-        perSecondMax: 0.02,
-      },
-      position: {
-        x: -70,
-        y: 0,
-      },
-      initializers: [
-        {
-          type: &apos;Mass&apos;,
-          properties: {
-            min: 1,
-            max: 1,
-          },
-        },
-        {
-          type: &apos;Life&apos;,
-          properties: {
-            min: 2,
-            max: 2,
-          },
-        },
-        {
-          type: &apos;BodySprite&apos;,
-          properties: {
-            texture: &apos;./img/dot.png&apos;,
-          },
-        },
-        {
-          type: &apos;Radius&apos;,
-          properties: {
-            width: 80,
-            height: 80,
-          },
-        },
-      ],
-      behaviours: [
-        {
-          type: &apos;Alpha&apos;,
-          properties: {
-            alphaA: 1,
-            alphaB: 0,
-          },
-        },
-        {
-          type: &apos;Color&apos;,
-          properties: {
-            colorA: &apos;#004CFE&apos;,
-            colorB: &apos;#6600FF&apos;,
-          },
-        },
-        {
-          type: &apos;Scale&apos;,
-          properties: {
-            scaleA: 1,
-            scaleB: 0.5,
-          },
-        },
-        {
-          type: &apos;Force&apos;,
-          properties: {
-            fx: 0,
-            fy: 0,
-            fz: -20,
-          },
-        },
-      ],
-    },
-  ],
-};
-
-const system = new System.fromJSONAsync(json, THREE).then(console.log);</code>
-</code></pre>
-<h3 id="script-tag">Script Tag</h3><p>If you are adding <code>three-nebula</code> to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const { System, Emitter, Rate, Span } = window.System;
-const system = new System();</code>
-</code></pre>
-<h2 id="development">Development</h2><h3 id="scripts">Scripts</h3><p>There are a few NPM scripts in the root package.json:</p>
-<ul>
-<li><code>build</code> - Builds the module and writes the code into <code>./build/three-nebula.js</code></li>
-<li><code>docs</code> - Serves the docs at <a href="http://localhost:8080">http://localhost:8080</a></li>
-<li><code>docs:build</code> - Copies the latest build to <code>./docs/js</code> and builds the API reference docs</li>
-<li><code>test</code> - Runs all specs</li>
-<li><code>test:only &lt;spec&gt;</code> - Runs a specific spec</li>
-<li><code>test:watch</code> - Watches tests</li>
-<li><code>test:watch-only &lt;spec&gt;</code> - Watches a specific spec</li>
-<li><code>lint</code> - Lints code and circular dependencies in <code>./src</code></li>
-<li><code>coverage:generate</code> - Generates a code coverage report</li>
-<li><code>coverage:view</code> - View the code coverage report</li>
-<li><code>coverage:publish</code> - Publishes the coverage report</li>
-<li><code>git:publish &lt;commit-message&gt;</code> - Builds the module, adds all changed files commits with the message you supply and pushes to remote</li>
-</ul>
-<h2 id="license">License</h2><p><a href="LICENSE.md">MIT</a></p>
-</div>
 </div>
 
 <footer class="footer">

@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Home | three-nebula</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/utils/THREEUtil.js | three-nebula</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -365,236 +365,50 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="three-nebula">Three Nebula</h1><p><a href="https://travis-ci.org/creativelifeform/three-nebula"><img src="https://travis-ci.org/creativelifeform/three-nebula.svg?branch=master" alt="Build Status"></a>
-<a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&amp;kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg" alt="Coverage Status"></a></p>
-<p><a href="https://github.com/creativelifeform/three-nebula/blob/master/CHANGELOG.md">CHANGELOG</a></p>
-<p><strong>Three Nebula</strong> is a WebGL based 3D particle engine that has been designed to work alongside <a href="https://github.com/mrdoob/three.js"><code>three.js</code></a>. Check out the <a href="https://creativelifeform.github.io/three-nebula/examples">examples</a> and <a href="https://three-nebula-docs.netlify.com/">API reference documentation</a> for more.</p>
-<h2 id="features">Features</h2><ul>
-<li>Perfect compatibility with <a href="https://github.com/mrdoob/three.js"><code>three@r106</code></a></li>
-<li>The ability to instantiate <code>three-nebula</code> particle systems from JSON objects using the static <code>System.fromJSON</code> method</li>
-<li>The ability to create particle systems from sprites as well as 3D meshes</li>
-<li>Many kinds of particle behaviours and initializers</li>
-</ul>
-<h2 id="installation">Installation</h2><h3 id="npm">npm</h3><pre><code><code class="source-code prettyprint">npm i --save three-nebula</code>
-</code></pre><h3 id="script">script</h3><pre><code><code class="source-code prettyprint">&lt;script type=&apos;text/javascript&apos; src=&apos;node_modules/three-nebula/build/three-nebula.js&apos;&gt;&lt;/script&gt;</code>
-</code></pre><h2 id="usage">Usage</h2><h3 id="module">Module</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import System, {
-  Emitter,
-  Rate,
-  Span,
-  Position,
-  Mass,
-  Radius,
-  Life,
-  Velocity,
-  PointZone,
-  Vector3D,
-  Alpha,
-  Scale,
-  Color,
-} from &apos;three-nebula&apos;;
-import * as THREE from &apos;three&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/utils/THREEUtil.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Vector3 } from &apos;../core/three/&apos;;
 
-const system = new System();
-const emitter = new Emitter();
-const renderer = new SpriteRenderer(threeScene, THREE);
+export default {
+  toScreenPos: (function() {
+    var vector = new Vector3();
 
-// Set emitter rate (particles per second) as well as the particle initializers and behaviours
-emitter
-  .setRate(new Rate(new Span(4, 16), new Span(0.01)))
-  .setInitializers([
-    new Position(new PointZone(0, 0)),
-    new Mass(1),
-    new Radius(6, 12),
-    new Life(3),
-    new RadialVelocity(45, new Vector3D(0, 1, 0), 180),
-  ])
-  .setBehaviours([
-    new Alpha(1, 0),
-    new Scale(0.1, 1.3),
-    new Color(new THREE.Color(), new THREE.Color()),
-  ])
-  .emit();
+    return function(pos, camera, canvas) {
+      vector.copy(pos);
+      // map to normalized device coordinate (NDC) space
+      vector.project(camera);
+      // map to 2D screen space
+      vector.x = Math.round(((vector.x + 1) * canvas.width) / 2);
+      vector.y = Math.round(((-vector.y + 1) * canvas.height) / 2);
+      vector.z = 0;
 
-// add the emitter and a renderer to your particle system
-system.addEmitter(emitter).addRenderer(renderer);</code>
-</code></pre>
-<p>You can also instantiate your system from a JSON object</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">import System from &apos;three-nebula&apos;;
+      return vector;
+    };
+  })(),
 
-const json = {
-  preParticles: 500,
-  integrationType: &apos;euler&apos;,
-  emitters: [
-    {
-      rate: {
-        particlesMin: 5,
-        particlesMax: 7,
-        perSecondMin: 0.01,
-        perSecondMax: 0.02,
-      },
-      position: {
-        x: 70,
-        y: 0,
-      },
-      initializers: [
-        {
-          type: &apos;Mass&apos;,
-          properties: {
-            min: 1,
-            max: 1,
-          },
-        },
-        {
-          type: &apos;Life&apos;,
-          properties: {
-            min: 2,
-            max: 2,
-          },
-        },
-        {
-          type: &apos;BodySprite&apos;,
-          properties: {
-            texture: &apos;./img/dot.png&apos;,
-          },
-        },
-        {
-          type: &apos;Radius&apos;,
-          properties: {
-            width: 80,
-            height: 80,
-          },
-        },
-      ],
-      behaviours: [
-        {
-          type: &apos;Alpha&apos;,
-          properties: {
-            alphaA: 1,
-            alphaB: 0,
-          },
-        },
-        {
-          type: &apos;Color&apos;,
-          properties: {
-            colorA: &apos;#4F1500&apos;,
-            colorB: &apos;#0029FF&apos;,
-          },
-        },
-        {
-          type: &apos;Scale&apos;,
-          properties: {
-            scaleA: 1,
-            scaleB: 0.5,
-          },
-        },
-        {
-          type: &apos;Force&apos;,
-          properties: {
-            fx: 0,
-            fy: 0,
-            fz: -20,
-          },
-        },
-      ],
-    },
-    {
-      rate: {
-        particlesMin: 5,
-        particlesMax: 7,
-        perSecondMin: 0.01,
-        perSecondMax: 0.02,
-      },
-      position: {
-        x: -70,
-        y: 0,
-      },
-      initializers: [
-        {
-          type: &apos;Mass&apos;,
-          properties: {
-            min: 1,
-            max: 1,
-          },
-        },
-        {
-          type: &apos;Life&apos;,
-          properties: {
-            min: 2,
-            max: 2,
-          },
-        },
-        {
-          type: &apos;BodySprite&apos;,
-          properties: {
-            texture: &apos;./img/dot.png&apos;,
-          },
-        },
-        {
-          type: &apos;Radius&apos;,
-          properties: {
-            width: 80,
-            height: 80,
-          },
-        },
-      ],
-      behaviours: [
-        {
-          type: &apos;Alpha&apos;,
-          properties: {
-            alphaA: 1,
-            alphaB: 0,
-          },
-        },
-        {
-          type: &apos;Color&apos;,
-          properties: {
-            colorA: &apos;#004CFE&apos;,
-            colorB: &apos;#6600FF&apos;,
-          },
-        },
-        {
-          type: &apos;Scale&apos;,
-          properties: {
-            scaleA: 1,
-            scaleB: 0.5,
-          },
-        },
-        {
-          type: &apos;Force&apos;,
-          properties: {
-            fx: 0,
-            fy: 0,
-            fz: -20,
-          },
-        },
-      ],
-    },
-  ],
+  toSpacePos: (function() {
+    var vector = new Vector3(),
+      dir = new Vector3(),
+      distance;
+
+    return function(pos, camera, canvas) {
+      vector.set(
+        (pos.x / canvas.width) * 2 - 1,
+        -(pos.y / canvas.height) * 2 + 1,
+        0.5
+      );
+      vector.unproject(camera);
+
+      dir.copy(vector.sub(camera.position).normalize());
+      distance = -camera.position.z / dir.z;
+      vector.copy(camera.position);
+      vector.add(dir.multiplyScalar(distance));
+
+      return vector;
+    };
+  })(),
 };
+</code></pre>
 
-const system = new System.fromJSONAsync(json, THREE).then(console.log);</code>
-</code></pre>
-<h3 id="script-tag">Script Tag</h3><p>If you are adding <code>three-nebula</code> to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const { System, Emitter, Rate, Span } = window.System;
-const system = new System();</code>
-</code></pre>
-<h2 id="development">Development</h2><h3 id="scripts">Scripts</h3><p>There are a few NPM scripts in the root package.json:</p>
-<ul>
-<li><code>build</code> - Builds the module and writes the code into <code>./build/three-nebula.js</code></li>
-<li><code>docs</code> - Serves the docs at <a href="http://localhost:8080">http://localhost:8080</a></li>
-<li><code>docs:build</code> - Copies the latest build to <code>./docs/js</code> and builds the API reference docs</li>
-<li><code>test</code> - Runs all specs</li>
-<li><code>test:only &lt;spec&gt;</code> - Runs a specific spec</li>
-<li><code>test:watch</code> - Watches tests</li>
-<li><code>test:watch-only &lt;spec&gt;</code> - Watches a specific spec</li>
-<li><code>lint</code> - Lints code and circular dependencies in <code>./src</code></li>
-<li><code>coverage:generate</code> - Generates a code coverage report</li>
-<li><code>coverage:view</code> - View the code coverage report</li>
-<li><code>coverage:publish</code> - Publishes the coverage report</li>
-<li><code>git:publish &lt;commit-message&gt;</code> - Builds the module, adds all changed files commits with the message you supply and pushes to remote</li>
-</ul>
-<h2 id="license">License</h2><p><a href="LICENSE.md">MIT</a></p>
-</div>
 </div>
 
 <footer class="footer">

@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Home | three-nebula</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/core/Pool.js | three-nebula</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -365,236 +365,165 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="three-nebula">Three Nebula</h1><p><a href="https://travis-ci.org/creativelifeform/three-nebula"><img src="https://travis-ci.org/creativelifeform/three-nebula.svg?branch=master" alt="Build Status"></a>
-<a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&amp;kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg" alt="Coverage Status"></a></p>
-<p><a href="https://github.com/creativelifeform/three-nebula/blob/master/CHANGELOG.md">CHANGELOG</a></p>
-<p><strong>Three Nebula</strong> is a WebGL based 3D particle engine that has been designed to work alongside <a href="https://github.com/mrdoob/three.js"><code>three.js</code></a>. Check out the <a href="https://creativelifeform.github.io/three-nebula/examples">examples</a> and <a href="https://three-nebula-docs.netlify.com/">API reference documentation</a> for more.</p>
-<h2 id="features">Features</h2><ul>
-<li>Perfect compatibility with <a href="https://github.com/mrdoob/three.js"><code>three@r106</code></a></li>
-<li>The ability to instantiate <code>three-nebula</code> particle systems from JSON objects using the static <code>System.fromJSON</code> method</li>
-<li>The ability to create particle systems from sprites as well as 3D meshes</li>
-<li>Many kinds of particle behaviours and initializers</li>
-</ul>
-<h2 id="installation">Installation</h2><h3 id="npm">npm</h3><pre><code><code class="source-code prettyprint">npm i --save three-nebula</code>
-</code></pre><h3 id="script">script</h3><pre><code><code class="source-code prettyprint">&lt;script type=&apos;text/javascript&apos; src=&apos;node_modules/three-nebula/build/three-nebula.js&apos;&gt;&lt;/script&gt;</code>
-</code></pre><h2 id="usage">Usage</h2><h3 id="module">Module</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import System, {
-  Emitter,
-  Rate,
-  Span,
-  Position,
-  Mass,
-  Radius,
-  Life,
-  Velocity,
-  PointZone,
-  Vector3D,
-  Alpha,
-  Scale,
-  Color,
-} from &apos;three-nebula&apos;;
-import * as THREE from &apos;three&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/core/Pool.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import PUID from &apos;../utils/PUID&apos;;
+import { CORE_TYPE_POOL as type } from &apos;./types&apos;;
+/**
+ * An object pool implementation. Used for pooling objects to avoid unnecessary
+ * garbage collection.
+ *
+ */
+export default class Pool {
+  /**
+   * Constructs a Pool instance.
+   *
+   * @return void
+   */
+  constructor() {
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
+    /**
+     * @desc Incrementing id that keeps a count of the number of objects created
+     * @type {integer}
+     */
+    this.cID = 0;
 
-const system = new System();
-const emitter = new Emitter();
-const renderer = new SpriteRenderer(threeScene, THREE);
+    /**
+     * @desc Map of pools in the format of PUID&lt;String&gt;: pool&lt;Array&gt;
+     * @type {object}
+     */
+    this.list = {};
+  }
 
-// Set emitter rate (particles per second) as well as the particle initializers and behaviours
-emitter
-  .setRate(new Rate(new Span(4, 16), new Span(0.01)))
-  .setInitializers([
-    new Position(new PointZone(0, 0)),
-    new Mass(1),
-    new Radius(6, 12),
-    new Life(3),
-    new RadialVelocity(45, new Vector3D(0, 1, 0), 180),
-  ])
-  .setBehaviours([
-    new Alpha(1, 0),
-    new Scale(0.1, 1.3),
-    new Color(new THREE.Color(), new THREE.Color()),
-  ])
-  .emit();
+  /**
+   * Attempts to create a new object either by creating a new instance or calling its
+   * clone method.
+   *
+   * @param {function|object} functionOrObject - The object to instantiate or clone
+   * @return {object|undefined}
+   */
+  create(functionOrObject) {
+    if (!this.canCreateNewObject(functionOrObject)) {
+      throw new Error(
+        &apos;The pool is unable to create or clone the object supplied&apos;
+      );
+    }
 
-// add the emitter and a renderer to your particle system
-system.addEmitter(emitter).addRenderer(renderer);</code>
+    this.cID++;
+
+    if (this.canInstantiateObject(functionOrObject)) {
+      return new functionOrObject();
+    }
+
+    if (this.canCloneObject(functionOrObject)) {
+      return functionOrObject.clone();
+    }
+  }
+
+  /**
+   * Determines if the object is able to be instantiated or not.
+   *
+   * @param {object} object - The object to check
+   * @return {boolean}
+   */
+  canInstantiateObject(object) {
+    return typeof object === &apos;function&apos;;
+  }
+
+  /**
+   * Determines if the object is able to be cloned or not.
+   *
+   * @param {object} object - The object to check
+   * @return {boolean}
+   */
+  canCloneObject(object) {
+    return object.clone &amp;&amp; typeof object.clone === &apos;function&apos;;
+  }
+
+  /**
+   * Determines if a new object is able to be created.
+   *
+   * @param {object} object - The object to check
+   * @return {boolean}
+   */
+  canCreateNewObject(object) {
+    return this.canInstantiateObject(object) || this.canCloneObject(object)
+      ? true
+      : false;
+  }
+
+  /**
+   * Gets a count of all objects in the pool.
+   *
+   * @return {integer}
+   */
+  getCount() {
+    var count = 0;
+
+    for (var id in this.list) count += this.list[id].length;
+
+    return count++;
+  }
+
+  /**
+   * Gets an object either by creating a new one or retrieving it from the pool.
+   *
+   * @param {function|object} obj - The function or object to get
+   * @return {object}
+   */
+  get(obj) {
+    var p,
+      puid = obj.__puid || PUID.id(obj);
+
+    if (this.list[puid] &amp;&amp; this.list[puid].length &gt; 0)
+      p = this.list[puid].pop();
+    else p = this.create(obj);
+
+    p.__puid = obj.__puid || puid;
+
+    return p;
+  }
+
+  /**
+   * Pushes an object into the pool.
+   *
+   * @param {object} obj - The object to expire
+   * @return {integer}
+   */
+  expire(obj) {
+    return this._getList(obj.__puid).push(obj);
+  }
+
+  /**
+   * Destroys all pools.
+   *
+   * @return void
+   */
+  destroy() {
+    for (var id in this.list) {
+      this.list[id].length = 0;
+      delete this.list[id];
+    }
+  }
+
+  /**
+   * Gets the pool mapped to the UID.
+   *
+   * @param {string} uid - The pool uid
+   * @return {array}
+   */
+  _getList(uid) {
+    uid = uid || &apos;default&apos;;
+    if (!this.list[uid]) this.list[uid] = [];
+
+    return this.list[uid];
+  }
+}
 </code></pre>
-<p>You can also instantiate your system from a JSON object</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">import System from &apos;three-nebula&apos;;
 
-const json = {
-  preParticles: 500,
-  integrationType: &apos;euler&apos;,
-  emitters: [
-    {
-      rate: {
-        particlesMin: 5,
-        particlesMax: 7,
-        perSecondMin: 0.01,
-        perSecondMax: 0.02,
-      },
-      position: {
-        x: 70,
-        y: 0,
-      },
-      initializers: [
-        {
-          type: &apos;Mass&apos;,
-          properties: {
-            min: 1,
-            max: 1,
-          },
-        },
-        {
-          type: &apos;Life&apos;,
-          properties: {
-            min: 2,
-            max: 2,
-          },
-        },
-        {
-          type: &apos;BodySprite&apos;,
-          properties: {
-            texture: &apos;./img/dot.png&apos;,
-          },
-        },
-        {
-          type: &apos;Radius&apos;,
-          properties: {
-            width: 80,
-            height: 80,
-          },
-        },
-      ],
-      behaviours: [
-        {
-          type: &apos;Alpha&apos;,
-          properties: {
-            alphaA: 1,
-            alphaB: 0,
-          },
-        },
-        {
-          type: &apos;Color&apos;,
-          properties: {
-            colorA: &apos;#4F1500&apos;,
-            colorB: &apos;#0029FF&apos;,
-          },
-        },
-        {
-          type: &apos;Scale&apos;,
-          properties: {
-            scaleA: 1,
-            scaleB: 0.5,
-          },
-        },
-        {
-          type: &apos;Force&apos;,
-          properties: {
-            fx: 0,
-            fy: 0,
-            fz: -20,
-          },
-        },
-      ],
-    },
-    {
-      rate: {
-        particlesMin: 5,
-        particlesMax: 7,
-        perSecondMin: 0.01,
-        perSecondMax: 0.02,
-      },
-      position: {
-        x: -70,
-        y: 0,
-      },
-      initializers: [
-        {
-          type: &apos;Mass&apos;,
-          properties: {
-            min: 1,
-            max: 1,
-          },
-        },
-        {
-          type: &apos;Life&apos;,
-          properties: {
-            min: 2,
-            max: 2,
-          },
-        },
-        {
-          type: &apos;BodySprite&apos;,
-          properties: {
-            texture: &apos;./img/dot.png&apos;,
-          },
-        },
-        {
-          type: &apos;Radius&apos;,
-          properties: {
-            width: 80,
-            height: 80,
-          },
-        },
-      ],
-      behaviours: [
-        {
-          type: &apos;Alpha&apos;,
-          properties: {
-            alphaA: 1,
-            alphaB: 0,
-          },
-        },
-        {
-          type: &apos;Color&apos;,
-          properties: {
-            colorA: &apos;#004CFE&apos;,
-            colorB: &apos;#6600FF&apos;,
-          },
-        },
-        {
-          type: &apos;Scale&apos;,
-          properties: {
-            scaleA: 1,
-            scaleB: 0.5,
-          },
-        },
-        {
-          type: &apos;Force&apos;,
-          properties: {
-            fx: 0,
-            fy: 0,
-            fz: -20,
-          },
-        },
-      ],
-    },
-  ],
-};
-
-const system = new System.fromJSONAsync(json, THREE).then(console.log);</code>
-</code></pre>
-<h3 id="script-tag">Script Tag</h3><p>If you are adding <code>three-nebula</code> to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const { System, Emitter, Rate, Span } = window.System;
-const system = new System();</code>
-</code></pre>
-<h2 id="development">Development</h2><h3 id="scripts">Scripts</h3><p>There are a few NPM scripts in the root package.json:</p>
-<ul>
-<li><code>build</code> - Builds the module and writes the code into <code>./build/three-nebula.js</code></li>
-<li><code>docs</code> - Serves the docs at <a href="http://localhost:8080">http://localhost:8080</a></li>
-<li><code>docs:build</code> - Copies the latest build to <code>./docs/js</code> and builds the API reference docs</li>
-<li><code>test</code> - Runs all specs</li>
-<li><code>test:only &lt;spec&gt;</code> - Runs a specific spec</li>
-<li><code>test:watch</code> - Watches tests</li>
-<li><code>test:watch-only &lt;spec&gt;</code> - Watches a specific spec</li>
-<li><code>lint</code> - Lints code and circular dependencies in <code>./src</code></li>
-<li><code>coverage:generate</code> - Generates a code coverage report</li>
-<li><code>coverage:view</code> - View the code coverage report</li>
-<li><code>coverage:publish</code> - Publishes the coverage report</li>
-<li><code>git:publish &lt;commit-message&gt;</code> - Builds the module, adds all changed files commits with the message you supply and pushes to remote</li>
-</ul>
-<h2 id="license">License</h2><p><a href="LICENSE.md">MIT</a></p>
-</div>
 </div>
 
 <footer class="footer">

@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Home | three-nebula</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/emitter/Emitter.js | three-nebula</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -365,236 +365,608 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="three-nebula">Three Nebula</h1><p><a href="https://travis-ci.org/creativelifeform/three-nebula"><img src="https://travis-ci.org/creativelifeform/three-nebula.svg?branch=master" alt="Build Status"></a>
-<a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&amp;kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg" alt="Coverage Status"></a></p>
-<p><a href="https://github.com/creativelifeform/three-nebula/blob/master/CHANGELOG.md">CHANGELOG</a></p>
-<p><strong>Three Nebula</strong> is a WebGL based 3D particle engine that has been designed to work alongside <a href="https://github.com/mrdoob/three.js"><code>three.js</code></a>. Check out the <a href="https://creativelifeform.github.io/three-nebula/examples">examples</a> and <a href="https://three-nebula-docs.netlify.com/">API reference documentation</a> for more.</p>
-<h2 id="features">Features</h2><ul>
-<li>Perfect compatibility with <a href="https://github.com/mrdoob/three.js"><code>three@r106</code></a></li>
-<li>The ability to instantiate <code>three-nebula</code> particle systems from JSON objects using the static <code>System.fromJSON</code> method</li>
-<li>The ability to create particle systems from sprites as well as 3D meshes</li>
-<li>Many kinds of particle behaviours and initializers</li>
-</ul>
-<h2 id="installation">Installation</h2><h3 id="npm">npm</h3><pre><code><code class="source-code prettyprint">npm i --save three-nebula</code>
-</code></pre><h3 id="script">script</h3><pre><code><code class="source-code prettyprint">&lt;script type=&apos;text/javascript&apos; src=&apos;node_modules/three-nebula/build/three-nebula.js&apos;&gt;&lt;/script&gt;</code>
-</code></pre><h2 id="usage">Usage</h2><h3 id="module">Module</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import System, {
-  Emitter,
-  Rate,
-  Span,
-  Position,
-  Mass,
-  Radius,
-  Life,
-  Velocity,
-  PointZone,
-  Vector3D,
-  Alpha,
-  Scale,
-  Color,
-} from &apos;three-nebula&apos;;
-import * as THREE from &apos;three&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/emitter/Emitter.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {
+  DEFAULT_BIND_EMITTER,
+  DEFAULT_BIND_EMITTER_EVENT,
+  DEFAULT_DAMPING,
+  DEFAULT_EMITTER_RATE,
+} from &apos;./constants&apos;;
+import EventDispatcher, {
+  PARTICLE_CREATED,
+  PARTICLE_DEAD,
+  PARTICLE_UPDATE,
+} from &apos;../events&apos;;
+import { INTEGRATION_TYPE_EULER, integrate } from &apos;../math&apos;;
+import { Util, uid } from &apos;../utils&apos;;
 
-const system = new System();
-const emitter = new Emitter();
-const renderer = new SpriteRenderer(threeScene, THREE);
+import { InitializerUtil } from &apos;../initializer&apos;;
+import Particle from &apos;../core/Particle&apos;;
+import isNumber from &apos;lodash/isNumber&apos;;
+import { EMITTER_TYPE_EMITTER as type } from &apos;./types&apos;;
 
-// Set emitter rate (particles per second) as well as the particle initializers and behaviours
-emitter
-  .setRate(new Rate(new Span(4, 16), new Span(0.01)))
-  .setInitializers([
-    new Position(new PointZone(0, 0)),
-    new Mass(1),
-    new Radius(6, 12),
-    new Life(3),
-    new RadialVelocity(45, new Vector3D(0, 1, 0), 180),
-  ])
-  .setBehaviours([
-    new Alpha(1, 0),
-    new Scale(0.1, 1.3),
-    new Color(new THREE.Color(), new THREE.Color()),
-  ])
-  .emit();
+/**
+ * Emitters are the System engine&apos;s particle factories. They cause particles to
+ * be rendered by emitting them, and store all particle initializers and behaviours.
+ *
+ */
+export default class Emitter extends Particle {
+  /**
+   * Constructs an Emitter instance.
+   *
+   * @param {object} properties - The properties to instantiate the emitter with
+   * @return void
+   */
+  constructor(properties) {
+    super(properties);
 
-// add the emitter and a renderer to your particle system
-system.addEmitter(emitter).addRenderer(renderer);</code>
+    /**
+     * @desc The class type.
+     * @type {string}
+     */
+    this.type = type;
+
+    /**
+     * @desc The particles emitted by this emitter.
+     * @type {array}
+     */
+    this.particles = [];
+
+    /**
+     * @desc The initializers for particles emitted by this emitter.
+     * @type {array}
+     */
+    this.initializers = [];
+
+    /**
+     * @desc The behaviours for particles emitted by this emitter.
+     * @type {array}
+     */
+    this.behaviours = [];
+
+    /**
+     * @desc The behaviours for the emitter.
+     * @type {array}
+     */
+    this.emitterBehaviours = [];
+
+    /**
+     * @desc The current emit iteration.
+     * @type {integer}
+     */
+    this.currentEmitTime = 0;
+
+    /**
+     * @desc The total number of times the emitter should emit particles.
+     * @type {integer}
+     */
+    this.totalEmitTimes = -1;
+
+    /**
+     * @desc The friction coefficient for all particle to emit by.
+     * @type {number}
+     */
+    this.damping = DEFAULT_DAMPING;
+
+    /**
+     * @desc Ensures that particles emitted by this emitter are positioned
+     * according to the emitter&apos;s properties.
+     * @type {boolean}
+     */
+    this.bindEmitter = DEFAULT_BIND_EMITTER;
+
+    /**
+     * @desc Determines if the emitter will dispatch internal events. Defaults
+     * to false
+     * @type {boolean}
+     */
+    this.bindEmitterEvent = DEFAULT_BIND_EMITTER_EVENT;
+
+    /**
+     * @desc The number of particles to emit per second (a [particle]/b [s])
+     * @type {Rate}
+     */
+    this.rate = DEFAULT_EMITTER_RATE;
+
+    /**
+     * @desc The emitter&apos;s id.
+     * @type {string}
+     */
+    this.id = `emitter-${uid()}`;
+    this.cID = 0;
+    this.name = &apos;Emitter&apos;;
+
+    /**
+     * @desc The emitter&apos;s internal event dispatcher.
+     * @type {EventDispatcher}
+     */
+    this.eventDispatcher = new EventDispatcher();
+  }
+
+  /**
+   * Proxy method for the internal event dispatcher&apos;s dispatchEvent method.
+   *
+   * @param {string} event - The event to dispatch
+   * @param {object&lt;Particle&gt;} [target=this] - The event target
+   */
+  dispatch(event, target = this) {
+    this.eventDispatcher.dispatchEvent(event, target);
+  }
+
+  /**
+   * Sets the emitter rate.
+   *
+   * @param {Rate} rate - a rate initializer object
+   * @return {Emitter}
+   */
+  setRate(rate) {
+    this.rate = rate;
+
+    return this;
+  }
+
+  /**
+   * Sets the position of the emitter.
+   *
+   * @param {object} newPosition - an object the new x, y and z props
+   * @return {Emitter}
+   */
+  setPosition(newPosition = {}) {
+    const { position } = this;
+    const { x = position.x, y = position.y, z = position.z } = newPosition;
+
+    this.position.set(x, y, z);
+
+    return this;
+  }
+
+  /**
+   * Sets the rotation of the emitter.
+   *
+   * @param {object} newRotation - an object the new x, y and z props
+   * @return {Emitter}
+   */
+  setRotation(newRotation = {}) {
+    const { rotation } = this;
+    const { x = rotation.x, y = rotation.y, z = rotation.z } = newRotation;
+
+    this.rotation.set(x, y, z);
+
+    return this;
+  }
+
+  /**
+   * Sets the total number of times the emitter should emit particles as well as
+   * the emitter&apos;s life. Also intializes the emitter rate.
+   * This enables the emitter to emit particles.
+   *
+   * @param {number} [totalEmitTimes=Infinity] - the total number of times to emit particles
+   * @param {number} [life=Infinity] - the life of this emitter in milliseconds
+   * @return {Emitter}
+   */
+  emit(totalEmitTimes = Infinity, life = Infinity) {
+    this.currentEmitTime = 0;
+    this.totalEmitTimes = isNumber(totalEmitTimes) ? totalEmitTimes : Infinity;
+
+    if (totalEmitTimes === 1) {
+      this.life = totalEmitTimes;
+    } else {
+      this.life = isNumber(life) ? life : Infinity;
+    }
+
+    this.rate.init();
+
+    return this;
+  }
+
+  /**
+   * Stops the emitter from emitting particles.
+   *
+   * @return void
+   */
+  stopEmit() {
+    this.totalEmitTimes = -1;
+    this.currentEmitTime = 0;
+  }
+
+  /**
+   * Kills all of the emitter&apos;s particles.
+   *
+   * @return void
+   */
+  removeAllParticles() {
+    let i = this.particles.length;
+
+    while (i--) {
+      this.particles[i].dead = true;
+    }
+  }
+
+  /**
+   * Adds a particle initializer to the emitter.
+   * Each initializer is run on each particle when they are created.
+   *
+   * @param {Initializer} initializer - The initializer to add
+   * @return {Emitter}
+   */
+  addInitializer(initializer) {
+    this.initializers.push(initializer);
+
+    return this;
+  }
+
+  /**
+   * Adds multiple particle initializers to the emitter.
+   *
+   * @param {array&lt;Initializer&gt;} initializers - an array of particle initializers
+   * @return {Emitter}
+   */
+  addInitializers(initializers) {
+    let i = initializers.length;
+
+    while (i--) {
+      this.addInitializer(initializers[i]);
+    }
+
+    return this;
+  }
+
+  /**
+   * Sets the emitter&apos;s particle initializers.
+   *
+   * @param {array&lt;Initializer&gt;} initializers - an array of particle initializers
+   * @return {Emitter}
+   */
+  setInitializers(initializers) {
+    this.initializers = initializers;
+
+    return this;
+  }
+
+  /**
+   * Removes an initializer from the emitter&apos;s initializers array.
+   *
+   * @param {Initializer} initializer - The initializer to remove
+   * @return {Emitter}
+   */
+  removeInitializer(initializer) {
+    const index = this.initializers.indexOf(initializer);
+
+    if (index &gt; -1) {
+      this.initializers.splice(index, 1);
+    }
+
+    return this;
+  }
+
+  /**
+   * Removes all initializers.
+   *
+   * @return {Emitter}
+   */
+  removeAllInitializers() {
+    Util.destroyArray(this.initializers);
+
+    return this;
+  }
+
+  /**
+   * Adds a behaviour to the emitter. All emitter behaviours are added to each particle when
+   * they are emitted.
+   *
+   * @param {Behaviour} behaviour - The behaviour to add to the emitter
+   * @return {Emitter}
+   */
+  addBehaviour(behaviour) {
+    this.behaviours.push(behaviour);
+
+    return this;
+  }
+
+  /**
+   * Adds multiple behaviours to the emitter.
+   *
+   * @param {array&lt;Behaviour&gt;} behaviours - an array of emitter behaviours
+   * @return {Emitter}
+   */
+  addBehaviours(behaviours) {
+    let i = behaviours.length;
+
+    while (i--) {
+      this.addBehaviour(behaviours[i]);
+    }
+
+    return this;
+  }
+
+  /**
+   * Sets the emitter&apos;s behaviours.
+   *
+   * @param {array&lt;Behaviour&gt;} behaviours - an array of emitter behaviours
+   * @return {Emitter}
+   */
+  setBehaviours(behaviours) {
+    this.behaviours = behaviours;
+
+    return this;
+  }
+
+  /**
+   * Removes the behaviour from the emitter&apos;s behaviours array.
+   *
+   * @param {Behaviour} behaviour - The behaviour to remove
+   * @return {Emitter}
+   */
+  removeBehaviour(behaviour) {
+    const index = this.behaviours.indexOf(behaviour);
+
+    if (index &gt; -1) {
+      this.behaviours.splice(index, 1);
+    }
+
+    return this;
+  }
+
+  /**
+   * Removes all behaviours from the emitter.
+   *
+   * @return {Emitter}
+   */
+  removeAllBehaviours() {
+    Util.destroyArray(this.behaviours);
+
+    return this;
+  }
+
+  /**
+   * Adds an emitter behaviour to the emitter.
+   *
+   * @param {Behaviour} behaviour - The behaviour to add to the emitter
+   * @return {Emitter}
+   */
+  addEmitterBehaviour(behaviour) {
+    this.emitterBehaviours.push(behaviour);
+
+    behaviour.initialize(this);
+
+    return this;
+  }
+
+  /**
+   * Adds multiple behaviours to the emitter.
+   *
+   * @param {array&lt;Behaviour&gt;} behaviours - an array of emitter behaviours
+   * @return {Emitter}
+   */
+  addEmitterBehaviours(behaviours) {
+    let i = behaviours.length;
+
+    while (i--) {
+      this.addEmitterBehaviour(behaviours[i]);
+    }
+
+    return this;
+  }
+
+  /**
+   * Sets the emitter&apos;s behaviours.
+   *
+   * @param {array&lt;Behaviour&gt;} behaviours - an array of emitter behaviours
+   * @return {Emitter}
+   */
+  setEmitterBehaviours(behaviours) {
+    const length = behaviours.length;
+
+    this.emitterBehaviours = behaviours;
+
+    for (let i = 0; i &lt; length; i++) {
+      this.emitterBehaviours[i].initialize(this);
+    }
+
+    return this;
+  }
+
+  /**
+   * Removes the behaviour from the emitter&apos;s behaviours array.
+   *
+   * @param {Behaviour} behaviour - The behaviour to remove
+   * @return {Emitter}
+   */
+  removeEmitterBehaviour(behaviour) {
+    const index = this.emitterBehaviours.indexOf(behaviour);
+
+    if (index &gt; -1) {
+      this.emitterBehaviours.splice(index, 1);
+    }
+
+    return this;
+  }
+
+  /**
+   * Removes all behaviours from the emitter.
+   *
+   * @return {Emitter}
+   */
+  removeAllEmitterBehaviours() {
+    Util.destroyArray(this.emitterBehaviours);
+
+    return this;
+  }
+
+  /**
+   * Creates a particle by retreiving one from the pool and setting it up with
+   * the supplied initializer and behaviour.
+   *
+   * @return {Emitter}
+   */
+  createParticle() {
+    const particle = this.parent.pool.get(Particle);
+
+    this.setupParticle(particle);
+    this.parent &amp;&amp; this.parent.dispatch(PARTICLE_CREATED, particle);
+    this.bindEmitterEvent &amp;&amp; this.dispatch(PARTICLE_CREATED, particle);
+
+    return particle;
+  }
+
+  /**
+   * Sets up a particle by running all initializers on it and setting its behaviours.
+   * Also adds the particle to this.particles.
+   *
+   * @param {Particle} particle - The particle to setup
+   * @return void
+   */
+  setupParticle(particle) {
+    const { initializers, behaviours } = this;
+
+    InitializerUtil.initialize(this, particle, initializers);
+
+    particle.addBehaviours(behaviours);
+    particle.parent = this;
+
+    this.particles.push(particle);
+  }
+
+  /**
+   * Updates the emitter according to the time passed by calling the generate
+   * and integrate methods. The generate method creates particles, the integrate
+   * method updates existing particles.
+   *
+   * If the emitter age is greater than time, the emitter is killed.
+   *
+   * @param {number} time - System engine time
+   * @return void
+   */
+  update(time) {
+    this.age += time;
+
+    if (this.dead || this.age &gt;= this.life) {
+      this.destroy();
+    }
+
+    this.generate(time);
+    this.integrate(time);
+
+    let i = this.particles.length;
+
+    while (i--) {
+      const particle = this.particles[i];
+
+      if (particle.dead) {
+        this.parent &amp;&amp; this.parent.dispatch(PARTICLE_DEAD, particle);
+        this.bindEmitterEvent &amp;&amp; this.dispatch(PARTICLE_DEAD, particle);
+        this.parent.pool.expire(particle.reset());
+        this.particles.splice(i, 1);
+      }
+    }
+
+    this.updateEmitterBehaviours(time);
+  }
+
+  /**
+   * Updates the emitter&apos;s emitter behaviours.
+   *
+   * @param {number} time - System engine time
+   * @return void
+   */
+  updateEmitterBehaviours(time) {
+    if (this.sleep) {
+      return;
+    }
+
+    const length = this.emitterBehaviours.length;
+
+    for (let i = 0; i &lt; length; i++) {
+      this.emitterBehaviours[i].applyBehaviour(this, time, i);
+    }
+  }
+
+  /**
+   * Runs the integration algorithm on the emitter and all particles.
+   * Updates the particles with the timstamp passed.
+   *
+   * @param {number} time - System engine time
+   * @return void
+   */
+  integrate(time) {
+    const integrationType = this.parent
+      ? this.parent.integrationType
+      : INTEGRATION_TYPE_EULER;
+    const damping = 1 - this.damping;
+
+    integrate(this, time, damping, integrationType);
+
+    let i = this.particles.length;
+
+    while (i--) {
+      const particle = this.particles[i];
+
+      particle.update(time, i);
+      integrate(particle, time, damping, integrationType);
+
+      this.parent &amp;&amp; this.parent.dispatch(PARTICLE_UPDATE, particle);
+      this.bindEmitterEvent &amp;&amp; this.dispatch(PARTICLE_UPDATE, particle);
+    }
+  }
+
+  /**
+   * Generates new particles.
+   *
+   * @param {number} time - System engine time
+   * @return void
+   */
+  generate(time) {
+    if (this.totalEmitTimes === 1) {
+      let i = this.rate.getValue(99999);
+
+      if (i &gt; 0) {
+        this.cID = i;
+      }
+
+      while (i--) {
+        this.createParticle();
+      }
+
+      this.totalEmitTimes = 0;
+
+      return;
+    }
+
+    this.currentEmitTime += time;
+
+    if (this.currentEmitTime &lt; this.totalEmitTimes) {
+      let i = this.rate.getValue(time);
+
+      if (i &gt; 0) {
+        this.cID = i;
+      }
+
+      while (i--) {
+        this.createParticle();
+      }
+    }
+  }
+
+  /**
+   * Kills the emitter.
+   *
+   * @return void
+   */
+  destroy() {
+    this.dead = true;
+    this.energy = 0;
+    this.totalEmitTimes = -1;
+
+    if (this.particles.length == 0) {
+      this.removeAllInitializers();
+      this.removeAllBehaviours();
+
+      this.parent &amp;&amp; this.parent.removeEmitter(this);
+    }
+  }
+}
 </code></pre>
-<p>You can also instantiate your system from a JSON object</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">import System from &apos;three-nebula&apos;;
 
-const json = {
-  preParticles: 500,
-  integrationType: &apos;euler&apos;,
-  emitters: [
-    {
-      rate: {
-        particlesMin: 5,
-        particlesMax: 7,
-        perSecondMin: 0.01,
-        perSecondMax: 0.02,
-      },
-      position: {
-        x: 70,
-        y: 0,
-      },
-      initializers: [
-        {
-          type: &apos;Mass&apos;,
-          properties: {
-            min: 1,
-            max: 1,
-          },
-        },
-        {
-          type: &apos;Life&apos;,
-          properties: {
-            min: 2,
-            max: 2,
-          },
-        },
-        {
-          type: &apos;BodySprite&apos;,
-          properties: {
-            texture: &apos;./img/dot.png&apos;,
-          },
-        },
-        {
-          type: &apos;Radius&apos;,
-          properties: {
-            width: 80,
-            height: 80,
-          },
-        },
-      ],
-      behaviours: [
-        {
-          type: &apos;Alpha&apos;,
-          properties: {
-            alphaA: 1,
-            alphaB: 0,
-          },
-        },
-        {
-          type: &apos;Color&apos;,
-          properties: {
-            colorA: &apos;#4F1500&apos;,
-            colorB: &apos;#0029FF&apos;,
-          },
-        },
-        {
-          type: &apos;Scale&apos;,
-          properties: {
-            scaleA: 1,
-            scaleB: 0.5,
-          },
-        },
-        {
-          type: &apos;Force&apos;,
-          properties: {
-            fx: 0,
-            fy: 0,
-            fz: -20,
-          },
-        },
-      ],
-    },
-    {
-      rate: {
-        particlesMin: 5,
-        particlesMax: 7,
-        perSecondMin: 0.01,
-        perSecondMax: 0.02,
-      },
-      position: {
-        x: -70,
-        y: 0,
-      },
-      initializers: [
-        {
-          type: &apos;Mass&apos;,
-          properties: {
-            min: 1,
-            max: 1,
-          },
-        },
-        {
-          type: &apos;Life&apos;,
-          properties: {
-            min: 2,
-            max: 2,
-          },
-        },
-        {
-          type: &apos;BodySprite&apos;,
-          properties: {
-            texture: &apos;./img/dot.png&apos;,
-          },
-        },
-        {
-          type: &apos;Radius&apos;,
-          properties: {
-            width: 80,
-            height: 80,
-          },
-        },
-      ],
-      behaviours: [
-        {
-          type: &apos;Alpha&apos;,
-          properties: {
-            alphaA: 1,
-            alphaB: 0,
-          },
-        },
-        {
-          type: &apos;Color&apos;,
-          properties: {
-            colorA: &apos;#004CFE&apos;,
-            colorB: &apos;#6600FF&apos;,
-          },
-        },
-        {
-          type: &apos;Scale&apos;,
-          properties: {
-            scaleA: 1,
-            scaleB: 0.5,
-          },
-        },
-        {
-          type: &apos;Force&apos;,
-          properties: {
-            fx: 0,
-            fy: 0,
-            fz: -20,
-          },
-        },
-      ],
-    },
-  ],
-};
-
-const system = new System.fromJSONAsync(json, THREE).then(console.log);</code>
-</code></pre>
-<h3 id="script-tag">Script Tag</h3><p>If you are adding <code>three-nebula</code> to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const { System, Emitter, Rate, Span } = window.System;
-const system = new System();</code>
-</code></pre>
-<h2 id="development">Development</h2><h3 id="scripts">Scripts</h3><p>There are a few NPM scripts in the root package.json:</p>
-<ul>
-<li><code>build</code> - Builds the module and writes the code into <code>./build/three-nebula.js</code></li>
-<li><code>docs</code> - Serves the docs at <a href="http://localhost:8080">http://localhost:8080</a></li>
-<li><code>docs:build</code> - Copies the latest build to <code>./docs/js</code> and builds the API reference docs</li>
-<li><code>test</code> - Runs all specs</li>
-<li><code>test:only &lt;spec&gt;</code> - Runs a specific spec</li>
-<li><code>test:watch</code> - Watches tests</li>
-<li><code>test:watch-only &lt;spec&gt;</code> - Watches a specific spec</li>
-<li><code>lint</code> - Lints code and circular dependencies in <code>./src</code></li>
-<li><code>coverage:generate</code> - Generates a code coverage report</li>
-<li><code>coverage:view</code> - View the code coverage report</li>
-<li><code>coverage:publish</code> - Publishes the coverage report</li>
-<li><code>git:publish &lt;commit-message&gt;</code> - Builds the module, adds all changed files commits with the message you supply and pushes to remote</li>
-</ul>
-<h2 id="license">License</h2><p><a href="LICENSE.md">MIT</a></p>
-</div>
 </div>
 
 <footer class="footer">

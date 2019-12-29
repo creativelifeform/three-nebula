@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Home | three-nebula</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/debug/Debug.js | three-nebula</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -365,236 +365,222 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="three-nebula">Three Nebula</h1><p><a href="https://travis-ci.org/creativelifeform/three-nebula"><img src="https://travis-ci.org/creativelifeform/three-nebula.svg?branch=master" alt="Build Status"></a>
-<a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&amp;kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg" alt="Coverage Status"></a></p>
-<p><a href="https://github.com/creativelifeform/three-nebula/blob/master/CHANGELOG.md">CHANGELOG</a></p>
-<p><strong>Three Nebula</strong> is a WebGL based 3D particle engine that has been designed to work alongside <a href="https://github.com/mrdoob/three.js"><code>three.js</code></a>. Check out the <a href="https://creativelifeform.github.io/three-nebula/examples">examples</a> and <a href="https://three-nebula-docs.netlify.com/">API reference documentation</a> for more.</p>
-<h2 id="features">Features</h2><ul>
-<li>Perfect compatibility with <a href="https://github.com/mrdoob/three.js"><code>three@r106</code></a></li>
-<li>The ability to instantiate <code>three-nebula</code> particle systems from JSON objects using the static <code>System.fromJSON</code> method</li>
-<li>The ability to create particle systems from sprites as well as 3D meshes</li>
-<li>Many kinds of particle behaviours and initializers</li>
-</ul>
-<h2 id="installation">Installation</h2><h3 id="npm">npm</h3><pre><code><code class="source-code prettyprint">npm i --save three-nebula</code>
-</code></pre><h3 id="script">script</h3><pre><code><code class="source-code prettyprint">&lt;script type=&apos;text/javascript&apos; src=&apos;node_modules/three-nebula/build/three-nebula.js&apos;&gt;&lt;/script&gt;</code>
-</code></pre><h2 id="usage">Usage</h2><h3 id="module">Module</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import System, {
-  Emitter,
-  Rate,
-  Span,
-  Position,
-  Mass,
-  Radius,
-  Life,
-  Velocity,
-  PointZone,
-  Vector3D,
-  Alpha,
-  Scale,
-  Color,
-} from &apos;three-nebula&apos;;
-import * as THREE from &apos;three&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/debug/Debug.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { DEFAULT_POSITION, DEFAULT_SIZE as size } from &apos;./constants&apos;;
 
-const system = new System();
-const emitter = new Emitter();
-const renderer = new SpriteRenderer(threeScene, THREE);
+/**
+ * @exports Debug - methods and helpers for debugging System emitters, zones and particles.
+ */
+export default {
+  /**
+   * Adds an event listener to the system instance&apos;s SYSTEM_UPDATE event.
+   *
+   * @param {System} system - the system instance
+   * @param {function} onSystemUpdated - the function to call when system has been updated
+   * @return {Debug}
+   */
+  addEventListener: function(system, onSystemUpdated) {
+    system.eventDispatcher.addEventListener(&apos;SYSTEM_UPDATE&apos;, onSystemUpdated);
 
-// Set emitter rate (particles per second) as well as the particle initializers and behaviours
-emitter
-  .setRate(new Rate(new Span(4, 16), new Span(0.01)))
-  .setInitializers([
-    new Position(new PointZone(0, 0)),
-    new Mass(1),
-    new Radius(6, 12),
-    new Life(3),
-    new RadialVelocity(45, new Vector3D(0, 1, 0), 180),
-  ])
-  .setBehaviours([
-    new Alpha(1, 0),
-    new Scale(0.1, 1.3),
-    new Color(new THREE.Color(), new THREE.Color()),
-  ])
-  .emit();
+    return this;
+  },
 
-// add the emitter and a renderer to your particle system
-system.addEmitter(emitter).addRenderer(renderer);</code>
-</code></pre>
-<p>You can also instantiate your system from a JSON object</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">import System from &apos;three-nebula&apos;;
+  /**
+   * Draws a wireframe mesh around the zone for debugging purposes.
+   *
+   * @param {System} system - the system instance
+   * @param {object} container - a three Object3D (usually the scene)
+   * @param {Zone} zone - a Zone instance
+   * @return void
+   */
+  drawZone: function(THREE, system, container, zone = {}) {
+    const color = &apos;#2194ce&apos;;
+    const wireframe = true;
+    const {
+      width = size,
+      height = size,
+      depth = size,
+      radius = size,
+      x = DEFAULT_POSITION,
+      y = DEFAULT_POSITION,
+      z = DEFAULT_POSITION,
+    } = zone;
+    let geometry;
 
-const json = {
-  preParticles: 500,
-  integrationType: &apos;euler&apos;,
-  emitters: [
-    {
-      rate: {
-        particlesMin: 5,
-        particlesMax: 7,
-        perSecondMin: 0.01,
-        perSecondMax: 0.02,
-      },
-      position: {
-        x: 70,
-        y: 0,
-      },
-      initializers: [
-        {
-          type: &apos;Mass&apos;,
-          properties: {
-            min: 1,
-            max: 1,
+    if (zone.isPointZone()) {
+      geometry = new THREE.SphereGeometry(15);
+    }
+
+    if (zone.isLineZone()) {
+      // TODO
+    }
+
+    if (zone.isBoxZone()) {
+      geometry = new THREE.BoxGeometry(width, height, depth);
+    }
+
+    if (zone.isSphereZone()) {
+      geometry = new THREE.SphereGeometry(radius, size, size);
+    }
+
+    if (zone.isMeshZone()) {
+      geometry = zone.geometry.geometry
+        ? zone.geometry.geometry.clone()
+        : zone.geometry.clone();
+    }
+
+    if (!geometry) {
+      geometry = new THREE.BoxGeometry(width, height, depth);
+    }
+
+    const material = new THREE.MeshBasicMaterial({ color, wireframe });
+    // NOTE! geometry.clone is required for UNKNOWN reasons,
+    // three does not render the mesh correctly without doing this since r88
+    const mesh = new THREE.Mesh(geometry.clone(), material);
+
+    container.add(mesh);
+
+    this.addEventListener(system, function() {
+      mesh.position.set(x, y, z);
+    });
+  },
+
+  /**
+   * Draws a mesh for each particle emitted in order to help debug particles.
+   *
+   * @param {object} system - the system instance
+   * @param {object} container - a three Object3D (usually the scene)
+   * @param {object} emitter - the emitter to debug
+   * @param {string} color - the color for the debug mesh material
+   * @return void
+   */
+  drawEmitter: function(THREE, system, container, emitter, color) {
+    const geometry = new THREE.OctahedronGeometry(size);
+    const material = new THREE.MeshBasicMaterial({
+      color: color || &apos;#aaa&apos;,
+      wireframe: true,
+    });
+    // NOTE! geometry.clone is required for UNKNOWN reasons,
+    // three does not render the mesh correctly without doing this since r88
+    const mesh = new THREE.Mesh(geometry.clone(), material);
+
+    container.add(mesh);
+
+    this.addEventListener(system, function() {
+      mesh.position.copy(emitter.position);
+      mesh.rotation.set(
+        emitter.rotation.x,
+        emitter.rotation.y,
+        emitter.rotation.z
+      );
+    });
+  },
+
+  /**
+   * Renders emitter / particle information into the info element.
+   *
+   * @param {object} system - the system instance
+   * @param {integer} style - style to apply (see the addInfo method&apos;s switch statement)
+   * @return void
+   */
+  renderInfo: (function() {
+    function getCreatedNumber(type, system) {
+      var pool = type == &apos;material&apos; ? &apos;_materialPool&apos; : &apos;_targetPool&apos;;
+      var renderer = system.renderers[0];
+
+      return renderer[pool].cID;
+    }
+
+    function getEmitterPos(system) {
+      var e = system.emitters[0];
+
+      return (
+        Math.round(e.p.x) + &apos;,&apos; + Math.round(e.p.y) + &apos;,&apos; + Math.round(e.p.z)
+      );
+    }
+
+    return function(system, style) {
+      this.addInfo(style);
+      var str = &apos;&apos;;
+
+      switch (this._infoType) {
+        case 2:
+          str += &apos;emitter:&apos; + system.emitters.length + &apos;&lt;br&gt;&apos;;
+          str += &apos;em speed:&apos; + system.emitters[0].cID + &apos;&lt;br&gt;&apos;;
+          str += &apos;pos:&apos; + getEmitterPos(system);
+          break;
+
+        case 3:
+          str += system.renderers[0].name + &apos;&lt;br&gt;&apos;;
+          str += &apos;target:&apos; + getCreatedNumber(&apos;target&apos;) + &apos;&lt;br&gt;&apos;;
+          str += &apos;material:&apos; + getCreatedNumber(&apos;material&apos;);
+          break;
+
+        default:
+          str += &apos;particles:&apos; + system.getCount() + &apos;&lt;br&gt;&apos;;
+          str += &apos;pool:&apos; + system.pool.getCount() + &apos;&lt;br&gt;&apos;;
+          str += &apos;total:&apos; + (system.getCount() + system.pool.getCount());
+      }
+      this._infoCon.innerHTML = str;
+    };
+  })(),
+
+  /**
+   * Appends the info element into the dom.
+   *
+   * @param {integer} style - the style type to apply
+   * @return void
+   */
+  addInfo: (function() {
+    return function(style) {
+      var self = this;
+
+      if (!this._infoCon) {
+        this._infoCon = document.createElement(&apos;div&apos;);
+        this._infoCon.style.cssText = [
+          &apos;position:fixed;bottom:0px;left:0;cursor:pointer;&apos;,
+          &apos;opacity:0.9;z-index:10000;padding:10px;font-size:12px;&apos;,
+          &apos;width:120px;height:50px;background-color:#002;color:#0ff;&apos;,
+        ].join(&apos;&apos;);
+
+        this._infoType = 1;
+        this._infoCon.addEventListener(
+          &apos;click&apos;,
+          function() {
+            self._infoType++;
+            if (self._infoType &gt; 3) self._infoType = 1;
           },
-        },
-        {
-          type: &apos;Life&apos;,
-          properties: {
-            min: 2,
-            max: 2,
-          },
-        },
-        {
-          type: &apos;BodySprite&apos;,
-          properties: {
-            texture: &apos;./img/dot.png&apos;,
-          },
-        },
-        {
-          type: &apos;Radius&apos;,
-          properties: {
-            width: 80,
-            height: 80,
-          },
-        },
-      ],
-      behaviours: [
-        {
-          type: &apos;Alpha&apos;,
-          properties: {
-            alphaA: 1,
-            alphaB: 0,
-          },
-        },
-        {
-          type: &apos;Color&apos;,
-          properties: {
-            colorA: &apos;#4F1500&apos;,
-            colorB: &apos;#0029FF&apos;,
-          },
-        },
-        {
-          type: &apos;Scale&apos;,
-          properties: {
-            scaleA: 1,
-            scaleB: 0.5,
-          },
-        },
-        {
-          type: &apos;Force&apos;,
-          properties: {
-            fx: 0,
-            fy: 0,
-            fz: -20,
-          },
-        },
-      ],
-    },
-    {
-      rate: {
-        particlesMin: 5,
-        particlesMax: 7,
-        perSecondMin: 0.01,
-        perSecondMax: 0.02,
-      },
-      position: {
-        x: -70,
-        y: 0,
-      },
-      initializers: [
-        {
-          type: &apos;Mass&apos;,
-          properties: {
-            min: 1,
-            max: 1,
-          },
-        },
-        {
-          type: &apos;Life&apos;,
-          properties: {
-            min: 2,
-            max: 2,
-          },
-        },
-        {
-          type: &apos;BodySprite&apos;,
-          properties: {
-            texture: &apos;./img/dot.png&apos;,
-          },
-        },
-        {
-          type: &apos;Radius&apos;,
-          properties: {
-            width: 80,
-            height: 80,
-          },
-        },
-      ],
-      behaviours: [
-        {
-          type: &apos;Alpha&apos;,
-          properties: {
-            alphaA: 1,
-            alphaB: 0,
-          },
-        },
-        {
-          type: &apos;Color&apos;,
-          properties: {
-            colorA: &apos;#004CFE&apos;,
-            colorB: &apos;#6600FF&apos;,
-          },
-        },
-        {
-          type: &apos;Scale&apos;,
-          properties: {
-            scaleA: 1,
-            scaleB: 0.5,
-          },
-        },
-        {
-          type: &apos;Force&apos;,
-          properties: {
-            fx: 0,
-            fy: 0,
-            fz: -20,
-          },
-        },
-      ],
-    },
-  ],
+          false
+        );
+
+        var bg, color;
+
+        switch (style) {
+          case 2:
+            bg = &apos;#201&apos;;
+            color = &apos;#f08&apos;;
+            break;
+
+          case 3:
+            bg = &apos;#020&apos;;
+            color = &apos;#0f0&apos;;
+            break;
+
+          default:
+            bg = &apos;#002&apos;;
+            color = &apos;#0ff&apos;;
+        }
+
+        this._infoCon.style[&apos;background-color&apos;] = bg;
+        this._infoCon.style[&apos;color&apos;] = color;
+      }
+
+      if (!this._infoCon.parentNode) document.body.appendChild(this._infoCon);
+    };
+  })(),
 };
+</code></pre>
 
-const system = new System.fromJSONAsync(json, THREE).then(console.log);</code>
-</code></pre>
-<h3 id="script-tag">Script Tag</h3><p>If you are adding <code>three-nebula</code> to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const { System, Emitter, Rate, Span } = window.System;
-const system = new System();</code>
-</code></pre>
-<h2 id="development">Development</h2><h3 id="scripts">Scripts</h3><p>There are a few NPM scripts in the root package.json:</p>
-<ul>
-<li><code>build</code> - Builds the module and writes the code into <code>./build/three-nebula.js</code></li>
-<li><code>docs</code> - Serves the docs at <a href="http://localhost:8080">http://localhost:8080</a></li>
-<li><code>docs:build</code> - Copies the latest build to <code>./docs/js</code> and builds the API reference docs</li>
-<li><code>test</code> - Runs all specs</li>
-<li><code>test:only &lt;spec&gt;</code> - Runs a specific spec</li>
-<li><code>test:watch</code> - Watches tests</li>
-<li><code>test:watch-only &lt;spec&gt;</code> - Watches a specific spec</li>
-<li><code>lint</code> - Lints code and circular dependencies in <code>./src</code></li>
-<li><code>coverage:generate</code> - Generates a code coverage report</li>
-<li><code>coverage:view</code> - View the code coverage report</li>
-<li><code>coverage:publish</code> - Publishes the coverage report</li>
-<li><code>git:publish &lt;commit-message&gt;</code> - Builds the module, adds all changed files commits with the message you supply and pushes to remote</li>
-</ul>
-<h2 id="license">License</h2><p><a href="LICENSE.md">MIT</a></p>
-</div>
 </div>
 
 <footer class="footer">
