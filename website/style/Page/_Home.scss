@@ -5,14 +5,13 @@
     max-width: 100%;
   }
 
-  .Content.Guide {
+  .Content.Features {
     padding: $padding-letterbox;
-    max-width: $content-max-width;
+    border-bottom: $sidebar-border;
   }
 
-  .Content.Examples {
+  .Content.AboutNebula {
     padding: $padding-letterbox;
-    background: black;
   }
 }
 
@@ -57,10 +56,9 @@
   text-align: center;
 }
 
-.Examples {
-  .wrap {
-    margin: auto;
-    max-width: $content-max-width;
+.AboutNebula {
+  .button {
+    margin-top: $padding-l;
   }
 }
 
@@ -83,6 +81,9 @@
   }
 }
 
+.Guide {
+}
+
 @include tablet {
   .Hero {
     .Blurb {
@@ -92,7 +93,7 @@
       }
 
       p {
-        font-size: 1.3em;
+        font-size: 1.5em;
       }
     }
     video {

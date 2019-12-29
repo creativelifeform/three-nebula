@@ -1,7 +1,16 @@
-import React from 'react';
-import { string } from 'prop-types';
+import { node, string } from 'prop-types';
 
-export const GridItemMedia = ({ type = 'image', alt = '', src = '' }) => {
+import React from 'react';
+
+export const GridItemMedia = ({
+  children,
+  type = 'image',
+  alt = '',
+  src = '',
+}) => {
+  if (children) {
+    return <div className="Media">{children}</div>;
+  }
   switch (type) {
     case 'image':
       return <img src={src} alt={alt} className={'Media'} />;
@@ -11,6 +20,7 @@ export const GridItemMedia = ({ type = 'image', alt = '', src = '' }) => {
 };
 
 GridItemMedia.propTypes = {
+  children: node,
   type: string,
   alt: string,
   src: string,

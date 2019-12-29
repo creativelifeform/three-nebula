@@ -4,13 +4,13 @@ import { array, shape, string } from 'prop-types';
 import React from 'react';
 import { withContent } from '../../common/utils';
 
-const Guide = ({
+const Features = ({
   content: {
-    guide: { items },
+    features: { items },
     callout: { large },
   },
 }) => (
-  <Content className="Guide">
+  <Content className="Features">
     <Grid>
       {items.map(({ title, text }) => (
         <GridItem key={title}>
@@ -23,9 +23,9 @@ const Guide = ({
   </Content>
 );
 
-Guide.propTypes = {
+Features.propTypes = {
   content: shape({
-    guide: shape({
+    features: shape({
       items: array,
     }),
     callout: shape({
@@ -34,4 +34,4 @@ Guide.propTypes = {
   }),
 };
 
-export default withContent(Guide);
+export default withContent(Features);
