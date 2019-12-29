@@ -64,6 +64,18 @@
       position: absolute !important;
       top: $header-h + $padding-xs !important;
       left: $sidebar-w + $padding-xs !important;
+      z-index: $header-z - 1 !important;
+    }
+  }
+
+  a.ViewSource {
+    position: absolute;
+    bottom: $padding-l;
+    left: $sidebar-w + $padding-m;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { string } from 'prop-types';
 
 const CustomRenderer = dynamic(() => import('./CustomRenderer'));
 const EightDiagrams = dynamic(() => import('./EightDiagrams'));
@@ -23,3 +24,5 @@ export const EXAMPLE_NAME_TO_COMPONENT_MAP = {
 };
 
 export const EXAMPLE_NAMES = Object.keys(EXAMPLE_NAME_TO_COMPONENT_MAP);
+
+export const EXAMPLE_PROP_TYPES = { src: string };

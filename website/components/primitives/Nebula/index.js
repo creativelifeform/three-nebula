@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { array, bool, func, number, shape, string } from 'prop-types';
 
 import { Stats } from './Stats';
+import { ViewSource } from './ViewSource';
 
 export class Nebula extends Component {
   state = {
@@ -84,11 +85,12 @@ export class Nebula extends Component {
 
   render() {
     const { width, height } = this.state;
-    const { shouldShowStats } = this.props;
+    const { shouldShowStats, srcHref } = this.props;
 
     return (
       <div className="canvas-container" ref={this.containerRef}>
         {shouldShowStats && <Stats />}
+        {srcHref && <ViewSource href={srcHref} />}
         <canvas
           ref={this.canvasRef}
           className="canvas"
@@ -108,6 +110,7 @@ Nebula.defaultProps = {
 Nebula.propTypes = {
   shouldRotateCamera: bool,
   shouldShowStats: bool,
+  srcHref: string,
   init: func,
   json: shape({
     headerState: shape({

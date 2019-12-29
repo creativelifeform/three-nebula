@@ -1,3 +1,19 @@
+/**
+ * You can load this via something like the following:
+ *
+ * import Nebula from 'three-nebula';
+ *
+ * async function loadParticleSystem(data) {
+ *   const system = await Nebula.fromJSONAsync(data);
+ *
+ *   // you will also need to add a renderer and call the update method into your render/animation pipeline
+ *   // check the docs for more info!
+ *   console.log(system);
+ * }
+ *
+ * loadParticleSystem(data);
+ */
+
 import dot from '../../../assets/dot.png';
 
 export default {
