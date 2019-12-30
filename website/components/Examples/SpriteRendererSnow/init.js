@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 import ParticleSystem, {
   Body,
   BoxZone,
@@ -22,19 +20,12 @@ import ParticleSystem, {
 
 import snow from '../../../assets/snow.png';
 
-const {
-  TextureLoader,
-  SpriteMaterial,
-  Sprite,
-  Mesh,
-  PlaneGeometry,
-  MeshLambertMaterial,
-} = THREE;
+let THREE;
 
 const createPlane = () => {
-  const plane = new Mesh(
-    new PlaneGeometry(2000, 2000, 9, 24),
-    new MeshLambertMaterial({
+  const plane = new THREE.Mesh(
+    new THREE.PlaneGeometry(2000, 2000, 9, 24),
+    new THREE.MeshLambertMaterial({
       color: '#3c5887',
       fog: false,
     })
@@ -64,14 +55,14 @@ const createPlane = () => {
 };
 
 const createSnow = () => {
-  var map = new TextureLoader().load(snow);
-  var material = new SpriteMaterial({
+  var map = new THREE.TextureLoader().load(snow);
+  var material = new THREE.SpriteMaterial({
     map: map,
     transparent: true,
     opacity: 0.5,
     color: 0xffffff,
   });
-  return new Sprite(material);
+  return new THREE.Sprite(material);
 };
 
 const createEmitter = (camera, renderer) => {
@@ -100,7 +91,9 @@ const createEmitter = (camera, renderer) => {
     .emit();
 };
 
-export default ({ scene, camera, renderer }) => {
+export default async (three, { scene, camera, renderer }) => {
+  THREE = three;
+
   const system = new ParticleSystem();
 
   scene.add(createPlane());

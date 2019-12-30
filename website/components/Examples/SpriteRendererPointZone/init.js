@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 import ParticleSystem, {
   Alpha,
   Color,
@@ -17,8 +15,7 @@ import ParticleSystem, {
   Vector3D,
 } from 'three-nebula';
 
-const { Color: ThreeColor } = THREE;
-
+let THREE;
 let hcolor = 0;
 let tha = 0;
 let ctha = 0;
@@ -80,10 +77,12 @@ const createEmitter = (color1, color2) => {
     .emit();
 };
 
-export default ({ scene, camera }) => {
+export default async (three, { scene, camera }) => {
+  THREE = three;
+
   const system = new ParticleSystem();
-  const color1 = new ThreeColor();
-  const color2 = new ThreeColor();
+  const color1 = new THREE.Color();
+  const color2 = new THREE.Color();
   const emitter = createEmitter(color1, color2);
 
   animate({ color1, color2, emitter, camera, scene });

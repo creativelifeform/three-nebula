@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 import ParticleSystem, {
   Body,
   BoxZone,
@@ -18,9 +16,10 @@ import ParticleSystem, {
   Vector3D,
 } from 'three-nebula';
 
-const { Mesh, SphereGeometry, BoxGeometry, MeshLambertMaterial } = THREE;
+let THREE;
 
-const createMesh = ({ geometry, material }) => new Mesh(geometry, material);
+const createMesh = ({ geometry, material }) =>
+  new THREE.Mesh(geometry, material);
 
 const createEmitter = ({ position, body }) => {
   const emitter = new Emitter();
@@ -44,7 +43,9 @@ const createEmitter = ({ position, body }) => {
     .emit();
 };
 
-export default ({ scene, camera }) => {
+export default async (three, { scene, camera }) => {
+  THREE = three;
+
   const system = new ParticleSystem();
   const sphereEmitter = createEmitter({
     position: {
@@ -52,8 +53,8 @@ export default ({ scene, camera }) => {
       y: 0,
     },
     body: createMesh({
-      geometry: new SphereGeometry(10, 8, 8),
-      material: new MeshLambertMaterial({ color: '#ff0000' }),
+      geometry: new THREE.SphereGeometry(10, 8, 8),
+      material: new THREE.MeshLambertMaterial({ color: '#ff0000' }),
     }),
   });
   const cubeEmitter = createEmitter({
@@ -62,8 +63,8 @@ export default ({ scene, camera }) => {
       y: 0,
     },
     body: createMesh({
-      geometry: new BoxGeometry(20, 20, 20),
-      material: new MeshLambertMaterial({ color: '#00ffcc' }),
+      geometry: new THREE.BoxGeometry(20, 20, 20),
+      material: new THREE.MeshLambertMaterial({ color: '#00ffcc' }),
     }),
   });
 

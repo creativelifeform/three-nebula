@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 import ParticleSystem, {
   BoxZone,
   Color,
@@ -20,10 +18,10 @@ import ParticleSystem, {
   ease,
 } from 'three-nebula';
 
-const { BoxGeometry, Mesh, MeshNormalMaterial } = THREE;
+let THREE;
 
-const createDebugger = ({ THREE, system, scene, zone }) => {
-  Debug.drawZone(THREE, system, scene, zone);
+const createDebugger = ({ THREE: three, system, scene, zone }) => {
+  Debug.drawZone(three, system, scene, zone);
 };
 
 const createZone = () => {
@@ -59,10 +57,15 @@ const createEmitter = zone => {
   return emitter;
 };
 
-export default async ({ scene, camera }) => {
+export default async (three, { scene, camera }) => {
+  THREE = three;
+
   const system = new ParticleSystem();
   const renderer = new CustomRenderer();
-  const mesh = new Mesh(new BoxGeometry(1, 1, 1), new MeshNormalMaterial());
+  const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshNormalMaterial()
+  );
   const zone = createZone();
   const emitter = createEmitter(zone);
 

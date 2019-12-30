@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 import ParticleSystem, {
   Body,
   Color,
@@ -16,27 +14,21 @@ import ParticleSystem, {
   SpriteRenderer,
 } from 'three-nebula';
 
-import GLTFLoader from 'three-gltf-loader';
 import dot from '../../../assets/dot.png';
 
-const {
-  TextureLoader,
-  SpriteMaterial,
-  AdditiveBlending,
-  Sprite,
-  Geometry,
-} = THREE;
+let GLTFLoader;
+let THREE;
 
 const createSprite = () => {
-  const map = new TextureLoader().load(dot);
-  const material = new SpriteMaterial({
+  const map = new THREE.TextureLoader().load(dot);
+  const material = new THREE.SpriteMaterial({
     map: map,
     color: 0xff0000,
-    blending: AdditiveBlending,
+    blending: THREE.AdditiveBlending,
     fog: true,
   });
 
-  return new Sprite(material);
+  return new THREE.Sprite(material);
 };
 
 const loadMeshFromGLTF = () =>
@@ -52,7 +44,7 @@ const createEmitter = async mesh => {
   return emitter
     .setRate(new Rate(new Span(11, 15), new Span(0.02)))
     .addInitializers([
-      new Position(new MeshZone(mesh, 200, Geometry)),
+      new Position(new MeshZone(mesh, 200, THREE.Geometry)),
       new Mass(1),
       new Radius(1, 3),
       new Life(1.5),
@@ -68,7 +60,10 @@ const createEmitter = async mesh => {
     .emit();
 };
 
-export default async ({ scene, camera }) => {
+export default async (three, { scene, camera }) => {
+  THREE = three;
+  GLTFLoader = await import('three-gltf-loader');
+
   const system = new ParticleSystem();
   const mesh = await loadMeshFromGLTF();
   const emitter = await createEmitter(mesh);

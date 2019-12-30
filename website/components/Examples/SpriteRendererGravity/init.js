@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 import ParticleSystem, {
   Body,
   Color,
@@ -21,17 +19,17 @@ import ParticleSystem, {
 
 import dot from '../../../assets/dot.png';
 
-const { TextureLoader, SpriteMaterial, Sprite, AdditiveBlending } = THREE;
+let THREE;
 
 const createSprite = () => {
-  var map = new TextureLoader().load(dot);
-  var material = new SpriteMaterial({
+  var map = new THREE.TextureLoader().load(dot);
+  var material = new THREE.SpriteMaterial({
     map: map,
     color: 0xff0000,
-    blending: AdditiveBlending,
+    blending: THREE.AdditiveBlending,
     fog: true,
   });
-  return new Sprite(material);
+  return new THREE.Sprite(material);
 };
 
 const createEmitter = () => {
@@ -56,7 +54,9 @@ const createEmitter = () => {
     .emit();
 };
 
-export default ({ scene, camera }) => {
+export default async (three, { scene, camera }) => {
+  THREE = three;
+
   const system = new ParticleSystem();
 
   camera.position.z = 500;

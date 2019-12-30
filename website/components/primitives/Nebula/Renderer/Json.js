@@ -1,7 +1,3 @@
-import * as THREE from 'three';
-
-import ParticleSystem, { SpriteRenderer } from 'three-nebula';
-
 import BaseRenderer from './Base';
 
 /**
@@ -9,14 +5,19 @@ import BaseRenderer from './Base';
  * into the editor's Stage component.
  *
  */
-export class Renderer extends BaseRenderer {
-  constructor({ canvas, json, shouldRotateCamera }) {
-    super({ canvas, shouldRotateCamera });
+export class JsonRenderer extends BaseRenderer {
+  constructor(THREE, { canvas, json, shouldRotateCamera }) {
+    super(THREE, { canvas, shouldRotateCamera });
 
     this.json = json;
   }
 
   async makeParticleSystem() {
+    const { THREE } = this;
+    const { default: ParticleSystem, SpriteRenderer } = await import(
+      'three-nebula'
+    );
+
     return new Promise(resolve => {
       ParticleSystem.fromJSONAsync(this.json.particleSystemState, THREE)
         .then(particleSystem => {

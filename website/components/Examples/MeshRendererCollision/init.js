@@ -1,5 +1,3 @@
-import * as THREE from 'three';
-
 import ParticleSystem, {
   Body,
   Collision,
@@ -16,13 +14,13 @@ import ParticleSystem, {
   Vector3D,
 } from 'three-nebula';
 
-const { Mesh, SphereGeometry, MeshStandardMaterial } = THREE;
+let THREE;
 
 const createEmitter = () => {
   const emitter = new Emitter();
-  const sphere = new Mesh(
-    new SphereGeometry(100, 24, 24),
-    new MeshStandardMaterial({
+  const sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(100, 24, 24),
+    new THREE.MeshStandardMaterial({
       color: 0x2170ce,
       metalness: 0.5,
       wireframe: true,
@@ -42,7 +40,9 @@ const createEmitter = () => {
     .emit();
 };
 
-export default ({ scene, camera }) => {
+export default async (three, { scene, camera }) => {
+  THREE = three;
+
   const system = new ParticleSystem();
 
   camera.position.z = 750;

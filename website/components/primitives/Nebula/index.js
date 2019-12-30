@@ -1,3 +1,4 @@
+import { JsonRenderer, ProceduralRenderer } from './renderer';
 import React, { Component } from 'react';
 import { array, bool, func, number, shape, string } from 'prop-types';
 
@@ -24,13 +25,12 @@ export class Nebula extends Component {
     }
 
     this.setCanvasSize(async () => {
+      const THREE = await import('three');
       const { canvas } = this;
       const { json, init, shouldRotateCamera } = this.props;
 
       if (json) {
-        const { Renderer } = require('./Renderer/Json');
-
-        this.renderer = await new Renderer({
+        this.renderer = await new JsonRenderer(THREE, {
           canvas,
           json,
           shouldRotateCamera,
@@ -38,9 +38,7 @@ export class Nebula extends Component {
       }
 
       if (init) {
-        const { Renderer } = require('./Renderer/Procedural');
-
-        this.renderer = await new Renderer({
+        this.renderer = await new ProceduralRenderer(THREE, {
           canvas,
           init,
           shouldRotateCamera,

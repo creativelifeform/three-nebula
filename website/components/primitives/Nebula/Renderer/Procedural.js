@@ -5,17 +5,18 @@ import BaseRenderer from './Base';
  * into the editor's Stage component.
  *
  */
-export class Renderer extends BaseRenderer {
-  constructor({ canvas, init, shouldRotateCamera = false }) {
-    super({ canvas, shouldRotateCamera });
+export class ProceduralRenderer extends BaseRenderer {
+  constructor(THREE, { canvas, init, shouldRotateCamera = false }) {
+    super(THREE, { canvas, shouldRotateCamera });
 
     this.init = init;
   }
 
   async makeParticleSystem() {
+    const { THREE } = this;
     const { scene, camera, webGlRenderer } = this;
 
-    this.particleSystem = await this.init({
+    this.particleSystem = await this.init(THREE, {
       scene,
       camera,
       renderer: webGlRenderer,

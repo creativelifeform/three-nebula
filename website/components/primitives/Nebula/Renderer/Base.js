@@ -1,15 +1,4 @@
-import * as THREE from 'three';
-
 import { stats } from '../Stats';
-
-const {
-  PerspectiveCamera,
-  Scene,
-  WebGLRenderer,
-  AmbientLight,
-  PointLight,
-  SpotLight,
-} = THREE;
 
 /**
  * Sets up three js and particle system environment so that they can be rendered
@@ -17,7 +6,8 @@ const {
  *
  */
 export default class {
-  constructor({ canvas, shouldRotateCamera }) {
+  constructor(THREE, { canvas, shouldRotateCamera }) {
+    this.THREE = THREE;
     this.canvas = canvas;
     this.shouldAnimate = true;
     this.shouldRotateCamera = shouldRotateCamera || false;
@@ -89,7 +79,7 @@ export default class {
   }
 
   makeScene() {
-    this.scene = new Scene();
+    this.scene = new this.THREE.Scene();
 
     return this;
   }
@@ -122,7 +112,7 @@ export default class {
     const { params, position, rotation } = cameraState;
     const { fov, nearPlane, farPlane } = params;
 
-    this.camera = new PerspectiveCamera(
+    this.camera = new this.THREE.PerspectiveCamera(
       fov,
       clientWidth / clientHeight,
       nearPlane,
@@ -151,9 +141,9 @@ export default class {
 
   makeLights() {
     const { scene } = this;
-    const ambientLight = new AmbientLight(0x101010);
-    const pointLight = new PointLight(0xffffff, 2, 1000, 1);
-    const spotLight = new SpotLight(0xffffff, 0.5);
+    const ambientLight = new this.THREE.AmbientLight(0x101010);
+    const pointLight = new this.THREE.PointLight(0xffffff, 2, 1000, 1);
+    const spotLight = new this.THREE.SpotLight(0xffffff, 0.5);
 
     pointLight.position.set(0, 200, 200);
     spotLight.position.set(0, 500, 100);
@@ -173,7 +163,8 @@ export default class {
     } = this;
 
     this.webGlRenderer =
-      this.webGlRenderer || new WebGLRenderer({ canvas, ...options });
+      this.webGlRenderer ||
+      new this.THREE.WebGLRenderer({ canvas, ...options });
     this.webGlRenderer.setSize(clientWidth, clientHeight, false);
 
     return this;
