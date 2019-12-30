@@ -5,6 +5,14 @@
     cursor: pointer;
   }
 
+  .SpectrumLogo {
+    display: inline-block;
+
+    path {
+      fill: $app-accent;
+    }
+  }
+
   ul {
     li {
       display: inline-block;
@@ -20,6 +28,18 @@
 
       a.active {
         background: lighten($app-bg, 10);
+      }
+
+      .SpectrumLogo {
+        a {
+          padding: 0;
+        }
+
+        a:hover {
+          path {
+            fill: lighten($app-accent, 5);
+          }
+        }
       }
     }
 
@@ -37,6 +57,10 @@
   .Nav {
     .fa-bars {
       cursor: pointer;
+    }
+
+    .spectrum-logo-container {
+      float: none;
     }
 
     .ul-container {
@@ -79,6 +103,12 @@
           background: black;
           text-decoration: underline;
         }
+
+        .SpectrumLogo {
+          a {
+            padding: 0;
+          }
+        }
       }
 
       li.has-button {
@@ -100,6 +130,10 @@
   .Nav {
     .Hamburger {
       display: none;
+    }
+
+    .spectrum-logo-container {
+      float: right;
     }
 
     .ul-container {

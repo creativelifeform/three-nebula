@@ -7,7 +7,7 @@ import {
   GridItemMedia,
   NebulaLink,
 } from '../primitives';
-import { shape, string } from 'prop-types';
+import { array, shape, string } from 'prop-types';
 
 import { HREF_NEBULA } from '../../common/constants';
 import React from 'react';
@@ -26,14 +26,14 @@ const AboutNebula = ({
           {text.items.map((paragraph, i) => {
             if (i === 0) {
               return (
-                <p>
+                <p key={i}>
                   <NebulaLink />
                   {paragraph}
                 </p>
               );
             }
 
-            return <p>{paragraph}</p>;
+            return <p key={i}>{paragraph}</p>;
           })}
 
           <CalloutLink href={HREF_NEBULA} text={'Get the desktop app'} />
@@ -50,7 +50,9 @@ AboutNebula.propTypes = {
   content: shape({
     about: shape({
       title: string,
-      text: string,
+      text: shape({
+        items: array,
+      }),
     }),
     callout: shape({
       large: string,

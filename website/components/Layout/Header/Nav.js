@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { array, bool, func, object } from 'prop-types';
 
 import { NavLink } from '../../primitives';
+import SpectrumLogo from './SpectrumLogo';
 import { withRouter } from 'next/router';
 
 const Hamburger = ({ isOpen, toggle }) => (
   <div className="Hamburger" onClick={toggle}>
-    {isOpen ? 'menu' : 'close'}
+    {isOpen ? 'close' : 'menu'}
   </div>
 );
 
@@ -47,6 +48,9 @@ class Nav extends Component {
                 </li>
               )
             )}
+            <li className="spectrum-logo-container">
+              <SpectrumLogo />
+            </li>
           </ul>
         </div>
       </nav>

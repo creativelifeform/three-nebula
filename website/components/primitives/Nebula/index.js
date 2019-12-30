@@ -19,15 +19,16 @@ export class Nebula extends Component {
   }
 
   async componentDidMount() {
-    // guards against nextjs errors for window being undefined on the server
-    if (typeof window === 'undefined') {
-      return;
-    }
-
     this.setCanvasSize(async () => {
       const THREE = await import('three');
       const { canvas } = this;
       const { json, init, shouldRotateCamera } = this.props;
+
+      // Prevents very odd bug where canvas is sometimes null.
+      // No idea how this could happen inside componentDidMount
+      if (!canvas) {
+        return;
+      }
 
       if (json) {
         this.renderer = await new JsonRenderer(THREE, {
