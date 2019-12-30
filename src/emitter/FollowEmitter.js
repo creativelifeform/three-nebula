@@ -19,12 +19,6 @@ export default class FollowEmitter extends Emitter {
   constructor(mouseTarget, ease, pObj) {
     super(pObj);
 
-    if (typeof window === 'undefined') {
-      throw new Error(
-        'The window object is not defined, are you trying to use the FollowEmitter in a Node environment?'
-      );
-    }
-
     /**
      * @desc The class type.
      * @type {string}
