@@ -11,10 +11,12 @@
     }
   ],
   "directories": {
-    "docs": "docs"
+    "docs": "docs",
+    "website": "website"
   },
   "scripts": {
     "build": "webpack && npm run docs:build",
+    "dev": "webpack --mode=development --watch",
     "docs": "./scripts/docs",
     "docs:build": "./scripts/docs-build",
     "test": "mocha --require @babel/register --colors './test/**/*.spec.js'",
@@ -27,7 +29,9 @@
     "coverage:generate": "istanbul cover -x 'src/core/three/*.js' -x 'src/debug/*.js' ./node_modules/.bin/_mocha './test/**/*.spec.js' -- --require @babel/register",
     "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "git:publish": "./scripts/publish",
-    "bundlesize": "bundlesize"
+    "bundlesize": "bundlesize",
+    "ci:src": "npm run lint && npm run test && npm run bundlesize && npm run coverage:generate && npm run coverage:publish",
+    "ci:website": "npm run ci --prefix website"
   },
   "repository": {
     "type": "git",
@@ -78,7 +82,7 @@
     "prettier": "^1.16.4",
     "sinon": "^7.1.1",
     "stats.js": "^0.17.0",
-    "three": "^0.106.1",
+    "three": "^0.112.0",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5"
   }

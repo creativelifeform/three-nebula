@@ -1,0 +1,43 @@
+button,
+.button {
+  outline: none;
+  background: $button-bg;
+  background: $button-gradient;
+  border: none;
+  padding: $padding-m $padding-xl;
+  border-radius: $radius-s;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: $app-font-header;
+}
+
+a.button {
+  text-decoration: none;
+  display: inline-block;
+}
+
+button:hover,
+.button:hover {
+  background: darken($button-bg, 10);
+  background: $button-gradient-hover;
+}
+
+button.small,
+.button.small {
+  padding: $padding-s $padding-xl;
+}
+
+button.xs,
+.button.xs {
+  padding: $padding-s $padding-l;
+  font-size: 0.9em;
+}
+
+.Gdpr {
+  button {
+    padding: 5px $padding-m;
+    display: inline-block;
+    margin-left: 10px;
+  }
+}

@@ -1,0 +1,118 @@
+.Page.Home {
+  .Content,
+  .main {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .Content.Features {
+    padding: $padding-letterbox;
+    border-bottom: $sidebar-border;
+  }
+
+  .Content.AboutNebula {
+    padding: $padding-letterbox;
+  }
+}
+
+.Hero {
+  background: black;
+  padding: 0 $padding-l;
+  width: 100%;
+  position: relative;
+
+  .canvas-container {
+    height: $hero-canvas-h;
+    position: relative;
+    width: 100%;
+  }
+
+  canvas {
+    vertical-align: bottom;
+    // opacity: 0.5;
+  }
+
+  .Blurb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .Code {
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+    }
+
+    p {
+      line-height: 1.4em;
+      margin-bottom: $padding-l;
+    }
+  }
+
+  video {
+    width: 100%;
+    height: 75%;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  text-align: center;
+}
+
+.AboutNebula {
+  .button {
+    margin-top: $padding-l;
+  }
+}
+
+@include phone {
+  .Hero {
+    .Blurb {
+      text-align: center;
+
+      h2 {
+        font-size: 2.2em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
+    video {
+      display: none;
+    }
+  }
+}
+
+.Guide {
+}
+
+@include tablet {
+  .Hero {
+    .Blurb {
+      h2 {
+        font-size: 2.8em;
+        margin-bottom: $padding-xxl * 2;
+      }
+
+      p {
+        font-size: 1.5em;
+      }
+    }
+    video {
+      display: block;
+    }
+  }
+}
+
+@include desktop {
+  .Hero {
+    .Blurb {
+      h2 {
+        font-size: 3em;
+      }
+    }
+  }
+}

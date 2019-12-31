@@ -1,0 +1,39 @@
+.Footer {
+  .Content {
+    max-width: $content-max-width;
+    margin: auto;
+    padding: $padding-l 0;
+  }
+
+  font-size: 0.8em;
+  background: black;
+  opacity: 0.7;
+
+  .copyright {
+    text-align: center;
+    margin-top: $padding-l;
+  }
+
+  h3 {
+    margin-bottom: $padding-m;
+    padding-bottom: $padding-s;
+    border-bottom: $sidebar-border;
+  }
+
+  a {
+    color: $app-color;
+  }
+}
+
+@include phone {
+  .Footer {
+    padding: $padding-m;
+    padding-top: 0;
+  }
+}
+
+@include tablet {
+  .Footer {
+    padding: $padding-xl $padding-m;
+  }
+}

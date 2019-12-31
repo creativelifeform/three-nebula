@@ -1,0 +1,178 @@
+.Nav {
+  font-size: 0.9em;
+
+  .Hamburger {
+    cursor: pointer;
+  }
+
+  .SpectrumLogo {
+    display: inline-block;
+
+    path {
+      fill: $app-accent;
+    }
+  }
+
+  ul {
+    li {
+      display: inline-block;
+
+      a {
+        background: $header-bg;
+        border-radius: $padding-xs;
+      }
+
+      a:hover {
+        background: lighten($app-bg, 5);
+      }
+
+      a.active {
+        background: lighten($app-bg, 10);
+      }
+
+      .SpectrumLogo {
+        a {
+          padding: 0;
+        }
+
+        a:hover {
+          path {
+            fill: lighten($app-accent, 5);
+          }
+        }
+      }
+    }
+
+    li:last-child {
+      margin-right: 0;
+    }
+  }
+
+  button {
+    font-family: $app-font-header;
+  }
+}
+
+@include phone {
+  .Nav {
+    .fa-bars {
+      cursor: pointer;
+    }
+
+    .spectrum-logo-container {
+      float: none;
+    }
+
+    .ul-container {
+      background: black;
+      position: absolute;
+      height: calc(100vh - #{$header-h});
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: $header-h;
+      left: 0;
+      display: none;
+    }
+
+    ul {
+      display: none;
+      width: 100%;
+      margin-top: -$header-h;
+
+      li {
+        display: block;
+        margin: 0;
+        text-align: center;
+
+        a {
+          display: block;
+          padding: $padding-l;
+          text-align: center;
+          border-radius: 0;
+          font-size: 1.5em;
+        }
+
+        a:hover {
+          background: black;
+          color: lighten($app-accent, 15);
+        }
+
+        a.active {
+          background: black;
+          text-decoration: underline;
+        }
+
+        .SpectrumLogo {
+          a {
+            padding: 0;
+          }
+        }
+      }
+
+      li.has-button {
+        padding: $padding-m 0;
+      }
+    }
+
+    ul.active {
+      display: block;
+    }
+
+    .ul-container.active {
+      display: flex;
+    }
+  }
+}
+
+@include tablet {
+  .Nav {
+    .Hamburger {
+      display: none;
+    }
+
+    .spectrum-logo-container {
+      float: right;
+    }
+
+    .ul-container {
+      background: none;
+      position: static;
+      display: block;
+      top: 0;
+      height: auto;
+    }
+
+    ul {
+      display: block;
+      position: static;
+      margin-top: 0px;
+
+      li {
+        display: inline-block;
+        margin-right: $padding-m;
+
+        a {
+          padding: $padding-s;
+          border-radius: $padding-xs;
+          font-size: 1em;
+        }
+
+        a:hover {
+          color: $app-color;
+          background: lighten($app-bg, 5);
+        }
+
+        a.active {
+          text-decoration: none;
+          background: lighten($app-bg, 10);
+        }
+      }
+
+      li.has-button {
+        padding: 0;
+      }
+    }
+  }
+}

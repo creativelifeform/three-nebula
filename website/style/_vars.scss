@@ -1,0 +1,72 @@
+$app-bg: #111;
+$app-color: #eee;
+$app-accent: #4202ff;
+$app-accent-alt: #a400c1;
+$app-error: red;
+// $app-accent-alt: #0280ff;
+$app-font: 'Dosis', sans-serif;
+$app-font-header: 'Dosis', sans-serif;
+$app-font-body: 'Barlow', sans-serif;
+
+$gdpr-h: 50px;
+$header-h: 60px;
+$header-bg: #000;
+$header-z: 3;
+
+$sidebar-border-width: 1px;
+$sidebar-w: 200 + $sidebar-border-width;
+$sidebar-border-color: #333;
+$sidebar-border: $sidebar-border-width solid #333;
+
+$content-max-width: 1280px;
+
+$hero-image-w: 2956px;
+$hero-image-h: 1804px;
+$hero-canvas-h: 300px;
+
+$input-submit-h: 40px;
+$input-submit-w: 75px;
+$spinner-w: 20px;
+
+$button-bg: $app-accent;
+$button-gradient: radial-gradient(
+  circle at top right,
+  $app-accent,
+  $app-accent-alt
+);
+$button-gradient-hover: radial-gradient(
+  circle at top right,
+  darken($app-accent, 10),
+  darken($app-accent-alt, 10)
+);
+
+$padding-xs: 5px;
+$padding-s: 10px;
+$padding-m: 15px;
+$padding-l: 20px;
+$padding-xl: 25px;
+$padding-xxl: 30px;
+$padding-letterbox: $padding-xxl * 2 0;
+
+$radius-s: 5px;
+
+@media all and (min-width: 15em) {
+}
+
+@media all and (min-width: 35em) {
+}
+
+@media all and (min-width: 40em) {
+}
+
+@media all and (min-width: 45em) {
+}
+
+@media all and (min-width: 60em) {
+}
+
+@media all and (min-width: 70em) {
+}
+
+@media all and (min-width: 80em) {
+}

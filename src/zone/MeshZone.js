@@ -11,9 +11,10 @@ export default class MeshZone extends Zone {
    *
    * @param {THREE.Geometry|Mesh} bounds - the geometry or mesh that will determine the zone bounds
    * @param {number} scale - the zone scale
+   * @param {THREE.Geometry} ThreeGeometry - the three geometry class
    * @return void
    */
-  constructor(bounds, scale = 1) {
+  constructor(bounds, scale = 1, ThreeGeometry) {
     super(type);
 
     this.geometry = null;
@@ -33,6 +34,10 @@ export default class MeshZone extends Zone {
         'MeshZone unable to set geometry from the supplied bounds'
       );
     }
+
+    if (this.geometry.isBufferGeometry) {
+      this.geometry = new ThreeGeometry().fromBufferGeometry(this.geometry);
+    }
   }
 
   /**
@@ -45,8 +50,8 @@ export default class MeshZone extends Zone {
   }
 
   getPosition() {
-    var vertices = this.geometry.vertices;
-    var rVector = vertices[(vertices.length * Math.random()) >> 0];
+    const vertices = this.geometry.vertices;
+    const rVector = vertices[(vertices.length * Math.random()) >> 0];
 
     this.vector.x = rVector.x * this.scale;
     this.vector.y = rVector.y * this.scale;
