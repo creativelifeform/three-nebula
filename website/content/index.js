@@ -5,7 +5,7 @@ const content = {
   },
   home: {
     title: 'three-nebula',
-    text: 'A lightweight, modular and powerful particle system engine for ',
+    text: 'A WebGL based 3D particle system engine for ',
   },
   features: {
     items: [
@@ -17,7 +17,7 @@ const content = {
       {
         title: 'Loadable & Portable via JSON',
         text:
-          'Load your entire system from a JSON object which you can easily share with others or modify for a fast and user friendly development feedback loop.',
+          'Load your entire system from a JSON object which you can easily share with others or modify for a fast and user friendly development experience.',
       },
       {
         title: 'MIT Licensed',
