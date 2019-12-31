@@ -1,13 +1,12 @@
 .Page.Examples {
   .Content {
+    display: flex;
     max-width: 100vw;
     height: calc(100vh - #{$header-h});
     padding: 0;
     clear: both;
 
     .Sidebar {
-      float: left;
-
       header {
         padding: $padding-l;
       }
@@ -34,7 +33,6 @@
             }
 
             &.active {
-              // color: #049ef4;
               background: $sidebar-border-color;
               background: $app-accent;
               font-weight: bold;
@@ -47,10 +45,6 @@
         }
       }
     }
-  }
-
-  .canvas-container {
-    float: left;
   }
 
   .canvas-container,

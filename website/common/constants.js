@@ -5,6 +5,6 @@ export const HREF_DOCS = 'https://three-nebula-docs.netlify.com/';
 export const HREF_NEBULA = 'https://test.getnebula.app';
 export const HREF_TWITTER = 'https://twitter.com/getnebula';
 export const HREF_SPECTRUM = 'https://spectrum.chat/nebula';
-export const HREF_COMPANY = 'http://creativelifeform.com';
+export const HREF_COMPANY = 'https://github.com/creativelifeform';
 export const HREF_THREE_JS = 'https://threejs.org';
 export const HREF_THREE_JS_DOCS = 'https://threejs.org/docs';
