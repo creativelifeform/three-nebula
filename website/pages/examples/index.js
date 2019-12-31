@@ -4,19 +4,15 @@ import { shape, string } from 'prop-types';
 import { Examples } from '../../components';
 import Router from 'next/router';
 
-class ExamplesPage extends Component {
-  static defaultProps = {
-    query: undefined,
-  };
+const DEFAULT_EXAMPLE = 'custom-renderer';
 
+class ExamplesPage extends Component {
   componentDidMount() {
-    !this.props.query && Router.push('/examples/custom-renderer');
+    Router.push(`/examples/${DEFAULT_EXAMPLE}`);
   }
 
   render() {
-    const { query } = this.props;
-
-    return <Examples name={query ? query.name : undefined} />;
+    return <Examples />;
   }
 }
 

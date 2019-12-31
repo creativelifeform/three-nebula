@@ -1,32 +1,23 @@
 import { Content, Page } from '../primitives';
+import { node, string } from 'prop-types';
 
-import { EXAMPLE_NAME_TO_COMPONENT_MAP } from './constants';
 import React from 'react';
 import { Sidebar } from './Sidebar';
-import { string } from 'prop-types';
 
-const examplePropTypes = {
-  name: string,
-};
-
-const Example = ({ name }) => {
-  const Component = EXAMPLE_NAME_TO_COMPONENT_MAP[name];
-
-  return Component ? <Component /> : null;
-};
-
-const Examples = ({ name }) => {
+const Examples = ({ name, children }) => {
   return (
     <Page className="Examples">
       <Content>
         <Sidebar />
-        <Example name={name} />
+        {children}
       </Content>
     </Page>
   );
 };
 
-Example.propTypes = examplePropTypes;
-Examples.propTypes = examplePropTypes;
+Examples.propTypes = {
+  name: string,
+  children: node,
+};
 
 export default Examples;
