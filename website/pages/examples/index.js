@@ -1,6 +1,7 @@
+import React, { Component } from 'react';
 import { shape, string } from 'prop-types';
 
-import { Component } from 'react';
+import { Examples } from '../../components';
 import Router from 'next/router';
 
 const DEFAULT_EXAMPLE = 'custom-renderer';
@@ -11,7 +12,7 @@ class ExamplesPage extends Component {
   }
 
   render() {
-    return null;
+    return <Examples />;
   }
 }
 

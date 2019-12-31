@@ -9,7 +9,6 @@ export const ViewSource = ({ href }) => (
     target="_blank"
     rel="noopener noreferrer "
   >
-    {href && console.log(href)}
     <Code>View Source</Code>
   </a>
 );
