@@ -9,10 +9,11 @@ const Link = ({ href, name, router: { pathname }, url = null }) => {
     return <a href={url}>{name}</a>;
   }
 
+  const paths = pathname.split('/');
   let route = pathname;
 
-  if (pathname.includes('[')) {
-    route = `/${pathname.split('/')[1]}`;
+  if (paths.length > 1) {
+    route = `/${paths[1]}`;
   }
 
   return (

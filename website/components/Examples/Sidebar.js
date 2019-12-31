@@ -1,7 +1,7 @@
-import { EXAMPLE_NAMES } from './constants';
 import NextLink from 'next/link';
 import React from 'react';
 import { Sidebar as SidebarWrapper } from '../primitives/Sidebar';
+import { exampleNames } from './constants';
 import { useRouter } from 'next/router';
 
 const formatLinkText = text => {
@@ -12,20 +12,20 @@ const formatLinkText = text => {
   return text;
 };
 
-const isActiveExample = (name, query) => name === query.name;
+const isActiveExample = (name, pathname) => pathname.includes(name);
 
 export const Sidebar = () => {
-  const { query } = useRouter();
+  const { pathname } = useRouter();
 
   return (
     <SidebarWrapper>
       <header>Examples</header>
       <ul>
-        {EXAMPLE_NAMES.map(name => (
+        {exampleNames.map(name => (
           <li key={name}>
             <NextLink href={`/examples/${name}`}>
               <a
-                className={isActiveExample(name, query) ? 'active' : ''}
+                className={isActiveExample(name, pathname) ? 'active' : ''}
                 href={`/examples/${name}`}
               >
                 {formatLinkText(name)}
