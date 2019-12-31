@@ -29,6 +29,10 @@ module.exports = withBundleAnalyzer(
           const map = {};
 
           routes.forEach(({ path }) => {
+            if (!path) {
+              return;
+            }
+
             map[path] = { page: path };
           });
 
