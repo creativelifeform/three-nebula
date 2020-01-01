@@ -5,13 +5,12 @@
     max-width: 100%;
   }
 
-  .Content.Features {
-    padding: $padding-letterbox;
-    border-bottom: $sidebar-border;
+  .Content.Hero {
+    padding: 0;
   }
 
-  .Content.AboutNebula {
-    padding: $padding-letterbox;
+  .Content.Features {
+    border-bottom: $sidebar-border;
   }
 }
 
@@ -68,6 +67,11 @@
 }
 
 @include phone {
+  .Page.Home {
+    .Content {
+      padding: $padding-letterbox-s;
+    }
+  }
   .Hero {
     .Blurb {
       text-align: center;
@@ -90,6 +94,11 @@
 }
 
 @include tablet {
+  .Page.Home {
+    .Content {
+      padding: $padding-letterbox;
+    }
+  }
   .Hero {
     .Blurb {
       h2 {

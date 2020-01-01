@@ -72,6 +72,14 @@
     .Item {
       margin-bottom: $padding-xxl;
     }
+
+    .Item:last-child {
+      margin: 0;
+
+      .Media {
+        margin: 0;
+      }
+    }
   }
 
   .Hero {
