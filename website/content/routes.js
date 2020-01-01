@@ -60,6 +60,12 @@ module.exports = [
     shouldHideFromNav: true,
   },
   {
+    title: 'Three Nebula - ThreeJs Particle System Engine LifeCycleApi',
+    name: 'life-cycle-api',
+    path: '/examples/life-cycle-api',
+    shouldHideFromNav: true,
+  },
+  {
     title: 'Three Nebula - Documentation',
     name: 'Docs',
     url: 'https://three-nebula-docs.netlify.com/',
