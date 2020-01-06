@@ -132,7 +132,7 @@ const makeBehaviours = items =>
     });
   });
 
-const makeEmitters = (emitters, Emitter, THREE) =>
+const makeEmitters = (emitters, Emitter, THREE, shouldAutoEmit) =>
   new Promise((resolve, reject) => {
     if (!emitters.length) {
       return resolve([]);
@@ -180,7 +180,12 @@ const makeEmitters = (emitters, Emitter, THREE) =>
           return Promise.resolve(emitter);
         })
         .then(emitter => {
-          madeEmitters.push(emitter.emit(totalEmitTimes, life));
+          madeEmitters.push(
+            // TODO UNIT_TEST
+            shouldAutoEmit
+              ? emitter.emit(totalEmitTimes, life)
+              : emitter.setTotalEmitTimes(totalEmitTimes).setLife(life)
+          );
 
           if (madeEmitters.length === numberOfEmitters) {
             return resolve(madeEmitters);
@@ -194,15 +199,17 @@ const makeEmitters = (emitters, Emitter, THREE) =>
  * Creates a System instance from a JSON object.
  *
  * @param {object} json - The JSON to create the System instance from
- * @param {object} THREE - The Web GL Api to use
- * @param {function} System - The system class
- * @param {function} Emitter - The emitter class
  * @param {number} json.preParticles - The predetermined number of particles
  * @param {string} json.integrationType - The integration algorithm to use
  * @param {array<object>} json.emitters - The emitters for the system instance
+ * @param {object} THREE - The Web GL Api to use
+ * @param {function} System - The system class
+ * @param {function} Emitter - The emitter class
+ * @param {object} options - Optional config options
+ * @param {boolean} [options.shouldAutoEmit=true] - Determines if the system should automatically emit particles
  * @return {Promise<System>}
  */
-export default (json, THREE, System, Emitter) =>
+export default (json, THREE, System, Emitter, { shouldAutoEmit = true } = {}) =>
   new Promise((resolve, reject) => {
     const {
       preParticles = POOL_MAX,
@@ -211,7 +218,7 @@ export default (json, THREE, System, Emitter) =>
     } = json;
     const system = new System(preParticles, integrationType);
 
-    makeEmitters(emitters, Emitter, THREE)
+    makeEmitters(emitters, Emitter, THREE, shouldAutoEmit)
       .then(madeEmitters => {
         const numberOfEmitters = madeEmitters.length;
 

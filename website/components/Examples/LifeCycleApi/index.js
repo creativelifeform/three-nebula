@@ -7,5 +7,9 @@ export default () => (
   <Nebula
     srcHref={getSrcHref('LifeCycleApi/data.json')}
     json={particleSystemState}
+    shouldExposeLifeCycleApi={true}
+    onStart={() => console.log('START')}
+    onUpdate={() => console.log('UPDATE')}
+    onEnd={() => console.log('END')}
   />
 );

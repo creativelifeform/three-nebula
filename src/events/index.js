@@ -1,22 +1,4 @@
-import {
-  EMITTER_ADDED,
-  EMITTER_REMOVED,
-  PARTICLE_CREATED,
-  PARTICLE_DEAD,
-  PARTICLE_UPDATE,
-  SYSTEM_UPDATE,
-  SYSTEM_UPDATE_AFTER
-} from './constants';
-
 import EventDispatcher from './EventDispatcher';
 
 export default EventDispatcher;
-export {
-  EMITTER_ADDED,
-  EMITTER_REMOVED,
-  PARTICLE_CREATED,
-  PARTICLE_DEAD,
-  PARTICLE_UPDATE,
-  SYSTEM_UPDATE_AFTER,
-  SYSTEM_UPDATE
-};
+export * from './constants';

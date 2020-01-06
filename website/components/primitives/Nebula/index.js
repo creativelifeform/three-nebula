@@ -22,7 +22,15 @@ export class Nebula extends Component {
     this.setCanvasSize(async () => {
       const THREE = await import('three');
       const { canvas } = this;
-      const { json, init, shouldRotateCamera } = this.props;
+      const {
+        json,
+        init,
+        shouldRotateCamera,
+        shouldExposeLifeCycleApi,
+        onStart,
+        onUpdate,
+        onEnd,
+      } = this.props;
 
       // Prevents very odd bug where canvas is sometimes null.
       // No idea how this could happen inside componentDidMount
@@ -35,6 +43,10 @@ export class Nebula extends Component {
           canvas,
           json,
           shouldRotateCamera,
+          shouldExposeLifeCycleApi,
+          onStart,
+          onUpdate,
+          onEnd,
         }).start();
       }
 
@@ -43,6 +55,7 @@ export class Nebula extends Component {
           canvas,
           init,
           shouldRotateCamera,
+          shouldExposeLifeCycleApi,
         }).start();
       }
 
@@ -104,10 +117,15 @@ export class Nebula extends Component {
 Nebula.defaultProps = {
   shouldRotateCamera: false,
   shouldShowStats: true,
+  shouldExposeLifeCycleApi: false,
+  onStart: () => {},
+  onUpdate: () => {},
+  onEnd: () => {},
 };
 
 Nebula.propTypes = {
   shouldRotateCamera: bool,
+  shouldExposeLifeCycleApi: bool,
   shouldShowStats: bool,
   srcHref: string,
   init: func,
@@ -121,4 +139,7 @@ Nebula.propTypes = {
       emitters: array,
     }),
   }),
+  onStart: func,
+  onUpdate: func,
+  onEnd: func,
 };
