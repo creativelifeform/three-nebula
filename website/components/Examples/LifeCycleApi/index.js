@@ -4,5 +4,7 @@ import { getSrcHref } from '../utils';
 import init from './init';
 
 export default () => (
-  <Nebula srcHref={getSrcHref('LifeCycleApi/init.js')} init={init} />
+  <Nebula srcHref={getSrcHref('LifeCycleApi/init.js')} init={init}>
+    <div>hello</div>
+  </Nebula>
 );

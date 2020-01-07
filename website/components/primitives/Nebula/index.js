@@ -1,6 +1,6 @@
 import { JsonRenderer, ProceduralRenderer } from './renderer';
 import React, { Component } from 'react';
-import { array, bool, func, number, shape, string } from 'prop-types';
+import { array, bool, func, node, number, shape, string } from 'prop-types';
 
 import { Stats } from './Stats';
 import { ViewSource } from './ViewSource';
@@ -97,7 +97,7 @@ export class Nebula extends Component {
 
   render() {
     const { width, height } = this.state;
-    const { shouldShowStats, srcHref } = this.props;
+    const { children, shouldShowStats, srcHref } = this.props;
 
     return (
       <div className="canvas-container" ref={this.containerRef}>
@@ -109,6 +109,7 @@ export class Nebula extends Component {
           width={width}
           height={height}
         />
+        {children}
       </div>
     );
   }
@@ -124,6 +125,7 @@ Nebula.defaultProps = {
 };
 
 Nebula.propTypes = {
+  children: node,
   shouldRotateCamera: bool,
   shouldExposeLifeCycleApi: bool,
   shouldShowStats: bool,
