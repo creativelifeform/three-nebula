@@ -181,7 +181,6 @@ const makeEmitters = (emitters, Emitter, THREE, shouldAutoEmit) =>
         })
         .then(emitter => {
           madeEmitters.push(
-            // TODO UNIT_TEST
             shouldAutoEmit
               ? emitter.emit(totalEmitTimes, life)
               : emitter.setTotalEmitTimes(totalEmitTimes).setLife(life)
