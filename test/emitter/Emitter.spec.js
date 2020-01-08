@@ -562,6 +562,7 @@ describe('emitter -> Emitter -> update', () => {
 
     done();
   });
+
   it('should destroy the emitter if the emitter age is >= to its life', done => {
     const emitterA = new Emitter();
     const emitterB = new Emitter();
@@ -596,6 +597,22 @@ describe('emitter -> Emitter -> update', () => {
 
     assert(generateSpy.calledOnceWith(TIME));
     assert(integrateSpy.calledOnceWith(TIME));
+
+    generateSpy.restore();
+    integrateSpy.restore();
+
+    done();
+  });
+
+  it('should not do anything if update is called while the emitter is not emitting particles', done => {
+    const emitter = new Emitter();
+    const generateSpy = spy(emitter, 'generate');
+    const integrateSpy = spy(emitter, 'integrate');
+
+    emitter.update(TIME);
+
+    assert(generateSpy.notCalled);
+    assert(integrateSpy.notCalled);
 
     generateSpy.restore();
     integrateSpy.restore();
@@ -749,15 +766,12 @@ describe('emitter -> Emitter -> experimental_emit', () => {
     const emitter = new Emitter();
 
     emitter.setTotalEmitTimes(null);
-
     assert.strictEqual(emitter.totalEmitTimes, Infinity);
 
     emitter.setTotalEmitTimes('foo');
-
     assert.strictEqual(emitter.totalEmitTimes, Infinity);
 
     emitter.setTotalEmitTimes(undefined);
-
     assert.strictEqual(emitter.totalEmitTimes, Infinity);
   });
 
@@ -765,7 +779,6 @@ describe('emitter -> Emitter -> experimental_emit', () => {
     const emitter = new Emitter();
 
     emitter.setTotalEmitTimes(10);
-
     assert.strictEqual(emitter.totalEmitTimes, 10);
   });
 
@@ -773,15 +786,12 @@ describe('emitter -> Emitter -> experimental_emit', () => {
     const emitter = new Emitter();
 
     emitter.setLife(null);
-
     assert.strictEqual(emitter.life, Infinity);
 
     emitter.setLife('foo');
-
     assert.strictEqual(emitter.life, Infinity);
 
     emitter.setLife(undefined);
-
     assert.strictEqual(emitter.life, Infinity);
   });
 
@@ -798,7 +808,6 @@ describe('emitter -> Emitter -> experimental_emit', () => {
     const emitter = new Emitter();
 
     emitter.setLife(100);
-
     assert.strictEqual(emitter.life, 100);
   });
 
