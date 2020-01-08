@@ -228,7 +228,6 @@ export default class Emitter extends Particle {
   /**
    * Sets the total emit times for the emitter.
    *
-   * TODO UNIT_TEST
    * @param {number} [totalEmitTimes=Infinity] - the total number of times to emit particles
    * @return {Emitter}
    */
@@ -241,7 +240,6 @@ export default class Emitter extends Particle {
   /**
    * Sets the life of the emitter.
    *
-   * TODO UNIT_TEST
    * @param {number} [life=Infinity] - the life of this emitter in milliseconds
    * @return {Emitter}
    */

@@ -745,6 +745,63 @@ describe('emitter -> Emitter -> generate', () => {
 });
 
 describe('emitter -> Emitter -> experimental_emit', () => {
+  it('should set the totalEmitTimes to Infinity', () => {
+    const emitter = new Emitter();
+
+    emitter.setTotalEmitTimes(null);
+
+    assert.strictEqual(emitter.totalEmitTimes, Infinity);
+
+    emitter.setTotalEmitTimes('foo');
+
+    assert.strictEqual(emitter.totalEmitTimes, Infinity);
+
+    emitter.setTotalEmitTimes(undefined);
+
+    assert.strictEqual(emitter.totalEmitTimes, Infinity);
+  });
+
+  it('should set the totalEmitTimes to the number passed', () => {
+    const emitter = new Emitter();
+
+    emitter.setTotalEmitTimes(10);
+
+    assert.strictEqual(emitter.totalEmitTimes, 10);
+  });
+
+  it('should set the life to Infinity', () => {
+    const emitter = new Emitter();
+
+    emitter.setLife(null);
+
+    assert.strictEqual(emitter.life, Infinity);
+
+    emitter.setLife('foo');
+
+    assert.strictEqual(emitter.life, Infinity);
+
+    emitter.setLife(undefined);
+
+    assert.strictEqual(emitter.life, Infinity);
+  });
+
+  it('should set the life to the totalEmitTimes if that value is 1', () => {
+    const emitter = new Emitter();
+
+    emitter.setTotalEmitTimes(1);
+    emitter.setLife(100);
+
+    assert.strictEqual(emitter.life, 1);
+  });
+
+  it('should set the life to the number passed', () => {
+    const emitter = new Emitter();
+
+    emitter.setLife(100);
+
+    assert.strictEqual(emitter.life, 100);
+  });
+
   it('should return the emitter and not perform any other operations if the emitter is already emitting', () => {
     const mockRate = { init: () => {} };
     const setTotalEmitTimesSpy = spy(Emitter.prototype, 'setTotalEmitTimes');
