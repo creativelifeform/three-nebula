@@ -536,6 +536,8 @@ describe('emitter -> Emitter -> update', () => {
   it('should set the emitter age according to the time passed', done => {
     const emitter = new Emitter();
 
+    emitter.isEmitting = true;
+
     assert.equal(emitter.age, 0);
 
     emitter.update(TIME);
@@ -549,6 +551,7 @@ describe('emitter -> Emitter -> update', () => {
     const emitter = new Emitter();
     const destroySpy = spy(emitter, 'destroy');
 
+    emitter.isEmitting = true;
     emitter.dead = true;
 
     emitter.update(TIME);
@@ -588,6 +591,7 @@ describe('emitter -> Emitter -> update', () => {
     const generateSpy = spy(emitter, 'generate');
     const integrateSpy = spy(emitter, 'integrate');
 
+    emitter.isEmitting = true;
     emitter.update(TIME);
 
     assert(generateSpy.calledOnceWith(TIME));
@@ -607,6 +611,8 @@ describe('emitter -> Emitter -> update', () => {
     const systemDispatchSpy = spy(system, 'dispatch');
     const poolExpireSpy = spy(system.pool, 'expire');
     const particleResetSpy = spy(Nebula.Particle.prototype, 'reset');
+
+    emitter.isEmitting = true;
 
     system.addEmitter(emitter);
 
@@ -735,5 +741,70 @@ describe('emitter -> Emitter -> generate', () => {
     createParticleSpy.restore();
 
     done();
+  });
+});
+
+describe('emitter -> Emitter -> experimental_emit', () => {
+  it('should return the emitter and not perform any other operations if the emitter is already emitting', () => {
+    const mockRate = { init: () => {} };
+    const setTotalEmitTimesSpy = spy(Emitter.prototype, 'setTotalEmitTimes');
+    const setLifeSpy = spy(Emitter.prototype, 'setLife');
+    const rateInitSpy = spy(mockRate, 'init');
+    const emitter = new Emitter().setRate(mockRate);
+
+    emitter.totalEmitTimes = 0;
+    emitter.life = 0;
+    emitter.isEmitting = true;
+
+    assert.instanceOf(emitter.experimental_emit(), Emitter);
+    assert(setTotalEmitTimesSpy.notCalled);
+    assert(setLifeSpy.notCalled);
+    assert(rateInitSpy.notCalled);
+
+    setTotalEmitTimesSpy.restore();
+    setLifeSpy.restore();
+    rateInitSpy.restore();
+  });
+
+  it('should set totalEmitTimes and life if the emitter is not emitting and these values are falsy', () => {
+    const mockRate = { init: () => {} };
+    const setTotalEmitTimesSpy = spy(Emitter.prototype, 'setTotalEmitTimes');
+    const setLifeSpy = spy(Emitter.prototype, 'setLife');
+    const rateInitSpy = spy(mockRate, 'init');
+    const emitter = new Emitter().setRate(mockRate);
+
+    emitter.totalEmitTimes = 0;
+    emitter.life = 0;
+
+    assert.instanceOf(emitter.experimental_emit(), Emitter);
+    assert(setTotalEmitTimesSpy.calledOnceWith(Infinity));
+    assert(setLifeSpy.calledOnceWith(Infinity));
+    assert(rateInitSpy.calledOnce);
+    assert.isTrue(emitter.isEmitting);
+
+    setTotalEmitTimesSpy.restore();
+    setLifeSpy.restore();
+    rateInitSpy.restore();
+  });
+
+  it('should not set totalEmitTimes and life if these values are not falsy but should init the rate if not emitting', () => {
+    const mockRate = { init: () => {} };
+    const setTotalEmitTimesSpy = spy(Emitter.prototype, 'setTotalEmitTimes');
+    const setLifeSpy = spy(Emitter.prototype, 'setLife');
+    const rateInitSpy = spy(mockRate, 'init');
+    const emitter = new Emitter().setRate(mockRate);
+
+    emitter.totalEmitTimes = 2;
+    emitter.life = 200;
+
+    assert.instanceOf(emitter.experimental_emit(), Emitter);
+    assert(setTotalEmitTimesSpy.notCalled);
+    assert(setLifeSpy.notCalled);
+    assert(rateInitSpy.calledOnce);
+    assert.isTrue(emitter.isEmitting);
+
+    setTotalEmitTimesSpy.restore();
+    setLifeSpy.restore();
+    rateInitSpy.restore();
   });
 });

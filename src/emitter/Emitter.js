@@ -200,9 +200,8 @@ export default class Emitter extends Particle {
   }
 
   /**
-   * Experimental emit method that is designed to be called from the System.emit method.
+   * imental emit method that is designed to be called from the System.emit method.
    *
-   * TODO UNIT_TEST
    * @return {Emitter}
    */
   experimental_emit() {
