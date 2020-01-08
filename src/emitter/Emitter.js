@@ -547,7 +547,6 @@ export default class Emitter extends Particle {
    * @return void
    */
   update(time) {
-    // TODO UNIT_TEST
     if (!this.isEmitting) {
       return;
     }
