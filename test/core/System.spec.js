@@ -16,6 +16,7 @@ import chai from 'chai';
 import sinon from 'sinon';
 
 const { assert } = chai;
+const { spy, stub } = sinon;
 const System = Nebula.System;
 const getSystem = () => new System();
 const getSpriteRenderer = container =>
@@ -120,6 +121,7 @@ describe('core -> System', () => {
     const emitterSpy = sinon.spy(emitter, 'update');
     const dispatchSpy = sinon.spy(system, 'dispatch');
 
+    emitter.isEmitting = true;
     system.addEmitter(emitter);
     system.update();
 
@@ -194,5 +196,82 @@ describe('core -> System', () => {
 
       done();
     }, 500);
+  });
+});
+
+describe('core -> System -> emit', () => {
+  it('should call the onStart method if provided', done => {
+    const system = new System();
+    const onStart = stub();
+
+    system.emit({ onStart });
+
+    assert(onStart.calledOnce);
+
+    done();
+  });
+
+  it('should wire up the onUpdate method to the event dispatcher SYSTEM_UPDATE event if provided', () => {
+    const system = new System();
+    const onUpdate = stub();
+    const addEventListenerSpy = spy(system.eventDispatcher, 'addEventListener');
+
+    system.emit({ onUpdate });
+
+    assert(addEventListenerSpy.calledOnceWith(SYSTEM_UPDATE, onUpdate));
+  });
+
+  it('should perform the correct flow if the emitter is infinite', async () => {
+    const system = new System();
+    const emitter = new Nebula.Emitter();
+    const onEnd = stub();
+    const emitterEmitSpy = spy(emitter, 'experimental_emit');
+    const addOnEmitterDeadEventListenerSpy = spy(
+      emitter,
+      'addOnEmitterDeadEventListener'
+    );
+
+    emitter.setLife(Infinity);
+
+    const result = await system.addEmitter(emitter).emit({ onEnd });
+
+    assert(onEnd.calledOnce);
+    assert(emitterEmitSpy.calledOnce);
+    assert(addOnEmitterDeadEventListenerSpy.notCalled);
+    assert.deepEqual(result, [undefined]);
+  });
+
+  it('should perform the correct flow if the emitter is finite', async () => {
+    const system = new System();
+    const emitterA = new Nebula.Emitter().setRate(new Nebula.Rate(1, 1));
+    const emitterB = new Nebula.Emitter().setRate(new Nebula.Rate(1, 1));
+    const onEnd = stub();
+    const emitterEmitSpyA = spy(emitterA, 'experimental_emit');
+    const emitterEmitSpyB = spy(emitterB, 'experimental_emit');
+    const addOnEmitterDeadEventListenerSpyA = spy(
+      emitterA,
+      'addOnEmitterDeadEventListener'
+    );
+    const addOnEmitterDeadEventListenerSpyB = spy(
+      emitterB,
+      'addOnEmitterDeadEventListener'
+    );
+
+    emitterA.setLife(0.1);
+    emitterB.setLife(0.1);
+    system.addEmitter(emitterA).addEmitter(emitterB);
+
+    const mockFiniteEmissions = async () => {
+      system.emit({ onEnd });
+      emitterA.destroy();
+      emitterB.destroy();
+    };
+
+    await mockFiniteEmissions();
+
+    assert(emitterEmitSpyA.calledOnce);
+    assert(emitterEmitSpyB.calledOnce);
+    assert(addOnEmitterDeadEventListenerSpyA.calledOnce);
+    assert(addOnEmitterDeadEventListenerSpyB.calledOnce);
   });
 });

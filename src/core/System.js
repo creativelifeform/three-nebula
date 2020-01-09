@@ -187,7 +187,6 @@ export default class System {
    * Expects emitters to have their totalEmitTimes and life set already.
    * Inifnite systems will resolve immediately.
    *
-   * TODO UNIT_TEST
    * @param {object} hooks - Functions to hook into the life cycle API
    * @param {function} hooks.onStart - Called when the system starts to emit particles
    * @param {function} hooks.onUpdate - Called each time the system updates
