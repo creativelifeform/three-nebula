@@ -1,5 +1,6 @@
 import ParticleSystem, { SpriteRenderer } from 'three-nebula';
 
+import { feedbackRef } from './refs';
 import json from './data';
 
 export default async (three, { scene, camera }) => {
@@ -10,9 +11,10 @@ export default async (three, { scene, camera }) => {
   );
 
   system.addRenderer(new SpriteRenderer(scene, three)).emit({
-    onStart: () => console.log('START'),
-    onUpdate: () => console.log('UPDATE'),
-    onEnd: () => console.log('END'),
+    onStart: () => feedbackRef.component.setState({ hasStarted: true }),
+    onUpdate: () => feedbackRef.component.setState({ isUpdating: true }),
+    onEnd: () =>
+      feedbackRef.component.setState({ hasEnded: true, isUpdating: false }),
   });
 
   return system;
