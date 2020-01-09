@@ -59,10 +59,6 @@
       cursor: pointer;
     }
 
-    .spectrum-logo-container {
-      float: none;
-    }
-
     .ul-container {
       background: black;
       position: absolute;
@@ -132,10 +128,6 @@
       display: none;
     }
 
-    .spectrum-logo-container {
-      float: right;
-    }
-
     .ul-container {
       background: none;
       position: static;
@@ -145,7 +137,8 @@
     }
 
     ul {
-      display: block;
+      display: flex;
+      align-items: center;
       position: static;
       margin-top: 0px;
 
