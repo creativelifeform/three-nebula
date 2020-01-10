@@ -93,6 +93,7 @@ describe('emitter -> Emitter -> updateEmitterBehaviours', () => {
     const emitter = new Emitter();
     const updateEmitterBehavioursSpy = spy(emitter, 'updateEmitterBehaviours');
 
+    emitter.isEmitting = true;
     emitter.update(TIME);
 
     assert(updateEmitterBehavioursSpy.calledOnceWith(TIME));
@@ -111,6 +112,8 @@ describe('emitter -> Emitter -> updateEmitterBehaviours', () => {
     const emitterBehaviour = new Nebula.Rotate(1, 0, 0);
     const before = { ...emitter.rotation };
     let after;
+
+    emitter.isEmitting = true;
 
     emitter
       .setBehaviours(behaviours)

@@ -2,6 +2,7 @@
 
 import * as THREE from 'three';
 
+import Emitter from '../../src/emitter/Emitter';
 import Particles from '../../src/core/System';
 import Texture from '../../src/initializer/Texture';
 import chai from 'chai';
@@ -26,9 +27,10 @@ describe('fromJSONAsync', () => {
     // stop three warns from being printed, these happen because we're stubbing
     // things below
     consoleWarnStub = stub(console, 'warn');
-    textureLoaderStub = stub(TextureLoader.prototype, 'load').callsFake(
-      (texture, callback) => callback()
-    );
+    textureLoaderStub = stub(
+      TextureLoader.prototype,
+      'load'
+    ).callsFake((texture, callback) => callback());
   });
 
   after(() => {
@@ -117,5 +119,44 @@ describe('fromJSONAsync', () => {
     behaviours.forEach(behaviour => {
       assert.equal(behaviour.life, Infinity);
     });
+  });
+
+  it("should call an emitter's emit method if shouldAutoEmit option is true", async () => {
+    const emitSpy = spy(Emitter.prototype, 'emit');
+
+    await Particles.fromJSONAsync(eightdiagrams, THREE, {
+      shouldAutoEmit: true,
+    });
+
+    assert(emitSpy.called);
+
+    emitSpy.restore();
+  });
+
+  it("should not ever call an emitter's emit method if shouldAutoEmit option is false", async () => {
+    const emitSpy = spy(Emitter.prototype, 'emit');
+
+    await Particles.fromJSONAsync(eightdiagrams, THREE, {
+      shouldAutoEmit: false,
+    });
+
+    assert(emitSpy.notCalled);
+
+    emitSpy.restore();
+  });
+
+  it("should call the emitter's setTotalEmitTimes and setLife methods if the shouldAutoEmit option is false", async () => {
+    const setTotalEmitTimesSpy = spy(Emitter.prototype, 'setTotalEmitTimes');
+    const setLifeSpy = spy(Emitter.prototype, 'setLife');
+
+    await Particles.fromJSONAsync(eightdiagrams, THREE, {
+      shouldAutoEmit: false,
+    });
+
+    assert(setTotalEmitTimesSpy.called);
+    assert(setLifeSpy.called);
+
+    setTotalEmitTimesSpy.restore();
+    setLifeSpy.restore();
   });
 });

@@ -56,8 +56,8 @@
   #stats {
     div {
       position: absolute !important;
-      top: $header-h + $padding-xs !important;
-      left: $sidebar-w + $padding-xs !important;
+      top: $header-h + $padding-s !important;
+      left: $sidebar-w + $padding-s !important;
       z-index: $header-z - 1 !important;
     }
   }
@@ -70,6 +70,32 @@
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+
+  .LifeCycleApiFeedback {
+    background: lighten($app-bg, 10);
+    border-radius: $radius-s;
+    padding: $padding-m;
+    font-size: 0.8em;
+    position: absolute;
+    top: $header-h + $stats-h + $padding-s * 2;
+    left: $sidebar-w + $padding-s;
+
+    li {
+      margin-bottom: $padding-m;
+
+      span:nth-child(2) {
+        padding-left: $padding-s;
+      }
+
+      .SpinnerWrap {
+        display: inline-block;
+      }
+    }
+
+    li:last-child {
+      margin: 0;
     }
   }
 }

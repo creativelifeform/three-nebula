@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 const formatLinkText = text => {
   if (text.includes('-')) {
-    return text.replace('-', ' ');
+    return text.split('-').join(' ');
   }
 
   return text;

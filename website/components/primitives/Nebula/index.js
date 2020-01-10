@@ -1,6 +1,6 @@
 import { JsonRenderer, ProceduralRenderer } from './renderer';
 import React, { Component } from 'react';
-import { array, bool, func, number, shape, string } from 'prop-types';
+import { array, bool, func, node, number, shape, string } from 'prop-types';
 
 import { Stats } from './Stats';
 import { ViewSource } from './ViewSource';
@@ -22,7 +22,15 @@ export class Nebula extends Component {
     this.setCanvasSize(async () => {
       const THREE = await import('three');
       const { canvas } = this;
-      const { json, init, shouldRotateCamera } = this.props;
+      const {
+        json,
+        init,
+        shouldRotateCamera,
+        shouldExposeLifeCycleApi,
+        onStart,
+        onUpdate,
+        onEnd,
+      } = this.props;
 
       // Prevents very odd bug where canvas is sometimes null.
       // No idea how this could happen inside componentDidMount
@@ -35,6 +43,10 @@ export class Nebula extends Component {
           canvas,
           json,
           shouldRotateCamera,
+          shouldExposeLifeCycleApi,
+          onStart,
+          onUpdate,
+          onEnd,
         }).start();
       }
 
@@ -43,6 +55,7 @@ export class Nebula extends Component {
           canvas,
           init,
           shouldRotateCamera,
+          shouldExposeLifeCycleApi,
         }).start();
       }
 
@@ -84,7 +97,7 @@ export class Nebula extends Component {
 
   render() {
     const { width, height } = this.state;
-    const { shouldShowStats, srcHref } = this.props;
+    const { children, shouldShowStats, srcHref } = this.props;
 
     return (
       <div className="canvas-container" ref={this.containerRef}>
@@ -96,6 +109,7 @@ export class Nebula extends Component {
           width={width}
           height={height}
         />
+        {children}
       </div>
     );
   }
@@ -104,10 +118,16 @@ export class Nebula extends Component {
 Nebula.defaultProps = {
   shouldRotateCamera: false,
   shouldShowStats: true,
+  shouldExposeLifeCycleApi: false,
+  onStart: () => {},
+  onUpdate: () => {},
+  onEnd: () => {},
 };
 
 Nebula.propTypes = {
+  children: node,
   shouldRotateCamera: bool,
+  shouldExposeLifeCycleApi: bool,
   shouldShowStats: bool,
   srcHref: string,
   init: func,
@@ -121,4 +141,7 @@ Nebula.propTypes = {
       emitters: array,
     }),
   }),
+  onStart: func,
+  onUpdate: func,
+  onEnd: func,
 };

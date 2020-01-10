@@ -53,3 +53,16 @@ $padding-letterbox: $padding-xxl * 2 0;
 $padding-letterbox-s: $padding-xxl * 1.5 0;
 
 $radius-s: 5px;
+
+$stats-w: 80px;
+$stats-h: 48px;
+
+$box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+
+$blink-animation: blinkAnimationKeyframes 1s linear infinite;
+
+@keyframes blinkAnimationKeyframes {
+  50% {
+    opacity: 0;
+  }
+}

@@ -11,3 +11,4 @@ export {
 } from './Hyperlink';
 export { NavLink } from './NavLink';
 export { Nebula } from './Nebula';
+export { Spinner } from './Spinner';
