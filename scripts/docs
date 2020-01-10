@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
 # copy all dependencies to example/js and start the http server
-cp ./build/three-nebula.js docs/js &&
-cp ./build/three-nebula.js.map docs/js &&
-cp ./node_modules/three/build/three.min.js docs/js &&
-cp ./node_modules/three/build/three.js docs/js &&
-cp ./node_modules/stats.js/build/stats.min.js docs/js &&
 open http://localhost:8080 &&
 node ./node_modules/.bin/http-server ./docs
