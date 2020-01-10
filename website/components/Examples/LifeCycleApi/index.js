@@ -1,6 +1,6 @@
+import { Nebula, Spinner } from '../../primitives';
 import React, { Component } from 'react';
 
-import { Nebula } from '../../primitives';
 import { feedbackRef } from './refs';
 import { getSrcHref } from '../utils';
 import init from './init';
@@ -49,7 +49,7 @@ class Feedback extends Component {
               <span role="img" aria-label="check-mark-button">
                 ✅
               </span>
-              <span>Updating</span>
+              <span className="blink">Updating</span>
             </>
           )}
           {!isUpdating && (
