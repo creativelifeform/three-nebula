@@ -9,7 +9,7 @@
     display: inline-block;
 
     path {
-      fill: $app-accent;
+      fill: $app-color;
     }
   }
 
@@ -33,12 +33,6 @@
       .SpectrumLogo {
         a {
           padding: 0;
-        }
-
-        a:hover {
-          path {
-            fill: lighten($app-accent, 5);
-          }
         }
       }
     }
