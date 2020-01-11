@@ -50,15 +50,37 @@ export default class {
         return;
       }
 
-      this.stats.begin();
+      requestAnimationFrame(animate); //Do this first to maximize the possibility of scheduling our animation frame at the display rate. 
+                                      //Doing this after the app render creates the possibility of missing the scheduling window and losing a frame, creating stutter
+      
+      var elapsedFrames = 1; //Default to doing at least one frame at startup...
+      if(!this.lastTime){
+        this.lastTime = this.currentTime = performance.now()
+        this.accumulatedTime = 0;
+      }else{
+        var millisPerFrame = 1000 / 60; //Framelocked timeslice duration
+        this.currentTime = performance.now()
+        this.accumulatedTime += this.currentTime-this.lastTime;
+        this.lastTime = this.currentTime;
+        elapsedFrames = this.accumulatedTime / millisPerFrame;
+        this.accumulatedTime -= millisPerFrame * elapsedFrames;
+        if(!elapsedFrames)  //We are running faster than the 60fps frame lock.. so return.
+            return;
+          if(elapsedFrames > 10)
+              elapsedFrames = 10; //The rendering loop got stalled, so limit the number of updates we will do to prevent death spiral.
+      }
 
-      this.particleSystem.update();
+      this.stats.begin();
+      
+      while(elapsedFrames--){
+        this.particleSystem.update();
+        this.rotateCamera();
+      }
+
       this.webGlRenderer.render(this.scene, this.camera);
-      this.rotateCamera();
 
       this.stats.end();
 
-      requestAnimationFrame(animate);
     };
 
     animate();
