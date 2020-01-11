@@ -55,11 +55,13 @@ export default class ColorSpan extends Span {
  * @return {?ColorSpan}
  */
 export const createColorSpan = colors => {
-  if (!colors) {
-    return null;
+  if (colors === undefined) {
+    console.warn(`Invalid parameter passed to createColorSpan:${colors}. Defaulting to 'random'.`)
+    colors = 'random';
   }
 
   if (colors instanceof ColorSpan) {
+    console.warn(`createColorSpan was passed an existing colorSpan. Was this intended? returning the parameter unmodified...`)
     return colors;
   }
 
