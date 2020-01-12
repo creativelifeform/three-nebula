@@ -1,24 +1,17 @@
-import { FPS, RAF_LOCK_LIMIT } from './constants';
-
-import { stats } from '../Stats';
-import { toInt } from '../../../../common/utils';
+//import * as THREE from "./three.js";
+//import StatsJs from "./stats.js";
 
 /**
- * Sets up three js and particle system environment so that they can be rendered
- * into the editor's Stage component.
+ * Sets up three js and particle system environment
  *
  */
-export default class {
-  constructor(THREE, { canvas, shouldRotateCamera }) {
-    this.THREE = THREE;
+class Visualization {
+  constructor({ canvas, init, shouldRotateCamera }) {
     this.canvas = canvas;
+    this.init = init;
     this.shouldAnimate = true;
     this.shouldRotateCamera = shouldRotateCamera || false;
-    this.stats = stats;
-    this.lastTime = null;
-    this.currentTime = null;
-    this.accumulatedTime = null;
-    this.millisecondsPerFrame = 1000 / FPS;
+    //this.stats = new StatsJs();
   }
 
   /**
@@ -57,49 +50,43 @@ export default class {
         return;
       }
 
-      requestAnimationFrame(animate);
+      requestAnimationFrame(animate); //Do this first to maximize the possibility of scheduling our animation frame at the display rate.
+      //Doing this after the app render creates the possibility of missing the scheduling window and losing a frame, creating stutter
 
-      let elapsedFrames = 0;
-
+      var elapsedFrames = 1; //Default to doing at least one frame at startup...
       if (!this.lastTime) {
-        this.lastTime = performance.now();
-        this.currentTime = this.lastTime;
+        this.lastTime = this.currentTime = performance.now();
         this.accumulatedTime = 0;
       } else {
+        var millisPerFrame = 1000 / 60; //Framelocked timeslice duration
         this.currentTime = performance.now();
         this.accumulatedTime += this.currentTime - this.lastTime;
         this.lastTime = this.currentTime;
-        elapsedFrames = toInt(this.accumulatedTime / this.millisecondsPerFrame);
-        this.accumulatedTime -= this.millisecondsPerFrame * elapsedFrames;
-
-        if (!elapsedFrames) {
+        elapsedFrames = this.accumulatedTime / millisPerFrame;
+        this.accumulatedTime -= millisPerFrame * elapsedFrames;
+        if (!elapsedFrames)
+          //We are running faster than the 60fps frame lock.. so return.
           return;
-        }
-
-        if (elapsedFrames > RAF_LOCK_LIMIT) {
-          elapsedFrames = RAF_LOCK_LIMIT;
-        }
+        if (elapsedFrames > 10) elapsedFrames = 10; //The rendering loop got stalled, so limit the number of updates we will do to prevent death spiral.
       }
 
-      this.stats.begin();
+      //this.stats.begin();
 
-      while (elapsedFrames > 0) {
+      while (elapsedFrames--) {
         this.particleSystem.update();
         this.rotateCamera();
-
-        elapsedFrames--;
+        break;
       }
 
       this.webGlRenderer.render(this.scene, this.camera);
 
-      this.stats.end();
+      //this.stats.end();
     };
 
     animate();
 
     return this;
   }
-
   resize() {
     const {
       camera,
@@ -113,7 +100,7 @@ export default class {
   }
 
   makeScene() {
-    this.scene = new this.THREE.Scene();
+    this.scene = new THREE.Scene();
 
     return this;
   }
@@ -146,7 +133,7 @@ export default class {
     const { params, position, rotation } = cameraState;
     const { fov, nearPlane, farPlane } = params;
 
-    this.camera = new this.THREE.PerspectiveCamera(
+    this.camera = new THREE.PerspectiveCamera(
       fov,
       clientWidth / clientHeight,
       nearPlane,
@@ -175,9 +162,9 @@ export default class {
 
   makeLights() {
     const { scene } = this;
-    const ambientLight = new this.THREE.AmbientLight(0x101010);
-    const pointLight = new this.THREE.PointLight(0xffffff, 2, 1000, 1);
-    const spotLight = new this.THREE.SpotLight(0xffffff, 0.5);
+    const ambientLight = new THREE.AmbientLight(0x101010);
+    const pointLight = new THREE.PointLight(0xffffff, 2, 1000, 1);
+    const spotLight = new THREE.SpotLight(0xffffff, 0.5);
 
     pointLight.position.set(0, 200, 200);
     spotLight.position.set(0, 500, 100);
@@ -197,14 +184,21 @@ export default class {
     } = this;
 
     this.webGlRenderer =
-      this.webGlRenderer ||
-      new this.THREE.WebGLRenderer({ canvas, ...options });
+      this.webGlRenderer || new THREE.WebGLRenderer({ canvas, ...options });
     this.webGlRenderer.setSize(clientWidth, clientHeight, false);
-
+    this.webGlRenderer.setClearColor('black');
     return this;
   }
 
   async makeParticleSystem() {
-    throw new Error('Your renderer is missing a makeParticleSystem function');
+    const { scene, camera, webGlRenderer } = this;
+
+    this.particleSystem = await this.init({
+      scene,
+      camera,
+      renderer: webGlRenderer,
+    });
+
+    return Promise.resolve(this.render());
   }
 }
