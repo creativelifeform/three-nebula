@@ -1,7 +1,5 @@
-import { FPS, RAF_LOCK_LIMIT } from './constants';
-
+import FpsLocker from 'fps-locker';
 import { stats } from '../Stats';
-import { toInt } from '../../../../common/utils';
 
 /**
  * Sets up three js and particle system environment so that they can be rendered
@@ -15,10 +13,6 @@ export default class {
     this.shouldAnimate = true;
     this.shouldRotateCamera = shouldRotateCamera || false;
     this.stats = stats;
-    this.lastTime = null;
-    this.currentTime = null;
-    this.accumulatedTime = null;
-    this.millisecondsPerFrame = 1000 / FPS;
   }
 
   /**
@@ -52,44 +46,20 @@ export default class {
    * @return {Visualization}
    */
   render() {
-    const animate = () => {
+    this.stats.begin();
+
+    const updater = new FpsLocker(() => {
+      this.particleSystem.update();
+      this.rotateCamera();
+    });
+    const animate = now => {
       if (!this.shouldAnimate) {
         return;
       }
 
       requestAnimationFrame(animate);
 
-      let elapsedFrames = 0;
-
-      if (!this.lastTime) {
-        this.lastTime = performance.now();
-        this.currentTime = this.lastTime;
-        this.accumulatedTime = 0;
-      } else {
-        this.currentTime = performance.now();
-        this.accumulatedTime += this.currentTime - this.lastTime;
-        this.lastTime = this.currentTime;
-        elapsedFrames = toInt(this.accumulatedTime / this.millisecondsPerFrame);
-        this.accumulatedTime -= this.millisecondsPerFrame * elapsedFrames;
-
-        if (!elapsedFrames) {
-          return;
-        }
-
-        if (elapsedFrames > RAF_LOCK_LIMIT) {
-          elapsedFrames = RAF_LOCK_LIMIT;
-        }
-      }
-
-      this.stats.begin();
-
-      while (elapsedFrames > 0) {
-        this.particleSystem.update();
-        this.rotateCamera();
-
-        elapsedFrames--;
-      }
-
+      updater.update();
       this.webGlRenderer.render(this.scene, this.camera);
 
       this.stats.end();

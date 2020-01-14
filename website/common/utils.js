@@ -11,5 +11,3 @@ export const withContent = WrappedComponent => props => (
 
 export const mapValueToKey = (object, value) =>
   Object.keys(object).find(key => object[key] === value);
-
-export const toInt = value => value | 0;
