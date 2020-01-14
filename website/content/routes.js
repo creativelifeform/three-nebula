@@ -66,6 +66,20 @@ module.exports = [
     shouldHideFromNav: true,
   },
   {
+    title:
+      'Three Nebula - ThreeJs Particle System Engine Instanced Mesh Renderer',
+    name: 'instanced-mesh-renderer',
+    path: '/examples/instanced-mesh-renderer',
+    shouldHideFromNav: true,
+  },
+  {
+    title:
+      'Three Nebula - ThreeJs Particle System Engine Buffer Geometry Renderer',
+    name: 'buffer-geometry-renderer',
+    path: '/examples/buffer-geometry-renderer',
+    shouldHideFromNav: true,
+  },
+  {
     title: 'Three Nebula - Documentation',
     name: 'Docs',
     url: 'https://three-nebula-docs.netlify.com/',
