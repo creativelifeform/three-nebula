@@ -1,3 +1,4 @@
+import FpsLocker from 'fps-locker';
 import { stats } from '../Stats';
 
 /**
@@ -45,20 +46,23 @@ export default class {
    * @return {Visualization}
    */
   render() {
-    const animate = () => {
+    this.stats.begin();
+
+    const updater = new FpsLocker(() => {
+      this.particleSystem.update();
+      this.rotateCamera();
+    });
+    const animate = now => {
       if (!this.shouldAnimate) {
         return;
       }
 
-      this.stats.begin();
+      requestAnimationFrame(animate);
 
-      this.particleSystem.update();
+      updater.update();
       this.webGlRenderer.render(this.scene, this.camera);
-      this.rotateCamera();
 
       this.stats.end();
-
-      requestAnimationFrame(animate);
     };
 
     animate();
