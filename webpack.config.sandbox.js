@@ -1,10 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  mode: process.env.NODE_ENV || 'production',
+  mode: 'development',
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'sandbox/common'),
     filename: 'three-nebula.js',
     library: 'Nebula',
     libraryTarget: 'umd',

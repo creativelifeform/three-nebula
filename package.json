@@ -18,7 +18,7 @@
     "build": "webpack",
     "dev": "webpack --mode=development --watch",
     "sandbox": "concurrently -k \"npm:sandbox:*\"",
-    "sandbox:build": "BUILD_TARGET='sandbox/common/' webpack --mode=development --watch",
+    "sandbox:build": "webpack --config webpack.config.sandbox.js --mode=development --watch",
     "sandbox:serve": "serve sandbox",
     "docs": "./scripts/docs",
     "docs:build": "./scripts/docs-build",
