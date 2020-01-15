@@ -17,6 +17,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack --mode=development --watch",
+    "dev:sandbox": "concurrently \"BUILD_TARGET='sandbox/common/' webpack --mode=development --watch\" \"npx serve sandbox\" -k & open http://localhost:5000",
     "docs": "./scripts/docs",
     "docs:build": "./scripts/docs-build",
     "test": "mocha --require @babel/register --colors './test/**/*.spec.js'",
@@ -70,6 +71,7 @@
     "babel-loader": "^8.0.6",
     "bundlesize": "^0.18.0",
     "chai": "^4.2.0",
+    "concurrently": "^5.0.2",
     "coveralls": "^3.0.3",
     "domino": "^2.1.1",
     "eslint": "^6.0.1",

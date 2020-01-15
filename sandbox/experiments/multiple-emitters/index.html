@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Multiple Emitters</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/style/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/style/app.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="https://threejs.org/build/three.js"></script>
+    <script src="/common/three-nebula.js"></script>
+    <script src="/common/Visualization.js"></script>
+    <script src="/common/run.js"></script>
+    <script src="/experiments/multiple-emitters/index.js"></script>
+    <script>
+      run(init).then(() => console.log(`APP LOADED`));
+    </script>
+  </body>
+</html>

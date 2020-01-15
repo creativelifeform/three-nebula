@@ -4,7 +4,7 @@ module.exports = {
   mode: process.env.NODE_ENV || 'production',
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, process.env.BUILD_TARGET || 'build'),
     filename: 'three-nebula.js',
     library: 'Nebula',
     libraryTarget: 'umd',
