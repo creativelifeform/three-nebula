@@ -87,13 +87,13 @@ window.Visualization = class {
             this.updateFn = (p)=>{
                 var sp=p.spr;
                 //sp.visible = false;
-                p.px= sp.position.x
-                p.py= sp.position.y + 300
-                p.pz= sp.position.z;
+                p.px = sp.position.x;//+(p.sys.srnd()*100)
+                p.py = sp.position.y;//+(p.sys.srnd()*100);// + 300
+                p.pz = sp.position.z;//+(p.sys.srnd()*100);
                 var c= sp.material.color;
-                p.cr=c.r;
-                p.cg=c.g;
-                p.cb=c.b;
+                p.cr = c.r;
+                p.cg = c.g;
+                p.cb = c.b;
                 var map = sp.material.map;
                 if(map._tileIndex==undefined){
                     if(map.image && map.image.complete){
@@ -105,7 +105,7 @@ window.Visualization = class {
                 }else                 
                     p.t0=p.t1b=map._tileIndex;
                 p.ca=sp.material.opacity;
-                p.s=sp.scale.x*2;
+                p.s=sp.scale.x*.2;
                 if(p.dead)
                     return false;
             }
@@ -122,16 +122,17 @@ window.Visualization = class {
                 //var p  = this.sprites.pop();
                 //if(pos<this.sprites.length)this.sprites[pos]=p;
                 e.userData.particle.dead = true;
+                e.userData.particle.s = 0;
                 //this.system.dealloc(this.system,e.userData.particle)
             }
             super.remove(e)
         }
         add(e){
             if(e.isSprite){
-                //e.visible = false;
+                e.visible = false;
                 e.userData.particle = this.system.alloc((p)=>{
                     p.spr=e;
-                    this.updateFn(p);
+                    //this.updateFn(p);
                     //p.s = 100;
                 })
                 //this.sprites.push(e)
@@ -139,9 +140,18 @@ window.Visualization = class {
             super.add(e)
         }
     }
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+var vars = getUrlVars();
 
     this.scene = new THREE.Scene()
-    this.scene = new BufferedScene()
+    if(vars.buffered)
+        this.scene = new BufferedScene()
 
     return this;
   }
@@ -227,7 +237,7 @@ window.Visualization = class {
     this.webGlRenderer =
       this.webGlRenderer || new THREE.WebGLRenderer({ canvas, ...options });
     this.webGlRenderer.setSize(clientWidth, clientHeight, false);
-    this.webGlRenderer.setClearColor('grey');
+    this.webGlRenderer.setClearColor('black');
 
     return this;
   }

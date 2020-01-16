@@ -35,7 +35,8 @@ const createEmitter = ({ colorA, colorB, camera, renderer }) => {
   const emitter = new Emitter();
 
   return emitter
-    .setRate(new Rate(new Span(5, 7), new Span(0.01, 0.02)))
+    //.setRate(new Rate(new Span(5, 7), new Span(0.01, 0.02)))
+    .setRate(new Rate(new Span(5,157), new Span(0.01, 0.02)))
     .setInitializers([
       new Mass(1),
       new Life(2),
