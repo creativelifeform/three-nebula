@@ -36,7 +36,7 @@ const createEmitter = ({ colorA, colorB, camera, renderer }) => {
 
   return emitter
     //.setRate(new Rate(new Span(5, 7), new Span(0.01, 0.02)))
-    .setRate(new Rate(new Span(5,157), new Span(0.01, 0.02)))
+    .setRate(new Rate(new Span(5,100), new Span(0.01, 0.02)))
     .setInitializers([
       new Mass(1),
       new Life(2),
@@ -47,7 +47,7 @@ const createEmitter = ({ colorA, colorB, camera, renderer }) => {
     .setBehaviours([
       new Alpha(1, 0),
       new Color(colorA, colorB),
-      new Scale(1, 0.5),
+      new Scale(.3, 0.3),
       new CrossZone(new ScreenZone(camera, renderer), 'dead'),
       new Force(0, 0, -20),
     ])
