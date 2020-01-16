@@ -4,6 +4,8 @@ window.Visualization = class {
     this.init = init;
     this.shouldAnimate = true;
     this.shouldRotateCamera = shouldRotateCamera || true;
+    this.stats = window.Stats ? new window.Stats() : null;
+    this.container = document.getElementById('app');
   }
 
   /**
@@ -38,6 +40,9 @@ window.Visualization = class {
    */
   render() {
     window.addEventListener('resize', () => this.resize());
+
+    this.addStats();
+
     const animate = () => {
       if (!this.shouldAnimate) {
         return;
@@ -48,6 +53,7 @@ window.Visualization = class {
       this.particleSystem.update();
       this.rotateCamera();
       this.webGlRenderer.render(this.scene, this.camera);
+      this.updateStats();
     };
 
     animate();
@@ -67,9 +73,24 @@ window.Visualization = class {
     webGlRenderer.setSize(clientWidth, clientHeight, false);
   }
 
+  addStats() {
+    if (!this.stats) {
+      return;
+    }
+
+    this.container.appendChild(this.stats.dom);
+    this.stats.begin();
+  }
+
+  updateStats() {
+    if (!this.stats) {
+      return;
+    }
+
+    this.stats.end();
+  }
 
   makeScene() {
-
     //this.scene = new THREE.Scene();
     
     class BufferedScene extends THREE.Scene
@@ -125,7 +146,25 @@ window.Visualization = class {
                 e.userData.particle.s = 0;
                 //this.system.dealloc(this.system,e.userData.particle)
             }
-            super.remove(e)
+          } else p.t0 = p.t1b = map._tileIndex;
+          p.ca = sp.material.opacity;
+          p.s = sp.scale.x * 2;
+          if (p.dead) return false;
+        };
+        this.system.points.onBeforeRender = (a, b, c, d, e, f) => {
+          var rendering = true;
+          sys.transform(this.updateFn);
+        };
+        this.add(this.system.points);
+        //this.add(this.system.ribbons)
+      }
+      remove(e) {
+        if (e.isSprite) {
+          //var pos = this.sprites.indexOf(e)
+          //var p  = this.sprites.pop();
+          //if(pos<this.sprites.length)this.sprites[pos]=p;
+          e.userData.particle.dead = true;
+          //this.system.dealloc(this.system,e.userData.particle)
         }
         add(e){
             if(e.isSprite){
@@ -139,6 +178,8 @@ window.Visualization = class {
             }            
             super.add(e)
         }
+        super.add(e);
+      }
     }
 function getUrlVars() {
     var vars = {};
