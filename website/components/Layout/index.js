@@ -1,5 +1,6 @@
 import { array, node, shape, string } from 'prop-types';
 
+import Favicon from './Favicon';
 import Footer from './Footer';
 import Head from 'next/head';
 import Header from './Header';
@@ -20,6 +21,9 @@ const Layout = ({ children, router: { pathname }, routes }) => (
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="description" content={getTitle('/', routes)} />
+      {/* <meta name="robots" content="index, follow" /> */}
+      <meta name="author" content="Rohan Deshpande" />
+      <Favicon />
     </Head>
     <main className="App">
       <Header routes={routes} />

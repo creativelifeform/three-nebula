@@ -1,4 +1,11 @@
 const content = {
+  favicon: {
+    title: 'Three Nebula',
+    description: 'A WebGL based 3D particle system engine for ThreeJs',
+    url: 'https://dev.three-nebula.org',
+    twitterName: 'three-nebula',
+    twitterImage: '',
+  },
   callout: {
     small: 'Download',
     large: 'See Examples',

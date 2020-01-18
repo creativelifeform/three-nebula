@@ -8,6 +8,7 @@
     "start": "next start",
     "export": "next export",
     "lint": "eslint common components content context pages && ./node_modules/.bin/madge --circular common components content context pages",
+    "favicon:generate": "real-favicon generate ./public/favicon/description.json ./public/favicon/data.json ./public/favicon",
     "analyze": "ANALYZE=true npm run build",
     "ci": "npm install && npm run lint"
   },
@@ -35,6 +36,7 @@
     "@zeit/next-sass": "^1.0.1",
     "babel-eslint": "^10.0.2",
     "babel-plugin-inline-react-svg": "^1.1.0",
+    "cli-real-favicon": "0.0.8",
     "dotenv": "^8.0.0",
     "eslint": "^6.2.1",
     "eslint-config-react-app": "^5.0.1",

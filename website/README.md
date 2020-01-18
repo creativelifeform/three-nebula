@@ -24,3 +24,13 @@ npm run link-src && npm run dev
 This will make sure that changes to `three-nebula/src` will appear in `three-nebula/website` in dev mode.
 
 Just visit `http://localhost:3000` and start hacking!
+
+## Favicons
+
+You can generate the site's favicons via the following script
+
+```
+npm run favicon:generate
+```
+
+This will generate the favicons. To generate the output of the Facebook section of the `components/Layout/Favicon` component, visit [realfavicongenerator.net](https://realfavicongenerator.net/social/).
