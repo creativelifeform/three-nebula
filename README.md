@@ -1,4 +1,9 @@
-# Three Nebula
+<p align="center">
+  <a href="https://dev.three-nebula.org/">
+    <img alt="react-router" src="https://dev.three-nebula.org/favicon/nebula-logo-favicon-master.svg" width="150">
+  </a>
+</p>
+<h2 align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;three-nebula</h2>
 
 [![Build Status](https://travis-ci.org/creativelifeform/three-nebula.svg?branch=master)](https://travis-ci.org/creativelifeform/three-nebula)
 [![Coverage Status](https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg)](https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1)
@@ -10,7 +15,7 @@
 ## Features
 
 - Perfect compatibility with [`three@r106`](https://github.com/mrdoob/three.js)
-- The ability to instantiate `three-nebula` particle systems from JSON objects using the static `System.fromJSON` method
+- The ability to instantiate `three-nebula` particle systems from JSON objects using the static `System.fromJSONAsync` method
 - The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers
 
@@ -68,11 +73,13 @@ emitter
     new Alpha(1, 0),
     new Scale(0.1, 1.3),
     new Color(new THREE.Color(), new THREE.Color()),
-  ])
-  .emit();
+  ]);
 
 // add the emitter and a renderer to your particle system
-system.addEmitter(emitter).addRenderer(renderer);
+system
+  .addEmitter(emitter)
+  .addRenderer(renderer)
+  .emit({ onStart, onUpdate, onEnd });
 ```
 
 You can also instantiate your system from a JSON object
@@ -231,7 +238,9 @@ const json = {
   ],
 };
 
-const system = new System.fromJSONAsync(json, THREE).then(console.log);
+new System.fromJSONAsync(json, THREE).then(system => {
+  console.log(system);
+});
 ```
 
 ### Script Tag
@@ -250,7 +259,6 @@ const system = new System();
 There are a few NPM scripts in the root package.json:
 
 - `build` - Builds the module and writes the code into `./build/three-nebula.js`
-- `docs` - Serves the docs at http://localhost:8080
 - `docs:build` - Copies the latest build to `./docs/js` and builds the API reference docs
 - `test` - Runs all specs
 - `test:only <spec>` - Runs a specific spec
