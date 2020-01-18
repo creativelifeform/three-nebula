@@ -10,37 +10,34 @@ const Favicon = ({
 }) => (
   <>
     {/* FAVICON */}
-    <link rel="shortcut icon" href={'/public/favicon/favicon.ico'} />
+    <link rel="shortcut icon" href={'/favicon/favicon.ico'} />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href={'/public/favicon/favicon-32x32.png'}
+      href={'/favicon/favicon-32x32.png'}
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href={'/public/favicon/favicon-16x16.png'}
+      href={'/favicon/favicon-16x16.png'}
     />
-    <link rel="manifest" href={'/public/favicon/site.webmanifest'} />
+    <link rel="manifest" href={'/favicon/site.webmanifest'} />
     {/* APPLE */}
     <link
       rel="mask-icon"
-      href={'/public/favicon/safari-pinned-tab.svg'}
+      href={'/favicon/safari-pinned-tab.svg'}
       color="#4325fb"
     />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href={'/public/favicon/apple-touch-icon.png'}
+      href={'/favicon/apple-touch-icon.png'}
     />
 
     {/* MS */}
-    <meta
-      name="msapplication-config"
-      content={'/public/favicon/browserconfig.xml'}
-    />
+    <meta name="msapplication-config" content={'/favicon/browserconfig.xml'} />
     <meta name="msapplication-TileColor" content="#000000" />
     <meta name="theme-color" content="#000000" />
     {/* TWITTER */}
