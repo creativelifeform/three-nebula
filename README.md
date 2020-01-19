@@ -14,9 +14,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://travis-ci.org/creativelifeform/three-nebula"><img src="https://travis-ci.org/creativelifeform/three-nebula.svg?branch=master"></a>
   <a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg"></a>
-  <a href="https://threejs.org">
-  <img src="https://img.shields.io/badge/three-v0.112.0-%230C7BB8">
-  </a>
+  <a href="https://threejs.org"><img src="https://img.shields.io/badge/three-v0.112.0-%230C7BB8"></a>
+  <a href="https://spectrum.chat/nebula"><img src="https://img.shields.io/badge/spectrum-chat-%237816F9"></a>
 </p>
 
 <hr/>
