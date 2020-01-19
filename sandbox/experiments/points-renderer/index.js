@@ -12,8 +12,10 @@ const safeLog = message => {
 };
 
 window.PointsRenderer = class extends CustomRenderer {
-  constructor(points) {
+  constructor(container, points) {
     super();
+
+    container.add(points);
 
     this.points = points;
     this.points.fustrumCulled = false;
@@ -54,14 +56,15 @@ window.PointsRenderer = class extends CustomRenderer {
 };
 
 window.init = async ({ scene, camera, renderer }) => {
-  const geometry = new THREE.Geometry();
-  const material = new THREE.PointsMaterial({ color: 0xffffff, size: 4 });
-  const spriteRenderer = new SpriteRenderer(scene, THREE);
-  const pointsRenderer = new PointsRenderer(
-    new THREE.Points(geometry, material)
+  const { particleSystemState } = window.SYSTEM;
+  const points = new THREE.Points(
+    new THREE.Geometry(),
+    new THREE.PointsMaterial({ color: 0xffffff, size: 5 })
   );
+  const spriteRenderer = new SpriteRenderer(scene, THREE);
+  const pointsRenderer = new window.PointsRenderer(scene, points);
   const systemRenderer = pointsRenderer;
-  const system = await System.fromJSONAsync(SYSTEM.particleSystemState, THREE, {
+  const system = await System.fromJSONAsync(particleSystemState, THREE, {
     shouldAutoEmit: true,
   });
 
