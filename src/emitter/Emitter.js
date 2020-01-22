@@ -509,6 +509,7 @@ export default class Emitter extends Particle {
    * @return {Emitter}
    */
   createParticle() {
+    // TODO COVERAGE - ensure particle has a integer __index property after it is retrieved from the pool
     const particle = this.parent.pool.get(Particle);
 
     this.setupParticle(particle);

@@ -12,7 +12,7 @@ import {
   DEFAULT_SCALE,
   DEFAULT_SLEEP,
   DEFAULT_USE_ALPHA,
-  DEFAULT_USE_COLOR
+  DEFAULT_USE_COLOR,
 } from './constants';
 import { Util, uid } from '../utils';
 
