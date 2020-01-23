@@ -2,6 +2,14 @@ const { CustomRenderer } = window.Nebula;
 
 const RENDERER_TYPE_POINTS_RENDERER = 'PointsRenderer';
 
+let loggedCount = 0;
+const MAX = 1;
+const log = (message, id) => {
+  loggedCount < MAX && console.log(message, id);
+
+  loggedCount++;
+};
+
 /**
  * Performant particle renderer that uses THREE.Points to propagate particle (postiion, rgba etc.,) properties to
  * vertices in a ParticleBufferGeometry.
@@ -27,7 +35,7 @@ window.PointsRenderer = class extends CustomRenderer {
     }
 
     particle.target.copy(particle.position);
-    this.mapParticlePropsToPoint(particle);
+    // this.mapParticlePropsToPoint(particle);
   }
 
   onParticleUpdate(particle) {
@@ -38,42 +46,41 @@ window.PointsRenderer = class extends CustomRenderer {
     this.mapParticlePropsToPoint(particle);
   }
 
-  // onParticleDead(particle) {
-  //   if (particle.target) {
-  //     var index = this.points.geometry.vertices.indexOf(particle.target);
-  //
-  //     if (index > -1) this.points.geometry.vertices.splice(index, 1);
-  //
-  //     particle.target = null;
-  //   }
-  // }
+  onParticleDead(particle) {
+    loggedCount = 0;
+    // if (particle.target) {
+    //   particle.target = null;
+    // }
+  }
 
   mapParticlePropsToPoint(particle) {
-    this.updatePointPosition(particle).updatePointRgba(particle);
+    this.updatePointPosition(particle);
+  }
+
+  randomisePointPositions(positionBuffer) {
+    const { array } = positionBuffer;
+
+    for (let i = 0; i < array.length; i++) {
+      array[i] = (Math.random() - 0.5) * 20;
+    }
   }
 
   updatePointPosition(particle) {
     const { geometry } = this;
     const {
-      positionBufferOffset,
+      positionBufferOffset: attributeOffset,
       buffers: { positionBuffer },
     } = geometry;
     const { x, y, z } = particle.target;
-    const { __poolIndex: i } = particle;
+    const { index: particleIndex } = particle;
 
-    // const { array } = positionBuffer;
-    //
-    // for (let i = 0; i < array.length; i++) {
-    //   array[i] = (Math.random() - 0.5) * 20;
-    // }
+    log('UPDATING', particleIndex);
 
-    positionBuffer.array[i + positionBufferOffset] = x;
-    positionBuffer.array[i + (positionBufferOffset + 1)] = y;
-    positionBuffer.array[i + (positionBufferOffset + 2)] = z;
+    positionBuffer.array[particleIndex + (attributeOffset + 0)] = x;
+    positionBuffer.array[particleIndex + (attributeOffset + 1)] = y;
+    positionBuffer.array[particleIndex + (attributeOffset + 2)] = z;
 
-    window.safeLog(i);
-
-    geometry.attributes.position.needsUpdate = true;
+    geometry.attributes.position.data.needsUpdate = true;
     geometry.computeBoundingSphere();
 
     return this;

@@ -509,7 +509,6 @@ export default class Emitter extends Particle {
    * @return {Emitter}
    */
   createParticle() {
-    // TODO COVERAGE - ensure particle has a integer __index property after it is retrieved from the pool
     const particle = this.parent.pool.get(Particle);
 
     this.setupParticle(particle);
@@ -527,12 +526,21 @@ export default class Emitter extends Particle {
    * @return void
    */
   setupParticle(particle) {
+    if (this.particles.length >= 5) {
+      return;
+    }
+
     const { initializers, behaviours } = this;
 
     InitializerUtil.initialize(this, particle, initializers);
 
     particle.addBehaviours(behaviours);
     particle.parent = this;
+
+    console.log(
+      'SPAWNED',
+      particle.id.replace('particle-', '').substring(0, 8)
+    );
 
     this.particles.push(particle);
   }
@@ -543,6 +551,8 @@ export default class Emitter extends Particle {
    * method updates existing particles.
    *
    * If the emitter age is greater than time, the emitter is killed.
+   *
+   * This method also indexes/deindexes particles.
    *
    * @param {number} time - System engine time
    * @return void
@@ -567,6 +577,10 @@ export default class Emitter extends Particle {
       const particle = this.particles[i];
 
       if (particle.dead) {
+        console.log(
+          'KILLED',
+          particle.id.replace('particle-', '').substring(0, 8)
+        );
         this.parent && this.parent.dispatch(PARTICLE_DEAD, particle);
         this.bindEmitterEvent && this.dispatch(PARTICLE_DEAD, particle);
         this.parent.pool.expire(particle.reset());

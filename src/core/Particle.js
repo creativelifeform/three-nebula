@@ -5,6 +5,7 @@ import {
   DEFAULT_DEAD,
   DEFAULT_EASING,
   DEFAULT_ENERGY,
+  DEFAULT_INDEX,
   DEFAULT_LIFE,
   DEFAULT_MASS,
   DEFAULT_PARENT,
@@ -78,6 +79,11 @@ export default class Particle {
      */
     this.energy = DEFAULT_ENERGY;
     /**
+     * @desc The particle's index in the emitter it belongs to.
+     * @type {integer}
+     */
+    this.index = 0;
+    /**
      * @desc Determines if the particle is dead or not
      * @type {number}
      */
@@ -129,7 +135,7 @@ export default class Particle {
     this.useAlpha = DEFAULT_USE_ALPHA;
     /**
      * @desc The particle's easing
-     * @type {number}
+     * @type {string}
      */
     this.easing = DEFAULT_EASING;
     /**
@@ -149,37 +155,37 @@ export default class Particle {
     this.acceleration = new Vector3D();
     /**
      * @desc The particle's last position, velocity and acceleration
-     * @type {object}
+     * @type {Vector3D}
      */
     this.old = {};
     /**
      * @desc The particle's old position
-     * @type {number}
+     * @type {Vector3D}
      */
     this.old.position = this.position.clone();
     /**
      * @desc The particle's old velocity
-     * @type {number}
+     * @type {Vector3D}
      */
     this.old.velocity = this.velocity.clone();
     /**
      * @desc The particle's old acceleration
-     * @type {number}
+     * @type {Vector3D}
      */
     this.old.acceleration = this.acceleration.clone();
     /**
      * @desc The particle's behaviours array
-     * @type {number}
+     * @type {array}
      */
     this.behaviours = [];
     /**
      * @desc The particle's transform collection
-     * @type {number}
+     * @type {object}
      */
     this.transform = {};
     /**
      * @desc The particle's color store
-     * @type {number}
+     * @type {object}
      */
     this.color = { r: 0, g: 0, b: 0 };
     /**
@@ -214,6 +220,7 @@ export default class Particle {
     this.energy = DEFAULT_ENERGY;
     this.dead = DEFAULT_DEAD;
     this.sleep = DEFAULT_SLEEP;
+    this.index = DEFAULT_INDEX;
     this.body = DEFAULT_BODY;
     this.parent = DEFAULT_PARENT;
     this.mass = DEFAULT_MASS;
@@ -250,6 +257,8 @@ export default class Particle {
    * @return void
    */
   update(time, index) {
+    this.index = index;
+
     if (!this.sleep) {
       this.age += time;
 
@@ -329,5 +338,6 @@ export default class Particle {
     this.energy = 0;
     this.dead = true;
     this.parent = null;
+    this.index = DEFAULT_INDEX;
   }
 }

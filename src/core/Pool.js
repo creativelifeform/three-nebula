@@ -115,8 +115,6 @@ export default class Pool {
     else p = this.create(obj);
 
     p.__puid = obj.__puid || puid;
-    // TODO COVERAGE
-    p.__poolIndex = PUID.getIndex(p);
 
     return p;
   }

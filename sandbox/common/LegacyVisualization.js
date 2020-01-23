@@ -3,7 +3,9 @@ window.Visualization = class {
     this.canvas = canvas;
     this.init = init;
     this.shouldAnimate = true;
-    this.shouldRotateCamera = shouldRotateCamera || true;
+    this.shouldRotateCamera = shouldRotateCamera;
+
+    console.log(shouldRotateCamera);
   }
 
   /**
