@@ -1,18 +1,18 @@
-const { CustomRenderer } = window.Nebula;
+const { CustomRenderer, Pool } = window.Nebula;
 
 const RENDERER_TYPE_POINTS_RENDERER = 'PointsRenderer';
 
-let loggedCount = 0;
-const MAX = 1;
-const log = (message, id) => {
-  loggedCount < MAX && console.log(message, id);
-
-  loggedCount++;
+window.Target = class {
+  constructor() {
+    this.position = new THREE.Vector3();
+    this.scale = new THREE.Vector3();
+  }
 };
 
 /**
  * Performant particle renderer that uses THREE.Points to propagate particle (postiion, rgba etc.,) properties to
  * vertices in a ParticleBufferGeometry.
+ *
  */
 window.PointsRenderer = class extends CustomRenderer {
   constructor(container, { size, maxParticles = undefined }) {
@@ -24,6 +24,9 @@ window.PointsRenderer = class extends CustomRenderer {
       vertexColors: THREE.VertexColors,
     });
 
+    this.geometry = geometry;
+    this.targetPool = new Pool();
+    this.texturePool = new Pool();
     this.points = new THREE.Points(geometry, material);
 
     container.add(this.points);
@@ -31,67 +34,79 @@ window.PointsRenderer = class extends CustomRenderer {
 
   onParticleCreated(particle) {
     if (!particle.target) {
-      particle.target = new THREE.Vector3();
+      particle.target = this.targetPool.get(window.Target);
     }
 
-    particle.target.copy(particle.position);
-    // this.mapParticlePropsToPoint(particle);
+    particle.target.position.copy(particle.position);
+    this.mapParticlePropsToPoint(particle);
   }
 
   onParticleUpdate(particle) {
     if (particle.target) {
-      particle.target.copy(particle.position);
+      particle.target.position.copy(particle.position);
+      this.mapParticlePropsToPoint(particle);
     }
-
-    this.mapParticlePropsToPoint(particle);
   }
 
   onParticleDead(particle) {
-    loggedCount = 0;
-    // if (particle.target) {
-    //   particle.target = null;
-    // }
-  }
-
-  mapParticlePropsToPoint(particle) {
-    this.updatePointPosition(particle);
-  }
-
-  randomisePointPositions(positionBuffer) {
-    const { array } = positionBuffer;
-
-    for (let i = 0; i < array.length; i++) {
-      array[i] = (Math.random() - 0.5) * 20;
+    if (particle.target) {
+      this.mapParticlePropsToPoint(particle);
+      particle.target = null;
     }
   }
 
+  /**
+   * Entry point for mapping particle properties to buffer geometry points.
+   *
+   * @param {Particle} particle - The particle containing the properties to map
+   * @return void
+   */
+  mapParticlePropsToPoint(particle) {
+    this.updatePointPosition(particle)
+      .updatePointSize(particle)
+      .updatePointRgba(particle);
+  }
+
+  /**
+   * Updates the particle buffer geometry point's position relative to the particle.
+   *
+   * @param {Particle} particle - The particle containing the target position.
+   * @return {PointsRenderer}
+   */
   updatePointPosition(particle) {
     const { geometry } = this;
-    const {
-      positionBufferOffset: attributeOffset,
-      buffers: { positionBuffer },
-    } = geometry;
-    const { x, y, z } = particle.target;
-    const { index: particleIndex } = particle;
+    const { positionBufferStride, buffers } = geometry;
+    const { target, index } = particle;
+    const { array } = buffers.positionBuffer;
 
-    log('UPDATING', particleIndex);
-
-    positionBuffer.array[particleIndex + (attributeOffset + 0)] = x;
-    positionBuffer.array[particleIndex + (attributeOffset + 1)] = y;
-    positionBuffer.array[particleIndex + (attributeOffset + 2)] = z;
+    array[index * positionBufferStride + 0] = target.position.x;
+    array[index * positionBufferStride + 1] = target.position.y;
+    array[index * positionBufferStride + 2] = target.position.z;
 
     geometry.attributes.position.data.needsUpdate = true;
-    geometry.computeBoundingSphere();
 
     return this;
   }
 
-  updatePointRgba(particle) {
+  /**
+   * Updates the particle buffer geometry point's size relative to the particle scale.
+   *
+   * @param {Particle} particle - The particle containing the target scale.
+   * @return {PointsRenderer}
+   */
+  updatePointSize(particle) {
     // TODO
     return this;
   }
 
-  get geometry() {
-    return this.points.geometry;
+  /**
+   * Updates the particle buffer geometry rgba values relative to the particle color and alpha properties.
+   *
+   * @param {Particle} particle - The particle containing the target color and alpha.
+   * @return {PointsRenderer}
+   */
+  updatePointRgba(particle) {
+    // TODO
+    return this;
   }
 };

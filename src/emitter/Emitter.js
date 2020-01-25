@@ -509,9 +509,14 @@ export default class Emitter extends Particle {
    * @return {Emitter}
    */
   createParticle() {
-    const particle = this.parent.pool.get(Particle);
+    // if (this.particles.length >= 5) {
+    //   return;
+    // }
 
-    this.setupParticle(particle);
+    const particle = this.parent.pool.get(Particle);
+    const index = this.particles.length;
+
+    this.setupParticle(particle, index);
     this.parent && this.parent.dispatch(PARTICLE_CREATED, particle);
     this.bindEmitterEvent && this.dispatch(PARTICLE_CREATED, particle);
 
@@ -525,22 +530,14 @@ export default class Emitter extends Particle {
    * @param {Particle} particle - The particle to setup
    * @return void
    */
-  setupParticle(particle) {
-    if (this.particles.length >= 5) {
-      return;
-    }
-
+  setupParticle(particle, index) {
     const { initializers, behaviours } = this;
 
     InitializerUtil.initialize(this, particle, initializers);
 
     particle.addBehaviours(behaviours);
     particle.parent = this;
-
-    console.log(
-      'SPAWNED',
-      particle.id.replace('particle-', '').substring(0, 8)
-    );
+    particle.index = index;
 
     this.particles.push(particle);
   }
@@ -577,10 +574,6 @@ export default class Emitter extends Particle {
       const particle = this.particles[i];
 
       if (particle.dead) {
-        console.log(
-          'KILLED',
-          particle.id.replace('particle-', '').substring(0, 8)
-        );
         this.parent && this.parent.dispatch(PARTICLE_DEAD, particle);
         this.bindEmitterEvent && this.dispatch(PARTICLE_DEAD, particle);
         this.parent.pool.expire(particle.reset());
@@ -624,12 +617,12 @@ export default class Emitter extends Particle {
 
     integrate(this, time, damping, integrationType);
 
-    let i = this.particles.length;
+    let index = this.particles.length;
 
-    while (i--) {
-      const particle = this.particles[i];
+    while (index--) {
+      const particle = this.particles[index];
 
-      particle.update(time, i);
+      particle.update(time, index);
       integrate(particle, time, damping, integrationType);
 
       this.parent && this.parent.dispatch(PARTICLE_UPDATE, particle);

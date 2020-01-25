@@ -39,6 +39,7 @@ window.Visualization = class {
    * @return {Visualization}
    */
   render() {
+    const TICK_DELAY = 0;
     let requestId;
 
     window.addEventListener('resize', () => this.resize());
@@ -48,11 +49,13 @@ window.Visualization = class {
         return;
       }
 
-      requestId = requestAnimationFrame(animate);
+      setTimeout(() => {
+        requestId = requestAnimationFrame(animate);
 
-      this.particleSystem.update();
-      this.rotateCamera();
-      this.webGlRenderer.render(this.scene, this.camera);
+        this.particleSystem.update();
+        this.rotateCamera();
+        this.webGlRenderer.render(this.scene, this.camera);
+      }, TICK_DELAY || 0);
     };
 
     try {

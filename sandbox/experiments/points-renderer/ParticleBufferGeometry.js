@@ -17,7 +17,7 @@ const RGBA_BUFFER_OFFSET = POSITION_BYTE_SIZE;
 const RGBA_BUFFER_IS_NORMALIZED = true;
 
 /**
- * Creates and provides performant buffers for each mutable particle property and sets up
+ * Creates and provides performant buffers for mapping particle properties to geometry vertices.
  *
  * @see https://github.com/mrdoob/three.js/blob/master/examples/webgl_buffergeometry_points_interleaved.html
  */
@@ -42,6 +42,7 @@ window.ParticleBufferGeometry = class extends THREE.BufferGeometry {
       new Float32Array(arrayBuffer),
       POSITION_BUFFER_STRIDE
     );
+
     this.rgbaBuffer = new THREE.InterleavedBuffer(
       new Uint8Array(arrayBuffer),
       RGBA_BUFFER_STRIDE
@@ -65,8 +66,9 @@ window.ParticleBufferGeometry = class extends THREE.BufferGeometry {
         POSITION_BUFFER_IS_NORMALIZED
       )
     );
+
     this.setAttribute(
-      'color',
+      'rgba',
       new THREE.InterleavedBufferAttribute(
         this.rgbaBuffer,
         RGBA_BUFFER_ITEM_SIZE,
@@ -94,11 +96,11 @@ window.ParticleBufferGeometry = class extends THREE.BufferGeometry {
     };
   }
 
-  get positionBufferOffset() {
-    return POSITION_BUFFER_OFFSET;
+  get positionBufferStride() {
+    return POSITION_BUFFER_STRIDE;
   }
 
-  get rgbaBufferOffset() {
-    return RGBA_BUFFER_OFFSET;
+  get rgbaBufferStride() {
+    return RGBA_BUFFER_STRIDE;
   }
 };
