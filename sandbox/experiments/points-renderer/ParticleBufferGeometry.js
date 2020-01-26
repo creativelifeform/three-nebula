@@ -1,20 +1,25 @@
-const FLOAT_BYTE_SIZE = 4;
-const POSITION_X_BYTE_SIZE = FLOAT_BYTE_SIZE;
-const POSITION_Y_BYTE_SIZE = FLOAT_BYTE_SIZE;
-const POSITION_Z_BYTE_SIZE = FLOAT_BYTE_SIZE;
-const POSITION_BYTE_SIZE =
-  POSITION_X_BYTE_SIZE + POSITION_Y_BYTE_SIZE + POSITION_Z_BYTE_SIZE;
-const RGBA_BYTE_SIZE = FLOAT_BYTE_SIZE;
-const PARTICLE_BYTE_SIZE = POSITION_BYTE_SIZE + RGBA_BYTE_SIZE;
+// Primitives
 const DEFAULT_MAX_PARTICLES = 10000;
-const POSITION_BUFFER_STRIDE = 4;
-const RGBA_BUFFER_STRIDE = 16;
-const POSITION_BUFFER_ITEM_SIZE = 3; // x, y, z
-const POSITION_BUFFER_OFFSET = 0;
-const POSITION_BUFFER_IS_NORMALIZED = false;
-const RGBA_BUFFER_ITEM_SIZE = 4; // r, g, b, a
-const RGBA_BUFFER_OFFSET = POSITION_BYTE_SIZE;
-const RGBA_BUFFER_IS_NORMALIZED = true;
+const VECTOR_3_SIZE = ['x', 'y', 'z'].length;
+const RGBA_SIZE = ['r', 'g', 'b', 'a'].length;
+const FLOAT_BYTE_SIZE = 4;
+
+// Byte sizes
+const POSITION_BYTE_SIZE = VECTOR_3_SIZE * FLOAT_BYTE_SIZE;
+const SCALE_BYTE_SIZE = FLOAT_BYTE_SIZE;
+const RGBA_BYTE_SIZE = RGBA_SIZE * FLOAT_BYTE_SIZE;
+const ALL_BYTE_SIZES = [POSITION_BYTE_SIZE, SCALE_BYTE_SIZE, RGBA_BYTE_SIZE];
+const PARTICLE_BYTE_SIZE = ALL_BYTE_SIZES.reduce((cur, acc) => cur + acc);
+
+// Attributes
+const POSITION_ATTRIBUTE_BUFFER_SIZE = VECTOR_3_SIZE;
+const SCALE_ATTRIBUTE_BUFFER_SIZE = 1;
+const RGBA_ATTRIBUTE_BUFFER_SIZE = RGBA_SIZE;
+const ATTRIBUTE_TO_SIZE_MAP = {
+  position: POSITION_ATTRIBUTE_BUFFER_SIZE,
+  scale: SCALE_ATTRIBUTE_BUFFER_SIZE,
+  rgba: RGBA_ATTRIBUTE_BUFFER_SIZE,
+};
 
 /**
  * Creates and provides performant buffers for mapping particle properties to geometry vertices.
@@ -27,80 +32,62 @@ window.ParticleBufferGeometry = class extends THREE.BufferGeometry {
 
     this.maxParticles = maxParticles;
 
-    this.createBuffers().setAttributes();
+    this.createInterleavedBuffer().setAttributes();
   }
 
   /**
-   * Creates the buffers that will be used to write data to the GPU.
+   * Creates the interleaved buffer that will be used to write data to the GPU.
    *
    * @return {ParticleBuffer}
    */
-  createBuffers() {
+  createInterleavedBuffer() {
     const arrayBuffer = new ArrayBuffer(this.maxParticles * PARTICLE_BYTE_SIZE);
 
-    this.positionBuffer = new THREE.InterleavedBuffer(
+    this.interleavedBuffer = new THREE.InterleavedBuffer(
       new Float32Array(arrayBuffer),
-      POSITION_BUFFER_STRIDE
-    );
-
-    this.rgbaBuffer = new THREE.InterleavedBuffer(
-      new Uint8Array(arrayBuffer),
-      RGBA_BUFFER_STRIDE
+      PARTICLE_BYTE_SIZE
     );
 
     return this;
   }
 
   /**
-   * Sets up the buffer geometry that will be provided to the renderer's THREE.Points object.
+   * Sets the geometry's buffer attributes.
+   *
+   * NOTE Each attribute needs to be set at the right index in the buffer right after the previous
+   * attribute that occupies a set amount of size in the buffer.
    *
    * @return {ParticleBufferGeometry}
    */
   setAttributes() {
-    this.setAttribute(
-      'position',
-      new THREE.InterleavedBufferAttribute(
-        this.positionBuffer,
-        POSITION_BUFFER_ITEM_SIZE,
-        POSITION_BUFFER_OFFSET,
-        POSITION_BUFFER_IS_NORMALIZED
-      )
-    );
+    Object.keys(ATTRIBUTE_TO_SIZE_MAP).reduce((offset, attribute) => {
+      const size = ATTRIBUTE_TO_SIZE_MAP[attribute];
 
-    this.setAttribute(
-      'rgba',
-      new THREE.InterleavedBufferAttribute(
-        this.rgbaBuffer,
-        RGBA_BUFFER_ITEM_SIZE,
-        RGBA_BUFFER_OFFSET,
-        RGBA_BUFFER_IS_NORMALIZED
-      )
-    );
+      this.setAttribute(
+        attribute,
+        new THREE.InterleavedBufferAttribute(
+          this.interleavedBuffer,
+          size,
+          offset
+        )
+      );
+
+      return (offset += size);
+    }, 0);
 
     return this;
   }
 
   /**
-   * Gets the publicly accessible buffers.
+   * Gets the publicly accessible interleaved buffer.
    *
-   * @return {object} buffers
-   * @return {THREE.InterleavedBuffer} buffers.positionBuffer - The position buffer
-   * @return {THREE.InterleavedBuffer} buffers.rgbaBuffer - The rgba buffer
+   * @return {THREE.InterleavedBuffer} buffers - The interleaved buffer
    */
-  get buffers() {
-    const { positionBuffer, rgbaBuffer } = this;
-
-    return {
-      positionBuffer,
-      rgbaBuffer,
-    };
+  get buffer() {
+    return this.interleavedBuffer;
   }
 
-  get positionBufferStride() {
-    return POSITION_BUFFER_STRIDE;
-  }
-
-  get rgbaBufferStride() {
-    return RGBA_BUFFER_STRIDE;
+  get stride() {
+    return PARTICLE_BYTE_SIZE;
   }
 };

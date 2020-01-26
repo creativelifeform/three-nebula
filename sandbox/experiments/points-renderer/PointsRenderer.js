@@ -5,7 +5,7 @@ const RENDERER_TYPE_POINTS_RENDERER = 'PointsRenderer';
 window.Target = class {
   constructor() {
     this.position = new THREE.Vector3();
-    this.scale = new THREE.Vector3();
+    this.scale = 1;
   }
 };
 
@@ -38,21 +38,44 @@ window.PointsRenderer = class extends CustomRenderer {
     }
 
     particle.target.position.copy(particle.position);
+    particle.target.scale = this.getParticleScale(particle);
+
     this.mapParticlePropsToPoint(particle);
   }
 
   onParticleUpdate(particle) {
-    if (particle.target) {
-      particle.target.position.copy(particle.position);
-      this.mapParticlePropsToPoint(particle);
+    if (!particle.target) {
+      return;
     }
+
+    const { position, scale } = particle;
+
+    particle.target.position.copy(position);
+    particle.target.scale = this.getParticleScale(particle);
+
+    this.mapParticlePropsToPoint(particle);
   }
 
   onParticleDead(particle) {
-    if (particle.target) {
-      this.mapParticlePropsToPoint(particle);
-      particle.target = null;
+    const { target } = particle;
+
+    if (!target) {
+      return;
     }
+
+    this.mapParticlePropsToPoint(particle);
+
+    particle.target = null;
+  }
+
+  /**
+   * Gets the particle scale by factoring in its current radius.
+   *
+   * @param {Particle}
+   * @return {number}
+   */
+  getParticleScale({ scale, radius }) {
+    return scale * radius;
   }
 
   /**
@@ -63,7 +86,7 @@ window.PointsRenderer = class extends CustomRenderer {
    */
   mapParticlePropsToPoint(particle) {
     this.updatePointPosition(particle)
-      .updatePointSize(particle)
+      .updatePointScale(particle)
       .updatePointRgba(particle);
   }
 
@@ -74,14 +97,15 @@ window.PointsRenderer = class extends CustomRenderer {
    * @return {PointsRenderer}
    */
   updatePointPosition(particle) {
+    const attribute = 'position';
     const { geometry } = this;
-    const { positionBufferStride, buffers } = geometry;
+    const { stride, buffer } = geometry;
     const { target, index } = particle;
-    const { array } = buffers.positionBuffer;
+    const { offset } = geometry.attributes[attribute];
 
-    array[index * positionBufferStride + 0] = target.position.x;
-    array[index * positionBufferStride + 1] = target.position.y;
-    array[index * positionBufferStride + 2] = target.position.z;
+    buffer.array[index * stride + offset + 0] = target.position.x;
+    buffer.array[index * stride + offset + 1] = target.position.y;
+    buffer.array[index * stride + offset + 2] = target.position.z;
 
     geometry.attributes.position.data.needsUpdate = true;
 
@@ -94,8 +118,17 @@ window.PointsRenderer = class extends CustomRenderer {
    * @param {Particle} particle - The particle containing the target scale.
    * @return {PointsRenderer}
    */
-  updatePointSize(particle) {
-    // TODO
+  updatePointScale(particle) {
+    const attribute = 'scale';
+    const { geometry } = this;
+    const { stride, buffer } = geometry;
+    const { target, index } = particle;
+    const { offset } = geometry.attributes[attribute];
+
+    buffer.array[index * stride + offset + 0] = target.scale;
+
+    geometry.attributes.scale.data.needsUpdate = true;
+
     return this;
   }
 
@@ -107,6 +140,7 @@ window.PointsRenderer = class extends CustomRenderer {
    */
   updatePointRgba(particle) {
     // TODO
+
     return this;
   }
 };
