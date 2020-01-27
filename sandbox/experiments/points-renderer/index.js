@@ -9,9 +9,5 @@ window.init = async ({ scene, camera, renderer }) => {
     shouldAutoEmit: true,
   });
 
-  console.log(system);
-
-  // renderer.setClearColor('red');
-
   return system.addRenderer(systemRenderer);
 };

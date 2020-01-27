@@ -32,22 +32,21 @@ const createSprite = () => {
 };
 
 const createEmitter = ({ colorA, colorB, camera, renderer }) => {
-  const emitter = new Emitter();
+  const emitter = new Emitter({ bindEmitterEvent: true });
 
   return emitter
-    //.setRate(new Rate(new Span(5, 7), new Span(0.01, 0.02)))
-    .setRate(new Rate(new Span(5,100), new Span(0.01, 0.02)))
+    .setRate(new Rate(new Span(5, 7), new Span(0.01, 0.02)))
     .setInitializers([
       new Mass(1),
       new Life(2),
       new Body(createSprite()),
       new Radius(80),
-      new RadialVelocity(200, new Vector3D(0, 0, -1), 0),
+      // new RadialVelocity(200, new Vector3D(0, 0, -1), 0),
     ])
     .setBehaviours([
       new Alpha(1, 0),
       new Color(colorA, colorB),
-      new Scale(.3, 0.3),
+      new Scale(1, 1.2),
       new CrossZone(new ScreenZone(camera, renderer), 'dead'),
       new Force(0, 0, -20),
     ])
@@ -80,11 +79,16 @@ window.init = async ({ scene, camera, renderer }) => {
     camera,
     renderer,
   });
+  const spriteRenderer = new SpriteRenderer(scene, THREE);
+  const pointsRenderer = new window.PointsRenderer(scene);
+  const systemRenderer = pointsRenderer;
 
   animateEmitters(emitterA, emitterB);
+
+  // renderer.setClearColor('red');
 
   return system
     .addEmitter(emitterA)
     .addEmitter(emitterB)
-    .addRenderer(new SpriteRenderer(scene, THREE));
+    .addRenderer(systemRenderer);
 };

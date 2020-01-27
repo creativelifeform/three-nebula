@@ -1,6 +1,13 @@
 const { CustomRenderer, Pool } = window.Nebula;
 
 const RENDERER_TYPE_POINTS_RENDERER = 'PointsRenderer';
+const DEFAULT_RENDERER_PROPS = {
+  blending: 'AdditiveBlending',
+  baseColor: 0xffffff,
+  depthTest: false,
+  transparent: true,
+  maxParticles: undefined,
+};
 
 const vertexShader = () => {
   const SIZE_ATTENUATION_FACTOR = '600.0';
@@ -45,9 +52,17 @@ const fragmentShader = () => {
 class Target {
   constructor() {
     this.position = new THREE.Vector3();
-    this.size = 1;
+    this.size = 0;
     this.color = new THREE.Color();
-    this.alpha = 1;
+    this.alpha = 0;
+    this.texture = null;
+  }
+
+  reset() {
+    this.position.set(0, 0, 0);
+    this.size = 0;
+    this.color.setRGB(0, 0, 0);
+    this.alpha = 0;
     this.texture = null;
   }
 }
@@ -60,19 +75,11 @@ class Target {
  * @author rohan-deshpande <rohan@creativelifeform.com>
  */
 window.PointsRenderer = class extends CustomRenderer {
-  constructor(
-    container,
-    {
-      size,
-      blending = 'AdditiveBlending',
-      baseColor = 0xffffff,
-      depthTest = false,
-      transparent = true,
-      maxParticles = undefined,
-    }
-  ) {
+  constructor(container, options = DEFAULT_RENDERER_PROPS) {
     super(RENDERER_TYPE_POINTS_RENDERER);
 
+    const props = { ...DEFAULT_RENDERER_PROPS, ...options };
+    const { maxParticles, baseColor, blending, depthTest, transparent } = props;
     const geometry = new window.ParticleBufferGeometry({ maxParticles });
     const material = new THREE.ShaderMaterial({
       uniforms: {
@@ -121,7 +128,7 @@ window.PointsRenderer = class extends CustomRenderer {
   }
 
   /**
-   * Clears the particle target.
+   * Resets and clears the particle target.
    *
    * @param {Particle}
    */
@@ -130,6 +137,7 @@ window.PointsRenderer = class extends CustomRenderer {
       return;
     }
 
+    particle.target.reset();
     this.mapParticleTargetPropsToPoint(particle);
 
     particle.target = null;
@@ -175,7 +183,7 @@ window.PointsRenderer = class extends CustomRenderer {
   }
 
   /**
-   * Updates the particle buffer geometry point's position relative to the particle.
+   * Updates the point's position according to the particle's target position.
    *
    * @param {Particle} particle - The particle containing the target position.
    * @return {PointsRenderer}
@@ -195,7 +203,7 @@ window.PointsRenderer = class extends CustomRenderer {
   }
 
   /**
-   * Updates the particle buffer geometry point's size relative to the particle scale.
+   * Updates the point's size relative to the particle's target scale and radius.
    *
    * @param {Particle} particle - The particle containing the target scale.
    * @return {PointsRenderer}
@@ -213,7 +221,7 @@ window.PointsRenderer = class extends CustomRenderer {
   }
 
   /**
-   * Updates the particle buffer geometry rgba values relative to the particle color properties.
+   * Updates the point's color attribute according with the particle's target color.
    *
    * @param {Particle} particle - The particle containing the target color and alpha.
    * @return {PointsRenderer}
@@ -232,6 +240,12 @@ window.PointsRenderer = class extends CustomRenderer {
     return this;
   }
 
+  /**
+   * Updates the point alpha attribute with the particle's target alpha.
+   *
+   * @param {Particle} particle - The particle containing the target alpha.
+   * @return {PointsRenderer}
+   */
   updatePointAlpha(particle) {
     const attribute = 'alpha';
     const { geometry } = this;
@@ -244,9 +258,16 @@ window.PointsRenderer = class extends CustomRenderer {
     return this;
   }
 
+  /**
+   * Ensures that all attribute updates are marked as needing updates from the WebGLRenderer.
+   *
+   * @return {PointsRenderer}
+   */
   ensurePointUpdatesAreRendered() {
     Object.keys(this.geometry.attributes).map(attribute => {
       this.geometry.attributes[attribute].data.needsUpdate = true;
     });
+
+    return this;
   }
 };
