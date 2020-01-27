@@ -2,26 +2,79 @@ const { CustomRenderer, Pool } = window.Nebula;
 
 const RENDERER_TYPE_POINTS_RENDERER = 'PointsRenderer';
 
-window.Target = class {
+const vertexShader = () => {
+  const SIZE_ATTENUATION_FACTOR = '300.0';
+
+  return `
+    attribute float size;
+    attribute vec3 color;
+
+    varying vec3 currentColor;
+
+    void main() {
+      vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+      currentColor = color;
+
+      gl_PointSize = size * (${SIZE_ATTENUATION_FACTOR} / -mvPosition.z);
+      gl_Position = projectionMatrix * mvPosition;
+    }
+`;
+};
+
+const fragmentShader = () => {
+  return `
+    uniform vec3 initialColor;
+
+    varying vec3 currentColor;
+
+    void main() {
+      gl_FragColor = vec4(initialColor * currentColor, 1.0);
+    }
+`;
+};
+
+/**
+ * Simple class that stores the particle's "target" or "next" state.
+ */
+class Target {
   constructor() {
     this.position = new THREE.Vector3();
-    this.scale = 1;
+    this.size = 1;
+    this.color = new THREE.Color();
+    this.alpha = 1;
   }
-};
+}
 
 /**
  * Performant particle renderer that uses THREE.Points to propagate particle (postiion, rgba etc.,) properties to
  * vertices in a ParticleBufferGeometry.
  *
+ * @author thrax <manthrax@gmail.com>
+ * @author rohan-deshpande <rohan@creativelifeform.com>
  */
 window.PointsRenderer = class extends CustomRenderer {
-  constructor(container, { size, maxParticles = undefined }) {
+  constructor(
+    container,
+    {
+      size,
+      blending = 'AdditiveBlending',
+      depthTest = false,
+      transparent = true,
+      maxParticles = undefined,
+    }
+  ) {
     super(RENDERER_TYPE_POINTS_RENDERER);
 
     const geometry = new window.ParticleBufferGeometry({ maxParticles });
-    const material = new THREE.PointsMaterial({
-      size,
-      vertexColors: THREE.VertexColors,
+    const material = new THREE.ShaderMaterial({
+      uniforms: {
+        initialColor: { value: new THREE.Color(0xffffff) },
+      },
+      vertexShader: vertexShader(),
+      fragmentShader: fragmentShader(),
+      blending: THREE[blending],
+      depthTest,
+      transparent,
     });
 
     this.geometry = geometry;
@@ -32,62 +85,79 @@ window.PointsRenderer = class extends CustomRenderer {
     container.add(this.points);
   }
 
+  /**
+   * Pools the particle target if it does not exist.
+   * Updates the target and maps particle properties to the point.
+   *
+   * @param {Particle}
+   */
   onParticleCreated(particle) {
     if (!particle.target) {
-      particle.target = this.targetPool.get(window.Target);
+      particle.target = this.targetPool.get(Target);
     }
 
-    particle.target.position.copy(particle.position);
-    particle.target.scale = this.getParticleScale(particle);
-
-    this.mapParticlePropsToPoint(particle);
+    this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
   }
 
+  /**
+   * Maps particle properties to the point if the particle has a target.
+   *
+   * @param {Particle}
+   */
   onParticleUpdate(particle) {
     if (!particle.target) {
       return;
     }
 
-    const { position, scale } = particle;
-
-    particle.target.position.copy(position);
-    particle.target.scale = this.getParticleScale(particle);
-
-    this.mapParticlePropsToPoint(particle);
+    this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
   }
 
+  /**
+   * Clears the particle target.
+   *
+   * @param {Particle}
+   */
   onParticleDead(particle) {
-    const { target } = particle;
-
-    if (!target) {
+    if (!particle.target) {
       return;
     }
 
-    this.mapParticlePropsToPoint(particle);
+    this.mapParticleTargetPropsToPoint(particle);
 
     particle.target = null;
   }
 
   /**
-   * Gets the particle scale by factoring in its current radius.
+   * Maps all mutable properties from the particle to the target.
    *
    * @param {Particle}
-   * @return {number}
+   * @return {PointsRenderer}
    */
-  getParticleScale({ scale, radius }) {
-    return scale * radius;
+  updateTarget(particle) {
+    const { position, scale, radius, color, alpha } = particle;
+    const { r, g, b } = color;
+
+    particle.target.position.copy(position);
+    particle.target.size = scale * radius;
+    particle.target.color.setRGB(r, g, b);
+    particle.target.alpha = alpha;
+
+    return this;
   }
 
   /**
    * Entry point for mapping particle properties to buffer geometry points.
    *
    * @param {Particle} particle - The particle containing the properties to map
-   * @return void
+   * @return {PointsRenderer}
    */
-  mapParticlePropsToPoint(particle) {
+  mapParticleTargetPropsToPoint(particle) {
     this.updatePointPosition(particle)
-      .updatePointScale(particle)
-      .updatePointRgba(particle);
+      .updatePointSize(particle)
+      .updatePointColor(particle)
+      .updatePointAlpha(particle);
+
+    return this;
   }
 
   /**
@@ -107,7 +177,7 @@ window.PointsRenderer = class extends CustomRenderer {
     buffer.array[index * stride + offset + 1] = target.position.y;
     buffer.array[index * stride + offset + 2] = target.position.z;
 
-    geometry.attributes.position.data.needsUpdate = true;
+    this.ensureAttributeChangeIsRendered(attribute);
 
     return this;
   }
@@ -118,29 +188,49 @@ window.PointsRenderer = class extends CustomRenderer {
    * @param {Particle} particle - The particle containing the target scale.
    * @return {PointsRenderer}
    */
-  updatePointScale(particle) {
-    const attribute = 'scale';
+  updatePointSize(particle) {
+    const attribute = 'size';
     const { geometry } = this;
     const { stride, buffer } = geometry;
     const { target, index } = particle;
     const { offset } = geometry.attributes[attribute];
 
-    buffer.array[index * stride + offset + 0] = target.scale;
+    buffer.array[index * stride + offset + 0] = target.size;
 
-    geometry.attributes.scale.data.needsUpdate = true;
+    this.ensureAttributeChangeIsRendered(attribute);
 
     return this;
   }
 
   /**
-   * Updates the particle buffer geometry rgba values relative to the particle color and alpha properties.
+   * Updates the particle buffer geometry rgba values relative to the particle color properties.
    *
    * @param {Particle} particle - The particle containing the target color and alpha.
    * @return {PointsRenderer}
    */
-  updatePointRgba(particle) {
+  updatePointColor(particle) {
+    const attribute = 'color';
+    const { geometry } = this;
+    const { stride, buffer } = geometry;
+    const { target, index } = particle;
+    const { offset } = geometry.attributes[attribute];
+
+    buffer.array[index * stride + offset + 0] = target.color.r;
+    buffer.array[index * stride + offset + 1] = target.color.g;
+    buffer.array[index * stride + offset + 2] = target.color.b;
+
+    this.ensureAttributeChangeIsRendered(attribute);
+
+    return this;
+  }
+
+  updatePointAlpha(particle) {
     // TODO
 
     return this;
+  }
+
+  ensureAttributeChangeIsRendered(attribute) {
+    this.geometry.attributes[attribute].data.needsUpdate = true;
   }
 };

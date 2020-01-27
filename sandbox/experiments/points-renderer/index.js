@@ -11,7 +11,7 @@ window.init = async ({ scene, camera, renderer }) => {
 
   console.log(system);
 
-  renderer.setClearColor('red');
+  // renderer.setClearColor('red');
 
   return system.addRenderer(systemRenderer);
 };

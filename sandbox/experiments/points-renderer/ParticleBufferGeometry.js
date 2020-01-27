@@ -6,25 +6,31 @@ const FLOAT_BYTE_SIZE = 4;
 
 // Byte sizes
 const POSITION_BYTE_SIZE = VECTOR_3_SIZE * FLOAT_BYTE_SIZE;
-const SCALE_BYTE_SIZE = FLOAT_BYTE_SIZE;
+const SIZE_BYTE_SIZE = FLOAT_BYTE_SIZE;
 const RGBA_BYTE_SIZE = RGBA_SIZE * FLOAT_BYTE_SIZE;
-const ALL_BYTE_SIZES = [POSITION_BYTE_SIZE, SCALE_BYTE_SIZE, RGBA_BYTE_SIZE];
+const ALL_BYTE_SIZES = [POSITION_BYTE_SIZE, SIZE_BYTE_SIZE, RGBA_BYTE_SIZE];
 const PARTICLE_BYTE_SIZE = ALL_BYTE_SIZES.reduce((cur, acc) => cur + acc);
 
 // Attributes
 const POSITION_ATTRIBUTE_BUFFER_SIZE = VECTOR_3_SIZE;
-const SCALE_ATTRIBUTE_BUFFER_SIZE = 1;
+const SIZE_ATTRIBUTE_BUFFER_SIZE = 1;
 const RGBA_ATTRIBUTE_BUFFER_SIZE = RGBA_SIZE;
+const ALPHA_ATTRIBUTE_BUFFER_SIZE = 1;
 const ATTRIBUTE_TO_SIZE_MAP = {
   position: POSITION_ATTRIBUTE_BUFFER_SIZE,
-  scale: SCALE_ATTRIBUTE_BUFFER_SIZE,
-  rgba: RGBA_ATTRIBUTE_BUFFER_SIZE,
+  size: SIZE_ATTRIBUTE_BUFFER_SIZE,
+  // THREE.Color does not contain alpha, so we will have separate attributes for these
+  color: RGBA_ATTRIBUTE_BUFFER_SIZE,
+  alpha: ALPHA_ATTRIBUTE_BUFFER_SIZE,
 };
 
 /**
  * Creates and provides performant buffers for mapping particle properties to geometry vertices.
  *
- * @see https://github.com/mrdoob/three.js/blob/master/examples/webgl_buffergeometry_points_interleaved.html
+ * @author thrax <manthrax@gmail.com>
+ * @author rohan-deshpande <rohan@creativelifeform.com>
+ * @see https://threejs.org/examples/?q=buffe#webgl_buffergeometry_points_interleaved
+ * @see https://threejs.org/examples/?q=points#webgl_custom_attributes_points
  */
 window.ParticleBufferGeometry = class extends THREE.BufferGeometry {
   constructor({ maxParticles = DEFAULT_MAX_PARTICLES }) {
@@ -60,16 +66,14 @@ window.ParticleBufferGeometry = class extends THREE.BufferGeometry {
    * @return {ParticleBufferGeometry}
    */
   setAttributes() {
+    const { interleavedBuffer } = this;
+
     Object.keys(ATTRIBUTE_TO_SIZE_MAP).reduce((offset, attribute) => {
       const size = ATTRIBUTE_TO_SIZE_MAP[attribute];
 
       this.setAttribute(
         attribute,
-        new THREE.InterleavedBufferAttribute(
-          this.interleavedBuffer,
-          size,
-          offset
-        )
+        new THREE.InterleavedBufferAttribute(interleavedBuffer, size, offset)
       );
 
       return (offset += size);
