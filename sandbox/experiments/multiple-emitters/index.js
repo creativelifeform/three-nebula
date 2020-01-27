@@ -41,7 +41,7 @@ const createEmitter = ({ colorA, colorB, camera, renderer }) => {
       new Life(2),
       new Body(createSprite()),
       new Radius(80),
-      // new RadialVelocity(200, new Vector3D(0, 0, -1), 0),
+      new RadialVelocity(200, new Vector3D(0, 0, -1), 0),
     ])
     .setBehaviours([
       new Alpha(1, 0),

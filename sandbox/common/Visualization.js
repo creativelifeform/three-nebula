@@ -49,13 +49,21 @@ window.Visualization = class {
         return;
       }
 
-      setTimeout(() => {
+      if (TICK_DELAY) {
+        setTimeout(() => {
+          requestId = requestAnimationFrame(animate);
+
+          this.particleSystem.update();
+          this.rotateCamera();
+          this.webGlRenderer.render(this.scene, this.camera);
+        }, TICK_DELAY || 0);
+      } else {
         requestId = requestAnimationFrame(animate);
 
         this.particleSystem.update();
         this.rotateCamera();
         this.webGlRenderer.render(this.scene, this.camera);
-      }, TICK_DELAY || 0);
+      }
     };
 
     try {

@@ -69,12 +69,21 @@ class Target {
 }
 
 class UniqueList {
-  constructor() {
+  constructor(max = Infinity) {
+    this.max = max;
     this.items = [];
   }
 
   add(item) {
-    !this.has(item) && this.items.push(item);
+    if (this.has(item)) {
+      return;
+    }
+
+    if (this.items.length + 1 === this.max) {
+      throw new RangeError('UniqueList max size exceeded');
+    }
+
+    this.items.push(item);
   }
 
   has(item) {
@@ -114,7 +123,7 @@ window.PointsRenderer = class extends CustomRenderer {
       transparent,
     });
 
-    this.uniqueList = new UniqueList();
+    this.uniqueList = new UniqueList(maxParticles);
     this.geometry = geometry;
     this.material = material;
     this.points = new THREE.Points(geometry, material);
