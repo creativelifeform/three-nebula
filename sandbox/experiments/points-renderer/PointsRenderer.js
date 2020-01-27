@@ -8,12 +8,15 @@ const vertexShader = () => {
   return `
     attribute float size;
     attribute vec3 color;
+    attribute float alpha;
 
     varying vec3 currentColor;
+    varying float currentAlpha;
 
     void main() {
       vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
       currentColor = color;
+      currentAlpha = alpha;
 
       gl_PointSize = size * (${SIZE_ATTENUATION_FACTOR} / -mvPosition.z);
       gl_Position = projectionMatrix * mvPosition;
@@ -26,9 +29,10 @@ const fragmentShader = () => {
     uniform vec3 initialColor;
 
     varying vec3 currentColor;
+    varying float currentAlpha;
 
     void main() {
-      gl_FragColor = vec4(initialColor * currentColor, 1.0);
+      gl_FragColor = vec4(initialColor * currentColor, currentAlpha);
     }
 `;
 };
@@ -225,7 +229,15 @@ window.PointsRenderer = class extends CustomRenderer {
   }
 
   updatePointAlpha(particle) {
-    // TODO
+    const attribute = 'alpha';
+    const { geometry } = this;
+    const { stride, buffer } = geometry;
+    const { target, index } = particle;
+    const { offset } = geometry.attributes[attribute];
+
+    buffer.array[index * stride + offset + 0] = target.alpha;
+
+    this.ensureAttributeChangeIsRendered(attribute);
 
     return this;
   }
