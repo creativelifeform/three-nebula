@@ -68,21 +68,21 @@ class Target {
   }
 }
 
-class List {
+class UniqueList {
   constructor() {
     this.items = [];
   }
 
   add(item) {
-    this.items.push(item);
-  }
-
-  find(item) {
-    return this.items.indexOf(item);
+    !this.has(item) && this.items.push(item);
   }
 
   has(item) {
     return this.items.indexOf(item) > 0;
+  }
+
+  find(item) {
+    return this.items.indexOf(item);
   }
 }
 
@@ -114,57 +114,12 @@ window.PointsRenderer = class extends CustomRenderer {
       transparent,
     });
 
-    this.list = new List();
-    this.ids = [];
+    this.uniqueList = new UniqueList();
     this.geometry = geometry;
     this.material = material;
     this.points = new THREE.Points(geometry, material);
 
     container.add(this.points);
-  }
-
-  /**
-   * Pools the particle target if it does not exist.
-   * Updates the target and maps particle properties to the point.
-   *
-   * @param {Particle}
-   */
-  onParticleCreated(particle) {
-    if (!particle.target) {
-      particle.target = this.targetPool.get(Target);
-      !this.list.has(particle.id) && this.list.add(particle.id);
-    }
-
-    this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
-  }
-
-  /**
-   * Maps particle properties to the point if the particle has a target.
-   *
-   * @param {Particle}
-   */
-  onParticleUpdate(particle) {
-    if (!particle.target) {
-      return;
-    }
-
-    this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
-  }
-
-  /**
-   * Resets and clears the particle target.
-   *
-   * @param {Particle}
-   */
-  onParticleDead(particle) {
-    if (!particle.target) {
-      return;
-    }
-
-    particle.target.reset();
-    this.mapParticleTargetPropsToPoint(particle);
-
-    particle.target = null;
   }
 
   /**
@@ -181,7 +136,7 @@ window.PointsRenderer = class extends CustomRenderer {
     particle.target.size = scale * radius;
     particle.target.color.setRGB(r, g, b);
     particle.target.alpha = alpha;
-    particle.target.index = this.list.find(id);
+    particle.target.index = this.uniqueList.find(id);
 
     if (body && body instanceof THREE.Sprite) {
       particle.target.texture = body.material.map;
@@ -294,5 +249,49 @@ window.PointsRenderer = class extends CustomRenderer {
     });
 
     return this;
+  }
+
+  /**
+   * Pools the particle target if it does not exist.
+   * Updates the target and maps particle properties to the point.
+   *
+   * @param {Particle}
+   */
+  onParticleCreated(particle) {
+    if (!particle.target) {
+      particle.target = this.targetPool.get(Target);
+      this.uniqueList.add(particle.id);
+    }
+
+    this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
+  }
+
+  /**
+   * Maps particle properties to the point if the particle has a target.
+   *
+   * @param {Particle}
+   */
+  onParticleUpdate(particle) {
+    if (!particle.target) {
+      return;
+    }
+
+    this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
+  }
+
+  /**
+   * Resets and clears the particle target.
+   *
+   * @param {Particle}
+   */
+  onParticleDead(particle) {
+    if (!particle.target) {
+      return;
+    }
+
+    particle.target.reset();
+    this.mapParticleTargetPropsToPoint(particle);
+
+    particle.target = null;
   }
 };
