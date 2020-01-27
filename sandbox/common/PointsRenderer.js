@@ -56,6 +56,7 @@ class Target {
     this.color = new THREE.Color();
     this.alpha = 0;
     this.texture = null;
+    this.index = 0;
   }
 
   reset() {
@@ -64,6 +65,24 @@ class Target {
     this.color.setRGB(0, 0, 0);
     this.alpha = 0;
     this.texture = null;
+  }
+}
+
+class List {
+  constructor() {
+    this.items = [];
+  }
+
+  add(item) {
+    this.items.push(item);
+  }
+
+  find(item) {
+    return this.items.indexOf(item);
+  }
+
+  has(item) {
+    return this.items.indexOf(item) > 0;
   }
 }
 
@@ -77,6 +96,8 @@ class Target {
 window.PointsRenderer = class extends CustomRenderer {
   constructor(container, options = DEFAULT_RENDERER_PROPS) {
     super(RENDERER_TYPE_POINTS_RENDERER);
+
+    console.log('USING POINTS RENDERER');
 
     const props = { ...DEFAULT_RENDERER_PROPS, ...options };
     const { maxParticles, baseColor, blending, depthTest, transparent } = props;
@@ -93,6 +114,8 @@ window.PointsRenderer = class extends CustomRenderer {
       transparent,
     });
 
+    this.list = new List();
+    this.ids = [];
     this.geometry = geometry;
     this.material = material;
     this.points = new THREE.Points(geometry, material);
@@ -109,6 +132,7 @@ window.PointsRenderer = class extends CustomRenderer {
   onParticleCreated(particle) {
     if (!particle.target) {
       particle.target = this.targetPool.get(Target);
+      !this.list.has(particle.id) && this.list.add(particle.id);
     }
 
     this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
@@ -150,13 +174,14 @@ window.PointsRenderer = class extends CustomRenderer {
    * @return {PointsRenderer}
    */
   updateTarget(particle) {
-    const { position, scale, radius, color, alpha, body } = particle;
+    const { position, scale, radius, color, alpha, body, id } = particle;
     const { r, g, b } = color;
 
     particle.target.position.copy(position);
     particle.target.size = scale * radius;
     particle.target.color.setRGB(r, g, b);
     particle.target.alpha = alpha;
+    particle.target.index = this.list.find(id);
 
     if (body && body instanceof THREE.Sprite) {
       particle.target.texture = body.material.map;
@@ -195,9 +220,9 @@ window.PointsRenderer = class extends CustomRenderer {
     const { target, index } = particle;
     const { offset } = geometry.attributes[attribute];
 
-    buffer.array[index * stride + offset + 0] = target.position.x;
-    buffer.array[index * stride + offset + 1] = target.position.y;
-    buffer.array[index * stride + offset + 2] = target.position.z;
+    buffer.array[target.index * stride + offset + 0] = target.position.x;
+    buffer.array[target.index * stride + offset + 1] = target.position.y;
+    buffer.array[target.index * stride + offset + 2] = target.position.z;
 
     return this;
   }
@@ -215,7 +240,7 @@ window.PointsRenderer = class extends CustomRenderer {
     const { target, index } = particle;
     const { offset } = geometry.attributes[attribute];
 
-    buffer.array[index * stride + offset + 0] = target.size;
+    buffer.array[target.index * stride + offset + 0] = target.size;
 
     return this;
   }
@@ -233,9 +258,9 @@ window.PointsRenderer = class extends CustomRenderer {
     const { target, index } = particle;
     const { offset } = geometry.attributes[attribute];
 
-    buffer.array[index * stride + offset + 0] = target.color.r;
-    buffer.array[index * stride + offset + 1] = target.color.g;
-    buffer.array[index * stride + offset + 2] = target.color.b;
+    buffer.array[target.index * stride + offset + 0] = target.color.r;
+    buffer.array[target.index * stride + offset + 1] = target.color.g;
+    buffer.array[target.index * stride + offset + 2] = target.color.b;
 
     return this;
   }
@@ -253,7 +278,7 @@ window.PointsRenderer = class extends CustomRenderer {
     const { target, index } = particle;
     const { offset } = geometry.attributes[attribute];
 
-    buffer.array[index * stride + offset + 0] = target.alpha;
+    buffer.array[target.index * stride + offset + 0] = target.alpha;
 
     return this;
   }

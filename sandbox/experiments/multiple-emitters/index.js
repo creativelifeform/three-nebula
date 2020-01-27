@@ -85,8 +85,6 @@ window.init = async ({ scene, camera, renderer }) => {
 
   animateEmitters(emitterA, emitterB);
 
-  // renderer.setClearColor('red');
-
   return system
     .addEmitter(emitterA)
     .addEmitter(emitterB)
