@@ -3,20 +3,20 @@ const { CustomRenderer, Pool } = window.Nebula;
 const RENDERER_TYPE_POINTS_RENDERER = 'PointsRenderer';
 
 const vertexShader = () => {
-  const SIZE_ATTENUATION_FACTOR = '300.0';
+  const SIZE_ATTENUATION_FACTOR = '600.0';
 
   return `
     attribute float size;
     attribute vec3 color;
     attribute float alpha;
 
-    varying vec3 currentColor;
-    varying float currentAlpha;
+    varying vec3 targetColor;
+    varying float targetAlpha;
 
     void main() {
       vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-      currentColor = color;
-      currentAlpha = alpha;
+      targetColor = color;
+      targetAlpha = alpha;
 
       gl_PointSize = size * (${SIZE_ATTENUATION_FACTOR} / -mvPosition.z);
       gl_Position = projectionMatrix * mvPosition;
@@ -26,13 +26,15 @@ const vertexShader = () => {
 
 const fragmentShader = () => {
   return `
-    uniform vec3 initialColor;
+    uniform vec3 baseColor;
+    uniform sampler2D texture;
 
-    varying vec3 currentColor;
-    varying float currentAlpha;
+    varying vec3 targetColor;
+    varying float targetAlpha;
 
     void main() {
-      gl_FragColor = vec4(initialColor * currentColor, currentAlpha);
+      gl_FragColor = vec4(baseColor * targetColor, targetAlpha);
+      gl_FragColor = gl_FragColor * texture2D(texture, gl_PointCoord);
     }
 `;
 };
@@ -46,6 +48,7 @@ class Target {
     this.size = 1;
     this.color = new THREE.Color();
     this.alpha = 1;
+    this.texture = null;
   }
 }
 
@@ -62,6 +65,7 @@ window.PointsRenderer = class extends CustomRenderer {
     {
       size,
       blending = 'AdditiveBlending',
+      baseColor = 0xffffff,
       depthTest = false,
       transparent = true,
       maxParticles = undefined,
@@ -72,7 +76,8 @@ window.PointsRenderer = class extends CustomRenderer {
     const geometry = new window.ParticleBufferGeometry({ maxParticles });
     const material = new THREE.ShaderMaterial({
       uniforms: {
-        initialColor: { value: new THREE.Color(0xffffff) },
+        baseColor: { value: new THREE.Color(baseColor) },
+        texture: { value: null },
       },
       vertexShader: vertexShader(),
       fragmentShader: fragmentShader(),
@@ -82,8 +87,7 @@ window.PointsRenderer = class extends CustomRenderer {
     });
 
     this.geometry = geometry;
-    this.targetPool = new Pool();
-    this.texturePool = new Pool();
+    this.material = material;
     this.points = new THREE.Points(geometry, material);
 
     container.add(this.points);
@@ -138,13 +142,18 @@ window.PointsRenderer = class extends CustomRenderer {
    * @return {PointsRenderer}
    */
   updateTarget(particle) {
-    const { position, scale, radius, color, alpha } = particle;
+    const { position, scale, radius, color, alpha, body } = particle;
     const { r, g, b } = color;
 
     particle.target.position.copy(position);
     particle.target.size = scale * radius;
     particle.target.color.setRGB(r, g, b);
     particle.target.alpha = alpha;
+
+    if (body && body instanceof THREE.Sprite) {
+      particle.target.texture = body.material.map;
+      this.material.uniforms.texture = { value: particle.target.texture };
+    }
 
     return this;
   }
@@ -159,7 +168,8 @@ window.PointsRenderer = class extends CustomRenderer {
     this.updatePointPosition(particle)
       .updatePointSize(particle)
       .updatePointColor(particle)
-      .updatePointAlpha(particle);
+      .updatePointAlpha(particle)
+      .ensurePointUpdatesAreRendered();
 
     return this;
   }
@@ -181,8 +191,6 @@ window.PointsRenderer = class extends CustomRenderer {
     buffer.array[index * stride + offset + 1] = target.position.y;
     buffer.array[index * stride + offset + 2] = target.position.z;
 
-    this.ensureAttributeChangeIsRendered(attribute);
-
     return this;
   }
 
@@ -200,8 +208,6 @@ window.PointsRenderer = class extends CustomRenderer {
     const { offset } = geometry.attributes[attribute];
 
     buffer.array[index * stride + offset + 0] = target.size;
-
-    this.ensureAttributeChangeIsRendered(attribute);
 
     return this;
   }
@@ -223,8 +229,6 @@ window.PointsRenderer = class extends CustomRenderer {
     buffer.array[index * stride + offset + 1] = target.color.g;
     buffer.array[index * stride + offset + 2] = target.color.b;
 
-    this.ensureAttributeChangeIsRendered(attribute);
-
     return this;
   }
 
@@ -237,12 +241,12 @@ window.PointsRenderer = class extends CustomRenderer {
 
     buffer.array[index * stride + offset + 0] = target.alpha;
 
-    this.ensureAttributeChangeIsRendered(attribute);
-
     return this;
   }
 
-  ensureAttributeChangeIsRendered(attribute) {
-    this.geometry.attributes[attribute].data.needsUpdate = true;
+  ensurePointUpdatesAreRendered() {
+    Object.keys(this.geometry.attributes).map(attribute => {
+      this.geometry.attributes[attribute].data.needsUpdate = true;
+    });
   }
 };
