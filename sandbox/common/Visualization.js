@@ -1,11 +1,12 @@
 window.Visualization = class {
-  constructor({ canvas, init, shouldRotateCamera }) {
+  constructor({ canvas, init, shouldRotateCamera, maxTicks = Infinity }) {
     this.canvas = canvas;
     this.init = init;
     this.shouldAnimate = true;
     this.shouldRotateCamera = shouldRotateCamera;
-
-    console.log(shouldRotateCamera);
+    this.stats = new window.Stats();
+    this.maxTicks = maxTicks;
+    this.renderTicks = 0;
   }
 
   /**
@@ -39,8 +40,10 @@ window.Visualization = class {
    * @return {Visualization}
    */
   render() {
-    const TICK_DELAY = 0;
     let requestId;
+
+    document.getElementById('app').appendChild(this.stats.dom);
+    this.stats.begin();
 
     window.addEventListener('resize', () => this.resize());
 
@@ -49,21 +52,19 @@ window.Visualization = class {
         return;
       }
 
-      if (TICK_DELAY) {
-        setTimeout(() => {
-          requestId = requestAnimationFrame(animate);
+      if (this.maxTicks !== Infinity && this.renderTicks >= this.maxTicks) {
+        console.log('REACHED MAX TICKS');
 
-          this.particleSystem.update();
-          this.rotateCamera();
-          this.webGlRenderer.render(this.scene, this.camera);
-        }, TICK_DELAY || 0);
-      } else {
-        requestId = requestAnimationFrame(animate);
-
-        this.particleSystem.update();
-        this.rotateCamera();
-        this.webGlRenderer.render(this.scene, this.camera);
+        return cancelAnimationFrame(requestId);
       }
+
+      requestId = requestAnimationFrame(animate);
+
+      this.renderTicks++;
+      this.particleSystem.update();
+      this.rotateCamera();
+      this.webGlRenderer.render(this.scene, this.camera);
+      this.stats.end();
     };
 
     try {
