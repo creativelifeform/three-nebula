@@ -5,7 +5,7 @@ import init from './init';
 
 export default () => (
   <Nebula
-    srcHref={getSrcHref('BufferGeometryRenderer/init.js')}
+    srcHref={getSrcHref('GpuRenderer/init.js')}
     init={init}
     shouldRotateCamera={true}
   />

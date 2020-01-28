@@ -49,7 +49,7 @@ describe('regression', () => {
       'Vector3D',
       'CustomRenderer',
       'MeshRenderer',
-      'PointsRenderer',
+      'GPURenderer',
       'SpriteRenderer',
       'ColorUtil',
       'PUID',

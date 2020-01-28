@@ -67,16 +67,9 @@ module.exports = [
   },
   {
     title:
-      'Three Nebula - ThreeJs Particle System Engine Instanced Mesh Renderer',
-    name: 'instanced-mesh-renderer',
-    path: '/examples/instanced-mesh-renderer',
-    shouldHideFromNav: true,
-  },
-  {
-    title:
-      'Three Nebula - ThreeJs Particle System Engine Buffer Geometry Renderer',
-    name: 'buffer-geometry-renderer',
-    path: '/examples/buffer-geometry-renderer',
+      'Three Nebula - ThreeJs Particle System Engine Instanced GPU Renderer',
+    name: 'gpu-renderer',
+    path: '/examples/gpu-renderer',
     shouldHideFromNav: true,
   },
   {

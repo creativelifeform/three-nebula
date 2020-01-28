@@ -43,9 +43,13 @@ export default class GPURenderer extends BaseRenderer {
     this.THREE = THREE;
     this.targetPool = new Pool();
     this.uniqueList = new UniqueList(maxParticles);
+    this.buffer = particleBuffer.buffer;
+    this.stride = particleBuffer.stride;
     this.geometry = particleBuffer.geometry;
     this.material = material;
     this.points = new THREE.Points(this.geometry, this.material);
+
+    console.log(this.points);
 
     container.add(this.points);
   }
@@ -142,8 +146,7 @@ export default class GPURenderer extends BaseRenderer {
    */
   updatePointPosition(particle) {
     const attribute = 'position';
-    const { geometry } = this;
-    const { stride, buffer } = geometry;
+    const { geometry, buffer, stride } = this;
     const { target } = particle;
     const { offset } = geometry.attributes[attribute];
 
@@ -162,8 +165,7 @@ export default class GPURenderer extends BaseRenderer {
    */
   updatePointSize(particle) {
     const attribute = 'size';
-    const { geometry } = this;
-    const { stride, buffer } = geometry;
+    const { geometry, buffer, stride } = this;
     const { target } = particle;
     const { offset } = geometry.attributes[attribute];
 
@@ -180,8 +182,7 @@ export default class GPURenderer extends BaseRenderer {
    */
   updatePointColor(particle) {
     const attribute = 'color';
-    const { geometry } = this;
-    const { stride, buffer } = geometry;
+    const { geometry, buffer, stride } = this;
     const { target } = particle;
     const { offset } = geometry.attributes[attribute];
 
@@ -200,8 +201,7 @@ export default class GPURenderer extends BaseRenderer {
    */
   updatePointAlpha(particle) {
     const attribute = 'alpha';
-    const { geometry } = this;
-    const { stride, buffer } = geometry;
+    const { geometry, buffer, stride } = this;
     const { target } = particle;
     const { offset } = geometry.attributes[attribute];
 

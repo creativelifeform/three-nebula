@@ -14,6 +14,7 @@ const {
   ScreenZone,
   Span,
   SpriteRenderer,
+  GPURenderer,
   Vector3D,
 } = window.Nebula;
 
@@ -79,9 +80,8 @@ window.init = async ({ scene, camera, renderer }) => {
     camera,
     renderer,
   });
-  const spriteRenderer = new SpriteRenderer(scene, THREE);
-  const pointsRenderer = new window.PointsRenderer(scene);
-  const systemRenderer = pointsRenderer;
+  // const systemRenderer = new GPURenderer(scene, THREE);
+  const systemRenderer = new window.PointsRenderer(scene);
 
   animateEmitters(emitterA, emitterB);
 
