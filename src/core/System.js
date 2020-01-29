@@ -154,7 +154,11 @@ export default class System {
    * @return {System}
    */
   addEmitter(emitter) {
+    const index = this.emitters.length;
+
     emitter.parent = this;
+    // TODO COVERAGE
+    emitter.index = index;
 
     this.emitters.push(emitter);
     this.dispatch(EMITTER_ADDED, emitter);

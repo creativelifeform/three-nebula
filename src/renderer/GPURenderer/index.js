@@ -42,7 +42,6 @@ export default class GPURenderer extends CustomRenderer {
     super(RENDERER_TYPE_GPU);
 
     console.log(RENDERER_TYPE_GPU);
-    console.log(container);
 
     THREE = three;
 
@@ -69,6 +68,50 @@ export default class GPURenderer extends CustomRenderer {
     this.points = new THREE.Points(this.geometry, this.material);
 
     container.add(this.points);
+  }
+
+  /**
+   * Pools the particle target if it does not exist.
+   * Updates the target and maps particle properties to the point.
+   *
+   * @param {Particle}
+   */
+  onParticleCreated(particle) {
+    if (!particle.target) {
+      particle.target = this.targetPool.get(Target);
+      this.uniqueList.add(particle.id);
+    }
+
+    this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
+  }
+
+  /**
+   * Maps particle properties to the point if the particle has a target.
+   *
+   * @param {Particle}
+   */
+  onParticleUpdate(particle) {
+    if (!particle.target) {
+      return;
+    }
+
+    this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
+  }
+
+  /**
+   * Resets and clears the particle target.
+   *
+   * @param {Particle}
+   */
+  onParticleDead(particle) {
+    if (!particle.target) {
+      return;
+    }
+
+    particle.target.reset();
+    this.mapParticleTargetPropsToPoint(particle);
+
+    particle.target = null;
   }
 
   /**
@@ -194,49 +237,5 @@ export default class GPURenderer extends CustomRenderer {
     });
 
     return this;
-  }
-
-  /**
-   * Pools the particle target if it does not exist.
-   * Updates the target and maps particle properties to the point.
-   *
-   * @param {Particle}
-   */
-  onParticleCreated(particle) {
-    if (!particle.target) {
-      particle.target = this.targetPool.get(Target);
-      this.uniqueList.add(particle.id);
-    }
-
-    this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
-  }
-
-  /**
-   * Maps particle properties to the point if the particle has a target.
-   *
-   * @param {Particle}
-   */
-  onParticleUpdate(particle) {
-    if (!particle.target) {
-      return;
-    }
-
-    this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
-  }
-
-  /**
-   * Resets and clears the particle target.
-   *
-   * @param {Particle}
-   */
-  onParticleDead(particle) {
-    if (!particle.target) {
-      return;
-    }
-
-    particle.target.reset();
-    this.mapParticleTargetPropsToPoint(particle);
-
-    particle.target = null;
   }
 }

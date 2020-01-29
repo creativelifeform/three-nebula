@@ -116,6 +116,12 @@ export default class Emitter extends Particle {
     this.name = 'Emitter';
 
     /**
+     * @desc The index of the emitter as it is added to the system.
+     * @type {number}
+     */
+    this.index = 0;
+
+    /**
      * @desc The emitter's internal event dispatcher.
      * @type {EventDispatcher}
      */
@@ -509,10 +515,6 @@ export default class Emitter extends Particle {
    * @return {Emitter}
    */
   createParticle() {
-    // if (this.particles.length >= 5) {
-    //   return;
-    // }
-
     const particle = this.parent.pool.get(Particle);
     const index = this.particles.length;
 

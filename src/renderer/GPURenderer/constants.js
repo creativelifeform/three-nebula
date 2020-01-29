@@ -35,5 +35,5 @@ export const DEFAULT_RENDERER_OPTIONS = {
   baseColor: 0xffffff,
   depthTest: false,
   transparent: true,
-  maxParticles: undefined,
+  maxParticles: DEFAULT_MAX_PARTICLES,
 };
