@@ -1,9 +1,16 @@
 window.Visualization = class {
-  constructor({ canvas, init, shouldRotateCamera, maxTicks = Infinity }) {
+  constructor({
+    canvas,
+    init,
+    shouldRotateCamera,
+    shouldAddCameraControls,
+    maxTicks = Infinity,
+  }) {
     this.canvas = canvas;
     this.init = init;
     this.shouldAnimate = true;
     this.shouldRotateCamera = shouldRotateCamera;
+    this.shouldAddCameraControls = shouldAddCameraControls;
     this.stats = new window.Stats();
     this.maxTicks = maxTicks;
     this.renderTicks = 0;
@@ -21,6 +28,7 @@ window.Visualization = class {
       .makeCamera()
       .makeLights()
       .makeWebGlRenderer()
+      .makeCameraControls()
       .makeParticleSystem();
   }
 
@@ -177,6 +185,19 @@ window.Visualization = class {
       this.webGlRenderer || new THREE.WebGLRenderer({ canvas, ...options });
     this.webGlRenderer.setSize(clientWidth, clientHeight, false);
     this.webGlRenderer.setClearColor('black');
+
+    return this;
+  }
+
+  makeCameraControls() {
+    if (!this.shouldAddCameraControls || !THREE.OrbitControls) {
+      return this;
+    }
+
+    this.cameraControls = new THREE.OrbitControls(
+      this.camera,
+      this.webGlRenderer.domElement
+    );
 
     return this;
   }

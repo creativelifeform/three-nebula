@@ -33,7 +33,7 @@ const createSprite = () => {
 };
 
 const createEmitter = ({ colorA, colorB, camera, renderer }) => {
-  const emitter = new Emitter({ bindEmitterEvent: true });
+  const emitter = new Emitter();
 
   return emitter
     .setRate(new Rate(new Span(5, 7), new Span(0.01, 0.02)))

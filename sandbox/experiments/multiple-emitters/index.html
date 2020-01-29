@@ -13,6 +13,7 @@
     </div>
 
     <script src="https://threejs.org/build/three.js"></script>
+    <script src="https://unpkg.com/three@0.112.1/examples/js/controls/OrbitControls.js"></script>
     <script src="https://unpkg.com/stats-js@1.0.1/build/stats.min.js"></script>
     <script src="/common/three-nebula.js"></script>
     <script src="/common/Visualization.js"></script>
@@ -21,9 +22,10 @@
     <script src="/common/PointsRenderer.js"></script>
     <script src="/experiments/multiple-emitters/index.js"></script>
     <script>
-      run(init, { shouldRotateCamera: true }).then(() =>
-        console.log(`APP LOADED`)
-      );
+      run(init, {
+        shouldRotateCamera: true,
+        shouldAddCameraControls: false,
+      }).then(() => console.log(`APP LOADED`));
     </script>
   </body>
 </html>

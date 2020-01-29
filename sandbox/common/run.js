@@ -1,5 +1,6 @@
 const defaults = {
   shouldRotateCamera: false,
+  shouldAddCameraControls: true,
   maxTicks: Infinity,
 };
 
