@@ -110,7 +110,7 @@ window.PointsRenderer = class extends CustomRenderer {
 
     const props = { ...DEFAULT_RENDERER_PROPS, ...options };
     const { maxParticles, baseColor, blending, depthTest, transparent } = props;
-    const geometry = new window.ParticleBufferGeometry({ maxParticles });
+    const particleBuffer = new window.ParticleBufferGeometry({ maxParticles });
     const material = new THREE.ShaderMaterial({
       uniforms: {
         baseColor: { value: new THREE.Color(baseColor) },
@@ -124,9 +124,13 @@ window.PointsRenderer = class extends CustomRenderer {
     });
 
     this.uniqueList = new UniqueList(maxParticles);
-    this.geometry = geometry;
+    this.buffer = particleBuffer.buffer;
+    this.stride = particleBuffer.stride;
+    this.geometry = particleBuffer.geometry;
     this.material = material;
-    this.points = new THREE.Points(geometry, material);
+    this.points = new THREE.Points(this.geometry, this.material);
+
+    console.log(this.points);
 
     container.add(this.points);
   }
@@ -179,9 +183,8 @@ window.PointsRenderer = class extends CustomRenderer {
    */
   updatePointPosition(particle) {
     const attribute = 'position';
-    const { geometry } = this;
-    const { stride, buffer } = geometry;
-    const { target, index } = particle;
+    const { geometry, stride, buffer } = this;
+    const { target } = particle;
     const { offset } = geometry.attributes[attribute];
 
     buffer.array[target.index * stride + offset + 0] = target.position.x;
@@ -199,8 +202,7 @@ window.PointsRenderer = class extends CustomRenderer {
    */
   updatePointSize(particle) {
     const attribute = 'size';
-    const { geometry } = this;
-    const { stride, buffer } = geometry;
+    const { geometry, stride, buffer } = this;
     const { target, index } = particle;
     const { offset } = geometry.attributes[attribute];
 
@@ -217,8 +219,7 @@ window.PointsRenderer = class extends CustomRenderer {
    */
   updatePointColor(particle) {
     const attribute = 'color';
-    const { geometry } = this;
-    const { stride, buffer } = geometry;
+    const { geometry, stride, buffer } = this;
     const { target, index } = particle;
     const { offset } = geometry.attributes[attribute];
 
@@ -237,8 +238,7 @@ window.PointsRenderer = class extends CustomRenderer {
    */
   updatePointAlpha(particle) {
     const attribute = 'alpha';
-    const { geometry } = this;
-    const { stride, buffer } = geometry;
+    const { geometry, stride, buffer } = this;
     const { target, index } = particle;
     const { offset } = geometry.attributes[attribute];
 

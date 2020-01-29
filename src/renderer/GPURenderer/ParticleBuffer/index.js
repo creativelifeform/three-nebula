@@ -1,4 +1,10 @@
-import { ATTRIBUTE_TO_SIZE_MAP, PARTICLE_BYTE_SIZE } from './constants';
+import {
+  ATTRIBUTE_TO_SIZE_MAP,
+  DEFAULT_MAX_PARTICLES,
+  PARTICLE_BYTE_SIZE,
+} from './constants';
+
+let THREE;
 
 /**
  * Creates and provides performant buffers for mapping particle properties to geometry vertices.
@@ -9,12 +15,11 @@ import { ATTRIBUTE_TO_SIZE_MAP, PARTICLE_BYTE_SIZE } from './constants';
  * @see https://threejs.org/examples/?q=points#webgl_custom_attributes_points
  */
 export default class ParticleBuffer {
-  constructor(maxParticles, THREE) {
+  constructor(maxParticles = DEFAULT_MAX_PARTICLES, three) {
+    THREE = three;
     this.maxParticles = maxParticles;
-    this.THREE = THREE;
-    this.geometry = new THREE.BufferGeometry();
 
-    this.createInterleavedBuffer().setBufferGeometryAttributes();
+    this.createInterleavedBuffer().createBufferGeometry();
   }
 
   /**
@@ -25,7 +30,7 @@ export default class ParticleBuffer {
   createInterleavedBuffer() {
     const arrayBuffer = new ArrayBuffer(this.maxParticles * PARTICLE_BYTE_SIZE);
 
-    this.interleavedBuffer = new this.THREE.InterleavedBuffer(
+    this.interleavedBuffer = new THREE.InterleavedBuffer(
       new Float32Array(arrayBuffer),
       PARTICLE_BYTE_SIZE
     );
@@ -41,7 +46,9 @@ export default class ParticleBuffer {
    *
    * @return {ParticleBufferGeometry}
    */
-  setBufferGeometryAttributes() {
+  createBufferGeometry() {
+    this.geometry = new THREE.BufferGeometry();
+
     const { interleavedBuffer, geometry } = this;
 
     Object.keys(ATTRIBUTE_TO_SIZE_MAP).reduce((offset, attribute) => {
@@ -49,11 +56,7 @@ export default class ParticleBuffer {
 
       geometry.setAttribute(
         attribute,
-        new this.THREE.InterleavedBufferAttribute(
-          interleavedBuffer,
-          size,
-          offset
-        )
+        new THREE.InterleavedBufferAttribute(interleavedBuffer, size, offset)
       );
 
       return (offset += size);

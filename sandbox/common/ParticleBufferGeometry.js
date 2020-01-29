@@ -32,13 +32,11 @@ const ATTRIBUTE_TO_SIZE_MAP = {
  * @see https://threejs.org/examples/?q=buffe#webgl_buffergeometry_points_interleaved
  * @see https://threejs.org/examples/?q=points#webgl_custom_attributes_points
  */
-window.ParticleBufferGeometry = class extends THREE.BufferGeometry {
+window.ParticleBufferGeometry = class {
   constructor({ maxParticles = DEFAULT_MAX_PARTICLES }) {
-    super();
-
     this.maxParticles = maxParticles;
 
-    this.createInterleavedBuffer().setAttributes();
+    this.createInterleavedBuffer().createBufferGeometry();
   }
 
   /**
@@ -65,13 +63,15 @@ window.ParticleBufferGeometry = class extends THREE.BufferGeometry {
    *
    * @return {ParticleBufferGeometry}
    */
-  setAttributes() {
-    const { interleavedBuffer } = this;
+  createBufferGeometry() {
+    this.geometry = new THREE.BufferGeometry();
+
+    const { interleavedBuffer, geometry } = this;
 
     Object.keys(ATTRIBUTE_TO_SIZE_MAP).reduce((offset, attribute) => {
       const size = ATTRIBUTE_TO_SIZE_MAP[attribute];
 
-      this.setAttribute(
+      geometry.setAttribute(
         attribute,
         new THREE.InterleavedBufferAttribute(interleavedBuffer, size, offset)
       );

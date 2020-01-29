@@ -5,7 +5,6 @@ import {
   DEFAULT_DEAD,
   DEFAULT_EASING,
   DEFAULT_ENERGY,
-  DEFAULT_INDEX,
   DEFAULT_LIFE,
   DEFAULT_MASS,
   DEFAULT_PARENT,
@@ -78,11 +77,6 @@ export default class Particle {
      * @type {number}
      */
     this.energy = DEFAULT_ENERGY;
-    /**
-     * @desc The particle's index in the emitter it belongs to.
-     * @type {integer}
-     */
-    this.index = 0;
     /**
      * @desc Determines if the particle is dead or not
      * @type {number}
@@ -220,7 +214,6 @@ export default class Particle {
     this.energy = DEFAULT_ENERGY;
     this.dead = DEFAULT_DEAD;
     this.sleep = DEFAULT_SLEEP;
-    this.index = DEFAULT_INDEX;
     this.body = DEFAULT_BODY;
     this.parent = DEFAULT_PARENT;
     this.mass = DEFAULT_MASS;
@@ -257,8 +250,6 @@ export default class Particle {
    * @return void
    */
   update(time, index) {
-    this.index = index;
-
     if (!this.sleep) {
       this.age += time;
 
@@ -338,6 +329,5 @@ export default class Particle {
     this.energy = 0;
     this.dead = true;
     this.parent = null;
-    this.index = DEFAULT_INDEX;
   }
 }

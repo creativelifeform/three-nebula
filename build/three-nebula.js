@@ -55050,12 +55050,6 @@ function () {
 
     this.energy = _constants__WEBPACK_IMPORTED_MODULE_2__["DEFAULT_ENERGY"];
     /**
-     * @desc The particle's index in the emitter it belongs to.
-     * @type {integer}
-     */
-
-    this.index = 0;
-    /**
      * @desc Determines if the particle is dead or not
      * @type {number}
      */
@@ -55222,7 +55216,6 @@ function () {
       this.energy = _constants__WEBPACK_IMPORTED_MODULE_2__["DEFAULT_ENERGY"];
       this.dead = _constants__WEBPACK_IMPORTED_MODULE_2__["DEFAULT_DEAD"];
       this.sleep = _constants__WEBPACK_IMPORTED_MODULE_2__["DEFAULT_SLEEP"];
-      this.index = _constants__WEBPACK_IMPORTED_MODULE_2__["DEFAULT_INDEX"];
       this.body = _constants__WEBPACK_IMPORTED_MODULE_2__["DEFAULT_BODY"];
       this.parent = _constants__WEBPACK_IMPORTED_MODULE_2__["DEFAULT_PARENT"];
       this.mass = _constants__WEBPACK_IMPORTED_MODULE_2__["DEFAULT_MASS"];
@@ -55259,8 +55252,6 @@ function () {
   }, {
     key: "update",
     value: function update(time, index) {
-      this.index = index;
-
       if (!this.sleep) {
         this.age += time;
         var i = this.behaviours.length;
@@ -55347,7 +55338,6 @@ function () {
       this.energy = 0;
       this.dead = true;
       this.parent = null;
-      this.index = _constants__WEBPACK_IMPORTED_MODULE_2__["DEFAULT_INDEX"];
     }
   }]);
 
@@ -55928,7 +55918,7 @@ function () {
 /*!*******************************!*\
   !*** ./src/core/constants.js ***!
   \*******************************/
-/*! exports provided: DEFAULT_LIFE, DEFAULT_AGE, DEFAULT_ENERGY, DEFAULT_DEAD, DEFAULT_SLEEP, DEFAULT_INDEX, DEFAULT_BODY, DEFAULT_PARENT, DEFAULT_MASS, DEFAULT_RADIUS, DEFAULT_ALPHA, DEFAULT_SCALE, DEFAULT_USE_COLOR, DEFAULT_USE_ALPHA, DEFAULT_EASING, DEFAULT_SYSTEM_DELTA, SUPPORTED_JSON_INITIALIZER_TYPES, SUPPORTED_JSON_BEHAVIOUR_TYPES, SUPPORTED_JSON_RENDERER_TYPES, SUPPORTED_JSON_ZONE_TYPES, INITIALIZER_TYPES_THAT_REQUIRE_THREE */
+/*! exports provided: DEFAULT_LIFE, DEFAULT_AGE, DEFAULT_ENERGY, DEFAULT_DEAD, DEFAULT_SLEEP, DEFAULT_BODY, DEFAULT_PARENT, DEFAULT_MASS, DEFAULT_RADIUS, DEFAULT_ALPHA, DEFAULT_SCALE, DEFAULT_USE_COLOR, DEFAULT_USE_ALPHA, DEFAULT_EASING, DEFAULT_SYSTEM_DELTA, SUPPORTED_JSON_INITIALIZER_TYPES, SUPPORTED_JSON_BEHAVIOUR_TYPES, SUPPORTED_JSON_RENDERER_TYPES, SUPPORTED_JSON_ZONE_TYPES, INITIALIZER_TYPES_THAT_REQUIRE_THREE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55938,7 +55928,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_ENERGY", function() { return DEFAULT_ENERGY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_DEAD", function() { return DEFAULT_DEAD; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_SLEEP", function() { return DEFAULT_SLEEP; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_INDEX", function() { return DEFAULT_INDEX; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_BODY", function() { return DEFAULT_BODY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_PARENT", function() { return DEFAULT_PARENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_MASS", function() { return DEFAULT_MASS; });
@@ -55995,12 +55984,6 @@ var DEFAULT_DEAD = false;
  */
 
 var DEFAULT_SLEEP = false;
-/**
- * @desc Default particle index
- * @type {number}
- */
-
-var DEFAULT_INDEX = 0;
 /**
  * @desc Default particle body
  * @type {?object}
@@ -63907,6 +63890,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var THREE;
 /**
  * Creates and provides performant buffers for mapping particle properties to geometry vertices.
  *
@@ -63919,13 +63903,15 @@ __webpack_require__.r(__webpack_exports__);
 var ParticleBuffer =
 /*#__PURE__*/
 function () {
-  function ParticleBuffer(maxParticles, THREE) {
+  function ParticleBuffer() {
+    var maxParticles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _constants__WEBPACK_IMPORTED_MODULE_2__["DEFAULT_MAX_PARTICLES"];
+    var three = arguments.length > 1 ? arguments[1] : undefined;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, ParticleBuffer);
 
+    THREE = three;
     this.maxParticles = maxParticles;
-    this.THREE = THREE;
-    this.geometry = new THREE.BufferGeometry();
-    this.createInterleavedBuffer().setBufferGeometryAttributes();
+    this.createInterleavedBuffer().createBufferGeometry();
   }
   /**
    * Creates the interleaved buffer that will be used to write data to the GPU.
@@ -63938,7 +63924,7 @@ function () {
     key: "createInterleavedBuffer",
     value: function createInterleavedBuffer() {
       var arrayBuffer = new ArrayBuffer(this.maxParticles * _constants__WEBPACK_IMPORTED_MODULE_2__["PARTICLE_BYTE_SIZE"]);
-      this.interleavedBuffer = new this.THREE.InterleavedBuffer(new Float32Array(arrayBuffer), _constants__WEBPACK_IMPORTED_MODULE_2__["PARTICLE_BYTE_SIZE"]);
+      this.interleavedBuffer = new THREE.InterleavedBuffer(new Float32Array(arrayBuffer), _constants__WEBPACK_IMPORTED_MODULE_2__["PARTICLE_BYTE_SIZE"]);
       return this;
     }
     /**
@@ -63951,15 +63937,14 @@ function () {
      */
 
   }, {
-    key: "setBufferGeometryAttributes",
-    value: function setBufferGeometryAttributes() {
-      var _this = this;
-
+    key: "createBufferGeometry",
+    value: function createBufferGeometry() {
+      this.geometry = new THREE.BufferGeometry();
       var interleavedBuffer = this.interleavedBuffer,
           geometry = this.geometry;
       Object.keys(_constants__WEBPACK_IMPORTED_MODULE_2__["ATTRIBUTE_TO_SIZE_MAP"]).reduce(function (offset, attribute) {
         var size = _constants__WEBPACK_IMPORTED_MODULE_2__["ATTRIBUTE_TO_SIZE_MAP"][attribute];
-        geometry.setAttribute(attribute, new _this.THREE.InterleavedBufferAttribute(interleavedBuffer, size, offset));
+        geometry.setAttribute(attribute, new THREE.InterleavedBufferAttribute(interleavedBuffer, size, offset));
         return offset += size;
       }, 0);
       return this;
@@ -64058,24 +64043,24 @@ var DEFAULT_RENDERER_OPTIONS = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return GPURenderer; });
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _stores__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./stores */ "./src/renderer/GPURenderer/stores/index.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _shaders__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./shaders */ "./src/renderer/GPURenderer/shaders/index.js");
-/* harmony import */ var _BaseRenderer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../BaseRenderer */ "./src/renderer/BaseRenderer.js");
+/* harmony import */ var _CustomRenderer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../CustomRenderer */ "./src/renderer/CustomRenderer.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./constants */ "./src/renderer/GPURenderer/constants.js");
 /* harmony import */ var _ParticleBuffer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ParticleBuffer */ "./src/renderer/GPURenderer/ParticleBuffer/index.js");
-/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../core */ "./src/core/index.js");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../types */ "./src/renderer/types.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils */ "./src/utils/index.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../types */ "./src/renderer/types.js");
+/* harmony import */ var _stores__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./stores */ "./src/renderer/GPURenderer/stores/index.js");
 
 
 
@@ -64083,39 +64068,81 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 
 
 
 
 
+
+var THREE;
+/**
+ * Simple class that stores the particle's "target" or "next" state.
+ */
+
+var Target =
+/*#__PURE__*/
+function () {
+  function Target() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4___default()(this, Target);
+
+    this.position = new THREE.Vector3();
+    this.size = 0;
+    this.color = new THREE.Color();
+    this.alpha = 0;
+    this.texture = null;
+    this.index = 0;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5___default()(Target, [{
+    key: "reset",
+    value: function reset() {
+      this.position.set(0, 0, 0);
+      this.size = 0;
+      this.color.setRGB(0, 0, 0);
+      this.alpha = 0;
+      this.texture = null;
+    }
+  }]);
+
+  return Target;
+}();
 /**
  * Performant particle renderer that uses THREE.Points to propagate particle (postiion, rgba etc.,) properties to
- * vertices in a buffer geometry and renders these with shaders.
+ * vertices in a ParticleBufferGeometry.
  *
  * @author thrax <manthrax@gmail.com>
  * @author rohan-deshpande <rohan@creativelifeform.com>
  */
 
+
 var GPURenderer =
 /*#__PURE__*/
-function (_BaseRenderer) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(GPURenderer, _BaseRenderer);
+function (_CustomRenderer) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3___default()(GPURenderer, _CustomRenderer);
 
-  function GPURenderer(container, THREE) {
+  function GPURenderer(container, three) {
     var _this;
 
     var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _constants__WEBPACK_IMPORTED_MODULE_8__["DEFAULT_RENDERER_OPTIONS"];
 
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, GPURenderer);
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4___default()(this, GPURenderer);
 
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(GPURenderer).call(this, _types__WEBPACK_IMPORTED_MODULE_11__["RENDERER_TYPE_GPU"]));
-    var config = Object(_utils__WEBPACK_IMPORTED_MODULE_12__["withDefaults"])(_constants__WEBPACK_IMPORTED_MODULE_8__["DEFAULT_RENDERER_OPTIONS"], options);
-    var maxParticles = config.maxParticles,
-        baseColor = config.baseColor,
-        blending = config.blending,
-        depthTest = config.depthTest,
-        transparent = config.transparent;
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_1___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2___default()(GPURenderer).call(this, _types__WEBPACK_IMPORTED_MODULE_10__["RENDERER_TYPE_GPU"]));
+    console.log(_types__WEBPACK_IMPORTED_MODULE_10__["RENDERER_TYPE_GPU"]);
+    console.log(container);
+    THREE = three;
+
+    var props = _objectSpread({}, _constants__WEBPACK_IMPORTED_MODULE_8__["DEFAULT_RENDERER_OPTIONS"], {}, options);
+
+    var maxParticles = props.maxParticles,
+        baseColor = props.baseColor,
+        blending = props.blending,
+        depthTest = props.depthTest,
+        transparent = props.transparent;
     var particleBuffer = new _ParticleBuffer__WEBPACK_IMPORTED_MODULE_9__["default"](maxParticles, THREE);
     var material = new THREE.ShaderMaterial({
       uniforms: {
@@ -64132,31 +64159,172 @@ function (_BaseRenderer) {
       depthTest: depthTest,
       transparent: transparent
     });
-    _this.THREE = THREE;
-    _this.targetPool = new _core__WEBPACK_IMPORTED_MODULE_10__["Pool"]();
-    _this.uniqueList = new _stores__WEBPACK_IMPORTED_MODULE_5__["UniqueList"](maxParticles);
+    _this.uniqueList = new _stores__WEBPACK_IMPORTED_MODULE_11__["UniqueList"](maxParticles);
     _this.buffer = particleBuffer.buffer;
     _this.stride = particleBuffer.stride;
     _this.geometry = particleBuffer.geometry;
     _this.material = material;
     _this.points = new THREE.Points(_this.geometry, _this.material);
-    console.log(_this.points);
     container.add(_this.points);
     return _this;
   }
   /**
-   * Pools the particle target if it does not exist.
-   * Updates the target and maps particle properties to the point.
+   * Maps all mutable properties from the particle to the target.
    *
    * @param {Particle}
+   * @return {GPURenderer}
    */
 
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(GPURenderer, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5___default()(GPURenderer, [{
+    key: "updateTarget",
+    value: function updateTarget(particle) {
+      var position = particle.position,
+          scale = particle.scale,
+          radius = particle.radius,
+          color = particle.color,
+          alpha = particle.alpha,
+          body = particle.body,
+          id = particle.id;
+      var r = color.r,
+          g = color.g,
+          b = color.b;
+      particle.target.position.copy(position);
+      particle.target.size = scale * radius;
+      particle.target.color.setRGB(r, g, b);
+      particle.target.alpha = alpha;
+      particle.target.index = this.uniqueList.find(id);
+
+      if (body && body instanceof THREE.Sprite) {
+        particle.target.texture = body.material.map;
+        this.material.uniforms.texture = {
+          value: particle.target.texture
+        };
+      }
+
+      return this;
+    }
+    /**
+     * Entry point for mapping particle properties to buffer geometry points.
+     *
+     * @param {Particle} particle - The particle containing the properties to map
+     * @return {GPURenderer}
+     */
+
+  }, {
+    key: "mapParticleTargetPropsToPoint",
+    value: function mapParticleTargetPropsToPoint(particle) {
+      this.updatePointPosition(particle).updatePointSize(particle).updatePointColor(particle).updatePointAlpha(particle).ensurePointUpdatesAreRendered();
+      return this;
+    }
+    /**
+     * Updates the point's position according to the particle's target position.
+     *
+     * @param {Particle} particle - The particle containing the target position.
+     * @return {GPURenderer}
+     */
+
+  }, {
+    key: "updatePointPosition",
+    value: function updatePointPosition(particle) {
+      var attribute = 'position';
+      var geometry = this.geometry,
+          stride = this.stride,
+          buffer = this.buffer;
+      var target = particle.target;
+      var offset = geometry.attributes[attribute].offset;
+      buffer.array[target.index * stride + offset + 0] = target.position.x;
+      buffer.array[target.index * stride + offset + 1] = target.position.y;
+      buffer.array[target.index * stride + offset + 2] = target.position.z;
+      return this;
+    }
+    /**
+     * Updates the point's size relative to the particle's target scale and radius.
+     *
+     * @param {Particle} particle - The particle containing the target scale.
+     * @return {GPURenderer}
+     */
+
+  }, {
+    key: "updatePointSize",
+    value: function updatePointSize(particle) {
+      var attribute = 'size';
+      var geometry = this.geometry,
+          stride = this.stride,
+          buffer = this.buffer;
+      var target = particle.target;
+      var offset = geometry.attributes[attribute].offset;
+      buffer.array[target.index * stride + offset + 0] = target.size;
+      return this;
+    }
+    /**
+     * Updates the point's color attribute according with the particle's target color.
+     *
+     * @param {Particle} particle - The particle containing the target color and alpha.
+     * @return {GPURenderer}
+     */
+
+  }, {
+    key: "updatePointColor",
+    value: function updatePointColor(particle) {
+      var attribute = 'color';
+      var geometry = this.geometry,
+          stride = this.stride,
+          buffer = this.buffer;
+      var target = particle.target;
+      var offset = geometry.attributes[attribute].offset;
+      buffer.array[target.index * stride + offset + 0] = target.color.r;
+      buffer.array[target.index * stride + offset + 1] = target.color.g;
+      buffer.array[target.index * stride + offset + 2] = target.color.b;
+      return this;
+    }
+    /**
+     * Updates the point alpha attribute with the particle's target alpha.
+     *
+     * @param {Particle} particle - The particle containing the target alpha.
+     * @return {GPURenderer}
+     */
+
+  }, {
+    key: "updatePointAlpha",
+    value: function updatePointAlpha(particle) {
+      var attribute = 'alpha';
+      var geometry = this.geometry,
+          stride = this.stride,
+          buffer = this.buffer;
+      var target = particle.target;
+      var offset = geometry.attributes[attribute].offset;
+      buffer.array[target.index * stride + offset + 0] = target.alpha;
+      return this;
+    }
+    /**
+     * Ensures that all attribute updates are marked as needing updates from the WebGLRenderer.
+     *
+     * @return {GPURenderer}
+     */
+
+  }, {
+    key: "ensurePointUpdatesAreRendered",
+    value: function ensurePointUpdatesAreRendered() {
+      var _this2 = this;
+
+      Object.keys(this.geometry.attributes).map(function (attribute) {
+        _this2.geometry.attributes[attribute].data.needsUpdate = true;
+      });
+      return this;
+    }
+    /**
+     * Pools the particle target if it does not exist.
+     * Updates the target and maps particle properties to the point.
+     *
+     * @param {Particle}
+     */
+
+  }, {
     key: "onParticleCreated",
     value: function onParticleCreated(particle) {
       if (!particle.target) {
-        particle.target = this.targetPool.get(_stores__WEBPACK_IMPORTED_MODULE_5__["Target"]);
+        particle.target = this.targetPool.get(Target);
         this.uniqueList.add(particle.id);
       }
 
@@ -64194,154 +64362,10 @@ function (_BaseRenderer) {
       this.mapParticleTargetPropsToPoint(particle);
       particle.target = null;
     }
-    /**
-     * Maps all mutable properties from the particle to the target.
-     *
-     * @param {Particle}
-     * @return {GPURenderer}
-     */
-
-  }, {
-    key: "updateTarget",
-    value: function updateTarget(particle) {
-      var position = particle.position,
-          scale = particle.scale,
-          radius = particle.radius,
-          color = particle.color,
-          alpha = particle.alpha,
-          body = particle.body,
-          id = particle.id;
-      var r = color.r,
-          g = color.g,
-          b = color.b;
-      particle.target.position.copy(position);
-      particle.target.size = scale * radius;
-      particle.target.color.setRGB(r, g, b);
-      particle.target.alpha = alpha;
-      particle.target.index = this.uniqueList.find(id);
-
-      if (body && body instanceof this.THREE.Sprite) {
-        particle.target.texture = body.material.map;
-        this.material.uniforms.texture = {
-          value: particle.target.texture
-        };
-      }
-
-      return this;
-    }
-    /**
-     * Entry point for mapping particle properties to buffer geometry points.
-     *
-     * @param {Particle} particle - The particle containing the properties to map
-     * @return {GPURenderer}
-     */
-
-  }, {
-    key: "mapParticleTargetPropsToPoint",
-    value: function mapParticleTargetPropsToPoint(particle) {
-      this.updatePointPosition(particle).updatePointSize(particle).updatePointColor(particle).updatePointAlpha(particle).ensurePointUpdatesAreRendered();
-      return this;
-    }
-    /**
-     * Updates the point's position according to the particle's target position.
-     *
-     * @param {Particle} particle - The particle containing the target position.
-     * @return {GPURenderer}
-     */
-
-  }, {
-    key: "updatePointPosition",
-    value: function updatePointPosition(particle) {
-      var attribute = 'position';
-      var geometry = this.geometry,
-          buffer = this.buffer,
-          stride = this.stride;
-      var target = particle.target;
-      var offset = geometry.attributes[attribute].offset;
-      buffer.array[target.index * stride + offset + 0] = target.position.x;
-      buffer.array[target.index * stride + offset + 1] = target.position.y;
-      buffer.array[target.index * stride + offset + 2] = target.position.z;
-      return this;
-    }
-    /**
-     * Updates the point's size relative to the particle's target scale and radius.
-     *
-     * @param {Particle} particle - The particle containing the target scale.
-     * @return {GPURenderer}
-     */
-
-  }, {
-    key: "updatePointSize",
-    value: function updatePointSize(particle) {
-      var attribute = 'size';
-      var geometry = this.geometry,
-          buffer = this.buffer,
-          stride = this.stride;
-      var target = particle.target;
-      var offset = geometry.attributes[attribute].offset;
-      buffer.array[target.index * stride + offset + 0] = target.size;
-      return this;
-    }
-    /**
-     * Updates the point's color attribute according with the particle's target color.
-     *
-     * @param {Particle} particle - The particle containing the target color and alpha.
-     * @return {GPURenderer}
-     */
-
-  }, {
-    key: "updatePointColor",
-    value: function updatePointColor(particle) {
-      var attribute = 'color';
-      var geometry = this.geometry,
-          buffer = this.buffer,
-          stride = this.stride;
-      var target = particle.target;
-      var offset = geometry.attributes[attribute].offset;
-      buffer.array[target.index * stride + offset + 0] = target.color.r;
-      buffer.array[target.index * stride + offset + 1] = target.color.g;
-      buffer.array[target.index * stride + offset + 2] = target.color.b;
-      return this;
-    }
-    /**
-     * Updates the point alpha attribute with the particle's target alpha.
-     *
-     * @param {Particle} particle - The particle containing the target alpha.
-     * @return {GPURenderer}
-     */
-
-  }, {
-    key: "updatePointAlpha",
-    value: function updatePointAlpha(particle) {
-      var attribute = 'alpha';
-      var geometry = this.geometry,
-          buffer = this.buffer,
-          stride = this.stride;
-      var target = particle.target;
-      var offset = geometry.attributes[attribute].offset;
-      buffer.array[target.index * stride + offset + 0] = target.alpha;
-      return this;
-    }
-    /**
-     * Ensures that all attribute updates are marked as needing updates from the WebGLRenderer.
-     *
-     * @return {GPURenderer}
-     */
-
-  }, {
-    key: "ensurePointUpdatesAreRendered",
-    value: function ensurePointUpdatesAreRendered() {
-      var _this2 = this;
-
-      Object.keys(this.geometry.attributes).map(function (attribute) {
-        _this2.geometry.attributes[attribute].data.needsUpdate = true;
-      });
-      return this;
-    }
   }]);
 
   return GPURenderer;
-}(_BaseRenderer__WEBPACK_IMPORTED_MODULE_7__["default"]);
+}(_CustomRenderer__WEBPACK_IMPORTED_MODULE_7__["default"]);
 
 
 

@@ -59,12 +59,6 @@ export const DEFAULT_DEAD = false;
  * @type {boolean}
  */
 export const DEFAULT_SLEEP = false;
-
-/**
- * @desc Default particle index
- * @type {number}
- */
-export const DEFAULT_INDEX = 0;
 /**
  * @desc Default particle body
  * @type {?object}
