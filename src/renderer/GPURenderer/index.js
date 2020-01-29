@@ -1,8 +1,9 @@
 import { fragmentShader, vertexShader } from './shaders';
 
-import CustomRenderer from '../CustomRenderer';
+import BaseRenderer from '../BaseRenderer';
 import { DEFAULT_RENDERER_OPTIONS } from './constants';
 import ParticleBuffer from './ParticleBuffer';
+import { Pool } from '../../core';
 import { RENDERER_TYPE_GPU } from '../types';
 import { UniqueList } from './stores';
 
@@ -37,7 +38,7 @@ class Target {
  * @author thrax <manthrax@gmail.com>
  * @author rohan-deshpande <rohan@creativelifeform.com>
  */
-export default class GPURenderer extends CustomRenderer {
+export default class GPURenderer extends BaseRenderer {
   constructor(container, three, options = DEFAULT_RENDERER_OPTIONS) {
     super(RENDERER_TYPE_GPU);
 
@@ -60,6 +61,7 @@ export default class GPURenderer extends CustomRenderer {
       transparent,
     });
 
+    this.targetPool = new Pool();
     this.uniqueList = new UniqueList(maxParticles);
     this.buffer = particleBuffer.buffer;
     this.stride = particleBuffer.stride;

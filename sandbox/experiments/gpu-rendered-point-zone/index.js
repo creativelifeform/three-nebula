@@ -26,6 +26,18 @@ let hcolor = 0;
 let tha = 0;
 let ctha = 0;
 
+const createSprite = () => {
+  const map = new THREE.TextureLoader().load('/assets/dot.png');
+  const material = new THREE.SpriteMaterial({
+    map: map,
+    color: 0xff0000,
+    blending: THREE.AdditiveBlending,
+    fog: true,
+  });
+
+  return new THREE.Sprite(material);
+};
+
 const animate = ({ color1, color2, emitter, camera, scene }) => {
   hcolor += 0.01;
   tha += Math.PI / 150;
@@ -67,17 +79,18 @@ const createEmitter = (color1, color2) => {
   const emitter = new Emitter();
 
   return emitter
-    .setRate(new Rate(new Span(4, 16), new Span(0.01)))
+    .setRate(new Rate(new Span(2, 4), new Span(0.01)))
     .addInitializers([
+      new Body(createSprite()),
       new Position(new PointZone(0, 0)),
       new Mass(1),
-      new Radius(6, 12),
+      new Radius(4, 8),
       new Life(3),
-      // new RadialVelocity(45, new Vector3D(0, 1, 0), 180),
+      new RadialVelocity(45, new Vector3D(0, 1, 0), 180),
     ])
     .addBehaviours([
       new Alpha(1, 0),
-      new Scale(0.3, 0.6),
+      new Scale(2, 4),
       new Color(color1, color2),
     ])
     .emit();
@@ -88,14 +101,9 @@ window.init = async ({ scene, camera, renderer }) => {
   const color1 = new THREE.Color();
   const color2 = new THREE.Color();
   const emitter = createEmitter(color1, color2);
-  // const systemRenderer = new SpriteRenderer(scene, THREE);
   const systemRenderer = new GPURenderer(scene, THREE);
 
-  console.log(systemRenderer);
-
-  renderer.setClearColor('red');
-
-  // animate({ color1, color2, emitter, camera, scene });
+  animate({ color1, color2, emitter, camera, scene });
 
   return system.addEmitter(emitter).addRenderer(systemRenderer);
 };
