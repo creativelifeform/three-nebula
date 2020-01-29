@@ -7,6 +7,6 @@ export default () => (
   <Nebula
     srcHref={getSrcHref('GpuRenderer/init.js')}
     init={init}
-    shouldRotateCamera={true}
+    shouldRotateCamera={false}
   />
 );

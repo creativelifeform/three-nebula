@@ -44,6 +44,8 @@ export default class BaseRenderer {
     ) {
       self.onParticleDead.call(self, particle);
     });
+
+    this.logRendererType();
   }
 
   remove() {
@@ -69,4 +71,29 @@ export default class BaseRenderer {
    * @abstract
    */
   onSystemUpdate(system) {} // eslint-disable-line
+
+  /**
+   * Logs the renderer type being used when in development mode.
+   *
+   * @return void
+   */
+  logRendererType() {
+    if (!process) {
+      return;
+    }
+
+    if (!process.env) {
+      return;
+    }
+
+    if (!process.env.NODE_ENV) {
+      return;
+    }
+
+    if (process.env.NODE_ENV !== 'development') {
+      return;
+    }
+
+    console.log(`${this.type}`);
+  }
 }

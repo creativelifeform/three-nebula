@@ -1,3 +1,4 @@
+import { Target, UniqueList } from './stores';
 import { fragmentShader, vertexShader } from './shaders';
 
 import BaseRenderer from '../BaseRenderer';
@@ -5,35 +6,14 @@ import { DEFAULT_RENDERER_OPTIONS } from './constants';
 import ParticleBuffer from './ParticleBuffer';
 import { Pool } from '../../core';
 import { RENDERER_TYPE_GPU } from '../types';
-import { UniqueList } from './stores';
 
 let THREE;
 
 /**
- * Simple class that stores the particle's "target" or "next" state.
- */
-class Target {
-  constructor() {
-    this.position = new THREE.Vector3();
-    this.size = 0;
-    this.color = new THREE.Color();
-    this.alpha = 0;
-    this.texture = null;
-    this.index = 0;
-  }
-
-  reset() {
-    this.position.set(0, 0, 0);
-    this.size = 0;
-    this.color.setRGB(0, 0, 0);
-    this.alpha = 0;
-    this.texture = null;
-  }
-}
-
-/**
  * Performant particle renderer that uses THREE.Points to propagate particle (postiion, rgba etc.,) properties to
  * vertices in a ParticleBufferGeometry.
+ *
+ * NOTE Currently only compatible with sprite/texture based systems. Meshes are not yet supported.
  *
  * @author thrax <manthrax@gmail.com>
  * @author rohan-deshpande <rohan@creativelifeform.com>
@@ -42,10 +22,7 @@ export default class GPURenderer extends BaseRenderer {
   constructor(container, three, options = DEFAULT_RENDERER_OPTIONS) {
     super(RENDERER_TYPE_GPU);
 
-    console.log(RENDERER_TYPE_GPU);
-
     THREE = three;
-
     const props = { ...DEFAULT_RENDERER_OPTIONS, ...options };
     const { maxParticles, baseColor, blending, depthTest, transparent } = props;
     const particleBuffer = new ParticleBuffer(maxParticles, THREE);
@@ -80,7 +57,7 @@ export default class GPURenderer extends BaseRenderer {
    */
   onParticleCreated(particle) {
     if (!particle.target) {
-      particle.target = this.targetPool.get(Target);
+      particle.target = this.targetPool.get(Target, [THREE]);
       this.uniqueList.add(particle.id);
     }
 

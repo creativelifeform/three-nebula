@@ -64,7 +64,7 @@ export default {
             type: 'Radius',
             properties: {
               width: 12,
-              height: 36,
+              height: 24,
               isEnabled: true,
             },
           },
@@ -118,7 +118,7 @@ export default {
             type: 'Scale',
             properties: {
               scaleA: 1,
-              scaleB: 0.96,
+              scaleB: 0.1,
               life: Infinity,
               easing: 'easeLinear',
             },

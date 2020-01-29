@@ -1857,6 +1857,201 @@ module.exports = values;
 
 /***/ }),
 
+/***/ "./node_modules/process/browser.js":
+/*!*****************************************!*\
+  !*** ./node_modules/process/browser.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+
 /***/ "./node_modules/three/build/three.module.js":
 /*!**************************************************!*\
   !*** ./node_modules/three/build/three.module.js ***!
@@ -55358,12 +55553,15 @@ function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Pool; });
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils_PUID__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/PUID */ "./src/utils/PUID.js");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./types */ "./src/core/types.js");
+/* harmony import */ var _babel_runtime_helpers_construct__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/construct */ "./node_modules/@babel/runtime/helpers/construct.js");
+/* harmony import */ var _babel_runtime_helpers_construct__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_construct__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_PUID__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/PUID */ "./src/utils/PUID.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./types */ "./src/core/types.js");
+
 
 
 
@@ -55383,13 +55581,13 @@ function () {
    * @return void
    */
   function Pool() {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Pool);
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, Pool);
 
     /**
      * @desc The class type.
      * @type {string}
      */
-    this.type = _types__WEBPACK_IMPORTED_MODULE_3__["CORE_TYPE_POOL"];
+    this.type = _types__WEBPACK_IMPORTED_MODULE_4__["CORE_TYPE_POOL"];
     /**
      * @desc Incrementing id that keeps a count of the number of objects created
      * @type {integer}
@@ -55407,12 +55605,13 @@ function () {
    * Attempts to create a new object either by creating a new instance or calling its
    * clone method.
    *
+   * TODO COVERAGE - for the constructorArgs
    * @param {function|object} functionOrObject - The object to instantiate or clone
    * @return {object|undefined}
    */
 
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Pool, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(Pool, [{
     key: "create",
     value: function create(functionOrObject) {
       if (!this.canCreateNewObject(functionOrObject)) {
@@ -55422,7 +55621,11 @@ function () {
       this.cID++;
 
       if (this.canInstantiateObject(functionOrObject)) {
-        return new functionOrObject();
+        for (var _len = arguments.length, constructorArgs = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+          constructorArgs[_key - 1] = arguments[_key];
+        }
+
+        return _babel_runtime_helpers_construct__WEBPACK_IMPORTED_MODULE_0___default()(functionOrObject, constructorArgs);
       }
 
       if (this.canCloneObject(functionOrObject)) {
@@ -55493,7 +55696,7 @@ function () {
     key: "get",
     value: function get(obj) {
       var p,
-          puid = obj.__puid || _utils_PUID__WEBPACK_IMPORTED_MODULE_2__["default"].id(obj);
+          puid = obj.__puid || _utils_PUID__WEBPACK_IMPORTED_MODULE_3__["default"].id(obj);
       if (this.list[puid] && this.list[puid].length > 0) p = this.list[puid].pop();else p = this.create(obj);
       p.__puid = obj.__puid || puid;
       return p;
@@ -55717,7 +55920,10 @@ function () {
   }, {
     key: "addEmitter",
     value: function addEmitter(emitter) {
-      emitter.parent = this;
+      var index = this.emitters.length;
+      emitter.parent = this; // TODO COVERAGE
+
+      emitter.index = index;
       this.emitters.push(emitter);
       this.dispatch(_events__WEBPACK_IMPORTED_MODULE_2__["EMITTER_ADDED"], emitter);
       return this;
@@ -55918,7 +56124,7 @@ function () {
 /*!*******************************!*\
   !*** ./src/core/constants.js ***!
   \*******************************/
-/*! exports provided: DEFAULT_LIFE, DEFAULT_AGE, DEFAULT_ENERGY, DEFAULT_DEAD, DEFAULT_SLEEP, DEFAULT_BODY, DEFAULT_PARENT, DEFAULT_MASS, DEFAULT_RADIUS, DEFAULT_ALPHA, DEFAULT_SCALE, DEFAULT_USE_COLOR, DEFAULT_USE_ALPHA, DEFAULT_EASING, DEFAULT_SYSTEM_DELTA, SUPPORTED_JSON_INITIALIZER_TYPES, SUPPORTED_JSON_BEHAVIOUR_TYPES, SUPPORTED_JSON_RENDERER_TYPES, SUPPORTED_JSON_ZONE_TYPES, INITIALIZER_TYPES_THAT_REQUIRE_THREE */
+/*! exports provided: DEFAULT_LIFE, DEFAULT_AGE, DEFAULT_ENERGY, DEFAULT_DEAD, DEFAULT_SLEEP, DEFAULT_INDEX, DEFAULT_BODY, DEFAULT_PARENT, DEFAULT_MASS, DEFAULT_RADIUS, DEFAULT_ALPHA, DEFAULT_SCALE, DEFAULT_USE_COLOR, DEFAULT_USE_ALPHA, DEFAULT_EASING, DEFAULT_SYSTEM_DELTA, SUPPORTED_JSON_INITIALIZER_TYPES, SUPPORTED_JSON_BEHAVIOUR_TYPES, SUPPORTED_JSON_RENDERER_TYPES, SUPPORTED_JSON_ZONE_TYPES, INITIALIZER_TYPES_THAT_REQUIRE_THREE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55928,6 +56134,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_ENERGY", function() { return DEFAULT_ENERGY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_DEAD", function() { return DEFAULT_DEAD; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_SLEEP", function() { return DEFAULT_SLEEP; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_INDEX", function() { return DEFAULT_INDEX; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_BODY", function() { return DEFAULT_BODY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_PARENT", function() { return DEFAULT_PARENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_MASS", function() { return DEFAULT_MASS; });
@@ -55984,6 +56191,12 @@ var DEFAULT_DEAD = false;
  */
 
 var DEFAULT_SLEEP = false;
+/**
+ * @desc Default particle index
+ * @type {number}
+ */
+
+var DEFAULT_INDEX = 0;
 /**
  * @desc Default particle body
  * @type {?object}
@@ -59696,6 +59909,12 @@ function (_Particle) {
     _this.cID = 0;
     _this.name = 'Emitter';
     /**
+     * @desc The index of the emitter as it is added to the system.
+     * @type {number}
+     */
+
+    _this.index = 0;
+    /**
      * @desc The emitter's internal event dispatcher.
      * @type {EventDispatcher}
      */
@@ -60148,9 +60367,6 @@ function (_Particle) {
   }, {
     key: "createParticle",
     value: function createParticle() {
-      // if (this.particles.length >= 5) {
-      //   return;
-      // }
       var particle = this.parent.pool.get(_core_Particle__WEBPACK_IMPORTED_MODULE_10__["default"]);
       var index = this.particles.length;
       this.setupParticle(particle, index);
@@ -63658,7 +63874,7 @@ var MATH_TYPE_VECTOR_3D = 'Vector3D';
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BaseRenderer; });
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return BaseRenderer; });
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
@@ -63702,6 +63918,7 @@ function () {
       this.system.eventDispatcher.addEventListener(_events_constants__WEBPACK_IMPORTED_MODULE_2__["PARTICLE_DEAD"], function (particle) {
         self.onParticleDead.call(self, particle);
       });
+      this.logRendererType();
     }
   }, {
     key: "remove",
@@ -63740,12 +63957,36 @@ function () {
     key: "onSystemUpdate",
     value: function onSystemUpdate(system) {} // eslint-disable-line
 
+    /**
+     * Logs the renderer type being used when in development mode.
+     *
+     * @return void
+     */
+
+  }, {
+    key: "logRendererType",
+    value: function logRendererType() {
+      if (!process) {
+        return;
+      }
+
+      if (!process.env) {
+        return;
+      }
+
+      if (false) {}
+
+      if (false) {}
+
+      console.log("".concat(this.type));
+    }
   }]);
 
   return BaseRenderer;
 }();
 
 
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -64028,7 +64269,7 @@ var DEFAULT_RENDERER_OPTIONS = {
   baseColor: 0xffffff,
   depthTest: false,
   transparent: true,
-  maxParticles: undefined
+  maxParticles: DEFAULT_MAX_PARTICLES
 };
 
 /***/ }),
@@ -64045,22 +64286,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return GPURenderer; });
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _shaders__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./shaders */ "./src/renderer/GPURenderer/shaders/index.js");
-/* harmony import */ var _CustomRenderer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../CustomRenderer */ "./src/renderer/CustomRenderer.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./constants */ "./src/renderer/GPURenderer/constants.js");
-/* harmony import */ var _ParticleBuffer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ParticleBuffer */ "./src/renderer/GPURenderer/ParticleBuffer/index.js");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../types */ "./src/renderer/types.js");
-/* harmony import */ var _stores__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./stores */ "./src/renderer/GPURenderer/stores/index.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _stores__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./stores */ "./src/renderer/GPURenderer/stores/index.js");
+/* harmony import */ var _shaders__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shaders */ "./src/renderer/GPURenderer/shaders/index.js");
+/* harmony import */ var _BaseRenderer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../BaseRenderer */ "./src/renderer/BaseRenderer.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./constants */ "./src/renderer/GPURenderer/constants.js");
+/* harmony import */ var _ParticleBuffer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ParticleBuffer */ "./src/renderer/GPURenderer/ParticleBuffer/index.js");
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../core */ "./src/core/index.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../types */ "./src/renderer/types.js");
 
 
 
@@ -64078,72 +64320,41 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
+
 var THREE;
-/**
- * Simple class that stores the particle's "target" or "next" state.
- */
-
-var Target =
-/*#__PURE__*/
-function () {
-  function Target() {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4___default()(this, Target);
-
-    this.position = new THREE.Vector3();
-    this.size = 0;
-    this.color = new THREE.Color();
-    this.alpha = 0;
-    this.texture = null;
-    this.index = 0;
-  }
-
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5___default()(Target, [{
-    key: "reset",
-    value: function reset() {
-      this.position.set(0, 0, 0);
-      this.size = 0;
-      this.color.setRGB(0, 0, 0);
-      this.alpha = 0;
-      this.texture = null;
-    }
-  }]);
-
-  return Target;
-}();
 /**
  * Performant particle renderer that uses THREE.Points to propagate particle (postiion, rgba etc.,) properties to
  * vertices in a ParticleBufferGeometry.
+ *
+ * NOTE Currently only compatible with sprite/texture based systems. Meshes are not yet supported.
  *
  * @author thrax <manthrax@gmail.com>
  * @author rohan-deshpande <rohan@creativelifeform.com>
  */
 
-
 var GPURenderer =
 /*#__PURE__*/
-function (_CustomRenderer) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3___default()(GPURenderer, _CustomRenderer);
+function (_BaseRenderer) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(GPURenderer, _BaseRenderer);
 
   function GPURenderer(container, three) {
     var _this;
 
-    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _constants__WEBPACK_IMPORTED_MODULE_8__["DEFAULT_RENDERER_OPTIONS"];
+    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _constants__WEBPACK_IMPORTED_MODULE_9__["DEFAULT_RENDERER_OPTIONS"];
 
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4___default()(this, GPURenderer);
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, GPURenderer);
 
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_1___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2___default()(GPURenderer).call(this, _types__WEBPACK_IMPORTED_MODULE_10__["RENDERER_TYPE_GPU"]));
-    console.log(_types__WEBPACK_IMPORTED_MODULE_10__["RENDERER_TYPE_GPU"]);
-    console.log(container);
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(GPURenderer).call(this, _types__WEBPACK_IMPORTED_MODULE_12__["RENDERER_TYPE_GPU"]));
     THREE = three;
 
-    var props = _objectSpread({}, _constants__WEBPACK_IMPORTED_MODULE_8__["DEFAULT_RENDERER_OPTIONS"], {}, options);
+    var props = _objectSpread({}, _constants__WEBPACK_IMPORTED_MODULE_9__["DEFAULT_RENDERER_OPTIONS"], {}, options);
 
     var maxParticles = props.maxParticles,
         baseColor = props.baseColor,
         blending = props.blending,
         depthTest = props.depthTest,
         transparent = props.transparent;
-    var particleBuffer = new _ParticleBuffer__WEBPACK_IMPORTED_MODULE_9__["default"](maxParticles, THREE);
+    var particleBuffer = new _ParticleBuffer__WEBPACK_IMPORTED_MODULE_10__["default"](maxParticles, THREE);
     var material = new THREE.ShaderMaterial({
       uniforms: {
         baseColor: {
@@ -64153,13 +64364,14 @@ function (_CustomRenderer) {
           value: null
         }
       },
-      vertexShader: Object(_shaders__WEBPACK_IMPORTED_MODULE_6__["vertexShader"])(),
-      fragmentShader: Object(_shaders__WEBPACK_IMPORTED_MODULE_6__["fragmentShader"])(),
+      vertexShader: Object(_shaders__WEBPACK_IMPORTED_MODULE_7__["vertexShader"])(),
+      fragmentShader: Object(_shaders__WEBPACK_IMPORTED_MODULE_7__["fragmentShader"])(),
       blending: THREE[blending],
       depthTest: depthTest,
       transparent: transparent
     });
-    _this.uniqueList = new _stores__WEBPACK_IMPORTED_MODULE_11__["UniqueList"](maxParticles);
+    _this.targetPool = new _core__WEBPACK_IMPORTED_MODULE_11__["Pool"]();
+    _this.uniqueList = new _stores__WEBPACK_IMPORTED_MODULE_6__["UniqueList"](maxParticles);
     _this.buffer = particleBuffer.buffer;
     _this.stride = particleBuffer.stride;
     _this.geometry = particleBuffer.geometry;
@@ -64169,14 +64381,63 @@ function (_CustomRenderer) {
     return _this;
   }
   /**
-   * Maps all mutable properties from the particle to the target.
+   * Pools the particle target if it does not exist.
+   * Updates the target and maps particle properties to the point.
    *
    * @param {Particle}
-   * @return {GPURenderer}
    */
 
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5___default()(GPURenderer, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(GPURenderer, [{
+    key: "onParticleCreated",
+    value: function onParticleCreated(particle) {
+      if (!particle.target) {
+        particle.target = this.targetPool.get(_stores__WEBPACK_IMPORTED_MODULE_6__["Target"], [THREE]);
+        this.uniqueList.add(particle.id);
+      }
+
+      this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
+    }
+    /**
+     * Maps particle properties to the point if the particle has a target.
+     *
+     * @param {Particle}
+     */
+
+  }, {
+    key: "onParticleUpdate",
+    value: function onParticleUpdate(particle) {
+      if (!particle.target) {
+        return;
+      }
+
+      this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
+    }
+    /**
+     * Resets and clears the particle target.
+     *
+     * @param {Particle}
+     */
+
+  }, {
+    key: "onParticleDead",
+    value: function onParticleDead(particle) {
+      if (!particle.target) {
+        return;
+      }
+
+      particle.target.reset();
+      this.mapParticleTargetPropsToPoint(particle);
+      particle.target = null;
+    }
+    /**
+     * Maps all mutable properties from the particle to the target.
+     *
+     * @param {Particle}
+     * @return {GPURenderer}
+     */
+
+  }, {
     key: "updateTarget",
     value: function updateTarget(particle) {
       var position = particle.position,
@@ -64313,59 +64574,10 @@ function (_CustomRenderer) {
       });
       return this;
     }
-    /**
-     * Pools the particle target if it does not exist.
-     * Updates the target and maps particle properties to the point.
-     *
-     * @param {Particle}
-     */
-
-  }, {
-    key: "onParticleCreated",
-    value: function onParticleCreated(particle) {
-      if (!particle.target) {
-        particle.target = this.targetPool.get(Target);
-        this.uniqueList.add(particle.id);
-      }
-
-      this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
-    }
-    /**
-     * Maps particle properties to the point if the particle has a target.
-     *
-     * @param {Particle}
-     */
-
-  }, {
-    key: "onParticleUpdate",
-    value: function onParticleUpdate(particle) {
-      if (!particle.target) {
-        return;
-      }
-
-      this.updateTarget(particle).mapParticleTargetPropsToPoint(particle);
-    }
-    /**
-     * Resets and clears the particle target.
-     *
-     * @param {Particle}
-     */
-
-  }, {
-    key: "onParticleDead",
-    value: function onParticleDead(particle) {
-      if (!particle.target) {
-        return;
-      }
-
-      particle.target.reset();
-      this.mapParticleTargetPropsToPoint(particle);
-      particle.target = null;
-    }
   }]);
 
   return GPURenderer;
-}(_CustomRenderer__WEBPACK_IMPORTED_MODULE_7__["default"]);
+}(_BaseRenderer__WEBPACK_IMPORTED_MODULE_8__["default"]);
 
 
 
@@ -64497,6 +64709,11 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Similar to a Set but with a find method.
  *
+ * NOTE There is a potential bug with how this is being used by the GPURenderer.
+ * Currently the particle.id is used as the "item", because it is always unique.
+ * The potential here is that even though the particles are generated by a Pool,
+ * we could potentially reach the max number of particles allowed by this list,
+ * causing the error to be thrown.
  */
 var UniqueList =
 /*#__PURE__*/

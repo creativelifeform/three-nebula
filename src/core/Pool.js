@@ -34,10 +34,11 @@ export default class Pool {
    * Attempts to create a new object either by creating a new instance or calling its
    * clone method.
    *
+   * TODO COVERAGE - for the constructorArgs
    * @param {function|object} functionOrObject - The object to instantiate or clone
    * @return {object|undefined}
    */
-  create(functionOrObject) {
+  create(functionOrObject, ...constructorArgs) {
     if (!this.canCreateNewObject(functionOrObject)) {
       throw new Error(
         'The pool is unable to create or clone the object supplied'
@@ -47,7 +48,7 @@ export default class Pool {
     this.cID++;
 
     if (this.canInstantiateObject(functionOrObject)) {
-      return new functionOrObject();
+      return new functionOrObject(...constructorArgs);
     }
 
     if (this.canCloneObject(functionOrObject)) {
