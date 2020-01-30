@@ -78,6 +78,7 @@ describe('core -> System', () => {
     assert.instanceOf(system.addEmitter(emitter), System);
     assert.isNotEmpty(system.emitters);
     assert.instanceOf(system.emitters[0], Nebula.Emitter);
+    assert.strictEqual(system.emitters[0].index, 0);
     assert(spy.calledOnce);
     assert(spy.calledWith(EMITTER_ADDED, emitter));
 
@@ -93,6 +94,7 @@ describe('core -> System', () => {
     system.addEmitter(emitter);
     system.removeEmitter(emitter);
     assert.isEmpty(system.emitters);
+    assert.strictEqual(emitter.index, undefined);
     assert(spy.calledTwice);
     assert(spy.secondCall.calledWith(EMITTER_REMOVED, emitter));
 

@@ -2,6 +2,7 @@ import {
   DEFAULT_BIND_EMITTER,
   DEFAULT_BIND_EMITTER_EVENT,
   DEFAULT_DAMPING,
+  DEFAULT_EMITTER_INDEX,
   DEFAULT_EMITTER_RATE,
 } from './constants';
 import EventDispatcher, {
@@ -117,9 +118,9 @@ export default class Emitter extends Particle {
 
     /**
      * @desc The index of the emitter as it is added to the system.
-     * @type {number}
+     * @type {number|undefined}
      */
-    this.index = 0;
+    this.index = DEFAULT_EMITTER_INDEX;
 
     /**
      * @desc The emitter's internal event dispatcher.

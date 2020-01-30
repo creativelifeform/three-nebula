@@ -105,15 +105,16 @@ export default class Pool {
    * Gets an object either by creating a new one or retrieving it from the pool.
    *
    * @param {function|object} obj - The function or object to get
+   * @param {array} args - The args to pass to the function on creation
    * @return {object}
    */
-  get(obj) {
+  get(obj, ...args) {
     var p,
       puid = obj.__puid || PUID.id(obj);
 
     if (this.list[puid] && this.list[puid].length > 0)
       p = this.list[puid].pop();
-    else p = this.create(obj);
+    else p = this.create(obj, ...args);
 
     p.__puid = obj.__puid || puid;
 
