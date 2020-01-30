@@ -13,9 +13,9 @@ let THREE;
  * Performant particle renderer that uses THREE.Points to propagate particle (postiion, rgba etc.,) properties to
  * vertices in a ParticleBufferGeometry.
  *
- * NOTE Currently only compatible with sprite/texture based systems. Meshes are not yet supported.
+ * NOTE! This is an experimental renderer and is currently not covered by tests, coverage will be added when the API
+ * is more stable. Currently only compatible with sprite/texture based systems. Meshes are not yet supported.
  *
- * TODO COVERAGE
  * @author thrax <manthrax@gmail.com>
  * @author rohan-deshpande <rohan@creativelifeform.com>
  */
