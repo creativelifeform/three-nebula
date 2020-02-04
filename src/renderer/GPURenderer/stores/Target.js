@@ -1,14 +1,12 @@
-import { Color, Vector3 } from 'three';
-
 /**
  * Simple class that stores the particle's "target" or "next" state.
  *
  */
 export class Target {
-  constructor() {
-    this.position = new Vector3();
+  constructor(THREE) {
+    this.position = new THREE.Vector3();
     this.size = 0;
-    this.color = new Color();
+    this.color = new THREE.Color();
     this.alpha = 0;
     this.texture = null;
     this.index = 0;

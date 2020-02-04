@@ -58,7 +58,7 @@ export default class GPURenderer extends BaseRenderer {
    */
   onParticleCreated(particle) {
     if (!particle.target) {
-      particle.target = this.targetPool.get(Target, [THREE]);
+      particle.target = this.targetPool.get(Target, THREE);
       this.uniqueList.add(particle.id);
     }
 
