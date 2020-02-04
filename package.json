@@ -32,8 +32,8 @@
     "coverage:generate": "istanbul cover -x 'src/core/three/*.js' -x 'src/debug/*.js' -x 'src/renderer/GPURenderer/**/*.js' ./node_modules/.bin/_mocha './test/**/*.spec.js' -- --require @babel/register",
     "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "git:publish": "./scripts/publish",
-    "bundlesize": "bundlesize",
-    "ci:src": "npm run lint && npm run test && npm run bundlesize && npm run coverage:generate && npm run coverage:publish",
+    "ci:src": "npm run lint && npm run test && npm run coverage:generate && npm run coverage:publish",
+    "ci:bundlesize": "./scripts/check-bundlesize",
     "ci:website": "npm run ci --prefix website"
   },
   "repository": {
