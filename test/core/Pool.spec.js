@@ -31,6 +31,25 @@ describe('core -> Pool', () => {
     done();
   });
 
+  it('should pass args to the pooled instance', done => {
+    const args = [1, 2, 3];
+    const Instance = class {
+      constructor(args) {
+        this.test(args);
+      }
+
+      test() {}
+    };
+    const pool = new Pool();
+    const spy = sinon.spy(Instance.prototype, 'test');
+
+    pool.get(Instance, args);
+
+    assert(spy.calledOnceWith(args));
+
+    done();
+  });
+
   it('should get a cloned object with a unique id if the object can be cloned', done => {
     const pool = new Pool();
     const object3d = new Object3D();

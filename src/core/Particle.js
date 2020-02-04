@@ -12,7 +12,7 @@ import {
   DEFAULT_SCALE,
   DEFAULT_SLEEP,
   DEFAULT_USE_ALPHA,
-  DEFAULT_USE_COLOR
+  DEFAULT_USE_COLOR,
 } from './constants';
 import { Util, uid } from '../utils';
 
@@ -129,7 +129,7 @@ export default class Particle {
     this.useAlpha = DEFAULT_USE_ALPHA;
     /**
      * @desc The particle's easing
-     * @type {number}
+     * @type {string}
      */
     this.easing = DEFAULT_EASING;
     /**
@@ -149,37 +149,37 @@ export default class Particle {
     this.acceleration = new Vector3D();
     /**
      * @desc The particle's last position, velocity and acceleration
-     * @type {object}
+     * @type {Vector3D}
      */
     this.old = {};
     /**
      * @desc The particle's old position
-     * @type {number}
+     * @type {Vector3D}
      */
     this.old.position = this.position.clone();
     /**
      * @desc The particle's old velocity
-     * @type {number}
+     * @type {Vector3D}
      */
     this.old.velocity = this.velocity.clone();
     /**
      * @desc The particle's old acceleration
-     * @type {number}
+     * @type {Vector3D}
      */
     this.old.acceleration = this.acceleration.clone();
     /**
      * @desc The particle's behaviours array
-     * @type {number}
+     * @type {array}
      */
     this.behaviours = [];
     /**
      * @desc The particle's transform collection
-     * @type {number}
+     * @type {object}
      */
     this.transform = {};
     /**
      * @desc The particle's color store
-     * @type {number}
+     * @type {object}
      */
     this.color = { r: 0, g: 0, b: 0 };
     /**

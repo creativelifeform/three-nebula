@@ -29,7 +29,7 @@ export class JsonRenderer extends BaseRenderer {
 
   async makeParticleSystem() {
     const { THREE, shouldExposeLifeCycleApi, onStart, onUpdate, onEnd } = this;
-    const { default: ParticleSystem, SpriteRenderer } = await import(
+    const { default: ParticleSystem, GPURenderer } = await import(
       'three-nebula'
     );
     let shouldAutoEmit = true;
@@ -45,7 +45,7 @@ export class JsonRenderer extends BaseRenderer {
         .then(particleSystem => {
           this.particleSystem = particleSystem;
 
-          particleSystem.addRenderer(new SpriteRenderer(this.scene, THREE));
+          particleSystem.addRenderer(new GPURenderer(this.scene, THREE));
 
           if (shouldExposeLifeCycleApi) {
             particleSystem.emit({

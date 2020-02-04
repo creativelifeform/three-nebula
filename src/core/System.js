@@ -154,7 +154,10 @@ export default class System {
    * @return {System}
    */
   addEmitter(emitter) {
+    const index = this.emitters.length;
+
     emitter.parent = this;
+    emitter.index = index;
 
     this.emitters.push(emitter);
     this.dispatch(EMITTER_ADDED, emitter);
@@ -175,6 +178,7 @@ export default class System {
     }
 
     emitter.parent = null;
+    emitter.index = undefined;
 
     this.emitters.splice(this.emitters.indexOf(emitter), 1);
     this.dispatch(EMITTER_REMOVED, emitter);

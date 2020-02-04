@@ -2,6 +2,7 @@ import {
   DEFAULT_BIND_EMITTER,
   DEFAULT_BIND_EMITTER_EVENT,
   DEFAULT_DAMPING,
+  DEFAULT_EMITTER_INDEX,
   DEFAULT_EMITTER_RATE,
 } from './constants';
 import EventDispatcher, {
@@ -114,6 +115,12 @@ export default class Emitter extends Particle {
     this.id = `emitter-${uid()}`;
     this.cID = 0;
     this.name = 'Emitter';
+
+    /**
+     * @desc The index of the emitter as it is added to the system.
+     * @type {number|undefined}
+     */
+    this.index = DEFAULT_EMITTER_INDEX;
 
     /**
      * @desc The emitter's internal event dispatcher.
@@ -510,8 +517,9 @@ export default class Emitter extends Particle {
    */
   createParticle() {
     const particle = this.parent.pool.get(Particle);
+    const index = this.particles.length;
 
-    this.setupParticle(particle);
+    this.setupParticle(particle, index);
     this.parent && this.parent.dispatch(PARTICLE_CREATED, particle);
     this.bindEmitterEvent && this.dispatch(PARTICLE_CREATED, particle);
 
@@ -525,13 +533,14 @@ export default class Emitter extends Particle {
    * @param {Particle} particle - The particle to setup
    * @return void
    */
-  setupParticle(particle) {
+  setupParticle(particle, index) {
     const { initializers, behaviours } = this;
 
     InitializerUtil.initialize(this, particle, initializers);
 
     particle.addBehaviours(behaviours);
     particle.parent = this;
+    particle.index = index;
 
     this.particles.push(particle);
   }
@@ -542,6 +551,8 @@ export default class Emitter extends Particle {
    * method updates existing particles.
    *
    * If the emitter age is greater than time, the emitter is killed.
+   *
+   * This method also indexes/deindexes particles.
    *
    * @param {number} time - System engine time
    * @return void
@@ -609,12 +620,12 @@ export default class Emitter extends Particle {
 
     integrate(this, time, damping, integrationType);
 
-    let i = this.particles.length;
+    let index = this.particles.length;
 
-    while (i--) {
-      const particle = this.particles[i];
+    while (index--) {
+      const particle = this.particles[index];
 
-      particle.update(time, i);
+      particle.update(time, index);
       integrate(particle, time, damping, integrationType);
 
       this.parent && this.parent.dispatch(PARTICLE_UPDATE, particle);

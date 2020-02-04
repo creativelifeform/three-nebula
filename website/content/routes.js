@@ -66,6 +66,13 @@ module.exports = [
     shouldHideFromNav: true,
   },
   {
+    title:
+      'Three Nebula - ThreeJs Particle System Engine Instanced GPU Renderer',
+    name: 'gpu-renderer',
+    path: '/examples/gpu-renderer',
+    shouldHideFromNav: true,
+  },
+  {
     title: 'Three Nebula - Documentation',
     name: 'Docs',
     url: 'https://three-nebula-docs.netlify.com/',

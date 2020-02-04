@@ -64,7 +64,7 @@ export default class EventDispatcher {
 
       if (!arr) return ret;
 
-      arr = arr.slice();
+      arr = arr.slice();        //Should use a copy into a temporary here instead...
       // to avoid issues with items being removed or added during the dispatch
 
       var handler,
