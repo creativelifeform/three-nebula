@@ -1,6 +1,5 @@
 import { Target, UniqueList } from './stores';
 import { fragmentShader, vertexShader } from './shaders';
-
 import BaseRenderer from '../BaseRenderer';
 import { DEFAULT_RENDERER_OPTIONS } from './constants';
 import ParticleBuffer from './ParticleBuffer';
@@ -25,7 +24,15 @@ export default class GPURenderer extends BaseRenderer {
 
     THREE = three;
     const props = { ...DEFAULT_RENDERER_OPTIONS, ...options };
-    const { maxParticles, baseColor, blending, depthTest, transparent } = props;
+    const {
+      camera,
+      maxParticles,
+      baseColor,
+      blending,
+      depthTest,
+      depthWrite,
+      transparent,
+    } = props;
     const particleBuffer = new ParticleBuffer(maxParticles, THREE);
     const material = new THREE.ShaderMaterial({
       uniforms: {
@@ -36,11 +43,14 @@ export default class GPURenderer extends BaseRenderer {
       fragmentShader: fragmentShader(),
       blending: THREE[blending],
       depthTest,
+      depthWrite,
       transparent,
     });
 
+    this.camera = camera;
     this.targetPool = new Pool();
     this.uniqueList = new UniqueList(maxParticles);
+    this.particleBuffer = particleBuffer;
     this.buffer = particleBuffer.buffer;
     this.stride = particleBuffer.stride;
     this.geometry = particleBuffer.geometry;

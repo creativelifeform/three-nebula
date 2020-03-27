@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GPU Renderer Depth Sorting</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/style/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/style/app.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <p id="description">
+        Switching between the SpriteRenderer and the GPURenderer should look
+        close to identical
+      </p>
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="https://threejs.org/build/three.js"></script>
+    <script src="https://unpkg.com/three@0.112.1/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/stats-js@1.0.1/build/stats.min.js"></script>
+    <script src="/common/three-nebula.js"></script>
+    <script src="/common/Visualization.js"></script>
+    <script src="/common/safeLog.js"></script>
+    <script src="/common/run.js"></script>
+    <script src="/experiments/gpu-renderer-depth-sorting/data.js"></script>
+    <script src="/experiments/gpu-renderer-depth-sorting/buffer-geometry-sorter.js"></script>
+    <script src="/experiments/gpu-renderer-depth-sorting/index.js"></script>
+    <script>
+      run(init).then(() => console.log(`APP LOADED`));
+    </script>
+  </body>
+</html>
