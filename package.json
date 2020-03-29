@@ -34,7 +34,8 @@
     "git:publish": "./scripts/publish",
     "ci:src": "npm run lint && npm run test && npm run coverage:generate && npm run coverage:publish",
     "ci:bundlesize": "./scripts/check-bundlesize",
-    "ci:website": "npm run ci --prefix website"
+    "ci:website": "npm run ci --prefix website",
+    "analyze": "webpack-bundle-analyzer build/stats.json"
   },
   "repository": {
     "type": "git",
@@ -87,6 +88,7 @@
     "sinon": "^7.1.1",
     "three": "^0.112.0",
     "webpack": "^4.42.1",
+    "webpack-bundle-analyzer": "^3.6.1",
     "webpack-cli": "^3.3.5"
   }
 }
