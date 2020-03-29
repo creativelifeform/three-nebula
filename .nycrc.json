@@ -6,6 +6,8 @@
       "src/debug/*.js",
       "src/renderer/GPURenderer/**/*.js"
     ],
-    "reporter": ["lcov", "text-lcov"]
+    "reporter": ["html", "lcov", "lcov-text"],
+    "report-dir": "./coverage",
+    "cache": false
   }
 }
