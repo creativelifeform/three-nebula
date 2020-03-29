@@ -1,0 +1,11 @@
+{
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-babel",
+    "exclude": [
+      "src/core/three/*.js",
+      "src/debug/*.js",
+      "src/renderer/GPURenderer/**/*.js"
+    ],
+    "reporter": "lcov"
+  }
+}
