@@ -33,7 +33,8 @@ export const ATTRIBUTE_TO_SIZE_MAP = {
 export const DEFAULT_RENDERER_OPTIONS = {
   blending: 'AdditiveBlending',
   baseColor: 0xffffff,
-  depthTest: false,
+  depthTest: true,
+  depthWrite: false,
   transparent: true,
   maxParticles: DEFAULT_MAX_PARTICLES,
 };

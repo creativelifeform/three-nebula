@@ -6,7 +6,7 @@
   "bundlesize": [
     {
       "path": "./build/three-nebula.js",
-      "maxSize": "115 kB",
+      "maxSize": "130 kB",
       "compression": "none"
     }
   ],
@@ -26,15 +26,16 @@
     "test:only": "mocha --require @babel/register --colors",
     "test:watch": "mocha --require @babel/register --colors -w './test/**/*.spec.js'",
     "test:watch-only": "mocha --require @babel/register --colors -w ",
-    "lint": "eslint src test && ./node_modules/.bin/madge --circular src",
+    "lint": "eslint src test && npx madge --circular src",
     "lint:fix": "eslint --fix",
     "coverage:view": "open ./coverage/lcov-report/index.html",
-    "coverage:generate": "istanbul cover -x 'src/core/three/*.js' -x 'src/debug/*.js' -x 'src/renderer/GPURenderer/**/*.js' ./node_modules/.bin/_mocha './test/**/*.spec.js' -- --require @babel/register",
-    "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "coverage:generate": "nyc ./node_modules/.bin/_mocha './test/**/*.spec.js' -- --require @babel/register",
+    "coverage:publish": "nyc report --reporter=text-lcov -x 'src/core/three/*.js' -x 'src/debug/*.js' -x 'src/renderer/GPURenderer/**/*.js' | coveralls",
     "git:publish": "./scripts/publish",
     "ci:src": "npm run lint && npm run test && npm run coverage:generate && npm run coverage:publish",
     "ci:bundlesize": "./scripts/check-bundlesize",
-    "ci:website": "npm run ci --prefix website"
+    "ci:website": "npm run ci --prefix website",
+    "analyze": "webpack-bundle-analyzer build/stats.json"
   },
   "repository": {
     "type": "git",
@@ -62,13 +63,14 @@
     "three": "^0.112.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.0",
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.5.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.1",
     "@babel/plugin-transform-runtime": "^7.5.0",
     "@babel/preset-env": "^7.5.0",
     "@babel/register": "^7.4.4",
     "@babel/runtime": "^7.5.1",
+    "@istanbuljs/nyc-config-babel": "^3.0.0",
     "babel-eslint": "^7.2.1",
     "babel-loader": "^8.0.6",
     "bundlesize": "^0.18.0",
@@ -79,14 +81,14 @@
     "eslint": "^6.0.1",
     "eslint-loader": "^2.2.1",
     "eslint-plugin-import": "^2.18.0",
-    "istanbul": "^1.1.0-alpha.1",
-    "madge": "^3.3.0",
-    "mocha": "^5.2.0",
+    "mocha": "^7.1.1",
+    "nyc": "^15.0.0",
     "prettier": "^1.16.4",
     "serve": "^11.3.0",
     "sinon": "^7.1.1",
     "three": "^0.112.0",
-    "webpack": "^4.35.2",
+    "webpack": "^4.42.1",
+    "webpack-bundle-analyzer": "^3.6.1",
     "webpack-cli": "^3.3.5"
   }
 }

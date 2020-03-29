@@ -188,6 +188,12 @@ export default class Particle {
      */
     this.rotation = new Vector3D();
 
+    /**
+     * @desc The particle's distance to the camera, only set by the GPURenderer for depth sorting purposes.
+     * @type {number}
+     */
+    this.distanceToCamera = 0;
+
     // override constructor props with passed properties.
     Util.setPrototypeByObj(this, properties);
   }

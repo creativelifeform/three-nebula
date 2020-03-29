@@ -1,4 +1,5 @@
 const path = require('path');
+const bundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   mode: process.env.NODE_ENV || 'production',
@@ -16,7 +17,7 @@ module.exports = {
       {
         test: /(\.jsx|\.js)$/,
         loader: 'babel-loader',
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
       },
       {
         test: /(\.jsx|\.js)$/,
@@ -29,4 +30,10 @@ module.exports = {
     modules: [path.resolve('./src'), path.resolve('./node_modules')],
     extensions: ['.json', '.js'],
   },
+  plugins: [
+    new bundleAnalyzer({
+      analyzerMode: 'disabled',
+      generateStatsFile: true,
+    }),
+  ],
 };
