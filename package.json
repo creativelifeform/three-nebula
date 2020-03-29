@@ -6,7 +6,7 @@
   "bundlesize": [
     {
       "path": "./build/three-nebula.js",
-      "maxSize": "115 kB",
+      "maxSize": "130 kB",
       "compression": "none"
     }
   ],
@@ -30,7 +30,7 @@
     "lint:fix": "eslint --fix",
     "coverage:view": "open ./coverage/lcov-report/index.html",
     "coverage:generate": "nyc ./node_modules/.bin/_mocha './test/**/*.spec.js' -- --require @babel/register",
-    "coverage:publish": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "coverage:publish": "nyc report --reporter=text-lcov | coveralls",
     "git:publish": "./scripts/publish",
     "ci:src": "npm run lint && npm run test && npm run coverage:generate && npm run coverage:publish",
     "ci:bundlesize": "./scripts/check-bundlesize",
