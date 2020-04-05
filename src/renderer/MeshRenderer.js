@@ -21,11 +21,10 @@ export default class MeshRenderer extends BaseRenderer {
       new THREE.BoxGeometry(50, 50, 50),
       new THREE.MeshLambertMaterial({ color: '#ff0000' })
     );
-    this.ThreeSprite = THREE.Sprite;
   }
 
   isThreeSprite(particle) {
-    return particle.target instanceof this.ThreeSprite;
+    return particle.target.isSprite;
   }
 
   onSystemUpdate() {}
