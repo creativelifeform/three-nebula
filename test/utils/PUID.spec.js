@@ -26,8 +26,8 @@ describe('utils -> PUID', () => {
 
     assert.strictEqual(NewPUID._id, 2);
     assert.strictEqual(nid2, 'PUID_1');
-    assert.strictEqual(NewPUID._uids[nid1], myObject);
-    assert.strictEqual(NewPUID._uids[nid2], myFunction);
+    assert.isTrue(NewPUID._uids.has(myObject));
+    assert.isTrue(NewPUID._uids.has(myFunction));
   });
 
   it('should not create a new id if the function or object has already been mapped', () => {
