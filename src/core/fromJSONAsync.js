@@ -17,7 +17,7 @@ import TextureInitializer from '../initializer/Texture';
  * @param {object} json - The data required to construct a Rate instance
  * @return {Rate}
  */
-const makeRate = json => new Rate.fromJSON(json);
+const makeRate = json => Rate.fromJSON(json);
 
 /**
  * Makes initializers from json items.
@@ -51,11 +51,9 @@ const makeInitializers = (items, THREE) =>
       }
 
       if (INITIALIZER_TYPES_THAT_REQUIRE_THREE.includes(type)) {
-        madeInitializers.push(
-          new Initializer[type].fromJSON(properties, THREE)
-        );
+        madeInitializers.push(Initializer[type].fromJSON(properties, THREE));
       } else {
-        madeInitializers.push(new Initializer[type].fromJSON(properties));
+        madeInitializers.push(Initializer[type].fromJSON(properties));
       }
 
       if (madeInitializers.length === numberOfInitializers) {
@@ -81,7 +79,7 @@ const makeInitializers = (items, THREE) =>
         texture,
         loadedTexture => {
           madeInitializers.push(
-            new TextureInitializer.fromJSON(
+            TextureInitializer.fromJSON(
               {
                 ...properties,
                 loadedTexture,
@@ -124,7 +122,7 @@ const makeBehaviours = items =>
         );
       }
 
-      madeBehaviours.push(new Behaviour[type].fromJSON(properties));
+      madeBehaviours.push(Behaviour[type].fromJSON(properties));
 
       if (madeBehaviours.length === numberOfBehaviours) {
         return resolve(madeBehaviours);
