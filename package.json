@@ -30,7 +30,7 @@
     "lint:fix": "eslint --fix",
     "coverage:view": "open ./coverage/lcov-report/index.html",
     "coverage:generate": "nyc ./node_modules/.bin/_mocha './test/**/*.spec.js' -- --require @babel/register",
-    "coverage:publish": "nyc report --reporter=text-lcov -x 'src/core/three/*.js' -x 'src/debug/*.js' -x 'src/renderer/GPURenderer/**/*.js' | coveralls",
+    "coverage:publish": "nyc report --reporter=text-lcov -x 'src/core/three/*.js' -x 'src/debug/*.js' -x 'src/renderer/GPURenderer/**/*.js'",
     "git:publish": "./scripts/publish",
     "ci:src": "npm run lint && npm run test && npm run coverage:generate && npm run coverage:publish",
     "ci:bundlesize": "./scripts/check-bundlesize",

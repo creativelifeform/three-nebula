@@ -3,7 +3,7 @@
 
 name: Node.js CI
 
-on: [push]
+on: [pull_request]
 
 jobs:
   build:
@@ -23,3 +23,8 @@ jobs:
       - run: npm run ci:website
       - run: npm run ci:src
       - run: npm run ci:bundlesize
+
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v1.1.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
