@@ -89,4 +89,14 @@ describe('regression', () => {
 
     done();
   });
+
+  it('should export the behaviour base class for extension', done => {
+    assert.isFunction(Nebula.Behaviour);
+
+    const behaviour = new Nebula.Behaviour();
+
+    assert.strictEqual(behaviour.constructor.name, 'Behaviour');
+
+    done();
+  });
 });
