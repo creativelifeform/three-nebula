@@ -1,6 +1,6 @@
 export const HREF_GITHUB = 'https://github.com/creativelifeform/three-nebula';
 export const HREF_NPM = 'https://www.npmjs.com/package/three-nebula';
-export const HREF_WEBSITE = 'https://creativelifeform.github.io/three-nebula/';
+export const HREF_WEBSITE = 'https://three-nebula.org';
 export const HREF_DOCS = 'https://three-nebula-docs.netlify.com/';
 export const HREF_NEBULA = 'https://getnebula.app';
 export const HREF_TWITTER = 'https://twitter.com/getnebula';

@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://dev.three-nebula.org/">
-    <img alt="react-router" src="https://dev.three-nebula.org/favicon/nebula-logo-favicon-master.svg" width="100">
+  <a href="https://three-nebula.org/">
+    <img alt="react-router" src="https://three-nebula.org/favicon/nebula-logo-favicon-master.svg" width="100">
   </a>
 </p>
 
@@ -22,7 +22,7 @@
 
 [CHANGELOG](https://github.com/creativelifeform/three-nebula/blob/master/CHANGELOG.md)
 
-**Three Nebula** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [website](https://dev.three-nebula.org/), [examples](https://dev.three-nebula.org/examples) and [API reference documentation](https://three-nebula-docs.netlify.com/) for more.
+**Three Nebula** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [website](https://three-nebula.org/), [examples](https://three-nebula.org/examples), the [quickstart sandbox](https://codesandbox.io/s/three-nebula-quickstart-kz6uv) and [API reference documentation](https://three-nebula-docs.netlify.com/) for more.
 
 ## Features
 

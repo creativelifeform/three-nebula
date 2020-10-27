@@ -12,10 +12,11 @@ const Features = ({
 }) => (
   <Content className="Features">
     <Grid>
-      {items.map(({ title, text }) => (
+      {items.map(({ title, text, link }) => (
         <GridItem key={title}>
           <GridItemDetails title={title}>
             <p>{text}</p>
+            <a href={link.href}>{link.text}</a>
           </GridItemDetails>
         </GridItem>
       ))}

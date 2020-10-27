@@ -2,7 +2,7 @@ const content = {
   favicon: {
     title: 'Three Nebula',
     description: 'A WebGL based 3D particle system engine for ThreeJs',
-    url: 'https://dev.three-nebula.org',
+    url: 'https://three-nebula.org',
     twitterName: 'three-nebula',
     twitterImage: '',
   },
@@ -20,16 +20,28 @@ const content = {
         title: 'Simple, Powerful API',
         text:
           'Choose from a wide variety of particle initializers & behaviors to create truly expressive, dynamic particle systems from textures or 3D objects.',
+        link: {
+          text: 'Get started',
+          href: 'https://codesandbox.io/s/three-nebula-quickstart-kz6uv',
+        },
       },
       {
         title: 'Loadable & Portable via JSON',
         text:
           'Load your entire system from a JSON object which you can easily share with others or modify for a fast and user friendly development experience.',
+        link: {
+          text: 'Read the docs',
+          href: 'https://three-nebula-docs.netlify.app/',
+        },
       },
       {
         title: 'MIT Licensed',
         text:
           'MIT licensed for you to fork and make changes to yourself, PRs welcome!',
+        link: {
+          text: 'View the source',
+          href: 'https://github.com/creativelifeform/three-nebula',
+        },
       },
     ],
   },
