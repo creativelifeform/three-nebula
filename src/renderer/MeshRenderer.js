@@ -3,6 +3,9 @@ import { PUID } from '../utils';
 import { Pool } from '../core';
 import { RENDERER_TYPE_MESH as type } from './types';
 
+/**
+ * @requires THREE - { Mesh, BoxGeometry, MeshLambertMaterial }
+ */
 export default class MeshRenderer extends BaseRenderer {
   /**
    * @param {object} container - An Object3D container, usually a THREE.Scene
@@ -12,13 +15,16 @@ export default class MeshRenderer extends BaseRenderer {
     super(type);
 
     this.container = container;
-
     this._targetPool = new Pool();
     this._materialPool = new Pool();
     this._body = new THREE.Mesh(
       new THREE.BoxGeometry(50, 50, 50),
       new THREE.MeshLambertMaterial({ color: '#ff0000' })
     );
+  }
+
+  isThreeSprite(particle) {
+    return particle.target.isSprite;
   }
 
   onSystemUpdate() {}
@@ -45,23 +51,27 @@ export default class MeshRenderer extends BaseRenderer {
   }
 
   onParticleUpdate(particle) {
-    if (particle.target) {
-      particle.target.position.copy(particle.position);
-      particle.target.rotation.set(
-        particle.rotation.x,
-        particle.rotation.y,
-        particle.rotation.z
-      );
-      this.scale(particle);
+    const { target, useAlpha, useColor, rotation } = particle;
 
-      if (particle.useAlpha) {
-        particle.target.material.opacity = particle.alpha;
-        particle.target.material.transparent = true;
-      }
+    if (!target) {
+      return;
+    }
 
-      if (particle.useColor) {
-        particle.target.material.color.copy(particle.color);
-      }
+    target.position.copy(particle.position);
+
+    if (!this.isThreeSprite(particle)) {
+      target.rotation.set(rotation.x, rotation.y, rotation.z);
+    }
+
+    this.scale(particle);
+
+    if (useAlpha) {
+      target.material.opacity = particle.alpha;
+      target.material.transparent = true;
+    }
+
+    if (useColor) {
+      target.material.color.copy(particle.color);
     }
   }
 

@@ -4,5 +4,5 @@
 ESDOC="esdoc esdoc-ecmascript-proposal-plugin esdoc-standard-plugin"
 
 npm i $ESDOC -D
-cp ./build/three-nebula.js docs/js && ./node_modules/.bin/esdoc
+./node_modules/.bin/esdoc
 npm uninstall $ESDOC -D

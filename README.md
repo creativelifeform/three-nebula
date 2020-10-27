@@ -1,16 +1,33 @@
-# Three Nebula
+<p align="center">
+  <a href="https://dev.three-nebula.org/">
+    <img alt="react-router" src="https://dev.three-nebula.org/favicon/nebula-logo-favicon-master.svg" width="100">
+  </a>
+</p>
 
-[![Build Status](https://travis-ci.org/creativelifeform/three-nebula.svg?branch=master)](https://travis-ci.org/creativelifeform/three-nebula)
-[![Coverage Status](https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg)](https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1)
+<h3 align="center">&nbsp;&nbsp;&nbsp;&nbsp;three-nebula</h3>
+
+<p align="center">
+  &nbsp;&nbsp;&nbsp;&nbsp;WebGL based 3D particle system engine for <a href="https://threejs.org">three</a>
+</p>
+
+<p align="center">
+&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://travis-ci.org/creativelifeform/three-nebula"><img src="https://travis-ci.org/creativelifeform/three-nebula.svg?branch=master"></a>
+  <a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg"></a>
+  <a href="https://threejs.org"><img src="https://img.shields.io/badge/three-v0.112.0-%230C7BB8"></a>
+  <a href="https://spectrum.chat/nebula"><img src="https://img.shields.io/badge/spectrum-chat-%237816F9"></a>
+</p>
+
+<hr/>
 
 [CHANGELOG](https://github.com/creativelifeform/three-nebula/blob/master/CHANGELOG.md)
 
-**Three Nebula** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [examples](https://creativelifeform.github.io/three-nebula/) and [API reference documentation](https://creativelifeform.github.io/three-nebula/api) for more.
+**Three Nebula** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [website](https://dev.three-nebula.org/), [examples](https://dev.three-nebula.org/examples) and [API reference documentation](https://three-nebula-docs.netlify.com/) for more.
 
 ## Features
 
-- Perfect compatibility with [`three@r106`](https://github.com/mrdoob/three.js)
-- The ability to instantiate `three-nebula` particle systems from JSON objects using the static `System.fromJSON` method
+- Perfect compatibility with [`three@0.112.0`](https://github.com/mrdoob/three.js)
+- The ability to instantiate `three-nebula` particle systems from JSON objects
 - The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers
 
@@ -68,11 +85,13 @@ emitter
     new Alpha(1, 0),
     new Scale(0.1, 1.3),
     new Color(new THREE.Color(), new THREE.Color()),
-  ])
-  .emit();
+  ]);
 
 // add the emitter and a renderer to your particle system
-system.addEmitter(emitter).addRenderer(renderer);
+system
+  .addEmitter(emitter)
+  .addRenderer(renderer)
+  .emit({ onStart, onUpdate, onEnd });
 ```
 
 You can also instantiate your system from a JSON object
@@ -231,7 +250,9 @@ const json = {
   ],
 };
 
-const system = new System.fromJSONAsync(json, THREE).then(console.log);
+new System.fromJSONAsync(json, THREE).then(system => {
+  console.log(system);
+});
 ```
 
 ### Script Tag
@@ -250,7 +271,6 @@ const system = new System();
 There are a few NPM scripts in the root package.json:
 
 - `build` - Builds the module and writes the code into `./build/three-nebula.js`
-- `docs` - Serves the docs at http://localhost:8080
 - `docs:build` - Copies the latest build to `./docs/js` and builds the API reference docs
 - `test` - Runs all specs
 - `test:only <spec>` - Runs a specific spec

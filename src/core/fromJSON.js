@@ -16,7 +16,7 @@ import Rate from '../initializer/Rate';
  * @param {object} json - The data required to construct a Rate instance
  * @return {Rate}
  */
-const makeRate = json => new Rate.fromJSON(json);
+const makeRate = json => Rate.fromJSON(json);
 
 /**
  * Makes initializers from json items.
@@ -38,9 +38,9 @@ const makeInitializers = (items, THREE) => {
     }
 
     if (INITIALIZER_TYPES_THAT_REQUIRE_THREE.includes(type)) {
-      initializers.push(new Initializer[type].fromJSON(properties, THREE));
+      initializers.push(Initializer[type].fromJSON(properties, THREE));
     } else {
-      initializers.push(new Initializer[type].fromJSON(properties));
+      initializers.push(Initializer[type].fromJSON(properties));
     }
   });
 
@@ -65,7 +65,7 @@ const makeBehaviours = items => {
       );
     }
 
-    behaviours.push(new Behaviour[type].fromJSON(properties));
+    behaviours.push(Behaviour[type].fromJSON(properties));
   });
 
   return behaviours;

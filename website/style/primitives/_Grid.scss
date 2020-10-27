@@ -1,0 +1,112 @@
+.Grid {
+  display: grid;
+  margin: auto;
+  padding: 0px $padding-xxl;
+
+  .Item {
+    .Media {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      background: black;
+      margin-bottom: $padding-xxl;
+    }
+
+    .Details {
+      line-height: 1.4em;
+
+      p {
+        margin-top: $padding-l;
+      }
+
+      p:first-of-type {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &.About {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 72px 32px;
+  }
+}
+
+.Features {
+  .Grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0px $padding-xl;
+    max-width: $content-max-width;
+  }
+}
+
+.AboutNebula {
+  .Grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: $content-max-width / 1.25;
+    grid-gap: 0px $padding-xl * 4;
+
+    .Media {
+      box-shadow: $box-shadow;
+    }
+  }
+}
+
+.Examples {
+  .Grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 32px 32px;
+  }
+}
+
+.Footer {
+  .Grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0px $padding-xl;
+  }
+}
+
+@include phone {
+  .Grid {
+    display: block;
+
+    .Item {
+      margin-bottom: $padding-xxl;
+    }
+
+    .Item:last-child {
+      margin: 0;
+
+      .Media {
+        margin: 0;
+      }
+    }
+  }
+
+  .Hero {
+    .Grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@include tablet {
+  .Grid {
+    display: grid;
+  }
+
+  .Hero {
+    .Grid {
+      display: grid;
+    }
+  }
+}
+
+@include desktop {
+  .Grid {
+    .Item {
+      margin-bottom: 0px;
+    }
+  }
+}

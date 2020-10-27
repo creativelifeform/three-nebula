@@ -1,0 +1,20 @@
+.Gdpr {
+  position: fixed;
+  top: 0;
+  width: 0;
+  z-index: 3;
+  width: 100%;
+  background: black;
+  text-align: center;
+  padding: $padding-s;
+  height: $gdpr-h;
+  font-size: 0.8em;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .message {
+    text-align: left;
+  }
+}

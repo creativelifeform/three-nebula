@@ -1,0 +1,25 @@
+.Table {
+  width: 100%;
+  text-align: left;
+
+  tr {
+    th {
+      p {
+        b {
+          display: block;
+          margin-bottom: $padding-s;
+        }
+      }
+    }
+
+    td,
+    th {
+      max-width: 100px;
+      padding: $padding-m 0;
+    }
+  }
+
+  tr {
+    border-bottom: 1px solid white;
+  }
+}

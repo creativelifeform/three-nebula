@@ -49,7 +49,7 @@ describe('regression', () => {
       'Vector3D',
       'CustomRenderer',
       'MeshRenderer',
-      'PointsRenderer',
+      'GPURenderer',
       'SpriteRenderer',
       'ColorUtil',
       'PUID',
@@ -86,6 +86,16 @@ describe('regression', () => {
     const system = new Nebula.System();
 
     assert.strictEqual(system.constructor.name, 'System');
+
+    done();
+  });
+
+  it('should export the behaviour base class for extension', done => {
+    assert.isFunction(Nebula.Behaviour);
+
+    const behaviour = new Nebula.Behaviour();
+
+    assert.strictEqual(behaviour.constructor.name, 'Behaviour');
 
     done();
   });

@@ -2,11 +2,9 @@ language: node_js
 node_js:
   - 'node'
 script:
-  - npm run lint
-  - npm run test
-  - npm run bundlesize
-  - npm run coverage:generate
-  - npm run coverage:publish
+  - npm run ci:website
+  - npm run ci:src
+  - npm run ci:bundlesize
 branches:
   only:
     - master

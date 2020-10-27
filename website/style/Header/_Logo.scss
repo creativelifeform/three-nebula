@@ -1,0 +1,24 @@
+.Logo {
+  font-weight: 700;
+  font-size: 1.2em;
+
+  a {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-mark {
+    width: $logo-w;
+    height: $logo-h;
+  }
+
+  .logo-mark,
+  .logo-text {
+    display: inline-block;
+  }
+
+  .logo-text {
+    margin-top: -1px;
+    padding-left: $padding-s;
+  }
+}

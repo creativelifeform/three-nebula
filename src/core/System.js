@@ -102,10 +102,12 @@ export default class System {
    *
    * @param {object} json - The JSON to create the System instance from
    * @param {object} THREE - The Web GL Api to use eg., THREE
+   * @param {object} [options={}] - Optional config options
+   * @param {boolean} [options.shouldAutoEmit=true] - Determines if the system should automatically emit particles
    * @return {Promise<System>}
    */
-  static fromJSONAsync(json, THREE) {
-    return fromJSONAsync(json, THREE, System, Emitter);
+  static fromJSONAsync(json, THREE, { shouldAutoEmit = false } = {}) {
+    return fromJSONAsync(json, THREE, System, Emitter, { shouldAutoEmit });
   }
 
   /**
@@ -152,7 +154,10 @@ export default class System {
    * @return {System}
    */
   addEmitter(emitter) {
+    const index = this.emitters.length;
+
     emitter.parent = this;
+    emitter.index = index;
 
     this.emitters.push(emitter);
     this.dispatch(EMITTER_ADDED, emitter);
@@ -173,11 +178,65 @@ export default class System {
     }
 
     emitter.parent = null;
+    emitter.index = undefined;
 
     this.emitters.splice(this.emitters.indexOf(emitter), 1);
     this.dispatch(EMITTER_REMOVED, emitter);
 
     return this;
+  }
+
+  /**
+   * Wires up life cycle methods and causes a system's emitters to emit particles.
+   * Expects emitters to have their totalEmitTimes and life set already.
+   * Inifnite systems will resolve immediately.
+   *
+   * @param {object} hooks - Functions to hook into the life cycle API
+   * @param {function} hooks.onStart - Called when the system starts to emit particles
+   * @param {function} hooks.onUpdate - Called each time the system updates
+   * @param {function} hooks.onEnd - Called when the system's emitters have all died
+   * @return {Promise}
+   */
+  emit({ onStart, onUpdate, onEnd }) {
+    if (onStart) {
+      onStart();
+    }
+
+    if (onUpdate) {
+      this.eventDispatcher.addEventListener(SYSTEM_UPDATE, onUpdate);
+    }
+
+    const emitters = this.emitters.map(emitter => {
+      const { life } = emitter;
+
+      if (life === Infinity) {
+        if (onEnd) {
+          onEnd();
+        }
+
+        emitter.experimental_emit();
+
+        return Promise.resolve();
+      }
+
+      return new Promise(resolve => {
+        emitter.addOnEmitterDeadEventListener(() => {
+          if (onEnd) {
+            onEnd();
+          }
+
+          resolve();
+        });
+
+        emitter.experimental_emit();
+      });
+    });
+
+    try {
+      return Promise.all(emitters);
+    } catch (e) {
+      console.warn(e);
+    }
   }
 
   /**
@@ -198,13 +257,14 @@ export default class System {
     const d = delta || DEFAULT_SYSTEM_DELTA;
 
     if (this.canUpdate) {
-      this.dispatch(SYSTEM_UPDATE);
-
       if (d > 0) {
         let i = this.emitters.length;
 
         while (i--) {
-          this.emitters[i].update(d);
+          const emitter = this.emitters[i];
+
+          emitter.update(d);
+          emitter.isEmitting && this.dispatch(SYSTEM_UPDATE);
         }
       }
 
@@ -232,7 +292,7 @@ export default class System {
   }
 
   /**
-   * Destroys all emitters and the Proton pool.
+   * Destroys all emitters and the Nebula pool.
    * Ensures that this.update will not perform any operations while the system
    * is being destroyed.
    *

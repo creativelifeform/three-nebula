@@ -123,6 +123,29 @@ describe('renderer -> MeshRenderer', () => {
       assert(scaleSpy.calledOnceWith(particle));
     });
 
+    it('should not set target rotation if the target is a THREE Sprite', () => {
+      const container = new THREE.Scene();
+      const particle = new Particle();
+      const renderer = new MeshRenderer(container, THREE);
+
+      particle.body = new THREE.Sprite(
+        new THREE.SpriteMaterial({
+          color: 0xff0000,
+          blending: THREE.AdditiveBlending,
+          fog: true,
+        })
+      );
+
+      // Ensure the particle has a target
+      renderer.onParticleCreated(particle);
+
+      const targetRotationSetSpy = spy(particle.target.rotation, 'set');
+
+      renderer.onParticleUpdate(particle);
+
+      assert(targetRotationSetSpy.notCalled);
+    });
+
     it("should set the target's material opacity and transparency if the particle is using alpha", () => {
       const { particle, renderer } = setup();
 

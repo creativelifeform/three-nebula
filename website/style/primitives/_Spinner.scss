@@ -1,0 +1,27 @@
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.SpinnerWrap {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.Spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: $spinner-w;
+  height: $spinner-w;
+  margin-top: -$spinner-w / 2;
+  margin-left: -$spinner-w / 2;
+  border-radius: 50%;
+  border: 2px solid lighten($app-accent, 30);
+  border-top-color: $app-accent-alt;
+  animation: spinner 0.6s linear infinite;
+}

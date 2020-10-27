@@ -1,0 +1,27 @@
+.Page {
+  padding-top: $header-h;
+
+  .Content {
+    background: $app-content-bg;
+    padding: 0 $padding-l;
+    header {
+      text-align: center;
+    }
+
+    .main {
+      padding-top: $padding-xxl * 2;
+    }
+
+    padding: $padding-letterbox;
+    max-width: $content-max-width;
+    margin: auto;
+  }
+}
+
+.Page.with-gdpr-consent {
+  padding-top: $header-h;
+}
+
+.Page.without-gdpr-consent {
+  padding-top: $header-h + $gdpr-h;
+}

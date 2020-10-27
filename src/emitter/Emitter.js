@@ -2,9 +2,11 @@ import {
   DEFAULT_BIND_EMITTER,
   DEFAULT_BIND_EMITTER_EVENT,
   DEFAULT_DAMPING,
+  DEFAULT_EMITTER_INDEX,
   DEFAULT_EMITTER_RATE,
 } from './constants';
 import EventDispatcher, {
+  EMITTER_DEAD,
   PARTICLE_CREATED,
   PARTICLE_DEAD,
   PARTICLE_UPDATE,
@@ -101,12 +103,24 @@ export default class Emitter extends Particle {
     this.rate = DEFAULT_EMITTER_RATE;
 
     /**
+     * @desc Determines if the emitter is emitting particles or not.
+     * @type {boolean}
+     */
+    this.isEmitting = false;
+
+    /**
      * @desc The emitter's id.
      * @type {string}
      */
     this.id = `emitter-${uid()}`;
     this.cID = 0;
     this.name = 'Emitter';
+
+    /**
+     * @desc The index of the emitter as it is added to the system.
+     * @type {number|undefined}
+     */
+    this.index = DEFAULT_EMITTER_INDEX;
 
     /**
      * @desc The emitter's internal event dispatcher.
@@ -187,6 +201,61 @@ export default class Emitter extends Particle {
     }
 
     this.rate.init();
+    this.isEmitting = true;
+
+    return this;
+  }
+
+  /**
+   * Experimental emit method that is designed to be called from the System.emit method.
+   *
+   * @return {Emitter}
+   */
+  experimental_emit() {
+    const { isEmitting, totalEmitTimes, life } = this;
+
+    if (!isEmitting) {
+      this.currentEmitTime = 0;
+
+      if (!totalEmitTimes) {
+        this.setTotalEmitTimes(Infinity);
+      }
+
+      if (!life) {
+        this.setLife(Infinity);
+      }
+
+      this.rate.init();
+      this.isEmitting = true;
+    }
+
+    return this;
+  }
+
+  /**
+   * Sets the total emit times for the emitter.
+   *
+   * @param {number} [totalEmitTimes=Infinity] - the total number of times to emit particles
+   * @return {Emitter}
+   */
+  setTotalEmitTimes(totalEmitTimes = Infinity) {
+    this.totalEmitTimes = isNumber(totalEmitTimes) ? totalEmitTimes : Infinity;
+
+    return this;
+  }
+
+  /**
+   * Sets the life of the emitter.
+   *
+   * @param {number} [life=Infinity] - the life of this emitter in milliseconds
+   * @return {Emitter}
+   */
+  setLife(life = Infinity) {
+    if (this.totalEmitTimes === 1) {
+      this.life = this.totalEmitTimes;
+    } else {
+      this.life = isNumber(life) ? life : Infinity;
+    }
 
     return this;
   }
@@ -199,6 +268,7 @@ export default class Emitter extends Particle {
   stopEmit() {
     this.totalEmitTimes = -1;
     this.currentEmitTime = 0;
+    this.isEmitting = false;
   }
 
   /**
@@ -426,6 +496,20 @@ export default class Emitter extends Particle {
   }
 
   /**
+   * Adds the event listener for the EMITTER_DEAD event.
+   *
+   * @param {onEmitterDead} - The function to call when the EMITTER_DEAD is dispatched.
+   * @return {Emitter}
+   */
+  addOnEmitterDeadEventListener(onEmitterDead) {
+    this.eventDispatcher.addEventListener(`${this.id}_${EMITTER_DEAD}`, () =>
+      onEmitterDead()
+    );
+
+    return this;
+  }
+
+  /**
    * Creates a particle by retreiving one from the pool and setting it up with
    * the supplied initializer and behaviour.
    *
@@ -433,8 +517,9 @@ export default class Emitter extends Particle {
    */
   createParticle() {
     const particle = this.parent.pool.get(Particle);
+    const index = this.particles.length;
 
-    this.setupParticle(particle);
+    this.setupParticle(particle, index);
     this.parent && this.parent.dispatch(PARTICLE_CREATED, particle);
     this.bindEmitterEvent && this.dispatch(PARTICLE_CREATED, particle);
 
@@ -448,13 +533,14 @@ export default class Emitter extends Particle {
    * @param {Particle} particle - The particle to setup
    * @return void
    */
-  setupParticle(particle) {
+  setupParticle(particle, index) {
     const { initializers, behaviours } = this;
 
     InitializerUtil.initialize(this, particle, initializers);
 
     particle.addBehaviours(behaviours);
     particle.parent = this;
+    particle.index = index;
 
     this.particles.push(particle);
   }
@@ -466,10 +552,16 @@ export default class Emitter extends Particle {
    *
    * If the emitter age is greater than time, the emitter is killed.
    *
+   * This method also indexes/deindexes particles.
+   *
    * @param {number} time - System engine time
    * @return void
    */
   update(time) {
+    if (!this.isEmitting) {
+      return;
+    }
+
     this.age += time;
 
     if (this.dead || this.age >= this.life) {
@@ -528,12 +620,12 @@ export default class Emitter extends Particle {
 
     integrate(this, time, damping, integrationType);
 
-    let i = this.particles.length;
+    let index = this.particles.length;
 
-    while (i--) {
-      const particle = this.particles[i];
+    while (index--) {
+      const particle = this.particles[index];
 
-      particle.update(time, i);
+      particle.update(time, index);
       integrate(particle, time, damping, integrationType);
 
       this.parent && this.parent.dispatch(PARTICLE_UPDATE, particle);
@@ -590,8 +682,10 @@ export default class Emitter extends Particle {
     this.totalEmitTimes = -1;
 
     if (this.particles.length == 0) {
+      this.isEmitting = false;
       this.removeAllInitializers();
       this.removeAllBehaviours();
+      this.dispatch(`${this.id}_${EMITTER_DEAD}`);
 
       this.parent && this.parent.removeEmitter(this);
     }
