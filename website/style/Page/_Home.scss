@@ -77,6 +77,19 @@
     .Content {
       padding: $padding-letterbox-s;
     }
+
+    .Content.Features {
+      .Details {
+        p {
+          height: auto;
+        }
+
+        a {
+          display: inline-block;
+          margin-top: $padding-l;
+        }
+      }
+    }
   }
   .Hero {
     .Blurb {
@@ -104,6 +117,19 @@
     .Content {
       padding: $padding-letterbox;
     }
+
+    .Content.Features {
+      .Details {
+        p {
+          height: 100px;
+        }
+
+        a {
+          display: inline;
+          margin-top: 0;
+        }
+      }
+    }
   }
   .Hero {
     .Blurb {
@@ -123,6 +149,15 @@
 }
 
 @include desktop {
+  .Page.Home {
+    .Content.Features {
+      .Details {
+        p {
+          height: 80px;
+        }
+      }
+    }
+  }
   .Hero {
     .Blurb {
       h2 {
