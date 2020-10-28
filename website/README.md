@@ -34,3 +34,11 @@ npm run favicon:generate
 ```
 
 This will generate the favicons. To generate the output of the Facebook section of the `components/Layout/Favicon` component, visit [realfavicongenerator.net](https://realfavicongenerator.net/social/).
+
+## Sitemap
+
+You can generate the XML sitemap with the following script
+
+```
+npm run sitemap
+```
