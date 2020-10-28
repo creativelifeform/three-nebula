@@ -48,9 +48,9 @@ class Nav extends Component {
                 </li>
               )
             )}
-            <li className="spectrum-logo-container">
+            {/* <li className="spectrum-logo-container">
               <SpectrumLogo />
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>

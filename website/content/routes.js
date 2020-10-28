@@ -82,4 +82,9 @@ module.exports = [
     name: 'GitHub',
     url: 'https://github.com/creativelifeform/three-nebula',
   },
+  {
+    title: 'Three Nebula - Chat',
+    name: 'Chat',
+    url: 'https://spectrum.chat/nebula',
+  },
 ];
