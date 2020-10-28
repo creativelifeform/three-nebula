@@ -10,7 +10,8 @@
     "lint": "eslint common components content context pages && ./node_modules/.bin/madge --circular common components content context pages",
     "favicon:generate": "real-favicon generate ./public/favicon/description.json ./public/favicon/data.json ./public/favicon",
     "analyze": "ANALYZE=true npm run build",
-    "ci": "npm install && npm run lint"
+    "ci": "npm install && npm run lint",
+    "sitemap": "node scripts/sitemap-generator.js"
   },
   "dependencies": {
     "fps-locker": "0.0.1",
@@ -52,6 +53,7 @@
     "madge": "^3.6.0",
     "next-assets-import": "0.0.2",
     "next-progressbar": "^1.0.0",
+    "nextjs-sitemap-generator": "^1.1.0",
     "node-sass": "^4.14.1",
     "prettier": "^1.15.2",
     "prop-types": "^15.7.2"
