@@ -1,4 +1,4 @@
-const { System, SpriteRenderer, GPURenderer } = window.Nebula;
+const { System,  GPURenderer } = window.Nebula;
 
 window.init = async ({ scene, camera, renderer }) => {
   const { particleSystemState } = window.SYSTEM;

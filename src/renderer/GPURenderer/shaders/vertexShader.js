@@ -1,4 +1,4 @@
-const SIZE_ATTENUATION_FACTOR = '200.0';
+const SIZE_ATTENUATION_FACTOR = '300.0';
 
 export const vertexShader = () => {
   return `
@@ -16,8 +16,8 @@ export const vertexShader = () => {
     varying vec3 targetColor;
     varying float targetAlpha;
 
-    varying vec4  tileRect;
-    varying float  tileID;
+    varying vec4  tileRect;                                         //GPU
+    varying float  tileID;                                          //GPU
     
     void main() {
       
