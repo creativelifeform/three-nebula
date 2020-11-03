@@ -6,6 +6,7 @@ import { DEFAULT_RENDERER_OPTIONS } from './constants';
 import ParticleBuffer from './ParticleBuffer';
 import { Pool } from '../../core';
 import { RENDERER_TYPE_GPU } from '../types';
+import TextureAtlas from './TextureAtlas';
 
 let THREE;
 
@@ -23,7 +24,7 @@ export default class GPURenderer extends BaseRenderer {
   constructor(container, three, options = DEFAULT_RENDERER_OPTIONS) {
     super(RENDERER_TYPE_GPU);
 
-    THREE = three;
+    THREE = this.three = three;
     const props = { ...DEFAULT_RENDERER_OPTIONS, ...options };
     const {
       camera,
@@ -39,9 +40,10 @@ export default class GPURenderer extends BaseRenderer {
       uniforms: {
         baseColor: { value: new THREE.Color(baseColor) },
         uTexture: { value: null },
+        atlasIndex: { value: null },
       },
-      vertexShader: vertexShader(),
-      fragmentShader: fragmentShader(),
+      vertexShader: vertexShader(), //.split('\n').filter(e=>!e.endsWith("//GPU")).join('\n'),   --use these to disable texture atlas code in shaders..
+      fragmentShader: fragmentShader(), //.split('\n').filter(e=>!e.endsWith("//GPU")).join('\n'),
       blending: THREE[blending],
       depthTest,
       depthWrite,
@@ -58,8 +60,18 @@ export default class GPURenderer extends BaseRenderer {
     this.material = material;
     this.points = new THREE.Points(this.geometry, this.material);
 
+    this.points.frustumCulled = false;
+
     container.add(this.points);
   }
+
+  onSystemUpdate(system) {
+    super.onSystemUpdate(system);
+    //this.text
+
+    //Doing this here instead of per particle took rendertime as optimization saved ~4 msec
+    this.buffer.needsUpdate = true;
+  } // eslint-disable-line
 
   /**
    * Pools the particle target if it does not exist.
@@ -111,6 +123,7 @@ export default class GPURenderer extends BaseRenderer {
    * @param {Particle}
    * @return {GPURenderer}
    */
+
   updateTarget(particle) {
     const { position, scale, radius, color, alpha, body, id } = particle;
     const { r, g, b } = color;
@@ -122,8 +135,10 @@ export default class GPURenderer extends BaseRenderer {
     particle.target.index = this.uniqueList.find(id);
 
     if (body && body instanceof THREE.Sprite) {
-      particle.target.texture = body.material.map;
-      this.material.uniforms.uTexture = { value: particle.target.texture };
+      let map = body.material.map;
+      particle.target.texture = map;
+
+      particle.target.textureIndex = GPURenderer.getTextureID(this, map);
     }
 
     return this;
@@ -140,7 +155,8 @@ export default class GPURenderer extends BaseRenderer {
       .updatePointSize(particle)
       .updatePointColor(particle)
       .updatePointAlpha(particle)
-      .ensurePointUpdatesAreRendered();
+      .updatePointTextureIndex(particle);
+    //.ensurePointUpdatesAreRendered();
 
     return this;
   }
@@ -218,11 +234,30 @@ export default class GPURenderer extends BaseRenderer {
   }
 
   /**
+   * Updates the point texture attribute with the particle's target texture.
+   *
+   * @param {Particle} particle - The particle containing the target texture.
+   * @return {GPURenderer}
+   */
+  updatePointTextureIndex(particle) {
+    const attribute = 'texID';
+    const { geometry, stride, buffer } = this;
+    const { target } = particle;
+    const { offset } = geometry.attributes[attribute];
+
+    buffer.array[target.index * stride + offset + 0] = target.textureIndex;
+
+    return this;
+  }
+
+  /**
    * Ensures that all attribute updates are marked as needing updates from the WebGLRenderer.
    *
    * @return {GPURenderer}
    */
   ensurePointUpdatesAreRendered() {
+    //for(let k in this.geometry.attributes)
+    //    this.geometry.attributes[k].data.needsUpdate = true;
     Object.keys(this.geometry.attributes).map(attribute => {
       this.geometry.attributes[attribute].data.needsUpdate = true;
     });
@@ -230,3 +265,13 @@ export default class GPURenderer extends BaseRenderer {
     return this;
   }
 }
+
+GPURenderer.getTextureID = (renderer, tex) => {
+  if (tex.textureIndex === undefined) {
+    let atlas = GPURenderer.textureAtlas;
+    if (!atlas) atlas = GPURenderer.textureAtlas = new TextureAtlas(renderer);
+    //Add to atlas here...
+    atlas.addTexture(tex);
+  }
+  return tex.textureIndex;
+};
