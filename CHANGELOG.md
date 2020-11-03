@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v7.0.0` - 2020-11-03
+
+### Fixed
+
+- The `fromJSONAsync` function can now take an options arg, but it was defaulting `shouldAutoEmit` for the system to `false`. This was actually a mistake, it should have been defaulting it to `true`.
+
 ## `v6.0.5` - 2020-11-03
 
 ### Changed
