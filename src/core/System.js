@@ -102,12 +102,11 @@ export default class System {
    *
    * @param {object} json - The JSON to create the System instance from
    * @param {object} THREE - The Web GL Api to use eg., THREE
-   * @param {object} [options={}] - Optional config options
-   * @param {boolean} [options.shouldAutoEmit=true] - Determines if the system should automatically emit particles
+   * @param {?object} options - Optional config options
    * @return {Promise<System>}
    */
-  static fromJSONAsync(json, THREE, { shouldAutoEmit = false } = {}) {
-    return fromJSONAsync(json, THREE, System, Emitter, { shouldAutoEmit });
+  static fromJSONAsync(json, THREE, options) {
+    return fromJSONAsync(json, THREE, System, Emitter, options);
   }
 
   /**

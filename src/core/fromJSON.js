@@ -74,6 +74,8 @@ const makeBehaviours = items => {
 /**
  * Creates a System instance from a JSON object.
  *
+ * @deprecated Use fromJSONAsync instead.
+ *
  * @param {object} json - The JSON to create the System instance from
  * @param {object} THREE - The Web GL Api to use
  * @param {function} System - The system class
