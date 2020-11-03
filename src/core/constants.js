@@ -115,7 +115,7 @@ export const DEFAULT_EASING = easeLinear;
  * @desc The default delta provided to the System instance
  * @type {number}
  */
-export const DEFAULT_SYSTEM_DELTA = 0.001;//0.0167;
+export const DEFAULT_SYSTEM_DELTA = 0.0167;
 
 /**
  * @desc The types of initializers supported by the System.fromJSON method.
