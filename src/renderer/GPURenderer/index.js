@@ -61,6 +61,15 @@ export default class GPURenderer extends BaseRenderer {
     container.add(this.points);
   }
 
+  onSystemUpdate(system) {
+    super.onSystemUpdate(system)
+    //this.text
+
+    //Doing this here instead of per particle took rendertime as optimization saved ~4 msec
+    this.buffer.needsUpdate = true; 
+
+  } // eslint-disable-line
+
   /**
    * Pools the particle target if it does not exist.
    * Updates the target and maps particle properties to the point.
@@ -144,7 +153,7 @@ export default class GPURenderer extends BaseRenderer {
       .updatePointColor(particle)
       .updatePointAlpha(particle)
       .updatePointTextureIndex(particle)
-      .ensurePointUpdatesAreRendered();
+      //.ensurePointUpdatesAreRendered();
 
     return this;
   }
@@ -244,6 +253,8 @@ export default class GPURenderer extends BaseRenderer {
    * @return {GPURenderer}
    */
   ensurePointUpdatesAreRendered() {
+    //for(let k in this.geometry.attributes)
+    //    this.geometry.attributes[k].data.needsUpdate = true;     
     Object.keys(this.geometry.attributes).map(attribute => {
       this.geometry.attributes[attribute].data.needsUpdate = true;
     });

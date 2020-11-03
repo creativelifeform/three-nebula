@@ -264,7 +264,8 @@ export default class Particle {
       while (i--) {
         let behaviour = this.behaviours[i];
 
-        behaviour && behaviour.applyBehaviour(this, time, index);
+        //behaviour && 
+        behaviour.applyBehaviour(this, time, index);
       }
     }
 

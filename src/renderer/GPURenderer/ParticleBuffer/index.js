@@ -34,7 +34,8 @@ export default class ParticleBuffer {
       new Float32Array(arrayBuffer),
       PARTICLE_BYTE_SIZE
     );
-
+   // this.interleavedBuffer.usage = THREE.DynamicDrawUsage;
+    
     return this;
   }
 
