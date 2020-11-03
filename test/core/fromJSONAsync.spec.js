@@ -133,6 +133,16 @@ describe('fromJSONAsync', () => {
     emitSpy.restore();
   });
 
+  it('should default to shouldAutoEmit is true', async () => {
+    const emitSpy = spy(Emitter.prototype, 'emit');
+
+    await Particles.fromJSONAsync(eightdiagrams, THREE);
+
+    assert(emitSpy.called);
+
+    emitSpy.restore();
+  });
+
   it("should not ever call an emitter's emit method if shouldAutoEmit option is false", async () => {
     const emitSpy = spy(Emitter.prototype, 'emit');
 
