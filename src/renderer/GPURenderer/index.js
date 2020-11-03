@@ -357,45 +357,13 @@ class TextureAtlas
         this.entries = [];
 
         let data = this.indexData = new Float32Array(256*4)
-        for(let i=0;i<data.length;i+=4){
-            data[i+0]=0
-            data[i+1]=0
-            data[i+2]=data[i+0]+1;
-            data[i+3]=data[i+1]+1;
-        }
-
-        data[0]=0
-        data[1]=0
-        data[2]=.5;
-        data[3]=.5;
-
-
-        data[4]=.5
-        data[5]=.5
-        data[6]=1.;
-        data[7]=1.;
-
-        data[8]=0
-        data[9]=.5
-        data[10]=.5;
-        data[11]=1.;
-
-        data[12]=.5
-        data[13]=.0
-        data[14]=.5;
-        data[15]=.5;
-
-        data[16]=0
-        data[17]=0
-        data[18]=1;
-        data[19]=1;
-
-
 
         this.atlasIndex = new THREE.DataTexture( data, 256,1, THREE.RGBAFormat, THREE.FloatType);
  
         let ctx = this.ctx = document.createElement('canvas').getContext('2d')
-        ctx.canvas.width=ctx.canvas.height=MAX_TEX;
+        let canv = ctx.canvas;
+        canv.width=canv.height=MAX_TEX;
+/*  //DEBUG SHOW TEXTURE ATLAS
         ctx.fillStyle='purple'
         let halfmax = MAX_TEX/2
         ctx.fillRect(0,0,halfmax,halfmax);
@@ -411,26 +379,23 @@ class TextureAtlas
         ctx.fillStyle='pink'
         ctx.fillText("CHUNKY",100,1500)
 
-        let canv = ctx.canvas;
         canv.style.position = "absolute"
         canv.style.width=canv.style.height="300px"
         canv.style.left = canv.style.top = "0px"
         canv.style.zIndex = 100;
         document.body.appendChild(canv);
-
-        this.atlasTexture = new THREE.CanvasTexture(ctx.canvas); // tex;//
+*/
+        this.atlasTexture = new THREE.CanvasTexture(ctx.canvas);
         this.atlasTexture.flipY = false;
-        renderer.material.uniforms.uTexture.value=this.atlasTexture;// = { value: particle.target.texture };
-        renderer.material.uniforms.atlasIndex.value=this.atlasIndex;// = { value: particle.target.texture };
+        renderer.material.uniforms.uTexture.value=this.atlasTexture;
+        renderer.material.uniforms.atlasIndex.value=this.atlasIndex;
         renderer.material.uniformsNeedUpdate = true;
-
-
     }
     addTexture(tex){
         console.log("Adding texture to atlas:",tex.uuid,tex.image.width,tex.image.height);
         tex.textureIndex = this.entries.length;
         this.entries.push({texture:tex,h:tex.image.height,w:tex.image.width})
-        
+                
         let stats = potpack(this.entries);
         for(let i=0,ii=0;i<this.entries.length;i++,ii+=4){
             let e= this.entries[i];
@@ -442,16 +407,16 @@ class TextureAtlas
             this.atlasIndex.needsUpdate = true;
             this.atlasTexture.needsUpdate = true;
         }
+        console.log("Rebuilt atlas:",stats);
     }
 }
 
 GPURenderer.getTextureID=(renderer,tex)=>{
     if(tex.textureIndex===undefined){
-        if(!GPURenderer.textureAtlas){
-            GPURenderer.textureAtlas = new TextureAtlas(renderer);
-        }
-        //Add to atlas here...
         let atlas = GPURenderer.textureAtlas;
+        if(!atlas)
+            atlas = GPURenderer.textureAtlas = new TextureAtlas(renderer);
+        //Add to atlas here...
         atlas.addTexture(tex)
     }
     return tex.textureIndex;
