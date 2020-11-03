@@ -37,7 +37,8 @@ export default class GPURenderer extends BaseRenderer {
     const material = new THREE.ShaderMaterial({
       uniforms: {
         baseColor: { value: new THREE.Color(baseColor) },
-        texture: { value: null },
+        uTexture: { value: null },
+        atlasIndex: { value: null },
       },
       vertexShader: vertexShader(),
       fragmentShader: fragmentShader(),
@@ -110,6 +111,7 @@ export default class GPURenderer extends BaseRenderer {
    * @param {Particle}
    * @return {GPURenderer}
    */
+
   updateTarget(particle) {
     const { position, scale, radius, color, alpha, body, id } = particle;
     const { r, g, b } = color;
@@ -121,8 +123,10 @@ export default class GPURenderer extends BaseRenderer {
     particle.target.index = this.uniqueList.find(id);
 
     if (body && body instanceof THREE.Sprite) {
-      particle.target.texture = body.material.map;
-      this.material.uniforms.texture = { value: particle.target.texture };
+        let map = body.material.map;
+      particle.target.texture = map;
+
+      particle.target.textureIndex = GPURenderer.getTextureID(this,map);
     }
 
     return this;
@@ -139,6 +143,7 @@ export default class GPURenderer extends BaseRenderer {
       .updatePointSize(particle)
       .updatePointColor(particle)
       .updatePointAlpha(particle)
+      .updatePointTextureIndex(particle)
       .ensurePointUpdatesAreRendered();
 
     return this;
@@ -217,6 +222,23 @@ export default class GPURenderer extends BaseRenderer {
   }
 
   /**
+   * Updates the point texture attribute with the particle's target texture.
+   *
+   * @param {Particle} particle - The particle containing the target texture.
+   * @return {GPURenderer}
+   */
+  updatePointTextureIndex(particle) {
+    const attribute = 'texID';
+    const { geometry, stride, buffer } = this;
+    const { target } = particle;
+    const { offset } = geometry.attributes[attribute];
+
+    buffer.array[target.index * stride + offset + 0] = target.textureIndex;
+
+    return this;
+  }
+
+  /**
    * Ensures that all attribute updates are marked as needing updates from the WebGLRenderer.
    *
    * @return {GPURenderer}
@@ -229,3 +251,71 @@ export default class GPURenderer extends BaseRenderer {
     return this;
   }
 }
+
+
+GPURenderer.atlasCount = 0;
+
+let atlasRects = []
+
+GPURenderer.getTextureID=(renderer,tex)=>{
+    if(tex.textureIndex===undefined){
+
+          //map.textureIndex = GPURenderer.getTextureID GPURenderer.atlasCount++;
+          //Add to atlas here...
+
+
+        if(!GPURenderer.atlasIndex){
+            let data = new Float32Array(256*4)
+            for(let i=0;i<data.length;i+=4){
+                data[i+0]=0
+                data[i+1]=0
+                data[i+2]=data[i+0]+1;
+                data[i+3]=data[i+1]+1;
+            }
+
+            data[0]=0
+            data[1]=0
+            data[2]=.5;
+            data[3]=.5;
+
+
+                data[4]=.5
+                data[5]=.5
+                data[6]=1.;
+                data[7]=1.;
+
+
+
+            GPURenderer.atlasIndex = new THREE.DataTexture( data, 256,1, THREE.RGBAFormat, THREE.FloatType);
+            let id = GPURenderer.atlasCount;
+
+            let ctx = document.createElement('canvas').getContext('2d')
+            ctx.canvas.width=ctx.canvas.height=2048;
+            ctx.fillStyle='purple'
+            ctx.fillRect(0,0,1024,1024);
+            ctx.fillStyle='green'
+            ctx.fillRect(0,1024,1024,1024);
+            ctx.fillStyle='blue'
+            ctx.fillRect(1024,0,1024,1024);
+            ctx.fillStyle='orange'
+            ctx.fillRect(1024,1024,1024,1024);
+            ctx.fillStyle='yellow'
+            ctx.font = "600px Verdana";
+            ctx.fillText("TOPPY",100,500)
+            ctx.fillStyle='pink'
+            ctx.fillText("CHUNKY",100,1500)
+
+            GPURenderer.atlasTexture = new THREE.CanvasTexture(ctx.canvas); // tex;//
+            GPURenderer.atlasTexture.flipY = false;
+            renderer.material.uniforms.uTexture.value=GPURenderer.atlasTexture;// = { value: particle.target.texture };
+            renderer.material.uniforms.atlasIndex.value=GPURenderer.atlasIndex;// = { value: particle.target.texture };
+            renderer.material.uniformsNeedUpdate = true;
+        }
+        console.log("Adding texture to atlas:",tex.uuid);
+
+        tex.textureIndex = GPURenderer.atlasCount++;
+
+    }
+    return tex.textureIndex;
+}
+
