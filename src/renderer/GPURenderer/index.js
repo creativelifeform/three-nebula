@@ -42,8 +42,8 @@ export default class GPURenderer extends BaseRenderer {
         uTexture: { value: null },
         atlasIndex: { value: null },
       },
-      vertexShader: vertexShader(),//.split('\n').filter(e=>!e.endsWith("//GPU")).join('\n'),
-      fragmentShader: fragmentShader(),//.split('\n').filter(e=>!e.endsWith("//GPU")).join('\n'),
+      vertexShader: vertexShader(),         //.split('\n').filter(e=>!e.endsWith("//GPU")).join('\n'),   --use these to disable texture atlas code in shaders..
+      fragmentShader: fragmentShader(),     //.split('\n').filter(e=>!e.endsWith("//GPU")).join('\n'),
       blending: THREE[blending],
       depthTest,
       depthWrite,
@@ -59,6 +59,8 @@ export default class GPURenderer extends BaseRenderer {
     this.geometry = particleBuffer.geometry;
     this.material = material;
     this.points = new THREE.Points(this.geometry, this.material);
+
+this.points.frustumCulled = false;
 
     container.add(this.points);
   }
@@ -264,9 +266,6 @@ export default class GPURenderer extends BaseRenderer {
     return this;
   }
 }
-
-
-
 
 
 GPURenderer.getTextureID=(renderer,tex)=>{
