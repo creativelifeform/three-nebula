@@ -1,5 +1,6 @@
 import { Target, UniqueList } from './stores';
 import { fragmentShader, vertexShader } from './shaders';
+
 import BaseRenderer from '../BaseRenderer';
 import { DEFAULT_RENDERER_OPTIONS } from './constants';
 import ParticleBuffer from './ParticleBuffer';
@@ -37,7 +38,7 @@ export default class GPURenderer extends BaseRenderer {
     const material = new THREE.ShaderMaterial({
       uniforms: {
         baseColor: { value: new THREE.Color(baseColor) },
-        texture: { value: null },
+        uTexture: { value: null },
       },
       vertexShader: vertexShader(),
       fragmentShader: fragmentShader(),
@@ -122,7 +123,7 @@ export default class GPURenderer extends BaseRenderer {
 
     if (body && body instanceof THREE.Sprite) {
       particle.target.texture = body.material.map;
-      this.material.uniforms.texture = { value: particle.target.texture };
+      this.material.uniforms.uTexture = { value: particle.target.texture };
     }
 
     return this;
