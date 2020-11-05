@@ -14,7 +14,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://github.com/creativelifeform/three-nebula/actions?query=workflow%3Aci"><img src="https://github.com/creativelifeform/three-nebula/workflows/ci/badge.svg"></a>
   <a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg"></a>
-  <a href="https://threejs.org"><img src="https://img.shields.io/badge/three-v0.112.0-%230C7BB8"></a>
+  <a href="https://threejs.org"><img src="https://img.shields.io/badge/three-v0.122.0-%230C7BB8"></a>
   <a href="https://spectrum.chat/nebula"><img src="https://img.shields.io/badge/spectrum-chat-%237816F9"></a>
 </p>
 
@@ -26,7 +26,7 @@
 
 ## Features
 
-- Perfect compatibility with [`three@0.112.0`](https://github.com/mrdoob/three.js)
+- Perfect compatibility with [`three@0.122.0`](https://github.com/mrdoob/three.js)
 - The ability to instantiate `three-nebula` particle systems from JSON objects
 - The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers
