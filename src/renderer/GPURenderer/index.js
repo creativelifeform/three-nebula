@@ -136,6 +136,7 @@ export default class GPURenderer extends BaseRenderer {
 
     if (body && body instanceof THREE.Sprite) {
       let map = body.material.map;
+
       particle.target.texture = map;
 
       particle.target.textureIndex = GPURenderer.getTextureID(this, map);
@@ -269,9 +270,11 @@ export default class GPURenderer extends BaseRenderer {
 GPURenderer.getTextureID = (renderer, tex) => {
   if (tex.textureIndex === undefined) {
     let atlas = GPURenderer.textureAtlas;
+
     if (!atlas) atlas = GPURenderer.textureAtlas = new TextureAtlas(renderer);
     //Add to atlas here...
     atlas.addTexture(tex);
   }
+
   return tex.textureIndex;
 };

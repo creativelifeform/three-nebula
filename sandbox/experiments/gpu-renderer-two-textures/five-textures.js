@@ -29,7 +29,7 @@ window.SYSTEM = {
         },
         rate: {
           particlesMin: 1,
-          particlesMax: 15,
+          particlesMax: 5,
           perSecondMin: 0.01,
           perSecondMax: 0.02,
         },
@@ -196,7 +196,7 @@ window.SYSTEM = {
         },
         rate: {
           particlesMin: 1,
-          particlesMax: 15,
+          particlesMax: 5,
           perSecondMin: 0.01,
           perSecondMax: 0.02,
         },
@@ -363,7 +363,7 @@ window.SYSTEM = {
         },
         rate: {
           particlesMin: 1,
-          particlesMax: 15,
+          particlesMax: 5,
           perSecondMin: 0.01,
           perSecondMax: 0.02,
         },
