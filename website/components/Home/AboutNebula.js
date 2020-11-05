@@ -40,7 +40,9 @@ const AboutNebula = ({
         </GridItemDetails>
       </GridItem>
       <GridItem>
-        <GridItemMedia src="/nebula-app.png" alt="Nebula" />
+        <a href={HREF_NEBULA}>
+          <GridItemMedia src="/nebula-app.png" alt="Nebula" />
+        </a>
       </GridItem>
     </Grid>
   </Content>
