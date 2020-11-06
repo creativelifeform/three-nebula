@@ -70,7 +70,9 @@ this.points.frustumCulled = false;
     //this.text
 
     //Doing this here instead of per particle took rendertime as optimization saved ~4 msec
-    this.buffer.needsUpdate = true; 
+    this.buffer.needsUpdate = true;
+
+    GPURenderer.textureAtlas && GPURenderer.textureAtlas.update()
 
   } // eslint-disable-line
 

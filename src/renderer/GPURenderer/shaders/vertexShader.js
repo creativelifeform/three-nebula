@@ -1,4 +1,4 @@
-const SIZE_ATTENUATION_FACTOR = '1600.0';
+const SIZE_ATTENUATION_FACTOR = '600.0';
 
 export const vertexShader = () => {
   return `
@@ -29,9 +29,17 @@ export const vertexShader = () => {
     
       tileID = texID;                                               //GPU
       //get the tile rectangle from the atlasIndex texture..
-      tileRect = texture2D(atlasIndex,vec2((texID+.5)/256.,.5));    //GPU
 
-      gl_PointSize = size * (${SIZE_ATTENUATION_FACTOR} / -mvPosition.z);
+      
+      tileRect = texture2D(atlasIndex,vec2((tileID+.5)/256.,.5));    //GPU
+
+//	vec2 scale;
+//	scale.x = length( vec3( modelMatrix[ 0 ].x, modelMatrix[ 0 ].y, modelMatrix[ 0 ].z ) );
+//	scale.y = length( vec3( modelMatrix[ 1 ].x, modelMatrix[ 1 ].y, modelMatrix[ 1 ].z ) );
+
+
+      gl_PointSize = ((size*${SIZE_ATTENUATION_FACTOR}) / -mvPosition.z); // (${SIZE_ATTENUATION_FACTOR} / -mvPosition.z);
+
       gl_Position = projectionMatrix * mvPosition;
     }
 `;

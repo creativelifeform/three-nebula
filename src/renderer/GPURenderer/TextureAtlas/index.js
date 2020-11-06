@@ -43,10 +43,22 @@ export default class TextureAtlas
         renderer.material.uniformsNeedUpdate = true;
     }
     addTexture(tex){
-        console.log("Adding texture to atlas:",tex.uuid,tex.image.width,tex.image.height);
+        console.log("Adding texture to atlas:",tex.uuid);
         tex.textureIndex = this.entries.length;
-        this.entries.push({texture:tex,h:tex.image.height,w:tex.image.width})
-        
+        this.entries.push({texture:tex})
+        this.needsUpdate = true;
+    }
+    update(){
+        if( ! this.needsUpdate ) return
+        //Only rebuild if all images are loaded..
+        for(let i=0;i<this.entries.length;i++)if(!this.entries[i].texture.image) return
+        this.needsUpdate = false;
+        for(let i=0;i<this.entries.length;i++){
+            let e=this.entries[i]
+            let tex = e.texture;
+            e.w=tex.image.width;
+            e.h=tex.image.height;
+        }
         let stats = potpack(this.entries);
         console.log("Rebuilt atlas:",stats);
         let canv = this.ctx.canvas;
