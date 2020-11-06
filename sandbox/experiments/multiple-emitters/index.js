@@ -82,7 +82,6 @@ window.init = async ({ scene, camera, renderer }) => {
   });
   //const systemRenderer = new SpriteRenderer(scene, THREE);
   const systemRenderer = new GPURenderer(scene, THREE);
-  // const systemRenderer = new window.PointsRenderer(scene);
 
   animateEmitters(emitterA, emitterB);
 

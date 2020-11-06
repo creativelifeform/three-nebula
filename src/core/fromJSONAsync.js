@@ -11,6 +11,8 @@ import {
 import Rate from '../initializer/Rate';
 import TextureInitializer from '../initializer/Texture';
 
+const DEFAULT_OPTIONS = { shouldAutoEmit: true };
+
 /**
  * Makes a rate instance.
  *
@@ -202,11 +204,10 @@ const makeEmitters = (emitters, Emitter, THREE, shouldAutoEmit) =>
  * @param {object} THREE - The Web GL Api to use
  * @param {function} System - The system class
  * @param {function} Emitter - The emitter class
- * @param {object} options - Optional config options
- * @param {boolean} [options.shouldAutoEmit=true] - Determines if the system should automatically emit particles
+ * @param {object} [options={}] - Optional config options
  * @return {Promise<System>}
  */
-export default (json, THREE, System, Emitter, { shouldAutoEmit = true } = {}) =>
+export default (json, THREE, System, Emitter, options = {}) =>
   new Promise((resolve, reject) => {
     const {
       preParticles = POOL_MAX,
@@ -214,6 +215,7 @@ export default (json, THREE, System, Emitter, { shouldAutoEmit = true } = {}) =>
       emitters = [],
     } = json;
     const system = new System(preParticles, integrationType);
+    const { shouldAutoEmit } = { ...DEFAULT_OPTIONS, ...options };
 
     makeEmitters(emitters, Emitter, THREE, shouldAutoEmit)
       .then(madeEmitters => {

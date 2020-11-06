@@ -1,12 +1,14 @@
 import { Target, UniqueList } from './stores';
 import { fragmentShader, vertexShader } from './shaders';
+
 import BaseRenderer from '../BaseRenderer';
 import { DEFAULT_RENDERER_OPTIONS } from './constants';
 import ParticleBuffer from './ParticleBuffer';
 import { Pool } from '../../core';
 import { RENDERER_TYPE_GPU } from '../types';
-
 import TextureAtlas from './TextureAtlas';
+
+
 
 let THREE;
 
@@ -60,19 +62,19 @@ export default class GPURenderer extends BaseRenderer {
     this.material = material;
     this.points = new THREE.Points(this.geometry, this.material);
 
-this.points.frustumCulled = false;
+    this.points.frustumCulled = false;
 
     container.add(this.points);
   }
 
   onSystemUpdate(system) {
-    super.onSystemUpdate(system)
+    super.onSystemUpdate(system);
     //this.text
 
     //Doing this here instead of per particle took rendertime as optimization saved ~4 msec
     this.buffer.needsUpdate = true;
 
-    GPURenderer.textureAtlas && GPURenderer.textureAtlas.update()
+    GPURenderer.textureAtlas && GPURenderer.textureAtlas.update();
 
   } // eslint-disable-line
 
@@ -138,10 +140,11 @@ this.points.frustumCulled = false;
     particle.target.index = this.uniqueList.find(id);
 
     if (body && body instanceof THREE.Sprite) {
-        let map = body.material.map;
+      let map = body.material.map;
+
       particle.target.texture = map;
 
-      particle.target.textureIndex = GPURenderer.getTextureID(this,map);
+      particle.target.textureIndex = GPURenderer.getTextureID(this, map);
     }
 
     return this;
@@ -158,8 +161,8 @@ this.points.frustumCulled = false;
       .updatePointSize(particle)
       .updatePointColor(particle)
       .updatePointAlpha(particle)
-      .updatePointTextureIndex(particle)
-      //.ensurePointUpdatesAreRendered();
+      .updatePointTextureIndex(particle);
+    //.ensurePointUpdatesAreRendered();
 
     return this;
   }
@@ -260,7 +263,7 @@ this.points.frustumCulled = false;
    */
   ensurePointUpdatesAreRendered() {
     //for(let k in this.geometry.attributes)
-    //    this.geometry.attributes[k].data.needsUpdate = true;     
+    //    this.geometry.attributes[k].data.needsUpdate = true;
     Object.keys(this.geometry.attributes).map(attribute => {
       this.geometry.attributes[attribute].data.needsUpdate = true;
     });
@@ -271,12 +274,14 @@ this.points.frustumCulled = false;
 
 
 GPURenderer.getTextureID=(renderer,tex)=>{
-    if(tex.textureIndex===undefined){
-        let atlas = GPURenderer.textureAtlas;
-        if(!atlas)
-            atlas = GPURenderer.textureAtlas = new TextureAtlas(renderer);
-        //Add to atlas here...
-        atlas.addTexture(tex)
-    }
-    return tex.textureIndex;
-}
+  if(tex.textureIndex===undefined){
+    let atlas = GPURenderer.textureAtlas;
+
+    if(!atlas)
+      atlas = GPURenderer.textureAtlas = new TextureAtlas(renderer);
+    //Add to atlas here...
+    atlas.addTexture(tex);
+  }
+  
+  return tex.textureIndex;
+};
