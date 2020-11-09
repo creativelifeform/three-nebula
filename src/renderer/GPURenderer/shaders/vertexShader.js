@@ -1,4 +1,4 @@
-const SIZE_ATTENUATION_FACTOR = '1600.0';
+import { SIZE_ATTENUATION_FACTOR } from './constants';
 
 export const vertexShader = () => {
   return `
@@ -20,17 +20,17 @@ export const vertexShader = () => {
 
     varying vec4  tileRect;                                         //GPU
     varying float  tileID;                                          //GPU
-    
+
     void main() {
-      
+
       vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
       targetColor = color;
       targetAlpha = alpha;
-    
+
       tileID = texID;                                               //GPU
       //get the tile rectangle from the atlasIndex texture..
 
-      
+
       tileRect = texture2D(atlasIndex,vec2((tileID+.5)/256.,.5));    //GPU
 
 //	vec2 scale;
