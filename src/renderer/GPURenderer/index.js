@@ -13,6 +13,7 @@ let THREE;
 /**
  * Performant particle renderer that uses THREE.Points to propagate particle (postiion, rgba etc.,) properties to
  * vertices in a ParticleBufferGeometry.
+ * Uses a dynamic texture atlas to support systems with mutliple sprites in a performant way.
  *
  * NOTE! This is an experimental renderer and is currently not covered by tests, coverage will be added when the API
  * is more stable. Currently only compatible with sprite/texture based systems. Meshes are not yet supported.
@@ -122,7 +123,6 @@ export default class GPURenderer extends BaseRenderer {
    * @param {Particle}
    * @return {GPURenderer}
    */
-
   updateTarget(particle) {
     const { position, scale, radius, color, alpha, body, id } = particle;
     const { r, g, b } = color;
@@ -244,19 +244,6 @@ export default class GPURenderer extends BaseRenderer {
     const { offset } = geometry.attributes[attribute];
 
     buffer.array[target.index * stride + offset + 0] = target.textureIndex;
-
-    return this;
-  }
-
-  /**
-   * Ensures that all attribute updates are marked as needing updates from the WebGLRenderer.
-   *
-   * @return {GPURenderer}
-   */
-  ensurePointUpdatesAreRendered() {
-    Object.keys(this.geometry.attributes).map(attribute => {
-      this.geometry.attributes[attribute].data.needsUpdate = true;
-    });
 
     return this;
   }
