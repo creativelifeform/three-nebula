@@ -8,8 +8,6 @@ import { Pool } from '../../core';
 import { RENDERER_TYPE_GPU } from '../types';
 import TextureAtlas from './TextureAtlas';
 
-
-
 let THREE;
 
 /**
@@ -44,8 +42,8 @@ export default class GPURenderer extends BaseRenderer {
         uTexture: { value: null },
         atlasIndex: { value: null },
       },
-      vertexShader: vertexShader(),         //.split('\n').filter(e=>!e.endsWith("//GPU")).join('\n'),   --use these to disable texture atlas code in shaders..
-      fragmentShader: fragmentShader(),     //.split('\n').filter(e=>!e.endsWith("//GPU")).join('\n'),
+      vertexShader: vertexShader(),
+      fragmentShader: fragmentShader(),
       blending: THREE[blending],
       depthTest,
       depthWrite,
@@ -61,7 +59,6 @@ export default class GPURenderer extends BaseRenderer {
     this.geometry = particleBuffer.geometry;
     this.material = material;
     this.points = new THREE.Points(this.geometry, this.material);
-
     this.points.frustumCulled = false;
 
     container.add(this.points);
@@ -69,14 +66,11 @@ export default class GPURenderer extends BaseRenderer {
 
   onSystemUpdate(system) {
     super.onSystemUpdate(system);
-    //this.text
 
-    //Doing this here instead of per particle took rendertime as optimization saved ~4 msec
     this.buffer.needsUpdate = true;
 
     GPURenderer.textureAtlas && GPURenderer.textureAtlas.update();
-
-  } // eslint-disable-line
+  }
 
   /**
    * Pools the particle target if it does not exist.
@@ -140,10 +134,9 @@ export default class GPURenderer extends BaseRenderer {
     particle.target.index = this.uniqueList.find(id);
 
     if (body && body instanceof THREE.Sprite) {
-      let map = body.material.map;
+      const { map } = body.material;
 
       particle.target.texture = map;
-
       particle.target.textureIndex = GPURenderer.getTextureID(this, map);
     }
 
@@ -162,7 +155,6 @@ export default class GPURenderer extends BaseRenderer {
       .updatePointColor(particle)
       .updatePointAlpha(particle)
       .updatePointTextureIndex(particle);
-    //.ensurePointUpdatesAreRendered();
 
     return this;
   }
@@ -262,8 +254,6 @@ export default class GPURenderer extends BaseRenderer {
    * @return {GPURenderer}
    */
   ensurePointUpdatesAreRendered() {
-    //for(let k in this.geometry.attributes)
-    //    this.geometry.attributes[k].data.needsUpdate = true;
     Object.keys(this.geometry.attributes).map(attribute => {
       this.geometry.attributes[attribute].data.needsUpdate = true;
     });
@@ -272,16 +262,16 @@ export default class GPURenderer extends BaseRenderer {
   }
 }
 
-
-GPURenderer.getTextureID=(renderer,tex)=>{
-  if(tex.textureIndex===undefined){
+GPURenderer.getTextureID = (renderer, texture) => {
+  if (texture.textureIndex === undefined) {
     let atlas = GPURenderer.textureAtlas;
 
-    if(!atlas)
+    if (!atlas) {
       atlas = GPURenderer.textureAtlas = new TextureAtlas(renderer);
-    //Add to atlas here...
-    atlas.addTexture(tex);
+    }
+
+    atlas.addTexture(texture);
   }
-  
-  return tex.textureIndex;
+
+  return texture.textureIndex;
 };
