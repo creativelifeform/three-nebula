@@ -260,7 +260,7 @@ new System.fromJSONAsync(json, THREE).then(system => {
 If you are adding `three-nebula` to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so
 
 ```javascript
-const { System, Emitter, Rate, Span } = window.System;
+const { System, Emitter, Rate, Span } = window.Nebula;
 const system = new System();
 ```
 
