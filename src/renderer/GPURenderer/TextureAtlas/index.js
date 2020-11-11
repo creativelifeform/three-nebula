@@ -1,6 +1,6 @@
 import { DATA_TEXTURE_SIZE } from './constants';
 import { __DEV__ } from '../../../constants';
-import { potpack } from './utils';
+import potpack from 'potpack';
 
 /**
  * Dynamic texture atlas for performant support of systems with multiple emitters and textures.
