@@ -30,8 +30,8 @@
     "lint:fix": "eslint --fix",
     "coverage": "npm run coverage:generate && npm run coverage:report",
     "coverage:view": "open ./coverage/lcov-report/index.html",
-    "coverage:generate": "nyc --exclude ['src/core/three/*.js','src/debug/*.js','src/renderer/GPURenderer/**/*.js'] mocha './test/**/*.spec.js' -- --require @babel/register",
-    "coverage:report": "nyc report --reporter=lcov --exclude ['src/core/three/*.js','src/debug/*.js','src/renderer/GPURenderer/**/*.js']",
+    "coverage:generate": "nyc mocha './test/**/*.spec.js' -- --require @babel/register",
+    "coverage:report": "nyc report --reporter=lcov",
     "git:publish": "./scripts/publish",
     "ci:src": "npm run lint && npm run test && npm run coverage",
     "ci:bundlesize": "./scripts/check-bundlesize",
@@ -58,6 +58,7 @@
   "homepage": "https://github.com/creativelifeform/three-nebula#readme",
   "dependencies": {
     "lodash": "^4.17.19",
+    "potpack": "^1.0.1",
     "uuid": "^3.3.2"
   },
   "peerDependencies": {
