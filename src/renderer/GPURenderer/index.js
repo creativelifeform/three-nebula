@@ -35,6 +35,7 @@ export default class GPURenderer extends BaseRenderer {
       depthTest,
       depthWrite,
       transparent,
+      shouldDebugTextureAtlas,
     } = props;
     const particleBuffer = new ParticleBuffer(maxParticles, THREE);
     const material = new THREE.ShaderMaterial({
@@ -61,6 +62,7 @@ export default class GPURenderer extends BaseRenderer {
     this.material = material;
     this.points = new THREE.Points(this.geometry, this.material);
     this.points.frustumCulled = false;
+    this.shouldDebugTextureAtlas = shouldDebugTextureAtlas;
 
     container.add(this.points);
   }
@@ -137,7 +139,11 @@ export default class GPURenderer extends BaseRenderer {
       const { map } = body.material;
 
       particle.target.texture = map;
-      particle.target.textureIndex = GPURenderer.getTextureID(this, map);
+      particle.target.textureIndex = GPURenderer.getTextureID(
+        this,
+        map,
+        this.shouldDebugTextureAtlas
+      );
     }
 
     return this;
@@ -249,12 +255,12 @@ export default class GPURenderer extends BaseRenderer {
   }
 }
 
-GPURenderer.getTextureID = (renderer, texture) => {
+GPURenderer.getTextureID = (renderer, texture, debug) => {
   if (texture.textureIndex === undefined) {
     let atlas = GPURenderer.textureAtlas;
 
     if (!atlas) {
-      atlas = GPURenderer.textureAtlas = new TextureAtlas(renderer);
+      atlas = GPURenderer.textureAtlas = new TextureAtlas(renderer, debug);
     }
 
     atlas.addTexture(texture);

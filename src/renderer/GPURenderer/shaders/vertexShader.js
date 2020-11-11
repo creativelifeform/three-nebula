@@ -1,3 +1,4 @@
+import { DATA_TEXTURE_SIZE } from '../TextureAtlas/constants';
 import { SIZE_ATTENUATION_FACTOR } from './constants';
 
 export const vertexShader = () => {
@@ -23,7 +24,7 @@ export const vertexShader = () => {
 
       tileID = texID; //GPU
       //get the tile rectangle from the atlasIndex texture..
-      tileRect = texture2D(atlasIndex, vec2((tileID + 0.5) / 256.0, 0.5)); //GPU
+      tileRect = texture2D(atlasIndex, vec2((tileID + 0.5) / ${DATA_TEXTURE_SIZE}.0, 0.5)); //GPU
 
       gl_PointSize = ((size*${SIZE_ATTENUATION_FACTOR}) / -mvPosition.z);
       gl_Position = projectionMatrix * mvPosition;

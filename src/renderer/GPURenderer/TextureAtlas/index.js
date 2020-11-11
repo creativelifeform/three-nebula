@@ -2,6 +2,10 @@ import { DATA_TEXTURE_SIZE } from './constants';
 import { __DEV__ } from '../../../constants';
 import { potpack } from './utils';
 
+/**
+ * Dynamic texture atlas for performant support of systems with multiple emitters and textures.
+ *
+ */
 export default class TextureAtlas {
   constructor(renderer, debug) {
     const { three: THREE } = renderer;
@@ -33,6 +37,10 @@ export default class TextureAtlas {
     renderer.material.uniformsNeedUpdate = true;
   }
 
+  /**
+   * Logs to the console when in dev mode.
+   *
+   */
   log(...args) {
     if (!__DEV__) {
       return;
@@ -42,7 +50,7 @@ export default class TextureAtlas {
   }
 
   /**
-   * Debugs the texture atlas by rendering it explicitly.
+   * Debugs the texture atlas by rendering it to a canvas in the DOM.
    *
    */
   debug() {
@@ -71,6 +79,10 @@ export default class TextureAtlas {
     document.body.appendChild(canvas);
   }
 
+  /**
+   * Adds a texture to the texture atlas and flags that the atlas needs to be updated.
+   *
+   */
   addTexture(texture) {
     this.log('Adding texture to atlas:', texture.uuid);
 
