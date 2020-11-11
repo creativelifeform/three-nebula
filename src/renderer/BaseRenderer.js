@@ -6,6 +6,7 @@ import {
 } from '../events/constants';
 
 import { RENDERER_TYPE_BASE } from './types';
+import { __DEV__ } from '../constants';
 
 export default class BaseRenderer {
   constructor(type = RENDERER_TYPE_BASE) {
@@ -78,19 +79,7 @@ export default class BaseRenderer {
    * @return void
    */
   logRendererType() {
-    if (!process) {
-      return;
-    }
-
-    if (!process.env) {
-      return;
-    }
-
-    if (!process.env.NODE_ENV) {
-      return;
-    }
-
-    if (process.env.NODE_ENV !== 'development') {
+    if (!__DEV__) {
       return;
     }
 

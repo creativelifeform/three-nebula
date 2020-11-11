@@ -6,12 +6,14 @@ import { DEFAULT_RENDERER_OPTIONS } from './constants';
 import ParticleBuffer from './ParticleBuffer';
 import { Pool } from '../../core';
 import { RENDERER_TYPE_GPU } from '../types';
+import TextureAtlas from './TextureAtlas';
 
 let THREE;
 
 /**
  * Performant particle renderer that uses THREE.Points to propagate particle (postiion, rgba etc.,) properties to
  * vertices in a ParticleBufferGeometry.
+ * Uses a dynamic texture atlas to support systems with mutliple sprites in a performant way.
  *
  * NOTE! This is an experimental renderer and is currently not covered by tests, coverage will be added when the API
  * is more stable. Currently only compatible with sprite/texture based systems. Meshes are not yet supported.
@@ -23,7 +25,7 @@ export default class GPURenderer extends BaseRenderer {
   constructor(container, three, options = DEFAULT_RENDERER_OPTIONS) {
     super(RENDERER_TYPE_GPU);
 
-    THREE = three;
+    THREE = this.three = three;
     const props = { ...DEFAULT_RENDERER_OPTIONS, ...options };
     const {
       camera,
@@ -33,12 +35,14 @@ export default class GPURenderer extends BaseRenderer {
       depthTest,
       depthWrite,
       transparent,
+      shouldDebugTextureAtlas,
     } = props;
     const particleBuffer = new ParticleBuffer(maxParticles, THREE);
     const material = new THREE.ShaderMaterial({
       uniforms: {
         baseColor: { value: new THREE.Color(baseColor) },
         uTexture: { value: null },
+        atlasIndex: { value: null },
       },
       vertexShader: vertexShader(),
       fragmentShader: fragmentShader(),
@@ -57,8 +61,18 @@ export default class GPURenderer extends BaseRenderer {
     this.geometry = particleBuffer.geometry;
     this.material = material;
     this.points = new THREE.Points(this.geometry, this.material);
+    this.points.frustumCulled = false;
+    this.shouldDebugTextureAtlas = shouldDebugTextureAtlas;
 
     container.add(this.points);
+  }
+
+  onSystemUpdate(system) {
+    super.onSystemUpdate(system);
+
+    this.buffer.needsUpdate = true;
+
+    GPURenderer.textureAtlas && GPURenderer.textureAtlas.update();
   }
 
   /**
@@ -122,8 +136,14 @@ export default class GPURenderer extends BaseRenderer {
     particle.target.index = this.uniqueList.find(id);
 
     if (body && body instanceof THREE.Sprite) {
-      particle.target.texture = body.material.map;
-      this.material.uniforms.uTexture = { value: particle.target.texture };
+      const { map } = body.material;
+
+      particle.target.texture = map;
+      particle.target.textureIndex = GPURenderer.getTextureID(
+        this,
+        map,
+        this.shouldDebugTextureAtlas
+      );
     }
 
     return this;
@@ -140,7 +160,7 @@ export default class GPURenderer extends BaseRenderer {
       .updatePointSize(particle)
       .updatePointColor(particle)
       .updatePointAlpha(particle)
-      .ensurePointUpdatesAreRendered();
+      .updatePointTextureIndex(particle);
 
     return this;
   }
@@ -218,15 +238,33 @@ export default class GPURenderer extends BaseRenderer {
   }
 
   /**
-   * Ensures that all attribute updates are marked as needing updates from the WebGLRenderer.
+   * Updates the point texture attribute with the particle's target texture.
    *
+   * @param {Particle} particle - The particle containing the target texture.
    * @return {GPURenderer}
    */
-  ensurePointUpdatesAreRendered() {
-    Object.keys(this.geometry.attributes).map(attribute => {
-      this.geometry.attributes[attribute].data.needsUpdate = true;
-    });
+  updatePointTextureIndex(particle) {
+    const attribute = 'texID';
+    const { geometry, stride, buffer } = this;
+    const { target } = particle;
+    const { offset } = geometry.attributes[attribute];
+
+    buffer.array[target.index * stride + offset + 0] = target.textureIndex;
 
     return this;
   }
 }
+
+GPURenderer.getTextureID = (renderer, texture, debug) => {
+  if (texture.textureIndex === undefined) {
+    let atlas = GPURenderer.textureAtlas;
+
+    if (!atlas) {
+      atlas = GPURenderer.textureAtlas = new TextureAtlas(renderer, debug);
+    }
+
+    atlas.addTexture(texture);
+  }
+
+  return texture.textureIndex;
+};

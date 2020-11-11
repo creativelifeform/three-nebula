@@ -37,4 +37,5 @@ export const DEFAULT_RENDERER_OPTIONS = {
   depthWrite: false,
   transparent: true,
   maxParticles: DEFAULT_MAX_PARTICLES,
+  shouldDebugTextureAtlas: false,
 };

@@ -20,3 +20,23 @@ export const RK2 = 'runge-kutta2';
 export const RK4 = 'runge-kutta4';
 export const VERLET = 'verlet';
 export const BIND_EMITTER_EVENT = false;
+
+export const __DEV__ = () => {
+  if (!process) {
+    return false;
+  }
+
+  if (!process.env) {
+    return false;
+  }
+
+  if (!process.env.NODE_ENV) {
+    return false;
+  }
+
+  if (process.env.NODE_ENV !== 'development') {
+    return false;
+  }
+
+  return true;
+};
