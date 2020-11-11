@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v9.0.0` - 2020-11-11
+
+Huge props to contributor [Michael "Manthrax" Schlachter](https://github.com/manthrax) for his awesome work on this PR!
+
+### Added
+
+- `TextureAtlas` module
+- Sandbox experiment for supporting a system using the GPURenderer with multiple textures
+- [`potpack`](https://github.com/mapbox/potpack) dependency for performant texture atlas packing
+
+### Changed
+
+- `GPURenderer` now uses a dynamic texture atlas for all textures.
+- Shaders have been updated to support this
+
+### Fixed
+
+- [#118](https://github.com/creativelifeform/three-nebula/issues/118)
+- `UniqueList` performance issues
+
 ## `v8.0.0` - 2020-11-05
 
 ### Fixed
