@@ -21,8 +21,6 @@ export const vertexShader = () => {
 
     varying vec3 targetColor;
     varying float targetAlpha;
-    varying vec4 tileRect; //GPU
-    varying float tileID; //GPU
 
     varying vec4  tileRect;                                         //GPU
    // varying float  tileID;                                          //GPU

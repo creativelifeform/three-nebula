@@ -15,6 +15,7 @@ export default class TextureAtlas {
 
     this.canvas = canvas;
     this.entries = [];
+    /*
     this.atlasIndex = new THREE.DataTexture(
       data,
       DATA_TEXTURE_SIZE,
@@ -22,7 +23,7 @@ export default class TextureAtlas {
       THREE.RGBAFormat,
       THREE.FloatType
     );
-
+*/
     canvas.width = canvas.height = DATA_TEXTURE_SIZE;
 
     if (debug) {
@@ -33,7 +34,7 @@ export default class TextureAtlas {
     this.atlasTexture.flipY = false;
 
     renderer.material.uniforms.uTexture.value = this.atlasTexture;
-    renderer.material.uniforms.atlasIndex.value = this.atlasIndex;
+    //renderer.material.uniforms.atlasIndex.value = this.atlasIndex;
     renderer.material.uniformsNeedUpdate = true;
   }
 
@@ -139,7 +140,7 @@ export default class TextureAtlas {
       ctx.drawImage(e.texture.image, e.x, e.y, e.w, e.h);
     }
 
-    atlasIndex.needsUpdate = true;
+    //atlasIndex.needsUpdate = true;
     atlasTexture.needsUpdate = true;
   }
 }
