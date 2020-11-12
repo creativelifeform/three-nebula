@@ -1,4 +1,5 @@
-const SIZE_ATTENUATION_FACTOR = '1600.0';
+import { DATA_TEXTURE_SIZE } from '../TextureAtlas/constants';
+import { SIZE_ATTENUATION_FACTOR } from './constants';
 
 export const vertexShader = () => {
   return `
@@ -20,12 +21,13 @@ export const vertexShader = () => {
 
     varying vec3 targetColor;
     varying float targetAlpha;
+    varying vec4 tileRect; //GPU
+    varying float tileID; //GPU
 
     varying vec4  tileRect;                                         //GPU
    // varying float  tileID;                                          //GPU
     
     void main() {
-      
       vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
       targetColor = color;
       targetAlpha = alpha;
@@ -45,6 +47,7 @@ export const vertexShader = () => {
 
       gl_PointSize = ((size*${SIZE_ATTENUATION_FACTOR}) / -mvPosition.z); // (${SIZE_ATTENUATION_FACTOR} / -mvPosition.z);
 
+      gl_PointSize = ((size*${SIZE_ATTENUATION_FACTOR}) / -mvPosition.z);
       gl_Position = projectionMatrix * mvPosition;
     }
 `;

@@ -10,13 +10,12 @@ export const fragmentShader = () => {
     //varying float   tileID;                                         //GPU
 
     void main() {
-
       gl_FragColor = vec4(baseColor * targetColor, targetAlpha);
 
       vec2 uv = gl_PointCoord;
-      uv = mix(tileRect.xy,tileRect.zw,gl_PointCoord);              //GPU
+      uv = mix(tileRect.xy, tileRect.zw, gl_PointCoord); //GPU
 
-      gl_FragColor = gl_FragColor * texture2D(uTexture, uv) ;
+      gl_FragColor = gl_FragColor * texture2D(uTexture, uv);
 
     }
 `;
