@@ -2,6 +2,7 @@ import {
   ATTRIBUTE_TO_SIZE_MAP,
   DEFAULT_MAX_PARTICLES,
   PARTICLE_BYTE_SIZE,
+  PARTICLE_STRIDE
 } from './constants';
 
 let THREE;
@@ -32,7 +33,7 @@ export default class ParticleBuffer {
 
     this.interleavedBuffer = new THREE.InterleavedBuffer(
       new Float32Array(arrayBuffer),
-      PARTICLE_BYTE_SIZE
+      PARTICLE_STRIDE
     );
     // this.interleavedBuffer.usage = THREE.DynamicDrawUsage;
     
@@ -76,6 +77,6 @@ export default class ParticleBuffer {
   }
 
   get stride() {
-    return PARTICLE_BYTE_SIZE;
+    return PARTICLE_STRIDE;
   }
 }
