@@ -5,21 +5,24 @@ export const vertexShader = () => {
 
     uniform sampler2D uTexture;                                     //GPU
 
+    uniform vec2 atlasDim;  //mobile                                        //GPU
+
     //atlasIndex is a 256x1 float texture of tile rectangles as r=minx g=miny b=maxx a=maxy
-    uniform sampler2D atlasIndex;                                   //GPU
+//desktop    uniform sampler2D atlasIndex;                                   //GPU
 
 
     attribute float size;
     attribute vec3 color;
     attribute float alpha;
 
-    attribute float texID;                                          //GPU
+//desktop    attribute float texID;                                          //GPU
+    attribute vec2 texID;  //mobile                                        //GPU
 
     varying vec3 targetColor;
     varying float targetAlpha;
 
     varying vec4  tileRect;                                         //GPU
-    varying float  tileID;                                          //GPU
+   // varying float  tileID;                                          //GPU
     
     void main() {
       
@@ -27,11 +30,13 @@ export const vertexShader = () => {
       targetColor = color;
       targetAlpha = alpha;
     
-      tileID = texID;                                               //GPU
       //get the tile rectangle from the atlasIndex texture..
-
+//desktop      tileID = texID;                                               //GPU
+//desktop      tileRect = texture2D(atlasIndex,vec2((tileID+.5)/256.,.5));    //GPU
       
-      tileRect = texture2D(atlasIndex,vec2((tileID+.5)/256.,.5));    //GPU
+      vec2 tmin=floor(texID)/atlasDim;
+      vec2 tmax=fract(texID);
+      tileRect=vec4(tmin,tmax);
 
 //	vec2 scale;
 //	scale.x = length( vec3( modelMatrix[ 0 ].x, modelMatrix[ 0 ].y, modelMatrix[ 0 ].z ) );

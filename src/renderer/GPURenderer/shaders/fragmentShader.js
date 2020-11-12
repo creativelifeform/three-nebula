@@ -2,12 +2,12 @@ export const fragmentShader = () => {
   return `
     uniform vec3 baseColor;
     uniform sampler2D uTexture;
-    uniform sampler2D atlasIndex;                                   //GPU
+    //uniform sampler2D atlasIndex;                                   //GPU
 
     varying vec3    targetColor;
     varying float   targetAlpha;
     varying vec4    tileRect;                                       //GPU
-    varying float   tileID;                                         //GPU
+    //varying float   tileID;                                         //GPU
 
     void main() {
 

@@ -42,7 +42,8 @@ export default class GPURenderer extends BaseRenderer {
       uniforms: {
         baseColor: { value: new THREE.Color(baseColor) },
         uTexture: { value: null },
-        atlasIndex: { value: null },
+        FFatlasIndex: { value: null },
+        atlasDim: { value:new THREE.Vector2()}
       },
       vertexShader: vertexShader(),         //.split('\n').filter(e=>!e.endsWith("//GPU")).join('\n'),   --use these to disable texture atlas code in shaders..
       fragmentShader: fragmentShader(),     //.split('\n').filter(e=>!e.endsWith("//GPU")).join('\n'),
@@ -74,7 +75,11 @@ export default class GPURenderer extends BaseRenderer {
     //Doing this here instead of per particle took rendertime as optimization saved ~4 msec
     this.buffer.needsUpdate = true;
 
-    GPURenderer.textureAtlas && GPURenderer.textureAtlas.update();
+    let ta= GPURenderer.textureAtlas
+    if(ta){ 
+        ta.update();
+        this.material.uniforms.atlasDim.value.set(ta.atlasTexture.image.width,ta.atlasTexture.image.height)
+    }
 
   } // eslint-disable-line
 
@@ -251,8 +256,22 @@ export default class GPURenderer extends BaseRenderer {
     const { target } = particle;
     const { offset } = geometry.attributes[attribute];
 
-    buffer.array[target.index * stride + offset + 0] = target.textureIndex;
+    let id=target.index * stride + offset + 0
+if(false){
+    buffer.array[id] = target.textureIndex;
+}else{
+let ti=target.textureIndex*4;
 
+    let ta=GPURenderer.textureAtlas
+let ida = ta.indexData;
+let nx = ida[ti++]
+let ny = ida[ti++]
+let px = ida[ti++]
+let py = ida[ti++]
+
+    buffer.array[id  ]=((nx*ta.atlasTexture.image.width)|0)+px;
+    buffer.array[id+1]=((ny*ta.atlasTexture.image.height)|0)+py;
+}
     return this;
   }
 
@@ -282,6 +301,5 @@ GPURenderer.getTextureID=(renderer,tex)=>{
     //Add to atlas here...
     atlas.addTexture(tex);
   }
-  
   return tex.textureIndex;
 };

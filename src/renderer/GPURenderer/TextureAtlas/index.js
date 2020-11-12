@@ -6,7 +6,7 @@ export default class TextureAtlas {
 
     let data = this.indexData = new Float32Array(256 * 4)
 
-    this.atlasIndex = new THREE.DataTexture(data, 256, 1, THREE.RGBAFormat, THREE.FloatType);
+    //this.atlasIndex = new THREE.DataTexture(data, 256, 1, THREE.RGBAFormat, THREE.FloatType);
 
     let ctx = this.ctx = document.createElement('canvas').getContext('2d')
     let canv = ctx.canvas;
@@ -38,7 +38,7 @@ export default class TextureAtlas {
     this.atlasTexture = new THREE.CanvasTexture(ctx.canvas);
     this.atlasTexture.flipY = false;
     renderer.material.uniforms.uTexture.value = this.atlasTexture;
-    renderer.material.uniforms.atlasIndex.value = this.atlasIndex;
+    //renderer.material.uniforms.atlasIndex.value = this.atlasIndex;
     renderer.material.uniformsNeedUpdate = true;
   }
   addTexture(tex) {
@@ -67,13 +67,13 @@ export default class TextureAtlas {
     }
     for (let i = 0, ii = 0; i < this.entries.length; i++, ii += 4) {
       let e = this.entries[i];
-      this.indexData[ii + 0] = e.x / canv.width;
-      this.indexData[ii + 1] = e.y / canv.height;
-      this.indexData[ii + 2] = (e.x + e.w) / canv.width;
-      this.indexData[ii + 3] = (e.y + e.h) / canv.height;
+      this.indexData[ii + 0] = e.x / (canv.width+1);
+      this.indexData[ii + 1] = e.y / (canv.height+1);
+      this.indexData[ii + 2] = (e.x + e.w) / (canv.width+1);
+      this.indexData[ii + 3] = (e.y + e.h) / (canv.height+1);
       this.ctx.drawImage(e.texture.image, e.x, e.y, e.w, e.h)
     }
-    this.atlasIndex.needsUpdate = true;
+    //this.atlasIndex.needsUpdate = true;
     this.atlasTexture.needsUpdate = true;
   }
 }
