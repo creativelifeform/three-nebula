@@ -19,7 +19,7 @@ export default class GPURenderer extends BaseRenderer {
   constructor(container, THREE, options = DEFAULT_RENDERER_OPTIONS) {
     super(RENDERER_TYPE_GPU);
 
-    if (!this.isFloatingPointTextureSupported(THREE)) {
+    if (!this.isFloatingPointTextureSupported()) {
       return new MobileGPURenderer(container, THREE, options);
     }
 
