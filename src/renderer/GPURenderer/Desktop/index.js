@@ -1,11 +1,10 @@
-import { ParticleBuffer, Target, UniqueList } from '../common';
+import { ParticleBuffer, Target, TextureAtlas, UniqueList } from '../common';
 import { fragmentShader, vertexShader } from './shaders';
 
 import BaseRenderer from '../../BaseRenderer';
 import { DEFAULT_RENDERER_OPTIONS } from '../common/constants';
 import { Pool } from '../../../core';
 import { RENDERER_TYPE_GPU_DESKTOP } from '../../types';
-import TextureAtlas from './TextureAtlas';
 
 let THREE;
 
