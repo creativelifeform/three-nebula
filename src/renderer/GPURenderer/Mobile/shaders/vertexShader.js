@@ -12,18 +12,18 @@ export const vertexShader = () => {
 
     varying vec3 targetColor;
     varying float targetAlpha;
-    varying vec4  tileRect;
+    varying vec4 tileRect;
 
     void main() {
       vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
       targetColor = color;
       targetAlpha = alpha;
 
-      vec2 tmin=floor(texID)/atlasDim;
-      vec2 tmax=fract(texID);
-      tileRect=vec4(tmin,tmax);
+      vec2 tmin = floor(texID) / atlasDim;
+      vec2 tmax = fract(texID);
+      tileRect = vec4(tmin,tmax);
 
-      gl_PointSize = ((size*${SIZE_ATTENUATION_FACTOR}) / -mvPosition.z);
+      gl_PointSize = ((size * ${SIZE_ATTENUATION_FACTOR}) / -mvPosition.z);
       gl_Position = projectionMatrix * mvPosition;
     }
 `;
