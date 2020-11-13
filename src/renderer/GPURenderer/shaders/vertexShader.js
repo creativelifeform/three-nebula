@@ -1,4 +1,3 @@
-import { DATA_TEXTURE_SIZE } from '../TextureAtlas/constants';
 import { SIZE_ATTENUATION_FACTOR } from './constants';
 
 export const vertexShader = () => {
@@ -24,16 +23,16 @@ export const vertexShader = () => {
 
     varying vec4  tileRect;                                         //GPU
    // varying float  tileID;                                          //GPU
-    
+
     void main() {
       vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
       targetColor = color;
       targetAlpha = alpha;
-    
+
       //get the tile rectangle from the atlasIndex texture..
 //desktop      tileID = texID;                                               //GPU
 //desktop      tileRect = texture2D(atlasIndex,vec2((tileID+.5)/256.,.5));    //GPU
-      
+
       vec2 tmin=floor(texID)/atlasDim;
       vec2 tmax=fract(texID);
       tileRect=vec4(tmin,tmax);

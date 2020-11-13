@@ -43,7 +43,7 @@ export default class GPURenderer extends BaseRenderer {
         baseColor: { value: new THREE.Color(baseColor) },
         uTexture: { value: null },
         FFatlasIndex: { value: null },
-        atlasDim: { value:new THREE.Vector2()}
+        atlasDim: { value: new THREE.Vector2() },
       },
       vertexShader: vertexShader(),
       fragmentShader: fragmentShader(),
@@ -73,12 +73,15 @@ export default class GPURenderer extends BaseRenderer {
 
     this.buffer.needsUpdate = true;
 
-    let ta= GPURenderer.textureAtlas
-    if(ta){ 
-        ta.update();
-        this.material.uniforms.atlasDim.value.set(ta.atlasTexture.image.width,ta.atlasTexture.image.height)
-    }
+    let ta = GPURenderer.textureAtlas;
 
+    if (ta) {
+      ta.update();
+      this.material.uniforms.atlasDim.value.set(
+        ta.atlasTexture.image.width,
+        ta.atlasTexture.image.height
+      );
+    }
   } // eslint-disable-line
 
   /**
@@ -255,22 +258,25 @@ export default class GPURenderer extends BaseRenderer {
     const { target } = particle;
     const { offset } = geometry.attributes[attribute];
 
-    let id=target.index * stride + offset + 0
-if(false){
-    buffer.array[id] = target.textureIndex;
-}else{
-let ti=target.textureIndex*4;
+    let id = target.index * stride + offset + 0;
 
-    let ta=GPURenderer.textureAtlas
-let ida = ta.indexData;
-let nx = ida[ti++]
-let ny = ida[ti++]
-let px = ida[ti++]
-let py = ida[ti++]
+    // eslint-disable-next-line
+    if (false) {
+      buffer.array[id] = target.textureIndex;
+    } else {
+      let ti = target.textureIndex * 4;
 
-    buffer.array[id  ]=((nx*ta.atlasTexture.image.width)|0)+px;
-    buffer.array[id+1]=((ny*ta.atlasTexture.image.height)|0)+py;
-}
+      let ta = GPURenderer.textureAtlas;
+      let ida = ta.indexData;
+      let nx = ida[ti++];
+      let ny = ida[ti++];
+      let px = ida[ti++];
+      let py = ida[ti++];
+
+      buffer.array[id] = ((nx * ta.atlasTexture.image.width) | 0) + px;
+      buffer.array[id + 1] = ((ny * ta.atlasTexture.image.height) | 0) + py;
+    }
+
     return this;
   }
 }

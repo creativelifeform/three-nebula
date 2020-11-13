@@ -9,10 +9,11 @@ import potpack from 'potpack';
 export default class TextureAtlas {
   constructor(renderer, debug) {
     const { three: THREE } = renderer;
-    const data = (this.indexData = new Float32Array(DATA_TEXTURE_SIZE * 4));
+    // const data = (this.indexData = new Float32Array(DATA_TEXTURE_SIZE * 4));
     const ctx = (this.ctx = document.createElement('canvas').getContext('2d'));
     const { canvas } = ctx;
 
+    this.indexData = new Float32Array(DATA_TEXTURE_SIZE * 4);
     this.canvas = canvas;
     this.entries = [];
     /*
@@ -101,7 +102,7 @@ export default class TextureAtlas {
       return;
     }
 
-    const { entries, canvas, indexData, ctx, atlasIndex, atlasTexture } = this;
+    const { entries, canvas, indexData, ctx, atlasTexture } = this;
 
     for (let i = 0; i < entries.length; i++) {
       if (!entries[i].texture.image) {
@@ -132,10 +133,10 @@ export default class TextureAtlas {
     for (let i = 0, ii = 0; i < entries.length; i++, ii += 4) {
       const e = this.entries[i];
 
-      indexData[ii + 0] = e.x / (canvas.width+1);
-      indexData[ii + 1] = e.y / (canvas.height+1);
-      indexData[ii + 2] = (e.x + e.w) / (canvas.width+1);
-      indexData[ii + 3] = (e.y + e.h) / (canvas.height+1);
+      indexData[ii + 0] = e.x / (canvas.width + 1);
+      indexData[ii + 1] = e.y / (canvas.height + 1);
+      indexData[ii + 2] = (e.x + e.w) / (canvas.width + 1);
+      indexData[ii + 3] = (e.y + e.h) / (canvas.height + 1);
 
       ctx.drawImage(e.texture.image, e.x, e.y, e.w, e.h);
     }
