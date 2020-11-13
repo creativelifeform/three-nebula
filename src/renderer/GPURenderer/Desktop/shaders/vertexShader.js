@@ -26,7 +26,7 @@ export const vertexShader = () => {
       //get the tile rectangle from the atlasIndex texture..
       tileRect = texture2D(atlasIndex, vec2((tileID + 0.5) / ${DATA_TEXTURE_SIZE}.0, 0.5));
 
-      gl_PointSize = ((size*${SIZE_ATTENUATION_FACTOR}) / -mvPosition.z);
+      gl_PointSize = ((size * ${SIZE_ATTENUATION_FACTOR}) / -mvPosition.z);
       gl_Position = projectionMatrix * mvPosition;
     }
 `;
