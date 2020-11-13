@@ -30,6 +30,7 @@ export default class GPURenderer extends BaseRenderer {
     const canvas = document.createElement('canvas');
 
     if (window.WebGL2RenderingContext && canvas.getContext('webgl2')) {
+      // return false here to test the mobile renderer on desktop
       return true;
     }
 

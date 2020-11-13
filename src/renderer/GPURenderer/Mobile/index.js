@@ -1,21 +1,15 @@
-import { ParticleBuffer, Target, UniqueList } from '../common';
+import { ParticleBuffer, Target, TextureAtlas, UniqueList } from '../common';
 import { fragmentShader, vertexShader } from './shaders';
 
 import BaseRenderer from '../../BaseRenderer';
 import { DEFAULT_RENDERER_OPTIONS } from '../common/constants';
 import { Pool } from '../../../core';
 import { RENDERER_TYPE_GPU_MOBILE } from '../../types';
-import TextureAtlas from './TextureAtlas';
 
 let THREE;
 
 /**
- * Performant particle renderer that uses THREE.Points to propagate particle (postiion, rgba etc.,) properties to
- * vertices in a ParticleBufferGeometry.
- * Uses a dynamic texture atlas to support systems with mutliple sprites in a performant way.
- *
- * NOTE! This is an experimental renderer and is currently not covered by tests, coverage will be added when the API
- * is more stable. Currently only compatible with sprite/texture based systems. Meshes are not yet supported.
+ * GPURenderer for mobile devices that do not support floating point textures.
  *
  * @author thrax <manthrax@gmail.com>
  * @author rohan-deshpande <rohan@creativelifeform.com>
@@ -72,16 +66,16 @@ export default class MobileGPURenderer extends BaseRenderer {
 
     this.buffer.needsUpdate = true;
 
-    let ta = MobileGPURenderer.textureAtlas;
+    const { textureAtlas } = MobileGPURenderer;
 
-    if (ta) {
-      ta.update();
+    if (textureAtlas) {
+      textureAtlas.update();
       this.material.uniforms.atlasDim.value.set(
-        ta.atlasTexture.image.width,
-        ta.atlasTexture.image.height
+        textureAtlas.atlasTexture.image.width,
+        textureAtlas.atlasTexture.image.height
       );
     }
-  } // eslint-disable-line
+  }
 
   /**
    * Pools the particle target if it does not exist.
