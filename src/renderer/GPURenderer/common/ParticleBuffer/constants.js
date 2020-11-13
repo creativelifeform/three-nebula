@@ -22,10 +22,7 @@ export const POSITION_ATTRIBUTE_BUFFER_SIZE = VECTOR_3_SIZE;
 export const SIZE_ATTRIBUTE_BUFFER_SIZE = 1;
 export const RGBA_ATTRIBUTE_BUFFER_SIZE = RGBA_SIZE;
 export const ALPHA_ATTRIBUTE_BUFFER_SIZE = 1;
-
-
-export const TEXID_ATTRIBUTE_BUFFER_SIZE = 2;   //GPU Renderer..
-
+export const TEXID_ATTRIBUTE_BUFFER_SIZE = 2;
 
 export const ATTRIBUTE_TO_SIZE_MAP = {
   position: POSITION_ATTRIBUTE_BUFFER_SIZE,
@@ -33,7 +30,7 @@ export const ATTRIBUTE_TO_SIZE_MAP = {
   // THREE.Color does not contain alpha, so we will have separate attributes for these
   color: RGBA_ATTRIBUTE_BUFFER_SIZE,
   alpha: ALPHA_ATTRIBUTE_BUFFER_SIZE,
-  texID: TEXID_ATTRIBUTE_BUFFER_SIZE,           //GPU Renderer..
+  texID: TEXID_ATTRIBUTE_BUFFER_SIZE,
 };
 
 export const PARTICLE_STRIDE = [
@@ -41,7 +38,5 @@ export const PARTICLE_STRIDE = [
   SIZE_ATTRIBUTE_BUFFER_SIZE,
   RGBA_ATTRIBUTE_BUFFER_SIZE,
   ALPHA_ATTRIBUTE_BUFFER_SIZE,
-  TEXID_ATTRIBUTE_BUFFER_SIZE
-].reduce(
-  (cur, acc) => cur + acc
-);
+  TEXID_ATTRIBUTE_BUFFER_SIZE,
+].reduce((cur, acc) => cur + acc);
