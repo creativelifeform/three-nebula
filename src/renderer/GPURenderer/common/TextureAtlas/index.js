@@ -150,11 +150,9 @@ export default class TextureAtlas {
       canvas.height = stats.h;
     }
 
-    //for (let i = 0, ii = 0; i < entries.length; i++, ii += 4) {
     for (let i = 0; i < entries.length; i++) {
       const e = this.entries[i];
-
-      let ii=e.texture.textureIndex * 4;
+      const ii = e.texture.textureIndex * 4;
 
       if (rendererType === RENDERER_TYPE_GPU_DESKTOP) {
         indexData[ii + 0] = e.x / canvas.width;
