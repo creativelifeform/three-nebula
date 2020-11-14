@@ -249,21 +249,19 @@ export default class MobileGPURenderer extends BaseRenderer {
     const { geometry, stride, buffer } = this;
     const { target } = particle;
     const { offset } = geometry.attributes[attribute];
-
-    let id = target.index * stride + offset + 0;
+    const id = target.index * stride + offset + 0;
 
     // eslint-disable-next-line
     if (false) {
       buffer.array[id] = target.textureIndex;
     } else {
       let ti = target.textureIndex * 4;
-
-      let ta = this.textureAtlas;
-      let ida = ta.indexData;
-      let nx = ida[ti++];
-      let ny = ida[ti++];
-      let px = ida[ti++];
-      let py = ida[ti++];
+      const ta = this.textureAtlas;
+      const ida = ta.indexData;
+      const nx = ida[ti++];
+      const ny = ida[ti++];
+      const px = ida[ti++];
+      const py = ida[ti++];
 
       buffer.array[id] = ((nx * ta.atlasTexture.image.width) | 0) + px;
       buffer.array[id + 1] = ((ny * ta.atlasTexture.image.height) | 0) + py;
@@ -274,13 +272,11 @@ export default class MobileGPURenderer extends BaseRenderer {
 
   getTextureID(texture, debug) {
     if (texture.textureIndex === undefined) {
-      let atlas = this.textureAtlas;
-
-      if (!atlas) {
-        atlas = this.textureAtlas = new TextureAtlas(this, debug);
+      if (!this.textureAtlas) {
+        this.textureAtlas = new TextureAtlas(this, debug);
       }
 
-      atlas.addTexture(texture);
+      this.textureAtlas.addTexture(texture);
     }
 
     return texture.textureIndex;
