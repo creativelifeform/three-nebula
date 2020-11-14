@@ -272,15 +272,12 @@ export default class MobileGPURenderer extends BaseRenderer {
     return this;
   }
 
-  getTextureID( texture, debug){
+  getTextureID(texture, debug) {
     if (texture.textureIndex === undefined) {
       let atlas = this.textureAtlas;
 
       if (!atlas) {
-        atlas = this.textureAtlas = new TextureAtlas(
-          renderer,
-          debug
-        );
+        atlas = this.textureAtlas = new TextureAtlas(this, debug);
       }
 
       atlas.addTexture(texture);
