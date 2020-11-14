@@ -66,7 +66,7 @@ export default class MobileGPURenderer extends BaseRenderer {
 
     this.buffer.needsUpdate = true;
 
-    const { textureAtlas } = MobileGPURenderer;
+    const { textureAtlas } = this;
 
     if (textureAtlas) {
       textureAtlas.update();
@@ -141,8 +141,7 @@ export default class MobileGPURenderer extends BaseRenderer {
       const { map } = body.material;
 
       particle.target.texture = map;
-      particle.target.textureIndex = MobileGPURenderer.getTextureID(
-        this,
+      particle.target.textureIndex = this.getTextureID(
         map,
         this.shouldDebugTextureAtlas
       );
@@ -259,7 +258,7 @@ export default class MobileGPURenderer extends BaseRenderer {
     } else {
       let ti = target.textureIndex * 4;
 
-      let ta = MobileGPURenderer.textureAtlas;
+      let ta = this.textureAtlas; //MobileGPURenderer
       let ida = ta.indexData;
       let nx = ida[ti++];
       let ny = ida[ti++];
@@ -272,21 +271,21 @@ export default class MobileGPURenderer extends BaseRenderer {
 
     return this;
   }
-}
 
-MobileGPURenderer.getTextureID = (renderer, texture, debug) => {
-  if (texture.textureIndex === undefined) {
-    let atlas = MobileGPURenderer.textureAtlas;
+  getTextureID( texture, debug){
+    if (texture.textureIndex === undefined) {
+      let atlas = this.textureAtlas;
 
-    if (!atlas) {
-      atlas = MobileGPURenderer.textureAtlas = new TextureAtlas(
-        renderer,
-        debug
-      );
+      if (!atlas) {
+        atlas = this.textureAtlas = new TextureAtlas(
+          renderer,
+          debug
+        );
+      }
+
+      atlas.addTexture(texture);
     }
 
-    atlas.addTexture(texture);
+    return texture.textureIndex;
   }
-
-  return texture.textureIndex;
-};
+}
