@@ -258,7 +258,7 @@ export default class MobileGPURenderer extends BaseRenderer {
     } else {
       let ti = target.textureIndex * 4;
 
-      let ta = this.textureAtlas; //MobileGPURenderer
+      let ta = this.textureAtlas;
       let ida = ta.indexData;
       let nx = ida[ti++];
       let ny = ida[ti++];
@@ -272,15 +272,12 @@ export default class MobileGPURenderer extends BaseRenderer {
     return this;
   }
 
-  getTextureID( texture, debug){
+  getTextureID(texture, debug) {
     if (texture.textureIndex === undefined) {
       let atlas = this.textureAtlas;
 
       if (!atlas) {
-        atlas = this.textureAtlas = new TextureAtlas(
-          renderer,
-          debug
-        );
+        atlas = this.textureAtlas = new TextureAtlas(this, debug);
       }
 
       atlas.addTexture(texture);

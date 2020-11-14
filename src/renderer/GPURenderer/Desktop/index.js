@@ -246,22 +246,17 @@ export default class DesktopGPURenderer extends BaseRenderer {
     return this;
   }
 
-  getTextureID( texture, debug) {
-  if (texture.textureIndex === undefined) {
-    let atlas = this.textureAtlas;
+  getTextureID(texture, debug) {
+    if (texture.textureIndex === undefined) {
+      let atlas = this.textureAtlas;
 
-    if (!atlas) {
-        atlas = this.textureAtlas = new TextureAtlas( //DesktopGPURenderer.textureAtlas = n
-        this,
-        debug
-      );
+      if (!atlas) {
+        atlas = this.textureAtlas = new TextureAtlas(this, debug);
+      }
+
+      atlas.addTexture(texture);
     }
 
-    atlas.addTexture(texture);
+    return texture.textureIndex;
   }
-  return texture.textureIndex;
 }
-
-
-
-};
