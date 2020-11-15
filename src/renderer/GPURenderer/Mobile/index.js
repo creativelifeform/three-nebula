@@ -66,7 +66,7 @@ export default class MobileGPURenderer extends BaseRenderer {
 
     this.buffer.needsUpdate = true;
 
-    const { textureAtlas } = MobileGPURenderer;
+    const { textureAtlas } = this;
 
     if (textureAtlas) {
       textureAtlas.update();
@@ -141,8 +141,7 @@ export default class MobileGPURenderer extends BaseRenderer {
       const { map } = body.material;
 
       particle.target.texture = map;
-      particle.target.textureIndex = MobileGPURenderer.getTextureID(
-        this,
+      particle.target.textureIndex = this.getTextureID(
         map,
         this.shouldDebugTextureAtlas
       );
@@ -250,21 +249,19 @@ export default class MobileGPURenderer extends BaseRenderer {
     const { geometry, stride, buffer } = this;
     const { target } = particle;
     const { offset } = geometry.attributes[attribute];
-
-    let id = target.index * stride + offset + 0;
+    const id = target.index * stride + offset + 0;
 
     // eslint-disable-next-line
     if (false) {
       buffer.array[id] = target.textureIndex;
     } else {
       let ti = target.textureIndex * 4;
-
-      let ta = MobileGPURenderer.textureAtlas;
-      let ida = ta.indexData;
-      let nx = ida[ti++];
-      let ny = ida[ti++];
-      let px = ida[ti++];
-      let py = ida[ti++];
+      const ta = this.textureAtlas;
+      const ida = ta.indexData;
+      const nx = ida[ti++];
+      const ny = ida[ti++];
+      const px = ida[ti++];
+      const py = ida[ti++];
 
       buffer.array[id] = ((nx * ta.atlasTexture.image.width) | 0) + px;
       buffer.array[id + 1] = ((ny * ta.atlasTexture.image.height) | 0) + py;
@@ -272,21 +269,16 @@ export default class MobileGPURenderer extends BaseRenderer {
 
     return this;
   }
-}
 
-MobileGPURenderer.getTextureID = (renderer, texture, debug) => {
-  if (texture.textureIndex === undefined) {
-    let atlas = MobileGPURenderer.textureAtlas;
+  getTextureID(texture, debug) {
+    if (texture.textureIndex === undefined) {
+      if (!this.textureAtlas) {
+        this.textureAtlas = new TextureAtlas(this, debug);
+      }
 
-    if (!atlas) {
-      atlas = MobileGPURenderer.textureAtlas = new TextureAtlas(
-        renderer,
-        debug
-      );
+      this.textureAtlas.addTexture(texture);
     }
 
-    atlas.addTexture(texture);
+    return texture.textureIndex;
   }
-
-  return texture.textureIndex;
-};
+}

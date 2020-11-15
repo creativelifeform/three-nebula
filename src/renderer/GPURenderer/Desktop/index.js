@@ -65,7 +65,7 @@ export default class DesktopGPURenderer extends BaseRenderer {
 
     this.buffer.needsUpdate = true;
 
-    DesktopGPURenderer.textureAtlas && DesktopGPURenderer.textureAtlas.update();
+    this.textureAtlas && this.textureAtlas.update();
   }
 
   /**
@@ -132,8 +132,7 @@ export default class DesktopGPURenderer extends BaseRenderer {
       const { map } = body.material;
 
       particle.target.texture = map;
-      particle.target.textureIndex = DesktopGPURenderer.getTextureID(
-        this,
+      particle.target.textureIndex = this.getTextureID(
         map,
         this.shouldDebugTextureAtlas
       );
@@ -246,21 +245,16 @@ export default class DesktopGPURenderer extends BaseRenderer {
 
     return this;
   }
-}
 
-DesktopGPURenderer.getTextureID = (renderer, texture, debug) => {
-  if (texture.textureIndex === undefined) {
-    let atlas = DesktopGPURenderer.textureAtlas;
+  getTextureID(texture, debug) {
+    if (texture.textureIndex === undefined) {
+      if (!this.textureAtlas) {
+        this.textureAtlas = new TextureAtlas(this, debug);
+      }
 
-    if (!atlas) {
-      atlas = DesktopGPURenderer.textureAtlas = new TextureAtlas(
-        renderer,
-        debug
-      );
+      this.textureAtlas.addTexture(texture);
     }
 
-    atlas.addTexture(texture);
+    return texture.textureIndex;
   }
-
-  return texture.textureIndex;
-};
+}
