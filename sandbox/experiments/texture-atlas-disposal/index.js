@@ -1,26 +1,42 @@
-const { System, GPURenderer, SpriteRenderer } = window.Nebula;
+const {
+  Nebula: { System, GPURenderer, SpriteRenderer },
+  SYSTEM: { particleSystemState },
+} = window;
 
+let visualisation, system, systemRenderer, container;
 const button = id => document.getElementById(id);
-const { start, stop, add, remove } = {
-  start: button('start'),
+const { restart, stop, add, remove } = {
+  restart: button('restart'),
   stop: button('stop'),
   add: button('add'),
   remove: button('remove'),
 };
-const startSystem = system => {
-  console.log(system);
+
+const hydrateSystem = () => System.fromJSONAsync(particleSystemState, THREE);
+const getRenderer = container =>
+  new GPURenderer(container, THREE, { shouldDebugTextureAtlas: true });
+const restartSystem = system => {
+  visualisation.stop();
+
+  hydrateSystem().then(hydrated => {
+    system = hydrated;
+
+    system.addRenderer(getRenderer(container));
+
+    console.log(system);
+    visualisation.restart(system);
+  });
 };
 
 window.init = async ({ scene, camera, renderer }) => {
-  const { particleSystemState } = window.SYSTEM;
-  const systemRenderer = new GPURenderer(scene, THREE, {
-    shouldDebugTextureAtlas: false,
-  });
-  const system = await System.fromJSONAsync(particleSystemState, THREE, {
-    shouldAutoEmit: false,
-  });
+  container = scene;
+  systemRenderer = getRenderer(container);
+  system = await hydrateSystem();
+  visualisation = window.visualisation;
 
-  start.addEventListener('click', () => startSystem(system));
+  console.log('FIRST SYSTEM', system);
+
+  restart.addEventListener('click', () => restartSystem(system));
 
   return system.addRenderer(systemRenderer);
 };

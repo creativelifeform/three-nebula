@@ -177,4 +177,15 @@ export default class TextureAtlas {
 
     atlasTexture.needsUpdate = true;
   }
+
+  destroy() {
+    const { atlasIndex, atlasTexture } = this;
+
+    atlasTexture.dispose();
+    console.log('ATLAS_TEXTURE', atlasTexture);
+    atlasIndex && atlasIndex.dispose();
+    console.log('ATLAS_INDEX', atlasIndex);
+
+    this.entries = [];
+  }
 }

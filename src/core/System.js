@@ -302,13 +302,23 @@ export default class System {
 
     this.canUpdate = false;
 
-    for (let i = 0; i < length; i++) {
-      this.emitters[i] && this.emitters[i].destroy();
-      delete this.emitters[i];
+    for (let e = 0; e < length; e++) {
+      this.emitters[e] && this.emitters[e].destroy();
+      delete this.emitters[e];
+    }
+
+    for (let r = 0; r < length; r++) {
+      if (this.renderers[r] && this.renderers[r].destroy) {
+        this.renderers[r].destroy();
+        console.log('RENDERER', this.renderers[r]);
+        delete this.renderers[r];
+      }
     }
 
     this.emitters.length = 0;
     this.pool.destroy();
     this.canUpdate = true;
+
+    console.log('SYSTEM', this);
   }
 }

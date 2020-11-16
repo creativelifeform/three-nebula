@@ -10,7 +10,7 @@
   <body>
     <div id="app">
       <div id="ui">
-        <button id="start">start system</button>
+        <button id="restart">restart system</button>
         <button id="stop">stop system</button>
         <button id="add">add emitter</button>
         <button id="remove">remove emitter</button>
@@ -28,7 +28,9 @@
     <script src="/experiments/texture-atlas-disposal/data.js"></script>
     <script src="/experiments/texture-atlas-disposal/index.js"></script>
     <script>
-      run(init).then(() => console.log(`APP LOADED`));
+      run(init, { shouldAutoStart: false }).then(() =>
+        console.log(`APP LOADED`)
+      );
     </script>
   </body>
 </html>
