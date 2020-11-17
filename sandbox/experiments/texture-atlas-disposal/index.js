@@ -3,14 +3,14 @@ const {
   SYSTEM: { particleSystemState },
   EMITTERS,
 } = window;
-
-let visualisation, system, systemRenderer, container;
 const button = id => document.getElementById(id);
 const { restart, stop, add, remove } = {
   restart: button('restart'),
   add: button('add'),
   remove: button('remove'),
 };
+const shouldDebugTextureAtlas = true;
+let visualisation, system, systemRenderer, container;
 
 /**
  * Creates a brand new system from the current particleSystemState object.
@@ -48,7 +48,6 @@ const addEmitter = system => {
  * The system is fully restarted afterwards.
  */
 const removeEmitter = system => {
-  console.log(particleSystemState.emitters);
   if (particleSystemState.emitters.length <= 1) {
     return;
   }
@@ -64,7 +63,7 @@ const removeEmitter = system => {
  * @param {Scene} container
  */
 const createRenderer = container =>
-  new GPURenderer(container, THREE, { shouldDebugTextureAtlas: true });
+  new GPURenderer(container, THREE, { shouldDebugTextureAtlas });
 
 /**
  * Fully restarts the particle system by destroying it first.
