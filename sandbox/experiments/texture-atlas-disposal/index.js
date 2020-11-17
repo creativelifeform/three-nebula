@@ -63,7 +63,7 @@ const removeEmitter = system => {
  *
  * @param {Scene} container
  */
-const getRenderer = container =>
+const createRenderer = container =>
   new GPURenderer(container, THREE, { shouldDebugTextureAtlas: true });
 
 /**
@@ -77,7 +77,7 @@ const restartSystem = system => {
   createSystem().then(hydrated => {
     system = hydrated;
 
-    system.addRenderer(getRenderer(container));
+    system.addRenderer(createRenderer(container));
 
     visualisation.restart(system);
   });
@@ -89,7 +89,7 @@ const restartSystem = system => {
  */
 window.init = async ({ scene, camera, renderer }) => {
   container = scene;
-  systemRenderer = getRenderer(container);
+  systemRenderer = createRenderer(container);
   system = await createSystem();
   visualisation = window.visualisation;
 
