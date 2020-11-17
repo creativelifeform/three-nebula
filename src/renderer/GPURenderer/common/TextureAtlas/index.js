@@ -12,12 +12,13 @@ import potpack from 'potpack';
  *
  */
 export default class TextureAtlas {
-  constructor(renderer, debug) {
+  constructor(renderer, shouldDebug) {
     const { three: THREE, type: rendererType } = renderer;
     const data = new Float32Array(DATA_TEXTURE_SIZE * 4);
     const ctx = (this.ctx = document.createElement('canvas').getContext('2d'));
     const { canvas } = ctx;
 
+    this.shouldDebug = shouldDebug;
     this.rendererType = rendererType;
     this.indexData = data;
     this.canvas = canvas;
@@ -35,7 +36,7 @@ export default class TextureAtlas {
 
     canvas.width = canvas.height = DATA_TEXTURE_SIZE;
 
-    if (debug) {
+    if (shouldDebug) {
       this.debug(canvas, ctx);
     }
 
@@ -179,12 +180,16 @@ export default class TextureAtlas {
   }
 
   destroy() {
-    const { atlasIndex, atlasTexture } = this;
+    const { atlasIndex, atlasTexture, canvas } = this;
 
     atlasTexture.dispose();
     console.log('ATLAS_TEXTURE', atlasTexture);
     atlasIndex && atlasIndex.dispose();
     console.log('ATLAS_INDEX', atlasIndex);
+
+    if (this.shouldDebug) {
+      canvas.remove();
+    }
 
     this.entries = [];
   }
