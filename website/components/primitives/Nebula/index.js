@@ -30,7 +30,10 @@ export class Nebula extends Component {
         onStart,
         onUpdate,
         onEnd,
+        webGlRendererOptions,
       } = this.props;
+
+      console.log('PROPS', webGlRendererOptions);
 
       // Prevents very odd bug where canvas is sometimes null.
       // No idea how this could happen inside componentDidMount
@@ -47,6 +50,7 @@ export class Nebula extends Component {
           onStart,
           onUpdate,
           onEnd,
+          webGlRendererOptions,
         }).start();
       }
 
@@ -56,6 +60,7 @@ export class Nebula extends Component {
           init,
           shouldRotateCamera,
           shouldExposeLifeCycleApi,
+          webGlRendererOptions,
         }).start();
       }
 
@@ -144,4 +149,9 @@ Nebula.propTypes = {
   onStart: func,
   onUpdate: func,
   onEnd: func,
+  webGlRendererOptions: shape({
+    alpha: bool,
+    antialias: bool,
+    clearColor: string,
+  }),
 };

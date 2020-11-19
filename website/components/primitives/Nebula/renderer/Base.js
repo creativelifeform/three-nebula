@@ -7,12 +7,14 @@ import { stats } from '../Stats';
  *
  */
 export default class {
-  constructor(THREE, { canvas, shouldRotateCamera }) {
+  constructor(THREE, { canvas, shouldRotateCamera, webGlRendererOptions }) {
     this.THREE = THREE;
     this.canvas = canvas;
     this.shouldAnimate = true;
     this.shouldRotateCamera = shouldRotateCamera || false;
     this.stats = stats;
+    this.webGlRendererOptions = webGlRendererOptions;
+    this.rafId = undefined;
   }
 
   /**
@@ -26,7 +28,7 @@ export default class {
     return this.makeScene()
       .makeCamera()
       .makeLights()
-      .makeWebGlRenderer()
+      .makeWebGlRenderer(this.webGlRendererOptions)
       .makeParticleSystem();
   }
 
@@ -37,6 +39,7 @@ export default class {
    */
   stop() {
     this.shouldAnimate = false;
+    cancelAnimationFrame(this.rafId);
     this.particleSystem.destroy();
   }
 
@@ -57,7 +60,7 @@ export default class {
         return;
       }
 
-      requestAnimationFrame(animate);
+      this.rafId = requestAnimationFrame(animate);
 
       updater.update();
       this.webGlRenderer.render(this.scene, this.camera);
@@ -160,7 +163,9 @@ export default class {
     return this;
   }
 
-  makeWebGlRenderer(options = { alpha: true, antialias: true }) {
+  makeWebGlRenderer(
+    options = { alpha: true, antialias: true, clearColor: undefined }
+  ) {
     const {
       canvas,
       canvas: { clientWidth, clientHeight },
@@ -170,6 +175,8 @@ export default class {
       this.webGlRenderer ||
       new this.THREE.WebGLRenderer({ canvas, ...options });
     this.webGlRenderer.setSize(clientWidth, clientHeight, false);
+    options.clearColor &&
+      this.webGlRenderer.setClearColor(options.clearColor, 1);
 
     return this;
   }

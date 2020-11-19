@@ -16,9 +16,10 @@ export class JsonRenderer extends BaseRenderer {
       onStart,
       onUpdate,
       onEnd,
+      webGlRendererOptions,
     }
   ) {
-    super(THREE, { canvas, shouldRotateCamera });
+    super(THREE, { canvas, shouldRotateCamera, webGlRendererOptions });
 
     this.shouldExposeLifeCycleApi = shouldExposeLifeCycleApi;
     this.onStart = onStart;
