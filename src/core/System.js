@@ -291,7 +291,7 @@ export default class System {
   }
 
   /**
-   * Destroys all emitters and the Nebula pool.
+   * Destroys all emitters, renderers and the Nebula pool.
    * Ensures that this.update will not perform any operations while the system
    * is being destroyed.
    *
@@ -302,9 +302,16 @@ export default class System {
 
     this.canUpdate = false;
 
-    for (let i = 0; i < length; i++) {
-      this.emitters[i] && this.emitters[i].destroy();
-      delete this.emitters[i];
+    for (let e = 0; e < length; e++) {
+      this.emitters[e] && this.emitters[e].destroy();
+      delete this.emitters[e];
+    }
+
+    for (let r = 0; r < length; r++) {
+      if (this.renderers[r] && this.renderers[r].destroy) {
+        this.renderers[r].destroy();
+        delete this.renderers[r];
+      }
     }
 
     this.emitters.length = 0;

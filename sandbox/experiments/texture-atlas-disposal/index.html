@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GPU Renderer</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/style/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/style/app.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="ui">
+        <button id="restart">restart system</button>
+        <button id="add">add emitter</button>
+        <button id="remove">remove emitter</button>
+      </div>
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="https://unpkg.com/three@0.122.0/build/three.js"></script>
+    <script src="https://unpkg.com/three@0.122.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/stats-js@1.0.1/build/stats.min.js"></script>
+    <script src="/common/three-nebula.js"></script>
+    <script src="/common/Visualization.js"></script>
+    <script src="/common/safeLog.js"></script>
+    <script src="/common/run.js"></script>
+    <script src="/experiments/texture-atlas-disposal/data.js"></script>
+    <script src="/experiments/texture-atlas-disposal/index.js"></script>
+    <script>
+      run(init, { shouldAutoStart: false }).then(() =>
+        console.log(`APP LOADED`)
+      );
+    </script>
+  </body>
+</html>

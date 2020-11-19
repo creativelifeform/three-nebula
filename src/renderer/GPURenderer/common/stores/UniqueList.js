@@ -9,11 +9,19 @@ export class UniqueList {
   }
 
   add(item) {
-    if (this._items[item] !== undefined) return;
+    if (this._items[item] !== undefined) {
+      return;
+    }
+
     this._items[item] = this.count++;
   }
 
   find(item) {
     return this._items[item];
+  }
+
+  destroy() {
+    this._items = {};
+    this.count = 0;
   }
 }
