@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v9.0.4` - 2020-11-20
+
+### Added
+
+- `destroy` method to `GPURenderer` and `TextureAtlas`
+- `texture-atlas-disposal` experiment to sandbox to test out the new functionality
+
+### Changed
+
+- `System.destroy()` will now call through to its renderers' destroy methods if they exist
+
 ## `v9.0.3` - 2020-11-15
 
 ### Fixed

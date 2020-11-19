@@ -45,6 +45,7 @@ export default class DesktopGPURenderer extends BaseRenderer {
       transparent,
     });
 
+    this.container = container;
     this.camera = camera;
     this.targetPool = new Pool();
     this.uniqueList = new UniqueList(maxParticles);
@@ -57,7 +58,7 @@ export default class DesktopGPURenderer extends BaseRenderer {
     this.points.frustumCulled = false;
     this.shouldDebugTextureAtlas = shouldDebugTextureAtlas;
 
-    container.add(this.points);
+    this.container.add(this.points);
   }
 
   onSystemUpdate(system) {
@@ -256,5 +257,18 @@ export default class DesktopGPURenderer extends BaseRenderer {
     }
 
     return texture.textureIndex;
+  }
+
+  /**
+   * Tears down the GPURenderer.
+   *
+   * @return void
+   */
+  destroy() {
+    const { container, points, textureAtlas, uniqueList } = this;
+
+    container.remove(points);
+    uniqueList.destroy();
+    textureAtlas && textureAtlas.destroy();
   }
 }

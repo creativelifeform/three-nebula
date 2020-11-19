@@ -266,6 +266,20 @@ const system = new System();
 
 ## Development
 
+### Sandbox
+
+The sandbox located in `./sandbox` contains a kind of plain JavaScript bootstrapping framework for testing and experimenting with library changes. The experiments in here are not permanent and will get updated/added/removed from time to time.
+
+Because of the visual and graphical nature of the library it is sometimes very helpful to have simple barebones examples that allow you to dig into the root cause of an issue or try new things out.
+
+The sandbox can easily be run via
+
+```
+npm run sandbox
+```
+
+This will serve the sandbox at `http://localhost:5000` and you can checkout the various experiments in the browser. It will also auto rebuild the library code and push the rebuilt bundle to the sandbox so all you need to do in order to see your changes is to refresh the browser.
+
 ### Scripts
 
 There are a few NPM scripts in the root package.json:

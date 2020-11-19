@@ -12,8 +12,10 @@ window.Visualization = class {
     this.shouldRotateCamera = shouldRotateCamera;
     this.shouldAddCameraControls = shouldAddCameraControls;
     this.stats = new window.Stats();
+    this.hasStats = false;
     this.maxTicks = maxTicks;
     this.renderTicks = 0;
+    this.rafId = undefined;
   }
 
   /**
@@ -39,7 +41,16 @@ window.Visualization = class {
    */
   stop() {
     this.shouldAnimate = false;
+    window.removeEventListener('resize', this.resize);
+    cancelAnimationFrame(this.rafId);
     this.particleSystem.destroy();
+  }
+
+  restart(system) {
+    this.particleSystem = system;
+    this.shouldAnimate = true;
+
+    this.render();
   }
 
   /**
@@ -50,10 +61,13 @@ window.Visualization = class {
   render() {
     let requestId;
 
-    document.getElementById('app').appendChild(this.stats.dom);
-    this.stats.begin();
+    if (!this.hasStats) {
+      document.getElementById('app').appendChild(this.stats.dom);
+      this.stats.begin();
+      this.hasStats = true;
+    }
 
-    window.addEventListener('resize', () => this.resize());
+    window.addEventListener('resize', this.resize);
 
     const animate = () => {
       if (!this.shouldAnimate) {
@@ -63,10 +77,10 @@ window.Visualization = class {
       if (this.maxTicks !== Infinity && this.renderTicks >= this.maxTicks) {
         console.log('REACHED MAX TICKS');
 
-        return cancelAnimationFrame(requestId);
+        return cancelAnimationFrame(this.rafId);
       }
 
-      requestId = requestAnimationFrame(animate);
+      this.rafId = requestAnimationFrame(animate);
 
       this.renderTicks++;
       this.particleSystem.update();
