@@ -259,12 +259,16 @@ export default class DesktopGPURenderer extends BaseRenderer {
     return texture.textureIndex;
   }
 
+  /**
+   * Tears down the GPURenderer.
+   *
+   * @return void
+   */
   destroy() {
     const { container, points, textureAtlas, uniqueList } = this;
 
     container.remove(points);
     uniqueList.destroy();
-    console.log('CONTAINER', container);
     textureAtlas && textureAtlas.destroy();
   }
 }

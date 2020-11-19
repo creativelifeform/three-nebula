@@ -281,4 +281,12 @@ export default class MobileGPURenderer extends BaseRenderer {
 
     return texture.textureIndex;
   }
+
+  destroy() {
+    const { container, points, textureAtlas, uniqueList } = this;
+
+    container.remove(points);
+    uniqueList.destroy();
+    textureAtlas && textureAtlas.destroy();
+  }
 }

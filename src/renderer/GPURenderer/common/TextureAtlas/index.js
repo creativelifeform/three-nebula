@@ -179,13 +179,16 @@ export default class TextureAtlas {
     atlasTexture.needsUpdate = true;
   }
 
+  /**
+   * Disposes of the textures used by the texture atlas.
+   *
+   * @return void
+   */
   destroy() {
     const { atlasIndex, atlasTexture, canvas } = this;
 
     atlasTexture.dispose();
-    console.log('ATLAS_TEXTURE', atlasTexture);
     atlasIndex && atlasIndex.dispose();
-    console.log('ATLAS_INDEX', atlasIndex);
 
     if (this.shouldDebug) {
       canvas.remove();
