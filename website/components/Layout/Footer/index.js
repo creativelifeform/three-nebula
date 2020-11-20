@@ -3,7 +3,7 @@ import {
   HREF_DOCS,
   HREF_GITHUB,
   HREF_NPM,
-  HREF_SPECTRUM,
+  HREF_CHAT,
   HREF_THREE_JS_DOCS,
   HREF_TWITTER,
 } from '../../../common/constants';
@@ -32,7 +32,7 @@ export default () => (
           <GridItemDetails title="Community">
             <ul>
               <li>
-                <a href={HREF_SPECTRUM}>Spectrum</a>
+                <a href={HREF_CHAT}>Spectrum</a>
               </li>
             </ul>
           </GridItemDetails>
