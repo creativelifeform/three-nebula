@@ -19,11 +19,22 @@ export default class GPURenderer extends BaseRenderer {
   constructor(container, THREE, options = DEFAULT_RENDERER_OPTIONS) {
     super(RENDERER_TYPE_GPU);
 
-    if (!this.isFloatingPointTextureSupported()) {
-      return new MobileGPURenderer(container, THREE, options);
+    const { shouldForceDesktopRenderer, shouldForceMobileRenderer } = options;
+    const args = [container, THREE, options];
+
+    if (shouldForceDesktopRenderer) {
+      return new DesktopGPURenderer(...args);
     }
 
-    return new DesktopGPURenderer(container, THREE, options);
+    if (shouldForceMobileRenderer) {
+      return new MobileGPURenderer(...args);
+    }
+
+    if (!this.isFloatingPointTextureSupported()) {
+      return new MobileGPURenderer(...args);
+    }
+
+    return new DesktopGPURenderer(...args);
   }
 
   isFloatingPointTextureSupported() {

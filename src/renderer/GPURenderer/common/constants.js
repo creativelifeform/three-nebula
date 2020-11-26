@@ -8,4 +8,6 @@ export const DEFAULT_RENDERER_OPTIONS = {
   transparent: true,
   maxParticles: DEFAULT_MAX_PARTICLES,
   shouldDebugTextureAtlas: false,
+  shouldForceDesktopRenderer: false,
+  shouldForceMobileRenderer: false,
 };
