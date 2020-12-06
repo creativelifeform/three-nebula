@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v10.0.0` - 2020-12-06
+
+### Added
+
+- Separate build scripts for `cjs` and `esm`
+- Github action for automatic publishing based on version tags
+- Module path to `package.json`
+
+### Removed
+
+- `./build` directory from the repo - this will be present in npm when published
+
+### Changed
+
+- `main` property of the `package.json` now points to the `cjs` entry point
+
 ## `v9.0.5` - 2020-11-26
 
 ### Added
