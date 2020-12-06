@@ -2,7 +2,8 @@
   "name": "three-nebula",
   "version": "9.0.5",
   "description": "WebGL based 3D particle engine",
-  "main": "./build/three-nebula.js",
+  "main": "./build/cjs/index.js",
+  "module": "./build/esm/index.js",
   "bundlesize": [
     {
       "path": "./build/three-nebula.js",
@@ -15,7 +16,11 @@
     "website": "website"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "npm run build:clean && npm run build:umd && npm run build:cjs && npm run build:esm",
+    "build:clean": "rm -rf ./build",
+    "build:umd": "webpack",
+    "build:cjs": "babel src --out-dir build/cjs --extensions \".js\" --source-maps inline --presets @babel/env",
+    "build:esm": "babel src --out-dir build/esm --extensions \".js\" --source-maps inline",
     "dev": "webpack --mode=development --watch",
     "sandbox": "concurrently -k \"npm:sandbox:*\"",
     "sandbox:build": "webpack --config webpack.config.sandbox.js --mode=development --watch",
