@@ -280,22 +280,6 @@ npm run sandbox
 
 This will serve the sandbox at `http://localhost:5000` and you can checkout the various experiments in the browser. It will also auto rebuild the library code and push the rebuilt bundle to the sandbox so all you need to do in order to see your changes is to refresh the browser.
 
-### Scripts
-
-There are a few NPM scripts in the root package.json:
-
-- `build` - Builds the module and writes the code into `./build/three-nebula.js`
-- `docs:build` - Copies the latest build to `./docs/js` and builds the API reference docs
-- `test` - Runs all specs
-- `test:only <spec>` - Runs a specific spec
-- `test:watch` - Watches tests
-- `test:watch-only <spec>` - Watches a specific spec
-- `lint` - Lints code and circular dependencies in `./src`
-- `coverage:generate` - Generates a code coverage report
-- `coverage:view` - View the code coverage report
-- `coverage:publish` - Publishes the coverage report
-- `git:publish <commit-message>` - Builds the module, adds all changed files commits with the message you supply and pushes to remote
-
 ## License
 
 [MIT](LICENSE.md)

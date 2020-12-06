@@ -5,12 +5,19 @@
       {
         "targets": {
           "browsers": ["defaults", "not IE 11"]
-        }
+        },
+        "modules": false
       }
     ]
   ],
   "plugins": [
     "@babel/plugin-proposal-object-rest-spread",
     "@babel/plugin-transform-runtime"
-  ]
+  ],
+  "env": {
+    "test": {
+      "presets": ["@babel/preset-env"],
+      "plugins": ["@babel/plugin-transform-runtime"]
+    }
+  }
 }
