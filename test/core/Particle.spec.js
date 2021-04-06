@@ -335,10 +335,9 @@ describe('particle update', () => {
     }
     integrate(particle_02, DEFAULT_SYSTEM_DELTA * times, 1 - DEFAULT_DAMPING);
 
-    assert.deepEqual(
-      values(particle_01.velocity),
-      values(particle_02.velocity)
-    );
+    assert.closeTo(particle_01.velocity.x, particle_02.velocity.x, 1e-14);
+    assert.closeTo(particle_01.velocity.y, particle_02.velocity.y, 1e-14);
+    assert.closeTo(particle_01.velocity.z, particle_02.velocity.z, 1e-14);
 
     done();
   });
