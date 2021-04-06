@@ -1,4 +1,5 @@
 import { INTEGRATION_TYPE_EULER } from './constants';
+import { DEFAULT_SYSTEM_DELTA } from '../core/constants';
 
 /**
  * Performs euler integration on the particle.
@@ -18,7 +19,8 @@ const eulerIntegration = (particle, time, damping) => {
   particle.acceleration.scalar(1 / particle.mass);
   particle.velocity.add(particle.acceleration.scalar(time));
   particle.position.add(particle.old.velocity.scalar(time));
-  damping && particle.velocity.scalar(damping);
+  damping &&
+    particle.velocity.scalar(Math.pow(damping, time / DEFAULT_SYSTEM_DELTA));
   particle.acceleration.clear();
 };
 
