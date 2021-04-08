@@ -15,6 +15,7 @@ import {
   DEFAULT_RADIUS,
   DEFAULT_SCALE,
   DEFAULT_SLEEP,
+  DEFAULT_SYSTEM_DELTA,
   DEFAULT_USE_ALPHA,
   DEFAULT_USE_COLOR,
 } from '../../src/core/constants';
@@ -22,6 +23,8 @@ import {
 import chai from 'chai';
 import { preset } from './fixtures/particle';
 import sinon from 'sinon';
+import { integrate } from '../../src';
+import { DEFAULT_DAMPING } from '../../src/emitter/constants';
 
 const { assert } = chai;
 const { Particle } = Nebula;
@@ -314,6 +317,27 @@ describe('particle update', () => {
     assert(destroySpy.calledOnce);
 
     destroySpy.restore();
+
+    done();
+  });
+
+  it('should have the same value in Particle.velocity if the total time of particles is the same', done => {
+    const particle_01 = new Particle({
+      velocity: new Nebula.Vector3D(1, 2, 0),
+    });
+    const particle_02 = new Particle({
+      velocity: new Nebula.Vector3D(1, 2, 0),
+    });
+    const times = 8.0;
+
+    for (let i = 0; i < times; i++) {
+      integrate(particle_01, DEFAULT_SYSTEM_DELTA, 1 - DEFAULT_DAMPING);
+    }
+    integrate(particle_02, DEFAULT_SYSTEM_DELTA * times, 1 - DEFAULT_DAMPING);
+
+    assert.closeTo(particle_01.velocity.x, particle_02.velocity.x, 1e-14);
+    assert.closeTo(particle_01.velocity.y, particle_02.velocity.y, 1e-14);
+    assert.closeTo(particle_01.velocity.z, particle_02.velocity.z, 1e-14);
 
     done();
   });

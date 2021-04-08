@@ -67,7 +67,7 @@ window.Visualization = class {
       this.hasStats = true;
     }
 
-    window.addEventListener('resize', this.resize);
+    window.addEventListener('resize', () => this.resize());
 
     const animate = () => {
       if (!this.shouldAnimate) {
@@ -105,6 +105,8 @@ window.Visualization = class {
       webGlRenderer,
       canvas: { clientWidth, clientHeight },
     } = this;
+
+    console.log(this);
 
     camera.aspect = clientWidth / clientHeight;
     camera.updateProjectionMatrix();
