@@ -20,12 +20,12 @@ describe('utils -> PUID', () => {
     const nid1 = NewPUID.id(myObject);
 
     assert.strictEqual(NewPUID._id, 1);
-    assert.strictEqual(nid1, 'PUID_0');
+    assert.strictEqual(nid1, 'PUID_1');
 
     const nid2 = NewPUID.id(myFunction);
 
     assert.strictEqual(NewPUID._id, 2);
-    assert.strictEqual(nid2, 'PUID_1');
+    assert.strictEqual(nid2, 'PUID_2');
     assert.isTrue(NewPUID._uids.has(myObject));
     assert.isTrue(NewPUID._uids.has(myFunction));
   });
