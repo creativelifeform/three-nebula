@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v10.0.2` - 2021-08-02
+
+### Fixed
+
+- Security vulnerabilities in dependencies
+- https://github.com/creativelifeform/three-nebula/issues/66 (thanks to [MasatoMakino](https://github.com/MasatoMakino) for their contribution!)
+- https://github.com/creativelifeform/three-nebula/issues/167 (thanks to [MasatoMakino](https://github.com/MasatoMakino) and [bendxr](https://github.com/bendxr) for their contribution!)
+
 ## `v10.0.1` - 2021-04-08
 
 ### Fixed

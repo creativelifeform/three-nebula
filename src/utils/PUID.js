@@ -2,7 +2,7 @@ export default {
   _id: 0,
   _uids: new Map(),
   getNewId: function() {
-    return `PUID_${this._id++}`;
+    return `PUID_${++this._id}`;
   },
   id: function(functionOrObject) {
     if (this._uids.has(functionOrObject)) {
