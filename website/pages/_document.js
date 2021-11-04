@@ -1,4 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+import { Fonts } from '../components';
 
 import React from 'react';
 
@@ -16,6 +17,7 @@ class MyDocument extends Document {
     return (
       <Html lang={lang}>
         <Head />
+        <Fonts />
         <body>
           <Main />
           <NextScript />
