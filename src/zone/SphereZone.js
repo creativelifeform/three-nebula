@@ -30,7 +30,9 @@ export default class SphereZone extends Zone {
       r = centerX || 100;
     } else {
       x = centerX;
+      // eslint-disable-next-line
       y = centerY;
+      // eslint-disable-next-line
       z = centerZ;
       r = radius;
     }

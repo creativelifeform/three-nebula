@@ -280,7 +280,9 @@ export default class System {
    */
   getCount() {
     const length = this.emitters.length;
+
     let total = 0;
+
     let i;
 
     for (i = 0; i < length; i++) {

@@ -38,6 +38,7 @@ export default {
       y = DEFAULT_POSITION,
       z = DEFAULT_POSITION,
     } = zone;
+
     let geometry;
 
     if (zone.isPointZone()) {

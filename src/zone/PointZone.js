@@ -26,7 +26,9 @@ export default class PointZone extends Zone {
       x = y = z = 0;
     } else {
       x = a;
+      // eslint-disable-next-line
       y = b;
+      // eslint-disable-next-line
       z = c;
     }
 

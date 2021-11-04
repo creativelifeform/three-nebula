@@ -9,14 +9,15 @@
     "plugin:import/errors",
     "plugin:import/warnings"
   ],
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
       "jsx": true
     },
     "sourceType": "module",
-    "ecmaVersion": 2017
+    "ecmaVersion": 2017,
+    "requireConfigFile": false
   },
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }],
