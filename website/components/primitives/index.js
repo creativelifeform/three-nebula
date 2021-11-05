@@ -12,3 +12,4 @@ export {
 export { NavLink } from './NavLink';
 export { Nebula } from './Nebula';
 export { Spinner } from './Spinner';
+export { Fonts } from './Fonts';
