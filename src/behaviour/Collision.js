@@ -56,7 +56,9 @@ export default class Collision extends Behaviour {
     const particles = this.emitter
       ? this.emitter.particles.slice(index)
       : this.particles.slice(index);
+
     let otherParticle, lengthSq, overlap, distance, averageMass1, averageMass2;
+
     let i = particles.length;
 
     while (i--) {

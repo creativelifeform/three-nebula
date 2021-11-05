@@ -1,10 +1,9 @@
-const withSass = require('@zeit/next-sass');
 const withAssetsImport = require('next-assets-import');
-const withProgressBar = require('next-progressbar');
 const routes = require('./content/routes');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
+const path = require('path');
 
 require('dotenv').config();
 
@@ -13,37 +12,46 @@ const {
 } = process;
 
 module.exports = withBundleAnalyzer(
-  withProgressBar(
-    withSass(
-      withAssetsImport({
-        progressBar: {
-          profile: true,
-        },
-        env: {
-          API_URL,
-          TEST_EMAIL,
-          UA_ID,
-          SENTRY_DSN,
-        },
-        exportPathMap: function() {
-          const map = {};
+  withAssetsImport({
+    // https://stackoverflow.com/a/68012194
+    images: {
+      disableStaticImages: true,
+    },
+    sassOptions: {
+      includePaths: [path.join(__dirname, 'style')],
+    },
+    env: {
+      API_URL,
+      TEST_EMAIL,
+      UA_ID,
+      SENTRY_DSN,
+    },
+    exportPathMap: function() {
+      const map = {};
 
-          routes.forEach(({ path }) => {
-            if (!path) {
-              return;
-            }
+      routes.forEach(({ path }) => {
+        if (!path) {
+          return;
+        }
 
-            map[path] = { page: path };
-          });
+        map[path] = { page: path };
+      });
 
-          return map;
-        },
-        webpack(config) {
-          config.node = { fs: 'empty', net: 'empty', tls: 'empty' };
+      return map;
+    },
+    webpack(config, { isServer }) {
+      if (!isServer) {
+        config.resolve.fallback = {
+          ...config.resolve.fallback,
+          ...{
+            fs: false,
+            net: false,
+            tls: false,
+          },
+        };
+      }
 
-          return config;
-        },
-      })
-    )
-  )
+      return config;
+    },
+  })
 );

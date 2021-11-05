@@ -1,4 +1,5 @@
 const path = require('path');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const bundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
@@ -19,11 +20,6 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /(node_modules)/,
       },
-      {
-        test: /(\.jsx|\.js)$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/,
-      },
     ],
   },
   resolve: {
@@ -35,5 +31,6 @@ module.exports = {
       analyzerMode: 'disabled',
       generateStatsFile: true,
     }),
+    new ESLintPlugin(),
   ],
 };
