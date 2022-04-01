@@ -50,48 +50,51 @@ npm i --save three-nebula
 ### Module
 
 ```javascript
+import * as THREE from 'three';
+
 import System, {
+  SpriteRenderer,
   Emitter,
   Rate,
-  Span,
-  Position,
-  Mass,
-  Radius,
+  RadialVelocity,
   Life,
-  Velocity,
-  PointZone,
   Vector3D,
   Alpha,
   Scale,
   Color,
 } from 'three-nebula';
-import * as THREE from 'three';
 
 const system = new System();
-const emitter = new Emitter();
 const renderer = new SpriteRenderer(threeScene, THREE);
+const emitter = new Emitter();
 
-// Set emitter rate (particles per second) as well as the particle initializers and behaviours
 emitter
-  .setRate(new Rate(new Span(4, 16), new Span(0.01)))
+  .setRate(new Rate(1, 0.1))
   .setInitializers([
-    new Position(new PointZone(0, 0)),
-    new Mass(1),
-    new Radius(6, 12),
+    new RadialVelocity(1, new Vector3D(0, 1, 0), 180),
     new Life(3),
-    new RadialVelocity(45, new Vector3D(0, 1, 0), 180),
   ])
   .setBehaviours([
     new Alpha(1, 0),
-    new Scale(0.1, 1.3),
-    new Color(new THREE.Color(), new THREE.Color()),
-  ]);
+    new Scale(0.25, 0.125),
+    new Color(new THREE.Color(0xFF0000), new THREE.Color(0x0000FF)),
+  ])
+  .emit();
 
-// add the emitter and a renderer to your particle system
 system
-  .addEmitter(emitter)
   .addRenderer(renderer)
-  .emit({ onStart, onUpdate, onEnd });
+  .addEmitter(emitter)
+  .emit({
+    onStart: () => { },
+    onUpdate: () => { },
+    onEnd: () => { },
+  });
+
+const animate = () => {
+  system.update();
+  requestAnimationFrame(animate);
+};
+requestAnimationFrame(animate);
 ```
 
 You can also instantiate your system from a JSON object
