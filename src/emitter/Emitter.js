@@ -558,7 +558,7 @@ export default class Emitter extends Particle {
    * @return void
    */
   update(time) {
-    if (!this.isEmitting) {
+    if (!this.isEmitting && this.particles.length === 0) {
       return;
     }
 
@@ -568,7 +568,11 @@ export default class Emitter extends Particle {
       this.destroy();
     }
 
-    this.generate(time);
+    if (this.isEmitting)
+    {
+      this.generate(time);
+    }
+
     this.integrate(time);
 
     let i = this.particles.length;
