@@ -106,7 +106,7 @@ window.Visualization = class {
       canvas: { clientWidth, clientHeight },
     } = this;
 
-    console.log(this);
+    //console.log(this);
 
     camera.aspect = clientWidth / clientHeight;
     camera.updateProjectionMatrix();
