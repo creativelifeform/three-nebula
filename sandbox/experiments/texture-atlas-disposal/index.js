@@ -10,7 +10,7 @@ const { restart, stop, add, remove } = {
   remove: button('remove'),
 };
 const shouldDebugTextureAtlas = true;
-let visualisation, system, systemRenderer, container;
+let visualisation, system, systemRenderer, container, threeRenderer;
 
 /**
  * Creates a brand new system from the current particleSystemState object.
@@ -61,9 +61,10 @@ const removeEmitter = system => {
  * Gets the correct renderer for the system.
  *
  * @param {Scene} container
+ * @param {THREE.WebGLRenderer} renderer
  */
-const createRenderer = container =>
-  new GPURenderer(container, THREE, { shouldDebugTextureAtlas });
+const createRenderer = (container, renderer) =>
+  new GPURenderer(container, renderer, THREE, { shouldDebugTextureAtlas });
 
 /**
  * Fully restarts the particle system by destroying it first.
@@ -76,7 +77,7 @@ const restartSystem = system => {
   createSystem().then(hydrated => {
     system = hydrated;
 
-    system.addRenderer(createRenderer(container));
+    system.addRenderer(createRenderer(container,threeRenderer));
 
     visualisation.restart(system);
   });
@@ -88,13 +89,23 @@ const restartSystem = system => {
  */
 window.init = async ({ scene, camera, renderer }) => {
   container = scene;
-  systemRenderer = createRenderer(container);
+  threeRenderer = renderer;
+  systemRenderer = createRenderer(container,threeRenderer);
   system = await createSystem();
   visualisation = window.visualisation;
 
   restart.addEventListener('click', () => restartSystem(system));
   add.addEventListener('click', () => addEmitter(system));
   remove.addEventListener('click', () => removeEmitter(system));
+
+  if(systemRenderer.type === 'GPURenderer' || systemRenderer.type === 'MobileGPURenderer' || systemRenderer.type === 'DesktopGPURenderer')
+  {
+    window.onresize = (e) => {
+      setTimeout(() => {
+        system.setSize(renderer.domElement.width,renderer.domElement.height);
+      },100)
+    }
+  }
 
   return system.addRenderer(systemRenderer);
 };

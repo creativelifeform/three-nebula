@@ -81,9 +81,18 @@ window.init = async ({ scene, camera, renderer }) => {
     renderer,
   });
   //const systemRenderer = new SpriteRenderer(scene, THREE);
-  const systemRenderer = new GPURenderer(scene, THREE);
+  const systemRenderer = new GPURenderer(scene, renderer, THREE);
 
   animateEmitters(emitterA, emitterB);
+
+  if(systemRenderer.type === 'GPURenderer' || systemRenderer.type === 'MobileGPURenderer' || systemRenderer.type === 'DesktopGPURenderer')
+  {
+    window.onresize = (e) => {
+      setTimeout(() => {
+        system.setSize(renderer.domElement.width,renderer.domElement.height);
+      },100)
+    }
+  }
 
   return system
     .addEmitter(emitterA)

@@ -16,11 +16,11 @@ import { RENDERER_TYPE_GPU } from '../types';
  * @author rohan-deshpande <rohan@creativelifeform.com>
  */
 export default class GPURenderer extends BaseRenderer {
-  constructor(container, THREE, options = DEFAULT_RENDERER_OPTIONS) {
+  constructor(container, threeRenderer, THREE, options = DEFAULT_RENDERER_OPTIONS) {
     super(RENDERER_TYPE_GPU);
 
     const { shouldForceDesktopRenderer, shouldForceMobileRenderer } = options;
-    const args = [container, THREE, options];
+    const args = [container, threeRenderer, THREE, options];
 
     if (shouldForceDesktopRenderer) {
       return new DesktopGPURenderer(...args);

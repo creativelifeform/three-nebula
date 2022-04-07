@@ -4,6 +4,7 @@ export const vertexShader = () => {
   return `
     uniform sampler2D uTexture;
     uniform vec2 atlasDim;
+    uniform float threeRendererHeight;
 
     attribute float size;
     attribute vec3 color;
@@ -23,7 +24,7 @@ export const vertexShader = () => {
       vec2 tmax = fract(texID);
       tileRect = vec4(tmin,tmax);
 
-      gl_PointSize = ((size * ${SIZE_ATTENUATION_FACTOR}) / -mvPosition.z);
+      gl_PointSize = ((size * threeRendererHeight * ${SIZE_ATTENUATION_FACTOR}) / -mvPosition.z);
       gl_Position = projectionMatrix * mvPosition;
     }
 `;

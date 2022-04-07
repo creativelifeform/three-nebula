@@ -101,9 +101,18 @@ window.init = async ({ scene, camera, renderer }) => {
   const color1 = new THREE.Color();
   const color2 = new THREE.Color();
   const emitter = createEmitter(color1, color2);
-  const systemRenderer = new GPURenderer(scene, THREE);
+  const systemRenderer = new GPURenderer(scene, renderer, THREE);
 
   animate({ color1, color2, emitter, camera, scene });
+
+  if(systemRenderer.type === 'GPURenderer' || systemRenderer.type === 'MobileGPURenderer' || systemRenderer.type === 'DesktopGPURenderer')
+  {
+    window.onresize = (e) => {
+      setTimeout(() => {
+        system.setSize(renderer.domElement.width,renderer.domElement.height);
+      },100)
+    }
+  }
 
   return system.addEmitter(emitter).addRenderer(systemRenderer);
 };

@@ -13,6 +13,12 @@ import Pool from './Pool';
 import fromJSON from './fromJSON';
 import fromJSONAsync from './fromJSONAsync';
 import { CORE_TYPE_SYSTEM as type } from './types';
+import { 
+  RENDERER_TYPE_GPU,
+  RENDERER_TYPE_GPU_MOBILE,
+  RENDERER_TYPE_GPU_DESKTOP,
+} from '../renderer/types';
+
 
 /**
  * The core of the three-system particle engine.
@@ -271,6 +277,23 @@ export default class System {
     }
 
     return Promise.resolve();
+  }
+
+  /**
+   * Updates the size/dimensions of the three.js renderer/canvas. (only applicable to the GPU renderers)
+   * The particles are then scaled relatively to the renderer/canvas height, keeping them a consistent proportional size regardless of the canvas dimensions
+   */
+  setSize(width,height) {
+
+    this.renderers.forEach( renderer => {
+     
+      if(renderer.type === RENDERER_TYPE_GPU || renderer.type === RENDERER_TYPE_GPU_MOBILE || renderer.type === RENDERER_TYPE_GPU_DESKTOP)
+      {
+        renderer.updateThreeRendererSize(width,height);
+      }
+
+    });
+
   }
 
   /**

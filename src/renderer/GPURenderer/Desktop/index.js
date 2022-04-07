@@ -15,7 +15,7 @@ let THREE;
  * @author rohan-deshpande <rohan@creativelifeform.com>
  */
 export default class DesktopGPURenderer extends BaseRenderer {
-  constructor(container, three, options = DEFAULT_RENDERER_OPTIONS) {
+  constructor(container, threeRenderer, three, options = DEFAULT_RENDERER_OPTIONS) {
     super(RENDERER_TYPE_GPU_DESKTOP);
 
     THREE = this.three = three;
@@ -36,6 +36,7 @@ export default class DesktopGPURenderer extends BaseRenderer {
         baseColor: { value: new THREE.Color(baseColor) },
         uTexture: { value: null },
         atlasIndex: { value: null },
+        threeRendererHeight: { value: threeRenderer.domElement.height },
       },
       vertexShader: vertexShader(),
       fragmentShader: fragmentShader(),
@@ -111,6 +112,18 @@ export default class DesktopGPURenderer extends BaseRenderer {
     this.mapParticleTargetPropsToPoint(particle);
 
     particle.target = null;
+  }
+
+
+  /**
+   * Updates the threeRendererHeight uniform to keep gl_PointSize sizes relative to the three.js renderer height.
+   * (without this the particle sizes vary across different device/canvas sizes)
+   * 
+   * @param {width}
+   * @param {height}
+   */
+  updateThreeRendererSize(width,height) {
+    this.material.uniforms.threeRendererHeight.value = height;
   }
 
   /**

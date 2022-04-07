@@ -92,7 +92,7 @@ const createEmitter = (color1, color2) => {
     .emit();
 };
 
-export default async (three, { scene, camera }) => {
+export default async (three, { scene, camera, renderer }) => {
   THREE = three;
 
   const system = new ParticleSystem();
@@ -102,5 +102,5 @@ export default async (three, { scene, camera }) => {
 
   animate({ color1, color2, emitter, camera, scene });
 
-  return system.addEmitter(emitter).addRenderer(new GPURenderer(scene, THREE));
+  return system.addEmitter(emitter).addRenderer(new GPURenderer(scene, renderer, THREE));
 };
