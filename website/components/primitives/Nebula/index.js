@@ -82,16 +82,18 @@ export class Nebula extends Component {
   setCanvasSize(callback) {
     const { offsetWidth: width = 0, offsetHeight: height = 0 } =
       this.container || {};
-    
+
     const system = this.renderer?.particleSystem;
 
-    if(system)
-    {
+    if (system) {
       const systemRenderer = system.renderers[0];
 
-      if(systemRenderer.type === 'GPURenderer' || systemRenderer.type === 'MobileGPURenderer' || systemRenderer.type === 'DesktopGPURenderer')
-      {
-        system.setSize(width,height);
+      if (
+        systemRenderer.type === 'GPURenderer' ||
+        systemRenderer.type === 'MobileGPURenderer' ||
+        systemRenderer.type === 'DesktopGPURenderer'
+      ) {
+        system.setSize(width, height);
       }
     }
 

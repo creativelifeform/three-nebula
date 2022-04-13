@@ -46,7 +46,9 @@ export class JsonRenderer extends BaseRenderer {
         .then(particleSystem => {
           this.particleSystem = particleSystem;
 
-          particleSystem.addRenderer(new GPURenderer(this.scene, this.webGlRenderer, THREE));
+          particleSystem.addRenderer(
+            new GPURenderer(this.scene, this.webGlRenderer, THREE)
+          );
 
           if (shouldExposeLifeCycleApi) {
             particleSystem.emit({

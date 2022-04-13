@@ -102,5 +102,7 @@ export default async (three, { scene, camera, renderer }) => {
 
   animate({ color1, color2, emitter, camera, scene });
 
-  return system.addEmitter(emitter).addRenderer(new GPURenderer(scene, renderer, THREE));
+  return system
+    .addEmitter(emitter)
+    .addRenderer(new GPURenderer(scene, renderer, THREE));
 };
