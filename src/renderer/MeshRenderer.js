@@ -51,7 +51,7 @@ export default class MeshRenderer extends BaseRenderer {
   }
 
   onParticleUpdate(particle) {
-    const { target, useAlpha, useColor, rotation } = particle;
+    const { target, useAlpha, useColor } = particle;
 
     if (!target) {
       return;
@@ -59,9 +59,7 @@ export default class MeshRenderer extends BaseRenderer {
 
     target.position.copy(particle.position);
 
-    if (!this.isThreeSprite(particle)) {
-      target.rotation.set(rotation.x, rotation.y, rotation.z);
-    }
+    this.rotate(particle);
 
     this.scale(particle);
 
@@ -73,6 +71,10 @@ export default class MeshRenderer extends BaseRenderer {
     if (useColor) {
       target.material.color.copy(particle.color);
     }
+  }
+
+  rotate(particle) {
+    particle.target.rotation.set(particle.rotation.x, particle.rotation.y, particle.rotation.z);
   }
 
   scale(particle) {
