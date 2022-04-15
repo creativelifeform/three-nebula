@@ -176,7 +176,7 @@ export default class Rotate extends Behaviour {
           particle.rotation = new Vector3D();
         }
 
-        particle.rotation.eulerFromDir(particle.velocity);
+        particle.rotation.copy(particle.velocity);
         break;
 
       case 'set':
