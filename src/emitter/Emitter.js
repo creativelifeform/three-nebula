@@ -10,6 +10,7 @@ import EventDispatcher, {
   PARTICLE_CREATED,
   PARTICLE_DEAD,
   PARTICLE_UPDATE,
+  SYSTEM_UPDATE,
 } from '../events';
 import { INTEGRATION_TYPE_EULER, integrate } from '../math';
 import { Util, uid } from '../utils';
@@ -585,6 +586,10 @@ export default class Emitter extends Particle {
         this.bindEmitterEvent && this.dispatch(PARTICLE_DEAD, particle);
         this.parent.pool.expire(particle.reset());
         this.particles.splice(i, 1);
+        if(this.particles.length === 0)
+        {
+          this.parent && this.parent.dispatch(SYSTEM_UPDATE);
+        }
       }
     }
 
