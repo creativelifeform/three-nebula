@@ -128,10 +128,9 @@ describe('core -> System', () => {
     system.update();
 
     assert(emitterSpy.calledOnce);
-    // system.addEmitter x1 + system.update x2
-    assert(dispatchSpy.calledThrice);
-    assert(dispatchSpy.secondCall.calledWith(SYSTEM_UPDATE));
-    assert(dispatchSpy.thirdCall.calledWith(SYSTEM_UPDATE_AFTER));
+    // system.addEmitter x1 + system.update x1
+    assert(dispatchSpy.calledTwice);
+    assert(dispatchSpy.secondCall.calledWith(SYSTEM_UPDATE_AFTER));
 
     emitterSpy.restore();
     dispatchSpy.restore();
