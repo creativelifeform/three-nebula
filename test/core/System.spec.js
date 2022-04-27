@@ -160,6 +160,29 @@ describe('core -> System', () => {
     done();
   });
 
+  it('should ensure all particles live out their lives after stopEmit is called', done => {
+    const system = getSystem();
+    const emitter = new Nebula.Emitter();
+    const rate = new Nebula.Rate(500, 0.01);
+    const life = new Nebula.Life(0.2);
+    const renderer = getSpriteRenderer(new Scene());
+
+    system
+      .addRenderer(renderer)
+      .addEmitter(emitter.setRate(rate).addInitializer(life).emit())
+      .update()
+      .then(() => {
+        setTimeout(() => {
+          emitter.stopEmit();
+          system.update(.1);       
+          assert.notEqual(system.getCount(), 0);
+          system.update(.1);       
+          assert.equal(system.getCount(), 0);
+          done();
+        }, 1500);
+      });
+  });
+
   it('should get the count of particles in the system', done => {
     const system = getSystem();
     const emitter = new Nebula.Emitter();
