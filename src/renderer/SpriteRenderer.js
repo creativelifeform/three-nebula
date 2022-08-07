@@ -18,6 +18,10 @@ export default class SpriteRenderer extends MeshRenderer {
     );
   }
 
+  rotate(particle) {
+    particle.target.material.rotation = particle.rotation.z;
+  }
+
   scale(particle) {
     particle.target.scale.set(
       particle.scale * particle.radius,

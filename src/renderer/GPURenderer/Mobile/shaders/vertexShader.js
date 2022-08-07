@@ -9,7 +9,9 @@ export const vertexShader = () => {
     attribute vec3 color;
     attribute float alpha;
     attribute vec2 texID;
+    attribute float rotation;
 
+    varying float vRotation;
     varying vec3 targetColor;
     varying float targetAlpha;
     varying vec4 tileRect;
@@ -18,6 +20,7 @@ export const vertexShader = () => {
       vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
       targetColor = color;
       targetAlpha = alpha;
+      vRotation = rotation;
 
       vec2 tmin = floor(texID) / atlasDim;
       vec2 tmax = fract(texID);
