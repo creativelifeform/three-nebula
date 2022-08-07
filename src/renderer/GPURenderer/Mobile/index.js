@@ -128,10 +128,11 @@ export default class MobileGPURenderer extends BaseRenderer {
    * @return {GPURenderer}
    */
   updateTarget(particle) {
-    const { position, scale, radius, color, alpha, body, id } = particle;
+    const { position, rotation, scale, radius, color, alpha, body, id } = particle;
     const { r, g, b } = color;
 
     particle.target.position.copy(position);
+    particle.target.rotation.copy(rotation);
     particle.target.size = scale * radius;
     particle.target.color.setRGB(r, g, b);
     particle.target.alpha = alpha;
@@ -159,6 +160,7 @@ export default class MobileGPURenderer extends BaseRenderer {
   mapParticleTargetPropsToPoint(particle) {
     this.updatePointPosition(particle)
       .updatePointSize(particle)
+      .updatePointRotation(particle)
       .updatePointColor(particle)
       .updatePointAlpha(particle)
       .updatePointTextureIndex(particle);
@@ -198,6 +200,23 @@ export default class MobileGPURenderer extends BaseRenderer {
     const { offset } = geometry.attributes[attribute];
 
     buffer.array[target.index * stride + offset + 0] = target.size;
+
+    return this;
+  }
+
+  /**
+   * Updates the point's rotation.
+   *
+   * @param {Particle} particle - The particle containing the target rotation.
+   * @return {GPURenderer}
+   */
+  updatePointRotation(particle) {
+    const attribute = 'rotation';
+    const { geometry, stride, buffer } = this;
+    const { target } = particle;
+    const { offset } = geometry.attributes[attribute];
+
+    buffer.array[target.index * stride + offset + 0] = target.rotation.z;
 
     return this;
   }
