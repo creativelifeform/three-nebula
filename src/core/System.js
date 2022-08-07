@@ -263,7 +263,7 @@ export default class System {
           const emitter = this.emitters[i];
 
           emitter.update(d);
-          emitter.isEmitting && this.dispatch(SYSTEM_UPDATE);
+          emitter.particles.length && this.dispatch(SYSTEM_UPDATE);
         }
       }
 
