@@ -6,7 +6,7 @@ This module exists to ensure that `three` is not shipped with `three-nebula`. Be
 
 ## Version
 
-The current version these classes have been pulled from is `r106`.
+The current version these classes have been pulled from is `r146`.
 
 ## Updating
 
