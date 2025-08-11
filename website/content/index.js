@@ -1,7 +1,7 @@
 const content = {
   favicon: {
     title: 'Three Nebula',
-    description: 'A WebGL based 3D particle system engine for ThreeJs',
+    description: 'A WebGL-based 3D particle system engine for Three.js',
     url: 'https://three-nebula.org',
     twitterName: 'three-nebula',
     twitterImage: '',
@@ -11,35 +11,35 @@ const content = {
     large: 'See Examples',
   },
   home: {
-    title: 'three-nebula',
-    text: 'A WebGL based 3D particle system engine for ',
+    title: 'Three Nebula',
+    text: 'A WebGL-based 3D particle system engine for ',
   },
   features: {
     items: [
       {
         title: 'Simple, Powerful API',
         text:
-          'Choose from a wide variety of particle initializers & behaviors to create truly expressive, dynamic particle systems from textures or 3D objects.',
+          'Choose from a wide range of particle initializers and behaviors to create expressive, dynamic particle systems from textures or 3D objects.',
         link: {
-          text: 'Get started',
+          text: 'Get Started',
           href: 'https://codesandbox.io/s/three-nebula-quickstart-kz6uv',
         },
       },
       {
         title: 'Loadable & Portable via JSON',
         text:
-          'Load your entire system from a JSON object which you can easily share with others or modify for a fast and user friendly development experience.',
+          'Load your entire system from a JSON file, making it easy to share with others or tweak for a fast, user-friendly development workflow.',
         link: {
-          text: 'Read the docs',
+          text: 'Read the Docs',
           href: 'https://three-nebula-docs.netlify.app/',
         },
       },
       {
         title: 'MIT Licensed',
         text:
-          'MIT licensed for you to fork and make changes to yourself, PRs welcome!',
+          'Released under the MIT License — fork it, modify it, and make it your own. Pull requests are welcome!',
         link: {
-          text: 'View the source',
+          text: 'View the Source',
           href: 'https://github.com/creativelifeform/three-nebula',
         },
       },
@@ -47,11 +47,11 @@ const content = {
   },
   about: {
     title:
-      "Comes with it's own GUI so you don't have to design your particle systems in code!",
+      'Comes with its own GUI so you don't have to design particle systems in code!',
     text: {
       items: [
-        ' is a GUI/editor for Windows, Mac and Linux which allows you fully design three-nebula particle systems, visually.',
-        'Control all aspects of the API with an intuitive, user friendly interface, then simply export your creations as JSON',
+        'A cross-platform GUI editor for Windows, macOS, and Linux that lets you visually design Three Nebula particle systems.',
+        'Control every aspect of the API with an intuitive, user-friendly interface, then export your creations as JSON.',
       ],
     },
   },
