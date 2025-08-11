@@ -47,7 +47,7 @@ const content = {
   },
   about: {
     title:
-      'Comes with its own GUI so you don't have to design particle systems in code!',
+      "Comes with its own GUI so you don't have to design particle systems in code!",
     text: {
       items: [
         'A cross-platform GUI editor for Windows, macOS, and Linux that lets you visually design Three Nebula particle systems.',
