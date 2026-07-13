@@ -24,7 +24,10 @@ jobs:
       # its own Netlify deploy-preview, so it's no longer built here.
       - run: npm run ci:src
 
+      # Coverage upload is optional telemetry — a coveralls.io outage (e.g. a 504
+      # downloading its binary) must not fail the build.
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v2
+        continue-on-error: true
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
