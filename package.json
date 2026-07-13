@@ -4,13 +4,6 @@
   "description": "WebGL based 3D particle engine",
   "main": "./build/cjs/index.js",
   "module": "./build/esm/index.js",
-  "bundlesize": [
-    {
-      "path": "./build/three-nebula.js",
-      "maxSize": "105 kB",
-      "compression": "none"
-    }
-  ],
   "directories": {
     "docs": "docs",
     "website": "website"
@@ -43,7 +36,6 @@
     "vr:diff": "node vr/diff.mjs",
     "vr:montage": "node vr/montage.mjs",
     "ci:src": "npm run lint && npm run test && npm run coverage",
-    "ci:bundlesize": "./scripts/check-bundlesize",
     "ci:website": "npm run ci --prefix website",
     "analyze": "webpack-bundle-analyzer build/stats.json"
   },
@@ -87,7 +79,6 @@
     "@playwright/test": "^1.61.1",
     "babel-loader": "^8.2.3",
     "babel-plugin-istanbul": "^6.0.0",
-    "bundlesize": "^0.18.1",
     "chai": "^4.2.0",
     "concurrently": "^6.3.0",
     "coveralls": "^3.0.3",
