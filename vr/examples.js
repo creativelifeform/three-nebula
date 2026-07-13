@@ -15,7 +15,7 @@ export const EXAMPLES = {
   MeshRendererCollision: { kind: 'init', frames: 120 },
   EmitterBehaviors: { kind: 'json', frames: 120 },
   GpuRenderer: { kind: 'json', frames: 120 },
-  // Uses the removed Geometry `.vertices` API — throws on modern three.
-  // A repair item (028), not a regression item; excluded from the golden master.
-  SpriteRendererSnow: { kind: 'init', frames: 120, broken: true },
+  // Repaired for modern three (BufferGeometry position instead of the removed
+  // Geometry `.vertices`). More frames for a fuller, settled snowfall.
+  SpriteRendererSnow: { kind: 'init', frames: 260 },
 };
