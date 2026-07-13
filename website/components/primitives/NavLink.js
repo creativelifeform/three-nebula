@@ -17,10 +17,8 @@ const Link = ({ href, name, router: { pathname }, url = null }) => {
   }
 
   return (
-    <NextLink href={href}>
-      <a className={href === route ? 'active' : ''} href={href}>
-        {name}
-      </a>
+    <NextLink href={href} className={href === route ? 'active' : ''}>
+      {name}
     </NextLink>
   );
 };

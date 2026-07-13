@@ -34,7 +34,7 @@ export const CalloutLink = ({ href, text = 'Get the GUI' }) => {
         isAbsoluteLink ? (
           <AnchorTag {...{ href, text, track }} />
         ) : (
-          <Link href={href}>
+          <Link href={href} legacyBehavior passHref>
             <AnchorTag {...{ href, text, track }} />
           </Link>
         )

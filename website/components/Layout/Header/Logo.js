@@ -5,12 +5,10 @@ import React from 'react';
 export default () => (
   <div className="Logo">
     <Link href="/">
-      <a href="/">
-        <span className="logo-mark">
-          <Logo />
-        </span>
-        <span className="logo-text">three nebula</span>
-      </a>
+      <span className="logo-mark">
+        <Logo />
+      </span>
+      <span className="logo-text">three nebula</span>
     </Link>
   </div>
 );
