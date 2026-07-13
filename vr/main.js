@@ -70,14 +70,22 @@ async function run() {
   const camera = new THREE.PerspectiveCamera(70, W / H, 0.1, 1000);
   camera.position.set(0, 0, 50);
 
-  // Mirror the site's Base renderer lighting.
-  scene.add(new THREE.AmbientLight(0x101010));
-  const point = new THREE.PointLight(0xffffff, 2, 1000, 1);
+  // A modern-three light rig for the lit mesh examples (MeshLambert / PBR
+  // MeshStandard). three r155 made lighting physically-correct, so punctual-light
+  // intensities are scaled by π (the standard migration); a soft ambient + a
+  // directional fill give the PBR material enough light to read. Sprite examples
+  // are unlit (SpriteMaterial ignores lights), so this only affects the meshes.
+  const L = Math.PI;
+  scene.add(new THREE.AmbientLight(0xffffff, 0.35 * L));
+  const point = new THREE.PointLight(0xffffff, 3 * L, 2000, 1);
   point.position.set(0, 200, 200);
   scene.add(point);
-  const spot = new THREE.SpotLight(0xffffff, 0.5);
+  const spot = new THREE.SpotLight(0xffffff, 0.5 * L);
   spot.position.set(0, 500, 100);
   scene.add(spot);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.7 * L);
+  fill.position.set(1, 1, 1);
+  scene.add(fill);
 
   const renderer = new THREE.WebGLRenderer({
     canvas,

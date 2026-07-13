@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+> Slated for a **major** release (`v11.0.0`) — core dependency change. Version bump
+> + tag to be cut on a `release/` branch.
+
+### Changed
+
+- **BREAKING (core dependency):** the supported/tested `three` baseline moves from
+  **r127 to r185**. Because three r152/r155 made output **sRGB** and lighting
+  **physically-correct** by default, rendered output differs from v10 — punctual
+  light intensities need scaling by π and lit-material appearance will shift.
+  three-nebula's own code is unchanged in behaviour; this is three's rendering
+  pipeline. Consumers should validate their scenes against modern three.
+- Modernised the toolchain: CI now runs on **Node 20/22** (was 12/14); removed the
+  unmaintained `bundlesize` → `iltorb` chain that no longer builds on modern Node,
+  and the redundant GitHub-Actions website build (covered by Netlify).
+
+### Added
+
+- A **deterministic visual-regression harness** (`vr/`) that renders the website
+  examples against a committed golden master — the safety net used to validate the
+  three upgrade (seeded RNG, fixed frames, Playwright + swiftshader).
+
+### Fixed
+
+- The **Snow** example used the removed `Geometry.vertices` API; ported to
+  `BufferGeometry`.
+
 ## `v10.0.3` - 2021-11-05
 
 ### Changed

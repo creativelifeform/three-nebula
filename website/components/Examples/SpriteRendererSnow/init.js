@@ -31,22 +31,29 @@ const createPlane = () => {
     })
   );
 
-  const planeGeometry = plane.geometry;
+  // three r125+ removed Geometry; PlaneGeometry is a BufferGeometry now, so
+  // displace the position attribute's z instead of the old .vertices array.
+  const position = plane.geometry.attributes.position;
 
-  for (let i = 0, l = planeGeometry.vertices.length; i < l; i++) {
+  for (let i = 0; i < position.count; i++) {
     const y = Math.floor(i / 10);
     const x = i - y * 10;
 
+    let z;
     if (x === 4 || x === 5) {
-      planeGeometry.vertices[i].z = 0;
+      z = 0;
     } else {
-      planeGeometry.vertices[i].z = Math.random() * 480 - 240;
+      z = Math.random() * 480 - 240;
     }
 
     if (y === 0 || y === 24) {
-      planeGeometry.vertices[i].z = -60;
+      z = -60;
     }
+
+    position.setZ(i, z);
   }
+
+  position.needsUpdate = true;
 
   plane.rotation.x = -Math.PI / 3;
   plane.position.y = -200;
@@ -93,6 +100,10 @@ const createEmitter = (camera, renderer) => {
 
 export default async (three, { scene, camera, renderer }) => {
   THREE = three;
+
+  // Frame the large snow field (the example relied on a full-page canvas and
+  // never set a camera).
+  camera.position.set(0, 100, 1000);
 
   const system = new ParticleSystem();
 
