@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -10,7 +9,7 @@ describe('initializer -> Radius', () => {
   const radius = 5;
   const initializer = new Nebula.Radius(radius);
 
-  it('should have the correct properties after instantiation', done => {
+  it('should have the correct properties after instantiation', () => {
     const {
       radius,
       radius: { _isArray, a, b, _center },
@@ -23,10 +22,9 @@ describe('initializer -> Radius', () => {
     assert.strictEqual(a, 5);
     assert.strictEqual(b, 5);
 
-    done();
   });
 
-  it('should set the correct properties on the particle after initialization', done => {
+  it('should set the correct properties on the particle after initialization', () => {
     const particle = new Nebula.Particle();
 
     initializer.initialize(particle);
@@ -39,10 +37,9 @@ describe('initializer -> Radius', () => {
     assert.strictEqual(radius, 5);
     assert.strictEqual(oldRadius, 5);
 
-    done();
   });
 
-  it('should construct the initializer from a JSON object', done => {
+  it('should construct the initializer from a JSON object', () => {
     const instance = Nebula.Radius.fromJSON({
       width: 3,
       height: 10,
@@ -55,6 +52,5 @@ describe('initializer -> Radius', () => {
     assert.equal(instance.radius.b, 10);
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });

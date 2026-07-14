@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -11,7 +10,7 @@ const { assert } = chai;
 describe('behaviour -> Gravity', () => {
   const behaviour = new Nebula.Gravity(1);
 
-  it('should instantiate with the correct properties', done => {
+  it('should instantiate with the correct properties', () => {
     const { life, easing, age, energy, dead, force } = behaviour;
 
     assert.equal(behaviour.type, 'Gravity');
@@ -23,10 +22,9 @@ describe('behaviour -> Gravity', () => {
     assert.instanceOf(force, Nebula.Vector3D);
     assert.strictEqual(force.y, -100);
 
-    done();
   });
 
-  it('should have set the correct properties on the particle after applying the behaviour', done => {
+  it('should have set the correct properties on the particle after applying the behaviour', () => {
     const particle = new Nebula.Particle();
 
     behaviour.applyBehaviour(particle, TIME);
@@ -41,10 +39,9 @@ describe('behaviour -> Gravity', () => {
     assert.strictEqual(old.acceleration.y, 0);
     assert.strictEqual(old.acceleration.z, 0);
 
-    done();
   });
 
-  it('should construct the behaviour from a JSON object', done => {
+  it('should construct the behaviour from a JSON object', () => {
     const instance = Nebula.Gravity.fromJSON({
       gravity: 1,
       life: 3,
@@ -60,6 +57,5 @@ describe('behaviour -> Gravity', () => {
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });

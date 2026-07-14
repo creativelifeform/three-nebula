@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -12,7 +11,7 @@ const { spy } = sinon;
 describe('behaviour -> Behaviour', () => {
   const behaviour = new Behaviour();
 
-  it('should instantiate with the correct properties and methods', done => {
+  it('should instantiate with the correct properties and methods', () => {
     const { type, id, life, easing, age, energy, dead } = behaviour;
 
     assert.equal(type, 'Behaviour');
@@ -30,40 +29,35 @@ describe('behaviour -> Behaviour', () => {
     assert.isFunction(behaviour.mutate);
     assert.isFunction(behaviour.destroy);
 
-    done();
   });
 
-  it('should set life to infinity if null is supplied', done => {
+  it('should set life to infinity if null is supplied', () => {
     const { life } = new Behaviour(null);
 
     assert.strictEqual(life, Infinity);
 
-    done();
   });
 
-  it('should set life to infinity if NaN is supplied', done => {
+  it('should set life to infinity if NaN is supplied', () => {
     const { life } = new Behaviour('null');
 
     assert.strictEqual(life, Infinity);
 
-    done();
   });
 
-  it('should normalize force correctly', done => {
+  it('should normalize force correctly', () => {
     const force = behaviour.normalizeForce(new Nebula.Vector3D(1, 2.4, 3));
 
     assert.deepEqual(Object.values(force), [100, 240, 300]);
 
-    done();
   });
 
-  it('should normalize the value correctly', done => {
+  it('should normalize the value correctly', () => {
     assert.strictEqual(behaviour.normalizeValue(1.22), 122);
 
-    done();
   });
 
-  it('should not call the mutate method if the behaviour is disabled', done => {
+  it('should not call the mutate method if the behaviour is disabled', () => {
     const disabled = new Behaviour(Infinity, () => {}, 'test', false);
     const particle = new Nebula.Particle();
     const mutateSpy = spy(disabled, 'mutate');
@@ -71,10 +65,9 @@ describe('behaviour -> Behaviour', () => {
     disabled.applyBehaviour(particle);
     assert(mutateSpy.notCalled);
 
-    done();
   });
 
-  it('should set the particle to dead when age is > life', done => {
+  it('should set the particle to dead when age is > life', () => {
     const life = 1;
     const hasLife = new Behaviour(life);
     const particle = new Nebula.Particle();
@@ -84,6 +77,5 @@ describe('behaviour -> Behaviour', () => {
     assert.isTrue(hasLife.dead);
     assert.equal(hasLife.energy, 0);
 
-    done();
   });
 });

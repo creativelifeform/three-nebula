@@ -1,4 +1,3 @@
-/*global describe, it, before, after */
 
 import * as THREE from 'three';
 
@@ -23,7 +22,7 @@ global.document = window.document;
 describe('fromJSONAsync', () => {
   let textureLoaderStub, consoleWarnStub;
 
-  before(() => {
+  beforeAll(() => {
     // stop three warns from being printed, these happen because we're stubbing
     // things below
     consoleWarnStub = stub(console, 'warn');
@@ -33,7 +32,7 @@ describe('fromJSONAsync', () => {
     ).callsFake((texture, callback) => callback());
   });
 
-  after(() => {
+  afterAll(() => {
     textureLoaderStub.restore();
     consoleWarnStub.restore();
   });

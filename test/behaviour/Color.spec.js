@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -17,7 +16,7 @@ describe('behaviour -> Color', () => {
   );
   const particle = new Nebula.Particle();
 
-  it('should instantiate with the correct properties', done => {
+  it('should instantiate with the correct properties', () => {
     const { colorA, colorB } = behaviour;
 
     assert.equal(behaviour.type, 'Color');
@@ -42,10 +41,9 @@ describe('behaviour -> Color', () => {
     assert.lengthOf(colorB.colors, 1);
     assert.strictEqual(colorB.colors[0], 'random');
 
-    done();
   });
 
-  it('should initialize the particle with the correct properties', done => {
+  it('should initialize the particle with the correct properties', () => {
     behaviour.initialize(particle);
 
     assert.strictEqual(particle.life, Infinity);
@@ -79,10 +77,9 @@ describe('behaviour -> Color', () => {
     assert.deepEqual(particle.color, { r: 0, g: 0, b: 0 });
     assert.instanceOf(particle.rotation, Nebula.Vector3D);
 
-    done();
   });
 
-  it('should then set the correct properties on the particle after applying behaviour', done => {
+  it('should then set the correct properties on the particle after applying behaviour', () => {
     behaviour.applyBehaviour(particle, TIME);
 
     assert.deepEqual(particle.transform.colorA, { r: 1, g: 0, b: 0 });
@@ -92,10 +89,9 @@ describe('behaviour -> Color', () => {
     );
     assert.deepEqual(particle.color, { r: 1, g: 0, b: 0 });
 
-    done();
   });
 
-  it('should construct the behaviour from a JSON object', done => {
+  it('should construct the behaviour from a JSON object', () => {
     const instance = Nebula.Color.fromJSON({
       colorA: '#FF0000',
       colorB: '#000000',
@@ -110,6 +106,5 @@ describe('behaviour -> Color', () => {
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });

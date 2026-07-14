@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -11,7 +10,7 @@ const { assert } = chai;
 const { Emitter } = Nebula;
 
 describe('emitter -> Emitter -> emitterBehaviours', () => {
-  it("should add a behaviour to the emitter's behaviours and call the behaviour's initialize method passing the emitter", done => {
+  it("should add a behaviour to the emitter's behaviours and call the behaviour's initialize method passing the emitter", () => {
     const emitter = new Emitter();
     const attraction = new Nebula.Attraction();
     const attractionInitializeSpy = spy(attraction, 'initialize');
@@ -23,10 +22,9 @@ describe('emitter -> Emitter -> emitterBehaviours', () => {
 
     attractionInitializeSpy.restore();
 
-    done();
   });
 
-  it("should add all the behaviours to the emitter's emitter behaviours", done => {
+  it("should add all the behaviours to the emitter's emitter behaviours", () => {
     const emitter = new Emitter();
     const attraction = new Nebula.Attraction();
     const repulsion = new Nebula.Repulsion();
@@ -39,10 +37,9 @@ describe('emitter -> Emitter -> emitterBehaviours', () => {
     assert.instanceOf(emitter.emitterBehaviours[1], Nebula.Repulsion);
     assert.instanceOf(emitter.emitterBehaviours[2], Nebula.Attraction);
 
-    done();
   });
 
-  it("should set the emitter's emitter behaviours to the behaviours passed", done => {
+  it("should set the emitter's emitter behaviours to the behaviours passed", () => {
     const emitter = new Emitter();
     const attraction = new Nebula.Attraction();
     const repulsion = new Nebula.Repulsion();
@@ -53,10 +50,9 @@ describe('emitter -> Emitter -> emitterBehaviours', () => {
     assert.lengthOf(emitter.emitterBehaviours, behaviours.length);
     assert.deepEqual(emitter.emitterBehaviours, behaviours);
 
-    done();
   });
 
-  it("should remove the emitter's emitter behaviour", done => {
+  it("should remove the emitter's emitter behaviour", () => {
     const emitter = new Emitter();
     const attraction = new Nebula.Attraction();
     const repulsion = new Nebula.Repulsion();
@@ -69,10 +65,9 @@ describe('emitter -> Emitter -> emitterBehaviours', () => {
     assert.lengthOf(emitter.emitterBehaviours, 2);
     assert.deepEqual(emitter.emitterBehaviours, [attraction, gravity]);
 
-    done();
   });
 
-  it("should remove all of the emitter's emitter behaviours", done => {
+  it("should remove all of the emitter's emitter behaviours", () => {
     const emitter = new Emitter();
 
     emitter.setEmitterBehaviours([
@@ -84,12 +79,11 @@ describe('emitter -> Emitter -> emitterBehaviours', () => {
     assert.instanceOf(emitter.removeAllEmitterBehaviours(), Emitter);
     assert.empty(emitter.behaviours);
 
-    done();
   });
 });
 
 describe('emitter -> Emitter -> updateEmitterBehaviours', () => {
-  it('should call the updateEmitterBehaviours method when calling update', done => {
+  it('should call the updateEmitterBehaviours method when calling update', () => {
     const emitter = new Emitter();
     const updateEmitterBehavioursSpy = spy(emitter, 'updateEmitterBehaviours');
 
@@ -100,10 +94,9 @@ describe('emitter -> Emitter -> updateEmitterBehaviours', () => {
 
     updateEmitterBehavioursSpy.restore();
 
-    done();
   });
 
-  it("should update the emitter's properties after an emitter behaviour has been added and the emitter has been updated", done => {
+  it("should update the emitter's properties after an emitter behaviour has been added and the emitter has been updated", () => {
     const emitter = new Emitter();
     const attraction = new Nebula.Attraction();
     const repulsion = new Nebula.Repulsion();
@@ -124,6 +117,5 @@ describe('emitter -> Emitter -> updateEmitterBehaviours', () => {
 
     assert.notEqual(before.x, after.x);
 
-    done();
   });
 });

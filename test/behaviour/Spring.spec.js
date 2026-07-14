@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -11,7 +10,7 @@ const { assert } = chai;
 describe('behaviour -> Spring', () => {
   const behaviour = new Nebula.Spring(2, 5, 6);
 
-  it('should instantiate with the correct properties', done => {
+  it('should instantiate with the correct properties', () => {
     const {
       life,
       easing,
@@ -35,10 +34,9 @@ describe('behaviour -> Spring', () => {
     assert.strictEqual(spring, 0.1);
     assert.strictEqual(friction, 0.98);
 
-    done();
   });
 
-  it('should have set the correct properties on the particle after applying the behaviour', done => {
+  it('should have set the correct properties on the particle after applying the behaviour', () => {
     const particle = new Nebula.Particle();
 
     behaviour.applyBehaviour(particle, TIME);
@@ -48,10 +46,9 @@ describe('behaviour -> Spring', () => {
     assert.deepEqual(Object.values(velocity), [0.2, 0.5, 0.6000000000000001]);
     assert.deepEqual(Object.values(old.velocity), [0, 0, 0]);
 
-    done();
   });
 
-  it('should construct the behaviour from a JSON object', done => {
+  it('should construct the behaviour from a JSON object', () => {
     const instance = Nebula.Spring.fromJSON({
       x: 1,
       y: 4,
@@ -71,6 +68,5 @@ describe('behaviour -> Spring', () => {
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });

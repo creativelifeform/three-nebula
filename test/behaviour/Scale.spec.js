@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -12,17 +11,16 @@ describe('behaviour -> Scale', () => {
   const behaviour = new Nebula.Scale(3, 11);
   const particle = new Nebula.Particle();
 
-  it('will set the same property to true if second arg is null or undefined', done => {
+  it('will set the same property to true if second arg is null or undefined', () => {
     const scaleA = new Nebula.Scale(1, null);
     const scaleB = new Nebula.Scale(1);
 
     assert.isTrue(scaleA._same);
     assert.isTrue(scaleB._same);
 
-    done();
   });
 
-  it('should instantiate with the correct properties', done => {
+  it('should instantiate with the correct properties', () => {
     const {
       life,
       easing,
@@ -48,10 +46,9 @@ describe('behaviour -> Scale', () => {
     assert.strictEqual(scaleB.a, 11);
     assert.strictEqual(scaleB.b, 11);
 
-    done();
   });
 
-  it('should initialize the particle with the correct properties', done => {
+  it('should initialize the particle with the correct properties', () => {
     behaviour.initialize(particle);
 
     const {
@@ -62,10 +59,9 @@ describe('behaviour -> Scale', () => {
     assert.strictEqual(oldRadius, 10);
     assert.strictEqual(scaleB, 11);
 
-    done();
   });
 
-  it('should have set the correct properties on the particle after applying the behaviour', done => {
+  it('should have set the correct properties on the particle after applying the behaviour', () => {
     assert.strictEqual(particle.radius, 10);
     assert.strictEqual(particle.scale, 1);
 
@@ -73,10 +69,9 @@ describe('behaviour -> Scale', () => {
 
     assert.strictEqual(particle.radius, 30);
     assert.strictEqual(particle.scale, 3);
-    done();
   });
 
-  it('should construct the behaviour from a JSON object', done => {
+  it('should construct the behaviour from a JSON object', () => {
     const instance = Nebula.Scale.fromJSON({
       scaleA: 0.4,
       scaleB: 1,
@@ -91,6 +86,5 @@ describe('behaviour -> Scale', () => {
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });

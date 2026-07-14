@@ -1,4 +1,3 @@
-/* global describe, it */
 
 import { PUID } from '../../src/utils';
 import chai from 'chai';

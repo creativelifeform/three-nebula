@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -32,7 +31,7 @@ const { values, keys } = Object;
 const { spy } = sinon;
 
 describe('core -> Particle', () => {
-  it('should set all default properties', done => {
+  it('should set all default properties', () => {
     const particle = new Particle();
 
     assert.equal(particle.type, 'Particle');
@@ -72,10 +71,9 @@ describe('core -> Particle', () => {
     assert.instanceOf(particle.rotation, Nebula.Vector3D);
     assert.deepEqual(values(particle.rotation), [0, 0, 0]);
 
-    done();
   });
 
-  it('should fully instantiate with the correct properties based on the object passed', done => {
+  it('should fully instantiate with the correct properties based on the object passed', () => {
     const particle = new Particle(preset);
 
     assert.strictEqual(particle.life, preset.life);
@@ -101,18 +99,16 @@ describe('core -> Particle', () => {
     assert.deepEqual(particle.color, preset.color);
     assert.deepEqual(particle.rotation, preset.rotation);
 
-    done();
   });
 
-  it('should get the particle direction', done => {
+  it('should get the particle direction', () => {
     const particle = new Particle(preset);
 
     assert.equal(particle.getDirection(), 153.41505666009473);
 
-    done();
   });
 
-  it("should reset the particle's clearable properties and return the particle", done => {
+  it("should reset the particle's clearable properties and return the particle", () => {
     const particle = new Particle(preset);
     const reset = particle.reset();
 
@@ -153,10 +149,9 @@ describe('core -> Particle', () => {
     assert.deepEqual(values(rotation), [0, 0, 0]);
     assert.instanceOf(reset, Particle);
 
-    done();
   });
 
-  it('should add a behaviour to the particle and call the behaviour initialize method with the particle', done => {
+  it('should add a behaviour to the particle and call the behaviour initialize method with the particle', () => {
     const particle = new Particle();
     const behaviour = new Nebula.Attraction();
     const spyInitialize = spy(behaviour, 'initialize');
@@ -169,10 +164,9 @@ describe('core -> Particle', () => {
     assert(spyInitialize.calledWith(particle));
 
     spyInitialize.restore();
-    done();
   });
 
-  it("should add a behaviours to the particle and call the behaviours's initialize method with the particle", done => {
+  it("should add a behaviours to the particle and call the behaviours's initialize method with the particle", () => {
     const particle = new Particle();
     const behaviours = [new Nebula.Attraction(), new Nebula.Repulsion()];
     const spyAttraction = spy(behaviours[0], 'initialize');
@@ -192,10 +186,9 @@ describe('core -> Particle', () => {
       spy.restore();
     });
 
-    done();
   });
 
-  it('should remove the behaviour from the particle', done => {
+  it('should remove the behaviour from the particle', () => {
     const attraction = new Nebula.Attraction();
     const particle = new Particle();
     const behaviours = [attraction, new Nebula.Repulsion()];
@@ -206,10 +199,9 @@ describe('core -> Particle', () => {
     assert.lengthOf(particle.behaviours, 1);
     assert.instanceOf(particle.behaviours[0], Nebula.Repulsion);
 
-    done();
   });
 
-  it('should remove all behaviours from the particle', done => {
+  it('should remove all behaviours from the particle', () => {
     const particle = new Particle();
     const behaviours = [new Nebula.Attraction(), new Nebula.Repulsion()];
 
@@ -218,10 +210,9 @@ describe('core -> Particle', () => {
 
     assert.isEmpty(particle.behaviours);
 
-    done();
   });
 
-  it('should kill the particle', done => {
+  it('should kill the particle', () => {
     const particle = new Particle();
 
     particle.addBehaviours([new Nebula.Attraction(), new Nebula.Repulsion()]);
@@ -236,12 +227,11 @@ describe('core -> Particle', () => {
     assert.isTrue(dead);
     assert.isNull(parent);
 
-    done();
   });
 });
 
 describe('particle update', () => {
-  it('should set the particle age, apply behaviours to the particle and set its energy if particle.sleep === false', done => {
+  it('should set the particle age, apply behaviours to the particle and set its energy if particle.sleep === false', () => {
     const particle = new Particle(preset);
     const attraction = new Nebula.Attraction();
     const time = 2;
@@ -270,10 +260,9 @@ describe('particle update', () => {
     assert.equal(particle.energy, 0.75);
     assert.isFalse(particle.dead);
 
-    done();
   });
 
-  it('should not set age or apply behaviours if particle.sleep === true', done => {
+  it('should not set age or apply behaviours if particle.sleep === true', () => {
     const particle = new Particle(preset);
     const attraction = new Nebula.Attraction();
     const time = 2;
@@ -299,10 +288,9 @@ describe('particle update', () => {
     assert.equal(particle.energy, 1);
     assert.isFalse(particle.dead);
 
-    done();
   });
 
-  it('should call particle.destroy the particle if age >= life', done => {
+  it('should call particle.destroy the particle if age >= life', () => {
     const particle = new Particle(preset);
     const time = 2;
     const destroySpy = spy(particle, 'destroy');
@@ -318,10 +306,9 @@ describe('particle update', () => {
 
     destroySpy.restore();
 
-    done();
   });
 
-  it('should have the same value in Particle.velocity if the total time of particles is the same', done => {
+  it('should have the same value in Particle.velocity if the total time of particles is the same', () => {
     const particle_01 = new Particle({
       velocity: new Nebula.Vector3D(1, 2, 0),
     });
@@ -339,6 +326,5 @@ describe('particle update', () => {
     assert.closeTo(particle_01.velocity.y, particle_02.velocity.y, 1e-14);
     assert.closeTo(particle_01.velocity.z, particle_02.velocity.z, 1e-14);
 
-    done();
   });
 });
