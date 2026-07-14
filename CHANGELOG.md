@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v11.0.0` - 2026-07-14
+
+### Changed
+
+- Upgraded supported `three` from r127 to r185. Rendered output differs on modern three (sRGB output, physically-correct lighting) — validate your scenes
+- Upgraded `uuid` from v3 to v11
+- CI now runs on Node 20 / 22 (dropped 12 / 14) and no longer depends on the unmaintained `bundlesize`
+
+### Added
+
+- Deterministic visual-regression harness (`vr/`) that diffs the example renders against a committed golden master
+
+### Fixed
+
+- Ported the Snow example off three's removed `Geometry.vertices` API
+
 ## `v10.0.3` - 2021-11-05
 
 ### Changed
