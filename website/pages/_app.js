@@ -4,17 +4,15 @@ import { AnalyticsProvider } from '../context';
 import App from 'next/app';
 import { Layout } from '../components';
 import React from 'react';
-import Router from 'next/router';
 
 const routes = require('../content/routes');
 
 class MyApp extends App {
   render() {
-    const { Component, hasGdprConsent, ...pageProps } = this.props;
-    const pathname = Router.router ? Router.router.pathname : undefined;
+    const { Component, ...pageProps } = this.props;
 
     return (
-      <AnalyticsProvider pathname={pathname}>
+      <AnalyticsProvider>
         <Layout routes={routes}>
           <Component {...pageProps} />
         </Layout>

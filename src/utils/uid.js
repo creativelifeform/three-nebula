@@ -1,3 +1,3 @@
-import uid from 'uuid/v1';
+import { v1 as uid } from 'uuid';
 
 export default uid;

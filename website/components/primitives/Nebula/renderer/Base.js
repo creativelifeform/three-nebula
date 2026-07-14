@@ -148,17 +148,25 @@ export default class {
 
   makeLights() {
     const { scene } = this;
-    const ambientLight = new this.THREE.AmbientLight(0x101010);
-    const pointLight = new this.THREE.PointLight(0xffffff, 2, 1000, 1);
-    const spotLight = new this.THREE.SpotLight(0xffffff, 0.5);
+    // three r155 made lighting physically-correct (no more useLegacyLights), so
+    // punctual-light intensities are scaled by π and a soft ambient + directional
+    // fill give lit materials (the mesh examples) enough light to read on modern
+    // three. Sprite examples are unlit, so this only affects meshes.
+    const L = Math.PI;
+    const ambientLight = new this.THREE.AmbientLight(0xffffff, 0.35 * L);
+    const pointLight = new this.THREE.PointLight(0xffffff, 3 * L, 2000, 1);
+    const spotLight = new this.THREE.SpotLight(0xffffff, 0.5 * L);
+    const fillLight = new this.THREE.DirectionalLight(0xffffff, 0.7 * L);
 
     pointLight.position.set(0, 200, 200);
     spotLight.position.set(0, 500, 100);
     spotLight.lookAt(scene);
+    fillLight.position.set(1, 1, 1);
 
     scene.add(ambientLight);
     scene.add(pointLight);
     scene.add(spotLight);
+    scene.add(fillLight);
 
     return this;
   }

@@ -23,13 +23,11 @@ export const Sidebar = () => {
       <ul>
         {exampleNames.map(name => (
           <li key={name}>
-            <NextLink href={`/examples/${name}`}>
-              <a
-                className={isActiveExample(name, pathname) ? 'active' : ''}
-                href={`/examples/${name}`}
-              >
-                {formatLinkText(name)}
-              </a>
+            <NextLink
+              href={`/examples/${name}`}
+              className={isActiveExample(name, pathname) ? 'active' : ''}
+            >
+              {formatLinkText(name)}
             </NextLink>
           </li>
         ))}
