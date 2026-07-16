@@ -1,0 +1,167 @@
+# Spec 03 — Sound Renderer
+
+Treat particles as sound sources. A renderer that emits voices instead of pixels.
+
+**Depends on:** 02 (seeded jitter, scrub muting), 05 (audio blob storage)
+**Priority:** lowest of the specs. Most additive, least entangled, easiest to defer.
+
+---
+
+## The model
+
+**This is not a sound-type particle.** It is an ordinary particle that a sound
+renderer happens to be reading.
+
+The particle stays dumb — position, life, age, alpha, size. It has no idea it's
+audible. The *renderer* decides to interpret the stream as voices. Nothing new
+enters the particle struct. The simulation does not branch.
+
+This is PopcornFX's model (sound sits alongside billboard, mesh, ribbon, light,
+decal as a peer renderer) and it's the right one.
+
+**Corollary:** a layer can carry both renderers. An ember that glows *and* crackles
+is one emitter with a `SpriteRenderer` and a `SoundRenderer` reading the same
+particles. No duplicate emitter.
+
+**Corollary 2:** triggering is already built. "Play a sound 0.5s in" is an emitter
+with `delay: 0.5`, `burst: 1`, `life: <sound duration>`, and a sound renderer. It
+draws nothing. It exists to be heard. The existing rate/burst/delay controls *are*
+the sound sequencer.
+
+---
+
+## Stage 0 — Audit
+
+1. Exact renderer interface — confirm the lifecycle hooks. Assumed:
+   `onParticleCreated`, `onParticleUpdate`, `onParticleDead`, `onSystemUpdate`.
+2. Is there any existing audio anywhere in the codebase? (Assume no.)
+3. How does the system expose the camera? The audio listener must track it.
+
+---
+
+## Stage 1 — One-shot voices
+
+**v1 is one-shot only.** Fire and forget. Persistent/attached sounds are Stage 5
+and may never happen.
+
+```
+onParticleCreated(particle):
+  if (!canPlay()) return          // voice cap, cooldown, probability
+  const src = ctx.createBufferSource()
+  src.buffer = resolvedBuffer
+  src.detune.value = jitter(particle.prng, detuneRange)
+  src.connect(panner).connect(gain).connect(ctx.destination)
+  src.start(ctx.currentTime, startOffsetJitter(particle.prng))
+```
+
+That's it. No handle retained. The voice finishes and GCs itself.
+
+**Config on the renderer (not the particle):**
+
+```jsonc
+{
+  "type": "sound",
+  "src": { "$ref": "sha256:..." },
+  "volume": 0.8,
+  "detuneCents": [-200, 200],
+  "startOffsetMs": [0, 30],
+  "maxVoices": 8,
+  "cooldownMs": 40,
+  "probability": 0.2,
+  "attenuation": { "refDistance": 1, "maxDistance": 50, "rolloff": 1 },
+  "gainFrom": "alpha",        // optional particle attribute → gain
+  "pitchFrom": null
+}
+```
+
+---
+
+## Stage 2 — Voice limiting
+
+**This is the feature.** 500 sparks × a sound renderer = 500 voices = catastrophe.
+
+Three independent throttles, all needed:
+
+1. **`maxVoices`** — hard cap per renderer. When exceeded, steal the
+   lowest-priority live voice or drop the new one (drop is usually better for FX).
+2. **`cooldownMs`** — minimum gap between triggers on this renderer. Kills the
+   machine-gun case where 50 particles spawn in one frame.
+3. **`probability`** — play on only N% of particles. The cheapest and most
+   effective control. 500 sparks, 5% probability → 25 crackles. Sounds right,
+   costs nothing.
+
+**Priority heuristic warning.** PopcornFX prioritises by volume × attenuation and
+their own docs concede the heuristic is naive: it reads the *configured* volume,
+not perceived loudness, so a quiet sample at volume 1.0 beats a hot sample at 0.1.
+Their guidance is to normalise your audio so the heuristic works.
+
+Do the same, and **say so in the docs**. Do not attempt loudness analysis in v1.
+
+---
+
+## Stage 3 — Jitter (required, not polish)
+
+Many copies of the same sample within a few milliseconds phase-cancel into
+flanging mush. Two mitigations, both mandatory:
+
+- **Detune jitter** — per-voice `detune` in cents, drawn from the *particle's*
+  seeded PRNG (02). Suggest ±200 cents default.
+- **Start-offset jitter** — a few ms of random offset into the buffer. Decorrelates
+  transients even at identical pitch.
+
+Both must be deterministic. A bake must produce the same pitches. (Even though
+audio isn't in the bake today — see below — this keeps the property honest.)
+
+---
+
+## Stage 4 — Context lifecycle and scrub
+
+**Autoplay policy.** `AudioContext` starts `suspended` until a user gesture. This
+is not a bug to work around; design for it:
+
+- The system must function fully with audio unavailable. Sound is decoration on
+  a working sim, never a dependency.
+- Expose `system.audio.resume()` for the host to call from a click handler.
+- Editor: sound off until the user presses play. Gallery: **silent on hover,
+  sound on click.** Nobody wants a grid of screaming thumbnails.
+
+**Mute conditions** — the renderer must not fire when:
+
+- Seeking / scrubbing (02, Stage 4)
+- `timeScale !== 1` (pitch would be wrong and it's not worth correcting)
+- The system is being baked headlessly
+- `ctx.state !== "running"`
+
+**Clock note.** Web Audio's `currentTime` and rAF are different clocks. Spawning
+voices off rAF gives up to ~16ms jitter. That is tolerable for FX and not worth
+fixing in v1. If anything rhythmic ever matters, schedule against `ctx.currentTime`
+with lookahead — do not do this now.
+
+---
+
+## Stage 5 — Persistent voices (deferred, possibly never)
+
+A sound that travels with a particle and stops on its death. Requires holding a
+handle per voice, updating the panner in `onParticleUpdate`, and stopping in
+`onParticleDead`. Niagara splits exactly this way — `Play Audio` (one-shot, cheap,
+uncancellable) vs `Play Persistent Audio` (retains a reference so it can be
+updated, needs a paired update module, trickier to set up).
+
+Their split is a good signal: the persistent path is meaningfully harder and most
+effects don't need it. **Do not build this until something concrete demands it.**
+
+---
+
+## Known limitations to document, not solve
+
+- **Baked export loses audio.** A sprite sheet has no audio track. A system with
+  sound only works fully in three-nebula. This means the sound feature and the
+  cross-engine baking story do not compose. Not fatal; be honest about it in docs.
+- **Licensing surface.** Audio has a messier provenance landscape than textures —
+  someone uploading a sound ripped from a game is both more likely and more
+  actionable than a stolen gradient. 05's content-addressing is what makes this
+  auditable. Flag it to whoever writes the gallery upload terms.
+- **No mixer.** There is no Wwise/FMOD on the web, so a self-contained effect is
+  more valuable here than it would be in AAA (where audio directors reasonably
+  object to VFX spawning unbudgeted voices outside their concurrency rules).
+  That asymmetry is the reason this feature is worth building at all.
