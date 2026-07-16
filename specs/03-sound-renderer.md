@@ -120,8 +120,9 @@ flanging mush. Two mitigations, both mandatory:
 - **Start-offset jitter** — a few ms of random offset into the buffer. Decorrelates
   transients even at identical pitch.
 
-Both must be deterministic. A bake must produce the same pitches. (Even though
-audio isn't in the bake today — see below — this keeps the property honest.)
+Both must be deterministic — the same system must produce the same pitches on
+every run. (Audio is not captured by offline rendering anyway — see below — but
+the property should hold regardless.)
 
 ---
 
@@ -140,7 +141,7 @@ is not a bug to work around; design for it:
 
 - Seeking / scrubbing (02, Stage 4)
 - `timeScale !== 1` (pitch would be wrong and it's not worth correcting)
-- The system is being baked headlessly
+- The system is being stepped headlessly (02, Stage 6)
 - `ctx.state !== "running"`
 
 **Clock note.** Web Audio's `currentTime` and rAF are different clocks. Spawning
@@ -170,9 +171,9 @@ concrete demands it.**
 
 ## Known limitations to document, not solve
 
-- **Baked export loses audio.** A sprite sheet has no audio track. A system with
-  sound only works fully in three-nebula. This means the sound feature and the
-  cross-engine baking story do not compose. Not fatal; be honest about it in docs.
+- **Offline rendering loses audio.** A sprite sheet has no audio track. A system
+  with a sound renderer renders silently, so sound and any sheet/video export path
+  do not compose. Not fatal; be explicit about it in the docs.
 - **No external mixer.** A native engine has audio middleware (Wwise, FMOD)
   downstream to arbitrate voice budgets, ducking and concurrency — engine
   integrations of FX tools typically defer to it, and PopcornFX's UE integration
