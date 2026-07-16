@@ -2,8 +2,7 @@
 
 ## Purpose
 
-Six specs covering the runtime work needed before the web editor and social gallery
-can be built on top of three-nebula.
+Six specs covering runtime modernisation work for the three-nebula library.
 
 **The numbers are identifiers, not execution order.** See the dependency graph below.
 
@@ -48,6 +47,16 @@ Suggested landing order: **04 → 02 → 01 → 05 → 06 → 03**
 03 (sound) is deliberately last: it is the most additive and least entangled,
 and it is the easiest to defer if time runs short.
 
+## On prior art
+
+Several specs cite existing FX tools — PopcornFX, Niagara, Effekseer, glTF — where
+they solved a problem first and solved it well. These are **references, not
+comparisons**: the point is to learn from work that's already been done rather than
+rediscover it, and to give an implementer somewhere concrete to read.
+
+Where a design here differs from prior art, that's a deliberate choice and the
+reasoning is stated. Where it copies, that's also deliberate.
+
 ## Assumptions flagged for verification
 
 These specs were written without repo access. Every spec contains an
@@ -66,6 +75,6 @@ If the audits contradict a spec, **trust the repo**.
 
 ## Out of scope
 
-- Editor work (the NW.js → browser port)
-- Gallery / backend / auth
-- Anything to do with pricing or Pro tiering
+- Anything outside the three-nebula library itself
+- Applications built on top of the library
+- Backend, hosting, or distribution infrastructure
