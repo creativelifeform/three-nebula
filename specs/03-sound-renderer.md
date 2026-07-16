@@ -3,7 +3,7 @@
 Treat particles as sound sources. A renderer that emits voices instead of pixels.
 
 **Depends on:** 02 (seeded jitter, scrub muting), 05 (audio blob storage)
-**Priority:** lowest of the six. Most additive, least entangled, easiest to defer.
+**Priority:** lowest of the five. Most additive, least entangled, easiest to defer.
 
 ---
 
