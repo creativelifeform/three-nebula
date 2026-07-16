@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -11,7 +10,7 @@ describe('initializer -> Mass', () => {
   const max = 5;
   const initializer = new Nebula.Mass(min, max);
 
-  it('should have the correct properties after instantiation', done => {
+  it('should have the correct properties after instantiation', () => {
     const {
       massPan,
       massPan: { _isArray, a, b, _center },
@@ -24,10 +23,9 @@ describe('initializer -> Mass', () => {
     assert.strictEqual(a, min);
     assert.strictEqual(b, max);
 
-    done();
   });
 
-  it('should set the correct properties on the particle after initialization', done => {
+  it('should set the correct properties on the particle after initialization', () => {
     const particle = new Nebula.Particle();
 
     initializer.initialize(particle);
@@ -37,10 +35,9 @@ describe('initializer -> Mass', () => {
     assert.isAbove(mass, min);
     assert.isBelow(mass, max);
 
-    done();
   });
 
-  it('should construct the initializer from a JSON object', done => {
+  it('should construct the initializer from a JSON object', () => {
     const instance = Nebula.Mass.fromJSON({
       min: 3,
       max: 10,
@@ -53,6 +50,5 @@ describe('initializer -> Mass', () => {
     assert.equal(instance.massPan.b, 10);
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });

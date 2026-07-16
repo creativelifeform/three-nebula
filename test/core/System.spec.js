@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 import * as THREE from 'three';
@@ -24,7 +23,7 @@ const getSpriteRenderer = container =>
 const { Scene } = THREE;
 
 describe('core -> System', () => {
-  it('should instantiate with the correct properties', done => {
+  it('should instantiate with the correct properties', () => {
     const {
       type,
       preParticles,
@@ -45,10 +44,9 @@ describe('core -> System', () => {
     assert.instanceOf(pool, Nebula.Pool);
     assert.instanceOf(eventDispatcher, EventDispatcher);
 
-    done();
   });
 
-  it('should add a renderer', done => {
+  it('should add a renderer', () => {
     const system = getSystem();
     const renderer = getSpriteRenderer();
 
@@ -56,10 +54,9 @@ describe('core -> System', () => {
     assert.notEmpty(system.renderers);
     assert.instanceOf(system.renderers[0], Nebula.SpriteRenderer);
 
-    done();
   });
 
-  it('should remove the renderer', done => {
+  it('should remove the renderer', () => {
     const system = getSystem();
     const renderer = getSpriteRenderer();
 
@@ -67,10 +64,9 @@ describe('core -> System', () => {
 
     assert.isEmpty(system.renderers);
 
-    done();
   });
 
-  it('should add an emitter and dispatch the EMITTER_ADDED', done => {
+  it('should add an emitter and dispatch the EMITTER_ADDED', () => {
     const system = getSystem();
     const emitter = new Nebula.Emitter();
     const spy = sinon.spy(system, 'dispatch');
@@ -83,10 +79,9 @@ describe('core -> System', () => {
     assert(spy.calledWith(EMITTER_ADDED, emitter));
 
     spy.restore();
-    done();
   });
 
-  it('should remove an emitter and dispatch the EMITTER_REMOVED event', done => {
+  it('should remove an emitter and dispatch the EMITTER_REMOVED event', () => {
     const system = getSystem();
     const emitter = new Nebula.Emitter();
     const spy = sinon.spy(system, 'dispatch');
@@ -100,10 +95,9 @@ describe('core -> System', () => {
 
     spy.restore();
 
-    done();
   });
 
-  it('should not remove an emitter that is not a child of the system instance', done => {
+  it('should not remove an emitter that is not a child of the system instance', () => {
     const system = getSystem();
     const emitterA = new Nebula.Emitter();
     const emitterB = new Nebula.Emitter();
@@ -114,10 +108,9 @@ describe('core -> System', () => {
     assert.lengthOf(system.emitters, 1);
     assert.equal(emitterA.id, system.emitters[0].id);
 
-    done();
   });
 
-  it('should call the update method for all emitters and also dispatch the required events', done => {
+  it('should call the update method for all emitters and also dispatch the required events', () => {
     const system = getSystem();
     const emitter = new Nebula.Emitter();
     const emitterSpy = sinon.spy(emitter, 'update');
@@ -135,10 +128,9 @@ describe('core -> System', () => {
     emitterSpy.restore();
     dispatchSpy.restore();
 
-    done();
   });
 
-  it('should not dispatch from within the update method if the canUpdate prop is set to false', done => {
+  it('should not dispatch from within the update method if the canUpdate prop is set to false', () => {
     const proton = getSystem();
     const emitter = new Nebula.Emitter();
 
@@ -157,10 +149,9 @@ describe('core -> System', () => {
     dispatchSpy.restore();
     emitterUpdateSpy.restore();
 
-    done();
   });
 
-  it('should ensure all particles live out their lives after stopEmit is called', done => {
+  it('should ensure all particles live out their lives after stopEmit is called', () => {
     const system = getSystem();
     const emitter = new Nebula.Emitter();
     const rate = new Nebula.Rate(500, 0.01);
@@ -178,12 +169,11 @@ describe('core -> System', () => {
           assert.notEqual(system.getCount(), 0);
           system.update(.1);       
           assert.equal(system.getCount(), 0);
-          done();
         }, 1500);
       });
   });
 
-  it('should get the count of particles in the system', done => {
+  it('should get the count of particles in the system', () => {
     const system = getSystem();
     const emitter = new Nebula.Emitter();
     const rate = new Nebula.Rate(500, 0.01);
@@ -196,12 +186,11 @@ describe('core -> System', () => {
       .then(() => {
         setTimeout(() => {
           assert.notEqual(system.getCount(), 0);
-          done();
         }, 1500);
       });
   });
 
-  it('should destroy all emitters and the empty the pool', done => {
+  it('should destroy all emitters and the empty the pool', () => {
     const system = getSystem();
     const emitter = new Nebula.Emitter();
     const rate = new Nebula.Rate(500, 0.01);
@@ -218,13 +207,12 @@ describe('core -> System', () => {
       assert.isEmpty(system.emitters);
       assert.isEmpty(system.pool.list);
 
-      done();
     }, 500);
   });
 });
 
 describe('core -> System -> emit', () => {
-  it('should call the onStart method if provided', done => {
+  it('should call the onStart method if provided', () => {
     const system = new System();
     const onStart = stub();
 
@@ -232,7 +220,6 @@ describe('core -> System -> emit', () => {
 
     assert(onStart.calledOnce);
 
-    done();
   });
 
   it('should wire up the onUpdate method to the event dispatcher SYSTEM_UPDATE event if provided', () => {

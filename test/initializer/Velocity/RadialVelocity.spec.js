@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../../src';
 
@@ -12,7 +11,7 @@ describe('initializer -> Radial Velocity', () => {
   const initializer = new Nebula.RadialVelocity(radius, vector3d, 5);
   const particle = new Nebula.Particle();
 
-  it('should set the correct properties', done => {
+  it('should set the correct properties', () => {
     const {
       radiusPan: { a, b },
       dir: { x, y, z },
@@ -32,10 +31,9 @@ describe('initializer -> Radial Velocity', () => {
     assert.instanceOf(dirVec, Nebula.Vector3D);
     assert.deepEqual(Object.values(dirVec), [0, 0, 0]);
 
-    done();
   });
 
-  it('should set the particle initializer', done => {
+  it('should set the particle initializer', () => {
     initializer.initialize(particle);
 
     const {
@@ -48,10 +46,9 @@ describe('initializer -> Radial Velocity', () => {
     assert.isAbove(y, 0);
     assert.isAbove(z, 0);
 
-    done();
   });
 
-  it('should construct the initializer from a JSON object', done => {
+  it('should construct the initializer from a JSON object', () => {
     const instance = Nebula.RadialVelocity.fromJSON({
       radius: 1.6,
       x: 0.96,
@@ -72,6 +69,5 @@ describe('initializer -> Radial Velocity', () => {
     assert.deepEqual([instance.radiusPan.a, instance.radiusPan.b], [1.6, 1.6]);
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });

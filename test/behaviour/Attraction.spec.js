@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -12,7 +11,7 @@ const { spy } = sinon;
 describe('behaviour -> Attraction', () => {
   const behaviour = new Nebula.Attraction();
 
-  it('should instantiate with the correct properties', done => {
+  it('should instantiate with the correct properties', () => {
     const {
       type,
       life,
@@ -41,10 +40,9 @@ describe('behaviour -> Attraction', () => {
     assert.isTrue(attractionForce instanceof Nebula.Vector3D);
     assert.strictEqual(lengthSq, 0);
 
-    done();
   });
 
-  it('should have the correct properties after applying behaviour', done => {
+  it('should have the correct properties after applying behaviour', () => {
     const {
       life,
       easing,
@@ -74,10 +72,9 @@ describe('behaviour -> Attraction', () => {
     assert.isTrue(attractionForce instanceof Nebula.Vector3D);
     assert.strictEqual(lengthSq, 0);
 
-    done();
   });
 
-  it('should reset the behaviour properties', done => {
+  it('should reset the behaviour properties', () => {
     behaviour.reset(new Nebula.Vector3D(1, 4, 1), 4, 12, 3);
 
     assert.deepEqual(Object.values(behaviour.targetPosition), [1, 4, 1]);
@@ -85,10 +82,9 @@ describe('behaviour -> Attraction', () => {
     assert.equal(behaviour.radius, 12);
     assert.equal(behaviour.life, 3);
 
-    done();
   });
 
-  it('should add the attraction force to the particle acceleration', done => {
+  it('should add the attraction force to the particle acceleration', () => {
     const attraction = new Nebula.Attraction();
     const particle = new Nebula.Particle();
     const addSpy = spy(particle.acceleration, 'add');
@@ -109,10 +105,9 @@ describe('behaviour -> Attraction', () => {
       1.5766510030358964,
     ]);
 
-    done();
   });
 
-  it('should construct the behaviour from a JSON object', done => {
+  it('should construct the behaviour from a JSON object', () => {
     const instance = Nebula.Attraction.fromJSON({
       x: 1,
       y: 4,
@@ -131,6 +126,5 @@ describe('behaviour -> Attraction', () => {
     assert.equal(instance.life, 3);
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });

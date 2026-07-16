@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -11,7 +10,7 @@ const { assert } = chai;
 describe('behaviour -> Repulsion', () => {
   const behaviour = new Nebula.Repulsion();
 
-  it('should instantiate with the correct properties', done => {
+  it('should instantiate with the correct properties', () => {
     const {
       life,
       easing,
@@ -39,10 +38,9 @@ describe('behaviour -> Repulsion', () => {
     assert.isTrue(attractionForce instanceof Nebula.Vector3D);
     assert.strictEqual(lengthSq, 0);
 
-    done();
   });
 
-  it('should have the correct properties after applying behaviour', done => {
+  it('should have the correct properties after applying behaviour', () => {
     const {
       life,
       easing,
@@ -72,10 +70,9 @@ describe('behaviour -> Repulsion', () => {
     assert.isTrue(attractionForce instanceof Nebula.Vector3D);
     assert.strictEqual(lengthSq, 0);
 
-    done();
   });
 
-  it('should construct the behaviour from a JSON object', done => {
+  it('should construct the behaviour from a JSON object', () => {
     const instance = Nebula.Repulsion.fromJSON({
       x: 1,
       y: 4,
@@ -95,6 +92,5 @@ describe('behaviour -> Repulsion', () => {
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });

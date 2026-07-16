@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 import * as integration from '../../src/math/integration';
@@ -23,7 +22,7 @@ const { assert } = chai;
 const { Emitter } = Nebula;
 
 describe('emitter -> Emitter', () => {
-  it('should instantiate with the correct properties', done => {
+  it('should instantiate with the correct properties', () => {
     const emitter = new Emitter();
 
     const {
@@ -58,10 +57,9 @@ describe('emitter -> Emitter', () => {
     assert.isString(id);
     assert.instanceOf(eventDispatcher, EventDispatcher);
 
-    done();
   });
 
-  it('should set the emitter rate and return the emitter', done => {
+  it('should set the emitter rate and return the emitter', () => {
     const emitter = new Emitter();
     const rate = new Nebula.Rate(1, 2);
 
@@ -74,10 +72,9 @@ describe('emitter -> Emitter', () => {
     assert.equal(timePan.a, 2);
     assert.equal(timePan.b, 2);
 
-    done();
   });
 
-  it('should set the emitter postion and return the emitter', done => {
+  it('should set the emitter postion and return the emitter', () => {
     const emitter = new Emitter();
     const _position = { x: 4, y: 2, z: 9 };
 
@@ -88,10 +85,9 @@ describe('emitter -> Emitter', () => {
 
     assert.deepEqual(Object.values(position), [x, y, z]);
 
-    done();
   });
 
-  it('should set the the totalEmitTimes and life and call the rate init method', done => {
+  it('should set the the totalEmitTimes and life and call the rate init method', () => {
     const emitter = new Emitter();
     const rateInitSpy = spy(emitter.rate, 'init');
 
@@ -107,10 +103,9 @@ describe('emitter -> Emitter', () => {
 
     rateInitSpy.restore();
 
-    done();
   });
 
-  it('should set the life to 1 if the totalEmitTimes is 1', done => {
+  it('should set the life to 1 if the totalEmitTimes is 1', () => {
     const emitter = new Emitter();
 
     emitter.emit(1, 1002);
@@ -118,10 +113,9 @@ describe('emitter -> Emitter', () => {
     assert.equal(emitter.totalEmitTimes, 1);
     assert.equal(emitter.life, 1);
 
-    done();
   });
 
-  it('should set the life to 0 if a life of 0 is provided', done => {
+  it('should set the life to 0 if a life of 0 is provided', () => {
     const emitter = new Emitter();
 
     emitter.emit(2, 0);
@@ -129,10 +123,9 @@ describe('emitter -> Emitter', () => {
     assert.equal(emitter.totalEmitTimes, 2);
     assert.equal(emitter.life, 0);
 
-    done();
   });
 
-  it('should set the totalEmitTimes to 0 if a life of 0 is provided', done => {
+  it('should set the totalEmitTimes to 0 if a life of 0 is provided', () => {
     const emitter = new Emitter();
 
     emitter.emit(0, 1);
@@ -140,10 +133,9 @@ describe('emitter -> Emitter', () => {
     assert.equal(emitter.totalEmitTimes, 0);
     assert.equal(emitter.life, 1);
 
-    done();
   });
 
-  it('should set the correct properties to stop particles emitting', done => {
+  it('should set the correct properties to stop particles emitting', () => {
     const emitter = new Emitter();
 
     emitter.emit(5, 11).stopEmit();
@@ -151,10 +143,9 @@ describe('emitter -> Emitter', () => {
     assert.equal(emitter.currentEmitTime, 0);
     assert.equal(emitter.totalEmitTimes, -1);
 
-    done();
   });
 
-  it("should kill all of the emitter's particles", done => {
+  it("should kill all of the emitter's particles", () => {
     const emitter = new Emitter();
 
     for (let i = 0; i < 500; i++) {
@@ -164,10 +155,9 @@ describe('emitter -> Emitter', () => {
     emitter.removeAllParticles();
     emitter.particles.forEach(particle => assert.isTrue(particle.dead));
 
-    done();
   });
 
-  it('should get a particle from the pool, call the setupParticle method, dispatch events and return the particle', done => {
+  it('should get a particle from the pool, call the setupParticle method, dispatch events and return the particle', () => {
     const system = new Nebula.System();
     const emitter = new Emitter();
     const initializer = new Nebula.Mass();
@@ -187,10 +177,9 @@ describe('emitter -> Emitter', () => {
     assert(emitterDispatchSpy.notCalled);
 
     spies.forEach(spy => spy.restore());
-    done();
   });
 
-  it("should call the emitter's dispatch when creating a particle with bindEmitterEvent set to true", done => {
+  it("should call the emitter's dispatch when creating a particle with bindEmitterEvent set to true", () => {
     const system = new Nebula.System();
     const emitter = new Emitter();
     const emitterDispatchSpy = spy(emitter, 'dispatch');
@@ -207,10 +196,9 @@ describe('emitter -> Emitter', () => {
     assert(emitterDispatchSpy.calledOnceWith(PARTICLE_CREATED, particle));
 
     spies.forEach(spy => spy.restore());
-    done();
   });
 
-  it('should add an initializer to the emitter', done => {
+  it('should add an initializer to the emitter', () => {
     const emitter = new Emitter();
     const mass = new Nebula.Mass();
 
@@ -218,10 +206,9 @@ describe('emitter -> Emitter', () => {
     assert.notEmpty(emitter.initializers);
     assert.instanceOf(emitter.initializers[0], Nebula.Mass);
 
-    done();
   });
 
-  it('should add all the initializers passed', done => {
+  it('should add all the initializers passed', () => {
     const emitter = new Emitter();
     const mass = new Nebula.Mass();
     const life = new Nebula.Life();
@@ -234,10 +221,9 @@ describe('emitter -> Emitter', () => {
     assert.instanceOf(emitter.initializers[1], Nebula.Life);
     assert.instanceOf(emitter.initializers[2], Nebula.Mass);
 
-    done();
   });
 
-  it('should set the emitter initializers to the initializers passed', done => {
+  it('should set the emitter initializers to the initializers passed', () => {
     const emitter = new Emitter();
     const mass = new Nebula.Mass();
     const life = new Nebula.Life();
@@ -247,10 +233,9 @@ describe('emitter -> Emitter', () => {
     assert.instanceOf(emitter.setInitializers(initializers), Emitter);
     assert.deepEqual(emitter.initializers, initializers);
 
-    done();
   });
 
-  it('should remove the initializer', done => {
+  it('should remove the initializer', () => {
     const emitter = new Emitter();
     const mass = new Nebula.Mass();
     const life = new Nebula.Life();
@@ -264,10 +249,9 @@ describe('emitter -> Emitter', () => {
     assert.lengthOf(emitter.initializers, 1);
     assert.instanceOf(emitter.initializers[0], Nebula.Life);
 
-    done();
   });
 
-  it('should remove all the initializers from the emitter', done => {
+  it('should remove all the initializers from the emitter', () => {
     const emitter = new Emitter();
     const mass = new Nebula.Mass();
     const life = new Nebula.Life();
@@ -279,10 +263,9 @@ describe('emitter -> Emitter', () => {
     assert.instanceOf(emitter.removeAllInitializers(), Emitter);
     assert.lengthOf(emitter.initializers, 0);
 
-    done();
   });
 
-  it('should add a behaviour to the emitter', done => {
+  it('should add a behaviour to the emitter', () => {
     const emitter = new Emitter();
     const attraction = new Nebula.Attraction();
 
@@ -290,10 +273,9 @@ describe('emitter -> Emitter', () => {
     assert.lengthOf(emitter.behaviours, 1);
     assert.deepEqual(emitter.behaviours[0], attraction);
 
-    done();
   });
 
-  it('should add all the behaviours to the emitter', done => {
+  it('should add all the behaviours to the emitter', () => {
     const emitter = new Emitter();
     const attraction = new Nebula.Attraction();
     const repulsion = new Nebula.Repulsion();
@@ -306,10 +288,9 @@ describe('emitter -> Emitter', () => {
     assert.instanceOf(emitter.behaviours[1], Nebula.Repulsion);
     assert.instanceOf(emitter.behaviours[2], Nebula.Attraction);
 
-    done();
   });
 
-  it('should set the emitter behaviours to the behaviours passed', done => {
+  it('should set the emitter behaviours to the behaviours passed', () => {
     const emitter = new Emitter();
     const attraction = new Nebula.Attraction();
     const repulsion = new Nebula.Repulsion();
@@ -320,10 +301,9 @@ describe('emitter -> Emitter', () => {
     assert.lengthOf(emitter.behaviours, behaviours.length);
     assert.deepEqual(emitter.behaviours, behaviours);
 
-    done();
   });
 
-  it('should remove the emitter behaviour', done => {
+  it('should remove the emitter behaviour', () => {
     const emitter = new Emitter();
     const attraction = new Nebula.Attraction();
     const repulsion = new Nebula.Repulsion();
@@ -336,10 +316,9 @@ describe('emitter -> Emitter', () => {
     assert.lengthOf(emitter.behaviours, 2);
     assert.deepEqual(emitter.behaviours, [attraction, gravity]);
 
-    done();
   });
 
-  it('should remove all emitter behaviours', done => {
+  it('should remove all emitter behaviours', () => {
     const emitter = new Emitter();
 
     emitter.setBehaviours([
@@ -351,10 +330,9 @@ describe('emitter -> Emitter', () => {
     assert.instanceOf(emitter.removeAllBehaviours(), Emitter);
     assert.empty(emitter.behaviours);
 
-    done();
   });
 
-  it('should get a particle from the pool when creating the particle and return the particle', done => {
+  it('should get a particle from the pool when creating the particle and return the particle', () => {
     const system = new Nebula.System();
     const emitter = new Emitter();
 
@@ -367,10 +345,9 @@ describe('emitter -> Emitter', () => {
 
     poolSpy.restore();
 
-    done();
   });
 
-  it('should call the setupParticle method on the particle when creating it', done => {
+  it('should call the setupParticle method on the particle when creating it', () => {
     const system = new Nebula.System();
     const emitter = new Emitter();
 
@@ -383,10 +360,9 @@ describe('emitter -> Emitter', () => {
 
     setupParticleSpy.restore();
 
-    done();
   });
 
-  it('should dispatch the correct events when creating a particle', done => {
+  it('should dispatch the correct events when creating a particle', () => {
     const system = new Nebula.System();
     const emitter = new Emitter();
     const systemDispatchSpy = spy(system, 'dispatch');
@@ -407,10 +383,9 @@ describe('emitter -> Emitter', () => {
     systemDispatchSpy.restore();
     emitterDispatchSpy.restore();
 
-    done();
   });
 
-  it("should call the InitializerUtil.initialize method on the particle passing the correct arguments. This should call every initializer's init method on the particle", done => {
+  it("should call the InitializerUtil.initialize method on the particle passing the correct arguments. This should call every initializer's init method on the particle", () => {
     const emitter = new Emitter();
     const particle = new Nebula.Particle();
     const initializeSpy = spy(Nebula.InitializerUtil, 'initialize');
@@ -441,10 +416,9 @@ describe('emitter -> Emitter', () => {
 
     initializeSpy.restore();
 
-    done();
   });
 
-  it('should set the particle beahviours as well as its parent and push the particle into the emitter.particles array', done => {
+  it('should set the particle beahviours as well as its parent and push the particle into the emitter.particles array', () => {
     const emitter = new Emitter();
     const particle = new Nebula.Particle();
     const attraction = new Nebula.Attraction();
@@ -464,10 +438,9 @@ describe('emitter -> Emitter', () => {
 
     addBehavioursSpy.restore();
 
-    done();
   });
 
-  it('should destroy the emitter and clear all initializers, behaviour and the parent if there are no particles', done => {
+  it('should destroy the emitter and clear all initializers, behaviour and the parent if there are no particles', () => {
     const system = new Nebula.System();
     const emitter = new Emitter();
     const mass = new Nebula.Mass();
@@ -494,10 +467,9 @@ describe('emitter -> Emitter', () => {
     assert.isEmpty(system.emitters);
     assert.isNull(emitter.parent);
 
-    done();
   });
 
-  it('should stop the emitter but not clear initializers, behaviours or the parent if the emitter has particles', done => {
+  it('should stop the emitter but not clear initializers, behaviours or the parent if the emitter has particles', () => {
     const system = new Nebula.System();
     const emitter = new Emitter();
     const particle = new Nebula.Particle();
@@ -528,12 +500,11 @@ describe('emitter -> Emitter', () => {
     assert.isNotEmpty(system.emitters);
     assert.isNotNull(emitter.parent);
 
-    done();
   });
 });
 
 describe('emitter -> Emitter -> update', () => {
-  it('should set the emitter age according to the time passed', done => {
+  it('should set the emitter age according to the time passed', () => {
     const emitter = new Emitter();
 
     emitter.isEmitting = true;
@@ -544,10 +515,9 @@ describe('emitter -> Emitter -> update', () => {
 
     assert.equal(emitter.age, TIME);
 
-    done();
   });
 
-  it('should destroy the emitter if the emitter is dead', done => {
+  it('should destroy the emitter if the emitter is dead', () => {
     const emitter = new Emitter();
     const destroySpy = spy(emitter, 'destroy');
 
@@ -560,10 +530,9 @@ describe('emitter -> Emitter -> update', () => {
 
     destroySpy.restore();
 
-    done();
   });
 
-  it('should destroy the emitter if the emitter age is >= to its life', done => {
+  it('should destroy the emitter if the emitter age is >= to its life', () => {
     const emitterA = new Emitter();
     const emitterB = new Emitter();
     const destroySpyA = spy(emitterA, 'destroy');
@@ -584,10 +553,9 @@ describe('emitter -> Emitter -> update', () => {
     destroySpyA.restore();
     destroySpyB.restore();
 
-    done();
   });
 
-  it('should call the generate and integrate methods, passing the update time argument to both', done => {
+  it('should call the generate and integrate methods, passing the update time argument to both', () => {
     const emitter = new Emitter();
     const generateSpy = spy(emitter, 'generate');
     const integrateSpy = spy(emitter, 'integrate');
@@ -601,10 +569,9 @@ describe('emitter -> Emitter -> update', () => {
     generateSpy.restore();
     integrateSpy.restore();
 
-    done();
   });
 
-  it('should not do anything if update is called while the emitter is not emitting particles', done => {
+  it('should not do anything if update is called while the emitter is not emitting particles', () => {
     const emitter = new Emitter();
     const generateSpy = spy(emitter, 'generate');
     const integrateSpy = spy(emitter, 'integrate');
@@ -617,10 +584,9 @@ describe('emitter -> Emitter -> update', () => {
     generateSpy.restore();
     integrateSpy.restore();
 
-    done();
   });
 
-  it('should call the required methods while updating the emitter if a particle is dead', done => {
+  it('should call the required methods while updating the emitter if a particle is dead', () => {
     const system = new Nebula.System();
     const emitter = new Emitter();
     const liveParticlesCount = 10;
@@ -650,28 +616,33 @@ describe('emitter -> Emitter -> update', () => {
     assert(systemDispatchSpy.callCount, deadParticlesCount + 1);
     assert(systemDispatchSpy.calledWith(PARTICLE_DEAD));
 
-    done();
   });
 });
 
 describe('emitter -> Emitter -> integrate', () => {
-  it('should integrate the emitter', done => {
+  // These spy the `integrate` module export, so they use vitest's vi.spyOn —
+  // native ESM exports aren't stubbable via sinon the way Babel-CJS allowed.
+  it('should integrate the emitter', () => {
     const emitter = new Emitter();
-    const integrationSpy = spy(integration, 'integrate');
+    const integrationSpy = vi.spyOn(integration, 'integrate');
 
     emitter.integrate(TIME);
 
-    assert(integrationSpy.calledOnceWith(emitter, TIME, 1 - emitter.damping));
+    expect(integrationSpy).toHaveBeenCalledTimes(1);
+    expect(integrationSpy).toHaveBeenCalledWith(
+      emitter,
+      TIME,
+      1 - emitter.damping,
+      expect.anything()
+    );
 
-    integrationSpy.restore();
-
-    done();
+    integrationSpy.mockRestore();
   });
 
-  it('should update and integrate each particle', done => {
+  it('should update and integrate each particle', () => {
     const emitter = new Emitter();
-    const integrationSpy = spy(integration, 'integrate');
-    const particleUpdateSpy = spy(Nebula.Particle.prototype, 'update');
+    const integrationSpy = vi.spyOn(integration, 'integrate');
+    const particleUpdateSpy = vi.spyOn(Nebula.Particle.prototype, 'update');
     const particlesCount = 33;
 
     for (let i = 0; i < particlesCount; i++) {
@@ -680,17 +651,15 @@ describe('emitter -> Emitter -> integrate', () => {
 
     emitter.integrate(TIME);
 
-    assert(integrationSpy.callCount, particlesCount + 1);
-    assert(particleUpdateSpy.callCount, particlesCount);
-    assert(particleUpdateSpy.calledWith(TIME));
+    expect(integrationSpy).toHaveBeenCalledTimes(particlesCount + 1);
+    expect(particleUpdateSpy).toHaveBeenCalledTimes(particlesCount);
+    expect(particleUpdateSpy).toHaveBeenCalledWith(TIME, expect.anything());
 
-    integrationSpy.restore();
-    particleUpdateSpy.restore();
-
-    done();
+    integrationSpy.mockRestore();
+    particleUpdateSpy.mockRestore();
   });
 
-  it('should dispatch the correct events after updating and integrating particles', done => {
+  it('should dispatch the correct events after updating and integrating particles', () => {
     const system = new Nebula.System();
     const emitter = new Emitter();
     const systemDispatchSpy = spy(system, 'dispatch');
@@ -705,12 +674,11 @@ describe('emitter -> Emitter -> integrate', () => {
 
     systemDispatchSpy.restore();
 
-    done();
   });
 });
 
 describe('emitter -> Emitter -> generate', () => {
-  it('should set the cID, call createParticle the right number of times and set the totalEmitTimes to 0 if the totalEmitTimes was 1', done => {
+  it('should set the cID, call createParticle the right number of times and set the totalEmitTimes to 0 if the totalEmitTimes was 1', () => {
     const system = new Nebula.System();
     const emitter = new Emitter();
     const createParticleSpy = spy(emitter, 'createParticle');
@@ -724,10 +692,9 @@ describe('emitter -> Emitter -> generate', () => {
 
     createParticleSpy.restore();
 
-    done();
   });
 
-  it('should set the currentEmitTime', done => {
+  it('should set the currentEmitTime', () => {
     const system = new Nebula.System();
     const emitter = new Emitter();
 
@@ -736,10 +703,9 @@ describe('emitter -> Emitter -> generate', () => {
 
     assert.equal(emitter.currentEmitTime, 0.01);
 
-    done();
   });
 
-  it('should create the correct number of particles if currentEmitTime < totalEmitTimes', done => {
+  it('should create the correct number of particles if currentEmitTime < totalEmitTimes', () => {
     const system = new Nebula.System();
     const emitter = new Emitter();
     const getValueSpy = spy(Nebula.Rate.prototype, 'getValue');
@@ -757,7 +723,6 @@ describe('emitter -> Emitter -> generate', () => {
     getValueSpy.restore();
     createParticleSpy.restore();
 
-    done();
   });
 });
 

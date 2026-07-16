@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -12,7 +11,7 @@ const { assert } = chai;
 describe('behaviour -> RandomDrift', () => {
   const behaviour = new Nebula.RandomDrift(1, 3, 2.5);
 
-  it('should instantiate with the correct properties', done => {
+  it('should instantiate with the correct properties', () => {
     const {
       life,
       easing,
@@ -39,10 +38,9 @@ describe('behaviour -> RandomDrift', () => {
     assert.strictEqual(delayPan.a, DEFAULT_RANDOM_DRIFT_DELAY);
     assert.strictEqual(delayPan.b, DEFAULT_RANDOM_DRIFT_DELAY);
 
-    done();
   });
 
-  it('should have set the correct properties on the particle after applying the behaviour', done => {
+  it('should have set the correct properties on the particle after applying the behaviour', () => {
     const particle = new Nebula.Particle();
 
     assert.equal(particle.acceleration.x, 0);
@@ -59,10 +57,9 @@ describe('behaviour -> RandomDrift', () => {
     assert.notEqual(y, 0);
     assert.notEqual(z, 0);
 
-    done();
   });
 
-  it('should construct the behaviour from a JSON object', done => {
+  it('should construct the behaviour from a JSON object', () => {
     const instance = Nebula.RandomDrift.fromJSON({
       x: 1,
       y: 2,
@@ -82,6 +79,5 @@ describe('behaviour -> RandomDrift', () => {
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });

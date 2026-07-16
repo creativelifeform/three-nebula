@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -10,27 +9,25 @@ describe('initializer -> Position', () => {
   const zoneA = new Nebula.BoxZone(0, 0, 0, 5, 5, 5);
   const zoneB = new Nebula.SphereZone(1, 1, 1);
 
-  it('can instantiate with a single zone', done => {
+  it('can instantiate with a single zone', () => {
     const position = new Nebula.Position(zoneA);
 
     assert.equal(position.type, 'Position');
     assert.lengthOf(position.zones, 1);
     assert.instanceOf(position.zones[0], Nebula.BoxZone);
 
-    done();
   });
 
-  it('can instantiate with multiple zones', done => {
+  it('can instantiate with multiple zones', () => {
     const position = new Nebula.Position(zoneA, zoneB);
 
     assert.lengthOf(position.zones, 2);
     assert.instanceOf(position.zones[0], Nebula.BoxZone);
     assert.instanceOf(position.zones[1], Nebula.SphereZone);
 
-    done();
   });
 
-  it('should reset the number of zones', done => {
+  it('should reset the number of zones', () => {
     const position = new Nebula.Position(zoneA, zoneB);
 
     assert.lengthOf(position.zones, 2);
@@ -39,10 +36,9 @@ describe('initializer -> Position', () => {
 
     assert.lengthOf(position.zones, 1);
 
-    done();
   });
 
-  it('should add a zone to the Position', done => {
+  it('should add a zone to the Position', () => {
     const position = new Nebula.Position(zoneA);
 
     position.addZone(zoneB);
@@ -51,10 +47,9 @@ describe('initializer -> Position', () => {
     assert.instanceOf(position.zones[0], Nebula.BoxZone);
     assert.instanceOf(position.zones[1], Nebula.SphereZone);
 
-    done();
   });
 
-  it('should set the correct properties on the particle after initialization', done => {
+  it('should set the correct properties on the particle after initialization', () => {
     const initializer = new Nebula.Position(zoneA);
     const particle = new Nebula.Particle();
 
@@ -70,10 +65,9 @@ describe('initializer -> Position', () => {
     assert.notEqual(y, 0);
     assert.notEqual(z, 0);
 
-    done();
   });
 
-  it('should construct the initializer from a JSON object', done => {
+  it('should construct the initializer from a JSON object', () => {
     const instance = Nebula.Position.fromJSON({
       zoneType: 'SphereZone',
       x: 1,
@@ -89,6 +83,5 @@ describe('initializer -> Position', () => {
     assert.equal(instance.zones[0].z, 1);
     assert.equal(instance.zones[0].radius, 4);
 
-    done();
   });
 });

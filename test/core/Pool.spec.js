@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -10,7 +9,7 @@ const { assert } = chai;
 const { Pool } = Nebula;
 
 describe('core -> Pool', () => {
-  it('should instantiate with the correct properties', done => {
+  it('should instantiate with the correct properties', () => {
     const { type, cID, list } = new Pool();
 
     assert.equal(type, 'Pool');
@@ -18,20 +17,18 @@ describe('core -> Pool', () => {
     assert.isObject(list);
     assert.isEmpty(list);
 
-    done();
   });
 
-  it('should get a new object with a unique id if the object can be instantiated', done => {
+  it('should get a new object with a unique id if the object can be instantiated', () => {
     const pool = new Pool();
     const particle = pool.get(Nebula.Particle);
 
     assert.instanceOf(particle, Nebula.Particle);
     assert.isString(particle.__puid);
 
-    done();
   });
 
-  it('should pass args to the pooled instance', done => {
+  it('should pass args to the pooled instance', () => {
     const args = [1, 2, 3];
     const Instance = class {
       constructor(args) {
@@ -47,10 +44,9 @@ describe('core -> Pool', () => {
 
     assert(spy.calledOnceWith(args));
 
-    done();
   });
 
-  it('should get a cloned object with a unique id if the object can be cloned', done => {
+  it('should get a cloned object with a unique id if the object can be cloned', () => {
     const pool = new Pool();
     const object3d = new Object3D();
     const cloned = pool.get(object3d);
@@ -59,10 +55,9 @@ describe('core -> Pool', () => {
     assert.notEqual(object3d.id, cloned.id);
     assert.isString(cloned.__puid);
 
-    done();
   });
 
-  it('should throw an error if the supplied argument can neither be instantiated or cloned', done => {
+  it('should throw an error if the supplied argument can neither be instantiated or cloned', () => {
     const pool = new Pool();
 
     assert.throws(
@@ -71,20 +66,18 @@ describe('core -> Pool', () => {
       'The pool is unable to create or clone the object supplied'
     );
 
-    done();
   });
 
-  it('should return an empty array if a pooled item id does not exist', done => {
+  it('should return an empty array if a pooled item id does not exist', () => {
     const pool = new Pool();
     const pooled = pool._getList(Math.random());
 
     assert.isArray(pooled);
     assert.isEmpty(pooled);
 
-    done();
   });
 
-  it('should store the object in the mapped list', done => {
+  it('should store the object in the mapped list', () => {
     const pool = new Pool();
     const particle = pool.get(Nebula.Particle);
     const poolId = particle.__puid;
@@ -94,10 +87,9 @@ describe('core -> Pool', () => {
     assert.isArray(pool.list[poolId]);
     assert.equal(poolId, pool.list[poolId][0].__puid);
 
-    done();
   });
 
-  it('should get the object out of the pool if it was previously expired', done => {
+  it('should get the object out of the pool if it was previously expired', () => {
     const pool = new Pool();
     const particle = pool.get(Nebula.Particle);
     const createSpy = sinon.spy(pool, 'create');
@@ -110,10 +102,9 @@ describe('core -> Pool', () => {
     assert.equal(particle, retrieved);
 
     createSpy.restore();
-    done();
   });
 
-  it('should get the count of objects in the pool', done => {
+  it('should get the count of objects in the pool', () => {
     const pool = new Pool();
     const count = 123;
     const particles = [];
@@ -126,10 +117,9 @@ describe('core -> Pool', () => {
 
     assert.equal(count, pool.getCount());
 
-    done();
   });
 
-  it('should destroy all pools', done => {
+  it('should destroy all pools', () => {
     const pool = new Pool();
     const count = 5;
     const particles = [];
@@ -147,6 +137,5 @@ describe('core -> Pool', () => {
 
     assert.isEmpty(pool.list);
 
-    done();
   });
 });

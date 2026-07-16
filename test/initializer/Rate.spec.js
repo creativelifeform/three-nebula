@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -12,7 +11,7 @@ describe('initializer -> Rate', () => {
     new Nebula.Span(0.1, 0.5)
   );
 
-  it('should have the correct properties after instantiation', done => {
+  it('should have the correct properties after instantiation', () => {
     const { numPan, timePan, startTime, nextTime } = rate;
 
     assert.equal(rate.type, 'Rate');
@@ -23,10 +22,9 @@ describe('initializer -> Rate', () => {
     assert.strictEqual(startTime, 0);
     assert.notEqual(nextTime, 0);
 
-    done();
   });
 
-  it('the Rate.getValue method should return the correct value', done => {
+  it('the Rate.getValue method should return the correct value', () => {
     const rate = new Nebula.Rate();
     const time = 4;
 
@@ -36,10 +34,9 @@ describe('initializer -> Rate', () => {
 
     assert.include([1, 2, 3], rate.getValue(time));
 
-    done();
   });
 
-  it('should construct the initializer from a JSON object', done => {
+  it('should construct the initializer from a JSON object', () => {
     const instance = Nebula.Rate.fromJSON({
       particlesMin: 3,
       particlesMax: 10,
@@ -55,6 +52,5 @@ describe('initializer -> Rate', () => {
     assert.equal(instance.timePan.a, 0.01);
     assert.equal(instance.timePan.b, 0.05);
 
-    done();
   });
 });

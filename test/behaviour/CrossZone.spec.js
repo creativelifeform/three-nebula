@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -14,7 +13,7 @@ describe('behaviour -> CrossZone', () => {
   const zone = new Nebula.BoxZone(0, 0, 0, 1, 1, 1);
   const behaviour = new Nebula.CrossZone(zone, 'dead');
 
-  it('should instantiate with the correct properties', done => {
+  it('should instantiate with the correct properties', () => {
     const { life, easing, age, energy, dead, zone } = behaviour;
 
     assert.equal(behaviour.type, 'CrossZone');
@@ -26,10 +25,9 @@ describe('behaviour -> CrossZone', () => {
     assert.instanceOf(zone, Nebula.BoxZone);
     assert.strictEqual(zone.crossType, 'dead');
 
-    done();
   });
 
-  it('should call the zone.crossing method when applying the behaviour', done => {
+  it('should call the zone.crossing method when applying the behaviour', () => {
     const particle = new Nebula.Particle();
 
     spy(behaviour.zone, 'crossing');
@@ -37,10 +35,9 @@ describe('behaviour -> CrossZone', () => {
     assert(behaviour.zone.crossing.calledOnce);
     behaviour.zone.crossing.restore();
 
-    done();
   });
 
-  it('should construct the behaviour from a JSON object', done => {
+  it('should construct the behaviour from a JSON object', () => {
     const instance = Nebula.CrossZone.fromJSON({
       zoneType: 'SphereZone',
       zoneParams: {
@@ -65,6 +62,5 @@ describe('behaviour -> CrossZone', () => {
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });
