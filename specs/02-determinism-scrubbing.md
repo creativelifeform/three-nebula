@@ -3,6 +3,7 @@
 Make the simulation reproducible: same seed + same step count = byte-identical
 particle state, every time, on every machine running the same JS engine.
 
+**Blocks:** 03 (sound jitter), and any offline/headless rendering built on the library
 **Entangled with:** 01 (hierarchy) — child seeds derive from parent particle IDs
 
 ---
@@ -12,12 +13,12 @@ particle state, every time, on every machine running the same JS engine.
 Determinism looks like a nicety. It is actually the load-bearing property under
 four separate product features:
 
-1. **Gallery thumbnails** must match what the user saw when they published.
-2. **Baked export** — two bakes of the same system must be identical
-3. **Nebula Editor scrubbing** — seek, step, edit-while-paused. The single most-used
-   affordance in commercial FX editors.
-4. **AI generation loop** — generate → bake N frames → critique → revise only
-   works if the render is a function of the JSON.
+1. **Reproducible rendering** — a headless render must match what was seen live.
+2. **Offline rendering** — two renders of one system must be byte-identical.
+3. **Seek and scrub** — step, rewind, edit-while-paused in any editing tool built
+   on the library. The single most-used affordance in mature FX tooling.
+4. **Programmatic iteration** — render → inspect → revise loops only work if the
+   output is a pure function of the input.
 
 Retrofitting determinism means touching every initializer and behaviour. Doing it
 while already in there for 01 costs a fraction.
@@ -83,7 +84,7 @@ The sim must advance in fixed increments, decoupled from rAF.
 - Optionally interpolate render state between steps (defer — not needed for v1)
 
 Without this, the same system produces different results on a 60Hz and a 144Hz
-display, and baking at a different fps produces a different effect.
+display, and rendering offline at a different fps produces a different effect.
 
 **Acceptance:** stepping the sim 600× at 1/60 produces identical state regardless
 of wall-clock time taken.
@@ -130,6 +131,39 @@ This is the deliverable that keeps the property from rotting.
 
 ---
 
+## Stage 6 — Headless contract
+
+Determinism is necessary but not sufficient for offline rendering. The system must
+also be *drivable from outside*, with no environmental dependencies.
+
+Consumers that step the library headlessly — in a Web Worker against an
+`OffscreenCanvas`, or under headless Chromium — are out of scope for this repo, but
+the contract that makes them possible is not.
+
+**Requirements:**
+
+- **The library never owns a loop.** No internal `requestAnimationFrame`. The caller
+  supplies `dt` and decides when to advance. (Verify in Stage 0 — this may already
+  hold.)
+- **No wall-clock reads in the sim path.** Covered by Stage 3, restated here because
+  it is the requirement that breaks headless stepping when violated.
+- **Simulation and rendering are separable.** A caller must be able to step N times
+  without rendering, or render the same state twice, in any order.
+- **No DOM access in the sim path.** No `document`, no `window`, no
+  `HTMLImageElement`. Textures arrive as decoded data via the resolver (05), not as
+  DOM elements. This is the requirement most likely to be quietly violated today.
+- **No `HTMLCanvasElement` assumption.** Anything canvas-shaped must accept an
+  `OffscreenCanvas`.
+
+**Acceptance:** a system steps 600 times inside a Web Worker with no DOM present,
+and produces particle state digests identical to the same run on the main thread.
+
+**Explicitly not this repo's job:** frame capture, sprite-sheet packing, video
+encoding, camera framing, warmup heuristics, loop-point selection, CLI, queueing.
+Those belong to whatever consumes this contract.
+
+---
+
 ## Known non-determinism sources to eliminate
 
 | Source | Fix |
@@ -149,6 +183,6 @@ netcode, not for this. Do not over-engineer.
 
 ## Explicitly out of scope
 
-- Cross-engine determinism (three-nebula ↔ some future Unity runtime)
+- Cross-runtime determinism (three-nebula ↔ a port to another engine)
 - Rewind / reverse simulation
 - Deterministic GPU simulation (revisit if/when a compute path exists)
