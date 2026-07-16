@@ -3,7 +3,7 @@
 Treat particles as sound sources. A renderer that emits voices instead of pixels.
 
 **Depends on:** 02 (seeded jitter, scrub muting), 05 (audio blob storage)
-**Priority:** lowest of the specs. Most additive, least entangled, easiest to defer.
+**Priority:** lowest of the six. Most additive, least entangled, easiest to defer.
 
 ---
 
@@ -16,8 +16,12 @@ The particle stays dumb — position, life, age, alpha, size. It has no idea it'
 audible. The *renderer* decides to interpret the stream as voices. Nothing new
 enters the particle struct. The simulation does not branch.
 
-This is PopcornFX's model (sound sits alongside billboard, mesh, ribbon, light,
-decal as a peer renderer) and it's the right one.
+Sound sits alongside billboard, mesh, ribbon and light as a peer renderer.
+
+*Prior art:* this is PopcornFX's model — its renderer list is billboard, mesh,
+ribbon, light, **sound**, decal, triangle, where the sound renderer simply treats
+particles as sound sources in the world. It's the right shape and worth copying
+closely.
 
 **Corollary:** a layer can carry both renderers. An ember that glows *and* crackles
 is one emitter with a `SpriteRenderer` and a `SoundRenderer` reading the same
@@ -90,12 +94,19 @@ Three independent throttles, all needed:
    effective control. 500 sparks, 5% probability → 25 crackles. Sounds right,
    costs nothing.
 
-**Priority heuristic warning.** PopcornFX prioritises by volume × attenuation and
-their own docs concede the heuristic is naive: it reads the *configured* volume,
-not perceived loudness, so a quiet sample at volume 1.0 beats a hot sample at 0.1.
-Their guidance is to normalise your audio so the heuristic works.
+**Priority heuristic warning.** The obvious voice-stealing heuristic — rank by
+`volume × attenuation` — is naive, and it's worth understanding why before
+shipping it. It reads the *configured* volume, not perceived loudness: a quiet
+sample at volume 1.0 outranks a hot sample at 0.1, which is backwards.
 
-Do the same, and **say so in the docs**. Do not attempt loudness analysis in v1.
+The pragmatic answer is to use the heuristic anyway and require **normalised
+source audio** (all samples at roughly equal perceptual loudness), then **say so
+in the docs**. Do not attempt loudness analysis in v1.
+
+*Prior art:* PopcornFX prioritises exactly this way, and its docs are refreshingly
+candid that the heuristic misjudges for precisely this reason — their guidance is
+to normalise source audio so it behaves. Their sound renderer page is worth reading
+before implementing this stage.
 
 ---
 
@@ -122,8 +133,8 @@ is not a bug to work around; design for it:
 - The system must function fully with audio unavailable. Sound is decoration on
   a working sim, never a dependency.
 - Expose `system.audio.resume()` for the host to call from a click handler.
-- Editor: sound off until the user presses play. Gallery: **silent on hover,
-  sound on click.** Nobody wants a grid of screaming thumbnails.
+- Default to silence; opt in on an explicit user action. Any consumer displaying
+  many systems at once must not auto-play audio.
 
 **Mute conditions** — the renderer must not fire when:
 
@@ -143,12 +154,17 @@ with lookahead — do not do this now.
 
 A sound that travels with a particle and stops on its death. Requires holding a
 handle per voice, updating the panner in `onParticleUpdate`, and stopping in
-`onParticleDead`. Niagara splits exactly this way — `Play Audio` (one-shot, cheap,
-uncancellable) vs `Play Persistent Audio` (retains a reference so it can be
-updated, needs a paired update module, trickier to set up).
+`onParticleDead`.
 
-Their split is a good signal: the persistent path is meaningfully harder and most
-effects don't need it. **Do not build this until something concrete demands it.**
+*Prior art:* Niagara splits exactly here. `Play Audio` is the one-shot — cheapest,
+fires and forgets, and once triggered it cannot be changed or stopped and keeps
+playing even if the simulation does not. `Play Persistent Audio` retains a
+reference per voice so it can be updated over time, requires a paired update
+module, and is notably trickier to set up.
+
+That two-feature split is a good signal: the persistent path is meaningfully
+harder and most effects don't need it. **Do not build this until something
+concrete demands it.**
 
 ---
 
@@ -157,11 +173,10 @@ effects don't need it. **Do not build this until something concrete demands it.*
 - **Baked export loses audio.** A sprite sheet has no audio track. A system with
   sound only works fully in three-nebula. This means the sound feature and the
   cross-engine baking story do not compose. Not fatal; be honest about it in docs.
-- **Licensing surface.** Audio has a messier provenance landscape than textures —
-  someone uploading a sound ripped from a game is both more likely and more
-  actionable than a stolen gradient. 05's content-addressing is what makes this
-  auditable. Flag it to whoever writes the gallery upload terms.
-- **No mixer.** There is no Wwise/FMOD on the web, so a self-contained effect is
-  more valuable here than it would be in AAA (where audio directors reasonably
-  object to VFX spawning unbudgeted voices outside their concurrency rules).
-  That asymmetry is the reason this feature is worth building at all.
+- **No external mixer.** A native engine has audio middleware (Wwise, FMOD)
+  downstream to arbitrate voice budgets, ducking and concurrency — engine
+  integrations of FX tools typically defer to it, and PopcornFX's UE integration
+  has you configure max concurrency per sound asset for exactly this reason. On the
+  web there is nothing downstream. The library owns its own voice budget, which is
+  why the limiting in Stage 2 is the substance of this spec rather than an
+  optimisation.
