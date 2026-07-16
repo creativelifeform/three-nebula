@@ -108,9 +108,12 @@ allocation attributable to particle or emitter instance churn.
 
 **Guards:**
 
-- `maxDepth` — hard recursion limit. Effekseer has a known footgun where
-  self-triggering recursive nodes retain every prior instance until the last child
-  dies. Cap depth (suggest 4) and cap total instances (Stage 1).
+- `maxDepth` — hard recursion limit. Self-triggering recursive nodes are a known
+  hazard in any hierarchical particle system: every ancestor instance is retained
+  until its last descendant dies, so an unbounded chain leaks until it exhausts
+  memory. Cap depth (suggest 4) and cap total instances (Stage 1).
+  *Prior art:* Effekseer permits recursion in its node tree — its documentation on
+  instance retention is worth reading before designing this guard.
 - Reject cycles at parse time.
 
 **Acceptance:** a two-level system (sparks → smoke trails) renders correctly;
