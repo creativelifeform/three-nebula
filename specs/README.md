@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Six specs covering runtime modernisation work for the three-nebula library.
+Five specs covering runtime modernisation work for the three-nebula library.
 
 **The numbers are identifiers, not execution order.** See the dependency graph below.
 
