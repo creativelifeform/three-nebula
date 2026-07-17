@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
 
 jobs:
   publish-npm:
@@ -27,4 +28,4 @@ jobs:
       - name: Publish packages to npm registry
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.THREE_NEBULA_NPM_PUBLISH_TOKEN}}
