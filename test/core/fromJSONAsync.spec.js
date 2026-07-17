@@ -37,6 +37,24 @@ describe('fromJSONAsync', () => {
     consoleWarnStub.restore();
   });
 
+  it('should read the emitter damping from JSON', async () => {
+    const json = {
+      emitters: [
+        {
+          rate: { particlesMin: 1, particlesMax: 1, perSecondMin: 1, perSecondMax: 1 },
+          rotation: { x: 0, y: 0, z: 0 },
+          position: { x: 0, y: 0, z: 0 },
+          initializers: [],
+          behaviours: [],
+          damping: 0.02,
+        },
+      ],
+    };
+    const system = await Particles.fromJSONAsync(json, THREE);
+
+    assert.strictEqual(system.emitters[0].damping, 0.02);
+  });
+
   it('should call the Texture initializer fromJSON method if the properties contain a texture', async () => {
     const fromJSONSpy = spy(Texture, 'fromJSON');
 

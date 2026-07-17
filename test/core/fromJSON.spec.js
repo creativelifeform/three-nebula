@@ -25,6 +25,31 @@ describe('fromJSON', () => {
 
   });
 
+  const emitterWith = props => ({
+    emitters: [
+      {
+        rate: { particlesMin: 1, particlesMax: 1, perSecondMin: 1, perSecondMax: 1 },
+        rotation: { x: 0, y: 0, z: 0 },
+        position: { x: 0, y: 0, z: 0 },
+        initializers: [],
+        behaviours: [],
+        ...props,
+      },
+    ],
+  });
+
+  it('should read the emitter damping from JSON', () => {
+    const system = Particles.fromJSON(emitterWith({ damping: 0.02 }), THREE);
+
+    assert.strictEqual(system.emitters[0].damping, 0.02);
+  });
+
+  it('should default the emitter damping when it is absent from JSON', () => {
+    const system = Particles.fromJSON(emitterWith({}), THREE);
+
+    assert.strictEqual(system.emitters[0].damping, 0.006);
+  });
+
   it('should instantiate the eightdiagrams example from JSON', () => {
     const system = Particles.fromJSON(eightdiagrams, THREE);
 
