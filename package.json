@@ -1,43 +1,38 @@
 {
   "name": "three-nebula",
-  "version": "11.0.0",
+  "version": "11.1.0",
   "description": "WebGL based 3D particle engine",
-  "main": "./build/cjs/index.js",
-  "module": "./build/esm/index.js",
+  "main": "./dist/three-nebula.cjs",
+  "module": "./dist/three-nebula.mjs",
+  "unpkg": "./dist/three-nebula.umd.js",
+  "jsdelivr": "./dist/three-nebula.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/three-nebula.mjs",
+      "require": "./dist/three-nebula.cjs"
+    }
+  },
   "directories": {
     "docs": "docs",
     "website": "website"
   },
   "scripts": {
-    "build": "npm run build:clean && npm run build:umd && npm run build:cjs && npm run build:esm",
-    "build:clean": "rm -rf ./build",
-    "build:umd": "webpack",
-    "build:cjs": "babel src --out-dir build/cjs --extensions \".js\" --source-maps inline --presets @babel/env",
-    "build:esm": "babel src --out-dir build/esm --extensions \".js\" --source-maps inline",
-    "dev": "webpack --mode=development --watch",
-    "sandbox": "concurrently -k \"npm:sandbox:*\"",
-    "sandbox:build": "webpack --config webpack.config.sandbox.js --mode=development --watch",
-    "sandbox:serve": "npx serve sandbox",
+    "build": "vite build",
+    "dev": "vite build --watch",
     "docs": "serve docs",
     "docs:build": "./scripts/docs-build",
-    "test": "NODE_ENV=test mocha --require @babel/register --colors './test/**/*.spec.js'",
-    "test:only": "NODE_ENV=test mocha --require @babel/register --colors",
-    "test:watch": "NODE_ENV=test mocha --require @babel/register --colors -w './test/**/*.spec.js'",
-    "test:watch-only": "NODE_ENV=test mocha --require @babel/register --colors -w ",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
     "lint": "eslint src test && npx madge --circular src",
     "lint:fix": "eslint --fix",
-    "coverage": "NODE_ENV=test npm run coverage:generate && npm run coverage:report",
-    "coverage:view": "open ./coverage/lcov-report/index.html",
-    "coverage:generate": "nyc mocha './test/**/*.spec.js' -- --require @babel/register",
-    "coverage:report": "nyc report --reporter=lcov",
     "git:publish": "./scripts/publish",
     "vr": "node vr/capture-all.mjs",
     "vr:baseline": "node vr/capture-all.mjs --baselines",
     "vr:diff": "node vr/diff.mjs",
     "vr:montage": "node vr/montage.mjs",
-    "ci:src": "npm run lint && npm run test && npm run coverage",
-    "ci:website": "npm run ci --prefix website",
-    "analyze": "webpack-bundle-analyzer build/stats.json"
+    "ci:src": "npm run lint && npm run coverage",
+    "ci:website": "npm run ci --prefix website"
   },
   "repository": {
     "type": "git",
@@ -58,45 +53,26 @@
     "url": "https://github.com/creativelifeform/three-nebula/issues"
   },
   "homepage": "https://github.com/creativelifeform/three-nebula#readme",
-  "dependencies": {
-    "lodash": "^4.17.21",
-    "potpack": "^1.0.1",
-    "uuid": "^11.1.1"
-  },
   "peerDependencies": {
     "three": ">=0.122.0 <1.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.16.0",
-    "@babel/eslint-parser": "^7.16.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.16.0",
-    "@babel/plugin-transform-runtime": "^7.16.0",
-    "@babel/preset-env": "^7.10.1",
-    "@babel/register": "^7.16.0",
-    "@babel/runtime": "^7.16.0",
-    "@istanbuljs/nyc-config-babel": "^3.0.0",
     "@playwright/test": "^1.61.1",
-    "babel-loader": "^8.2.3",
-    "babel-plugin-istanbul": "^6.0.0",
+    "@vitest/coverage-v8": "^3.2.6",
     "chai": "^4.2.0",
-    "concurrently": "^6.3.0",
-    "coveralls": "^3.0.3",
     "domino": "^2.1.1",
     "eslint": "^8.1.0",
     "eslint-plugin-import": "^2.25.2",
-    "eslint-webpack-plugin": "^3.1.0",
-    "mocha": "^9.1.3",
-    "nyc": "^15.1.0",
+    "lodash": "^4.17.21",
     "pixelmatch": "^7.2.0",
     "pngjs": "^7.0.0",
+    "potpack": "^1.0.1",
     "prettier": "^1.16.4",
     "seedrandom": "^3.0.5",
     "sinon": "^7.1.1",
     "three": "^0.185.1",
+    "uuid": "^11.1.1",
     "vite": "^8.1.4",
-    "webpack": "^5.61.0",
-    "webpack-bundle-analyzer": "^4.5.0",
-    "webpack-cli": "^4.9.1"
+    "vitest": "^3.2.6"
   }
 }

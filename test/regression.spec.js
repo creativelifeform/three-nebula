@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../src';
 
@@ -7,7 +6,7 @@ import chai from 'chai';
 const { assert, expect } = chai;
 
 describe('regression', () => {
-  it('should export all the required modules', done => {
+  it('should export all the required modules', () => {
     const modules = [
       'Particle',
       'Pool',
@@ -67,36 +66,32 @@ describe('regression', () => {
 
     modules.forEach(module => expect(Nebula).to.have.property(module));
 
-    done();
   });
 
-  it('should export a default module which is the System class', done => {
+  it('should export a default module which is the System class', () => {
     assert.isFunction(Nebula.default);
 
     const system = new Nebula.default();
 
     assert.strictEqual(system.constructor.name, 'System');
 
-    done();
   });
 
-  it('should export a named module which is the System class', done => {
+  it('should export a named module which is the System class', () => {
     assert.isFunction(Nebula.System);
 
     const system = new Nebula.System();
 
     assert.strictEqual(system.constructor.name, 'System');
 
-    done();
   });
 
-  it('should export the behaviour base class for extension', done => {
+  it('should export the behaviour base class for extension', () => {
     assert.isFunction(Nebula.Behaviour);
 
     const behaviour = new Nebula.Behaviour();
 
     assert.strictEqual(behaviour.constructor.name, 'Behaviour');
 
-    done();
   });
 });

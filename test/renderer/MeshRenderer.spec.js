@@ -1,4 +1,3 @@
-/* global describe, it */
 
 import * as THREE from 'three';
 

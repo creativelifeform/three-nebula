@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -13,7 +12,7 @@ describe('behaviour -> Collision', () => {
   const particleA = new Nebula.Particle({ mass: 1 });
   const particleB = new Nebula.Particle({ mass: 4 });
 
-  it('should instantiate with the correct properties', done => {
+  it('should instantiate with the correct properties', () => {
     assert.equal(behaviour.type, 'Collision');
     assert.strictEqual(behaviour.life, Infinity);
     assert.isFunction(behaviour.easing);
@@ -27,10 +26,9 @@ describe('behaviour -> Collision', () => {
     assert.isTrue(behaviour.delta instanceof Nebula.Vector3D);
     assert.isFunction(behaviour._getAverageMass);
 
-    done();
   });
 
-  it('should have the correct properties after applying behaviour', done => {
+  it('should have the correct properties after applying behaviour', () => {
     const particle = new Nebula.Particle();
 
     behaviour.applyBehaviour(particle, TIME);
@@ -46,24 +44,21 @@ describe('behaviour -> Collision', () => {
     assert.isArray(behaviour.particles);
     assert.isTrue(behaviour.delta instanceof Nebula.Vector3D);
 
-    done();
   });
 
-  it('should calculate the average mass', done => {
+  it('should calculate the average mass', () => {
     const averageMass = behaviour._getAverageMass(particleA, particleB);
 
     assert.strictEqual(averageMass, 0.8);
 
-    done();
   });
 
-  it('should return an average mass of 0.5 if useMass is false', done => {
+  it('should return an average mass of 0.5 if useMass is false', () => {
     behaviour.useMass = false;
 
     const averageMass = behaviour._getAverageMass(particleA, particleB);
 
     assert.strictEqual(averageMass, 0.5);
 
-    done();
   });
 });

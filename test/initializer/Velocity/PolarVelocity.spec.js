@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../../src';
 
@@ -11,7 +10,7 @@ describe('initializer -> Polar Velocity', () => {
   const initializer = new Nebula.PolarVelocity(polar3d, 9);
   const particle = new Nebula.Particle();
 
-  it('should set the correct properties', done => {
+  it('should set the correct properties', () => {
     const { tha, dirVec, _useV, radiusPan, dir } = initializer;
 
     assert.equal(initializer.type, 'PolarVelocity');
@@ -26,10 +25,9 @@ describe('initializer -> Polar Velocity', () => {
     assert.isUndefined(dir);
     assert.isFalse(_useV);
 
-    done();
   });
 
-  it('should set the particle initializer', done => {
+  it('should set the particle initializer', () => {
     initializer.initialize(particle);
 
     const {
@@ -42,10 +40,9 @@ describe('initializer -> Polar Velocity', () => {
     assert.notEqual(y, 0);
     assert.notEqual(z, 0);
 
-    done();
   });
 
-  it('should construct the initializer from a JSON object', done => {
+  it('should construct the initializer from a JSON object', () => {
     const instance = Nebula.PolarVelocity.fromJSON({
       polarRadius: 1,
       polarTheta: 0.96,
@@ -63,6 +60,5 @@ describe('initializer -> Polar Velocity', () => {
     ]);
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });

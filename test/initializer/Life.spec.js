@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -11,7 +10,7 @@ describe('initializer -> Life', () => {
   const end = 5;
   const initializer = new Nebula.Life(start, end);
 
-  it('should have the correct properties after instantiation', done => {
+  it('should have the correct properties after instantiation', () => {
     const {
       lifePan,
       lifePan: { _isArray, a, b, _center },
@@ -24,10 +23,9 @@ describe('initializer -> Life', () => {
     assert.strictEqual(a, start);
     assert.strictEqual(b, end);
 
-    done();
   });
 
-  it('should set the correct properties on the particle after initialization', done => {
+  it('should set the correct properties on the particle after initialization', () => {
     const particle = new Nebula.Particle();
 
     initializer.initialize(particle);
@@ -37,10 +35,9 @@ describe('initializer -> Life', () => {
     assert.isAbove(life, start);
     assert.isBelow(life, end);
 
-    done();
   });
 
-  it('should set the particle life to Infinity if the first argument to the constructor is Infinity', done => {
+  it('should set the particle life to Infinity if the first argument to the constructor is Infinity', () => {
     const infiniteLife = new Nebula.Life(Infinity);
     const particle = new Nebula.Particle();
 
@@ -48,10 +45,9 @@ describe('initializer -> Life', () => {
 
     assert.strictEqual(particle.life, Infinity);
 
-    done();
   });
 
-  it('should construct the initializer from a JSON object', done => {
+  it('should construct the initializer from a JSON object', () => {
     const instance = Nebula.Life.fromJSON({
       min: 3,
       max: 10,
@@ -64,6 +60,5 @@ describe('initializer -> Life', () => {
     assert.equal(instance.lifePan.b, 10);
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });

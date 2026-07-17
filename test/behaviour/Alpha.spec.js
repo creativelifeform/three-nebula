@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -11,7 +10,7 @@ const { assert } = chai;
 describe('behaviour -> Alpha', () => {
   const behaviour = new Nebula.Alpha(1, 0);
 
-  it('should instantiate with the correct properties', done => {
+  it('should instantiate with the correct properties', () => {
     const {
       type,
       life,
@@ -42,10 +41,9 @@ describe('behaviour -> Alpha', () => {
     assert.strictEqual(alphaB.a, 0);
     assert.strictEqual(alphaB.b, 0);
 
-    done();
   });
 
-  it('should initialize the particle with the correct properties', done => {
+  it('should initialize the particle with the correct properties', () => {
     const particle = new Nebula.Particle();
 
     behaviour.initialize(particle);
@@ -61,10 +59,9 @@ describe('behaviour -> Alpha', () => {
     assert.strictEqual(alphaA, 1);
     assert.strictEqual(alphaB, 0);
 
-    done();
   });
 
-  it('should have the correct properties after applying behaviour', done => {
+  it('should have the correct properties after applying behaviour', () => {
     const particle = new Nebula.Particle();
 
     behaviour.initialize(particle);
@@ -98,10 +95,9 @@ describe('behaviour -> Alpha', () => {
     assert.strictEqual(alphaB.a, 0);
     assert.strictEqual(alphaB.b, 0);
 
-    done();
   });
 
-  it('should construct the behaviour from a JSON object', done => {
+  it('should construct the behaviour from a JSON object', () => {
     const instance = Nebula.Alpha.fromJSON({
       alphaA: 0.4,
       alphaB: 1,
@@ -116,6 +112,5 @@ describe('behaviour -> Alpha', () => {
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
 
-    done();
   });
 });

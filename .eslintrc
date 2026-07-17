@@ -4,20 +4,24 @@
     "node": true,
     "es6": true
   },
+  "globals": {
+    "describe": "readonly",
+    "it": "readonly",
+    "expect": "readonly",
+    "vi": "readonly",
+    "beforeAll": "readonly",
+    "afterAll": "readonly",
+    "beforeEach": "readonly",
+    "afterEach": "readonly"
+  },
   "extends": [
     "eslint:recommended",
     "plugin:import/errors",
     "plugin:import/warnings"
   ],
-  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true
-    },
     "sourceType": "module",
-    "ecmaVersion": 2017,
-    "requireConfigFile": false
+    "ecmaVersion": 2020
   },
   "rules": {
     "indent": ["error", 2, { "SwitchCase": 1 }],
@@ -26,6 +30,7 @@
     "semi": ["error", "always"],
     "no-console": 0,
     "import/namespace": 0,
+    "import/named": 0,
     "newline-before-return": 1,
     "newline-after-var": 1
   }

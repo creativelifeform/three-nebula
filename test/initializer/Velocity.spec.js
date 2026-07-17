@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -10,15 +9,13 @@ const { assert } = chai;
 describe('initializer -> Velocity abstract', () => {
   const velocity = new Velocity();
 
-  it('should set the dirVec property', done => {
+  it('should set the dirVec property', () => {
     assert.instanceOf(velocity.dirVec, Nebula.Vector3D);
 
-    done();
   });
 
-  it('should have the normalize method', done => {
+  it('should have the normalize method', () => {
     assert.isFunction(velocity.normalize);
 
-    done();
   });
 });

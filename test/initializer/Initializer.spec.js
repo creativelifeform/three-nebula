@@ -1,4 +1,3 @@
-/*global describe, it */
 
 import * as Nebula from '../../src';
 
@@ -8,7 +7,7 @@ import chai from 'chai';
 const { assert } = chai;
 
 describe('initializer -> Initializer', () => {
-  it('should have the required methods after instantiation', done => {
+  it('should have the required methods after instantiation', () => {
     const initializer = new Initializer();
 
     assert.equal(initializer.type, 'Initializer');
@@ -16,9 +15,8 @@ describe('initializer -> Initializer', () => {
     assert.isFunction(initializer.reset);
     assert.isFunction(initializer.initialize);
 
-    done();
   });
-  it('should initialize the emitter', done => {
+  it('should initialize the emitter', () => {
     const emitter = new Nebula.Emitter();
     const initializer = new Initializer();
 
@@ -26,10 +24,9 @@ describe('initializer -> Initializer', () => {
 
     assert.isTrue(emitter.hasBeenInitialized);
 
-    done();
   });
 
-  it('should initialize the particle', done => {
+  it('should initialize the particle', () => {
     const emitter = new Nebula.Emitter();
     const particle = new Nebula.Particle();
     const initializer = new Initializer();
@@ -39,10 +36,9 @@ describe('initializer -> Initializer', () => {
     assert.isUndefined(emitter.hasBeenInitialized);
     assert.isTrue(particle.hasBeenInitialized);
 
-    done();
   });
 
-  it('should not initialize the particle if the initializer is disabled', done => {
+  it('should not initialize the particle if the initializer is disabled', () => {
     const particle = new Nebula.Particle();
     const initializer = new Initializer('test', false);
 
@@ -50,6 +46,5 @@ describe('initializer -> Initializer', () => {
 
     assert.isUndefined(particle.hasBeenInitialized);
 
-    done();
   });
 });

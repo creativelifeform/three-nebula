@@ -2,6 +2,7 @@ import * as Behaviour from '../behaviour';
 import * as Initializer from '../initializer';
 
 import { EULER, POOL_MAX } from '../constants';
+import { DEFAULT_DAMPING } from '../emitter/constants';
 import {
   INITIALIZER_TYPES_THAT_REQUIRE_THREE,
   SUPPORTED_JSON_BEHAVIOUR_TYPES,
@@ -156,8 +157,10 @@ const makeEmitters = (emitters, Emitter, THREE, shouldAutoEmit) =>
         position,
         totalEmitTimes = Infinity,
         life = Infinity,
+        damping = DEFAULT_DAMPING,
       } = data;
 
+      emitter.damping = damping;
       emitter
         .setRate(makeRate(rate))
         .setRotation(rotation)
