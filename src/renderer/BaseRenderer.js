@@ -6,7 +6,6 @@ import {
 } from '../events/constants';
 
 import { RENDERER_TYPE_BASE } from './types';
-import { __DEV__ } from '../constants';
 
 export default class BaseRenderer {
   constructor(type = RENDERER_TYPE_BASE) {
@@ -45,8 +44,6 @@ export default class BaseRenderer {
     ) {
       self.onParticleDead.call(self, particle);
     });
-
-    this.logRendererType();
   }
 
   remove() {
@@ -72,17 +69,4 @@ export default class BaseRenderer {
    * @abstract
    */
   onSystemUpdate(system) {} // eslint-disable-line
-
-  /**
-   * Logs the renderer type being used when in development mode.
-   *
-   * @return void
-   */
-  logRendererType() {
-    if (!__DEV__) {
-      return;
-    }
-
-    console.log(`${this.type}`);
-  }
 }
