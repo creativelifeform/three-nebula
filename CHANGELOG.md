@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v11.1.1` - 2026-07-23
+
+### Fixed
+
+- `fromJSONAsync` now preserves the declared order of emitters, and of the initializers within an emitter. They were previously assembled in async completion order, so once an initializer loaded a texture asynchronously the emitters — and an emitter's initializers — could come back reordered (and non-deterministically, depending on load timing). `system.emitters[i]` now reliably corresponds to `json.emitters[i]`. The synchronous `fromJSON` path was already order-correct and is unaffected
+
 ## `v11.1.0` - 2026-07-17
 
 ### Changed
