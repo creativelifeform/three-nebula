@@ -36,15 +36,24 @@ const makeInitializers = (items, THREE) =>
     }
 
     const numberOfInitializers = items.length;
-    const madeInitializers = [];
-    const doNotRequireTextureLoading = items.filter(
-      ({ properties }) => !properties.texture
-    );
-    const doRequireTextureLoading = items.filter(
-      ({ properties }) => properties.texture
-    );
+    // Each result is written at its ORIGINAL index, and we resolve once every slot is
+    // filled — so the resolved array preserves the input order regardless of how the
+    // async texture loads below interleave. (Previously initializers were pushed as
+    // they completed: non-texture ones first, then texture ones in load-resolution
+    // order, which reordered them non-deterministically.)
+    const madeInitializers = new Array(numberOfInitializers);
+    let madeCount = 0;
 
-    doNotRequireTextureLoading.forEach(data => {
+    const onMade = (index, initializer) => {
+      madeInitializers[index] = initializer;
+      madeCount += 1;
+
+      if (madeCount === numberOfInitializers) {
+        return resolve(madeInitializers);
+      }
+    };
+
+    items.forEach((data, index) => {
       const { type, properties } = data;
 
       if (!SUPPORTED_JSON_INITIALIZER_TYPES.includes(type)) {
@@ -53,50 +62,28 @@ const makeInitializers = (items, THREE) =>
         );
       }
 
-      if (INITIALIZER_TYPES_THAT_REQUIRE_THREE.includes(type)) {
-        madeInitializers.push(Initializer[type].fromJSON(properties, THREE));
-      } else {
-        madeInitializers.push(Initializer[type].fromJSON(properties));
-      }
+      if (properties.texture) {
+        const textureLoader = new THREE.TextureLoader();
 
-      if (madeInitializers.length === numberOfInitializers) {
-        return resolve(madeInitializers);
-      }
-    });
-
-    doRequireTextureLoading.forEach(data => {
-      const {
-        type,
-        properties,
-        properties: { texture },
-      } = data;
-      const textureLoader = new THREE.TextureLoader();
-
-      if (!SUPPORTED_JSON_INITIALIZER_TYPES.includes(type)) {
-        return reject(
-          `The initializer type ${type} is invalid or not yet supported`
+        textureLoader.load(
+          properties.texture,
+          loadedTexture =>
+            onMade(
+              index,
+              TextureInitializer.fromJSON({ ...properties, loadedTexture }, THREE)
+            ),
+          undefined,
+          reject
         );
+
+        return;
       }
 
-      textureLoader.load(
-        texture,
-        loadedTexture => {
-          madeInitializers.push(
-            TextureInitializer.fromJSON(
-              {
-                ...properties,
-                loadedTexture,
-              },
-              THREE
-            )
-          );
-
-          if (madeInitializers.length === numberOfInitializers) {
-            return resolve(madeInitializers);
-          }
-        },
-        undefined,
-        reject
+      onMade(
+        index,
+        INITIALIZER_TYPES_THAT_REQUIRE_THREE.includes(type)
+          ? Initializer[type].fromJSON(properties, THREE)
+          : Initializer[type].fromJSON(properties)
       );
     });
   });
@@ -139,14 +126,20 @@ const makeEmitters = (emitters, Emitter, THREE, shouldAutoEmit) =>
       return resolve([]);
     }
 
-    const madeEmitters = [];
     const numberOfEmitters = emitters.length;
 
     if (!numberOfEmitters) {
-      return resolve(madeEmitters);
+      return resolve([]);
     }
 
-    emitters.forEach(data => {
+    // Each built emitter is written at its ORIGINAL index, and we resolve once every
+    // slot is filled — so system.emitters preserves the input order regardless of how
+    // the emitters' async initializer/texture loads interleave. (Previously emitters
+    // were pushed as they completed, i.e. in load-resolution order.)
+    const madeEmitters = new Array(numberOfEmitters);
+    let madeCount = 0;
+
+    emitters.forEach((data, index) => {
       const emitter = new Emitter();
       const {
         rate,
@@ -183,13 +176,12 @@ const makeEmitters = (emitters, Emitter, THREE, shouldAutoEmit) =>
           return Promise.resolve(emitter);
         })
         .then(emitter => {
-          madeEmitters.push(
-            shouldAutoEmit
-              ? emitter.emit(totalEmitTimes, life)
-              : emitter.setTotalEmitTimes(totalEmitTimes).setLife(life)
-          );
+          madeEmitters[index] = shouldAutoEmit
+            ? emitter.emit(totalEmitTimes, life)
+            : emitter.setTotalEmitTimes(totalEmitTimes).setLife(life);
+          madeCount += 1;
 
-          if (madeEmitters.length === numberOfEmitters) {
+          if (madeCount === numberOfEmitters) {
             return resolve(madeEmitters);
           }
         })

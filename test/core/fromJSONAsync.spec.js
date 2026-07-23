@@ -187,3 +187,66 @@ describe('fromJSONAsync', () => {
     setLifeSpy.restore();
   });
 });
+
+// Emitters and initializers must come out in the order they were declared, even when
+// their textures load asynchronously and out of that order. The suite above stubs
+// TextureLoader.load to fire synchronously, which hides any resolution-order
+// assembly; here we make loads genuinely async and out of order to exercise it.
+describe('fromJSONAsync — preserves input order under out-of-order async texture loads', () => {
+  let textureLoaderStub, consoleWarnStub;
+
+  // A "slow" texture resolves after a "fast" one — i.e. the reverse of declaration
+  // order — so any code that assembled by resolution order would come out reordered.
+  beforeAll(() => {
+    consoleWarnStub = stub(console, 'warn');
+    textureLoaderStub = stub(TextureLoader.prototype, 'load').callsFake(
+      (texture, onLoad) =>
+        setTimeout(() => onLoad(), texture.includes('slow') ? 20 : 0)
+    );
+  });
+
+  afterAll(() => {
+    textureLoaderStub.restore();
+    consoleWarnStub.restore();
+  });
+
+  const emitter = (positionX, initializers) => ({
+    rate: { particlesMin: 1, particlesMax: 1, perSecondMin: 1, perSecondMax: 1 },
+    rotation: { x: 0, y: 0, z: 0 },
+    position: { x: positionX, y: 0, z: 0 },
+    initializers,
+    behaviours: [],
+  });
+  const textureInit = texture => ({ type: 'BodySprite', properties: { texture } });
+  const massInit = { type: 'Mass', properties: { min: 1, max: 1 } };
+  const radiusInit = { type: 'Radius', properties: { width: 1, height: 1 } };
+
+  it('keeps emitters in declared order even when an earlier one loads its texture later', async () => {
+    const json = {
+      emitters: [
+        emitter(10, [textureInit('slow.png')]), // resolves LAST
+        emitter(20, [textureInit('fast.png')]), // resolves FIRST
+      ],
+    };
+
+    const system = await Particles.fromJSONAsync(json, THREE);
+
+    // Without the fix these come back swapped (fast-loading emitter first).
+    assert.equal(system.emitters[0].position.x, 10);
+    assert.equal(system.emitters[1].position.x, 20);
+  });
+
+  it("keeps an emitter's initializers in declared order (texture first, before sync non-texture ones)", async () => {
+    const json = {
+      emitters: [emitter(0, [textureInit('some.png'), massInit, radiusInit])],
+    };
+
+    const system = await Particles.fromJSONAsync(json, THREE);
+    const { initializers } = system.emitters[0];
+
+    // Without the fix the async texture initializer is pushed last, after the
+    // synchronous Mass/Radius — so index 0 would be Mass, not the Texture.
+    assert.lengthOf(initializers, 3);
+    assert.instanceOf(initializers[0], Texture);
+  });
+});
