@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - `fromJSONAsync` now preserves the declared order of emitters, and of the initializers within an emitter. They were previously assembled in async completion order, so once an initializer loaded a texture asynchronously the emitters — and an emitter's initializers — could come back reordered (and non-deterministically, depending on load timing). `system.emitters[i]` now reliably corresponds to `json.emitters[i]`. The synchronous `fromJSON` path was already order-correct and is unaffected
+  - Note for consumers: if you snapshot or pixel-test particle output, you may need to re-baseline. Correcting the order changes the seeded-RNG draw sequence, so particle arrangements differ — same system, same behaviour, different positions. Systems whose initializer arrangement isn't reorder-sensitive are unaffected (byte-identical)
 
 ## `v11.1.0` - 2026-07-17
 
