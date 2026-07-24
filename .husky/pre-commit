@@ -1,0 +1,10 @@
+# Keep the three version shown in README.md in sync with package.json.
+# Only runs when package.json is part of the commit, and only stages README
+# when the sync actually changed it — so ordinary commits are untouched.
+if git diff --cached --name-only | grep -qx 'package.json'; then
+  node scripts/sync-readme-three-version.mjs
+  if ! git diff --quiet -- README.md; then
+    git add README.md
+    echo "pre-commit: synced three version in README.md from package.json"
+  fi
+fi

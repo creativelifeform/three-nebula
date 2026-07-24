@@ -22,21 +22,11 @@ export const VERLET = 'verlet';
 export const BIND_EMITTER_EVENT = false;
 
 export const __DEV__ = () => {
-  if (!process) {
+  // `typeof` guards the bare `process` reference — in a browser `process` is
+  // undeclared, so `!process` would throw a ReferenceError rather than be false.
+  if (typeof process === 'undefined' || !process.env) {
     return false;
   }
 
-  if (!process.env) {
-    return false;
-  }
-
-  if (!process.env.NODE_ENV) {
-    return false;
-  }
-
-  if (process.env.NODE_ENV !== 'development') {
-    return false;
-  }
-
-  return true;
+  return process.env.NODE_ENV === 'development';
 };
