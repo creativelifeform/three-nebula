@@ -47,6 +47,14 @@ npm i --save three-nebula
 
 ## Usage
 
+`three-nebula` ships ES module, CommonJS and UMD builds and declares [`three`](https://github.com/mrdoob/three.js) as a peer dependency, so install both alongside each other:
+
+```
+npm i --save three three-nebula
+```
+
+It works with any bundler (Vite, webpack, Rollup) or straight from a `<script>` tag — see the examples below. However you build a system, the one thing to remember is to **drive it from your render loop by calling `system.update()` once per frame**; nothing animates until you do. For runnable, self-contained examples of every renderer, see the [sandbox](#sandbox).
+
 ### Module
 
 ```javascript
@@ -268,17 +276,56 @@ const system = new System();
 
 ### Sandbox
 
-The sandbox located in `./sandbox` contains a kind of plain JavaScript bootstrapping framework for testing and experimenting with library changes. The experiments in here are not permanent and will get updated/added/removed from time to time.
+The sandbox in `./sandbox` is a small collection of visual experiments for testing and playing with library changes — the kind of barebones examples that make it easy to dig into a rendering issue or try something new. The experiments aren't permanent; they get added and removed over time.
 
-Because of the visual and graphical nature of the library it is sometimes very helpful to have simple barebones examples that allow you to dig into the root cause of an issue or try new things out.
-
-The sandbox can easily be run via
+Run it with
 
 ```
 npm run sandbox
 ```
 
-This will serve the sandbox at `http://localhost:5000` and you can checkout the various experiments in the browser. It will also auto rebuild the library code and push the rebuilt bundle to the sandbox so all you need to do in order to see your changes is to refresh the browser.
+This serves the sandbox with Vite (defaults to `http://localhost:5000`, falling back to the next free port). Pick an experiment from the index page.
+
+Each experiment is a small ES module — there's no build config to think about. Vite resolves `three`, `three/addons/*` and `three-nebula` by name, and `three-nebula` is aliased to the library **source**, so editing the library hot-reloads the sandbox with no separate build step.
+
+Adding an experiment is just two files under `sandbox/experiments/<name>/`.
+
+`index.html` — the shared styles, a canvas inside an `#app` container (the harness mounts its FPS panel there and the styles size the canvas), and a module entry point:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/style/reset.css" />
+    <link rel="stylesheet" href="/style/app.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="canvas"></canvas>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
+```
+
+`index.js` — build a system and hand it to `run`:
+
+```javascript
+import * as THREE from 'three';
+import System, { Emitter, SpriteRenderer /* … */ } from 'three-nebula';
+import { run } from '/common/run.js';
+
+const init = async ({ scene, camera, renderer }) => {
+  const system = new System();
+  // … set up emitters, initializers and behaviours …
+  return system.addRenderer(new SpriteRenderer(scene, THREE));
+};
+
+run(init);
+```
+
+`run` (in `sandbox/common/`) sets up the scene, camera, renderer and animation loop, calls your `init` with `{ scene, camera, renderer }`, and drives `system.update()` every frame — so an experiment only has to describe the system it wants to see.
 
 ## License
 

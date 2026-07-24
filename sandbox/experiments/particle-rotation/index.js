@@ -1,7 +1,10 @@
-const { System, SpriteRenderer, GPURenderer } = window.Nebula;
+import * as THREE from 'three';
+import System, { SpriteRenderer, GPURenderer } from 'three-nebula';
+import { run } from '/common/run.js';
+import { SYSTEM } from './data.js';
 
-window.init = async ({ scene, camera, renderer }) => {
-  const { particleSystemState } = window.SYSTEM;
+const init = async ({ scene, camera, renderer }) => {
+  const { particleSystemState } = SYSTEM;
   const spriteRenderer = new SpriteRenderer(scene, THREE);
   const pointsRenderer = new GPURenderer(scene, THREE);
   const systemRenderer = pointsRenderer;
@@ -9,3 +12,5 @@ window.init = async ({ scene, camera, renderer }) => {
 
   return system.addRenderer(systemRenderer);
 };
+
+run(init);
