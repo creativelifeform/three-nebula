@@ -46,7 +46,7 @@ const createEmitter = ({ colorA, colorB, camera, renderer }) => {
     .setBehaviours([
       new Alpha(1, 0),
       new Color(colorA, colorB),
-      new Scale(1, 1.2),
+      new Scale(1, 0.5),
       new CrossZone(new ScreenZone(camera, renderer), 'dead'),
       new Force(0, 0, -20),
     ])
