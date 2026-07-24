@@ -1,4 +1,7 @@
-const { System, SpriteRenderer, GPURenderer } = window.Nebula;
+import * as THREE from 'three';
+import System, { SpriteRenderer, GPURenderer } from 'three-nebula';
+import { run } from '/common/run.js';
+import { SYSTEM } from './data.js';
 
 const button = id => document.getElementById(id);
 const { start, stop } = {
@@ -6,12 +9,14 @@ const { start, stop } = {
   stop: button('stop'),
 };
 
-window.init = async ({ scene, camera, renderer }) => {
-  const { particleSystemState } = window.SYSTEM;
+const init = async ({ scene, camera, renderer }) => {
+  const { particleSystemState } = SYSTEM;
   const spriteRenderer = new SpriteRenderer(scene, THREE);
   const pointsRenderer = new GPURenderer(scene, THREE);
   const systemRenderer = pointsRenderer;
-  const system = await System.fromJSONAsync(particleSystemState, THREE, { shouldAutoEmit: false });
+  const system = await System.fromJSONAsync(particleSystemState, THREE, {
+    shouldAutoEmit: false,
+  });
 
   start.addEventListener('click', () => {
     system.emitters[0].emit();
@@ -23,3 +28,5 @@ window.init = async ({ scene, camera, renderer }) => {
 
   return system.addRenderer(systemRenderer);
 };
+
+run(init);

@@ -1,4 +1,5 @@
-const {
+import * as THREE from 'three';
+import System, {
   Alpha,
   Body,
   Color,
@@ -13,12 +14,10 @@ const {
   Scale,
   ScreenZone,
   Span,
-  SpriteRenderer,
   GPURenderer,
   Vector3D,
-} = window.Nebula;
-
-const ParticleSystem = window.Nebula.default;
+} from 'three-nebula';
+import { run } from '/common/run.js';
 
 const createSprite = () => {
   const map = new THREE.TextureLoader().load('/assets/dot.png');
@@ -66,8 +65,8 @@ const animateEmitters = (a, b, tha = 0, radius = 70) => {
   requestAnimationFrame(() => animateEmitters(a, b, tha, radius));
 };
 
-window.init = async ({ scene, camera, renderer }) => {
-  const system = new ParticleSystem();
+const init = async ({ scene, camera, renderer }) => {
+  const system = new System();
   const emitterA = createEmitter({
     colorA: '#4F1500',
     colorB: '#0029FF',
@@ -80,7 +79,6 @@ window.init = async ({ scene, camera, renderer }) => {
     camera,
     renderer,
   });
-  //const systemRenderer = new SpriteRenderer(scene, THREE);
   const systemRenderer = new GPURenderer(scene, THREE);
 
   animateEmitters(emitterA, emitterB);
@@ -90,3 +88,8 @@ window.init = async ({ scene, camera, renderer }) => {
     .addEmitter(emitterB)
     .addRenderer(systemRenderer);
 };
+
+run(init, {
+  shouldRotateCamera: true,
+  shouldAddCameraControls: false,
+});

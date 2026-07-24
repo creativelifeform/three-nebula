@@ -1,26 +1,22 @@
-const {
+import * as THREE from 'three';
+import System, {
   Alpha,
   Body,
   Color,
-  CrossZone,
   Emitter,
-  Force,
   Life,
   Mass,
   RadialVelocity,
   Radius,
   Rate,
   Scale,
-  ScreenZone,
   Span,
-  SpriteRenderer,
   GPURenderer,
   Vector3D,
   Position,
   PointZone,
-} = window.Nebula;
-
-const ParticleSystem = window.Nebula.default;
+} from 'three-nebula';
+import { run } from '/common/run.js';
 
 let hcolor = 0;
 let tha = 0;
@@ -96,8 +92,8 @@ const createEmitter = (color1, color2) => {
     .emit();
 };
 
-window.init = async ({ scene, camera, renderer }) => {
-  const system = new ParticleSystem();
+const init = async ({ scene, camera, renderer }) => {
+  const system = new System();
   const color1 = new THREE.Color();
   const color2 = new THREE.Color();
   const emitter = createEmitter(color1, color2);
@@ -107,3 +103,5 @@ window.init = async ({ scene, camera, renderer }) => {
 
   return system.addEmitter(emitter).addRenderer(systemRenderer);
 };
+
+run(init, { shouldRotateCamera: false, shouldAddCameraControls: false });

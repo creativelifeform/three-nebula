@@ -1,4 +1,4 @@
-window.SYSTEM = {
+export const SYSTEM = {
   headerState: {
     projectName: 'five-textures.js',
     version: {
@@ -21,7 +21,7 @@ window.SYSTEM = {
     emitters: [],
   },
 };
-window.EMITTERS = [
+export const EMITTERS = [
   {
     id: 'd1136af0-1d97-11eb-85e3-298720191a56',
     totalEmitTimes: null,

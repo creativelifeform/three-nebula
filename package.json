@@ -32,7 +32,8 @@
     "vr:diff": "node vr/diff.mjs",
     "vr:montage": "node vr/montage.mjs",
     "ci:src": "npm run lint && npm run coverage",
-    "ci:website": "npm run ci --prefix website"
+    "ci:website": "npm run ci --prefix website",
+    "sandbox": "vite --config vite.sandbox.config.js"
   },
   "repository": {
     "type": "git",
