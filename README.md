@@ -25,7 +25,7 @@
 
 ## Features
 
-- Built and tested against [`three@0.185.1`](https://github.com/mrdoob/three.js); supports `three` `>=0.122.0`
+- Built and tested against [`three@0.185.1`](https://github.com/mrdoob/three.js); supports `three` `>=0.122.0 <1.0.0`
 - The ability to instantiate `three-nebula` particle systems from JSON objects
 - The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers
