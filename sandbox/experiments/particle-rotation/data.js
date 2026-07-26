@@ -1,4 +1,4 @@
-window.SYSTEM = {
+export const SYSTEM = {
   headerState: {
     projectName: 'data',
     version: { loading: false, error: null, data: null },

@@ -1,4 +1,8 @@
-window.Visualization = class {
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import Stats from 'three/addons/libs/stats.module.js';
+
+export class Visualization {
   constructor({
     canvas,
     init,
@@ -11,7 +15,7 @@ window.Visualization = class {
     this.shouldAnimate = true;
     this.shouldRotateCamera = shouldRotateCamera;
     this.shouldAddCameraControls = shouldAddCameraControls;
-    this.stats = new window.Stats();
+    this.stats = new Stats();
     this.hasStats = false;
     this.maxTicks = maxTicks;
     this.renderTicks = 0;
@@ -106,7 +110,6 @@ window.Visualization = class {
       canvas: { clientWidth, clientHeight },
     } = this;
 
-
     camera.aspect = clientWidth / clientHeight;
     camera.updateProjectionMatrix();
     webGlRenderer.setSize(clientWidth, clientHeight, false);
@@ -181,7 +184,7 @@ window.Visualization = class {
 
     pointLight.position.set(0, 200, 200);
     spotLight.position.set(0, 500, 100);
-    spotLight.lookAt(scene);
+    spotLight.lookAt(scene.position);
 
     scene.add(ambientLight);
     scene.add(pointLight);
@@ -205,11 +208,11 @@ window.Visualization = class {
   }
 
   makeCameraControls() {
-    if (!this.shouldAddCameraControls || !THREE.OrbitControls) {
+    if (!this.shouldAddCameraControls) {
       return this;
     }
 
-    this.cameraControls = new THREE.OrbitControls(
+    this.cameraControls = new OrbitControls(
       this.camera,
       this.webGlRenderer.domElement
     );
@@ -228,4 +231,4 @@ window.Visualization = class {
 
     return Promise.resolve(this.render());
   }
-};
+}

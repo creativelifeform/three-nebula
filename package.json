@@ -35,7 +35,8 @@
     "ci:website": "npm run ci --prefix website",
     "readme:sync-three": "node scripts/sync-readme-three-version.mjs",
     "readme:check-three": "node scripts/sync-readme-three-version.mjs --check",
-    "prepare": "husky"
+    "prepare": "husky",
+    "sandbox": "vite --config vite.sandbox.config.js"
   },
   "repository": {
     "type": "git",
