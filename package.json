@@ -31,8 +31,11 @@
     "vr:baseline": "node vr/capture-all.mjs --baselines",
     "vr:diff": "node vr/diff.mjs",
     "vr:montage": "node vr/montage.mjs",
-    "ci:src": "npm run lint && npm run coverage",
-    "ci:website": "npm run ci --prefix website"
+    "ci:src": "npm run readme:check-three && npm run lint && npm run coverage",
+    "ci:website": "npm run ci --prefix website",
+    "readme:sync-three": "node scripts/sync-readme-three-version.mjs",
+    "readme:check-three": "node scripts/sync-readme-three-version.mjs --check",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -63,6 +66,7 @@
     "domino": "^2.1.1",
     "eslint": "^8.1.0",
     "eslint-plugin-import": "^2.25.2",
+    "husky": "^9.1.7",
     "lodash": "^4.17.21",
     "pixelmatch": "^7.2.0",
     "pngjs": "^7.0.0",

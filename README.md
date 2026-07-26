@@ -14,8 +14,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://github.com/creativelifeform/three-nebula/actions?query=workflow%3Aci"><img src="https://github.com/creativelifeform/three-nebula/workflows/ci/badge.svg"></a>
   <a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg"></a>
-  <a href="https://threejs.org"><img src="https://img.shields.io/badge/three-v0.122.0-%230C7BB8"></a>
-  <a href="https://spectrum.chat/nebula"><img src="https://img.shields.io/badge/spectrum-chat-%237816F9"></a>
+  <a href="https://threejs.org"><img src="https://img.shields.io/badge/three-v0.185.1-%230C7BB8"></a>
 </p>
 
 <hr/>
@@ -26,7 +25,7 @@
 
 ## Features
 
-- Perfect compatibility with [`three@0.122.0`](https://github.com/mrdoob/three.js)
+- Built and tested against [`three@0.185.1`](https://github.com/mrdoob/three.js); supports `three` `>=0.122.0 <1.0.0`
 - The ability to instantiate `three-nebula` particle systems from JSON objects
 - The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers
@@ -42,7 +41,7 @@ npm i --save three-nebula
 ### script
 
 ```
-<script type='text/javascript' src='node_modules/three-nebula/build/three-nebula.js'></script>
+<script type='text/javascript' src='node_modules/three-nebula/dist/three-nebula.umd.js'></script>
 ```
 
 ## Usage
@@ -50,7 +49,10 @@ npm i --save three-nebula
 ### Module
 
 ```javascript
+import * as THREE from 'three';
+
 import System, {
+  SpriteRenderer,
   Emitter,
   Rate,
   Span,
@@ -58,18 +60,17 @@ import System, {
   Mass,
   Radius,
   Life,
-  Velocity,
-  PointZone,
+  RadialVelocity,
   Vector3D,
   Alpha,
   Scale,
   Color,
+  PointZone,
 } from 'three-nebula';
-import * as THREE from 'three';
 
 const system = new System();
-const emitter = new Emitter();
 const renderer = new SpriteRenderer(threeScene, THREE);
+const emitter = new Emitter();
 
 // Set emitter rate (particles per second) as well as the particle initializers and behaviours
 emitter
@@ -84,14 +85,26 @@ emitter
   .setBehaviours([
     new Alpha(1, 0),
     new Scale(0.1, 1.3),
-    new Color(new THREE.Color(), new THREE.Color()),
-  ]);
+    new Color(new THREE.Color(0xff0000), new THREE.Color(0x0000ff)),
+  ])
+  .emit();
 
 // add the emitter and a renderer to your particle system
 system
-  .addEmitter(emitter)
   .addRenderer(renderer)
-  .emit({ onStart, onUpdate, onEnd });
+  .addEmitter(emitter)
+  .emit({
+    onStart: () => {},
+    onUpdate: () => {},
+    onEnd: () => {},
+  });
+
+// drive the system from your render loop
+const animate = () => {
+  system.update();
+  requestAnimationFrame(animate);
+};
+requestAnimationFrame(animate);
 ```
 
 You can also instantiate your system from a JSON object
@@ -250,7 +263,7 @@ const json = {
   ],
 };
 
-new System.fromJSONAsync(json, THREE).then(system => {
+System.fromJSONAsync(json, THREE).then(system => {
   console.log(system);
 });
 ```
