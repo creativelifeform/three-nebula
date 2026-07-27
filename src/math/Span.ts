@@ -2,33 +2,34 @@ import MathUtils from './MathUtils';
 import Util from '../utils/Util';
 import { MATH_TYPE_SPAN as type } from './types';
 
-export default class Span {
+export default class Span<T = number> {
+  _isArray: boolean;
+  type: string;
+  a: number | T[];
+  b: number;
+  _center: number | boolean;
+
   /**
    * Span Class. Get a random Number from a to b. Or from c-a to c+b
-   * @param {Number|Array} a - min number
-   * @param {Number} b - max number
-   * @param {Number} center - the center's z value
+   *
    * @example
    * var span = new Span(0,30);
    * or
    * var span = new Span(["#fff","#ff0","#000"]);
    * or
    * var span = new Span(5,1,"center");
-   * @extends {Zone}
-   * @constructor
    */
-  constructor(a, b, center) {
+  constructor(a?: number | T[], b?: number, center?: number | boolean) {
     this._isArray = false;
 
     /**
      * @desc The class type.
-     * @type {string}
      */
     this.type = type;
 
     if (Util.isArray(a)) {
       this._isArray = true;
-      this.a = a;
+      this.a = a as T[];
     } else {
       this.a = Util.initValue(a, 1);
       this.b = Util.initValue(b, this.a);
@@ -37,22 +38,30 @@ export default class Span {
   }
 
   /**
-   * Span.getValue function
-   * @name get a random Number from a to b. Or get a random Number from c-a to c+b
-   * @param {number} INT or int
-   * @return {number} a random Number
+   * Get a random value from a to b, or from c-a to c+b, or a random member of
+   * the array form.
    */
-  getValue(INT) {
+  getValue(INT?: boolean): T {
     if (this._isArray) {
-      return this.a[(this.a.length * Math.random()) >> 0];
+      const arr = this.a as T[];
+
+      return arr[(arr.length * Math.random()) >> 0];
     } else {
-      if (!this._center) return MathUtils.randomAToB(this.a, this.b, INT);
-      else return MathUtils.randomFloating(this.a, this.b, INT);
+      const a = this.a as number;
+      const value = !this._center
+        ? MathUtils.randomAToB(a, this.b, INT)
+        : MathUtils.randomFloating(a, this.b, INT);
+
+      return value as T;
     }
   }
 }
 
-export const createSpan = (a, b, c) => {
+export const createSpan = (
+  a: number | number[] | Span,
+  b?: number,
+  c?: number | boolean
+): Span => {
   if (a instanceof Span) return a;
 
   if (b === undefined) {

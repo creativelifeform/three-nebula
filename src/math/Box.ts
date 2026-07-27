@@ -1,10 +1,26 @@
 import { MATH_TYPE_BOX as type } from './types';
 
 export default class Box {
-  constructor(x, y, z, w, h, d) {
+  type: string;
+  x: number;
+  y: number;
+  z: number;
+  width: number;
+  height: number;
+  depth: number;
+  bottom: number;
+  right: number;
+
+  constructor(
+    x: number,
+    y: number,
+    z: number,
+    w: number,
+    h: number,
+    d: number
+  ) {
     /**
      * @desc The class type.
-     * @type {string}
      */
     this.type = type;
     this.x = x;
@@ -15,10 +31,9 @@ export default class Box {
     this.depth = d;
     this.bottom = this.y + this.height;
     this.right = this.x + this.width;
-    this.right = this.x + this.width;
   }
 
-  contains(x, y, z) {
+  contains(x: number, y: number, z: number): boolean {
     if (
       x <= this.right &&
       x >= this.x &&

@@ -1,15 +1,19 @@
 import { INTEGRATION_TYPE_EULER } from './constants';
 import { DEFAULT_SYSTEM_DELTA } from '../core/constants';
 
+// `particle` is typed loosely until core/Particle is converted to TypeScript
+// (spec 06, later Stage 2 pass); it is a `Particle` instance.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Particle = any;
+
 /**
  * Performs euler integration on the particle.
- *
- * @param {Particle} particle - The particle to integrate
- * @param {number} time - The factor of time to use
- * @param {number} damping - The damping to use
- * @return void
  */
-const eulerIntegration = (particle, time, damping) => {
+const eulerIntegration = (
+  particle: Particle,
+  time: number,
+  damping: number
+): void => {
   if (particle.sleep) {
     return;
   }
@@ -25,21 +29,14 @@ const eulerIntegration = (particle, time, damping) => {
 };
 
 /**
- * Performs the chosen integration on the particle.
- * Defaults to euler integration.
- *
- * @param {Particle} particle - The particle to integrate
- * @param {number} time - The factor of time to use
- * @param {number} damping - The damping to use
- * @param {string} [type=INTEGRATION_TYPE_EULER] - The algorithm to use
- * @return void
+ * Performs the chosen integration on the particle. Defaults to euler.
  */
 export const integrate = (
-  particle,
-  time,
-  damping,
-  type = INTEGRATION_TYPE_EULER
-) => {
+  particle: Particle,
+  time: number,
+  damping: number,
+  type: string = INTEGRATION_TYPE_EULER
+): void => {
   switch (type) {
     case INTEGRATION_TYPE_EULER:
       eulerIntegration(particle, time, damping);
