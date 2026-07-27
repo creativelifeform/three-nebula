@@ -31,12 +31,13 @@
     "vr:baseline": "node vr/capture-all.mjs --baselines",
     "vr:diff": "node vr/diff.mjs",
     "vr:montage": "node vr/montage.mjs",
-    "ci:src": "npm run readme:check-three && npm run lint && npm run coverage",
+    "ci:src": "npm run readme:check-three && npm run typecheck && npm run lint && npm run coverage",
     "ci:website": "npm run ci --prefix website",
     "readme:sync-three": "node scripts/sync-readme-three-version.mjs",
     "readme:check-three": "node scripts/sync-readme-three-version.mjs --check",
     "prepare": "husky",
-    "sandbox": "vite --config vite.sandbox.config.js"
+    "sandbox": "vite --config vite.sandbox.config.js",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -62,6 +63,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1",
+    "@types/three": "^0.185.1",
     "@vitest/coverage-v8": "^4.1.10",
     "chai": "^4.2.0",
     "domino": "^2.1.1",
@@ -76,6 +78,7 @@
     "seedrandom": "^3.0.5",
     "sinon": "^7.1.1",
     "three": "^0.185.1",
+    "typescript": "^7.0.2",
     "uuid": "^11.1.1",
     "vite": "^8.1.4",
     "vitest": "^4.1.10"

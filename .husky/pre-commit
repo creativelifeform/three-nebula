@@ -8,3 +8,9 @@ if git diff --cached --name-only | grep -qx 'package.json'; then
     echo "pre-commit: synced three version in README.md from package.json"
   fi
 fi
+
+# Type-check when any TS/JS or the tsconfig is part of the commit.
+if git diff --cached --name-only | grep -qE '\.(ts|tsx|js|mjs|cjs)$|(^|/)tsconfig.*\.json$'; then
+  echo "pre-commit: type-checking (tsc --noEmit)"
+  npm run typecheck
+fi
