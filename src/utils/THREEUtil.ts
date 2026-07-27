@@ -1,10 +1,16 @@
-import { Vector3 } from '../core/three/';
+import { Vector3 } from '../core/three';
+import type { Camera } from 'three';
+
+interface CanvasSize {
+  width: number;
+  height: number;
+}
 
 export default {
   toScreenPos: (function() {
     var vector = new Vector3();
 
-    return function(pos, camera, canvas) {
+    return function(pos: Vector3, camera: Camera, canvas: CanvasSize): Vector3 {
       vector.copy(pos);
       // map to normalized device coordinate (NDC) space
       vector.project(camera);
@@ -22,7 +28,7 @@ export default {
       dir = new Vector3(),
       distance;
 
-    return function(pos, camera, canvas) {
+    return function(pos: Vector3, camera: Camera, canvas: CanvasSize): Vector3 {
       vector.set(
         (pos.x / canvas.width) * 2 - 1,
         -(pos.y / canvas.height) * 2 + 1,

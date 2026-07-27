@@ -4,20 +4,25 @@
  *
  **/
 
+export type Listener = (eventTarget?: unknown) => unknown;
+type ListenerMap = Record<string, Listener[]>;
+
 export default class EventDispatcher {
+  _listeners: ListenerMap | null;
+
   constructor() {
     this.listeners = null;
   }
 
-  set listeners(listeners) {
+  set listeners(listeners: ListenerMap | null) {
     this._listeners = listeners;
   }
 
-  get listeners() {
+  get listeners(): ListenerMap | null {
     return this._listeners;
   }
 
-  addEventListener(type, listener) {
+  addEventListener(type: string, listener: Listener): Listener {
     if (!this.listeners) {
       this.listeners = {};
     } else {
@@ -30,7 +35,7 @@ export default class EventDispatcher {
     return listener;
   }
 
-  removeEventListener(type, listener) {
+  removeEventListener(type: string, listener: Listener): void {
     if (!this.listeners) return;
     if (!this.listeners[type]) return;
 
@@ -50,21 +55,21 @@ export default class EventDispatcher {
     }
   }
 
-  removeAllEventListeners(type) {
+  removeAllEventListeners(type?: string): void {
     if (!type) this.listeners = null;
     else if (this.listeners) delete this.listeners[type];
   }
 
-  dispatchEvent(eventName, eventTarget) {
-    var ret = false,
+  dispatchEvent(eventName: string, eventTarget?: unknown): boolean {
+    var ret: unknown = false,
       listeners = this.listeners;
 
     if (eventName && listeners) {
       var arr = listeners[eventName];
 
-      if (!arr) return ret;
+      if (!arr) return !!ret;
 
-      arr = arr.slice();        //Should use a copy into a temporary here instead...
+      arr = arr.slice(); //Should use a copy into a temporary here instead...
       // to avoid issues with items being removed or added during the dispatch
 
       var handler,
@@ -80,7 +85,7 @@ export default class EventDispatcher {
     return !!ret;
   }
 
-  hasEventListener(type) {
+  hasEventListener(type: string): boolean {
     var listeners = this.listeners;
 
     return !!(listeners && listeners[type]);
