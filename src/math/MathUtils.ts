@@ -1,24 +1,5 @@
 import { PI } from '../constants';
-
-/**
- * The vector surface these helpers operate on. Ideally this would be
- * `Vector3D`, but `Vector3D extends` the vendored `core/three/Vector3`, which is
- * written with prototype assignment (`Object.assign(Vector3.prototype, …)`) that
- * TypeScript cannot infer — so its inherited methods aren't visible on the type
- * yet. Replace with `Vector3D` once `core/three` is typed (see spec 06, Stage 0).
- */
-interface VectorLike {
-  x: number;
-  y: number;
-  z: number;
-  set(x: number, y: number, z: number): VectorLike;
-  normalize(): VectorLike;
-  copy(v: VectorLike): VectorLike;
-  cross(v: VectorLike): VectorLike;
-  dot(v: VectorLike): number;
-  scalar(s: number): VectorLike;
-  addValue(a: number, b: number, c: number): VectorLike;
-}
+import type Vector3D from './Vector3D';
 
 export default {
   randomAToB: function(a: number, b: number, INT?: boolean): number {
@@ -50,7 +31,7 @@ export default {
     return b + (a - b) * energy;
   },
 
-  getNormal: function(v: VectorLike, n: VectorLike): VectorLike {
+  getNormal: function(v: Vector3D, n: Vector3D): Vector3D {
     if (v.x == 0 && v.y == 0) {
       if (v.z == 0) n.set(1, 0, 1);
       else n.set(1, 1, -v.y / v.z);
@@ -68,9 +49,9 @@ export default {
    * v′ = vcos(θ) + k(k⋅v)(1−cos(θ)) + (k*v)sin(θ)
    */
   axisRotate: function(
-    v0: VectorLike,
-    v: VectorLike,
-    k: VectorLike,
+    v0: Vector3D,
+    v: Vector3D,
+    k: Vector3D,
     tha: number
   ): void {
     var cos = Math.cos(tha);
