@@ -1,4 +1,4 @@
-window.SYSTEM = {
+export const SYSTEM = {
   headerState: {
     projectName: 'five-textures.js',
     version: {

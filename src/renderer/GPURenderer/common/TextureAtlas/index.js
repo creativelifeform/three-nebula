@@ -57,7 +57,7 @@ export default class TextureAtlas {
    *
    */
   log(...args) {
-    if (!__DEV__) {
+    if (!__DEV__()) {
       return;
     }
 

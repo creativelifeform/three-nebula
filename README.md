@@ -14,8 +14,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://github.com/creativelifeform/three-nebula/actions?query=workflow%3Aci"><img src="https://github.com/creativelifeform/three-nebula/workflows/ci/badge.svg"></a>
   <a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg"></a>
-  <a href="https://threejs.org"><img src="https://img.shields.io/badge/three-v0.122.0-%230C7BB8"></a>
-  <a href="https://spectrum.chat/nebula"><img src="https://img.shields.io/badge/spectrum-chat-%237816F9"></a>
+  <a href="https://threejs.org"><img src="https://img.shields.io/badge/three-v0.185.1-%230C7BB8"></a>
 </p>
 
 <hr/>
@@ -26,7 +25,7 @@
 
 ## Features
 
-- Perfect compatibility with [`three@0.122.0`](https://github.com/mrdoob/three.js)
+- Built and tested against [`three@0.185.1`](https://github.com/mrdoob/three.js); supports `three` `>=0.122.0 <1.0.0`
 - The ability to instantiate `three-nebula` particle systems from JSON objects
 - The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers
@@ -42,15 +41,26 @@ npm i --save three-nebula
 ### script
 
 ```
-<script type='text/javascript' src='node_modules/three-nebula/build/three-nebula.js'></script>
+<script type='text/javascript' src='node_modules/three-nebula/dist/three-nebula.umd.js'></script>
 ```
 
 ## Usage
 
+`three-nebula` ships ES module, CommonJS and UMD builds and declares [`three`](https://github.com/mrdoob/three.js) as a peer dependency, so install both alongside each other:
+
+```
+npm i --save three three-nebula
+```
+
+It works with any bundler (Vite, webpack, Rollup) or straight from a `<script>` tag — see the examples below. However you build a system, the one thing to remember is to **drive it from your render loop by calling `system.update()` once per frame**; nothing animates until you do. For runnable, self-contained examples of every renderer, see the [sandbox](#sandbox).
+
 ### Module
 
 ```javascript
+import * as THREE from 'three';
+
 import System, {
+  SpriteRenderer,
   Emitter,
   Rate,
   Span,
@@ -58,18 +68,17 @@ import System, {
   Mass,
   Radius,
   Life,
-  Velocity,
-  PointZone,
+  RadialVelocity,
   Vector3D,
   Alpha,
   Scale,
   Color,
+  PointZone,
 } from 'three-nebula';
-import * as THREE from 'three';
 
 const system = new System();
-const emitter = new Emitter();
 const renderer = new SpriteRenderer(threeScene, THREE);
+const emitter = new Emitter();
 
 // Set emitter rate (particles per second) as well as the particle initializers and behaviours
 emitter
@@ -84,14 +93,26 @@ emitter
   .setBehaviours([
     new Alpha(1, 0),
     new Scale(0.1, 1.3),
-    new Color(new THREE.Color(), new THREE.Color()),
-  ]);
+    new Color(new THREE.Color(0xff0000), new THREE.Color(0x0000ff)),
+  ])
+  .emit();
 
 // add the emitter and a renderer to your particle system
 system
-  .addEmitter(emitter)
   .addRenderer(renderer)
-  .emit({ onStart, onUpdate, onEnd });
+  .addEmitter(emitter)
+  .emit({
+    onStart: () => {},
+    onUpdate: () => {},
+    onEnd: () => {},
+  });
+
+// drive the system from your render loop
+const animate = () => {
+  system.update();
+  requestAnimationFrame(animate);
+};
+requestAnimationFrame(animate);
 ```
 
 You can also instantiate your system from a JSON object
@@ -250,7 +271,7 @@ const json = {
   ],
 };
 
-new System.fromJSONAsync(json, THREE).then(system => {
+System.fromJSONAsync(json, THREE).then(system => {
   console.log(system);
 });
 ```
@@ -268,17 +289,56 @@ const system = new System();
 
 ### Sandbox
 
-The sandbox located in `./sandbox` contains a kind of plain JavaScript bootstrapping framework for testing and experimenting with library changes. The experiments in here are not permanent and will get updated/added/removed from time to time.
+The sandbox in `./sandbox` is a small collection of visual experiments for testing and playing with library changes — the kind of barebones examples that make it easy to dig into a rendering issue or try something new. The experiments aren't permanent; they get added and removed over time.
 
-Because of the visual and graphical nature of the library it is sometimes very helpful to have simple barebones examples that allow you to dig into the root cause of an issue or try new things out.
-
-The sandbox can easily be run via
+Run it with
 
 ```
 npm run sandbox
 ```
 
-This will serve the sandbox at `http://localhost:5000` and you can checkout the various experiments in the browser. It will also auto rebuild the library code and push the rebuilt bundle to the sandbox so all you need to do in order to see your changes is to refresh the browser.
+This serves the sandbox with Vite (defaults to `http://localhost:5000`, falling back to the next free port). Pick an experiment from the index page.
+
+Each experiment is a small ES module — there's no build config to think about. Vite resolves `three`, `three/addons/*` and `three-nebula` by name, and `three-nebula` is aliased to the library **source**, so editing the library hot-reloads the sandbox with no separate build step.
+
+Adding an experiment is just two files under `sandbox/experiments/<name>/`.
+
+`index.html` — the shared styles, a canvas inside an `#app` container (the harness mounts its FPS panel there and the styles size the canvas), and a module entry point:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/style/reset.css" />
+    <link rel="stylesheet" href="/style/app.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="canvas"></canvas>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
+```
+
+`index.js` — build a system and hand it to `run`:
+
+```javascript
+import * as THREE from 'three';
+import System, { Emitter, SpriteRenderer /* … */ } from 'three-nebula';
+import { run } from '/common/run.js';
+
+const init = async ({ scene, camera, renderer }) => {
+  const system = new System();
+  // … set up emitters, initializers and behaviours …
+  return system.addRenderer(new SpriteRenderer(scene, THREE));
+};
+
+run(init);
+```
+
+`run` (in `sandbox/common/`) sets up the scene, camera, renderer and animation loop, calls your `init` with `{ scene, camera, renderer }`, and drives `system.update()` every frame — so an experiment only has to describe the system it wants to see.
 
 ## License
 

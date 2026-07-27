@@ -1,18 +1,20 @@
+// Rate-limited console logging, handy inside per-frame code where a raw
+// console.log would flood the console.
 const LOG_MAX = 10;
 let loggedTimes = 0;
 
-window.safeLog = (message, max = LOG_MAX) => {
-  if (loggedTimes < LOG_MAX) {
+export const safeLog = (message, max = LOG_MAX) => {
+  if (loggedTimes < max) {
     console.log(message);
   }
 
   loggedTimes++;
 };
 
-window.SafeLog = class {
+export class SafeLog {
   constructor(message, max = LOG_MAX) {
     this.message = message;
-    this.max = LOG_MAX;
+    this.max = max;
     this.loggedTimes = 0;
   }
 
@@ -27,4 +29,4 @@ window.SafeLog = class {
   reset() {
     this.loggedTimes = 0;
   }
-};
+}

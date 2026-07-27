@@ -1,10 +1,11 @@
-const {
-  Nebula: { System, GPURenderer, SpriteRenderer },
-  SYSTEM: { particleSystemState },
-  EMITTERS,
-} = window;
+import * as THREE from 'three';
+import System, { GPURenderer, SpriteRenderer } from 'three-nebula';
+import { run } from '/common/run.js';
+import { SYSTEM, EMITTERS } from './data.js';
+
+const { particleSystemState } = SYSTEM;
 const button = id => document.getElementById(id);
-const { restart, stop, add, remove } = {
+const { restart, add, remove } = {
   restart: button('restart'),
   add: button('add'),
   remove: button('remove'),
@@ -86,7 +87,7 @@ const restartSystem = system => {
  * Boots the visualisation.
  *
  */
-window.init = async ({ scene, camera, renderer }) => {
+const init = async ({ scene, camera, renderer }) => {
   container = scene;
   systemRenderer = createRenderer(container);
   system = await createSystem();
@@ -98,3 +99,5 @@ window.init = async ({ scene, camera, renderer }) => {
 
   return system.addRenderer(systemRenderer);
 };
+
+run(init, { shouldAutoStart: false });
