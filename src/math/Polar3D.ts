@@ -2,10 +2,14 @@ import Vector3D from './Vector3D';
 import { MATH_TYPE_POLAR_3D as type } from './types';
 
 export default class Polar3D {
-  constructor(radius, theta, phi) {
+  type: string;
+  radius: number;
+  phi: number;
+  theta: number;
+
+  constructor(radius?: number, theta?: number, phi?: number) {
     /**
      * @desc The class type.
-     * @type {string}
      */
     this.type = type;
     this.radius = radius || 1;
@@ -13,7 +17,7 @@ export default class Polar3D {
     this.theta = theta || 0;
   }
 
-  set(radius, theta, phi) {
+  set(radius?: number, theta?: number, phi?: number): this {
     this.radius = radius || 1;
     this.phi = phi || 0;
     this.theta = theta || 0;
@@ -21,25 +25,25 @@ export default class Polar3D {
     return this;
   }
 
-  setRadius(radius) {
+  setRadius(radius: number): this {
     this.radius = radius;
 
     return this;
   }
 
-  setPhi(phi) {
+  setPhi(phi: number): this {
     this.phi = phi;
 
     return this;
   }
 
-  setTheta(theta) {
+  setTheta(theta: number): this {
     this.theta = theta;
 
     return this;
   }
 
-  copy(p) {
+  copy(p: Polar3D): this {
     this.radius = p.radius;
     this.phi = p.phi;
     this.theta = p.theta;
@@ -47,35 +51,35 @@ export default class Polar3D {
     return this;
   }
 
-  toVector3D() {
+  toVector3D(): Vector3D {
     return new Vector3D(this.getX(), this.getY(), this.getZ());
   }
 
-  getX() {
+  getX(): number {
     return this.radius * Math.sin(this.theta) * Math.cos(this.phi);
   }
 
-  getY() {
+  getY(): number {
     return -this.radius * Math.sin(this.theta) * Math.sin(this.phi);
   }
 
-  getZ() {
+  getZ(): number {
     return this.radius * Math.cos(this.theta);
   }
 
-  normalize() {
+  normalize(): this {
     this.radius = 1;
 
     return this;
   }
 
-  equals(v) {
+  equals(v: Polar3D): boolean {
     return (
       v.radius === this.radius && v.phi === this.phi && v.theta === this.theta
     );
   }
 
-  clear() {
+  clear(): this {
     this.radius = 0.0;
     this.phi = 0.0;
     this.theta = 0.0;
@@ -83,7 +87,7 @@ export default class Polar3D {
     return this;
   }
 
-  clone() {
+  clone(): Polar3D {
     return new Polar3D(this.radius, this.phi, this.theta);
   }
 }
