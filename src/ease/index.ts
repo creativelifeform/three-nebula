@@ -1,9 +1,11 @@
 import { PI } from '../constants';
 
+export type EasingFunction = (value: number) => number;
+
 /**
  * The Ease class provides a collection of easing functions for use with System
  */
-export const ease = {
+export const ease: Record<string, EasingFunction> = {
   easeLinear: function(value) {
     return value;
   },
@@ -111,7 +113,7 @@ export const ease = {
       return 0.5 * (value * value * (((s *= 1.525) + 1) * value - s));
 
     return 0.5 * ((value -= 2) * value * (((s *= 1.525) + 1) * value + s) + 2);
-  }
+  },
 };
 
 export const {
@@ -136,13 +138,13 @@ export const {
   easeInOutCirc,
   easeInBack,
   easeOutBack,
-  easeInOutBack
+  easeInOutBack,
 } = ease;
 
-export const setEasingByName = easeName => {
+export const setEasingByName = (easeName: string): EasingFunction => {
   if (ease[easeName]) return ease[easeName];
   else return ease.easeLinear;
 };
 
-export const getEasingByName = name =>
+export const getEasingByName = (name: string): EasingFunction =>
   ease[name] ? ease[name] : ease.easeLinear;

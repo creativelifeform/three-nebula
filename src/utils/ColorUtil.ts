@@ -1,9 +1,14 @@
+interface RGB {
+  r: number;
+  g: number;
+  b: number;
+}
+
 export default {
-  getRGB: function(color) {
-    var rgb = {};
+  getRGB: function(color: number | string | RGB): RGB {
+    const rgb: RGB = { r: 0, g: 0, b: 0 };
 
     if (typeof color === 'number') {
-      hex = Math.floor(color);
       rgb.r = ((color >> 16) & 255) / 255;
       rgb.g = ((color >> 8) & 255) / 255;
       rgb.b = (color & 255) / 255;
