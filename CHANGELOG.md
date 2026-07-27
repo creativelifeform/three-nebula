@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v11.1.2` - 2026-07-27
+
+### Fixed
+
+- Renderers no longer log to the console in production. `__DEV__` is a function that was never invoked, so its dev-only guards were always truthy — `BaseRenderer` logged its renderer type on every init, and the GPU renderer's texture atlas logged on every texture add and rebuild, in every environment. Thanks to [@wmcmurray](https://github.com/wmcmurray) for reporting and fixing this in [#205](https://github.com/creativelifeform/three-nebula/pull/205)
+- `__DEV__` no longer throws a `ReferenceError` in the browser. It referenced the bare `process` global (undeclared outside Node), so once the guard above was actually invoked it crashed the GPU renderer's texture atlas; it is now guarded with `typeof process`
+- Fixed the README quickstart example, which was missing the `SpriteRenderer` import and a render loop and so never rendered, and refreshed other stale references. Thanks to [@wmcmurray](https://github.com/wmcmurray) for [#204](https://github.com/creativelifeform/three-nebula/pull/204)
+
+### Changed
+
+- Modernised the development sandbox onto `three@0.185` and Vite, converting its experiments to ES modules so it exercises the same `three` version the library targets (`npm run sandbox`). Development-only; not part of the published package
+
 ## `v11.1.1` - 2026-07-23
 
 ### Fixed
