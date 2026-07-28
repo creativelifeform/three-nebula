@@ -1,34 +1,49 @@
-import { MathUtils, Vector3D, createSpan } from '../math';
+import { MathUtils, Span, Vector3D, createSpan } from '../math';
 
 import Behaviour from './Behaviour';
 import { DEFAULT_RANDOM_DRIFT_DELAY } from './constants';
 import { getEasingByName } from '../ease';
 import { BEHAVIOUR_TYPE_RANDOM_DRIFT as type } from './types';
+import type { EasingFunction } from '../ease';
+import type Particle from '../core/Particle';
+
+interface RandomDriftJSON {
+  x: number;
+  y: number;
+  z: number;
+  delay?: number;
+  life?: number;
+  easing?: string;
+  isEnabled?: boolean;
+}
 
 /**
  * Behaviour that causes particles to drift to random coordinates in 3D space.
  *
  */
 export default class RandomDrift extends Behaviour {
+  randomForce: Vector3D;
+  delayPan: Span<number>;
+  time: number;
+
   /**
    * Constructs a RandomDrift behaviour instance.
    *
-   * @param {number} driftX - x axis drift
-   * @param {number} driftY - y axis drift
-   * @param {number} driftZ - z axis drift
-   * @param {number} [delay=DEFAULT_RANDOM_DRIFT_DELAY] - drift delay
-   * @param {number} life - The life of the particle
-   * @param {function} easing - The behaviour's decaying trend
-   * @return void
+   * @param driftX - x axis drift
+   * @param driftY - y axis drift
+   * @param driftZ - z axis drift
+   * @param delay - drift delay
+   * @param life - The life of the particle
+   * @param easing - The behaviour's decaying trend
    */
   constructor(
-    driftX,
-    driftY,
-    driftZ,
-    delay = DEFAULT_RANDOM_DRIFT_DELAY,
-    life,
-    easing,
-    isEnabled = true
+    driftX: number,
+    driftY: number,
+    driftZ: number,
+    delay: number = DEFAULT_RANDOM_DRIFT_DELAY,
+    life?: number,
+    easing?: EasingFunction,
+    isEnabled: boolean = true
   ) {
     super(life, easing, type, isEnabled);
 
@@ -36,7 +51,6 @@ export default class RandomDrift extends Behaviour {
 
     /**
      * @desc Internal time used for calculating drift vs internal delay.
-     * @type {number}
      */
     this.time = 0;
   }
@@ -44,31 +58,29 @@ export default class RandomDrift extends Behaviour {
   /**
    * Resets the behaviour properties.
    *
-   * @param {number} driftX - x axis drift
-   * @param {number} driftY - y axis drift
-   * @param {number} driftZ - z axis drift
-   * @param {number} [delay=DEFAULT_RANDOM_DRIFT_DELAY] - drift delay
-   * @param {number} life - The life of the particle
-   * @param {function} easing - The behaviour's decaying trend
+   * @param driftX - x axis drift
+   * @param driftY - y axis drift
+   * @param driftZ - z axis drift
+   * @param delay - drift delay
+   * @param life - The life of the particle
+   * @param easing - The behaviour's decaying trend
    */
   reset(
-    driftX,
-    driftY,
-    driftZ,
-    delay = DEFAULT_RANDOM_DRIFT_DELAY,
-    life,
-    easing
-  ) {
+    driftX: number,
+    driftY: number,
+    driftZ: number,
+    delay: number = DEFAULT_RANDOM_DRIFT_DELAY,
+    life?: number,
+    easing?: EasingFunction
+  ): void {
     /**
      * @desc A Vector3D that stores the drift properties.
-     * @type {Vector3D}
      */
     this.randomForce = this.normalizeForce(
       new Vector3D(driftX, driftY, driftZ)
     );
     /**
      * @desc A Span containing the delay supplied.
-     * @type {Span}
      */
     this.delayPan = createSpan(delay);
     this.time = 0;
@@ -79,12 +91,11 @@ export default class RandomDrift extends Behaviour {
   /**
    * Mutates the particle.acceleration property.
    *
-   * @param {object} particle - the particle to apply the behaviour to
-   * @param {number} time - engine time
-   * @param {integer} index - the particle index
-   * @return void
+   * @param particle - the particle to apply the behaviour to
+   * @param time - engine time
+   * @param index - the particle index
    */
-  mutate(particle, time, index) {
+  mutate(particle: Particle, time: number, index?: number): void {
     this.energize(particle, time, index);
 
     this.time += time;
@@ -100,7 +111,7 @@ export default class RandomDrift extends Behaviour {
     }
   }
 
-  static fromJSON(json) {
+  static fromJSON(json: RandomDriftJSON): RandomDrift {
     const { x, y, z, delay, life, easing, isEnabled = true } = json;
 
     return new RandomDrift(

@@ -1,26 +1,48 @@
 import { DR, PI } from '../constants';
-import { MathUtils, Vector3D, createSpan } from '../math';
+import { MathUtils, Span, Vector3D, createSpan } from '../math';
 
 import Behaviour from './Behaviour';
 import { getEasingByName } from '../ease';
 import { BEHAVIOUR_TYPE_ROTATE as type } from './types';
+import type { EasingFunction } from '../ease';
+import type Particle from '../core/Particle';
+
+interface RotateJSON {
+  x: number;
+  y: number;
+  z: number;
+  life?: number;
+  easing?: string;
+  isEnabled?: boolean;
+}
 
 /**
  * Behaviour that rotates particles.
  */
 export default class Rotate extends Behaviour {
+  x: number | Span<number>;
+  y: number | Span<number>;
+  z: number | Span<number>;
+  _rotationType: string;
+
   /**
    * Constructs a Rotate behaviour instance.
    *
-   * @param {number} x - X axis rotation
-   * @param {number} y - Y axis rotation
-   * @param {number} z - Z axis rotation
-   * @param {number} life - The life of the behaviour
-   * @param {function} easing - The easing equation to use for transforms
-   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
-   * @return void
+   * @param x - X axis rotation
+   * @param y - Y axis rotation
+   * @param z - Z axis rotation
+   * @param life - The life of the behaviour
+   * @param easing - The easing equation to use for transforms
+   * @param isEnabled - Determines if the behaviour will be applied or not
    */
-  constructor(x, y, z, life, easing, isEnabled = true) {
+  constructor(
+    x: number,
+    y: number,
+    z: number,
+    life?: number,
+    easing?: EasingFunction,
+    isEnabled: boolean = true
+  ) {
     super(life, easing, type, isEnabled);
 
     this.reset(x, y, z);
@@ -28,23 +50,17 @@ export default class Rotate extends Behaviour {
 
   /**
    * Gets the rotation type.
-   *
-   * @return {string}
    */
-  get rotationType() {
+  get rotationType(): string {
     return this._rotationType;
   }
 
   /**
    * Sets the rotation type.
-   *
-   * @param {string}
-   * @return void
    */
-  set rotationType(rotationType) {
+  set rotationType(rotationType: string) {
     /**
      * @desc The rotation type. ENUM of ['same', 'set', 'to', 'add'].
-     * @type {string}
      */
     this._rotationType = rotationType;
   }
@@ -52,33 +68,35 @@ export default class Rotate extends Behaviour {
   /**
    * Resets the behaviour properties.
    *
-   * @param {number} x - X axis rotation
-   * @param {number} y - Y axis rotation
-   * @param {number} z - Z axis rotation
-   * @param {number} life - the life of the behaviour
-   * @param {function} easing - the easing equation to use for transforms
-   * @return void
+   * @param x - X axis rotation
+   * @param y - Y axis rotation
+   * @param z - Z axis rotation
+   * @param life - the life of the behaviour
+   * @param easing - the easing equation to use for transforms
    */
-  reset(x, y, z, life, easing) {
+  reset(
+    x: number,
+    y?: number,
+    z?: number,
+    life?: number,
+    easing?: EasingFunction
+  ): void {
     /**
      * @desc X axis rotation.
-     * @type {number|Span}
      */
     this.x = x || 0;
 
     /**
      * @desc Y axis rotation.
-     * @type {number|Span}
      */
     this.y = y || 0;
 
     /**
      * @desc Z axis rotation.
-     * @type {number|Span}
      */
     this.z = z || 0;
 
-    if (x === undefined || x == 'same') {
+    if (x === undefined || (x as unknown) == 'same') {
       this.rotationType = 'same';
     } else if (y == undefined) {
       this.rotationType = 'set';
@@ -86,9 +104,9 @@ export default class Rotate extends Behaviour {
       this.rotationType = 'to';
     } else {
       this.rotationType = 'add';
-      this.x = createSpan(this.x * DR);
-      this.y = createSpan(this.y * DR);
-      this.z = createSpan(this.z * DR);
+      this.x = createSpan((this.x as number) * DR);
+      this.y = createSpan((this.y as number) * DR);
+      this.z = createSpan((this.z as number) * DR);
     }
 
     life && super.reset(life, easing);
@@ -97,10 +115,9 @@ export default class Rotate extends Behaviour {
   /**
    * Initializes the behaviour on a particle.
    *
-   * @param {object} particle - the particle to initialize the behaviour on
-   * @return void
+   * @param particle - the particle to initialize the behaviour on
    */
-  initialize(particle) {
+  initialize(particle: Particle): void {
     switch (this.rotationType) {
       case 'same':
         break;
@@ -112,15 +129,15 @@ export default class Rotate extends Behaviour {
       case 'to':
         particle.transform.fR = particle.transform.fR || new Vector3D();
         particle.transform.tR = particle.transform.tR || new Vector3D();
-        this._setRotation(particle.transform.fR, this.x);
-        this._setRotation(particle.transform.tR, this.y);
+        this._setRotation(particle.transform.fR as Vector3D, this.x);
+        this._setRotation(particle.transform.tR as Vector3D, this.y);
         break;
 
       case 'add':
         particle.transform.addR = new Vector3D(
-          this.x.getValue(),
-          this.y.getValue(),
-          this.z.getValue()
+          (this.x as Span<number>).getValue(),
+          (this.y as Span<number>).getValue(),
+          (this.z as Span<number>).getValue()
         );
         break;
     }
@@ -135,12 +152,14 @@ export default class Rotate extends Behaviour {
    * NOTE the else if below will never be reached because the value being passed in
    * will never be of type Vector3D.
    *
-   * @param {Vector3D} particleRotation - the particle's rotation vector
-   * @param {string|number} value - the value to set the rotation value to, if 'random'
+   * @param particleRotation - the particle's rotation vector
+   * @param value - the value to set the rotation value to, if 'random'
    * rotation is randomised
-   * @return void
    */
-  _setRotation(particleRotation, value) {
+  _setRotation(
+    particleRotation: Vector3D,
+    value: number | Span<number> | string
+  ): void {
     particleRotation = particleRotation || new Vector3D();
     if (value == 'random') {
       var x = MathUtils.randomAToB(-PI, PI);
@@ -161,12 +180,11 @@ export default class Rotate extends Behaviour {
    * Mutates the particle.rotation property.
    *
    * @see http://stackoverflow.com/questions/21622956/how-to-convert-direction-vector-to-euler-angles
-   * @param {object} particle - the particle to apply the behaviour to
-   * @param {number} time - engine time
-   * @param {integer} index - the particle index
-   * @return void
+   * @param particle - the particle to apply the behaviour to
+   * @param time - engine time
+   * @param index - the particle index
    */
-  mutate(particle, time, index) {
+  mutate(particle: Particle, time: number, index?: number): void {
     this.energize(particle, time, index);
 
     switch (this.rotationType) {
@@ -185,29 +203,29 @@ export default class Rotate extends Behaviour {
 
       case 'to':
         particle.rotation.x = MathUtils.lerp(
-          particle.transform.fR.x,
-          particle.transform.tR.x,
+          (particle.transform.fR as Vector3D).x,
+          (particle.transform.tR as Vector3D).x,
           this.energy
         );
         particle.rotation.y = MathUtils.lerp(
-          particle.transform.fR.y,
-          particle.transform.tR.y,
+          (particle.transform.fR as Vector3D).y,
+          (particle.transform.tR as Vector3D).y,
           this.energy
         );
         particle.rotation.z = MathUtils.lerp(
-          particle.transform.fR.z,
-          particle.transform.tR.z,
+          (particle.transform.fR as Vector3D).z,
+          (particle.transform.tR as Vector3D).z,
           this.energy
         );
         break;
 
       case 'add':
-        particle.rotation.add(particle.transform.addR);
+        particle.rotation.add(particle.transform.addR as Vector3D);
         break;
     }
   }
 
-  static fromJSON(json) {
+  static fromJSON(json: RotateJSON): Rotate {
     const { x, y, z, life, easing, isEnabled = true } = json;
 
     return new Rotate(x, y, z, life, getEasingByName(easing), isEnabled);

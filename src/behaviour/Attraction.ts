@@ -10,66 +10,79 @@ import Behaviour from './Behaviour';
 import { Vector3D } from '../math';
 import { getEasingByName } from '../ease';
 import { BEHAVIOUR_TYPE_ATTRACTION as type } from './types';
+import type { EasingFunction } from '../ease';
+import type Particle from '../core/Particle';
+
+interface AttractionJSON {
+  x: number;
+  y: number;
+  z: number;
+  force: number;
+  radius: number;
+  life?: number;
+  easing?: string;
+  isEnabled?: boolean;
+}
 
 /**
  * Behaviour that causes particles to be attracted to a target position.
  *
  */
 export default class Attraction extends Behaviour {
+  targetPosition: Vector3D;
+  radius: number;
+  force: number;
+  radiusSq: number;
+  attractionForce: Vector3D;
+  lengthSq: number;
+
   /**
    * Constructs an Attraction behaviour instance.
    *
-   * @param {Vector3D} targetPosition - The position the particles will be attracted to
-   * @param {number} force - The attraction force scalar multiplier
-   * @param {number} radius - The attraction radius
-   * @param {number} [life=DEFAULT_LIFE] - The life of the particle
-   * @param {function} [easing=DEFAULT_BEHAVIOUR_EASING] - The behaviour's decaying trend
-   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
-   * @return void
+   * @param targetPosition - The position the particles will be attracted to
+   * @param force - The attraction force scalar multiplier
+   * @param radius - The attraction radius
+   * @param life - The life of the particle
+   * @param easing - The behaviour's decaying trend
+   * @param isEnabled - Determines if the behaviour will be applied or not
    */
   constructor(
-    targetPosition = new Vector3D(),
-    force = DEFAULT_ATTRACTION_FORCE_SCALAR,
-    radius = DEFAULT_ATTRACITON_RADIUS,
-    life = DEFAULT_LIFE,
-    easing = DEFAULT_BEHAVIOUR_EASING,
-    isEnabled = true
+    targetPosition: Vector3D = new Vector3D(),
+    force: number = DEFAULT_ATTRACTION_FORCE_SCALAR,
+    radius: number = DEFAULT_ATTRACITON_RADIUS,
+    life: number = DEFAULT_LIFE,
+    easing: EasingFunction = DEFAULT_BEHAVIOUR_EASING,
+    isEnabled: boolean = true
   ) {
     super(life, easing, type, isEnabled);
 
     /**
      * @desc The position the particles will be attracted to
-     * @type {Vector3D}
      */
     this.targetPosition = targetPosition;
 
     /**
      * @desc The attraction radius
-     * @type {number} - the attraction radius
      */
     this.radius = radius;
 
     /**
      * @desc The attraction force scalar multiplier
-     * @type {number}
      */
     this.force = this.normalizeValue(force);
 
     /**
      * @desc The radius of the attraction squared
-     * @type {number}
      */
     this.radiusSq = this.radius * this.radius;
 
     /**
      * @desc The attraction force in 3D space
-     * @type {Vector3D}
      */
     this.attractionForce = new Vector3D();
 
     /**
      * @desc The linear attraction force
-     * @type {number}
      */
     this.lengthSq = 0;
   }
@@ -77,20 +90,19 @@ export default class Attraction extends Behaviour {
   /**
    * Resets the behaviour properties.
    *
-   * @param {Vector3D} targetPosition - the position the particles will be attracted to
-   * @param {number} force - the attraction force multiplier
-   * @param {number} radius - the attraction radius
-   * @param {number} life - the life of the particle
-   * @param {function} easing - The behaviour's decaying trend
-   * @return void
+   * @param targetPosition - the position the particles will be attracted to
+   * @param force - the attraction force multiplier
+   * @param radius - the attraction radius
+   * @param life - the life of the particle
+   * @param easing - The behaviour's decaying trend
    */
   reset(
-    targetPosition = new Vector3D(),
-    force = DEFAULT_ATTRACTION_FORCE_SCALAR,
-    radius = DEFAULT_ATTRACITON_RADIUS,
-    life,
-    easing
-  ) {
+    targetPosition: Vector3D = new Vector3D(),
+    force: number = DEFAULT_ATTRACTION_FORCE_SCALAR,
+    radius: number = DEFAULT_ATTRACITON_RADIUS,
+    life?: number,
+    easing?: EasingFunction
+  ): void {
     this.targetPosition = targetPosition;
     this.radius = radius;
     this.force = this.normalizeValue(force);
@@ -104,12 +116,11 @@ export default class Attraction extends Behaviour {
   /**
    * Mutates particle acceleration.
    *
-   * @param {Particle} particle - the particle to apply the behaviour to
-   * @param {number} time - particle engine time
-   * @param {integer} index - the particle index
-   * @return void
+   * @param particle - the particle to apply the behaviour to
+   * @param time - particle engine time
+   * @param index - the particle index
    */
-  mutate(particle, time, index) {
+  mutate(particle: Particle, time: number, index?: number): void {
     this.energize(particle, time, index);
 
     this.attractionForce.copy(this.targetPosition);
@@ -132,16 +143,9 @@ export default class Attraction extends Behaviour {
   /**
    * Creates a Body initializer from JSON.
    *
-   * @param {object} json - The JSON to construct the instance from.
-   * @property {number} json.x - The target position x value
-   * @property {number} json.y - The target position y value
-   * @property {number} json.z - The target position z value
-   * @property {number} json.force - The attraction force scalar multiplier
-   * @property {number} json.life - The life of the particle
-   * @property {string} json.easing - The behaviour's decaying trend
-   * @return {Body}
+   * @param json - The JSON to construct the instance from.
    */
-  static fromJSON(json) {
+  static fromJSON(json: AttractionJSON): Attraction {
     const { x, y, z, force, radius, life, easing, isEnabled = true } = json;
 
     return new Attraction(

@@ -42,12 +42,9 @@ export default class Behaviour {
   /**
    * Reset this behaviour's parameters.
    */
-  reset(
-    life: number = DEFAULT_LIFE,
-    easing: EasingFunction = DEFAULT_BEHAVIOUR_EASING
-  ): void {
-    this.life = life;
-    this.easing = easing || DEFAULT_BEHAVIOUR_EASING;
+  reset(life: unknown = DEFAULT_LIFE, easing: unknown = DEFAULT_BEHAVIOUR_EASING, ...args: unknown[]): void { // eslint-disable-line @typescript-eslint/no-unused-vars
+    this.life = life as number;
+    this.easing = (easing as EasingFunction) || DEFAULT_BEHAVIOUR_EASING;
   }
 
   /**
@@ -111,7 +108,7 @@ export default class Behaviour {
    * Compares the age of the behaviour vs integration time and determines
    * if the behaviour should be set to dead or not.
    */
-  energize(particle: Particle, time: number): void {
+  energize(particle: Particle, time: number, index?: number): void {
     if (this.dead) {
       return;
     }
