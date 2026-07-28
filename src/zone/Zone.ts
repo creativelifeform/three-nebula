@@ -1,4 +1,5 @@
 import Vector3D from '../math/Vector3D';
+import type Particle from '../core/Particle';
 import { ZONE_TYPE_ABSTRACT } from './types';
 
 /**
@@ -6,18 +7,17 @@ import { ZONE_TYPE_ABSTRACT } from './types';
  * themselves. They are supplied to both the Position initializer
  * and the CrossZone behaviour.
  *
- * @see {@link '../initialize/Position.js'}
- * @see {@link '../behaviour/CrossZone.js'}
  * @abstract
  */
 export default class Zone {
-  /**
-   * Constructs a Zone instance.
-   *
-   * @param {string} type - The zone type
-   * @return void
-   */
-  constructor(type = ZONE_TYPE_ABSTRACT) {
+  type: string;
+  vector: Vector3D;
+  random: number;
+  crossType: string;
+  log: boolean;
+  supportsCrossing: boolean;
+
+  constructor(type: string = ZONE_TYPE_ABSTRACT) {
     this.type = type;
     this.vector = new Vector3D(0, 0, 0);
     this.random = 0;
@@ -26,15 +26,17 @@ export default class Zone {
     this.supportsCrossing = true;
   }
 
-  getPosition() {
+  getPosition(): Vector3D | null {
     return null;
   }
 
-  crossing(particle) {
+  crossing(particle: Particle): void {
     if (!this.supportsCrossing) {
-      return console.warn(
+      console.warn(
         `${this.constructor.name} does not support the crossing method`
       );
+
+      return;
     }
 
     switch (this.crossType) {
@@ -52,75 +54,44 @@ export default class Zone {
     }
   }
 
-  /**
-   * Determines if this zone is a BoxZone.
-   *
-   * @return {boolean}
-   */
-  isBoxZone() {
+  isBoxZone(): boolean {
     return false;
   }
 
-  /**
-   * Determines if this zone is a LineZone.
-   *
-   * @return {boolean}
-   */
-  isLineZone() {
+  isLineZone(): boolean {
     return false;
   }
 
-  /**
-   * Determines if this zone is a MeshZone.
-   *
-   * @return {boolean}
-   */
-  isMeshZone() {
+  isMeshZone(): boolean {
     return false;
   }
 
-  /**
-   * Determines if this zone is a PointZone.
-   *
-   * @return {boolean}
-   */
-  isPointZone() {
+  isPointZone(): boolean {
     return false;
   }
 
-  /**
-   * Determines if this zone is a ScreenZone.
-   *
-   * @return {boolean}
-   */
-  isScreenZone() {
+  isScreenZone(): boolean {
     return false;
   }
 
-  /**
-   * Determines if this zone is a SphereZone.
-   *
-   * @return {boolean}
-   */
-  isSphereZone() {
+  isSphereZone(): boolean {
     return false;
   }
 
   /**
    * Sets the particle's dead property to true if required.
    *
-   * @param {Particle} particle
    * @abstract
    */
-  _dead(particle) {} //eslint-disable-line
+  _dead(particle: Particle): void {} // eslint-disable-line
 
   /**
    * @abstract
    */
-  _bound(particle) {} //eslint-disable-line
+  _bound(particle: Particle): void {} // eslint-disable-line
 
   /**
    * @abstract
    */
-  _cross(particle) {} //eslint-disable-line
+  _cross(particle: Particle): void {} // eslint-disable-line
 }
