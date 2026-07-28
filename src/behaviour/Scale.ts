@@ -1,25 +1,44 @@
-import { MathUtils, createSpan } from '../math';
+import { MathUtils, Span, createSpan } from '../math';
 
 import Behaviour from './Behaviour';
 import { getEasingByName } from '../ease';
 import { BEHAVIOUR_TYPE_SCALE as type } from './types';
+import type { EasingFunction } from '../ease';
+import type Particle from '../core/Particle';
+
+interface ScaleJSON {
+  scaleA: number;
+  scaleB?: number;
+  life?: number;
+  easing?: string;
+  isEnabled?: boolean;
+}
 
 /**
  * Behaviour that scales particles.
  *
  */
 export default class Scale extends Behaviour {
+  scaleA: Span<number>;
+  scaleB: Span<number>;
+  _same: boolean;
+
   /**
    * Constructs a Scale behaviour instance.
    *
-   * @param {number} scaleA - the starting scale value
-   * @param {?number} scaleB - the ending scale value
-   * @param {number} life - the life of the behaviour
-   * @param {function} easing - the easing equation to use for transforms
-   * @param {boolean} [isEnabled=true] - Determines if the behaviour will be applied or not
-   * @return void
+   * @param scaleA - the starting scale value
+   * @param scaleB - the ending scale value
+   * @param life - the life of the behaviour
+   * @param easing - the easing equation to use for transforms
+   * @param isEnabled - Determines if the behaviour will be applied or not
    */
-  constructor(scaleA, scaleB, life, easing, isEnabled = true) {
+  constructor(
+    scaleA: number,
+    scaleB: number,
+    life?: number,
+    easing?: EasingFunction,
+    isEnabled: boolean = true
+  ) {
     super(life, easing, type, isEnabled);
 
     this.reset(scaleA, scaleB);
@@ -27,47 +46,41 @@ export default class Scale extends Behaviour {
 
   /**
    * Gets the _same property which determines if the scale props are the same.
-   *
-   * @return {boolean}
    */
-  get same() {
+  get same(): boolean {
     return this._same;
   }
 
   /**
    * Sets the _same property which determines if the scale props are the same.
-   *
-   * @param {boolean} same
-   * @return {boolean}
    */
-  set same(same) {
-    /**
-     * @type {boolean}
-     */
+  set same(same: boolean) {
     this._same = same;
   }
 
   /**
    * Resets the behaviour properties.
    *
-   * @param {number} scaleA - the starting scale value
-   * @param {?number} scaleB - the ending scale value
-   * @param {number} life - the life of the behaviour
-   * @param {function} easing - the easing equation to use for transforms
-   * @return void
+   * @param scaleA - the starting scale value
+   * @param scaleB - the ending scale value
+   * @param life - the life of the behaviour
+   * @param easing - the easing equation to use for transforms
    */
-  reset(scaleA, scaleB, life, easing) {
+  reset(
+    scaleA: number,
+    scaleB: number,
+    life?: number,
+    easing?: EasingFunction
+  ): void {
     this.same = scaleB === null || scaleB === undefined ? true : false;
 
     /**
      * @desc The starting scale.
-     * @type {Span}
      */
     this.scaleA = createSpan(scaleA || 1);
 
     /**
      * @desc The ending scale.
-     * @type {Span}
      */
     this.scaleB = createSpan(scaleB);
 
@@ -78,10 +91,9 @@ export default class Scale extends Behaviour {
    * Initializes the behaviour on a particle.
    * Stores initial values for comparison and mutation in the applyBehaviour method.
    *
-   * @param {object} particle - the particle to initialize the behaviour on
-   * @return void
+   * @param particle - the particle to initialize the behaviour on
    */
-  initialize(particle) {
+  initialize(particle: Particle): void {
     particle.transform.scaleA = this.scaleA.getValue();
     particle.transform.oldRadius = particle.radius;
 
@@ -94,17 +106,16 @@ export default class Scale extends Behaviour {
    * Applies the behaviour to the particle.
    * Mutates the particle's scale and its radius according to this scale.
    *
-   * @param {object} particle - the particle to apply the behaviour to
-   * @param {number} time - engine time
-   * @param {integer} index - the particle index
-   * @return void
+   * @param particle - the particle to apply the behaviour to
+   * @param time - engine time
+   * @param index - the particle index
    */
-  mutate(particle, time, index) {
+  mutate(particle: Particle, time: number, index?: number): void {
     this.energize(particle, time, index);
 
     particle.scale = MathUtils.lerp(
-      particle.transform.scaleA,
-      particle.transform.scaleB,
+      particle.transform.scaleA as number,
+      particle.transform.scaleB as number,
       this.energy
     );
 
@@ -112,16 +123,15 @@ export default class Scale extends Behaviour {
       particle.scale = 0;
     }
 
-    particle.radius = particle.transform.oldRadius * particle.scale;
+    particle.radius = (particle.transform.oldRadius as number) * particle.scale;
   }
 
   /**
    * Returns a new instance of the behaviour from the JSON object passed.
    *
-   * @param {object} json - JSON object containing the required constructor properties
-   * @return {Spring}
+   * @param json - JSON object containing the required constructor properties
    */
-  static fromJSON(json) {
+  static fromJSON(json: ScaleJSON): Scale {
     const { scaleA, scaleB, life, easing, isEnabled = true } = json;
 
     return new Scale(scaleA, scaleB, life, getEasingByName(easing), isEnabled);
