@@ -1,30 +1,39 @@
 import MathUtils from '../math/MathUtils';
 import Util from '../utils/Util';
 import Zone from './Zone';
+import type Vector3D from '../math/Vector3D';
+import type Particle from '../core/Particle';
 import { ZONE_TYPE_BOX as type } from './types';
 
+type Axis = 'x' | 'y' | 'z';
+
 export default class BoxZone extends Zone {
+  x: number;
+  y: number;
+  z: number;
+  width: number;
+  height: number;
+  depth: number;
+  friction: number;
+  max: number;
+
   /**
-   * BoxZone is a box zone
-   * @param {Number|Vector3D} x - the position's x value or a Vector3D Object
-   * @param {Number} y - the position's y value
-   * @param {Number} z - the position's z value
-   * @param {Number} w - the Box's width
-   * @param {Number} h - the Box's height
-   * @param {Number} d - the Box's depth
-   * @example
-   * var boxZone = new BoxZone(0,0,0,50,50,50);
-   * or
-   * var boxZone = new BoxZone(new Vector3D(0,0,0), 50, 50, 50);
-   * @extends {Zone}
-   * @constructor
+   * BoxZone is a box zone.
    */
-  constructor(a, b, c, d, e, f) {
+  constructor(
+    a?: number,
+    b?: number,
+    c?: number,
+    d?: number,
+    e?: number,
+    f?: number
+  ) {
     super(type);
 
-    // TODO this reassigning of arguments is pretty dangerous, need to fix it.
+    // `d` is the constructor parameter (reused below); the other locals default
+    // to undefined and are assigned per the argument pattern.
     // eslint-disable-next-line
-    var x, y, z, w, h, d;
+    var x, y, z, w, h;
 
     if (Util.isUndefined(b, c, d, e, f)) {
       x = y = z = 0;
@@ -48,23 +57,16 @@ export default class BoxZone extends Zone {
     this.z = z;
     this.width = w;
     this.height = h;
-    this.depth = d;
-    // TODO Set this via an argument to the constructor
+    this.depth = d as number;
     this.friction = 0.85;
-    // TODO Set this via an argument to the constructor
     this.max = 6;
   }
 
-  /**
-   * Returns true to indicate this is a BoxZone.
-   *
-   * @return {boolean}
-   */
-  isBoxZone() {
+  isBoxZone(): boolean {
     return true;
   }
 
-  getPosition() {
+  getPosition(): Vector3D {
     this.vector.x = this.x + MathUtils.randomAToB(-0.5, 0.5) * this.width;
     this.vector.y = this.y + MathUtils.randomAToB(-0.5, 0.5) * this.height;
     this.vector.z = this.z + MathUtils.randomAToB(-0.5, 0.5) * this.depth;
@@ -72,7 +74,7 @@ export default class BoxZone extends Zone {
     return this.vector;
   }
 
-  _dead(particle) {
+  _dead(particle: Particle): void {
     if (particle.position.x + particle.radius < this.x - this.width / 2)
       particle.dead = true;
     else if (particle.position.x - particle.radius > this.x + this.width / 2)
@@ -89,7 +91,7 @@ export default class BoxZone extends Zone {
       particle.dead = true;
   }
 
-  _bound(particle) {
+  _bound(particle: Particle): void {
     if (particle.position.x - particle.radius < this.x - this.width / 2) {
       particle.position.x = this.x - this.width / 2 + particle.radius;
       particle.velocity.x *= -this.friction;
@@ -121,7 +123,7 @@ export default class BoxZone extends Zone {
     }
   }
 
-  _static(particle, axis) {
+  _static(particle: Particle, axis: Axis): void {
     if (particle.velocity[axis] * particle.acceleration[axis] > 0) return;
     if (
       Math.abs(particle.velocity[axis]) <
@@ -132,7 +134,7 @@ export default class BoxZone extends Zone {
     }
   }
 
-  _cross(particle) {
+  _cross(particle: Particle): void {
     if (
       particle.position.x + particle.radius < this.x - this.width / 2 &&
       particle.velocity.x <= 0
