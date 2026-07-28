@@ -77,7 +77,7 @@ export default {
   },
 
   //set prototype
-  setPrototypeByObj: function<T extends Record<string, unknown>>(
+  setPrototypeByObj: function<T extends object>(
     target: T,
     proObj: Record<string, unknown>,
     filters?: string[]

@@ -6,17 +6,21 @@ import {
 } from '../events/constants';
 
 import { RENDERER_TYPE_BASE } from './types';
+import type System from '../core/System';
+import type Particle from '../core/Particle';
 
 export default class BaseRenderer {
-  constructor(type = RENDERER_TYPE_BASE) {
+  type: string;
+  system: System | null;
+
+  constructor(type: string = RENDERER_TYPE_BASE) {
     /**
      * @desc The class type.
-     * @type {string}
      */
     this.type = type;
   }
 
-  init(system) {
+  init(system: System): void {
     var self = this;
 
     this.system = system;
@@ -24,49 +28,49 @@ export default class BaseRenderer {
     this.system.eventDispatcher.addEventListener(SYSTEM_UPDATE, function(
       system
     ) {
-      self.onSystemUpdate.call(self, system);
+      self.onSystemUpdate.call(self, system as System);
     });
 
     this.system.eventDispatcher.addEventListener(PARTICLE_CREATED, function(
       particle
     ) {
-      self.onParticleCreated.call(self, particle);
+      self.onParticleCreated.call(self, particle as Particle);
     });
 
     this.system.eventDispatcher.addEventListener(PARTICLE_UPDATE, function(
       particle
     ) {
-      self.onParticleUpdate.call(self, particle);
+      self.onParticleUpdate.call(self, particle as Particle);
     });
 
     this.system.eventDispatcher.addEventListener(PARTICLE_DEAD, function(
       particle
     ) {
-      self.onParticleDead.call(self, particle);
+      self.onParticleDead.call(self, particle as Particle);
     });
   }
 
-  remove() {
+  remove(): void {
     this.system = null;
   }
 
   /**
    * @abstract
    */
-  onParticleCreated(particle) {} // eslint-disable-line
+  onParticleCreated(particle: Particle): void {} // eslint-disable-line
 
   /**
    * @abstract
    */
-  onParticleUpdate(particle) {} // eslint-disable-line
+  onParticleUpdate(particle: Particle): void {} // eslint-disable-line
 
   /**
    * @abstract
    */
-  onParticleDead(particle) {} // eslint-disable-line
+  onParticleDead(particle: Particle): void {} // eslint-disable-line
 
   /**
    * @abstract
    */
-  onSystemUpdate(system) {} // eslint-disable-line
+  onSystemUpdate(system: System): void {} // eslint-disable-line
 }

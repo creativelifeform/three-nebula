@@ -1,10 +1,6 @@
 import { INTEGRATION_TYPE_EULER } from './constants';
 import { DEFAULT_SYSTEM_DELTA } from '../core/constants';
-
-// `particle` is typed loosely until core/Particle is converted to TypeScript
-// (spec 06, later Stage 2 pass); it is a `Particle` instance.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Particle = any;
+import type Particle from '../core/Particle';
 
 /**
  * Performs euler integration on the particle.
