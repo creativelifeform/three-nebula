@@ -4,19 +4,65 @@ import { fragmentShader, vertexShader } from './shaders';
 import BaseRenderer from '../../BaseRenderer';
 import { DEFAULT_RENDERER_OPTIONS } from '../common/constants';
 import { Pool } from '../../../core';
-import { RENDERER_TYPE_GPU_MOBILE } from '../../types';
+import { RENDERER_TYPE_GPU_DESKTOP } from '../../types';
+import type Particle from '../../../core/Particle';
+import type System from '../../../core/System';
+import type {
+  Blending,
+  BufferGeometry,
+  Camera,
+  InterleavedBuffer,
+  InterleavedBufferAttribute,
+  Object3D,
+  Points,
+  ShaderMaterial,
+  Texture,
+} from 'three';
 
-let THREE;
+type IndexedTexture = Texture & { textureIndex?: number };
+
+interface RendererOptions {
+  camera?: Camera;
+  maxParticles: number;
+  baseColor: number;
+  blending: string;
+  depthTest: boolean;
+  depthWrite: boolean;
+  transparent: boolean;
+  shouldDebugTextureAtlas: boolean;
+  shouldForceDesktopRenderer?: boolean;
+  shouldForceMobileRenderer?: boolean;
+}
+
+let THREE: typeof import('three');
 
 /**
- * GPURenderer for mobile devices that do not support floating point textures.
+ * GPURenderer for devices that support floating point textures.
  *
  * @author thrax <manthrax@gmail.com>
  * @author rohan-deshpande <rohan@creativelifeform.com>
  */
-export default class MobileGPURenderer extends BaseRenderer {
-  constructor(container, three, options = DEFAULT_RENDERER_OPTIONS) {
-    super(RENDERER_TYPE_GPU_MOBILE);
+export default class DesktopGPURenderer extends BaseRenderer {
+  three: typeof import('three');
+  container: Object3D;
+  camera: Camera;
+  targetPool: Pool;
+  uniqueList: UniqueList;
+  particleBuffer: ParticleBuffer;
+  buffer: InterleavedBuffer;
+  stride: number;
+  geometry: BufferGeometry;
+  material: ShaderMaterial;
+  points: Points;
+  shouldDebugTextureAtlas: boolean;
+  textureAtlas?: TextureAtlas;
+
+  constructor(
+    container: Object3D,
+    three: typeof import('three'),
+    options: RendererOptions = DEFAULT_RENDERER_OPTIONS
+  ) {
+    super(RENDERER_TYPE_GPU_DESKTOP);
 
     THREE = this.three = three;
     const props = { ...DEFAULT_RENDERER_OPTIONS, ...options };
@@ -35,17 +81,17 @@ export default class MobileGPURenderer extends BaseRenderer {
       uniforms: {
         baseColor: { value: new THREE.Color(baseColor) },
         uTexture: { value: null },
-        FFatlasIndex: { value: null },
-        atlasDim: { value: new THREE.Vector2() },
+        atlasIndex: { value: null },
       },
       vertexShader: vertexShader(),
       fragmentShader: fragmentShader(),
-      blending: THREE[blending],
+      blending: (THREE as unknown as Record<string, Blending>)[blending],
       depthTest,
       depthWrite,
       transparent,
     });
 
+    this.container = container;
     this.camera = camera;
     this.targetPool = new Pool();
     this.uniqueList = new UniqueList(maxParticles);
@@ -58,23 +104,15 @@ export default class MobileGPURenderer extends BaseRenderer {
     this.points.frustumCulled = false;
     this.shouldDebugTextureAtlas = shouldDebugTextureAtlas;
 
-    container.add(this.points);
+    this.container.add(this.points);
   }
 
-  onSystemUpdate(system) {
+  onSystemUpdate(system: System): void {
     super.onSystemUpdate(system);
 
     this.buffer.needsUpdate = true;
 
-    const { textureAtlas } = this;
-
-    if (textureAtlas) {
-      textureAtlas.update();
-      this.material.uniforms.atlasDim.value.set(
-        textureAtlas.atlasTexture.image.width,
-        textureAtlas.atlasTexture.image.height
-      );
-    }
+    this.textureAtlas && this.textureAtlas.update();
   }
 
   /**
@@ -83,9 +121,9 @@ export default class MobileGPURenderer extends BaseRenderer {
    *
    * @param {Particle}
    */
-  onParticleCreated(particle) {
+  onParticleCreated(particle: Particle): void {
     if (!particle.target) {
-      particle.target = this.targetPool.get(Target, THREE);
+      particle.target = this.targetPool.get(Target, THREE) as Target;
       this.uniqueList.add(particle.id);
     }
 
@@ -97,7 +135,7 @@ export default class MobileGPURenderer extends BaseRenderer {
    *
    * @param {Particle}
    */
-  onParticleUpdate(particle) {
+  onParticleUpdate(particle: Particle): void {
     if (!particle.target) {
       return;
     }
@@ -110,12 +148,12 @@ export default class MobileGPURenderer extends BaseRenderer {
    *
    * @param {Particle}
    */
-  onParticleDead(particle) {
+  onParticleDead(particle: Particle): void {
     if (!particle.target) {
       return;
     }
 
-    particle.target.reset();
+    (particle.target as Target).reset();
     this.mapParticleTargetPropsToPoint(particle);
 
     particle.target = null;
@@ -125,25 +163,35 @@ export default class MobileGPURenderer extends BaseRenderer {
    * Maps all mutable properties from the particle to the target.
    *
    * @param {Particle}
-   * @return {GPURenderer}
+   * @return {DesktopGPURenderer}
    */
-  updateTarget(particle) {
-    const { position, rotation, scale, radius, color, alpha, body, id } = particle;
+  updateTarget(particle: Particle): DesktopGPURenderer {
+    const {
+      position,
+      rotation,
+      scale,
+      radius,
+      color,
+      alpha,
+      body,
+      id,
+    } = particle;
     const { r, g, b } = color;
+    const target = particle.target as Target;
 
-    particle.target.position.copy(position);
-    particle.target.rotation.copy(rotation);
-    particle.target.size = scale * radius;
-    particle.target.color.setRGB(r, g, b);
-    particle.target.alpha = alpha;
-    particle.target.index = this.uniqueList.find(id);
+    target.position.copy(position);
+    target.rotation.copy(rotation);
+    target.size = scale * radius;
+    target.color.setRGB(r, g, b);
+    target.alpha = alpha;
+    target.index = this.uniqueList.find(id);
 
     if (body && body instanceof THREE.Sprite) {
       const { map } = body.material;
 
-      particle.target.texture = map;
-      particle.target.textureIndex = this.getTextureID(
-        map,
+      target.texture = map;
+      target.textureIndex = this.getTextureID(
+        map as IndexedTexture,
         this.shouldDebugTextureAtlas
       );
     }
@@ -155,9 +203,9 @@ export default class MobileGPURenderer extends BaseRenderer {
    * Entry point for mapping particle properties to buffer geometry points.
    *
    * @param {Particle} particle - The particle containing the properties to map
-   * @return {GPURenderer}
+   * @return {DesktopGPURenderer}
    */
-  mapParticleTargetPropsToPoint(particle) {
+  mapParticleTargetPropsToPoint(particle: Particle): DesktopGPURenderer {
     this.updatePointPosition(particle)
       .updatePointSize(particle)
       .updatePointRotation(particle)
@@ -172,13 +220,15 @@ export default class MobileGPURenderer extends BaseRenderer {
    * Updates the point's position according to the particle's target position.
    *
    * @param {Particle} particle - The particle containing the target position.
-   * @return {GPURenderer}
+   * @return {DesktopGPURenderer}
    */
-  updatePointPosition(particle) {
+  updatePointPosition(particle: Particle): DesktopGPURenderer {
     const attribute = 'position';
     const { geometry, stride, buffer } = this;
-    const { target } = particle;
-    const { offset } = geometry.attributes[attribute];
+    const target = particle.target as Target;
+    const { offset } = geometry.attributes[
+      attribute
+    ] as InterleavedBufferAttribute;
 
     buffer.array[target.index * stride + offset + 0] = target.position.x;
     buffer.array[target.index * stride + offset + 1] = target.position.y;
@@ -191,13 +241,15 @@ export default class MobileGPURenderer extends BaseRenderer {
    * Updates the point's size relative to the particle's target scale and radius.
    *
    * @param {Particle} particle - The particle containing the target scale.
-   * @return {GPURenderer}
+   * @return {DesktopGPURenderer}
    */
-  updatePointSize(particle) {
+  updatePointSize(particle: Particle): DesktopGPURenderer {
     const attribute = 'size';
     const { geometry, stride, buffer } = this;
-    const { target } = particle;
-    const { offset } = geometry.attributes[attribute];
+    const target = particle.target as Target;
+    const { offset } = geometry.attributes[
+      attribute
+    ] as InterleavedBufferAttribute;
 
     buffer.array[target.index * stride + offset + 0] = target.size;
 
@@ -208,13 +260,15 @@ export default class MobileGPURenderer extends BaseRenderer {
    * Updates the point's rotation.
    *
    * @param {Particle} particle - The particle containing the target rotation.
-   * @return {GPURenderer}
+   * @return {DesktopGPURenderer}
    */
-  updatePointRotation(particle) {
+  updatePointRotation(particle: Particle): DesktopGPURenderer {
     const attribute = 'rotation';
     const { geometry, stride, buffer } = this;
-    const { target } = particle;
-    const { offset } = geometry.attributes[attribute];
+    const target = particle.target as Target;
+    const { offset } = geometry.attributes[
+      attribute
+    ] as InterleavedBufferAttribute;
 
     buffer.array[target.index * stride + offset + 0] = target.rotation.z;
 
@@ -225,13 +279,15 @@ export default class MobileGPURenderer extends BaseRenderer {
    * Updates the point's color attribute according with the particle's target color.
    *
    * @param {Particle} particle - The particle containing the target color and alpha.
-   * @return {GPURenderer}
+   * @return {DesktopGPURenderer}
    */
-  updatePointColor(particle) {
+  updatePointColor(particle: Particle): DesktopGPURenderer {
     const attribute = 'color';
     const { geometry, stride, buffer } = this;
-    const { target } = particle;
-    const { offset } = geometry.attributes[attribute];
+    const target = particle.target as Target;
+    const { offset } = geometry.attributes[
+      attribute
+    ] as InterleavedBufferAttribute;
 
     buffer.array[target.index * stride + offset + 0] = target.color.r;
     buffer.array[target.index * stride + offset + 1] = target.color.g;
@@ -244,13 +300,15 @@ export default class MobileGPURenderer extends BaseRenderer {
    * Updates the point alpha attribute with the particle's target alpha.
    *
    * @param {Particle} particle - The particle containing the target alpha.
-   * @return {GPURenderer}
+   * @return {DesktopGPURenderer}
    */
-  updatePointAlpha(particle) {
+  updatePointAlpha(particle: Particle): DesktopGPURenderer {
     const attribute = 'alpha';
     const { geometry, stride, buffer } = this;
-    const { target } = particle;
-    const { offset } = geometry.attributes[attribute];
+    const target = particle.target as Target;
+    const { offset } = geometry.attributes[
+      attribute
+    ] as InterleavedBufferAttribute;
 
     buffer.array[target.index * stride + offset + 0] = target.alpha;
 
@@ -261,35 +319,22 @@ export default class MobileGPURenderer extends BaseRenderer {
    * Updates the point texture attribute with the particle's target texture.
    *
    * @param {Particle} particle - The particle containing the target texture.
-   * @return {GPURenderer}
+   * @return {DesktopGPURenderer}
    */
-  updatePointTextureIndex(particle) {
+  updatePointTextureIndex(particle: Particle): DesktopGPURenderer {
     const attribute = 'texID';
     const { geometry, stride, buffer } = this;
-    const { target } = particle;
-    const { offset } = geometry.attributes[attribute];
-    const id = target.index * stride + offset + 0;
+    const target = particle.target as Target;
+    const { offset } = geometry.attributes[
+      attribute
+    ] as InterleavedBufferAttribute;
 
-    // eslint-disable-next-line
-    if (false) {
-      buffer.array[id] = target.textureIndex;
-    } else {
-      let ti = target.textureIndex * 4;
-      const ta = this.textureAtlas;
-      const ida = ta.indexData;
-      const nx = ida[ti++];
-      const ny = ida[ti++];
-      const px = ida[ti++];
-      const py = ida[ti++];
-
-      buffer.array[id] = ((nx * ta.atlasTexture.image.width) | 0) + px;
-      buffer.array[id + 1] = ((ny * ta.atlasTexture.image.height) | 0) + py;
-    }
+    buffer.array[target.index * stride + offset + 0] = target.textureIndex;
 
     return this;
   }
 
-  getTextureID(texture, debug) {
+  getTextureID(texture: IndexedTexture, debug: boolean): number {
     if (texture.textureIndex === undefined) {
       if (!this.textureAtlas) {
         this.textureAtlas = new TextureAtlas(this, debug);
@@ -301,7 +346,12 @@ export default class MobileGPURenderer extends BaseRenderer {
     return texture.textureIndex;
   }
 
-  destroy() {
+  /**
+   * Tears down the GPURenderer.
+   *
+   * @return void
+   */
+  destroy(): void {
     const { container, points, textureAtlas, uniqueList } = this;
 
     container.remove(points);

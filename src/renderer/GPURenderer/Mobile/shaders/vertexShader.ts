@@ -1,6 +1,6 @@
 import { SIZE_ATTENUATION_FACTOR } from '../../common/shaders/constants';
 
-export const vertexShader = () => {
+export const vertexShader = (): string => {
   return `
     uniform sampler2D uTexture;
     uniform vec2 atlasDim;

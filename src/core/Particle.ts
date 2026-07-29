@@ -61,6 +61,9 @@ export default class Particle {
   hasBeenInitialized?: boolean;
   // Set by Emitter.setupParticle — the particle's index within its emitter.
   index?: number;
+  // Set by renderers — the render target (a THREE Object3D for Mesh/Sprite
+  // renderers, or a GPU `Target` store for the GPURenderer). Polymorphic.
+  target?: unknown;
 
   /**
    * Constructs a Particle instance.

@@ -3,8 +3,9 @@ import {
   DEFAULT_MAX_PARTICLES,
   PARTICLE_BYTE_SIZE,
 } from './constants';
+import type { BufferGeometry, InterleavedBuffer } from 'three';
 
-let THREE;
+let THREE: typeof import('three');
 
 /**
  * Creates and provides performant buffers for mapping particle properties to geometry vertices.
@@ -15,7 +16,14 @@ let THREE;
  * @see https://threejs.org/examples/?q=points#webgl_custom_attributes_points
  */
 export default class ParticleBuffer {
-  constructor(maxParticles = DEFAULT_MAX_PARTICLES, three) {
+  maxParticles: number;
+  interleavedBuffer: InterleavedBuffer;
+  geometry: BufferGeometry;
+
+  constructor(
+    maxParticles: number = DEFAULT_MAX_PARTICLES,
+    three: typeof import('three')
+  ) {
     THREE = three;
     this.maxParticles = maxParticles;
 
@@ -27,7 +35,7 @@ export default class ParticleBuffer {
    *
    * @return {ParticleBuffer}
    */
-  createInterleavedBuffer() {
+  createInterleavedBuffer(): ParticleBuffer {
     const arrayBuffer = new ArrayBuffer(this.maxParticles * PARTICLE_BYTE_SIZE);
 
     this.interleavedBuffer = new THREE.InterleavedBuffer(
@@ -35,7 +43,7 @@ export default class ParticleBuffer {
       PARTICLE_BYTE_SIZE
     );
     // this.interleavedBuffer.usage = THREE.DynamicDrawUsage;
-    
+
     return this;
   }
 
@@ -47,13 +55,13 @@ export default class ParticleBuffer {
    *
    * @return {ParticleBufferGeometry}
    */
-  createBufferGeometry() {
+  createBufferGeometry(): ParticleBuffer {
     this.geometry = new THREE.BufferGeometry();
 
     const { interleavedBuffer, geometry } = this;
 
     Object.keys(ATTRIBUTE_TO_SIZE_MAP).reduce((offset, attribute) => {
-      const size = ATTRIBUTE_TO_SIZE_MAP[attribute];
+      const size = (ATTRIBUTE_TO_SIZE_MAP as Record<string, number>)[attribute];
 
       geometry.setAttribute(
         attribute,
@@ -71,11 +79,11 @@ export default class ParticleBuffer {
    *
    * @return {THREE.InterleavedBuffer} buffers - The interleaved buffer
    */
-  get buffer() {
+  get buffer(): InterleavedBuffer {
     return this.interleavedBuffer;
   }
 
-  get stride() {
+  get stride(): number {
     return PARTICLE_BYTE_SIZE;
   }
 }

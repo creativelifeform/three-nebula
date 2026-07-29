@@ -6,16 +6,46 @@ import {
 import { DATA_TEXTURE_SIZE } from './constants';
 import { __DEV__ } from '../../../../constants';
 import potpack from 'potpack';
+import type { PotpackBox } from 'potpack';
+import type { CanvasTexture, DataTexture, ShaderMaterial, Texture } from 'three';
+
+type IndexedTexture = Texture & { textureIndex?: number };
+
+interface AtlasEntry {
+  texture: IndexedTexture;
+  w?: number;
+  h?: number;
+  x?: number;
+  y?: number;
+}
+
+interface AtlasRenderer {
+  three: typeof import('three');
+  type: string;
+  material: ShaderMaterial;
+}
 
 /**
  * Dynamic texture atlas for performant support of systems with multiple emitters and textures.
  *
  */
 export default class TextureAtlas {
-  constructor(renderer, shouldDebug) {
+  ctx: CanvasRenderingContext2D;
+  shouldDebug: boolean;
+  rendererType: string;
+  indexData: Float32Array;
+  canvas: HTMLCanvasElement;
+  entries: AtlasEntry[];
+  atlasIndex?: DataTexture;
+  atlasTexture: CanvasTexture;
+  needsUpdate?: boolean;
+
+  constructor(renderer: AtlasRenderer, shouldDebug: boolean) {
     const { three: THREE, type: rendererType } = renderer;
     const data = new Float32Array(DATA_TEXTURE_SIZE * 4);
-    const ctx = (this.ctx = document.createElement('canvas').getContext('2d'));
+    const ctx = (this.ctx = document
+      .createElement('canvas')
+      .getContext('2d') as CanvasRenderingContext2D);
     const { canvas } = ctx;
 
     this.shouldDebug = shouldDebug;
@@ -56,7 +86,7 @@ export default class TextureAtlas {
    * Logs to the console when in dev mode.
    *
    */
-  log(...args) {
+  log(...args: unknown[]): void {
     if (!__DEV__()) {
       return;
     }
@@ -68,7 +98,10 @@ export default class TextureAtlas {
    * Debugs the texture atlas by rendering it to a canvas in the DOM.
    *
    */
-  debug() {
+  debug(
+    _canvas?: HTMLCanvasElement,
+    _ctx?: CanvasRenderingContext2D
+  ): void {
     const { canvas, ctx } = this;
     const halfmax = canvas.width;
 
@@ -89,7 +122,7 @@ export default class TextureAtlas {
     canvas.style.position = 'absolute';
     canvas.style.width = canvas.style.height = '300px';
     canvas.style.left = canvas.style.top = '0px';
-    canvas.style.zIndex = 100;
+    canvas.style.zIndex = '100';
 
     document.body.appendChild(canvas);
   }
@@ -98,7 +131,7 @@ export default class TextureAtlas {
    * Adds a texture to the texture atlas and flags that the atlas needs to be updated.
    *
    */
-  addTexture(texture) {
+  addTexture(texture: IndexedTexture): void {
     this.log('Adding texture to atlas:', texture.uuid);
 
     texture.textureIndex = this.entries.length;
@@ -110,7 +143,7 @@ export default class TextureAtlas {
    * Updates the texture atlas. Will only rebuild the atlas if all images are loaded.
    *
    */
-  update() {
+  update(): void {
     if (!this.needsUpdate) {
       return;
     }
@@ -136,13 +169,16 @@ export default class TextureAtlas {
     for (let i = 0; i < entries.length; i++) {
       const e = entries[i];
       const { texture } = e;
-      const { width, height } = texture.image;
+      const { width, height } = texture.image as {
+        width: number;
+        height: number;
+      };
 
       e.w = width;
       e.h = height;
     }
 
-    const stats = potpack(entries);
+    const stats = potpack(entries as PotpackBox[]);
 
     this.log('Rebuilt atlas:', stats);
 
@@ -169,7 +205,7 @@ export default class TextureAtlas {
         indexData[ii + 3] = (e.y + e.h) / (canvas.height + 1);
       }
 
-      ctx.drawImage(e.texture.image, e.x, e.y, e.w, e.h);
+      ctx.drawImage(e.texture.image as CanvasImageSource, e.x, e.y, e.w, e.h);
     }
 
     if (rendererType === RENDERER_TYPE_GPU_DESKTOP) {
@@ -184,7 +220,7 @@ export default class TextureAtlas {
    *
    * @return void
    */
-  destroy() {
+  destroy(): void {
     const { atlasIndex, atlasTexture, canvas } = this;
 
     atlasTexture.dispose();
