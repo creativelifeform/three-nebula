@@ -1,4 +1,7 @@
 import { Euler } from '../core/three/';
+import type Initializer from './Initializer';
+import type Emitter from '../emitter/Emitter';
+import type Particle from '../core/Particle';
 
 const particleEuler = new Euler();
 
@@ -9,12 +12,15 @@ export default {
    * on the supplied particle. This sets the particle's initial properties.
    *
    * @see {@link '../emitter/Emitter'} setupParticle
-   * @param {Emitter} emitter - The emitter that has called this method
-   * @param {Particle} particle - The particle that has just been created
-   * @param {array<Initializer>} initializers - All of the emitter's initializers
-   * @return void
+   * @param emitter - The emitter that has called this method
+   * @param particle - The particle that has just been created
+   * @param initializers - All of the emitter's initializers
    */
-  initialize: function(emitter, particle, initializers) {
+  initialize: function(
+    emitter: Emitter,
+    particle: Particle,
+    initializers: Initializer[]
+  ): void {
     let i = initializers.length;
 
     while (i--) {
@@ -28,11 +34,10 @@ export default {
    * Ensures that the emitter's position, velocity and accleration are added
    * to each created particle.
    *
-   * @param {Emitter} emitter - The emitter that is emitting the particles
-   * @param {Particle} particle - The newly created particle
-   * @return void
+   * @param emitter - The emitter that is emitting the particles
+   * @param particle - The newly created particle
    */
-  bindEmitter: function(emitter, particle) {
+  bindEmitter: function(emitter: Emitter, particle: Particle): void {
     const {
       rotation: { x, y, z },
     } = emitter;

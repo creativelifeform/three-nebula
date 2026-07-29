@@ -7,25 +7,41 @@ import {
 import Initializer from './Initializer';
 import { INITIALIZER_TYPE_TEXTURE as type } from './types';
 import { withDefaults } from '../utils';
+import type {
+  Sprite,
+  SpriteMaterial,
+  Texture as ThreeTexture,
+} from 'three';
+import type Particle from '../core/Particle';
+
+interface TextureJSON {
+  loadedTexture?: ThreeTexture;
+  materialProperties?: Record<string, unknown>;
+  isEnabled?: boolean;
+}
 
 /**
  * Sets the body property to be a THREE.Sprite with a texture map on initialized particles.
  *
  */
 export default class Texture extends Initializer {
+  materialProperties: Record<string, unknown>;
+  texture: ThreeTexture;
+  material: SpriteMaterial;
+  sprite: Sprite;
+
   /**
    * Constructs an Texture initializer.
    *
-   * @param {object} THREE - The Web GL API we are using eg., THREE
-   * @param {string} texture - The sprite texture
-   * @param {object|undefined} materialProperties - The sprite material properties
-   * @param {?Texture} loadedTexture - Preloaded THREE.Texture instance
+   * @param THREE - The Web GL API we are using eg., THREE
+   * @param loadedTexture - Preloaded THREE.Texture instance
+   * @param materialProperties - The sprite material properties
    */
   constructor(
-    THREE,
-    loadedTexture,
-    materialProperties = DEFAULT_MATERIAL_PROPERTIES,
-    isEnabled = true
+    THREE: typeof import('three'),
+    loadedTexture: ThreeTexture,
+    materialProperties: Record<string, unknown> = DEFAULT_MATERIAL_PROPERTIES,
+    isEnabled: boolean = true
   ) {
     super(type, isEnabled);
 
@@ -34,7 +50,6 @@ export default class Texture extends Initializer {
     /**
      * @desc The material properties for this object's SpriteMaterial
      * NOTE This is required for testing purposes
-     * @type {object}
      */
     this.materialProperties = withDefaults(
       DEFAULT_MATERIAL_PROPERTIES,
@@ -43,13 +58,11 @@ export default class Texture extends Initializer {
 
     /**
      * @desc The texture for the THREE.SpriteMaterial map.
-     * @type {Texture}
      */
     this.texture = loadedTexture;
 
     /**
      * @desc THREE.SpriteMaterial instance.
-     * @type {SpriteMaterial}
      */
     this.material = new SpriteMaterial({
       ...{ map: loadedTexture },
@@ -58,7 +71,6 @@ export default class Texture extends Initializer {
 
     /**
      * @desc THREE.Sprite instance.
-     * @type {Sprite}
      */
     this.sprite = new Sprite(this.material);
   }
@@ -66,39 +78,39 @@ export default class Texture extends Initializer {
   /**
    * Sets the particle body to the sprite.
    *
-   * @param {Particle} particle - The particle to set the body of
-   * @return void
+   * @param particle - The particle to set the body of
    */
-  initialize(particle) {
+  initialize(particle: Particle): void {
     particle.body = this.sprite;
   }
 
   /**
    * Creates a Texture initializer from JSON.
    *
-   * @param {object} json - The JSON to construct the instance from
-   * @param {object} THREE - The Web GL API we are using eg., THREE
-   * @param {Texture} json.loadedTexture - The loaded sprite texture
-   * @param {object} json.materialProperties - The sprite material properties
-   * @return {BodySprite}
+   * @param json - The JSON to construct the instance from
+   * @param THREE - The Web GL API we are using eg., THREE
    */
-  static fromJSON(json, THREE) {
+  static fromJSON(json: TextureJSON, THREE: typeof import('three')): Texture {
     const {
       loadedTexture,
       materialProperties = DEFAULT_JSON_MATERIAL_PROPERTIES,
       isEnabled = true,
     } = json;
 
-    const ensureMappedBlendingMode = properties => {
+    const ensureMappedBlendingMode = (
+      properties: Record<string, unknown>
+    ): Record<string, unknown> => {
       const { blending } = properties;
 
       return {
         ...properties,
         blending: blending
-          ? SUPPORTED_MATERIAL_BLENDING_MODES[blending]
+          ? SUPPORTED_MATERIAL_BLENDING_MODES[
+              blending as keyof typeof SUPPORTED_MATERIAL_BLENDING_MODES
+            ]
           : SUPPORTED_MATERIAL_BLENDING_MODES[
-            DEFAULT_JSON_MATERIAL_PROPERTIES.blending
-          ],
+              DEFAULT_JSON_MATERIAL_PROPERTIES.blending as keyof typeof SUPPORTED_MATERIAL_BLENDING_MODES
+            ],
       };
     };
 

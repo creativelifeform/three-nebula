@@ -61,5 +61,8 @@ export default class Initializer {
    *
    * @abstract
    */
-  static fromJSON(json: Record<string, unknown>): Initializer | void {} // eslint-disable-line
+  static fromJSON(
+    json: Record<string, unknown>,
+    ...args: unknown[] // eslint-disable-line @typescript-eslint/no-unused-vars
+  ): Initializer | void {} // eslint-disable-line
 }
