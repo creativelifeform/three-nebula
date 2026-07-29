@@ -4,6 +4,13 @@ import { Span, createSpan } from '../math';
 import Initializer from './Initializer';
 import { INITIALIZER_TYPE_RATE as type } from './types';
 
+interface RateJSON {
+  particlesMin?: number;
+  particlesMax?: number;
+  perSecondMin?: number;
+  perSecondMax?: number;
+}
+
 /**
  * Calculates the rate of particle emission.
  *
@@ -13,37 +20,40 @@ import { INITIALIZER_TYPE_RATE as type } from './types';
  *
  */
 export default class Rate extends Initializer {
+  numPan: Span<number>;
+  timePan: Span<number>;
+  startTime: number;
+  nextTime: number;
+
   /**
    * Constructs a Rate instance.
    *
-   * @param {number|array|Span} numPan - The number of particles to emit
-   * @param {number|array|Span} timePan - The time between each particle emission
-   * @return void
+   * @param numPan - The number of particles to emit
+   * @param timePan - The time between each particle emission
    */
-  constructor(numPan = DEFAULT_RATE_NUM_PAN, timePan = DEFAULT_RATE_TIME_PAN) {
+  constructor(
+    numPan: number | number[] | Span = DEFAULT_RATE_NUM_PAN,
+    timePan: number | number[] | Span = DEFAULT_RATE_TIME_PAN
+  ) {
     super(type);
 
     /**
      * @desc Sets the number of particles to emit.
-     * @type {Span}
      */
     this.numPan = createSpan(numPan);
 
     /**
      * @desc Sets the time between each particle emission.
-     * @type {Span}
      */
     this.timePan = createSpan(timePan);
 
     /**
      * @desc The rate's start time.
-     * @type {number}
      */
     this.startTime = 0;
 
     /**
      * @desc The rate's next time.
-     * @type {number}
      */
     this.nextTime = 0;
 
@@ -52,10 +62,8 @@ export default class Rate extends Initializer {
 
   /**
    * Sets the startTime and nextTime properties.
-   *
-   * @return void
    */
-  init() {
+  init(): void {
     this.startTime = 0;
     this.nextTime = this.timePan.getValue();
   }
@@ -63,20 +71,19 @@ export default class Rate extends Initializer {
   /**
    * Gets the number of particles to emit.
    *
-   * @param {number} time - Current particle engine time
-   * @return {number}
+   * @param time - Current particle engine time
    */
-  getValue(time) {
+  getValue(time: number): number {
     this.startTime += time;
 
     if (this.startTime >= this.nextTime) {
       this.init();
 
       if (this.numPan.b == 1) {
-        if (this.numPan.getValue('Float') > 0.5) return 1;
+        if (this.numPan.getValue(true) > 0.5) return 1;
         else return 0;
       } else {
-        return this.numPan.getValue('Int');
+        return this.numPan.getValue(true);
       }
     }
 
@@ -86,14 +93,9 @@ export default class Rate extends Initializer {
   /**
    * Creates a Rate initializer from JSON.
    *
-   * @param {object} json - The JSON to construct the instance from.
-   * @property {number} json.particlesMin - The minimum number of particles to emit
-   * @property {number} json.particlesMax - The maximum number of particles to emit
-   * @property {number} json.perSecondMin - The minimum per second emit rate
-   * @property {number} json.perSecondMax - The maximum per second emit rate
-   * @return {Rate}
+   * @param json - The JSON to construct the instance from.
    */
-  static fromJSON(json) {
+  static fromJSON(json: RateJSON): Rate {
     const { particlesMin, particlesMax, perSecondMin, perSecondMax } = json;
 
     return new Rate(

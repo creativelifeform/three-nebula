@@ -1,38 +1,47 @@
 import Initializer from './Initializer';
-import { createArraySpan } from '../math';
+import { ArraySpan, createArraySpan } from '../math';
 import { INITIALIZER_TYPE_BODY as type } from './types';
+import type Particle from '../core/Particle';
+
+interface BodyJSON {
+  body?: unknown;
+  width?: number;
+  height?: number;
+  isEnabled?: boolean;
+}
+
 /**
  * Sets the body property on initialized particles.
  *
  */
 export default class Body extends Initializer {
+  body: ArraySpan;
+  w: number;
+  h: number;
+
   /**
    * Constructs a Body initalizer instance.
    *
-   * @param {string|number|object} body - The content for the particle body, can
+   * @param body - The content for the particle body, can
    * be a color or an object (mesh)
-   * @param {?number} w - The width of the particle body
-   * @param {?number} h - The height of the particle body
-   * @return void
+   * @param w - The width of the particle body
+   * @param h - The height of the particle body
    */
-  constructor(body, w, h, isEnabled = true) {
+  constructor(body: unknown, w?: number, h?: number, isEnabled: boolean = true) {
     super(type, isEnabled);
 
     /**
      * @desc The content for the particle body
-     * @type {ArraySpan}
      */
     this.body = createArraySpan(body);
 
     /**
      * @desc The width of the particle Body
-     * @type {number}
      */
     this.w = w;
 
     /**
      * @desc The height of the particle Body
-     * @type {number}
      */
     this.h = h || w;
   }
@@ -40,11 +49,10 @@ export default class Body extends Initializer {
   /**
    * Sets the particle's initial body.
    *
-   * @param {Particle} particle - the particle to initialize the property on
-   * @return void
+   * @param particle - the particle to initialize the property on
    */
-  initialize(particle) {
-    var body = this.body.getValue();
+  initialize(particle: Particle): void {
+    const body = this.body.getValue();
 
     if (this.w) {
       particle.body = {
@@ -60,13 +68,9 @@ export default class Body extends Initializer {
   /**
    * Creates a Body initializer from JSON.
    *
-   * @param {object} json - The JSON to construct the instance from.
-   * @property {number} json.body - The color for the particle body
-   * @property {number} json.width - The width of the particle body
-   * @property {number} json.height - The height of the particle body
-   * @return {Body}
+   * @param json - The JSON to construct the instance from.
    */
-  static fromJSON(json) {
+  static fromJSON(json: BodyJSON): Body {
     const { body, width, height, isEnabled = true } = json;
 
     return new Body(body, width, height, isEnabled);

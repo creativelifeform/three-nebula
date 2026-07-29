@@ -4,6 +4,14 @@ import { DR } from '../../constants';
 import Velocity from './Velocity';
 import { INITIALIZER_TYPE_VECTOR_VELOCITY as type } from '../types';
 
+interface VectorVelocityJSON {
+  x?: number;
+  y?: number;
+  z?: number;
+  theta?: number;
+  isEnabled?: boolean;
+}
+
 /**
  * Sets the velocity property on initialized particles.
  *
@@ -12,34 +20,29 @@ export default class VectorVelocity extends Velocity {
   /**
    * Constructs a VectorVelocity initializer.
    *
-   * @param {Vector3D} vector3d - The directional vector for the velocity
-   * @param {number} theta - The theta angle to use
-   * @return void
+   * @param vector3d - The directional vector for the velocity
+   * @param theta - The theta angle to use
    */
-  constructor(vector3d, theta, isEnabled = true) {
+  constructor(vector3d: Vector3D, theta: number, isEnabled: boolean = true) {
     super(type, isEnabled);
 
     /**
      * @desc Velocity radius span.
-     * @type {Span}
      */
     this.radiusPan = createSpan(1);
 
     /**
      * @desc Direction vector.
-     * @type {Vector3D}
      */
     this.dir = vector3d.clone();
 
     /**
      * @desc Theta.
-     * @type {number}
      */
     this.tha = theta * DR;
 
     /**
      * @desc Determines whether to use the directional vector or not.
-     * @type {boolean}
      */
     this._useV = true;
   }
@@ -47,14 +50,9 @@ export default class VectorVelocity extends Velocity {
   /**
    * Creates a VectorVelocity initializer from JSON.
    *
-   * @param {object} json - The JSON to construct the instance from.
-   * @param {number} json.x - The velocity x axis direction
-   * @param {number} json.y - The velocity y axis direction
-   * @param {number} json.z - The velocity z axis direction
-   * @param {number} json.theta - The velocity theta
-   * @return {VectorVelocity}
+   * @param json - The JSON to construct the instance from.
    */
-  static fromJSON(json) {
+  static fromJSON(json: VectorVelocityJSON): VectorVelocity {
     const { x, y, z, theta, isEnabled = true } = json;
 
     return new VectorVelocity(new Vector3D(x, y, z), theta, isEnabled);
