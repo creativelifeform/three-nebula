@@ -1,7 +1,7 @@
 import { DATA_TEXTURE_SIZE } from '../../common/TextureAtlas/constants';
 import { SIZE_ATTENUATION_FACTOR } from '../../common/shaders/constants';
 
-export const vertexShader = () => {
+export const vertexShader = (): string => {
   return `
     uniform sampler2D uTexture;
     //atlasIndex is a 256x1 float texture of tile rectangles as r=minx g=miny b=maxx a=maxy

@@ -1,4 +1,4 @@
-export const fragmentShader = () => {
+export const fragmentShader = (): string => {
   return `
     uniform vec3 baseColor;
     uniform sampler2D uTexture;

@@ -2,13 +2,17 @@
  * Map of particle IDs to integer ids
  */
 export class UniqueList {
-  constructor(max = Infinity) {
+  max: number;
+  count: number;
+  _items: Record<string, number>;
+
+  constructor(max: number = Infinity) {
     this.max = max;
     this.count = 0;
     this._items = {};
   }
 
-  add(item) {
+  add(item: string | number): void {
     if (this._items[item] !== undefined) {
       return;
     }
@@ -16,11 +20,11 @@ export class UniqueList {
     this._items[item] = this.count++;
   }
 
-  find(item) {
+  find(item: string | number): number {
     return this._items[item];
   }
 
-  destroy() {
+  destroy(): void {
     this._items = {};
     this.count = 0;
   }
