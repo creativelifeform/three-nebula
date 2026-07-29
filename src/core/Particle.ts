@@ -59,6 +59,8 @@ export default class Particle {
   rotation: Vector3D;
   distanceToCamera: number;
   hasBeenInitialized?: boolean;
+  // Set by Emitter.setupParticle — the particle's index within its emitter.
+  index?: number;
 
   /**
    * Constructs a Particle instance.

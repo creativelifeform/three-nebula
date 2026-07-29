@@ -15,138 +15,80 @@ import EventDispatcher, {
 import { INTEGRATION_TYPE_EULER, integrate } from '../math';
 import { Util, uid } from '../utils';
 
-import { InitializerUtil } from '../initializer';
+import { InitializerUtil, Rate } from '../initializer';
 import Particle from '../core/Particle';
 import isNumber from 'lodash/isNumber';
 import { EMITTER_TYPE_EMITTER as type } from './types';
+import type Initializer from '../initializer/Initializer';
+import type Behaviour from '../behaviour/Behaviour';
+import type System from '../core/System';
+
+interface Vector3Props {
+  x?: number;
+  y?: number;
+  z?: number;
+}
 
 /**
  * Emitters are the System engine's particle factories. They cause particles to
  * be rendered by emitting them, and store all particle initializers and behaviours.
- *
  */
 export default class Emitter extends Particle {
-  /**
-   * Constructs an Emitter instance.
-   *
-   * @param {object} properties - The properties to instantiate the emitter with
-   * @return void
-   */
-  constructor(properties) {
+  particles: Particle[];
+  initializers: Initializer[];
+  emitterBehaviours: Behaviour[];
+  currentEmitTime: number;
+  totalEmitTimes: number;
+  damping: number;
+  bindEmitter: boolean;
+  bindEmitterEvent: boolean;
+  rate: Rate;
+  isEmitting: boolean;
+  cID: number;
+  name: string;
+  eventDispatcher: EventDispatcher;
+
+  constructor(properties?: Record<string, unknown>) {
     super(properties);
 
-    /**
-     * @desc The class type.
-     * @type {string}
-     */
     this.type = type;
-
-    /**
-     * @desc The particles emitted by this emitter.
-     * @type {array}
-     */
     this.particles = [];
-
-    /**
-     * @desc The initializers for particles emitted by this emitter.
-     * @type {array}
-     */
     this.initializers = [];
-
-    /**
-     * @desc The behaviours for particles emitted by this emitter.
-     * @type {array}
-     */
     this.behaviours = [];
-
-    /**
-     * @desc The behaviours for the emitter.
-     * @type {array}
-     */
     this.emitterBehaviours = [];
-
-    /**
-     * @desc The current emit iteration.
-     * @type {integer}
-     */
     this.currentEmitTime = 0;
-
-    /**
-     * @desc The total number of times the emitter should emit particles.
-     * @type {integer}
-     */
     this.totalEmitTimes = -1;
-
-    /**
-     * @desc The friction coefficient for all particle to emit by.
-     * @type {number}
-     */
     this.damping = DEFAULT_DAMPING;
-
-    /**
-     * @desc Ensures that particles emitted by this emitter are positioned
-     * according to the emitter's properties.
-     * @type {boolean}
-     */
     this.bindEmitter = DEFAULT_BIND_EMITTER;
-
-    /**
-     * @desc Determines if the emitter will dispatch internal events. Defaults
-     * to false
-     * @type {boolean}
-     */
     this.bindEmitterEvent = DEFAULT_BIND_EMITTER_EVENT;
-
-    /**
-     * @desc The number of particles to emit per second (a [particle]/b [s])
-     * @type {Rate}
-     */
     this.rate = DEFAULT_EMITTER_RATE;
-
-    /**
-     * @desc Determines if the emitter is emitting particles or not.
-     * @type {boolean}
-     */
     this.isEmitting = false;
-
-    /**
-     * @desc The emitter's id.
-     * @type {string}
-     */
     this.id = `emitter-${uid()}`;
     this.cID = 0;
     this.name = 'Emitter';
-
-    /**
-     * @desc The index of the emitter as it is added to the system.
-     * @type {number|undefined}
-     */
     this.index = DEFAULT_EMITTER_INDEX;
-
-    /**
-     * @desc The emitter's internal event dispatcher.
-     * @type {EventDispatcher}
-     */
     this.eventDispatcher = new EventDispatcher();
   }
 
   /**
-   * Proxy method for the internal event dispatcher's dispatchEvent method.
-   *
-   * @param {string} event - The event to dispatch
-   * @param {object<Particle>} [target=this] - The event target
+   * An emitter's parent is the System it was added to (a particle's parent is
+   * its emitter, hence the inherited `parent` field is narrowed here).
    */
-  dispatch(event, target = this) {
+  get system(): System {
+    return this.parent as unknown as System;
+  }
+
+  /**
+   * Proxy method for the internal event dispatcher's dispatchEvent method.
+   */
+  dispatch(event: string, target: unknown = this): void {
     this.eventDispatcher.dispatchEvent(event, target);
   }
 
   /**
    * Sets the emitter rate.
-   *
-   * @param {Rate} rate - a rate initializer object
-   * @return {Emitter}
    */
-  setRate(rate) {
+  setRate(rate: Rate): this {
     this.rate = rate;
 
     return this;
@@ -154,11 +96,8 @@ export default class Emitter extends Particle {
 
   /**
    * Sets the position of the emitter.
-   *
-   * @param {object} newPosition - an object the new x, y and z props
-   * @return {Emitter}
    */
-  setPosition(newPosition = {}) {
+  setPosition(newPosition: Vector3Props = {}): this {
     const { position } = this;
     const { x = position.x, y = position.y, z = position.z } = newPosition;
 
@@ -169,11 +108,8 @@ export default class Emitter extends Particle {
 
   /**
    * Sets the rotation of the emitter.
-   *
-   * @param {object} newRotation - an object the new x, y and z props
-   * @return {Emitter}
    */
-  setRotation(newRotation = {}) {
+  setRotation(newRotation: Vector3Props = {}): this {
     const { rotation } = this;
     const { x = rotation.x, y = rotation.y, z = rotation.z } = newRotation;
 
@@ -184,14 +120,10 @@ export default class Emitter extends Particle {
 
   /**
    * Sets the total number of times the emitter should emit particles as well as
-   * the emitter's life. Also intializes the emitter rate.
-   * This enables the emitter to emit particles.
-   *
-   * @param {number} [totalEmitTimes=Infinity] - the total number of times to emit particles
-   * @param {number} [life=Infinity] - the life of this emitter in milliseconds
-   * @return {Emitter}
+   * the emitter's life. Also intializes the emitter rate. This enables the
+   * emitter to emit particles.
    */
-  emit(totalEmitTimes = Infinity, life = Infinity) {
+  emit(totalEmitTimes: number = Infinity, life: number = Infinity): this {
     this.currentEmitTime = 0;
     this.totalEmitTimes = isNumber(totalEmitTimes) ? totalEmitTimes : Infinity;
 
@@ -209,10 +141,8 @@ export default class Emitter extends Particle {
 
   /**
    * Experimental emit method that is designed to be called from the System.emit method.
-   *
-   * @return {Emitter}
    */
-  experimental_emit() {
+  experimental_emit(): this {
     const { isEmitting, totalEmitTimes, life } = this;
 
     if (!isEmitting) {
@@ -235,11 +165,8 @@ export default class Emitter extends Particle {
 
   /**
    * Sets the total emit times for the emitter.
-   *
-   * @param {number} [totalEmitTimes=Infinity] - the total number of times to emit particles
-   * @return {Emitter}
    */
-  setTotalEmitTimes(totalEmitTimes = Infinity) {
+  setTotalEmitTimes(totalEmitTimes: number = Infinity): this {
     this.totalEmitTimes = isNumber(totalEmitTimes) ? totalEmitTimes : Infinity;
 
     return this;
@@ -247,11 +174,8 @@ export default class Emitter extends Particle {
 
   /**
    * Sets the life of the emitter.
-   *
-   * @param {number} [life=Infinity] - the life of this emitter in milliseconds
-   * @return {Emitter}
    */
-  setLife(life = Infinity) {
+  setLife(life: number = Infinity): this {
     if (this.totalEmitTimes === 1) {
       this.life = this.totalEmitTimes;
     } else {
@@ -263,10 +187,8 @@ export default class Emitter extends Particle {
 
   /**
    * Stops the emitter from emitting particles.
-   *
-   * @return void
    */
-  stopEmit() {
+  stopEmit(): void {
     this.totalEmitTimes = -1;
     this.currentEmitTime = 0;
     this.isEmitting = false;
@@ -274,10 +196,8 @@ export default class Emitter extends Particle {
 
   /**
    * Kills all of the emitter's particles.
-   *
-   * @return void
    */
-  removeAllParticles() {
+  removeAllParticles(): void {
     let i = this.particles.length;
 
     while (i--) {
@@ -287,12 +207,8 @@ export default class Emitter extends Particle {
 
   /**
    * Adds a particle initializer to the emitter.
-   * Each initializer is run on each particle when they are created.
-   *
-   * @param {Initializer} initializer - The initializer to add
-   * @return {Emitter}
    */
-  addInitializer(initializer) {
+  addInitializer(initializer: Initializer): this {
     this.initializers.push(initializer);
 
     return this;
@@ -300,11 +216,8 @@ export default class Emitter extends Particle {
 
   /**
    * Adds multiple particle initializers to the emitter.
-   *
-   * @param {array<Initializer>} initializers - an array of particle initializers
-   * @return {Emitter}
    */
-  addInitializers(initializers) {
+  addInitializers(initializers: Initializer[]): this {
     let i = initializers.length;
 
     while (i--) {
@@ -316,11 +229,8 @@ export default class Emitter extends Particle {
 
   /**
    * Sets the emitter's particle initializers.
-   *
-   * @param {array<Initializer>} initializers - an array of particle initializers
-   * @return {Emitter}
    */
-  setInitializers(initializers) {
+  setInitializers(initializers: Initializer[]): this {
     this.initializers = initializers;
 
     return this;
@@ -328,11 +238,8 @@ export default class Emitter extends Particle {
 
   /**
    * Removes an initializer from the emitter's initializers array.
-   *
-   * @param {Initializer} initializer - The initializer to remove
-   * @return {Emitter}
    */
-  removeInitializer(initializer) {
+  removeInitializer(initializer: Initializer): this {
     const index = this.initializers.indexOf(initializer);
 
     if (index > -1) {
@@ -344,23 +251,17 @@ export default class Emitter extends Particle {
 
   /**
    * Removes all initializers.
-   *
-   * @return {Emitter}
    */
-  removeAllInitializers() {
+  removeAllInitializers(): this {
     Util.destroyArray(this.initializers);
 
     return this;
   }
 
   /**
-   * Adds a behaviour to the emitter. All emitter behaviours are added to each particle when
-   * they are emitted.
-   *
-   * @param {Behaviour} behaviour - The behaviour to add to the emitter
-   * @return {Emitter}
+   * Adds a behaviour to the emitter.
    */
-  addBehaviour(behaviour) {
+  addBehaviour(behaviour: Behaviour): this {
     this.behaviours.push(behaviour);
 
     return this;
@@ -368,11 +269,8 @@ export default class Emitter extends Particle {
 
   /**
    * Adds multiple behaviours to the emitter.
-   *
-   * @param {array<Behaviour>} behaviours - an array of emitter behaviours
-   * @return {Emitter}
    */
-  addBehaviours(behaviours) {
+  addBehaviours(behaviours: Behaviour[]): this {
     let i = behaviours.length;
 
     while (i--) {
@@ -384,11 +282,8 @@ export default class Emitter extends Particle {
 
   /**
    * Sets the emitter's behaviours.
-   *
-   * @param {array<Behaviour>} behaviours - an array of emitter behaviours
-   * @return {Emitter}
    */
-  setBehaviours(behaviours) {
+  setBehaviours(behaviours: Behaviour[]): this {
     this.behaviours = behaviours;
 
     return this;
@@ -396,11 +291,8 @@ export default class Emitter extends Particle {
 
   /**
    * Removes the behaviour from the emitter's behaviours array.
-   *
-   * @param {Behaviour} behaviour - The behaviour to remove
-   * @return {Emitter}
    */
-  removeBehaviour(behaviour) {
+  removeBehaviour(behaviour: Behaviour): this {
     const index = this.behaviours.indexOf(behaviour);
 
     if (index > -1) {
@@ -412,10 +304,8 @@ export default class Emitter extends Particle {
 
   /**
    * Removes all behaviours from the emitter.
-   *
-   * @return {Emitter}
    */
-  removeAllBehaviours() {
+  removeAllBehaviours(): this {
     Util.destroyArray(this.behaviours);
 
     return this;
@@ -423,11 +313,8 @@ export default class Emitter extends Particle {
 
   /**
    * Adds an emitter behaviour to the emitter.
-   *
-   * @param {Behaviour} behaviour - The behaviour to add to the emitter
-   * @return {Emitter}
    */
-  addEmitterBehaviour(behaviour) {
+  addEmitterBehaviour(behaviour: Behaviour): this {
     this.emitterBehaviours.push(behaviour);
 
     behaviour.initialize(this);
@@ -437,11 +324,8 @@ export default class Emitter extends Particle {
 
   /**
    * Adds multiple behaviours to the emitter.
-   *
-   * @param {array<Behaviour>} behaviours - an array of emitter behaviours
-   * @return {Emitter}
    */
-  addEmitterBehaviours(behaviours) {
+  addEmitterBehaviours(behaviours: Behaviour[]): this {
     let i = behaviours.length;
 
     while (i--) {
@@ -453,11 +337,8 @@ export default class Emitter extends Particle {
 
   /**
    * Sets the emitter's behaviours.
-   *
-   * @param {array<Behaviour>} behaviours - an array of emitter behaviours
-   * @return {Emitter}
    */
-  setEmitterBehaviours(behaviours) {
+  setEmitterBehaviours(behaviours: Behaviour[]): this {
     const length = behaviours.length;
 
     this.emitterBehaviours = behaviours;
@@ -471,11 +352,8 @@ export default class Emitter extends Particle {
 
   /**
    * Removes the behaviour from the emitter's behaviours array.
-   *
-   * @param {Behaviour} behaviour - The behaviour to remove
-   * @return {Emitter}
    */
-  removeEmitterBehaviour(behaviour) {
+  removeEmitterBehaviour(behaviour: Behaviour): this {
     const index = this.emitterBehaviours.indexOf(behaviour);
 
     if (index > -1) {
@@ -487,10 +365,8 @@ export default class Emitter extends Particle {
 
   /**
    * Removes all behaviours from the emitter.
-   *
-   * @return {Emitter}
    */
-  removeAllEmitterBehaviours() {
+  removeAllEmitterBehaviours(): this {
     Util.destroyArray(this.emitterBehaviours);
 
     return this;
@@ -498,11 +374,8 @@ export default class Emitter extends Particle {
 
   /**
    * Adds the event listener for the EMITTER_DEAD event.
-   *
-   * @param {onEmitterDead} - The function to call when the EMITTER_DEAD is dispatched.
-   * @return {Emitter}
    */
-  addOnEmitterDeadEventListener(onEmitterDead) {
+  addOnEmitterDeadEventListener(onEmitterDead: () => void): this {
     this.eventDispatcher.addEventListener(`${this.id}_${EMITTER_DEAD}`, () =>
       onEmitterDead()
     );
@@ -513,15 +386,13 @@ export default class Emitter extends Particle {
   /**
    * Creates a particle by retreiving one from the pool and setting it up with
    * the supplied initializer and behaviour.
-   *
-   * @return {Emitter}
    */
-  createParticle() {
-    const particle = this.parent.pool.get(Particle);
+  createParticle(): Particle {
+    const particle = this.system.pool.get(Particle) as Particle;
     const index = this.particles.length;
 
     this.setupParticle(particle, index);
-    this.parent && this.parent.dispatch(PARTICLE_CREATED, particle);
+    this.system && this.system.dispatch(PARTICLE_CREATED, particle);
     this.bindEmitterEvent && this.dispatch(PARTICLE_CREATED, particle);
 
     return particle;
@@ -530,11 +401,8 @@ export default class Emitter extends Particle {
   /**
    * Sets up a particle by running all initializers on it and setting its behaviours.
    * Also adds the particle to this.particles.
-   *
-   * @param {Particle} particle - The particle to setup
-   * @return void
    */
-  setupParticle(particle, index) {
+  setupParticle(particle: Particle, index?: number): void {
     const { initializers, behaviours } = this;
 
     InitializerUtil.initialize(this, particle, initializers);
@@ -548,17 +416,9 @@ export default class Emitter extends Particle {
 
   /**
    * Updates the emitter according to the time passed by calling the generate
-   * and integrate methods. The generate method creates particles, the integrate
-   * method updates existing particles.
-   *
-   * If the emitter age is greater than time, the emitter is killed.
-   *
-   * This method also indexes/deindexes particles.
-   *
-   * @param {number} time - System engine time
-   * @return void
+   * and integrate methods.
    */
-  update(time) {
+  update(time: number): void {
     if (!this.isEmitting && this.particles.length === 0) {
       return;
     }
@@ -569,8 +429,7 @@ export default class Emitter extends Particle {
       this.destroy();
     }
 
-    if (this.isEmitting)
-    {
+    if (this.isEmitting) {
       this.generate(time);
     }
 
@@ -582,13 +441,12 @@ export default class Emitter extends Particle {
       const particle = this.particles[i];
 
       if (particle.dead) {
-        this.parent && this.parent.dispatch(PARTICLE_DEAD, particle);
+        this.system && this.system.dispatch(PARTICLE_DEAD, particle);
         this.bindEmitterEvent && this.dispatch(PARTICLE_DEAD, particle);
-        this.parent.pool.expire(particle.reset());
+        this.system.pool.expire(particle.reset());
         this.particles.splice(i, 1);
-        if(this.particles.length === 0)
-        {
-          this.parent && this.parent.dispatch(SYSTEM_UPDATE);
+        if (this.particles.length === 0) {
+          this.system && this.system.dispatch(SYSTEM_UPDATE);
         }
       }
     }
@@ -598,11 +456,8 @@ export default class Emitter extends Particle {
 
   /**
    * Updates the emitter's emitter behaviours.
-   *
-   * @param {number} time - System engine time
-   * @return void
    */
-  updateEmitterBehaviours(time) {
+  updateEmitterBehaviours(time: number): void {
     if (this.sleep) {
       return;
     }
@@ -616,14 +471,10 @@ export default class Emitter extends Particle {
 
   /**
    * Runs the integration algorithm on the emitter and all particles.
-   * Updates the particles with the timstamp passed.
-   *
-   * @param {number} time - System engine time
-   * @return void
    */
-  integrate(time) {
-    const integrationType = this.parent
-      ? this.parent.integrationType
+  integrate(time: number): void {
+    const integrationType = this.system
+      ? this.system.integrationType
       : INTEGRATION_TYPE_EULER;
     const damping = 1 - this.damping;
 
@@ -637,18 +488,15 @@ export default class Emitter extends Particle {
       particle.update(time, index);
       integrate(particle, time, damping, integrationType);
 
-      this.parent && this.parent.dispatch(PARTICLE_UPDATE, particle);
+      this.system && this.system.dispatch(PARTICLE_UPDATE, particle);
       this.bindEmitterEvent && this.dispatch(PARTICLE_UPDATE, particle);
     }
   }
 
   /**
    * Generates new particles.
-   *
-   * @param {number} time - System engine time
-   * @return void
    */
-  generate(time) {
+  generate(time: number): void {
     if (this.totalEmitTimes === 1) {
       let i = this.rate.getValue(99999);
 
@@ -682,10 +530,8 @@ export default class Emitter extends Particle {
 
   /**
    * Kills the emitter.
-   *
-   * @return void
    */
-  destroy() {
+  destroy(): void {
     this.dead = true;
     this.energy = 0;
     this.totalEmitTimes = -1;
@@ -696,7 +542,7 @@ export default class Emitter extends Particle {
       this.removeAllBehaviours();
       this.dispatch(`${this.id}_${EMITTER_DEAD}`);
 
-      this.parent && this.parent.removeEmitter(this);
+      this.system && this.system.removeEmitter(this);
     }
   }
 }
