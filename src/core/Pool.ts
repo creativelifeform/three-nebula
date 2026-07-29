@@ -1,44 +1,32 @@
 import PUID from '../utils/PUID';
 import { CORE_TYPE_POOL as type } from './types';
+
+// A pooled object carries a `__puid` tag and may be cloneable.
+interface Poolable {
+  __puid?: string;
+  clone?: () => Poolable;
+}
+
 /**
  * An object pool implementation. Used for pooling objects to avoid unnecessary
  * garbage collection.
- *
  */
 export default class Pool {
-  /**
-   * Constructs a Pool instance.
-   *
-   * @return void
-   */
-  constructor() {
-    /**
-     * @desc The class type.
-     * @type {string}
-     */
-    this.type = type;
-    /**
-     * @desc Incrementing id that keeps a count of the number of objects created
-     * @type {integer}
-     */
-    this.cID = 0;
+  type: string;
+  cID: number;
+  list: Record<string, Poolable[]>;
 
-    /**
-     * @desc Map of pools in the format of PUID<String>: pool<Array>
-     * @type {object}
-     */
+  constructor() {
+    this.type = type;
+    this.cID = 0;
     this.list = {};
   }
 
   /**
-   * Attempts to create a new object either by creating a new instance or calling its
-   * clone method.
-   *
-   * TODO COVERAGE - for the constructorArgs
-   * @param {function|object} functionOrObject - The object to instantiate or clone
-   * @return {object|undefined}
+   * Attempts to create a new object either by creating a new instance or calling
+   * its clone method.
    */
-  create(functionOrObject, ...constructorArgs) {
+  create(functionOrObject: unknown, ...constructorArgs: unknown[]): unknown {
     if (!this.canCreateNewObject(functionOrObject)) {
       throw new Error(
         'The pool is unable to create or clone the object supplied'
@@ -48,41 +36,36 @@ export default class Pool {
     this.cID++;
 
     if (this.canInstantiateObject(functionOrObject)) {
-      return new functionOrObject(...constructorArgs);
+      return new (functionOrObject as new (...args: unknown[]) => unknown)(
+        ...constructorArgs
+      );
     }
 
     if (this.canCloneObject(functionOrObject)) {
-      return functionOrObject.clone();
+      return (functionOrObject as Poolable).clone!();
     }
   }
 
   /**
    * Determines if the object is able to be instantiated or not.
-   *
-   * @param {object} object - The object to check
-   * @return {boolean}
    */
-  canInstantiateObject(object) {
+  canInstantiateObject(object: unknown): boolean {
     return typeof object === 'function';
   }
 
   /**
    * Determines if the object is able to be cloned or not.
-   *
-   * @param {object} object - The object to check
-   * @return {boolean}
    */
-  canCloneObject(object) {
-    return object.clone && typeof object.clone === 'function';
+  canCloneObject(object: unknown): boolean {
+    const clone = (object as Poolable).clone;
+
+    return Boolean(clone) && typeof clone === 'function';
   }
 
   /**
    * Determines if a new object is able to be created.
-   *
-   * @param {object} object - The object to check
-   * @return {boolean}
    */
-  canCreateNewObject(object) {
+  canCreateNewObject(object: unknown): boolean {
     return this.canInstantiateObject(object) || this.canCloneObject(object)
       ? true
       : false;
@@ -90,10 +73,8 @@ export default class Pool {
 
   /**
    * Gets a count of all objects in the pool.
-   *
-   * @return {integer}
    */
-  getCount() {
+  getCount(): number {
     var count = 0;
 
     for (var id in this.list) count += this.list[id].length;
@@ -103,40 +84,31 @@ export default class Pool {
 
   /**
    * Gets an object either by creating a new one or retrieving it from the pool.
-   *
-   * @param {function|object} obj - The function or object to get
-   * @param {array} args - The args to pass to the function on creation
-   * @return {object}
    */
-  get(obj, ...args) {
+  get(obj: unknown, ...args: unknown[]): unknown {
     var p,
-      puid = obj.__puid || PUID.id(obj);
+      puid = (obj as Poolable).__puid || PUID.id(obj);
 
     if (this.list[puid] && this.list[puid].length > 0)
       p = this.list[puid].pop();
     else p = this.create(obj, ...args);
 
-    p.__puid = obj.__puid || puid;
+    (p as Poolable).__puid = (obj as Poolable).__puid || puid;
 
     return p;
   }
 
   /**
    * Pushes an object into the pool.
-   *
-   * @param {object} obj - The object to expire
-   * @return {integer}
    */
-  expire(obj) {
-    return this._getList(obj.__puid).push(obj);
+  expire(obj: unknown): number {
+    return this._getList((obj as Poolable).__puid).push(obj as Poolable);
   }
 
   /**
    * Destroys all pools.
-   *
-   * @return void
    */
-  destroy() {
+  destroy(): void {
     for (var id in this.list) {
       this.list[id].length = 0;
       delete this.list[id];
@@ -145,11 +117,8 @@ export default class Pool {
 
   /**
    * Gets the pool mapped to the UID.
-   *
-   * @param {string} uid - The pool uid
-   * @return {array}
    */
-  _getList(uid) {
+  _getList(uid?: string): Poolable[] {
     uid = uid || 'default';
     if (!this.list[uid]) this.list[uid] = [];
 

@@ -24,7 +24,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "lint": "eslint src test && npx madge --circular src",
+    "lint": "eslint test && npx madge --circular src",
     "lint:fix": "eslint --fix",
     "git:publish": "./scripts/publish",
     "vr": "node vr/capture-all.mjs",

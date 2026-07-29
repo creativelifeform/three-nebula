@@ -22,6 +22,7 @@ import { CORE_TYPE_PARTICLE as type } from './types';
 import type { EasingFunction } from '../ease';
 import type Behaviour from '../behaviour/Behaviour';
 import type Emitter from '../emitter/Emitter';
+import type System from './System';
 
 interface RGB {
   r: number;
@@ -41,7 +42,9 @@ export default class Particle {
   dead: boolean;
   sleep: boolean;
   body: unknown;
-  parent: Emitter | null;
+  // A particle's parent is its Emitter; an Emitter's parent is its System
+  // (Emitter extends Particle) — hence the union.
+  parent: Emitter | System | null;
   mass: number;
   radius: number;
   alpha: number;
