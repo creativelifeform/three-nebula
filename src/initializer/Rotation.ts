@@ -2,6 +2,7 @@ import { Vector3 } from '../core/three';
 import Initializer from './Initializer';
 import { INITIALIZER_TYPE_ROTATION as type } from './types';
 import type Particle from '../core/Particle';
+import type Emitter from '../emitter/Emitter';
 
 interface RotationJSON {
   x?: number;
@@ -48,7 +49,10 @@ export default class Rotation extends Initializer {
   initialize(particle: Particle): void {
     if (this.useEmitterRotation) {
       // set initial particle rotation to that of the particle's emitter then add our set rotation
-      particle.rotation.copy(particle.parent.rotation).add(this.rotation);
+      // A particle's parent is always its Emitter.
+      particle.rotation
+        .copy((particle.parent as Emitter).rotation)
+        .add(this.rotation);
     } else {
       particle.rotation.copy(this.rotation);
     }

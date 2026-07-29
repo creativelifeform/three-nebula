@@ -10,122 +10,84 @@ import Emitter from '../emitter/Emitter';
 import { INTEGRATION_TYPE_EULER } from '../math/constants';
 import { POOL_MAX } from '../constants';
 import Pool from './Pool';
-import fromJSON from './fromJSON';
+import fromJSON, { SystemJSON } from './fromJSON';
 import fromJSONAsync from './fromJSONAsync';
 import { CORE_TYPE_SYSTEM as type } from './types';
+import type BaseRenderer from '../renderer/BaseRenderer';
+import type { Listener } from '../events/EventDispatcher';
+
+type ThreeApi = typeof import('three');
+
+interface LifeCycleHooks {
+  onStart?: () => void;
+  onUpdate?: Listener;
+  onEnd?: () => void;
+}
+
+interface FromJSONAsyncOptions {
+  shouldAutoEmit?: boolean;
+}
 
 /**
- * The core of the three-system particle engine.
- * A System instance can contain multiple emitters, each with their own initializers
- * and behaviours.
- *
+ * The core of the three-system particle engine. A System instance can contain
+ * multiple emitters, each with their own initializers and behaviours.
  */
 export default class System {
-  /**
-   * Constructs a System instance.
-   *
-   * @param {object} THREE - ThreeJs
-   * @param {number} [preParticles=POOL_MAX] - The number of particles to start with
-   * @param {string} [integrationType=INTEGRATION_TYPE_EULER] - The integration type to use
-   * @return void
-   */
+  type: string;
+  canUpdate: boolean;
+  preParticles: number;
+  integrationType: string;
+  emitters: Emitter[];
+  renderers: BaseRenderer[];
+  pool: Pool;
+  eventDispatcher: EventDispatcher;
+
   constructor(
-    preParticles = POOL_MAX,
-    integrationType = INTEGRATION_TYPE_EULER
+    preParticles: number = POOL_MAX,
+    integrationType: string = INTEGRATION_TYPE_EULER
   ) {
-    /**
-     * @desc The class type.
-     * @type {string}
-     */
     this.type = type;
-
-    /**
-     * @desc Determines if the system can update or not. Set to false when destroying
-     * to ensure that external calls to update do not throw errors.
-     * @type {boolean}
-     */
     this.canUpdate = true;
-
-    /**
-     * @desc The number of particles to start with.
-     * @type {number}
-     */
     this.preParticles = preParticles;
-
-    /**
-     * @desc The integration algorithm type to use.
-     * @param {string}
-     */
     this.integrationType = integrationType;
-
-    /**
-     * @desc The emitters in the particle system.
-     * @type {array<Emitter>}
-     */
     this.emitters = [];
-
-    /**
-     * @desc The renderers for the system.
-     * @type {array<Renderer>}
-     */
     this.renderers = [];
-
-    /**
-     * @desc A pool used to manage the internal system cache of objects
-     * @type {Pool}
-     */
     this.pool = new Pool();
-
-    /**
-     * @desc Internal event dispatcher
-     * @type {EventDispatcher}
-     */
     this.eventDispatcher = new EventDispatcher();
   }
 
   /**
    * Creates a System instance from a JSON object.
    *
-   * @param {object} json - The JSON to create the System instance from
-   * @param {object} THREE - The Web GL Api to use eg., THREE
-   * @return {System}
-   *
    * @deprecated use fromJSONAsync instead
    */
-  static fromJSON(json, THREE) {
+  static fromJSON(json: SystemJSON, THREE: ThreeApi): System {
     return fromJSON(json, THREE, System, Emitter);
   }
 
   /**
    * Loads a System instance from JSON asynchronously. Ensures all textures are
    * fully loaded before resolving with the instantiated System instance.
-   *
-   * @param {object} json - The JSON to create the System instance from
-   * @param {object} THREE - The Web GL Api to use eg., THREE
-   * @param {?object} options - Optional config options
-   * @return {Promise<System>}
    */
-  static fromJSONAsync(json, THREE, options) {
+  static fromJSONAsync(
+    json: SystemJSON,
+    THREE: ThreeApi,
+    options?: FromJSONAsyncOptions
+  ): Promise<System> {
     return fromJSONAsync(json, THREE, System, Emitter, options);
   }
 
   /**
    * Proxy method for the internal event dispatcher's dispatchEvent method.
-   *
-   * @param {string} event - The event to dispatch
-   * @param {object<System|Emitter|Particle>} [target=this] - The event target
    */
-  dispatch(event, target = this) {
+  dispatch(event: string, target: unknown = this): void {
     this.eventDispatcher.dispatchEvent(event, target);
   }
 
   /**
    * Adds a renderer to the System instance and initializes it.
-   *
-   * @param {Renderer} renderer - The renderer to add
-   * @return {System}
    */
-  addRenderer(renderer) {
+  addRenderer(renderer: BaseRenderer): this {
     this.renderers.push(renderer);
     renderer.init(this);
 
@@ -134,11 +96,8 @@ export default class System {
 
   /**
    * Removes a renderer from the System instance.
-   *
-   * @param {Renderer} renderer
-   * @return {System}
    */
-  removeRenderer(renderer) {
+  removeRenderer(renderer: BaseRenderer): this {
     this.renderers.splice(this.renderers.indexOf(renderer), 1);
     renderer.remove(this);
 
@@ -146,13 +105,9 @@ export default class System {
   }
 
   /**
-   * Adds an emitter to the System instance.
-   * Dispatches the EMITTER_ADDED event.
-   *
-   * @param {Emitter} emitter - The emitter to add
-   * @return {System}
+   * Adds an emitter to the System instance. Dispatches the EMITTER_ADDED event.
    */
-  addEmitter(emitter) {
+  addEmitter(emitter: Emitter): this {
     const index = this.emitters.length;
 
     emitter.parent = this;
@@ -165,13 +120,10 @@ export default class System {
   }
 
   /**
-   * Removes an emitter from the System instance.
-   * Dispatches the EMITTER_REMOVED event.
-   *
-   * @param {Emitter} emitter - The emitter to remove
-   * @return {System}
+   * Removes an emitter from the System instance. Dispatches the EMITTER_REMOVED
+   * event.
    */
-  removeEmitter(emitter) {
+  removeEmitter(emitter: Emitter): this {
     if (emitter.parent !== this) {
       return this;
     }
@@ -187,16 +139,12 @@ export default class System {
 
   /**
    * Wires up life cycle methods and causes a system's emitters to emit particles.
-   * Expects emitters to have their totalEmitTimes and life set already.
-   * Inifnite systems will resolve immediately.
-   *
-   * @param {object} hooks - Functions to hook into the life cycle API
-   * @param {function} hooks.onStart - Called when the system starts to emit particles
-   * @param {function} hooks.onUpdate - Called each time the system updates
-   * @param {function} hooks.onEnd - Called when the system's emitters have all died
-   * @return {Promise}
    */
-  emit({ onStart, onUpdate, onEnd }) {
+  emit({
+    onStart,
+    onUpdate,
+    onEnd,
+  }: LifeCycleHooks): Promise<unknown[]> | undefined {
     if (onStart) {
       onStart();
     }
@@ -218,7 +166,7 @@ export default class System {
         return Promise.resolve();
       }
 
-      return new Promise(resolve => {
+      return new Promise<void>(resolve => {
         emitter.addOnEmitterDeadEventListener(() => {
           if (onEnd) {
             onEnd();
@@ -240,19 +188,8 @@ export default class System {
 
   /**
    * Updates the particle system based on the delta passed.
-   *
-   * @example
-   * animate = () => {
-   *   threeRenderer.render(threeScene, threeCamera);
-   *   system.update();
-   *   requestAnimationFrame(animate);
-   * }
-   * animate();
-   *
-   * @param {number} delta - Delta time
-   * @return {Promise}
    */
-  update(delta = DEFAULT_SYSTEM_DELTA) {
+  update(delta: number = DEFAULT_SYSTEM_DELTA): Promise<void> {
     const d = delta || DEFAULT_SYSTEM_DELTA;
 
     if (this.canUpdate) {
@@ -275,10 +212,8 @@ export default class System {
 
   /**
    * Gets a count of the total number of particles in the system.
-   *
-   * @return {integer}
    */
-  getCount() {
+  getCount(): number {
     const length = this.emitters.length;
 
     let total = 0;
@@ -294,12 +229,8 @@ export default class System {
 
   /**
    * Destroys all emitters, renderers and the Nebula pool.
-   * Ensures that this.update will not perform any operations while the system
-   * is being destroyed.
-   *
-   * @return void
    */
-  destroy() {
+  destroy(): void {
     const length = this.emitters.length;
 
     this.canUpdate = false;
@@ -311,7 +242,7 @@ export default class System {
 
     for (let r = 0; r < length; r++) {
       if (this.renderers[r] && this.renderers[r].destroy) {
-        this.renderers[r].destroy();
+        this.renderers[r].destroy!();
         delete this.renderers[r];
       }
     }

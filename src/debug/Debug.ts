@@ -1,18 +1,61 @@
 import { DEFAULT_POSITION, DEFAULT_SIZE as size } from './constants';
+import type { Object3D, BufferGeometry } from 'three';
+import type System from '../core/System';
+import type Emitter from '../emitter/Emitter';
+import type { Listener } from '../events/EventDispatcher';
+
+type ThreeApi = typeof import('three');
+
+// The zone surface Debug reads — the `is*Zone` type guards plus the
+// (subclass-specific) dimension props it destructures generically.
+interface DebugZone {
+  isPointZone(): boolean;
+  isLineZone(): boolean;
+  isBoxZone(): boolean;
+  isSphereZone(): boolean;
+  isMeshZone(): boolean;
+  width?: number;
+  height?: number;
+  depth?: number;
+  radius?: number;
+  x?: number;
+  y?: number;
+  z?: number;
+  geometry?: {
+    geometry?: { clone(): unknown };
+    clone(): unknown;
+  };
+}
+
+interface DebugModule {
+  _infoCon?: HTMLDivElement;
+  _infoType?: number;
+  addEventListener(system: System, onSystemUpdated: Listener): DebugModule;
+  drawZone(
+    THREE: ThreeApi,
+    system: System,
+    container: Object3D,
+    zone?: DebugZone
+  ): void;
+  drawEmitter(
+    THREE: ThreeApi,
+    system: System,
+    container: Object3D,
+    emitter: Emitter,
+    color?: string
+  ): void;
+  renderInfo(system: System, style?: number): void;
+  addInfo(style?: number): void;
+}
 
 /**
  * @exports Debug - methods and helpers for debugging System emitters, zones and particles.
- * @requires THREE - { SphereGeometry, BoxGeometry, MeshBasicMaterial, OctahedronGeometry, Mesh }
  */
-export default {
+const Debug: DebugModule = {
   /**
    * Adds an event listener to the system instance's SYSTEM_UPDATE event.
-   *
-   * @param {System} system - the system instance
-   * @param {function} onSystemUpdated - the function to call when system has been updated
-   * @return {Debug}
    */
-  addEventListener: function(system, onSystemUpdated) {
+  addEventListener: function(system: System, onSystemUpdated: Listener) {
     system.eventDispatcher.addEventListener('SYSTEM_UPDATE', onSystemUpdated);
 
     return this;
@@ -20,13 +63,8 @@ export default {
 
   /**
    * Draws a wireframe mesh around the zone for debugging purposes.
-   *
-   * @param {System} system - the system instance
-   * @param {object} container - a three Object3D (usually the scene)
-   * @param {Zone} zone - a Zone instance
-   * @return void
    */
-  drawZone: function(THREE, system, container, zone = {}) {
+  drawZone: function(THREE, system, container, zone = {} as DebugZone) {
     const color = '#2194ce';
     const wireframe = true;
     const {
@@ -39,7 +77,7 @@ export default {
       z = DEFAULT_POSITION,
     } = zone;
 
-    let geometry;
+    let geometry: BufferGeometry | undefined;
 
     if (zone.isPointZone()) {
       geometry = new THREE.SphereGeometry(15);
@@ -58,9 +96,9 @@ export default {
     }
 
     if (zone.isMeshZone()) {
-      geometry = zone.geometry.geometry
-        ? zone.geometry.geometry.clone()
-        : zone.geometry.clone();
+      geometry = (zone.geometry!.geometry
+        ? zone.geometry!.geometry.clone()
+        : zone.geometry!.clone()) as BufferGeometry;
     }
 
     if (!geometry) {
@@ -81,12 +119,6 @@ export default {
 
   /**
    * Draws a mesh for each particle emitted in order to help debug particles.
-   *
-   * @param {object} system - the system instance
-   * @param {object} container - a three Object3D (usually the scene)
-   * @param {object} emitter - the emitter to debug
-   * @param {string} color - the color for the debug mesh material
-   * @return void
    */
   drawEmitter: function(THREE, system, container, emitter, color) {
     const geometry = new THREE.OctahedronGeometry(size);
@@ -112,28 +144,29 @@ export default {
 
   /**
    * Renders emitter / particle information into the info element.
-   *
-   * @param {object} system - the system instance
-   * @param {integer} style - style to apply (see the addInfo method's switch statement)
-   * @return void
    */
   renderInfo: (function() {
-    function getCreatedNumber(type, system) {
+    function getCreatedNumber(type: string, system?: System): number {
       var pool = type == 'material' ? '_materialPool' : '_targetPool';
-      var renderer = system.renderers[0];
+      var renderer = system!.renderers[0] as unknown as Record<
+        string,
+        { cID: number }
+      >;
 
       return renderer[pool].cID;
     }
 
-    function getEmitterPos(system) {
-      var e = system.emitters[0];
+    function getEmitterPos(system: System): string {
+      var e = system.emitters[0] as unknown as {
+        p: { x: number; y: number; z: number };
+      };
 
       return (
         Math.round(e.p.x) + ',' + Math.round(e.p.y) + ',' + Math.round(e.p.z)
       );
     }
 
-    return function(system, style) {
+    return function(this: DebugModule, system: System, style?: number) {
       this.addInfo(style);
       var str = '';
 
@@ -145,7 +178,7 @@ export default {
           break;
 
         case 3:
-          str += system.renderers[0].name + '<br>';
+          str += (system.renderers[0] as unknown as { name: string }).name + '<br>';
           str += 'target:' + getCreatedNumber('target') + '<br>';
           str += 'material:' + getCreatedNumber('material');
           break;
@@ -155,18 +188,15 @@ export default {
           str += 'pool:' + system.pool.getCount() + '<br>';
           str += 'total:' + (system.getCount() + system.pool.getCount());
       }
-      this._infoCon.innerHTML = str;
+      this._infoCon!.innerHTML = str;
     };
   })(),
 
   /**
    * Appends the info element into the dom.
-   *
-   * @param {integer} style - the style type to apply
-   * @return void
    */
   addInfo: (function() {
-    return function(style) {
+    return function(this: DebugModule, style?: number) {
       var self = this;
 
       if (!this._infoCon) {
@@ -181,8 +211,8 @@ export default {
         this._infoCon.addEventListener(
           'click',
           function() {
-            self._infoType++;
-            if (self._infoType > 3) self._infoType = 1;
+            self._infoType!++;
+            if (self._infoType! > 3) self._infoType = 1;
           },
           false
         );
@@ -205,7 +235,7 @@ export default {
             color = '#0ff';
         }
 
-        this._infoCon.style['background-color'] = bg;
+        this._infoCon.style['backgroundColor'] = bg;
         this._infoCon.style['color'] = color;
       }
 
@@ -213,3 +243,5 @@ export default {
     };
   })(),
 };
+
+export default Debug;

@@ -75,7 +75,7 @@ export default class Emitter extends Particle {
    * its emitter, hence the inherited `parent` field is narrowed here).
    */
   get system(): System {
-    return this.parent as unknown as System;
+    return this.parent as System;
   }
 
   /**

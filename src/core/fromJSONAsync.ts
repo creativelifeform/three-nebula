@@ -11,25 +11,56 @@ import {
 
 import Rate from '../initializer/Rate';
 import TextureInitializer from '../initializer/Texture';
+import type System from './System';
+import type Emitter from '../emitter/Emitter';
+import type InitializerBase from '../initializer/Initializer';
+import type BehaviourBase from '../behaviour/Behaviour';
+import type {
+  EmitterJSON,
+  ItemJSON,
+  SystemJSON,
+  SystemConstructor,
+  EmitterConstructor,
+} from './fromJSON';
 
-const DEFAULT_OPTIONS = { shouldAutoEmit: true };
+type ThreeApi = typeof import('three');
+
+interface FromJSONAsyncOptions {
+  shouldAutoEmit?: boolean;
+}
+
+const DEFAULT_OPTIONS: FromJSONAsyncOptions = { shouldAutoEmit: true };
+
+const initializerFor = (type: string) =>
+  (Initializer as unknown as Record<
+    string,
+    {
+      fromJSON(
+        properties: Record<string, unknown>,
+        THREE?: ThreeApi
+      ): InitializerBase;
+    }
+  >)[type];
+
+const behaviourFor = (type: string) =>
+  (Behaviour as unknown as Record<
+    string,
+    { fromJSON(properties: Record<string, unknown>): BehaviourBase }
+  >)[type];
 
 /**
  * Makes a rate instance.
- *
- * @param {object} json - The data required to construct a Rate instance
- * @return {Rate}
  */
-const makeRate = json => Rate.fromJSON(json);
+const makeRate = (json: Record<string, unknown>): Rate =>
+  Rate.fromJSON(json as Parameters<typeof Rate.fromJSON>[0]);
 
 /**
  * Makes initializers from json items.
- *
- * @param {array<object>} items - An array of objects which provide initializer constructor params
- * @param {object} THREE - The Web GL Api to use
- * @return {array<Initializer>}
  */
-const makeInitializers = (items, THREE) =>
+const makeInitializers = (
+  items: ItemJSON[],
+  THREE: ThreeApi
+): Promise<InitializerBase[]> =>
   new Promise((resolve, reject) => {
     if (!items.length) {
       return resolve([]);
@@ -41,10 +72,10 @@ const makeInitializers = (items, THREE) =>
     // async texture loads below interleave. (Previously initializers were pushed as
     // they completed: non-texture ones first, then texture ones in load-resolution
     // order, which reordered them non-deterministically.)
-    const madeInitializers = new Array(numberOfInitializers);
+    const madeInitializers: InitializerBase[] = new Array(numberOfInitializers);
     let madeCount = 0;
 
-    const onMade = (index, initializer) => {
+    const onMade = (index: number, initializer: InitializerBase) => {
       madeInitializers[index] = initializer;
       madeCount += 1;
 
@@ -66,11 +97,16 @@ const makeInitializers = (items, THREE) =>
         const textureLoader = new THREE.TextureLoader();
 
         textureLoader.load(
-          properties.texture,
+          properties.texture as string,
           loadedTexture =>
             onMade(
               index,
-              TextureInitializer.fromJSON({ ...properties, loadedTexture }, THREE)
+              TextureInitializer.fromJSON(
+                { ...properties, loadedTexture } as Parameters<
+                  typeof TextureInitializer.fromJSON
+                >[0],
+                THREE
+              )
             ),
           undefined,
           reject
@@ -82,26 +118,23 @@ const makeInitializers = (items, THREE) =>
       onMade(
         index,
         INITIALIZER_TYPES_THAT_REQUIRE_THREE.includes(type)
-          ? Initializer[type].fromJSON(properties, THREE)
-          : Initializer[type].fromJSON(properties)
+          ? initializerFor(type).fromJSON(properties, THREE)
+          : initializerFor(type).fromJSON(properties)
       );
     });
   });
 
 /**
  * Makes behaviours from json items.
- *
- * @param {array<object>} items - An array of objects which provide behaviour constructor params
- * @return {Promise<array>}
  */
-const makeBehaviours = items =>
+const makeBehaviours = (items: ItemJSON[]): Promise<BehaviourBase[]> =>
   new Promise((resolve, reject) => {
     if (!items.length) {
       return resolve([]);
     }
 
     const numberOfBehaviours = items.length;
-    const madeBehaviours = [];
+    const madeBehaviours: BehaviourBase[] = [];
 
     items.forEach(data => {
       const { type, properties } = data;
@@ -112,7 +145,7 @@ const makeBehaviours = items =>
         );
       }
 
-      madeBehaviours.push(Behaviour[type].fromJSON(properties));
+      madeBehaviours.push(behaviourFor(type).fromJSON(properties));
 
       if (madeBehaviours.length === numberOfBehaviours) {
         return resolve(madeBehaviours);
@@ -120,7 +153,12 @@ const makeBehaviours = items =>
     });
   });
 
-const makeEmitters = (emitters, Emitter, THREE, shouldAutoEmit) =>
+const makeEmitters = (
+  emitters: EmitterJSON[],
+  Emitter: EmitterConstructor,
+  THREE: ThreeApi,
+  shouldAutoEmit: boolean
+): Promise<Emitter[]> =>
   new Promise((resolve, reject) => {
     if (!emitters.length) {
       return resolve([]);
@@ -136,7 +174,7 @@ const makeEmitters = (emitters, Emitter, THREE, shouldAutoEmit) =>
     // slot is filled — so system.emitters preserves the input order regardless of how
     // the emitters' async initializer/texture loads interleave. (Previously emitters
     // were pushed as they completed, i.e. in load-resolution order.)
-    const madeEmitters = new Array(numberOfEmitters);
+    const madeEmitters: Emitter[] = new Array(numberOfEmitters);
     let madeCount = 0;
 
     emitters.forEach((data, index) => {
@@ -191,18 +229,14 @@ const makeEmitters = (emitters, Emitter, THREE, shouldAutoEmit) =>
 
 /**
  * Creates a System instance from a JSON object.
- *
- * @param {object} json - The JSON to create the System instance from
- * @param {number} json.preParticles - The predetermined number of particles
- * @param {string} json.integrationType - The integration algorithm to use
- * @param {array<object>} json.emitters - The emitters for the system instance
- * @param {object} THREE - The Web GL Api to use
- * @param {function} System - The system class
- * @param {function} Emitter - The emitter class
- * @param {object} [options={}] - Optional config options
- * @return {Promise<System>}
  */
-export default (json, THREE, System, Emitter, options = {}) =>
+export default (
+  json: SystemJSON,
+  THREE: ThreeApi,
+  System: SystemConstructor,
+  Emitter: EmitterConstructor,
+  options: FromJSONAsyncOptions = {}
+): Promise<System> =>
   new Promise((resolve, reject) => {
     const {
       preParticles = POOL_MAX,
@@ -212,7 +246,7 @@ export default (json, THREE, System, Emitter, options = {}) =>
     const system = new System(preParticles, integrationType);
     const { shouldAutoEmit } = { ...DEFAULT_OPTIONS, ...options };
 
-    makeEmitters(emitters, Emitter, THREE, shouldAutoEmit)
+    makeEmitters(emitters, Emitter, THREE, shouldAutoEmit as boolean)
       .then(madeEmitters => {
         const numberOfEmitters = madeEmitters.length;
 

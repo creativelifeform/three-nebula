@@ -50,7 +50,7 @@ export default class BaseRenderer {
     });
   }
 
-  remove(): void {
+  remove(_system?: System): void {
     this.system = null;
   }
 
@@ -73,4 +73,12 @@ export default class BaseRenderer {
    * @abstract
    */
   onSystemUpdate(system: System): void {} // eslint-disable-line
+
+  /**
+   * Tears down the renderer. Implemented by renderers that need cleanup
+   * (e.g. the GPURenderer).
+   *
+   * @abstract
+   */
+  destroy?(): void;
 }
