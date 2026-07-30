@@ -57,7 +57,7 @@ export default class PolarVelocity extends Velocity {
 
     return new PolarVelocity(
       new Polar3D(polarRadius, polarTheta, polarPhi),
-      velocityTheta,
+      velocityTheta!,
       isEnabled
     );
   }

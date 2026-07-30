@@ -26,7 +26,7 @@ export default class RadialVelocity extends Velocity {
    * @param theta - The theta angle to use
    */
   constructor(
-    radius: number | Span,
+    radius: number | Span | undefined,
     vector3d: Vector3D,
     theta: number,
     isEnabled: boolean = true
@@ -62,6 +62,6 @@ export default class RadialVelocity extends Velocity {
   static fromJSON(json: RadialVelocityJSON): RadialVelocity {
     const { radius, x, y, z, theta, isEnabled = true } = json;
 
-    return new RadialVelocity(radius, new Vector3D(x, y, z), theta, isEnabled);
+    return new RadialVelocity(radius, new Vector3D(x, y, z), theta!, isEnabled);
   }
 }

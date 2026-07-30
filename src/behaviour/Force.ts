@@ -32,9 +32,9 @@ export default class Force extends Behaviour {
    * @param isEnabled - Determines if the behaviour will be applied or not
    */
   constructor(
-    fx: number,
-    fy: number,
-    fz: number,
+    fx?: number,
+    fy?: number,
+    fz?: number,
     life?: number,
     easing?: EasingFunction,
     isEnabled: boolean = true
@@ -51,7 +51,7 @@ export default class Force extends Behaviour {
    * @param fy - the y axis force
    * @param fz - the z axis force
    */
-  reset(fx: number, fy: number, fz: number): void {
+  reset(fx?: number, fy?: number, fz?: number): void {
     /**
      * @desc The normalized force to exert on the particle in
      */

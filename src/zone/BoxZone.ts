@@ -52,11 +52,11 @@ export default class BoxZone extends Zone {
       d = f;
     }
 
-    this.x = x;
-    this.y = y;
-    this.z = z;
-    this.width = w;
-    this.height = h;
+    this.x = x as number;
+    this.y = y as number;
+    this.z = z as number;
+    this.width = w as number;
+    this.height = h as number;
     this.depth = d as number;
     this.friction = 0.85;
     this.max = 6;

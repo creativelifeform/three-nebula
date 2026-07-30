@@ -146,5 +146,5 @@ export const setEasingByName = (easeName: string): EasingFunction => {
   else return ease.easeLinear;
 };
 
-export const getEasingByName = (name: string): EasingFunction =>
-  ease[name] ? ease[name] : ease.easeLinear;
+export const getEasingByName = (name?: string): EasingFunction =>
+  name && ease[name] ? ease[name] : ease.easeLinear;

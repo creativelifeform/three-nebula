@@ -15,9 +15,9 @@ interface BodyJSON {
  *
  */
 export default class Body extends Initializer {
-  body: ArraySpan;
-  w: number;
-  h: number;
+  body: ArraySpan | null;
+  w?: number;
+  h?: number;
 
   /**
    * Constructs a Body initalizer instance.
@@ -57,7 +57,7 @@ export default class Body extends Initializer {
    * @param particle - the particle to initialize the property on
    */
   initialize(particle: Particle): void {
-    const body = this.body.getValue();
+    const body = this.body!.getValue();
 
     if (this.w) {
       particle.body = {

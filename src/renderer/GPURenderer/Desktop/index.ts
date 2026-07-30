@@ -92,7 +92,7 @@ export default class DesktopGPURenderer extends BaseRenderer {
     });
 
     this.container = container;
-    this.camera = camera;
+    this.camera = camera!;
     this.targetPool = new Pool();
     this.uniqueList = new UniqueList(maxParticles);
     this.particleBuffer = particleBuffer;
@@ -321,7 +321,7 @@ export default class DesktopGPURenderer extends BaseRenderer {
       attribute
     ] as InterleavedBufferAttribute;
 
-    buffer.array[target.index * stride + offset + 0] = target.textureIndex;
+    buffer.array[target.index * stride + offset + 0] = target.textureIndex!;
 
     return this;
   }
@@ -335,7 +335,8 @@ export default class DesktopGPURenderer extends BaseRenderer {
       this.textureAtlas.addTexture(texture);
     }
 
-    return texture.textureIndex;
+    // addTexture assigns textureIndex, so it is defined here.
+    return texture.textureIndex!;
   }
 
   /**

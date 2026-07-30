@@ -55,6 +55,6 @@ export default class VectorVelocity extends Velocity {
   static fromJSON(json: VectorVelocityJSON): VectorVelocity {
     const { x, y, z, theta, isEnabled = true } = json;
 
-    return new VectorVelocity(new Vector3D(x, y, z), theta, isEnabled);
+    return new VectorVelocity(new Vector3D(x, y, z), theta!, isEnabled);
   }
 }

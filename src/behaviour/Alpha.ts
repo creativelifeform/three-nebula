@@ -35,7 +35,7 @@ export default class Alpha extends Behaviour {
    */
   constructor(
     alphaA: number = 1,
-    alphaB: number = null,
+    alphaB: number | null = null,
     life?: number,
     easing?: EasingFunction,
     isEnabled: boolean = true
@@ -69,7 +69,7 @@ export default class Alpha extends Behaviour {
    */
   reset(
     alphaA: number = 1,
-    alphaB: number = null,
+    alphaB: number | null = null,
     life?: number,
     easing?: EasingFunction
   ): void {

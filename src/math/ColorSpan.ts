@@ -49,7 +49,7 @@ export default class ColorSpan extends Span<string> {
  * Attempts to create a ColorSpan from the colors provided.
  */
 export const createColorSpan = (
-  colors: string | string[] | ColorSpan
+  colors: string | string[] | ColorSpan | null | undefined
 ): ColorSpan => {
   if (!colors) {
     console.warn(

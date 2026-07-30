@@ -127,7 +127,7 @@ export default class BodySprite extends Initializer {
 
     return new BodySprite(
       THREE,
-      texture,
+      texture!,
       withDefaults(
         DEFAULT_JSON_MATERIAL_PROPERTIES,
         ensureMappedBlendingMode(materialProperties)

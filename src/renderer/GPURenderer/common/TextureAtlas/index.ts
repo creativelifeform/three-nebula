@@ -191,27 +191,34 @@ export default class TextureAtlas {
 
     for (let i = 0; i < entries.length; i++) {
       const e = this.entries[i];
-      const ii = e.texture.textureIndex * 4;
+      // textureIndex is assigned in addTexture; x/y are populated by potpack
+      // above and w/h in the preceding loop, so all are defined here.
+      const ii = e.texture.textureIndex! * 4;
+      const ex = e.x!;
+      const ey = e.y!;
+      const ew = e.w!;
+      const eh = e.h!;
 
       if (rendererType === RENDERER_TYPE_GPU_DESKTOP) {
-        indexData[ii + 0] = e.x / canvas.width;
-        indexData[ii + 1] = e.y / canvas.height;
-        indexData[ii + 2] = (e.x + e.w) / canvas.width;
-        indexData[ii + 3] = (e.y + e.h) / canvas.height;
+        indexData[ii + 0] = ex / canvas.width;
+        indexData[ii + 1] = ey / canvas.height;
+        indexData[ii + 2] = (ex + ew) / canvas.width;
+        indexData[ii + 3] = (ey + eh) / canvas.height;
       }
 
       if (rendererType === RENDERER_TYPE_GPU_MOBILE) {
-        indexData[ii + 0] = e.x / (canvas.width + 1);
-        indexData[ii + 1] = e.y / (canvas.height + 1);
-        indexData[ii + 2] = (e.x + e.w) / (canvas.width + 1);
-        indexData[ii + 3] = (e.y + e.h) / (canvas.height + 1);
+        indexData[ii + 0] = ex / (canvas.width + 1);
+        indexData[ii + 1] = ey / (canvas.height + 1);
+        indexData[ii + 2] = (ex + ew) / (canvas.width + 1);
+        indexData[ii + 3] = (ey + eh) / (canvas.height + 1);
       }
 
-      ctx.drawImage(e.texture.image as CanvasImageSource, e.x, e.y, e.w, e.h);
+      ctx.drawImage(e.texture.image as CanvasImageSource, ex, ey, ew, eh);
     }
 
     if (rendererType === RENDERER_TYPE_GPU_DESKTOP) {
-      atlasIndex.needsUpdate = true;
+      // atlasIndex is constructed exactly when rendererType is GPU_DESKTOP.
+      atlasIndex!.needsUpdate = true;
     }
 
     atlasTexture.needsUpdate = true;

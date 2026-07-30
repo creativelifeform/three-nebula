@@ -19,7 +19,7 @@ export default class Span<T = number> {
    * or
    * var span = new Span(5,1,"center");
    */
-  constructor(a?: number | T[], b?: number, center?: number | boolean) {
+  constructor(a?: number | T[] | null, b?: number, center?: number | boolean) {
     this._isArray = false;
 
     /**
@@ -58,7 +58,7 @@ export default class Span<T = number> {
 }
 
 export const createSpan = (
-  a: number | number[] | Span,
+  a: number | number[] | Span | null | undefined,
   b?: number,
   c?: number | boolean
 ): Span => {

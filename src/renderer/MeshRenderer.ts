@@ -42,7 +42,7 @@ export default class MeshRenderer extends BaseRenderer {
   }
 
   isThreeSprite(particle: Particle): boolean {
-    return (particle.target as RenderableTarget).isSprite;
+    return !!(particle.target as RenderableTarget).isSprite;
   }
 
   onSystemUpdate(): void {}

@@ -10,7 +10,7 @@
 export default function () {
   let once = 0;
 
-  if (window.console && window.console.trace) {
+  if (window.console && typeof window.console.trace === 'function') {
     var arg = Array.prototype.slice.call(arguments);
     var s1 = arguments[0] + '';
 

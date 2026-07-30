@@ -112,7 +112,7 @@ export default class Texture extends Initializer {
 
     return new Texture(
       THREE,
-      loadedTexture,
+      loadedTexture!,
       withDefaults(
         DEFAULT_JSON_MATERIAL_PROPERTIES,
         ensureMappedBlendingMode(materialProperties)

@@ -84,7 +84,7 @@ export default class Position extends Initializer {
   static fromJSON(json: PositionJSON): Position {
     const { zoneType, ...params } = json;
 
-    if (!SUPPORTED_JSON_ZONE_TYPES.includes(zoneType)) {
+    if (!zoneType || !SUPPORTED_JSON_ZONE_TYPES.includes(zoneType)) {
       throw new Error(
         `The zone type ${zoneType} is invalid or not yet supported`
       );

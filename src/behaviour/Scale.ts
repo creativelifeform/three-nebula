@@ -33,8 +33,8 @@ export default class Scale extends Behaviour {
    * @param isEnabled - Determines if the behaviour will be applied or not
    */
   constructor(
-    scaleA: number,
-    scaleB: number,
+    scaleA?: number,
+    scaleB?: number,
     life?: number,
     easing?: EasingFunction,
     isEnabled: boolean = true
@@ -67,8 +67,8 @@ export default class Scale extends Behaviour {
    * @param easing - the easing equation to use for transforms
    */
   reset(
-    scaleA: number,
-    scaleB: number,
+    scaleA?: number,
+    scaleB?: number,
     life?: number,
     easing?: EasingFunction
   ): void {

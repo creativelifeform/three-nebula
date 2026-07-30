@@ -92,7 +92,7 @@ export default class MobileGPURenderer extends BaseRenderer {
       transparent,
     });
 
-    this.camera = camera;
+    this.camera = camera!;
     this.targetPool = new Pool();
     this.uniqueList = new UniqueList(maxParticles);
     this.particleBuffer = particleBuffer;
@@ -332,10 +332,12 @@ export default class MobileGPURenderer extends BaseRenderer {
 
     // eslint-disable-next-line
     if (false) {
-      buffer.array[id] = target.textureIndex;
+      buffer.array[id] = target.textureIndex!;
     } else {
-      let ti = target.textureIndex * 4;
-      const ta = this.textureAtlas;
+      // textureIndex is assigned upstream via getTextureID and the texture
+      // atlas is created during the same update pass before this runs.
+      let ti = target.textureIndex! * 4;
+      const ta = this.textureAtlas!;
       const ida = ta.indexData;
       const nx = ida[ti++];
       const ny = ida[ti++];
@@ -358,13 +360,15 @@ export default class MobileGPURenderer extends BaseRenderer {
       this.textureAtlas.addTexture(texture);
     }
 
-    return texture.textureIndex;
+    // addTexture assigns textureIndex, so it is defined here.
+    return texture.textureIndex!;
   }
 
   destroy(): void {
     const { container, points, textureAtlas, uniqueList } = this;
 
-    container.remove(points);
+    // container is loosely typed as optional; preserve existing behaviour.
+    container!.remove(points);
     uniqueList.destroy();
     textureAtlas && textureAtlas.destroy();
   }

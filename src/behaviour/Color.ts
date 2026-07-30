@@ -40,8 +40,8 @@ export default class Color extends Behaviour {
    * @param isEnabled - Determines if the behaviour will be applied or not
    */
   constructor(
-    colorA: string,
-    colorB: string,
+    colorA?: string,
+    colorB?: string,
     life?: number,
     easing?: EasingFunction,
     isEnabled: boolean = true
@@ -66,8 +66,8 @@ export default class Color extends Behaviour {
   }
 
   reset(
-    colorA: string,
-    colorB: string,
+    colorA?: string,
+    colorB?: string,
     life?: number,
     easing?: EasingFunction
   ): void {
