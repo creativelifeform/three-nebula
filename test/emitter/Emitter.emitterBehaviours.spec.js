@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
@@ -21,7 +20,6 @@ describe('emitter -> Emitter -> emitterBehaviours', () => {
     assert(attractionInitializeSpy.calledOnceWith(emitter));
 
     attractionInitializeSpy.restore();
-
   });
 
   it("should add all the behaviours to the emitter's emitter behaviours", () => {
@@ -36,7 +34,6 @@ describe('emitter -> Emitter -> emitterBehaviours', () => {
     assert.instanceOf(emitter.emitterBehaviours[0], Nebula.Gravity);
     assert.instanceOf(emitter.emitterBehaviours[1], Nebula.Repulsion);
     assert.instanceOf(emitter.emitterBehaviours[2], Nebula.Attraction);
-
   });
 
   it("should set the emitter's emitter behaviours to the behaviours passed", () => {
@@ -49,7 +46,6 @@ describe('emitter -> Emitter -> emitterBehaviours', () => {
     assert.instanceOf(emitter.setEmitterBehaviours(behaviours), Emitter);
     assert.lengthOf(emitter.emitterBehaviours, behaviours.length);
     assert.deepEqual(emitter.emitterBehaviours, behaviours);
-
   });
 
   it("should remove the emitter's emitter behaviour", () => {
@@ -64,7 +60,6 @@ describe('emitter -> Emitter -> emitterBehaviours', () => {
 
     assert.lengthOf(emitter.emitterBehaviours, 2);
     assert.deepEqual(emitter.emitterBehaviours, [attraction, gravity]);
-
   });
 
   it("should remove all of the emitter's emitter behaviours", () => {
@@ -78,7 +73,6 @@ describe('emitter -> Emitter -> emitterBehaviours', () => {
 
     assert.instanceOf(emitter.removeAllEmitterBehaviours(), Emitter);
     assert.empty(emitter.behaviours);
-
   });
 });
 
@@ -93,7 +87,6 @@ describe('emitter -> Emitter -> updateEmitterBehaviours', () => {
     assert(updateEmitterBehavioursSpy.calledOnceWith(TIME));
 
     updateEmitterBehavioursSpy.restore();
-
   });
 
   it("should update the emitter's properties after an emitter behaviour has been added and the emitter has been updated", () => {
@@ -116,6 +109,5 @@ describe('emitter -> Emitter -> updateEmitterBehaviours', () => {
     after = emitter.rotation;
 
     assert.notEqual(before.x, after.x);
-
   });
 });

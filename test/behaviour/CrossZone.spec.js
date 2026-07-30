@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
@@ -24,7 +23,6 @@ describe('behaviour -> CrossZone', () => {
     assert.isFalse(dead);
     assert.instanceOf(zone, Nebula.BoxZone);
     assert.strictEqual(zone.crossType, 'dead');
-
   });
 
   it('should call the zone.crossing method when applying the behaviour', () => {
@@ -34,7 +32,6 @@ describe('behaviour -> CrossZone', () => {
     behaviour.applyBehaviour(particle, TIME);
     assert(behaviour.zone.crossing.calledOnce);
     behaviour.zone.crossing.restore();
-
   });
 
   it('should construct the behaviour from a JSON object', () => {
@@ -61,6 +58,5 @@ describe('behaviour -> CrossZone', () => {
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
-
   });
 });

@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
@@ -25,7 +24,6 @@ describe('behaviour -> Collision', () => {
     assert.isArray(behaviour.particles);
     assert.isTrue(behaviour.delta instanceof Nebula.Vector3D);
     assert.isFunction(behaviour._getAverageMass);
-
   });
 
   it('should have the correct properties after applying behaviour', () => {
@@ -43,14 +41,12 @@ describe('behaviour -> Collision', () => {
     assert.isFunction(behaviour.onCollide);
     assert.isArray(behaviour.particles);
     assert.isTrue(behaviour.delta instanceof Nebula.Vector3D);
-
   });
 
   it('should calculate the average mass', () => {
     const averageMass = behaviour._getAverageMass(particleA, particleB);
 
     assert.strictEqual(averageMass, 0.8);
-
   });
 
   it('should return an average mass of 0.5 if useMass is false', () => {
@@ -59,6 +55,5 @@ describe('behaviour -> Collision', () => {
     const averageMass = behaviour._getAverageMass(particleA, particleB);
 
     assert.strictEqual(averageMass, 0.5);
-
   });
 });

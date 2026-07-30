@@ -24,7 +24,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
-    "lint": "oxlint src test && npx madge --circular src",
+    "lint": "npm run format:check && oxlint src test && npx madge --circular src",
     "lint:fix": "oxlint --fix src test",
     "git:publish": "./scripts/publish",
     "vr": "node vr/capture-all.mjs",
@@ -36,7 +36,9 @@
     "readme:sync-three": "node scripts/sync-readme-three-version.mjs",
     "readme:check-three": "node scripts/sync-readme-three-version.mjs --check",
     "prepare": "husky",
-    "sandbox": "vite --config vite.sandbox.config.js"
+    "sandbox": "vite --config vite.sandbox.config.js",
+    "format": "prettier --write \"src/**/*.js\" \"test/**/*.js\"",
+    "format:check": "prettier --check \"src/**/*.js\" \"test/**/*.js\""
   },
   "repository": {
     "type": "git",

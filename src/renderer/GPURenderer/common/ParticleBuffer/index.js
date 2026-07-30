@@ -35,7 +35,7 @@ export default class ParticleBuffer {
       PARTICLE_BYTE_SIZE
     );
     // this.interleavedBuffer.usage = THREE.DynamicDrawUsage;
-    
+
     return this;
   }
 

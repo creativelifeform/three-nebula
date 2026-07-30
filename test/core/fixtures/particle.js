@@ -22,12 +22,12 @@ export const preset = {
   old: {
     position: new Vector3D(0, 3, 1),
     velocity: new Vector3D(5, 1, 5),
-    acceleration: new Vector3D(0, 0, 1)
+    acceleration: new Vector3D(0, 0, 1),
   },
   behaviours: ['a', 'b', 'c'],
   transform: {
-    a: true
+    a: true,
   },
   color: { r: 255, g: 234, b: 233 },
-  rotation: new Vector3D(0, 0, 1)
+  rotation: new Vector3D(0, 0, 1),
 };

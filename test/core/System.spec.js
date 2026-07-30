@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 import * as THREE from 'three';
 
@@ -43,7 +42,6 @@ describe('core -> System', () => {
     assert.isEmpty(renderers);
     assert.instanceOf(pool, Nebula.Pool);
     assert.instanceOf(eventDispatcher, EventDispatcher);
-
   });
 
   it('should add a renderer', () => {
@@ -53,7 +51,6 @@ describe('core -> System', () => {
     assert.instanceOf(system.addRenderer(renderer), System);
     assert.notEmpty(system.renderers);
     assert.instanceOf(system.renderers[0], Nebula.SpriteRenderer);
-
   });
 
   it('should remove the renderer', () => {
@@ -63,7 +60,6 @@ describe('core -> System', () => {
     system.addRenderer(renderer).removeRenderer(renderer);
 
     assert.isEmpty(system.renderers);
-
   });
 
   it('should add an emitter and dispatch the EMITTER_ADDED', () => {
@@ -94,7 +90,6 @@ describe('core -> System', () => {
     assert(spy.secondCall.calledWith(EMITTER_REMOVED, emitter));
 
     spy.restore();
-
   });
 
   it('should not remove an emitter that is not a child of the system instance', () => {
@@ -107,7 +102,6 @@ describe('core -> System', () => {
 
     assert.lengthOf(system.emitters, 1);
     assert.equal(emitterA.id, system.emitters[0].id);
-
   });
 
   it('should call the update method for all emitters and also dispatch the required events', () => {
@@ -127,7 +121,6 @@ describe('core -> System', () => {
 
     emitterSpy.restore();
     dispatchSpy.restore();
-
   });
 
   it('should not dispatch from within the update method if the canUpdate prop is set to false', () => {
@@ -148,7 +141,6 @@ describe('core -> System', () => {
 
     dispatchSpy.restore();
     emitterUpdateSpy.restore();
-
   });
 
   it('should ensure all particles live out their lives after stopEmit is called', () => {
@@ -160,14 +152,19 @@ describe('core -> System', () => {
 
     system
       .addRenderer(renderer)
-      .addEmitter(emitter.setRate(rate).addInitializer(life).emit())
+      .addEmitter(
+        emitter
+          .setRate(rate)
+          .addInitializer(life)
+          .emit()
+      )
       .update()
       .then(() => {
         setTimeout(() => {
           emitter.stopEmit();
-          system.update(.1);       
+          system.update(0.1);
           assert.notEqual(system.getCount(), 0);
-          system.update(.1);       
+          system.update(0.1);
           assert.equal(system.getCount(), 0);
         }, 1500);
       });
@@ -206,7 +203,6 @@ describe('core -> System', () => {
 
       assert.isEmpty(system.emitters);
       assert.isEmpty(system.pool.list);
-
     }, 500);
   });
 });
@@ -219,7 +215,6 @@ describe('core -> System -> emit', () => {
     system.emit({ onStart });
 
     assert(onStart.calledOnce);
-
   });
 
   it('should wire up the onUpdate method to the event dispatcher SYSTEM_UPDATE event if provided', () => {

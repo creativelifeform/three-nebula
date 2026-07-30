@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 import * as THREE from 'three';
 
@@ -28,7 +27,6 @@ describe('initializer -> BodySprite', () => {
     assert(textureLoaderSpy.calledOnceWith(texture));
 
     textureLoaderSpy.restore();
-
   });
 
   it('should construct the initializer from a JSON object and set the default blending mode', () => {
@@ -53,7 +51,6 @@ describe('initializer -> BodySprite', () => {
     assert.isTrue(instance.isEnabled);
 
     textureLoaderSpy.restore();
-
   });
 
   it('should set the material blending properties correctly when loaded from a JSON object', () => {
@@ -71,6 +68,5 @@ describe('initializer -> BodySprite', () => {
 
     assert.instanceOf(instance, Nebula.BodySprite);
     assert.strictEqual(instance.materialProperties.blending, NormalBlending);
-
   });
 });

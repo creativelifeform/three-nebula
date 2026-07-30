@@ -1,4 +1,3 @@
-
 import * as THREE from 'three';
 
 import { Particle, Pool } from '../../src/core';
@@ -143,7 +142,9 @@ describe('renderer -> MeshRenderer', () => {
 
       renderer.onParticleUpdate(particle);
 
-      assert(targetRotationSetSpy.calledOnceWith(rotation.x, rotation.y, rotation.z));
+      assert(
+        targetRotationSetSpy.calledOnceWith(rotation.x, rotation.y, rotation.z)
+      );
     });
 
     it("should set the target's material opacity and transparency if the particle is using alpha", () => {

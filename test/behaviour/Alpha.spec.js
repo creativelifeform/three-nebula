@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
@@ -40,7 +39,6 @@ describe('behaviour -> Alpha', () => {
     assert.isFalse(alphaB._center);
     assert.strictEqual(alphaB.a, 0);
     assert.strictEqual(alphaB.b, 0);
-
   });
 
   it('should initialize the particle with the correct properties', () => {
@@ -58,7 +56,6 @@ describe('behaviour -> Alpha', () => {
     assert.isTrue(useAlpha);
     assert.strictEqual(alphaA, 1);
     assert.strictEqual(alphaB, 0);
-
   });
 
   it('should have the correct properties after applying behaviour', () => {
@@ -94,7 +91,6 @@ describe('behaviour -> Alpha', () => {
     assert.isFalse(alphaB._center);
     assert.strictEqual(alphaB.a, 0);
     assert.strictEqual(alphaB.b, 0);
-
   });
 
   it('should construct the behaviour from a JSON object', () => {
@@ -111,6 +107,5 @@ describe('behaviour -> Alpha', () => {
     assert.equal(instance.life, 4);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
-
   });
 });

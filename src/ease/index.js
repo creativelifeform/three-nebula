@@ -111,7 +111,7 @@ export const ease = {
       return 0.5 * (value * value * (((s *= 1.525) + 1) * value - s));
 
     return 0.5 * ((value -= 2) * value * (((s *= 1.525) + 1) * value + s) + 2);
-  }
+  },
 };
 
 export const {
@@ -136,7 +136,7 @@ export const {
   easeInOutCirc,
   easeInBack,
   easeOutBack,
-  easeInOutBack
+  easeInOutBack,
 } = ease;
 
 export const setEasingByName = easeName => {

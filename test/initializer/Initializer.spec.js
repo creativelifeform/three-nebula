@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import Initializer from '../../src/initializer/Initializer';
@@ -14,7 +13,6 @@ describe('initializer -> Initializer', () => {
     assert.isFunction(initializer.init);
     assert.isFunction(initializer.reset);
     assert.isFunction(initializer.initialize);
-
   });
   it('should initialize the emitter', () => {
     const emitter = new Nebula.Emitter();
@@ -23,7 +21,6 @@ describe('initializer -> Initializer', () => {
     initializer.init(emitter);
 
     assert.isTrue(emitter.hasBeenInitialized);
-
   });
 
   it('should initialize the particle', () => {
@@ -35,7 +32,6 @@ describe('initializer -> Initializer', () => {
 
     assert.isUndefined(emitter.hasBeenInitialized);
     assert.isTrue(particle.hasBeenInitialized);
-
   });
 
   it('should not initialize the particle if the initializer is disabled', () => {
@@ -45,6 +41,5 @@ describe('initializer -> Initializer', () => {
     initializer.init(null, particle);
 
     assert.isUndefined(particle.hasBeenInitialized);
-
   });
 });

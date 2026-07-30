@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../../src';
 
 import chai from 'chai';
@@ -29,7 +28,6 @@ describe('initializer -> Vector Velocity', () => {
     assert.isTrue(_useV);
     assert.instanceOf(dirVec, Nebula.Vector3D);
     assert.deepEqual(Object.values(dirVec), [0, 0, 0]);
-
   });
 
   it('should set the particle initializer', () => {
@@ -44,7 +42,6 @@ describe('initializer -> Vector Velocity', () => {
     assert.notEqual(x, 0);
     assert.notEqual(y, 0);
     assert.notEqual(z, 0);
-
   });
 
   it('should construct the initializer from a JSON object', () => {
@@ -62,6 +59,5 @@ describe('initializer -> Vector Velocity', () => {
     assert.deepEqual(Object.values(instance.dir), [0.96, 0.88, 0.45]);
     assert.deepEqual([instance.radiusPan.a, instance.radiusPan.b], [1, 1]);
     assert.isTrue(instance.isEnabled);
-
   });
 });
