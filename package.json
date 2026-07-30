@@ -64,7 +64,13 @@
   },
   "homepage": "https://github.com/creativelifeform/three-nebula#readme",
   "peerDependencies": {
-    "three": ">=0.122.0 <1.0.0"
+    "three": ">=0.122.0 <1.0.0",
+    "@types/three": ">=0.122.0 <1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/three": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1",
