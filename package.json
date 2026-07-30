@@ -4,10 +4,12 @@
   "description": "WebGL based 3D particle engine",
   "main": "./dist/three-nebula.cjs",
   "module": "./dist/three-nebula.mjs",
+  "types": "./dist/types/index.d.ts",
   "unpkg": "./dist/three-nebula.umd.js",
   "jsdelivr": "./dist/three-nebula.umd.js",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/three-nebula.mjs",
       "require": "./dist/three-nebula.cjs"
     }
@@ -17,7 +19,8 @@
     "website": "website"
   },
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && npm run build:types",
+    "build:types": "tsc -p tsconfig.types.json",
     "dev": "vite build --watch",
     "docs": "serve docs",
     "docs:build": "./scripts/docs-build",
@@ -25,7 +28,7 @@
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
     "lint": "npm run format:check && oxlint src test && npx madge --circular src",
-    "lint:fix": "eslint --fix",
+    "lint:fix": "oxlint --fix src test && npm run format",
     "git:publish": "./scripts/publish",
     "vr": "node vr/capture-all.mjs",
     "vr:baseline": "node vr/capture-all.mjs --baselines",
