@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../../src';
 
 import chai from 'chai';
@@ -24,7 +23,6 @@ describe('initializer -> Polar Velocity', () => {
     assert.isUndefined(radiusPan);
     assert.isUndefined(dir);
     assert.isFalse(_useV);
-
   });
 
   it('should set the particle initializer', () => {
@@ -39,7 +37,6 @@ describe('initializer -> Polar Velocity', () => {
     assert.notEqual(x, 0);
     assert.notEqual(y, 0);
     assert.notEqual(z, 0);
-
   });
 
   it('should construct the initializer from a JSON object', () => {
@@ -59,6 +56,5 @@ describe('initializer -> Polar Velocity', () => {
       0.5735199860724567,
     ]);
     assert.isTrue(instance.isEnabled);
-
   });
 });

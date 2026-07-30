@@ -70,7 +70,10 @@ const makeInitializers = (items, THREE) =>
           loadedTexture =>
             onMade(
               index,
-              TextureInitializer.fromJSON({ ...properties, loadedTexture }, THREE)
+              TextureInitializer.fromJSON(
+                { ...properties, loadedTexture },
+                THREE
+              )
             ),
           undefined,
           reject

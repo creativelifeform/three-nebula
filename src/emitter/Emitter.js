@@ -569,8 +569,7 @@ export default class Emitter extends Particle {
       this.destroy();
     }
 
-    if (this.isEmitting)
-    {
+    if (this.isEmitting) {
       this.generate(time);
     }
 
@@ -586,8 +585,7 @@ export default class Emitter extends Particle {
         this.bindEmitterEvent && this.dispatch(PARTICLE_DEAD, particle);
         this.parent.pool.expire(particle.reset());
         this.particles.splice(i, 1);
-        if(this.particles.length === 0)
-        {
+        if (this.particles.length === 0) {
           this.parent && this.parent.dispatch(SYSTEM_UPDATE);
         }
       }

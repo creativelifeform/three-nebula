@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import { DEFAULT_RANDOM_DRIFT_DELAY } from '../../src/behaviour/constants';
@@ -37,7 +36,6 @@ describe('behaviour -> RandomDrift', () => {
     assert.isFalse(delayPan._center);
     assert.strictEqual(delayPan.a, DEFAULT_RANDOM_DRIFT_DELAY);
     assert.strictEqual(delayPan.b, DEFAULT_RANDOM_DRIFT_DELAY);
-
   });
 
   it('should have set the correct properties on the particle after applying the behaviour', () => {
@@ -56,7 +54,6 @@ describe('behaviour -> RandomDrift', () => {
     assert.notEqual(x, 0);
     assert.notEqual(y, 0);
     assert.notEqual(z, 0);
-
   });
 
   it('should construct the behaviour from a JSON object', () => {
@@ -78,6 +75,5 @@ describe('behaviour -> RandomDrift', () => {
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
-
   });
 });

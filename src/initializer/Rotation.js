@@ -17,9 +17,9 @@ export default class Rotation extends Initializer {
    * @param {boolean} [isEnabled=true] - Determines if the initializer should be enabled or not
    * @return void
    */
-  constructor(x, y, z, useEmitterRotation=true, isEnabled = true) {
+  constructor(x, y, z, useEmitterRotation = true, isEnabled = true) {
     super(type, isEnabled);
-    this.rotation = new Vector3(x,y,z);
+    this.rotation = new Vector3(x, y, z);
     this.useEmitterRotation = useEmitterRotation;
   }
 
@@ -30,13 +30,10 @@ export default class Rotation extends Initializer {
    * @return void
    */
   initialize(particle) {
-    if(this.useEmitterRotation)
-    {
+    if (this.useEmitterRotation) {
       // set initial particle rotation to that of the particle's emitter then add our set rotation
       particle.rotation.copy(particle.parent.rotation).add(this.rotation);
-    }
-    else
-    {
+    } else {
       particle.rotation.copy(this.rotation);
     }
   }

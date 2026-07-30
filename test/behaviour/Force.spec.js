@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
@@ -23,7 +22,6 @@ describe('behaviour -> Force', () => {
     assert.strictEqual(force.x, 100);
     assert.strictEqual(force.y, 200);
     assert.strictEqual(force.z, 100);
-
   });
 
   it('should have set the correct properties on the particle after applying the behaviour', () => {
@@ -40,7 +38,6 @@ describe('behaviour -> Force', () => {
     assert.strictEqual(old.acceleration.x, 0);
     assert.strictEqual(old.acceleration.y, 0);
     assert.strictEqual(old.acceleration.z, 0);
-
   });
 
   it('should construct the behaviour from a JSON object', () => {
@@ -60,6 +57,5 @@ describe('behaviour -> Force', () => {
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
-
   });
 });

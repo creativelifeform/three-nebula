@@ -1,4 +1,3 @@
-
 import * as THREE from 'three';
 
 import Emitter from '../../src/emitter/Emitter';
@@ -41,7 +40,12 @@ describe('fromJSONAsync', () => {
     const json = {
       emitters: [
         {
-          rate: { particlesMin: 1, particlesMax: 1, perSecondMin: 1, perSecondMax: 1 },
+          rate: {
+            particlesMin: 1,
+            particlesMax: 1,
+            perSecondMin: 1,
+            perSecondMax: 1,
+          },
           rotation: { x: 0, y: 0, z: 0 },
           position: { x: 0, y: 0, z: 0 },
           initializers: [],
@@ -199,9 +203,11 @@ describe('fromJSONAsync — preserves input order under out-of-order async textu
   // order — so any code that assembled by resolution order would come out reordered.
   beforeAll(() => {
     consoleWarnStub = stub(console, 'warn');
-    textureLoaderStub = stub(TextureLoader.prototype, 'load').callsFake(
-      (texture, onLoad) =>
-        setTimeout(() => onLoad(), texture.includes('slow') ? 20 : 0)
+    textureLoaderStub = stub(
+      TextureLoader.prototype,
+      'load'
+    ).callsFake((texture, onLoad) =>
+      setTimeout(() => onLoad(), texture.includes('slow') ? 20 : 0)
     );
   });
 
@@ -211,13 +217,21 @@ describe('fromJSONAsync — preserves input order under out-of-order async textu
   });
 
   const emitter = (positionX, initializers) => ({
-    rate: { particlesMin: 1, particlesMax: 1, perSecondMin: 1, perSecondMax: 1 },
+    rate: {
+      particlesMin: 1,
+      particlesMax: 1,
+      perSecondMin: 1,
+      perSecondMax: 1,
+    },
     rotation: { x: 0, y: 0, z: 0 },
     position: { x: positionX, y: 0, z: 0 },
     initializers,
     behaviours: [],
   });
-  const textureInit = texture => ({ type: 'BodySprite', properties: { texture } });
+  const textureInit = texture => ({
+    type: 'BodySprite',
+    properties: { texture },
+  });
   const massInit = { type: 'Mass', properties: { min: 1, max: 1 } };
   const radiusInit = { type: 'Radius', properties: { width: 1, height: 1 } };
 

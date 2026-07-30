@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import chai from 'chai';
@@ -22,7 +21,6 @@ describe('initializer -> Mass', () => {
     assert.isFalse(_center);
     assert.strictEqual(a, min);
     assert.strictEqual(b, max);
-
   });
 
   it('should set the correct properties on the particle after initialization', () => {
@@ -34,7 +32,6 @@ describe('initializer -> Mass', () => {
 
     assert.isAbove(mass, min);
     assert.isBelow(mass, max);
-
   });
 
   it('should construct the initializer from a JSON object', () => {
@@ -49,6 +46,5 @@ describe('initializer -> Mass', () => {
     assert.equal(instance.massPan.a, 3);
     assert.equal(instance.massPan.b, 10);
     assert.isTrue(instance.isEnabled);
-
   });
 });

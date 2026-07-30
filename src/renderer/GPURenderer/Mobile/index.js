@@ -128,7 +128,16 @@ export default class MobileGPURenderer extends BaseRenderer {
    * @return {GPURenderer}
    */
   updateTarget(particle) {
-    const { position, rotation, scale, radius, color, alpha, body, id } = particle;
+    const {
+      position,
+      rotation,
+      scale,
+      radius,
+      color,
+      alpha,
+      body,
+      id,
+    } = particle;
     const { r, g, b } = color;
 
     particle.target.position.copy(position);

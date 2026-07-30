@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import Velocity from '../../src/initializer/Velocity/Velocity';
@@ -11,11 +10,9 @@ describe('initializer -> Velocity abstract', () => {
 
   it('should set the dirVec property', () => {
     assert.instanceOf(velocity.dirVec, Nebula.Vector3D);
-
   });
 
   it('should have the normalize method', () => {
     assert.isFunction(velocity.normalize);
-
   });
 });

@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import InitializerUtil from '../../src/initializer/InitializerUtil';
@@ -22,7 +21,7 @@ describe('initializer -> InitializeUtil', () => {
   const particle = new Nebula.Particle();
   const initializers = [mass, life, body, radius, velocity];
 
-  it('should run each initializer\'s initialize method on all particles', () => {
+  it("should run each initializer's initialize method on all particles", () => {
     const massSpy = spy(mass, 'initialize');
     const lifeSpy = spy(life, 'initialize');
     const bodySpy = spy(body, 'initialize');
@@ -39,7 +38,6 @@ describe('initializer -> InitializeUtil', () => {
 
       spy.restore();
     });
-
   });
 
   it('should call the bindEmitter method if the emitter has its bindEmitter prop set to true', () => {
@@ -53,7 +51,7 @@ describe('initializer -> InitializeUtil', () => {
       particlePositionAddSpy,
       particleVelocityAddSpy,
       particleVelocityApplyEulerSpy,
-      particleAccelerationAddSpy
+      particleAccelerationAddSpy,
     ];
 
     InitializerUtil.initialize(emitter, particle, initializers);
@@ -63,6 +61,5 @@ describe('initializer -> InitializeUtil', () => {
 
       spy.restore();
     });
-
   });
 });

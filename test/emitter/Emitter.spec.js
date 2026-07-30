@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 import * as integration from '../../src/math/integration';
 
@@ -56,7 +55,6 @@ describe('emitter -> Emitter', () => {
     assert.equal(rate, DEFAULT_EMITTER_RATE);
     assert.isString(id);
     assert.instanceOf(eventDispatcher, EventDispatcher);
-
   });
 
   it('should set the emitter rate and return the emitter', () => {
@@ -71,7 +69,6 @@ describe('emitter -> Emitter', () => {
     assert.equal(numPan.b, 1);
     assert.equal(timePan.a, 2);
     assert.equal(timePan.b, 2);
-
   });
 
   it('should set the emitter postion and return the emitter', () => {
@@ -84,7 +81,6 @@ describe('emitter -> Emitter', () => {
     const { x, y, z } = position;
 
     assert.deepEqual(Object.values(position), [x, y, z]);
-
   });
 
   it('should set the the totalEmitTimes and life and call the rate init method', () => {
@@ -102,7 +98,6 @@ describe('emitter -> Emitter', () => {
     assert(rateInitSpy.calledOnce);
 
     rateInitSpy.restore();
-
   });
 
   it('should set the life to 1 if the totalEmitTimes is 1', () => {
@@ -112,7 +107,6 @@ describe('emitter -> Emitter', () => {
 
     assert.equal(emitter.totalEmitTimes, 1);
     assert.equal(emitter.life, 1);
-
   });
 
   it('should set the life to 0 if a life of 0 is provided', () => {
@@ -122,7 +116,6 @@ describe('emitter -> Emitter', () => {
 
     assert.equal(emitter.totalEmitTimes, 2);
     assert.equal(emitter.life, 0);
-
   });
 
   it('should set the totalEmitTimes to 0 if a life of 0 is provided', () => {
@@ -132,7 +125,6 @@ describe('emitter -> Emitter', () => {
 
     assert.equal(emitter.totalEmitTimes, 0);
     assert.equal(emitter.life, 1);
-
   });
 
   it('should set the correct properties to stop particles emitting', () => {
@@ -142,7 +134,6 @@ describe('emitter -> Emitter', () => {
 
     assert.equal(emitter.currentEmitTime, 0);
     assert.equal(emitter.totalEmitTimes, -1);
-
   });
 
   it("should kill all of the emitter's particles", () => {
@@ -154,7 +145,6 @@ describe('emitter -> Emitter', () => {
 
     emitter.removeAllParticles();
     emitter.particles.forEach(particle => assert.isTrue(particle.dead));
-
   });
 
   it('should get a particle from the pool, call the setupParticle method, dispatch events and return the particle', () => {
@@ -205,7 +195,6 @@ describe('emitter -> Emitter', () => {
     assert.instanceOf(emitter.addInitializer(mass), Emitter);
     assert.notEmpty(emitter.initializers);
     assert.instanceOf(emitter.initializers[0], Nebula.Mass);
-
   });
 
   it('should add all the initializers passed', () => {
@@ -220,7 +209,6 @@ describe('emitter -> Emitter', () => {
     assert.instanceOf(emitter.initializers[0], Nebula.Radius);
     assert.instanceOf(emitter.initializers[1], Nebula.Life);
     assert.instanceOf(emitter.initializers[2], Nebula.Mass);
-
   });
 
   it('should set the emitter initializers to the initializers passed', () => {
@@ -232,7 +220,6 @@ describe('emitter -> Emitter', () => {
 
     assert.instanceOf(emitter.setInitializers(initializers), Emitter);
     assert.deepEqual(emitter.initializers, initializers);
-
   });
 
   it('should remove the initializer', () => {
@@ -248,7 +235,6 @@ describe('emitter -> Emitter', () => {
 
     assert.lengthOf(emitter.initializers, 1);
     assert.instanceOf(emitter.initializers[0], Nebula.Life);
-
   });
 
   it('should remove all the initializers from the emitter', () => {
@@ -262,7 +248,6 @@ describe('emitter -> Emitter', () => {
 
     assert.instanceOf(emitter.removeAllInitializers(), Emitter);
     assert.lengthOf(emitter.initializers, 0);
-
   });
 
   it('should add a behaviour to the emitter', () => {
@@ -272,7 +257,6 @@ describe('emitter -> Emitter', () => {
     assert.instanceOf(emitter.addBehaviour(attraction), Emitter);
     assert.lengthOf(emitter.behaviours, 1);
     assert.deepEqual(emitter.behaviours[0], attraction);
-
   });
 
   it('should add all the behaviours to the emitter', () => {
@@ -287,7 +271,6 @@ describe('emitter -> Emitter', () => {
     assert.instanceOf(emitter.behaviours[0], Nebula.Gravity);
     assert.instanceOf(emitter.behaviours[1], Nebula.Repulsion);
     assert.instanceOf(emitter.behaviours[2], Nebula.Attraction);
-
   });
 
   it('should set the emitter behaviours to the behaviours passed', () => {
@@ -300,7 +283,6 @@ describe('emitter -> Emitter', () => {
     assert.instanceOf(emitter.setBehaviours(behaviours), Emitter);
     assert.lengthOf(emitter.behaviours, behaviours.length);
     assert.deepEqual(emitter.behaviours, behaviours);
-
   });
 
   it('should remove the emitter behaviour', () => {
@@ -315,7 +297,6 @@ describe('emitter -> Emitter', () => {
 
     assert.lengthOf(emitter.behaviours, 2);
     assert.deepEqual(emitter.behaviours, [attraction, gravity]);
-
   });
 
   it('should remove all emitter behaviours', () => {
@@ -329,7 +310,6 @@ describe('emitter -> Emitter', () => {
 
     assert.instanceOf(emitter.removeAllBehaviours(), Emitter);
     assert.empty(emitter.behaviours);
-
   });
 
   it('should get a particle from the pool when creating the particle and return the particle', () => {
@@ -344,7 +324,6 @@ describe('emitter -> Emitter', () => {
     assert(poolSpy.calledOnce);
 
     poolSpy.restore();
-
   });
 
   it('should call the setupParticle method on the particle when creating it', () => {
@@ -359,7 +338,6 @@ describe('emitter -> Emitter', () => {
     assert(setupParticleSpy.calledOnceWith(particle));
 
     setupParticleSpy.restore();
-
   });
 
   it('should dispatch the correct events when creating a particle', () => {
@@ -382,7 +360,6 @@ describe('emitter -> Emitter', () => {
 
     systemDispatchSpy.restore();
     emitterDispatchSpy.restore();
-
   });
 
   it("should call the InitializerUtil.initialize method on the particle passing the correct arguments. This should call every initializer's init method on the particle", () => {
@@ -415,7 +392,6 @@ describe('emitter -> Emitter', () => {
     });
 
     initializeSpy.restore();
-
   });
 
   it('should set the particle beahviours as well as its parent and push the particle into the emitter.particles array', () => {
@@ -437,7 +413,6 @@ describe('emitter -> Emitter', () => {
     assert.deepEqual(particle.behaviours, behaviours.reverse());
 
     addBehavioursSpy.restore();
-
   });
 
   it('should destroy the emitter and clear all initializers, behaviour and the parent if there are no particles', () => {
@@ -466,7 +441,6 @@ describe('emitter -> Emitter', () => {
     assert.isEmpty(emitter.behaviours);
     assert.isEmpty(system.emitters);
     assert.isNull(emitter.parent);
-
   });
 
   it('should stop the emitter but not clear initializers, behaviours or the parent if the emitter has particles', () => {
@@ -499,7 +473,6 @@ describe('emitter -> Emitter', () => {
     assert.isNotEmpty(emitter.behaviours);
     assert.isNotEmpty(system.emitters);
     assert.isNotNull(emitter.parent);
-
   });
 });
 
@@ -514,7 +487,6 @@ describe('emitter -> Emitter -> update', () => {
     emitter.update(TIME);
 
     assert.equal(emitter.age, TIME);
-
   });
 
   it('should destroy the emitter if the emitter is dead', () => {
@@ -529,7 +501,6 @@ describe('emitter -> Emitter -> update', () => {
     assert(destroySpy.calledOnce);
 
     destroySpy.restore();
-
   });
 
   it('should destroy the emitter if the emitter age is >= to its life', () => {
@@ -552,7 +523,6 @@ describe('emitter -> Emitter -> update', () => {
 
     destroySpyA.restore();
     destroySpyB.restore();
-
   });
 
   it('should call the generate and integrate methods, passing the update time argument to both', () => {
@@ -568,7 +538,6 @@ describe('emitter -> Emitter -> update', () => {
 
     generateSpy.restore();
     integrateSpy.restore();
-
   });
 
   it('should not do anything if update is called while the emitter is not emitting particles', () => {
@@ -583,7 +552,6 @@ describe('emitter -> Emitter -> update', () => {
 
     generateSpy.restore();
     integrateSpy.restore();
-
   });
 
   it('should call the required methods while updating the emitter if a particle is dead', () => {
@@ -615,7 +583,6 @@ describe('emitter -> Emitter -> update', () => {
     // +1 for the add emitter dispatch
     assert(systemDispatchSpy.callCount, deadParticlesCount + 1);
     assert(systemDispatchSpy.calledWith(PARTICLE_DEAD));
-
   });
 });
 
@@ -673,7 +640,6 @@ describe('emitter -> Emitter -> integrate', () => {
     assert(systemDispatchSpy.secondCall.calledWith(PARTICLE_UPDATE, particle));
 
     systemDispatchSpy.restore();
-
   });
 });
 
@@ -691,7 +657,6 @@ describe('emitter -> Emitter -> generate', () => {
     assert.equal(emitter.totalEmitTimes, 0);
 
     createParticleSpy.restore();
-
   });
 
   it('should set the currentEmitTime', () => {
@@ -702,7 +667,6 @@ describe('emitter -> Emitter -> generate', () => {
     emitter.generate(0.01);
 
     assert.equal(emitter.currentEmitTime, 0.01);
-
   });
 
   it('should create the correct number of particles if currentEmitTime < totalEmitTimes', () => {
@@ -722,7 +686,6 @@ describe('emitter -> Emitter -> generate', () => {
 
     getValueSpy.restore();
     createParticleSpy.restore();
-
   });
 });
 

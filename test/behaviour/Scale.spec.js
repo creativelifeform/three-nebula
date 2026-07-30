@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
@@ -17,7 +16,6 @@ describe('behaviour -> Scale', () => {
 
     assert.isTrue(scaleA._same);
     assert.isTrue(scaleB._same);
-
   });
 
   it('should instantiate with the correct properties', () => {
@@ -45,7 +43,6 @@ describe('behaviour -> Scale', () => {
     assert.strictEqual(scaleA.b, 3);
     assert.strictEqual(scaleB.a, 11);
     assert.strictEqual(scaleB.b, 11);
-
   });
 
   it('should initialize the particle with the correct properties', () => {
@@ -58,7 +55,6 @@ describe('behaviour -> Scale', () => {
     assert.strictEqual(scaleA, 3);
     assert.strictEqual(oldRadius, 10);
     assert.strictEqual(scaleB, 11);
-
   });
 
   it('should have set the correct properties on the particle after applying the behaviour', () => {
@@ -85,6 +81,5 @@ describe('behaviour -> Scale', () => {
     assert.equal(instance.life, 4);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
-
   });
 });

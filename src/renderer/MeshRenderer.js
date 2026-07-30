@@ -74,7 +74,11 @@ export default class MeshRenderer extends BaseRenderer {
   }
 
   rotate(particle) {
-    particle.target.rotation.set(particle.rotation.x, particle.rotation.y, particle.rotation.z);
+    particle.target.rotation.set(
+      particle.rotation.x,
+      particle.rotation.y,
+      particle.rotation.z
+    );
   }
 
   scale(particle) {

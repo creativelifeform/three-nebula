@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 import * as THREE from 'three';
 
@@ -22,13 +21,17 @@ describe('fromJSON', () => {
     const system = Particles.fromJSON({});
 
     assert.instanceOf(system, Nebula.System);
-
   });
 
   const emitterWith = props => ({
     emitters: [
       {
-        rate: { particlesMin: 1, particlesMax: 1, perSecondMin: 1, perSecondMax: 1 },
+        rate: {
+          particlesMin: 1,
+          particlesMax: 1,
+          perSecondMin: 1,
+          perSecondMax: 1,
+        },
         rotation: { x: 0, y: 0, z: 0 },
         position: { x: 0, y: 0, z: 0 },
         initializers: [],
@@ -91,7 +94,6 @@ describe('fromJSON', () => {
       system.emitters[0].rotation.z,
       eightdiagrams.emitters[0].rotation.z
     );
-
   });
 
   it('should instantiate and set the total emit times and life to 1 on the emitter', () => {
@@ -100,7 +102,6 @@ describe('fromJSON', () => {
 
     assert.equal(emitter.totalEmitTimes, 1);
     assert.equal(emitter.life, 1);
-
   });
 
   it('should set the emitter behaviours', () => {
@@ -109,7 +110,6 @@ describe('fromJSON', () => {
 
     assert.notEmpty(emitter.emitterBehaviours);
     assert.lengthOf(emitter.emitterBehaviours, 1);
-
   });
 
   it('should throw an error if an invalid initializer type is supplied', () => {
@@ -118,7 +118,6 @@ describe('fromJSON', () => {
       Error,
       'The initializer type MrDoob is invalid or not yet supported'
     );
-
   });
 
   it('should throw an error if an invalid behavour type is supplied', () => {
@@ -127,7 +126,6 @@ describe('fromJSON', () => {
       Error,
       'The behaviour type MrDoob is invalid or not yet supported'
     );
-
   });
 
   it('should throw an error if an invalid zoneType is supplied as a position initializer property', () => {
@@ -136,6 +134,5 @@ describe('fromJSON', () => {
       Error,
       'The zone type MrDoob is invalid or not yet supported'
     );
-
   });
 });

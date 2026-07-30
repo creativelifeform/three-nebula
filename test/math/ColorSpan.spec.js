@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import chai from 'chai';
