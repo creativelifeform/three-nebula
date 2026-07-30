@@ -6,73 +6,73 @@ export type EasingFunction = (value: number) => number;
  * The Ease class provides a collection of easing functions for use with System
  */
 export const ease: Record<string, EasingFunction> = {
-  easeLinear: function(value) {
+  easeLinear: function (value) {
     return value;
   },
 
-  easeInQuad: function(value) {
+  easeInQuad: function (value) {
     return Math.pow(value, 2);
   },
 
-  easeOutQuad: function(value) {
+  easeOutQuad: function (value) {
     return -(Math.pow(value - 1, 2) - 1);
   },
 
-  easeInOutQuad: function(value) {
+  easeInOutQuad: function (value) {
     if ((value /= 0.5) < 1) return 0.5 * Math.pow(value, 2);
 
     return -0.5 * ((value -= 2) * value - 2);
   },
 
-  easeInCubic: function(value) {
+  easeInCubic: function (value) {
     return Math.pow(value, 3);
   },
 
-  easeOutCubic: function(value) {
+  easeOutCubic: function (value) {
     return Math.pow(value - 1, 3) + 1;
   },
 
-  easeInOutCubic: function(value) {
+  easeInOutCubic: function (value) {
     if ((value /= 0.5) < 1) return 0.5 * Math.pow(value, 3);
 
     return 0.5 * (Math.pow(value - 2, 3) + 2);
   },
 
-  easeInQuart: function(value) {
+  easeInQuart: function (value) {
     return Math.pow(value, 4);
   },
 
-  easeOutQuart: function(value) {
+  easeOutQuart: function (value) {
     return -(Math.pow(value - 1, 4) - 1);
   },
 
-  easeInOutQuart: function(value) {
+  easeInOutQuart: function (value) {
     if ((value /= 0.5) < 1) return 0.5 * Math.pow(value, 4);
 
     return -0.5 * ((value -= 2) * Math.pow(value, 3) - 2);
   },
 
-  easeInSine: function(value) {
+  easeInSine: function (value) {
     return -Math.cos(value * (PI / 2)) + 1;
   },
 
-  easeOutSine: function(value) {
+  easeOutSine: function (value) {
     return Math.sin(value * (PI / 2));
   },
 
-  easeInOutSine: function(value) {
+  easeInOutSine: function (value) {
     return -0.5 * (Math.cos(PI * value) - 1);
   },
 
-  easeInExpo: function(value) {
+  easeInExpo: function (value) {
     return value === 0 ? 0 : Math.pow(2, 10 * (value - 1));
   },
 
-  easeOutExpo: function(value) {
+  easeOutExpo: function (value) {
     return value === 1 ? 1 : -Math.pow(2, -10 * value) + 1;
   },
 
-  easeInOutExpo: function(value) {
+  easeInOutExpo: function (value) {
     if (value === 0) return 0;
     if (value === 1) return 1;
     if ((value /= 0.5) < 1) return 0.5 * Math.pow(2, 10 * (value - 1));
@@ -80,33 +80,33 @@ export const ease: Record<string, EasingFunction> = {
     return 0.5 * (-Math.pow(2, -10 * --value) + 2);
   },
 
-  easeInCirc: function(value) {
+  easeInCirc: function (value) {
     return -(Math.sqrt(1 - value * value) - 1);
   },
 
-  easeOutCirc: function(value) {
+  easeOutCirc: function (value) {
     return Math.sqrt(1 - Math.pow(value - 1, 2));
   },
 
-  easeInOutCirc: function(value) {
+  easeInOutCirc: function (value) {
     if ((value /= 0.5) < 1) return -0.5 * (Math.sqrt(1 - value * value) - 1);
 
     return 0.5 * (Math.sqrt(1 - (value -= 2) * value) + 1);
   },
 
-  easeInBack: function(value) {
+  easeInBack: function (value) {
     var s = 1.70158;
 
     return value * value * ((s + 1) * value - s);
   },
 
-  easeOutBack: function(value) {
+  easeOutBack: function (value) {
     var s = 1.70158;
 
     return (value = value - 1) * value * ((s + 1) * value + s) + 1;
   },
 
-  easeInOutBack: function(value) {
+  easeInOutBack: function (value) {
     var s = 1.70158;
 
     if ((value /= 0.5) < 1)

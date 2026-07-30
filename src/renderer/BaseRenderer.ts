@@ -25,29 +25,33 @@ export default class BaseRenderer {
 
     this.system = system;
 
-    this.system.eventDispatcher.addEventListener(SYSTEM_UPDATE, function(
-      system
-    ) {
-      self.onSystemUpdate.call(self, system as System);
-    });
+    this.system.eventDispatcher.addEventListener(
+      SYSTEM_UPDATE,
+      function (system) {
+        self.onSystemUpdate.call(self, system as System);
+      }
+    );
 
-    this.system.eventDispatcher.addEventListener(PARTICLE_CREATED, function(
-      particle
-    ) {
-      self.onParticleCreated.call(self, particle as Particle);
-    });
+    this.system.eventDispatcher.addEventListener(
+      PARTICLE_CREATED,
+      function (particle) {
+        self.onParticleCreated.call(self, particle as Particle);
+      }
+    );
 
-    this.system.eventDispatcher.addEventListener(PARTICLE_UPDATE, function(
-      particle
-    ) {
-      self.onParticleUpdate.call(self, particle as Particle);
-    });
+    this.system.eventDispatcher.addEventListener(
+      PARTICLE_UPDATE,
+      function (particle) {
+        self.onParticleUpdate.call(self, particle as Particle);
+      }
+    );
 
-    this.system.eventDispatcher.addEventListener(PARTICLE_DEAD, function(
-      particle
-    ) {
-      self.onParticleDead.call(self, particle as Particle);
-    });
+    this.system.eventDispatcher.addEventListener(
+      PARTICLE_DEAD,
+      function (particle) {
+        self.onParticleDead.call(self, particle as Particle);
+      }
+    );
   }
 
   remove(_system?: System): void {

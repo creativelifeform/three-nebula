@@ -1,4 +1,3 @@
-
 import * as Nebula from '../src';
 
 import chai from 'chai';
@@ -65,7 +64,6 @@ describe('regression', () => {
     ];
 
     modules.forEach(module => expect(Nebula).to.have.property(module));
-
   });
 
   it('should export a default module which is the System class', () => {
@@ -74,7 +72,6 @@ describe('regression', () => {
     const system = new Nebula.default();
 
     assert.strictEqual(system.constructor.name, 'System');
-
   });
 
   it('should export a named module which is the System class', () => {
@@ -83,7 +80,6 @@ describe('regression', () => {
     const system = new Nebula.System();
 
     assert.strictEqual(system.constructor.name, 'System');
-
   });
 
   it('should export the behaviour base class for extension', () => {
@@ -92,6 +88,5 @@ describe('regression', () => {
     const behaviour = new Nebula.Behaviour();
 
     assert.strictEqual(behaviour.constructor.name, 'Behaviour');
-
   });
 });

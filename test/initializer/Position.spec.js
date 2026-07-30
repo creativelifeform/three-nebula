@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import chai from 'chai';
@@ -15,7 +14,6 @@ describe('initializer -> Position', () => {
     assert.equal(position.type, 'Position');
     assert.lengthOf(position.zones, 1);
     assert.instanceOf(position.zones[0], Nebula.BoxZone);
-
   });
 
   it('can instantiate with multiple zones', () => {
@@ -24,7 +22,6 @@ describe('initializer -> Position', () => {
     assert.lengthOf(position.zones, 2);
     assert.instanceOf(position.zones[0], Nebula.BoxZone);
     assert.instanceOf(position.zones[1], Nebula.SphereZone);
-
   });
 
   it('should reset the number of zones', () => {
@@ -35,7 +32,6 @@ describe('initializer -> Position', () => {
     position.reset(zoneA);
 
     assert.lengthOf(position.zones, 1);
-
   });
 
   it('should add a zone to the Position', () => {
@@ -46,7 +42,6 @@ describe('initializer -> Position', () => {
     assert.lengthOf(position.zones, 2);
     assert.instanceOf(position.zones[0], Nebula.BoxZone);
     assert.instanceOf(position.zones[1], Nebula.SphereZone);
-
   });
 
   it('should set the correct properties on the particle after initialization', () => {
@@ -57,14 +52,13 @@ describe('initializer -> Position', () => {
 
     const {
       position,
-      position: { x, y, z }
+      position: { x, y, z },
     } = particle;
 
     assert.instanceOf(position, Nebula.Vector3D);
     assert.notEqual(x, 0);
     assert.notEqual(y, 0);
     assert.notEqual(z, 0);
-
   });
 
   it('should construct the initializer from a JSON object', () => {
@@ -73,7 +67,7 @@ describe('initializer -> Position', () => {
       x: 1,
       y: 1,
       z: 1,
-      radius: 4
+      radius: 4,
     });
 
     assert.instanceOf(instance, Nebula.Position);
@@ -82,6 +76,5 @@ describe('initializer -> Position', () => {
     assert.equal(instance.zones[0].y, 1);
     assert.equal(instance.zones[0].z, 1);
     assert.equal(instance.zones[0].radius, 4);
-
   });
 });

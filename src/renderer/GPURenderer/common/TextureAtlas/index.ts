@@ -7,7 +7,12 @@ import { DATA_TEXTURE_SIZE } from './constants';
 import { __DEV__ } from '../../../../constants';
 import potpack from 'potpack';
 import type { PotpackBox } from 'potpack';
-import type { CanvasTexture, DataTexture, ShaderMaterial, Texture } from 'three';
+import type {
+  CanvasTexture,
+  DataTexture,
+  ShaderMaterial,
+  Texture,
+} from 'three';
 
 type IndexedTexture = Texture & { textureIndex?: number };
 
@@ -98,10 +103,7 @@ export default class TextureAtlas {
    * Debugs the texture atlas by rendering it to a canvas in the DOM.
    *
    */
-  debug(
-    _canvas?: HTMLCanvasElement,
-    _ctx?: CanvasRenderingContext2D
-  ): void {
+  debug(_canvas?: HTMLCanvasElement, _ctx?: CanvasRenderingContext2D): void {
     const { canvas, ctx } = this;
     const halfmax = canvas.width;
 

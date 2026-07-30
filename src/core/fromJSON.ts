@@ -49,21 +49,25 @@ export type EmitterConstructor = new (...args: unknown[]) => Emitter;
 
 // The Initializer / Behaviour namespaces indexed by the JSON `type` string.
 const initializerFor = (type: string) =>
-  (Initializer as unknown as Record<
-    string,
-    {
-      fromJSON(
-        properties: Record<string, unknown>,
-        THREE?: ThreeApi
-      ): InitializerBase;
-    }
-  >)[type];
+  (
+    Initializer as unknown as Record<
+      string,
+      {
+        fromJSON(
+          properties: Record<string, unknown>,
+          THREE?: ThreeApi
+        ): InitializerBase;
+      }
+    >
+  )[type];
 
 const behaviourFor = (type: string) =>
-  (Behaviour as unknown as Record<
-    string,
-    { fromJSON(properties: Record<string, unknown>): BehaviourBase }
-  >)[type];
+  (
+    Behaviour as unknown as Record<
+      string,
+      { fromJSON(properties: Record<string, unknown>): BehaviourBase }
+    >
+  )[type];
 
 /**
  * Makes a rate instance.

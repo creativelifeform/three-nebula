@@ -7,7 +7,7 @@
  *
  * @return void
  */
-export default function() {
+export default function () {
   let once = 0;
 
   if (window.console && window.console.trace) {

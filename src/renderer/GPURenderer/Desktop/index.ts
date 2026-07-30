@@ -166,16 +166,8 @@ export default class DesktopGPURenderer extends BaseRenderer {
    * @return {DesktopGPURenderer}
    */
   updateTarget(particle: Particle): DesktopGPURenderer {
-    const {
-      position,
-      rotation,
-      scale,
-      radius,
-      color,
-      alpha,
-      body,
-      id,
-    } = particle;
+    const { position, rotation, scale, radius, color, alpha, body, id } =
+      particle;
     const { r, g, b } = color;
     const target = particle.target as Target;
 

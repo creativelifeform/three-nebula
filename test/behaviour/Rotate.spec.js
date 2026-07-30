@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
@@ -25,22 +24,18 @@ describe('behaviour -> Rotate', () => {
     const _same = new Nebula.Rotate('same');
 
     assert.strictEqual(_same.rotationType, 'same');
-
   });
 
   it('should set the rotation type to "set" if the second argument is undefined', () => {
     assert.strictEqual(set.rotationType, 'set');
-
   });
 
   it('should set the rotation type to "to" if the third argument is undefined', () => {
     assert.strictEqual(to.rotationType, 'to');
-
   });
 
   it('should set the rotation type to "add" if all arguments are defined', () => {
     assert.strictEqual(add.rotationType, 'add');
-
   });
 
   it('should instantiate with the correct properties', () => {
@@ -70,7 +65,6 @@ describe('behaviour -> Rotate', () => {
     assert.strictEqual(add.y.b, 0.03491111111111111);
     assert.strictEqual(add.z.a, 0.05236666666666666);
     assert.strictEqual(add.z.b, 0.05236666666666666);
-
   });
 
   it('should initialize the randomParticle with the correct properties', () => {
@@ -85,7 +79,6 @@ describe('behaviour -> Rotate', () => {
     assert.notEqual(x, 0);
     assert.notEqual(y, 0);
     assert.notEqual(z, 0);
-
   });
 
   it('should initialize the sameParticle with the correct properties', () => {
@@ -100,7 +93,6 @@ describe('behaviour -> Rotate', () => {
     assert.equal(x, 0);
     assert.equal(y, 0);
     assert.equal(z, 0);
-
   });
 
   it('should initialize the setParticle with the correct properties', () => {
@@ -115,7 +107,6 @@ describe('behaviour -> Rotate', () => {
     assert.equal(x, 0);
     assert.equal(y, 0);
     assert.equal(z, 0);
-
   });
 
   it('should initialize the toParticle with the correct properties', () => {
@@ -129,7 +120,6 @@ describe('behaviour -> Rotate', () => {
     assert.instanceOf(rotation, Nebula.Vector3D);
     assert.instanceOf(fR, Nebula.Vector3D);
     assert.instanceOf(tR, Nebula.Vector3D);
-
   });
 
   it('should initialize the addParticle with the correct properties', () => {
@@ -148,7 +138,6 @@ describe('behaviour -> Rotate', () => {
     assert.strictEqual(x, 0.017455555555555554);
     assert.strictEqual(y, 0.03491111111111111);
     assert.strictEqual(z, 0.05236666666666666);
-
   });
 
   it('should have the correct sameParticle properties after applying behaviour', () => {
@@ -163,7 +152,6 @@ describe('behaviour -> Rotate', () => {
     assert.equal(x, 0);
     assert.equal(y, 0);
     assert.equal(z, 0);
-
   });
 
   it('should have the correct setParticle properties after applying behaviour', () => {
@@ -178,7 +166,6 @@ describe('behaviour -> Rotate', () => {
     assert.equal(x, 0);
     assert.equal(y, 0);
     assert.equal(z, 0);
-
   });
 
   it('should have the correct toParticle properties after applying behaviour', () => {
@@ -192,7 +179,6 @@ describe('behaviour -> Rotate', () => {
     assert.instanceOf(rotation, Nebula.Vector3D);
     assert.instanceOf(fR, Nebula.Vector3D);
     assert.instanceOf(tR, Nebula.Vector3D);
-
   });
 
   it('should have the correct addParticle properties after applying behaviour', () => {
@@ -214,7 +200,6 @@ describe('behaviour -> Rotate', () => {
     assert.strictEqual(rotation.x, 0.017455555555555554);
     assert.strictEqual(rotation.y, 0.03491111111111111);
     assert.strictEqual(rotation.z, 0.05236666666666666);
-
   });
 
   it('should construct the behaviour from a JSON object', () => {
@@ -233,6 +218,5 @@ describe('behaviour -> Rotate', () => {
     assert.instanceOf(instance.z, Nebula.Span);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
-
   });
 });

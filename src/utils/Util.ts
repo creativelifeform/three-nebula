@@ -25,25 +25,25 @@ interface VectorConfig {
 }
 
 export default {
-  initValue: function<T>(value: T | null | undefined, defaults: T): T {
+  initValue: function <T>(value: T | null | undefined, defaults: T): T {
     const _value = value != null && value != undefined ? value : defaults;
 
     return _value;
   },
 
-  isArray: function(value: unknown): value is unknown[] {
+  isArray: function (value: unknown): value is unknown[] {
     return Object.prototype.toString.call(value) === '[object Array]';
   },
 
-  destroyArray: function(array: unknown[]): void {
+  destroyArray: function (array: unknown[]): void {
     array.length = 0;
   },
 
-  destroyObject: function(obj: Record<string, unknown>): void {
+  destroyObject: function (obj: Record<string, unknown>): void {
     for (var o in obj) delete obj[o];
   },
 
-  isUndefined: function(...args: unknown[]): boolean {
+  isUndefined: function (...args: unknown[]): boolean {
     for (var id in args) {
       var arg = args[id];
 
@@ -53,7 +53,7 @@ export default {
     return true;
   },
 
-  setVectorByObj: function(target: Vectorable, pOBJ: VectorConfig): void {
+  setVectorByObj: function (target: Vectorable, pOBJ: VectorConfig): void {
     if (pOBJ.x !== undefined) target.position.x = pOBJ.x;
     if (pOBJ.y !== undefined) target.position.y = pOBJ.y;
     if (pOBJ.z !== undefined) target.position.z = pOBJ.z;
@@ -77,7 +77,7 @@ export default {
   },
 
   //set prototype
-  setPrototypeByObj: function<T extends object>(
+  setPrototypeByObj: function <T extends object>(
     target: T,
     proObj: Record<string, unknown>,
     filters?: string[]
@@ -101,7 +101,7 @@ export default {
     return target;
   },
 
-  _getValue: function(pan: unknown): unknown {
+  _getValue: function (pan: unknown): unknown {
     if (
       pan != null &&
       (pan as { constructor?: { type?: string } }).constructor?.type === 'Span'

@@ -55,7 +55,7 @@ const Debug: DebugModule = {
   /**
    * Adds an event listener to the system instance's SYSTEM_UPDATE event.
    */
-  addEventListener: function(system: System, onSystemUpdated: Listener) {
+  addEventListener: function (system: System, onSystemUpdated: Listener) {
     system.eventDispatcher.addEventListener('SYSTEM_UPDATE', onSystemUpdated);
 
     return this;
@@ -64,7 +64,7 @@ const Debug: DebugModule = {
   /**
    * Draws a wireframe mesh around the zone for debugging purposes.
    */
-  drawZone: function(THREE, system, container, zone = {} as DebugZone) {
+  drawZone: function (THREE, system, container, zone = {} as DebugZone) {
     const color = '#2194ce';
     const wireframe = true;
     const {
@@ -96,9 +96,11 @@ const Debug: DebugModule = {
     }
 
     if (zone.isMeshZone()) {
-      geometry = (zone.geometry!.geometry
-        ? zone.geometry!.geometry.clone()
-        : zone.geometry!.clone()) as BufferGeometry;
+      geometry = (
+        zone.geometry!.geometry
+          ? zone.geometry!.geometry.clone()
+          : zone.geometry!.clone()
+      ) as BufferGeometry;
     }
 
     if (!geometry) {
@@ -112,7 +114,7 @@ const Debug: DebugModule = {
 
     container.add(mesh);
 
-    this.addEventListener(system, function() {
+    this.addEventListener(system, function () {
       mesh.position.set(x, y, z);
     });
   },
@@ -120,7 +122,7 @@ const Debug: DebugModule = {
   /**
    * Draws a mesh for each particle emitted in order to help debug particles.
    */
-  drawEmitter: function(THREE, system, container, emitter, color) {
+  drawEmitter: function (THREE, system, container, emitter, color) {
     const geometry = new THREE.OctahedronGeometry(size);
     const material = new THREE.MeshBasicMaterial({
       color: color || '#aaa',
@@ -132,7 +134,7 @@ const Debug: DebugModule = {
 
     container.add(mesh);
 
-    this.addEventListener(system, function() {
+    this.addEventListener(system, function () {
       mesh.position.copy(emitter.position);
       mesh.rotation.set(
         emitter.rotation.x,
@@ -145,7 +147,7 @@ const Debug: DebugModule = {
   /**
    * Renders emitter / particle information into the info element.
    */
-  renderInfo: (function() {
+  renderInfo: (function () {
     function getCreatedNumber(type: string, system?: System): number {
       var pool = type == 'material' ? '_materialPool' : '_targetPool';
       var renderer = system!.renderers[0] as unknown as Record<
@@ -166,7 +168,7 @@ const Debug: DebugModule = {
       );
     }
 
-    return function(this: DebugModule, system: System, style?: number) {
+    return function (this: DebugModule, system: System, style?: number) {
       this.addInfo(style);
       var str = '';
 
@@ -178,7 +180,8 @@ const Debug: DebugModule = {
           break;
 
         case 3:
-          str += (system.renderers[0] as unknown as { name: string }).name + '<br>';
+          str +=
+            (system.renderers[0] as unknown as { name: string }).name + '<br>';
           str += 'target:' + getCreatedNumber('target') + '<br>';
           str += 'material:' + getCreatedNumber('material');
           break;
@@ -195,8 +198,8 @@ const Debug: DebugModule = {
   /**
    * Appends the info element into the dom.
    */
-  addInfo: (function() {
-    return function(this: DebugModule, style?: number) {
+  addInfo: (function () {
+    return function (this: DebugModule, style?: number) {
       var self = this;
 
       if (!this._infoCon) {
@@ -210,7 +213,7 @@ const Debug: DebugModule = {
         this._infoType = 1;
         this._infoCon.addEventListener(
           'click',
-          function() {
+          function () {
             self._infoType!++;
             if (self._infoType! > 3) self._infoType = 1;
           },

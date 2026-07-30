@@ -96,7 +96,10 @@ export default class BoxZone extends Zone {
       particle.position.x = this.x - this.width / 2 + particle.radius;
       particle.velocity.x *= -this.friction;
       this._static(particle, 'x');
-    } else if (particle.position.x + particle.radius > this.x + this.width / 2) {
+    } else if (
+      particle.position.x + particle.radius >
+      this.x + this.width / 2
+    ) {
       particle.position.x = this.x + this.width / 2 - particle.radius;
       particle.velocity.x *= -this.friction;
       this._static(particle, 'x');
@@ -106,7 +109,10 @@ export default class BoxZone extends Zone {
       particle.position.y = this.y - this.height / 2 + particle.radius;
       particle.velocity.y *= -this.friction;
       this._static(particle, 'y');
-    } else if (particle.position.y + particle.radius > this.y + this.height / 2) {
+    } else if (
+      particle.position.y + particle.radius >
+      this.y + this.height / 2
+    ) {
       particle.position.y = this.y + this.height / 2 - particle.radius;
       particle.velocity.y *= -this.friction;
       this._static(particle, 'y');
@@ -116,7 +122,10 @@ export default class BoxZone extends Zone {
       particle.position.z = this.z - this.depth / 2 + particle.radius;
       particle.velocity.z *= -this.friction;
       this._static(particle, 'z');
-    } else if (particle.position.z + particle.radius > this.z + this.depth / 2) {
+    } else if (
+      particle.position.z + particle.radius >
+      this.z + this.depth / 2
+    ) {
       particle.position.z = this.z + this.depth / 2 - particle.radius;
       particle.velocity.z *= -this.friction;
       this._static(particle, 'z');

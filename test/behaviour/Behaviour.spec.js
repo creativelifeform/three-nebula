@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import Behaviour from '../../src/behaviour/Behaviour';
@@ -28,33 +27,28 @@ describe('behaviour -> Behaviour', () => {
     assert.isFunction(behaviour.applyBehaviour);
     assert.isFunction(behaviour.mutate);
     assert.isFunction(behaviour.destroy);
-
   });
 
   it('should set life to infinity if null is supplied', () => {
     const { life } = new Behaviour(null);
 
     assert.strictEqual(life, Infinity);
-
   });
 
   it('should set life to infinity if NaN is supplied', () => {
     const { life } = new Behaviour('null');
 
     assert.strictEqual(life, Infinity);
-
   });
 
   it('should normalize force correctly', () => {
     const force = behaviour.normalizeForce(new Nebula.Vector3D(1, 2.4, 3));
 
     assert.deepEqual(Object.values(force), [100, 240, 300]);
-
   });
 
   it('should normalize the value correctly', () => {
     assert.strictEqual(behaviour.normalizeValue(1.22), 122);
-
   });
 
   it('should not call the mutate method if the behaviour is disabled', () => {
@@ -64,7 +58,6 @@ describe('behaviour -> Behaviour', () => {
 
     disabled.applyBehaviour(particle);
     assert(mutateSpy.notCalled);
-
   });
 
   it('should set the particle to dead when age is > life', () => {
@@ -76,6 +69,5 @@ describe('behaviour -> Behaviour', () => {
 
     assert.isTrue(hasLife.dead);
     assert.equal(hasLife.energy, 0);
-
   });
 });

@@ -27,7 +27,12 @@ export default class Body extends Initializer {
    * @param w - The width of the particle body
    * @param h - The height of the particle body
    */
-  constructor(body: unknown, w?: number, h?: number, isEnabled: boolean = true) {
+  constructor(
+    body: unknown,
+    w?: number,
+    h?: number,
+    isEnabled: boolean = true
+  ) {
     super(type, isEnabled);
 
     /**

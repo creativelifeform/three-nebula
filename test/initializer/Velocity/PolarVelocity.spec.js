@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../../src';
 
 import chai from 'chai';
@@ -16,15 +15,13 @@ describe('initializer -> Polar Velocity', () => {
     assert.equal(initializer.type, 'PolarVelocity');
     assert.equal(tha, 0.1571);
     assert.instanceOf(dirVec, Nebula.Vector3D);
-    assert.deepEqual(Object.values(dirVec), [
-      -0.6860072156638288,
-      -1.4989531127105078,
-      -3.6445210475387078,
-    ]);
+    assert.deepEqual(
+      Object.values(dirVec),
+      [-0.6860072156638288, -1.4989531127105078, -3.6445210475387078]
+    );
     assert.isUndefined(radiusPan);
     assert.isUndefined(dir);
     assert.isFalse(_useV);
-
   });
 
   it('should set the particle initializer', () => {
@@ -39,7 +36,6 @@ describe('initializer -> Polar Velocity', () => {
     assert.notEqual(x, 0);
     assert.notEqual(y, 0);
     assert.notEqual(z, 0);
-
   });
 
   it('should construct the initializer from a JSON object', () => {
@@ -53,12 +49,10 @@ describe('initializer -> Polar Velocity', () => {
     assert.instanceOf(instance, Nebula.PolarVelocity);
     assert.instanceOf(instance.dirVec, Nebula.Vector3D);
     assert.equal(instance.tha, 0.007855);
-    assert.deepEqual(Object.values(instance.dirVec), [
-      0.5219488450608104,
-      -0.6313827909557999,
-      0.5735199860724567,
-    ]);
+    assert.deepEqual(
+      Object.values(instance.dirVec),
+      [0.5219488450608104, -0.6313827909557999, 0.5735199860724567]
+    );
     assert.isTrue(instance.isEnabled);
-
   });
 });

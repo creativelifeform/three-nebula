@@ -5,7 +5,7 @@ interface RGB {
 }
 
 export default {
-  getRGB: function(color: number | string | RGB): RGB {
+  getRGB: function (color: number | string | RGB): RGB {
     const rgb: RGB = { r: 0, g: 0, b: 0 };
 
     if (typeof color === 'number') {
@@ -16,9 +16,10 @@ export default {
       var m;
 
       if (
-        (m = /^(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(,\s*([0-9]*\.?[0-9]+)\s*)?$/.exec(
-          color
-        ))
+        (m =
+          /^(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(,\s*([0-9]*\.?[0-9]+)\s*)?$/.exec(
+            color
+          ))
       ) {
         rgb.r = Math.min(255, parseInt(m[1], 10)) / 255;
         rgb.g = Math.min(255, parseInt(m[2], 10)) / 255;

@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import chai from 'chai';
@@ -21,7 +20,6 @@ describe('initializer -> Rate', () => {
     assert.strictEqual(timePan.b, 0.5);
     assert.strictEqual(startTime, 0);
     assert.notEqual(nextTime, 0);
-
   });
 
   it('the Rate.getValue method should return the correct value', () => {
@@ -33,7 +31,6 @@ describe('initializer -> Rate', () => {
     rate.numPan.b = 4;
 
     assert.include([1, 2, 3], rate.getValue(time));
-
   });
 
   it('should construct the initializer from a JSON object', () => {
@@ -41,7 +38,7 @@ describe('initializer -> Rate', () => {
       particlesMin: 3,
       particlesMax: 10,
       perSecondMin: 0.01,
-      perSecondMax: 0.05
+      perSecondMax: 0.05,
     });
 
     assert.instanceOf(instance, Nebula.Rate);
@@ -51,6 +48,5 @@ describe('initializer -> Rate', () => {
     assert.equal(instance.numPan.b, 10);
     assert.equal(instance.timePan.a, 0.01);
     assert.equal(instance.timePan.b, 0.05);
-
   });
 });

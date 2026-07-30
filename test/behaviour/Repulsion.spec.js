@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
@@ -37,7 +36,6 @@ describe('behaviour -> Repulsion', () => {
     assert.strictEqual(radiusSq, 1000000);
     assert.isTrue(attractionForce instanceof Nebula.Vector3D);
     assert.strictEqual(lengthSq, 0);
-
   });
 
   it('should have the correct properties after applying behaviour', () => {
@@ -69,7 +67,6 @@ describe('behaviour -> Repulsion', () => {
     assert.strictEqual(radiusSq, 1000000);
     assert.isTrue(attractionForce instanceof Nebula.Vector3D);
     assert.strictEqual(lengthSq, 0);
-
   });
 
   it('should construct the behaviour from a JSON object', () => {
@@ -91,6 +88,5 @@ describe('behaviour -> Repulsion', () => {
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
-
   });
 });

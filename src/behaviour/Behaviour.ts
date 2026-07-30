@@ -42,7 +42,12 @@ export default class Behaviour {
   /**
    * Reset this behaviour's parameters.
    */
-  reset(life: unknown = DEFAULT_LIFE, easing: unknown = DEFAULT_BEHAVIOUR_EASING, ...args: unknown[]): void { // eslint-disable-line @typescript-eslint/no-unused-vars
+  reset(
+    life: unknown = DEFAULT_LIFE,
+    easing: unknown = DEFAULT_BEHAVIOUR_EASING,
+    ...args: unknown[]
+  ): void {
+    // eslint-disable-line @typescript-eslint/no-unused-vars
     this.life = life as number;
     this.easing = (easing as EasingFunction) || DEFAULT_BEHAVIOUR_EASING;
   }

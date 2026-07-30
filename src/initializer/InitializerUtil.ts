@@ -16,7 +16,7 @@ export default {
    * @param particle - The particle that has just been created
    * @param initializers - All of the emitter's initializers
    */
-  initialize: function(
+  initialize: function (
     emitter: Emitter,
     particle: Particle,
     initializers: Initializer[]
@@ -37,7 +37,7 @@ export default {
    * @param emitter - The emitter that is emitting the particles
    * @param particle - The newly created particle
    */
-  bindEmitter: function(emitter: Emitter, particle: Particle): void {
+  bindEmitter: function (emitter: Emitter, particle: Particle): void {
     const {
       rotation: { x, y, z },
     } = emitter;

@@ -2,17 +2,17 @@ import { PI } from '../constants';
 import type Vector3D from './Vector3D';
 
 export default {
-  randomAToB: function(a: number, b: number, INT?: boolean): number {
+  randomAToB: function (a: number, b: number, INT?: boolean): number {
     if (!INT) return a + Math.random() * (b - a);
     else return ((Math.random() * (b - a)) >> 0) + a;
   },
-  randomFloating: function(center: number, f: number, INT?: boolean): number {
+  randomFloating: function (center: number, f: number, INT?: boolean): number {
     return this.randomAToB(center - f, center + f, INT);
   },
 
-  randomZone: function(display?: unknown): void {}, //eslint-disable-line
+  randomZone: function (display?: unknown): void {}, //eslint-disable-line
 
-  degreeTransform: function(a: number): number {
+  degreeTransform: function (a: number): number {
     return (a * PI) / 180;
   },
 
@@ -20,18 +20,18 @@ export default {
     return '#' + num.toString(16);
   },
 
-  randomColor: function(): string {
+  randomColor: function (): string {
     return (
       '#' +
       ('00000' + ((Math.random() * 0x1000000) << 0).toString(16)).slice(-6)
     );
   },
 
-  lerp: function(a: number, b: number, energy: number): number {
+  lerp: function (a: number, b: number, energy: number): number {
     return b + (a - b) * energy;
   },
 
-  getNormal: function(v: Vector3D, n: Vector3D): Vector3D {
+  getNormal: function (v: Vector3D, n: Vector3D): Vector3D {
     if (v.x == 0 && v.y == 0) {
       if (v.z == 0) n.set(1, 0, 1);
       else n.set(1, 1, -v.y / v.z);
@@ -48,7 +48,7 @@ export default {
    * https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula
    * v′ = vcos(θ) + k(k⋅v)(1−cos(θ)) + (k*v)sin(θ)
    */
-  axisRotate: function(
+  axisRotate: function (
     v0: Vector3D,
     v: Vector3D,
     k: Vector3D,

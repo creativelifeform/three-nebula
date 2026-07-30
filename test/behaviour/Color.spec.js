@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
@@ -40,7 +39,6 @@ describe('behaviour -> Color', () => {
     assert.isFalse(colorB._center);
     assert.lengthOf(colorB.colors, 1);
     assert.strictEqual(colorB.colors[0], 'random');
-
   });
 
   it('should initialize the particle with the correct properties', () => {
@@ -76,7 +74,6 @@ describe('behaviour -> Color', () => {
     );
     assert.deepEqual(particle.color, { r: 0, g: 0, b: 0 });
     assert.instanceOf(particle.rotation, Nebula.Vector3D);
-
   });
 
   it('should then set the correct properties on the particle after applying behaviour', () => {
@@ -88,7 +85,6 @@ describe('behaviour -> Color', () => {
       assert.isNumber(value)
     );
     assert.deepEqual(particle.color, { r: 1, g: 0, b: 0 });
-
   });
 
   it('should construct the behaviour from a JSON object', () => {
@@ -105,6 +101,5 @@ describe('behaviour -> Color', () => {
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
-
   });
 });

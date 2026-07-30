@@ -32,21 +32,25 @@ interface FromJSONAsyncOptions {
 const DEFAULT_OPTIONS: FromJSONAsyncOptions = { shouldAutoEmit: true };
 
 const initializerFor = (type: string) =>
-  (Initializer as unknown as Record<
-    string,
-    {
-      fromJSON(
-        properties: Record<string, unknown>,
-        THREE?: ThreeApi
-      ): InitializerBase;
-    }
-  >)[type];
+  (
+    Initializer as unknown as Record<
+      string,
+      {
+        fromJSON(
+          properties: Record<string, unknown>,
+          THREE?: ThreeApi
+        ): InitializerBase;
+      }
+    >
+  )[type];
 
 const behaviourFor = (type: string) =>
-  (Behaviour as unknown as Record<
-    string,
-    { fromJSON(properties: Record<string, unknown>): BehaviourBase }
-  >)[type];
+  (
+    Behaviour as unknown as Record<
+      string,
+      { fromJSON(properties: Record<string, unknown>): BehaviourBase }
+    >
+  )[type];
 
 /**
  * Makes a rate instance.

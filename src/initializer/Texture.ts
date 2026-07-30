@@ -7,11 +7,7 @@ import {
 import Initializer from './Initializer';
 import { INITIALIZER_TYPE_TEXTURE as type } from './types';
 import { withDefaults } from '../utils';
-import type {
-  Sprite,
-  SpriteMaterial,
-  Texture as ThreeTexture,
-} from 'three';
+import type { Sprite, SpriteMaterial, Texture as ThreeTexture } from 'three';
 import type Particle from '../core/Particle';
 
 interface TextureJSON {

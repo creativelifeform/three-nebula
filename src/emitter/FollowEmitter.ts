@@ -39,7 +39,7 @@ export default class FollowEmitter extends Emitter {
   initEventHandler(): void {
     var self = this;
 
-    this.mousemoveHandler = function(e: Event) {
+    this.mousemoveHandler = function (e: Event) {
       self.mousemove.call(self, e as MouseEvent);
     };
 

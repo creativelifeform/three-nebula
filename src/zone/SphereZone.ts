@@ -77,10 +77,7 @@ export default class SphereZone extends Zone {
     const d = particle.position.distanceTo(this);
 
     if (d + particle.radius >= this.radius) {
-      _boundNormal
-        .copy(particle.position)
-        .sub(this)
-        .normalize();
+      _boundNormal.copy(particle.position).sub(this).normalize();
       _boundV.copy(particle.velocity);
       const k = 2 * _boundV.dot(_boundNormal);
       particle.velocity.sub(_boundNormal.scalar(k));
