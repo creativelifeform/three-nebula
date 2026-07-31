@@ -42,10 +42,14 @@ export interface SystemJSON {
 }
 
 // Constructors are passed in (rather than imported) to avoid a circular
-// dependency with System. Kept loose so the deprecated `new System(THREE, …)`
-// call below — which predates the current System signature — still compiles.
-export type SystemConstructor = new (...args: unknown[]) => System;
-export type EmitterConstructor = new (...args: unknown[]) => Emitter;
+// dependency with System.
+export type SystemConstructor = new (
+  preParticles?: number,
+  integrationType?: string
+) => System;
+export type EmitterConstructor = new (
+  properties?: Record<string, unknown>
+) => Emitter;
 
 // The Initializer / Behaviour namespaces indexed by the JSON `type` string.
 const initializerFor = (type: string) =>
@@ -140,7 +144,10 @@ export default (
     integrationType = EULER,
     emitters = [],
   } = json;
-  const system = new System(THREE, preParticles, integrationType);
+  // The async path (fromJSONAsync) already calls this correctly; the deprecated
+  // sync path historically passed THREE into the preParticles slot — a bug that
+  // set system.preParticles to the three namespace. Fixed to match the async path.
+  const system = new System(preParticles, integrationType);
 
   emitters.forEach(data => {
     const emitter = new Emitter();

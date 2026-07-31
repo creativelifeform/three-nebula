@@ -7,7 +7,7 @@
  *
  * @return void
  */
-export default function () {
+export default function (this: unknown) {
   let once = 0;
 
   if (window.console && typeof window.console.trace === 'function') {
@@ -24,7 +24,10 @@ export default function () {
       }
     } else {
       arg.unshift('+15');
-      this.apply(console, arg);
+      // Pre-existing legacy branch: `this` is undefined under ESM strict mode,
+      // so this throws exactly as it did before — annotated only to satisfy
+      // noImplicitThis without altering the (broken) runtime behaviour.
+      (this as (...args: unknown[]) => unknown).apply(console, arg);
     }
   }
 }
