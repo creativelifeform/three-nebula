@@ -45,7 +45,7 @@ let THREE: typeof import('three');
 export default class MobileGPURenderer extends BaseRenderer {
   three: typeof import('three');
   container?: Object3D;
-  camera: Camera;
+  camera?: Camera;
   targetPool: Pool;
   uniqueList: UniqueList;
   particleBuffer: ParticleBuffer;
@@ -92,7 +92,7 @@ export default class MobileGPURenderer extends BaseRenderer {
       transparent,
     });
 
-    this.camera = camera!;
+    this.camera = camera;
     this.targetPool = new Pool();
     this.uniqueList = new UniqueList(maxParticles);
     this.particleBuffer = particleBuffer;

@@ -74,8 +74,8 @@ export default class Emitter extends Particle {
    * An emitter's parent is the System it was added to (a particle's parent is
    * its emitter, hence the inherited `parent` field is narrowed here).
    */
-  get system(): System {
-    return this.parent as System;
+  get system(): System | null {
+    return this.parent as System | null;
   }
 
   /**
@@ -388,7 +388,9 @@ export default class Emitter extends Particle {
    * the supplied initializer and behaviour.
    */
   createParticle(): Particle {
-    const particle = this.system.pool.get(Particle) as Particle;
+    // system is non-null throughout an attached emitter's lifecycle; faithful
+    // to the pre-migration crash if this runs while the emitter is detached.
+    const particle = this.system!.pool.get(Particle) as Particle;
     const index = this.particles.length;
 
     this.setupParticle(particle, index);
@@ -443,7 +445,8 @@ export default class Emitter extends Particle {
       if (particle.dead) {
         this.system && this.system.dispatch(PARTICLE_DEAD, particle);
         this.bindEmitterEvent && this.dispatch(PARTICLE_DEAD, particle);
-        this.system.pool.expire(particle.reset());
+        // faithful to the pre-migration crash if the emitter is detached.
+        this.system!.pool.expire(particle.reset());
         this.particles.splice(i, 1);
         if (this.particles.length === 0) {
           this.system && this.system.dispatch(SYSTEM_UPDATE);

@@ -102,10 +102,10 @@ export default {
   },
 
   _getValue: function (pan: unknown): unknown {
-    if (
-      pan != null &&
-      (pan as { constructor?: { type?: string } }).constructor?.type === 'Span'
-    )
+    // Deliberately unguarded: pre-migration behaviour throws TypeError on
+    // nullish values (e.g. `new Particle({ life: null })`), and callers rely on
+    // that loud, fail-fast signal rather than silently poisoning the particle.
+    if ((pan as { constructor: { type?: string } }).constructor.type === 'Span')
       return (pan as { getValue(): unknown }).getValue();
     else return pan;
   },

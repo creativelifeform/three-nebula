@@ -51,8 +51,11 @@ export default class MeshZone extends Zone {
       );
     }
 
-    if (this.geometry.isBufferGeometry && ThreeGeometry) {
-      this.geometry = new ThreeGeometry().fromBufferGeometry!(this.geometry);
+    if (this.geometry.isBufferGeometry) {
+      // ThreeGeometry is required to convert BufferGeometry bounds; faithful to
+      // the pre-migration construction-time TypeError when it isn't supplied
+      // (rather than deferring the failure to a per-particle getPosition crash).
+      this.geometry = new ThreeGeometry!().fromBufferGeometry!(this.geometry);
     }
   }
 
