@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Transparent Canvas Additive Blending (GPU)</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/style/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/style/app.css" />
+    <style>
+      /* Transparent WebGL canvas (clearAlpha = 0) over a CSS gradient — the same
+         #133 setup as the SpriteRenderer experiment, but driven by the
+         GPURenderer. See specs/fix-133-additive-transparent-canvas.md. */
+      #canvas {
+        background: linear-gradient(
+          160deg,
+          #f6d365 0%,
+          #fda085 45%,
+          #a18cd1 100%
+        );
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <canvas id="canvas"></canvas>
+      <div id="description">
+        #133 repro — GPURenderer, additive no-alpha texture
+        (<code>circle_01.png</code>) on an <code>alpha: true</code> canvas over a
+        CSS gradient. Same particle system as the SpriteRenderer experiment, so
+        the two can be compared directly.
+      </div>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
