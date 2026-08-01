@@ -1,11 +1,17 @@
 # Fix #133 — additive/transparent particles render opaque squares on an `alpha: true` canvas
 
-**Status:** Not started. **Blocked on:** the TypeScript migration landing on `develop`
-(don't build this on the JS lib). Branch off `develop` *after* the migration merges, and
-implement against the TS source.
+**Status:** **Fix implemented** on `fix/issue-133`, validated on both renderers. Shared
+helper `src/utils/materialBlend.ts` (`applyEmissiveAlphaBlend`) converts Additive/Subtractive
+materials to `CustomBlending` that keeps the colour blend but leaves the destination (canvas)
+alpha untouched. Applied in `Texture` + `BodySprite` initializers (SpriteRenderer path) and
+the Desktop + Mobile GPURenderer `ShaderMaterial`. Verified: sandbox transparent-canvas
+experiments (SpriteRenderer **and** GPURenderer) — opaque squares gone; **VR golden master
+still green** (the change is opaque-neutral, so no re-baseline needed) and 259 tests pass.
+Remaining: final review + PR. (Subtractive is implemented via three's subtractive colour
+factors but not yet visually validated — no subtractive fixture.)
 
-**Root cause:** **verified** in a live engine host (see Reproduction → Confirmed). The
-diagnosis is locked; the proposed *fix* below is still a hypothesis to spike.
+**Root cause:** **verified** in a live engine host (see Reproduction → Confirmed) and again
+by inspecting live runtime materials during implementation. Diagnosis locked; fix landed.
 
 **Upstream issue:** [#133 — "GPURenderer transparent vs non-transparent texture issue"](https://github.com/creativelifeform/three-nebula/issues/133)
 

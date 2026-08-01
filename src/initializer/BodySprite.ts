@@ -7,6 +7,7 @@ import {
 import Initializer from './Initializer';
 import { INITIALIZER_TYPE_BODY_SPRITE as type } from './types';
 import { withDefaults } from '../utils';
+import { applyEmissiveAlphaBlend } from '../utils/materialBlend';
 import type { Sprite, SpriteMaterial, Texture as ThreeTexture } from 'three';
 import type Particle from '../core/Particle';
 
@@ -74,29 +75,10 @@ export default class BodySprite extends Initializer {
           ...this.materialProperties,
         });
 
-        // Fix #133 (spike): additive particles must not write into the
-        // destination (canvas) alpha channel, or a no-alpha texture's opaque
-        // corners composite as solid squares on a transparent (alpha:true)
-        // canvas. Keep the additive colour blend but leave dst alpha untouched
-        // via separate alpha blend factors (src*0 + dst*1 = dst).
-        const {
-          CustomBlending,
-          AddEquation,
-          SrcAlphaFactor,
-          OneFactor,
-          ZeroFactor,
-          AdditiveBlending,
-        } = THREE;
-
-        if (this.material.blending === AdditiveBlending) {
-          this.material.blending = CustomBlending;
-          this.material.blendEquation = AddEquation;
-          this.material.blendSrc = SrcAlphaFactor;
-          this.material.blendDst = OneFactor;
-          this.material.blendEquationAlpha = AddEquation;
-          this.material.blendSrcAlpha = ZeroFactor;
-          this.material.blendDstAlpha = OneFactor;
-        }
+        // Additive/subtractive particles must not write the canvas alpha
+        // channel (issue #133) — a no-alpha texture would otherwise paint
+        // opaque squares on a transparent canvas.
+        applyEmissiveAlphaBlend(this.material, THREE);
 
         /**
          * @desc THREE.Sprite instance.
