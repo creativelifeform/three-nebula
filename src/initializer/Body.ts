@@ -57,6 +57,8 @@ export default class Body extends Initializer {
    * @param particle - the particle to initialize the property on
    */
   initialize(particle: Particle): void {
+    // body is null when constructed with a falsy body (createArraySpan returns
+    // null); dereferencing then throws, faithful to the pre-migration crash.
     const body = this.body!.getValue();
 
     if (this.w) {

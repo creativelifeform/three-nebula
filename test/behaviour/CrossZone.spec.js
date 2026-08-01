@@ -59,4 +59,18 @@ describe('behaviour -> CrossZone', () => {
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
   });
+
+  it('should construct from JSON with a ScreenZone (not a System.fromJSON zone type)', () => {
+    // CrossZone historically indexed the whole zone namespace unguarded, so a
+    // ScreenZone — which is not in SUPPORTED_JSON_ZONE_TYPES — must still be
+    // constructable here (regression for the fromJSON zone-dispatch refactor).
+    const instance = Nebula.CrossZone.fromJSON({
+      zoneType: 'ScreenZone',
+      zoneParams: { camera: {}, renderer: {} },
+      crossType: 'dead',
+    });
+
+    assert.instanceOf(instance, Nebula.CrossZone);
+    assert.instanceOf(instance.zone, Nebula.ScreenZone);
+  });
 });

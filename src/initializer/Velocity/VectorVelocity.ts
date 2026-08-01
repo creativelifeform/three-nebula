@@ -23,7 +23,7 @@ export default class VectorVelocity extends Velocity {
    * @param vector3d - The directional vector for the velocity
    * @param theta - The theta angle to use
    */
-  constructor(vector3d: Vector3D, theta: number, isEnabled: boolean = true) {
+  constructor(vector3d: Vector3D, theta?: number, isEnabled: boolean = true) {
     super(type, isEnabled);
 
     /**
@@ -37,9 +37,11 @@ export default class VectorVelocity extends Velocity {
     this.dir = vector3d.clone();
 
     /**
-     * @desc Theta.
+     * @desc Theta. `theta!` is erased at runtime, so an omitted (undefined)
+     * theta still yields NaN exactly as the base JS did, while a JS caller
+     * passing null coerces to 0 — preserving base behaviour on every input.
      */
-    this.tha = theta * DR;
+    this.tha = theta! * DR;
 
     /**
      * @desc Determines whether to use the directional vector or not.
@@ -55,6 +57,6 @@ export default class VectorVelocity extends Velocity {
   static fromJSON(json: VectorVelocityJSON): VectorVelocity {
     const { x, y, z, theta, isEnabled = true } = json;
 
-    return new VectorVelocity(new Vector3D(x, y, z), theta!, isEnabled);
+    return new VectorVelocity(new Vector3D(x, y, z), theta, isEnabled);
   }
 }

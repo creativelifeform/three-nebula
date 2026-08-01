@@ -28,7 +28,7 @@ export default class RadialVelocity extends Velocity {
   constructor(
     radius: number | Span | undefined,
     vector3d: Vector3D,
-    theta: number,
+    theta?: number,
     isEnabled: boolean = true
   ) {
     super(type, isEnabled);
@@ -44,9 +44,11 @@ export default class RadialVelocity extends Velocity {
     this.dir = vector3d.clone().normalize();
 
     /**
-     * @desc Theta.
+     * @desc Theta. `theta!` is erased at runtime, so an omitted (undefined)
+     * theta still yields NaN exactly as the base JS did, while a JS caller
+     * passing null coerces to 0 — preserving base behaviour on every input.
      */
-    this.tha = theta * DR;
+    this.tha = theta! * DR;
 
     /**
      * @desc Determines whether to use the directional vector or not.
@@ -62,6 +64,6 @@ export default class RadialVelocity extends Velocity {
   static fromJSON(json: RadialVelocityJSON): RadialVelocity {
     const { radius, x, y, z, theta, isEnabled = true } = json;
 
-    return new RadialVelocity(radius, new Vector3D(x, y, z), theta!, isEnabled);
+    return new RadialVelocity(radius, new Vector3D(x, y, z), theta, isEnabled);
   }
 }

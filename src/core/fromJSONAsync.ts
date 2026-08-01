@@ -1,16 +1,15 @@
-import * as Behaviour from '../behaviour';
-import * as Initializer from '../initializer';
-
 import { EULER, POOL_MAX } from '../constants';
 import { DEFAULT_DAMPING } from '../emitter/constants';
 import {
   INITIALIZER_TYPES_THAT_REQUIRE_THREE,
   SUPPORTED_JSON_BEHAVIOUR_TYPES,
   SUPPORTED_JSON_INITIALIZER_TYPES,
+  isSupported,
 } from './constants';
 
 import Rate from '../initializer/Rate';
 import TextureInitializer from '../initializer/Texture';
+import { makeBehaviour, makeInitializer } from './fromJSON';
 import type System from './System';
 import type Emitter from '../emitter/Emitter';
 import type InitializerBase from '../initializer/Initializer';
@@ -30,27 +29,6 @@ interface FromJSONAsyncOptions {
 }
 
 const DEFAULT_OPTIONS: FromJSONAsyncOptions = { shouldAutoEmit: true };
-
-const initializerFor = (type: string) =>
-  (
-    Initializer as unknown as Record<
-      string,
-      {
-        fromJSON(
-          properties: Record<string, unknown>,
-          THREE?: ThreeApi
-        ): InitializerBase;
-      }
-    >
-  )[type];
-
-const behaviourFor = (type: string) =>
-  (
-    Behaviour as unknown as Record<
-      string,
-      { fromJSON(properties: Record<string, unknown>): BehaviourBase }
-    >
-  )[type];
 
 /**
  * Makes a rate instance.
@@ -91,7 +69,7 @@ const makeInitializers = (
     items.forEach((data, index) => {
       const { type, properties } = data;
 
-      if (!SUPPORTED_JSON_INITIALIZER_TYPES.includes(type)) {
+      if (!isSupported(SUPPORTED_JSON_INITIALIZER_TYPES, type)) {
         return reject(
           `The initializer type ${type} is invalid or not yet supported`
         );
@@ -122,8 +100,8 @@ const makeInitializers = (
       onMade(
         index,
         INITIALIZER_TYPES_THAT_REQUIRE_THREE.includes(type)
-          ? initializerFor(type).fromJSON(properties, THREE)
-          : initializerFor(type).fromJSON(properties)
+          ? makeInitializer(type, properties, THREE)
+          : makeInitializer(type, properties)
       );
     });
   });
@@ -143,13 +121,13 @@ const makeBehaviours = (items: ItemJSON[]): Promise<BehaviourBase[]> =>
     items.forEach(data => {
       const { type, properties } = data;
 
-      if (!SUPPORTED_JSON_BEHAVIOUR_TYPES.includes(type)) {
+      if (!isSupported(SUPPORTED_JSON_BEHAVIOUR_TYPES, type)) {
         return reject(
           `The behaviour type ${type} is invalid or not yet supported`
         );
       }
 
-      madeBehaviours.push(behaviourFor(type).fromJSON(properties));
+      madeBehaviours.push(makeBehaviour(type, properties));
 
       if (madeBehaviours.length === numberOfBehaviours) {
         return resolve(madeBehaviours);
@@ -161,7 +139,7 @@ const makeEmitters = (
   emitters: EmitterJSON[],
   Emitter: EmitterConstructor,
   THREE: ThreeApi,
-  shouldAutoEmit: boolean
+  shouldAutoEmit: boolean | undefined
 ): Promise<Emitter[]> =>
   new Promise((resolve, reject) => {
     if (!emitters.length) {
@@ -250,7 +228,7 @@ export default (
     const system = new System(preParticles, integrationType);
     const { shouldAutoEmit } = { ...DEFAULT_OPTIONS, ...options };
 
-    makeEmitters(emitters, Emitter, THREE, shouldAutoEmit as boolean)
+    makeEmitters(emitters, Emitter, THREE, shouldAutoEmit)
       .then(madeEmitters => {
         const numberOfEmitters = madeEmitters.length;
 

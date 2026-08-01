@@ -51,9 +51,9 @@ export default class MeshRenderer extends BaseRenderer {
     if (!particle.target) {
       //set target
       if (!particle.body) particle.body = this._body;
-      particle.target = this._targetPool.get(
-        particle.body as object
-      ) as RenderableTarget;
+      particle.target = this._targetPool.get<RenderableTarget>(
+        particle.body as RenderableTarget
+      );
 
       //set material
       if (particle.useAlpha || particle.useColor) {
@@ -62,7 +62,7 @@ export default class MeshRenderer extends BaseRenderer {
         (target.material as Material & { __puid?: string }).__puid = PUID.id(
           (particle.body as RenderableTarget).material
         );
-        target.material = this._materialPool.get(target.material) as Material;
+        target.material = this._materialPool.get(target.material);
       }
     }
 
@@ -94,6 +94,8 @@ export default class MeshRenderer extends BaseRenderer {
     }
 
     if (useColor) {
+      // particle.color is a plain { r, g, b }; three's Color.copy only reads
+      // those three fields, so this structural boundary cast is safe.
       (target.material as MeshLambertMaterial).color.copy(
         particle.color as unknown as Color
       );

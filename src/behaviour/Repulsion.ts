@@ -2,7 +2,7 @@ import Attraction from './Attraction';
 import { Vector3D } from '../math';
 import { getEasingByName } from '../ease';
 import { BEHAVIOUR_TYPE_REPULSION as type } from './types';
-import type { EasingFunction } from '../ease';
+import type { EasingFunction, EaseName } from '../ease';
 
 interface RepulsionJSON {
   x: number;
@@ -11,7 +11,7 @@ interface RepulsionJSON {
   force: number;
   radius: number;
   life?: number;
-  easing?: string;
+  easing?: EaseName | (string & {});
   isEnabled?: boolean;
 }
 

@@ -8,7 +8,6 @@ import { RENDERER_TYPE_GPU_MOBILE } from '../../types';
 import type Particle from '../../../core/Particle';
 import type System from '../../../core/System';
 import type {
-  Blending,
   BufferGeometry,
   Camera,
   InterleavedBuffer,
@@ -21,11 +20,19 @@ import type {
 
 type IndexedTexture = Texture & { textureIndex?: number };
 
+type BlendingMode =
+  | 'AdditiveBlending'
+  | 'NormalBlending'
+  | 'SubtractiveBlending'
+  | 'MultiplyBlending'
+  | 'NoBlending'
+  | 'CustomBlending';
+
 interface RendererOptions {
   camera?: Camera;
   maxParticles: number;
   baseColor: number;
-  blending: string;
+  blending: BlendingMode;
   depthTest: boolean;
   depthWrite: boolean;
   transparent: boolean;
@@ -60,12 +67,12 @@ export default class MobileGPURenderer extends BaseRenderer {
   constructor(
     container: Object3D,
     three: typeof import('three'),
-    options: RendererOptions = DEFAULT_RENDERER_OPTIONS
+    options: Partial<RendererOptions> = {}
   ) {
     super(RENDERER_TYPE_GPU_MOBILE);
 
     THREE = this.three = three;
-    const props = { ...DEFAULT_RENDERER_OPTIONS, ...options };
+    const props: RendererOptions = { ...DEFAULT_RENDERER_OPTIONS, ...options };
     const {
       camera,
       maxParticles,
@@ -86,7 +93,7 @@ export default class MobileGPURenderer extends BaseRenderer {
       },
       vertexShader: vertexShader(),
       fragmentShader: fragmentShader(),
-      blending: (THREE as unknown as Record<string, Blending>)[blending],
+      blending: THREE[blending],
       depthTest,
       depthWrite,
       transparent,
@@ -131,7 +138,7 @@ export default class MobileGPURenderer extends BaseRenderer {
    */
   onParticleCreated(particle: Particle): void {
     if (!particle.target) {
-      particle.target = this.targetPool.get(Target, THREE) as Target;
+      particle.target = this.targetPool.get(Target, THREE);
       this.uniqueList.add(particle.id);
     }
 
@@ -334,8 +341,11 @@ export default class MobileGPURenderer extends BaseRenderer {
     if (false) {
       buffer.array[id] = target.textureIndex!;
     } else {
-      // textureIndex is assigned upstream via getTextureID and the texture
-      // atlas is created during the same update pass before this runs.
+      // textureIndex may be undefined for non-sprite bodies (updateTarget only
+      // assigns it for THREE.Sprite bodies); the resulting NaN write is
+      // preserved exactly from the base JS. textureAtlas is likewise unset until
+      // a sprite body triggers getTextureID, so this throws for a sprite-less
+      // system — the same faithful crash the JS produced.
       let ti = target.textureIndex! * 4;
       const ta = this.textureAtlas!;
       const ida = ta.indexData;

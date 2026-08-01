@@ -38,7 +38,7 @@ export default class BodySprite extends Initializer {
    */
   constructor(
     THREE: typeof import('three'),
-    texture: string,
+    texture?: string,
     materialProperties: Record<string, unknown> = DEFAULT_MATERIAL_PROPERTIES,
     isEnabled: boolean = true
   ) {
@@ -55,8 +55,11 @@ export default class BodySprite extends Initializer {
       materialProperties
     );
 
+    // texture may be omitted from JSON; loading `undefined` fails async exactly
+    // as the base JS did (the `!` keeps that faithful crash rather than a
+    // compile-time guard that would change behaviour).
     new TextureLoader().load(
-      texture,
+      texture!,
       map => {
         /**
          * @desc The texture for the THREE.SpriteMaterial map.
@@ -127,7 +130,7 @@ export default class BodySprite extends Initializer {
 
     return new BodySprite(
       THREE,
-      texture!,
+      texture,
       withDefaults(
         DEFAULT_JSON_MATERIAL_PROPERTIES,
         ensureMappedBlendingMode(materialProperties)

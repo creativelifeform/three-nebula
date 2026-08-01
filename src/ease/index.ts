@@ -5,7 +5,7 @@ export type EasingFunction = (value: number) => number;
 /**
  * The Ease class provides a collection of easing functions for use with System
  */
-export const ease: Record<string, EasingFunction> = {
+export const ease = {
   easeLinear: function (value) {
     return value;
   },
@@ -114,7 +114,10 @@ export const ease: Record<string, EasingFunction> = {
 
     return 0.5 * ((value -= 2) * value * (((s *= 1.525) + 1) * value + s) + 2);
   },
-};
+} satisfies Record<string, EasingFunction>;
+
+/** The names of the built-in easing functions. */
+export type EaseName = keyof typeof ease;
 
 export const {
   easeLinear,
@@ -141,10 +144,11 @@ export const {
   easeInOutBack,
 } = ease;
 
-export const setEasingByName = (easeName: string): EasingFunction => {
-  if (ease[easeName]) return ease[easeName];
-  else return ease.easeLinear;
-};
+const easeByName = (name: string): EasingFunction | undefined =>
+  (ease as Record<string, EasingFunction>)[name];
+
+export const setEasingByName = (easeName: string): EasingFunction =>
+  easeByName(easeName) || ease.easeLinear;
 
 export const getEasingByName = (name?: string): EasingFunction =>
-  name && ease[name] ? ease[name] : ease.easeLinear;
+  (name && easeByName(name)) || ease.easeLinear;

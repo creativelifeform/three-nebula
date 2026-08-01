@@ -1,15 +1,22 @@
 import BaseRenderer from '../BaseRenderer';
-import { DEFAULT_RENDERER_OPTIONS } from './common/constants';
 import DesktopGPURenderer from './Desktop';
 import MobileGPURenderer from './Mobile';
 import { RENDERER_TYPE_GPU } from '../types';
 import type { Camera, Object3D } from 'three';
 
+type BlendingMode =
+  | 'AdditiveBlending'
+  | 'NormalBlending'
+  | 'SubtractiveBlending'
+  | 'MultiplyBlending'
+  | 'NoBlending'
+  | 'CustomBlending';
+
 interface RendererOptions {
   camera?: Camera;
   maxParticles: number;
   baseColor: number;
-  blending: string;
+  blending: BlendingMode;
   depthTest: boolean;
   depthWrite: boolean;
   transparent: boolean;
@@ -33,12 +40,12 @@ class GPURendererImpl extends BaseRenderer {
   constructor(
     container: Object3D,
     THREE: typeof import('three'),
-    options: RendererOptions = DEFAULT_RENDERER_OPTIONS
+    options: Partial<RendererOptions> = {}
   ) {
     super(RENDERER_TYPE_GPU);
 
     const { shouldForceDesktopRenderer, shouldForceMobileRenderer } = options;
-    const args: [Object3D, typeof import('three'), RendererOptions] = [
+    const args: [Object3D, typeof import('three'), Partial<RendererOptions>] = [
       container,
       THREE,
       options,
@@ -96,7 +103,7 @@ const GPURenderer = GPURendererImpl as unknown as {
   new (
     container: Object3D,
     THREE: typeof import('three'),
-    options?: RendererOptions
+    options?: Partial<RendererOptions>
   ): GPURenderer;
 };
 

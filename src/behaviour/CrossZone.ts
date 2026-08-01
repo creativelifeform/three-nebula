@@ -1,10 +1,10 @@
-import * as Zone from '../zone';
+import { createZone } from '../zone/createZone';
 
 import Behaviour from './Behaviour';
 import { DEFAULT_CROSS_TYPE } from './constants';
 import { getEasingByName } from '../ease';
 import { BEHAVIOUR_TYPE_CROSS_ZONE as type } from './types';
-import type { EasingFunction } from '../ease';
+import type { EasingFunction, EaseName } from '../ease';
 import type Particle from '../core/Particle';
 import type ZoneBase from '../zone/Zone';
 
@@ -13,11 +13,9 @@ interface CrossZoneJSON {
   zoneParams: Record<string, unknown>;
   crossType: string;
   life?: number;
-  easing?: string;
+  easing?: EaseName | (string & {});
   isEnabled?: boolean;
 }
-
-type ZoneConstructor = new (...args: unknown[]) => ZoneBase;
 
 /**
  * Behaviour that allows for specific functions to be called on particles when
@@ -100,9 +98,7 @@ export default class CrossZone extends Behaviour {
       isEnabled = true,
     } = json;
 
-    const zone = new (Zone as Record<string, ZoneConstructor>)[zoneType](
-      ...Object.values(zoneParams)
-    );
+    const zone = createZone(zoneType, Object.values(zoneParams));
 
     return new CrossZone(
       zone,

@@ -7,6 +7,11 @@ import {
   INITIALIZER_TYPES_THAT_REQUIRE_THREE,
   SUPPORTED_JSON_BEHAVIOUR_TYPES,
   SUPPORTED_JSON_INITIALIZER_TYPES,
+  isSupported,
+} from './constants';
+import type {
+  SupportedBehaviourType,
+  SupportedInitializerType,
 } from './constants';
 
 import Rate from '../initializer/Rate';
@@ -17,9 +22,72 @@ import type BehaviourBase from '../behaviour/Behaviour';
 
 type ThreeApi = typeof import('three');
 
+// A factory is any namespace member exposing a static `fromJSON`. The `never[]`
+// params make each concrete (narrowly-typed) `fromJSON` assignable while still
+// checking the RETURN type — so `satisfies Record<Union, …>` verifies, at
+// compile time, that every supported type maps to a real namespace member of
+// the right kind. A constant-list/namespace mismatch is now a build error
+// rather than a runtime throw (which is exactly what MOD-3 buys us).
+type InitializerFactory = { fromJSON(...args: never[]): InitializerBase };
+type BehaviourFactory = { fromJSON(...args: never[]): BehaviourBase };
+
+const INITIALIZERS = {
+  Position: Initializer.Position,
+  Rotation: Initializer.Rotation,
+  Life: Initializer.Life,
+  Radius: Initializer.Radius,
+  Mass: Initializer.Mass,
+  Body: Initializer.Body,
+  BodySprite: Initializer.BodySprite,
+  Texture: Initializer.Texture,
+  PolarVelocity: Initializer.PolarVelocity,
+  RadialVelocity: Initializer.RadialVelocity,
+  VectorVelocity: Initializer.VectorVelocity,
+} satisfies Record<SupportedInitializerType, InitializerFactory>;
+
+const BEHAVIOURS = {
+  Alpha: Behaviour.Alpha,
+  Attraction: Behaviour.Attraction,
+  Color: Behaviour.Color,
+  CrossZone: Behaviour.CrossZone,
+  Force: Behaviour.Force,
+  Gravity: Behaviour.Gravity,
+  RandomDrift: Behaviour.RandomDrift,
+  Repulsion: Behaviour.Repulsion,
+  Rotate: Behaviour.Rotate,
+  Scale: Behaviour.Scale,
+  Spring: Behaviour.Spring,
+} satisfies Record<SupportedBehaviourType, BehaviourFactory>;
+
+// The concrete `fromJSON` methods each take a narrow `*JSON` param; the JSON we
+// deserialise is the hostile `Record<string, unknown>`. These two helpers do
+// that single narrowing at the call boundary (identical to the base JS, which
+// fed the raw object straight in) so the loops below stay cast-free.
+export const makeInitializer = (
+  type: SupportedInitializerType,
+  properties: Record<string, unknown>,
+  THREE?: ThreeApi
+): InitializerBase =>
+  (
+    INITIALIZERS[type].fromJSON as (
+      properties: Record<string, unknown>,
+      THREE?: ThreeApi
+    ) => InitializerBase
+  )(properties, THREE);
+
+export const makeBehaviour = (
+  type: SupportedBehaviourType,
+  properties: Record<string, unknown>
+): BehaviourBase =>
+  (
+    BEHAVIOURS[type].fromJSON as (
+      properties: Record<string, unknown>
+    ) => BehaviourBase
+  )(properties);
+
 /** A `{ type, properties }` entry in the JSON. */
 export interface ItemJSON {
-  type: string;
+  type: SupportedInitializerType | SupportedBehaviourType | (string & {});
   properties: Record<string, unknown>;
 }
 
@@ -51,28 +119,6 @@ export type EmitterConstructor = new (
   properties?: Record<string, unknown>
 ) => Emitter;
 
-// The Initializer / Behaviour namespaces indexed by the JSON `type` string.
-const initializerFor = (type: string) =>
-  (
-    Initializer as unknown as Record<
-      string,
-      {
-        fromJSON(
-          properties: Record<string, unknown>,
-          THREE?: ThreeApi
-        ): InitializerBase;
-      }
-    >
-  )[type];
-
-const behaviourFor = (type: string) =>
-  (
-    Behaviour as unknown as Record<
-      string,
-      { fromJSON(properties: Record<string, unknown>): BehaviourBase }
-    >
-  )[type];
-
 /**
  * Makes a rate instance.
  */
@@ -91,16 +137,16 @@ const makeInitializers = (
   items.forEach(data => {
     const { type, properties } = data;
 
-    if (!SUPPORTED_JSON_INITIALIZER_TYPES.includes(type)) {
+    if (!isSupported(SUPPORTED_JSON_INITIALIZER_TYPES, type)) {
       throw new Error(
         `The initializer type ${type} is invalid or not yet supported`
       );
     }
 
     if (INITIALIZER_TYPES_THAT_REQUIRE_THREE.includes(type)) {
-      initializers.push(initializerFor(type).fromJSON(properties, THREE));
+      initializers.push(makeInitializer(type, properties, THREE));
     } else {
-      initializers.push(initializerFor(type).fromJSON(properties));
+      initializers.push(makeInitializer(type, properties));
     }
   });
 
@@ -116,13 +162,13 @@ const makeBehaviours = (items: ItemJSON[]): BehaviourBase[] => {
   items.forEach(data => {
     const { type, properties } = data;
 
-    if (!SUPPORTED_JSON_BEHAVIOUR_TYPES.includes(type)) {
+    if (!isSupported(SUPPORTED_JSON_BEHAVIOUR_TYPES, type)) {
       throw new Error(
         `The behaviour type ${type} is invalid or not yet supported`
       );
     }
 
-    behaviours.push(behaviourFor(type).fromJSON(properties));
+    behaviours.push(makeBehaviour(type, properties));
   });
 
   return behaviours;

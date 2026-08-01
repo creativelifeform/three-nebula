@@ -10,7 +10,7 @@ import Behaviour from './Behaviour';
 import { Vector3D } from '../math';
 import { getEasingByName } from '../ease';
 import { BEHAVIOUR_TYPE_ATTRACTION as type } from './types';
-import type { EasingFunction } from '../ease';
+import type { EasingFunction, EaseName } from '../ease';
 import type Particle from '../core/Particle';
 
 interface AttractionJSON {
@@ -20,7 +20,7 @@ interface AttractionJSON {
   force: number;
   radius: number;
   life?: number;
-  easing?: string;
+  easing?: EaseName | (string & {});
   isEnabled?: boolean;
 }
 

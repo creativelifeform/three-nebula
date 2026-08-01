@@ -22,13 +22,15 @@ export default class PolarVelocity extends Velocity {
    * @param polar3d - The polar vector for the velocity
    * @param theta - The theta angle to use
    */
-  constructor(polar3d: Polar3D, theta: number, isEnabled: boolean = true) {
+  constructor(polar3d: Polar3D, theta?: number, isEnabled: boolean = true) {
     super(type, isEnabled);
 
     /**
-     * @desc Theta.
+     * @desc Theta. `theta!` is erased at runtime, so an omitted (undefined)
+     * theta still yields NaN exactly as the base JS did, while a JS caller
+     * passing null coerces to 0 — preserving base behaviour on every input.
      */
-    this.tha = theta * DR;
+    this.tha = theta! * DR;
 
     /**
      * @desc Directional vector
@@ -57,7 +59,7 @@ export default class PolarVelocity extends Velocity {
 
     return new PolarVelocity(
       new Polar3D(polarRadius, polarTheta, polarPhi),
-      velocityTheta!,
+      velocityTheta,
       isEnabled
     );
   }

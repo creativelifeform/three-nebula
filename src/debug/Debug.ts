@@ -150,6 +150,10 @@ const Debug: DebugModule = {
   renderInfo: (function () {
     function getCreatedNumber(type: string, system?: System): number {
       var pool = type == 'material' ? '_materialPool' : '_targetPool';
+      // getCreatedNumber is called with no system argument in info style 3, so
+      // system is undefined and this throws — a pre-existing bug carried
+      // faithfully from the base JS. The `as unknown as` is a debug-only
+      // introspection of renderer pool internals.
       var renderer = system!.renderers[0] as unknown as Record<
         string,
         { cID: number }

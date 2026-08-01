@@ -1,12 +1,12 @@
 import Force from './Force';
 import { getEasingByName } from '../ease';
 import { BEHAVIOUR_TYPE_GRAVITY as type } from './types';
-import type { EasingFunction } from '../ease';
+import type { EasingFunction, EaseName } from '../ease';
 
 interface GravityJSON {
   gravity: number;
   life?: number;
-  easing?: string;
+  easing?: EaseName | (string & {});
   isEnabled?: boolean;
 }
 

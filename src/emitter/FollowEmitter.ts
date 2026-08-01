@@ -16,8 +16,8 @@ export default class FollowEmitter extends Emitter {
   ease: number;
   _allowEmitting: boolean;
   mousemoveHandler: (e: Event) => void;
-  camera: Camera;
-  canvas: HTMLCanvasElement;
+  camera?: Camera;
+  canvas?: HTMLCanvasElement;
 
   /**
    * The FollowEmitter will emit particles when the mouse moves.
@@ -82,11 +82,13 @@ export default class FollowEmitter extends Emitter {
       this.position.y += (e.offsetY - this.position.y) * this.ease;
     }
 
+    // camera/canvas are set via setCameraAndCanvas; a mousemove before that
+    // dereferences undefined and throws, faithful to the pre-migration crash.
     this.position.copy(
-      THREEUtil.toSpacePos(this.position, this.camera, this.canvas)
+      THREEUtil.toSpacePos(this.position, this.camera!, this.canvas!)
     );
 
-    if (this._allowEmitting) super.emit('once' as unknown as number);
+    if (this._allowEmitting) super.emit('once');
   }
 
   /**

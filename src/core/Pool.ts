@@ -84,8 +84,10 @@ export default class Pool {
 
   /**
    * Gets an object either by creating a new one or retrieving it from the pool.
+   * The pooled object is either constructed from `obj` (when it is a class) or a
+   * clone of `obj`; either way the result is a `T`, so callers no longer cast.
    */
-  get(obj: unknown, ...args: unknown[]): unknown {
+  get<T>(obj: (new (...args: never[]) => T) | T, ...args: unknown[]): T {
     var p,
       puid = (obj as Poolable).__puid || PUID.id(obj);
 
@@ -95,7 +97,7 @@ export default class Pool {
 
     (p as Poolable).__puid = (obj as Poolable).__puid || puid;
 
-    return p;
+    return p as T;
   }
 
   /**

@@ -1,7 +1,7 @@
-import * as Zone from '../zone';
+import { createZone } from '../zone/createZone';
 
 import Initializer from './Initializer';
-import { SUPPORTED_JSON_ZONE_TYPES } from '../core/constants';
+import { SUPPORTED_JSON_ZONE_TYPES, isSupported } from '../core/constants';
 import { INITIALIZER_TYPE_POSITION as type } from './types';
 import type ZoneBase from '../zone/Zone';
 import type Emitter from '../emitter/Emitter';
@@ -11,8 +11,6 @@ interface PositionJSON {
   zoneType?: string;
   [key: string]: unknown;
 }
-
-type ZoneConstructor = new (...args: unknown[]) => ZoneBase;
 
 /**
  * Sets the starting position property for initialized particles.
@@ -84,16 +82,12 @@ export default class Position extends Initializer {
   static fromJSON(json: PositionJSON): Position {
     const { zoneType, ...params } = json;
 
-    if (!zoneType || !SUPPORTED_JSON_ZONE_TYPES.includes(zoneType)) {
+    if (!zoneType || !isSupported(SUPPORTED_JSON_ZONE_TYPES, zoneType)) {
       throw new Error(
         `The zone type ${zoneType} is invalid or not yet supported`
       );
     }
 
-    return new Position(
-      new (Zone as Record<string, ZoneConstructor>)[zoneType](
-        ...Object.values(params)
-      )
-    );
+    return new Position(createZone(zoneType, Object.values(params)));
   }
 }

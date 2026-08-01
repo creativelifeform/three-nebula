@@ -4,7 +4,7 @@ import Behaviour from './Behaviour';
 import { DEFAULT_RANDOM_DRIFT_DELAY } from './constants';
 import { getEasingByName } from '../ease';
 import { BEHAVIOUR_TYPE_RANDOM_DRIFT as type } from './types';
-import type { EasingFunction } from '../ease';
+import type { EasingFunction, EaseName } from '../ease';
 import type Particle from '../core/Particle';
 
 interface RandomDriftJSON {
@@ -13,7 +13,7 @@ interface RandomDriftJSON {
   z: number;
   delay?: number;
   life?: number;
-  easing?: string;
+  easing?: EaseName | (string & {});
   isEnabled?: boolean;
 }
 

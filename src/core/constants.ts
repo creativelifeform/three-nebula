@@ -134,7 +134,11 @@ export const SUPPORTED_JSON_INITIALIZER_TYPES = [
   INITIALIZER_TYPE_POLAR_VELOCITY,
   INITIALIZER_TYPE_RADIAL_VELOCITY,
   INITIALIZER_TYPE_VECTOR_VELOCITY,
-];
+] as const;
+
+/** The initializer `type` strings accepted by `System.fromJSON`. */
+export type SupportedInitializerType =
+  (typeof SUPPORTED_JSON_INITIALIZER_TYPES)[number];
 
 /**
  * @desc The types of behaviours supported by the System.fromJSON method.
@@ -152,13 +156,21 @@ export const SUPPORTED_JSON_BEHAVIOUR_TYPES = [
   BEHAVIOUR_TYPE_ROTATE,
   BEHAVIOUR_TYPE_SCALE,
   BEHAVIOUR_TYPE_SPRING,
-];
+] as const;
+
+/** The behaviour `type` strings accepted by `System.fromJSON`. */
+export type SupportedBehaviourType =
+  (typeof SUPPORTED_JSON_BEHAVIOUR_TYPES)[number];
 
 /**
  * @desc The types of renderers supported by the System.fromJSON method.
  * @type {array<string>}
  */
-export const SUPPORTED_JSON_RENDERER_TYPES = [RENDERER_TYPE_SPRITE];
+export const SUPPORTED_JSON_RENDERER_TYPES = [RENDERER_TYPE_SPRITE] as const;
+
+/** The renderer `type` strings accepted by `System.fromJSON`. */
+export type SupportedRendererType =
+  (typeof SUPPORTED_JSON_RENDERER_TYPES)[number];
 
 /**
  * @desc The types of zones supported by the System.fromJSON method.
@@ -170,6 +182,19 @@ export const SUPPORTED_JSON_ZONE_TYPES = [
   ZONE_TYPE_MESH,
   ZONE_TYPE_POINT,
   ZONE_TYPE_SPHERE,
-];
+] as const;
+
+/** The zone `type` strings accepted by `System.fromJSON`. */
+export type SupportedZoneType = (typeof SUPPORTED_JSON_ZONE_TYPES)[number];
+
+/**
+ * Narrows an arbitrary JSON `type` string to one of a closed supported-type
+ * list. Used so the namespace lookup tables (keyed by the union) accept the
+ * string only after the same `.includes()` runtime check the base JS ran.
+ */
+export const isSupported = <T extends string>(
+  supported: readonly T[],
+  type: string
+): type is T => (supported as readonly string[]).includes(type);
 
 export { INITIALIZER_TYPES_THAT_REQUIRE_THREE } from '../initializer/types';

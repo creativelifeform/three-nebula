@@ -3,14 +3,14 @@ import { MathUtils, Span, createSpan } from '../math';
 import Behaviour from './Behaviour';
 import { getEasingByName } from '../ease';
 import { BEHAVIOUR_TYPE_SCALE as type } from './types';
-import type { EasingFunction } from '../ease';
+import type { EasingFunction, EaseName } from '../ease';
 import type Particle from '../core/Particle';
 
 interface ScaleJSON {
   scaleA: number;
   scaleB?: number;
   life?: number;
-  easing?: string;
+  easing?: EaseName | (string & {});
   isEnabled?: boolean;
 }
 

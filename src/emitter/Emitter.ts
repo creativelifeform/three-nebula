@@ -123,7 +123,10 @@ export default class Emitter extends Particle {
    * the emitter's life. Also intializes the emitter rate. This enables the
    * emitter to emit particles.
    */
-  emit(totalEmitTimes: number = Infinity, life: number = Infinity): this {
+  emit(
+    totalEmitTimes: number | 'once' = Infinity,
+    life: number = Infinity
+  ): this {
     this.currentEmitTime = 0;
     this.totalEmitTimes = isNumber(totalEmitTimes) ? totalEmitTimes : Infinity;
 
@@ -390,7 +393,7 @@ export default class Emitter extends Particle {
   createParticle(): Particle {
     // system is non-null throughout an attached emitter's lifecycle; faithful
     // to the pre-migration crash if this runs while the emitter is detached.
-    const particle = this.system!.pool.get(Particle) as Particle;
+    const particle = this.system!.pool.get(Particle);
     const index = this.particles.length;
 
     this.setupParticle(particle, index);

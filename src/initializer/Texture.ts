@@ -22,7 +22,7 @@ interface TextureJSON {
  */
 export default class Texture extends Initializer {
   materialProperties: Record<string, unknown>;
-  texture: ThreeTexture;
+  texture?: ThreeTexture;
   material: SpriteMaterial;
   sprite: Sprite;
 
@@ -35,7 +35,7 @@ export default class Texture extends Initializer {
    */
   constructor(
     THREE: typeof import('three'),
-    loadedTexture: ThreeTexture,
+    loadedTexture?: ThreeTexture,
     materialProperties: Record<string, unknown> = DEFAULT_MATERIAL_PROPERTIES,
     isEnabled: boolean = true
   ) {
@@ -112,7 +112,7 @@ export default class Texture extends Initializer {
 
     return new Texture(
       THREE,
-      loadedTexture!,
+      loadedTexture,
       withDefaults(
         DEFAULT_JSON_MATERIAL_PROPERTIES,
         ensureMappedBlendingMode(materialProperties)

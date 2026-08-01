@@ -4,7 +4,7 @@ import Behaviour from './Behaviour';
 import { ColorUtil } from '../utils';
 import { getEasingByName } from '../ease';
 import { BEHAVIOUR_TYPE_COLOR as type } from './types';
-import type { EasingFunction } from '../ease';
+import type { EasingFunction, EaseName } from '../ease';
 import type Particle from '../core/Particle';
 
 interface RGB {
@@ -17,7 +17,7 @@ interface ColorJSON {
   colorA: string;
   colorB?: string;
   life?: number;
-  easing?: string;
+  easing?: EaseName | (string & {});
   isEnabled?: boolean;
 }
 
