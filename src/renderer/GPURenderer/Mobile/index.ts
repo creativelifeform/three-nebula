@@ -51,7 +51,7 @@ let THREE: typeof import('three');
  */
 export default class MobileGPURenderer extends BaseRenderer {
   three: typeof import('three');
-  container?: Object3D;
+  container: Object3D;
   camera?: Camera;
   targetPool: Pool;
   uniqueList: UniqueList;
@@ -99,6 +99,7 @@ export default class MobileGPURenderer extends BaseRenderer {
       transparent,
     });
 
+    this.container = container;
     this.camera = camera;
     this.targetPool = new Pool();
     this.uniqueList = new UniqueList(maxParticles);
@@ -111,7 +112,7 @@ export default class MobileGPURenderer extends BaseRenderer {
     this.points.frustumCulled = false;
     this.shouldDebugTextureAtlas = shouldDebugTextureAtlas;
 
-    container.add(this.points);
+    this.container.add(this.points);
   }
 
   onSystemUpdate(system: System): void {
@@ -377,8 +378,7 @@ export default class MobileGPURenderer extends BaseRenderer {
   destroy(): void {
     const { container, points, textureAtlas, uniqueList } = this;
 
-    // container is loosely typed as optional; preserve existing behaviour.
-    container!.remove(points);
+    container.remove(points);
     uniqueList.destroy();
     textureAtlas && textureAtlas.destroy();
   }
