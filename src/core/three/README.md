@@ -1,13 +1,18 @@
-# Three Dependencies
+# Three compatibility shim
 
 ## Why?
 
-This module exists to ensure that `three` is not shipped with `three-nebula`. Because this library requires the consumer to have `three` installed already, if we bundle it we will be increasing the bundle size by a large amount, which is unnecessary since we only need a few dependencies internally which cannot easily be passed in as arguments to constructors or regular functions.
+The core simulation math needs a few `three` classes internally — `Vector3`
+(the base for `Vector3D`), `Euler`, and the material blending-mode constants.
 
-## Version
+This module re-exports them from `three`. It does **not** bundle three: the
+build externalises `three` (`rollupOptions.external` in `vite.config.js`), and
+`three` is a peer dependency the consumer already has installed. Re-exporting the
+real classes means one source of truth, correct TypeScript types, and math that
+stays in step with the three version the consumer runs.
 
-The current version these classes have been pulled from is `r106`.
+## History
 
-## Updating
-
-In order to update this module, you will need to copy all the relevant files from the correct version of three. You shouldn't need more than what is already in this module.
+This module previously vendored a snapshot of these classes from three `r106`,
+to avoid bundling three before the build externalised it. That snapshot has been
+removed in favour of importing from `three` directly.

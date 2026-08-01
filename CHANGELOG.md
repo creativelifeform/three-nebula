@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v12.0.0` - 2026-08-01
+
+three-nebula is now written in TypeScript and ships its own type declarations. The runtime is behaviour-preserving — every conversion stage was validated against a visual-regression golden master and the full test suite — so this is a types-and-tooling release, not a behavioural rewrite.
+
+### Breaking
+
+- **First-party types now ship with the package.** If you installed `@types/three-nebula` from DefinitelyTyped, uninstall it — the bundled declarations supersede it and keeping both will produce conflicting types. That package is now superseded and should be deprecated by its maintainer.
+- **`@types/three` is a new optional peer dependency.** TypeScript consumers should have it installed so the `three` types our signatures reference resolve (the `three` build we target ships no bundled declarations). JavaScript consumers are unaffected.
+- **The vendored three r106 math snapshot has been removed.** `Vector3` / `Euler` / blending constants now resolve against your installed `three` instead of a frozen r106 copy, so this math tracks your `three` version. Behaviour is unchanged for the supported range (`three` `>=0.122.0`), the bundle is smaller, and the package still ships zero runtime dependencies.
+- **The deprecated synchronous `System.fromJSON` is fixed:** it previously passed the `THREE` namespace into the `preParticles` slot, leaving `system.preParticles` set to the three namespace object. It now reads `preParticles` from the JSON, matching `System.fromJSONAsync`. Prefer `fromJSONAsync`.
+
+### Added
+
+- First-party TypeScript declarations, emitted to `dist/types` and advertised via the package `types` field and an `exports` `types` condition — resolved automatically, with no separate `@types` install.
+
+### Changed
+
+- The entire `src/` is converted to TypeScript and compiled under `strict` (with `strictPropertyInitialization` off, since fields are declared and assigned in `reset()`/`init()` called from constructors). There is no `any` on the public API surface.
+- Replaced ESLint with oxlint (which works with the native TypeScript compiler) and added a Prettier format gate; added a `tsc --noEmit` typecheck gate. All run in CI and the pre-commit hook.
+
+### Removed
+
+- The vendored `core/three` r106 math snapshot (see Breaking, above).
+- ESLint and its configuration, replaced by oxlint.
+
 ## `v11.1.2` - 2026-07-27
 
 ### Fixed

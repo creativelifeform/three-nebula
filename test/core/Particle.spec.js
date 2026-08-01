@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import {
@@ -70,7 +69,6 @@ describe('core -> Particle', () => {
     assert.deepEqual(values(particle.color), [0, 0, 0]);
     assert.instanceOf(particle.rotation, Nebula.Vector3D);
     assert.deepEqual(values(particle.rotation), [0, 0, 0]);
-
   });
 
   it('should fully instantiate with the correct properties based on the object passed', () => {
@@ -98,14 +96,12 @@ describe('core -> Particle', () => {
     assert.strictEqual(particle.transform, preset.transform);
     assert.deepEqual(particle.color, preset.color);
     assert.deepEqual(particle.rotation, preset.rotation);
-
   });
 
   it('should get the particle direction', () => {
     const particle = new Particle(preset);
 
     assert.equal(particle.getDirection(), 153.41505666009473);
-
   });
 
   it("should reset the particle's clearable properties and return the particle", () => {
@@ -148,7 +144,6 @@ describe('core -> Particle', () => {
     assert.isEmpty(behaviours);
     assert.deepEqual(values(rotation), [0, 0, 0]);
     assert.instanceOf(reset, Particle);
-
   });
 
   it('should add a behaviour to the particle and call the behaviour initialize method with the particle', () => {
@@ -185,7 +180,6 @@ describe('core -> Particle', () => {
 
       spy.restore();
     });
-
   });
 
   it('should remove the behaviour from the particle', () => {
@@ -198,7 +192,6 @@ describe('core -> Particle', () => {
 
     assert.lengthOf(particle.behaviours, 1);
     assert.instanceOf(particle.behaviours[0], Nebula.Repulsion);
-
   });
 
   it('should remove all behaviours from the particle', () => {
@@ -209,7 +202,6 @@ describe('core -> Particle', () => {
     particle.removeAllBehaviours();
 
     assert.isEmpty(particle.behaviours);
-
   });
 
   it('should kill the particle', () => {
@@ -226,7 +218,6 @@ describe('core -> Particle', () => {
     assert.equal(energy, 0);
     assert.isTrue(dead);
     assert.isNull(parent);
-
   });
 });
 
@@ -259,7 +250,6 @@ describe('particle update', () => {
     assert.equal(particle.age, 2);
     assert.equal(particle.energy, 0.75);
     assert.isFalse(particle.dead);
-
   });
 
   it('should not set age or apply behaviours if particle.sleep === true', () => {
@@ -287,7 +277,6 @@ describe('particle update', () => {
     assert.equal(particle.age, 0);
     assert.equal(particle.energy, 1);
     assert.isFalse(particle.dead);
-
   });
 
   it('should call particle.destroy the particle if age >= life', () => {
@@ -305,7 +294,6 @@ describe('particle update', () => {
     assert(destroySpy.calledOnce);
 
     destroySpy.restore();
-
   });
 
   it('should have the same value in Particle.velocity if the total time of particles is the same', () => {
@@ -325,6 +313,5 @@ describe('particle update', () => {
     assert.closeTo(particle_01.velocity.x, particle_02.velocity.x, 1e-14);
     assert.closeTo(particle_01.velocity.y, particle_02.velocity.y, 1e-14);
     assert.closeTo(particle_01.velocity.z, particle_02.velocity.z, 1e-14);
-
   });
 });

@@ -26,6 +26,19 @@ jobs:
         run: npm run build
 
       - name: Publish packages to npm registry
-        run: npm publish --access public
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "$VERSION" == *-* ]]; then
+            # Prerelease (e.g. 12.0.0-alpha.0): route to a dist-tag derived from
+            # the prerelease id so it never lands on `latest`. `npm publish`
+            # WITHOUT --tag publishes to `latest` even for prerelease versions.
+            PRERELEASE_ID="${VERSION#*-}"
+            DIST_TAG="${PRERELEASE_ID%%.*}"
+            echo "Publishing prerelease $VERSION under dist-tag '$DIST_TAG'"
+            npm publish --access public --tag "$DIST_TAG"
+          else
+            echo "Publishing $VERSION under dist-tag 'latest'"
+            npm publish --access public
+          fi
         env:
           NODE_AUTH_TOKEN: ${{secrets.THREE_NEBULA_NPM_PUBLISH_TOKEN}}

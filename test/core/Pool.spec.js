@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import { Object3D } from 'three';
@@ -16,7 +15,6 @@ describe('core -> Pool', () => {
     assert.equal(cID, 0);
     assert.isObject(list);
     assert.isEmpty(list);
-
   });
 
   it('should get a new object with a unique id if the object can be instantiated', () => {
@@ -25,7 +23,6 @@ describe('core -> Pool', () => {
 
     assert.instanceOf(particle, Nebula.Particle);
     assert.isString(particle.__puid);
-
   });
 
   it('should pass args to the pooled instance', () => {
@@ -43,7 +40,6 @@ describe('core -> Pool', () => {
     pool.get(Instance, args);
 
     assert(spy.calledOnceWith(args));
-
   });
 
   it('should get a cloned object with a unique id if the object can be cloned', () => {
@@ -54,7 +50,6 @@ describe('core -> Pool', () => {
     assert.instanceOf(cloned, Object3D);
     assert.notEqual(object3d.id, cloned.id);
     assert.isString(cloned.__puid);
-
   });
 
   it('should throw an error if the supplied argument can neither be instantiated or cloned', () => {
@@ -65,7 +60,6 @@ describe('core -> Pool', () => {
       Error,
       'The pool is unable to create or clone the object supplied'
     );
-
   });
 
   it('should return an empty array if a pooled item id does not exist', () => {
@@ -74,7 +68,6 @@ describe('core -> Pool', () => {
 
     assert.isArray(pooled);
     assert.isEmpty(pooled);
-
   });
 
   it('should store the object in the mapped list', () => {
@@ -86,7 +79,6 @@ describe('core -> Pool', () => {
 
     assert.isArray(pool.list[poolId]);
     assert.equal(poolId, pool.list[poolId][0].__puid);
-
   });
 
   it('should get the object out of the pool if it was previously expired', () => {
@@ -116,7 +108,6 @@ describe('core -> Pool', () => {
     particles.forEach(particle => pool.expire(particle));
 
     assert.equal(count, pool.getCount());
-
   });
 
   it('should destroy all pools', () => {
@@ -136,6 +127,5 @@ describe('core -> Pool', () => {
     pool.destroy();
 
     assert.isEmpty(pool.list);
-
   });
 });

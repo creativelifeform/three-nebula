@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import chai from 'chai';
@@ -27,7 +26,6 @@ describe('initializer -> Body', () => {
     assert.strictEqual(b, 1);
     assert.lengthOf(items, 1);
     assert.strictEqual(items[0], color);
-
   });
 
   it('should set height to width if height not supplied', () => {
@@ -35,7 +33,6 @@ describe('initializer -> Body', () => {
 
     assert.strictEqual(w, 2);
     assert.strictEqual(h, 2);
-
   });
 
   it('should set the correct properties on the particle after initialization', () => {
@@ -50,7 +47,6 @@ describe('initializer -> Body', () => {
     assert.strictEqual(width, 3);
     assert.strictEqual(height, 4);
     assert.strictEqual(body, color);
-
   });
 
   it('should construct the initializer from a JSON object', () => {
@@ -65,6 +61,5 @@ describe('initializer -> Body', () => {
     assert.equal(instance.w, 4);
     assert.equal(instance.h, 5);
     assert.isTrue(instance.isEnabled);
-
   });
 });

@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import chai from 'chai';
@@ -22,7 +21,6 @@ describe('initializer -> Life', () => {
     assert.isFalse(_center);
     assert.strictEqual(a, start);
     assert.strictEqual(b, end);
-
   });
 
   it('should set the correct properties on the particle after initialization', () => {
@@ -34,7 +32,6 @@ describe('initializer -> Life', () => {
 
     assert.isAbove(life, start);
     assert.isBelow(life, end);
-
   });
 
   it('should set the particle life to Infinity if the first argument to the constructor is Infinity', () => {
@@ -44,7 +41,6 @@ describe('initializer -> Life', () => {
     infiniteLife.initialize(particle);
 
     assert.strictEqual(particle.life, Infinity);
-
   });
 
   it('should construct the initializer from a JSON object', () => {
@@ -59,6 +55,5 @@ describe('initializer -> Life', () => {
     assert.equal(instance.lifePan.a, 3);
     assert.equal(instance.lifePan.b, 10);
     assert.isTrue(instance.isEnabled);
-
   });
 });

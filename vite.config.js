@@ -14,7 +14,7 @@ export default defineConfig({
     target: 'es2020',
     sourcemap: true,
     lib: {
-      entry: resolve(root, 'src/index.js'),
+      entry: resolve(root, 'src/index.ts'),
       name: 'Nebula',
       formats: ['es', 'cjs', 'umd'],
       // Explicit extensions disambiguate ESM vs CJS without needing

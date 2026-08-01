@@ -1,4 +1,3 @@
-
 import * as Nebula from '../../src';
 
 import { TIME } from '../constants';
@@ -24,7 +23,6 @@ describe('behaviour -> CrossZone', () => {
     assert.isFalse(dead);
     assert.instanceOf(zone, Nebula.BoxZone);
     assert.strictEqual(zone.crossType, 'dead');
-
   });
 
   it('should call the zone.crossing method when applying the behaviour', () => {
@@ -34,7 +32,6 @@ describe('behaviour -> CrossZone', () => {
     behaviour.applyBehaviour(particle, TIME);
     assert(behaviour.zone.crossing.calledOnce);
     behaviour.zone.crossing.restore();
-
   });
 
   it('should construct the behaviour from a JSON object', () => {
@@ -61,6 +58,19 @@ describe('behaviour -> CrossZone', () => {
     assert.equal(instance.life, 3);
     assert.deepEqual(instance.easing, getEasingByName('easeInOutExpo'));
     assert.isTrue(instance.isEnabled);
+  });
 
+  it('should construct from JSON with a ScreenZone (not a System.fromJSON zone type)', () => {
+    // CrossZone historically indexed the whole zone namespace unguarded, so a
+    // ScreenZone — which is not in SUPPORTED_JSON_ZONE_TYPES — must still be
+    // constructable here (regression for the fromJSON zone-dispatch refactor).
+    const instance = Nebula.CrossZone.fromJSON({
+      zoneType: 'ScreenZone',
+      zoneParams: { camera: {}, renderer: {} },
+      crossType: 'dead',
+    });
+
+    assert.instanceOf(instance, Nebula.CrossZone);
+    assert.instanceOf(instance.zone, Nebula.ScreenZone);
   });
 });
