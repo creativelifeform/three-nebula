@@ -95,11 +95,10 @@ describe('behaviour -> Attraction', () => {
 
     addSpy.restore();
 
-    assert.deepEqual(Object.values(particle.acceleration), [
-      0.23744744021624944,
-      0.7906999759201108,
-      1.5766510030358964,
-    ]);
+    assert.deepEqual(
+      Object.values(particle.acceleration),
+      [0.23744744021624944, 0.7906999759201108, 1.5766510030358964]
+    );
   });
 
   it('should construct the behaviour from a JSON object', () => {

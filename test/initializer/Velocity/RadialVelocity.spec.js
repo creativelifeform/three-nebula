@@ -58,11 +58,10 @@ describe('initializer -> Radial Velocity', () => {
     assert.instanceOf(instance.radiusPan, Nebula.Span);
     assert.instanceOf(instance.dir, Nebula.Vector3D);
     assert.equal(instance.tha, 0.013091666666666665);
-    assert.deepEqual(Object.values(instance.dir), [
-      0.696732280308598,
-      0.6386712569495482,
-      0.32659325639465536,
-    ]);
+    assert.deepEqual(
+      Object.values(instance.dir),
+      [0.696732280308598, 0.6386712569495482, 0.32659325639465536]
+    );
     assert.deepEqual([instance.radiusPan.a, instance.radiusPan.b], [1.6, 1.6]);
     assert.isTrue(instance.isEnabled);
   });

@@ -10,17 +10,8 @@ describe('behaviour -> Alpha', () => {
   const behaviour = new Nebula.Alpha(1, 0);
 
   it('should instantiate with the correct properties', () => {
-    const {
-      type,
-      life,
-      age,
-      energy,
-      dead,
-      _same,
-      easing,
-      alphaA,
-      alphaB,
-    } = behaviour;
+    const { type, life, age, energy, dead, _same, easing, alphaA, alphaB } =
+      behaviour;
 
     assert.strictEqual(type, 'Alpha');
     assert.strictEqual(life, Infinity);
@@ -64,16 +55,8 @@ describe('behaviour -> Alpha', () => {
     behaviour.initialize(particle);
     behaviour.applyBehaviour(particle, TIME);
 
-    const {
-      life,
-      age,
-      energy,
-      dead,
-      _same,
-      easing,
-      alphaA,
-      alphaB,
-    } = behaviour;
+    const { life, age, energy, dead, _same, easing, alphaA, alphaB } =
+      behaviour;
 
     assert.strictEqual(life, Infinity);
     assert.strictEqual(age, 1000);

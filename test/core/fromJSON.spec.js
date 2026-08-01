@@ -23,6 +23,14 @@ describe('fromJSON', () => {
     assert.instanceOf(system, Nebula.System);
   });
 
+  it('should set preParticles from JSON, not the THREE argument (regression)', () => {
+    // The deprecated sync path historically passed THREE into the preParticles
+    // slot; assert it now reads the numeric value from the JSON.
+    const system = Particles.fromJSON({ preParticles: 500 }, THREE);
+
+    assert.strictEqual(system.preParticles, 500);
+  });
+
   const emitterWith = props => ({
     emitters: [
       {

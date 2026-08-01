@@ -25,10 +25,9 @@ describe('fromJSONAsync', () => {
     // stop three warns from being printed, these happen because we're stubbing
     // things below
     consoleWarnStub = stub(console, 'warn');
-    textureLoaderStub = stub(
-      TextureLoader.prototype,
-      'load'
-    ).callsFake((texture, callback) => callback());
+    textureLoaderStub = stub(TextureLoader.prototype, 'load').callsFake(
+      (texture, callback) => callback()
+    );
   });
 
   afterAll(() => {
@@ -203,11 +202,9 @@ describe('fromJSONAsync — preserves input order under out-of-order async textu
   // order — so any code that assembled by resolution order would come out reordered.
   beforeAll(() => {
     consoleWarnStub = stub(console, 'warn');
-    textureLoaderStub = stub(
-      TextureLoader.prototype,
-      'load'
-    ).callsFake((texture, onLoad) =>
-      setTimeout(() => onLoad(), texture.includes('slow') ? 20 : 0)
+    textureLoaderStub = stub(TextureLoader.prototype, 'load').callsFake(
+      (texture, onLoad) =>
+        setTimeout(() => onLoad(), texture.includes('slow') ? 20 : 0)
     );
   });
 

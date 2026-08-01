@@ -11,15 +11,8 @@ describe('behaviour -> RandomDrift', () => {
   const behaviour = new Nebula.RandomDrift(1, 3, 2.5);
 
   it('should instantiate with the correct properties', () => {
-    const {
-      life,
-      easing,
-      age,
-      energy,
-      dead,
-      randomForce,
-      delayPan,
-    } = behaviour;
+    const { life, easing, age, energy, dead, randomForce, delayPan } =
+      behaviour;
 
     assert.equal(behaviour.type, 'RandomDrift');
     assert.strictEqual(life, Infinity);

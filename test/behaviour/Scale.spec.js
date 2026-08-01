@@ -19,16 +19,8 @@ describe('behaviour -> Scale', () => {
   });
 
   it('should instantiate with the correct properties', () => {
-    const {
-      life,
-      easing,
-      age,
-      energy,
-      dead,
-      _same,
-      scaleA,
-      scaleB,
-    } = behaviour;
+    const { life, easing, age, energy, dead, _same, scaleA, scaleB } =
+      behaviour;
 
     assert.equal(behaviour.type, 'Scale');
     assert.strictEqual(life, Infinity);

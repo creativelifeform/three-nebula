@@ -7,16 +7,21 @@ DS_Store
 .babelrc
 .editorconfig
 .esdoc.json
-.eslintrc
+.oxlintrc.json
 .gitignore
-.prettierc
+.prettierrc
 .travis.yml
+tsconfig.json
+tsconfig.types.json
 vite.config.js
+vite.sandbox.config.js
 vitest.config.js
+*.tgz
 npm-debug.log
 
 # Directories
 
+.husky/
 docs/
 git/
 node_modules/
@@ -24,6 +29,7 @@ node_modules/
 .github/
 coverage/
 scripts/
+specs/
 src/
 test/
 vr/

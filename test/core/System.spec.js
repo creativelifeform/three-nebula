@@ -152,12 +152,7 @@ describe('core -> System', () => {
 
     system
       .addRenderer(renderer)
-      .addEmitter(
-        emitter
-          .setRate(rate)
-          .addInitializer(life)
-          .emit()
-      )
+      .addEmitter(emitter.setRate(rate).addInitializer(life).emit())
       .update()
       .then(() => {
         setTimeout(() => {

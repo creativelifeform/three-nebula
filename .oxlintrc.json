@@ -4,6 +4,13 @@
     "no-unused-expressions": "off",
     "no-this-alias": "off",
     "no-useless-spread": "off",
-    "no-new-array": "off"
+    "no-new-array": "off",
+    "no-unused-vars": [
+      "warn",
+      {
+        "args": "none",
+        "varsIgnorePattern": "^_"
+      }
+    ]
   }
 }
