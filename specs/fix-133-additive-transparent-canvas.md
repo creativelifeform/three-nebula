@@ -128,6 +128,36 @@ fix to be blend-mode-aware rather than global.
   material so pooled clones inherit it. Confirm the material pool/clone path preserves the
   separate-alpha settings.
 
+## Spike findings (SpriteRenderer path)
+
+Spiked the separate-alpha approach on `BodySprite`'s `SpriteMaterial` (switch `AdditiveBlending`
+→ `CustomBlending` with `blendSrcAlpha: Zero`, `blendDstAlpha: One`) and validated against the
+sandbox `transparent-canvas-additive-blending` experiment.
+
+**Confirmed:**
+- **Direction is right.** The gradient shows through the corners again and the additive white
+  core returns — a clear, large improvement over the opaque-squares baseline.
+- **The pool/clone path preserves the fix** (the spec's open question). `MeshRenderer.onParticleCreated`
+  clones the body material via `_materialPool.get(...)` when `useAlpha`/`useColor` are set, and
+  `SpriteMaterial.clone()` copies all blend fields — so setting it on the body material is
+  sufficient; per-particle clones inherit it.
+
+**Not fully solved — the real crux:**
+- **Residual hard-edged dark squares remain.** The blend-factor swap alone doesn't fully clean
+  up, which points at **premultiplied-alpha compositing**: the host `WebGLRenderer` is
+  `premultipliedAlpha: true` (three's default), and additive-glow-on-a-transparent-premultiplied
+  canvas has subtleties a plain factor swap doesn't cover. The complete fix likely needs one of:
+  output **premultiplied** color from the material/shader, or a documented/asserted host
+  `premultipliedAlpha` expectation (a host concern the library can only partly own).
+- `depthWrite: false` (standard for additive) did **not** resolve the squares on its own — it
+  *revealed more* overlap, reinforcing that the residue is a compositing issue, not depth.
+
+**Implication for the implementation:** it's more than a blend-state one-liner. Plan for a shared
+`applyAdditiveAlphaBlend(material | shaderMaterialOpts)`-style helper used by `BodySprite`,
+`Texture`, and the `GPURenderer` `ShaderMaterial`, blend-mode-aware (§ Mode nuance), with the
+premultiplied-alpha behaviour nailed and validated on the full matrix below — and a VR
+re-baseline, since the fix changes correct-case output on a transparent canvas.
+
 ## Scope
 
 - [ ] `GPURenderer` (Desktop + Mobile variants)
