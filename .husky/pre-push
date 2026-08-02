@@ -1,0 +1,6 @@
+# Upload Git LFS objects on push. husky owns core.hooksPath (.husky/_), so
+# git-lfs's own pre-push hook (.git/hooks/pre-push) is bypassed — forward to it
+# here. git passes the remote name and URL as $1 and $2.
+if command -v git-lfs >/dev/null 2>&1; then
+  git lfs pre-push "$@"
+fi
