@@ -4,7 +4,6 @@ import { fragmentShader, vertexShader } from './shaders';
 import BaseRenderer from '../../BaseRenderer';
 import { DEFAULT_RENDERER_OPTIONS } from '../common/constants';
 import { Pool } from '../../../core';
-import { applyEmissiveAlphaBlend } from '../../../utils/materialBlend';
 import { RENDERER_TYPE_GPU_DESKTOP } from '../../types';
 import type Particle from '../../../core/Particle';
 import type System from '../../../core/System';
@@ -98,11 +97,6 @@ export default class DesktopGPURenderer extends BaseRenderer {
       depthWrite,
       transparent,
     });
-
-    // Additive/subtractive particles must not write the canvas alpha channel
-    // (issue #133) — otherwise no-alpha textures paint opaque squares on a
-    // transparent canvas.
-    applyEmissiveAlphaBlend(material, THREE);
 
     this.container = container;
     this.camera = camera;

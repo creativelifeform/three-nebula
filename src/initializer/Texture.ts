@@ -7,7 +7,6 @@ import {
 import Initializer from './Initializer';
 import { INITIALIZER_TYPE_TEXTURE as type } from './types';
 import { withDefaults } from '../utils';
-import { applyEmissiveAlphaBlend } from '../utils/materialBlend';
 import type { Sprite, SpriteMaterial, Texture as ThreeTexture } from 'three';
 import type Particle from '../core/Particle';
 
@@ -65,11 +64,6 @@ export default class Texture extends Initializer {
       ...{ map: loadedTexture },
       ...this.materialProperties,
     });
-
-    // Additive/subtractive particles must not write the canvas alpha channel
-    // (issue #133) — a no-alpha texture would otherwise paint opaque squares on
-    // a transparent canvas.
-    applyEmissiveAlphaBlend(this.material, THREE);
 
     /**
      * @desc THREE.Sprite instance.
