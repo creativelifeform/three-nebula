@@ -18,4 +18,8 @@ export const EXAMPLES = {
   // Repaired for modern three (BufferGeometry position instead of the removed
   // Geometry `.vertices`). More frames for a fuller, settled snowfall.
   SpriteRendererSnow: { kind: 'init', frames: 260 },
+  // #133 — additive, no-alpha texture over an in-scene gradient background
+  // (the recommended approach). VR-local cases (vr/cases/), not website pages.
+  AdditiveSceneBackgroundCpu: { kind: 'init', frames: 200 },
+  AdditiveSceneBackgroundGpu: { kind: 'init', frames: 200 },
 };
