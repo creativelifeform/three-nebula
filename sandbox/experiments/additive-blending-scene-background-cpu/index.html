@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Additive Blending — Scene Background (CPU)</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/style/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/style/app.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <canvas id="canvas"></canvas>
+      <div id="description">
+        Additive, no-alpha texture (<code>circle_01.png</code>) with the gradient
+        rendered <strong>in the scene</strong> (<code>scene.background</code>) on
+        an opaque canvas — not a transparent CSS canvas. Clean library, no shader
+        hacks: additive blends against real framebuffer pixels, so it Just Works.
+      </div>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
