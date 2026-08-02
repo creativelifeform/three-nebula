@@ -22,6 +22,12 @@ const server = await createServer({ configFile: path.join(dir, 'vite.config.js')
 await server.listen();
 const port = server.httpServer.address().port;
 const base = `http://localhost:${port}`;
+// SwiftShader (software WebGL) so the golden master is bit-identical across
+// machines — an OSS lib can't pin the CI runner, and real GPUs differ per host.
+// The tradeoff: SwiftShader does NOT render the GPURenderer faithfully (its
+// point sprites come out blocky regardless), so VR is blind to GPURenderer
+// visual correctness. Validate GPURenderer changes in a real/headed browser and
+// with unit tests instead. See vr/README.md.
 const browser = await chromium.launch({
   args: ['--use-gl=angle', '--use-angle=swiftshader'],
 });
