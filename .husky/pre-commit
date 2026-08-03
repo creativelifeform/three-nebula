@@ -14,3 +14,10 @@ if git diff --cached --name-only | grep -qE '\.(ts|tsx|js|mjs|cjs)$|(^|/)tsconfi
   echo "pre-commit: type-checking (tsc --noEmit)"
   npm run typecheck
 fi
+
+# Check formatting when any linted src/test source is part of the commit — CI
+# runs the same check (npm run lint -> format:check), so catch it before push.
+if git diff --cached --name-only | grep -qE '^(src|test)/.*\.(js|ts)$'; then
+  echo "pre-commit: checking formatting (prettier)"
+  npm run format:check
+fi
