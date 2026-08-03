@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v12.0.1` - 2026-08-03
+
+### Fixed
+
+- **`GPURenderer` systems with multiple (or large) textures rendered as blocky, aliased squares** after the `three` r127→r185 upgrade. The texture atlas is uploaded once, then resized and redrawn as textures load; under modern `three` / WebGL2 that in-place re-upload no longer regenerates the texture's mipmaps, so trilinear minification fell back to an un-mipped base level and aliased the large tiles. The atlas texture is now recreated from the final canvas so its mipmaps generate cleanly, restoring smooth minification. Systems with a single small texture were largely unaffected.
+
 ## `v12.0.0` - 2026-08-01
 
 three-nebula is now written in TypeScript and ships its own type declarations. The runtime is behaviour-preserving — every conversion stage was validated against a visual-regression golden master and the full test suite — so this is a types-and-tooling release, not a behavioural rewrite.
