@@ -15,6 +15,6 @@ export default defineConfig({
     },
   },
   server: {
-    fs: { allow: [repoRoot] }, // serve src/ and website/assets/ outside vr/
+    fs: { allow: [repoRoot] }, // serve src/ and sandbox/ outside vr/
   },
 });

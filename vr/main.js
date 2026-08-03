@@ -1,6 +1,6 @@
 // Deterministic in-browser render harness for the VR golden master.
 //
-// Renders a website example's particle system under controlled conditions:
+// Renders a sandbox example's particle system under controlled conditions:
 // seeded Math.random + fixed frame count. The examples call system.update()
 // with three-nebula's fixed DEFAULT_SYSTEM_DELTA (not wall-clock dt), so they're
 // already time-deterministic — the only nondeterminism is Math.random and how
@@ -11,14 +11,13 @@ import ParticleSystem, { GPURenderer } from 'three-nebula';
 import seedrandom from 'seedrandom';
 import { EXAMPLES } from './examples.js';
 
-// MeshZone isn't in the page set and pulls an unresolved loader dep; exclude it.
-const INIT = import.meta.glob([
-  '../website/components/Examples/*/init.js',
-  '!**/MeshZone/**',
-]);
-const DATA = import.meta.glob('../website/components/Examples/*/data.js');
-// VR-local cases, decoupled from the website (the site is moving to its own
-// repo). A local `cases/<Name>.js` takes precedence over a website example.
+// The VR example scenes live in the sandbox, decoupled from the website (which
+// is moving to its own repo). `init.js` = procedural init(THREE, ctx);
+// `data.js` = a serialized system for fromJSONAsync.
+const INIT = import.meta.glob('../sandbox/examples/*/init.js');
+const DATA = import.meta.glob('../sandbox/examples/*/data.js');
+// VR-local cases. A local `cases/<Name>.js` takes precedence over a sandbox
+// example of the same name.
 const LOCAL = import.meta.glob('./cases/*.js');
 
 const params = new URLSearchParams(location.search);
@@ -33,14 +32,14 @@ const frames = Number(params.get('frames') || spec?.frames || 120);
 async function buildInit(scene, camera, renderer) {
   const loader =
     LOCAL[`./cases/${name}.js`] ||
-    INIT[`../website/components/Examples/${name}/init.js`];
+    INIT[`../sandbox/examples/${name}/init.js`];
   if (!loader) throw new Error(`no init for "${name}"`);
   const init = (await loader()).default;
   return init(THREE, { scene, camera, renderer });
 }
 
 async function buildJson(scene) {
-  const loader = DATA[`../website/components/Examples/${name}/data.js`];
+  const loader = DATA[`../sandbox/examples/${name}/data.js`];
   if (!loader) throw new Error(`no data.js for "${name}"`);
   const particleSystemState = (await loader()).default;
   const system = await ParticleSystem.fromJSONAsync(
@@ -119,9 +118,7 @@ async function run() {
   // LifeCycleApi drives a React component ref in its emit callbacks; stub it so
   // the standalone harness doesn't crash on setState.
   if (name === 'LifeCycleApi') {
-    const refs = await import(
-      '../website/components/Examples/LifeCycleApi/refs.js'
-    );
+    const refs = await import('../sandbox/examples/LifeCycleApi/refs.js');
     refs.feedbackRef.component = { setState: () => {} };
   }
 
