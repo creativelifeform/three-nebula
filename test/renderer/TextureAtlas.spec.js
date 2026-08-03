@@ -36,7 +36,10 @@ const makeRenderer = () => ({
   },
 });
 
-const fakeTexture = (size, uuid) => ({ image: { width: size, height: size }, uuid });
+const fakeTexture = (size, uuid) => ({
+  image: { width: size, height: size },
+  uuid,
+});
 
 describe('renderer -> GPURenderer -> TextureAtlas', () => {
   // Guards the multi-texture aliasing regression: the atlas texture is first
