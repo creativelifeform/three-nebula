@@ -13,6 +13,10 @@ const {
 const nextConfig = {
   // Static export (replaces the removed `next export` / `exportPathMap`).
   output: 'export',
+  // The three-nebula source is now TypeScript and lives outside this app root
+  // (`../src`). externalDir makes Next run its SWC transform on that external
+  // dir so the aliased .ts source transpiles (webpack can't parse raw TS).
+  experimental: { externalDir: true },
   images: { unoptimized: true, disableStaticImages: true },
   sassOptions: { includePaths: [path.join(__dirname, 'style')] },
   env: { API_URL, TEST_EMAIL, UA_ID, SENTRY_DSN },
@@ -23,7 +27,7 @@ const nextConfig = {
     // rather than a published npm build — mirrors the VR harness alias.
     config.resolve.alias['three-nebula'] = path.resolve(
       __dirname,
-      '../src/index.js'
+      '../src/index.ts'
     );
 
     // Import image assets as plain URLs — examples call

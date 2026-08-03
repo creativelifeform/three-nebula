@@ -11,7 +11,7 @@ export default defineConfig({
   root: dir,
   resolve: {
     alias: {
-      'three-nebula': path.resolve(repoRoot, 'src/index.js'),
+      'three-nebula': path.resolve(repoRoot, 'src/index.ts'),
     },
   },
   server: {

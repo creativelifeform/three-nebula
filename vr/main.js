@@ -17,6 +17,9 @@ const INIT = import.meta.glob([
   '!**/MeshZone/**',
 ]);
 const DATA = import.meta.glob('../website/components/Examples/*/data.js');
+// VR-local cases, decoupled from the website (the site is moving to its own
+// repo). A local `cases/<Name>.js` takes precedence over a website example.
+const LOCAL = import.meta.glob('./cases/*.js');
 
 const params = new URLSearchParams(location.search);
 const name = params.get('example') || 'SpriteRendererGravity';
@@ -28,8 +31,10 @@ const spec = EXAMPLES[name];
 const frames = Number(params.get('frames') || spec?.frames || 120);
 
 async function buildInit(scene, camera, renderer) {
-  const loader = INIT[`../website/components/Examples/${name}/init.js`];
-  if (!loader) throw new Error(`no init.js for "${name}"`);
+  const loader =
+    LOCAL[`./cases/${name}.js`] ||
+    INIT[`../website/components/Examples/${name}/init.js`];
+  if (!loader) throw new Error(`no init for "${name}"`);
   const init = (await loader()).default;
   return init(THREE, { scene, camera, renderer });
 }

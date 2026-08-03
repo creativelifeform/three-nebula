@@ -43,6 +43,8 @@ export default class TextureAtlas {
   entries: AtlasEntry[];
   atlasIndex?: DataTexture;
   atlasTexture: CanvasTexture;
+  three: typeof import('three');
+  material: ShaderMaterial;
   needsUpdate?: boolean;
 
   constructor(renderer: AtlasRenderer, shouldDebug: boolean) {
@@ -58,6 +60,8 @@ export default class TextureAtlas {
     this.indexData = data;
     this.canvas = canvas;
     this.entries = [];
+    this.three = THREE;
+    this.material = renderer.material;
 
     if (rendererType === RENDERER_TYPE_GPU_DESKTOP) {
       this.atlasIndex = new THREE.DataTexture(
@@ -221,7 +225,22 @@ export default class TextureAtlas {
       atlasIndex!.needsUpdate = true;
     }
 
-    atlasTexture.needsUpdate = true;
+    // Recreate the atlas texture from the freshly-sized, fully-drawn canvas.
+    // The texture was first uploaded tiny in the constructor; resizing +
+    // redrawing that same canvas in place does not get clean GPU mipmaps
+    // regenerated under modern three / WebGL2, so trilinear minFilter fell back
+    // to an un-mipped base level and aliased the large tiles into blocky,
+    // shimmering squares (the "textures look broken" regression). A brand-new
+    // texture is uploaded once at the final size and mipmaps correctly — giving
+    // smooth, stable minification.
+    atlasTexture.dispose();
+
+    const texture = new this.three.CanvasTexture(canvas);
+
+    texture.flipY = false;
+    this.atlasTexture = texture;
+    this.material.uniforms.uTexture.value = texture;
+    this.material.uniformsNeedUpdate = true;
   }
 
   /**

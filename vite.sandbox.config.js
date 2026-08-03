@@ -12,7 +12,7 @@ export default defineConfig({
   root: resolve(root, 'sandbox'),
   resolve: {
     alias: {
-      'three-nebula': resolve(root, 'src/index.js'),
+      'three-nebula': resolve(root, 'src/index.ts'),
     },
   },
   server: { port: 5000, open: true },

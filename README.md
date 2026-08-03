@@ -285,6 +285,34 @@ const { System, Emitter, Rate, Span } = window.Nebula;
 const system = new System();
 ```
 
+## Additive particles & transparent canvases
+
+Additive blending adds light to whatever is already in the WebGL framebuffer. That works
+perfectly on an **opaque** canvas — but a `THREE.WebGLRenderer` created with `{ alpha: true }`
+(a transparent canvas over a DOM/CSS background) is a common gotcha, because WebGL can't
+additively blend with the page behind the canvas — the canvas is composited **over** the page,
+not added to it. Two rules keep additive particles looking right ([#133](https://github.com/creativelifeform/three-nebula/issues/133)):
+
+1. **Over a transparent canvas, use textures that have an alpha channel.** The alpha is the
+   coverage the browser needs to composite correctly. A fully-opaque, no-alpha,
+   black-background additive texture will render as **opaque squares**, because its corners are
+   opaque. (The classic three.js sprite textures such as `disc.png` all carry alpha.)
+
+2. **For a flat colour or gradient background, let three own it — render it in the scene**
+   (`scene.background`, or a backdrop mesh) on an **opaque** canvas, rather than a CSS
+   background behind a transparent canvas. With the background in the framebuffer, additive
+   blends against real pixels and works with **any** texture, no alpha channel required:
+
+   ```javascript
+   // gradient (or flat colour, image, …) as the scene background — opaque canvas
+   scene.background = myGradientTexture;
+   ```
+
+   See the `Additive Blending — Scene Background` sandbox experiments (CPU + GPU) for a
+   working example, and [`specs/fix-133-additive-transparent-canvas.md`](specs/fix-133-additive-transparent-canvas.md)
+   for the full rationale. (A future opt-in render-target compositing mode for true additive on
+   a *transparent* canvas is specced in `specs/render-target-additive-compositing.md`.)
+
 ## Development
 
 ### Sandbox
