@@ -309,7 +309,7 @@ not added to it. Two rules keep additive particles looking right ([#133](https:/
    ```
 
    See the `Additive Blending — Scene Background` sandbox experiments (CPU + GPU) for a
-   working example, and [`specs/fix-133-additive-transparent-canvas.md`](specs/fix-133-additive-transparent-canvas.md)
+   working example, and [#133](https://github.com/creativelifeform/three-nebula/issues/133)
    for the full rationale. (A future opt-in render-target compositing mode for true additive on
    a *transparent* canvas is specced in `specs/render-target-additive-compositing.md`.)
 
