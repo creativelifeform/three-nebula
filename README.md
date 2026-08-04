@@ -15,6 +15,7 @@
   <a href="https://github.com/creativelifeform/three-nebula/actions?query=workflow%3Aci"><img src="https://github.com/creativelifeform/three-nebula/workflows/ci/badge.svg"></a>
   <a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg"></a>
   <a href="https://threejs.org"><img src="https://img.shields.io/badge/three-v0.185.1-%230C7BB8"></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white"></a>
 </p>
 
 <hr/>
@@ -25,7 +26,7 @@
 
 ## Features
 
-- Built and tested against [`three@0.185.1`](https://github.com/mrdoob/three.js); supports `three` `>=0.122.0 <1.0.0`
+- Built and tested against [`three@0.185.1`](https://github.com/mrdoob/three.js)
 - The ability to instantiate `three-nebula` particle systems from JSON objects
 - The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers
@@ -367,6 +368,23 @@ run(init);
 ```
 
 `run` (in `sandbox/common/`) sets up the scene, camera, renderer and animation loop, calls your `init` with `{ scene, camera, renderer }`, and drives `system.update()` every frame — so an experiment only has to describe the system it wants to see.
+
+### Visual regression testing
+
+The golden-master visual regression (VR) suite lives in `./vr`. It renders the library's example scenes — kept in `sandbox/examples/`, decoupled from the docs website — through a deterministic headless harness and diffs each screenshot against a committed baseline.
+
+```
+npm run vr           # render every example, check determinism (render twice, diff)
+npm run vr:diff      # diff the latest render against the committed baselines
+npm run vr:baseline  # (re)write the baselines in vr/baselines/
+npm run vr:montage   # stitch the captures into one overview grid
+```
+
+Determinism comes from the harness, not luck: it seeds the global RNG, pins `requestAnimationFrame`, and captures a fixed number of frames, so a given example renders the same pixels every run. Baselines are compared with `pixelmatch`, and the image files are tracked with Git LFS.
+
+**Why SwiftShader.** The captures run on headless Chromium with WebGL forced onto SwiftShader (Google's software rasteriser) via `--use-gl=angle --use-angle=swiftshader`. That's deliberate: the golden master is diffed near-pixel-exact and committed to the repo, and real GPUs don't produce identical pixels across machines. This is an OSS library — we can't pin the CI runner — so a hardware-rendered baseline would flake everywhere; SwiftShader renders bit-identical on any machine, which is what makes a committable baseline viable.
+
+**The trade-off.** SwiftShader does not render the `GPURenderer`'s point sprites faithfully (they come out blocky regardless of the real output), so VR is trustworthy for the CPU-material renderers (`SpriteRenderer` / `MeshRenderer`) but **blind to `GPURenderer` visual correctness** — validate GPU changes in a real/headed browser plus unit tests. See [`vr/README.md`](vr/README.md) for the full rationale.
 
 ## License
 

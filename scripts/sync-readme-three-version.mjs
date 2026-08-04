@@ -5,11 +5,10 @@
  *
  * Two spots are kept up to date:
  *   1. the shields.io badge   -> three-vX.Y.Z
- *   2. the feature bullet      -> "Built and tested against `three@X.Y.Z`; supports `three` `<range>`"
+ *   2. the feature bullet      -> "Built and tested against `three@X.Y.Z`"
  *
  * Source of truth:
  *   - devDependencies.three   -> the concrete version we build & test against
- *   - peerDependencies.three  -> the supported range
  *
  * Usage:
  *   node scripts/sync-readme-three-version.mjs            # rewrite README in place
@@ -26,7 +25,6 @@ const readmePath = resolve(root, 'README.md');
 
 const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
 const rawDev = pkg.devDependencies?.three;
-const peerRange = pkg.peerDependencies?.three;
 
 if (!rawDev) {
   console.error(
@@ -37,7 +35,6 @@ if (!rawDev) {
 
 // Strip semver range operators (^ ~ >= <= > < =) to get the concrete version.
 const tested = rawDev.replace(/^[\^~>=<\s]+/, '').trim();
-const supports = (peerRange || `>=${tested}`).trim();
 
 const before = readFileSync(readmePath, 'utf8');
 
@@ -46,24 +43,22 @@ let after = before
   .replace(/(img\.shields\.io\/badge\/three-v)[^-\s)"]+/, `$1${tested}`)
   // 2) feature bullet (keeps whatever URL is already linked)
   .replace(
-    /(- Built and tested against \[`three@)[^`]+(`\]\([^)]+\); supports `three` `)[^`]+(`)/,
-    `$1${tested}$2${supports}$3`
+    /(- Built and tested against \[`three@)[^`]+(`\]\([^)]+\))/,
+    `$1${tested}$2`
   );
 
 if (after === before) {
-  console.log(
-    `README three version already in sync (three@${tested}, supports ${supports}).`
-  );
+  console.log(`README three version already in sync (three@${tested}).`);
   process.exit(0);
 }
 
 if (process.argv.includes('--check')) {
   console.error(
-    `README three version is out of date (expected three@${tested}, supports ${supports}).\n` +
+    `README three version is out of date (expected three@${tested}).\n` +
       'Run: npm run readme:sync-three'
   );
   process.exit(1);
 }
 
 writeFileSync(readmePath, after);
-console.log(`Synced README to three@${tested} (supports ${supports}).`);
+console.log(`Synced README to three@${tested}.`);
