@@ -3,7 +3,8 @@
 ## Purpose
 
 Specs covering modernisation work for the three-nebula library — 01–05 are
-runtime features/architecture; 06 is a cross-cutting TypeScript migration.
+runtime features/architecture; 06 is a cross-cutting TypeScript migration; 07
+adds WebGPU support.
 
 **The numbers are identifiers, not execution order.** See the dependency graph below.
 
@@ -17,6 +18,7 @@ runtime features/architecture; 06 is a cross-cutting TypeScript migration.
 | 04 | Schema Versioning | Architecture, enabling |
 | 05 | Content-Addressed Assets | Architecture + schema break |
 | 06 | TypeScript Migration | Cross-cutting refactor, enabling |
+| 07 | WebGPU Support (renderers under three's `WebGPURenderer`; a TSL/node `WebGPURenderer` alongside `GPURenderer`) | New capability + packaging, opt-in/additive |
 
 ## Dependency graph
 
