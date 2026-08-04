@@ -15,6 +15,7 @@
   <a href="https://github.com/creativelifeform/three-nebula/actions?query=workflow%3Aci"><img src="https://github.com/creativelifeform/three-nebula/workflows/ci/badge.svg"></a>
   <a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg"></a>
   <a href="https://threejs.org"><img src="https://img.shields.io/badge/three-v0.185.1-%230C7BB8"></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white"></a>
 </p>
 
 <hr/>
@@ -25,7 +26,7 @@
 
 ## Features
 
-- Built and tested against [`three@0.185.1`](https://github.com/mrdoob/three.js); supports `three` `>=0.122.0 <1.0.0`
+- Built and tested against [`three@0.185.1`](https://github.com/mrdoob/three.js)
 - The ability to instantiate `three-nebula` particle systems from JSON objects
 - The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers
