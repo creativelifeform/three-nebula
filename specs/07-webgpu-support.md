@@ -130,6 +130,25 @@ renderers lean on:
 **Packaging: zero new dependencies.** These renderers import no node/TSL code, so Level 0
 ships in the core bundle at the current three floor; only the *host's* three must be r171+.
 
+### Findings (audited 2026-08-05, `three@0.185.1`, real GPU via headed Chromium)
+
+**Level 0 is free — confirmed.** The existing example scenes were run *verbatim*, with only
+the host renderer swapped `WebGLRenderer` → three's `WebGPURenderer` (real `WebGPUBackend`,
+not the WebGL2 fallback). Sandbox experiment: `sandbox/experiments/webgpu-renderers`
+(`?mode=sprite|mesh`).
+
+- **`SpriteRenderer`** (`SpriteMaterial`, additive): renders correctly — textured soft
+  sprites, blending and colours all right. Auto-converted, no changes.
+- **`MeshRenderer`** (`MeshLambertMaterial`, lit): renders correctly — lit spheres/cubes,
+  correct shading and colour. Auto-converted, lights work, no changes.
+- Both ran hundreds of frames with live particles and **zero errors**; `import * as THREE
+  from 'three/webgpu'` supplies the full namespace the renderers need.
+- `WebGPURenderer.init()` is async but the library never touches the renderer object, so the
+  host owning the async init is sufficient — no library change needed there either.
+
+**Conclusion:** the CPU-material renderers need no work for WebGPU. The entire remaining
+effort is **Level 1** (the `GPURenderer` TSL rebuild).
+
 ---
 
 ## Level 1 — a TSL / node `GPURenderer`
