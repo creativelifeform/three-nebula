@@ -35,6 +35,47 @@ while already in there for 01 costs a fraction.
    simulation output?
 6. Is there existing seed handling anywhere?
 
+### Findings (audited 2026-08-05, against `develop`)
+
+1. **`Math.random` — 15 hits in `src/`.** In `behaviour/Force`, `initializer/Position`,
+   `initializer/Velocity`, `math/MathUtils`, `math/Span`, and the zones (`LineZone`,
+   `MeshZone`, `ScreenZone`, `SphereZone`). These are the only source of nondeterminism in
+   the sim.
+2. **No wall-clock reads in the sim.** Zero `Date.now` / `performance.now` / `new Date` in
+   `src/`. So `Math.random` is the *sole* nondeterminism source — Stage 1 (seeded PRNG) is
+   the entire determinism job on the RNG side.
+3. **Raw single-step delta; no accumulator.** `System.update(delta = DEFAULT_SYSTEM_DELTA =
+   0.0167)` takes one step of `delta` (→ `Emitter.update` → `Particle.update`); there is no
+   fixed-timestep accumulator. Every consumer (sandbox, VR, website, the README/docs
+   examples) calls `update()` **with no argument**, so the sim advances a fixed 1/60 *per
+   call* — speed is tied to rAF frequency (120 Hz runs 2× fast) and degrades on dropped
+   frames. The `delta` param already exists but is effectively unused, so Stage 3's
+   accumulator can be added **backward-compatibly**: no-arg `update()` stays "one fixed
+   step"; `update(realDt)` opts into sub-stepping.
+4. **Particles have IDs — frame-stable but NOT reproducible.** `Particle.id` is set once at
+   construction to `` `particle-${uid()}` `` where `uid` is **uuid v1** (time + node +
+   random). So IDs are stable across frames ✓ but differ every run ✗. Stage 2 / the 01
+   child-seed entanglement needs a **deterministic** ID (seeded counter or PRNG-derived),
+   not uuid v1 — this is the concrete piece 01 depends on.
+5. **No order-dependent iteration in the sim path.** Emitters and particles are stored in
+   **arrays** and iterated by index (`while (i--)`); no `Set` / `Map` / `Object.keys` in the
+   core / emitter / behaviour / initializer sim path. The only `forEach` are array
+   iterations in `fromJSON` / `fromJSONAsync` during load (order-stable). No hazard found.
+6. **No seed handling in the library.** `seedrandom` appears **only** in `vr/main.js`, which
+   achieves determinism by globally monkeypatching `Math.random` (`seedrandom(seed, {global:
+   true})`) — a harness hack, not a library capability.
+
+**Two consequences for sequencing:**
+
+- **Passing real `dt` is a safe, additive change for consumers.** Nobody passes the arg
+  today and the signature already accepts it, so the accumulator (Stage 3) can land without
+  breaking existing no-arg callers.
+- **The change with teeth is the PRNG swap (Stage 1).** Replacing the 15 `Math.random` calls
+  with a seeded generator changes the default random stream, so the VR harness must switch
+  from monkeypatching global `Math.random` to seeding the library PRNG, and the golden-master
+  baselines **will shift and need re-capturing** (same drill as the #293 atlas fix). Sequence
+  the RNG change with a deliberate VR re-baseline.
+
 ---
 
 ## Stage 1 — Seeded PRNG
