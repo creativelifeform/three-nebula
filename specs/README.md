@@ -17,7 +17,7 @@ migration, is complete and its spec has been removed.)
 | 03 | Sound Renderer | New capability, additive |
 | 04 | Schema Versioning | Architecture, enabling |
 | 05 | Content-Addressed Assets | Architecture + schema break |
-| 07 | WebGPU Support (renderers under three's `WebGPURenderer`; a TSL/node `WebGPURenderer` alongside `GPURenderer`) | New capability + packaging, opt-in/additive |
+| 07 | WebGPU Support (renderers under three's `WebGPURenderer`; a TSL/node `GPURenderer` from the `three-nebula/webgpu` subpath) | New capability + packaging, opt-in/additive |
 
 ## Dependency graph
 

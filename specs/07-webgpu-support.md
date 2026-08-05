@@ -22,10 +22,10 @@ There are three levels, of increasing cost and value:
 - **Level 0 — compatibility.** Make the CPU-material renderers (`SpriteRenderer`,
   `MeshRenderer`, `CustomRenderer`) render correctly under `WebGPURenderer`. Small; likely
   mostly works already.
-- **Level 1 — a TSL/node `WebGPURenderer`.** Reimplement the instanced batched renderer's
+- **Level 1 — a TSL/node `GPURenderer`.** Reimplement the instanced batched renderer's
   shaders in **TSL** so it runs under three's `WebGPURenderer` (and, for free, on that
-  renderer's WebGL2 backend), shipped as three-nebula's `WebGPURenderer` (see _Naming_). This
-  is the real work.
+  renderer's WebGL2 backend), shipped as `GPURenderer` from the `three-nebula/webgpu` subpath
+  (see _Naming_). This is the real work.
 - **Level 2 — GPU-compute simulation.** Move particle *simulation* onto the GPU via compute
   shaders. **Out of scope** for this spec (see below); flagged as a future initiative.
 
@@ -75,31 +75,40 @@ packaging (below) so the core is unaffected.
   **simply does not exist** with instanced quads.
 
 The concept only truly dissolves at **Level 2**: if simulation moves to GPU compute, the
-simulator and renderer merge into one GPU pipeline and "a rendering-only `GPURenderer` /
-`WebGPURenderer`" stops being a separate thing. That is the future initiative — not this spec.
+simulator and renderer merge into one GPU pipeline and "a rendering-only `GPURenderer`"
+stops being a separate thing. That is the future initiative — not this spec.
 
-## Naming — `WebGPURenderer`
+## Naming — `GPURenderer`, from the `three-nebula/webgpu` subpath
 
-The renderer names here are **consumer-facing signposts** — chosen for immediate clarity
-about *what to reach for on your backend*, not internal accuracy. `GPURenderer` is,
-strictly, a misnomer (it does no GPU *simulation* — it batches every particle into one
-instanced draw), but to a consumer it reads clearly as "the fast, GPU-accelerated renderer
-for lots of particles," and it **stays as-is**.
-
-By the same principle, the WebGPU-path renderer is **`WebGPURenderer`**: a consumer on
-WebGPU instantly knows this is the one for them, mirroring the three renderer they're already
-using. No rename, no alias — `GPURenderer` is untouched.
+The WebGPU batched renderer ships as **`GPURenderer`**, imported from the
+**`three-nebula/webgpu`** subpath — the **subpath is the backend selector; the class name is
+`GPURenderer` on both backends**:
 
 ```
-import { GPURenderer }    from 'three-nebula';         // WebGL host
-import { WebGPURenderer } from 'three-nebula/webgpu';  // WebGPU host
+import { GPURenderer } from 'three-nebula';          // WebGL host  (three's WebGLRenderer)
+import { GPURenderer } from 'three-nebula/webgpu';   // WebGPU host (three's WebGPURenderer)
 ```
 
-**Known trade-off (accepted):** the name shadows three's own `WebGPURenderer` (the *device*
-renderer). A consumer importing both by name must alias one —
-`import { WebGPURenderer as NebulaWebGPURenderer } from 'three-nebula/webgpu'` — and we
-document that. Namespace imports (`import * as THREE from 'three/webgpu'`, then
-`THREE.WebGPURenderer`) don't collide. The clarity win is judged worth the shadowing.
+Two decisions drove this, and we explicitly rejected naming it `WebGPURenderer`:
+
+**1. No collision with three.** A `three-nebula` `WebGPURenderer` would shadow three's own
+`WebGPURenderer` (the *device* renderer). Every WebGPU app instantiates three's renderer and
+the three docs encourage a named import, so `import { WebGPURenderer } from 'three/webgpu'`
+next to a `three-nebula` `WebGPURenderer` is an illegal duplicate binding that forces an
+alias — hitting exactly this renderer's audience. `three` ships no `GPURenderer`, so reusing
+that name collides with nothing.
+
+**2. It's the name that survives.** The node/TSL renderer is the **eventual single renderer**
+(see _Risks_): TSL compiles to both WGSL and GLSL and three's `WebGPURenderer` has a WebGL2
+backend, so the node renderer runs everywhere the GLSL one does **plus** WebGPU — a strict
+superset. As three sunsets `WebGLRenderer`, the GLSL `GPURenderer` loses its reason to exist
+and the node renderer **graduates**: the main-entry `GPURenderer` swaps GLSL→node, the
+`/webgpu` subpath becomes a thin alias (or deprecates), and code importing `GPURenderer` from
+`three-nebula` keeps working **with no rename**. Baking "WebGPU" into the class name would
+instead freeze a backend distinction into the API long after it stopped mattering.
+
+The mental model: **the `/webgpu` subpath is transitional; the name `GPURenderer` is
+permanent.**
 
 ## Level 0 — CPU-material renderers under WebGPURenderer
 
@@ -123,15 +132,16 @@ ships in the core bundle at the current three floor; only the *host's* three mus
 
 ---
 
-## Level 1 — a TSL / node `WebGPURenderer`
+## Level 1 — a TSL / node `GPURenderer`
 
 Reimplement the batched renderer's shader work — atlas tile-rect lookup, point-sprite
 rotation, per-particle colour/alpha, additive accumulation — in **TSL**, as a node material.
-Because TSL compiles to both WGSL and GLSL, three-nebula's node `WebGPURenderer` runs under
-three's `WebGPURenderer` on **both** its WebGPU and WebGL2 backends. It does **not** run
-under the classic `WebGLRenderer` (which needs the GLSL `ShaderMaterial`), so **both
-implementations coexist**: `GPURenderer` (GLSL) for `WebGLRenderer` hosts, `WebGPURenderer`
-(node/TSL) for `WebGPURenderer` hosts.
+Because TSL compiles to both WGSL and GLSL, the node `GPURenderer` runs under three's
+`WebGPURenderer` on **both** its WebGPU and WebGL2 backends. It does **not** run under the
+classic `WebGLRenderer` (which needs the GLSL `ShaderMaterial`), so **both implementations
+coexist during the transition**: the GLSL `GPURenderer` (`three-nebula`) for `WebGLRenderer`
+hosts, the node `GPURenderer` (`three-nebula/webgpu`) for `WebGPURenderer` hosts — until the
+node one graduates (see _Naming_).
 
 Porting notes:
 
@@ -150,24 +160,25 @@ Porting notes:
 
 ### Packaging
 
-`WebGPURenderer` imports `three/webgpu` + `three/tsl`; these must **not** leak into the WebGL
-build. Expose it behind the `three-nebula/webgpu` subpath:
+The node `GPURenderer` imports `three/webgpu` + `three/tsl`; these must **not** leak into the
+WebGL build. Expose it behind the `three-nebula/webgpu` subpath:
 
 ```
-import { WebGPURenderer } from 'three-nebula/webgpu';  // node/TSL, three-WebGPURenderer hosts
-import { GPURenderer }    from 'three-nebula';          // GLSL, three-WebGLRenderer hosts
+import { GPURenderer } from 'three-nebula/webgpu';  // node/TSL, three-WebGPURenderer hosts
+import { GPURenderer } from 'three-nebula';          // GLSL, three-WebGLRenderer hosts
 ```
 
 - Core bundle stays dependency-clean and at the current three floor.
 - The `webgpu` entry declares `three/webgpu` (r171+) as an **optional peer**; its `.d.ts`
   depends on the node-material types from there.
 
-### API — two named entry points, on purpose
+### API — same name, subpath-selected
 
-The two backends get **two distinct, self-documenting names** (`GPURenderer`,
-`WebGPURenderer`) so a consumer picks the one matching their three renderer — clarity is the
-point. We deliberately do **not** hide this behind a single auto-detecting class: that would
-obscure which backend the consumer is on, the opposite of the naming goal.
+Both backends export **`GPURenderer`**; the **import path** picks the implementation
+(`three-nebula` = GLSL, `three-nebula/webgpu` = node). Switching backends is a one-line
+import-path change, not a rename, and it sets up the graduation cleanly (see _Naming_). A
+dual-backend app that imports both aliases one — rare, and less surprising than aliasing
+across the `three` boundary.
 
 ---
 
@@ -214,11 +225,12 @@ master. Strategy:
 ## Scope checklist
 
 - [ ] **Level 0** audit matrix + fixes (Sprite / Mesh / Custom under `WebGPURenderer`).
-- [ ] **Level 1** node/TSL `WebGPURenderer`: instanced-quad vs `PointsNodeMaterial` decision;
-      atlas as node textures (preserving the #293 mipmap fix); additive blend; rotation;
-      per-particle attributes; likely collapse Desktop/Mobile.
-- [ ] **Naming**: ship as `WebGPURenderer` (mirrors the host renderer); `GPURenderer`
-      untouched; document the alias-on-collision guidance.
+- [ ] **Level 1** node/TSL `GPURenderer` (from `three-nebula/webgpu`): instanced-quad vs
+      `PointsNodeMaterial` decision; atlas as node textures (preserving the #293 mipmap fix);
+      additive blend; rotation; per-particle attributes; likely collapse Desktop/Mobile.
+- [ ] **Naming**: ship as `GPURenderer` from the `three-nebula/webgpu` subpath (subpath =
+      backend selector); no collision with three; plan the graduation path (node → main entry
+      when `WebGLRenderer` sunsets).
 - [ ] **Packaging**: `three-nebula/webgpu` subpath; keep node deps out of the core bundle;
       optional peer + types.
 - [ ] **Testing**: node-graph unit tests + real-GPU headed validation; keep WebGL VR as the
@@ -230,12 +242,13 @@ master. Strategy:
 - Does WebGPURenderer's auto-conversion faithfully reproduce the Sprite/Mesh look
   (blending, colour space, sprite rotation)? — Level 0 audit answers this empirically.
 - `PointsNodeMaterial` vs instanced quads for the GPU renderer — fidelity, perf, complexity.
-- **Two batched-renderer implementations to maintain** — `GPURenderer` (GLSL) and
-  `WebGPURenderer` (node). Long term, three's `WebGPURenderer` WebGL2 backend could let the
-  single node renderer serve everyone and retire the GLSL one — but that forces all users onto
-  `three/webgpu`. Decision deferred.
-- **Name shadowing** three's `WebGPURenderer` — accepted for clarity; document the
-  alias-on-collision guidance in the README/examples.
+- **Two `GPURenderer` implementations during the transition** — GLSL (`three-nebula`) and
+  node (`three-nebula/webgpu`). This is the *eventual single renderer* story: three's
+  `WebGPURenderer` WebGL2 backend + TSL's dual compilation mean the node renderer is a strict
+  superset, so as three sunsets `WebGLRenderer` the GLSL one retires and the node one
+  **graduates** to the main entry (name unchanged; `/webgpu` becomes an alias). Timeline is
+  three's, not ours — years, not months — so we maintain both through the transition.
+  **Open:** when/whether to flip the main-entry `GPURenderer` to node, and how to signal it.
 - three floor: the `webgpu` entry needs r171+; the core stays `>=0.122.0`.
 
 ## References
