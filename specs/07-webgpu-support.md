@@ -231,13 +231,34 @@ master. Strategy:
 - **Keep** the WebGL VR golden master as the deterministic guard (it already covers the
   CPU-material renderers and the GLSL `GPURenderer`, and simulation stays on CPU so it's
   unaffected).
-- **Unit-test the node graph** — assert the node material/uniforms are constructed and wired
-  (environment-independent, like `test/renderer/TextureAtlas.spec.js`).
+- **Snapshot the node graph + generated shaders** — assert the node material/uniforms are
+  constructed and wired, and snapshot the TSL-generated **WGSL + GLSL** source. Both are
+  environment-independent (no GPU), so this is the **committed deterministic guard** — it
+  catches logic/codegen regressions the way `test/renderer/TextureAtlas.spec.js` guards the
+  atlas.
 - **Real-GPU headed validation** for visual correctness — eyeballed / loose tolerance
   (headed Playwright on a real GPU, as used to validate #293), **not** a committed pixel
   baseline.
-- Optionally a **headed + xvfb GPU smoke job** (does it render non-blank?) rather than
-  pixel-exact.
+
+### Findings (audited 2026-08-05) — the deterministic-headless workarounds don't work
+
+Two plausible ways to get a *deterministic, committable* WebGPU golden master were spiked
+empirically. **Both failed — do not re-attempt:**
+
+- **WebGPURenderer's WebGL2 backend on SwiftShader** (`{ forceWebGL: true }` +
+  `--use-angle=swiftshader`): bit-identical across runs (0px) but **not faithful** — the
+  auto-converted `SpriteMaterial` rendered solid **black**. SwiftShader cannot run three's
+  node-material pipeline faithfully (the same class of problem as its blocky `gl.POINTS`).
+  Deterministic-but-wrong is useless for a baseline.
+- **Software WebGPU adapter, headless** (`--enable-unsafe-webgpu`
+  `--use-webgpu-adapter=swiftshader`): the adapter is obtainable, but the render came back
+  **blank** in headless Playwright — no usable capture.
+
+So the guard is **snapshots (deterministic, committed) + real-GPU headed validation
+(fidelity, manual)** — there is no CI-usable deterministic *pixel* path for WebGPU.
+**Corollary:** the SwiftShader golden master is bound to the classic WebGLRenderer + GLSL
+material path and cannot cover node/WebGPU rendering — relevant when the node `GPURenderer`
+eventually graduates (see _Naming_).
 
 ---
 
