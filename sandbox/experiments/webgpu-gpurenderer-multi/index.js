@@ -208,7 +208,7 @@ async function main() {
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(70, w / h, 1, 10000);
-  camera.position.z = 300;
+  camera.position.z = 50;
 
   const system = await ParticleSystem.fromJSONAsync(
     SYSTEM.particleSystemState ?? SYSTEM,
