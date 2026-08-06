@@ -12,6 +12,11 @@
       "types": "./dist/types/index.d.ts",
       "import": "./dist/three-nebula.mjs",
       "require": "./dist/three-nebula.cjs"
+    },
+    "./webgpu": {
+      "types": "./dist/types/webgpu/index.d.ts",
+      "import": "./dist/three-nebula-webgpu.mjs",
+      "require": "./dist/three-nebula-webgpu.cjs"
     }
   },
   "directories": {
@@ -19,8 +24,9 @@
     "website": "website"
   },
   "scripts": {
-    "build": "vite build && npm run build:types",
+    "build": "vite build && vite build --config vite.webgpu.config.js && npm run build:types && npm run build:types:webgpu",
     "build:types": "tsc -p tsconfig.types.json",
+    "build:types:webgpu": "tsc -p tsconfig.webgpu.json",
     "dev": "vite build --watch",
     "docs": "serve docs",
     "docs:build": "./scripts/docs-build",

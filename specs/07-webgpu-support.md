@@ -162,6 +162,11 @@ coexist during the transition**: the GLSL `GPURenderer` (`three-nebula`) for `We
 hosts, the node `GPURenderer` (`three-nebula/webgpu`) for `WebGPURenderer` hosts — until the
 node one graduates (see _Naming_).
 
+**Status: implemented** — shipped as `GPURenderer` from `three-nebula/webgpu` (`src/webgpu`).
+Instanced-quad `SpriteNodeMaterial` + TSL, texture atlas, world-scale sizing; single- and
+multi-texture parity confirmed against `SpriteRenderer` on a real GPU. Guarded by a node-graph
+snapshot test (`test/webgpu/GPURenderer.spec.js`).
+
 Porting notes:
 
 - **Point sprites → instanced quads.** WebGPU has no direct `gl.POINTS` point-sprite
@@ -173,6 +178,12 @@ Porting notes:
   `texture()` / storage samples. **Preserve the #293 mipmap fix** (recreate the atlas
   texture at final size so mipmaps generate) — it is equally necessary here.
 - **Attributes.** Interleaved per-particle buffers → instanced buffer attribute nodes.
+- **Sizing — world-scale (decided).** The GLSL renderer sizes points via
+  `gl_PointSize = size * 600 / distance` — a screen-pixel point-size model with a magic
+  constant. The node renderer instead uses **world-unit scale** (`scale * radius` in world
+  units, matching `SpriteRenderer` and letting perspective handle distance falloff), the more
+  principled model. It is therefore not pixel-identical in *size* to the v1 GPURenderer, but
+  it matches `SpriteRenderer`, which is the intended look. (Confirmed by side-by-side parity.)
 - **Desktop vs Mobile.** Both variants exist today (the Mobile one drops the `DataTexture`
   index for a `canvas.width + 1` normalisation). The node rewrite likely **collapses the
   Desktop/Mobile split** — the backend abstraction removes the reason it existed.
