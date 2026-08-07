@@ -1,5 +1,12 @@
 {
-  "extends": "./tsconfig.types.json",
-  "include": ["src/webgpu"],
+  // Drift/validity check for the hand-authored webgpu declaration. Type-checks
+  // the published `src/webgpu/public.d.ts` against a usage sample. It never
+  // touches the TSL-heavy `src/webgpu/GPURenderer/*`, so it stays fast (unlike
+  // declaration emit for the real class, which hangs on TSL's type complexity).
+  // `exclude: []` overrides the base config's `exclude: ["src/webgpu"]` so the
+  // declaration under src/webgpu is visible.
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "noEmit": true },
+  "include": ["src/webgpu/public.d.ts", "test/webgpu/public.type-check.ts"],
   "exclude": []
 }

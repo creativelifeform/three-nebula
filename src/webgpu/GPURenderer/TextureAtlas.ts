@@ -6,8 +6,13 @@ import { ATLAS_INDEX_SIZE } from './constants';
 
 type ThreeWebGPU = typeof import('three/webgpu');
 
+// potpack types x/y as optional (it fills them in when packing), but our
+// entries always carry them — seeded to 0 in `register`, then set by potpack —
+// so we narrow them to required and index the packed rects without guards.
 interface AtlasEntry extends PotpackBox {
   texture: Texture;
+  x: number;
+  y: number;
 }
 
 /**
