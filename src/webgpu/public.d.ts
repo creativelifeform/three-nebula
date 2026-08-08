@@ -10,8 +10,15 @@
 //
 // The relative imports below resolve identically from `src/webgpu/` and from
 // the copied location `dist/types/webgpu/` (same depth to their siblings), so
-// no rewriting is needed on copy. `tsconfig.webgpu.json` type-checks this file
-// against a usage sample to catch drift from the real class.
+// no rewriting is needed on copy.
+//
+// Guarding: `tsconfig.webgpu.json` checks this file is valid and compiles a
+// real usage sample (construct -> System.addRenderer -> dispose). It does NOT
+// diff against the real class — resolving that class's type forces tsc to
+// evaluate the TSL graph, which hangs (the very reason we hand-author here).
+// Fidelity of the public members is exercised at runtime by
+// test/webgpu/GPURenderer.spec.js. When you change a public member on the real
+// GPURenderer, update this file too.
 
 import type { InstancedBufferGeometry, Object3D } from 'three';
 import type { Mesh, SpriteNodeMaterial } from 'three/webgpu';

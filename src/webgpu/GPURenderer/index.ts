@@ -38,10 +38,17 @@ export default class GPURenderer extends BaseRenderer {
   container: Object3D;
   maxParticles: number;
 
+  // Public escape hatches for advanced hosts. NOTE: the published types are
+  // re-declared by hand in ../public.d.ts (tsc can't emit them — the TSL node
+  // types are too complex to serialize). Keep the two in sync when the public
+  // surface below changes.
   mesh: Mesh;
   material: SpriteNodeMaterial;
   geometry: InstancedBufferGeometry;
-  atlas: TextureAtlas;
+
+  // Internal texture-packing plumbing — deliberately not part of the published
+  // surface (exposing it would drag TextureAtlas into the public API).
+  private atlas: TextureAtlas;
 
   private aOffset: InstancedBufferAttribute;
   private aColor: InstancedBufferAttribute;

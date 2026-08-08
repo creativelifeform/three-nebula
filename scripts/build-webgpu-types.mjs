@@ -6,7 +6,9 @@
 // hand-maintain the small public surface in `src/webgpu/public.d.ts` and copy
 // it verbatim to where package.json's `./webgpu` export points its `types`.
 // Its relative imports are depth-consistent between the two locations, so no
-// rewriting is required. `tsconfig.webgpu.json` guards it against drift.
+// rewriting is required. `tsconfig.webgpu.json` checks the declaration is valid
+// and models real usage (it can't diff against the TSL-heavy real class, which
+// hangs tsc); the runtime spec exercises the public members.
 
 import { copyFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
