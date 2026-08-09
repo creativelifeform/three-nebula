@@ -15,5 +15,9 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  // The WebGPU entry pulls in three/webgpu + three/tsl, whose enormous type
+  // declarations slow the whole-project typecheck. It is checked/built
+  // separately via tsconfig.webgpu.json so the core typecheck stays fast.
+  "exclude": ["src/webgpu"]
 }

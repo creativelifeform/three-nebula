@@ -15,6 +15,7 @@
   <a href="https://github.com/creativelifeform/three-nebula/actions?query=workflow%3Aci"><img src="https://github.com/creativelifeform/three-nebula/workflows/ci/badge.svg"></a>
   <a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg"></a>
   <a href="https://threejs.org"><img src="https://img.shields.io/badge/three-v0.185.1-%230C7BB8"></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white"></a>
 </p>
 
 <hr/>
@@ -25,10 +26,11 @@
 
 ## Features
 
-- Built and tested against [`three@0.185.1`](https://github.com/mrdoob/three.js); supports `three` `>=0.122.0 <1.0.0`
+- Built and tested against [`three@0.185.1`](https://github.com/mrdoob/three.js)
 - The ability to instantiate `three-nebula` particle systems from JSON objects
 - The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers
+- Optional WebGPU rendering via a batched `GPURenderer` at [`three-nebula/webgpu`](#webgpu)
 
 ## Installation
 
@@ -276,6 +278,25 @@ System.fromJSONAsync(json, THREE).then(system => {
 });
 ```
 
+### WebGPU
+
+`three-nebula` ships an optional batched `GPURenderer` for WebGPU at the `three-nebula/webgpu` entry point. It draws every particle as a camera-facing instanced quad in a single draw call and packs multiple textures into an atlas, and is a drop-in alternative to `SpriteRenderer` when your app renders with three's `WebGPURenderer`:
+
+```javascript
+import * as THREE from 'three/webgpu';
+import System, { Emitter /* … initializers, behaviours … */ } from 'three-nebula';
+import { GPURenderer } from 'three-nebula/webgpu';
+
+const renderer = new THREE.WebGPURenderer();
+await renderer.init();
+
+const system = new System();
+system.addRenderer(new GPURenderer(scene, THREE));
+// build emitters as usual, then drive system.update() from your render loop
+```
+
+> **Requires a modern `three`.** The WebGPU entry point imports `three/webgpu` and `three/tsl`, which only exist in recent `three` releases (roughly r167+). This requirement applies **only** if you import `three-nebula/webgpu` — the core `three-nebula` package's supported `three` range is unchanged.
+
 ### Script Tag
 
 If you are adding `three-nebula` to your project in the script tag, the only difference to the above example is how you access the classes you need. You can do that like so
@@ -309,7 +330,7 @@ not added to it. Two rules keep additive particles looking right ([#133](https:/
    ```
 
    See the `Additive Blending — Scene Background` sandbox experiments (CPU + GPU) for a
-   working example, and [`specs/fix-133-additive-transparent-canvas.md`](specs/fix-133-additive-transparent-canvas.md)
+   working example, and [#133](https://github.com/creativelifeform/three-nebula/issues/133)
    for the full rationale. (A future opt-in render-target compositing mode for true additive on
    a *transparent* canvas is specced in `specs/render-target-additive-compositing.md`.)
 
@@ -367,6 +388,23 @@ run(init);
 ```
 
 `run` (in `sandbox/common/`) sets up the scene, camera, renderer and animation loop, calls your `init` with `{ scene, camera, renderer }`, and drives `system.update()` every frame — so an experiment only has to describe the system it wants to see.
+
+### Visual regression testing
+
+The golden-master visual regression (VR) suite lives in `./vr`. It renders the library's example scenes — kept in `sandbox/examples/`, decoupled from the docs website — through a deterministic headless harness and diffs each screenshot against a committed baseline.
+
+```
+npm run vr           # render every example, check determinism (render twice, diff)
+npm run vr:diff      # diff the latest render against the committed baselines
+npm run vr:baseline  # (re)write the baselines in vr/baselines/
+npm run vr:montage   # stitch the captures into one overview grid
+```
+
+Determinism comes from the harness, not luck: it seeds the global RNG, pins `requestAnimationFrame`, and captures a fixed number of frames, so a given example renders the same pixels every run. Baselines are compared with `pixelmatch`, and the image files are tracked with Git LFS.
+
+**Why SwiftShader.** The captures run on headless Chromium with WebGL forced onto SwiftShader (Google's software rasteriser) via `--use-gl=angle --use-angle=swiftshader`. That's deliberate: the golden master is diffed near-pixel-exact and committed to the repo, and real GPUs don't produce identical pixels across machines. This is an OSS library — we can't pin the CI runner — so a hardware-rendered baseline would flake everywhere; SwiftShader renders bit-identical on any machine, which is what makes a committable baseline viable.
+
+**The trade-off.** SwiftShader does not render the `GPURenderer`'s point sprites faithfully (they come out blocky regardless of the real output), so VR is trustworthy for the CPU-material renderers (`SpriteRenderer` / `MeshRenderer`) but **blind to `GPURenderer` visual correctness** — validate GPU changes in a real/headed browser plus unit tests. See [`vr/README.md`](vr/README.md) for the full rationale.
 
 ## License
 

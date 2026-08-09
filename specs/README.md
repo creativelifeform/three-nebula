@@ -3,7 +3,8 @@
 ## Purpose
 
 Specs covering modernisation work for the three-nebula library — 01–05 are
-runtime features/architecture; 06 is a cross-cutting TypeScript migration.
+runtime features/architecture; 07 adds WebGPU support. (06, the TypeScript
+migration, is complete and its spec has been removed.)
 
 **The numbers are identifiers, not execution order.** See the dependency graph below.
 
@@ -16,7 +17,7 @@ runtime features/architecture; 06 is a cross-cutting TypeScript migration.
 | 03 | Sound Renderer | New capability, additive |
 | 04 | Schema Versioning | Architecture, enabling |
 | 05 | Content-Addressed Assets | Architecture + schema break |
-| 06 | TypeScript Migration | Cross-cutting refactor, enabling |
+| 07 | WebGPU Support (renderers under three's `WebGPURenderer`; a TSL/node `GPURenderer` from the `three-nebula/webgpu` subpath) | New capability + packaging, opt-in/additive |
 
 ## Dependency graph
 
@@ -43,12 +44,6 @@ Suggested landing order: **04 → 02 → 01 → 05 → 03**
 
 03 (sound) is deliberately last: it is the most additive and least entangled,
 and it is the easiest to defer if time runs short.
-
-**06 (TypeScript) sits outside this graph** — it's a cross-cutting refactor, not a
-runtime feature. It blocks nothing hard, but landing it (or at least its schema
-types) before 04 and 01 means those schema-breaking changes are written against a
-compiler-checked type layer instead of stringly-typed JSON. Cheaper first; not
-mandatory first. See 06's *Sequencing* section.
 
 ## On prior art
 

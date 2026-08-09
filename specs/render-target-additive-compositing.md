@@ -2,7 +2,7 @@
 
 **Status:** Specced, **not prioritised.** Opt-in future feature. The default and recommended
 path for additive particles remains "render your background in the scene on an opaque canvas"
-— see [`fix-133-additive-transparent-canvas.md`](./fix-133-additive-transparent-canvas.md).
+— see [#133](https://github.com/creativelifeform/three-nebula/issues/133).
 
 **Depends on:** nothing hard. Cross-cuts both renderers.
 
@@ -128,7 +128,7 @@ opt-in.
 
 ## References
 
-- [#133 resolution](./fix-133-additive-transparent-canvas.md)
+- [#133 resolution](https://github.com/creativelifeform/three-nebula/issues/133)
 - Standard glow/bloom compositing (render emissive to a target, then composite).
 - Sandbox: `additive-blending-scene-background-{cpu,gpu}` (the recommended, non-render-target
   approach).

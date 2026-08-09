@@ -1,0 +1,13 @@
+{
+  // Validity check for the hand-authored webgpu declaration: confirms
+  // `src/webgpu/public.d.ts` is valid and that a real usage sample compiles.
+  // It deliberately never touches the TSL-heavy `src/webgpu/GPURenderer/*`, so
+  // it stays fast — but that also means it can't diff the declaration against
+  // the real class (resolving that type hangs tsc on TSL complexity); the
+  // runtime spec covers public-member fidelity. `exclude: []` overrides the
+  // base config's `exclude: ["src/webgpu"]` so the declaration is visible.
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "noEmit": true },
+  "include": ["src/webgpu/public.d.ts", "test/webgpu/public.type-check.ts"],
+  "exclude": []
+}
