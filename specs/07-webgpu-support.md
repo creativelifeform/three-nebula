@@ -130,6 +130,25 @@ renderers lean on:
 **Packaging: zero new dependencies.** These renderers import no node/TSL code, so Level 0
 ships in the core bundle at the current three floor; only the *host's* three must be r171+.
 
+### Findings (audited 2026-08-05, `three@0.185.1`, real GPU via headed Chromium)
+
+**Level 0 is free — confirmed.** The existing example scenes were run *verbatim*, with only
+the host renderer swapped `WebGLRenderer` → three's `WebGPURenderer` (real `WebGPUBackend`,
+not the WebGL2 fallback). Sandbox experiment: `sandbox/experiments/webgpu-renderers`
+(`?mode=sprite|mesh`).
+
+- **`SpriteRenderer`** (`SpriteMaterial`, additive): renders correctly — textured soft
+  sprites, blending and colours all right. Auto-converted, no changes.
+- **`MeshRenderer`** (`MeshLambertMaterial`, lit): renders correctly — lit spheres/cubes,
+  correct shading and colour. Auto-converted, lights work, no changes.
+- Both ran hundreds of frames with live particles and **zero errors**; `import * as THREE
+  from 'three/webgpu'` supplies the full namespace the renderers need.
+- `WebGPURenderer.init()` is async but the library never touches the renderer object, so the
+  host owning the async init is sufficient — no library change needed there either.
+
+**Conclusion:** the CPU-material renderers need no work for WebGPU. The entire remaining
+effort is **Level 1** (the `GPURenderer` TSL rebuild).
+
 ---
 
 ## Level 1 — a TSL / node `GPURenderer`
@@ -143,6 +162,11 @@ coexist during the transition**: the GLSL `GPURenderer` (`three-nebula`) for `We
 hosts, the node `GPURenderer` (`three-nebula/webgpu`) for `WebGPURenderer` hosts — until the
 node one graduates (see _Naming_).
 
+**Status: implemented** — shipped as `GPURenderer` from `three-nebula/webgpu` (`src/webgpu`).
+Instanced-quad `SpriteNodeMaterial` + TSL, texture atlas, world-scale sizing; single- and
+multi-texture parity confirmed against `SpriteRenderer` on a real GPU. Guarded by a node-graph
+snapshot test (`test/webgpu/GPURenderer.spec.js`).
+
 Porting notes:
 
 - **Point sprites → instanced quads.** WebGPU has no direct `gl.POINTS` point-sprite
@@ -154,6 +178,12 @@ Porting notes:
   `texture()` / storage samples. **Preserve the #293 mipmap fix** (recreate the atlas
   texture at final size so mipmaps generate) — it is equally necessary here.
 - **Attributes.** Interleaved per-particle buffers → instanced buffer attribute nodes.
+- **Sizing — world-scale (decided).** The GLSL renderer sizes points via
+  `gl_PointSize = size * 600 / distance` — a screen-pixel point-size model with a magic
+  constant. The node renderer instead uses **world-unit scale** (`scale * radius` in world
+  units, matching `SpriteRenderer` and letting perspective handle distance falloff), the more
+  principled model. It is therefore not pixel-identical in *size* to the v1 GPURenderer, but
+  it matches `SpriteRenderer`, which is the intended look. (Confirmed by side-by-side parity.)
 - **Desktop vs Mobile.** Both variants exist today (the Mobile one drops the `DataTexture`
   index for a `canvas.width + 1` normalisation). The node rewrite likely **collapses the
   Desktop/Mobile split** — the backend abstraction removes the reason it existed.
@@ -212,13 +242,34 @@ master. Strategy:
 - **Keep** the WebGL VR golden master as the deterministic guard (it already covers the
   CPU-material renderers and the GLSL `GPURenderer`, and simulation stays on CPU so it's
   unaffected).
-- **Unit-test the node graph** — assert the node material/uniforms are constructed and wired
-  (environment-independent, like `test/renderer/TextureAtlas.spec.js`).
+- **Snapshot the node graph + generated shaders** — assert the node material/uniforms are
+  constructed and wired, and snapshot the TSL-generated **WGSL + GLSL** source. Both are
+  environment-independent (no GPU), so this is the **committed deterministic guard** — it
+  catches logic/codegen regressions the way `test/renderer/TextureAtlas.spec.js` guards the
+  atlas.
 - **Real-GPU headed validation** for visual correctness — eyeballed / loose tolerance
   (headed Playwright on a real GPU, as used to validate #293), **not** a committed pixel
   baseline.
-- Optionally a **headed + xvfb GPU smoke job** (does it render non-blank?) rather than
-  pixel-exact.
+
+### Findings (audited 2026-08-05) — the deterministic-headless workarounds don't work
+
+Two plausible ways to get a *deterministic, committable* WebGPU golden master were spiked
+empirically. **Both failed — do not re-attempt:**
+
+- **WebGPURenderer's WebGL2 backend on SwiftShader** (`{ forceWebGL: true }` +
+  `--use-angle=swiftshader`): bit-identical across runs (0px) but **not faithful** — the
+  auto-converted `SpriteMaterial` rendered solid **black**. SwiftShader cannot run three's
+  node-material pipeline faithfully (the same class of problem as its blocky `gl.POINTS`).
+  Deterministic-but-wrong is useless for a baseline.
+- **Software WebGPU adapter, headless** (`--enable-unsafe-webgpu`
+  `--use-webgpu-adapter=swiftshader`): the adapter is obtainable, but the render came back
+  **blank** in headless Playwright — no usable capture.
+
+So the guard is **snapshots (deterministic, committed) + real-GPU headed validation
+(fidelity, manual)** — there is no CI-usable deterministic *pixel* path for WebGPU.
+**Corollary:** the SwiftShader golden master is bound to the classic WebGLRenderer + GLSL
+material path and cannot cover node/WebGPU rendering — relevant when the node `GPURenderer`
+eventually graduates (see _Naming_).
 
 ---
 

@@ -11,9 +11,14 @@ const root = dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   root: resolve(root, 'sandbox'),
   resolve: {
-    alias: {
-      'three-nebula': resolve(root, 'src/index.ts'),
-    },
+    alias: [
+      // More specific first: the /webgpu subpath maps to its own entry.
+      {
+        find: /^three-nebula\/webgpu$/,
+        replacement: resolve(root, 'src/webgpu/index.ts'),
+      },
+      { find: /^three-nebula$/, replacement: resolve(root, 'src/index.ts') },
+    ],
   },
   server: { port: 5000, open: true },
 });
