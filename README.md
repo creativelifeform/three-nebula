@@ -30,6 +30,7 @@
 - The ability to instantiate `three-nebula` particle systems from JSON objects
 - The ability to create particle systems from sprites as well as 3D meshes
 - Many kinds of particle behaviours and initializers
+- Optional WebGPU rendering via a batched `GPURenderer` at [`three-nebula/webgpu`](#webgpu)
 
 ## Installation
 
@@ -276,6 +277,25 @@ System.fromJSONAsync(json, THREE).then(system => {
   console.log(system);
 });
 ```
+
+### WebGPU
+
+`three-nebula` ships an optional batched `GPURenderer` for WebGPU at the `three-nebula/webgpu` entry point. It draws every particle as a camera-facing instanced quad in a single draw call and packs multiple textures into an atlas, and is a drop-in alternative to `SpriteRenderer` when your app renders with three's `WebGPURenderer`:
+
+```javascript
+import * as THREE from 'three/webgpu';
+import System, { Emitter /* … initializers, behaviours … */ } from 'three-nebula';
+import { GPURenderer } from 'three-nebula/webgpu';
+
+const renderer = new THREE.WebGPURenderer();
+await renderer.init();
+
+const system = new System();
+system.addRenderer(new GPURenderer(scene, THREE));
+// build emitters as usual, then drive system.update() from your render loop
+```
+
+> **Requires a modern `three`.** The WebGPU entry point imports `three/webgpu` and `three/tsl`, which only exist in recent `three` releases (roughly r167+). This requirement applies **only** if you import `three-nebula/webgpu` — the core `three-nebula` package's supported `three` range is unchanged.
 
 ### Script Tag
 
