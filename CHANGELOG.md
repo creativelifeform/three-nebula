@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v12.1.0` - 2026-08-09
+
+Adds optional WebGPU support via a new `three-nebula/webgpu` entry point. This is a backward-compatible, additive release — the core package and every existing renderer are unchanged, and the supported `three` range for the core is the same.
+
+### Added
+
+- **A WebGPU `GPURenderer`, published at the `three-nebula/webgpu` subpath.** A node/TSL batched particle renderer that draws every particle as a camera-facing instanced quad (`SpriteNodeMaterial`) in a single draw call, packing multiple textures into an atlas. Import it with `import { GPURenderer } from 'three-nebula/webgpu'` and use it under three's `WebGPURenderer`. Validated for visual parity with `SpriteRenderer`.
+  - **The WebGPU entry requires a modern `three`** — one that ships `three/webgpu` and `three/tsl` (roughly `three` r167+). This applies only if you import `three-nebula/webgpu`; the core `three-nebula` package's supported `three` range is unchanged.
+  - Its type declarations are hand-authored and shipped at the subpath (three's TSL node types are too complex for `tsc`'s declaration emit to serialize).
+- The existing CPU-material renderers (`SpriteRenderer`, `MeshRenderer`) also work unchanged under three's `WebGPURenderer`.
+
 ## `v12.0.1` - 2026-08-03
 
 ### Fixed
