@@ -1,0 +1,12 @@
+{
+  "name": "three-nebula-docs",
+  "private": true,
+  "description": "API reference for three-nebula, generated from the TypeScript source with TypeDoc. Isolated from the root so it can pin a classic `typescript` (the root uses the native tsgo build, which ships no compiler API for TypeDoc to consume).",
+  "scripts": {
+    "build": "typedoc"
+  },
+  "devDependencies": {
+    "typedoc": "^0.28.20",
+    "typescript": "^5.9.3"
+  }
+}
