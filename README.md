@@ -14,7 +14,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://github.com/creativelifeform/three-nebula/actions?query=workflow%3Aci"><img src="https://github.com/creativelifeform/three-nebula/workflows/ci/badge.svg"></a>
   <a href="https://coveralls.io/github/creativelifeform/three-nebula?branch=master&kill_cache=1"><img src="https://coveralls.io/repos/github/creativelifeform/three-nebula/badge.svg"></a>
-  <a href="https://app.netlify.com/projects/three-nebula-docs/deploys"><img src="https://api.netlify.com/api/v1/badges/1d2dda8a-cc12-487c-950d-ff69d95c7355/deploy-status"></a>
+  <a href="https://three-nebula-docs.netlify.app"><img src="https://api.netlify.com/api/v1/badges/1d2dda8a-cc12-487c-950d-ff69d95c7355/deploy-status"></a>
   <a href="https://threejs.org"><img src="https://img.shields.io/badge/three-v0.185.1-%230C7BB8"></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white"></a>
 </p>
@@ -23,7 +23,7 @@
 
 [CHANGELOG](https://github.com/creativelifeform/three-nebula/blob/master/CHANGELOG.md)
 
-**Three Nebula** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [website](https://three-nebula.org/), [examples](https://three-nebula.org/examples), the [quickstart sandbox](https://codesandbox.io/s/three-nebula-quickstart-kz6uv) and [API reference documentation](https://three-nebula-docs.netlify.com/) for more.
+**Three Nebula** is a WebGL based 3D particle engine that has been designed to work alongside [`three.js`](https://github.com/mrdoob/three.js). Check out the [website](https://three-nebula.org/), [examples](https://three-nebula.org/examples), the [quickstart sandbox](https://codesandbox.io/s/three-nebula-quickstart-kz6uv) and [API reference documentation](https://three-nebula-docs.netlify.app/) for more.
 
 ## Features
 
