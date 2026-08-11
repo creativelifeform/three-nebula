@@ -10,7 +10,13 @@
 # v12.0.0 TypeScript migration.
 
 [build]
-  command = "npm run build"
+  # TypeDoc type-checks ../src, which imports three / lodash / uuid / potpack and
+  # uses @types/node — so the root dependencies must be installed for those to
+  # resolve. base=docs only auto-installs docs/'s own deps (typedoc + typescript),
+  # so we install the root deps here as well. `--ignore-scripts` skips the root
+  # `prepare`→husky hook and the native tsc binary download, neither of which the
+  # docs build needs.
+  command = "(cd .. && npm ci --ignore-scripts) && npm run build"
   publish = "dist"
 
 [build.environment]
