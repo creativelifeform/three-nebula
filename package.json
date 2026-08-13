@@ -20,8 +20,7 @@
     }
   },
   "directories": {
-    "docs": "docs",
-    "website": "website"
+    "docs": "docs"
   },
   "scripts": {
     "build": "vite build && vite build --config vite.webgpu.config.js && npm run build:types && npm run build:types:webgpu",
@@ -41,7 +40,6 @@
     "vr:diff": "node vr/diff.mjs",
     "vr:montage": "node vr/montage.mjs",
     "ci:src": "npm run readme:check-three && npm run typecheck && npm run typecheck:webgpu && npm run lint && npm run coverage",
-    "ci:website": "npm run ci --prefix website",
     "readme:sync-three": "node scripts/sync-readme-three-version.mjs",
     "readme:check-three": "node scripts/sync-readme-three-version.mjs --check",
     "prepare": "husky",
