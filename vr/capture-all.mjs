@@ -1,4 +1,4 @@
-// Render every (non-broken) website example through the deterministic harness,
+// Render every (non-broken) sandbox example through the deterministic harness,
 // check determinism (render twice, diff), and write the golden-master baselines.
 //
 //   node vr/capture-all.mjs [--baselines]   # write to vr/baselines/ (else vr/examples/)

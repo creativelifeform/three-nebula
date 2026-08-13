@@ -1,4 +1,4 @@
-// Render a website example twice via the deterministic harness and pixel-diff
+// Render a sandbox example twice via the deterministic harness and pixel-diff
 // the two captures. This proves determinism (a good build → diff ≈ 0) before we
 // scale to all examples + a committed golden master.
 //
