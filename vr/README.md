@@ -1,6 +1,6 @@
 # Visual regression (VR) golden master
 
-A deterministic screenshot harness for the website example scenes. It renders
+A deterministic screenshot harness for the sandbox example scenes. It renders
 each example under controlled conditions (seeded RNG, fixed frame count), then
 diffs the result pixel-for-pixel against a committed baseline in `baselines/`.
 
