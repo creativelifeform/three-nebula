@@ -1,10 +1,15 @@
 # Spec 05 — Content-Addressed Assets
 
-Replace inlined base64 textures with content-addressed references, plus a
-pluggable resolver and a bundle container.
+Add an optional content-addressed texture reference (`textureRef`) alongside the
+existing base64 `texture`, with a pluggable resolver. **The library only reads
+both forms.** Producing, storing, deduplicating and packaging refs is the
+consumer's job, not the runtime's.
 
-**Depends on:** 04 (schema versioning) — this breaks the schema.
-**Blocks:** 03 (audio blob storage)
+**Additive — not a schema break.** The existing `texture` (base64) field is left
+exactly as it is; `textureRef` is a new optional field. Old systems load
+unchanged, so this is **not gated on 04 (schema versioning)**. 04 stays useful
+hygiene (the `version` stamp), not a prerequisite.
+**Relates to:** 03 — audio blobs reuse the same ref shape + resolver.
 
 ---
 
@@ -14,11 +19,12 @@ Textures are currently base64-encoded directly into the system JSON. **This was
 the right call.** Nebula was an NW.js desktop app with no server: one portable
 file, no asset resolution, no CORS, atomically versioned, works offline.
 
-The constraint has changed, not the reasoning. Any consumer holding more than a
-handful of systems needs dedup, CDN caching, and stable asset identity — none of
-which are possible when assets are anonymous strings inside documents.
+The constraint has changed, not the reasoning. A consumer holding many systems —
+a gallery, a shared library — needs dedup, CDN caching and stable asset identity,
+none of which are possible when assets are anonymous strings inside documents.
 
-**Do not frame this as fixing a mistake. It's an inherited constraint being lifted.**
+**Do not frame this as fixing a mistake. It's an inherited constraint being lifted** —
+and base64 stays a first-class, permanently-supported form (see below).
 
 ---
 
@@ -37,252 +43,153 @@ this?" is a single lookup; with inlined base64 the question cannot be asked.
 
 ## Precedent
 
-glTF ships exactly these three forms of the same problem:
-
-- `.gltf` + external files → references
-- `.gltf` with `data:` URIs → **the current design**
-- `.glb` → binary container, JSON chunk + binary chunk, no base64
-
-The industry converged on GLB, for precisely the 33% tax plus parse cost. Steal
-the resolution, not just the problem statement — and lean on it in docs, because
-three.js users already know this shape.
+glTF ships the same asset two ways — embedded `data:` URIs, or external file
+references — and treats **both as first-class, permanent** forms. That is exactly
+the split here: `texture` (base64, portable) and `textureRef` (hosted, efficient).
+Lean on it in docs; three.js users already know this shape.
 
 ---
 
 ## Stage 0 — Audit
 
-1. How are textures currently represented in the JSON? Exact field paths.
-2. Is base64 the only form, or are URLs also accepted?
-3. Where does texture loading happen — is there a single choke point or is it
-   scattered across renderers/initializers?
+1. How are textures currently represented in the JSON? Exact field paths (which
+   initializer/renderer, what the value is — bare base64, `data:` URI, or URL).
+2. Is base64 the only accepted form, or are URLs also accepted today?
+3. Where does texture loading happen — a single choke point, or scattered across
+   renderers/initializers? (The resolver branch wants one choke point.)
 4. Is `Body` / sprite texture handling shared with anything else?
 5. Is there any caching of decoded textures today?
 
+If the audit contradicts anything below, trust the repo and correct this spec.
+
 ---
 
-## Stage 1 — Reference format
+## Stage 1 — The two representations
+
+A texture asset carries **exactly one** of two first-class, permanent encodings:
+
+- **`texture`** — base64 (inline). **Unchanged from today.** Self-contained;
+  loads with no resolver and no network. This is the **portable / distribution**
+  form — what an exported, hand-it-to-anyone system uses.
+- **`textureRef: { hash, mime }`** — a content-addressed reference (new). Hosted;
+  resolved to bytes via the resolver. This is the **efficient storage** form —
+  what a gallery persists (tiny JSON, dedup, CDN caching).
 
 ```jsonc
-{
-  "renderer": {
-    "type": "sprite",
-    "texture": { "$ref": "sha256:a3f2c1..." }
-  }
-}
+// inline — unchanged; existing systems and exports
+{ "type": "Texture", "properties": { "texture": "<base64>" } }
+
+// referenced — new; gallery storage
+{ "type": "Texture", "properties": { "textureRef": { "hash": "sha256:a3f2c1…", "mime": "image/png" } } }
 ```
 
-- **sha256 over the raw bytes**, hex-encoded, prefixed with the algorithm.
-  The prefix is cheap and buys algorithm agility.
-- The hash **is** the identity. Immutable by construction.
-- Same format for audio blobs (03) and any future asset type. One store.
+- **`hash`** — sha256 over the raw bytes, hex, algorithm-prefixed (the prefix is
+  cheap and buys algorithm agility). The hash **is** the identity; immutable by
+  construction.
+- **Exactly one of `texture` / `textureRef`.** If both are somehow present,
+  `textureRef` wins (or throw in a strict mode). In practice only one is set.
+- **One ref shape for every asset type.** Audio (03) and any future asset use the
+  same `{ hash, mime }`, so the resolver is asset-type-agnostic. Adopt a `*Ref`
+  naming convention (`textureRef`, later `audioRef`) deliberately now.
+
+**Why two fields rather than a tagged value inside `texture`:** it leaves the
+existing field byte-for-byte unchanged. No loader has to sniff "is this string
+base64 or a URI?", and every existing document stays valid. Purely additive.
+
+**No metadata beyond `hash` + `mime` for now.** Width/height and friends are easy
+to add to the ref later if a use case appears (e.g. reserving gallery layout
+before the image loads); don't add them speculatively.
 
 ---
 
-## Stage 2 — Resolver interface
+## Stage 2 — Resolver
 
-The runtime must not know or care where bytes come from.
+The runtime's **only** concern for refs. It never knows or cares where bytes live.
 
 ```ts
-interface AssetResolver {
-  resolve(ref: string): Promise<ArrayBuffer>;
-  has(ref: string): boolean;
-}
+type AssetResolver = (ref: { hash: string; mime: string }) => Promise<string>; // a URL
 ```
 
-Implementations:
+- **Returns a URL.** Simplest, and lets the browser cache immutably by hash
+  (`cache-control: immutable`, forever, no invalidation). The library then builds
+  the `THREE.Texture` from it. (A Blob/`ArrayBuffer` variant is possible if a
+  consumer wants to verify bytes against the hash; URL is the default.)
+- **Only invoked on the `textureRef` path.** A fully-inline system needs no
+  resolver — passing one is optional:
 
-- `MemoryResolver` — a `Map`, for tests and for the embed case
-- `BundleResolver` — reads from an unpacked container (Stage 4)
-- `HttpResolver` — `GET {baseUrl}/{hash}`, immutable cache semantics
-- `IndexedDBResolver` — browser-local persistence
-- `ChainResolver` — tries several in order
+```js
+Nebula.fromJSONAsync(exportedJson, THREE);                    // all inline → works, no resolver
+Nebula.fromJSONAsync(galleryJson, THREE, { resolveAsset });   // has refs → resolver required
+```
 
-**Decoded-texture cache keyed by hash.** This is where dedup actually pays: a
-thousand systems referencing the same gradient decode it once.
+- **Loader branch (one choke point):**
+
+```js
+if (props.textureRef) texture = await load(await resolveAsset(props.textureRef));
+else if (props.texture) texture = decodeBase64(props.texture);
+```
+
+- **Decoded-texture cache keyed by hash.** This is where dedup actually pays: a
+  thousand systems referencing the same gradient decode it once.
+- Resolver implementations live **in the consumer** — an HTTP/CDN resolver for the
+  gallery, a `Map` for tests. The library ships none.
 
 ---
 
-## Stage 3 — Migration from base64
+## Stage 3 — Producing refs is the consumer's job (not the library)
 
-04 requires migrations to be pure functions. Blob extraction needs a storage
-target. The resolution:
+The library **reads** `texture` and `textureRef`. It never hashes for storage,
+uploads, bakes, or bundles. There are two conversions, both owned by the consumer
+(e.g. the gallery), and they are symmetric — each clears the other field, so the
+"exactly one" invariant holds on both sides:
 
-- The **pure** migration rewrites `"data:image/png;base64,..."` →
-  `{ "$ref": "sha256:..." }` and emits the decoded bytes into a side-channel on
-  the returned object (`__pendingAssets: Map<ref, ArrayBuffer>`).
-- `System.fromJSON` (which is already async) drains `__pendingAssets` into
-  whatever resolver it was given, then discards the side-channel.
-- Migrations stay pure. The async lives at the call site where it belongs.
-
-**Back-compat is permanent.** Keep accepting `data:` URIs and plain URLs forever;
-normalise to refs on read. Legacy systems must keep loading with no ceremony.
-
----
-
-## Stage 4 — Bundle container
-
-A system plus every asset it references, as one portable file. This is what makes
-a system genuinely self-contained: a JSON whose textures live on somebody else's
-server is not portable, it's a dangling dependency.
-
-*Prior art:* Effekseer's `.efkpkg` does exactly this — an effect bundled with every
-resource it references, travelling as one artifact. glTF's `.glb` is the same idea
-in a container three.js users already know.
-
-Two viable shapes:
-
-- **Zip** — trivially inspectable, universal tooling, streams poorly.
-- **GLB-style binary container** — JSON chunk + blob chunk, fast to parse,
-  requires custom tooling.
-
-**Recommend zip for v1.** Deflate on already-compressed PNGs is near-free; store
-them uncompressed. Universal tooling matters more than parse speed at this stage,
-and the format is versioned separately from the schema (04) so it can change.
-
-```
-system.nebula (zip)
-├── manifest.json     { bundleVersion, systemRef, assets: [{ ref, mime, bytes }] }
-├── system.json       (version-stamped, refs only)
-└── assets/
-    ├── a3f2c1...     (raw bytes, filename = hash)
-    └── 9b7e04...
-```
-
-**Verify hashes on read.** A ref that doesn't match its bytes is a corrupt or
-tampered bundle and should fail loudly.
-
----
-
-## Stage 5 — Export modes
-
-There are **three** export modes and they are not interchangeable. The bundle
-(Stage 4) is the default. Base64 is a narrow third path, not the export format.
-
-| Mode | Output | Use | Assets |
+| Conversion | When | Needs | Lives in |
 |---|---|---|---|
-| `bundle` **(default)** | `.nebula` zip | Distributing a system to anyone else | Packed, hash-verified |
-| `refs` | `system.json` + loose asset files | A build pipeline where the bundler/CDN handles assets | External |
-| `embed` | one `system.json` | Copy-paste into a CodePen/gist, single-file demo, no build step | `data:` URIs |
+| **intern** — base64 → ref | saving into the gallery | hash + **upload** (dedup by hash) | gallery backend |
+| **bake** — ref → base64 | **exporting** for distribution | **fetch** the bytes, then base64-encode | gallery |
 
-**Why `bundle` beats `embed` almost everywhere:** a zip is *also* one
-self-contained portable file. It just doesn't pay the ~33% base64 tax or the
-`JSON.parse` cost on a multi-MB string. Anywhere the goal is "one file I can hand
-someone," `bundle` is strictly better.
+- **intern:** decode `texture` → hash → upload if the hash is new → store
+  `textureRef`, drop `texture`.
+- **bake:** fetch each `textureRef` → base64-encode → store `texture`, drop
+  `textureRef`. Produces a self-contained, portable JSON that loads anywhere with
+  no resolver.
 
-**`embed`'s only real advantage is pasteability.** A zip cannot be pasted into a
-text editor. That is a genuine use case — plausibly how a lot of three.js
-developers first try the library — so the mode stays and should be a first-class,
-documented affordance. It is not the default and it is not the storage format.
-
-**Guard rail:** `embed` should warn (not fail) above a size threshold — suggest
-2MB of decoded assets. The moment flipbooks are involved, `embed` stops being
-viable and users should be told why rather than discovering it as a mystery stall.
-
-Keep base64 as an **explicit opt-in export flag**, not the canonical form.
-
-```js
-system.toBundle()                      // .nebula zip (default for sharing)
-system.toJSON()                        // refs (default for build pipelines)
-system.toJSON({ embedAssets: true })   // data: URIs, one self-contained file
-```
+**Hard architectural constraint.** three-nebula core must never contain upload
+logic, a storage backend, or a bundle/zip decoder. The runtime only ever accepts
+an `AssetResolver`. This keeps the core small and storage-agnostic, and lets all
+of the above evolve in the consumer without touching the runtime.
 
 ---
 
-## Stage 6 — Runtime & distribution
-
-**The bundle is an interchange format, not a runtime format.** Nothing should
-ship a zip to production. This is the single most important thing in this spec to
-get right, and it is currently only implied by the resolver interface.
-
-| Phase | Format | Who handles it |
-|---|---|---|
-| **Interchange** | `.nebula` zip | Publishing, downloading, handing a file to a colleague |
-| **Build** | unpacked → `system.json` + loose assets | The bundler |
-| **Runtime** | refs resolved to URLs | The app |
-
-The zip exists to move a system from A to B intact. It is unpacked **once, at
-build time**, and never appears in production — the same way nobody ships a zip
-of `node_modules`.
-
-### Why runtime-unzip is actively wrong on the web
-
-- **HTTP caching dies.** A zip is one opaque blob. Change one texture and the
-  whole thing redownloads. Loose hashed assets cache individually, forever.
-- **No parallel fetch.** The browser will pull six textures concurrently. A zip
-  is one serial request, then a decompress.
-- **Main-thread cost** for the unzip, on every load.
-- **No transcoding.** Consumers may want webp/avif, or KTX2 for GPU textures.
-  You cannot run an image pipeline over bytes sealed in a zip.
-- **No code splitting.** The system can't be lazily loaded per-route if it's
-  welded into a blob.
-
-### Consumer paths
-
-**With a build pipeline (Vite/Next/webpack — the common case).**
-
-Their bundler *already does content-addressing*: it emits `fire-tex.a3f2c1.png`
-with immutable cache headers. Our hash refs map onto that almost exactly.
-
-Ship a **bundler plugin** (`@nebula/vite-plugin`, others later):
-
-```js
-import fireSystem from './effects/fire.nebula'
-// → unpacked at build, assets emitted through Vite's pipeline,
-//   refs resolved to hashed URLs, tree-shaken, lazy-loadable
-```
-
-Architecturally this is nearly free: the plugin constructs an `AssetResolver`
-(Stage 2) backed by the bundler's emitted URLs. Small package, high DX leverage.
-
-**Without a build step** — Webflow, a CMS, a marketing site, a `<script>` tag.
-
-This is where `embed` (Stage 5) earns its keep. One JSON, base64 assets, no asset
-pipeline to configure, no CORS. For an agency dropping one hero effect onto a
-landing page with no tooling, this is the correct answer.
-
-**CDN-hosted refs** — viable for a live web page (`HttpResolver`, immutable cache
-keys). **Never for a shipped game**: offline breaks, latency, CORS, a GDPR
-surface from player IPs, and a hard dependency on our uptime. Document it as
-demo/web-embed convenience only, with no SLA.
-
-### Hard architectural constraint
-
-**three-nebula core must never contain a zip decoder.**
-
-Bundle handling lives in a separate package — `@nebula/bundle` — consumed by the
-editing tools, packaging tools, and the bundler plugin. The runtime only ever
-accepts an `AssetResolver`.
-
-This keeps the core small, keeps fflate (or equivalent) out of every consumer's
-bundle, and means the zip-vs-GLB decision in Stage 4 can be revisited later
-without touching the runtime at all.
-
-It also validates the Stage 2 resolver design: `HttpResolver` covers
-agency-with-CDN, `MemoryResolver` covers embed, the bundler plugin covers the
-build case — and none of them require the runtime to know that a bundle format
-exists.
-
----
-
-## Downstream (not this spec — just don't foreclose it)
+## Downstream — enabled later, not built here
 
 Content-addressing makes several things tractable that are impossible while assets
-are anonymous strings inside documents:
+are anonymous strings. This spec only needs to avoid ruling them out:
 
 - **Shared asset libraries** — curated packs; "what uses this texture?" as a
   query; one asset becoming a dependency of many systems.
-- **Programmatic system generation** — with a tagged, hashed asset store, asset
-  selection becomes *retrieval* rather than *generation*.
-- **Asset-level metadata** — licensing, attribution and provenance attach to the
-  hash once, rather than to every copy.
-
-Nothing in this spec builds any of that. It only needs to avoid ruling it out.
+- **Asset-level metadata** — licensing, attribution, provenance attach to the hash
+  once, not to every copy.
+- **A bundle/interchange format** (e.g. a zip of `system.json` + hashed asset
+  files, à la glTF's `.glb` or Effekseer's `.efkpkg`) for handing a system plus
+  its assets around as one artifact. If it ever exists it lives in a **separate
+  consumer package**, unpacked to refs + a resolver before it reaches the runtime —
+  never a zip decoder in core.
+- **A bundler plugin** (Vite/webpack) that maps refs onto the bundler's own
+  content-addressed output. High-DX, but consumer tooling, not the library.
 
 ---
 
 ## Explicitly out of scope
 
-- Any specific storage backend — that's infrastructure, not runtime
-- Texture tagging / search
-- Licensing metadata schema — flag that it will attach to the hash, then leave it
-- Compression / transcoding (KTX2, basis) — real future win, separate spec
+- **Baking, interning, uploading, and any storage backend** — the consumer's job
+  (the gallery owns both conversions and the CDN).
+- **Bundle / container formats** (`.nebula` zip, GLB-style) — future *consumer*
+  tooling, not the runtime and not this spec.
+- **Ref metadata beyond `hash` + `mime`** (width/height, etc.) — add on a real use
+  case.
+- **Texture tagging / search, licensing schema, transcoding** (KTX2/basis) —
+  separate concerns.
+- **A migration from base64 → refs** — unnecessary: the change is additive, so
+  legacy base64 systems keep loading untouched with no migration and no forced
+  version bump.
