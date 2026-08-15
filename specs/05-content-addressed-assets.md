@@ -170,13 +170,12 @@ are anonymous strings. This spec only needs to avoid ruling them out:
   query; one asset becoming a dependency of many systems.
 - **Asset-level metadata** — licensing, attribution, provenance attach to the hash
   once, not to every copy.
-- **A bundle/interchange format** (e.g. a zip of `system.json` + hashed asset
-  files, à la glTF's `.glb` or Effekseer's `.efkpkg`) for handing a system plus
-  its assets around as one artifact. If it ever exists it lives in a **separate
-  consumer package**, unpacked to refs + a resolver before it reaches the runtime —
-  never a zip decoder in core.
-- **A bundler plugin** (Vite/webpack) that maps refs onto the bundler's own
-  content-addressed output. High-DX, but consumer tooling, not the library.
+- **A portable bundle/interchange format** (`.nebula`) for handing a system plus
+  its assets around as one artifact, and the bundler-plugin story that goes with
+  it. Split into its own spec — **see [09 — Bundle Packaging](./09-bundle-packaging.md)**.
+  It builds *on* this spec's refs + resolver, lives in a separate consumer package,
+  and is unpacked to refs before it ever reaches the runtime — never a zip decoder
+  in core.
 
 ---
 
@@ -184,8 +183,9 @@ are anonymous strings. This spec only needs to avoid ruling them out:
 
 - **Baking, interning, uploading, and any storage backend** — the consumer's job
   (the gallery owns both conversions and the CDN).
-- **Bundle / container formats** (`.nebula` zip, GLB-style) — future *consumer*
-  tooling, not the runtime and not this spec.
+- **Bundle / container formats** (`.nebula` zip, GLB-style) — their own spec
+  ([09 — Bundle Packaging](./09-bundle-packaging.md)); consumer tooling, never in
+  the runtime.
 - **Ref metadata beyond `hash` + `mime`** (width/height, etc.) — add on a real use
   case.
 - **Texture tagging / search, licensing schema, transcoding** (KTX2/basis) —

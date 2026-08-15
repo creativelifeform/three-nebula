@@ -18,6 +18,7 @@ migration, is complete and its spec has been removed.)
 | 04 | Schema Versioning | Architecture, hygiene (not gating) |
 | 05 | Content-Addressed Assets | New capability, additive |
 | 07 | WebGPU Support (renderers under three's `WebGPURenderer`; a TSL/node `GPURenderer` from the `three-nebula/webgpu` subpath) | New capability + packaging, opt-in/additive |
+| 09 | Bundle Packaging (`.nebula` portable bundle; separate `@nebula/bundle` package) | Consumer tooling, deferred |
 
 ## Dependency graph
 
@@ -29,6 +30,8 @@ migration, is complete and its spec has been removed.)
 05 (assets) ───────┘
 
 04 (versioning) — standalone hygiene; gates nothing
+
+05 (assets) ──> 09 (bundle packaging) — deferred consumer tooling
 ```
 
 **Hard constraints:**
