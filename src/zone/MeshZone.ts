@@ -1,5 +1,6 @@
 import Zone from './Zone';
 import type Vector3D from '../math/Vector3D';
+import type { RNG } from '../math/rng';
 import { ZONE_TYPE_MESH as type } from './types';
 
 // three removed the legacy `Geometry` (with `.vertices`) in r125+. These minimal
@@ -63,9 +64,10 @@ export default class MeshZone extends Zone {
     return true;
   }
 
-  getPosition(): Vector3D {
+  getPosition(rng?: RNG): Vector3D {
+    const rand = rng ?? Math.random;
     const vertices = (this.geometry as LegacyGeometry).vertices;
-    const rVector = vertices[(vertices.length * Math.random()) >> 0];
+    const rVector = vertices[(vertices.length * rand()) >> 0];
 
     this.vector.x = rVector.x * this.scale;
     this.vector.y = rVector.y * this.scale;

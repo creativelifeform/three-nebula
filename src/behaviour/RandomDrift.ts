@@ -100,10 +100,26 @@ export default class RandomDrift extends Behaviour {
 
     this.time += time;
 
-    if (this.time >= this.delayPan.getValue()) {
-      const ax = MathUtils.randomAToB(-this.randomForce.x, this.randomForce.x);
-      const ay = MathUtils.randomAToB(-this.randomForce.y, this.randomForce.y);
-      const az = MathUtils.randomAToB(-this.randomForce.z, this.randomForce.z);
+    if (this.time >= this.delayPan.getValue(undefined, particle.rng)) {
+      const { rng } = particle;
+      const ax = MathUtils.randomAToB(
+        -this.randomForce.x,
+        this.randomForce.x,
+        undefined,
+        rng
+      );
+      const ay = MathUtils.randomAToB(
+        -this.randomForce.y,
+        this.randomForce.y,
+        undefined,
+        rng
+      );
+      const az = MathUtils.randomAToB(
+        -this.randomForce.z,
+        this.randomForce.z,
+        undefined,
+        rng
+      );
 
       particle.acceleration.addValue(ax, ay, az);
 

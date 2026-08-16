@@ -1,5 +1,6 @@
 import Vector3D from '../math/Vector3D';
 import type Particle from '../core/Particle';
+import type { RNG } from '../math/rng';
 import { ZONE_TYPE_ABSTRACT } from './types';
 
 /**
@@ -26,7 +27,8 @@ export default class Zone {
     this.supportsCrossing = true;
   }
 
-  getPosition(): Vector3D | null {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  getPosition(rng?: RNG): Vector3D | null {
     return null;
   }
 

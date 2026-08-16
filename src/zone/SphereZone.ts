@@ -3,6 +3,7 @@ import Util from '../utils/Util';
 import Vector3D from '../math/Vector3D';
 import Zone from './Zone';
 import type Particle from '../core/Particle';
+import type { RNG } from '../math/rng';
 import { ZONE_TYPE_SPHERE as type } from './types';
 
 // Scratch vectors reused across _bound calls (matches the original closure).
@@ -53,12 +54,14 @@ export default class SphereZone extends Zone {
     return true;
   }
 
-  getPosition(): Vector3D {
-    this.random = Math.random();
+  getPosition(rng?: RNG): Vector3D {
+    const rand = rng ?? Math.random;
+
+    this.random = rand();
 
     const r = this.random * this.radius;
-    const tha = PI * Math.random(); //[0-pi]
-    const phi = PI * 2 * Math.random(); //[0-2pi]
+    const tha = PI * rand(); //[0-pi]
+    const phi = PI * 2 * rand(); //[0-2pi]
 
     this.vector.x = this.x + r * Math.sin(tha) * Math.cos(phi);
     this.vector.y = this.y + r * Math.sin(phi) * Math.sin(tha);

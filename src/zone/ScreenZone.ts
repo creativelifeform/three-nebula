@@ -2,6 +2,7 @@ import THREEUtil from '../utils/THREEUtil';
 import Vector3D from '../math/Vector3D';
 import Zone from './Zone';
 import type Particle from '../core/Particle';
+import type { RNG } from '../math/rng';
 import type { Camera, WebGLRenderer } from 'three';
 import { ZONE_TYPE_SCREEN as type } from './types';
 
@@ -41,11 +42,12 @@ export default class ScreenZone extends Zone {
     return true;
   }
 
-  getPosition(): Vector3D {
+  getPosition(rng?: RNG): Vector3D {
+    const rand = rng ?? Math.random;
     const canvas = this.renderer.domElement;
 
-    _positionVec2.x = Math.random() * canvas.width;
-    _positionVec2.y = Math.random() * canvas.height;
+    _positionVec2.x = rand() * canvas.width;
+    _positionVec2.y = rand() * canvas.height;
     this.vector.copy(THREEUtil.toSpacePos(_positionVec2, this.camera, canvas));
 
     return this.vector;
