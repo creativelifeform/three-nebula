@@ -1,6 +1,7 @@
 import MathUtils from './MathUtils';
 import Util from '../utils/Util';
 import { MATH_TYPE_SPAN as type } from './types';
+import type { RNG } from './rng';
 
 export default class Span<T = number> {
   _isArray: boolean;
@@ -41,16 +42,17 @@ export default class Span<T = number> {
    * Get a random value from a to b, or from c-a to c+b, or a random member of
    * the array form.
    */
-  getValue(INT?: boolean): T {
+  getValue(INT?: boolean, rng?: RNG): T {
     if (this._isArray) {
       const arr = this.a as T[];
+      const rand = rng ?? Math.random;
 
-      return arr[(arr.length * Math.random()) >> 0];
+      return arr[(arr.length * rand()) >> 0];
     } else {
       const a = this.a as number;
       const value = !this._center
-        ? MathUtils.randomAToB(a, this.b, INT)
-        : MathUtils.randomFloating(a, this.b, INT);
+        ? MathUtils.randomAToB(a, this.b, INT, rng)
+        : MathUtils.randomFloating(a, this.b, INT, rng);
 
       return value as T;
     }

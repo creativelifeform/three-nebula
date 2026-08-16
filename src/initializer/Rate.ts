@@ -1,5 +1,6 @@
 import { DEFAULT_RATE_NUM_PAN, DEFAULT_RATE_TIME_PAN } from './constants';
 import { Span, createSpan } from '../math';
+import type { RNG } from '../math/rng';
 
 import Initializer from './Initializer';
 import { INITIALIZER_TYPE_RATE as type } from './types';
@@ -64,8 +65,17 @@ export default class Rate extends Initializer {
    * Sets the startTime and nextTime properties.
    */
   init(): void {
+    this.resetInterval();
+  }
+
+  /**
+   * Resets the emission interval, drawing the next interval from `timePan`.
+   * Separate from the base `Initializer.init` (which has a different signature)
+   * so the emitter's seeded `rng` can be threaded in without an override clash.
+   */
+  resetInterval(rng?: RNG): void {
     this.startTime = 0;
-    this.nextTime = this.timePan.getValue();
+    this.nextTime = this.timePan.getValue(undefined, rng);
   }
 
   /**
@@ -73,17 +83,17 @@ export default class Rate extends Initializer {
    *
    * @param time - Current particle engine time
    */
-  getValue(time: number): number {
+  getValue(time: number, rng?: RNG): number {
     this.startTime += time;
 
     if (this.startTime >= this.nextTime) {
-      this.init();
+      this.resetInterval(rng);
 
       if (this.numPan.b == 1) {
-        if (this.numPan.getValue(true) > 0.5) return 1;
+        if (this.numPan.getValue(true, rng) > 0.5) return 1;
         else return 0;
       } else {
-        return this.numPan.getValue(true);
+        return this.numPan.getValue(true, rng);
       }
     }
 

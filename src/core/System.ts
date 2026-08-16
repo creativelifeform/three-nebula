@@ -8,6 +8,7 @@ import EventDispatcher, {
 import { DEFAULT_SYSTEM_DELTA } from './constants';
 import Emitter from '../emitter/Emitter';
 import { INTEGRATION_TYPE_EULER } from '../math/constants';
+import { randomSeed } from '../math/rng';
 import { POOL_MAX } from '../constants';
 import Pool from './Pool';
 import fromJSON, { SystemJSON } from './fromJSON';
@@ -41,10 +42,15 @@ export default class System {
   renderers: BaseRenderer[];
   pool: Pool;
   eventDispatcher: EventDispatcher;
+  // Root of the seed hierarchy (Stage 2). Defaults to random, so systems still
+  // vary run-to-run; set an explicit seed (here or via setSeed) for reproducible
+  // output. Every emitter/particle stream derives from this.
+  seed: number;
 
   constructor(
     preParticles: number = POOL_MAX,
-    integrationType: string = INTEGRATION_TYPE_EULER
+    integrationType: string = INTEGRATION_TYPE_EULER,
+    seed: number = randomSeed()
   ) {
     this.type = type;
     this.canUpdate = true;
@@ -54,6 +60,19 @@ export default class System {
     this.renderers = [];
     this.pool = new Pool();
     this.eventDispatcher = new EventDispatcher();
+    this.seed = seed;
+  }
+
+  /**
+   * Sets the system seed and re-derives every attached emitter's stream, so the
+   * whole system becomes reproducible from this seed. Call before emitting for
+   * fully deterministic output.
+   */
+  setSeed(seed: number): this {
+    this.seed = seed;
+    this.emitters.forEach((emitter, index) => emitter.reseed(seed, index));
+
+    return this;
   }
 
   /**
@@ -112,6 +131,9 @@ export default class System {
 
     emitter.parent = this;
     emitter.index = index;
+    // Derive this emitter's deterministic seed from the system seed + its index
+    // (stable across runs since emitters load in JSON order).
+    emitter.reseed(this.seed, index);
 
     this.emitters.push(emitter);
     this.dispatch(EMITTER_ADDED, emitter);
