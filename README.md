@@ -285,7 +285,9 @@ System.fromJSONAsync(json, THREE).then(system => {
 
 ```javascript
 import * as THREE from 'three/webgpu';
-import System, { Emitter /* … initializers, behaviours … */ } from 'three-nebula';
+import System, {
+  Emitter /* … initializers, behaviours … */,
+} from 'three-nebula';
 import { GPURenderer } from 'three-nebula/webgpu';
 
 const renderer = new THREE.WebGPURenderer();
@@ -327,7 +329,18 @@ system.setSeed(1234);
 for (let i = 0; i < 300; i++) system.update(); // identical across runs
 ```
 
-**Using it in a game.** Call `system.update(dt)` from your own update loop. If your game already runs a fixed timestep, pass your fixed `dt` so the particles advance in lockstep with your game. If you want the particle visuals to be part of your reproducible / replay world, seed the system from your game's own generator:
+**Real-time playback.** For a live render loop driven by `requestAnimationFrame`, call `system.tick(realDeltaSeconds)` instead of `update()`. It advances the sim in fixed steps based on **real elapsed time**, so playback runs at the correct speed regardless of the display's refresh rate — whereas calling `update()` once per frame ties speed to how often it's called (≈2× too fast on a 120Hz display). Long stalls (e.g. a backgrounded tab) are clamped so the sim can't spiral. Tune with `system.fixedTimeStep` and `system.maxSubSteps`.
+
+```javascript
+const loop = (now, last = now) => {
+  system.tick((now - last) / 1000); // real seconds since last frame
+  renderer.render(scene, camera);
+  requestAnimationFrame(next => loop(next, now));
+};
+requestAnimationFrame(loop);
+```
+
+**Using it in a game.** Call `system.update(dt)` from your own update loop — a game that already runs a fixed-timestep loop uses `update`, not `tick`, so the particles advance in lockstep with your game's own steps (nesting `tick`'s accumulator inside yours would desync them). If you want the particle visuals to be part of your reproducible / replay world, seed the system from your game's own generator:
 
 ```javascript
 system.setSeed(myGameRng.int32());
@@ -363,7 +376,7 @@ not added to it. Two rules keep additive particles looking right ([#133](https:/
    See the `Additive Blending — Scene Background` sandbox experiments (CPU + GPU) for a
    working example, and [#133](https://github.com/creativelifeform/three-nebula/issues/133)
    for the full rationale. (A future opt-in render-target compositing mode for true additive on
-   a *transparent* canvas is specced in `specs/render-target-additive-compositing.md`.)
+   a _transparent_ canvas is specced in `specs/render-target-additive-compositing.md`.)
 
 ## Development
 

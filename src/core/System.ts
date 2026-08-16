@@ -5,7 +5,7 @@ import EventDispatcher, {
   SYSTEM_UPDATE_AFTER,
 } from '../events';
 
-import { DEFAULT_SYSTEM_DELTA } from './constants';
+import { DEFAULT_MAX_SUB_STEPS, DEFAULT_SYSTEM_DELTA } from './constants';
 import Emitter from '../emitter/Emitter';
 import { INTEGRATION_TYPE_EULER } from '../math/constants';
 import { randomSeed } from '../math/rng';
@@ -46,6 +46,12 @@ export default class System {
   // vary run-to-run; set an explicit seed (here or via setSeed) for reproducible
   // output. Every emitter/particle stream derives from this.
   seed: number;
+  // Fixed-timestep accumulator (Stage 3), used only by `tick`. `update` remains
+  // the single-fixed-step primitive; these govern how `tick` maps real elapsed
+  // time onto fixed steps. Both are public so a consumer can retune them.
+  fixedTimeStep: number;
+  maxSubSteps: number;
+  _accumulator: number;
 
   constructor(
     preParticles: number = POOL_MAX,
@@ -61,6 +67,9 @@ export default class System {
     this.pool = new Pool();
     this.eventDispatcher = new EventDispatcher();
     this.seed = seed;
+    this.fixedTimeStep = DEFAULT_SYSTEM_DELTA;
+    this.maxSubSteps = DEFAULT_MAX_SUB_STEPS;
+    this._accumulator = 0;
   }
 
   /**
@@ -230,6 +239,41 @@ export default class System {
     }
 
     return Promise.resolve();
+  }
+
+  /**
+   * Advances the simulation by the real elapsed time `realDt` (seconds),
+   * consuming it in fixed `fixedTimeStep` increments (Stage 3 — the fixed-timestep
+   * accumulator). Drive this from a `requestAnimationFrame` loop for playback that
+   * is independent of the display's refresh rate; calling `update()` once per
+   * frame instead ties simulation speed to how often it's called (2x on a 120Hz
+   * display). Sub-steps are clamped to `maxSubSteps` per call so a long stall
+   * (e.g. a backgrounded tab) can't spiral — excess time is dropped.
+   *
+   * This is the real-time driver, not a replacement for `update`: deterministic
+   * stepping (headless render, seek, tests) should keep calling `update()`, which
+   * remains the single-fixed-step primitive.
+   */
+  tick(realDt: number): Promise<void> {
+    const { fixedTimeStep, maxSubSteps } = this;
+    const promises: Promise<void>[] = [];
+
+    this._accumulator += realDt;
+
+    let steps = 0;
+
+    while (this._accumulator >= fixedTimeStep && steps < maxSubSteps) {
+      promises.push(this.update(fixedTimeStep));
+      this._accumulator -= fixedTimeStep;
+      steps++;
+    }
+
+    // Hit the clamp with time still owed — drop the backlog rather than spiral.
+    if (steps === maxSubSteps && this._accumulator >= fixedTimeStep) {
+      this._accumulator = 0;
+    }
+
+    return Promise.all(promises).then(() => undefined);
   }
 
   /**

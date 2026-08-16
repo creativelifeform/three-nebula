@@ -119,6 +119,15 @@ export const DEFAULT_EASING = easeLinear;
 export const DEFAULT_SYSTEM_DELTA = 0.0167;
 
 /**
+ * The default maximum number of fixed sub-steps consumed per `System.tick` call.
+ * Caps catch-up after a long stall (e.g. a backgrounded tab) so the accumulator
+ * can't spiral; excess real time beyond this is dropped.
+ *
+ * @type {number}
+ */
+export const DEFAULT_MAX_SUB_STEPS = 6;
+
+/**
  * @desc The types of initializers supported by the System.fromJSON method.
  * @type {array<string>}
  */
