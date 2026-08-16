@@ -307,6 +307,36 @@ const { System, Emitter, Rate, Span } = window.Nebula;
 const system = new System();
 ```
 
+## Determinism & seeding
+
+Every system is driven by a **seeded** pseudo-random generator, so a simulation can be reproduced exactly — the same seed produces the same result, on any machine. This is what makes reproducible previews, thumbnails, tests and scrubbing possible.
+
+**By default the seed is random**, so systems still vary from run to run and you don't have to change anything. For reproducible output, set a seed:
+
+```javascript
+const system = new System();
+
+system.setSeed(1234); // deterministic from here on
+// …add emitters, emit as usual…
+```
+
+**Reproducibility = same seed + the same number of fixed steps.** Drive the sim by calling `system.update()` a fixed number of times — each call advances one fixed `1/60s` step — and the result is byte-identical every run:
+
+```javascript
+system.setSeed(1234);
+for (let i = 0; i < 300; i++) system.update(); // identical across runs
+```
+
+**Using it in a game.** Call `system.update(dt)` from your own update loop. If your game already runs a fixed timestep, pass your fixed `dt` so the particles advance in lockstep with your game. If you want the particle visuals to be part of your reproducible / replay world, seed the system from your game's own generator:
+
+```javascript
+system.setSeed(myGameRng.int32());
+```
+
+**Isolation.** The engine draws from its own per-system stream and does **not** consume from the global `Math.random`. If you seed `Math.random` globally for your own determinism, particle draws won't disturb your sequence.
+
+**Scope.** Determinism holds within one JavaScript engine on one platform (reproducible replays and previews) — it is not intended for cross-machine lockstep netcode. Particles are visual state; keep them on the presentation side of a netcode boundary.
+
 ## Additive particles & transparent canvases
 
 Additive blending adds light to whatever is already in the WebGL framebuffer. That works

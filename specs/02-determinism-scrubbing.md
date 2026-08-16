@@ -170,6 +170,23 @@ This is the deliverable that keeps the property from rotting.
 
 **Acceptance:** CI fails if determinism regresses.
 
+### Implementation note (landed)
+
+`test/core/determinism.spec.js` gates this via **self-consistency**, not a
+committed absolute digest: two same-machine runs at the same seed must produce a
+byte-identical particle-buffer digest, different seeds must differ, and ids must
+be reproducible. This catches every determinism regression (reintroduced
+`Math.random`, broken seeding, order-dependence) and is **robust across
+platforms** — both runs share one JS engine, so they share the same
+transcendental (`Math.sin`/`sqrt`) results.
+
+A committed *absolute* golden digest was deliberately avoided: transcendentals
+are not bit-identical across platforms/engines (macOS-arm vs CI Linux-x64), so a
+pinned value would fail in CI for reasons unrelated to determinism — exactly the
+cross-platform float divergence this spec puts out of scope. The pixel VR golden
+master covers "did the visual output change" (with re-baselining); the digest
+test covers "is it still deterministic".
+
 ---
 
 ## Stage 6 — Headless contract
