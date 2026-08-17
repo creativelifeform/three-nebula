@@ -45,7 +45,9 @@ export default class Velocity extends Initializer {
     const tha = this.tha * particle.rng();
 
     this._useV &&
-      this.dirVec.copy(this.dir).scalar(this.radiusPan.sample(particle.rng));
+      this.dirVec
+        .copy(this.dir)
+        .scalar(this.radiusPan.getValue(false, particle.rng));
 
     MathUtils.getNormal(this.dirVec, normal);
     v.copy(this.dirVec).applyAxisAngle(normal, tha);

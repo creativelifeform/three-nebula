@@ -100,7 +100,7 @@ export default class RandomDrift extends Behaviour {
 
     this.time += time;
 
-    if (this.time >= this.delayPan.sample(particle.rng)) {
+    if (this.time >= this.delayPan.getValue(false, particle.rng)) {
       const { rng } = particle;
       const ax = MathUtils.randomAToB(
         -this.randomForce.x,

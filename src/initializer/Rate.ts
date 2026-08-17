@@ -75,7 +75,7 @@ export default class Rate extends Initializer {
    */
   resetInterval(rng?: RNG): void {
     this.startTime = 0;
-    this.nextTime = this.timePan.sample(rng);
+    this.nextTime = this.timePan.getValue(false, rng);
   }
 
   /**

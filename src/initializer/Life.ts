@@ -48,7 +48,7 @@ export default class Life extends Initializer {
     if (this.lifePan.a == Infinity || (this.lifePan.a as unknown) == 'infi') {
       particle.life = Infinity;
     } else {
-      particle.life = this.lifePan.sample(particle.rng);
+      particle.life = this.lifePan.getValue(false, particle.rng);
     }
   }
 

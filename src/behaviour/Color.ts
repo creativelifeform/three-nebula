@@ -80,13 +80,13 @@ export default class Color extends Behaviour {
 
   initialize(particle: Particle): void {
     particle.transform.colorA = ColorUtil.getRGB(
-      this.colorA.sample(particle.rng)
+      this.colorA.getValue(false, particle.rng)
     );
 
     particle.useColor = true;
     particle.transform.colorB = this.same
       ? particle.transform.colorA
-      : ColorUtil.getRGB(this.colorB.sample(particle.rng));
+      : ColorUtil.getRGB(this.colorB.getValue(false, particle.rng));
   }
 
   mutate(particle: Particle, time: number, index?: number): void {

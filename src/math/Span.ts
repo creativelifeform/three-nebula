@@ -57,17 +57,6 @@ export default class Span<T = number> {
       return value as T;
     }
   }
-
-  /**
-   * Draws a value from this span (the common non-integer case), using the
-   * supplied seeded `rng` when provided and falling back to `Math.random`
-   * otherwise. Sugar for `getValue(false, rng)`; prefer this over
-   * `getValue(undefined, rng)` when threading a seeded stream. Inherited by
-   * ArraySpan/ColorSpan, where it returns a random element.
-   */
-  sample(rng?: RNG): T {
-    return this.getValue(false, rng);
-  }
 }
 
 export const createSpan = (

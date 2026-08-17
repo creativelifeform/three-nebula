@@ -25,8 +25,8 @@ export default class ArraySpan<T = unknown> extends Span<T> {
 
   /**
    * Gets a random item, using the supplied seeded `rng` when provided (falls
-   * back to Math.random). Replaces the former lodash array-pick, which drew
-   * from the global Math.random and could not be seeded.
+   * back to Math.random). Replaces lodash `sample`, which drew from the global
+   * Math.random and could not be seeded.
    */
   getValue(_INT?: boolean, rng?: RNG): T {
     const rand = rng ?? Math.random;
