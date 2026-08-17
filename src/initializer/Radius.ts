@@ -56,7 +56,7 @@ export default class Radius extends Initializer {
    * @param particle - the particle to initialize the property on
    */
   initialize(particle: Particle): void {
-    particle.radius = this.radius.getValue(undefined, particle.rng);
+    particle.radius = this.radius.sample(particle.rng);
     particle.transform.oldRadius = particle.radius;
   }
 

@@ -94,12 +94,12 @@ export default class Scale extends Behaviour {
    * @param particle - the particle to initialize the behaviour on
    */
   initialize(particle: Particle): void {
-    particle.transform.scaleA = this.scaleA.getValue(undefined, particle.rng);
+    particle.transform.scaleA = this.scaleA.sample(particle.rng);
     particle.transform.oldRadius = particle.radius;
 
     particle.transform.scaleB = this.same
       ? particle.transform.scaleA
-      : this.scaleB.getValue(undefined, particle.rng);
+      : this.scaleB.sample(particle.rng);
   }
 
   /**

@@ -144,9 +144,9 @@ export default class Rotate extends Behaviour {
 
       case 'add':
         particle.transform.addR = new Vector3D(
-          (this.x as Span<number>).getValue(undefined, particle.rng),
-          (this.y as Span<number>).getValue(undefined, particle.rng),
-          (this.z as Span<number>).getValue(undefined, particle.rng)
+          (this.x as Span<number>).sample(particle.rng),
+          (this.y as Span<number>).sample(particle.rng),
+          (this.z as Span<number>).sample(particle.rng)
         );
         break;
     }
