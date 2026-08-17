@@ -311,7 +311,7 @@ const system = new System();
 
 ## Determinism & seeding
 
-Every system is driven by a **seeded** pseudo-random generator, so a simulation can be reproduced exactly — the same seed produces the same result, on any machine. This is what makes reproducible previews, thumbnails, tests and scrubbing possible.
+Every system is driven by a **seeded** pseudo-random generator, so a simulation can be reproduced exactly — the same seed produces the same result, on any machine.
 
 **By default the seed is random**, so systems still vary from run to run and you don't have to change anything. For reproducible output, set a seed:
 
@@ -348,7 +348,7 @@ system.setSeed(myGameRng.int32());
 
 **Isolation.** The engine draws from its own per-system stream and does **not** consume from the global `Math.random`. If you seed `Math.random` globally for your own determinism, particle draws won't disturb your sequence.
 
-**Scope.** Determinism holds within one JavaScript engine on one platform (reproducible replays and previews) — it is not intended for cross-machine lockstep netcode. Particles are visual state; keep them on the presentation side of a netcode boundary.
+**Scope.** Determinism holds within one JavaScript engine on one platform — it is not intended for cross-machine lockstep netcode. Particles are visual state; keep them on the presentation side of a netcode boundary.
 
 ## Additive particles & transparent canvases
 
