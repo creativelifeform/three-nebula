@@ -322,6 +322,18 @@ system.setSeed(1234); // deterministic from here on
 // …add emitters, emit as usual…
 ```
 
+**Which method should I use?** Seeding and stepping are two independent choices — `setSeed` controls _what_ randomness is drawn; `update`/`tick` control _how time advances_. Pick a stepping method by what you're doing:
+
+| Your situation                                             | Use                                | Why                                                                     |
+| ---------------------------------------------------------- | ---------------------------------- | ----------------------------------------------------------------------- |
+| **Live rendering in a browser** (most apps)                | `tick(realDeltaSeconds)`           | Refresh-rate independent — correct speed on any display, stall-safe     |
+| **Reproducible/offline**: tests, thumbnails, export, replays | `update()` a fixed number of times | Byte-identical output, no wall-clock involved                           |
+| **Inside your own fixed-timestep game loop**               | `update(dt)` with your own `dt`    | Particles advance in lockstep with your sim (don't nest two accumulators) |
+
+**The short version: reach for `tick` when rendering live** — it's the one most apps want, and it avoids the "runs 2× too fast on a 120Hz display" trap. **Reach for `update` only when you need exact, reproducible stepping** (or you're driving from your own loop). Add `setSeed(...)` on top of _either_ when you want the effect to look the same every time it plays — e.g. a curated preview or thumbnail. Leave the seed unset for ambient effects that can vary run to run.
+
+> For a **guaranteed** byte-identical replay, prefer `update()` × N: `tick` is deterministic for the same total elapsed time, but a long stall can hit `maxSubSteps` and drop time, nudging live playback off a previous run.
+
 **Reproducibility = same seed + the same number of fixed steps.** Drive the sim by calling `system.update()` a fixed number of times — each call advances one fixed `1/60s` step — and the result is byte-identical every run:
 
 ```javascript
