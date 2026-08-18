@@ -329,7 +329,7 @@ system.setSeed(1234);
 for (let i = 0; i < 300; i++) system.update(); // identical across runs
 ```
 
-**Real-time playback.** For a live render loop driven by `requestAnimationFrame`, call `system.tick(realDeltaSeconds)` instead of `update()`. It advances the sim in fixed steps based on **real elapsed time**, so playback runs at the correct speed regardless of the display's refresh rate — whereas calling `update()` once per frame ties speed to how often it's called (≈2× too fast on a 120Hz display). Long stalls (e.g. a backgrounded tab) are clamped so the sim can't spiral. Tune with `system.fixedTimeStep` and `system.maxSubSteps`.
+**Real-time playback.** For a live render loop driven by `requestAnimationFrame`, call `system.tick(realDeltaSeconds)` instead of `update()`. It advances the sim in fixed steps based on **real elapsed time**, so playback runs at the correct speed regardless of the display's refresh rate — whereas calling `update()` once per frame ties speed to how often it's called (≈2× too fast on a 120Hz display). Long stalls (e.g. a backgrounded tab) are clamped so the sim can't spiral (see the next section to tune this).
 
 ```javascript
 const loop = (now, last = now) => {
@@ -339,6 +339,20 @@ const loop = (now, last = now) => {
 };
 requestAnimationFrame(loop);
 ```
+
+**Tuning the loop: `fixedTimeStep` and `maxSubSteps`.** `tick` turns real elapsed time into whole fixed steps using two knobs on the system:
+
+- **`system.fixedTimeStep`** (default `1/60`s ≈ `0.0167`) — the size of one simulation step, in seconds. `tick` accumulates real time and runs one `update(fixedTimeStep)` for each whole step that fits, carrying the leftover into the next call. It's also the step `update()` uses when called with no argument. Smaller steps give smoother, more accurate motion but do more work per second; larger steps are cheaper but chunkier. **Reproducibility is defined relative to this value** — two runs match only if they use the same `fixedTimeStep` and the same number of steps.
+- **`system.maxSubSteps`** (default `6`) — the most steps a single `tick` call will run. This caps catch-up after a long frame or stall (say a backgrounded tab that resumes with a multi-second delta). Without a cap, a huge delta would try to run hundreds of updates in one frame, and each frame would then fall further behind — the "spiral of death". When the cap is hit, the leftover time is dropped so the sim skips ahead instead of freezing.
+
+Together they bound the work per `tick`: at most `maxSubSteps` updates, i.e. `fixedTimeStep × maxSubSteps` seconds of simulation. With the defaults that's `6 × 1/60 = 0.1s` — any single frame longer than 100ms of real time has its excess discarded rather than simulated.
+
+```javascript
+system.fixedTimeStep = 1 / 120; // finer, smoother steps (more CPU per second)
+system.maxSubSteps = 10; //        allow more catch-up before dropping time
+```
+
+These only affect `tick`. `update(dt)` always advances by exactly the `dt` you pass (or one `fixedTimeStep` if you pass nothing), so deterministic stepping is unaffected by `maxSubSteps`.
 
 **Using it in a game.** Call `system.update(dt)` from your own update loop — a game that already runs a fixed-timestep loop uses `update`, not `tick`, so the particles advance in lockstep with your game's own steps (nesting `tick`'s accumulator inside yours would desync them). If you want the particle visuals to be part of your reproducible / replay world, seed the system from your game's own generator:
 
