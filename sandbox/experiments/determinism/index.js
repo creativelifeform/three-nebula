@@ -173,8 +173,10 @@ const updateStatus = () => {
 const animate = () => {
   requestAnimationFrame(animate);
 
-  // Lockstep: both systems advance by the same fixed dt, the same number of
-  // times. Same seed + same steps → same state.
+  // This demo deliberately uses update(), not tick(): it's showing
+  // reproducible stepping, so both systems advance by the same fixed dt the
+  // same number of times. Same seed + same steps → same state. (Live examples
+  // use tick() for refresh-rate independence — this one wants exact lockstep.)
   left.update(FIXED_STEP);
   right.update(FIXED_STEP);
   step++;
