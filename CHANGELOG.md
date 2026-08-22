@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v13.0.0` - 2026-08-22
+
+Introduces **deterministic simulation**: give a system a seed and it reproduces its output exactly — the same seed produces the same result, on any machine — which unlocks reproducible previews, thumbnails, tests and replays. The public API is backward-compatible (everything new is additive), but reproducibility and output behaviour changed, so this is a major release. Most consumers need no code changes; see the [Determinism & seeding](./README.md#determinism--seeding) section and the two upgrade notes below. `three`'s supported range is unchanged.
+
+### Breaking
+
+- **The engine no longer draws from the global `Math.random`.** Each system now advances its own isolated, seeded stream. If you seeded `Math.random` globally to make particle output reproducible (a common trick), that no longer has any effect — use `system.setSeed(seed)` instead, which is the supported and much stronger way to get reproducible output. Systems that don't seed still vary run to run as before.
+- **Default particle arrangements differ from 12.x.** Because the random source changed, the same system renders a different (still random) arrangement than it did in 12.x. If you keep your own visual or snapshot baselines of three-nebula output, re-generate them.
+- **Particle `id` format changed** from a UUID (`particle-<uuid>`) to a deterministic `particle-<emitterSeed>-<spawnIndex>`. Ids remain unique and opaque; this only affects code that parsed or pattern-matched on the old format.
+
+### Added
+
+- **Seeded determinism via `System.setSeed(seed)`.** Sets the root of a seed hierarchy (`system → emitter → particle`), so every emitter and particle derives a stable stream and the whole simulation is reproducible from the seed. The seed can also be passed as the third `System` constructor argument. By default the seed is random, so nothing changes unless you opt in. Drive the sim with a fixed number of `system.update()` calls for byte-identical output every run.
+- **Fixed-timestep real-time driver `System.tick(realDeltaSeconds)`.** Advances the simulation in fixed steps based on real elapsed time, so playback runs at the correct speed regardless of the display's refresh rate — unlike calling `update()` once per frame, which runs ~2× too fast on a 120Hz display. Catch-up after a long stall (e.g. a backgrounded tab) is clamped so the sim can't spiral. Tunable via `system.fixedTimeStep` and `system.maxSubSteps`. `update(dt)` remains the single-fixed-step primitive for deterministic/offline stepping and for games driving their own loop.
+
+### Fixed
+
+- **`GPURenderer` particles stopped rendering after a period of heavy churn.** The renderer assigned each particle id a permanent buffer slot and never released it; with deterministic per-spawn ids this grew without bound and eventually pushed slots past the buffer's capacity, silently dropping particles (sooner on high-refresh displays). Buffer slots are now recycled on particle death, bounding the slot space by concurrent live particles.
+
 ## `v12.1.0` - 2026-08-09
 
 Adds optional WebGPU support via a new `three-nebula/webgpu` entry point. This is a backward-compatible, additive release — the core package and every existing renderer are unchanged, and the supported `three` range for the core is the same.
