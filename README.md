@@ -352,6 +352,11 @@ const loop = (now, last = now) => {
 requestAnimationFrame(loop);
 ```
 
+> **Upgrading an existing project?** Two behaviour changes are worth knowing:
+>
+> - **Already calling `system.update()` once per frame?** That's the legacy pattern that assumes a 60Hz display — it runs ~2× too fast on a 120Hz screen. Switch your `requestAnimationFrame` loop to `system.tick(realDeltaSeconds)` for refresh-rate-independent speed. (Keep `update()` only for deterministic/offline stepping or your own fixed loop.)
+> - **Seeding `Math.random` globally to make particles reproducible?** That no longer works — the engine now draws from its own isolated stream and doesn't touch `Math.random`. Use `system.setSeed(...)` instead, which is the supported (and much stronger) way to get reproducible output.
+
 **Tuning the loop: `fixedTimeStep` and `maxSubSteps`.** `tick` turns real elapsed time into whole fixed steps using two knobs on the system:
 
 - **`system.fixedTimeStep`** (default `1/60`s ≈ `0.0167`) — the size of one simulation step, in seconds. `tick` accumulates real time and runs one `update(fixedTimeStep)` for each whole step that fits, carrying the leftover into the next call. It's also the step `update()` uses when called with no argument. Smaller steps give smoother, more accurate motion but do more work per second; larger steps are cheaper but chunkier. **Reproducibility is defined relative to this value** — two runs match only if they use the same `fixedTimeStep` and the same number of steps.
