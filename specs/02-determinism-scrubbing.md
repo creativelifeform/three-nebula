@@ -170,6 +170,23 @@ This is the deliverable that keeps the property from rotting.
 
 **Acceptance:** CI fails if determinism regresses.
 
+### Implementation note (landed)
+
+`test/core/determinism.spec.js` gates this via **self-consistency**, not a
+committed absolute digest: two same-machine runs at the same seed must produce a
+byte-identical particle-buffer digest, different seeds must differ, and ids must
+be reproducible. This catches every determinism regression (reintroduced
+`Math.random`, broken seeding, order-dependence) and is **robust across
+platforms** — both runs share one JS engine, so they share the same
+transcendental (`Math.sin`/`sqrt`) results.
+
+A committed *absolute* golden digest was deliberately avoided: transcendentals
+are not bit-identical across platforms/engines (macOS-arm vs CI Linux-x64), so a
+pinned value would fail in CI for reasons unrelated to determinism — exactly the
+cross-platform float divergence this spec puts out of scope. The pixel VR golden
+master covers "did the visual output change" (with re-baselining); the digest
+test covers "is it still deterministic".
+
 ---
 
 ## Stage 6 — Headless contract
@@ -219,6 +236,32 @@ Those belong to whatever consumes this contract.
 **Not a concern:** IEEE-754 float behaviour is deterministic within a given JS
 engine on a given platform. Cross-platform float divergence matters for lockstep
 netcode, not for this. Do not over-engineer.
+
+---
+
+## Consumer impact & isolation
+
+The seeded PRNG is **additive and non-breaking**:
+
+- **`rng` is optional with a `Math.random()` fallback** at every draw site.
+  Built-in units always receive the engine's seeded stream (deterministic);
+  custom code or direct calls that pass no `rng` fall back to `Math.random` and
+  behave exactly as today. Constructors are unchanged; there is nothing to migrate.
+- **The seed defaults to random** at system creation, so systems still vary
+  run-to-run by default. Reproducibility is opt-in: `new System({ seed })` /
+  `setSeed()`.
+- **Isolation is a fix, not just a feature.** Built-ins stop calling
+  `Math.random()`, so the engine no longer draws from — and perturbs — the global
+  RNG stream. A consumer who seeds `Math.random` globally for their own
+  determinism is *currently* disturbed by particle draws; after Stage 1 they are
+  not. Each system's stream is per-system and independent of the host's.
+- **Optional alignment.** A consumer running their own seeded sim can fold the
+  visuals into their reproducible world by passing their seed:
+  `new System({ seed: yourRng.int32() })`. Never required — the two determinisms
+  are orthogonal.
+- **Boundary.** Determinism is within one JS engine on one platform (reproducible
+  replays/previews), not cross-runtime float-exact (lockstep netcode). Particles
+  are visual state; keep them on the presentation side of a netcode boundary.
 
 ---
 

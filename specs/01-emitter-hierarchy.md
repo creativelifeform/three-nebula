@@ -3,8 +3,13 @@
 Nested child emitters, ribbon/trail renderers, and the pooling required to make
 both survivable.
 
-**Depends on:** 04 (schema versioning) — this spec breaks the schema.
+**Additive — not a schema break.** Each emitter gains an optional `children[]`
+(absent = today's flat, leaf emitter), so existing systems load unchanged. Not
+gated on 04 (schema versioning); 04's `version` stamp is nice hygiene, not a
+prerequisite.
 **Entangled with:** 02 (determinism) — child seeds derive from parent particle IDs.
+Land 02 first to avoid reworking every initializer/behaviour's seeding. Soft
+(efficiency), not a hard blocker.
 
 ---
 

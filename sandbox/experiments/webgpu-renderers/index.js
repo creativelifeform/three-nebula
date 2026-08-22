@@ -61,9 +61,14 @@ async function main() {
   const system = await mod.default(THREE, { scene, camera, renderer });
   diag.system = system;
 
+  // Real-time playback via tick(realDelta) so speed is refresh-rate independent.
+  let last = performance.now();
   async function animate() {
     try {
-      system.update();
+      const now = performance.now();
+
+      system.tick((now - last) / 1000);
+      last = now;
       diag.particles = system.emitters.reduce(
         (n, e) => n + e.particles.length,
         0

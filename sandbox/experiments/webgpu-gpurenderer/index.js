@@ -48,11 +48,26 @@ class WebGPUGPURenderer {
     this.dirty = false;
     this.textureBound = false;
 
-    this.aOffset = new three.InstancedBufferAttribute(new Float32Array(maxParticles * 3), 3);
-    this.aColor = new three.InstancedBufferAttribute(new Float32Array(maxParticles * 3), 3);
-    this.aAlpha = new three.InstancedBufferAttribute(new Float32Array(maxParticles), 1);
-    this.aScale = new three.InstancedBufferAttribute(new Float32Array(maxParticles), 1);
-    this.aRotation = new three.InstancedBufferAttribute(new Float32Array(maxParticles), 1);
+    this.aOffset = new three.InstancedBufferAttribute(
+      new Float32Array(maxParticles * 3),
+      3
+    );
+    this.aColor = new three.InstancedBufferAttribute(
+      new Float32Array(maxParticles * 3),
+      3
+    );
+    this.aAlpha = new three.InstancedBufferAttribute(
+      new Float32Array(maxParticles),
+      1
+    );
+    this.aScale = new three.InstancedBufferAttribute(
+      new Float32Array(maxParticles),
+      1
+    );
+    this.aRotation = new three.InstancedBufferAttribute(
+      new Float32Array(maxParticles),
+      1
+    );
 
     const base = new three.PlaneGeometry(1, 1);
     const geo = new three.InstancedBufferGeometry();
@@ -146,7 +161,13 @@ class WebGPUGPURenderer {
 
   onSystemUpdate() {
     if (!this.dirty) return;
-    for (const a of [this.aOffset, this.aColor, this.aAlpha, this.aScale, this.aRotation])
+    for (const a of [
+      this.aOffset,
+      this.aColor,
+      this.aAlpha,
+      this.aScale,
+      this.aRotation,
+    ])
       a.needsUpdate = true;
     this.dirty = false;
   }
@@ -187,7 +208,11 @@ const createEmitter = () =>
 async function main() {
   const canvas = document.getElementById('canvas');
   const { clientWidth: w, clientHeight: h } = canvas;
-  const renderer = new THREE.WebGPURenderer({ canvas, alpha: false, antialias: true });
+  const renderer = new THREE.WebGPURenderer({
+    canvas,
+    alpha: false,
+    antialias: true,
+  });
   await renderer.init();
   renderer.setSize(w, h, false);
   renderer.setClearColor(0x000000, 1);
@@ -204,10 +229,18 @@ async function main() {
       : new SpriteRenderer(scene, THREE)
   );
 
-  window.__parity = { mode, particles: () => system.emitters.reduce((n, e) => n + e.particles.length, 0) };
+  window.__parity = {
+    mode,
+    particles: () =>
+      system.emitters.reduce((n, e) => n + e.particles.length, 0),
+  };
 
+  // Real-time playback via tick(realDelta) so speed is refresh-rate independent.
+  let last = performance.now();
   async function animate() {
-    system.update();
+    const now = performance.now();
+    system.tick((now - last) / 1000);
+    last = now;
     await renderer.renderAsync(scene, camera);
     requestAnimationFrame(animate);
   }

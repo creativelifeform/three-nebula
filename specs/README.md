@@ -12,35 +12,47 @@ migration, is complete and its spec has been removed.)
 
 | # | Spec | Shape |
 |---|------|-------|
-| 01 | Emitter Hierarchy (nested emitters, ribbon/trail renderer, pooling) | New capability + schema break |
+| 01 | Emitter Hierarchy (nested emitters, ribbon/trail renderer, pooling) | New capability, additive |
 | 02 | Determinism & Scrubbing | Architecture, invisible, blocking |
 | 03 | Sound Renderer | New capability, additive |
-| 04 | Schema Versioning | Architecture, enabling |
-| 05 | Content-Addressed Assets | Architecture + schema break |
+| 04 | Schema Versioning | Architecture, hygiene (not gating) |
+| 05 | Content-Addressed Assets | New capability, additive |
 | 07 | WebGPU Support (renderers under three's `WebGPURenderer`; a TSL/node `GPURenderer` from the `three-nebula/webgpu` subpath) | New capability + packaging, opt-in/additive |
+| 09 | Bundle Packaging (`.nebula` portable bundle; separate `@nebula/bundle` package) | Consumer tooling, deferred |
 
 ## Dependency graph
 
 ```
-04 (versioning) ──┬──> 01 (hierarchy)
-                  │         ▲
-                  └──> 05 (assets)
-                            ▲
-02 (determinism) ───────────┴──> 03 (sound)
+02 (determinism) ──soft──> 01 (hierarchy)
+
+02 (determinism) ──┐
+                   ├──> 03 (sound)
+05 (assets) ───────┘
+
+04 (versioning) — standalone hygiene; gates nothing
+
+05 (assets) ──> 09 (bundle packaging) — deferred consumer tooling
 ```
 
 **Hard constraints:**
 
-- **04 lands first.** Both 01 and 05 break the JSON schema. Without a migration
-  path in place, every existing saved system is stranded. 04 is small and boring
-  and must precede both.
-- **02 entangles with 01.** Child emitter instances need seeds derived from the
-  parent particle's ID. Landing 01 without 02 means touching every initializer
-  and behaviour twice.
+- **01 and 05 are additive, not schema breaks.** 01 adds an optional
+  `children[]` to each emitter (absent = today's flat, leaf emitter); 05 adds an
+  optional `textureRef` alongside the **untouched** base64 `texture`. Existing
+  systems load unchanged either way, so neither strands data.
+- **04 is hygiene, not a prerequisite.** Because 01 and 05 are additive, nothing
+  hard-depends on schema versioning. The `version` stamp is cheap and worth adding
+  whenever convenient, but it only *earns its keep* if a genuinely non-additive
+  change ever lands. Do not treat it as a blocker for 01 or 05.
+- **02 entangles with 01 (soft).** Child emitter instances need seeds derived from
+  the parent particle's ID. Landing 01 without 02 means touching every initializer
+  and behaviour's seeding twice — do 02 first to avoid the rework. Efficiency, not
+  correctness.
 - **03 depends on 02** for jitter (pitch/offset randomisation must be seeded) and
-  on **05** for audio blob storage.
+  on **05** for audio blobs (which reuse 05's `{ hash, mime }` ref + resolver).
 
-Suggested landing order: **04 → 02 → 01 → 05 → 03**
+Suggested landing order: **02 → 01 → 05 → 03**, with 04's `version` stamp folded
+in cheaply whenever (it gates nothing).
 
 03 (sound) is deliberately last: it is the most additive and least entangled,
 and it is the easiest to defer if time runs short.

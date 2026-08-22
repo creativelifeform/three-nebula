@@ -73,7 +73,12 @@ export class Visualization {
 
     window.addEventListener('resize', () => this.resize());
 
-    const animate = () => {
+    // Real-time playback: drive the sim with `tick(realDeltaSeconds)`, not
+    // `update()`. `tick` consumes actual elapsed time in fixed steps, so speed
+    // is correct regardless of the display's refresh rate — calling `update()`
+    // once per frame would run ~2x too fast on a 120Hz display. (Deterministic /
+    // offline stepping, e.g. the VR harness, uses `update()` instead.)
+    const animate = (now = performance.now()) => {
       if (!this.shouldAnimate) {
         return;
       }
@@ -86,8 +91,11 @@ export class Visualization {
 
       this.rafId = requestAnimationFrame(animate);
 
+      const last = this._lastFrameTime ?? now;
+
+      this._lastFrameTime = now;
       this.renderTicks++;
-      this.particleSystem.update();
+      this.particleSystem.tick((now - last) / 1000);
       this.rotateCamera();
       this.webGlRenderer.render(this.scene, this.camera);
       this.stats.end();

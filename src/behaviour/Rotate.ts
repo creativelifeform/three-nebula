@@ -6,6 +6,7 @@ import { getEasingByName } from '../ease';
 import { BEHAVIOUR_TYPE_ROTATE as type } from './types';
 import type { EasingFunction, EaseName } from '../ease';
 import type Particle from '../core/Particle';
+import type { RNG } from '../math/rng';
 
 interface RotateJSON {
   x: number;
@@ -123,21 +124,29 @@ export default class Rotate extends Behaviour {
         break;
 
       case 'set':
-        this._setRotation(particle.rotation, this.x);
+        this._setRotation(particle.rotation, this.x, particle.rng);
         break;
 
       case 'to':
         particle.transform.fR = particle.transform.fR || new Vector3D();
         particle.transform.tR = particle.transform.tR || new Vector3D();
-        this._setRotation(particle.transform.fR as Vector3D, this.x);
-        this._setRotation(particle.transform.tR as Vector3D, this.y);
+        this._setRotation(
+          particle.transform.fR as Vector3D,
+          this.x,
+          particle.rng
+        );
+        this._setRotation(
+          particle.transform.tR as Vector3D,
+          this.y,
+          particle.rng
+        );
         break;
 
       case 'add':
         particle.transform.addR = new Vector3D(
-          (this.x as Span<number>).getValue(),
-          (this.y as Span<number>).getValue(),
-          (this.z as Span<number>).getValue()
+          (this.x as Span<number>).getValue(false, particle.rng),
+          (this.y as Span<number>).getValue(false, particle.rng),
+          (this.z as Span<number>).getValue(false, particle.rng)
         );
         break;
     }
@@ -158,13 +167,14 @@ export default class Rotate extends Behaviour {
    */
   _setRotation(
     particleRotation: Vector3D,
-    value: number | Span<number> | string
+    value: number | Span<number> | string,
+    rng?: RNG
   ): void {
     particleRotation = particleRotation || new Vector3D();
     if (value == 'random') {
-      var x = MathUtils.randomAToB(-PI, PI);
-      var y = MathUtils.randomAToB(-PI, PI);
-      var z = MathUtils.randomAToB(-PI, PI);
+      var x = MathUtils.randomAToB(-PI, PI, undefined, rng);
+      var y = MathUtils.randomAToB(-PI, PI, undefined, rng);
+      var z = MathUtils.randomAToB(-PI, PI, undefined, rng);
 
       particleRotation.set(x, y, z);
     }

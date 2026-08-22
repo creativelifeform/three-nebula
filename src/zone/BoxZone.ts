@@ -3,6 +3,7 @@ import Util from '../utils/Util';
 import Zone from './Zone';
 import type Vector3D from '../math/Vector3D';
 import type Particle from '../core/Particle';
+import type { RNG } from '../math/rng';
 import { ZONE_TYPE_BOX as type } from './types';
 
 type Axis = 'x' | 'y' | 'z';
@@ -66,10 +67,13 @@ export default class BoxZone extends Zone {
     return true;
   }
 
-  getPosition(): Vector3D {
-    this.vector.x = this.x + MathUtils.randomAToB(-0.5, 0.5) * this.width;
-    this.vector.y = this.y + MathUtils.randomAToB(-0.5, 0.5) * this.height;
-    this.vector.z = this.z + MathUtils.randomAToB(-0.5, 0.5) * this.depth;
+  getPosition(rng?: RNG): Vector3D {
+    this.vector.x =
+      this.x + MathUtils.randomAToB(-0.5, 0.5, undefined, rng) * this.width;
+    this.vector.y =
+      this.y + MathUtils.randomAToB(-0.5, 0.5, undefined, rng) * this.height;
+    this.vector.z =
+      this.z + MathUtils.randomAToB(-0.5, 0.5, undefined, rng) * this.depth;
 
     return this.vector;
   }

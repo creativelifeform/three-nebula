@@ -65,9 +65,9 @@ export default class Position extends Initializer {
    * @param target - the particle to initialize the property on
    */
   initialize(target: Emitter | Particle): void {
-    const zone = this.zones[(Math.random() * this.zones.length) >> 0];
+    const zone = this.zones[(target.rng() * this.zones.length) >> 0];
 
-    zone.getPosition();
+    zone.getPosition(target.rng);
 
     target.position.x = zone.vector.x;
     target.position.y = zone.vector.y;

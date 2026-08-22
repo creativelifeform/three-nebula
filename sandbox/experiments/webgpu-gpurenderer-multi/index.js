@@ -17,7 +17,11 @@ const mode =
 async function main() {
   const canvas = document.getElementById('canvas');
   const { clientWidth: w, clientHeight: h } = canvas;
-  const renderer = new THREE.WebGPURenderer({ canvas, alpha: false, antialias: true });
+  const renderer = new THREE.WebGPURenderer({
+    canvas,
+    alpha: false,
+    antialias: true,
+  });
   await renderer.init();
   renderer.setSize(w, h, false);
   renderer.setClearColor(0x000000, 1);
@@ -32,13 +36,23 @@ async function main() {
     { shouldAutoEmit: true }
   );
   system.addRenderer(
-    mode === 'webgpu' ? new GPURenderer(scene, THREE) : new SpriteRenderer(scene, THREE)
+    mode === 'webgpu'
+      ? new GPURenderer(scene, THREE)
+      : new SpriteRenderer(scene, THREE)
   );
 
-  window.__parity = { mode, particles: () => system.emitters.reduce((n, e) => n + e.particles.length, 0) };
+  window.__parity = {
+    mode,
+    particles: () =>
+      system.emitters.reduce((n, e) => n + e.particles.length, 0),
+  };
 
+  // Real-time playback via tick(realDelta) so speed is refresh-rate independent.
+  let last = performance.now();
   async function animate() {
-    system.update();
+    const now = performance.now();
+    system.tick((now - last) / 1000);
+    last = now;
     await renderer.renderAsync(scene, camera);
     requestAnimationFrame(animate);
   }
