@@ -42,13 +42,16 @@ export default class Velocity extends Initializer {
    * @param particle - the particle to initialize the property on
    */
   initialize(particle: Emitter | Particle): void {
-    const tha = this.tha * Math.random();
+    const tha = this.tha * particle.rng();
 
-    this._useV && this.dirVec.copy(this.dir).scalar(this.radiusPan.getValue());
+    this._useV &&
+      this.dirVec
+        .copy(this.dir)
+        .scalar(this.radiusPan.getValue(false, particle.rng));
 
     MathUtils.getNormal(this.dirVec, normal);
     v.copy(this.dirVec).applyAxisAngle(normal, tha);
-    v.applyAxisAngle(this.dirVec.normalize(), Math.random() * PI * 2);
+    v.applyAxisAngle(this.dirVec.normalize(), particle.rng() * PI * 2);
 
     particle.velocity.copy(v);
   }

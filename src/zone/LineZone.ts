@@ -1,5 +1,6 @@
 import Vector3D from '../math/Vector3D';
 import Zone from './Zone';
+import type { RNG } from '../math/rng';
 import { ZONE_TYPE_LINE as type } from './types';
 
 export default class LineZone extends Zone {
@@ -50,8 +51,8 @@ export default class LineZone extends Zone {
     return true;
   }
 
-  getPosition(): Vector3D {
-    this.random = Math.random();
+  getPosition(rng?: RNG): Vector3D {
+    this.random = (rng ?? Math.random)();
     this.vector.x = this.x1 + this.random * (this.x2 - this.x1);
     this.vector.y = this.y1 + this.random * (this.y2 - this.y1);
     this.vector.z = this.z1 + this.random * (this.z2 - this.z1);

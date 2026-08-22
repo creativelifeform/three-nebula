@@ -59,7 +59,7 @@ export default class Body extends Initializer {
   initialize(particle: Particle): void {
     // body is null when constructed with a falsy body (createArraySpan returns
     // null); dereferencing then throws, faithful to the pre-migration crash.
-    const body = this.body!.getValue();
+    const body = this.body!.getValue(false, particle.rng);
 
     if (this.w) {
       particle.body = {

@@ -171,6 +171,9 @@ export default class MobileGPURenderer extends BaseRenderer {
 
     (particle.target as Target).reset();
     this.mapParticleTargetPropsToPoint(particle);
+    // Release the slot (after the zeroing write above) so it can be recycled;
+    // otherwise per-spawn ids grow the slot space past the buffer's capacity.
+    this.uniqueList.remove(particle.id);
 
     particle.target = null;
   }

@@ -87,11 +87,11 @@ export default class Alpha extends Behaviour {
    */
   initialize(particle: Particle): void {
     particle.useAlpha = true;
-    particle.transform.alphaA = this.alphaA.getValue();
+    particle.transform.alphaA = this.alphaA.getValue(false, particle.rng);
 
     particle.transform.alphaB = this.same
       ? particle.transform.alphaA
-      : this.alphaB.getValue();
+      : this.alphaB.getValue(false, particle.rng);
   }
 
   /**

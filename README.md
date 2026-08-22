@@ -285,7 +285,9 @@ System.fromJSONAsync(json, THREE).then(system => {
 
 ```javascript
 import * as THREE from 'three/webgpu';
-import System, { Emitter /* … initializers, behaviours … */ } from 'three-nebula';
+import System, {
+  Emitter /* … initializers, behaviours … */,
+} from 'three-nebula';
 import { GPURenderer } from 'three-nebula/webgpu';
 
 const renderer = new THREE.WebGPURenderer();
@@ -306,6 +308,78 @@ If you are adding `three-nebula` to your project in the script tag, the only dif
 const { System, Emitter, Rate, Span } = window.Nebula;
 const system = new System();
 ```
+
+## Determinism & seeding
+
+Every system is driven by a **seeded** pseudo-random generator, so a simulation can be reproduced exactly — the same seed produces the same result, on any machine.
+
+**By default the seed is random**, so systems still vary from run to run and you don't have to change anything. For reproducible output, set a seed:
+
+```javascript
+const system = new System();
+
+system.setSeed(1234); // deterministic from here on
+// …add emitters, emit as usual…
+```
+
+**Which method should I use?** Seeding and stepping are two independent choices — `setSeed` controls _what_ randomness is drawn; `update`/`tick` control _how time advances_. Pick a stepping method by what you're doing:
+
+| Your situation                                             | Use                                | Why                                                                     |
+| ---------------------------------------------------------- | ---------------------------------- | ----------------------------------------------------------------------- |
+| **Live rendering in a browser** (most apps)                | `tick(realDeltaSeconds)`           | Refresh-rate independent — correct speed on any display, stall-safe     |
+| **Reproducible/offline**: tests, thumbnails, export, replays | `update()` a fixed number of times | Byte-identical output, no wall-clock involved                           |
+| **Inside your own fixed-timestep game loop**               | `update(dt)` with your own `dt`    | Particles advance in lockstep with your sim (don't nest two accumulators) |
+
+**The short version: reach for `tick` when rendering live** — it's the one most apps want, and it avoids the "runs 2× too fast on a 120Hz display" trap. **Reach for `update` only when you need exact, reproducible stepping** (or you're driving from your own loop). Add `setSeed(...)` on top of _either_ when you want the effect to look the same every time it plays — e.g. a curated preview or thumbnail. Leave the seed unset for ambient effects that can vary run to run.
+
+> For a **guaranteed** byte-identical replay, prefer `update()` × N: `tick` is deterministic for the same total elapsed time, but a long stall can hit `maxSubSteps` and drop time, nudging live playback off a previous run.
+
+**Reproducibility = same seed + the same number of fixed steps.** Drive the sim by calling `system.update()` a fixed number of times — each call advances one fixed `1/60s` step — and the result is byte-identical every run:
+
+```javascript
+system.setSeed(1234);
+for (let i = 0; i < 300; i++) system.update(); // identical across runs
+```
+
+**Real-time playback.** For a live render loop driven by `requestAnimationFrame`, call `system.tick(realDeltaSeconds)` instead of `update()`. It advances the sim in fixed steps based on **real elapsed time**, so playback runs at the correct speed regardless of the display's refresh rate — whereas calling `update()` once per frame ties speed to how often it's called (≈2× too fast on a 120Hz display). Long stalls (e.g. a backgrounded tab) are clamped so the sim can't spiral (see the next section to tune this).
+
+```javascript
+const loop = (now, last = now) => {
+  system.tick((now - last) / 1000); // real seconds since last frame
+  renderer.render(scene, camera);
+  requestAnimationFrame(next => loop(next, now));
+};
+requestAnimationFrame(loop);
+```
+
+> **Upgrading an existing project?** Two behaviour changes are worth knowing:
+>
+> - **Already calling `system.update()` once per frame?** That's the legacy pattern that assumes a 60Hz display — it runs ~2× too fast on a 120Hz screen. Switch your `requestAnimationFrame` loop to `system.tick(realDeltaSeconds)` for refresh-rate-independent speed. (Keep `update()` only for deterministic/offline stepping or your own fixed loop.)
+> - **Seeding `Math.random` globally to make particles reproducible?** That no longer works — the engine now draws from its own isolated stream and doesn't touch `Math.random`. Use `system.setSeed(...)` instead, which is the supported (and much stronger) way to get reproducible output.
+
+**Tuning the loop: `fixedTimeStep` and `maxSubSteps`.** `tick` turns real elapsed time into whole fixed steps using two knobs on the system:
+
+- **`system.fixedTimeStep`** (default `1/60`s ≈ `0.0167`) — the size of one simulation step, in seconds. `tick` accumulates real time and runs one `update(fixedTimeStep)` for each whole step that fits, carrying the leftover into the next call. It's also the step `update()` uses when called with no argument. Smaller steps give smoother, more accurate motion but do more work per second; larger steps are cheaper but chunkier. **Reproducibility is defined relative to this value** — two runs match only if they use the same `fixedTimeStep` and the same number of steps.
+- **`system.maxSubSteps`** (default `6`) — the most steps a single `tick` call will run. This caps catch-up after a long frame or stall (say a backgrounded tab that resumes with a multi-second delta). Without a cap, a huge delta would try to run hundreds of updates in one frame, and each frame would then fall further behind — the "spiral of death". When the cap is hit, the leftover time is dropped so the sim skips ahead instead of freezing.
+
+Together they bound the work per `tick`: at most `maxSubSteps` updates, i.e. `fixedTimeStep × maxSubSteps` seconds of simulation. With the defaults that's `6 × 1/60 = 0.1s` — any single frame longer than 100ms of real time has its excess discarded rather than simulated.
+
+```javascript
+system.fixedTimeStep = 1 / 120; // finer, smoother steps (more CPU per second)
+system.maxSubSteps = 10; //        allow more catch-up before dropping time
+```
+
+These only affect `tick`. `update(dt)` always advances by exactly the `dt` you pass (or one `fixedTimeStep` if you pass nothing), so deterministic stepping is unaffected by `maxSubSteps`.
+
+**Using it in a game.** Call `system.update(dt)` from your own update loop — a game that already runs a fixed-timestep loop uses `update`, not `tick`, so the particles advance in lockstep with your game's own steps (nesting `tick`'s accumulator inside yours would desync them). If you want the particle visuals to be part of your reproducible / replay world, seed the system from your game's own generator:
+
+```javascript
+system.setSeed(myGameRng.int32());
+```
+
+**Isolation.** The engine draws from its own per-system stream and does **not** consume from the global `Math.random`. If you seed `Math.random` globally for your own determinism, particle draws won't disturb your sequence.
+
+**Scope.** Determinism holds within one JavaScript engine on one platform — it is not intended for cross-machine lockstep netcode. Particles are visual state; keep them on the presentation side of a netcode boundary.
 
 ## Additive particles & transparent canvases
 
@@ -333,7 +407,7 @@ not added to it. Two rules keep additive particles looking right ([#133](https:/
    See the `Additive Blending — Scene Background` sandbox experiments (CPU + GPU) for a
    working example, and [#133](https://github.com/creativelifeform/three-nebula/issues/133)
    for the full rationale. (A future opt-in render-target compositing mode for true additive on
-   a *transparent* canvas is specced in `specs/render-target-additive-compositing.md`.)
+   a _transparent_ canvas is specced in `specs/render-target-additive-compositing.md`.)
 
 ## Development
 

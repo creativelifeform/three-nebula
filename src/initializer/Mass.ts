@@ -44,7 +44,7 @@ export default class Mass extends Initializer {
    * @param particle - the particle to initialize the property on
    */
   initialize(particle: Particle): void {
-    particle.mass = this.massPan.getValue();
+    particle.mass = this.massPan.getValue(false, particle.rng);
   }
 
   /**

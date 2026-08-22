@@ -83,9 +83,9 @@ describe('emitter -> Emitter', () => {
     assert.deepEqual(Object.values(position), [x, y, z]);
   });
 
-  it('should set the the totalEmitTimes and life and call the rate init method', () => {
+  it('should set the totalEmitTimes and life and reset the rate interval with the emitter rng', () => {
     const emitter = new Emitter();
-    const rateInitSpy = spy(emitter.rate, 'init');
+    const resetIntervalSpy = spy(emitter.rate, 'resetInterval');
 
     emitter.emit(5, 11);
 
@@ -95,9 +95,10 @@ describe('emitter -> Emitter', () => {
     assert.equal(totalEmitTimes, 5);
     assert.equal(life, 11);
 
-    assert(rateInitSpy.calledOnce);
+    // emit() seeds the first emission interval from the emitter's own stream.
+    assert(resetIntervalSpy.calledOnceWith(emitter.rng));
 
-    rateInitSpy.restore();
+    resetIntervalSpy.restore();
   });
 
   it('should set the life to 1 if the totalEmitTimes is 1', () => {

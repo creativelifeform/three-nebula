@@ -13,6 +13,8 @@ import EventDispatcher, {
   SYSTEM_UPDATE,
 } from '../events';
 import { INTEGRATION_TYPE_EULER, integrate } from '../math';
+import { mulberry32, hashSeed, randomSeed } from '../math/rng';
+import type { RNG } from '../math/rng';
 import { Util, uid } from '../utils';
 
 import { InitializerUtil, Rate } from '../initializer';
@@ -47,11 +49,22 @@ export default class Emitter extends Particle {
   cID: number;
   name: string;
   eventDispatcher: EventDispatcher;
+  // The emitter's own seeded stream (emitter-level draws, e.g. the rate) and the
+  // seed its particles derive from. Defaults to random; System.addEmitter /
+  // setSeed re-derive it deterministically from the system seed + emitter index.
+  seed: number;
+  rng: RNG;
+  // Monotonic spawn counter — never reused, survives pooling — so each particle
+  // gets a stable, unique index for its ID and seed.
+  _spawnCount: number;
 
   constructor(properties?: Record<string, unknown>) {
     super(properties);
 
     this.type = type;
+    this.seed = randomSeed();
+    this.rng = mulberry32(this.seed);
+    this._spawnCount = 0;
     this.particles = [];
     this.initializers = [];
     this.behaviours = [];
@@ -76,6 +89,19 @@ export default class Emitter extends Particle {
    */
   get system(): System | null {
     return this.parent as System | null;
+  }
+
+  /**
+   * Re-derives this emitter's seed (and particle stream) from the system seed
+   * and its index. Called by System.addEmitter / setSeed so that emitters loaded
+   * in the same order produce the same streams across runs.
+   */
+  reseed(systemSeed: number, index: number): this {
+    this.seed = hashSeed(systemSeed, index);
+    this.rng = mulberry32(this.seed);
+    this._spawnCount = 0;
+
+    return this;
   }
 
   /**
@@ -136,7 +162,7 @@ export default class Emitter extends Particle {
       this.life = isNumber(life) ? life : Infinity;
     }
 
-    this.rate.init();
+    this.rate.resetInterval(this.rng);
     this.isEmitting = true;
 
     return this;
@@ -410,6 +436,14 @@ export default class Emitter extends Particle {
   setupParticle(particle: Particle, index?: number): void {
     const { initializers, behaviours } = this;
 
+    // Deterministic identity + stream, derived from the emitter seed and a
+    // monotonic spawn index (assigned before initializers run so they draw from
+    // the particle's own seeded stream).
+    const spawnIndex = this._spawnCount++;
+
+    particle.id = `particle-${this.seed}-${spawnIndex}`;
+    particle.rng = mulberry32(hashSeed(this.seed, spawnIndex));
+
     InitializerUtil.initialize(this, particle, initializers);
 
     particle.addBehaviours(behaviours);
@@ -504,7 +538,7 @@ export default class Emitter extends Particle {
    */
   generate(time: number): void {
     if (this.totalEmitTimes === 1) {
-      let i = this.rate.getValue(99999);
+      let i = this.rate.getValue(99999, this.rng);
 
       if (i > 0) {
         this.cID = i;
@@ -522,7 +556,7 @@ export default class Emitter extends Particle {
     this.currentEmitTime += time;
 
     if (this.currentEmitTime < this.totalEmitTimes) {
-      let i = this.rate.getValue(time);
+      let i = this.rate.getValue(time, this.rng);
 
       if (i > 0) {
         this.cID = i;

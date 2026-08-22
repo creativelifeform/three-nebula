@@ -18,6 +18,7 @@ import { Util, uid } from '../utils';
 
 import { PI } from '../constants';
 import { Vector3D } from '../math';
+import type { RNG } from '../math/rng';
 import { CORE_TYPE_PARTICLE as type } from './types';
 import type { EasingFunction } from '../ease';
 import type Behaviour from '../behaviour/Behaviour';
@@ -64,6 +65,11 @@ export default class Particle {
   hasBeenInitialized?: boolean;
   // Set by Emitter.setupParticle — the particle's index within its emitter.
   index?: number;
+  // The particle's own seeded PRNG stream (Stage 2). Assigned by
+  // Emitter.setupParticle from the emitter seed + a monotonic spawn index, so a
+  // particle's randomness is a pure function of who spawned it and when.
+  // Defaults to Math.random until an emitter seeds it (the fallback path).
+  rng: RNG;
   // Set by renderers — the render target (a THREE Object3D for Mesh/Sprite
   // renderers, or a GPU `Target` store for the GPURenderer). Polymorphic.
   target?: unknown;
@@ -102,6 +108,7 @@ export default class Particle {
     this.transform = {};
     this.color = { r: 0, g: 0, b: 0 };
     this.rotation = new Vector3D();
+    this.rng = Math.random;
 
     /**
      * @desc The particle's distance to the camera, only set by the GPURenderer

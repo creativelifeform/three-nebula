@@ -1,5 +1,5 @@
 import Span from './Span';
-import sample from 'lodash/sample';
+import type { RNG } from './rng';
 import { MATH_TYPE_ARRAY_SPAN as type } from './types';
 
 /**
@@ -24,10 +24,14 @@ export default class ArraySpan<T = unknown> extends Span<T> {
   }
 
   /**
-   * Gets a random item.
+   * Gets a random item, using the supplied seeded `rng` when provided (falls
+   * back to Math.random). Replaces lodash `sample`, which drew from the global
+   * Math.random and could not be seeded.
    */
-  getValue(): T {
-    return sample(this.items) as T;
+  getValue(_INT?: boolean, rng?: RNG): T {
+    const rand = rng ?? Math.random;
+
+    return this.items[(rand() * this.items.length) >> 0];
   }
 }
 

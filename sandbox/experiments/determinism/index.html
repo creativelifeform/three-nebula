@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Determinism — same seed, same result</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="/style/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/style/app.css" />
+    <style>
+      #ui {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        padding: 12px;
+        border-radius: 5px;
+        background-color: #000020;
+        color: #03e5e6;
+        font-size: 13px;
+      }
+      #ui input[type='number'] {
+        width: 90px;
+      }
+      #status {
+        position: absolute;
+        z-index: 2;
+        top: 20px;
+        left: 20px;
+        padding: 12px 16px;
+        border-radius: 5px;
+        background-color: #000020;
+        color: #03e5e6;
+        font-family: monospace;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      #status .verdict.match {
+        color: #4dff88;
+      }
+      #status .verdict.diverged {
+        color: #ff5d6c;
+      }
+      #status .digest {
+        opacity: 0.85;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="status">
+        <div>step <span id="step">0</span></div>
+        <div class="digest">left&nbsp;&nbsp;<span id="digestL">—</span></div>
+        <div class="digest">right&nbsp;<span id="digestR">—</span></div>
+        <div class="verdict" id="verdict">—</div>
+      </div>
+
+      <div id="ui">
+        <label>seed <input id="seed" type="number" value="1234" /></label>
+        <label
+          ><input id="desync" type="checkbox" /> desync right (seed + 1)</label
+        >
+        <button id="replay">apply &amp; replay</button>
+      </div>
+
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

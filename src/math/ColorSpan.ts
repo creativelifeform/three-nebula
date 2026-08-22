@@ -1,6 +1,6 @@
 import MathUtils from './MathUtils';
 import Span from './Span';
-import sample from 'lodash/sample';
+import type { RNG } from './rng';
 import { MATH_TYPE_COLOR_SPAN as type } from './types';
 
 /**
@@ -38,10 +38,12 @@ export default class ColorSpan extends Span<string> {
   /**
    * Gets a color from the color array, or a random color if shouldRandomize.
    */
-  getValue(): string {
+  getValue(_INT?: boolean, rng?: RNG): string {
+    const rand = rng ?? Math.random;
+
     return this.shouldRandomize
-      ? MathUtils.randomColor()
-      : (sample(this.colors) as string);
+      ? MathUtils.randomColor(rng)
+      : this.colors[(rand() * this.colors.length) >> 0];
   }
 }
 

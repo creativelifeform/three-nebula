@@ -1,13 +1,28 @@
 import { PI } from '../constants';
 import type Vector3D from './Vector3D';
+import type { RNG } from './rng';
 
 export default {
-  randomAToB: function (a: number, b: number, INT?: boolean): number {
-    if (!INT) return a + Math.random() * (b - a);
-    else return ((Math.random() * (b - a)) >> 0) + a;
+  // `rng` is optional with a Math.random fallback: the engine passes its seeded
+  // stream (deterministic); callers that pass nothing behave exactly as before.
+  randomAToB: function (
+    a: number,
+    b: number,
+    INT?: boolean,
+    rng?: RNG
+  ): number {
+    const rand = rng ?? Math.random;
+
+    if (!INT) return a + rand() * (b - a);
+    else return ((rand() * (b - a)) >> 0) + a;
   },
-  randomFloating: function (center: number, f: number, INT?: boolean): number {
-    return this.randomAToB(center - f, center + f, INT);
+  randomFloating: function (
+    center: number,
+    f: number,
+    INT?: boolean,
+    rng?: RNG
+  ): number {
+    return this.randomAToB(center - f, center + f, INT, rng);
   },
 
   randomZone: function (display?: unknown): void {}, //eslint-disable-line
@@ -20,11 +35,10 @@ export default {
     return '#' + num.toString(16);
   },
 
-  randomColor: function (): string {
-    return (
-      '#' +
-      ('00000' + ((Math.random() * 0x1000000) << 0).toString(16)).slice(-6)
-    );
+  randomColor: function (rng?: RNG): string {
+    const rand = rng ?? Math.random;
+
+    return '#' + ('00000' + ((rand() * 0x1000000) << 0).toString(16)).slice(-6);
   },
 
   lerp: function (a: number, b: number, energy: number): number {
