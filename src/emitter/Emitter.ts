@@ -57,6 +57,19 @@ export default class Emitter extends Particle {
   // Monotonic spawn counter — never reused, survives pooling — so each particle
   // gets a stable, unique index for its ID and seed.
   _spawnCount: number;
+  // Emitter hierarchy (spec 01, Stage 1). `nodeId` is this emitter's tree-path
+  // address (e.g. "0/children/0"), assigned when loaded from a hierarchy; it is
+  // the key child seeds derive from and the stamp put on emitted particles.
+  // `childNodes` are authored child templates, each instanced once per parent
+  // particle. A live instance sets `_template` (the node it was cloned from) and
+  // `_parentParticle` (the particle it rides); `_freeInstances` is a template's
+  // own free-list of dormant instances, so recycling bounds instance count by
+  // live particles rather than cumulative spawns.
+  nodeId: string;
+  childNodes: Emitter[];
+  _template: Emitter | null;
+  _parentParticle: Particle | null;
+  _freeInstances: Emitter[];
 
   constructor(properties?: Record<string, unknown>) {
     super(properties);
@@ -65,6 +78,11 @@ export default class Emitter extends Particle {
     this.seed = randomSeed();
     this.rng = mulberry32(this.seed);
     this._spawnCount = 0;
+    this.nodeId = '';
+    this.childNodes = [];
+    this._template = null;
+    this._parentParticle = null;
+    this._freeInstances = [];
     this.particles = [];
     this.initializers = [];
     this.behaviours = [];
@@ -102,6 +120,96 @@ export default class Emitter extends Particle {
     this._spawnCount = 0;
 
     return this;
+  }
+
+  /**
+   * Derives a child instance's seed from its node's tree-path address and the
+   * parent particle's (stable, deterministic) id, so a given parent always
+   * produces the same child stream. Mirrors `reseed` but keyed on identity
+   * rather than array index (a child instance has no fixed index).
+   */
+  reseedFromParent(nodeId: string, parentParticleId: string): this {
+    this.seed = hashSeed(nodeId, parentParticleId);
+    this.rng = mulberry32(this.seed);
+    this._spawnCount = 0;
+
+    return this;
+  }
+
+  /**
+   * Cold path: builds a fresh instance of this node. Config (initializers,
+   * behaviours, child templates) is shared by reference — it is read-only during
+   * simulation — while all mutable runtime state is per-instance. The instance
+   * gets its own Rate over the template's immutable Spans so interval counters
+   * don't collide across the many instances of one node.
+   */
+  _createInstance(): Emitter {
+    const inst = new Emitter();
+
+    inst._template = this;
+    inst.nodeId = this.nodeId;
+    inst.initializers = this.initializers;
+    inst.behaviours = this.behaviours;
+    inst.emitterBehaviours = this.emitterBehaviours;
+    inst.childNodes = this.childNodes;
+    inst.damping = this.damping;
+    inst.rate = new Rate(this.rate.numPan, this.rate.timePan);
+    inst.totalEmitTimes = this.totalEmitTimes;
+    inst.life = this.life;
+
+    return inst;
+  }
+
+  /**
+   * Clears an instance's runtime state so a pooled instance is indistinguishable
+   * from a cold one. Deliberately does NOT touch the shared config arrays (that
+   * would mutate the template every other instance reads) — only per-instance
+   * mutable fields. `totalEmitTimes`/`life` are restored from the template since
+   * `generate` decrements them as the instance runs.
+   */
+  _resetInstanceState(): void {
+    const template = this._template as Emitter;
+
+    this.age = 0;
+    this.dead = false;
+    this.energy = 1;
+    this.currentEmitTime = 0;
+    this.totalEmitTimes = template.totalEmitTimes;
+    this.life = template.life;
+    this._spawnCount = 0;
+    this.isEmitting = false;
+    this.particles.length = 0;
+    this._parentParticle = null;
+    this.position.set(0, 0, 0);
+    this.rotation.clear();
+  }
+
+  /**
+   * Warm-or-cold acquire of an instance of this node bound to `parentParticle`.
+   * Pops the free-list when possible (no allocation on the warm path), otherwise
+   * builds one. The instance is reseeded from the parent's id so its stream is
+   * deterministic. Call on the template node; the returned instance carries a
+   * `_template` back-reference for release.
+   */
+  acquireInstance(parentParticle: Particle): Emitter {
+    const inst = this._freeInstances.pop() ?? this._createInstance();
+
+    inst._resetInstanceState();
+    inst._parentParticle = parentParticle;
+    inst.reseedFromParent(this.nodeId, parentParticle.id);
+    inst.isEmitting = true;
+
+    return inst;
+  }
+
+  /**
+   * Returns an instance to this node's free-list for reuse. Callers must ensure
+   * the instance has no live particles first (the System's release path only
+   * releases once a detached instance has drained).
+   */
+  releaseInstance(inst: Emitter): void {
+    inst.isEmitting = false;
+    this._freeInstances.push(inst);
   }
 
   /**
@@ -443,6 +551,10 @@ export default class Emitter extends Particle {
 
     particle.id = `particle-${this.seed}-${spawnIndex}`;
     particle.rng = mulberry32(hashSeed(this.seed, spawnIndex));
+    // Stamp the spawning emitter's node id (null for a flat top-level emitter,
+    // whose nodeId is still ''); lights up automatically once hierarchy loading
+    // assigns tree-path ids.
+    particle.emitterId = this.nodeId || null;
 
     InitializerUtil.initialize(this, particle, initializers);
 

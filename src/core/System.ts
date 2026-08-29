@@ -5,7 +5,11 @@ import EventDispatcher, {
   SYSTEM_UPDATE_AFTER,
 } from '../events';
 
-import { DEFAULT_MAX_SUB_STEPS, DEFAULT_SYSTEM_DELTA } from './constants';
+import {
+  DEFAULT_MAX_EMITTER_INSTANCES,
+  DEFAULT_MAX_SUB_STEPS,
+  DEFAULT_SYSTEM_DELTA,
+} from './constants';
 import Emitter from '../emitter/Emitter';
 import { INTEGRATION_TYPE_EULER } from '../math/constants';
 import { randomSeed } from '../math/rng';
@@ -15,6 +19,7 @@ import fromJSON, { SystemJSON } from './fromJSON';
 import fromJSONAsync from './fromJSONAsync';
 import { CORE_TYPE_SYSTEM as type } from './types';
 import type BaseRenderer from '../renderer/BaseRenderer';
+import type Particle from './Particle';
 import type { Listener } from '../events/EventDispatcher';
 
 type ThreeApi = typeof import('three');
@@ -52,6 +57,17 @@ export default class System {
   fixedTimeStep: number;
   maxSubSteps: number;
   _accumulator: number;
+  // Emitter-instance pooling + cap (spec 01, Stage 1). Child emitter instances
+  // recycle through per-node free-lists, but the System owns the global live cap
+  // and instrumentation because child nodes aren't directly attached to it — the
+  // tree walk (Stage 2) drives spawn/release through here where the System is in
+  // scope. Counters are exposed for the sandbox HUD; the overflow warning fires
+  // once so the cap is never silently hit.
+  maxEmitterInstances: number;
+  _liveEmitterInstances: number;
+  _emitterPoolHits: number;
+  _emitterPoolMisses: number;
+  _warnedInstanceOverflow: boolean;
 
   constructor(
     preParticles: number = POOL_MAX,
@@ -70,6 +86,52 @@ export default class System {
     this.fixedTimeStep = DEFAULT_SYSTEM_DELTA;
     this.maxSubSteps = DEFAULT_MAX_SUB_STEPS;
     this._accumulator = 0;
+    this.maxEmitterInstances = DEFAULT_MAX_EMITTER_INSTANCES;
+    this._liveEmitterInstances = 0;
+    this._emitterPoolHits = 0;
+    this._emitterPoolMisses = 0;
+    this._warnedInstanceOverflow = false;
+  }
+
+  /**
+   * Acquires a child emitter instance of `node` bound to `parentParticle`,
+   * honouring the global live-instance cap. On overflow the newest spawn is
+   * dropped (the right default for FX) and a one-time warning is logged so the
+   * cap is never hit silently. Returns the instance, or null when dropped.
+   */
+  spawnEmitterInstance(
+    node: Emitter,
+    parentParticle: Particle
+  ): Emitter | null {
+    if (this._liveEmitterInstances >= this.maxEmitterInstances) {
+      if (!this._warnedInstanceOverflow) {
+        this._warnedInstanceOverflow = true;
+        // eslint-disable-next-line no-console
+        console.warn(
+          `three-nebula: maxEmitterInstances (${this.maxEmitterInstances}) reached; ` +
+            `dropping newest child emitter instances. Raise System.maxEmitterInstances if intended.`
+        );
+      }
+
+      return null;
+    }
+
+    const warm = node._freeInstances.length > 0;
+    const inst = node.acquireInstance(parentParticle);
+
+    warm ? this._emitterPoolHits++ : this._emitterPoolMisses++;
+    this._liveEmitterInstances++;
+
+    return inst;
+  }
+
+  /**
+   * Releases a child emitter instance back to its node's free-list and updates
+   * the live count. The caller guarantees the instance has drained its particles.
+   */
+  releaseEmitterInstance(inst: Emitter): void {
+    (inst._template as Emitter).releaseInstance(inst);
+    this._liveEmitterInstances--;
   }
 
   /**

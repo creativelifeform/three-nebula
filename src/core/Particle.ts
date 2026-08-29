@@ -65,6 +65,11 @@ export default class Particle {
   hasBeenInitialized?: boolean;
   // Set by Emitter.setupParticle — the particle's index within its emitter.
   index?: number;
+  // Emitter hierarchy (spec 01): the tree-path id of the emitter that spawned
+  // this particle (null for top-level emitters). Stamped in Emitter.setupParticle
+  // and, like `id`, deliberately preserved across pooling until the next setup
+  // overwrites it. Renderers/ribbon grouping key off this without re-hashing.
+  emitterId: string | null;
   // The particle's own seeded PRNG stream (Stage 2). Assigned by
   // Emitter.setupParticle from the emitter seed + a monotonic spawn index, so a
   // particle's randomness is a pure function of who spawned it and when.
@@ -81,6 +86,7 @@ export default class Particle {
    */
   constructor(properties: Record<string, unknown> = {}) {
     this.id = `particle-${uid()}`;
+    this.emitterId = null;
     this.type = type;
     this.life = DEFAULT_LIFE;
     this.age = DEFAULT_AGE;

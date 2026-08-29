@@ -128,6 +128,17 @@ export const DEFAULT_SYSTEM_DELTA = 0.0167;
 export const DEFAULT_MAX_SUB_STEPS = 6;
 
 /**
+ * The default global cap on concurrently live child emitter instances (spec 01,
+ * Stage 1). Nested emitters multiply cardinality fast (100 parents × a child
+ * node = 100 live instances), so this bounds the blast radius. On overflow the
+ * newest instance is dropped — the right default for FX. Raise via
+ * `System.maxEmitterInstances` for genuinely large hierarchies.
+ *
+ * @type {number}
+ */
+export const DEFAULT_MAX_EMITTER_INSTANCES = 2000;
+
+/**
  * @desc The types of initializers supported by the System.fromJSON method.
  * @type {array<string>}
  */
