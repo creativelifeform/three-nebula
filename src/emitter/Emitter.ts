@@ -4,7 +4,12 @@ import {
   DEFAULT_DAMPING,
   DEFAULT_EMITTER_INDEX,
   DEFAULT_EMITTER_RATE,
+  DEFAULT_INHERIT_POSITION,
+  DEFAULT_INHERIT_ROTATION,
+  DEFAULT_INHERIT_SCALE,
+  DEFAULT_ORPHAN_POLICY,
 } from './constants';
+import { DEFAULT_MAX_DEPTH } from '../core/constants';
 import EventDispatcher, {
   EMITTER_DEAD,
   PARTICLE_CREATED,
@@ -30,6 +35,50 @@ interface Vector3Props {
   y?: number;
   z?: number;
 }
+
+/**
+ * How a child emitter's transform relates to its parent particle, per channel:
+ * `always` tracks it every frame (trails, attached FX), `onCreate` snapshots it
+ * once at spawn then runs free (ribbons, debris), `none` ignores it (system space).
+ */
+export type InheritMode = 'always' | 'onCreate' | 'none';
+
+export interface InheritConfig {
+  position: InheritMode;
+  rotation: InheritMode;
+  scale: InheritMode;
+}
+
+/** What becomes of a dead parent's already-emitted child particles. */
+export type OrphanPolicy = 'kill' | 'detach';
+
+/**
+ * Copies the parent particle's transform onto a child instance according to its
+ * `inherit` config. `atSpawn` runs the one-shot `onCreate` snapshot; the
+ * per-frame call (atSpawn=false) only re-applies the continuous `always` mode.
+ * Scale inheritance is deferred to Stage 3 (it needs a per-emitter scale offset).
+ */
+const applyInheritance = (
+  inst: Emitter,
+  particle: Particle,
+  atSpawn: boolean
+): void => {
+  const { inherit } = inst;
+
+  if (
+    inherit.position === 'always' ||
+    (atSpawn && inherit.position === 'onCreate')
+  ) {
+    inst.position.copy(particle.position);
+  }
+
+  if (
+    inherit.rotation === 'always' ||
+    (atSpawn && inherit.rotation === 'onCreate')
+  ) {
+    inst.rotation.copy(particle.rotation);
+  }
+};
 
 /**
  * Emitters are the System engine's particle factories. They cause particles to
@@ -67,9 +116,15 @@ export default class Emitter extends Particle {
   // live particles rather than cumulative spawns.
   nodeId: string;
   childNodes: Emitter[];
+  inherit: InheritConfig;
+  orphanPolicy: OrphanPolicy;
   _template: Emitter | null;
   _parentParticle: Particle | null;
   _freeInstances: Emitter[];
+  // Live child instances riding each of this emitter's still-alive particles,
+  // keyed by the parent particle so they can be orphaned when it dies. On a live
+  // instance this holds its grandchildren; on a template it stays empty.
+  activeChildren: Map<Particle, Emitter[]>;
 
   constructor(properties?: Record<string, unknown>) {
     super(properties);
@@ -80,9 +135,16 @@ export default class Emitter extends Particle {
     this._spawnCount = 0;
     this.nodeId = '';
     this.childNodes = [];
+    this.inherit = {
+      position: DEFAULT_INHERIT_POSITION,
+      rotation: DEFAULT_INHERIT_ROTATION,
+      scale: DEFAULT_INHERIT_SCALE,
+    };
+    this.orphanPolicy = DEFAULT_ORPHAN_POLICY;
     this._template = null;
     this._parentParticle = null;
     this._freeInstances = [];
+    this.activeChildren = new Map();
     this.particles = [];
     this.initializers = [];
     this.behaviours = [];
@@ -152,6 +214,8 @@ export default class Emitter extends Particle {
     inst.behaviours = this.behaviours;
     inst.emitterBehaviours = this.emitterBehaviours;
     inst.childNodes = this.childNodes;
+    inst.inherit = this.inherit;
+    inst.orphanPolicy = this.orphanPolicy;
     inst.damping = this.damping;
     inst.rate = new Rate(this.rate.numPan, this.rate.timePan);
     inst.totalEmitTimes = this.totalEmitTimes;
@@ -179,6 +243,7 @@ export default class Emitter extends Particle {
     this._spawnCount = 0;
     this.isEmitting = false;
     this.particles.length = 0;
+    this.activeChildren.clear();
     this._parentParticle = null;
     this.position.set(0, 0, 0);
     this.rotation.clear();
@@ -197,6 +262,10 @@ export default class Emitter extends Particle {
     inst._resetInstanceState();
     inst._parentParticle = parentParticle;
     inst.reseedFromParent(this.nodeId, parentParticle.id);
+    // Re-draw the emission interval from the instance's own seeded stream — the
+    // fresh Rate built in _createInstance seeded its first interval off
+    // Math.random, which would make child timing non-deterministic.
+    inst.rate.resetInterval(inst.rng);
     inst.isEmitting = true;
 
     return inst;
@@ -210,6 +279,117 @@ export default class Emitter extends Particle {
   releaseInstance(inst: Emitter): void {
     inst.isEmitting = false;
     this._freeInstances.push(inst);
+  }
+
+  /**
+   * Assigns this node's tree-path id and recurses into its children, so the whole
+   * subtree gets stable addresses (e.g. "0", "0/children/1"). Called by
+   * System.addEmitter with the emitter's array index as the root path. Enforces
+   * the hard depth cap here — the single choke point both the JSON and code paths
+   * flow through — throwing on an over-deep tree rather than leaking at runtime.
+   */
+  _assignNodeIds(
+    nodeId: string,
+    depth = 0,
+    maxDepth: number = DEFAULT_MAX_DEPTH
+  ): void {
+    if (depth > maxDepth) {
+      throw new Error(
+        `three-nebula: emitter hierarchy exceeds maxDepth (${maxDepth}) at "${nodeId}"`
+      );
+    }
+
+    this.nodeId = nodeId;
+
+    for (let i = 0; i < this.childNodes.length; i++) {
+      this.childNodes[i]._assignNodeIds(
+        `${nodeId}/children/${i}`,
+        depth + 1,
+        maxDepth
+      );
+    }
+  }
+
+  /**
+   * Nests a child emitter template under this one. The child is instanced once
+   * per particle this emitter spawns. Node ids are (re)assigned when the root is
+   * added to a System, so children may be attached in any order beforehand.
+   */
+  addChild(child: Emitter): this {
+    this.childNodes.push(child);
+
+    return this;
+  }
+
+  /**
+   * Spawns a child instance of every child node, bound to a just-created parent
+   * particle, and snapshots the parent transform for `onCreate` inheritance. The
+   * System owns the acquire (cap + accounting); a null return means the cap was
+   * hit and this child is dropped.
+   */
+  _spawnChildrenFor(particle: Particle): void {
+    const system = this.system as System;
+    const instances: Emitter[] = [];
+
+    for (let i = 0; i < this.childNodes.length; i++) {
+      const inst = system.spawnEmitterInstance(this.childNodes[i], particle);
+
+      if (!inst) {
+        continue;
+      }
+
+      applyInheritance(inst, particle, true);
+      instances.push(inst);
+    }
+
+    if (instances.length) {
+      this.activeChildren.set(particle, instances);
+    }
+  }
+
+  /**
+   * Handles the child instances riding a particle that has just died: each is
+   * either detached (its particles live on, per `detach`) or killed with it.
+   * Runs before the particle is reset so the mapping key is still valid.
+   */
+  _orphanChildrenOf(particle: Particle): void {
+    const instances = this.activeChildren.get(particle);
+
+    if (!instances) {
+      return;
+    }
+
+    const system = this.system as System;
+
+    for (let i = 0; i < instances.length; i++) {
+      const inst = instances[i];
+
+      inst.orphanPolicy === 'kill'
+        ? system._killInstance(inst)
+        : system._detachInstance(inst);
+    }
+
+    this.activeChildren.delete(particle);
+  }
+
+  /**
+   * Advances the child instances riding each still-live particle, after this
+   * emitter's own particles have moved this frame (topological order: a parent
+   * resolves before its children read its transform). Recurses via inst.update.
+   */
+  _updateChildInstances(time: number): void {
+    if (!this.activeChildren.size) {
+      return;
+    }
+
+    this.activeChildren.forEach((instances, particle) => {
+      for (let i = 0; i < instances.length; i++) {
+        const inst = instances[i];
+
+        applyInheritance(inst, particle, false);
+        inst.update(time);
+      }
+    });
   }
 
   /**
@@ -534,6 +714,11 @@ export default class Emitter extends Particle {
     this.system && this.system.dispatch(PARTICLE_CREATED, particle);
     this.bindEmitterEvent && this.dispatch(PARTICLE_CREATED, particle);
 
+    // Instance a child emitter per child node, riding this new particle.
+    if (this.childNodes.length && this.system) {
+      this._spawnChildrenFor(particle);
+    }
+
     return particle;
   }
 
@@ -592,6 +777,11 @@ export default class Emitter extends Particle {
       const particle = this.particles[i];
 
       if (particle.dead) {
+        // Detach or kill any child instances riding this particle before it is
+        // reset and returned to the pool (the map is keyed on the particle).
+        if (this.activeChildren.size) {
+          this._orphanChildrenOf(particle);
+        }
         this.system && this.system.dispatch(PARTICLE_DEAD, particle);
         this.bindEmitterEvent && this.dispatch(PARTICLE_DEAD, particle);
         // faithful to the pre-migration crash if the emitter is detached.
@@ -604,6 +794,9 @@ export default class Emitter extends Particle {
     }
 
     this.updateEmitterBehaviours(time);
+
+    // Children resolve last, after this emitter's particles have advanced.
+    this._updateChildInstances(time);
   }
 
   /**

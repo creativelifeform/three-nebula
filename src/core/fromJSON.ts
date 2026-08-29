@@ -17,6 +17,7 @@ import type {
 import Rate from '../initializer/Rate';
 import type System from './System';
 import type Emitter from '../emitter/Emitter';
+import type { InheritConfig, OrphanPolicy } from '../emitter/Emitter';
 import type InitializerBase from '../initializer/Initializer';
 import type BehaviourBase from '../behaviour/Behaviour';
 
@@ -101,6 +102,12 @@ export interface EmitterJSON {
   totalEmitTimes?: number;
   life?: number;
   damping?: number;
+  // Emitter hierarchy (spec 01, Stage 2), all additive: `children` nests emitter
+  // templates (absent = a flat leaf emitter, i.e. today's schema); `inherit` and
+  // `orphanPolicy` only apply to a nested child.
+  children?: EmitterJSON[];
+  inherit?: Partial<InheritConfig>;
+  orphanPolicy?: OrphanPolicy;
 }
 
 export interface SystemJSON {
@@ -175,6 +182,57 @@ const makeBehaviours = (items: ItemJSON[]): BehaviourBase[] => {
 };
 
 /**
+ * Builds an emitter (and, recursively, its child templates) from JSON. Children
+ * are wired as `childNodes` rather than added to the System — only the root is
+ * added, which assigns the whole subtree's node ids and enforces the depth cap.
+ */
+const buildEmitter = (
+  data: EmitterJSON,
+  THREE: ThreeApi,
+  Emitter: EmitterConstructor
+): Emitter => {
+  const emitter = new Emitter();
+  const {
+    rate,
+    rotation,
+    initializers,
+    behaviours,
+    emitterBehaviours = [],
+    position,
+    totalEmitTimes = Infinity,
+    life = Infinity,
+    damping = DEFAULT_DAMPING,
+    children = [],
+    inherit,
+    orphanPolicy,
+  } = data;
+
+  emitter.damping = damping;
+  emitter
+    .setRate(makeRate(rate))
+    .setRotation(rotation)
+    .setInitializers(makeInitializers(initializers, THREE))
+    .setBehaviours(makeBehaviours(behaviours))
+    .setEmitterBehaviours(makeBehaviours(emitterBehaviours))
+    .setPosition(position)
+    .emit(totalEmitTimes, life);
+
+  if (inherit) {
+    emitter.inherit = { ...emitter.inherit, ...inherit };
+  }
+
+  if (orphanPolicy) {
+    emitter.orphanPolicy = orphanPolicy;
+  }
+
+  children.forEach(child =>
+    emitter.addChild(buildEmitter(child, THREE, Emitter))
+  );
+
+  return emitter;
+};
+
+/**
  * Creates a System instance from a JSON object.
  *
  * @deprecated Use fromJSONAsync instead.
@@ -195,32 +253,9 @@ export default (
   // set system.preParticles to the three namespace. Fixed to match the async path.
   const system = new System(preParticles, integrationType);
 
-  emitters.forEach(data => {
-    const emitter = new Emitter();
-    const {
-      rate,
-      rotation,
-      initializers,
-      behaviours,
-      emitterBehaviours = [],
-      position,
-      totalEmitTimes = Infinity,
-      life = Infinity,
-      damping = DEFAULT_DAMPING,
-    } = data;
-
-    emitter.damping = damping;
-    emitter
-      .setRate(makeRate(rate))
-      .setRotation(rotation)
-      .setInitializers(makeInitializers(initializers, THREE))
-      .setBehaviours(makeBehaviours(behaviours))
-      .setEmitterBehaviours(makeBehaviours(emitterBehaviours))
-      .setPosition(position)
-      .emit(totalEmitTimes, life);
-
-    system.addEmitter(emitter);
-  });
+  emitters.forEach(data =>
+    system.addEmitter(buildEmitter(data, THREE, Emitter))
+  );
 
   return system;
 };
