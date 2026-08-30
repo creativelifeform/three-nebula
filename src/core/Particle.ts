@@ -65,11 +65,17 @@ export default class Particle {
   hasBeenInitialized?: boolean;
   // Set by Emitter.setupParticle — the particle's index within its emitter.
   index?: number;
-  // Emitter hierarchy (spec 01): the tree-path id of the emitter that spawned
-  // this particle (null for top-level emitters). Stamped in Emitter.setupParticle
-  // and, like `id`, deliberately preserved across pooling until the next setup
-  // overwrites it. Renderers/ribbon grouping key off this without re-hashing.
+  // Emitter hierarchy (spec 01): the tree-path id of the emitter *definition*
+  // that spawned this particle (null for a flat top-level emitter). Shared by all
+  // instances of one node — the "which kind of thing" key (look/config).
   emitterId: string | null;
+  // The specific emitting *instance* (spec 01, Stage 4): the emitter's seed as a
+  // string. Unique per live emitter — every instance of a child node has its own —
+  // so the RibbonRenderer groups particles into one strip per trail. `spawnIndex`
+  // is the monotonic order within that instance, giving the strip its spine order.
+  // Both are stamped in setupParticle and preserved across pooling like `id`.
+  emitterInstanceId: string | null;
+  spawnIndex: number;
   // The particle's own seeded PRNG stream (Stage 2). Assigned by
   // Emitter.setupParticle from the emitter seed + a monotonic spawn index, so a
   // particle's randomness is a pure function of who spawned it and when.
@@ -87,6 +93,8 @@ export default class Particle {
   constructor(properties: Record<string, unknown> = {}) {
     this.id = `particle-${uid()}`;
     this.emitterId = null;
+    this.emitterInstanceId = null;
+    this.spawnIndex = 0;
     this.type = type;
     this.life = DEFAULT_LIFE;
     this.age = DEFAULT_AGE;
