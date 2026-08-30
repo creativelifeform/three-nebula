@@ -161,6 +161,7 @@ const buildEmitterAsync = (
     children = [],
     inherit,
     orphanPolicy,
+    trigger,
   } = data;
 
   emitter.damping = damping;
@@ -172,6 +173,10 @@ const buildEmitterAsync = (
 
   if (orphanPolicy) {
     emitter.orphanPolicy = orphanPolicy;
+  }
+
+  if (trigger) {
+    emitter.trigger = trigger;
   }
 
   return makeInitializers(initializers, THREE)

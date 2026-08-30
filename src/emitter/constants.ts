@@ -17,3 +17,9 @@ export const DEFAULT_INHERIT_SCALE = 'none';
 // particle dies. `detach` lets them live out their lives (a spark's smoke should
 // outlive the spark); `kill` takes them with it.
 export const DEFAULT_ORPHAN_POLICY = 'detach';
+
+// When a child emitter is instanced (spec 01, Stage 5). `spawn` (default) is
+// attachment — instanced at parent-particle birth, rides it (Stages 2–3).
+// `death` is an event — instanced at parent-particle death, bursts at the death
+// position and outlives the parent (fireworks).
+export const DEFAULT_EMITTER_TRIGGER = 'spawn';
