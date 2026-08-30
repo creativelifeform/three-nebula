@@ -18,10 +18,18 @@ import System, {
 import { run } from '/common/run.js';
 
 // Emitter hierarchy (spec 01): the parent "sparks" emitter throws sprites
-// outward; each spark rides a child "smoke" emitter (inherit.position: 'always',
-// orphanPolicy: 'detach') so the smoke follows its spark and lives on after the
-// spark dies. One child node → one live instance per spark, all recycled through
-// the Stage 1 pool.
+// outward; each spark rides a child "smoke" emitter (orphanPolicy: 'detach') so
+// the smoke follows its spark and lives on after the spark dies. One child node →
+// one live instance per spark, all recycled through the Stage 1 pool.
+//
+// Stage 3 inheritance modes are on show:
+//   - scale: 'always'    smoke puffs shrink as the spark shrinks
+//   - position: 'always' (default) smoke rides the spark; append
+//     ?position=onCreate to leave a stationary band where each spark was born.
+const positionMode =
+  new URLSearchParams(window.location.search).get('position') === 'onCreate'
+    ? 'onCreate'
+    : 'always';
 
 const createSprite = color => {
   const map = new THREE.TextureLoader().load('/assets/dot.png');
@@ -55,8 +63,9 @@ const createSmokeTrail = () => {
       new Color('#aaaaaa', '#222222'),
     ]);
 
-  // Follow the parent spark every frame; let emitted smoke outlive the spark.
-  smoke.inherit = { position: 'always', rotation: 'none', scale: 'none' };
+  // Track the spark's position (see positionMode) and shrink with it (scale);
+  // let emitted smoke outlive the spark.
+  smoke.inherit = { position: positionMode, rotation: 'none', scale: 'always' };
   smoke.orphanPolicy = 'detach';
   smoke.emit(Infinity, Infinity);
 

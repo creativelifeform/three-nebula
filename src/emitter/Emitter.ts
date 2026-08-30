@@ -52,11 +52,20 @@ export interface InheritConfig {
 /** What becomes of a dead parent's already-emitted child particles. */
 export type OrphanPolicy = 'kill' | 'detach';
 
+/** True when a channel should be applied on this call (Stage 3). */
+const shouldInherit = (mode: InheritMode, atSpawn: boolean): boolean =>
+  mode === 'always' || (atSpawn && mode === 'onCreate');
+
 /**
- * Copies the parent particle's transform onto a child instance according to its
- * `inherit` config. `atSpawn` runs the one-shot `onCreate` snapshot; the
- * per-frame call (atSpawn=false) only re-applies the continuous `always` mode.
- * Scale inheritance is deferred to Stage 3 (it needs a per-emitter scale offset).
+ * Reflects the parent particle's transform onto a child instance according to
+ * its `inherit` config. `atSpawn` runs the one-shot `onCreate` snapshot; the
+ * per-frame call (atSpawn=false) only re-applies continuous `always` channels.
+ *
+ * Position and rotation copy directly onto the instance (which bindEmitter then
+ * adds to each emitted particle). Scale can't do the same — a Scale behaviour
+ * overwrites `particle.scale` every frame — so the parent's scale is captured
+ * here and baked into each child particle's `radius` at birth (see setupParticle),
+ * which behaviours leave alone.
  */
 const applyInheritance = (
   inst: Emitter,
@@ -65,18 +74,16 @@ const applyInheritance = (
 ): void => {
   const { inherit } = inst;
 
-  if (
-    inherit.position === 'always' ||
-    (atSpawn && inherit.position === 'onCreate')
-  ) {
+  if (shouldInherit(inherit.position, atSpawn)) {
     inst.position.copy(particle.position);
   }
 
-  if (
-    inherit.rotation === 'always' ||
-    (atSpawn && inherit.rotation === 'onCreate')
-  ) {
+  if (shouldInherit(inherit.rotation, atSpawn)) {
     inst.rotation.copy(particle.rotation);
+  }
+
+  if (shouldInherit(inherit.scale, atSpawn)) {
+    inst._inheritedScale = particle.scale;
   }
 };
 
@@ -120,6 +127,9 @@ export default class Emitter extends Particle {
   orphanPolicy: OrphanPolicy;
   _template: Emitter | null;
   _parentParticle: Particle | null;
+  // The parent particle's scale captured for `inherit.scale`, baked into each
+  // child particle's radius at birth. 1 when scale is not inherited.
+  _inheritedScale: number;
   _freeInstances: Emitter[];
   // Live child instances riding each of this emitter's still-alive particles,
   // keyed by the parent particle so they can be orphaned when it dies. On a live
@@ -143,6 +153,7 @@ export default class Emitter extends Particle {
     this.orphanPolicy = DEFAULT_ORPHAN_POLICY;
     this._template = null;
     this._parentParticle = null;
+    this._inheritedScale = 1;
     this._freeInstances = [];
     this.activeChildren = new Map();
     this.particles = [];
@@ -245,6 +256,7 @@ export default class Emitter extends Particle {
     this.particles.length = 0;
     this.activeChildren.clear();
     this._parentParticle = null;
+    this._inheritedScale = 1;
     this.position.set(0, 0, 0);
     this.rotation.clear();
   }
@@ -742,6 +754,12 @@ export default class Emitter extends Particle {
     particle.emitterId = this.nodeId || null;
 
     InitializerUtil.initialize(this, particle, initializers);
+
+    // Bake inherited parent scale into radius (Scale behaviours overwrite
+    // `scale` each frame; radius they leave alone). 1 for non-inheriting emitters.
+    if (this._inheritedScale !== 1) {
+      particle.radius *= this._inheritedScale;
+    }
 
     particle.addBehaviours(behaviours);
     particle.parent = this;
