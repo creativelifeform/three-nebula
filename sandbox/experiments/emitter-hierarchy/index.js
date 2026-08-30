@@ -7,29 +7,38 @@ import System, {
   Force,
   Life,
   Mass,
+  Position,
   RadialVelocity,
   Radius,
+  RandomDrift,
   Rate,
   Scale,
+  SphereZone,
   Span,
+  VectorVelocity,
   GPURenderer,
   Vector3D,
 } from 'three-nebula';
 import { run } from '/common/run.js';
 
-// Emitter hierarchy (spec 01): the parent "sparks" emitter throws sprites
-// outward; each spark rides a child "smoke" emitter (orphanPolicy: 'detach') so
-// the smoke follows its spark and lives on after the spark dies. One child node →
-// one live instance per spark, all recycled through the Stage 1 pool.
+// Healing aura — a designed showcase of the emitter hierarchy (spec 01).
 //
-// Stage 3 inheritance modes are on show:
-//   - scale: 'always'    smoke puffs shrink as the spark shrinks
-//   - position: 'always' (default) smoke rides the spark; append
-//     ?position=onCreate to leave a stationary band where each spark was born.
+// A ground cluster lifts soft green→gold "motes" (parent). Each mote rides a
+// child "sparkle" emitter that inherits its transform, so the sparkles ride the
+// mote up the column and — because scale is inherited — shrink as the mote fades.
+// orphanPolicy 'detach' lets a mote's sparkles twinkle out on their own after the
+// mote dies. One child node → one live sparkle emitter per mote, all recycled
+// through the pool.
+//
+// Append ?position=onCreate to switch the sparkles from riding the mote (a
+// trailing shimmer) to snapping to where the mote was born (a standing pillar of
+// light) — the Stage 3 always↔onCreate contrast.
 const positionMode =
   new URLSearchParams(window.location.search).get('position') === 'onCreate'
     ? 'onCreate'
     : 'always';
+
+const BASE_Y = -120;
 
 const createSprite = color => {
   const map = new THREE.TextureLoader().load('/assets/dot.png');
@@ -44,64 +53,70 @@ const createSprite = color => {
   );
 };
 
-// The child: a slow, greying puff that trails whichever spark spawned it.
-const createSmokeTrail = () => {
-  const smoke = new Emitter();
+// The child: a small, bright twinkle that rides (or is left behind by) its mote.
+const createSparkles = () => {
+  const sparkles = new Emitter();
 
-  smoke
-    .setRate(new Rate(new Span(1, 2), new Span(0.02, 0.04)))
+  sparkles
+    .setRate(new Rate(new Span(1, 2), new Span(0.03, 0.06)))
     .setInitializers([
       new Mass(1),
-      new Life(0.6, 1.1),
-      new Body(createSprite(0x888888)),
-      new Radius(16, 32),
-      new RadialVelocity(15, new Vector3D(0, 1, 0), 30),
-    ])
-    .setBehaviours([
-      new Alpha(0.35, 0),
-      new Scale(0.5, 1.6),
-      new Color('#aaaaaa', '#222222'),
-    ]);
-
-  // Track the spark's position (see positionMode) and shrink with it (scale);
-  // let emitted smoke outlive the spark.
-  smoke.inherit = { position: positionMode, rotation: 'none', scale: 'always' };
-  smoke.orphanPolicy = 'detach';
-  smoke.emit(Infinity, Infinity);
-
-  return smoke;
-};
-
-// The parent: bright, fast sparks under gravity, each carrying a smoke child.
-const createSparks = () => {
-  const sparks = new Emitter();
-
-  sparks
-    .setRate(new Rate(new Span(2, 4), new Span(0.06, 0.1)))
-    .setInitializers([
-      new Mass(1),
-      new Life(1.1, 1.7),
-      new Body(createSprite(0xffcc33)),
-      new Radius(26, 46),
-      new RadialVelocity(220, new Vector3D(0, 1, 0), 55),
+      new Life(0.35, 0.7),
+      new Body(createSprite(0xffffff)),
+      new Radius(3, 6),
+      new RadialVelocity(16, new Vector3D(0, 1, 0), 70),
     ])
     .setBehaviours([
       new Alpha(1, 0),
-      new Scale(1, 0.25),
-      new Color('#fffb00', '#ff3c00'),
-      new Force(0, -140, 0),
+      new Color('#ffffff', '#ffd86b'),
+      new Scale(1, 0.1),
     ]);
 
-  sparks.addChild(createSmokeTrail());
+  // Ride the mote (position) and shrink with it (scale); linger after it dies.
+  sparkles.inherit = {
+    position: positionMode,
+    rotation: 'none',
+    scale: 'always',
+  };
+  sparkles.orphanPolicy = 'detach';
+  sparkles.emit(Infinity, Infinity);
 
-  return sparks.emit();
+  return sparkles;
+};
+
+// The parent: soft motes rising from a base cluster, greening into gold.
+const createMotes = () => {
+  const motes = new Emitter();
+
+  motes
+    .setRate(new Rate(new Span(3, 5), new Span(0.02, 0.04)))
+    .setInitializers([
+      new Mass(1),
+      new Life(1.6, 2.6),
+      new Body(createSprite(0xffffff)),
+      new Radius(8, 16),
+      new Position(new SphereZone(45)),
+      new VectorVelocity(new Vector3D(0, 90, 0), 25),
+    ])
+    .setBehaviours([
+      new Alpha(1, 0),
+      new Color('#7cffb0', '#ffe68a'),
+      new Scale(0.7, 1.5),
+      new RandomDrift(18, 8, 18, 0.1),
+      new Force(0, 30, 0),
+    ]);
+
+  motes.setPosition({ x: 0, y: BASE_Y, z: 0 });
+  motes.addChild(createSparkles());
+
+  return motes.emit();
 };
 
 const init = async ({ scene }) => {
   const system = new System();
 
   return system
-    .addEmitter(createSparks())
+    .addEmitter(createMotes())
     .addRenderer(new GPURenderer(scene, THREE));
 };
 
