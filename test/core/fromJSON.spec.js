@@ -143,4 +143,71 @@ describe('fromJSON', () => {
       'The zone type MrDoob is invalid or not yet supported'
     );
   });
+
+  describe('emitter hierarchy (children)', () => {
+    const withChild = (childProps = {}) => ({
+      emitters: [
+        {
+          rate: { particlesMin: 1, particlesMax: 1 },
+          initializers: [],
+          behaviours: [],
+          children: [
+            {
+              rate: { particlesMin: 1, particlesMax: 1 },
+              initializers: [],
+              behaviours: [],
+              ...childProps,
+            },
+          ],
+        },
+      ],
+    });
+
+    it('nests child emitters as childNodes rather than top-level emitters', () => {
+      const system = Particles.fromJSON(withChild(), THREE);
+
+      assert.lengthOf(system.emitters, 1, 'child is not a sibling');
+      assert.lengthOf(system.emitters[0].childNodes, 1);
+    });
+
+    it('assigns tree-path node ids across the subtree', () => {
+      const system = Particles.fromJSON(withChild(), THREE);
+
+      assert.equal(system.emitters[0].nodeId, '0');
+      assert.equal(system.emitters[0].childNodes[0].nodeId, '0/children/0');
+    });
+
+    it('parses inherit (merged over defaults) and orphanPolicy', () => {
+      const system = Particles.fromJSON(
+        withChild({
+          inherit: { position: 'onCreate' },
+          orphanPolicy: 'kill',
+        }),
+        THREE
+      );
+      const child = system.emitters[0].childNodes[0];
+
+      assert.equal(child.inherit.position, 'onCreate', 'overridden');
+      assert.equal(child.inherit.rotation, 'none', 'default preserved');
+      assert.equal(child.orphanPolicy, 'kill');
+    });
+
+    it('defaults inherit and orphanPolicy when absent', () => {
+      const child = Particles.fromJSON(withChild(), THREE).emitters[0]
+        .childNodes[0];
+
+      assert.deepEqual(child.inherit, {
+        position: 'always',
+        rotation: 'none',
+        scale: 'none',
+      });
+      assert.equal(child.orphanPolicy, 'detach');
+    });
+
+    it('leaves flat (childless) emitters unchanged', () => {
+      const system = Particles.fromJSON(emitterWith({}), THREE);
+
+      assert.lengthOf(system.emitters[0].childNodes, 0);
+    });
+  });
 });
