@@ -752,6 +752,10 @@ export default class Emitter extends Particle {
     // whose nodeId is still ''); lights up automatically once hierarchy loading
     // assigns tree-path ids.
     particle.emitterId = this.nodeId || null;
+    // Per-instance grouping key + spine order for the RibbonRenderer (Stage 4).
+    // The seed is unique per live emitter, so each child trail is its own strip.
+    particle.emitterInstanceId = `${this.seed}`;
+    particle.spawnIndex = spawnIndex;
 
     InitializerUtil.initialize(this, particle, initializers);
 
