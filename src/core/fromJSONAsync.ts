@@ -135,79 +135,88 @@ const makeBehaviours = (items: ItemJSON[]): Promise<BehaviourBase[]> =>
     });
   });
 
+/**
+ * Builds one emitter (and, recursively, its child templates) from JSON, awaiting
+ * each node's async initializer/texture loads. Children are wired as `childNodes`
+ * via addChild; only the root is added to the System (which assigns node ids and
+ * enforces the depth cap). Mirrors the sync `buildEmitter`.
+ */
+const buildEmitterAsync = (
+  data: EmitterJSON,
+  Emitter: EmitterConstructor,
+  THREE: ThreeApi,
+  shouldAutoEmit: boolean | undefined
+): Promise<Emitter> => {
+  const emitter = new Emitter();
+  const {
+    rate,
+    rotation,
+    initializers,
+    behaviours,
+    emitterBehaviours = [],
+    position,
+    totalEmitTimes = Infinity,
+    life = Infinity,
+    damping = DEFAULT_DAMPING,
+    children = [],
+    inherit,
+    orphanPolicy,
+  } = data;
+
+  emitter.damping = damping;
+  emitter.setRate(makeRate(rate)).setRotation(rotation).setPosition(position);
+
+  if (inherit) {
+    emitter.inherit = { ...emitter.inherit, ...inherit };
+  }
+
+  if (orphanPolicy) {
+    emitter.orphanPolicy = orphanPolicy;
+  }
+
+  return makeInitializers(initializers, THREE)
+    .then(madeInitializers => {
+      emitter.setInitializers(madeInitializers);
+
+      return makeBehaviours(behaviours);
+    })
+    .then(madeBehaviours => {
+      emitter.setBehaviours(madeBehaviours);
+
+      return makeBehaviours(emitterBehaviours);
+    })
+    .then(madeEmitterBehaviours => {
+      emitter.setEmitterBehaviours(madeEmitterBehaviours);
+
+      // Build children in order (each may itself load textures asynchronously).
+      return Promise.all(
+        children.map(child =>
+          buildEmitterAsync(child, Emitter, THREE, shouldAutoEmit)
+        )
+      );
+    })
+    .then(childEmitters => {
+      childEmitters.forEach(child => emitter.addChild(child));
+
+      return shouldAutoEmit
+        ? emitter.emit(totalEmitTimes, life)
+        : emitter.setTotalEmitTimes(totalEmitTimes).setLife(life);
+    });
+};
+
 const makeEmitters = (
   emitters: EmitterJSON[],
   Emitter: EmitterConstructor,
   THREE: ThreeApi,
   shouldAutoEmit: boolean | undefined
 ): Promise<Emitter[]> =>
-  new Promise((resolve, reject) => {
-    if (!emitters.length) {
-      return resolve([]);
-    }
-
-    const numberOfEmitters = emitters.length;
-
-    if (!numberOfEmitters) {
-      return resolve([]);
-    }
-
-    // Each built emitter is written at its ORIGINAL index, and we resolve once every
-    // slot is filled — so system.emitters preserves the input order regardless of how
-    // the emitters' async initializer/texture loads interleave. (Previously emitters
-    // were pushed as they completed, i.e. in load-resolution order.)
-    const madeEmitters: Emitter[] = new Array(numberOfEmitters);
-    let madeCount = 0;
-
-    emitters.forEach((data, index) => {
-      const emitter = new Emitter();
-      const {
-        rate,
-        rotation,
-        initializers,
-        behaviours,
-        emitterBehaviours = [],
-        position,
-        totalEmitTimes = Infinity,
-        life = Infinity,
-        damping = DEFAULT_DAMPING,
-      } = data;
-
-      emitter.damping = damping;
-      emitter
-        .setRate(makeRate(rate))
-        .setRotation(rotation)
-        .setPosition(position);
-
-      makeInitializers(initializers, THREE)
-        .then(madeInitializers => {
-          emitter.setInitializers(madeInitializers);
-
-          return makeBehaviours(behaviours);
-        })
-        .then(madeBehaviours => {
-          emitter.setBehaviours(madeBehaviours);
-
-          return makeBehaviours(emitterBehaviours);
-        })
-        .then(madeEmitterBehaviours => {
-          emitter.setEmitterBehaviours(madeEmitterBehaviours);
-
-          return Promise.resolve(emitter);
-        })
-        .then(emitter => {
-          madeEmitters[index] = shouldAutoEmit
-            ? emitter.emit(totalEmitTimes, life)
-            : emitter.setTotalEmitTimes(totalEmitTimes).setLife(life);
-          madeCount += 1;
-
-          if (madeCount === numberOfEmitters) {
-            return resolve(madeEmitters);
-          }
-        })
-        .catch(reject);
-    });
-  });
+  // Promise.all preserves input order, so system.emitters stays in JSON order
+  // regardless of how the nested async texture loads interleave.
+  Promise.all(
+    emitters.map(data =>
+      buildEmitterAsync(data, Emitter, THREE, shouldAutoEmit)
+    )
+  );
 
 /**
  * Creates a System instance from a JSON object.

@@ -1,11 +1,13 @@
 import EventDispatcher, {
   EMITTER_ADDED,
   EMITTER_REMOVED,
+  PARTICLE_DEAD,
   SYSTEM_UPDATE,
   SYSTEM_UPDATE_AFTER,
 } from '../events';
 
 import {
+  DEFAULT_MAX_DEPTH,
   DEFAULT_MAX_EMITTER_INSTANCES,
   DEFAULT_MAX_SUB_STEPS,
   DEFAULT_SYSTEM_DELTA,
@@ -68,6 +70,12 @@ export default class System {
   _emitterPoolHits: number;
   _emitterPoolMisses: number;
   _warnedInstanceOverflow: boolean;
+  // Hard recursion cap on the emitter tree (spec 01, Stage 2), enforced when an
+  // emitter is added. Detached child instances outlive their dead parent to let
+  // their particles drain (orphanPolicy 'detach'); the System advances them each
+  // frame and releases them once empty.
+  maxEmitterDepth: number;
+  _detached: Emitter[];
 
   constructor(
     preParticles: number = POOL_MAX,
@@ -91,6 +99,8 @@ export default class System {
     this._emitterPoolHits = 0;
     this._emitterPoolMisses = 0;
     this._warnedInstanceOverflow = false;
+    this.maxEmitterDepth = DEFAULT_MAX_DEPTH;
+    this._detached = [];
   }
 
   /**
@@ -119,6 +129,11 @@ export default class System {
     const warm = node._freeInstances.length > 0;
     const inst = node.acquireInstance(parentParticle);
 
+    // Parent the instance to the System (not the spawning emitter) so its own
+    // createParticle/update dispatch through the System's event stream — the same
+    // path top-level emitters use, so child particles reach the renderers (B1).
+    inst.parent = this;
+
     warm ? this._emitterPoolHits++ : this._emitterPoolMisses++;
     this._liveEmitterInstances++;
 
@@ -132,6 +147,81 @@ export default class System {
   releaseEmitterInstance(inst: Emitter): void {
     (inst._template as Emitter).releaseInstance(inst);
     this._liveEmitterInstances--;
+  }
+
+  /**
+   * Detaches a child instance from its dead parent: it stops emitting but keeps
+   * updating so its already-emitted particles live out their lives, then is
+   * released once drained (see `_updateDetached`). This is the `detach` policy.
+   */
+  _detachInstance(inst: Emitter): void {
+    inst.isEmitting = false;
+    inst._parentParticle = null;
+    this._detached.push(inst);
+  }
+
+  /**
+   * Kills a child instance with its parent (the `kill` policy): recursively kills
+   * its own descendants, expires its particles (dispatching PARTICLE_DEAD so
+   * renderers free them), then releases it immediately.
+   */
+  _killInstance(inst: Emitter): void {
+    inst.isEmitting = false;
+
+    if (inst.activeChildren.size) {
+      inst.activeChildren.forEach(instances => {
+        for (let i = 0; i < instances.length; i++) {
+          this._killInstance(instances[i]);
+        }
+      });
+      inst.activeChildren.clear();
+    }
+
+    let i = inst.particles.length;
+
+    while (i--) {
+      const particle = inst.particles[i];
+
+      this.dispatch(PARTICLE_DEAD, particle);
+      this.pool.expire(particle.reset());
+    }
+
+    inst.particles.length = 0;
+    this.releaseEmitterInstance(inst);
+  }
+
+  /**
+   * Advances detached instances (parents already dead) and releases each once it
+   * has fully drained. Runs after the emitter walk so freshly-detached instances
+   * still tick this frame. Flushes SYSTEM_UPDATE if any still hold particles so
+   * renderer buffers pick up their movement.
+   */
+  _updateDetached(time: number): void {
+    if (!this._detached.length) {
+      return;
+    }
+
+    let flushed = false;
+    let i = this._detached.length;
+
+    while (i--) {
+      const inst = this._detached[i];
+
+      inst.update(time);
+
+      if (inst.particles.length) {
+        flushed = true;
+      }
+
+      if (inst.particles.length === 0 && inst.activeChildren.size === 0) {
+        this._detached.splice(i, 1);
+        this.releaseEmitterInstance(inst);
+      }
+    }
+
+    if (flushed) {
+      this.dispatch(SYSTEM_UPDATE);
+    }
   }
 
   /**
@@ -205,6 +295,9 @@ export default class System {
     // Derive this emitter's deterministic seed from the system seed + its index
     // (stable across runs since emitters load in JSON order).
     emitter.reseed(this.seed, index);
+    // Assign tree-path node ids across the whole subtree (and enforce the depth
+    // cap) now that we know this emitter's root index.
+    emitter._assignNodeIds(`${index}`, 0, this.maxEmitterDepth);
 
     this.emitters.push(emitter);
     this.dispatch(EMITTER_ADDED, emitter);
@@ -295,6 +388,10 @@ export default class System {
           emitter.update(d);
           emitter.particles.length && this.dispatch(SYSTEM_UPDATE);
         }
+
+        // Advance detached child instances (dead parents) so their particles
+        // drain, then release the empty ones.
+        this._updateDetached(d);
       }
 
       this.dispatch(SYSTEM_UPDATE_AFTER);

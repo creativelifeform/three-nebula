@@ -139,6 +139,16 @@ export const DEFAULT_MAX_SUB_STEPS = 6;
 export const DEFAULT_MAX_EMITTER_INSTANCES = 2000;
 
 /**
+ * The default hard recursion limit on the emitter tree (spec 01, Stage 2). A
+ * self-triggering or accidentally deep hierarchy retains every ancestor instance
+ * until its last descendant dies, so an unbounded chain leaks until it exhausts
+ * memory. Trees deeper than this are rejected when added to a System.
+ *
+ * @type {number}
+ */
+export const DEFAULT_MAX_DEPTH = 4;
+
+/**
  * @desc The types of initializers supported by the System.fromJSON method.
  * @type {array<string>}
  */
