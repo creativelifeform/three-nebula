@@ -17,7 +17,11 @@ import type {
 import Rate from '../initializer/Rate';
 import type System from './System';
 import type Emitter from '../emitter/Emitter';
-import type { InheritConfig, OrphanPolicy } from '../emitter/Emitter';
+import type {
+  InheritConfig,
+  OrphanPolicy,
+  EmitterTrigger,
+} from '../emitter/Emitter';
 import type InitializerBase from '../initializer/Initializer';
 import type BehaviourBase from '../behaviour/Behaviour';
 
@@ -108,6 +112,9 @@ export interface EmitterJSON {
   children?: EmitterJSON[];
   inherit?: Partial<InheritConfig>;
   orphanPolicy?: OrphanPolicy;
+  // Stage 5: `spawn` (default) attaches this child at parent birth; `death`
+  // bursts it at parent death.
+  trigger?: EmitterTrigger;
 }
 
 export interface SystemJSON {
@@ -205,6 +212,7 @@ const buildEmitter = (
     children = [],
     inherit,
     orphanPolicy,
+    trigger,
   } = data;
 
   emitter.damping = damping;
@@ -223,6 +231,10 @@ const buildEmitter = (
 
   if (orphanPolicy) {
     emitter.orphanPolicy = orphanPolicy;
+  }
+
+  if (trigger) {
+    emitter.trigger = trigger;
   }
 
   children.forEach(child =>

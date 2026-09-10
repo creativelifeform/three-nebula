@@ -8,6 +8,7 @@ import {
   DEFAULT_INHERIT_ROTATION,
   DEFAULT_INHERIT_SCALE,
   DEFAULT_ORPHAN_POLICY,
+  DEFAULT_EMITTER_TRIGGER,
 } from './constants';
 import { DEFAULT_MAX_DEPTH } from '../core/constants';
 import EventDispatcher, {
@@ -51,6 +52,14 @@ export interface InheritConfig {
 
 /** What becomes of a dead parent's already-emitted child particles. */
 export type OrphanPolicy = 'kill' | 'detach';
+
+/**
+ * When a child emitter is instanced (spec 01, Stage 5). `spawn` is attachment —
+ * instanced at the parent particle's birth and riding it. `death` is an event —
+ * instanced at the parent particle's death, bursting once at that position and
+ * outliving the parent (fireworks). `collision` is reserved for later.
+ */
+export type EmitterTrigger = 'spawn' | 'death';
 
 /** True when a channel should be applied on this call (Stage 3). */
 const shouldInherit = (mode: InheritMode, atSpawn: boolean): boolean =>
@@ -125,6 +134,9 @@ export default class Emitter extends Particle {
   childNodes: Emitter[];
   inherit: InheritConfig;
   orphanPolicy: OrphanPolicy;
+  // Whether this (child) node is attached at parent birth (`spawn`) or burst at
+  // parent death (`death`). Meaningless on a top-level emitter.
+  trigger: EmitterTrigger;
   _template: Emitter | null;
   _parentParticle: Particle | null;
   // The parent particle's scale captured for `inherit.scale`, baked into each
@@ -151,6 +163,7 @@ export default class Emitter extends Particle {
       scale: DEFAULT_INHERIT_SCALE,
     };
     this.orphanPolicy = DEFAULT_ORPHAN_POLICY;
+    this.trigger = DEFAULT_EMITTER_TRIGGER;
     this._template = null;
     this._parentParticle = null;
     this._inheritedScale = 1;
@@ -227,6 +240,7 @@ export default class Emitter extends Particle {
     inst.childNodes = this.childNodes;
     inst.inherit = this.inherit;
     inst.orphanPolicy = this.orphanPolicy;
+    inst.trigger = this.trigger;
     inst.damping = this.damping;
     inst.rate = new Rate(this.rate.numPan, this.rate.timePan);
     inst.totalEmitTimes = this.totalEmitTimes;
@@ -344,7 +358,15 @@ export default class Emitter extends Particle {
     const instances: Emitter[] = [];
 
     for (let i = 0; i < this.childNodes.length; i++) {
-      const inst = system.spawnEmitterInstance(this.childNodes[i], particle);
+      const node = this.childNodes[i];
+
+      // Only `spawn`-trigger children attach at birth; `death` children are held
+      // back and burst when the parent particle dies (see _triggerDeathChildren).
+      if (node.trigger !== 'spawn') {
+        continue;
+      }
+
+      const inst = system.spawnEmitterInstance(node, particle);
 
       if (!inst) {
         continue;
@@ -356,6 +378,35 @@ export default class Emitter extends Particle {
 
     if (instances.length) {
       this.activeChildren.set(particle, instances);
+    }
+  }
+
+  /**
+   * Bursts every `death`-trigger child node at a particle that has just died: the
+   * instance is placed at the death position and released as a free-running,
+   * still-emitting detached instance, so its one-shot burst outlives the parent.
+   * Runs before the particle is reset (its position is still valid).
+   */
+  _triggerDeathChildren(particle: Particle): void {
+    const system = this.system as System;
+
+    for (let i = 0; i < this.childNodes.length; i++) {
+      const node = this.childNodes[i];
+
+      if (node.trigger !== 'death') {
+        continue;
+      }
+
+      const inst = system.spawnEmitterInstance(node, particle);
+
+      if (!inst) {
+        continue;
+      }
+
+      // Snapshot the death location; there is no parent to ride. Detach while
+      // keeping it emitting so its burst fires, then it drains and releases.
+      inst.position.copy(particle.position);
+      system._detachInstance(inst, false);
     }
   }
 
@@ -799,8 +850,12 @@ export default class Emitter extends Particle {
       const particle = this.particles[i];
 
       if (particle.dead) {
-        // Detach or kill any child instances riding this particle before it is
-        // reset and returned to the pool (the map is keyed on the particle).
+        // Before the particle is reset (its position is still valid): burst any
+        // `death`-trigger children at the death spot, then detach/kill any
+        // `spawn` children riding it (the map is keyed on the particle).
+        if (this.childNodes.length) {
+          this._triggerDeathChildren(particle);
+        }
         if (this.activeChildren.size) {
           this._orphanChildrenOf(particle);
         }

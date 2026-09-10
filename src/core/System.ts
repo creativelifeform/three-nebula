@@ -150,12 +150,18 @@ export default class System {
   }
 
   /**
-   * Detaches a child instance from its dead parent: it stops emitting but keeps
-   * updating so its already-emitted particles live out their lives, then is
-   * released once drained (see `_updateDetached`). This is the `detach` policy.
+   * Detaches a child instance from its (dead or absent) parent: it keeps updating
+   * so its already-emitted particles live out their lives, then is released once
+   * drained (see `_updateDetached`). Used by the `detach` orphan policy
+   * (`stopEmitting` true) and by `death`-trigger event bursts, which stay
+   * emitting so their one-shot burst fires after detachment (`stopEmitting`
+   * false — their own totalEmitTimes/life then bounds emission).
    */
-  _detachInstance(inst: Emitter): void {
-    inst.isEmitting = false;
+  _detachInstance(inst: Emitter, stopEmitting = true): void {
+    if (stopEmitting) {
+      inst.isEmitting = false;
+    }
+
     inst._parentParticle = null;
     this._detached.push(inst);
   }
