@@ -5,11 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## `v13.1.0-alpha.0` - 2026-09-11
+## `v13.1.0` - 2026-09-11
 
-**Alpha prerelease** (published under the `alpha` dist-tag — `npm i three-nebula@alpha`), for integration testing ahead of the official release. A backward-compatible, additive minor.
-
-Introduces **emitter hierarchy** (spec 01): a child emitter can be nested under a parent and is instanced **once per parent particle**, riding it — so effects that live on individual particles ("every spark leaves its own smoke trail") become expressible. The core is backward-compatible; everything below is additive, and a childless emitter behaves exactly as before. Also fixes a long-standing `SphereZone` centre bug.
+A backward-compatible, additive minor. Introduces **emitter hierarchy** (spec 01): a child emitter can be nested under a parent and is instanced **once per parent particle**, riding it — so effects that live on individual particles ("every spark leaves its own smoke trail") become expressible. The core is backward-compatible; everything below is additive, and a childless emitter behaves exactly as before. Also fixes a long-standing `SphereZone` centre bug.
 
 ### Added
 
