@@ -71,11 +71,6 @@ const glow = color =>
     })
   );
 
-// Same dot texture for the ribbons, stretched over each arm (uv: 'stretch'): its
-// radial falloff softens the width edges and fades the arm in/out at its ends —
-// a smooth streak, no beading (which is what tiling a dot gives).
-const ribbonTexture = () => new THREE.TextureLoader().load('/assets/dot.png');
-
 // ── System A: the point orb (unchanged from `arcane-vortex`) ────────────────
 
 const createInflow = () =>
@@ -167,9 +162,12 @@ const init = async ({ scene, camera }) => {
     new RibbonRenderer(scene, THREE, {
       camera,
       width: 16,
-      texture: ribbonTexture(),
+      // No texture needed now: softEdge (default) fades the arm's width edges,
+      // and smoothing rides over spine noise. This is the point of the polish —
+      // an untextured ribbon reads as a soft streak out of the box.
       blending: 'AdditiveBlending',
       uv: 'stretch',
+      smoothing: 3,
     })
   );
 
