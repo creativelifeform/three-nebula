@@ -71,16 +71,10 @@ const glow = color =>
     })
   );
 
-// Same dot texture for the ribbons. `uv: 'tile'` + RepeatWrapping tiles it along
-// the strip (its radial falloff gives soft width-edges AND a continuous glow);
-// `repeat.x` sets how many dots per unit length.
-const ribbonTexture = () => {
-  const t = new THREE.TextureLoader().load('/assets/dot.png');
-  t.wrapS = THREE.RepeatWrapping;
-  t.wrapT = THREE.ClampToEdgeWrapping;
-  t.repeat.set(0.5, 1); // a dot every ~2 spine points
-  return t;
-};
+// Same dot texture for the ribbons, stretched over each arm (uv: 'stretch'): its
+// radial falloff softens the width edges and fades the arm in/out at its ends —
+// a smooth streak, no beading (which is what tiling a dot gives).
+const ribbonTexture = () => new THREE.TextureLoader().load('/assets/dot.png');
 
 // ── System A: the point orb (unchanged from `arcane-vortex`) ────────────────
 
@@ -135,7 +129,10 @@ const createTendril = angle =>
       new Mass(1),
       new Life(3, 3.6), // long enough to spiral rim → core
       new Radius(2, 5),
-      new RadialVelocity(24, new Vector3D(0, 0, 1), 10), // slight spread → arm width
+      // NO velocity spread: every particle follows the identical deterministic
+      // vortex path, so spawn order == spatial order and the ribbon spine is a
+      // clean curve (a scattered spine is what makes ribbons look like flat
+      // quads). Width comes from the ribbon, not particle spread.
     ])
     .setBehaviours([
       new Vortex(CENTER, AXIS, 820, 70), // same field as the orb
@@ -167,10 +164,10 @@ const init = async ({ scene, camera }) => {
   tendrils.addRenderer(
     new RibbonRenderer(scene, THREE, {
       camera,
-      width: 14,
+      width: 16,
       texture: ribbonTexture(),
       blending: 'AdditiveBlending',
-      uv: 'tile',
+      uv: 'stretch',
     })
   );
 
