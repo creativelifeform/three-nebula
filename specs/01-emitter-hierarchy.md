@@ -47,6 +47,92 @@ Before writing code, establish:
 **Write the answers into this spec before proceeding.** Stages 1–4 assume answers
 that may be wrong.
 
+### Audit findings (recorded 2026-08-26, against `develop` @ post-13.0.0)
+
+**1. Particle pooling — exists, global, System-owned.**
+`src/core/Pool.ts` — API is `get<T>(obj, ...args)` / `expire(obj)` (not `acquire`/
+`release`). One pool per System (`System.ts` `this.pool = new Pool()`), **shared by
+all emitters**; emitters reach it via `this.system.pool`. Acquire in
+`Emitter.createParticle()` (`pool.get(Particle)`); release in `Emitter.update()`'s
+dead-particle loop (`pool.expire(particle.reset())`). **No emitter pool exists** —
+emitters are `new`'d once, long-lived, spliced out on removal, never recycled. Stage 1's
+emitter-instance pool is genuinely new work.
+
+**2. Particle ID — stable, deterministic, survives pool reuse.**
+Format `particle-${emitterSeed}-${spawnIndex}`, assigned in `Emitter.setupParticle()`,
+NOT in the constructor (which sets a throwaway uuid). `spawnIndex` is a monotonic
+`_spawnCount++` per emitter. `Particle.reset()` deliberately does **not** clear `id`, so
+the id is valid for the whole life and is only overwritten at the next `setupParticle`.
+Good enough to key child-instance seeds off — but see risk (A).
+
+**3. Renderer interface — System-level, event-driven. THIS IS THE KEY CONSTRAINT.**
+`src/renderer/BaseRenderer.ts`. Hooks: `init(system)`, `onSystemUpdate(system)`,
+`onParticleCreated(particle)`, `onParticleUpdate(particle)`, `onParticleDead(particle)`,
+`remove(system)`, optional `destroy()`. Renderers attach to the **System**
+(`system.addRenderer` → `renderer.init(system)`), *not* to emitters. They receive work
+purely through the System's `eventDispatcher` (`PARTICLE_CREATED/UPDATE/DEAD`,
+`SYSTEM_UPDATE`). **A renderer cannot today be scoped to one emitter, and a particle
+carries no emitter back-reference a renderer could switch on.** The spec's per-child
+`renderer: {...}` block collides with this — see risk (B).
+
+**4. Update ordering — flat, reverse iteration.**
+`System.update(delta)` runs `while (i--)` over `emitters` (reverse array order), calling
+`emitter.update(delta)`, then dispatches `SYSTEM_UPDATE` if that emitter has particles;
+`SYSTEM_UPDATE_AFTER` once at the end. `tick(realDt)` is the fixed-step accumulator that
+calls `update(fixedTimeStep)` N times. Within `Emitter.update`: `generate` (rate→
+`createParticle`) → `integrate` (behaviours + physics, dispatch `PARTICLE_UPDATE`) →
+dead-particle sweep (dispatch `PARTICLE_DEAD`, `pool.expire`, splice) →
+`updateEmitterBehaviours`. There is no topological/tree ordering — the tree walk in
+Stage 2 is new control flow we add.
+
+**5. Emitter-to-emitter references — none.**
+`System.emitters: Emitter[]` is a flat sibling list. No `children`/`parent`/sub-emitter
+concept. Note `Emitter extends Particle`, so `emitter.parent` exists but is typed
+`Emitter | System | null` and only ever holds the System. `emitter.particles` is
+`Particle[]`, never emitters. Clean slate for hierarchy.
+
+**6. JSON schema — unversioned; flat emitter list.**
+`src/core/fromJSON.ts` (+ `fromJSONAsync.ts`). `SystemJSON = { preParticles?,
+integrationType?, emitters? }`; `EmitterJSON = { rate, rotation?, position?,
+initializers, behaviours, emitterBehaviours?, totalEmitTimes?, life?, damping? }`.
+**No `version` field, and no emitter `id` field.** Initializers/behaviours rebuilt via
+hard-coded `INITIALIZERS`/`BEHAVIOURS` lookup tables → static `fromJSON`. Adding
+`children[]` is additive; adding a stable emitter `id` (needed for child seeds — risk A)
+is also additive but new.
+
+**Seeding (from 02, relevant to child seeds):** `System.seed` → `emitter.reseed(seed,
+index)` sets `emitter.seed = hashSeed(systemSeed, index)` → `particle.rng =
+mulberry32(hashSeed(emitterSeed, spawnIndex))`. Utilities: `hashSeed(...parts)` (FNV-1a
+over `parts.join(' ')`, accepts strings *or* numbers) and `mulberry32` in
+`src/math/rng.ts`. `hashSeed` taking strings is convenient — a child instance seed can be
+`hashSeed(emitterSeed, parentParticleId)` directly.
+
+### Risks / spec contradictions to resolve before Stage 2
+
+- **(A) Child seed key.** Spec says child seeds derive from `hash(systemSeed, emitterId,
+  parentParticleId)` but emitters have no stable string `id` — they key off array
+  `index`. Either add an optional `id` to emitters (preferred; also useful for tooling)
+  or derive from the definition's tree-path index. Parent particle id is stable and
+  usable as-is.
+- **(B) Renderer scoping is the crux.** Child particles need to render, but renderers are
+  System-level and event-routed with no emitter discriminator on the particle. Options,
+  cheapest first: **(B1)** child emitters share the system's renderers — drop the
+  per-child `renderer` block for v1, all particles flow through existing System renderers
+  (smallest change, but no distinct look per child); **(B2)** stamp an emitter/definition
+  ref onto each particle and let a renderer filter — needs a particle field + renderer
+  changes; **(B3)** make renderers attachable per-emitter — largest change, touches the
+  event-dispatch model. Recommend deciding B before committing to Stage 2's JSON.
+- **(C) `detach` orphan policy vs pooling.** Default `orphanPolicy: "detach"` means a
+  dead parent's child *instance* is recycled while its already-emitted particles must
+  live on. Those particles live in `childInstance.particles`; recycling the instance
+  needs their ownership transferred (to the System or a survivor list) or they vanish.
+  This is the sharp edge where Stage 1 (pooling) and Stage 2 (lifecycle) meet.
+- **(D) `Emitter extends Particle`.** A child instance riding a parent is literally an
+  Emitter whose transform tracks a Particle each frame — `always` inheritance is a
+  per-frame `position.copy(parentParticle.position)`. The existing inheritance is a nice
+  fit, but watch that the emitter's own Particle-integration (`integrate(this, ...)`)
+  doesn't fight the tracked transform.
+
 ---
 
 ## Stage 1 — Pooling foundation

@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v13.1.0` - 2026-09-11
+
+A backward-compatible, additive minor. Introduces **emitter hierarchy** (spec 01): a child emitter can be nested under a parent and is instanced **once per parent particle**, riding it — so effects that live on individual particles ("every spark leaves its own smoke trail") become expressible. The core is backward-compatible; everything below is additive, and a childless emitter behaves exactly as before. Also fixes a long-standing `SphereZone` centre bug.
+
+### Added
+
+- **Nested child emitters via `children[]`.** Each emitter may carry child emitter templates, instanced per parent particle and recycled through a per-node pool (bounded by *live* particles, not cumulative spawns; global cap with a drop-newest overflow policy). Loadable from JSON (`fromJSON`/`fromJSONAsync`) or built in code with `emitter.addChild(child)`. Tree depth is capped (`System.maxEmitterDepth`, default 4).
+- **Per-channel inheritance** — a child's `position` / `rotation` / `scale` can each `always` track the parent particle, snapshot it `onCreate`, or ignore it (`none`). Flipping `position` from `always` to `onCreate` turns an attached trail into a left-behind band.
+- **Orphan policy** — when a parent particle dies, its child instances either `detach` (their particles live out their lives — the default) or `kill` (die with it).
+- **Event bursts** — a child with `trigger: 'death'` is instanced at the parent particle's death position and outlives it (fireworks). Default `trigger: 'spawn'` is the attachment behaviour above.
+- **`RibbonRenderer`** — connects an emitter instance's particles into one continuous, camera-facing strip (one ribbon per instance), with width from particle scale, per-vertex colour/alpha, and `stretch`/`tile` UVs.
+- **Particle stamps `emitterId` (source node) and `emitterInstanceId` (source instance)** — additive metadata that renderers can group or filter on.
+- Child instance streams are seeded from `hash(nodeId, parentParticleId)`, so nested output is fully reproducible (builds on 13.0.0 determinism).
+
+### Fixed
+
+- **`SphereZone(centerX, centerY, centerZ, radius)` ignored `centerY` and `centerZ`**, collapsing the centre to `(centerX, centerX, centerX)`. The centre is now `(centerX, centerY, centerZ)`. The single-argument `SphereZone(radius)` form (origin-centred) is unchanged. This changes spawn positions only for systems that used the four-argument form with unequal coordinates.
+
 ## `v13.0.0` - 2026-08-22
 
 Introduces **deterministic simulation**: give a system a seed and it reproduces its output exactly — the same seed produces the same result, on any machine — which unlocks reproducible previews, thumbnails, tests and replays. The public API is backward-compatible (everything new is additive), but reproducibility and output behaviour changed, so this is a major release. Most consumers need no code changes; see the [Determinism & seeding](./README.md#determinism--seeding) section and the two upgrade notes below. `three`'s supported range is unchanged.

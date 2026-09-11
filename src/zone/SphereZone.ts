@@ -30,22 +30,23 @@ export default class SphereZone extends Zone {
     super(type);
 
     let x = 0;
+    let y = 0;
+    let z = 0;
     let r = 100;
 
     if (Util.isUndefined(centerY, centerZ, radius)) {
+      // Single-arg form: SphereZone(radius), centred at the origin.
       r = centerX || 100;
     } else {
       x = centerX as number;
+      y = centerY as number;
+      z = centerZ as number;
       r = radius as number;
     }
 
     this.x = x;
-
-    // TODO shouldn't this be set to y?
-    this.y = x;
-
-    // TODO shouldn't this be set to z?
-    this.z = x;
+    this.y = y;
+    this.z = z;
     this.radius = r;
     this.the = this.phi = 0;
   }
