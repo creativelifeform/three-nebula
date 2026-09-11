@@ -20,6 +20,13 @@ export class Visualization {
     this.maxTicks = maxTicks;
     this.renderTicks = 0;
     this.rafId = undefined;
+    // Deterministic offline capture mode (?capture=1): drive the sim one fixed
+    // step at a time from an external driver instead of the realtime rAF/tick
+    // loop, for frame-perfect 60fps video regardless of render speed. See the
+    // nebula-preview skill.
+    this.capture =
+      typeof window !== 'undefined' &&
+      new URLSearchParams(window.location.search).has('capture');
   }
 
   /**
@@ -207,8 +214,13 @@ export class Visualization {
       canvas: { clientWidth, clientHeight },
     } = this;
 
+    // Capture mode needs a readable back-buffer (canvas.toDataURL after render).
+    const opts = this.capture
+      ? { ...options, preserveDrawingBuffer: true }
+      : options;
+
     this.webGlRenderer =
-      this.webGlRenderer || new THREE.WebGLRenderer({ canvas, ...options });
+      this.webGlRenderer || new THREE.WebGLRenderer({ canvas, ...opts });
     this.webGlRenderer.setSize(clientWidth, clientHeight, false);
     this.webGlRenderer.setClearColor('black');
 
@@ -237,6 +249,38 @@ export class Visualization {
       renderer: webGlRenderer,
     });
 
+    if (this.capture) {
+      return Promise.resolve(this.enableCaptureMode());
+    }
+
     return Promise.resolve(this.render());
+  }
+
+  /**
+   * Deterministic offline capture: no rAF/tick loop. An external driver (the
+   * nebula-preview capture script) advances the sim one fixed step at a time via
+   * `window.__nebulaCapture.step(dt)` and reads the canvas between steps, so the
+   * output is frame-perfect 60fps no matter how slowly headless renders. Uses
+   * `update(dt)` (the deterministic primitive), not `tick`. Note: effects that
+   * animate via their own `requestAnimationFrame` loop (e.g. a scripted moving
+   * emitter) won't be captured deterministically — drive those from the sim, or
+   * capture them with the realtime fallback.
+   *
+   * @return {Visualization}
+   */
+  enableCaptureMode() {
+    this.shouldAnimate = false;
+
+    const self = this;
+
+    window.__nebulaCapture = {
+      step(dt = 1 / 60) {
+        self.particleSystem.update(dt);
+        self.rotateCamera();
+        self.webGlRenderer.render(self.scene, self.camera);
+      },
+    };
+
+    return this;
   }
 }
