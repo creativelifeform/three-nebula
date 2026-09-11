@@ -156,3 +156,52 @@ describe('renderer -> RibbonRenderer -> rebuild', () => {
     assert.equal(r._ribbons.get('a').geometry.drawRange.count, 11 * 6);
   });
 });
+
+describe('renderer -> RibbonRenderer -> soft edge & smoothing', () => {
+  const build = (opts = {}) => {
+    const r = new RibbonRenderer(new THREE.Object3D(), THREE, opts);
+
+    for (let i = 0; i < 4; i++) {
+      r.onParticleCreated(
+        particle({ instance: 'a', spawnIndex: i, x: i * 10 })
+      );
+    }
+    r.onSystemUpdate();
+
+    return r;
+  };
+
+  it('applies a built-in soft-edge alphaMap by default', () => {
+    const r = build();
+
+    assert.isNotNull(r._softEdgeMap, 'soft-edge map created');
+    assert.strictEqual(
+      r._ribbons.get('a').mesh.material.alphaMap,
+      r._softEdgeMap,
+      'material uses the shared soft-edge map'
+    );
+  });
+
+  it('omits the soft edge when softEdge is false', () => {
+    const r = build({ softEdge: false });
+
+    assert.isNull(r._softEdgeMap);
+    assert.isNull(r._ribbons.get('a').mesh.material.alphaMap);
+  });
+
+  it('disposes the soft-edge map on remove', () => {
+    const r = build();
+
+    r.remove();
+    assert.isNull(r._softEdgeMap);
+  });
+
+  it('produces a finite strip with a wider smoothing window', () => {
+    const r = build({ smoothing: 3 });
+    const pos = r._ribbons.get('a').geometry.attributes.position.array;
+
+    for (let i = 0; i < 4 * 6; i++) {
+      assert.isFalse(Number.isNaN(pos[i]));
+    }
+  });
+});
