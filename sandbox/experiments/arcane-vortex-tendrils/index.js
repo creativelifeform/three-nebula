@@ -136,8 +136,10 @@ const createTendril = angle =>
     ])
     .setBehaviours([
       new Vortex(CENTER, AXIS, 820, 70), // same field as the orb
-      new Color('#cdefff', '#8a4dff'), // bright cyan-white → violet inward
-      new Scale(1.4, 0), // taper the ribbon to nothing at the core
+      // Saturated so the arms actually read as colour (a near-white birth colour
+      // washes out under additive). Slower taper so the violet inner shows too.
+      new Color('#12c8ff', '#a020ff'), // saturated cyan → violet inward
+      new Scale(1.5, 0.4),
       new Alpha(1, 0),
     ])
     .setPosition({ x: RIM * Math.cos(angle), y: RIM * Math.sin(angle), z: 0 })
