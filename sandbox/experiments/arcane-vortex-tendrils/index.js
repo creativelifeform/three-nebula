@@ -58,31 +58,28 @@ class Vortex extends Behaviour {
 const CENTER = new Vector3D(0, 0, 0);
 const AXIS = new Vector3D(0, 0, 1);
 
+// The same soft dot used for the orb sprites — shared across both systems.
+const DOT = new THREE.TextureLoader().load('/assets/dot.png');
+
 const glow = color =>
   new THREE.Sprite(
     new THREE.SpriteMaterial({
-      map: new THREE.TextureLoader().load('/assets/dot.png'),
+      map: DOT,
       color,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     })
   );
 
-// A soft glow-band texture for the ribbons: bright down the centre line, fading
-// to transparent at both edges (across the strip's width / V axis). Multiplied
-// by the per-vertex colour, this turns the flat strips into soft energy streaks.
+// Same dot texture for the ribbons. `uv: 'tile'` + RepeatWrapping tiles it along
+// the strip (its radial falloff gives soft width-edges AND a continuous glow);
+// `repeat.x` sets how many dots per unit length.
 const ribbonTexture = () => {
-  const c = document.createElement('canvas');
-  c.width = 4;
-  c.height = 64;
-  const ctx = c.getContext('2d');
-  const g = ctx.createLinearGradient(0, 0, 0, 64);
-  g.addColorStop(0.0, 'rgba(255,255,255,0)');
-  g.addColorStop(0.5, 'rgba(255,255,255,1)');
-  g.addColorStop(1.0, 'rgba(255,255,255,0)');
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 0, 4, 64);
-  return new THREE.CanvasTexture(c);
+  const t = new THREE.TextureLoader().load('/assets/dot.png');
+  t.wrapS = THREE.RepeatWrapping;
+  t.wrapT = THREE.ClampToEdgeWrapping;
+  t.repeat.set(0.5, 1); // a dot every ~2 spine points
+  return t;
 };
 
 // ── System A: the point orb (unchanged from `arcane-vortex`) ────────────────
@@ -171,9 +168,9 @@ const init = async ({ scene, camera }) => {
     new RibbonRenderer(scene, THREE, {
       camera,
       width: 14,
-      texture: ribbonTexture(), // soft-edged glow band, not a flat strip
+      texture: ribbonTexture(),
       blending: 'AdditiveBlending',
-      uv: 'stretch',
+      uv: 'tile',
     })
   );
 
