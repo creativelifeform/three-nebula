@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v13.2.0` - 2026-09-13
+
+A backward-compatible, additive minor that polishes the `RibbonRenderer` introduced in 13.1.0. Ribbons now look smooth by default — soft-edged and free of the bright banding that clustered or bursty emission used to produce. No API changes; existing ribbons render better with no code changes, and the new behaviour is controllable via renderer options.
+
+### Added
+
+- **`RibbonRenderer` soft edge (default on).** A built-in alpha-map edge falloff gives ribbons a soft, feathered border instead of a hard-cut strip. Toggle with the `softEdge` option (default `true`).
+- **`RibbonRenderer` tangent smoothing.** The strip's tangents are averaged over a window along the spine, removing kinks from noisy particle motion. Tune with the `smoothing` option (default `2`).
+
+### Fixed
+
+- **`RibbonRenderer` bright banding from clustered emission.** Coincident/stacked spine points (e.g. many particles emitted at once, or an emitter that pauses in place) are now deduped, so additive over-draw no longer produces bright ribs across the ribbon. This is the same idea as a trail renderer's "minimum vertex distance". Ribbons fed a clean spine are unchanged.
+
 ## `v13.1.0` - 2026-09-11
 
 A backward-compatible, additive minor. Introduces **emitter hierarchy** (spec 01): a child emitter can be nested under a parent and is instanced **once per parent particle**, riding it — so effects that live on individual particles ("every spark leaves its own smoke trail") become expressible. The core is backward-compatible; everything below is additive, and a childless emitter behaves exactly as before. Also fixes a long-standing `SphereZone` centre bug.
