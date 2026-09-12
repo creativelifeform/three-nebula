@@ -88,20 +88,20 @@ const createRisers = () => {
   const risers = new Emitter();
 
   risers
-    .setRate(new Rate(new Span(4, 6), new Span(0.004, 0.008)))
+    .setRate(new Rate(new Span(16, 22), new Span(0.003, 0.006))) // very dense
     .setInitializers([
       new Mass(1),
       new Life(0.9, 1.5),
       new Body(glow(0xffffff)),
-      new Radius(7, 13),
+      new Radius(12, 20),
     ])
     .setBehaviours([
       new Color('#cdefff', '#3a6cff'), // pale cyan → blue
-      new Alpha(0.9, 0),
-      new Scale(1, 0.25),
-      new Force(0, -0.3, 0), // gentle arc back down
+      new Alpha(0.8, 0),
+      new Scale(1.2, 0.45),
+      new Force(0, -0.25, 0),
     ]);
-  risers.addEmitterBehaviour(new Orbit(0.9, R, 0, 26, 92));
+  risers.addEmitterBehaviour(new Orbit(0.9, R, 0, 16, 90));
 
   return risers.emit();
 };
