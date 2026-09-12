@@ -84,6 +84,72 @@ fx.dispose();
 - Lives behind a subpath export (like `three-nebula/webgpu`), so nobody who
   doesn't opt in pays for `three/addons` postprocessing.
 
+### 3. Per-emitter variation — HDR emissive intensity, NOT per-emitter bloom
+
+The obvious ask is "let each emitter have its own bloom amount." **Don't build
+that as a per-emitter bloom control.** It is not how commercial designers do it,
+and it drags us into a selective-bloom-per-emitter pipeline (multiple composers /
+layers) for a result the industry gets far more simply.
+
+**The commercial idiom is: one *global* bloom pass + per-emitter HDR emissive
+intensity.** Bloom in the mainstream real-time tools is a single, screen-space,
+HDR-threshold post effect; per-emitter *variation* is emergent from how bright
+each emitter is authored, against that one shared threshold:
+
+- **Unity (URP/HDRP, VFX Graph):** bloom is a global Volume override; you vary an
+  emitter's glow via its **HDR color Intensity (EV)**. Brighter → crosses the
+  global threshold harder → blooms more.
+- **Unreal (Cascade/Niagara):** bloom is the global Post Process Volume; per-emitter
+  variation is the particle material's **emissive intensity**.
+- **PopcornFX / Effekseer:** engine/editor global bloom block + emissive/HDR per
+  emitter.
+- **Offline (Houdini + Nuke):** the only place *true* independent per-emitter bloom
+  lives — via per-emitter **AOVs / render passes** composited separately. That is
+  the "expose the render target" escape hatch (§4), not an emitter property.
+
+So the feature to add is a **per-emitter/per-particle color intensity multiplier
+(HDR, values > 1)** on the existing color path — authoring "brighter than white"
+so an emitter deliberately crosses the shared bloom threshold. This:
+
+- lives in the **serialized emitter definition**, so it's WYSIWYG-safe by the same
+  mechanism as `postFx` (§1) — no separate machinery;
+- is a *tiny* addition (a multiplier on the emissive/color output), not a
+  post-processing pipeline;
+- degrades gracefully — with bloom off it just reads as a brighter (clamped)
+  particle; with bloom on it glows more.
+
+Note three-nebula already gives per-emitter *apparent* glow the other cheap way
+commercial tools use — **additive soft sprites** (the `dot.png` glow) — which needs
+no post-processing at all. HDR intensity + one global bloom is the enhancement, not
+a replacement.
+
+**Requirement for HDR to actually register:** the WebGLRenderer must render to a
+float/half-float target (or the bloom pass must read HDR luminance) — an LDR 8-bit
+target clamps at white and defeats intensity > 1. The helper should set this up.
+
+### 4. Selective bloom & the render-target escape hatch
+
+If a project genuinely needs only-particles-glow or independent per-emitter bloom
+*params* (beyond the §3 idiom), the answer is **not** to bake it into core:
+
+- **Selective bloom** (particles bloom, scene geometry doesn't) is a standard
+  three.js recipe — either layer masking + a dual composer, or (more correct)
+  material-darkening non-bloom objects so occlusion is preserved (pure layer
+  isolation makes bloom bleed *through* foreground geometry). The helper MAY offer
+  a selective mode, but it is opt-in and secondary to §3.
+- **Renderer integration is cheaper than it looks.** `GPURenderer` adds a **single**
+  `THREE.Points` to its container (`GPURenderer/*/index.ts`), so selecting it for
+  bloom is one object. `Sprite`/`Mesh` renderers pool per-particle objects under
+  one container and add/remove them on birth/death (`MeshRenderer.ts`), but since
+  three.js layers don't auto-inherit, the helper just does one
+  `container.traverse(o => o.layers.enable(BLOOM_LAYER))` per frame — which
+  auto-catches new spawns. No per-emit developer boilerplate.
+- **Primary API is the raw render target, not a forced final composite.** The
+  helper should expose the bloom **render target** so apps with existing
+  post-processing hook it into their own master pipeline (the Houdini/AOV model);
+  the one-call `render()` is a convenience for the simple case only. Core/helper
+  never owns final compositing.
+
 ## Fidelity requirements (this is where WYSIWYG actually lives)
 
 "Same pass + same params" is necessary but **not sufficient**. The helper must
@@ -116,6 +182,14 @@ pin the variables that make two composites diverge:
   `three-nebula/postfx`.
 - The sandbox `?bloom` capability is re-expressed in terms of the helper (single
   implementation) rather than a bespoke composer in `Visualization`.
+- **Per-emitter idiom (§3):** two emitters with different HDR color intensities,
+  under one global bloom pass, bloom by visibly different amounts — with no
+  per-emitter bloom config. Intensity round-trips in the emitter definition and,
+  with bloom off, reads as a brighter (clamped) particle.
+- **Escape hatch (§4):** the helper exposes the bloom render target; an app can
+  composite it into its own pipeline without routing through the helper's
+  `render()`. A selective-bloom mode, if implemented, leaves scene geometry
+  un-bloomed while particles glow.
 
 ## Risk / notes
 
