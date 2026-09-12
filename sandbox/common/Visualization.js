@@ -1,6 +1,9 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import Stats from 'three/addons/libs/stats.module.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
 export class Visualization {
   constructor({
@@ -27,6 +30,23 @@ export class Visualization {
     this.capture =
       typeof window !== 'undefined' &&
       new URLSearchParams(window.location.search).has('capture');
+    // Opt-in bloom post-processing (?bloom, tune with
+    // ?bloom=strength,radius,threshold e.g. ?bloom=1.6,0.6,0.0). Renders the
+    // scene through an EffectComposer + UnrealBloomPass, which blurs bright
+    // regions into overlapping glows — the biggest "eye-catching" upgrade for
+    // additive effects, and it smooths beading/banding for free.
+    const params =
+      typeof window !== 'undefined'
+        ? new URLSearchParams(window.location.search)
+        : new URLSearchParams();
+
+    this.bloom = params.has('bloom');
+    this.bloomParams = (() => {
+      const raw = (params.get('bloom') || '').split(',').map(parseFloat);
+      const [strength = 1.4, radius = 0.6, threshold = 0.0] = raw;
+
+      return { strength, radius, threshold };
+    })();
   }
 
   /**
@@ -41,6 +61,7 @@ export class Visualization {
       .makeCamera()
       .makeLights()
       .makeWebGlRenderer()
+      .makeComposer()
       .makeCameraControls()
       .makeParticleSystem();
   }
@@ -104,7 +125,7 @@ export class Visualization {
       this.renderTicks++;
       this.particleSystem.tick((now - last) / 1000);
       this.rotateCamera();
-      this.webGlRenderer.render(this.scene, this.camera);
+      this.renderFrame();
       this.stats.end();
     };
 
@@ -128,6 +149,10 @@ export class Visualization {
     camera.aspect = clientWidth / clientHeight;
     camera.updateProjectionMatrix();
     webGlRenderer.setSize(clientWidth, clientHeight, false);
+
+    if (this.composer) {
+      this.composer.setSize(clientWidth, clientHeight);
+    }
   }
 
   makeScene() {
@@ -227,6 +252,44 @@ export class Visualization {
     return this;
   }
 
+  makeComposer() {
+    if (!this.bloom) {
+      return this;
+    }
+
+    const {
+      webGlRenderer,
+      scene,
+      camera,
+      canvas: { clientWidth, clientHeight },
+      bloomParams: { strength, radius, threshold },
+    } = this;
+
+    this.composer = new EffectComposer(webGlRenderer);
+    this.composer.setSize(clientWidth, clientHeight);
+    this.composer.addPass(new RenderPass(scene, camera));
+    this.composer.addPass(
+      new UnrealBloomPass(
+        new THREE.Vector2(clientWidth, clientHeight),
+        strength,
+        radius,
+        threshold
+      )
+    );
+
+    return this;
+  }
+
+  // Single render entry point so realtime playback and offline capture share the
+  // same path (with or without post-processing).
+  renderFrame() {
+    if (this.composer) {
+      this.composer.render();
+    } else {
+      this.webGlRenderer.render(this.scene, this.camera);
+    }
+  }
+
   makeCameraControls() {
     if (!this.shouldAddCameraControls) {
       return this;
@@ -277,7 +340,7 @@ export class Visualization {
       step(dt = 1 / 60) {
         self.particleSystem.update(dt);
         self.rotateCamera();
-        self.webGlRenderer.render(self.scene, self.camera);
+        self.renderFrame();
       },
     };
 

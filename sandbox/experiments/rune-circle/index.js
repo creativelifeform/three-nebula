@@ -71,11 +71,11 @@ const createRing = () => {
       new Mass(1),
       new Life(1.5, 1.9), // long enough to fill the whole circle
       new Body(glow(0xffffff)),
-      new Radius(20, 30), // big, overlapping → a continuous glowing ring
+      new Radius(14, 22), // big, overlapping → a continuous glowing ring
     ])
     .setBehaviours([
       new Color('#ffe08a', '#ff6a1a'), // gold → amber
-      new Alpha(0.85, 0),
+      new Alpha(0.5, 0), // leave tonal range for bloom to lift
       new Scale(1, 0.9),
     ]);
   ring.addEmitterBehaviour(new Orbit(0.9, R, 0, 0, 0)); // slower → denser ring
@@ -88,16 +88,16 @@ const createRisers = () => {
   const risers = new Emitter();
 
   risers
-    .setRate(new Rate(new Span(16, 22), new Span(0.003, 0.006))) // very dense
+    .setRate(new Rate(new Span(7, 10), new Span(0.004, 0.008))) // dense, but not a hot pile-up at the head
     .setInitializers([
       new Mass(1),
       new Life(0.9, 1.5),
       new Body(glow(0xffffff)),
-      new Radius(12, 20),
+      new Radius(10, 16),
     ])
     .setBehaviours([
       new Color('#cdefff', '#3a6cff'), // pale cyan → blue
-      new Alpha(0.8, 0),
+      new Alpha(0.45, 0), // leave tonal range for bloom to lift
       new Scale(1.2, 0.45),
       new Force(0, -0.25, 0),
     ]);
