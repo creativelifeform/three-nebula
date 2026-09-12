@@ -32,6 +32,14 @@ interface RibbonRendererOptions {
   texture?: Texture;
   // 'stretch' maps U 0→1 across the whole ribbon; 'tile' repeats U per segment.
   uv: 'stretch' | 'tile';
+  // Fade the strip's opacity across its width (a built-in alphaMap) so an
+  // untextured ribbon reads as a soft streak rather than a hard-edged flat band.
+  // Composes with `texture`. Set false for a hard-edged strip.
+  softEdge: boolean;
+  // Tangent-smoothing window (points each side) when orienting the strip. A wider
+  // window rides over spine noise so a slightly scattered spine doesn't produce a
+  // self-crossing sawtooth. Clamped to >= 1.
+  smoothing: number;
   depthTest: boolean;
   depthWrite: boolean;
 }
@@ -40,6 +48,8 @@ const DEFAULT_OPTIONS: RibbonRendererOptions = {
   width: 20,
   blending: 'AdditiveBlending',
   uv: 'stretch',
+  softEdge: true,
+  smoothing: 2,
   depthTest: true,
   depthWrite: false,
 };
@@ -103,6 +113,10 @@ export default class RibbonRenderer extends BaseRenderer {
   _side: Vector3;
   _lastSide: Vector3;
   _up: Vector3;
+  // Built-in across-width opacity falloff shared by every ribbon (see softEdge).
+  _softEdgeMap: Texture | null;
+  // Reused scratch list for the deduped spine (no per-frame allocation).
+  _spine: Particle[];
 
   constructor(
     container: Object3D,
@@ -124,6 +138,61 @@ export default class RibbonRenderer extends BaseRenderer {
     this._side = new THREE.Vector3();
     this._lastSide = new THREE.Vector3(1, 0, 0);
     this._up = new THREE.Vector3(0, 1, 0);
+    this._softEdgeMap = this.options.softEdge ? this._makeSoftEdgeMap() : null;
+    this._spine = [];
+  }
+
+  // Returns the spine with coincident points collapsed. Particles emitted at the
+  // same spot in one frame (a burst) would otherwise stack identical
+  // cross-sections that additively over-draw as bright ribs. Fills a reused array
+  // (no per-frame allocation). `group` must already be sorted by spawn order.
+  _dedupe(group: Particle[]): Particle[] {
+    const eps = 0.25 * 0.25;
+    const spine = this._spine;
+
+    spine.length = 0;
+
+    for (let i = 0; i < group.length; i++) {
+      const p = group[i];
+
+      if (spine.length > 0) {
+        const last = spine[spine.length - 1].position;
+        const dx = p.position.x - last.x;
+        const dy = p.position.y - last.y;
+        const dz = p.position.z - last.z;
+
+        if (dx * dx + dy * dy + dz * dz < eps) {
+          continue;
+        }
+      }
+
+      spine.push(p);
+    }
+
+    return spine;
+  }
+
+  // A 1×N alpha ramp — transparent at the strip edges (V 0 and 1), opaque down
+  // the centre line — applied as the material's alphaMap so the width fades
+  // smoothly. Built from a data array (no DOM), so it works headless/in tests.
+  _makeSoftEdgeMap(): Texture {
+    const n = 64;
+    const data = new Uint8Array(n * 4);
+
+    for (let i = 0; i < n; i++) {
+      const a = Math.round(Math.sin((i / (n - 1)) * Math.PI) * 255);
+
+      data[i * 4] = a;
+      data[i * 4 + 1] = a;
+      data[i * 4 + 2] = a;
+      data[i * 4 + 3] = 255;
+    }
+
+    const texture = new this.three.DataTexture(data, 1, n);
+
+    texture.needsUpdate = true;
+
+    return texture;
   }
 
   // Group key: the emitting instance, falling back to the node id or a shared
@@ -180,11 +249,23 @@ export default class RibbonRenderer extends BaseRenderer {
       return;
     }
 
-    ribbon.mesh.visible = true;
     group.sort(bySpawnIndex);
 
+    // Collapse coincident spine points — e.g. a burst of particles emitted at one
+    // spot in a single frame — so the strip doesn't stack many identical
+    // cross-sections at one position, which additively over-draws as a bright rib.
+    const spine = this._dedupe(group);
+
+    if (spine.length < 2) {
+      ribbon.mesh.visible = false;
+
+      return;
+    }
+
+    ribbon.mesh.visible = true;
+
     const { width, uv, camera } = this.options;
-    const n = group.length;
+    const n = spine.length;
     const { positions, colors, uvs } = ribbon;
 
     if (camera) {
@@ -192,15 +273,16 @@ export default class RibbonRenderer extends BaseRenderer {
     }
 
     for (let i = 0; i < n; i++) {
-      const particle = group[i];
+      const particle = spine[i];
       const point = particle.position as unknown as Vector3;
 
-      // Tangent by central difference (forward/backward at the ends).
-      this._prev.copy(
-        i > 0 ? (group[i - 1].position as unknown as Vector3) : point
-      );
+      // Tangent by central difference over a smoothing window (clamped at the
+      // ends), so a slightly noisy spine doesn't jitter the strip's orientation.
+      const w = Math.max(1, this.options.smoothing);
+
+      this._prev.copy(spine[Math.max(0, i - w)].position as unknown as Vector3);
       this._next.copy(
-        i < n - 1 ? (group[i + 1].position as unknown as Vector3) : point
+        spine[Math.min(n - 1, i + w)].position as unknown as Vector3
       );
       this._tangent.subVectors(this._next, this._prev);
 
@@ -318,6 +400,7 @@ export default class RibbonRenderer extends BaseRenderer {
         side: THREE.DoubleSide,
         blending: THREE[blending],
         map: texture || null,
+        alphaMap: this._softEdgeMap,
         depthTest,
         depthWrite,
       });
@@ -356,6 +439,11 @@ export default class RibbonRenderer extends BaseRenderer {
   remove(_system?: System): void {
     this._ribbons.forEach((_ribbon, key) => this._disposeRibbon(key));
     this._groups.clear();
+
+    if (this._softEdgeMap) {
+      this._softEdgeMap.dispose();
+      this._softEdgeMap = null;
+    }
   }
 
   destroy(): void {
