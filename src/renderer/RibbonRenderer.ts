@@ -115,6 +115,8 @@ export default class RibbonRenderer extends BaseRenderer {
   _up: Vector3;
   // Built-in across-width opacity falloff shared by every ribbon (see softEdge).
   _softEdgeMap: Texture | null;
+  // Reused scratch list for the deduped spine (no per-frame allocation).
+  _spine: Particle[];
 
   constructor(
     container: Object3D,
@@ -137,6 +139,37 @@ export default class RibbonRenderer extends BaseRenderer {
     this._lastSide = new THREE.Vector3(1, 0, 0);
     this._up = new THREE.Vector3(0, 1, 0);
     this._softEdgeMap = this.options.softEdge ? this._makeSoftEdgeMap() : null;
+    this._spine = [];
+  }
+
+  // Returns the spine with coincident points collapsed. Particles emitted at the
+  // same spot in one frame (a burst) would otherwise stack identical
+  // cross-sections that additively over-draw as bright ribs. Fills a reused array
+  // (no per-frame allocation). `group` must already be sorted by spawn order.
+  _dedupe(group: Particle[]): Particle[] {
+    const eps = 0.25 * 0.25;
+    const spine = this._spine;
+
+    spine.length = 0;
+
+    for (let i = 0; i < group.length; i++) {
+      const p = group[i];
+
+      if (spine.length > 0) {
+        const last = spine[spine.length - 1].position;
+        const dx = p.position.x - last.x;
+        const dy = p.position.y - last.y;
+        const dz = p.position.z - last.z;
+
+        if (dx * dx + dy * dy + dz * dz < eps) {
+          continue;
+        }
+      }
+
+      spine.push(p);
+    }
+
+    return spine;
   }
 
   // A 1×N alpha ramp — transparent at the strip edges (V 0 and 1), opaque down
@@ -216,11 +249,23 @@ export default class RibbonRenderer extends BaseRenderer {
       return;
     }
 
-    ribbon.mesh.visible = true;
     group.sort(bySpawnIndex);
 
+    // Collapse coincident spine points — e.g. a burst of particles emitted at one
+    // spot in a single frame — so the strip doesn't stack many identical
+    // cross-sections at one position, which additively over-draws as a bright rib.
+    const spine = this._dedupe(group);
+
+    if (spine.length < 2) {
+      ribbon.mesh.visible = false;
+
+      return;
+    }
+
+    ribbon.mesh.visible = true;
+
     const { width, uv, camera } = this.options;
-    const n = group.length;
+    const n = spine.length;
     const { positions, colors, uvs } = ribbon;
 
     if (camera) {
@@ -228,16 +273,16 @@ export default class RibbonRenderer extends BaseRenderer {
     }
 
     for (let i = 0; i < n; i++) {
-      const particle = group[i];
+      const particle = spine[i];
       const point = particle.position as unknown as Vector3;
 
       // Tangent by central difference over a smoothing window (clamped at the
       // ends), so a slightly noisy spine doesn't jitter the strip's orientation.
       const w = Math.max(1, this.options.smoothing);
 
-      this._prev.copy(group[Math.max(0, i - w)].position as unknown as Vector3);
+      this._prev.copy(spine[Math.max(0, i - w)].position as unknown as Vector3);
       this._next.copy(
-        group[Math.min(n - 1, i + w)].position as unknown as Vector3
+        spine[Math.min(n - 1, i + w)].position as unknown as Vector3
       );
       this._tangent.subVectors(this._next, this._prev);
 

@@ -204,4 +204,17 @@ describe('renderer -> RibbonRenderer -> soft edge & smoothing', () => {
       assert.isFalse(Number.isNaN(pos[i]));
     }
   });
+
+  it('collapses coincident spine points (a same-spot burst) so they do not rib', () => {
+    const r = new RibbonRenderer(new THREE.Object3D(), THREE);
+
+    // Three distinct positions, each emitted as a 2-particle cluster at one spot.
+    [0, 0, 10, 10, 20, 20].forEach((x, i) =>
+      r.onParticleCreated(particle({ instance: 'a', spawnIndex: i, x }))
+    );
+    r.onSystemUpdate();
+
+    // Deduped spine = 3 points → 2 segments → 12 indices (not 5 segments → 30).
+    assert.equal(r._ribbons.get('a').geometry.drawRange.count, 2 * 6);
+  });
 });
