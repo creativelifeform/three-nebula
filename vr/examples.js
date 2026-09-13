@@ -7,6 +7,8 @@
 // golden master until modernised.
 export const EXAMPLES = {
   SpriteRendererGravity: { kind: 'init', frames: 120 },
+  // The Vortex behaviour — a swirling inflow (SpriteRenderer for SwiftShader).
+  Vortex: { kind: 'init', frames: 120 },
   SpriteRendererPointZone: { kind: 'init', frames: 120 },
   CustomRenderer: { kind: 'init', frames: 120 },
   EightDiagrams: { kind: 'init', frames: 120 },
