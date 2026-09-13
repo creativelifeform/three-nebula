@@ -11,3 +11,4 @@ export const BEHAVIOUR_TYPE_REPULSION = 'Repulsion';
 export const BEHAVIOUR_TYPE_ROTATE = 'Rotate';
 export const BEHAVIOUR_TYPE_SCALE = 'Scale';
 export const BEHAVIOUR_TYPE_SPRING = 'Spring';
+export const BEHAVIOUR_TYPE_VORTEX = 'Vortex';
