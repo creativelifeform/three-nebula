@@ -12,6 +12,11 @@ export const DEFAULT_VORTEX_FALLOFF = 1;
 // Below this distance from the swirl axis a particle has no well-defined
 // tangent, so the Vortex leaves it untouched (also avoids a 1/dist^falloff blowup).
 export const VORTEX_MIN_DISTANCE = 0.0001;
+export const DEFAULT_CURL_NOISE_SCALE = 0.01;
+export const DEFAULT_CURL_NOISE_STRENGTH = 100;
+export const DEFAULT_CURL_NOISE_SEED = 1;
+// Finite-difference epsilon (in noise space) for the numerical curl.
+export const DEFAULT_CURL_NOISE_EPSILON = 0.1;
 export const PARTICLE_ALPHA_THRESHOLD = 0.002;
 export const PARTICLE_LENGTH_SQ_THRESHOLD = 0.000004;
 export const DEFAULT_CROSS_TYPE = 'dead';

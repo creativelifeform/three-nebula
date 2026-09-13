@@ -9,6 +9,8 @@ export const EXAMPLES = {
   SpriteRendererGravity: { kind: 'init', frames: 120 },
   // The Vortex behaviour — a swirling inflow (SpriteRenderer for SwiftShader).
   Vortex: { kind: 'init', frames: 120 },
+  // The CurlNoise flow field — a turbulent rising column (SpriteRenderer).
+  CurlNoise: { kind: 'init', frames: 160 },
   SpriteRendererPointZone: { kind: 'init', frames: 120 },
   CustomRenderer: { kind: 'init', frames: 120 },
   EightDiagrams: { kind: 'init', frames: 120 },

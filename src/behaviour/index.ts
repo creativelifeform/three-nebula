@@ -11,4 +11,5 @@ export { default as Rotate } from './Rotate';
 export { default as Scale } from './Scale';
 export { default as Spring } from './Spring';
 export { default as Vortex } from './Vortex';
+export { default as CurlNoise } from './CurlNoise';
 export { default as Behaviour } from './Behaviour';
