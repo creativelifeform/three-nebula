@@ -11,6 +11,7 @@ import {
   BEHAVIOUR_TYPE_SCALE,
   BEHAVIOUR_TYPE_SPRING,
   BEHAVIOUR_TYPE_VORTEX,
+  BEHAVIOUR_TYPE_CURL_NOISE,
 } from '../behaviour/types';
 import {
   INITIALIZER_TYPE_BODY,
@@ -188,6 +189,7 @@ export const SUPPORTED_JSON_BEHAVIOUR_TYPES = [
   BEHAVIOUR_TYPE_SCALE,
   BEHAVIOUR_TYPE_SPRING,
   BEHAVIOUR_TYPE_VORTEX,
+  BEHAVIOUR_TYPE_CURL_NOISE,
 ] as const;
 
 /** The behaviour `type` strings accepted by `System.fromJSON`. */

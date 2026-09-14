@@ -63,6 +63,7 @@ const BEHAVIOURS = {
   Scale: Behaviour.Scale,
   Spring: Behaviour.Spring,
   Vortex: Behaviour.Vortex,
+  CurlNoise: Behaviour.CurlNoise,
 } satisfies Record<SupportedBehaviourType, BehaviourFactory>;
 
 // The concrete `fromJSON` methods each take a narrow `*JSON` param; the JSON we
