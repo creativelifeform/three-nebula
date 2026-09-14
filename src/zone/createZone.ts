@@ -4,6 +4,10 @@ import MeshZone from './MeshZone';
 import PointZone from './PointZone';
 import ScreenZone from './ScreenZone';
 import SphereZone from './SphereZone';
+import RingZone from './RingZone';
+import DiscZone from './DiscZone';
+import ConeZone from './ConeZone';
+import CylinderZone from './CylinderZone';
 import type { SupportedZoneType } from '../core/constants';
 import type ZoneBase from './Zone';
 
@@ -27,6 +31,10 @@ const ZONES: Record<SupportedZoneType, ZoneFactory> &
   PointZone,
   ScreenZone,
   SphereZone,
+  RingZone,
+  DiscZone,
+  ConeZone,
+  CylinderZone,
 };
 
 /**

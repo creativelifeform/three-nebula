@@ -5,3 +5,7 @@ export const ZONE_TYPE_MESH = 'MeshZone';
 export const ZONE_TYPE_POINT = 'PointZone';
 export const ZONE_TYPE_SCREEN = 'ScreenZone';
 export const ZONE_TYPE_SPHERE = 'SphereZone';
+export const ZONE_TYPE_RING = 'RingZone';
+export const ZONE_TYPE_DISC = 'DiscZone';
+export const ZONE_TYPE_CONE = 'ConeZone';
+export const ZONE_TYPE_CYLINDER = 'CylinderZone';
