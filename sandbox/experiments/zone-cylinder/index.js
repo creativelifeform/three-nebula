@@ -65,7 +65,7 @@ const init = async ({ scene, camera }) => {
     camera.position.set(360, 220, 640);
     camera.lookAt(0, 160, 0);
   } else {
-    camera.position.set(0, 120, 520);
+    camera.position.set(340, 150, 520);
     camera.lookAt(0, 0, 0);
   }
 
@@ -74,7 +74,7 @@ const init = async ({ scene, camera }) => {
     .addRenderer(new GPURenderer(scene, THREE, { maxParticles: 30000 }));
 };
 
-run(init, {
-  shouldRotateCamera: !motion.moving,
-  shouldAddCameraControls: true,
-});
+// A fixed 3/4 camera (the wireframe conveys the 3D shape) so OrbitControls drag
+// works cleanly — matching every other experiment. The built-in auto-rotate
+// (shouldRotateCamera) overrides the camera each frame and fights OrbitControls.
+run(init, { shouldRotateCamera: false, shouldAddCameraControls: true });

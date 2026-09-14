@@ -67,7 +67,7 @@ const init = async ({ scene, camera }) => {
     camera.position.set(360, 260, 620);
     camera.lookAt(0, 180, 0);
   } else {
-    camera.position.set(0, 220, 520);
+    camera.position.set(300, 240, 460);
     camera.lookAt(0, 0, 0);
   }
 
@@ -76,9 +76,7 @@ const init = async ({ scene, camera }) => {
     .addRenderer(new GPURenderer(scene, THREE, { maxParticles: 30000 }));
 };
 
-// Orbit to show the flat shape when static; hold a fixed 3/4 framing when the
-// particles travel (so the rising column stays in frame).
-run(init, {
-  shouldRotateCamera: !motion.moving,
-  shouldAddCameraControls: true,
-});
+// A fixed 3/4 camera (the wireframe conveys the 3D shape) so OrbitControls drag
+// works cleanly — matching every other experiment. The built-in auto-rotate
+// (shouldRotateCamera) overrides the camera each frame and fights OrbitControls.
+run(init, { shouldRotateCamera: false, shouldAddCameraControls: true });
