@@ -77,6 +77,10 @@ const init = async ({ scene, camera }) => {
 };
 
 // A fixed 3/4 camera (the wireframe conveys the 3D shape) so OrbitControls drag
-// works cleanly — matching every other experiment. The built-in auto-rotate
-// (shouldRotateCamera) overrides the camera each frame and fights OrbitControls.
-run(init, { shouldRotateCamera: false, shouldAddCameraControls: true });
+// works cleanly. cameraTarget matches the camera's lookAt so the first drag
+// doesn't snap the view (the moving view looks at the risen column, not origin).
+run(init, {
+  shouldRotateCamera: false,
+  shouldAddCameraControls: true,
+  cameraTarget: motion.moving ? [0, 180, 0] : [0, 0, 0],
+});

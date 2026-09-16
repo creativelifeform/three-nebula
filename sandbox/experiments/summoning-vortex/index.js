@@ -83,4 +83,10 @@ const init = async ({ scene, camera }) => {
     .addRenderer(new GPURenderer(scene, THREE, { maxParticles: 30000 }));
 };
 
-run(init, { shouldRotateCamera: false, shouldAddCameraControls: true });
+// cameraTarget keeps OrbitControls focused on the column's mid-height (matching
+// the camera's lookAt), so the first drag doesn't snap the view.
+run(init, {
+  shouldRotateCamera: false,
+  shouldAddCameraControls: true,
+  cameraTarget: [0, 200, 0],
+});
