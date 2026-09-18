@@ -14,10 +14,15 @@ interface DebugZone {
   isBoxZone(): boolean;
   isSphereZone(): boolean;
   isMeshZone(): boolean;
+  isRingZone(): boolean;
+  isConeZone(): boolean;
+  isCylinderZone(): boolean;
   width?: number;
   height?: number;
   depth?: number;
   radius?: number;
+  innerRadius?: number;
+  outerRadius?: number;
   x?: number;
   y?: number;
   z?: number;
@@ -76,6 +81,7 @@ const Debug: DebugModule = {
       y = DEFAULT_POSITION,
       z = DEFAULT_POSITION,
     } = zone;
+    const { innerRadius = 0, outerRadius = radius } = zone;
 
     let geometry: BufferGeometry | undefined;
 
@@ -93,6 +99,28 @@ const Debug: DebugModule = {
 
     if (zone.isSphereZone()) {
       geometry = new THREE.SphereGeometry(radius, size, size);
+    }
+
+    // Ring/Disc are planar (XZ); a RingGeometry (built in XY) laid flat. Disc is
+    // a RingZone with innerRadius 0, so this covers both.
+    if (zone.isRingZone()) {
+      geometry = new THREE.RingGeometry(innerRadius, outerRadius, 32);
+      geometry.rotateX(Math.PI / 2);
+    }
+
+    if (zone.isCylinderZone()) {
+      geometry = new THREE.CylinderGeometry(
+        radius,
+        radius,
+        height,
+        24,
+        1,
+        true
+      );
+    }
+
+    if (zone.isConeZone()) {
+      geometry = new THREE.ConeGeometry(radius, height, 24, 1, true);
     }
 
     if (zone.isMeshZone()) {

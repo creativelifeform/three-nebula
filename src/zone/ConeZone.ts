@@ -36,6 +36,10 @@ export default class ConeZone extends Zone {
     this.height = height;
   }
 
+  isConeZone(): boolean {
+    return true;
+  }
+
   getPosition(rng?: RNG): Vector3D {
     const rand = rng ?? Math.random;
     // Uniform over the cone volume: the height fraction's density grows with the

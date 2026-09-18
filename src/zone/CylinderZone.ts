@@ -35,6 +35,10 @@ export default class CylinderZone extends Zone {
     this.height = height;
   }
 
+  isCylinderZone(): boolean {
+    return true;
+  }
+
   getPosition(rng?: RNG): Vector3D {
     const rand = rng ?? Math.random;
     // Uniform over the disc cross-section (r = sqrt(u)·radius), uniform along

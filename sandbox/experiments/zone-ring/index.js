@@ -16,6 +16,7 @@ import System, {
 } from 'three-nebula';
 import { ring } from '/common/wireframe.js';
 import { readZoneMotion } from '/common/zone-motion.js';
+import { glow } from '/common/sprite.js';
 import { run } from '/common/run.js';
 
 // RingZone — particles emitted uniformly within an annulus (XZ plane). The dim
@@ -27,16 +28,6 @@ import { run } from '/common/run.js';
 const INNER = 90;
 const OUTER = 150;
 const motion = readZoneMotion();
-
-const glow = color =>
-  new THREE.Sprite(
-    new THREE.SpriteMaterial({
-      map: new THREE.TextureLoader().load('/assets/dot.png'),
-      color,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    })
-  );
 
 const createFill = () =>
   new Emitter()

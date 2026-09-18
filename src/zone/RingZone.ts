@@ -39,6 +39,10 @@ export default class RingZone extends Zone {
     this.supportsCrossing = false;
   }
 
+  isRingZone(): boolean {
+    return true;
+  }
+
   getPosition(rng?: RNG): Vector3D {
     const rand = rng ?? Math.random;
     // Uniform *area* sampling of the annulus: r = sqrt(lerp(inner², outer², u)),

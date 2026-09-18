@@ -19,6 +19,7 @@ import System, {
   GPURenderer,
 } from 'three-nebula';
 import { circle } from '/common/wireframe.js';
+import { glow } from '/common/sprite.js';
 import { run } from '/common/run.js';
 
 // Summoning Vortex — the hero for why decoupling position from direction beats the
@@ -35,16 +36,6 @@ import { run } from '/common/run.js';
 const CENTER = new Vector3D(0, 0, 0);
 const UP = new Vector3D(0, 1, 0);
 const RADIUS = 130;
-
-const glow = color =>
-  new THREE.Sprite(
-    new THREE.SpriteMaterial({
-      map: new THREE.TextureLoader().load('/assets/dot.png'),
-      color,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    })
-  );
 
 const createVortex = () =>
   new Emitter()

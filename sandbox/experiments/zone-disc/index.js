@@ -16,6 +16,7 @@ import System, {
 } from 'three-nebula';
 import { circle } from '/common/wireframe.js';
 import { readZoneMotion } from '/common/zone-motion.js';
+import { glow } from '/common/sprite.js';
 import { run } from '/common/run.js';
 
 // DiscZone — uniform emission within a filled circle (XZ plane). Static by default
@@ -24,16 +25,6 @@ import { run } from '/common/run.js';
 
 const RADIUS = 150;
 const motion = readZoneMotion();
-
-const glow = color =>
-  new THREE.Sprite(
-    new THREE.SpriteMaterial({
-      map: new THREE.TextureLoader().load('/assets/dot.png'),
-      color,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    })
-  );
 
 const createFill = () =>
   new Emitter()

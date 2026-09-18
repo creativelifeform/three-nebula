@@ -16,6 +16,7 @@ import System, {
 } from 'three-nebula';
 import { cone } from '/common/wireframe.js';
 import { readZoneMotion } from '/common/zone-motion.js';
+import { glow } from '/common/sprite.js';
 import { run } from '/common/run.js';
 
 // ConeZone — uniform emission within a solid cone (apex at base, opening +Y).
@@ -26,16 +27,6 @@ const APEX_Y = -130;
 const RADIUS = 130;
 const HEIGHT = 260;
 const motion = readZoneMotion();
-
-const glow = color =>
-  new THREE.Sprite(
-    new THREE.SpriteMaterial({
-      map: new THREE.TextureLoader().load('/assets/dot.png'),
-      color,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    })
-  );
 
 const createFill = () =>
   new Emitter()
