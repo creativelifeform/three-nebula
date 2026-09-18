@@ -11,6 +11,12 @@ export const EXAMPLES = {
   Vortex: { kind: 'init', frames: 120 },
   // The CurlNoise flow field — a turbulent rising column (SpriteRenderer).
   CurlNoise: { kind: 'init', frames: 160 },
+  // Parametric emission zones — static fills that capture each zone's sampling
+  // distribution (SpriteRenderer for SwiftShader).
+  RingZone: { kind: 'init', frames: 120 },
+  DiscZone: { kind: 'init', frames: 120 },
+  CylinderZone: { kind: 'init', frames: 120 },
+  ConeZone: { kind: 'init', frames: 120 },
   SpriteRendererPointZone: { kind: 'init', frames: 120 },
   CustomRenderer: { kind: 'init', frames: 120 },
   EightDiagrams: { kind: 'init', frames: 120 },
