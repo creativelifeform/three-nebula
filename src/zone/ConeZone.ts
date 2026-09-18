@@ -67,8 +67,11 @@ export default class ConeZone extends Zone {
     const dx = particle.position.x - this.x;
     const dz = particle.position.z - this.z;
     const radial = Math.sqrt(dx * dx + dz * dz);
-    // Allowed radius grows linearly from apex (0) to base (radius).
-    const allowed = (Math.max(dy, 0) / this.height) * this.radius;
+    // Allowed radius grows linearly from apex (0) to base (radius). Guard a
+    // degenerate zero-height cone (avoids a divide-by-zero → NaN, which would
+    // silently disable the radial check).
+    const allowed =
+      this.height > 0 ? (Math.max(dy, 0) / this.height) * this.radius : 0;
 
     if (radial - particle.radius > allowed) {
       particle.dead = true;
