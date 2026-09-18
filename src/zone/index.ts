@@ -4,3 +4,7 @@ export { default as MeshZone } from './MeshZone';
 export { default as PointZone } from './PointZone';
 export { default as ScreenZone } from './ScreenZone';
 export { default as SphereZone } from './SphereZone';
+export { default as RingZone } from './RingZone';
+export { default as DiscZone } from './DiscZone';
+export { default as ConeZone } from './ConeZone';
+export { default as CylinderZone } from './CylinderZone';

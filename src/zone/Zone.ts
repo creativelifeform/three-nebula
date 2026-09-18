@@ -80,6 +80,18 @@ export default class Zone {
     return false;
   }
 
+  isRingZone(): boolean {
+    return false;
+  }
+
+  isConeZone(): boolean {
+    return false;
+  }
+
+  isCylinderZone(): boolean {
+    return false;
+  }
+
   /**
    * Sets the particle's dead property to true if required.
    *

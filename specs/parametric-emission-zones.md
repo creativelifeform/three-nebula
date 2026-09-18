@@ -52,17 +52,30 @@ The four are not uniform in dimensionality, and that changes what `CrossZone`
   (or a thin planar test) rather than pretend they are 3D volumes. Do **not** ship
   a `DiscZone` that behaves unpredictably under `CrossZone`.
 
-## Stage 0 — Audit (before implementing)
+## Stage 0 — Audit (DONE — findings)
 
-1. Read the `Zone` base class and an existing zone (e.g. `SphereZone`) for the
-   exact method surface `getPosition` / `getPosition3D` / `_dead` / `_bound` /
-   `_cross` and how `Position` and `CrossZone` consume it.
-2. **Determinism (spec 02):** check whether zone sampling currently draws from
-   `Math.random` (via `MathUtils.randomFloating`) or a threaded seeded `rng`. New
-   zones must sample from the seeded stream so `setSeed` output stays reproducible
-   — align with however the initializers thread `particle.rng`.
-3. Confirm axis handling (arbitrary axis vs. axis-aligned) — a `+Y` default with
-   an optional axis is enough for v1; full arbitrary-axis can follow.
+1. **Zone contract** (`src/zone/Zone.ts`): `getPosition(rng?): Vector3D` sets
+   `this.vector` and returns it. `crossing(particle)` dispatches to
+   `_dead`/`_bound`/`_cross` by `crossType` — **but first checks a
+   `supportsCrossing` flag**; when `false` it `console.warn`s and no-ops. That
+   flag is exactly the mechanism for the planar/emission-first zones.
+2. **Determinism is already threaded:** `Position.initialize` calls
+   `zone.getPosition(target.rng)` and each zone does `const rand = rng ??
+   Math.random`. New zones just draw from the passed `rand()` — no `Math.random`,
+   no extra plumbing.
+3. **JSON round-trip uses POSITIONAL SCALAR args:** `Position.fromJSON` does
+   `createZone(zoneType, Object.values(params))`, spreading the JSON values into
+   the constructor in key order. So constructors must be **scalars in a fixed
+   order** (that's why `SphereZone` is `(x, y, z, radius)`, not a `Vector3D`).
+   → **Decision:** new zones take scalar args (e.g.
+   `RingZone(x, y, z, innerRadius, outerRadius)`), NOT the `Vector3D` sketch above.
+4. **Axis:** v1 is **axis-aligned to +Y** (disc/ring in the XZ plane, cylinder/cone
+   along +Y). Keeps args scalar/JSON-friendly. Covers ground rings, summoning
+   circles, vertical pillars/beams, upward cones/fountains. Arbitrary-axis
+   (needed for e.g. horizontal dragon-breath) is the documented follow-up.
+5. **Registration points:** `zone/types.ts` (type const), `zone/index.ts`
+   (export), `createZone.ts` (ZONES table), `core/constants.ts`
+   (`SUPPORTED_JSON_ZONE_TYPES`).
 
 ## Acceptance
 

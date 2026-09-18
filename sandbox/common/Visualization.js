@@ -11,6 +11,7 @@ export class Visualization {
     init,
     shouldRotateCamera,
     shouldAddCameraControls,
+    cameraTarget,
     maxTicks = Infinity,
   }) {
     this.canvas = canvas;
@@ -18,6 +19,10 @@ export class Visualization {
     this.shouldAnimate = true;
     this.shouldRotateCamera = shouldRotateCamera;
     this.shouldAddCameraControls = shouldAddCameraControls;
+    // The point OrbitControls orbits around (and the camera looks at). Defaults to
+    // the origin; set it when the camera looks at a non-origin point, otherwise the
+    // first drag snaps the view from the camera's lookAt onto the controls' target.
+    this.cameraTarget = cameraTarget;
     this.stats = new Stats();
     this.hasStats = false;
     this.maxTicks = maxTicks;
@@ -311,6 +316,15 @@ export class Visualization {
       camera,
       renderer: webGlRenderer,
     });
+
+    // Keep OrbitControls' target in sync with where the camera looks, so the
+    // first drag doesn't snap the view. Done after init, since init positions the
+    // camera. (Capture mode has no controls, so this is a no-op there.)
+    if (this.cameraTarget && this.cameraControls) {
+      this.cameraControls.target.fromArray(this.cameraTarget);
+      this.camera.lookAt(this.cameraControls.target);
+      this.cameraControls.update();
+    }
 
     if (this.capture) {
       return Promise.resolve(this.enableCaptureMode());
