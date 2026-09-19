@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## `v13.3.0` — Helix - 2026-09-19
+
+A backward-compatible, additive minor — the **flow & shapes** release. Two new flow-field behaviours make organic, swirling motion first-class, and four parametric emission zones open up a whole category of AoE/spell shapes. Everything is opt-in, deterministic (seeded, spec 02), and applies over the untouched existing API — nothing changes for effects that don't use it.
+
+### Added
+
+- **`Vortex` behaviour** — a coherent tangential swirl around an axis, with optional inward/outward `pull` and radial `falloff`. For vortices, spell charge-ups, tornados and orbiting motes. Applied to particle **velocity** (not acceleration), so it isn't subject to the `Force` 1:100 (MEASURE) scaling; deterministic by construction.
+- **`CurlNoise` behaviour** — drives particles with the **curl of a seeded Perlin field**. Because it's the curl of a vector potential it's divergence-free, so particles roil and fold without clumping — the standard for organic turbulence (smoke, fire, dust, energy). Seeded via `mulberry32` (never `Math.random`), so the same seed yields the same flow everywhere.
+- **Parametric emission zones — `RingZone`, `DiscZone`, `CylinderZone`, `ConeZone`.** Uniform-sampled, deterministic, axis-aligned to +Y (arbitrary axis is a follow-up). Summoning circles / frost novas (ring, disc), pillars / beams (cylinder), cones of cold / sprays (cone).
+  - **Planar zones (Ring, Disc) are emission-first**: `supportsCrossing` is `false`, so a `CrossZone` using them warns rather than misbehaving.
+  - **Solid zones (Cone, Cylinder) are true 3D boundaries**: `_dead` kills particles that leave the volume; `CylinderZone` also reflects off the side wall (`_bound`).
+- All five new types round-trip through `System.fromJSON` (`SUPPORTED_JSON_BEHAVIOUR_TYPES` / `SUPPORTED_JSON_ZONE_TYPES`), and the debug renderer draws wireframes for the new zones.
+
+### Notes
+
+- `Vortex` and `CurlNoise` write to `particle.velocity`, so magnitudes are intuitive (tune in the hundreds) — they do **not** use the `Force` ×100 convention.
+- The new zones sample uniformly by area/volume (unlike the older `SphereZone`, whose sampling clusters toward the centre — left unchanged for compatibility).
+
 ## `v13.2.0` - 2026-09-13
 
 A backward-compatible, additive minor that polishes the `RibbonRenderer` introduced in 13.1.0. Ribbons now look smooth by default — soft-edged and free of the bright banding that clustered or bursty emission used to produce. No API changes; existing ribbons render better with no code changes, and the new behaviour is controllable via renderer options.

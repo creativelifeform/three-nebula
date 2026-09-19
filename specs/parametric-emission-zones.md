@@ -21,38 +21,81 @@ asset authoring) or by placing particles with hand-written math.
 
 ## Proposed
 
-New zones, each implementing the existing Zone contract (`getPosition()` with
-**uniform** sampling, plus the crossing/`_dead`/`_bound`/`_cross` methods the
-other zones provide so `CrossZone` works):
+New **zones** — kept as zones, not a separate "shape" type (see *Terminology*
+below) — each implementing the existing Zone contract: `getPosition()` with
+**uniform** sampling, plus the `_dead`/`_bound`/`_cross` boundary methods, **with
+the solid-vs-planar caveat below**.
 
 ```
-new RingZone(center: Vector3D, innerRadius, outerRadius, axis = +Y)   // annulus in a plane
-new DiscZone(center: Vector3D, radius, axis = +Y)                     // filled circle (RingZone inner=0)
-new ConeZone(apex: Vector3D, direction: Vector3D, angle°, length)     // solid cone (breath/spray)
-new CylinderZone(center: Vector3D, radius, height, axis = +Y)         // solid cylinder (pillar/beam)
+new RingZone(center: Vector3D, innerRadius, outerRadius, axis = +Y)   // annulus in a plane  (planar)
+new DiscZone(center: Vector3D, radius, axis = +Y)                     // filled circle (RingZone inner=0)  (planar)
+new ConeZone(apex: Vector3D, direction: Vector3D, angle°, length)     // solid cone (breath/spray)  (solid)
+new CylinderZone(center: Vector3D, radius, height, axis = +Y)         // solid cylinder (pillar/beam)  (solid)
 ```
 
 Uniform sampling notes (avoid clustering at the centre):
 - Disc/Ring: `r = sqrt(lerp(inner², outer², u))`, `θ = 2πv`.
 - Cone: sample along length, radius scales with distance from apex.
 
-## Stage 0 — Audit (before implementing)
+### Solid vs planar — boundary behaviour differs
 
-1. Read the `Zone` base class and an existing zone (e.g. `SphereZone`) for the
-   exact method surface `getPosition` / `getPosition3D` / `_dead` / `_bound` /
-   `_cross` and how `Position` and `CrossZone` consume it.
-2. **Determinism (spec 02):** check whether zone sampling currently draws from
-   `Math.random` (via `MathUtils.randomFloating`) or a threaded seeded `rng`. New
-   zones must sample from the seeded stream so `setSeed` output stays reproducible
-   — align with however the initializers thread `particle.rng`.
-3. Confirm axis handling (arbitrary axis vs. axis-aligned) — a `+Y` default with
-   an optional axis is enough for v1; full arbitrary-axis can follow.
+The four are not uniform in dimensionality, and that changes what `CrossZone`
+(dead/bound/cross) can mean:
+
+- **Solid volumes — `ConeZone`, `CylinderZone`:** have a well-defined
+  inside/outside test, so they are **full boundaries** — implement
+  `_dead`/`_bound`/`_cross` properly; they work as both emission shapes and
+  `CrossZone` boundaries.
+- **Planar zones — `RingZone`, `DiscZone`:** zero thickness, so "is the particle
+  inside a flat disc?" is degenerate for bounce/wrap. These are **emission-first**:
+  implement `getPosition` fully, but make the boundary methods a documented no-op
+  (or a thin planar test) rather than pretend they are 3D volumes. Do **not** ship
+  a `DiscZone` that behaves unpredictably under `CrossZone`.
+
+## Stage 0 — Audit (DONE — findings)
+
+1. **Zone contract** (`src/zone/Zone.ts`): `getPosition(rng?): Vector3D` sets
+   `this.vector` and returns it. `crossing(particle)` dispatches to
+   `_dead`/`_bound`/`_cross` by `crossType` — **but first checks a
+   `supportsCrossing` flag**; when `false` it `console.warn`s and no-ops. That
+   flag is exactly the mechanism for the planar/emission-first zones.
+2. **Determinism is already threaded:** `Position.initialize` calls
+   `zone.getPosition(target.rng)` and each zone does `const rand = rng ??
+   Math.random`. New zones just draw from the passed `rand()` — no `Math.random`,
+   no extra plumbing.
+3. **JSON round-trip uses POSITIONAL SCALAR args:** `Position.fromJSON` does
+   `createZone(zoneType, Object.values(params))`, spreading the JSON values into
+   the constructor in key order. So constructors must be **scalars in a fixed
+   order** (that's why `SphereZone` is `(x, y, z, radius)`, not a `Vector3D`).
+   → **Decision:** new zones take scalar args (e.g.
+   `RingZone(x, y, z, innerRadius, outerRadius)`), NOT the `Vector3D` sketch above.
+4. **Axis:** v1 is **axis-aligned to +Y** (disc/ring in the XZ plane, cylinder/cone
+   along +Y). Keeps args scalar/JSON-friendly. Covers ground rings, summoning
+   circles, vertical pillars/beams, upward cones/fountains. Arbitrary-axis
+   (needed for e.g. horizontal dragon-breath) is the documented follow-up.
+5. **Registration points:** `zone/types.ts` (type const), `zone/index.ts`
+   (export), `createZone.ts` (ZONES table), `core/constants.ts`
+   (`SUPPORTED_JSON_ZONE_TYPES`).
 
 ## Acceptance
 
 - Each zone samples uniformly within its shape; visualised in a sandbox demo.
-- Works as a `Position` initializer and a `CrossZone` boundary.
+- All four work as a `Position` initializer.
+- **Solid zones (Cone, Cylinder) work as a `CrossZone` boundary; planar zones
+  (Ring, Disc) are emission-first — boundary methods no-op / documented, not
+  broken.**
 - Deterministic for a fixed seed.
+
+## Terminology — kept as "Zone", not "Shape"
+
+These are `Zone`s, deliberately — not a new "shape" abstraction. Unity/Niagara
+call the emission-source module "Shape" and couple it to the emitter;
+three-nebula's `Zone` is a **standalone geometric region** consumed by *both* the
+`Position` initializer (emission) *and* the `CrossZone` behaviour (boundary). That
+decoupling is the reason to build these as zones (one implementation serves both
+uses) and the reason "zone" is the more accurate name. Keep the term throughout
+code, docs, and editor — intentional differentiation over 1:1 parity with other
+tools.
 
 ## Notes
 

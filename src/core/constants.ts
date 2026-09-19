@@ -10,6 +10,8 @@ import {
   BEHAVIOUR_TYPE_ROTATE,
   BEHAVIOUR_TYPE_SCALE,
   BEHAVIOUR_TYPE_SPRING,
+  BEHAVIOUR_TYPE_VORTEX,
+  BEHAVIOUR_TYPE_CURL_NOISE,
 } from '../behaviour/types';
 import {
   INITIALIZER_TYPE_BODY,
@@ -30,6 +32,10 @@ import {
   ZONE_TYPE_MESH,
   ZONE_TYPE_POINT,
   ZONE_TYPE_SPHERE,
+  ZONE_TYPE_RING,
+  ZONE_TYPE_DISC,
+  ZONE_TYPE_CONE,
+  ZONE_TYPE_CYLINDER,
 } from '../zone/types';
 
 import { RENDERER_TYPE_SPRITE } from '../renderer/types';
@@ -186,6 +192,8 @@ export const SUPPORTED_JSON_BEHAVIOUR_TYPES = [
   BEHAVIOUR_TYPE_ROTATE,
   BEHAVIOUR_TYPE_SCALE,
   BEHAVIOUR_TYPE_SPRING,
+  BEHAVIOUR_TYPE_VORTEX,
+  BEHAVIOUR_TYPE_CURL_NOISE,
 ] as const;
 
 /** The behaviour `type` strings accepted by `System.fromJSON`. */
@@ -212,6 +220,10 @@ export const SUPPORTED_JSON_ZONE_TYPES = [
   ZONE_TYPE_MESH,
   ZONE_TYPE_POINT,
   ZONE_TYPE_SPHERE,
+  ZONE_TYPE_RING,
+  ZONE_TYPE_DISC,
+  ZONE_TYPE_CONE,
+  ZONE_TYPE_CYLINDER,
 ] as const;
 
 /** The zone `type` strings accepted by `System.fromJSON`. */

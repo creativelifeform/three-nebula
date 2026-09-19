@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import System, {
   Alpha,
-  Behaviour,
   Body,
   Color,
   Emitter,
@@ -16,49 +15,16 @@ import System, {
   SphereZone,
   GPURenderer,
   Vector3D,
+  Vortex,
 } from 'three-nebula';
 import { run } from '/common/run.js';
 
 // Arcane Vortex — a spell charge-up: energy is drawn inward in a tightening
 // spiral toward the caster's focus, brightening as it converges.
 //
-// Ad-hoc workaround for a real library gap (no curl/vortex force field, filed as
-// specs/curl-noise-force-field.md): a custom Behaviour applying a tangential
-// force around an axis plus an inward pull. Written against particle.velocity, so
-// it is NOT subject to the Force ×100 (MEASURE) scaling — tune in the hundreds.
-
-class Vortex extends Behaviour {
-  constructor(center, axis, swirl = 400, pull = 80, life, easing, isEnabled = true) {
-    super(life, easing, 'Vortex', isEnabled);
-    this.center = center;
-    this.axis = axis.clone().normalize();
-    this.swirl = swirl;
-    this.pull = pull;
-    this._r = new Vector3D();
-    this._t = new Vector3D();
-    this._in = new Vector3D();
-    this._axis = new Vector3D();
-  }
-
-  mutate(particle, time) {
-    this.energize(particle, time);
-
-    // Radial vector from the axis line to the particle (component ⟂ to axis).
-    this._r.copy(particle.position).sub(this.center);
-    const along = this._r.dot(this.axis);
-    this._r.sub(this._axis.copy(this.axis).multiplyScalar(along));
-
-    const dist = this._r.length() || 1e-3;
-
-    // Tangential swirl (axis × radial) + inward pull, tightened toward the core.
-    this._t.copy(this.axis).cross(this._r).multiplyScalar(this.swirl / dist);
-    this._in.copy(this._r).multiplyScalar(-this.pull / dist);
-
-    particle.velocity
-      .add(this._t.multiplyScalar(time))
-      .add(this._in.multiplyScalar(time));
-  }
-}
+// Uses the first-class `Vortex` behaviour (a tangential swirl around an axis plus
+// an optional inward pull). It writes to particle.velocity, so it is NOT subject
+// to the Force ×100 (MEASURE) scaling — tune swirl/pull in the hundreds.
 
 const CENTER = new Vector3D(0, 0, 0);
 const AXIS = new Vector3D(0, 0, 1); // swirl faces the camera
