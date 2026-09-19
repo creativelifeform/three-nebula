@@ -350,10 +350,34 @@ export class Visualization {
 
     const self = this;
 
+    // The point to orbit around (the camera's focus) and the camera's starting
+    // offset from it, captured once. A scripted orbit (below) rotates that offset
+    // around +Y, keeping radius and elevation — revealing that the effect is 3D.
+    const target = new THREE.Vector3().fromArray(this.cameraTarget || [0, 0, 0]);
+    const initialOffset = this.camera.position.clone().sub(target);
+
     window.__nebulaCapture = {
-      step(dt = 1 / 60) {
+      // `orbitAngle` (radians) is supplied by the capture driver for a scripted
+      // "hold then orbit" shot; when omitted, fall back to the experiment's own
+      // rotateCamera (legacy behaviour).
+      step(dt = 1 / 60, orbitAngle) {
         self.particleSystem.update(dt);
-        self.rotateCamera();
+
+        if (orbitAngle === undefined) {
+          self.rotateCamera();
+        } else {
+          const c = Math.cos(orbitAngle);
+          const s = Math.sin(orbitAngle);
+          const { x: ox, y: oy, z: oz } = initialOffset;
+
+          self.camera.position.set(
+            target.x + ox * c + oz * s,
+            target.y + oy,
+            target.z - ox * s + oz * c
+          );
+          self.camera.lookAt(target);
+        }
+
         self.renderFrame();
       },
     };
