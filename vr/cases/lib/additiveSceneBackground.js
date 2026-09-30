@@ -2,9 +2,8 @@
 //
 // The gradient is a scene object (opaque backdrop), so additive particles blend
 // against real framebuffer pixels — the recommended approach from the #133
-// resolution (see specs/fix-133-additive-transparent-canvas.md). Uses the
-// opaque, no-alpha circle_01.png on purpose: the whole point is that it renders
-// correctly here without an alpha channel.
+// resolution. Uses the opaque, no-alpha circle_01.png on purpose: the whole point
+// is that it renders correctly here without an alpha channel.
 import System from 'three-nebula';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import suzanneUrl from '../../assets/Suzanne.glb?url';
