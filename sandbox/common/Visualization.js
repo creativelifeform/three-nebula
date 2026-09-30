@@ -350,10 +350,46 @@ export class Visualization {
 
     const self = this;
 
+    // The point to orbit around (the camera's focus) and the camera's starting
+    // offset from it, captured once. A scripted orbit (below) rotates that offset
+    // around +Y, keeping radius and elevation — revealing that the effect is 3D.
+    const target = new THREE.Vector3().fromArray(this.cameraTarget || [0, 0, 0]);
+    const offset = this.camera.position.clone().sub(target);
+    // The starting camera pose in spherical coords about the target, so a showcase
+    // move can add azimuth (orbit), elevation (tilt) and radius (zoom) deltas.
+    const r0 = offset.length() || 1;
+    const az0 = Math.atan2(offset.x, offset.z);
+    const el0 = Math.asin(Math.max(-1, Math.min(1, offset.y / r0)));
+    const HALF_PI = Math.PI / 2;
+
     window.__nebulaCapture = {
-      step(dt = 1 / 60) {
+      // `pose` (from the capture driver) choreographs a showcase camera move:
+      //   azimuth   — radians added to the start azimuth (the left↔right orbit)
+      //   elevation — radians added to the start elevation (tilt up/down)
+      //   zoom      — radius multiplier (<1 = closer)
+      // Omit `pose` to fall back to the experiment's own rotateCamera.
+      step(dt = 1 / 60, pose) {
         self.particleSystem.update(dt);
-        self.rotateCamera();
+
+        if (!pose) {
+          self.rotateCamera();
+        } else {
+          const r = r0 * (pose.zoom ?? 1);
+          const az = az0 + (pose.azimuth ?? 0);
+          const el = Math.max(
+            -HALF_PI + 0.01,
+            Math.min(HALF_PI - 0.01, el0 + (pose.elevation ?? 0))
+          );
+          const h = r * Math.cos(el);
+
+          self.camera.position.set(
+            target.x + h * Math.sin(az),
+            target.y + r * Math.sin(el),
+            target.z + h * Math.cos(az)
+          );
+          self.camera.lookAt(target);
+        }
+
         self.renderFrame();
       },
     };
