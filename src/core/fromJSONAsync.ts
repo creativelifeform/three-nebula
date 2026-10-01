@@ -23,12 +23,38 @@ import type {
 } from './fromJSON';
 
 type ThreeApi = typeof import('three');
+type ThreeTexture = import('three').Texture;
 
-interface FromJSONAsyncOptions {
+/**
+ * A content-addressed asset reference (spec 05). The `hash` is the asset's
+ * identity (sha256 over the raw bytes, algorithm-prefixed); `mime` is its type.
+ */
+export interface AssetRef {
+  hash: string;
+  mime: string;
+}
+
+/**
+ * Resolves a content-addressed asset reference to a URL the loader can fetch.
+ * Supplied by the consumer (an HTTP/CDN resolver, a `Map` for tests, …); the
+ * library ships none and is storage-agnostic. Only invoked on the `textureRef`
+ * path — a fully-inline (base64 `texture`) system needs no resolver.
+ */
+export type AssetResolver = (ref: AssetRef) => Promise<string>;
+
+export interface FromJSONAsyncOptions {
   shouldAutoEmit?: boolean;
+  resolveAsset?: AssetResolver;
 }
 
 const DEFAULT_OPTIONS: FromJSONAsyncOptions = { shouldAutoEmit: true };
+
+// Threaded through the async build: the optional resolver + a per-build decode
+// cache keyed by asset hash, so repeated refs resolve/load exactly once.
+interface AssetContext {
+  resolveAsset?: AssetResolver;
+  cache: Map<string, Promise<ThreeTexture>>;
+}
 
 /**
  * Makes a rate instance.
@@ -41,7 +67,8 @@ const makeRate = (json: Record<string, unknown>): Rate =>
  */
 const makeInitializers = (
   items: ItemJSON[],
-  THREE: ThreeApi
+  THREE: ThreeApi,
+  assets: AssetContext
 ): Promise<InitializerBase[]> =>
   new Promise((resolve, reject) => {
     if (!items.length) {
@@ -75,24 +102,56 @@ const makeInitializers = (
         );
       }
 
-      if (properties.texture) {
-        const textureLoader = new THREE.TextureLoader();
-
-        textureLoader.load(
-          properties.texture as string,
-          loadedTexture =>
-            onMade(
-              index,
-              TextureInitializer.fromJSON(
-                { ...properties, loadedTexture } as Parameters<
-                  typeof TextureInitializer.fromJSON
-                >[0],
-                THREE
-              )
-            ),
-          undefined,
-          reject
+      // Both texture forms resolve to a loaded THREE.Texture, then build the same
+      // Texture initializer. `textureRef` (content-addressed) takes precedence over
+      // inline `texture` if both are somehow present (spec 05).
+      const buildTextureInitializer = (loadedTexture: ThreeTexture) =>
+        onMade(
+          index,
+          TextureInitializer.fromJSON(
+            { ...properties, loadedTexture } as Parameters<
+              typeof TextureInitializer.fromJSON
+            >[0],
+            THREE
+          )
         );
+
+      const loadUrl = (url: string): Promise<ThreeTexture> =>
+        new Promise((resolveTexture, rejectTexture) =>
+          new THREE.TextureLoader().load(
+            url,
+            resolveTexture,
+            undefined,
+            rejectTexture
+          )
+        );
+
+      if (properties.textureRef) {
+        const ref = properties.textureRef as AssetRef;
+
+        if (!assets.resolveAsset) {
+          return reject(
+            `A textureRef was found (hash: ${ref.hash}) but no resolveAsset option was supplied to fromJSONAsync`
+          );
+        }
+
+        // Dedup by hash: the same asset referenced many times resolves/loads once.
+        let loaded = assets.cache.get(ref.hash);
+
+        if (!loaded) {
+          loaded = assets.resolveAsset(ref).then(loadUrl);
+          assets.cache.set(ref.hash, loaded);
+        }
+
+        loaded.then(buildTextureInitializer).catch(reject);
+
+        return;
+      }
+
+      if (properties.texture) {
+        loadUrl(properties.texture as string)
+          .then(buildTextureInitializer)
+          .catch(reject);
 
         return;
       }
@@ -145,7 +204,8 @@ const buildEmitterAsync = (
   data: EmitterJSON,
   Emitter: EmitterConstructor,
   THREE: ThreeApi,
-  shouldAutoEmit: boolean | undefined
+  shouldAutoEmit: boolean | undefined,
+  assets: AssetContext
 ): Promise<Emitter> => {
   const emitter = new Emitter();
   const {
@@ -179,7 +239,7 @@ const buildEmitterAsync = (
     emitter.trigger = trigger;
   }
 
-  return makeInitializers(initializers, THREE)
+  return makeInitializers(initializers, THREE, assets)
     .then(madeInitializers => {
       emitter.setInitializers(madeInitializers);
 
@@ -196,7 +256,7 @@ const buildEmitterAsync = (
       // Build children in order (each may itself load textures asynchronously).
       return Promise.all(
         children.map(child =>
-          buildEmitterAsync(child, Emitter, THREE, shouldAutoEmit)
+          buildEmitterAsync(child, Emitter, THREE, shouldAutoEmit, assets)
         )
       );
     })
@@ -213,13 +273,14 @@ const makeEmitters = (
   emitters: EmitterJSON[],
   Emitter: EmitterConstructor,
   THREE: ThreeApi,
-  shouldAutoEmit: boolean | undefined
+  shouldAutoEmit: boolean | undefined,
+  assets: AssetContext
 ): Promise<Emitter[]> =>
   // Promise.all preserves input order, so system.emitters stays in JSON order
   // regardless of how the nested async texture loads interleave.
   Promise.all(
     emitters.map(data =>
-      buildEmitterAsync(data, Emitter, THREE, shouldAutoEmit)
+      buildEmitterAsync(data, Emitter, THREE, shouldAutoEmit, assets)
     )
   );
 
@@ -240,9 +301,11 @@ export default (
       emitters = [],
     } = json;
     const system = new System(preParticles, integrationType);
-    const { shouldAutoEmit } = { ...DEFAULT_OPTIONS, ...options };
+    const { shouldAutoEmit, resolveAsset } = { ...DEFAULT_OPTIONS, ...options };
+    // One decode cache per build so repeated asset refs load once (dedup).
+    const assets: AssetContext = { resolveAsset, cache: new Map() };
 
-    makeEmitters(emitters, Emitter, THREE, shouldAutoEmit)
+    makeEmitters(emitters, Emitter, THREE, shouldAutoEmit, assets)
       .then(madeEmitters => {
         const numberOfEmitters = madeEmitters.length;
 

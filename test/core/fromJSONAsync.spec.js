@@ -261,3 +261,121 @@ describe('fromJSONAsync — preserves input order under out-of-order async textu
     assert.instanceOf(initializers[0], Texture);
   });
 });
+
+// Content-addressed assets (spec 05): an optional `textureRef: { hash, mime }`
+// alongside the inline base64 `texture`, resolved to a URL by a consumer-supplied
+// resolver. Additive — inline textures keep working with no resolver.
+describe('fromJSONAsync — content-addressed assets (textureRef)', () => {
+  let textureLoaderStub, consoleWarnStub;
+
+  beforeAll(() => {
+    consoleWarnStub = stub(console, 'warn');
+  });
+
+  afterAll(() => {
+    consoleWarnStub.restore();
+  });
+
+  beforeEach(() => {
+    textureLoaderStub = stub(TextureLoader.prototype, 'load').callsFake(
+      (url, onLoad) => onLoad()
+    );
+  });
+
+  afterEach(() => {
+    textureLoaderStub.restore();
+  });
+
+  const REF = { hash: 'sha256:abc123', mime: 'image/png' };
+
+  const systemWith = properties => ({
+    emitters: [
+      {
+        rate: {
+          particlesMin: 1,
+          particlesMax: 1,
+          perSecondMin: 1,
+          perSecondMax: 1,
+        },
+        initializers: [{ type: 'Texture', properties }],
+        behaviours: [],
+      },
+    ],
+  });
+
+  it('resolves a textureRef via resolveAsset and loads the resolved URL', async () => {
+    const resolveAsset = stub().resolves('https://cdn.example/abc123.png');
+
+    await Particles.fromJSONAsync(systemWith({ textureRef: REF }), THREE, {
+      resolveAsset,
+    });
+
+    assert(resolveAsset.calledOnceWith(REF));
+    assert(textureLoaderStub.calledWith('https://cdn.example/abc123.png'));
+  });
+
+  it('rejects when a textureRef is present but no resolveAsset is supplied', async () => {
+    let error;
+
+    try {
+      await Particles.fromJSONAsync(systemWith({ textureRef: REF }), THREE);
+    } catch (e) {
+      error = e;
+    }
+
+    assert.isDefined(error);
+    assert.include(String(error), 'resolveAsset');
+  });
+
+  it('prefers textureRef over inline texture when both are present', async () => {
+    const resolveAsset = stub().resolves('https://cdn.example/abc123.png');
+
+    await Particles.fromJSONAsync(
+      systemWith({ textureRef: REF, texture: 'data:image/png;base64,AAAA' }),
+      THREE,
+      { resolveAsset }
+    );
+
+    assert(resolveAsset.calledOnce);
+    assert(textureLoaderStub.calledWith('https://cdn.example/abc123.png'));
+    assert(textureLoaderStub.neverCalledWith('data:image/png;base64,AAAA'));
+  });
+
+  it('dedups: the same hash referenced twice resolves and loads once', async () => {
+    const resolveAsset = stub().resolves('https://cdn.example/abc123.png');
+
+    await Particles.fromJSONAsync(
+      {
+        emitters: [
+          {
+            rate: {
+              particlesMin: 1,
+              particlesMax: 1,
+              perSecondMin: 1,
+              perSecondMax: 1,
+            },
+            initializers: [
+              { type: 'Texture', properties: { textureRef: REF } },
+              { type: 'Texture', properties: { textureRef: REF } },
+            ],
+            behaviours: [],
+          },
+        ],
+      },
+      THREE,
+      { resolveAsset }
+    );
+
+    assert(resolveAsset.calledOnce);
+    assert(textureLoaderStub.calledOnce);
+  });
+
+  it('still loads an inline base64 texture with no resolver (backwards compatible)', async () => {
+    await Particles.fromJSONAsync(
+      systemWith({ texture: 'data:image/png;base64,AAAA' }),
+      THREE
+    );
+
+    assert(textureLoaderStub.calledWith('data:image/png;base64,AAAA'));
+  });
+});
