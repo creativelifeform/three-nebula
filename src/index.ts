@@ -10,4 +10,9 @@ export * from './renderer';
 export * from './utils';
 export * from './zone';
 export { System, Particle, Pool } from './core';
+export type {
+  AssetRef,
+  AssetResolver,
+  FromJSONAsyncOptions,
+} from './core/fromJSONAsync';
 export default System;

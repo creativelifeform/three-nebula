@@ -19,6 +19,7 @@ import { POOL_MAX } from '../constants';
 import Pool from './Pool';
 import fromJSON, { SystemJSON } from './fromJSON';
 import fromJSONAsync from './fromJSONAsync';
+import type { FromJSONAsyncOptions } from './fromJSONAsync';
 import { CORE_TYPE_SYSTEM as type } from './types';
 import type BaseRenderer from '../renderer/BaseRenderer';
 import type Particle from './Particle';
@@ -30,10 +31,6 @@ interface LifeCycleHooks {
   onStart?: () => void;
   onUpdate?: Listener;
   onEnd?: () => void;
-}
-
-interface FromJSONAsyncOptions {
-  shouldAutoEmit?: boolean;
 }
 
 /**
